@@ -94,6 +94,21 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (string) - The email of the project owner
+     * 
+     */
+    @Import(name="owner")
+    private @Nullable Output<String> owner;
+
+    /**
+     * @return (string) - The email of the project owner
+     * 
+     */
+    public Optional<Output<String>> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+
+    /**
      * (integer) - The effective major Postgres version number
      * 
      */
@@ -146,6 +161,7 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
         this.defaultEndpointSettings = $.defaultEndpointSettings;
         this.displayName = $.displayName;
         this.historyRetentionDuration = $.historyRetentionDuration;
+        this.owner = $.owner;
         this.pgVersion = $.pgVersion;
         this.settings = $.settings;
         this.syntheticStorageSizeBytes = $.syntheticStorageSizeBytes;
@@ -272,6 +288,27 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
          */
         public Builder historyRetentionDuration(String historyRetentionDuration) {
             return historyRetentionDuration(Output.of(historyRetentionDuration));
+        }
+
+        /**
+         * @param owner (string) - The email of the project owner
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(@Nullable Output<String> owner) {
+            $.owner = owner;
+            return this;
+        }
+
+        /**
+         * @param owner (string) - The email of the project owner
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(String owner) {
+            return owner(Output.of(owner));
         }
 
         /**

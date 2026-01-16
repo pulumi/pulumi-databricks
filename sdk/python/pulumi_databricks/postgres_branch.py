@@ -21,24 +21,38 @@ __all__ = ['PostgresBranchArgs', 'PostgresBranch']
 @pulumi.input_type
 class PostgresBranchArgs:
     def __init__(__self__, *,
+                 branch_id: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
-                 branch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input['PostgresBranchSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresBranch resource.
-        :param pulumi.Input[_builtins.str] parent: The project containing this branch.
-               Format: projects/{project_id}
         :param pulumi.Input[_builtins.str] branch_id: The ID to use for the Branch, which will become the final component of
                the branch's resource name.
                
                This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        :param pulumi.Input[_builtins.str] parent: The project containing this branch.
+               Format: projects/{project_id}
         :param pulumi.Input['PostgresBranchSpecArgs'] spec: The desired state of a Branch
         """
+        pulumi.set(__self__, "branch_id", branch_id)
         pulumi.set(__self__, "parent", parent)
-        if branch_id is not None:
-            pulumi.set(__self__, "branch_id", branch_id)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+
+    @_builtins.property
+    @pulumi.getter(name="branchId")
+    def branch_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID to use for the Branch, which will become the final component of
+        the branch's resource name.
+
+        This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        """
+        return pulumi.get(self, "branch_id")
+
+    @branch_id.setter
+    def branch_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "branch_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -52,21 +66,6 @@ class PostgresBranchArgs:
     @parent.setter
     def parent(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parent", value)
-
-    @_builtins.property
-    @pulumi.getter(name="branchId")
-    def branch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID to use for the Branch, which will become the final component of
-        the branch's resource name.
-
-        This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-        """
-        return pulumi.get(self, "branch_id")
-
-    @branch_id.setter
-    def branch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "branch_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -326,6 +325,8 @@ class PostgresBranch(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PostgresBranchArgs.__new__(PostgresBranchArgs)
 
+            if branch_id is None and not opts.urn:
+                raise TypeError("Missing required property 'branch_id'")
             __props__.__dict__["branch_id"] = branch_id
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")

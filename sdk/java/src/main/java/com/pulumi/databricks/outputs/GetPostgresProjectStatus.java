@@ -39,6 +39,11 @@ public final class GetPostgresProjectStatus {
      */
     private String historyRetentionDuration;
     /**
+     * @return (string) - The email of the project owner
+     * 
+     */
+    private String owner;
+    /**
      * @return (integer) - The effective major Postgres version number
      * 
      */
@@ -91,6 +96,13 @@ public final class GetPostgresProjectStatus {
         return this.historyRetentionDuration;
     }
     /**
+     * @return (string) - The email of the project owner
+     * 
+     */
+    public String owner() {
+        return this.owner;
+    }
+    /**
      * @return (integer) - The effective major Postgres version number
      * 
      */
@@ -126,6 +138,7 @@ public final class GetPostgresProjectStatus {
         private GetPostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings;
         private String displayName;
         private String historyRetentionDuration;
+        private String owner;
         private Integer pgVersion;
         private GetPostgresProjectStatusSettings settings;
         private Integer syntheticStorageSizeBytes;
@@ -137,6 +150,7 @@ public final class GetPostgresProjectStatus {
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
     	      this.displayName = defaults.displayName;
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
+    	      this.owner = defaults.owner;
     	      this.pgVersion = defaults.pgVersion;
     	      this.settings = defaults.settings;
     	      this.syntheticStorageSizeBytes = defaults.syntheticStorageSizeBytes;
@@ -183,6 +197,14 @@ public final class GetPostgresProjectStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder owner(String owner) {
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectStatus", "owner");
+            }
+            this.owner = owner;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgVersion(Integer pgVersion) {
             if (pgVersion == null) {
               throw new MissingRequiredPropertyException("GetPostgresProjectStatus", "pgVersion");
@@ -213,6 +235,7 @@ public final class GetPostgresProjectStatus {
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;
             _resultValue.displayName = displayName;
             _resultValue.historyRetentionDuration = historyRetentionDuration;
+            _resultValue.owner = owner;
             _resultValue.pgVersion = pgVersion;
             _resultValue.settings = settings;
             _resultValue.syntheticStorageSizeBytes = syntheticStorageSizeBytes;

@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingProvisionedThroughputConfigServedEntity
     {
+        public readonly bool? BurstScalingEnabled;
         /// <summary>
         /// The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
         /// </summary>
@@ -32,6 +33,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingProvisionedThroughputConfigServedEntity(
+            bool? burstScalingEnabled,
+
             string entityName,
 
             string entityVersion,
@@ -40,6 +43,7 @@ namespace Pulumi.Databricks.Outputs
 
             int provisionedModelUnits)
         {
+            BurstScalingEnabled = burstScalingEnabled;
             EntityName = entityName;
             EntityVersion = entityVersion;
             Name = name;

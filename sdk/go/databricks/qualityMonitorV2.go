@@ -80,6 +80,8 @@ type QualityMonitorV2 struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
+	// Validity check configurations for anomaly detection
+	ValidityCheckConfigurations QualityMonitorV2ValidityCheckConfigurationArrayOutput `pulumi:"validityCheckConfigurations"`
 }
 
 // NewQualityMonitorV2 registers a new resource with the given unique name, arguments, and options.
@@ -124,6 +126,8 @@ type qualityMonitorV2State struct {
 	ObjectId *string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType *string `pulumi:"objectType"`
+	// Validity check configurations for anomaly detection
+	ValidityCheckConfigurations []QualityMonitorV2ValidityCheckConfiguration `pulumi:"validityCheckConfigurations"`
 }
 
 type QualityMonitorV2State struct {
@@ -133,6 +137,8 @@ type QualityMonitorV2State struct {
 	ObjectId pulumi.StringPtrInput
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringPtrInput
+	// Validity check configurations for anomaly detection
+	ValidityCheckConfigurations QualityMonitorV2ValidityCheckConfigurationArrayInput
 }
 
 func (QualityMonitorV2State) ElementType() reflect.Type {
@@ -144,6 +150,8 @@ type qualityMonitorV2Args struct {
 	ObjectId string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType string `pulumi:"objectType"`
+	// Validity check configurations for anomaly detection
+	ValidityCheckConfigurations []QualityMonitorV2ValidityCheckConfiguration `pulumi:"validityCheckConfigurations"`
 }
 
 // The set of arguments for constructing a QualityMonitorV2 resource.
@@ -152,6 +160,8 @@ type QualityMonitorV2Args struct {
 	ObjectId pulumi.StringInput
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringInput
+	// Validity check configurations for anomaly detection
+	ValidityCheckConfigurations QualityMonitorV2ValidityCheckConfigurationArrayInput
 }
 
 func (QualityMonitorV2Args) ElementType() reflect.Type {
@@ -256,6 +266,13 @@ func (o QualityMonitorV2Output) ObjectId() pulumi.StringOutput {
 // The type of the monitored object. Can be one of the following: schema
 func (o QualityMonitorV2Output) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitorV2) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Validity check configurations for anomaly detection
+func (o QualityMonitorV2Output) ValidityCheckConfigurations() QualityMonitorV2ValidityCheckConfigurationArrayOutput {
+	return o.ApplyT(func(v *QualityMonitorV2) QualityMonitorV2ValidityCheckConfigurationArrayOutput {
+		return v.ValidityCheckConfigurations
+	}).(QualityMonitorV2ValidityCheckConfigurationArrayOutput)
 }
 
 type QualityMonitorV2ArrayOutput struct{ *pulumi.OutputState }

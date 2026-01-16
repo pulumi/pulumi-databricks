@@ -66,6 +66,9 @@ func NewPostgresEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.EndpointId == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointId'")
+	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
@@ -148,7 +151,7 @@ type postgresEndpointArgs struct {
 	// the endpoint's resource name.
 	//
 	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-	EndpointId *string `pulumi:"endpointId"`
+	EndpointId string `pulumi:"endpointId"`
 	// The branch containing this endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent string `pulumi:"parent"`
@@ -162,7 +165,7 @@ type PostgresEndpointArgs struct {
 	// the endpoint's resource name.
 	//
 	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-	EndpointId pulumi.StringPtrInput
+	EndpointId pulumi.StringInput
 	// The branch containing this endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent pulumi.StringInput

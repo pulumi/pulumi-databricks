@@ -33,10 +33,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
-        /// (string) - Possible values are: `TRANSACTION`
-        /// </summary>
-        public readonly string? PoolerMode;
-        /// <summary>
         /// (EndpointSettings)
         /// </summary>
         public readonly Outputs.PostgresEndpointSpecSettings? Settings;
@@ -55,8 +51,6 @@ namespace Pulumi.Databricks.Outputs
 
             string endpointType,
 
-            string? poolerMode,
-
             Outputs.PostgresEndpointSpecSettings? settings,
 
             string? suspendTimeoutDuration)
@@ -65,7 +59,6 @@ namespace Pulumi.Databricks.Outputs
             AutoscalingLimitMinCu = autoscalingLimitMinCu;
             Disabled = disabled;
             EndpointType = endpointType;
-            PoolerMode = poolerMode;
             Settings = settings;
             SuspendTimeoutDuration = suspendTimeoutDuration;
         }

@@ -55,7 +55,9 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
 
     /**
      * (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog
+     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveDatabaseInstanceName")
@@ -63,7 +65,9 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
 
     /**
      * @return (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog
+     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<String>> effectiveDatabaseInstanceName() {
@@ -71,14 +75,18 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
     }
 
     /**
-     * (string) - The name of the logical database that this table is registered to
+     * (string) - The name of the logical database that this table is registered to.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveLogicalDatabaseName")
     private @Nullable Output<String> effectiveLogicalDatabaseName;
 
     /**
-     * @return (string) - The name of the logical database that this table is registered to
+     * @return (string) - The name of the logical database that this table is registered to.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<String>> effectiveLogicalDatabaseName() {
@@ -240,7 +248,9 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
 
         /**
          * @param effectiveDatabaseInstanceName (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-         * tables inside database catalogs is inferred database instance associated with the catalog
+         * tables inside database catalogs is inferred database instance associated with the catalog.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -252,7 +262,9 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
 
         /**
          * @param effectiveDatabaseInstanceName (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-         * tables inside database catalogs is inferred database instance associated with the catalog
+         * tables inside database catalogs is inferred database instance associated with the catalog.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -262,7 +274,9 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
         }
 
         /**
-         * @param effectiveLogicalDatabaseName (string) - The name of the logical database that this table is registered to
+         * @param effectiveLogicalDatabaseName (string) - The name of the logical database that this table is registered to.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -273,7 +287,9 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
         }
 
         /**
-         * @param effectiveLogicalDatabaseName (string) - The name of the logical database that this table is registered to
+         * @param effectiveLogicalDatabaseName (string) - The name of the logical database that this table is registered to.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingProvisionedThroughputConfigServedEntityArgs : global::Pulumi.ResourceArgs
     {
+        [Input("burstScalingEnabled")]
+        public Input<bool>? BurstScalingEnabled { get; set; }
+
         /// <summary>
         /// The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
         /// </summary>

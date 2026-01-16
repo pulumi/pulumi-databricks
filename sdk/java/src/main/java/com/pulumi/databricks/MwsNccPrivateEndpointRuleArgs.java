@@ -160,6 +160,13 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.endpointService);
     }
 
+    @Import(name="errorMessage")
+    private @Nullable Output<String> errorMessage;
+
+    public Optional<Output<String>> errorMessage() {
+        return Optional.ofNullable(this.errorMessage);
+    }
+
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      * 
@@ -277,6 +284,7 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         this.enabled = $.enabled;
         this.endpointName = $.endpointName;
         this.endpointService = $.endpointService;
+        this.errorMessage = $.errorMessage;
         this.groupId = $.groupId;
         this.networkConnectivityConfigId = $.networkConnectivityConfigId;
         this.resourceId = $.resourceId;
@@ -504,6 +512,15 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
          */
         public Builder endpointService(String endpointService) {
             return endpointService(Output.of(endpointService));
+        }
+
+        public Builder errorMessage(@Nullable Output<String> errorMessage) {
+            $.errorMessage = errorMessage;
+            return this;
+        }
+
+        public Builder errorMessage(String errorMessage) {
+            return errorMessage(Output.of(errorMessage));
         }
 
         /**

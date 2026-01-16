@@ -118,6 +118,9 @@ export class PostgresEndpoint extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PostgresEndpointArgs | undefined;
+            if (args?.endpointId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'endpointId'");
+            }
             if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
@@ -188,7 +191,7 @@ export interface PostgresEndpointArgs {
      *
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId: pulumi.Input<string>;
     /**
      * The branch containing this endpoint.
      * Format: projects/{project_id}/branches/{branch_id}

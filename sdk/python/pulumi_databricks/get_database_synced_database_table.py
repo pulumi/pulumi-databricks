@@ -80,7 +80,9 @@ class GetDatabaseSyncedDatabaseTableResult:
     def effective_database_instance_name(self) -> _builtins.str:
         """
         (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-        tables inside database catalogs is inferred database instance associated with the catalog
+        tables inside database catalogs is inferred database instance associated with the catalog.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_database_instance_name")
 
@@ -88,7 +90,9 @@ class GetDatabaseSyncedDatabaseTableResult:
     @pulumi.getter(name="effectiveLogicalDatabaseName")
     def effective_logical_database_name(self) -> _builtins.str:
         """
-        (string) - The name of the logical database that this table is registered to
+        (string) - The name of the logical database that this table is registered to.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_logical_database_name")
 

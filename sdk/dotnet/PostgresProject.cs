@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public PostgresProject(string name, PostgresProjectArgs? args = null, CustomResourceOptions? options = null)
+        public PostgresProject(string name, PostgresProjectArgs args, CustomResourceOptions? options = null)
             : base("databricks:index/postgresProject:PostgresProject", name, args ?? new PostgresProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -133,8 +133,8 @@ namespace Pulumi.Databricks
         /// 
         /// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
         /// The desired state of a Project

@@ -43,6 +43,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? HistoryRetentionDuration { get; set; }
 
         /// <summary>
+        /// (string) - The email of the project owner
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
+        /// <summary>
         /// (integer) - The effective major Postgres version number
         /// </summary>
         [Input("pgVersion")]

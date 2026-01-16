@@ -118,6 +118,9 @@ export class PostgresBranch extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PostgresBranchArgs | undefined;
+            if (args?.branchId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'branchId'");
+            }
             if (args?.parent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
@@ -188,7 +191,7 @@ export interface PostgresBranchArgs {
      *
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      */
-    branchId?: pulumi.Input<string>;
+    branchId: pulumi.Input<string>;
     /**
      * The project containing this branch.
      * Format: projects/{project_id}

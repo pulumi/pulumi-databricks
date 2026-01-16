@@ -64,12 +64,6 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? PendingState { get; set; }
 
         /// <summary>
-        /// (string) - Possible values are: `TRANSACTION`
-        /// </summary>
-        [Input("poolerMode")]
-        public Input<string>? PoolerMode { get; set; }
-
-        /// <summary>
         /// (EndpointSettings)
         /// </summary>
         [Input("settings")]

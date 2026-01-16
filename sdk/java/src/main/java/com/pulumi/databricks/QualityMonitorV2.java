@@ -11,7 +11,9 @@ import com.pulumi.databricks.QualityMonitorV2Args;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.QualityMonitorV2State;
 import com.pulumi.databricks.outputs.QualityMonitorV2AnomalyDetectionConfig;
+import com.pulumi.databricks.outputs.QualityMonitorV2ValidityCheckConfiguration;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -126,6 +128,20 @@ public class QualityMonitorV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> objectType() {
         return this.objectType;
+    }
+    /**
+     * Validity check configurations for anomaly detection
+     * 
+     */
+    @Export(name="validityCheckConfigurations", refs={List.class,QualityMonitorV2ValidityCheckConfiguration.class}, tree="[0,1]")
+    private Output<List<QualityMonitorV2ValidityCheckConfiguration>> validityCheckConfigurations;
+
+    /**
+     * @return Validity check configurations for anomaly detection
+     * 
+     */
+    public Output<List<QualityMonitorV2ValidityCheckConfiguration>> validityCheckConfigurations() {
+        return this.validityCheckConfigurations;
     }
 
     /**

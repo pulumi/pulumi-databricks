@@ -16,11 +16,6 @@ public final class PostgresEndpointSpecSettings {
      * 
      */
     private @Nullable Map<String,String> pgSettings;
-    /**
-     * @return A raw representation of PgBouncer settings
-     * 
-     */
-    private @Nullable Map<String,String> pgbouncerSettings;
 
     private PostgresEndpointSpecSettings() {}
     /**
@@ -29,13 +24,6 @@ public final class PostgresEndpointSpecSettings {
      */
     public Map<String,String> pgSettings() {
         return this.pgSettings == null ? Map.of() : this.pgSettings;
-    }
-    /**
-     * @return A raw representation of PgBouncer settings
-     * 
-     */
-    public Map<String,String> pgbouncerSettings() {
-        return this.pgbouncerSettings == null ? Map.of() : this.pgbouncerSettings;
     }
 
     public static Builder builder() {
@@ -48,12 +36,10 @@ public final class PostgresEndpointSpecSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> pgSettings;
-        private @Nullable Map<String,String> pgbouncerSettings;
         public Builder() {}
         public Builder(PostgresEndpointSpecSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pgSettings = defaults.pgSettings;
-    	      this.pgbouncerSettings = defaults.pgbouncerSettings;
         }
 
         @CustomType.Setter
@@ -62,16 +48,9 @@ public final class PostgresEndpointSpecSettings {
             this.pgSettings = pgSettings;
             return this;
         }
-        @CustomType.Setter
-        public Builder pgbouncerSettings(@Nullable Map<String,String> pgbouncerSettings) {
-
-            this.pgbouncerSettings = pgbouncerSettings;
-            return this;
-        }
         public PostgresEndpointSpecSettings build() {
             final var _resultValue = new PostgresEndpointSpecSettings();
             _resultValue.pgSettings = pgSettings;
-            _resultValue.pgbouncerSettings = pgbouncerSettings;
             return _resultValue;
         }
     }

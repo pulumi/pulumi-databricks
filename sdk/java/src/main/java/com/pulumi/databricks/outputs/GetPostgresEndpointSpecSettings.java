@@ -16,11 +16,6 @@ public final class GetPostgresEndpointSpecSettings {
      * 
      */
     private @Nullable Map<String,String> pgSettings;
-    /**
-     * @return (object) - A raw representation of PgBouncer settings
-     * 
-     */
-    private @Nullable Map<String,String> pgbouncerSettings;
 
     private GetPostgresEndpointSpecSettings() {}
     /**
@@ -29,13 +24,6 @@ public final class GetPostgresEndpointSpecSettings {
      */
     public Map<String,String> pgSettings() {
         return this.pgSettings == null ? Map.of() : this.pgSettings;
-    }
-    /**
-     * @return (object) - A raw representation of PgBouncer settings
-     * 
-     */
-    public Map<String,String> pgbouncerSettings() {
-        return this.pgbouncerSettings == null ? Map.of() : this.pgbouncerSettings;
     }
 
     public static Builder builder() {
@@ -48,12 +36,10 @@ public final class GetPostgresEndpointSpecSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> pgSettings;
-        private @Nullable Map<String,String> pgbouncerSettings;
         public Builder() {}
         public Builder(GetPostgresEndpointSpecSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pgSettings = defaults.pgSettings;
-    	      this.pgbouncerSettings = defaults.pgbouncerSettings;
         }
 
         @CustomType.Setter
@@ -62,16 +48,9 @@ public final class GetPostgresEndpointSpecSettings {
             this.pgSettings = pgSettings;
             return this;
         }
-        @CustomType.Setter
-        public Builder pgbouncerSettings(@Nullable Map<String,String> pgbouncerSettings) {
-
-            this.pgbouncerSettings = pgbouncerSettings;
-            return this;
-        }
         public GetPostgresEndpointSpecSettings build() {
             final var _resultValue = new GetPostgresEndpointSpecSettings();
             _resultValue.pgSettings = pgSettings;
-            _resultValue.pgbouncerSettings = pgbouncerSettings;
             return _resultValue;
         }
     }

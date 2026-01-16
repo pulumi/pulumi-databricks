@@ -154,37 +154,53 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceCustomTagResult> CustomTags;
         /// <summary>
-        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         public readonly string EffectiveCapacity;
         /// <summary>
-        /// (list of CustomTag) - The recorded custom tags associated with the instance
+        /// (list of CustomTag) - The recorded custom tags associated with the instance.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceEffectiveCustomTagResult> EffectiveCustomTags;
         /// <summary>
-        /// (boolean) - Whether the instance has PG native password login enabled
+        /// (boolean) - Whether the instance has PG native password login enabled.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         public readonly bool EffectiveEnablePgNativeLogin;
         /// <summary>
-        /// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        /// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         public readonly bool EffectiveEnableReadableSecondaries;
         /// <summary>
         /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        /// 1 primary and 0 secondaries
+        /// 1 primary and 0 secondaries.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         public readonly int EffectiveNodeCount;
         /// <summary>
         /// (integer) - The retention window for the instance. This is the time window in days
-        /// for which the historical data is retained
+        /// for which the historical data is retained.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         public readonly int EffectiveRetentionWindowInDays;
         /// <summary>
-        /// (boolean) - Whether the instance is stopped
+        /// (boolean) - Whether the instance is stopped.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         public readonly bool EffectiveStopped;
         /// <summary>
-        /// (string) - The policy that is applied to the instance
+        /// (string) - The policy that is applied to the instance.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         public readonly string EffectiveUsagePolicyId;
         /// <summary>

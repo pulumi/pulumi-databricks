@@ -6,7 +6,9 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.QualityMonitorV2AnomalyDetectionConfigArgs;
+import com.pulumi.databricks.inputs.QualityMonitorV2ValidityCheckConfigurationArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -61,12 +63,28 @@ public final class QualityMonitorV2State extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.objectType);
     }
 
+    /**
+     * Validity check configurations for anomaly detection
+     * 
+     */
+    @Import(name="validityCheckConfigurations")
+    private @Nullable Output<List<QualityMonitorV2ValidityCheckConfigurationArgs>> validityCheckConfigurations;
+
+    /**
+     * @return Validity check configurations for anomaly detection
+     * 
+     */
+    public Optional<Output<List<QualityMonitorV2ValidityCheckConfigurationArgs>>> validityCheckConfigurations() {
+        return Optional.ofNullable(this.validityCheckConfigurations);
+    }
+
     private QualityMonitorV2State() {}
 
     private QualityMonitorV2State(QualityMonitorV2State $) {
         this.anomalyDetectionConfig = $.anomalyDetectionConfig;
         this.objectId = $.objectId;
         this.objectType = $.objectType;
+        this.validityCheckConfigurations = $.validityCheckConfigurations;
     }
 
     public static Builder builder() {
@@ -148,6 +166,37 @@ public final class QualityMonitorV2State extends com.pulumi.resources.ResourceAr
          */
         public Builder objectType(String objectType) {
             return objectType(Output.of(objectType));
+        }
+
+        /**
+         * @param validityCheckConfigurations Validity check configurations for anomaly detection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validityCheckConfigurations(@Nullable Output<List<QualityMonitorV2ValidityCheckConfigurationArgs>> validityCheckConfigurations) {
+            $.validityCheckConfigurations = validityCheckConfigurations;
+            return this;
+        }
+
+        /**
+         * @param validityCheckConfigurations Validity check configurations for anomaly detection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validityCheckConfigurations(List<QualityMonitorV2ValidityCheckConfigurationArgs> validityCheckConfigurations) {
+            return validityCheckConfigurations(Output.of(validityCheckConfigurations));
+        }
+
+        /**
+         * @param validityCheckConfigurations Validity check configurations for anomaly detection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validityCheckConfigurations(QualityMonitorV2ValidityCheckConfigurationArgs... validityCheckConfigurations) {
+            return validityCheckConfigurations(List.of(validityCheckConfigurations));
         }
 
         public QualityMonitorV2State build() {

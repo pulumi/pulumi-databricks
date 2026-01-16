@@ -31,26 +31,10 @@ public final class PostgresEndpointSpecSettingsArgs extends com.pulumi.resources
         return Optional.ofNullable(this.pgSettings);
     }
 
-    /**
-     * A raw representation of PgBouncer settings
-     * 
-     */
-    @Import(name="pgbouncerSettings")
-    private @Nullable Output<Map<String,String>> pgbouncerSettings;
-
-    /**
-     * @return A raw representation of PgBouncer settings
-     * 
-     */
-    public Optional<Output<Map<String,String>>> pgbouncerSettings() {
-        return Optional.ofNullable(this.pgbouncerSettings);
-    }
-
     private PostgresEndpointSpecSettingsArgs() {}
 
     private PostgresEndpointSpecSettingsArgs(PostgresEndpointSpecSettingsArgs $) {
         this.pgSettings = $.pgSettings;
-        this.pgbouncerSettings = $.pgbouncerSettings;
     }
 
     public static Builder builder() {
@@ -90,27 +74,6 @@ public final class PostgresEndpointSpecSettingsArgs extends com.pulumi.resources
          */
         public Builder pgSettings(Map<String,String> pgSettings) {
             return pgSettings(Output.of(pgSettings));
-        }
-
-        /**
-         * @param pgbouncerSettings A raw representation of PgBouncer settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pgbouncerSettings(@Nullable Output<Map<String,String>> pgbouncerSettings) {
-            $.pgbouncerSettings = pgbouncerSettings;
-            return this;
-        }
-
-        /**
-         * @param pgbouncerSettings A raw representation of PgBouncer settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pgbouncerSettings(Map<String,String> pgbouncerSettings) {
-            return pgbouncerSettings(Output.of(pgbouncerSettings));
         }
 
         public PostgresEndpointSpecSettingsArgs build() {

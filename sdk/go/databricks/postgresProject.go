@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,9 +60,12 @@ type PostgresProject struct {
 func NewPostgresProject(ctx *pulumi.Context,
 	name string, args *PostgresProjectArgs, opts ...pulumi.ResourceOption) (*PostgresProject, error) {
 	if args == nil {
-		args = &PostgresProjectArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PostgresProject
 	err := ctx.RegisterResource("databricks:index/postgresProject:PostgresProject", name, args, &resource, opts...)
@@ -135,7 +139,7 @@ type postgresProjectArgs struct {
 	// the project's resource name.
 	//
 	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-	ProjectId *string `pulumi:"projectId"`
+	ProjectId string `pulumi:"projectId"`
 	// The desired state of a Project
 	Spec *PostgresProjectSpec `pulumi:"spec"`
 }
@@ -146,7 +150,7 @@ type PostgresProjectArgs struct {
 	// the project's resource name.
 	//
 	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-	ProjectId pulumi.StringPtrInput
+	ProjectId pulumi.StringInput
 	// The desired state of a Project
 	Spec PostgresProjectSpecPtrInput
 }

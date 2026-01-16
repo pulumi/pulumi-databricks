@@ -13,6 +13,1582 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails struct {
+	// (boolean) - The feature is force enabled if compliance mode is active
+	ForcedForComplianceMode *bool `pulumi:"forcedForComplianceMode"`
+	// (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+	UnavailableForDisabledEntitlement *bool `pulumi:"unavailableForDisabledEntitlement"`
+	// (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+	UnavailableForNonEnterpriseTier *bool `pulumi:"unavailableForNonEnterpriseTier"`
+}
+
+// GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsInput is an input type that accepts GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs and GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsInput` via:
+//
+//	GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs{...}
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutputWithContext(context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs struct {
+	// (boolean) - The feature is force enabled if compliance mode is active
+	ForcedForComplianceMode pulumi.BoolPtrInput `pulumi:"forcedForComplianceMode"`
+	// (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+	UnavailableForDisabledEntitlement pulumi.BoolPtrInput `pulumi:"unavailableForDisabledEntitlement"`
+	// (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+	UnavailableForNonEnterpriseTier pulumi.BoolPtrInput `pulumi:"unavailableForNonEnterpriseTier"`
+}
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput)
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput).ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput is an input type that accepts GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs, GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtr and GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput` via:
+//
+//	        GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput
+}
+
+type getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrType GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs
+
+func GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtr(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput {
+	return (*getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrType)(v)
+}
+
+func (*getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails)(nil)).Elem()
+}
+
+func (i *getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrType) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrType) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return o.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails) *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+		return &v
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput)
+}
+
+// (boolean) - The feature is force enabled if compliance mode is active
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ForcedForComplianceMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		return v.ForcedForComplianceMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput) UnavailableForDisabledEntitlement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		return v.UnavailableForDisabledEntitlement
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput) UnavailableForNonEnterpriseTier() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		return v.UnavailableForNonEnterpriseTier
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) Elem() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails
+		return ret
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput)
+}
+
+// (boolean) - The feature is force enabled if compliance mode is active
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) ForcedForComplianceMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForcedForComplianceMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) UnavailableForDisabledEntitlement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UnavailableForDisabledEntitlement
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) UnavailableForNonEnterpriseTier() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UnavailableForNonEnterpriseTier
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow struct {
+	// (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+	WeekDayBasedSchedule *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule `pulumi:"weekDayBasedSchedule"`
+}
+
+// GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowInput is an input type that accepts GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs and GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowInput` via:
+//
+//	GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs{...}
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutputWithContext(context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs struct {
+	// (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+	WeekDayBasedSchedule GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput `pulumi:"weekDayBasedSchedule"`
+}
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput)
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput).ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput is an input type that accepts GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs, GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtr and GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput` via:
+//
+//	        GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput
+}
+
+type getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs
+
+func GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtr(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput {
+	return (*getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType)(v)
+}
+
+func (*getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return o.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow) *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+		return &v
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput)
+}
+
+// (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) WeekDayBasedSchedule() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow) *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+		return v.WeekDayBasedSchedule
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) Elem() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow
+		return ret
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput)
+}
+
+// (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) WeekDayBasedSchedule() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow) *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.WeekDayBasedSchedule
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule struct {
+	// (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+	DayOfWeek *string `pulumi:"dayOfWeek"`
+	// (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+	Frequency *string `pulumi:"frequency"`
+	// (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+	WindowStartTime *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime `pulumi:"windowStartTime"`
+}
+
+// GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleInput is an input type that accepts GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs and GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleInput` via:
+//
+//	GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs{...}
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutputWithContext(context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs struct {
+	// (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	// (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+	WindowStartTime GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput `pulumi:"windowStartTime"`
+}
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput)
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput).ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput is an input type that accepts GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs, GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtr and GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput` via:
+//
+//	        GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput
+}
+
+type getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs
+
+func GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtr(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput {
+	return (*getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType)(v)
+}
+
+func (*getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule)(nil)).Elem()
+}
+
+func (i *getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+		return &v
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput)
+}
+
+// (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+		return v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) WindowStartTime() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+		return v.WindowStartTime
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) Elem() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule
+		return ret
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput)
+}
+
+// (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) WindowStartTime() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+		if v == nil {
+			return nil
+		}
+		return v.WindowStartTime
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime struct {
+	// (integer)
+	Hours *int `pulumi:"hours"`
+	// (integer)
+	Minutes *int `pulumi:"minutes"`
+}
+
+// GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput is an input type that accepts GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs and GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput` via:
+//
+//	GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{...}
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutputWithContext(context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs struct {
+	// (integer)
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// (integer)
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+}
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput)
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput).ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput is an input type that accepts GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs, GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtr and GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput` via:
+//
+//	        GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput
+	ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput
+}
+
+type getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs
+
+func GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtr(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput {
+	return (*getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType)(v)
+}
+
+func (*getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime)(nil)).Elem()
+}
+
+func (i *getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return i.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o.ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+		return &v
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput)
+}
+
+// (integer)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) ToGetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) Elem() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime
+		return ret
+	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput)
+}
+
+// (integer)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer)
+func (o GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetWorkspaceSettingV2BooleanVal struct {
+	// (string) - Represents a generic string value
+	Value *bool `pulumi:"value"`
+}
+
+// GetWorkspaceSettingV2BooleanValInput is an input type that accepts GetWorkspaceSettingV2BooleanValArgs and GetWorkspaceSettingV2BooleanValOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2BooleanValInput` via:
+//
+//	GetWorkspaceSettingV2BooleanValArgs{...}
+type GetWorkspaceSettingV2BooleanValInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2BooleanValOutput() GetWorkspaceSettingV2BooleanValOutput
+	ToGetWorkspaceSettingV2BooleanValOutputWithContext(context.Context) GetWorkspaceSettingV2BooleanValOutput
+}
+
+type GetWorkspaceSettingV2BooleanValArgs struct {
+	// (string) - Represents a generic string value
+	Value pulumi.BoolPtrInput `pulumi:"value"`
+}
+
+func (GetWorkspaceSettingV2BooleanValArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2BooleanVal)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2BooleanValArgs) ToGetWorkspaceSettingV2BooleanValOutput() GetWorkspaceSettingV2BooleanValOutput {
+	return i.ToGetWorkspaceSettingV2BooleanValOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2BooleanValArgs) ToGetWorkspaceSettingV2BooleanValOutputWithContext(ctx context.Context) GetWorkspaceSettingV2BooleanValOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2BooleanValOutput)
+}
+
+type GetWorkspaceSettingV2BooleanValOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2BooleanValOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2BooleanVal)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2BooleanValOutput) ToGetWorkspaceSettingV2BooleanValOutput() GetWorkspaceSettingV2BooleanValOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2BooleanValOutput) ToGetWorkspaceSettingV2BooleanValOutputWithContext(ctx context.Context) GetWorkspaceSettingV2BooleanValOutput {
+	return o
+}
+
+// (string) - Represents a generic string value
+func (o GetWorkspaceSettingV2BooleanValOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2BooleanVal) *bool { return v.Value }).(pulumi.BoolPtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy struct {
+	// (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+	AccessPolicyType string `pulumi:"accessPolicyType"`
+}
+
+// GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyInput is an input type that accepts GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs and GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyInput` via:
+//
+//	GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs{...}
+type GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput() GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput
+	ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput
+}
+
+type GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs struct {
+	// (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+	AccessPolicyType pulumi.StringInput `pulumi:"accessPolicyType"`
+}
+
+func (GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs) ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput() GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs) ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput) ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput() GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput) ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput {
+	return o
+}
+
+// (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+func (o GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput) AccessPolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy) string {
+		return v.AccessPolicyType
+	}).(pulumi.StringOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains struct {
+	// (list of string)
+	ApprovedDomains []string `pulumi:"approvedDomains"`
+}
+
+// GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsInput is an input type that accepts GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs and GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsInput` via:
+//
+//	GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs{...}
+type GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput() GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput
+	ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput
+}
+
+type GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs struct {
+	// (list of string)
+	ApprovedDomains pulumi.StringArrayInput `pulumi:"approvedDomains"`
+}
+
+func (GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs) ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput() GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs) ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput) ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput() GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput) ToGetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput {
+	return o
+}
+
+// (list of string)
+func (o GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput) ApprovedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains) []string {
+		return v.ApprovedDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace struct {
+	// (boolean)
+	CanToggle *bool `pulumi:"canToggle"`
+	// (boolean)
+	Enabled *bool `pulumi:"enabled"`
+	// (ClusterAutoRestartMessageEnablementDetails)
+	EnablementDetails *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails `pulumi:"enablementDetails"`
+	// (ClusterAutoRestartMessageMaintenanceWindow)
+	MaintenanceWindow *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow `pulumi:"maintenanceWindow"`
+	// (boolean)
+	RestartEvenIfNoUpdatesAvailable *bool `pulumi:"restartEvenIfNoUpdatesAvailable"`
+}
+
+// GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceInput is an input type that accepts GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs and GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceInput` via:
+//
+//	GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs{...}
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs struct {
+	// (boolean)
+	CanToggle pulumi.BoolPtrInput `pulumi:"canToggle"`
+	// (boolean)
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// (ClusterAutoRestartMessageEnablementDetails)
+	EnablementDetails GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput `pulumi:"enablementDetails"`
+	// (ClusterAutoRestartMessageMaintenanceWindow)
+	MaintenanceWindow GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
+	// (boolean)
+	RestartEvenIfNoUpdatesAvailable pulumi.BoolPtrInput `pulumi:"restartEvenIfNoUpdatesAvailable"`
+}
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput {
+	return o
+}
+
+// (boolean)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput) CanToggle() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace) *bool { return v.CanToggle }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// (ClusterAutoRestartMessageEnablementDetails)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput) EnablementDetails() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+		return v.EnablementDetails
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput)
+}
+
+// (ClusterAutoRestartMessageMaintenanceWindow)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput) MaintenanceWindow() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+		return v.MaintenanceWindow
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput)
+}
+
+// (boolean)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput) RestartEvenIfNoUpdatesAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace) *bool {
+		return v.RestartEvenIfNoUpdatesAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails struct {
+	// (boolean) - The feature is force enabled if compliance mode is active
+	ForcedForComplianceMode *bool `pulumi:"forcedForComplianceMode"`
+	// (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+	UnavailableForDisabledEntitlement *bool `pulumi:"unavailableForDisabledEntitlement"`
+	// (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+	UnavailableForNonEnterpriseTier *bool `pulumi:"unavailableForNonEnterpriseTier"`
+}
+
+// GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsInput is an input type that accepts GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs and GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsInput` via:
+//
+//	GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs{...}
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs struct {
+	// (boolean) - The feature is force enabled if compliance mode is active
+	ForcedForComplianceMode pulumi.BoolPtrInput `pulumi:"forcedForComplianceMode"`
+	// (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+	UnavailableForDisabledEntitlement pulumi.BoolPtrInput `pulumi:"unavailableForDisabledEntitlement"`
+	// (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+	UnavailableForNonEnterpriseTier pulumi.BoolPtrInput `pulumi:"unavailableForNonEnterpriseTier"`
+}
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput)
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput).ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput is an input type that accepts GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs, GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtr and GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput` via:
+//
+//	        GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput
+}
+
+type getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrType GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs
+
+func GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtr(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput {
+	return (*getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrType)(v)
+}
+
+func (*getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails)(nil)).Elem()
+}
+
+func (i *getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrType) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrType) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return o.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+		return &v
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput)
+}
+
+// (boolean) - The feature is force enabled if compliance mode is active
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput) ForcedForComplianceMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		return v.ForcedForComplianceMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput) UnavailableForDisabledEntitlement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		return v.UnavailableForDisabledEntitlement
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput) UnavailableForNonEnterpriseTier() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		return v.UnavailableForNonEnterpriseTier
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) Elem() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails
+		return ret
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput)
+}
+
+// (boolean) - The feature is force enabled if compliance mode is active
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) ForcedForComplianceMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForcedForComplianceMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) UnavailableForDisabledEntitlement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UnavailableForDisabledEntitlement
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput) UnavailableForNonEnterpriseTier() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UnavailableForNonEnterpriseTier
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow struct {
+	// (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+	WeekDayBasedSchedule *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule `pulumi:"weekDayBasedSchedule"`
+}
+
+// GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowInput is an input type that accepts GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs and GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowInput` via:
+//
+//	GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs{...}
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs struct {
+	// (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+	WeekDayBasedSchedule GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput `pulumi:"weekDayBasedSchedule"`
+}
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput)
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput).ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput is an input type that accepts GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs, GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtr and GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput` via:
+//
+//	        GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput
+}
+
+type getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs
+
+func GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtr(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput {
+	return (*getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType)(v)
+}
+
+func (*getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrType) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return o.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+		return &v
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput)
+}
+
+// (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput) WeekDayBasedSchedule() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+		return v.WeekDayBasedSchedule
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) Elem() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow
+		return ret
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput)
+}
+
+// (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput) WeekDayBasedSchedule() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.WeekDayBasedSchedule
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule struct {
+	// (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+	DayOfWeek *string `pulumi:"dayOfWeek"`
+	// (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+	Frequency *string `pulumi:"frequency"`
+	// (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+	WindowStartTime *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime `pulumi:"windowStartTime"`
+}
+
+// GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleInput is an input type that accepts GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs and GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleInput` via:
+//
+//	GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs{...}
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs struct {
+	// (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	// (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+	WindowStartTime GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput `pulumi:"windowStartTime"`
+}
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput)
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput).ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput is an input type that accepts GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs, GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtr and GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput` via:
+//
+//	        GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput
+}
+
+type getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs
+
+func GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtr(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput {
+	return (*getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType)(v)
+}
+
+func (*getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule)(nil)).Elem()
+}
+
+func (i *getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrType) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+		return &v
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput)
+}
+
+// (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+		return v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput) WindowStartTime() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+		return v.WindowStartTime
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) Elem() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule
+		return ret
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput)
+}
+
+// (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput) WindowStartTime() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+		if v == nil {
+			return nil
+		}
+		return v.WindowStartTime
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime struct {
+	// (integer)
+	Hours *int `pulumi:"hours"`
+	// (integer)
+	Minutes *int `pulumi:"minutes"`
+}
+
+// GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput is an input type that accepts GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs and GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput` via:
+//
+//	GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{...}
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs struct {
+	// (integer)
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// (integer)
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+}
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput)
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput).ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx)
+}
+
+// GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput is an input type that accepts GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs, GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtr and GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput` via:
+//
+//	        GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput
+	ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput
+}
+
+type getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs
+
+func GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtr(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput {
+	return (*getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType)(v)
+}
+
+func (*getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime)(nil)).Elem()
+}
+
+func (i *getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrType) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o.ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+		return &v
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput)
+}
+
+// (integer)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) ToGetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) Elem() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime
+		return ret
+	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput)
+}
+
+// (integer)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer)
+func (o GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetWorkspaceSettingV2EffectiveBooleanVal struct {
 	// (string) - Represents a generic string value
 	Value *bool `pulumi:"value"`
@@ -619,6 +2195,26 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2BooleanValInput)(nil)).Elem(), GetWorkspaceSettingV2BooleanValArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveBooleanValInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveBooleanValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveIntegerValInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveIntegerValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectivePersonalComputeInput)(nil)).Elem(), GetWorkspaceSettingV2EffectivePersonalComputeArgs{})
@@ -630,6 +2226,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2BooleanValOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsPtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedulePtrOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveBooleanValOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveIntegerValOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectivePersonalComputeOutput{})

@@ -44,44 +44,60 @@ public final class GetDatabaseInstanceResult {
      */
     private List<GetDatabaseInstanceCustomTag> customTags;
     /**
-     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     private String effectiveCapacity;
     /**
-     * @return (list of CustomTag) - The recorded custom tags associated with the instance
+     * @return (list of CustomTag) - The recorded custom tags associated with the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     private List<GetDatabaseInstanceEffectiveCustomTag> effectiveCustomTags;
     /**
-     * @return (boolean) - Whether the instance has PG native password login enabled
+     * @return (boolean) - Whether the instance has PG native password login enabled.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     private Boolean effectiveEnablePgNativeLogin;
     /**
-     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     private Boolean effectiveEnableReadableSecondaries;
     /**
      * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     private Integer effectiveNodeCount;
     /**
      * @return (integer) - The retention window for the instance. This is the time window in days
-     * for which the historical data is retained
+     * for which the historical data is retained.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     private Integer effectiveRetentionWindowInDays;
     /**
-     * @return (boolean) - Whether the instance is stopped
+     * @return (boolean) - Whether the instance is stopped.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     private Boolean effectiveStopped;
     /**
-     * @return (string) - The policy that is applied to the instance
+     * @return (string) - The policy that is applied to the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     private String effectiveUsagePolicyId;
@@ -201,28 +217,36 @@ public final class GetDatabaseInstanceResult {
         return this.customTags;
     }
     /**
-     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public String effectiveCapacity() {
         return this.effectiveCapacity;
     }
     /**
-     * @return (list of CustomTag) - The recorded custom tags associated with the instance
+     * @return (list of CustomTag) - The recorded custom tags associated with the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public List<GetDatabaseInstanceEffectiveCustomTag> effectiveCustomTags() {
         return this.effectiveCustomTags;
     }
     /**
-     * @return (boolean) - Whether the instance has PG native password login enabled
+     * @return (boolean) - Whether the instance has PG native password login enabled.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Boolean effectiveEnablePgNativeLogin() {
         return this.effectiveEnablePgNativeLogin;
     }
     /**
-     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Boolean effectiveEnableReadableSecondaries() {
@@ -230,7 +254,9 @@ public final class GetDatabaseInstanceResult {
     }
     /**
      * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Integer effectiveNodeCount() {
@@ -238,21 +264,27 @@ public final class GetDatabaseInstanceResult {
     }
     /**
      * @return (integer) - The retention window for the instance. This is the time window in days
-     * for which the historical data is retained
+     * for which the historical data is retained.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Integer effectiveRetentionWindowInDays() {
         return this.effectiveRetentionWindowInDays;
     }
     /**
-     * @return (boolean) - Whether the instance is stopped
+     * @return (boolean) - Whether the instance is stopped.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Boolean effectiveStopped() {
         return this.effectiveStopped;
     }
     /**
-     * @return (string) - The policy that is applied to the instance
+     * @return (string) - The policy that is applied to the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public String effectiveUsagePolicyId() {

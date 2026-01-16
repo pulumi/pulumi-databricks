@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class ModelServingProvisionedThroughputConfigServedEntityArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ModelServingProvisionedThroughputConfigServedEntityArgs Empty = new ModelServingProvisionedThroughputConfigServedEntityArgs();
+
+    @Import(name="burstScalingEnabled")
+    private @Nullable Output<Boolean> burstScalingEnabled;
+
+    public Optional<Output<Boolean>> burstScalingEnabled() {
+        return Optional.ofNullable(this.burstScalingEnabled);
+    }
 
     /**
      * The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
@@ -80,6 +88,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntityArgs exten
     private ModelServingProvisionedThroughputConfigServedEntityArgs() {}
 
     private ModelServingProvisionedThroughputConfigServedEntityArgs(ModelServingProvisionedThroughputConfigServedEntityArgs $) {
+        this.burstScalingEnabled = $.burstScalingEnabled;
         this.entityName = $.entityName;
         this.entityVersion = $.entityVersion;
         this.name = $.name;
@@ -102,6 +111,15 @@ public final class ModelServingProvisionedThroughputConfigServedEntityArgs exten
 
         public Builder(ModelServingProvisionedThroughputConfigServedEntityArgs defaults) {
             $ = new ModelServingProvisionedThroughputConfigServedEntityArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder burstScalingEnabled(@Nullable Output<Boolean> burstScalingEnabled) {
+            $.burstScalingEnabled = burstScalingEnabled;
+            return this;
+        }
+
+        public Builder burstScalingEnabled(Boolean burstScalingEnabled) {
+            return burstScalingEnabled(Output.of(burstScalingEnabled));
         }
 
         /**

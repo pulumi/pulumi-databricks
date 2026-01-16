@@ -175,51 +175,67 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.DatabaseInstanceCustomTag>> CustomTags { get; private set; } = null!;
 
         /// <summary>
-        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Output("effectiveCapacity")]
         public Output<string> EffectiveCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// (list of CustomTag) - The recorded custom tags associated with the instance
+        /// (list of CustomTag) - The recorded custom tags associated with the instance.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Output("effectiveCustomTags")]
         public Output<ImmutableArray<Outputs.DatabaseInstanceEffectiveCustomTag>> EffectiveCustomTags { get; private set; } = null!;
 
         /// <summary>
-        /// (boolean) - Whether the instance has PG native password login enabled
+        /// (boolean) - Whether the instance has PG native password login enabled.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Output("effectiveEnablePgNativeLogin")]
         public Output<bool> EffectiveEnablePgNativeLogin { get; private set; } = null!;
 
         /// <summary>
-        /// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        /// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Output("effectiveEnableReadableSecondaries")]
         public Output<bool> EffectiveEnableReadableSecondaries { get; private set; } = null!;
 
         /// <summary>
         /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        /// 1 primary and 0 secondaries
+        /// 1 primary and 0 secondaries.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Output("effectiveNodeCount")]
         public Output<int> EffectiveNodeCount { get; private set; } = null!;
 
         /// <summary>
         /// (integer) - The retention window for the instance. This is the time window in days
-        /// for which the historical data is retained
+        /// for which the historical data is retained.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Output("effectiveRetentionWindowInDays")]
         public Output<int> EffectiveRetentionWindowInDays { get; private set; } = null!;
 
         /// <summary>
-        /// (boolean) - Whether the instance is stopped
+        /// (boolean) - Whether the instance is stopped.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Output("effectiveStopped")]
         public Output<bool> EffectiveStopped { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The policy that is applied to the instance
+        /// (string) - The policy that is applied to the instance.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Output("effectiveUsagePolicyId")]
         public Output<string> EffectiveUsagePolicyId { get; private set; } = null!;
@@ -491,7 +507,9 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Input("effectiveCapacity")]
         public Input<string>? EffectiveCapacity { get; set; }
@@ -500,7 +518,9 @@ namespace Pulumi.Databricks
         private InputList<Inputs.DatabaseInstanceEffectiveCustomTagGetArgs>? _effectiveCustomTags;
 
         /// <summary>
-        /// (list of CustomTag) - The recorded custom tags associated with the instance
+        /// (list of CustomTag) - The recorded custom tags associated with the instance.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         public InputList<Inputs.DatabaseInstanceEffectiveCustomTagGetArgs> EffectiveCustomTags
         {
@@ -509,39 +529,51 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// (boolean) - Whether the instance has PG native password login enabled
+        /// (boolean) - Whether the instance has PG native password login enabled.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Input("effectiveEnablePgNativeLogin")]
         public Input<bool>? EffectiveEnablePgNativeLogin { get; set; }
 
         /// <summary>
-        /// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        /// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Input("effectiveEnableReadableSecondaries")]
         public Input<bool>? EffectiveEnableReadableSecondaries { get; set; }
 
         /// <summary>
         /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        /// 1 primary and 0 secondaries
+        /// 1 primary and 0 secondaries.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Input("effectiveNodeCount")]
         public Input<int>? EffectiveNodeCount { get; set; }
 
         /// <summary>
         /// (integer) - The retention window for the instance. This is the time window in days
-        /// for which the historical data is retained
+        /// for which the historical data is retained.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Input("effectiveRetentionWindowInDays")]
         public Input<int>? EffectiveRetentionWindowInDays { get; set; }
 
         /// <summary>
-        /// (boolean) - Whether the instance is stopped
+        /// (boolean) - Whether the instance is stopped.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Input("effectiveStopped")]
         public Input<bool>? EffectiveStopped { get; set; }
 
         /// <summary>
-        /// (string) - The policy that is applied to the instance
+        /// (string) - The policy that is applied to the instance.
+        /// This is an output only field that contains the value computed from the input field combined with
+        /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
         [Input("effectiveUsagePolicyId")]
         public Input<string>? EffectiveUsagePolicyId { get; set; }

@@ -271,9 +271,13 @@ type DatabaseSyncedDatabaseTable struct {
 	// match that of the registered catalog (or the request will be rejected)
 	DatabaseInstanceName pulumi.StringOutput `pulumi:"databaseInstanceName"`
 	// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-	// tables inside database catalogs is inferred database instance associated with the catalog
+	// tables inside database catalogs is inferred database instance associated with the catalog.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveDatabaseInstanceName pulumi.StringOutput `pulumi:"effectiveDatabaseInstanceName"`
-	// (string) - The name of the logical database that this table is registered to
+	// (string) - The name of the logical database that this table is registered to.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveLogicalDatabaseName pulumi.StringOutput `pulumi:"effectiveLogicalDatabaseName"`
 	// Target Postgres database object (logical database) name for this table.
 	//
@@ -333,9 +337,13 @@ type databaseSyncedDatabaseTableState struct {
 	// match that of the registered catalog (or the request will be rejected)
 	DatabaseInstanceName *string `pulumi:"databaseInstanceName"`
 	// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-	// tables inside database catalogs is inferred database instance associated with the catalog
+	// tables inside database catalogs is inferred database instance associated with the catalog.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveDatabaseInstanceName *string `pulumi:"effectiveDatabaseInstanceName"`
-	// (string) - The name of the logical database that this table is registered to
+	// (string) - The name of the logical database that this table is registered to.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveLogicalDatabaseName *string `pulumi:"effectiveLogicalDatabaseName"`
 	// Target Postgres database object (logical database) name for this table.
 	//
@@ -366,9 +374,13 @@ type DatabaseSyncedDatabaseTableState struct {
 	// match that of the registered catalog (or the request will be rejected)
 	DatabaseInstanceName pulumi.StringPtrInput
 	// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-	// tables inside database catalogs is inferred database instance associated with the catalog
+	// tables inside database catalogs is inferred database instance associated with the catalog.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveDatabaseInstanceName pulumi.StringPtrInput
-	// (string) - The name of the logical database that this table is registered to
+	// (string) - The name of the logical database that this table is registered to.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveLogicalDatabaseName pulumi.StringPtrInput
 	// Target Postgres database object (logical database) name for this table.
 	//
@@ -542,12 +554,16 @@ func (o DatabaseSyncedDatabaseTableOutput) DatabaseInstanceName() pulumi.StringO
 }
 
 // (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-// tables inside database catalogs is inferred database instance associated with the catalog
+// tables inside database catalogs is inferred database instance associated with the catalog.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseSyncedDatabaseTableOutput) EffectiveDatabaseInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) pulumi.StringOutput { return v.EffectiveDatabaseInstanceName }).(pulumi.StringOutput)
 }
 
-// (string) - The name of the logical database that this table is registered to
+// (string) - The name of the logical database that this table is registered to.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseSyncedDatabaseTableOutput) EffectiveLogicalDatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) pulumi.StringOutput { return v.EffectiveLogicalDatabaseName }).(pulumi.StringOutput)
 }

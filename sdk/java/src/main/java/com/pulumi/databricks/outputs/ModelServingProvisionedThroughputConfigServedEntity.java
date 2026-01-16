@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -13,6 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingProvisionedThroughputConfigServedEntity {
+    private @Nullable Boolean burstScalingEnabled;
     /**
      * @return The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
      * 
@@ -35,6 +37,9 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
     private Integer provisionedModelUnits;
 
     private ModelServingProvisionedThroughputConfigServedEntity() {}
+    public Optional<Boolean> burstScalingEnabled() {
+        return Optional.ofNullable(this.burstScalingEnabled);
+    }
     /**
      * @return The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
      * 
@@ -73,6 +78,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean burstScalingEnabled;
         private String entityName;
         private String entityVersion;
         private @Nullable String name;
@@ -80,12 +86,19 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
         public Builder() {}
         public Builder(ModelServingProvisionedThroughputConfigServedEntity defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.burstScalingEnabled = defaults.burstScalingEnabled;
     	      this.entityName = defaults.entityName;
     	      this.entityVersion = defaults.entityVersion;
     	      this.name = defaults.name;
     	      this.provisionedModelUnits = defaults.provisionedModelUnits;
         }
 
+        @CustomType.Setter
+        public Builder burstScalingEnabled(@Nullable Boolean burstScalingEnabled) {
+
+            this.burstScalingEnabled = burstScalingEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder entityName(String entityName) {
             if (entityName == null) {
@@ -118,6 +131,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
         }
         public ModelServingProvisionedThroughputConfigServedEntity build() {
             final var _resultValue = new ModelServingProvisionedThroughputConfigServedEntity();
+            _resultValue.burstScalingEnabled = burstScalingEnabled;
             _resultValue.entityName = entityName;
             _resultValue.entityVersion = entityVersion;
             _resultValue.name = name;

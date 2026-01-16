@@ -57,11 +57,6 @@ public final class GetPostgresEndpointStatus {
      */
     private String pendingState;
     /**
-     * @return (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    private String poolerMode;
-    /**
      * @return (EndpointSettings)
      * 
      */
@@ -143,13 +138,6 @@ public final class GetPostgresEndpointStatus {
         return this.pendingState;
     }
     /**
-     * @return (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    public String poolerMode() {
-        return this.poolerMode;
-    }
-    /**
      * @return (EndpointSettings)
      * 
      */
@@ -195,7 +183,6 @@ public final class GetPostgresEndpointStatus {
         private String host;
         private String lastActiveTime;
         private String pendingState;
-        private String poolerMode;
         private GetPostgresEndpointStatusSettings settings;
         private String startTime;
         private String suspendTime;
@@ -211,7 +198,6 @@ public final class GetPostgresEndpointStatus {
     	      this.host = defaults.host;
     	      this.lastActiveTime = defaults.lastActiveTime;
     	      this.pendingState = defaults.pendingState;
-    	      this.poolerMode = defaults.poolerMode;
     	      this.settings = defaults.settings;
     	      this.startTime = defaults.startTime;
     	      this.suspendTime = defaults.suspendTime;
@@ -283,14 +269,6 @@ public final class GetPostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
-        public Builder poolerMode(String poolerMode) {
-            if (poolerMode == null) {
-              throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "poolerMode");
-            }
-            this.poolerMode = poolerMode;
-            return this;
-        }
-        @CustomType.Setter
         public Builder settings(GetPostgresEndpointStatusSettings settings) {
             if (settings == null) {
               throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "settings");
@@ -332,7 +310,6 @@ public final class GetPostgresEndpointStatus {
             _resultValue.host = host;
             _resultValue.lastActiveTime = lastActiveTime;
             _resultValue.pendingState = pendingState;
-            _resultValue.poolerMode = poolerMode;
             _resultValue.settings = settings;
             _resultValue.startTime = startTime;
             _resultValue.suspendTime = suspendTime;
