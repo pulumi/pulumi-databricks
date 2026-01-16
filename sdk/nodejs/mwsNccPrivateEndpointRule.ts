@@ -158,6 +158,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
      * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      */
     declare public readonly endpointService: pulumi.Output<string | undefined>;
+    declare public readonly errorMessage: pulumi.Output<string | undefined>;
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      */
@@ -209,6 +210,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["endpointName"] = state?.endpointName;
             resourceInputs["endpointService"] = state?.endpointService;
+            resourceInputs["errorMessage"] = state?.errorMessage;
             resourceInputs["groupId"] = state?.groupId;
             resourceInputs["networkConnectivityConfigId"] = state?.networkConnectivityConfigId;
             resourceInputs["resourceId"] = state?.resourceId;
@@ -230,6 +232,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["endpointName"] = args?.endpointName;
             resourceInputs["endpointService"] = args?.endpointService;
+            resourceInputs["errorMessage"] = args?.errorMessage;
             resourceInputs["groupId"] = args?.groupId;
             resourceInputs["networkConnectivityConfigId"] = args?.networkConnectivityConfigId;
             resourceInputs["resourceId"] = args?.resourceId;
@@ -287,6 +290,7 @@ export interface MwsNccPrivateEndpointRuleState {
      * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      */
     endpointService?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string>;
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      */
@@ -361,6 +365,7 @@ export interface MwsNccPrivateEndpointRuleArgs {
      * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      */
     endpointService?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string>;
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      */

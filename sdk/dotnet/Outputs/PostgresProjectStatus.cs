@@ -34,6 +34,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? HistoryRetentionDuration;
         /// <summary>
+        /// (string) - The email of the project owner
+        /// </summary>
+        public readonly string? Owner;
+        /// <summary>
         /// (integer) - The effective major Postgres version number
         /// </summary>
         public readonly int? PgVersion;
@@ -58,6 +62,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? historyRetentionDuration,
 
+            string? owner,
+
             int? pgVersion,
 
             Outputs.PostgresProjectStatusSettings? settings,
@@ -69,6 +75,7 @@ namespace Pulumi.Databricks.Outputs
             DefaultEndpointSettings = defaultEndpointSettings;
             DisplayName = displayName;
             HistoryRetentionDuration = historyRetentionDuration;
+            Owner = owner;
             PgVersion = pgVersion;
             Settings = settings;
             SyntheticStorageSizeBytes = syntheticStorageSizeBytes;

@@ -72,6 +72,10 @@ export interface GetQualityMonitorV2Result {
      * (string) - The type of the monitored object. Can be one of the following: schema
      */
     readonly objectType: string;
+    /**
+     * (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+     */
+    readonly validityCheckConfigurations: outputs.GetQualityMonitorV2ValidityCheckConfiguration[];
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

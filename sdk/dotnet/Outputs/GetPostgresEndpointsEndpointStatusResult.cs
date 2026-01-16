@@ -49,10 +49,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string PendingState;
         /// <summary>
-        /// (string) - Possible values are: `TRANSACTION`
-        /// </summary>
-        public readonly string PoolerMode;
-        /// <summary>
         /// (EndpointSettings)
         /// </summary>
         public readonly Outputs.GetPostgresEndpointsEndpointStatusSettingsResult Settings;
@@ -87,8 +83,6 @@ namespace Pulumi.Databricks.Outputs
 
             string pendingState,
 
-            string poolerMode,
-
             Outputs.GetPostgresEndpointsEndpointStatusSettingsResult settings,
 
             string startTime,
@@ -105,7 +99,6 @@ namespace Pulumi.Databricks.Outputs
             Host = host;
             LastActiveTime = lastActiveTime;
             PendingState = pendingState;
-            PoolerMode = poolerMode;
             Settings = settings;
             StartTime = startTime;
             SuspendTime = suspendTime;

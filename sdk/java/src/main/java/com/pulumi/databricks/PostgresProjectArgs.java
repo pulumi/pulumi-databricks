@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,8 +24,8 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      * 
      */
-    @Import(name="projectId")
-    private @Nullable Output<String> projectId;
+    @Import(name="projectId", required=true)
+    private Output<String> projectId;
 
     /**
      * @return The ID to use for the Project, which will become the final component of
@@ -33,8 +34,8 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      * 
      */
-    public Optional<Output<String>> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public Output<String> projectId() {
+        return this.projectId;
     }
 
     /**
@@ -86,7 +87,7 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder projectId(@Nullable Output<String> projectId) {
+        public Builder projectId(Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -126,6 +127,9 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public PostgresProjectArgs build() {
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("PostgresProjectArgs", "projectId");
+            }
             return $;
         }
     }

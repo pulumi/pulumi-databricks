@@ -82,6 +82,12 @@ namespace Pulumi.Databricks
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
 
+        /// <summary>
+        /// Validity check configurations for anomaly detection
+        /// </summary>
+        [Output("validityCheckConfigurations")]
+        public Output<ImmutableArray<Outputs.QualityMonitorV2ValidityCheckConfiguration>> ValidityCheckConfigurations { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a QualityMonitorV2 resource with the given unique name, arguments, and options.
@@ -140,6 +146,18 @@ namespace Pulumi.Databricks
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
 
+        [Input("validityCheckConfigurations")]
+        private InputList<Inputs.QualityMonitorV2ValidityCheckConfigurationArgs>? _validityCheckConfigurations;
+
+        /// <summary>
+        /// Validity check configurations for anomaly detection
+        /// </summary>
+        public InputList<Inputs.QualityMonitorV2ValidityCheckConfigurationArgs> ValidityCheckConfigurations
+        {
+            get => _validityCheckConfigurations ?? (_validityCheckConfigurations = new InputList<Inputs.QualityMonitorV2ValidityCheckConfigurationArgs>());
+            set => _validityCheckConfigurations = value;
+        }
+
         public QualityMonitorV2Args()
         {
         }
@@ -165,6 +183,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
+
+        [Input("validityCheckConfigurations")]
+        private InputList<Inputs.QualityMonitorV2ValidityCheckConfigurationGetArgs>? _validityCheckConfigurations;
+
+        /// <summary>
+        /// Validity check configurations for anomaly detection
+        /// </summary>
+        public InputList<Inputs.QualityMonitorV2ValidityCheckConfigurationGetArgs> ValidityCheckConfigurations
+        {
+            get => _validityCheckConfigurations ?? (_validityCheckConfigurations = new InputList<Inputs.QualityMonitorV2ValidityCheckConfigurationGetArgs>());
+            set => _validityCheckConfigurations = value;
+        }
 
         public QualityMonitorV2State()
         {

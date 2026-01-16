@@ -39,11 +39,6 @@ public final class GetPostgresEndpointSpec {
      */
     private String endpointType;
     /**
-     * @return (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    private @Nullable String poolerMode;
-    /**
      * @return (EndpointSettings)
      * 
      */
@@ -87,13 +82,6 @@ public final class GetPostgresEndpointSpec {
         return this.endpointType;
     }
     /**
-     * @return (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    public Optional<String> poolerMode() {
-        return Optional.ofNullable(this.poolerMode);
-    }
-    /**
      * @return (EndpointSettings)
      * 
      */
@@ -121,7 +109,6 @@ public final class GetPostgresEndpointSpec {
         private @Nullable Double autoscalingLimitMinCu;
         private @Nullable Boolean disabled;
         private String endpointType;
-        private @Nullable String poolerMode;
         private @Nullable GetPostgresEndpointSpecSettings settings;
         private @Nullable String suspendTimeoutDuration;
         public Builder() {}
@@ -131,7 +118,6 @@ public final class GetPostgresEndpointSpec {
     	      this.autoscalingLimitMinCu = defaults.autoscalingLimitMinCu;
     	      this.disabled = defaults.disabled;
     	      this.endpointType = defaults.endpointType;
-    	      this.poolerMode = defaults.poolerMode;
     	      this.settings = defaults.settings;
     	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
         }
@@ -163,12 +149,6 @@ public final class GetPostgresEndpointSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder poolerMode(@Nullable String poolerMode) {
-
-            this.poolerMode = poolerMode;
-            return this;
-        }
-        @CustomType.Setter
         public Builder settings(@Nullable GetPostgresEndpointSpecSettings settings) {
 
             this.settings = settings;
@@ -186,7 +166,6 @@ public final class GetPostgresEndpointSpec {
             _resultValue.autoscalingLimitMinCu = autoscalingLimitMinCu;
             _resultValue.disabled = disabled;
             _resultValue.endpointType = endpointType;
-            _resultValue.poolerMode = poolerMode;
             _resultValue.settings = settings;
             _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;
             return _resultValue;

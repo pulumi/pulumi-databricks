@@ -5,8 +5,10 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig;
+import com.pulumi.databricks.outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -26,6 +28,11 @@ public final class GetQualityMonitorsV2QualityMonitor {
      * 
      */
     private String objectType;
+    /**
+     * @return (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+     * 
+     */
+    private List<GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration> validityCheckConfigurations;
 
     private GetQualityMonitorsV2QualityMonitor() {}
     /**
@@ -49,6 +56,13 @@ public final class GetQualityMonitorsV2QualityMonitor {
     public String objectType() {
         return this.objectType;
     }
+    /**
+     * @return (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+     * 
+     */
+    public List<GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration> validityCheckConfigurations() {
+        return this.validityCheckConfigurations;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,12 +76,14 @@ public final class GetQualityMonitorsV2QualityMonitor {
         private GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig anomalyDetectionConfig;
         private String objectId;
         private String objectType;
+        private List<GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration> validityCheckConfigurations;
         public Builder() {}
         public Builder(GetQualityMonitorsV2QualityMonitor defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.anomalyDetectionConfig = defaults.anomalyDetectionConfig;
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
+    	      this.validityCheckConfigurations = defaults.validityCheckConfigurations;
         }
 
         @CustomType.Setter
@@ -94,11 +110,23 @@ public final class GetQualityMonitorsV2QualityMonitor {
             this.objectType = objectType;
             return this;
         }
+        @CustomType.Setter
+        public Builder validityCheckConfigurations(List<GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration> validityCheckConfigurations) {
+            if (validityCheckConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetQualityMonitorsV2QualityMonitor", "validityCheckConfigurations");
+            }
+            this.validityCheckConfigurations = validityCheckConfigurations;
+            return this;
+        }
+        public Builder validityCheckConfigurations(GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration... validityCheckConfigurations) {
+            return validityCheckConfigurations(List.of(validityCheckConfigurations));
+        }
         public GetQualityMonitorsV2QualityMonitor build() {
             final var _resultValue = new GetQualityMonitorsV2QualityMonitor();
             _resultValue.anomalyDetectionConfig = anomalyDetectionConfig;
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
+            _resultValue.validityCheckConfigurations = validityCheckConfigurations;
             return _resultValue;
         }
     }

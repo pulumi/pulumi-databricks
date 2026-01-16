@@ -40,6 +40,11 @@ public final class PostgresProjectStatus {
      */
     private @Nullable String historyRetentionDuration;
     /**
+     * @return (string) - The email of the project owner
+     * 
+     */
+    private @Nullable String owner;
+    /**
      * @return (integer) - The effective major Postgres version number
      * 
      */
@@ -92,6 +97,13 @@ public final class PostgresProjectStatus {
         return Optional.ofNullable(this.historyRetentionDuration);
     }
     /**
+     * @return (string) - The email of the project owner
+     * 
+     */
+    public Optional<String> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+    /**
      * @return (integer) - The effective major Postgres version number
      * 
      */
@@ -127,6 +139,7 @@ public final class PostgresProjectStatus {
         private @Nullable PostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings;
         private @Nullable String displayName;
         private @Nullable String historyRetentionDuration;
+        private @Nullable String owner;
         private @Nullable Integer pgVersion;
         private @Nullable PostgresProjectStatusSettings settings;
         private @Nullable Integer syntheticStorageSizeBytes;
@@ -138,6 +151,7 @@ public final class PostgresProjectStatus {
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
     	      this.displayName = defaults.displayName;
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
+    	      this.owner = defaults.owner;
     	      this.pgVersion = defaults.pgVersion;
     	      this.settings = defaults.settings;
     	      this.syntheticStorageSizeBytes = defaults.syntheticStorageSizeBytes;
@@ -174,6 +188,12 @@ public final class PostgresProjectStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder owner(@Nullable String owner) {
+
+            this.owner = owner;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgVersion(@Nullable Integer pgVersion) {
 
             this.pgVersion = pgVersion;
@@ -198,6 +218,7 @@ public final class PostgresProjectStatus {
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;
             _resultValue.displayName = displayName;
             _resultValue.historyRetentionDuration = historyRetentionDuration;
+            _resultValue.owner = owner;
             _resultValue.pgVersion = pgVersion;
             _resultValue.settings = settings;
             _resultValue.syntheticStorageSizeBytes = syntheticStorageSizeBytes;

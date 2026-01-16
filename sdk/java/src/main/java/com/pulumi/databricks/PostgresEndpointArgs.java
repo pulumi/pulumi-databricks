@@ -24,8 +24,8 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      * 
      */
-    @Import(name="endpointId")
-    private @Nullable Output<String> endpointId;
+    @Import(name="endpointId", required=true)
+    private Output<String> endpointId;
 
     /**
      * @return The ID to use for the Endpoint, which will become the final component of
@@ -34,8 +34,8 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      * 
      */
-    public Optional<Output<String>> endpointId() {
-        return Optional.ofNullable(this.endpointId);
+    public Output<String> endpointId() {
+        return this.endpointId;
     }
 
     /**
@@ -105,7 +105,7 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder endpointId(@Nullable Output<String> endpointId) {
+        public Builder endpointId(Output<String> endpointId) {
             $.endpointId = endpointId;
             return this;
         }
@@ -168,6 +168,9 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         public PostgresEndpointArgs build() {
+            if ($.endpointId == null) {
+                throw new MissingRequiredPropertyException("PostgresEndpointArgs", "endpointId");
+            }
             if ($.parent == null) {
                 throw new MissingRequiredPropertyException("PostgresEndpointArgs", "parent");
             }

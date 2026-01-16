@@ -27,7 +27,7 @@ class GetQualityMonitorV2Result:
     """
     A collection of values returned by getQualityMonitorV2.
     """
-    def __init__(__self__, anomaly_detection_config=None, id=None, object_id=None, object_type=None):
+    def __init__(__self__, anomaly_detection_config=None, id=None, object_id=None, object_type=None, validity_check_configurations=None):
         if anomaly_detection_config and not isinstance(anomaly_detection_config, dict):
             raise TypeError("Expected argument 'anomaly_detection_config' to be a dict")
         pulumi.set(__self__, "anomaly_detection_config", anomaly_detection_config)
@@ -40,6 +40,9 @@ class GetQualityMonitorV2Result:
         if object_type and not isinstance(object_type, str):
             raise TypeError("Expected argument 'object_type' to be a str")
         pulumi.set(__self__, "object_type", object_type)
+        if validity_check_configurations and not isinstance(validity_check_configurations, list):
+            raise TypeError("Expected argument 'validity_check_configurations' to be a list")
+        pulumi.set(__self__, "validity_check_configurations", validity_check_configurations)
 
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionConfig")
@@ -73,6 +76,14 @@ class GetQualityMonitorV2Result:
         """
         return pulumi.get(self, "object_type")
 
+    @_builtins.property
+    @pulumi.getter(name="validityCheckConfigurations")
+    def validity_check_configurations(self) -> Sequence['outputs.GetQualityMonitorV2ValidityCheckConfigurationResult']:
+        """
+        (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+        """
+        return pulumi.get(self, "validity_check_configurations")
+
 
 class AwaitableGetQualityMonitorV2Result(GetQualityMonitorV2Result):
     # pylint: disable=using-constant-test
@@ -83,7 +94,8 @@ class AwaitableGetQualityMonitorV2Result(GetQualityMonitorV2Result):
             anomaly_detection_config=self.anomaly_detection_config,
             id=self.id,
             object_id=self.object_id,
-            object_type=self.object_type)
+            object_type=self.object_type,
+            validity_check_configurations=self.validity_check_configurations)
 
 
 def get_quality_monitor_v2(object_id: Optional[_builtins.str] = None,
@@ -123,7 +135,8 @@ def get_quality_monitor_v2(object_id: Optional[_builtins.str] = None,
         anomaly_detection_config=pulumi.get(__ret__, 'anomaly_detection_config'),
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
-        object_type=pulumi.get(__ret__, 'object_type'))
+        object_type=pulumi.get(__ret__, 'object_type'),
+        validity_check_configurations=pulumi.get(__ret__, 'validity_check_configurations'))
 def get_quality_monitor_v2_output(object_id: Optional[pulumi.Input[_builtins.str]] = None,
                                   object_type: Optional[pulumi.Input[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQualityMonitorV2Result]:
@@ -160,4 +173,5 @@ def get_quality_monitor_v2_output(object_id: Optional[pulumi.Input[_builtins.str
         anomaly_detection_config=pulumi.get(__response__, 'anomaly_detection_config'),
         id=pulumi.get(__response__, 'id'),
         object_id=pulumi.get(__response__, 'object_id'),
-        object_type=pulumi.get(__response__, 'object_type')))
+        object_type=pulumi.get(__response__, 'object_type'),
+        validity_check_configurations=pulumi.get(__response__, 'validity_check_configurations')))

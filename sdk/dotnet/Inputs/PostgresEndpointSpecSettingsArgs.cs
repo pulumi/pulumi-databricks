@@ -24,18 +24,6 @@ namespace Pulumi.Databricks.Inputs
             set => _pgSettings = value;
         }
 
-        [Input("pgbouncerSettings")]
-        private InputMap<string>? _pgbouncerSettings;
-
-        /// <summary>
-        /// A raw representation of PgBouncer settings
-        /// </summary>
-        public InputMap<string> PgbouncerSettings
-        {
-            get => _pgbouncerSettings ?? (_pgbouncerSettings = new InputMap<string>());
-            set => _pgbouncerSettings = value;
-        }
-
         public PostgresEndpointSpecSettingsArgs()
         {
         }

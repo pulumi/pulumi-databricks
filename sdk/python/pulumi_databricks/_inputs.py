@@ -1337,6 +1337,14 @@ __all__ = [
     'QualityMonitorTimeSeriesArgsDict',
     'QualityMonitorV2AnomalyDetectionConfigArgs',
     'QualityMonitorV2AnomalyDetectionConfigArgsDict',
+    'QualityMonitorV2ValidityCheckConfigurationArgs',
+    'QualityMonitorV2ValidityCheckConfigurationArgsDict',
+    'QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs',
+    'QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgsDict',
+    'QualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs',
+    'QualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgsDict',
+    'QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs',
+    'QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgsDict',
     'QueryParameterArgs',
     'QueryParameterArgsDict',
     'QueryParameterDateRangeValueArgs',
@@ -11376,7 +11384,9 @@ if not MYPY:
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         lsn: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -11415,7 +11425,9 @@ class DatabaseInstanceChildInstanceRefArgs:
         :param pulumi.Input[_builtins.str] effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
-               was created
+               was created.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.str] lsn: User-specified WAL LSN of the ref database instance.
                
                Input: For specifying the WAL LSN to create a child instance. Optional.
@@ -11459,7 +11471,9 @@ class DatabaseInstanceChildInstanceRefArgs:
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_lsn")
 
@@ -11628,7 +11642,9 @@ if not MYPY:
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         lsn: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -11667,7 +11683,9 @@ class DatabaseInstanceParentInstanceRefArgs:
         :param pulumi.Input[_builtins.str] effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
-               was created
+               was created.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.str] lsn: User-specified WAL LSN of the ref database instance.
                
                Input: For specifying the WAL LSN to create a child instance. Optional.
@@ -11711,7 +11729,9 @@ class DatabaseInstanceParentInstanceRefArgs:
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_lsn")
 
@@ -38046,6 +38066,7 @@ if not MYPY:
         """
         The number of model units to be provisioned.
         """
+        burst_scaling_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
@@ -38059,6 +38080,7 @@ class ModelServingProvisionedThroughputConfigServedEntityArgs:
                  entity_name: pulumi.Input[_builtins.str],
                  entity_version: pulumi.Input[_builtins.str],
                  provisioned_model_units: pulumi.Input[_builtins.int],
+                 burst_scaling_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] entity_name: The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
@@ -38069,6 +38091,8 @@ class ModelServingProvisionedThroughputConfigServedEntityArgs:
         pulumi.set(__self__, "entity_name", entity_name)
         pulumi.set(__self__, "entity_version", entity_version)
         pulumi.set(__self__, "provisioned_model_units", provisioned_model_units)
+        if burst_scaling_enabled is not None:
+            pulumi.set(__self__, "burst_scaling_enabled", burst_scaling_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -38107,6 +38131,15 @@ class ModelServingProvisionedThroughputConfigServedEntityArgs:
     @provisioned_model_units.setter
     def provisioned_model_units(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "provisioned_model_units", value)
+
+    @_builtins.property
+    @pulumi.getter(name="burstScalingEnabled")
+    def burst_scaling_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "burst_scaling_enabled")
+
+    @burst_scaling_enabled.setter
+    def burst_scaling_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "burst_scaling_enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -39649,13 +39682,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -39709,7 +39742,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -39719,7 +39752,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -39995,13 +40028,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -40016,7 +40049,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -40026,7 +40059,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -45799,10 +45832,6 @@ if not MYPY:
         A disabled compute endpoint cannot be enabled by a connection or
         console action
         """
-        pooler_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
         settings: NotRequired[pulumi.Input['PostgresEndpointSpecSettingsArgsDict']]
         """
         (EndpointSettings)
@@ -45821,7 +45850,6 @@ class PostgresEndpointSpecArgs:
                  autoscaling_limit_max_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  autoscaling_limit_min_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pooler_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input['PostgresEndpointSpecSettingsArgs']] = None,
                  suspend_timeout_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -45832,7 +45860,6 @@ class PostgresEndpointSpecArgs:
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
-        :param pulumi.Input[_builtins.str] pooler_mode: (string) - Possible values are: `TRANSACTION`
         :param pulumi.Input['PostgresEndpointSpecSettingsArgs'] settings: (EndpointSettings)
         :param pulumi.Input[_builtins.str] suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -45843,8 +45870,6 @@ class PostgresEndpointSpecArgs:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
-        if pooler_mode is not None:
-            pulumi.set(__self__, "pooler_mode", pooler_mode)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if suspend_timeout_duration is not None:
@@ -45902,18 +45927,6 @@ class PostgresEndpointSpecArgs:
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
-    @pulumi.getter(name="poolerMode")
-    def pooler_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
-        return pulumi.get(self, "pooler_mode")
-
-    @pooler_mode.setter
-    def pooler_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "pooler_mode", value)
-
-    @_builtins.property
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input['PostgresEndpointSpecSettingsArgs']]:
         """
@@ -45944,26 +45957,18 @@ if not MYPY:
         """
         A raw representation of Postgres settings
         """
-        pgbouncer_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A raw representation of PgBouncer settings
-        """
 elif False:
     PostgresEndpointSpecSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PostgresEndpointSpecSettingsArgs:
     def __init__(__self__, *,
-                 pg_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pgbouncer_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 pg_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pg_settings: A raw representation of Postgres settings
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pgbouncer_settings: A raw representation of PgBouncer settings
         """
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -45976,18 +45981,6 @@ class PostgresEndpointSpecSettingsArgs:
     @pg_settings.setter
     def pg_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pg_settings", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
-
-    @pgbouncer_settings.setter
-    def pgbouncer_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "pgbouncer_settings", value)
 
 
 if not MYPY:
@@ -46027,10 +46020,6 @@ if not MYPY:
         """
         (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
         """
-        pooler_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
         settings: NotRequired[pulumi.Input['PostgresEndpointStatusSettingsArgsDict']]
         """
         (EndpointSettings)
@@ -46061,7 +46050,6 @@ class PostgresEndpointStatusArgs:
                  host: Optional[pulumi.Input[_builtins.str]] = None,
                  last_active_time: Optional[pulumi.Input[_builtins.str]] = None,
                  pending_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 pooler_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input['PostgresEndpointStatusSettingsArgs']] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None,
                  suspend_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -46078,7 +46066,6 @@ class PostgresEndpointStatusArgs:
         :param pulumi.Input[_builtins.str] host: (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
         :param pulumi.Input[_builtins.str] last_active_time: (string) - A timestamp indicating when the compute endpoint was last active
         :param pulumi.Input[_builtins.str] pending_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
-        :param pulumi.Input[_builtins.str] pooler_mode: (string) - Possible values are: `TRANSACTION`
         :param pulumi.Input['PostgresEndpointStatusSettingsArgs'] settings: (EndpointSettings)
         :param pulumi.Input[_builtins.str] start_time: (string) - A timestamp indicating when the compute endpoint was last started
         :param pulumi.Input[_builtins.str] suspend_time: (string) - A timestamp indicating when the compute endpoint was last suspended
@@ -46100,8 +46087,6 @@ class PostgresEndpointStatusArgs:
             pulumi.set(__self__, "last_active_time", last_active_time)
         if pending_state is not None:
             pulumi.set(__self__, "pending_state", pending_state)
-        if pooler_mode is not None:
-            pulumi.set(__self__, "pooler_mode", pooler_mode)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if start_time is not None:
@@ -46211,18 +46196,6 @@ class PostgresEndpointStatusArgs:
         pulumi.set(self, "pending_state", value)
 
     @_builtins.property
-    @pulumi.getter(name="poolerMode")
-    def pooler_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
-        return pulumi.get(self, "pooler_mode")
-
-    @pooler_mode.setter
-    def pooler_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "pooler_mode", value)
-
-    @_builtins.property
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input['PostgresEndpointStatusSettingsArgs']]:
         """
@@ -46277,26 +46250,18 @@ if not MYPY:
         """
         A raw representation of Postgres settings
         """
-        pgbouncer_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A raw representation of PgBouncer settings
-        """
 elif False:
     PostgresEndpointStatusSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PostgresEndpointStatusSettingsArgs:
     def __init__(__self__, *,
-                 pg_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pgbouncer_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 pg_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pg_settings: A raw representation of Postgres settings
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pgbouncer_settings: A raw representation of PgBouncer settings
         """
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -46309,18 +46274,6 @@ class PostgresEndpointStatusSettingsArgs:
     @pg_settings.setter
     def pg_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pg_settings", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
-
-    @pgbouncer_settings.setter
-    def pgbouncer_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "pgbouncer_settings", value)
 
 
 if not MYPY:
@@ -46449,10 +46402,6 @@ if not MYPY:
         """
         A raw representation of Postgres settings
         """
-        pgbouncer_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A raw representation of PgBouncer settings
-        """
         suspend_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
         """
         Duration of inactivity after which the compute endpoint is automatically suspended
@@ -46466,13 +46415,11 @@ class PostgresProjectSpecDefaultEndpointSettingsArgs:
                  autoscaling_limit_max_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  autoscaling_limit_min_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  pg_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pgbouncer_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  suspend_timeout_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] autoscaling_limit_max_cu: The maximum number of Compute Units
         :param pulumi.Input[_builtins.float] autoscaling_limit_min_cu: The minimum number of Compute Units
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pg_settings: A raw representation of Postgres settings
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pgbouncer_settings: A raw representation of PgBouncer settings
         :param pulumi.Input[_builtins.str] suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -46481,8 +46428,6 @@ class PostgresProjectSpecDefaultEndpointSettingsArgs:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -46521,18 +46466,6 @@ class PostgresProjectSpecDefaultEndpointSettingsArgs:
     @pg_settings.setter
     def pg_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pg_settings", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
-
-    @pgbouncer_settings.setter
-    def pgbouncer_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "pgbouncer_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
@@ -46607,6 +46540,10 @@ if not MYPY:
         """
         (string) - The effective number of seconds to retain the shared history for point in time recovery
         """
+        owner: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (string) - The email of the project owner
+        """
         pg_version: NotRequired[pulumi.Input[_builtins.int]]
         """
         (integer) - The effective major Postgres version number
@@ -46630,6 +46567,7 @@ class PostgresProjectStatusArgs:
                  default_endpoint_settings: Optional[pulumi.Input['PostgresProjectStatusDefaultEndpointSettingsArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  history_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 owner: Optional[pulumi.Input[_builtins.str]] = None,
                  pg_version: Optional[pulumi.Input[_builtins.int]] = None,
                  settings: Optional[pulumi.Input['PostgresProjectStatusSettingsArgs']] = None,
                  synthetic_storage_size_bytes: Optional[pulumi.Input[_builtins.int]] = None):
@@ -46639,6 +46577,7 @@ class PostgresProjectStatusArgs:
         :param pulumi.Input['PostgresProjectStatusDefaultEndpointSettingsArgs'] default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param pulumi.Input[_builtins.str] display_name: (string) - The effective human-readable project name
         :param pulumi.Input[_builtins.str] history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
+        :param pulumi.Input[_builtins.str] owner: (string) - The email of the project owner
         :param pulumi.Input[_builtins.int] pg_version: (integer) - The effective major Postgres version number
         :param pulumi.Input['PostgresProjectStatusSettingsArgs'] settings: (ProjectSettings) - The effective project settings
         :param pulumi.Input[_builtins.int] synthetic_storage_size_bytes: (integer) - The current space occupied by the project in storage
@@ -46653,6 +46592,8 @@ class PostgresProjectStatusArgs:
             pulumi.set(__self__, "display_name", display_name)
         if history_retention_duration is not None:
             pulumi.set(__self__, "history_retention_duration", history_retention_duration)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
         if settings is not None:
@@ -46721,6 +46662,18 @@ class PostgresProjectStatusArgs:
         pulumi.set(self, "history_retention_duration", value)
 
     @_builtins.property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The email of the project owner
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "owner", value)
+
+    @_builtins.property
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -46771,10 +46724,6 @@ if not MYPY:
         """
         A raw representation of Postgres settings
         """
-        pgbouncer_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A raw representation of PgBouncer settings
-        """
         suspend_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
         """
         Duration of inactivity after which the compute endpoint is automatically suspended
@@ -46788,13 +46737,11 @@ class PostgresProjectStatusDefaultEndpointSettingsArgs:
                  autoscaling_limit_max_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  autoscaling_limit_min_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  pg_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 pgbouncer_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  suspend_timeout_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] autoscaling_limit_max_cu: The maximum number of Compute Units
         :param pulumi.Input[_builtins.float] autoscaling_limit_min_cu: The minimum number of Compute Units
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pg_settings: A raw representation of Postgres settings
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pgbouncer_settings: A raw representation of PgBouncer settings
         :param pulumi.Input[_builtins.str] suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -46803,8 +46750,6 @@ class PostgresProjectStatusDefaultEndpointSettingsArgs:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -46843,18 +46788,6 @@ class PostgresProjectStatusDefaultEndpointSettingsArgs:
     @pg_settings.setter
     def pg_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pg_settings", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
-
-    @pgbouncer_settings.setter
-    def pgbouncer_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "pgbouncer_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
@@ -47517,6 +47450,194 @@ class QualityMonitorV2AnomalyDetectionConfigArgs:
     @latest_run_status.setter
     def latest_run_status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "latest_run_status", value)
+
+
+if not MYPY:
+    class QualityMonitorV2ValidityCheckConfigurationArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Can be set by system. Does not need to be user facing
+        """
+        percent_null_validity_check: NotRequired[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgsDict']]
+        range_validity_check: NotRequired[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgsDict']]
+        uniqueness_validity_check: NotRequired[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgsDict']]
+elif False:
+    QualityMonitorV2ValidityCheckConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QualityMonitorV2ValidityCheckConfigurationArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 percent_null_validity_check: Optional[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs']] = None,
+                 range_validity_check: Optional[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs']] = None,
+                 uniqueness_validity_check: Optional[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Can be set by system. Does not need to be user facing
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if percent_null_validity_check is not None:
+            pulumi.set(__self__, "percent_null_validity_check", percent_null_validity_check)
+        if range_validity_check is not None:
+            pulumi.set(__self__, "range_validity_check", range_validity_check)
+        if uniqueness_validity_check is not None:
+            pulumi.set(__self__, "uniqueness_validity_check", uniqueness_validity_check)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Can be set by system. Does not need to be user facing
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="percentNullValidityCheck")
+    def percent_null_validity_check(self) -> Optional[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs']]:
+        return pulumi.get(self, "percent_null_validity_check")
+
+    @percent_null_validity_check.setter
+    def percent_null_validity_check(self, value: Optional[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs']]):
+        pulumi.set(self, "percent_null_validity_check", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rangeValidityCheck")
+    def range_validity_check(self) -> Optional[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs']]:
+        return pulumi.get(self, "range_validity_check")
+
+    @range_validity_check.setter
+    def range_validity_check(self, value: Optional[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs']]):
+        pulumi.set(self, "range_validity_check", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uniquenessValidityCheck")
+    def uniqueness_validity_check(self) -> Optional[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs']]:
+        return pulumi.get(self, "uniqueness_validity_check")
+
+    @uniqueness_validity_check.setter
+    def uniqueness_validity_check(self, value: Optional[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs']]):
+        pulumi.set(self, "uniqueness_validity_check", value)
+
+
+if not MYPY:
+    class QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgsDict(TypedDict):
+        column_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        upper_bound: NotRequired[pulumi.Input[_builtins.float]]
+elif False:
+    QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs:
+    def __init__(__self__, *,
+                 column_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 upper_bound: Optional[pulumi.Input[_builtins.float]] = None):
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "column_names")
+
+    @column_names.setter
+    def column_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "column_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> Optional[pulumi.Input[_builtins.float]]:
+        return pulumi.get(self, "upper_bound")
+
+    @upper_bound.setter
+    def upper_bound(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "upper_bound", value)
+
+
+if not MYPY:
+    class QualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgsDict(TypedDict):
+        column_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        lower_bound: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Lower bound for the range
+        """
+        upper_bound: NotRequired[pulumi.Input[_builtins.float]]
+elif False:
+    QualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs:
+    def __init__(__self__, *,
+                 column_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lower_bound: Optional[pulumi.Input[_builtins.float]] = None,
+                 upper_bound: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.float] lower_bound: Lower bound for the range
+        """
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "column_names")
+
+    @column_names.setter
+    def column_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "column_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Lower bound for the range
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @lower_bound.setter
+    def lower_bound(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "lower_bound", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> Optional[pulumi.Input[_builtins.float]]:
+        return pulumi.get(self, "upper_bound")
+
+    @upper_bound.setter
+    def upper_bound(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "upper_bound", value)
+
+
+if not MYPY:
+    class QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgsDict(TypedDict):
+        column_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs:
+    def __init__(__self__, *,
+                 column_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "column_names")
+
+    @column_names.setter
+    def column_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "column_names", value)
 
 
 if not MYPY:

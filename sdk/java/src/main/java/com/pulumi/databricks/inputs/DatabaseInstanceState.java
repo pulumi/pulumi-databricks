@@ -100,14 +100,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveCapacity")
     private @Nullable Output<String> effectiveCapacity;
 
     /**
-     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<String>> effectiveCapacity() {
@@ -115,14 +119,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (list of CustomTag) - The recorded custom tags associated with the instance
+     * (list of CustomTag) - The recorded custom tags associated with the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveCustomTags")
     private @Nullable Output<List<DatabaseInstanceEffectiveCustomTagArgs>> effectiveCustomTags;
 
     /**
-     * @return (list of CustomTag) - The recorded custom tags associated with the instance
+     * @return (list of CustomTag) - The recorded custom tags associated with the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<List<DatabaseInstanceEffectiveCustomTagArgs>>> effectiveCustomTags() {
@@ -130,14 +138,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (boolean) - Whether the instance has PG native password login enabled
+     * (boolean) - Whether the instance has PG native password login enabled.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveEnablePgNativeLogin")
     private @Nullable Output<Boolean> effectiveEnablePgNativeLogin;
 
     /**
-     * @return (boolean) - Whether the instance has PG native password login enabled
+     * @return (boolean) - Whether the instance has PG native password login enabled.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<Boolean>> effectiveEnablePgNativeLogin() {
@@ -145,14 +157,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveEnableReadableSecondaries")
     private @Nullable Output<Boolean> effectiveEnableReadableSecondaries;
 
     /**
-     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<Boolean>> effectiveEnableReadableSecondaries() {
@@ -161,7 +177,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveNodeCount")
@@ -169,7 +187,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<Integer>> effectiveNodeCount() {
@@ -178,7 +198,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * (integer) - The retention window for the instance. This is the time window in days
-     * for which the historical data is retained
+     * for which the historical data is retained.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveRetentionWindowInDays")
@@ -186,7 +208,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return (integer) - The retention window for the instance. This is the time window in days
-     * for which the historical data is retained
+     * for which the historical data is retained.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<Integer>> effectiveRetentionWindowInDays() {
@@ -194,14 +218,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (boolean) - Whether the instance is stopped
+     * (boolean) - Whether the instance is stopped.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveStopped")
     private @Nullable Output<Boolean> effectiveStopped;
 
     /**
-     * @return (boolean) - Whether the instance is stopped
+     * @return (boolean) - Whether the instance is stopped.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<Boolean>> effectiveStopped() {
@@ -209,14 +237,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (string) - The policy that is applied to the instance
+     * (string) - The policy that is applied to the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveUsagePolicyId")
     private @Nullable Output<String> effectiveUsagePolicyId;
 
     /**
-     * @return (string) - The policy that is applied to the instance
+     * @return (string) - The policy that is applied to the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<String>> effectiveUsagePolicyId() {
@@ -626,7 +658,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveCapacity (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+         * @param effectiveCapacity (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -637,7 +671,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveCapacity (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+         * @param effectiveCapacity (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -647,7 +683,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveCustomTags (list of CustomTag) - The recorded custom tags associated with the instance
+         * @param effectiveCustomTags (list of CustomTag) - The recorded custom tags associated with the instance.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -658,7 +696,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveCustomTags (list of CustomTag) - The recorded custom tags associated with the instance
+         * @param effectiveCustomTags (list of CustomTag) - The recorded custom tags associated with the instance.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -668,7 +708,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveCustomTags (list of CustomTag) - The recorded custom tags associated with the instance
+         * @param effectiveCustomTags (list of CustomTag) - The recorded custom tags associated with the instance.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -678,7 +720,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnablePgNativeLogin (boolean) - Whether the instance has PG native password login enabled
+         * @param effectiveEnablePgNativeLogin (boolean) - Whether the instance has PG native password login enabled.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -689,7 +733,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnablePgNativeLogin (boolean) - Whether the instance has PG native password login enabled
+         * @param effectiveEnablePgNativeLogin (boolean) - Whether the instance has PG native password login enabled.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -699,7 +745,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnableReadableSecondaries (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+         * @param effectiveEnableReadableSecondaries (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -710,7 +758,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnableReadableSecondaries (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+         * @param effectiveEnableReadableSecondaries (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -721,7 +771,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param effectiveNodeCount (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-         * 1 primary and 0 secondaries
+         * 1 primary and 0 secondaries.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -733,7 +785,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param effectiveNodeCount (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-         * 1 primary and 0 secondaries
+         * 1 primary and 0 secondaries.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -744,7 +798,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param effectiveRetentionWindowInDays (integer) - The retention window for the instance. This is the time window in days
-         * for which the historical data is retained
+         * for which the historical data is retained.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -756,7 +812,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param effectiveRetentionWindowInDays (integer) - The retention window for the instance. This is the time window in days
-         * for which the historical data is retained
+         * for which the historical data is retained.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -766,7 +824,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveStopped (boolean) - Whether the instance is stopped
+         * @param effectiveStopped (boolean) - Whether the instance is stopped.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -777,7 +837,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveStopped (boolean) - Whether the instance is stopped
+         * @param effectiveStopped (boolean) - Whether the instance is stopped.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -787,7 +849,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveUsagePolicyId (string) - The policy that is applied to the instance
+         * @param effectiveUsagePolicyId (string) - The policy that is applied to the instance.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -798,7 +862,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveUsagePolicyId (string) - The policy that is applied to the instance
+         * @param effectiveUsagePolicyId (string) - The policy that is applied to the instance.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 

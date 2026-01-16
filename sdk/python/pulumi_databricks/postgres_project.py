@@ -21,7 +21,7 @@ __all__ = ['PostgresProjectArgs', 'PostgresProject']
 @pulumi.input_type
 class PostgresProjectArgs:
     def __init__(__self__, *,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: pulumi.Input[_builtins.str],
                  spec: Optional[pulumi.Input['PostgresProjectSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresProject resource.
@@ -31,14 +31,13 @@ class PostgresProjectArgs:
                This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
         :param pulumi.Input['PostgresProjectSpecArgs'] spec: The desired state of a Project
         """
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project_id", project_id)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[_builtins.str]:
         """
         The ID to use for the Project, which will become the final component of
         the project's resource name.
@@ -48,7 +47,7 @@ class PostgresProjectArgs:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
@@ -236,7 +235,7 @@ class PostgresProject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[PostgresProjectArgs] = None,
+                 args: PostgresProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -287,6 +286,8 @@ class PostgresProject(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PostgresProjectArgs.__new__(PostgresProjectArgs)
 
+            if project_id is None and not opts.urn:
+                raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None

@@ -66,6 +66,9 @@ func NewPostgresBranch(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BranchId == nil {
+		return nil, errors.New("invalid value for required argument 'BranchId'")
+	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
@@ -148,7 +151,7 @@ type postgresBranchArgs struct {
 	// the branch's resource name.
 	//
 	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-	BranchId *string `pulumi:"branchId"`
+	BranchId string `pulumi:"branchId"`
 	// The project containing this branch.
 	// Format: projects/{project_id}
 	Parent string `pulumi:"parent"`
@@ -162,7 +165,7 @@ type PostgresBranchArgs struct {
 	// the branch's resource name.
 	//
 	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-	BranchId pulumi.StringPtrInput
+	BranchId pulumi.StringInput
 	// The project containing this branch.
 	// Format: projects/{project_id}
 	Parent pulumi.StringInput

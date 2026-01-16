@@ -182,23 +182,39 @@ type DatabaseInstance struct {
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// Custom tags associated with the instance. This field is only included on create and update responses
 	CustomTags DatabaseInstanceCustomTagArrayOutput `pulumi:"customTags"`
-	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCapacity pulumi.StringOutput `pulumi:"effectiveCapacity"`
-	// (list of CustomTag) - The recorded custom tags associated with the instance
+	// (list of CustomTag) - The recorded custom tags associated with the instance.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCustomTags DatabaseInstanceEffectiveCustomTagArrayOutput `pulumi:"effectiveCustomTags"`
-	// (boolean) - Whether the instance has PG native password login enabled
+	// (boolean) - Whether the instance has PG native password login enabled.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveEnablePgNativeLogin pulumi.BoolOutput `pulumi:"effectiveEnablePgNativeLogin"`
-	// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+	// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveEnableReadableSecondaries pulumi.BoolOutput `pulumi:"effectiveEnableReadableSecondaries"`
 	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-	// 1 primary and 0 secondaries
+	// 1 primary and 0 secondaries.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveNodeCount pulumi.IntOutput `pulumi:"effectiveNodeCount"`
 	// (integer) - The retention window for the instance. This is the time window in days
-	// for which the historical data is retained
+	// for which the historical data is retained.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveRetentionWindowInDays pulumi.IntOutput `pulumi:"effectiveRetentionWindowInDays"`
-	// (boolean) - Whether the instance is stopped
+	// (boolean) - Whether the instance is stopped.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveStopped pulumi.BoolOutput `pulumi:"effectiveStopped"`
-	// (string) - The policy that is applied to the instance
+	// (string) - The policy that is applied to the instance.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveUsagePolicyId pulumi.StringOutput `pulumi:"effectiveUsagePolicyId"`
 	// Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin pulumi.BoolOutput `pulumi:"enablePgNativeLogin"`
@@ -278,23 +294,39 @@ type databaseInstanceState struct {
 	Creator *string `pulumi:"creator"`
 	// Custom tags associated with the instance. This field is only included on create and update responses
 	CustomTags []DatabaseInstanceCustomTag `pulumi:"customTags"`
-	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCapacity *string `pulumi:"effectiveCapacity"`
-	// (list of CustomTag) - The recorded custom tags associated with the instance
+	// (list of CustomTag) - The recorded custom tags associated with the instance.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCustomTags []DatabaseInstanceEffectiveCustomTag `pulumi:"effectiveCustomTags"`
-	// (boolean) - Whether the instance has PG native password login enabled
+	// (boolean) - Whether the instance has PG native password login enabled.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveEnablePgNativeLogin *bool `pulumi:"effectiveEnablePgNativeLogin"`
-	// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+	// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveEnableReadableSecondaries *bool `pulumi:"effectiveEnableReadableSecondaries"`
 	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-	// 1 primary and 0 secondaries
+	// 1 primary and 0 secondaries.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveNodeCount *int `pulumi:"effectiveNodeCount"`
 	// (integer) - The retention window for the instance. This is the time window in days
-	// for which the historical data is retained
+	// for which the historical data is retained.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveRetentionWindowInDays *int `pulumi:"effectiveRetentionWindowInDays"`
-	// (boolean) - Whether the instance is stopped
+	// (boolean) - Whether the instance is stopped.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveStopped *bool `pulumi:"effectiveStopped"`
-	// (string) - The policy that is applied to the instance
+	// (string) - The policy that is applied to the instance.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveUsagePolicyId *string `pulumi:"effectiveUsagePolicyId"`
 	// Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin *bool `pulumi:"enablePgNativeLogin"`
@@ -345,23 +377,39 @@ type DatabaseInstanceState struct {
 	Creator pulumi.StringPtrInput
 	// Custom tags associated with the instance. This field is only included on create and update responses
 	CustomTags DatabaseInstanceCustomTagArrayInput
-	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCapacity pulumi.StringPtrInput
-	// (list of CustomTag) - The recorded custom tags associated with the instance
+	// (list of CustomTag) - The recorded custom tags associated with the instance.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCustomTags DatabaseInstanceEffectiveCustomTagArrayInput
-	// (boolean) - Whether the instance has PG native password login enabled
+	// (boolean) - Whether the instance has PG native password login enabled.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveEnablePgNativeLogin pulumi.BoolPtrInput
-	// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+	// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveEnableReadableSecondaries pulumi.BoolPtrInput
 	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-	// 1 primary and 0 secondaries
+	// 1 primary and 0 secondaries.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveNodeCount pulumi.IntPtrInput
 	// (integer) - The retention window for the instance. This is the time window in days
-	// for which the historical data is retained
+	// for which the historical data is retained.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveRetentionWindowInDays pulumi.IntPtrInput
-	// (boolean) - Whether the instance is stopped
+	// (boolean) - Whether the instance is stopped.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveStopped pulumi.BoolPtrInput
-	// (string) - The policy that is applied to the instance
+	// (string) - The policy that is applied to the instance.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveUsagePolicyId pulumi.StringPtrInput
 	// Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin pulumi.BoolPtrInput
@@ -580,44 +628,60 @@ func (o DatabaseInstanceOutput) CustomTags() DatabaseInstanceCustomTagArrayOutpu
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceCustomTagArrayOutput { return v.CustomTags }).(DatabaseInstanceCustomTagArrayOutput)
 }
 
-// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseInstanceOutput) EffectiveCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.EffectiveCapacity }).(pulumi.StringOutput)
 }
 
-// (list of CustomTag) - The recorded custom tags associated with the instance
+// (list of CustomTag) - The recorded custom tags associated with the instance.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseInstanceOutput) EffectiveCustomTags() DatabaseInstanceEffectiveCustomTagArrayOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceEffectiveCustomTagArrayOutput { return v.EffectiveCustomTags }).(DatabaseInstanceEffectiveCustomTagArrayOutput)
 }
 
-// (boolean) - Whether the instance has PG native password login enabled
+// (boolean) - Whether the instance has PG native password login enabled.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseInstanceOutput) EffectiveEnablePgNativeLogin() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolOutput { return v.EffectiveEnablePgNativeLogin }).(pulumi.BoolOutput)
 }
 
-// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseInstanceOutput) EffectiveEnableReadableSecondaries() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolOutput { return v.EffectiveEnableReadableSecondaries }).(pulumi.BoolOutput)
 }
 
 // (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-// 1 primary and 0 secondaries
+// 1 primary and 0 secondaries.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseInstanceOutput) EffectiveNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.IntOutput { return v.EffectiveNodeCount }).(pulumi.IntOutput)
 }
 
 // (integer) - The retention window for the instance. This is the time window in days
-// for which the historical data is retained
+// for which the historical data is retained.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseInstanceOutput) EffectiveRetentionWindowInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.IntOutput { return v.EffectiveRetentionWindowInDays }).(pulumi.IntOutput)
 }
 
-// (boolean) - Whether the instance is stopped
+// (boolean) - Whether the instance is stopped.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseInstanceOutput) EffectiveStopped() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolOutput { return v.EffectiveStopped }).(pulumi.BoolOutput)
 }
 
-// (string) - The policy that is applied to the instance
+// (string) - The policy that is applied to the instance.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o DatabaseInstanceOutput) EffectiveUsagePolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.EffectiveUsagePolicyId }).(pulumi.StringOutput)
 }

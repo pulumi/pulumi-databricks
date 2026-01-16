@@ -25,6 +25,10 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - The type of the monitored object. Can be one of the following: schema
         /// </summary>
         public readonly string ObjectType;
+        /// <summary>
+        /// (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationResult> ValidityCheckConfigurations;
 
         [OutputConstructor]
         private GetQualityMonitorsV2QualityMonitorResult(
@@ -32,11 +36,14 @@ namespace Pulumi.Databricks.Outputs
 
             string objectId,
 
-            string objectType)
+            string objectType,
+
+            ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationResult> validityCheckConfigurations)
         {
             AnomalyDetectionConfig = anomalyDetectionConfig;
             ObjectId = objectId;
             ObjectType = objectType;
+            ValidityCheckConfigurations = validityCheckConfigurations;
         }
     }
 }

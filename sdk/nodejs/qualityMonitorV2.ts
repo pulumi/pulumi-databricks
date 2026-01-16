@@ -89,6 +89,10 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
      * The type of the monitored object. Can be one of the following: schema
      */
     declare public readonly objectType: pulumi.Output<string>;
+    /**
+     * Validity check configurations for anomaly detection
+     */
+    declare public readonly validityCheckConfigurations: pulumi.Output<outputs.QualityMonitorV2ValidityCheckConfiguration[]>;
 
     /**
      * Create a QualityMonitorV2 resource with the given unique name, arguments, and options.
@@ -106,6 +110,7 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
             resourceInputs["anomalyDetectionConfig"] = state?.anomalyDetectionConfig;
             resourceInputs["objectId"] = state?.objectId;
             resourceInputs["objectType"] = state?.objectType;
+            resourceInputs["validityCheckConfigurations"] = state?.validityCheckConfigurations;
         } else {
             const args = argsOrState as QualityMonitorV2Args | undefined;
             if (args?.objectId === undefined && !opts.urn) {
@@ -116,6 +121,7 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
             }
             resourceInputs["objectId"] = args?.objectId;
             resourceInputs["objectType"] = args?.objectType;
+            resourceInputs["validityCheckConfigurations"] = args?.validityCheckConfigurations;
             resourceInputs["anomalyDetectionConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -139,6 +145,10 @@ export interface QualityMonitorV2State {
      * The type of the monitored object. Can be one of the following: schema
      */
     objectType?: pulumi.Input<string>;
+    /**
+     * Validity check configurations for anomaly detection
+     */
+    validityCheckConfigurations?: pulumi.Input<pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfiguration>[]>;
 }
 
 /**
@@ -153,4 +163,8 @@ export interface QualityMonitorV2Args {
      * The type of the monitored object. Can be one of the following: schema
      */
     objectType: pulumi.Input<string>;
+    /**
+     * Validity check configurations for anomaly detection
+     */
+    validityCheckConfigurations?: pulumi.Input<pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfiguration>[]>;
 }

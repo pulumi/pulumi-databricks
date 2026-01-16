@@ -252,16 +252,32 @@ class _DatabaseInstanceState:
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the instance was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the instance
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
-        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceEffectiveCustomTagArgs']]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance
-        :param pulumi.Input[_builtins.bool] effective_enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled
-        :param pulumi.Input[_builtins.bool] effective_enable_readable_secondaries: (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceEffectiveCustomTagArgs']]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.bool] effective_enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.bool] effective_enable_readable_secondaries: (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.int] effective_node_count: (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-               1 primary and 0 secondaries
+               1 primary and 0 secondaries.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.int] effective_retention_window_in_days: (integer) - The retention window for the instance. This is the time window in days
-               for which the historical data is retained
-        :param pulumi.Input[_builtins.bool] effective_stopped: (boolean) - Whether the instance is stopped
-        :param pulumi.Input[_builtins.str] effective_usage_policy_id: (string) - The policy that is applied to the instance
+               for which the historical data is retained.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.bool] effective_stopped: (boolean) - Whether the instance is stopped.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.str] effective_usage_policy_id: (string) - The policy that is applied to the instance.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
         :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
@@ -404,7 +420,9 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveCapacity")
     def effective_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_capacity")
 
@@ -416,7 +434,9 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveCustomTags")
     def effective_custom_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceEffectiveCustomTagArgs']]]]:
         """
-        (list of CustomTag) - The recorded custom tags associated with the instance
+        (list of CustomTag) - The recorded custom tags associated with the instance.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_custom_tags")
 
@@ -428,7 +448,9 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveEnablePgNativeLogin")
     def effective_enable_pg_native_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        (boolean) - Whether the instance has PG native password login enabled
+        (boolean) - Whether the instance has PG native password login enabled.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_enable_pg_native_login")
 
@@ -440,7 +462,9 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveEnableReadableSecondaries")
     def effective_enable_readable_secondaries(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_enable_readable_secondaries")
 
@@ -453,7 +477,9 @@ class _DatabaseInstanceState:
     def effective_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        1 primary and 0 secondaries
+        1 primary and 0 secondaries.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_node_count")
 
@@ -466,7 +492,9 @@ class _DatabaseInstanceState:
     def effective_retention_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         (integer) - The retention window for the instance. This is the time window in days
-        for which the historical data is retained
+        for which the historical data is retained.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_retention_window_in_days")
 
@@ -478,7 +506,9 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        (boolean) - Whether the instance is stopped
+        (boolean) - Whether the instance is stopped.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_stopped")
 
@@ -490,7 +520,9 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveUsagePolicyId")
     def effective_usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - The policy that is applied to the instance
+        (string) - The policy that is applied to the instance.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_usage_policy_id")
 
@@ -1020,16 +1052,32 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the instance was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the instance
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
-        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict']]]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance
-        :param pulumi.Input[_builtins.bool] effective_enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled
-        :param pulumi.Input[_builtins.bool] effective_enable_readable_secondaries: (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict']]]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.bool] effective_enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.bool] effective_enable_readable_secondaries: (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.int] effective_node_count: (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-               1 primary and 0 secondaries
+               1 primary and 0 secondaries.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.int] effective_retention_window_in_days: (integer) - The retention window for the instance. This is the time window in days
-               for which the historical data is retained
-        :param pulumi.Input[_builtins.bool] effective_stopped: (boolean) - Whether the instance is stopped
-        :param pulumi.Input[_builtins.str] effective_usage_policy_id: (string) - The policy that is applied to the instance
+               for which the historical data is retained.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.bool] effective_stopped: (boolean) - Whether the instance is stopped.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.str] effective_usage_policy_id: (string) - The policy that is applied to the instance.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
         :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
@@ -1130,7 +1178,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveCapacity")
     def effective_capacity(self) -> pulumi.Output[_builtins.str]:
         """
-        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_capacity")
 
@@ -1138,7 +1188,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveCustomTags")
     def effective_custom_tags(self) -> pulumi.Output[Sequence['outputs.DatabaseInstanceEffectiveCustomTag']]:
         """
-        (list of CustomTag) - The recorded custom tags associated with the instance
+        (list of CustomTag) - The recorded custom tags associated with the instance.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_custom_tags")
 
@@ -1146,7 +1198,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveEnablePgNativeLogin")
     def effective_enable_pg_native_login(self) -> pulumi.Output[_builtins.bool]:
         """
-        (boolean) - Whether the instance has PG native password login enabled
+        (boolean) - Whether the instance has PG native password login enabled.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_enable_pg_native_login")
 
@@ -1154,7 +1208,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveEnableReadableSecondaries")
     def effective_enable_readable_secondaries(self) -> pulumi.Output[_builtins.bool]:
         """
-        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_enable_readable_secondaries")
 
@@ -1163,7 +1219,9 @@ class DatabaseInstance(pulumi.CustomResource):
     def effective_node_count(self) -> pulumi.Output[_builtins.int]:
         """
         (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        1 primary and 0 secondaries
+        1 primary and 0 secondaries.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_node_count")
 
@@ -1172,7 +1230,9 @@ class DatabaseInstance(pulumi.CustomResource):
     def effective_retention_window_in_days(self) -> pulumi.Output[_builtins.int]:
         """
         (integer) - The retention window for the instance. This is the time window in days
-        for which the historical data is retained
+        for which the historical data is retained.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_retention_window_in_days")
 
@@ -1180,7 +1240,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> pulumi.Output[_builtins.bool]:
         """
-        (boolean) - Whether the instance is stopped
+        (boolean) - Whether the instance is stopped.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_stopped")
 
@@ -1188,7 +1250,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveUsagePolicyId")
     def effective_usage_policy_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The policy that is applied to the instance
+        (string) - The policy that is applied to the instance.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_usage_policy_id")
 

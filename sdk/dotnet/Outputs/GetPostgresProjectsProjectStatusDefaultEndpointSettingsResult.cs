@@ -26,10 +26,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? PgSettings;
         /// <summary>
-        /// (object) - A raw representation of PgBouncer settings
-        /// </summary>
-        public readonly ImmutableDictionary<string, string>? PgbouncerSettings;
-        /// <summary>
         /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         /// </summary>
         public readonly string? SuspendTimeoutDuration;
@@ -42,14 +38,11 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableDictionary<string, string>? pgSettings,
 
-            ImmutableDictionary<string, string>? pgbouncerSettings,
-
             string? suspendTimeoutDuration)
         {
             AutoscalingLimitMaxCu = autoscalingLimitMaxCu;
             AutoscalingLimitMinCu = autoscalingLimitMinCu;
             PgSettings = pgSettings;
-            PgbouncerSettings = pgbouncerSettings;
             SuspendTimeoutDuration = suspendTimeoutDuration;
         }
     }

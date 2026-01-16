@@ -3527,6 +3527,34 @@
                                 "maxItemsOne": false
                             }
                         }
+                    },
+                    "validity_check_configurations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "percent_null_validity_check": {
+                                    "fields": {
+                                        "column_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "range_validity_check": {
+                                    "fields": {
+                                        "column_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "uniqueness_validity_check": {
+                                    "fields": {
+                                        "column_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -6748,6 +6776,34 @@
                                 "maxItemsOne": false
                             }
                         }
+                    },
+                    "validity_check_configurations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "percent_null_validity_check": {
+                                    "fields": {
+                                        "column_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "range_validity_check": {
+                                    "fields": {
+                                        "column_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "uniqueness_validity_check": {
+                                    "fields": {
+                                        "column_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -6763,6 +6819,34 @@
                                     "fields": {
                                         "excluded_table_full_names": {
                                             "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "validity_check_configurations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "percent_null_validity_check": {
+                                                "fields": {
+                                                    "column_names": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            },
+                                            "range_validity_check": {
+                                                "fields": {
+                                                    "column_names": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            },
+                                            "uniqueness_validity_check": {
+                                                "fields": {
+                                                    "column_names": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }

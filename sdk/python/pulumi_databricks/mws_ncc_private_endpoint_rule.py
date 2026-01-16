@@ -29,6 +29,7 @@ class MwsNccPrivateEndpointRuleArgs:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -79,6 +80,8 @@ class MwsNccPrivateEndpointRuleArgs:
             pulumi.set(__self__, "endpoint_name", endpoint_name)
         if endpoint_service is not None:
             pulumi.set(__self__, "endpoint_service", endpoint_service)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if resource_id is not None:
@@ -217,6 +220,15 @@ class MwsNccPrivateEndpointRuleArgs:
         pulumi.set(self, "endpoint_service", value)
 
     @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "error_message")
+
+    @error_message.setter
+    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "error_message", value)
+
+    @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -301,6 +313,7 @@ class _MwsNccPrivateEndpointRuleState:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -351,6 +364,8 @@ class _MwsNccPrivateEndpointRuleState:
             pulumi.set(__self__, "endpoint_name", endpoint_name)
         if endpoint_service is not None:
             pulumi.set(__self__, "endpoint_service", endpoint_service)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if network_connectivity_config_id is not None:
@@ -479,6 +494,15 @@ class _MwsNccPrivateEndpointRuleState:
         pulumi.set(self, "endpoint_service", value)
 
     @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "error_message")
+
+    @error_message.setter
+    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "error_message", value)
+
+    @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -578,6 +602,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -801,6 +826,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -826,6 +852,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["endpoint_name"] = endpoint_name
             __props__.__dict__["endpoint_service"] = endpoint_service
+            __props__.__dict__["error_message"] = error_message
             __props__.__dict__["group_id"] = group_id
             if network_connectivity_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_connectivity_config_id'")
@@ -854,6 +881,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
             endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
+            error_message: Optional[pulumi.Input[_builtins.str]] = None,
             group_id: Optional[pulumi.Input[_builtins.str]] = None,
             network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -904,6 +932,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["endpoint_name"] = endpoint_name
         __props__.__dict__["endpoint_service"] = endpoint_service
+        __props__.__dict__["error_message"] = error_message
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["network_connectivity_config_id"] = network_connectivity_config_id
         __props__.__dict__["resource_id"] = resource_id
@@ -988,6 +1017,11 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
         """
         return pulumi.get(self, "endpoint_service")
+
+    @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "error_message")
 
     @_builtins.property
     @pulumi.getter(name="groupId")

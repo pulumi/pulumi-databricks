@@ -29,11 +29,6 @@ public final class GetPostgresProjectsProjectSpecDefaultEndpointSettings {
      */
     private @Nullable Map<String,String> pgSettings;
     /**
-     * @return (object) - A raw representation of PgBouncer settings
-     * 
-     */
-    private @Nullable Map<String,String> pgbouncerSettings;
-    /**
      * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      * 
      */
@@ -62,13 +57,6 @@ public final class GetPostgresProjectsProjectSpecDefaultEndpointSettings {
         return this.pgSettings == null ? Map.of() : this.pgSettings;
     }
     /**
-     * @return (object) - A raw representation of PgBouncer settings
-     * 
-     */
-    public Map<String,String> pgbouncerSettings() {
-        return this.pgbouncerSettings == null ? Map.of() : this.pgbouncerSettings;
-    }
-    /**
      * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      * 
      */
@@ -88,7 +76,6 @@ public final class GetPostgresProjectsProjectSpecDefaultEndpointSettings {
         private @Nullable Double autoscalingLimitMaxCu;
         private @Nullable Double autoscalingLimitMinCu;
         private @Nullable Map<String,String> pgSettings;
-        private @Nullable Map<String,String> pgbouncerSettings;
         private @Nullable String suspendTimeoutDuration;
         public Builder() {}
         public Builder(GetPostgresProjectsProjectSpecDefaultEndpointSettings defaults) {
@@ -96,7 +83,6 @@ public final class GetPostgresProjectsProjectSpecDefaultEndpointSettings {
     	      this.autoscalingLimitMaxCu = defaults.autoscalingLimitMaxCu;
     	      this.autoscalingLimitMinCu = defaults.autoscalingLimitMinCu;
     	      this.pgSettings = defaults.pgSettings;
-    	      this.pgbouncerSettings = defaults.pgbouncerSettings;
     	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
         }
 
@@ -119,12 +105,6 @@ public final class GetPostgresProjectsProjectSpecDefaultEndpointSettings {
             return this;
         }
         @CustomType.Setter
-        public Builder pgbouncerSettings(@Nullable Map<String,String> pgbouncerSettings) {
-
-            this.pgbouncerSettings = pgbouncerSettings;
-            return this;
-        }
-        @CustomType.Setter
         public Builder suspendTimeoutDuration(@Nullable String suspendTimeoutDuration) {
 
             this.suspendTimeoutDuration = suspendTimeoutDuration;
@@ -135,7 +115,6 @@ public final class GetPostgresProjectsProjectSpecDefaultEndpointSettings {
             _resultValue.autoscalingLimitMaxCu = autoscalingLimitMaxCu;
             _resultValue.autoscalingLimitMinCu = autoscalingLimitMinCu;
             _resultValue.pgSettings = pgSettings;
-            _resultValue.pgbouncerSettings = pgbouncerSettings;
             _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;
             return _resultValue;
         }

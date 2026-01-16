@@ -97,7 +97,7 @@ export class PostgresProject extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: PostgresProjectArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: PostgresProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PostgresProjectArgs | PostgresProjectState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -112,6 +112,9 @@ export class PostgresProject extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as PostgresProjectArgs | undefined;
+            if (args?.projectId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'projectId'");
+            }
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -173,7 +176,7 @@ export interface PostgresProjectArgs {
      *
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      */
-    projectId?: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * The desired state of a Project
      */

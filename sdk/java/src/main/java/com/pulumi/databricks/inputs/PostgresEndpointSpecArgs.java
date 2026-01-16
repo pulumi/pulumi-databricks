@@ -86,21 +86,6 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    @Import(name="poolerMode")
-    private @Nullable Output<String> poolerMode;
-
-    /**
-     * @return (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    public Optional<Output<String>> poolerMode() {
-        return Optional.ofNullable(this.poolerMode);
-    }
-
-    /**
      * (EndpointSettings)
      * 
      */
@@ -137,7 +122,6 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         this.autoscalingLimitMinCu = $.autoscalingLimitMinCu;
         this.disabled = $.disabled;
         this.endpointType = $.endpointType;
-        this.poolerMode = $.poolerMode;
         this.settings = $.settings;
         this.suspendTimeoutDuration = $.suspendTimeoutDuration;
     }
@@ -248,27 +232,6 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
          */
         public Builder endpointType(String endpointType) {
             return endpointType(Output.of(endpointType));
-        }
-
-        /**
-         * @param poolerMode (string) - Possible values are: `TRANSACTION`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder poolerMode(@Nullable Output<String> poolerMode) {
-            $.poolerMode = poolerMode;
-            return this;
-        }
-
-        /**
-         * @param poolerMode (string) - Possible values are: `TRANSACTION`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder poolerMode(String poolerMode) {
-            return poolerMode(Output.of(poolerMode));
         }
 
         /**

@@ -46,7 +46,9 @@ public final class DatabaseInstanceParentInstanceRefArgs extends com.pulumi.reso
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Import(name="effectiveLsn")
@@ -56,7 +58,9 @@ public final class DatabaseInstanceParentInstanceRefArgs extends com.pulumi.reso
      * @return (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Optional<Output<String>> effectiveLsn() {
@@ -179,7 +183,9 @@ public final class DatabaseInstanceParentInstanceRefArgs extends com.pulumi.reso
          * @param effectiveLsn (string) - For a parent ref instance, this is the LSN on the parent instance from which the
          * instance was created.
          * For a child ref instance, this is the LSN on the instance from which the child instance
-         * was created
+         * was created.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 
@@ -193,7 +199,9 @@ public final class DatabaseInstanceParentInstanceRefArgs extends com.pulumi.reso
          * @param effectiveLsn (string) - For a parent ref instance, this is the LSN on the parent instance from which the
          * instance was created.
          * For a child ref instance, this is the LSN on the instance from which the child instance
-         * was created
+         * was created.
+         * This is an output only field that contains the value computed from the input field combined with
+         * server side defaults. Use the field without the effective_ prefix to set the value
          * 
          * @return builder
          * 

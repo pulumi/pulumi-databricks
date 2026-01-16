@@ -145,21 +145,6 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    @Import(name="poolerMode")
-    private @Nullable Output<String> poolerMode;
-
-    /**
-     * @return (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    public Optional<Output<String>> poolerMode() {
-        return Optional.ofNullable(this.poolerMode);
-    }
-
-    /**
      * (EndpointSettings)
      * 
      */
@@ -230,7 +215,6 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         this.host = $.host;
         this.lastActiveTime = $.lastActiveTime;
         this.pendingState = $.pendingState;
-        this.poolerMode = $.poolerMode;
         this.settings = $.settings;
         this.startTime = $.startTime;
         this.suspendTime = $.suspendTime;
@@ -427,27 +411,6 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
          */
         public Builder pendingState(String pendingState) {
             return pendingState(Output.of(pendingState));
-        }
-
-        /**
-         * @param poolerMode (string) - Possible values are: `TRANSACTION`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder poolerMode(@Nullable Output<String> poolerMode) {
-            $.poolerMode = poolerMode;
-            return this;
-        }
-
-        /**
-         * @param poolerMode (string) - Possible values are: `TRANSACTION`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder poolerMode(String poolerMode) {
-            return poolerMode(Output.of(poolerMode));
         }
 
         /**

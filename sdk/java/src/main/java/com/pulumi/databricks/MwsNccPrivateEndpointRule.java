@@ -290,6 +290,12 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
     public Output<Optional<String>> endpointService() {
         return Codegen.optional(this.endpointService);
     }
+    @Export(name="errorMessage", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> errorMessage;
+
+    public Output<Optional<String>> errorMessage() {
+        return Codegen.optional(this.errorMessage);
+    }
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      * 

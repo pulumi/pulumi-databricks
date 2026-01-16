@@ -63,21 +63,6 @@ public final class PostgresProjectSpecDefaultEndpointSettingsArgs extends com.pu
     }
 
     /**
-     * A raw representation of PgBouncer settings
-     * 
-     */
-    @Import(name="pgbouncerSettings")
-    private @Nullable Output<Map<String,String>> pgbouncerSettings;
-
-    /**
-     * @return A raw representation of PgBouncer settings
-     * 
-     */
-    public Optional<Output<Map<String,String>>> pgbouncerSettings() {
-        return Optional.ofNullable(this.pgbouncerSettings);
-    }
-
-    /**
      * Duration of inactivity after which the compute endpoint is automatically suspended
      * 
      */
@@ -98,7 +83,6 @@ public final class PostgresProjectSpecDefaultEndpointSettingsArgs extends com.pu
         this.autoscalingLimitMaxCu = $.autoscalingLimitMaxCu;
         this.autoscalingLimitMinCu = $.autoscalingLimitMinCu;
         this.pgSettings = $.pgSettings;
-        this.pgbouncerSettings = $.pgbouncerSettings;
         this.suspendTimeoutDuration = $.suspendTimeoutDuration;
     }
 
@@ -181,27 +165,6 @@ public final class PostgresProjectSpecDefaultEndpointSettingsArgs extends com.pu
          */
         public Builder pgSettings(Map<String,String> pgSettings) {
             return pgSettings(Output.of(pgSettings));
-        }
-
-        /**
-         * @param pgbouncerSettings A raw representation of PgBouncer settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pgbouncerSettings(@Nullable Output<Map<String,String>> pgbouncerSettings) {
-            $.pgbouncerSettings = pgbouncerSettings;
-            return this;
-        }
-
-        /**
-         * @param pgbouncerSettings A raw representation of PgBouncer settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pgbouncerSettings(Map<String,String> pgbouncerSettings) {
-            return pgbouncerSettings(Output.of(pgbouncerSettings));
         }
 
         /**

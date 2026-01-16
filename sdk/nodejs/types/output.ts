@@ -1723,7 +1723,9 @@ export interface DatabaseInstanceChildInstanceRef {
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveLsn: string;
     /**
@@ -1780,7 +1782,9 @@ export interface DatabaseInstanceParentInstanceRef {
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveLsn: string;
     /**
@@ -5698,7 +5702,9 @@ export interface GetDatabaseInstanceChildInstanceRef {
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveLsn: string;
     /**
@@ -5752,7 +5758,9 @@ export interface GetDatabaseInstanceParentInstanceRef {
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveLsn: string;
     /**
@@ -5792,37 +5800,53 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     customTags: outputs.GetDatabaseInstancesDatabaseInstanceCustomTag[];
     /**
-     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveCapacity: string;
     /**
-     * (list of CustomTag) - The recorded custom tags associated with the instance
+     * (list of CustomTag) - The recorded custom tags associated with the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveCustomTags: outputs.GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag[];
     /**
-     * (boolean) - Whether the instance has PG native password login enabled
+     * (boolean) - Whether the instance has PG native password login enabled.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveEnablePgNativeLogin: boolean;
     /**
-     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveEnableReadableSecondaries: boolean;
     /**
      * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveNodeCount: number;
     /**
      * (integer) - The retention window for the instance. This is the time window in days
-     * for which the historical data is retained
+     * for which the historical data is retained.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveRetentionWindowInDays: number;
     /**
-     * (boolean) - Whether the instance is stopped
+     * (boolean) - Whether the instance is stopped.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveStopped: boolean;
     /**
-     * (string) - The policy that is applied to the instance
+     * (string) - The policy that is applied to the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveUsagePolicyId: string;
     /**
@@ -5901,7 +5925,9 @@ export interface GetDatabaseInstancesDatabaseInstanceChildInstanceRef {
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveLsn: string;
     /**
@@ -5955,7 +5981,9 @@ export interface GetDatabaseInstancesDatabaseInstanceParentInstanceRef {
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveLsn: string;
     /**
@@ -6237,11 +6265,15 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTable {
     databaseInstanceName: string;
     /**
      * (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog
+     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveDatabaseInstanceName: string;
     /**
-     * (string) - The name of the logical database that this table is registered to
+     * (string) - The name of the logical database that this table is registered to.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveLogicalDatabaseName: string;
     /**
@@ -9925,10 +9957,6 @@ export interface GetPostgresEndpointSpec {
      */
     endpointType: string;
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     */
-    poolerMode?: string;
-    /**
      * (EndpointSettings)
      */
     settings?: outputs.GetPostgresEndpointSpecSettings;
@@ -9943,10 +9971,6 @@ export interface GetPostgresEndpointSpecSettings {
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * (object) - A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
 }
 
 export interface GetPostgresEndpointStatus {
@@ -9986,10 +10010,6 @@ export interface GetPostgresEndpointStatus {
      */
     pendingState: string;
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     */
-    poolerMode: string;
-    /**
      * (EndpointSettings)
      */
     settings: outputs.GetPostgresEndpointStatusSettings;
@@ -10012,10 +10032,6 @@ export interface GetPostgresEndpointStatusSettings {
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * (object) - A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
 }
 
 export interface GetPostgresEndpointsEndpoint {
@@ -10072,10 +10088,6 @@ export interface GetPostgresEndpointsEndpointSpec {
      */
     endpointType: string;
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     */
-    poolerMode?: string;
-    /**
      * (EndpointSettings)
      */
     settings?: outputs.GetPostgresEndpointsEndpointSpecSettings;
@@ -10090,10 +10102,6 @@ export interface GetPostgresEndpointsEndpointSpecSettings {
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * (object) - A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
 }
 
 export interface GetPostgresEndpointsEndpointStatus {
@@ -10133,10 +10141,6 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     pendingState: string;
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     */
-    poolerMode: string;
-    /**
      * (EndpointSettings)
      */
     settings: outputs.GetPostgresEndpointsEndpointStatusSettings;
@@ -10159,10 +10163,6 @@ export interface GetPostgresEndpointsEndpointStatusSettings {
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * (object) - A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
 }
 
 export interface GetPostgresProjectSpec {
@@ -10202,10 +10202,6 @@ export interface GetPostgresProjectSpecDefaultEndpointSettings {
      */
     pgSettings?: {[key: string]: string};
     /**
-     * (object) - A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
-    /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration?: string;
@@ -10242,6 +10238,10 @@ export interface GetPostgresProjectStatus {
      */
     historyRetentionDuration: string;
     /**
+     * (string) - The email of the project owner
+     */
+    owner: string;
+    /**
      * (integer) - The effective major Postgres version number
      */
     pgVersion: number;
@@ -10268,10 +10268,6 @@ export interface GetPostgresProjectStatusDefaultEndpointSettings {
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * (object) - A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
     /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
@@ -10352,10 +10348,6 @@ export interface GetPostgresProjectsProjectSpecDefaultEndpointSettings {
      */
     pgSettings?: {[key: string]: string};
     /**
-     * (object) - A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
-    /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration?: string;
@@ -10392,6 +10384,10 @@ export interface GetPostgresProjectsProjectStatus {
      */
     historyRetentionDuration: string;
     /**
+     * (string) - The email of the project owner
+     */
+    owner: string;
+    /**
      * (integer) - The effective major Postgres version number
      */
     pgVersion: number;
@@ -10418,10 +10414,6 @@ export interface GetPostgresProjectsProjectStatusDefaultEndpointSettings {
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * (object) - A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
     /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
@@ -10452,6 +10444,58 @@ export interface GetQualityMonitorV2AnomalyDetectionConfig {
     latestRunStatus: string;
 }
 
+export interface GetQualityMonitorV2ValidityCheckConfiguration {
+    /**
+     * (string) - Can be set by system. Does not need to be user facing
+     */
+    name?: string;
+    /**
+     * (PercentNullValidityCheck)
+     */
+    percentNullValidityCheck?: outputs.GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck;
+    /**
+     * (RangeValidityCheck)
+     */
+    rangeValidityCheck?: outputs.GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck;
+    /**
+     * (UniquenessValidityCheck)
+     */
+    uniquenessValidityCheck?: outputs.GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck;
+}
+
+export interface GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck {
+    /**
+     * (list of string) - List of column names to check for uniqueness
+     */
+    columnNames?: string[];
+    /**
+     * (number) - Upper bound for the range
+     */
+    upperBound?: number;
+}
+
+export interface GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck {
+    /**
+     * (list of string) - List of column names to check for uniqueness
+     */
+    columnNames?: string[];
+    /**
+     * (number) - Lower bound for the range
+     */
+    lowerBound?: number;
+    /**
+     * (number) - Upper bound for the range
+     */
+    upperBound?: number;
+}
+
+export interface GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck {
+    /**
+     * (list of string) - List of column names to check for uniqueness
+     */
+    columnNames?: string[];
+}
+
 export interface GetQualityMonitorsV2QualityMonitor {
     /**
      * (AnomalyDetectionConfig)
@@ -10465,6 +10509,10 @@ export interface GetQualityMonitorsV2QualityMonitor {
      * (string) - The type of the monitored object. Can be one of the following: schema
      */
     objectType: string;
+    /**
+     * (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+     */
+    validityCheckConfigurations: outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration[];
 }
 
 export interface GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig {
@@ -10480,6 +10528,58 @@ export interface GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig {
      * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
      */
     latestRunStatus: string;
+}
+
+export interface GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration {
+    /**
+     * (string) - Can be set by system. Does not need to be user facing
+     */
+    name?: string;
+    /**
+     * (PercentNullValidityCheck)
+     */
+    percentNullValidityCheck?: outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck;
+    /**
+     * (RangeValidityCheck)
+     */
+    rangeValidityCheck?: outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck;
+    /**
+     * (UniquenessValidityCheck)
+     */
+    uniquenessValidityCheck?: outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck;
+}
+
+export interface GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck {
+    /**
+     * (list of string) - List of column names to check for uniqueness
+     */
+    columnNames?: string[];
+    /**
+     * (number) - Upper bound for the range
+     */
+    upperBound?: number;
+}
+
+export interface GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck {
+    /**
+     * (list of string) - List of column names to check for uniqueness
+     */
+    columnNames?: string[];
+    /**
+     * (number) - Lower bound for the range
+     */
+    lowerBound?: number;
+    /**
+     * (number) - Upper bound for the range
+     */
+    upperBound?: number;
+}
+
+export interface GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck {
+    /**
+     * (list of string) - List of column names to check for uniqueness
+     */
+    columnNames?: string[];
 }
 
 export interface GetRegisteredModelModelInfo {
@@ -16246,6 +16346,7 @@ export interface ModelServingProvisionedThroughputConfig {
 }
 
 export interface ModelServingProvisionedThroughputConfigServedEntity {
+    burstScalingEnabled?: boolean;
     /**
      * The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
      */
@@ -16509,11 +16610,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -16580,11 +16681,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -17467,10 +17568,6 @@ export interface PostgresEndpointSpec {
      */
     endpointType: string;
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     */
-    poolerMode?: string;
-    /**
      * (EndpointSettings)
      */
     settings?: outputs.PostgresEndpointSpecSettings;
@@ -17485,10 +17582,6 @@ export interface PostgresEndpointSpecSettings {
      * A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
 }
 
 export interface PostgresEndpointStatus {
@@ -17528,10 +17621,6 @@ export interface PostgresEndpointStatus {
      */
     pendingState: string;
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     */
-    poolerMode: string;
-    /**
      * (EndpointSettings)
      */
     settings: outputs.PostgresEndpointStatusSettings;
@@ -17554,10 +17643,6 @@ export interface PostgresEndpointStatusSettings {
      * A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
 }
 
 export interface PostgresProjectSpec {
@@ -17597,10 +17682,6 @@ export interface PostgresProjectSpecDefaultEndpointSettings {
      */
     pgSettings?: {[key: string]: string};
     /**
-     * A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
-    /**
      * Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration?: string;
@@ -17637,6 +17718,10 @@ export interface PostgresProjectStatus {
      */
     historyRetentionDuration: string;
     /**
+     * (string) - The email of the project owner
+     */
+    owner: string;
+    /**
      * (integer) - The effective major Postgres version number
      */
     pgVersion: number;
@@ -17663,10 +17748,6 @@ export interface PostgresProjectStatusDefaultEndpointSettings {
      * A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: {[key: string]: string};
     /**
      * Duration of inactivity after which the compute endpoint is automatically suspended
      */
@@ -17808,6 +17889,34 @@ export interface QualityMonitorV2AnomalyDetectionConfig {
      * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
      */
     latestRunStatus: string;
+}
+
+export interface QualityMonitorV2ValidityCheckConfiguration {
+    /**
+     * Can be set by system. Does not need to be user facing
+     */
+    name?: string;
+    percentNullValidityCheck?: outputs.QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck;
+    rangeValidityCheck?: outputs.QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck;
+    uniquenessValidityCheck?: outputs.QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck;
+}
+
+export interface QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck {
+    columnNames?: string[];
+    upperBound?: number;
+}
+
+export interface QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck {
+    columnNames?: string[];
+    /**
+     * Lower bound for the range
+     */
+    lowerBound?: number;
+    upperBound?: number;
+}
+
+export interface QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck {
+    columnNames?: string[];
 }
 
 export interface QueryParameter {

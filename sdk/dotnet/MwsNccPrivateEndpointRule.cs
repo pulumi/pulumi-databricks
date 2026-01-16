@@ -187,6 +187,9 @@ namespace Pulumi.Databricks
         [Output("endpointService")]
         public Output<string?> EndpointService { get; private set; } = null!;
 
+        [Output("errorMessage")]
+        public Output<string?> ErrorMessage { get; private set; } = null!;
+
         /// <summary>
         /// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `Blob`, `Dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `Blob` and one for `Dfs`. Change forces creation of a new resource. Conflicts with `DomainNames`.
         /// </summary>
@@ -339,6 +342,9 @@ namespace Pulumi.Databricks
         [Input("endpointService")]
         public Input<string>? EndpointService { get; set; }
 
+        [Input("errorMessage")]
+        public Input<string>? ErrorMessage { get; set; }
+
         /// <summary>
         /// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `Blob`, `Dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `Blob` and one for `Dfs`. Change forces creation of a new resource. Conflicts with `DomainNames`.
         /// </summary>
@@ -458,6 +464,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("endpointService")]
         public Input<string>? EndpointService { get; set; }
+
+        [Input("errorMessage")]
+        public Input<string>? ErrorMessage { get; set; }
 
         /// <summary>
         /// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `Blob`, `Dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `Blob` and one for `Dfs`. Change forces creation of a new resource. Conflicts with `DomainNames`.

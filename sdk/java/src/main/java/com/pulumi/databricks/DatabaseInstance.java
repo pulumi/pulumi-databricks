@@ -285,56 +285,72 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.customTags;
     }
     /**
-     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Export(name="effectiveCapacity", refs={String.class}, tree="[0]")
     private Output<String> effectiveCapacity;
 
     /**
-     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Output<String> effectiveCapacity() {
         return this.effectiveCapacity;
     }
     /**
-     * (list of CustomTag) - The recorded custom tags associated with the instance
+     * (list of CustomTag) - The recorded custom tags associated with the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Export(name="effectiveCustomTags", refs={List.class,DatabaseInstanceEffectiveCustomTag.class}, tree="[0,1]")
     private Output<List<DatabaseInstanceEffectiveCustomTag>> effectiveCustomTags;
 
     /**
-     * @return (list of CustomTag) - The recorded custom tags associated with the instance
+     * @return (list of CustomTag) - The recorded custom tags associated with the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Output<List<DatabaseInstanceEffectiveCustomTag>> effectiveCustomTags() {
         return this.effectiveCustomTags;
     }
     /**
-     * (boolean) - Whether the instance has PG native password login enabled
+     * (boolean) - Whether the instance has PG native password login enabled.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Export(name="effectiveEnablePgNativeLogin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> effectiveEnablePgNativeLogin;
 
     /**
-     * @return (boolean) - Whether the instance has PG native password login enabled
+     * @return (boolean) - Whether the instance has PG native password login enabled.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Output<Boolean> effectiveEnablePgNativeLogin() {
         return this.effectiveEnablePgNativeLogin;
     }
     /**
-     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Export(name="effectiveEnableReadableSecondaries", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> effectiveEnableReadableSecondaries;
 
     /**
-     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Output<Boolean> effectiveEnableReadableSecondaries() {
@@ -342,7 +358,9 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Export(name="effectiveNodeCount", refs={Integer.class}, tree="[0]")
@@ -350,7 +368,9 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Output<Integer> effectiveNodeCount() {
@@ -358,7 +378,9 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * (integer) - The retention window for the instance. This is the time window in days
-     * for which the historical data is retained
+     * for which the historical data is retained.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Export(name="effectiveRetentionWindowInDays", refs={Integer.class}, tree="[0]")
@@ -366,35 +388,45 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return (integer) - The retention window for the instance. This is the time window in days
-     * for which the historical data is retained
+     * for which the historical data is retained.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Output<Integer> effectiveRetentionWindowInDays() {
         return this.effectiveRetentionWindowInDays;
     }
     /**
-     * (boolean) - Whether the instance is stopped
+     * (boolean) - Whether the instance is stopped.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Export(name="effectiveStopped", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> effectiveStopped;
 
     /**
-     * @return (boolean) - Whether the instance is stopped
+     * @return (boolean) - Whether the instance is stopped.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Output<Boolean> effectiveStopped() {
         return this.effectiveStopped;
     }
     /**
-     * (string) - The policy that is applied to the instance
+     * (string) - The policy that is applied to the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     @Export(name="effectiveUsagePolicyId", refs={String.class}, tree="[0]")
     private Output<String> effectiveUsagePolicyId;
 
     /**
-     * @return (string) - The policy that is applied to the instance
+     * @return (string) - The policy that is applied to the instance.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public Output<String> effectiveUsagePolicyId() {

@@ -27,7 +27,9 @@ public final class GetDatabaseInstanceChildInstanceRef {
      * @return (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     private String effectiveLsn;
@@ -65,7 +67,9 @@ public final class GetDatabaseInstanceChildInstanceRef {
      * @return (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      * 
      */
     public String effectiveLsn() {

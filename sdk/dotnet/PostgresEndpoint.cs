@@ -140,8 +140,8 @@ namespace Pulumi.Databricks
         /// 
         /// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
         /// </summary>
-        [Input("endpointId")]
-        public Input<string>? EndpointId { get; set; }
+        [Input("endpointId", required: true)]
+        public Input<string> EndpointId { get; set; } = null!;
 
         /// <summary>
         /// The branch containing this endpoint.

@@ -1723,7 +1723,9 @@ export interface DatabaseInstanceChildInstanceRef {
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveLsn?: pulumi.Input<string>;
     /**
@@ -1780,7 +1782,9 @@ export interface DatabaseInstanceParentInstanceRef {
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
+     * was created.
+     * This is an output only field that contains the value computed from the input field combined with
+     * server side defaults. Use the field without the effective_ prefix to set the value
      */
     effectiveLsn?: pulumi.Input<string>;
     /**
@@ -15206,6 +15210,7 @@ export interface ModelServingProvisionedThroughputConfig {
 }
 
 export interface ModelServingProvisionedThroughputConfigServedEntity {
+    burstScalingEnabled?: pulumi.Input<boolean>;
     /**
      * The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
      */
@@ -15469,11 +15474,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -15540,11 +15545,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -16427,10 +16432,6 @@ export interface PostgresEndpointSpec {
      */
     endpointType: pulumi.Input<string>;
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     */
-    poolerMode?: pulumi.Input<string>;
-    /**
      * (EndpointSettings)
      */
     settings?: pulumi.Input<inputs.PostgresEndpointSpecSettings>;
@@ -16445,10 +16446,6 @@ export interface PostgresEndpointSpecSettings {
      * A raw representation of Postgres settings
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface PostgresEndpointStatus {
@@ -16488,10 +16485,6 @@ export interface PostgresEndpointStatus {
      */
     pendingState?: pulumi.Input<string>;
     /**
-     * (string) - Possible values are: `TRANSACTION`
-     */
-    poolerMode?: pulumi.Input<string>;
-    /**
      * (EndpointSettings)
      */
     settings?: pulumi.Input<inputs.PostgresEndpointStatusSettings>;
@@ -16514,10 +16507,6 @@ export interface PostgresEndpointStatusSettings {
      * A raw representation of Postgres settings
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface PostgresProjectSpec {
@@ -16557,10 +16546,6 @@ export interface PostgresProjectSpecDefaultEndpointSettings {
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration?: pulumi.Input<string>;
@@ -16597,6 +16582,10 @@ export interface PostgresProjectStatus {
      */
     historyRetentionDuration?: pulumi.Input<string>;
     /**
+     * (string) - The email of the project owner
+     */
+    owner?: pulumi.Input<string>;
+    /**
      * (integer) - The effective major Postgres version number
      */
     pgVersion?: pulumi.Input<number>;
@@ -16623,10 +16612,6 @@ export interface PostgresProjectStatusDefaultEndpointSettings {
      * A raw representation of Postgres settings
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * A raw representation of PgBouncer settings
-     */
-    pgbouncerSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Duration of inactivity after which the compute endpoint is automatically suspended
      */
@@ -16768,6 +16753,34 @@ export interface QualityMonitorV2AnomalyDetectionConfig {
      * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
      */
     latestRunStatus?: pulumi.Input<string>;
+}
+
+export interface QualityMonitorV2ValidityCheckConfiguration {
+    /**
+     * Can be set by system. Does not need to be user facing
+     */
+    name?: pulumi.Input<string>;
+    percentNullValidityCheck?: pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck>;
+    rangeValidityCheck?: pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck>;
+    uniquenessValidityCheck?: pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck>;
+}
+
+export interface QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck {
+    columnNames?: pulumi.Input<pulumi.Input<string>[]>;
+    upperBound?: pulumi.Input<number>;
+}
+
+export interface QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck {
+    columnNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Lower bound for the range
+     */
+    lowerBound?: pulumi.Input<number>;
+    upperBound?: pulumi.Input<number>;
+}
+
+export interface QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck {
+    columnNames?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface QueryParameter {

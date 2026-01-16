@@ -40,12 +40,6 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> EndpointType { get; set; } = null!;
 
         /// <summary>
-        /// (string) - Possible values are: `TRANSACTION`
-        /// </summary>
-        [Input("poolerMode")]
-        public Input<string>? PoolerMode { get; set; }
-
-        /// <summary>
         /// (EndpointSettings)
         /// </summary>
         [Input("settings")]

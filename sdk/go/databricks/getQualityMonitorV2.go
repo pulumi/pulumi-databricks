@@ -79,6 +79,8 @@ type LookupQualityMonitorV2Result struct {
 	ObjectId string `pulumi:"objectId"`
 	// (string) - The type of the monitored object. Can be one of the following: schema
 	ObjectType string `pulumi:"objectType"`
+	// (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+	ValidityCheckConfigurations []GetQualityMonitorV2ValidityCheckConfiguration `pulumi:"validityCheckConfigurations"`
 }
 
 func LookupQualityMonitorV2Output(ctx *pulumi.Context, args LookupQualityMonitorV2OutputArgs, opts ...pulumi.InvokeOption) LookupQualityMonitorV2ResultOutput {
@@ -137,6 +139,13 @@ func (o LookupQualityMonitorV2ResultOutput) ObjectId() pulumi.StringOutput {
 // (string) - The type of the monitored object. Can be one of the following: schema
 func (o LookupQualityMonitorV2ResultOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQualityMonitorV2Result) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+func (o LookupQualityMonitorV2ResultOutput) ValidityCheckConfigurations() GetQualityMonitorV2ValidityCheckConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupQualityMonitorV2Result) []GetQualityMonitorV2ValidityCheckConfiguration {
+		return v.ValidityCheckConfigurations
+	}).(GetQualityMonitorV2ValidityCheckConfigurationArrayOutput)
 }
 
 func init() {

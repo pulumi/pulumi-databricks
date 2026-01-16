@@ -17,19 +17,11 @@ namespace Pulumi.Databricks.Outputs
         /// (object) - A raw representation of Postgres settings
         /// </summary>
         public readonly ImmutableDictionary<string, string>? PgSettings;
-        /// <summary>
-        /// (object) - A raw representation of PgBouncer settings
-        /// </summary>
-        public readonly ImmutableDictionary<string, string>? PgbouncerSettings;
 
         [OutputConstructor]
-        private GetPostgresEndpointsEndpointStatusSettingsResult(
-            ImmutableDictionary<string, string>? pgSettings,
-
-            ImmutableDictionary<string, string>? pgbouncerSettings)
+        private GetPostgresEndpointsEndpointStatusSettingsResult(ImmutableDictionary<string, string>? pgSettings)
         {
             PgSettings = pgSettings;
-            PgbouncerSettings = pgbouncerSettings;
         }
     }
 }

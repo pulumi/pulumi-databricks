@@ -24,8 +24,8 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      * 
      */
-    @Import(name="branchId")
-    private @Nullable Output<String> branchId;
+    @Import(name="branchId", required=true)
+    private Output<String> branchId;
 
     /**
      * @return The ID to use for the Branch, which will become the final component of
@@ -34,8 +34,8 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      * 
      */
-    public Optional<Output<String>> branchId() {
-        return Optional.ofNullable(this.branchId);
+    public Output<String> branchId() {
+        return this.branchId;
     }
 
     /**
@@ -105,7 +105,7 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder branchId(@Nullable Output<String> branchId) {
+        public Builder branchId(Output<String> branchId) {
             $.branchId = branchId;
             return this;
         }
@@ -168,6 +168,9 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public PostgresBranchArgs build() {
+            if ($.branchId == null) {
+                throw new MissingRequiredPropertyException("PostgresBranchArgs", "branchId");
+            }
             if ($.parent == null) {
                 throw new MissingRequiredPropertyException("PostgresBranchArgs", "parent");
             }

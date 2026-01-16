@@ -129,8 +129,12 @@ class _DatabaseSyncedDatabaseTableState:
                when creating synced database tables in registered catalogs, the database instance name MUST
                match that of the registered catalog (or the request will be rejected)
         :param pulumi.Input[_builtins.str] effective_database_instance_name: (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-               tables inside database catalogs is inferred database instance associated with the catalog
-        :param pulumi.Input[_builtins.str] effective_logical_database_name: (string) - The name of the logical database that this table is registered to
+               tables inside database catalogs is inferred database instance associated with the catalog.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.str] effective_logical_database_name: (string) - The name of the logical database that this table is registered to.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.str] logical_database_name: Target Postgres database object (logical database) name for this table.
                
                When creating a synced table in a registered Postgres catalog, the
@@ -195,7 +199,9 @@ class _DatabaseSyncedDatabaseTableState:
     def effective_database_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-        tables inside database catalogs is inferred database instance associated with the catalog
+        tables inside database catalogs is inferred database instance associated with the catalog.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_database_instance_name")
 
@@ -207,7 +213,9 @@ class _DatabaseSyncedDatabaseTableState:
     @pulumi.getter(name="effectiveLogicalDatabaseName")
     def effective_logical_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - The name of the logical database that this table is registered to
+        (string) - The name of the logical database that this table is registered to.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_logical_database_name")
 
@@ -692,8 +700,12 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                when creating synced database tables in registered catalogs, the database instance name MUST
                match that of the registered catalog (or the request will be rejected)
         :param pulumi.Input[_builtins.str] effective_database_instance_name: (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-               tables inside database catalogs is inferred database instance associated with the catalog
-        :param pulumi.Input[_builtins.str] effective_logical_database_name: (string) - The name of the logical database that this table is registered to
+               tables inside database catalogs is inferred database instance associated with the catalog.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param pulumi.Input[_builtins.str] effective_logical_database_name: (string) - The name of the logical database that this table is registered to.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.str] logical_database_name: Target Postgres database object (logical database) name for this table.
                
                When creating a synced table in a registered Postgres catalog, the
@@ -747,7 +759,9 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
     def effective_database_instance_name(self) -> pulumi.Output[_builtins.str]:
         """
         (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-        tables inside database catalogs is inferred database instance associated with the catalog
+        tables inside database catalogs is inferred database instance associated with the catalog.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_database_instance_name")
 
@@ -755,7 +769,9 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLogicalDatabaseName")
     def effective_logical_database_name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The name of the logical database that this table is registered to
+        (string) - The name of the logical database that this table is registered to.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_logical_database_name")
 

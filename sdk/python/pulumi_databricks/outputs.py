@@ -677,6 +677,10 @@ __all__ = [
     'QualityMonitorSnapshot',
     'QualityMonitorTimeSeries',
     'QualityMonitorV2AnomalyDetectionConfig',
+    'QualityMonitorV2ValidityCheckConfiguration',
+    'QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck',
+    'QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck',
+    'QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck',
     'QueryParameter',
     'QueryParameterDateRangeValue',
     'QueryParameterDateRangeValueDateRangeValue',
@@ -1386,8 +1390,16 @@ __all__ = [
     'GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult',
     'GetPostgresProjectsProjectStatusSettingsResult',
     'GetQualityMonitorV2AnomalyDetectionConfigResult',
+    'GetQualityMonitorV2ValidityCheckConfigurationResult',
+    'GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckResult',
+    'GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckResult',
+    'GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckResult',
     'GetQualityMonitorsV2QualityMonitorResult',
     'GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult',
+    'GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationResult',
+    'GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckResult',
+    'GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckResult',
+    'GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckResult',
     'GetRegisteredModelModelInfoResult',
     'GetRegisteredModelModelInfoAliasResult',
     'GetRegisteredModelProviderConfigResult',
@@ -8537,7 +8549,9 @@ class DatabaseInstanceChildInstanceRef(dict):
         :param _builtins.str effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
-               was created
+               was created.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.str lsn: User-specified WAL LSN of the ref database instance.
                
                Input: For specifying the WAL LSN to create a child instance. Optional.
@@ -8577,7 +8591,9 @@ class DatabaseInstanceChildInstanceRef(dict):
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_lsn")
 
@@ -8709,7 +8725,9 @@ class DatabaseInstanceParentInstanceRef(dict):
         :param _builtins.str effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
-               was created
+               was created.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.str lsn: User-specified WAL LSN of the ref database instance.
                
                Input: For specifying the WAL LSN to create a child instance. Optional.
@@ -8749,7 +8767,9 @@ class DatabaseInstanceParentInstanceRef(dict):
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_lsn")
 
@@ -29738,6 +29758,8 @@ class ModelServingProvisionedThroughputConfigServedEntity(dict):
             suggest = "entity_version"
         elif key == "provisionedModelUnits":
             suggest = "provisioned_model_units"
+        elif key == "burstScalingEnabled":
+            suggest = "burst_scaling_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingProvisionedThroughputConfigServedEntity. Access the value via the '{suggest}' property getter instead.")
@@ -29754,6 +29776,7 @@ class ModelServingProvisionedThroughputConfigServedEntity(dict):
                  entity_name: _builtins.str,
                  entity_version: _builtins.str,
                  provisioned_model_units: _builtins.int,
+                 burst_scaling_enabled: Optional[_builtins.bool] = None,
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.str entity_name: The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
@@ -29764,6 +29787,8 @@ class ModelServingProvisionedThroughputConfigServedEntity(dict):
         pulumi.set(__self__, "entity_name", entity_name)
         pulumi.set(__self__, "entity_version", entity_version)
         pulumi.set(__self__, "provisioned_model_units", provisioned_model_units)
+        if burst_scaling_enabled is not None:
+            pulumi.set(__self__, "burst_scaling_enabled", burst_scaling_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -29790,6 +29815,11 @@ class ModelServingProvisionedThroughputConfigServedEntity(dict):
         The number of model units to be provisioned.
         """
         return pulumi.get(self, "provisioned_model_units")
+
+    @_builtins.property
+    @pulumi.getter(name="burstScalingEnabled")
+    def burst_scaling_enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "burst_scaling_enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -31171,13 +31201,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -31449,13 +31479,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -36204,8 +36234,6 @@ class PostgresEndpointSpec(dict):
             suggest = "autoscaling_limit_max_cu"
         elif key == "autoscalingLimitMinCu":
             suggest = "autoscaling_limit_min_cu"
-        elif key == "poolerMode":
-            suggest = "pooler_mode"
         elif key == "suspendTimeoutDuration":
             suggest = "suspend_timeout_duration"
 
@@ -36225,7 +36253,6 @@ class PostgresEndpointSpec(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  disabled: Optional[_builtins.bool] = None,
-                 pooler_mode: Optional[_builtins.str] = None,
                  settings: Optional['outputs.PostgresEndpointSpecSettings'] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
@@ -36236,7 +36263,6 @@ class PostgresEndpointSpec(dict):
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
-        :param _builtins.str pooler_mode: (string) - Possible values are: `TRANSACTION`
         :param 'PostgresEndpointSpecSettingsArgs' settings: (EndpointSettings)
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -36247,8 +36273,6 @@ class PostgresEndpointSpec(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
-        if pooler_mode is not None:
-            pulumi.set(__self__, "pooler_mode", pooler_mode)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if suspend_timeout_duration is not None:
@@ -36290,14 +36314,6 @@ class PostgresEndpointSpec(dict):
         return pulumi.get(self, "disabled")
 
     @_builtins.property
-    @pulumi.getter(name="poolerMode")
-    def pooler_mode(self) -> Optional[_builtins.str]:
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
-        return pulumi.get(self, "pooler_mode")
-
-    @_builtins.property
     @pulumi.getter
     def settings(self) -> Optional['outputs.PostgresEndpointSpecSettings']:
         """
@@ -36321,8 +36337,6 @@ class PostgresEndpointSpecSettings(dict):
         suggest = None
         if key == "pgSettings":
             suggest = "pg_settings"
-        elif key == "pgbouncerSettings":
-            suggest = "pgbouncer_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PostgresEndpointSpecSettings. Access the value via the '{suggest}' property getter instead.")
@@ -36336,16 +36350,12 @@ class PostgresEndpointSpecSettings(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None):
+                 pg_settings: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param Mapping[str, _builtins.str] pg_settings: A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: A raw representation of PgBouncer settings
         """
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -36354,14 +36364,6 @@ class PostgresEndpointSpecSettings(dict):
         A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
 
 @pulumi.output_type
@@ -36381,8 +36383,6 @@ class PostgresEndpointStatus(dict):
             suggest = "last_active_time"
         elif key == "pendingState":
             suggest = "pending_state"
-        elif key == "poolerMode":
-            suggest = "pooler_mode"
         elif key == "startTime":
             suggest = "start_time"
         elif key == "suspendTime":
@@ -36410,7 +36410,6 @@ class PostgresEndpointStatus(dict):
                  host: Optional[_builtins.str] = None,
                  last_active_time: Optional[_builtins.str] = None,
                  pending_state: Optional[_builtins.str] = None,
-                 pooler_mode: Optional[_builtins.str] = None,
                  settings: Optional['outputs.PostgresEndpointStatusSettings'] = None,
                  start_time: Optional[_builtins.str] = None,
                  suspend_time: Optional[_builtins.str] = None,
@@ -36427,7 +36426,6 @@ class PostgresEndpointStatus(dict):
         :param _builtins.str host: (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
         :param _builtins.str last_active_time: (string) - A timestamp indicating when the compute endpoint was last active
         :param _builtins.str pending_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
-        :param _builtins.str pooler_mode: (string) - Possible values are: `TRANSACTION`
         :param 'PostgresEndpointStatusSettingsArgs' settings: (EndpointSettings)
         :param _builtins.str start_time: (string) - A timestamp indicating when the compute endpoint was last started
         :param _builtins.str suspend_time: (string) - A timestamp indicating when the compute endpoint was last suspended
@@ -36449,8 +36447,6 @@ class PostgresEndpointStatus(dict):
             pulumi.set(__self__, "last_active_time", last_active_time)
         if pending_state is not None:
             pulumi.set(__self__, "pending_state", pending_state)
-        if pooler_mode is not None:
-            pulumi.set(__self__, "pooler_mode", pooler_mode)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if start_time is not None:
@@ -36528,14 +36524,6 @@ class PostgresEndpointStatus(dict):
         return pulumi.get(self, "pending_state")
 
     @_builtins.property
-    @pulumi.getter(name="poolerMode")
-    def pooler_mode(self) -> Optional[_builtins.str]:
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
-        return pulumi.get(self, "pooler_mode")
-
-    @_builtins.property
     @pulumi.getter
     def settings(self) -> Optional['outputs.PostgresEndpointStatusSettings']:
         """
@@ -36575,8 +36563,6 @@ class PostgresEndpointStatusSettings(dict):
         suggest = None
         if key == "pgSettings":
             suggest = "pg_settings"
-        elif key == "pgbouncerSettings":
-            suggest = "pgbouncer_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PostgresEndpointStatusSettings. Access the value via the '{suggest}' property getter instead.")
@@ -36590,16 +36576,12 @@ class PostgresEndpointStatusSettings(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None):
+                 pg_settings: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param Mapping[str, _builtins.str] pg_settings: A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: A raw representation of PgBouncer settings
         """
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -36608,14 +36590,6 @@ class PostgresEndpointStatusSettings(dict):
         A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
 
 @pulumi.output_type
@@ -36719,8 +36693,6 @@ class PostgresProjectSpecDefaultEndpointSettings(dict):
             suggest = "autoscaling_limit_min_cu"
         elif key == "pgSettings":
             suggest = "pg_settings"
-        elif key == "pgbouncerSettings":
-            suggest = "pgbouncer_settings"
         elif key == "suspendTimeoutDuration":
             suggest = "suspend_timeout_duration"
 
@@ -36739,13 +36711,11 @@ class PostgresProjectSpecDefaultEndpointSettings(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.float autoscaling_limit_max_cu: The maximum number of Compute Units
         :param _builtins.float autoscaling_limit_min_cu: The minimum number of Compute Units
         :param Mapping[str, _builtins.str] pg_settings: A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: A raw representation of PgBouncer settings
         :param _builtins.str suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -36754,8 +36724,6 @@ class PostgresProjectSpecDefaultEndpointSettings(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -36782,14 +36750,6 @@ class PostgresProjectSpecDefaultEndpointSettings(dict):
         A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
     @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
@@ -36877,6 +36837,7 @@ class PostgresProjectStatus(dict):
                  default_endpoint_settings: Optional['outputs.PostgresProjectStatusDefaultEndpointSettings'] = None,
                  display_name: Optional[_builtins.str] = None,
                  history_retention_duration: Optional[_builtins.str] = None,
+                 owner: Optional[_builtins.str] = None,
                  pg_version: Optional[_builtins.int] = None,
                  settings: Optional['outputs.PostgresProjectStatusSettings'] = None,
                  synthetic_storage_size_bytes: Optional[_builtins.int] = None):
@@ -36886,6 +36847,7 @@ class PostgresProjectStatus(dict):
         :param 'PostgresProjectStatusDefaultEndpointSettingsArgs' default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param _builtins.str display_name: (string) - The effective human-readable project name
         :param _builtins.str history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
+        :param _builtins.str owner: (string) - The email of the project owner
         :param _builtins.int pg_version: (integer) - The effective major Postgres version number
         :param 'PostgresProjectStatusSettingsArgs' settings: (ProjectSettings) - The effective project settings
         :param _builtins.int synthetic_storage_size_bytes: (integer) - The current space occupied by the project in storage
@@ -36900,6 +36862,8 @@ class PostgresProjectStatus(dict):
             pulumi.set(__self__, "display_name", display_name)
         if history_retention_duration is not None:
             pulumi.set(__self__, "history_retention_duration", history_retention_duration)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
         if settings is not None:
@@ -36948,6 +36912,14 @@ class PostgresProjectStatus(dict):
         return pulumi.get(self, "history_retention_duration")
 
     @_builtins.property
+    @pulumi.getter
+    def owner(self) -> Optional[_builtins.str]:
+        """
+        (string) - The email of the project owner
+        """
+        return pulumi.get(self, "owner")
+
+    @_builtins.property
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[_builtins.int]:
         """
@@ -36983,8 +36955,6 @@ class PostgresProjectStatusDefaultEndpointSettings(dict):
             suggest = "autoscaling_limit_min_cu"
         elif key == "pgSettings":
             suggest = "pg_settings"
-        elif key == "pgbouncerSettings":
-            suggest = "pgbouncer_settings"
         elif key == "suspendTimeoutDuration":
             suggest = "suspend_timeout_duration"
 
@@ -37003,13 +36973,11 @@ class PostgresProjectStatusDefaultEndpointSettings(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.float autoscaling_limit_max_cu: The maximum number of Compute Units
         :param _builtins.float autoscaling_limit_min_cu: The minimum number of Compute Units
         :param Mapping[str, _builtins.str] pg_settings: A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: A raw representation of PgBouncer settings
         :param _builtins.str suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -37018,8 +36986,6 @@ class PostgresProjectStatusDefaultEndpointSettings(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -37046,14 +37012,6 @@ class PostgresProjectStatusDefaultEndpointSettings(dict):
         A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
     @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
@@ -37634,6 +37592,196 @@ class QualityMonitorV2AnomalyDetectionConfig(dict):
         (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
         """
         return pulumi.get(self, "latest_run_status")
+
+
+@pulumi.output_type
+class QualityMonitorV2ValidityCheckConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "percentNullValidityCheck":
+            suggest = "percent_null_validity_check"
+        elif key == "rangeValidityCheck":
+            suggest = "range_validity_check"
+        elif key == "uniquenessValidityCheck":
+            suggest = "uniqueness_validity_check"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QualityMonitorV2ValidityCheckConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QualityMonitorV2ValidityCheckConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QualityMonitorV2ValidityCheckConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 percent_null_validity_check: Optional['outputs.QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck'] = None,
+                 range_validity_check: Optional['outputs.QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck'] = None,
+                 uniqueness_validity_check: Optional['outputs.QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck'] = None):
+        """
+        :param _builtins.str name: Can be set by system. Does not need to be user facing
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if percent_null_validity_check is not None:
+            pulumi.set(__self__, "percent_null_validity_check", percent_null_validity_check)
+        if range_validity_check is not None:
+            pulumi.set(__self__, "range_validity_check", range_validity_check)
+        if uniqueness_validity_check is not None:
+            pulumi.set(__self__, "uniqueness_validity_check", uniqueness_validity_check)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Can be set by system. Does not need to be user facing
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="percentNullValidityCheck")
+    def percent_null_validity_check(self) -> Optional['outputs.QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck']:
+        return pulumi.get(self, "percent_null_validity_check")
+
+    @_builtins.property
+    @pulumi.getter(name="rangeValidityCheck")
+    def range_validity_check(self) -> Optional['outputs.QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck']:
+        return pulumi.get(self, "range_validity_check")
+
+    @_builtins.property
+    @pulumi.getter(name="uniquenessValidityCheck")
+    def uniqueness_validity_check(self) -> Optional['outputs.QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck']:
+        return pulumi.get(self, "uniqueness_validity_check")
+
+
+@pulumi.output_type
+class QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnNames":
+            suggest = "column_names"
+        elif key == "upperBound":
+            suggest = "upper_bound"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column_names: Optional[Sequence[_builtins.str]] = None,
+                 upper_bound: Optional[_builtins.float] = None):
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "column_names")
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> Optional[_builtins.float]:
+        return pulumi.get(self, "upper_bound")
+
+
+@pulumi.output_type
+class QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnNames":
+            suggest = "column_names"
+        elif key == "lowerBound":
+            suggest = "lower_bound"
+        elif key == "upperBound":
+            suggest = "upper_bound"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column_names: Optional[Sequence[_builtins.str]] = None,
+                 lower_bound: Optional[_builtins.float] = None,
+                 upper_bound: Optional[_builtins.float] = None):
+        """
+        :param _builtins.float lower_bound: Lower bound for the range
+        """
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "column_names")
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> Optional[_builtins.float]:
+        """
+        Lower bound for the range
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> Optional[_builtins.float]:
+        return pulumi.get(self, "upper_bound")
+
+
+@pulumi.output_type
+class QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnNames":
+            suggest = "column_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column_names: Optional[Sequence[_builtins.str]] = None):
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "column_names")
 
 
 @pulumi.output_type
@@ -52840,7 +52988,9 @@ class GetDatabaseInstanceChildInstanceRefResult(dict):
         :param _builtins.str effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
-               was created
+               was created.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
         :param _builtins.str uid: (string) - Id of the ref database instance
         :param _builtins.str branch_time: (string) - Branch time of the ref database instance.
@@ -52867,7 +53017,9 @@ class GetDatabaseInstanceChildInstanceRefResult(dict):
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_lsn")
 
@@ -52984,7 +53136,9 @@ class GetDatabaseInstanceParentInstanceRefResult(dict):
         :param _builtins.str effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
-               was created
+               was created.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
         :param _builtins.str uid: (string) - Id of the ref database instance
         :param _builtins.str branch_time: (string) - Branch time of the ref database instance.
@@ -53011,7 +53165,9 @@ class GetDatabaseInstanceParentInstanceRefResult(dict):
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_lsn")
 
@@ -53090,16 +53246,32 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
         :param _builtins.str creation_time: (string) - The timestamp when the instance was created
         :param _builtins.str creator: (string) - The email of the creator of the instance
         :param Sequence['GetDatabaseInstancesDatabaseInstanceCustomTagArgs'] custom_tags: (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
-        :param _builtins.str effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
-        :param Sequence['GetDatabaseInstancesDatabaseInstanceEffectiveCustomTagArgs'] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance
-        :param _builtins.bool effective_enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled
-        :param _builtins.bool effective_enable_readable_secondaries: (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        :param _builtins.str effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param Sequence['GetDatabaseInstancesDatabaseInstanceEffectiveCustomTagArgs'] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param _builtins.bool effective_enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param _builtins.bool effective_enable_readable_secondaries: (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.int effective_node_count: (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-               1 primary and 0 secondaries
+               1 primary and 0 secondaries.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.int effective_retention_window_in_days: (integer) - The retention window for the instance. This is the time window in days
-               for which the historical data is retained
-        :param _builtins.bool effective_stopped: (boolean) - Whether the instance is stopped
-        :param _builtins.str effective_usage_policy_id: (string) - The policy that is applied to the instance
+               for which the historical data is retained.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param _builtins.bool effective_stopped: (boolean) - Whether the instance is stopped.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param _builtins.str effective_usage_policy_id: (string) - The policy that is applied to the instance.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.bool enable_pg_native_login: (boolean) - Whether to enable PG native password login on the instance. Defaults to false
         :param _builtins.bool enable_readable_secondaries: (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param _builtins.str name: (string) - Name of the ref database instance
@@ -53193,7 +53365,9 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter(name="effectiveCapacity")
     def effective_capacity(self) -> _builtins.str:
         """
-        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_capacity")
 
@@ -53201,7 +53375,9 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter(name="effectiveCustomTags")
     def effective_custom_tags(self) -> Sequence['outputs.GetDatabaseInstancesDatabaseInstanceEffectiveCustomTagResult']:
         """
-        (list of CustomTag) - The recorded custom tags associated with the instance
+        (list of CustomTag) - The recorded custom tags associated with the instance.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_custom_tags")
 
@@ -53209,7 +53385,9 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter(name="effectiveEnablePgNativeLogin")
     def effective_enable_pg_native_login(self) -> _builtins.bool:
         """
-        (boolean) - Whether the instance has PG native password login enabled
+        (boolean) - Whether the instance has PG native password login enabled.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_enable_pg_native_login")
 
@@ -53217,7 +53395,9 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter(name="effectiveEnableReadableSecondaries")
     def effective_enable_readable_secondaries(self) -> _builtins.bool:
         """
-        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_enable_readable_secondaries")
 
@@ -53226,7 +53406,9 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     def effective_node_count(self) -> _builtins.int:
         """
         (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        1 primary and 0 secondaries
+        1 primary and 0 secondaries.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_node_count")
 
@@ -53235,7 +53417,9 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     def effective_retention_window_in_days(self) -> _builtins.int:
         """
         (integer) - The retention window for the instance. This is the time window in days
-        for which the historical data is retained
+        for which the historical data is retained.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_retention_window_in_days")
 
@@ -53243,7 +53427,9 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> _builtins.bool:
         """
-        (boolean) - Whether the instance is stopped
+        (boolean) - Whether the instance is stopped.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_stopped")
 
@@ -53251,7 +53437,9 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter(name="effectiveUsagePolicyId")
     def effective_usage_policy_id(self) -> _builtins.str:
         """
-        (string) - The policy that is applied to the instance
+        (string) - The policy that is applied to the instance.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_usage_policy_id")
 
@@ -53379,7 +53567,9 @@ class GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult(dict):
         :param _builtins.str effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
-               was created
+               was created.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
         :param _builtins.str uid: (string) - Id of the ref database instance
         :param _builtins.str branch_time: (string) - Branch time of the ref database instance.
@@ -53406,7 +53596,9 @@ class GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult(dict):
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_lsn")
 
@@ -53523,7 +53715,9 @@ class GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult(dict):
         :param _builtins.str effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
-               was created
+               was created.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
         :param _builtins.str uid: (string) - Id of the ref database instance
         :param _builtins.str branch_time: (string) - Branch time of the ref database instance.
@@ -53550,7 +53744,9 @@ class GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult(dict):
         (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        was created.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_lsn")
 
@@ -54286,8 +54482,12 @@ class GetDatabaseSyncedDatabaseTablesSyncedTableResult(dict):
                when creating synced database tables in registered catalogs, the database instance name MUST
                match that of the registered catalog (or the request will be rejected)
         :param _builtins.str effective_database_instance_name: (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-               tables inside database catalogs is inferred database instance associated with the catalog
-        :param _builtins.str effective_logical_database_name: (string) - The name of the logical database that this table is registered to
+               tables inside database catalogs is inferred database instance associated with the catalog.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
+        :param _builtins.str effective_logical_database_name: (string) - The name of the logical database that this table is registered to.
+               This is an output only field that contains the value computed from the input field combined with
+               server side defaults. Use the field without the effective_ prefix to set the value
         :param _builtins.str logical_database_name: (string) - Target Postgres database object (logical database) name for this table.
         :param _builtins.str name: (string) - Full three-part (catalog, schema, table) name of the table
         :param 'GetDatabaseSyncedDatabaseTablesSyncedTableSpecArgs' spec: (SyncedTableSpec)
@@ -54328,7 +54528,9 @@ class GetDatabaseSyncedDatabaseTablesSyncedTableResult(dict):
     def effective_database_instance_name(self) -> _builtins.str:
         """
         (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-        tables inside database catalogs is inferred database instance associated with the catalog
+        tables inside database catalogs is inferred database instance associated with the catalog.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_database_instance_name")
 
@@ -54336,7 +54538,9 @@ class GetDatabaseSyncedDatabaseTablesSyncedTableResult(dict):
     @pulumi.getter(name="effectiveLogicalDatabaseName")
     def effective_logical_database_name(self) -> _builtins.str:
         """
-        (string) - The name of the logical database that this table is registered to
+        (string) - The name of the logical database that this table is registered to.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_logical_database_name")
 
@@ -68138,7 +68342,6 @@ class GetPostgresEndpointSpecResult(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  disabled: Optional[_builtins.bool] = None,
-                 pooler_mode: Optional[_builtins.str] = None,
                  settings: Optional['outputs.GetPostgresEndpointSpecSettingsResult'] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
@@ -68149,7 +68352,6 @@ class GetPostgresEndpointSpecResult(dict):
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
-        :param _builtins.str pooler_mode: (string) - Possible values are: `TRANSACTION`
         :param 'GetPostgresEndpointSpecSettingsArgs' settings: (EndpointSettings)
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -68160,8 +68362,6 @@ class GetPostgresEndpointSpecResult(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
-        if pooler_mode is not None:
-            pulumi.set(__self__, "pooler_mode", pooler_mode)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if suspend_timeout_duration is not None:
@@ -68203,14 +68403,6 @@ class GetPostgresEndpointSpecResult(dict):
         return pulumi.get(self, "disabled")
 
     @_builtins.property
-    @pulumi.getter(name="poolerMode")
-    def pooler_mode(self) -> Optional[_builtins.str]:
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
-        return pulumi.get(self, "pooler_mode")
-
-    @_builtins.property
     @pulumi.getter
     def settings(self) -> Optional['outputs.GetPostgresEndpointSpecSettingsResult']:
         """
@@ -68230,16 +68422,12 @@ class GetPostgresEndpointSpecResult(dict):
 @pulumi.output_type
 class GetPostgresEndpointSpecSettingsResult(dict):
     def __init__(__self__, *,
-                 pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None):
+                 pg_settings: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: (object) - A raw representation of PgBouncer settings
         """
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -68248,14 +68436,6 @@ class GetPostgresEndpointSpecSettingsResult(dict):
         (object) - A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        (object) - A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
 
 @pulumi.output_type
@@ -68269,7 +68449,6 @@ class GetPostgresEndpointStatusResult(dict):
                  host: _builtins.str,
                  last_active_time: _builtins.str,
                  pending_state: _builtins.str,
-                 pooler_mode: _builtins.str,
                  settings: 'outputs.GetPostgresEndpointStatusSettingsResult',
                  start_time: _builtins.str,
                  suspend_time: _builtins.str,
@@ -68286,7 +68465,6 @@ class GetPostgresEndpointStatusResult(dict):
         :param _builtins.str host: (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
         :param _builtins.str last_active_time: (string) - A timestamp indicating when the compute endpoint was last active
         :param _builtins.str pending_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
-        :param _builtins.str pooler_mode: (string) - Possible values are: `TRANSACTION`
         :param 'GetPostgresEndpointStatusSettingsArgs' settings: (EndpointSettings)
         :param _builtins.str start_time: (string) - A timestamp indicating when the compute endpoint was last started
         :param _builtins.str suspend_time: (string) - A timestamp indicating when the compute endpoint was last suspended
@@ -68300,7 +68478,6 @@ class GetPostgresEndpointStatusResult(dict):
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "last_active_time", last_active_time)
         pulumi.set(__self__, "pending_state", pending_state)
-        pulumi.set(__self__, "pooler_mode", pooler_mode)
         pulumi.set(__self__, "settings", settings)
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "suspend_time", suspend_time)
@@ -68374,14 +68551,6 @@ class GetPostgresEndpointStatusResult(dict):
         return pulumi.get(self, "pending_state")
 
     @_builtins.property
-    @pulumi.getter(name="poolerMode")
-    def pooler_mode(self) -> _builtins.str:
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
-        return pulumi.get(self, "pooler_mode")
-
-    @_builtins.property
     @pulumi.getter
     def settings(self) -> 'outputs.GetPostgresEndpointStatusSettingsResult':
         """
@@ -68417,16 +68586,12 @@ class GetPostgresEndpointStatusResult(dict):
 @pulumi.output_type
 class GetPostgresEndpointStatusSettingsResult(dict):
     def __init__(__self__, *,
-                 pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None):
+                 pg_settings: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: (object) - A raw representation of PgBouncer settings
         """
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -68435,14 +68600,6 @@ class GetPostgresEndpointStatusSettingsResult(dict):
         (object) - A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        (object) - A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
 
 @pulumi.output_type
@@ -68540,7 +68697,6 @@ class GetPostgresEndpointsEndpointSpecResult(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  disabled: Optional[_builtins.bool] = None,
-                 pooler_mode: Optional[_builtins.str] = None,
                  settings: Optional['outputs.GetPostgresEndpointsEndpointSpecSettingsResult'] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
@@ -68551,7 +68707,6 @@ class GetPostgresEndpointsEndpointSpecResult(dict):
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
-        :param _builtins.str pooler_mode: (string) - Possible values are: `TRANSACTION`
         :param 'GetPostgresEndpointsEndpointSpecSettingsArgs' settings: (EndpointSettings)
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -68562,8 +68717,6 @@ class GetPostgresEndpointsEndpointSpecResult(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
-        if pooler_mode is not None:
-            pulumi.set(__self__, "pooler_mode", pooler_mode)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if suspend_timeout_duration is not None:
@@ -68605,14 +68758,6 @@ class GetPostgresEndpointsEndpointSpecResult(dict):
         return pulumi.get(self, "disabled")
 
     @_builtins.property
-    @pulumi.getter(name="poolerMode")
-    def pooler_mode(self) -> Optional[_builtins.str]:
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
-        return pulumi.get(self, "pooler_mode")
-
-    @_builtins.property
     @pulumi.getter
     def settings(self) -> Optional['outputs.GetPostgresEndpointsEndpointSpecSettingsResult']:
         """
@@ -68632,16 +68777,12 @@ class GetPostgresEndpointsEndpointSpecResult(dict):
 @pulumi.output_type
 class GetPostgresEndpointsEndpointSpecSettingsResult(dict):
     def __init__(__self__, *,
-                 pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None):
+                 pg_settings: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: (object) - A raw representation of PgBouncer settings
         """
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -68650,14 +68791,6 @@ class GetPostgresEndpointsEndpointSpecSettingsResult(dict):
         (object) - A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        (object) - A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
 
 @pulumi.output_type
@@ -68671,7 +68804,6 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
                  host: _builtins.str,
                  last_active_time: _builtins.str,
                  pending_state: _builtins.str,
-                 pooler_mode: _builtins.str,
                  settings: 'outputs.GetPostgresEndpointsEndpointStatusSettingsResult',
                  start_time: _builtins.str,
                  suspend_time: _builtins.str,
@@ -68688,7 +68820,6 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
         :param _builtins.str host: (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
         :param _builtins.str last_active_time: (string) - A timestamp indicating when the compute endpoint was last active
         :param _builtins.str pending_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
-        :param _builtins.str pooler_mode: (string) - Possible values are: `TRANSACTION`
         :param 'GetPostgresEndpointsEndpointStatusSettingsArgs' settings: (EndpointSettings)
         :param _builtins.str start_time: (string) - A timestamp indicating when the compute endpoint was last started
         :param _builtins.str suspend_time: (string) - A timestamp indicating when the compute endpoint was last suspended
@@ -68702,7 +68833,6 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "last_active_time", last_active_time)
         pulumi.set(__self__, "pending_state", pending_state)
-        pulumi.set(__self__, "pooler_mode", pooler_mode)
         pulumi.set(__self__, "settings", settings)
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "suspend_time", suspend_time)
@@ -68776,14 +68906,6 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
         return pulumi.get(self, "pending_state")
 
     @_builtins.property
-    @pulumi.getter(name="poolerMode")
-    def pooler_mode(self) -> _builtins.str:
-        """
-        (string) - Possible values are: `TRANSACTION`
-        """
-        return pulumi.get(self, "pooler_mode")
-
-    @_builtins.property
     @pulumi.getter
     def settings(self) -> 'outputs.GetPostgresEndpointsEndpointStatusSettingsResult':
         """
@@ -68819,16 +68941,12 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
 @pulumi.output_type
 class GetPostgresEndpointsEndpointStatusSettingsResult(dict):
     def __init__(__self__, *,
-                 pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None):
+                 pg_settings: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: (object) - A raw representation of PgBouncer settings
         """
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -68837,14 +68955,6 @@ class GetPostgresEndpointsEndpointStatusSettingsResult(dict):
         (object) - A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        (object) - A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
 
 @pulumi.output_type
@@ -68920,13 +69030,11 @@ class GetPostgresProjectSpecDefaultEndpointSettingsResult(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
         :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: (object) - A raw representation of PgBouncer settings
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -68935,8 +69043,6 @@ class GetPostgresProjectSpecDefaultEndpointSettingsResult(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -68963,14 +69069,6 @@ class GetPostgresProjectSpecDefaultEndpointSettingsResult(dict):
         (object) - A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        (object) - A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
     @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
@@ -69012,6 +69110,7 @@ class GetPostgresProjectStatusResult(dict):
                  default_endpoint_settings: 'outputs.GetPostgresProjectStatusDefaultEndpointSettingsResult',
                  display_name: _builtins.str,
                  history_retention_duration: _builtins.str,
+                 owner: _builtins.str,
                  pg_version: _builtins.int,
                  settings: 'outputs.GetPostgresProjectStatusSettingsResult',
                  synthetic_storage_size_bytes: _builtins.int):
@@ -69021,6 +69120,7 @@ class GetPostgresProjectStatusResult(dict):
         :param 'GetPostgresProjectStatusDefaultEndpointSettingsArgs' default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param _builtins.str display_name: (string) - The effective human-readable project name
         :param _builtins.str history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
+        :param _builtins.str owner: (string) - The email of the project owner
         :param _builtins.int pg_version: (integer) - The effective major Postgres version number
         :param 'GetPostgresProjectStatusSettingsArgs' settings: (ProjectSettings) - The effective project settings
         :param _builtins.int synthetic_storage_size_bytes: (integer) - The current space occupied by the project in storage
@@ -69030,6 +69130,7 @@ class GetPostgresProjectStatusResult(dict):
         pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "history_retention_duration", history_retention_duration)
+        pulumi.set(__self__, "owner", owner)
         pulumi.set(__self__, "pg_version", pg_version)
         pulumi.set(__self__, "settings", settings)
         pulumi.set(__self__, "synthetic_storage_size_bytes", synthetic_storage_size_bytes)
@@ -69075,6 +69176,14 @@ class GetPostgresProjectStatusResult(dict):
         return pulumi.get(self, "history_retention_duration")
 
     @_builtins.property
+    @pulumi.getter
+    def owner(self) -> _builtins.str:
+        """
+        (string) - The email of the project owner
+        """
+        return pulumi.get(self, "owner")
+
+    @_builtins.property
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> _builtins.int:
         """
@@ -69105,13 +69214,11 @@ class GetPostgresProjectStatusDefaultEndpointSettingsResult(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
         :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: (object) - A raw representation of PgBouncer settings
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -69120,8 +69227,6 @@ class GetPostgresProjectStatusDefaultEndpointSettingsResult(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -69148,14 +69253,6 @@ class GetPostgresProjectStatusDefaultEndpointSettingsResult(dict):
         (object) - A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        (object) - A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
     @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
@@ -69337,13 +69434,11 @@ class GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
         :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: (object) - A raw representation of PgBouncer settings
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -69352,8 +69447,6 @@ class GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -69380,14 +69473,6 @@ class GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult(dict):
         (object) - A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        (object) - A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
     @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
@@ -69429,6 +69514,7 @@ class GetPostgresProjectsProjectStatusResult(dict):
                  default_endpoint_settings: 'outputs.GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult',
                  display_name: _builtins.str,
                  history_retention_duration: _builtins.str,
+                 owner: _builtins.str,
                  pg_version: _builtins.int,
                  settings: 'outputs.GetPostgresProjectsProjectStatusSettingsResult',
                  synthetic_storage_size_bytes: _builtins.int):
@@ -69438,6 +69524,7 @@ class GetPostgresProjectsProjectStatusResult(dict):
         :param 'GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs' default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param _builtins.str display_name: (string) - The effective human-readable project name
         :param _builtins.str history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
+        :param _builtins.str owner: (string) - The email of the project owner
         :param _builtins.int pg_version: (integer) - The effective major Postgres version number
         :param 'GetPostgresProjectsProjectStatusSettingsArgs' settings: (ProjectSettings) - The effective project settings
         :param _builtins.int synthetic_storage_size_bytes: (integer) - The current space occupied by the project in storage
@@ -69447,6 +69534,7 @@ class GetPostgresProjectsProjectStatusResult(dict):
         pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "history_retention_duration", history_retention_duration)
+        pulumi.set(__self__, "owner", owner)
         pulumi.set(__self__, "pg_version", pg_version)
         pulumi.set(__self__, "settings", settings)
         pulumi.set(__self__, "synthetic_storage_size_bytes", synthetic_storage_size_bytes)
@@ -69492,6 +69580,14 @@ class GetPostgresProjectsProjectStatusResult(dict):
         return pulumi.get(self, "history_retention_duration")
 
     @_builtins.property
+    @pulumi.getter
+    def owner(self) -> _builtins.str:
+        """
+        (string) - The email of the project owner
+        """
+        return pulumi.get(self, "owner")
+
+    @_builtins.property
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> _builtins.int:
         """
@@ -69522,13 +69618,11 @@ class GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
-                 pgbouncer_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
         :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param Mapping[str, _builtins.str] pgbouncer_settings: (object) - A raw representation of PgBouncer settings
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -69537,8 +69631,6 @@ class GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
-        if pgbouncer_settings is not None:
-            pulumi.set(__self__, "pgbouncer_settings", pgbouncer_settings)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -69565,14 +69657,6 @@ class GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult(dict):
         (object) - A raw representation of Postgres settings
         """
         return pulumi.get(self, "pg_settings")
-
-    @_builtins.property
-    @pulumi.getter(name="pgbouncerSettings")
-    def pgbouncer_settings(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        (object) - A raw representation of PgBouncer settings
-        """
-        return pulumi.get(self, "pgbouncer_settings")
 
     @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
@@ -69648,19 +69732,170 @@ class GetQualityMonitorV2AnomalyDetectionConfigResult(dict):
 
 
 @pulumi.output_type
+class GetQualityMonitorV2ValidityCheckConfigurationResult(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 percent_null_validity_check: Optional['outputs.GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckResult'] = None,
+                 range_validity_check: Optional['outputs.GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckResult'] = None,
+                 uniqueness_validity_check: Optional['outputs.GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckResult'] = None):
+        """
+        :param _builtins.str name: (string) - Can be set by system. Does not need to be user facing
+        :param 'GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs' percent_null_validity_check: (PercentNullValidityCheck)
+        :param 'GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs' range_validity_check: (RangeValidityCheck)
+        :param 'GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs' uniqueness_validity_check: (UniquenessValidityCheck)
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if percent_null_validity_check is not None:
+            pulumi.set(__self__, "percent_null_validity_check", percent_null_validity_check)
+        if range_validity_check is not None:
+            pulumi.set(__self__, "range_validity_check", range_validity_check)
+        if uniqueness_validity_check is not None:
+            pulumi.set(__self__, "uniqueness_validity_check", uniqueness_validity_check)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Can be set by system. Does not need to be user facing
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="percentNullValidityCheck")
+    def percent_null_validity_check(self) -> Optional['outputs.GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckResult']:
+        """
+        (PercentNullValidityCheck)
+        """
+        return pulumi.get(self, "percent_null_validity_check")
+
+    @_builtins.property
+    @pulumi.getter(name="rangeValidityCheck")
+    def range_validity_check(self) -> Optional['outputs.GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckResult']:
+        """
+        (RangeValidityCheck)
+        """
+        return pulumi.get(self, "range_validity_check")
+
+    @_builtins.property
+    @pulumi.getter(name="uniquenessValidityCheck")
+    def uniqueness_validity_check(self) -> Optional['outputs.GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckResult']:
+        """
+        (UniquenessValidityCheck)
+        """
+        return pulumi.get(self, "uniqueness_validity_check")
+
+
+@pulumi.output_type
+class GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckResult(dict):
+    def __init__(__self__, *,
+                 column_names: Optional[Sequence[_builtins.str]] = None,
+                 upper_bound: Optional[_builtins.float] = None):
+        """
+        :param Sequence[_builtins.str] column_names: (list of string) - List of column names to check for uniqueness
+        :param _builtins.float upper_bound: (number) - Upper bound for the range
+        """
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - List of column names to check for uniqueness
+        """
+        return pulumi.get(self, "column_names")
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> Optional[_builtins.float]:
+        """
+        (number) - Upper bound for the range
+        """
+        return pulumi.get(self, "upper_bound")
+
+
+@pulumi.output_type
+class GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckResult(dict):
+    def __init__(__self__, *,
+                 column_names: Optional[Sequence[_builtins.str]] = None,
+                 lower_bound: Optional[_builtins.float] = None,
+                 upper_bound: Optional[_builtins.float] = None):
+        """
+        :param Sequence[_builtins.str] column_names: (list of string) - List of column names to check for uniqueness
+        :param _builtins.float lower_bound: (number) - Lower bound for the range
+        :param _builtins.float upper_bound: (number) - Upper bound for the range
+        """
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - List of column names to check for uniqueness
+        """
+        return pulumi.get(self, "column_names")
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> Optional[_builtins.float]:
+        """
+        (number) - Lower bound for the range
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> Optional[_builtins.float]:
+        """
+        (number) - Upper bound for the range
+        """
+        return pulumi.get(self, "upper_bound")
+
+
+@pulumi.output_type
+class GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckResult(dict):
+    def __init__(__self__, *,
+                 column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] column_names: (list of string) - List of column names to check for uniqueness
+        """
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - List of column names to check for uniqueness
+        """
+        return pulumi.get(self, "column_names")
+
+
+@pulumi.output_type
 class GetQualityMonitorsV2QualityMonitorResult(dict):
     def __init__(__self__, *,
                  anomaly_detection_config: 'outputs.GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult',
                  object_id: _builtins.str,
-                 object_type: _builtins.str):
+                 object_type: _builtins.str,
+                 validity_check_configurations: Sequence['outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationResult']):
         """
         :param 'GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs' anomaly_detection_config: (AnomalyDetectionConfig)
         :param _builtins.str object_id: (string) - The uuid of the request object. For example, schema id
         :param _builtins.str object_type: (string) - The type of the monitored object. Can be one of the following: schema
+        :param Sequence['GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArgs'] validity_check_configurations: (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
         """
         pulumi.set(__self__, "anomaly_detection_config", anomaly_detection_config)
         pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "validity_check_configurations", validity_check_configurations)
 
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionConfig")
@@ -69685,6 +69920,14 @@ class GetQualityMonitorsV2QualityMonitorResult(dict):
         (string) - The type of the monitored object. Can be one of the following: schema
         """
         return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter(name="validityCheckConfigurations")
+    def validity_check_configurations(self) -> Sequence['outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationResult']:
+        """
+        (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+        """
+        return pulumi.get(self, "validity_check_configurations")
 
 
 @pulumi.output_type
@@ -69726,6 +69969,154 @@ class GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult(dict):
         (list of string) - List of fully qualified table names to exclude from anomaly detection
         """
         return pulumi.get(self, "excluded_table_full_names")
+
+
+@pulumi.output_type
+class GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationResult(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 percent_null_validity_check: Optional['outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckResult'] = None,
+                 range_validity_check: Optional['outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckResult'] = None,
+                 uniqueness_validity_check: Optional['outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckResult'] = None):
+        """
+        :param _builtins.str name: (string) - Can be set by system. Does not need to be user facing
+        :param 'GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs' percent_null_validity_check: (PercentNullValidityCheck)
+        :param 'GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs' range_validity_check: (RangeValidityCheck)
+        :param 'GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs' uniqueness_validity_check: (UniquenessValidityCheck)
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if percent_null_validity_check is not None:
+            pulumi.set(__self__, "percent_null_validity_check", percent_null_validity_check)
+        if range_validity_check is not None:
+            pulumi.set(__self__, "range_validity_check", range_validity_check)
+        if uniqueness_validity_check is not None:
+            pulumi.set(__self__, "uniqueness_validity_check", uniqueness_validity_check)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Can be set by system. Does not need to be user facing
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="percentNullValidityCheck")
+    def percent_null_validity_check(self) -> Optional['outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckResult']:
+        """
+        (PercentNullValidityCheck)
+        """
+        return pulumi.get(self, "percent_null_validity_check")
+
+    @_builtins.property
+    @pulumi.getter(name="rangeValidityCheck")
+    def range_validity_check(self) -> Optional['outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckResult']:
+        """
+        (RangeValidityCheck)
+        """
+        return pulumi.get(self, "range_validity_check")
+
+    @_builtins.property
+    @pulumi.getter(name="uniquenessValidityCheck")
+    def uniqueness_validity_check(self) -> Optional['outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckResult']:
+        """
+        (UniquenessValidityCheck)
+        """
+        return pulumi.get(self, "uniqueness_validity_check")
+
+
+@pulumi.output_type
+class GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckResult(dict):
+    def __init__(__self__, *,
+                 column_names: Optional[Sequence[_builtins.str]] = None,
+                 upper_bound: Optional[_builtins.float] = None):
+        """
+        :param Sequence[_builtins.str] column_names: (list of string) - List of column names to check for uniqueness
+        :param _builtins.float upper_bound: (number) - Upper bound for the range
+        """
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - List of column names to check for uniqueness
+        """
+        return pulumi.get(self, "column_names")
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> Optional[_builtins.float]:
+        """
+        (number) - Upper bound for the range
+        """
+        return pulumi.get(self, "upper_bound")
+
+
+@pulumi.output_type
+class GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckResult(dict):
+    def __init__(__self__, *,
+                 column_names: Optional[Sequence[_builtins.str]] = None,
+                 lower_bound: Optional[_builtins.float] = None,
+                 upper_bound: Optional[_builtins.float] = None):
+        """
+        :param Sequence[_builtins.str] column_names: (list of string) - List of column names to check for uniqueness
+        :param _builtins.float lower_bound: (number) - Lower bound for the range
+        :param _builtins.float upper_bound: (number) - Upper bound for the range
+        """
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+        if lower_bound is not None:
+            pulumi.set(__self__, "lower_bound", lower_bound)
+        if upper_bound is not None:
+            pulumi.set(__self__, "upper_bound", upper_bound)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - List of column names to check for uniqueness
+        """
+        return pulumi.get(self, "column_names")
+
+    @_builtins.property
+    @pulumi.getter(name="lowerBound")
+    def lower_bound(self) -> Optional[_builtins.float]:
+        """
+        (number) - Lower bound for the range
+        """
+        return pulumi.get(self, "lower_bound")
+
+    @_builtins.property
+    @pulumi.getter(name="upperBound")
+    def upper_bound(self) -> Optional[_builtins.float]:
+        """
+        (number) - Upper bound for the range
+        """
+        return pulumi.get(self, "upper_bound")
+
+
+@pulumi.output_type
+class GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckResult(dict):
+    def __init__(__self__, *,
+                 column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] column_names: (list of string) - List of column names to check for uniqueness
+        """
+        if column_names is not None:
+            pulumi.set(__self__, "column_names", column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="columnNames")
+    def column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - List of column names to check for uniqueness
+        """
+        return pulumi.get(self, "column_names")
 
 
 @pulumi.output_type

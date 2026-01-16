@@ -58,11 +58,6 @@ public final class PostgresEndpointStatus {
      */
     private @Nullable String pendingState;
     /**
-     * @return (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    private @Nullable String poolerMode;
-    /**
      * @return (EndpointSettings)
      * 
      */
@@ -144,13 +139,6 @@ public final class PostgresEndpointStatus {
         return Optional.ofNullable(this.pendingState);
     }
     /**
-     * @return (string) - Possible values are: `TRANSACTION`
-     * 
-     */
-    public Optional<String> poolerMode() {
-        return Optional.ofNullable(this.poolerMode);
-    }
-    /**
      * @return (EndpointSettings)
      * 
      */
@@ -196,7 +184,6 @@ public final class PostgresEndpointStatus {
         private @Nullable String host;
         private @Nullable String lastActiveTime;
         private @Nullable String pendingState;
-        private @Nullable String poolerMode;
         private @Nullable PostgresEndpointStatusSettings settings;
         private @Nullable String startTime;
         private @Nullable String suspendTime;
@@ -212,7 +199,6 @@ public final class PostgresEndpointStatus {
     	      this.host = defaults.host;
     	      this.lastActiveTime = defaults.lastActiveTime;
     	      this.pendingState = defaults.pendingState;
-    	      this.poolerMode = defaults.poolerMode;
     	      this.settings = defaults.settings;
     	      this.startTime = defaults.startTime;
     	      this.suspendTime = defaults.suspendTime;
@@ -268,12 +254,6 @@ public final class PostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
-        public Builder poolerMode(@Nullable String poolerMode) {
-
-            this.poolerMode = poolerMode;
-            return this;
-        }
-        @CustomType.Setter
         public Builder settings(@Nullable PostgresEndpointStatusSettings settings) {
 
             this.settings = settings;
@@ -307,7 +287,6 @@ public final class PostgresEndpointStatus {
             _resultValue.host = host;
             _resultValue.lastActiveTime = lastActiveTime;
             _resultValue.pendingState = pendingState;
-            _resultValue.poolerMode = poolerMode;
             _resultValue.settings = settings;
             _resultValue.startTime = startTime;
             _resultValue.suspendTime = suspendTime;

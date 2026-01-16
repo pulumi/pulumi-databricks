@@ -68,9 +68,13 @@ type LookupDatabaseSyncedDatabaseTableResult struct {
 	// match that of the registered catalog (or the request will be rejected)
 	DatabaseInstanceName string `pulumi:"databaseInstanceName"`
 	// (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-	// tables inside database catalogs is inferred database instance associated with the catalog
+	// tables inside database catalogs is inferred database instance associated with the catalog.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveDatabaseInstanceName string `pulumi:"effectiveDatabaseInstanceName"`
-	// (string) - The name of the logical database that this table is registered to
+	// (string) - The name of the logical database that this table is registered to.
+	// This is an output only field that contains the value computed from the input field combined with
+	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveLogicalDatabaseName string `pulumi:"effectiveLogicalDatabaseName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -136,12 +140,16 @@ func (o LookupDatabaseSyncedDatabaseTableResultOutput) DatabaseInstanceName() pu
 }
 
 // (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-// tables inside database catalogs is inferred database instance associated with the catalog
+// tables inside database catalogs is inferred database instance associated with the catalog.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o LookupDatabaseSyncedDatabaseTableResultOutput) EffectiveDatabaseInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) string { return v.EffectiveDatabaseInstanceName }).(pulumi.StringOutput)
 }
 
-// (string) - The name of the logical database that this table is registered to
+// (string) - The name of the logical database that this table is registered to.
+// This is an output only field that contains the value computed from the input field combined with
+// server side defaults. Use the field without the effective_ prefix to set the value
 func (o LookupDatabaseSyncedDatabaseTableResultOutput) EffectiveLogicalDatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) string { return v.EffectiveLogicalDatabaseName }).(pulumi.StringOutput)
 }

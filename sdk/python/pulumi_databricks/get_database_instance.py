@@ -155,7 +155,9 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="effectiveCapacity")
     def effective_capacity(self) -> _builtins.str:
         """
-        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_capacity")
 
@@ -163,7 +165,9 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="effectiveCustomTags")
     def effective_custom_tags(self) -> Sequence['outputs.GetDatabaseInstanceEffectiveCustomTagResult']:
         """
-        (list of CustomTag) - The recorded custom tags associated with the instance
+        (list of CustomTag) - The recorded custom tags associated with the instance.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_custom_tags")
 
@@ -171,7 +175,9 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="effectiveEnablePgNativeLogin")
     def effective_enable_pg_native_login(self) -> _builtins.bool:
         """
-        (boolean) - Whether the instance has PG native password login enabled
+        (boolean) - Whether the instance has PG native password login enabled.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_enable_pg_native_login")
 
@@ -179,7 +185,9 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="effectiveEnableReadableSecondaries")
     def effective_enable_readable_secondaries(self) -> _builtins.bool:
         """
-        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_enable_readable_secondaries")
 
@@ -188,7 +196,9 @@ class GetDatabaseInstanceResult:
     def effective_node_count(self) -> _builtins.int:
         """
         (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        1 primary and 0 secondaries
+        1 primary and 0 secondaries.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_node_count")
 
@@ -197,7 +207,9 @@ class GetDatabaseInstanceResult:
     def effective_retention_window_in_days(self) -> _builtins.int:
         """
         (integer) - The retention window for the instance. This is the time window in days
-        for which the historical data is retained
+        for which the historical data is retained.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_retention_window_in_days")
 
@@ -205,7 +217,9 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> _builtins.bool:
         """
-        (boolean) - Whether the instance is stopped
+        (boolean) - Whether the instance is stopped.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_stopped")
 
@@ -213,7 +227,9 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="effectiveUsagePolicyId")
     def effective_usage_policy_id(self) -> _builtins.str:
         """
-        (string) - The policy that is applied to the instance
+        (string) - The policy that is applied to the instance.
+        This is an output only field that contains the value computed from the input field combined with
+        server side defaults. Use the field without the effective_ prefix to set the value
         """
         return pulumi.get(self, "effective_usage_policy_id")
 
