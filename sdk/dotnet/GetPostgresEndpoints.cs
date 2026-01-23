@@ -12,19 +12,121 @@ namespace Pulumi.Databricks
     public static class GetPostgresEndpoints
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres endpoints in a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Endpoints in a Branch
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPostgresEndpoints.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project/branches/dev-branch",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpointNames"] = .Select(endpoint =&gt; 
+        ///         {
+        ///             return endpoint.Name;
+        ///         }).ToList(),
+        ///         ["endpointTypes"] = .Select(endpoint =&gt; 
+        ///         {
+        ///             return endpoint.Status?.EndpointType;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresEndpointsResult> InvokeAsync(GetPostgresEndpointsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresEndpointsResult>("databricks:index/getPostgresEndpoints:getPostgresEndpoints", args ?? new GetPostgresEndpointsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres endpoints in a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Endpoints in a Branch
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPostgresEndpoints.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project/branches/dev-branch",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpointNames"] = .Select(endpoint =&gt; 
+        ///         {
+        ///             return endpoint.Name;
+        ///         }).ToList(),
+        ///         ["endpointTypes"] = .Select(endpoint =&gt; 
+        ///         {
+        ///             return endpoint.Status?.EndpointType;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresEndpointsResult> Invoke(GetPostgresEndpointsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresEndpointsResult>("databricks:index/getPostgresEndpoints:getPostgresEndpoints", args ?? new GetPostgresEndpointsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres endpoints in a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Endpoints in a Branch
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPostgresEndpoints.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project/branches/dev-branch",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpointNames"] = .Select(endpoint =&gt; 
+        ///         {
+        ///             return endpoint.Name;
+        ///         }).ToList(),
+        ///         ["endpointTypes"] = .Select(endpoint =&gt; 
+        ///         {
+        ///             return endpoint.Status?.EndpointType;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresEndpointsResult> Invoke(GetPostgresEndpointsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresEndpointsResult>("databricks:index/getPostgresEndpoints:getPostgresEndpoints", args ?? new GetPostgresEndpointsInvokeArgs(), options.WithDefaults());
@@ -34,7 +136,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresEndpointsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned
+        /// Upper bound for items returned. Cannot be negative
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -55,7 +157,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresEndpointsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned
+        /// Upper bound for items returned. Cannot be negative
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
@@ -84,7 +186,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly int? PageSize;
         /// <summary>
-        /// (string) - The branch containing this endpoint.
+        /// (string) - The branch containing this endpoint (API resource hierarchy).
         /// Format: projects/{project_id}/branches/{branch_id}
         /// </summary>
         public readonly string Parent;

@@ -11,7 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source lists all Postgres branches in a project.
+//
+// ## Example Usage
+//
+// ### List All Branches in a Project
 func GetPostgresBranches(ctx *pulumi.Context, args *GetPostgresBranchesArgs, opts ...pulumi.InvokeOption) (*GetPostgresBranchesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPostgresBranchesResult
@@ -24,7 +30,7 @@ func GetPostgresBranches(ctx *pulumi.Context, args *GetPostgresBranchesArgs, opt
 
 // A collection of arguments for invoking getPostgresBranches.
 type GetPostgresBranchesArgs struct {
-	// Upper bound for items returned
+	// Upper bound for items returned. Cannot be negative
 	PageSize *int `pulumi:"pageSize"`
 	// The Project that owns this collection of branches.
 	// Format: projects/{project_id}
@@ -37,7 +43,7 @@ type GetPostgresBranchesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
 	PageSize *int   `pulumi:"pageSize"`
-	// (string) - The project containing this branch.
+	// (string) - The project containing this branch (API resource hierarchy).
 	// Format: projects/{project_id}
 	Parent string `pulumi:"parent"`
 }
@@ -53,7 +59,7 @@ func GetPostgresBranchesOutput(ctx *pulumi.Context, args GetPostgresBranchesOutp
 
 // A collection of arguments for invoking getPostgresBranches.
 type GetPostgresBranchesOutputArgs struct {
-	// Upper bound for items returned
+	// Upper bound for items returned. Cannot be negative
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The Project that owns this collection of branches.
 	// Format: projects/{project_id}
@@ -92,7 +98,7 @@ func (o GetPostgresBranchesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPostgresBranchesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// (string) - The project containing this branch.
+// (string) - The project containing this branch (API resource hierarchy).
 // Format: projects/{project_id}
 func (o GetPostgresBranchesResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresBranchesResult) string { return v.Parent }).(pulumi.StringOutput)

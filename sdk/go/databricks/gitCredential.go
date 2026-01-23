@@ -120,6 +120,7 @@ type GitCredential struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrOutput `pulumi:"personalAccessToken"`
+	PrincipalId         pulumi.StringPtrOutput `pulumi:"principalId"`
 }
 
 // NewGitCredential registers a new resource with the given unique name, arguments, and options.
@@ -169,6 +170,7 @@ type gitCredentialState struct {
 	Name *string `pulumi:"name"`
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
+	PrincipalId         *string `pulumi:"principalId"`
 }
 
 type GitCredentialState struct {
@@ -186,6 +188,7 @@ type GitCredentialState struct {
 	Name pulumi.StringPtrInput
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
+	PrincipalId         pulumi.StringPtrInput
 }
 
 func (GitCredentialState) ElementType() reflect.Type {
@@ -207,6 +210,7 @@ type gitCredentialArgs struct {
 	Name *string `pulumi:"name"`
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
+	PrincipalId         *string `pulumi:"principalId"`
 }
 
 // The set of arguments for constructing a GitCredential resource.
@@ -225,6 +229,7 @@ type GitCredentialArgs struct {
 	Name pulumi.StringPtrInput
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
+	PrincipalId         pulumi.StringPtrInput
 }
 
 func (GitCredentialArgs) ElementType() reflect.Type {
@@ -347,6 +352,10 @@ func (o GitCredentialOutput) Name() pulumi.StringOutput {
 // The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 func (o GitCredentialOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
+}
+
+func (o GitCredentialOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }
 
 type GitCredentialArrayOutput struct{ *pulumi.OutputState }

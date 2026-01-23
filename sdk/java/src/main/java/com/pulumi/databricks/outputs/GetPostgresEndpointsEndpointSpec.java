@@ -34,10 +34,16 @@ public final class GetPostgresEndpointsEndpointSpec {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     private String endpointType;
+    /**
+     * @return (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     * 
+     */
+    private @Nullable Boolean noSuspension;
     /**
      * @return (EndpointSettings)
      * 
@@ -75,11 +81,19 @@ public final class GetPostgresEndpointsEndpointSpec {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     public String endpointType() {
         return this.endpointType;
+    }
+    /**
+     * @return (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     * 
+     */
+    public Optional<Boolean> noSuspension() {
+        return Optional.ofNullable(this.noSuspension);
     }
     /**
      * @return (EndpointSettings)
@@ -109,6 +123,7 @@ public final class GetPostgresEndpointsEndpointSpec {
         private @Nullable Double autoscalingLimitMinCu;
         private @Nullable Boolean disabled;
         private String endpointType;
+        private @Nullable Boolean noSuspension;
         private @Nullable GetPostgresEndpointsEndpointSpecSettings settings;
         private @Nullable String suspendTimeoutDuration;
         public Builder() {}
@@ -118,6 +133,7 @@ public final class GetPostgresEndpointsEndpointSpec {
     	      this.autoscalingLimitMinCu = defaults.autoscalingLimitMinCu;
     	      this.disabled = defaults.disabled;
     	      this.endpointType = defaults.endpointType;
+    	      this.noSuspension = defaults.noSuspension;
     	      this.settings = defaults.settings;
     	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
         }
@@ -149,6 +165,12 @@ public final class GetPostgresEndpointsEndpointSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder noSuspension(@Nullable Boolean noSuspension) {
+
+            this.noSuspension = noSuspension;
+            return this;
+        }
+        @CustomType.Setter
         public Builder settings(@Nullable GetPostgresEndpointsEndpointSpecSettings settings) {
 
             this.settings = settings;
@@ -166,6 +188,7 @@ public final class GetPostgresEndpointsEndpointSpec {
             _resultValue.autoscalingLimitMinCu = autoscalingLimitMinCu;
             _resultValue.disabled = disabled;
             _resultValue.endpointType = endpointType;
+            _resultValue.noSuspension = noSuspension;
             _resultValue.settings = settings;
             _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;
             return _resultValue;

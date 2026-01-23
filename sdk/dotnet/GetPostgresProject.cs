@@ -12,19 +12,106 @@ namespace Pulumi.Databricks
     public static class GetPostgresProject
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres project.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Project by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresProject.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectPgVersion"] = @this.Apply(@this =&gt; @this.Apply(getPostgresProjectResult =&gt; getPostgresProjectResult.Status?.PgVersion)),
+        ///         ["projectDisplayName"] = @this.Apply(@this =&gt; @this.Apply(getPostgresProjectResult =&gt; getPostgresProjectResult.Status?.DisplayName)),
+        ///         ["projectHistoryRetention"] = @this.Apply(@this =&gt; @this.Apply(getPostgresProjectResult =&gt; getPostgresProjectResult.Status?.HistoryRetentionDuration)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresProjectResult> InvokeAsync(GetPostgresProjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresProjectResult>("databricks:index/getPostgresProject:getPostgresProject", args ?? new GetPostgresProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres project.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Project by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresProject.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectPgVersion"] = @this.Apply(@this =&gt; @this.Apply(getPostgresProjectResult =&gt; getPostgresProjectResult.Status?.PgVersion)),
+        ///         ["projectDisplayName"] = @this.Apply(@this =&gt; @this.Apply(getPostgresProjectResult =&gt; getPostgresProjectResult.Status?.DisplayName)),
+        ///         ["projectHistoryRetention"] = @this.Apply(@this =&gt; @this.Apply(getPostgresProjectResult =&gt; getPostgresProjectResult.Status?.HistoryRetentionDuration)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresProjectResult> Invoke(GetPostgresProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresProjectResult>("databricks:index/getPostgresProject:getPostgresProject", args ?? new GetPostgresProjectInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres project.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Project by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresProject.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectPgVersion"] = @this.Apply(@this =&gt; @this.Apply(getPostgresProjectResult =&gt; getPostgresProjectResult.Status?.PgVersion)),
+        ///         ["projectDisplayName"] = @this.Apply(@this =&gt; @this.Apply(getPostgresProjectResult =&gt; getPostgresProjectResult.Status?.DisplayName)),
+        ///         ["projectHistoryRetention"] = @this.Apply(@this =&gt; @this.Apply(getPostgresProjectResult =&gt; getPostgresProjectResult.Status?.HistoryRetentionDuration)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresProjectResult> Invoke(GetPostgresProjectInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresProjectResult>("databricks:index/getPostgresProject:getPostgresProject", args ?? new GetPostgresProjectInvokeArgs(), options.WithDefaults());
@@ -34,8 +121,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the project.
-        /// Format: projects/{project_id}
+        /// The resource name of the project. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -49,8 +136,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the project.
-        /// Format: projects/{project_id}
+        /// The resource name of the project. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -74,12 +161,12 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (string) - The resource name of the project.
-        /// Format: projects/{project_id}
+        /// (string) - The resource name of the project. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (ProjectSpec) - The desired state of a Project
+        /// (ProjectSpec) - The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
         public readonly Outputs.GetPostgresProjectSpecResult Spec;
         /// <summary>
@@ -87,7 +174,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetPostgresProjectStatusResult Status;
         /// <summary>
-        /// (string) - System generated unique ID for the project
+        /// (string) - System-generated unique ID for the project
         /// </summary>
         public readonly string Uid;
         /// <summary>

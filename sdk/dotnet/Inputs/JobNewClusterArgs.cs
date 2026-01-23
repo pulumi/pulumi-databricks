@@ -58,6 +58,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("driverInstancePoolId")]
         public Input<string>? DriverInstancePoolId { get; set; }
 
+        [Input("driverNodeTypeFlexibility")]
+        public Input<Inputs.JobNewClusterDriverNodeTypeFlexibilityArgs>? DriverNodeTypeFlexibility { get; set; }
+
         [Input("driverNodeTypeId")]
         public Input<string>? DriverNodeTypeId { get; set; }
 
@@ -158,6 +161,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }
+
+        [Input("workerNodeTypeFlexibility")]
+        public Input<Inputs.JobNewClusterWorkerNodeTypeFlexibilityArgs>? WorkerNodeTypeFlexibility { get; set; }
 
         /// <summary>
         /// isn't supported

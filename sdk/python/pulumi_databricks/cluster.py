@@ -34,6 +34,7 @@ class ClusterArgs:
                  data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  docker_image: Optional[pulumi.Input['ClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 driver_node_type_flexibility: Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']] = None,
                  driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -58,6 +59,7 @@ class ClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
+                 worker_node_type_flexibility: Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']] = None,
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
@@ -138,6 +140,8 @@ class ClusterArgs:
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -186,6 +190,8 @@ class ClusterArgs:
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -349,6 +355,15 @@ class ClusterArgs:
     @driver_instance_pool_id.setter
     def driver_instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "driver_instance_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "driver_node_type_flexibility")
+
+    @driver_node_type_flexibility.setter
+    def driver_node_type_flexibility(self, value: Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -626,6 +641,15 @@ class ClusterArgs:
         pulumi.set(self, "use_ml_runtime", value)
 
     @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "worker_node_type_flexibility")
+
+    @worker_node_type_flexibility.setter
+    def worker_node_type_flexibility(self, value: Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "worker_node_type_flexibility", value)
+
+    @_builtins.property
     @pulumi.getter(name="workloadType")
     def workload_type(self) -> Optional[pulumi.Input['ClusterWorkloadTypeArgs']]:
         return pulumi.get(self, "workload_type")
@@ -652,6 +676,7 @@ class _ClusterState:
                  default_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  docker_image: Optional[pulumi.Input['ClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 driver_node_type_flexibility: Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']] = None,
                  driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -679,6 +704,7 @@ class _ClusterState:
                  total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
+                 worker_node_type_flexibility: Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']] = None,
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
@@ -764,6 +790,8 @@ class _ClusterState:
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -818,6 +846,8 @@ class _ClusterState:
             pulumi.set(__self__, "url", url)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -990,6 +1020,15 @@ class _ClusterState:
     @driver_instance_pool_id.setter
     def driver_instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "driver_instance_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "driver_node_type_flexibility")
+
+    @driver_node_type_flexibility.setter
+    def driver_node_type_flexibility(self, value: Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -1300,6 +1339,15 @@ class _ClusterState:
         pulumi.set(self, "use_ml_runtime", value)
 
     @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "worker_node_type_flexibility")
+
+    @worker_node_type_flexibility.setter
+    def worker_node_type_flexibility(self, value: Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "worker_node_type_flexibility", value)
+
+    @_builtins.property
     @pulumi.getter(name="workloadType")
     def workload_type(self) -> Optional[pulumi.Input['ClusterWorkloadTypeArgs']]:
         return pulumi.get(self, "workload_type")
@@ -1327,6 +1375,7 @@ class Cluster(pulumi.CustomResource):
                  data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 driver_node_type_flexibility: Optional[pulumi.Input[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
                  driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1352,6 +1401,7 @@ class Cluster(pulumi.CustomResource):
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
+                 worker_node_type_flexibility: Optional[pulumi.Input[Union['ClusterWorkerNodeTypeFlexibilityArgs', 'ClusterWorkerNodeTypeFlexibilityArgsDict']]] = None,
                  workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         """
@@ -1463,6 +1513,7 @@ class Cluster(pulumi.CustomResource):
                  data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 driver_node_type_flexibility: Optional[pulumi.Input[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
                  driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1488,6 +1539,7 @@ class Cluster(pulumi.CustomResource):
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
+                 worker_node_type_flexibility: Optional[pulumi.Input[Union['ClusterWorkerNodeTypeFlexibilityArgs', 'ClusterWorkerNodeTypeFlexibilityArgsDict']]] = None,
                  workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1510,6 +1562,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["data_security_mode"] = data_security_mode
             __props__.__dict__["docker_image"] = docker_image
             __props__.__dict__["driver_instance_pool_id"] = driver_instance_pool_id
+            __props__.__dict__["driver_node_type_flexibility"] = driver_node_type_flexibility
             __props__.__dict__["driver_node_type_id"] = driver_node_type_id
             __props__.__dict__["enable_elastic_disk"] = enable_elastic_disk
             __props__.__dict__["enable_local_disk_encryption"] = enable_local_disk_encryption
@@ -1537,6 +1590,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["ssh_public_keys"] = ssh_public_keys
             __props__.__dict__["total_initial_remote_disk_size"] = total_initial_remote_disk_size
             __props__.__dict__["use_ml_runtime"] = use_ml_runtime
+            __props__.__dict__["worker_node_type_flexibility"] = worker_node_type_flexibility
             __props__.__dict__["workload_type"] = workload_type
             __props__.__dict__["cluster_id"] = None
             __props__.__dict__["default_tags"] = None
@@ -1566,6 +1620,7 @@ class Cluster(pulumi.CustomResource):
             default_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
             driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+            driver_node_type_flexibility: Optional[pulumi.Input[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
             driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
             enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1593,6 +1648,7 @@ class Cluster(pulumi.CustomResource):
             total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None,
             use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
+            worker_node_type_flexibility: Optional[pulumi.Input[Union['ClusterWorkerNodeTypeFlexibilityArgs', 'ClusterWorkerNodeTypeFlexibilityArgsDict']]] = None,
             workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -1673,6 +1729,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["default_tags"] = default_tags
         __props__.__dict__["docker_image"] = docker_image
         __props__.__dict__["driver_instance_pool_id"] = driver_instance_pool_id
+        __props__.__dict__["driver_node_type_flexibility"] = driver_node_type_flexibility
         __props__.__dict__["driver_node_type_id"] = driver_node_type_id
         __props__.__dict__["enable_elastic_disk"] = enable_elastic_disk
         __props__.__dict__["enable_local_disk_encryption"] = enable_local_disk_encryption
@@ -1700,6 +1757,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["total_initial_remote_disk_size"] = total_initial_remote_disk_size
         __props__.__dict__["url"] = url
         __props__.__dict__["use_ml_runtime"] = use_ml_runtime
+        __props__.__dict__["worker_node_type_flexibility"] = worker_node_type_flexibility
         __props__.__dict__["workload_type"] = workload_type
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
@@ -1816,6 +1874,11 @@ class Cluster(pulumi.CustomResource):
         similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         """
         return pulumi.get(self, "driver_instance_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> pulumi.Output[Optional['outputs.ClusterDriverNodeTypeFlexibility']]:
+        return pulumi.get(self, "driver_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -2016,6 +2079,11 @@ class Cluster(pulumi.CustomResource):
         Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
         """
         return pulumi.get(self, "use_ml_runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> pulumi.Output[Optional['outputs.ClusterWorkerNodeTypeFlexibility']]:
+        return pulumi.get(self, "worker_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="workloadType")

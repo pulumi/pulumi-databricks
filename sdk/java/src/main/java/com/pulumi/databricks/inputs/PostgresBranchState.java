@@ -18,20 +18,22 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
     public static final PostgresBranchState Empty = new PostgresBranchState();
 
     /**
-     * The ID to use for the Branch, which will become the final component of
-     * the branch&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
      * 
      */
     @Import(name="branchId")
     private @Nullable Output<String> branchId;
 
     /**
-     * @return The ID to use for the Branch, which will become the final component of
-     * the branch&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * @return The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
      * 
      */
     public Optional<Output<String>> branchId() {
@@ -54,16 +56,16 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * @return (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,16 +73,22 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The project containing this branch.
+     * The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
+     * 
+     * Note: This field indicates where the branch exists in the resource hierarchy.
+     * For point-in-time branching from another branch, see `spec.source_branch`
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return The project containing this branch.
+     * @return The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
+     * 
+     * Note: This field indicates where the branch exists in the resource hierarchy.
+     * For point-in-time branching from another branch, see `spec.source_branch`
      * 
      */
     public Optional<Output<String>> parent() {
@@ -88,14 +96,14 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The desired state of a Branch
+     * The spec contains the branch configuration
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresBranchSpecArgs> spec;
 
     /**
-     * @return The desired state of a Branch
+     * @return The spec contains the branch configuration
      * 
      */
     public Optional<Output<PostgresBranchSpecArgs>> spec() {
@@ -118,14 +126,14 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (string) - System generated unique ID for the branch
+     * (string) - System-generated unique ID for the branch
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return (string) - System generated unique ID for the branch
+     * @return (string) - System-generated unique ID for the branch
      * 
      */
     public Optional<Output<String>> uid() {
@@ -179,10 +187,11 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param branchId The ID to use for the Branch, which will become the final component of
-         * the branch&#39;s resource name.
-         * 
-         * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+         * @param branchId The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+         * Examples:
+         * - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
+         * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
          * 
          * @return builder
          * 
@@ -193,10 +202,11 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param branchId The ID to use for the Branch, which will become the final component of
-         * the branch&#39;s resource name.
-         * 
-         * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+         * @param branchId The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+         * Examples:
+         * - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
+         * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
          * 
          * @return builder
          * 
@@ -227,8 +237,8 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name (string) - The resource name of the branch.
-         * Format: projects/{project_id}/branches/{branch_id}
+         * @param name (string) - The resource name of the branch. This field is output-only and constructed by the system.
+         * Format: `projects/{project_id}/branches/{branch_id}`
          * 
          * @return builder
          * 
@@ -239,8 +249,8 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name (string) - The resource name of the branch.
-         * Format: projects/{project_id}/branches/{branch_id}
+         * @param name (string) - The resource name of the branch. This field is output-only and constructed by the system.
+         * Format: `projects/{project_id}/branches/{branch_id}`
          * 
          * @return builder
          * 
@@ -250,8 +260,11 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param parent The project containing this branch.
+         * @param parent The project containing this branch (API resource hierarchy).
          * Format: projects/{project_id}
+         * 
+         * Note: This field indicates where the branch exists in the resource hierarchy.
+         * For point-in-time branching from another branch, see `spec.source_branch`
          * 
          * @return builder
          * 
@@ -262,8 +275,11 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param parent The project containing this branch.
+         * @param parent The project containing this branch (API resource hierarchy).
          * Format: projects/{project_id}
+         * 
+         * Note: This field indicates where the branch exists in the resource hierarchy.
+         * For point-in-time branching from another branch, see `spec.source_branch`
          * 
          * @return builder
          * 
@@ -273,7 +289,7 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spec The desired state of a Branch
+         * @param spec The spec contains the branch configuration
          * 
          * @return builder
          * 
@@ -284,7 +300,7 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spec The desired state of a Branch
+         * @param spec The spec contains the branch configuration
          * 
          * @return builder
          * 
@@ -315,7 +331,7 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uid (string) - System generated unique ID for the branch
+         * @param uid (string) - System-generated unique ID for the branch
          * 
          * @return builder
          * 
@@ -326,7 +342,7 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uid (string) - System generated unique ID for the branch
+         * @param uid (string) - System-generated unique ID for the branch
          * 
          * @return builder
          * 

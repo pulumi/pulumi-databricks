@@ -22,6 +22,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? Default;
         /// <summary>
+        /// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+        /// </summary>
+        public readonly string? ExpireTime;
+        /// <summary>
         /// (boolean) - Whether the branch is protected
         /// </summary>
         public readonly bool? IsProtected;
@@ -57,6 +61,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool? @default,
 
+            string? expireTime,
+
             bool? isProtected,
 
             int? logicalSizeBytes,
@@ -73,6 +79,7 @@ namespace Pulumi.Databricks.Outputs
         {
             CurrentState = currentState;
             Default = @default;
+            ExpireTime = expireTime;
             IsProtected = isProtected;
             LogicalSizeBytes = logicalSizeBytes;
             PendingState = pendingState;

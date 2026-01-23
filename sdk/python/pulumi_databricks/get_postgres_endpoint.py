@@ -73,8 +73,8 @@ class GetPostgresEndpointResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the endpoint.
-        Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+        (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
         """
         return pulumi.get(self, "name")
 
@@ -82,7 +82,7 @@ class GetPostgresEndpointResult:
     @pulumi.getter
     def parent(self) -> _builtins.str:
         """
-        (string) - The branch containing this endpoint.
+        (string) - The branch containing this endpoint (API resource hierarchy).
         Format: projects/{project_id}/branches/{branch_id}
         """
         return pulumi.get(self, "parent")
@@ -91,7 +91,7 @@ class GetPostgresEndpointResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresEndpointSpecResult':
         """
-        (EndpointSpec) - The desired state of an Endpoint
+        (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         return pulumi.get(self, "spec")
 
@@ -99,7 +99,7 @@ class GetPostgresEndpointResult:
     @pulumi.getter
     def status(self) -> 'outputs.GetPostgresEndpointStatusResult':
         """
-        (EndpointStatus) - The current status of an Endpoint
+        (EndpointStatus) - Current operational status of the compute endpoint
         """
         return pulumi.get(self, "status")
 
@@ -107,7 +107,7 @@ class GetPostgresEndpointResult:
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string) - System generated unique ID for the endpoint
+        (string) - System-generated unique ID for the endpoint
         """
         return pulumi.get(self, "uid")
 
@@ -139,11 +139,25 @@ class AwaitableGetPostgresEndpointResult(GetPostgresEndpointResult):
 def get_postgres_endpoint(name: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresEndpointResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source retrieves a single Postgres endpoint.
+
+    ## Example Usage
+
+    ### Retrieve Endpoint by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_endpoint(name="projects/my-project/branches/dev-branch/endpoints/primary")
+    pulumi.export("endpointType", this.status.endpoint_type)
+    ```
 
 
-    :param _builtins.str name: The resource name of the endpoint.
-           Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+    :param _builtins.str name: The resource name of the endpoint. This field is output-only and constructed by the system.
+           Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
     """
     __args__ = dict()
     __args__['name'] = name
@@ -162,11 +176,25 @@ def get_postgres_endpoint(name: Optional[_builtins.str] = None,
 def get_postgres_endpoint_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresEndpointResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source retrieves a single Postgres endpoint.
+
+    ## Example Usage
+
+    ### Retrieve Endpoint by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_endpoint(name="projects/my-project/branches/dev-branch/endpoints/primary")
+    pulumi.export("endpointType", this.status.endpoint_type)
+    ```
 
 
-    :param _builtins.str name: The resource name of the endpoint.
-           Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+    :param _builtins.str name: The resource name of the endpoint. This field is output-only and constructed by the system.
+           Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
     """
     __args__ = dict()
     __args__['name'] = name

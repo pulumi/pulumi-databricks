@@ -12,19 +12,100 @@ namespace Pulumi.Databricks
     public static class GetPostgresEndpoint
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres endpoint.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Endpoint by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresEndpoint.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/dev-branch/endpoints/primary",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpointType"] = @this.Apply(@this =&gt; @this.Apply(getPostgresEndpointResult =&gt; getPostgresEndpointResult.Status?.EndpointType)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresEndpointResult> InvokeAsync(GetPostgresEndpointArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresEndpointResult>("databricks:index/getPostgresEndpoint:getPostgresEndpoint", args ?? new GetPostgresEndpointArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres endpoint.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Endpoint by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresEndpoint.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/dev-branch/endpoints/primary",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpointType"] = @this.Apply(@this =&gt; @this.Apply(getPostgresEndpointResult =&gt; getPostgresEndpointResult.Status?.EndpointType)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresEndpointResult> Invoke(GetPostgresEndpointInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresEndpointResult>("databricks:index/getPostgresEndpoint:getPostgresEndpoint", args ?? new GetPostgresEndpointInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres endpoint.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Endpoint by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresEndpoint.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/dev-branch/endpoints/primary",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpointType"] = @this.Apply(@this =&gt; @this.Apply(getPostgresEndpointResult =&gt; getPostgresEndpointResult.Status?.EndpointType)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresEndpointResult> Invoke(GetPostgresEndpointInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresEndpointResult>("databricks:index/getPostgresEndpoint:getPostgresEndpoint", args ?? new GetPostgresEndpointInvokeArgs(), options.WithDefaults());
@@ -34,8 +115,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresEndpointArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the endpoint.
-        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+        /// The resource name of the endpoint. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -49,8 +130,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresEndpointInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the endpoint.
-        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+        /// The resource name of the endpoint. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -74,25 +155,25 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (string) - The resource name of the endpoint.
-        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+        /// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - The branch containing this endpoint.
+        /// (string) - The branch containing this endpoint (API resource hierarchy).
         /// Format: projects/{project_id}/branches/{branch_id}
         /// </summary>
         public readonly string Parent;
         /// <summary>
-        /// (EndpointSpec) - The desired state of an Endpoint
+        /// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         /// </summary>
         public readonly Outputs.GetPostgresEndpointSpecResult Spec;
         /// <summary>
-        /// (EndpointStatus) - The current status of an Endpoint
+        /// (EndpointStatus) - Current operational status of the compute endpoint
         /// </summary>
         public readonly Outputs.GetPostgresEndpointStatusResult Status;
         /// <summary>
-        /// (string) - System generated unique ID for the endpoint
+        /// (string) - System-generated unique ID for the endpoint
         /// </summary>
         public readonly string Uid;
         /// <summary>

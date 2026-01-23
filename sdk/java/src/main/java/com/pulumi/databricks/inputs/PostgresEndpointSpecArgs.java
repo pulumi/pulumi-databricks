@@ -71,18 +71,35 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     @Import(name="endpointType", required=true)
     private Output<String> endpointType;
 
     /**
-     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     public Output<String> endpointType() {
         return this.endpointType;
+    }
+
+    /**
+     * When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     * 
+     */
+    @Import(name="noSuspension")
+    private @Nullable Output<Boolean> noSuspension;
+
+    /**
+     * @return When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     * 
+     */
+    public Optional<Output<Boolean>> noSuspension() {
+        return Optional.ofNullable(this.noSuspension);
     }
 
     /**
@@ -122,6 +139,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         this.autoscalingLimitMinCu = $.autoscalingLimitMinCu;
         this.disabled = $.disabled;
         this.endpointType = $.endpointType;
+        this.noSuspension = $.noSuspension;
         this.settings = $.settings;
         this.suspendTimeoutDuration = $.suspendTimeoutDuration;
     }
@@ -214,7 +232,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpointType (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+         * @param endpointType (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
          * 
          * @return builder
          * 
@@ -225,13 +243,36 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpointType (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+         * @param endpointType (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
          * 
          * @return builder
          * 
          */
         public Builder endpointType(String endpointType) {
             return endpointType(Output.of(endpointType));
+        }
+
+        /**
+         * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
+         * Should be set to true when provided
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noSuspension(@Nullable Output<Boolean> noSuspension) {
+            $.noSuspension = noSuspension;
+            return this;
+        }
+
+        /**
+         * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
+         * Should be set to true when provided
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noSuspension(Boolean noSuspension) {
+            return noSuspension(Output.of(noSuspension));
         }
 
         /**

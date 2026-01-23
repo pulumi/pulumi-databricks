@@ -10,10 +10,12 @@ import com.pulumi.databricks.outputs.JobTaskNewClusterAzureAttributes;
 import com.pulumi.databricks.outputs.JobTaskNewClusterClusterLogConf;
 import com.pulumi.databricks.outputs.JobTaskNewClusterClusterMountInfo;
 import com.pulumi.databricks.outputs.JobTaskNewClusterDockerImage;
+import com.pulumi.databricks.outputs.JobTaskNewClusterDriverNodeTypeFlexibility;
 import com.pulumi.databricks.outputs.JobTaskNewClusterGcpAttributes;
 import com.pulumi.databricks.outputs.JobTaskNewClusterInitScript;
 import com.pulumi.databricks.outputs.JobTaskNewClusterLibrary;
 import com.pulumi.databricks.outputs.JobTaskNewClusterProviderConfig;
+import com.pulumi.databricks.outputs.JobTaskNewClusterWorkerNodeTypeFlexibility;
 import com.pulumi.databricks.outputs.JobTaskNewClusterWorkloadType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -39,6 +41,7 @@ public final class JobTaskNewCluster {
     private @Nullable String dataSecurityMode;
     private @Nullable JobTaskNewClusterDockerImage dockerImage;
     private @Nullable String driverInstancePoolId;
+    private @Nullable JobTaskNewClusterDriverNodeTypeFlexibility driverNodeTypeFlexibility;
     private @Nullable String driverNodeTypeId;
     private @Nullable Boolean enableElasticDisk;
     private @Nullable Boolean enableLocalDiskEncryption;
@@ -70,6 +73,7 @@ public final class JobTaskNewCluster {
     private @Nullable List<String> sshPublicKeys;
     private @Nullable Integer totalInitialRemoteDiskSize;
     private @Nullable Boolean useMlRuntime;
+    private @Nullable JobTaskNewClusterWorkerNodeTypeFlexibility workerNodeTypeFlexibility;
     /**
      * @return isn&#39;t supported
      * 
@@ -115,6 +119,9 @@ public final class JobTaskNewCluster {
     }
     public Optional<String> driverInstancePoolId() {
         return Optional.ofNullable(this.driverInstancePoolId);
+    }
+    public Optional<JobTaskNewClusterDriverNodeTypeFlexibility> driverNodeTypeFlexibility() {
+        return Optional.ofNullable(this.driverNodeTypeFlexibility);
     }
     public Optional<String> driverNodeTypeId() {
         return Optional.ofNullable(this.driverNodeTypeId);
@@ -193,6 +200,9 @@ public final class JobTaskNewCluster {
     public Optional<Boolean> useMlRuntime() {
         return Optional.ofNullable(this.useMlRuntime);
     }
+    public Optional<JobTaskNewClusterWorkerNodeTypeFlexibility> workerNodeTypeFlexibility() {
+        return Optional.ofNullable(this.workerNodeTypeFlexibility);
+    }
     /**
      * @return isn&#39;t supported
      * 
@@ -223,6 +233,7 @@ public final class JobTaskNewCluster {
         private @Nullable String dataSecurityMode;
         private @Nullable JobTaskNewClusterDockerImage dockerImage;
         private @Nullable String driverInstancePoolId;
+        private @Nullable JobTaskNewClusterDriverNodeTypeFlexibility driverNodeTypeFlexibility;
         private @Nullable String driverNodeTypeId;
         private @Nullable Boolean enableElasticDisk;
         private @Nullable Boolean enableLocalDiskEncryption;
@@ -246,6 +257,7 @@ public final class JobTaskNewCluster {
         private @Nullable List<String> sshPublicKeys;
         private @Nullable Integer totalInitialRemoteDiskSize;
         private @Nullable Boolean useMlRuntime;
+        private @Nullable JobTaskNewClusterWorkerNodeTypeFlexibility workerNodeTypeFlexibility;
         private @Nullable JobTaskNewClusterWorkloadType workloadType;
         public Builder() {}
         public Builder(JobTaskNewCluster defaults) {
@@ -263,6 +275,7 @@ public final class JobTaskNewCluster {
     	      this.dataSecurityMode = defaults.dataSecurityMode;
     	      this.dockerImage = defaults.dockerImage;
     	      this.driverInstancePoolId = defaults.driverInstancePoolId;
+    	      this.driverNodeTypeFlexibility = defaults.driverNodeTypeFlexibility;
     	      this.driverNodeTypeId = defaults.driverNodeTypeId;
     	      this.enableElasticDisk = defaults.enableElasticDisk;
     	      this.enableLocalDiskEncryption = defaults.enableLocalDiskEncryption;
@@ -286,6 +299,7 @@ public final class JobTaskNewCluster {
     	      this.sshPublicKeys = defaults.sshPublicKeys;
     	      this.totalInitialRemoteDiskSize = defaults.totalInitialRemoteDiskSize;
     	      this.useMlRuntime = defaults.useMlRuntime;
+    	      this.workerNodeTypeFlexibility = defaults.workerNodeTypeFlexibility;
     	      this.workloadType = defaults.workloadType;
         }
 
@@ -371,6 +385,12 @@ public final class JobTaskNewCluster {
         public Builder driverInstancePoolId(@Nullable String driverInstancePoolId) {
 
             this.driverInstancePoolId = driverInstancePoolId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder driverNodeTypeFlexibility(@Nullable JobTaskNewClusterDriverNodeTypeFlexibility driverNodeTypeFlexibility) {
+
+            this.driverNodeTypeFlexibility = driverNodeTypeFlexibility;
             return this;
         }
         @CustomType.Setter
@@ -521,6 +541,12 @@ public final class JobTaskNewCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder workerNodeTypeFlexibility(@Nullable JobTaskNewClusterWorkerNodeTypeFlexibility workerNodeTypeFlexibility) {
+
+            this.workerNodeTypeFlexibility = workerNodeTypeFlexibility;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workloadType(@Nullable JobTaskNewClusterWorkloadType workloadType) {
 
             this.workloadType = workloadType;
@@ -541,6 +567,7 @@ public final class JobTaskNewCluster {
             _resultValue.dataSecurityMode = dataSecurityMode;
             _resultValue.dockerImage = dockerImage;
             _resultValue.driverInstancePoolId = driverInstancePoolId;
+            _resultValue.driverNodeTypeFlexibility = driverNodeTypeFlexibility;
             _resultValue.driverNodeTypeId = driverNodeTypeId;
             _resultValue.enableElasticDisk = enableElasticDisk;
             _resultValue.enableLocalDiskEncryption = enableLocalDiskEncryption;
@@ -564,6 +591,7 @@ public final class JobTaskNewCluster {
             _resultValue.sshPublicKeys = sshPublicKeys;
             _resultValue.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
             _resultValue.useMlRuntime = useMlRuntime;
+            _resultValue.workerNodeTypeFlexibility = workerNodeTypeFlexibility;
             _resultValue.workloadType = workloadType;
             return _resultValue;
         }

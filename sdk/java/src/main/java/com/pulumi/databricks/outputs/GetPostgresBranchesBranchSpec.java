@@ -13,15 +13,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresBranchesBranchSpec {
     /**
-     * @return (boolean) - Whether the branch is the project&#39;s default branch
+     * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      * 
      */
-    private @Nullable Boolean default_;
+    private @Nullable String expireTime;
     /**
      * @return (boolean) - Whether the branch is protected
      * 
      */
     private @Nullable Boolean isProtected;
+    /**
+     * @return (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * 
+     */
+    private @Nullable Boolean noExpiry;
     /**
      * @return (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -38,14 +44,19 @@ public final class GetPostgresBranchesBranchSpec {
      * 
      */
     private @Nullable String sourceBranchTime;
+    /**
+     * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * 
+     */
+    private @Nullable String ttl;
 
     private GetPostgresBranchesBranchSpec() {}
     /**
-     * @return (boolean) - Whether the branch is the project&#39;s default branch
+     * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      * 
      */
-    public Optional<Boolean> default_() {
-        return Optional.ofNullable(this.default_);
+    public Optional<String> expireTime() {
+        return Optional.ofNullable(this.expireTime);
     }
     /**
      * @return (boolean) - Whether the branch is protected
@@ -53,6 +64,14 @@ public final class GetPostgresBranchesBranchSpec {
      */
     public Optional<Boolean> isProtected() {
         return Optional.ofNullable(this.isProtected);
+    }
+    /**
+     * @return (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * 
+     */
+    public Optional<Boolean> noExpiry() {
+        return Optional.ofNullable(this.noExpiry);
     }
     /**
      * @return (string) - The name of the source branch from which this branch was created.
@@ -76,6 +95,13 @@ public final class GetPostgresBranchesBranchSpec {
     public Optional<String> sourceBranchTime() {
         return Optional.ofNullable(this.sourceBranchTime);
     }
+    /**
+     * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * 
+     */
+    public Optional<String> ttl() {
+        return Optional.ofNullable(this.ttl);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -86,31 +112,41 @@ public final class GetPostgresBranchesBranchSpec {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean default_;
+        private @Nullable String expireTime;
         private @Nullable Boolean isProtected;
+        private @Nullable Boolean noExpiry;
         private @Nullable String sourceBranch;
         private @Nullable String sourceBranchLsn;
         private @Nullable String sourceBranchTime;
+        private @Nullable String ttl;
         public Builder() {}
         public Builder(GetPostgresBranchesBranchSpec defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.default_ = defaults.default_;
+    	      this.expireTime = defaults.expireTime;
     	      this.isProtected = defaults.isProtected;
+    	      this.noExpiry = defaults.noExpiry;
     	      this.sourceBranch = defaults.sourceBranch;
     	      this.sourceBranchLsn = defaults.sourceBranchLsn;
     	      this.sourceBranchTime = defaults.sourceBranchTime;
+    	      this.ttl = defaults.ttl;
         }
 
-        @CustomType.Setter("default")
-        public Builder default_(@Nullable Boolean default_) {
+        @CustomType.Setter
+        public Builder expireTime(@Nullable String expireTime) {
 
-            this.default_ = default_;
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder isProtected(@Nullable Boolean isProtected) {
 
             this.isProtected = isProtected;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder noExpiry(@Nullable Boolean noExpiry) {
+
+            this.noExpiry = noExpiry;
             return this;
         }
         @CustomType.Setter
@@ -131,13 +167,21 @@ public final class GetPostgresBranchesBranchSpec {
             this.sourceBranchTime = sourceBranchTime;
             return this;
         }
+        @CustomType.Setter
+        public Builder ttl(@Nullable String ttl) {
+
+            this.ttl = ttl;
+            return this;
+        }
         public GetPostgresBranchesBranchSpec build() {
             final var _resultValue = new GetPostgresBranchesBranchSpec();
-            _resultValue.default_ = default_;
+            _resultValue.expireTime = expireTime;
             _resultValue.isProtected = isProtected;
+            _resultValue.noExpiry = noExpiry;
             _resultValue.sourceBranch = sourceBranch;
             _resultValue.sourceBranchLsn = sourceBranchLsn;
             _resultValue.sourceBranchTime = sourceBranchTime;
+            _resultValue.ttl = ttl;
             return _resultValue;
         }
     }

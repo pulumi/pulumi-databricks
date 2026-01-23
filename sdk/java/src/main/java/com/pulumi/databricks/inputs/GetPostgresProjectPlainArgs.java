@@ -14,16 +14,16 @@ public final class GetPostgresProjectPlainArgs extends com.pulumi.resources.Invo
     public static final GetPostgresProjectPlainArgs Empty = new GetPostgresProjectPlainArgs();
 
     /**
-     * The resource name of the project.
-     * Format: projects/{project_id}
+     * The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the project.
-     * Format: projects/{project_id}
+     * @return The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      * 
      */
     public String name() {
@@ -55,8 +55,8 @@ public final class GetPostgresProjectPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param name The resource name of the project.
-         * Format: projects/{project_id}
+         * @param name The resource name of the project. This field is output-only and constructed by the system.
+         * Format: `projects/{project_id}`
          * 
          * @return builder
          * 

@@ -147,6 +147,22 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     enforcementMode?: string;
 }
 
+export interface AccountSettingUserPreferenceV2BooleanVal {
+    value?: boolean;
+}
+
+export interface AccountSettingUserPreferenceV2EffectiveBooleanVal {
+    value?: boolean;
+}
+
+export interface AccountSettingUserPreferenceV2EffectiveStringVal {
+    value?: string;
+}
+
+export interface AccountSettingUserPreferenceV2StringVal {
+    value?: string;
+}
+
 export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
      * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
@@ -1227,6 +1243,10 @@ export interface ClusterDockerImageBasicAuth {
     username: string;
 }
 
+export interface ClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
+}
+
 export interface ClusterGcpAttributes {
     /**
      * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
@@ -1444,6 +1464,10 @@ export interface ClusterProviderConfig {
      * ```
      */
     workspaceId: string;
+}
+
+export interface ClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface ClusterWorkloadType {
@@ -2663,6 +2687,34 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
      * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: string;
+}
+
+export interface GetAccountSettingUserPreferenceV2BooleanVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: boolean;
+}
+
+export interface GetAccountSettingUserPreferenceV2EffectiveBooleanVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: boolean;
+}
+
+export interface GetAccountSettingUserPreferenceV2EffectiveStringVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetAccountSettingUserPreferenceV2StringVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
 }
 
 export interface GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy {
@@ -4539,6 +4591,7 @@ export interface GetClusterClusterInfo {
      * similar to `instancePoolId`, but for driver node.
      */
     driverInstancePoolId?: string;
+    driverNodeTypeFlexibility?: outputs.GetClusterClusterInfoDriverNodeTypeFlexibility;
     /**
      * The node type of the Spark driver.
      */
@@ -4606,6 +4659,7 @@ export interface GetClusterClusterInfo {
     terminationReason?: outputs.GetClusterClusterInfoTerminationReason;
     totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
+    workerNodeTypeFlexibility?: outputs.GetClusterClusterInfoWorkerNodeTypeFlexibility;
     workloadType?: outputs.GetClusterClusterInfoWorkloadType;
 }
 
@@ -4690,6 +4744,10 @@ export interface GetClusterClusterInfoDriver {
 
 export interface GetClusterClusterInfoDriverNodeAwsAttributes {
     isSpot?: boolean;
+}
+
+export interface GetClusterClusterInfoDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface GetClusterClusterInfoExecutor {
@@ -4788,6 +4846,7 @@ export interface GetClusterClusterInfoSpec {
      * similar to `instancePoolId`, but for driver node.
      */
     driverInstancePoolId: string;
+    driverNodeTypeFlexibility?: outputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibility;
     /**
      * The node type of the Spark driver.
      */
@@ -4853,6 +4912,7 @@ export interface GetClusterClusterInfoSpec {
     sshPublicKeys?: string[];
     totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
+    workerNodeTypeFlexibility?: outputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibility;
     workloadType?: outputs.GetClusterClusterInfoSpecWorkloadType;
 }
 
@@ -4929,6 +4989,10 @@ export interface GetClusterClusterInfoSpecDockerImage {
 export interface GetClusterClusterInfoSpecDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface GetClusterClusterInfoSpecDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface GetClusterClusterInfoSpecGcpAttributes {
@@ -5035,6 +5099,10 @@ export interface GetClusterClusterInfoSpecProviderConfig {
     workspaceId: string;
 }
 
+export interface GetClusterClusterInfoSpecWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
+}
+
 export interface GetClusterClusterInfoSpecWorkloadType {
     clients: outputs.GetClusterClusterInfoSpecWorkloadTypeClients;
 }
@@ -5048,6 +5116,10 @@ export interface GetClusterClusterInfoTerminationReason {
     code?: string;
     parameters?: {[key: string]: string};
     type?: string;
+}
+
+export interface GetClusterClusterInfoWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface GetClusterClusterInfoWorkloadType {
@@ -9777,13 +9849,18 @@ export interface GetPolicyInfosPolicyRowFilterUsing {
 
 export interface GetPostgresBranchSpec {
     /**
-     * (boolean) - Whether the branch is the project's default branch
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      */
-    default?: boolean;
+    expireTime?: string;
     /**
      * (boolean) - Whether the branch is protected
      */
     isProtected?: boolean;
+    /**
+     * (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     */
+    noExpiry?: boolean;
     /**
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -9797,6 +9874,10 @@ export interface GetPostgresBranchSpec {
      * (string) - The point in time on the source branch from which this branch was created
      */
     sourceBranchTime?: string;
+    /**
+     * (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     */
+    ttl?: string;
 }
 
 export interface GetPostgresBranchStatus {
@@ -9808,6 +9889,10 @@ export interface GetPostgresBranchStatus {
      * (boolean) - Whether the branch is the project's default branch
      */
     default: boolean;
+    /**
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     */
+    expireTime: string;
     /**
      * (boolean) - Whether the branch is protected
      */
@@ -9845,8 +9930,8 @@ export interface GetPostgresBranchesBranch {
      */
     createTime: string;
     /**
-     * (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      */
     name: string;
     /**
@@ -9855,7 +9940,7 @@ export interface GetPostgresBranchesBranch {
      */
     parent: string;
     /**
-     * (BranchSpec) - The desired state of a Branch
+     * (BranchSpec) - The spec contains the branch configuration
      */
     spec: outputs.GetPostgresBranchesBranchSpec;
     /**
@@ -9863,7 +9948,7 @@ export interface GetPostgresBranchesBranch {
      */
     status: outputs.GetPostgresBranchesBranchStatus;
     /**
-     * (string) - System generated unique ID for the branch
+     * (string) - System-generated unique ID for the branch
      */
     uid: string;
     /**
@@ -9874,13 +9959,18 @@ export interface GetPostgresBranchesBranch {
 
 export interface GetPostgresBranchesBranchSpec {
     /**
-     * (boolean) - Whether the branch is the project's default branch
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      */
-    default?: boolean;
+    expireTime?: string;
     /**
      * (boolean) - Whether the branch is protected
      */
     isProtected?: boolean;
+    /**
+     * (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     */
+    noExpiry?: boolean;
     /**
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -9894,6 +9984,10 @@ export interface GetPostgresBranchesBranchSpec {
      * (string) - The point in time on the source branch from which this branch was created
      */
     sourceBranchTime?: string;
+    /**
+     * (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     */
+    ttl?: string;
 }
 
 export interface GetPostgresBranchesBranchStatus {
@@ -9905,6 +9999,10 @@ export interface GetPostgresBranchesBranchStatus {
      * (boolean) - Whether the branch is the project's default branch
      */
     default: boolean;
+    /**
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     */
+    expireTime: string;
     /**
      * (boolean) - Whether the branch is protected
      */
@@ -9953,9 +10051,14 @@ export interface GetPostgresEndpointSpec {
      */
     disabled?: boolean;
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
     endpointType: string;
+    /**
+     * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: boolean;
     /**
      * (EndpointSettings)
      */
@@ -9994,17 +10097,13 @@ export interface GetPostgresEndpointStatus {
      */
     disabled: boolean;
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
     endpointType: string;
     /**
-     * (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * (EndpointHosts) - Contains host information for connecting to the endpoint
      */
-    host: string;
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last active
-     */
-    lastActiveTime: string;
+    hosts: outputs.GetPostgresEndpointStatusHosts;
     /**
      * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
      */
@@ -10014,17 +10113,17 @@ export interface GetPostgresEndpointStatus {
      */
     settings: outputs.GetPostgresEndpointStatusSettings;
     /**
-     * (string) - A timestamp indicating when the compute endpoint was last started
-     */
-    startTime: string;
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last suspended
-     */
-    suspendTime: string;
-    /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration: string;
+}
+
+export interface GetPostgresEndpointStatusHosts {
+    /**
+     * (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+     * to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+     */
+    host: string;
 }
 
 export interface GetPostgresEndpointStatusSettings {
@@ -10040,8 +10139,8 @@ export interface GetPostgresEndpointsEndpoint {
      */
     createTime: string;
     /**
-     * (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      */
     name: string;
     /**
@@ -10050,15 +10149,15 @@ export interface GetPostgresEndpointsEndpoint {
      */
     parent: string;
     /**
-     * (EndpointSpec) - The desired state of an Endpoint
+     * (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     spec: outputs.GetPostgresEndpointsEndpointSpec;
     /**
-     * (EndpointStatus) - The current status of an Endpoint
+     * (EndpointStatus) - Current operational status of the compute endpoint
      */
     status: outputs.GetPostgresEndpointsEndpointStatus;
     /**
-     * (string) - System generated unique ID for the endpoint
+     * (string) - System-generated unique ID for the endpoint
      */
     uid: string;
     /**
@@ -10084,9 +10183,14 @@ export interface GetPostgresEndpointsEndpointSpec {
      */
     disabled?: boolean;
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
     endpointType: string;
+    /**
+     * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: boolean;
     /**
      * (EndpointSettings)
      */
@@ -10125,17 +10229,13 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     disabled: boolean;
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
     endpointType: string;
     /**
-     * (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * (EndpointHosts) - Contains host information for connecting to the endpoint
      */
-    host: string;
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last active
-     */
-    lastActiveTime: string;
+    hosts: outputs.GetPostgresEndpointsEndpointStatusHosts;
     /**
      * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
      */
@@ -10145,17 +10245,17 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     settings: outputs.GetPostgresEndpointsEndpointStatusSettings;
     /**
-     * (string) - A timestamp indicating when the compute endpoint was last started
-     */
-    startTime: string;
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last suspended
-     */
-    suspendTime: string;
-    /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration: string;
+}
+
+export interface GetPostgresEndpointsEndpointStatusHosts {
+    /**
+     * (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+     * to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+     */
+    host: string;
 }
 
 export interface GetPostgresEndpointsEndpointStatusSettings {
@@ -10182,38 +10282,31 @@ export interface GetPostgresProjectSpec {
      * (integer) - The effective major Postgres version number
      */
     pgVersion?: number;
-    /**
-     * (ProjectSettings) - The effective project settings
-     */
-    settings?: outputs.GetPostgresProjectSpecSettings;
 }
 
 export interface GetPostgresProjectSpecDefaultEndpointSettings {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMaxCu?: number;
     /**
-     * (number) - The minimum number of Compute Units
+     * (number) - The minimum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMinCu?: number;
+    /**
+     * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: boolean;
     /**
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: string;
-}
-
-export interface GetPostgresProjectSpecSettings {
-    /**
-     * (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-     * All active endpoints will be suspended.
-     * Once enabled, logical replication cannot be disabled
-     */
-    enableLogicalReplication?: boolean;
 }
 
 export interface GetPostgresProjectStatus {
@@ -10221,10 +10314,6 @@ export interface GetPostgresProjectStatus {
      * (integer) - The logical size limit for a branch
      */
     branchLogicalSizeLimitBytes: number;
-    /**
-     * (string) - The most recent time when any endpoint of this project was active
-     */
-    computeLastActiveTime: string;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
@@ -10246,10 +10335,6 @@ export interface GetPostgresProjectStatus {
      */
     pgVersion: number;
     /**
-     * (ProjectSettings) - The effective project settings
-     */
-    settings: outputs.GetPostgresProjectStatusSettings;
-    /**
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes: number;
@@ -10257,30 +10342,27 @@ export interface GetPostgresProjectStatus {
 
 export interface GetPostgresProjectStatusDefaultEndpointSettings {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMaxCu?: number;
     /**
-     * (number) - The minimum number of Compute Units
+     * (number) - The minimum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMinCu?: number;
+    /**
+     * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: boolean;
     /**
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: string;
-}
-
-export interface GetPostgresProjectStatusSettings {
-    /**
-     * (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-     * All active endpoints will be suspended.
-     * Once enabled, logical replication cannot be disabled
-     */
-    enableLogicalReplication?: boolean;
 }
 
 export interface GetPostgresProjectsProject {
@@ -10289,12 +10371,12 @@ export interface GetPostgresProjectsProject {
      */
     createTime: string;
     /**
-     * (string) - The resource name of the project.
-     * Format: projects/{project_id}
+     * (string) - The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      */
     name: string;
     /**
-     * (ProjectSpec) - The desired state of a Project
+     * (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
     spec: outputs.GetPostgresProjectsProjectSpec;
     /**
@@ -10302,7 +10384,7 @@ export interface GetPostgresProjectsProject {
      */
     status: outputs.GetPostgresProjectsProjectStatus;
     /**
-     * (string) - System generated unique ID for the project
+     * (string) - System-generated unique ID for the project
      */
     uid: string;
     /**
@@ -10328,38 +10410,31 @@ export interface GetPostgresProjectsProjectSpec {
      * (integer) - The effective major Postgres version number
      */
     pgVersion?: number;
-    /**
-     * (ProjectSettings) - The effective project settings
-     */
-    settings?: outputs.GetPostgresProjectsProjectSpecSettings;
 }
 
 export interface GetPostgresProjectsProjectSpecDefaultEndpointSettings {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMaxCu?: number;
     /**
-     * (number) - The minimum number of Compute Units
+     * (number) - The minimum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMinCu?: number;
+    /**
+     * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: boolean;
     /**
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: string;
-}
-
-export interface GetPostgresProjectsProjectSpecSettings {
-    /**
-     * (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-     * All active endpoints will be suspended.
-     * Once enabled, logical replication cannot be disabled
-     */
-    enableLogicalReplication?: boolean;
 }
 
 export interface GetPostgresProjectsProjectStatus {
@@ -10367,10 +10442,6 @@ export interface GetPostgresProjectsProjectStatus {
      * (integer) - The logical size limit for a branch
      */
     branchLogicalSizeLimitBytes: number;
-    /**
-     * (string) - The most recent time when any endpoint of this project was active
-     */
-    computeLastActiveTime: string;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
@@ -10392,10 +10463,6 @@ export interface GetPostgresProjectsProjectStatus {
      */
     pgVersion: number;
     /**
-     * (ProjectSettings) - The effective project settings
-     */
-    settings: outputs.GetPostgresProjectsProjectStatusSettings;
-    /**
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes: number;
@@ -10403,30 +10470,27 @@ export interface GetPostgresProjectsProjectStatus {
 
 export interface GetPostgresProjectsProjectStatusDefaultEndpointSettings {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMaxCu?: number;
     /**
-     * (number) - The minimum number of Compute Units
+     * (number) - The minimum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMinCu?: number;
+    /**
+     * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: boolean;
     /**
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: string;
-}
-
-export interface GetPostgresProjectsProjectStatusSettings {
-    /**
-     * (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-     * All active endpoints will be suspended.
-     * Once enabled, logical replication cannot be disabled
-     */
-    enableLogicalReplication?: boolean;
 }
 
 export interface GetQualityMonitorV2AnomalyDetectionConfig {
@@ -12034,6 +12098,27 @@ export interface GetVolumesProviderConfig {
     workspaceId: string;
 }
 
+export interface GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride {
+    /**
+     * (string) - The ID component of the resource name (user ID)
+     */
+    defaultWarehouseOverrideId: string;
+    /**
+     * (string) - The resource name of the default warehouse override.
+     * Format: default-warehouse-overrides/{default_warehouse_override_id}
+     */
+    name: string;
+    /**
+     * (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
+     */
+    type: string;
+    /**
+     * (string) - The specific warehouse ID when type is CUSTOM.
+     * Not set for LAST_SELECTED type
+     */
+    warehouseId: string;
+}
+
 export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
     /**
      * The identifier of the entity to which the tag is assigned
@@ -12612,6 +12697,7 @@ export interface JobJobClusterNewCluster {
     dataSecurityMode?: string;
     dockerImage?: outputs.JobJobClusterNewClusterDockerImage;
     driverInstancePoolId: string;
+    driverNodeTypeFlexibility?: outputs.JobJobClusterNewClusterDriverNodeTypeFlexibility;
     driverNodeTypeId: string;
     enableElasticDisk: boolean;
     enableLocalDiskEncryption: boolean;
@@ -12641,6 +12727,7 @@ export interface JobJobClusterNewCluster {
     sshPublicKeys?: string[];
     totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
+    workerNodeTypeFlexibility?: outputs.JobJobClusterNewClusterWorkerNodeTypeFlexibility;
     /**
      * isn't supported
      */
@@ -12723,6 +12810,10 @@ export interface JobJobClusterNewClusterDockerImage {
 export interface JobJobClusterNewClusterDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface JobJobClusterNewClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface JobJobClusterNewClusterGcpAttributes {
@@ -12832,6 +12923,10 @@ export interface JobJobClusterNewClusterProviderConfig {
     workspaceId: string;
 }
 
+export interface JobJobClusterNewClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
+}
+
 export interface JobJobClusterNewClusterWorkloadType {
     clients: outputs.JobJobClusterNewClusterWorkloadTypeClients;
 }
@@ -12894,6 +12989,7 @@ export interface JobNewCluster {
     dataSecurityMode?: string;
     dockerImage?: outputs.JobNewClusterDockerImage;
     driverInstancePoolId: string;
+    driverNodeTypeFlexibility?: outputs.JobNewClusterDriverNodeTypeFlexibility;
     driverNodeTypeId: string;
     enableElasticDisk: boolean;
     enableLocalDiskEncryption: boolean;
@@ -12923,6 +13019,7 @@ export interface JobNewCluster {
     sshPublicKeys?: string[];
     totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
+    workerNodeTypeFlexibility?: outputs.JobNewClusterWorkerNodeTypeFlexibility;
     /**
      * isn't supported
      */
@@ -13005,6 +13102,10 @@ export interface JobNewClusterDockerImage {
 export interface JobNewClusterDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface JobNewClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface JobNewClusterGcpAttributes {
@@ -13112,6 +13213,10 @@ export interface JobNewClusterProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface JobNewClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface JobNewClusterWorkloadType {
@@ -13937,6 +14042,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     dataSecurityMode?: string;
     dockerImage?: outputs.JobTaskForEachTaskTaskNewClusterDockerImage;
     driverInstancePoolId: string;
+    driverNodeTypeFlexibility?: outputs.JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility;
     driverNodeTypeId: string;
     enableElasticDisk: boolean;
     enableLocalDiskEncryption: boolean;
@@ -13966,6 +14072,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     sshPublicKeys?: string[];
     totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
+    workerNodeTypeFlexibility?: outputs.JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility;
     /**
      * isn't supported
      */
@@ -14048,6 +14155,10 @@ export interface JobTaskForEachTaskTaskNewClusterDockerImage {
 export interface JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
@@ -14155,6 +14266,10 @@ export interface JobTaskForEachTaskTaskNewClusterProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
@@ -14657,6 +14772,7 @@ export interface JobTaskNewCluster {
     dataSecurityMode?: string;
     dockerImage?: outputs.JobTaskNewClusterDockerImage;
     driverInstancePoolId: string;
+    driverNodeTypeFlexibility?: outputs.JobTaskNewClusterDriverNodeTypeFlexibility;
     driverNodeTypeId: string;
     enableElasticDisk: boolean;
     enableLocalDiskEncryption: boolean;
@@ -14686,6 +14802,7 @@ export interface JobTaskNewCluster {
     sshPublicKeys?: string[];
     totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
+    workerNodeTypeFlexibility?: outputs.JobTaskNewClusterWorkerNodeTypeFlexibility;
     /**
      * isn't supported
      */
@@ -14768,6 +14885,10 @@ export interface JobTaskNewClusterDockerImage {
 export interface JobTaskNewClusterDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface JobTaskNewClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface JobTaskNewClusterGcpAttributes {
@@ -14875,6 +14996,10 @@ export interface JobTaskNewClusterProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface JobTaskNewClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -16610,11 +16735,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -16681,11 +16806,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -17175,6 +17300,7 @@ export interface PipelineGatewayDefinitionConnectionParameters {
 
 export interface PipelineIngestionDefinition {
     connectionName?: string;
+    fullRefreshWindow?: outputs.PipelineIngestionDefinitionFullRefreshWindow;
     ingestFromUcForeignCatalog?: boolean;
     ingestionGatewayId?: string;
     netsuiteJarPath?: string;
@@ -17182,6 +17308,12 @@ export interface PipelineIngestionDefinition {
     sourceConfigurations?: outputs.PipelineIngestionDefinitionSourceConfiguration[];
     sourceType?: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionTableConfiguration;
+}
+
+export interface PipelineIngestionDefinitionFullRefreshWindow {
+    daysOfWeeks?: string[];
+    startHour: number;
+    timeZoneId?: string;
 }
 
 export interface PipelineIngestionDefinitionObject {
@@ -17202,6 +17334,7 @@ export interface PipelineIngestionDefinitionObjectReport {
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
+    autoFullRefreshPolicy?: outputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy;
     excludeColumns?: string[];
     includeColumns?: string[];
     primaryKeys?: string[];
@@ -17211,6 +17344,11 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     scdType?: string;
     sequenceBies?: string[];
     workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters;
+}
+
+export interface PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy {
+    enabled: boolean;
+    minIntervalHours?: number;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig {
@@ -17239,6 +17377,7 @@ export interface PipelineIngestionDefinitionObjectSchema {
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
+    autoFullRefreshPolicy?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy;
     excludeColumns?: string[];
     includeColumns?: string[];
     primaryKeys?: string[];
@@ -17248,6 +17387,11 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     scdType?: string;
     sequenceBies?: string[];
     workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy {
+    enabled: boolean;
+    minIntervalHours?: number;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig {
@@ -17278,6 +17422,7 @@ export interface PipelineIngestionDefinitionObjectTable {
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
+    autoFullRefreshPolicy?: outputs.PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy;
     excludeColumns?: string[];
     includeColumns?: string[];
     primaryKeys?: string[];
@@ -17287,6 +17432,11 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     scdType?: string;
     sequenceBies?: string[];
     workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters;
+}
+
+export interface PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy {
+    enabled: boolean;
+    minIntervalHours?: number;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig {
@@ -17328,6 +17478,7 @@ export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSl
 }
 
 export interface PipelineIngestionDefinitionTableConfiguration {
+    autoFullRefreshPolicy?: outputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy;
     excludeColumns?: string[];
     includeColumns?: string[];
     primaryKeys?: string[];
@@ -17337,6 +17488,11 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     scdType?: string;
     sequenceBies?: string[];
     workdayReportParameters?: outputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters;
+}
+
+export interface PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy {
+    enabled: boolean;
+    minIntervalHours?: number;
 }
 
 export interface PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig {
@@ -17485,13 +17641,18 @@ export interface PolicyInfoRowFilterUsing {
 
 export interface PostgresBranchSpec {
     /**
-     * (boolean) - Whether the branch is the project's default branch
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      */
-    default?: boolean;
+    expireTime?: string;
     /**
      * (boolean) - Whether the branch is protected
      */
     isProtected?: boolean;
+    /**
+     * Explicitly disable expiration. When set to true, the branch will not expire.
+     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     */
+    noExpiry?: boolean;
     /**
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -17505,6 +17666,10 @@ export interface PostgresBranchSpec {
      * (string) - The point in time on the source branch from which this branch was created
      */
     sourceBranchTime?: string;
+    /**
+     * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     */
+    ttl?: string;
 }
 
 export interface PostgresBranchStatus {
@@ -17516,6 +17681,10 @@ export interface PostgresBranchStatus {
      * (boolean) - Whether the branch is the project's default branch
      */
     default: boolean;
+    /**
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     */
+    expireTime: string;
     /**
      * (boolean) - Whether the branch is protected
      */
@@ -17564,9 +17733,14 @@ export interface PostgresEndpointSpec {
      */
     disabled?: boolean;
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
     endpointType: string;
+    /**
+     * When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: boolean;
     /**
      * (EndpointSettings)
      */
@@ -17605,17 +17779,13 @@ export interface PostgresEndpointStatus {
      */
     disabled: boolean;
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
     endpointType: string;
     /**
-     * (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * (EndpointHosts) - Contains host information for connecting to the endpoint
      */
-    host: string;
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last active
-     */
-    lastActiveTime: string;
+    hosts: outputs.PostgresEndpointStatusHosts;
     /**
      * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
      */
@@ -17625,17 +17795,17 @@ export interface PostgresEndpointStatus {
      */
     settings: outputs.PostgresEndpointStatusSettings;
     /**
-     * (string) - A timestamp indicating when the compute endpoint was last started
-     */
-    startTime: string;
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last suspended
-     */
-    suspendTime: string;
-    /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration: string;
+}
+
+export interface PostgresEndpointStatusHosts {
+    /**
+     * (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+     * to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+     */
+    host: string;
 }
 
 export interface PostgresEndpointStatusSettings {
@@ -17662,38 +17832,31 @@ export interface PostgresProjectSpec {
      * (integer) - The effective major Postgres version number
      */
     pgVersion?: number;
-    /**
-     * (ProjectSettings) - The effective project settings
-     */
-    settings?: outputs.PostgresProjectSpecSettings;
 }
 
 export interface PostgresProjectSpecDefaultEndpointSettings {
     /**
-     * The maximum number of Compute Units
+     * The maximum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMaxCu?: number;
     /**
-     * The minimum number of Compute Units
+     * The minimum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMinCu?: number;
+    /**
+     * When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: boolean;
     /**
      * A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
     /**
-     * Duration of inactivity after which the compute endpoint is automatically suspended
+     * Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: string;
-}
-
-export interface PostgresProjectSpecSettings {
-    /**
-     * Sets wal_level=logical for all compute endpoints in this project.
-     * All active endpoints will be suspended.
-     * Once enabled, logical replication cannot be disabled
-     */
-    enableLogicalReplication?: boolean;
 }
 
 export interface PostgresProjectStatus {
@@ -17701,10 +17864,6 @@ export interface PostgresProjectStatus {
      * (integer) - The logical size limit for a branch
      */
     branchLogicalSizeLimitBytes: number;
-    /**
-     * (string) - The most recent time when any endpoint of this project was active
-     */
-    computeLastActiveTime: string;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
@@ -17726,10 +17885,6 @@ export interface PostgresProjectStatus {
      */
     pgVersion: number;
     /**
-     * (ProjectSettings) - The effective project settings
-     */
-    settings: outputs.PostgresProjectStatusSettings;
-    /**
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes: number;
@@ -17737,30 +17892,27 @@ export interface PostgresProjectStatus {
 
 export interface PostgresProjectStatusDefaultEndpointSettings {
     /**
-     * The maximum number of Compute Units
+     * The maximum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMaxCu?: number;
     /**
-     * The minimum number of Compute Units
+     * The minimum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMinCu?: number;
+    /**
+     * When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: boolean;
     /**
      * A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
     /**
-     * Duration of inactivity after which the compute endpoint is automatically suspended
+     * Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: string;
-}
-
-export interface PostgresProjectStatusSettings {
-    /**
-     * Sets wal_level=logical for all compute endpoints in this project.
-     * All active endpoints will be suspended.
-     * Once enabled, logical replication cannot be disabled
-     */
-    enableLogicalReplication?: boolean;
 }
 
 export interface QualityMonitorCustomMetric {

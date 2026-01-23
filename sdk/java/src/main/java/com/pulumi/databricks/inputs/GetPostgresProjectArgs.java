@@ -15,16 +15,16 @@ public final class GetPostgresProjectArgs extends com.pulumi.resources.InvokeArg
     public static final GetPostgresProjectArgs Empty = new GetPostgresProjectArgs();
 
     /**
-     * The resource name of the project.
-     * Format: projects/{project_id}
+     * The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The resource name of the project.
-     * Format: projects/{project_id}
+     * @return The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      * 
      */
     public Output<String> name() {
@@ -56,8 +56,8 @@ public final class GetPostgresProjectArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param name The resource name of the project.
-         * Format: projects/{project_id}
+         * @param name The resource name of the project. This field is output-only and constructed by the system.
+         * Format: `projects/{project_id}`
          * 
          * @return builder
          * 
@@ -68,8 +68,8 @@ public final class GetPostgresProjectArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param name The resource name of the project.
-         * Format: projects/{project_id}
+         * @param name The resource name of the project. This field is output-only and constructed by the system.
+         * Format: `projects/{project_id}`
          * 
          * @return builder
          * 

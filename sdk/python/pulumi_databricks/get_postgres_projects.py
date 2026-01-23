@@ -71,10 +71,24 @@ class AwaitableGetPostgresProjectsResult(GetPostgresProjectsResult):
 def get_postgres_projects(page_size: Optional[_builtins.int] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresProjectsResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source lists all Postgres projects in the workspace.
+
+    ## Example Usage
+
+    ### List All Projects
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_postgres_projects()
+    pulumi.export("projectNames", [project.name for project in all.projects])
+    ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned
+    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -88,10 +102,24 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
 def get_postgres_projects_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresProjectsResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source lists all Postgres projects in the workspace.
+
+    ## Example Usage
+
+    ### List All Projects
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_postgres_projects()
+    pulumi.export("projectNames", [project.name for project in all.projects])
+    ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned
+    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

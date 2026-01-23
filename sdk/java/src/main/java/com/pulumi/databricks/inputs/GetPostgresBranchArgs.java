@@ -15,16 +15,16 @@ public final class GetPostgresBranchArgs extends com.pulumi.resources.InvokeArgs
     public static final GetPostgresBranchArgs Empty = new GetPostgresBranchArgs();
 
     /**
-     * The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * @return The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      * 
      */
     public Output<String> name() {
@@ -56,8 +56,8 @@ public final class GetPostgresBranchArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param name The resource name of the branch.
-         * Format: projects/{project_id}/branches/{branch_id}
+         * @param name The resource name of the branch. This field is output-only and constructed by the system.
+         * Format: `projects/{project_id}/branches/{branch_id}`
          * 
          * @return builder
          * 
@@ -68,8 +68,8 @@ public final class GetPostgresBranchArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param name The resource name of the branch.
-         * Format: projects/{project_id}/branches/{branch_id}
+         * @param name The resource name of the branch. This field is output-only and constructed by the system.
+         * Format: `projects/{project_id}/branches/{branch_id}`
          * 
          * @return builder
          * 

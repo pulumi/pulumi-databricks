@@ -63,7 +63,7 @@ class GetPostgresEndpointsResult:
     @pulumi.getter
     def parent(self) -> _builtins.str:
         """
-        (string) - The branch containing this endpoint.
+        (string) - The branch containing this endpoint (API resource hierarchy).
         Format: projects/{project_id}/branches/{branch_id}
         """
         return pulumi.get(self, "parent")
@@ -85,10 +85,25 @@ def get_postgres_endpoints(page_size: Optional[_builtins.int] = None,
                            parent: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresEndpointsResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source lists all Postgres endpoints in a branch.
+
+    ## Example Usage
+
+    ### List All Endpoints in a Branch
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_postgres_endpoints(parent="projects/my-project/branches/dev-branch")
+    pulumi.export("endpointNames", [endpoint.name for endpoint in all.endpoints])
+    pulumi.export("endpointTypes", [endpoint.status.endpoint_type for endpoint in all.endpoints])
+    ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned
+    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     :param _builtins.str parent: The Branch that owns this collection of endpoints.
            Format: projects/{project_id}/branches/{branch_id}
     """
@@ -107,10 +122,25 @@ def get_postgres_endpoints_output(page_size: Optional[pulumi.Input[Optional[_bui
                                   parent: Optional[pulumi.Input[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresEndpointsResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source lists all Postgres endpoints in a branch.
+
+    ## Example Usage
+
+    ### List All Endpoints in a Branch
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_postgres_endpoints(parent="projects/my-project/branches/dev-branch")
+    pulumi.export("endpointNames", [endpoint.name for endpoint in all.endpoints])
+    pulumi.export("endpointTypes", [endpoint.status.endpoint_type for endpoint in all.endpoints])
+    ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned
+    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     :param _builtins.str parent: The Branch that owns this collection of endpoints.
            Format: projects/{project_id}/branches/{branch_id}
     """

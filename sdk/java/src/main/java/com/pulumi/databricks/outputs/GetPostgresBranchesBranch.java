@@ -18,8 +18,8 @@ public final class GetPostgresBranchesBranch {
      */
     private String createTime;
     /**
-     * @return (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * @return (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      * 
      */
     private String name;
@@ -30,7 +30,7 @@ public final class GetPostgresBranchesBranch {
      */
     private String parent;
     /**
-     * @return (BranchSpec) - The desired state of a Branch
+     * @return (BranchSpec) - The spec contains the branch configuration
      * 
      */
     private GetPostgresBranchesBranchSpec spec;
@@ -40,7 +40,7 @@ public final class GetPostgresBranchesBranch {
      */
     private GetPostgresBranchesBranchStatus status;
     /**
-     * @return (string) - System generated unique ID for the branch
+     * @return (string) - System-generated unique ID for the branch
      * 
      */
     private String uid;
@@ -59,8 +59,8 @@ public final class GetPostgresBranchesBranch {
         return this.createTime;
     }
     /**
-     * @return (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * @return (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      * 
      */
     public String name() {
@@ -75,7 +75,7 @@ public final class GetPostgresBranchesBranch {
         return this.parent;
     }
     /**
-     * @return (BranchSpec) - The desired state of a Branch
+     * @return (BranchSpec) - The spec contains the branch configuration
      * 
      */
     public GetPostgresBranchesBranchSpec spec() {
@@ -89,7 +89,7 @@ public final class GetPostgresBranchesBranch {
         return this.status;
     }
     /**
-     * @return (string) - System generated unique ID for the branch
+     * @return (string) - System-generated unique ID for the branch
      * 
      */
     public String uid() {

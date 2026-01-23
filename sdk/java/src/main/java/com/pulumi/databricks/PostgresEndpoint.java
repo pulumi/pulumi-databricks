@@ -16,7 +16,309 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Read-Write Endpoint
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresEndpoint;
+ * import com.pulumi.databricks.PostgresEndpointArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Project")
+ *                 .build())
+ *             .build());
+ * 
+ *         var dev = new PostgresBranch("dev", PostgresBranchArgs.builder()
+ *             .branchId("dev-branch")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var primary = new PostgresEndpoint("primary", PostgresEndpointArgs.builder()
+ *             .endpointId("primary")
+ *             .parent(dev.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Read-Only Endpoint with Autoscaling
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresEndpoint;
+ * import com.pulumi.databricks.PostgresEndpointArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var readReplica = new PostgresEndpoint("readReplica", PostgresEndpointArgs.builder()
+ *             .endpointId("read-replica-1")
+ *             .parent(dev.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_ONLY")
+ *                 .autoscalingLimitMinCu(0.5)
+ *                 .autoscalingLimitMaxCu(4.0)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Endpoint with Custom Autoscaling and Suspension
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresEndpoint;
+ * import com.pulumi.databricks.PostgresEndpointArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var analytics = new PostgresEndpoint("analytics", PostgresEndpointArgs.builder()
+ *             .endpointId("analytics")
+ *             .parent(dev.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_ONLY")
+ *                 .autoscalingLimitMinCu(1.0)
+ *                 .autoscalingLimitMaxCu(8.0)
+ *                 .suspendTimeoutDuration("600s")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Disabled Endpoint
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresEndpoint;
+ * import com.pulumi.databricks.PostgresEndpointArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var maintenance = new PostgresEndpoint("maintenance", PostgresEndpointArgs.builder()
+ *             .endpointId("primary")
+ *             .parent(dev.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .disabled(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Endpoint with No Suspension
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresEndpoint;
+ * import com.pulumi.databricks.PostgresEndpointArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var alwaysOn = new PostgresEndpoint("alwaysOn", PostgresEndpointArgs.builder()
+ *             .endpointId("always-on")
+ *             .parent(dev.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .noSuspension(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Complete Example
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecDefaultEndpointSettingsArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresEndpoint;
+ * import com.pulumi.databricks.PostgresEndpointArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var prod = new PostgresProject("prod", PostgresProjectArgs.builder()
+ *             .projectId("production")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("Production Workloads")
+ *                 .historyRetentionDuration("2592000s")
+ *                 .defaultEndpointSettings(PostgresProjectSpecDefaultEndpointSettingsArgs.builder()
+ *                     .autoscalingLimitMinCu(1.0)
+ *                     .autoscalingLimitMaxCu(8.0)
+ *                     .suspendTimeoutDuration("300s")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var main = new PostgresBranch("main", PostgresBranchArgs.builder()
+ *             .branchId("main")
+ *             .parent(prod.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var primary = new PostgresEndpoint("primary", PostgresEndpointArgs.builder()
+ *             .endpointId("primary")
+ *             .parent(main.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .autoscalingLimitMinCu(1.0)
+ *                 .autoscalingLimitMaxCu(9.0)
+ *                 .noSuspension(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var readReplica = new PostgresEndpoint("readReplica", PostgresEndpointArgs.builder()
+ *             .endpointId("read-replica")
+ *             .parent(main.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_ONLY")
+ *                 .autoscalingLimitMinCu(0.5)
+ *                 .autoscalingLimitMaxCu(8.0)
+ *                 .suspendTimeoutDuration("600s")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -56,43 +358,45 @@ public class PostgresEndpoint extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The ID to use for the Endpoint, which will become the final component of
-     * the endpoint&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
      * 
      */
     @Export(name="endpointId", refs={String.class}, tree="[0]")
     private Output<String> endpointId;
 
     /**
-     * @return The ID to use for the Endpoint, which will become the final component of
-     * the endpoint&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
      * 
      */
     public Output<String> endpointId() {
         return this.endpointId;
     }
     /**
-     * (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The branch containing this endpoint.
+     * The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
@@ -100,7 +404,7 @@ public class PostgresEndpoint extends com.pulumi.resources.CustomResource {
     private Output<String> parent;
 
     /**
-     * @return The branch containing this endpoint.
+     * @return The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
@@ -108,42 +412,42 @@ public class PostgresEndpoint extends com.pulumi.resources.CustomResource {
         return this.parent;
     }
     /**
-     * The desired state of an Endpoint
+     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     @Export(name="spec", refs={PostgresEndpointSpec.class}, tree="[0]")
     private Output<PostgresEndpointSpec> spec;
 
     /**
-     * @return The desired state of an Endpoint
+     * @return The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     public Output<PostgresEndpointSpec> spec() {
         return this.spec;
     }
     /**
-     * (EndpointStatus) - The current status of an Endpoint
+     * (EndpointStatus) - Current operational status of the compute endpoint
      * 
      */
     @Export(name="status", refs={PostgresEndpointStatus.class}, tree="[0]")
     private Output<PostgresEndpointStatus> status;
 
     /**
-     * @return (EndpointStatus) - The current status of an Endpoint
+     * @return (EndpointStatus) - Current operational status of the compute endpoint
      * 
      */
     public Output<PostgresEndpointStatus> status() {
         return this.status;
     }
     /**
-     * (string) - System generated unique ID for the endpoint
+     * (string) - System-generated unique ID for the endpoint
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return (string) - System generated unique ID for the endpoint
+     * @return (string) - System-generated unique ID for the endpoint
      * 
      */
     public Output<String> uid() {

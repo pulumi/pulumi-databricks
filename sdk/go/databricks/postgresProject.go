@@ -12,7 +12,115 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// ## Example Usage
+//
+// ### Basic Project Creation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:   pulumi.Int(17),
+//					DisplayName: pulumi.String("My Application Project"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Project with Custom Settings
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("analytics-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:                pulumi.Int(16),
+//					DisplayName:              pulumi.String("Analytics Workloads"),
+//					HistoryRetentionDuration: pulumi.String("1209600s"),
+//					DefaultEndpointSettings: &databricks.PostgresProjectSpecDefaultEndpointSettingsArgs{
+//						AutoscalingLimitMinCu:  pulumi.Float64(1),
+//						AutoscalingLimitMaxCu:  pulumi.Float64(8),
+//						SuspendTimeoutDuration: pulumi.String("300s"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Referencing in Other Resources
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:   pulumi.Int(17),
+//					DisplayName: pulumi.String("My Project"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresBranch(ctx, "dev", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("dev-branch"),
+//				Parent:   this.Name,
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					NoExpiry: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -38,19 +146,20 @@ type PostgresProject struct {
 
 	// (string) - A timestamp indicating when the project was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// (string) - The resource name of the project.
-	// Format: projects/{project_id}
+	// (string) - The resource name of the project. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID to use for the Project, which will become the final component of
-	// the project's resource name.
-	//
-	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+	// The ID to use for the Project. This becomes the final component of the project's resource name.
+	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+	// Examples:
+	// - With custom ID: `production` → name becomes `projects/production`
+	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// The desired state of a Project
+	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecOutput `pulumi:"spec"`
 	// (ProjectStatus) - The current status of a Project
 	Status PostgresProjectStatusOutput `pulumi:"status"`
-	// (string) - System generated unique ID for the project
+	// (string) - System-generated unique ID for the project
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// (string) - A timestamp indicating when the project was last updated
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -91,19 +200,20 @@ func GetPostgresProject(ctx *pulumi.Context,
 type postgresProjectState struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime *string `pulumi:"createTime"`
-	// (string) - The resource name of the project.
-	// Format: projects/{project_id}
+	// (string) - The resource name of the project. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}`
 	Name *string `pulumi:"name"`
-	// The ID to use for the Project, which will become the final component of
-	// the project's resource name.
-	//
-	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+	// The ID to use for the Project. This becomes the final component of the project's resource name.
+	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+	// Examples:
+	// - With custom ID: `production` → name becomes `projects/production`
+	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
 	ProjectId *string `pulumi:"projectId"`
-	// The desired state of a Project
+	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec *PostgresProjectSpec `pulumi:"spec"`
 	// (ProjectStatus) - The current status of a Project
 	Status *PostgresProjectStatus `pulumi:"status"`
-	// (string) - System generated unique ID for the project
+	// (string) - System-generated unique ID for the project
 	Uid *string `pulumi:"uid"`
 	// (string) - A timestamp indicating when the project was last updated
 	UpdateTime *string `pulumi:"updateTime"`
@@ -112,19 +222,20 @@ type postgresProjectState struct {
 type PostgresProjectState struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime pulumi.StringPtrInput
-	// (string) - The resource name of the project.
-	// Format: projects/{project_id}
+	// (string) - The resource name of the project. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}`
 	Name pulumi.StringPtrInput
-	// The ID to use for the Project, which will become the final component of
-	// the project's resource name.
-	//
-	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+	// The ID to use for the Project. This becomes the final component of the project's resource name.
+	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+	// Examples:
+	// - With custom ID: `production` → name becomes `projects/production`
+	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
 	ProjectId pulumi.StringPtrInput
-	// The desired state of a Project
+	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecPtrInput
 	// (ProjectStatus) - The current status of a Project
 	Status PostgresProjectStatusPtrInput
-	// (string) - System generated unique ID for the project
+	// (string) - System-generated unique ID for the project
 	Uid pulumi.StringPtrInput
 	// (string) - A timestamp indicating when the project was last updated
 	UpdateTime pulumi.StringPtrInput
@@ -135,23 +246,25 @@ func (PostgresProjectState) ElementType() reflect.Type {
 }
 
 type postgresProjectArgs struct {
-	// The ID to use for the Project, which will become the final component of
-	// the project's resource name.
-	//
-	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+	// The ID to use for the Project. This becomes the final component of the project's resource name.
+	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+	// Examples:
+	// - With custom ID: `production` → name becomes `projects/production`
+	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
 	ProjectId string `pulumi:"projectId"`
-	// The desired state of a Project
+	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec *PostgresProjectSpec `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a PostgresProject resource.
 type PostgresProjectArgs struct {
-	// The ID to use for the Project, which will become the final component of
-	// the project's resource name.
-	//
-	// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+	// The ID to use for the Project. This becomes the final component of the project's resource name.
+	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+	// Examples:
+	// - With custom ID: `production` → name becomes `projects/production`
+	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
 	ProjectId pulumi.StringInput
-	// The desired state of a Project
+	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecPtrInput
 }
 
@@ -247,21 +360,22 @@ func (o PostgresProjectOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the project.
-// Format: projects/{project_id}
+// (string) - The resource name of the project. This field is output-only and constructed by the system.
+// Format: `projects/{project_id}`
 func (o PostgresProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID to use for the Project, which will become the final component of
-// the project's resource name.
-//
-// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+// The ID to use for the Project. This becomes the final component of the project's resource name.
+// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+// Examples:
+// - With custom ID: `production` → name becomes `projects/production`
+// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
 func (o PostgresProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// The desired state of a Project
+// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 func (o PostgresProjectOutput) Spec() PostgresProjectSpecOutput {
 	return o.ApplyT(func(v *PostgresProject) PostgresProjectSpecOutput { return v.Spec }).(PostgresProjectSpecOutput)
 }
@@ -271,7 +385,7 @@ func (o PostgresProjectOutput) Status() PostgresProjectStatusOutput {
 	return o.ApplyT(func(v *PostgresProject) PostgresProjectStatusOutput { return v.Status }).(PostgresProjectStatusOutput)
 }
 
-// (string) - System generated unique ID for the project
+// (string) - System-generated unique ID for the project
 func (o PostgresProjectOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

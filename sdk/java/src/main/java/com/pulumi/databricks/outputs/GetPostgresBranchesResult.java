@@ -23,7 +23,7 @@ public final class GetPostgresBranchesResult {
     private String id;
     private @Nullable Integer pageSize;
     /**
-     * @return (string) - The project containing this branch.
+     * @return (string) - The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
      * 
      */
@@ -44,7 +44,7 @@ public final class GetPostgresBranchesResult {
         return Optional.ofNullable(this.pageSize);
     }
     /**
-     * @return (string) - The project containing this branch.
+     * @return (string) - The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
      * 
      */

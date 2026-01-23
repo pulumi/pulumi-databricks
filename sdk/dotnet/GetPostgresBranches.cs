@@ -12,19 +12,109 @@ namespace Pulumi.Databricks
     public static class GetPostgresBranches
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres branches in a project.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Branches in a Project
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPostgresBranches.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["branchNames"] = .Select(branch =&gt; 
+        ///         {
+        ///             return branch.Name;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresBranchesResult> InvokeAsync(GetPostgresBranchesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresBranchesResult>("databricks:index/getPostgresBranches:getPostgresBranches", args ?? new GetPostgresBranchesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres branches in a project.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Branches in a Project
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPostgresBranches.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["branchNames"] = .Select(branch =&gt; 
+        ///         {
+        ///             return branch.Name;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresBranchesResult> Invoke(GetPostgresBranchesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresBranchesResult>("databricks:index/getPostgresBranches:getPostgresBranches", args ?? new GetPostgresBranchesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres branches in a project.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Branches in a Project
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPostgresBranches.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["branchNames"] = .Select(branch =&gt; 
+        ///         {
+        ///             return branch.Name;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresBranchesResult> Invoke(GetPostgresBranchesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresBranchesResult>("databricks:index/getPostgresBranches:getPostgresBranches", args ?? new GetPostgresBranchesInvokeArgs(), options.WithDefaults());
@@ -34,7 +124,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresBranchesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned
+        /// Upper bound for items returned. Cannot be negative
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -55,7 +145,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresBranchesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned
+        /// Upper bound for items returned. Cannot be negative
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
@@ -84,7 +174,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly int? PageSize;
         /// <summary>
-        /// (string) - The project containing this branch.
+        /// (string) - The project containing this branch (API resource hierarchy).
         /// Format: projects/{project_id}
         /// </summary>
         public readonly string Parent;

@@ -12,19 +12,100 @@ namespace Pulumi.Databricks
     public static class GetPostgresProjects
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres projects in the workspace.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Projects
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPostgresProjects.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectNames"] = .Select(project =&gt; 
+        ///         {
+        ///             return project.Name;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresProjectsResult> InvokeAsync(GetPostgresProjectsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresProjectsResult>("databricks:index/getPostgresProjects:getPostgresProjects", args ?? new GetPostgresProjectsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres projects in the workspace.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Projects
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPostgresProjects.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectNames"] = .Select(project =&gt; 
+        ///         {
+        ///             return project.Name;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresProjectsResult> Invoke(GetPostgresProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresProjectsResult>("databricks:index/getPostgresProjects:getPostgresProjects", args ?? new GetPostgresProjectsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres projects in the workspace.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Projects
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPostgresProjects.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectNames"] = .Select(project =&gt; 
+        ///         {
+        ///             return project.Name;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresProjectsResult> Invoke(GetPostgresProjectsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresProjectsResult>("databricks:index/getPostgresProjects:getPostgresProjects", args ?? new GetPostgresProjectsInvokeArgs(), options.WithDefaults());
@@ -34,7 +115,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresProjectsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned
+        /// Upper bound for items returned. Cannot be negative
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -48,7 +129,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresProjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned
+        /// Upper bound for items returned. Cannot be negative
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

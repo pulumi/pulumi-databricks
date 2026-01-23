@@ -36,12 +36,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("pgVersion")]
         public Input<int>? PgVersion { get; set; }
 
-        /// <summary>
-        /// (ProjectSettings) - The effective project settings
-        /// </summary>
-        [Input("settings")]
-        public Input<Inputs.PostgresProjectSpecSettingsArgs>? Settings { get; set; }
-
         public PostgresProjectSpecArgs()
         {
         }

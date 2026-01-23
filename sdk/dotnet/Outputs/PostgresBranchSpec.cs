@@ -14,13 +14,18 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PostgresBranchSpec
     {
         /// <summary>
-        /// (boolean) - Whether the branch is the project's default branch
+        /// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         /// </summary>
-        public readonly bool? Default;
+        public readonly string? ExpireTime;
         /// <summary>
         /// (boolean) - Whether the branch is protected
         /// </summary>
         public readonly bool? IsProtected;
+        /// <summary>
+        /// Explicitly disable expiration. When set to true, the branch will not expire.
+        /// If set to false, the request is invalid; provide either ttl or ExpireTime instead
+        /// </summary>
+        public readonly bool? NoExpiry;
         /// <summary>
         /// (string) - The name of the source branch from which this branch was created.
         /// Format: projects/{project_id}/branches/{branch_id}
@@ -34,24 +39,34 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - The point in time on the source branch from which this branch was created
         /// </summary>
         public readonly string? SourceBranchTime;
+        /// <summary>
+        /// Relative time-to-live duration. When set, the branch will expire at CreationTime + ttl
+        /// </summary>
+        public readonly string? Ttl;
 
         [OutputConstructor]
         private PostgresBranchSpec(
-            bool? @default,
+            string? expireTime,
 
             bool? isProtected,
+
+            bool? noExpiry,
 
             string? sourceBranch,
 
             string? sourceBranchLsn,
 
-            string? sourceBranchTime)
+            string? sourceBranchTime,
+
+            string? ttl)
         {
-            Default = @default;
+            ExpireTime = expireTime;
             IsProtected = isProtected;
+            NoExpiry = noExpiry;
             SourceBranch = sourceBranch;
             SourceBranchLsn = sourceBranchLsn;
             SourceBranchTime = sourceBranchTime;
+            Ttl = ttl;
         }
     }
 }

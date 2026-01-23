@@ -18,8 +18,8 @@ public final class GetPostgresEndpointsEndpoint {
      */
     private String createTime;
     /**
-     * @return (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      * 
      */
     private String name;
@@ -30,17 +30,17 @@ public final class GetPostgresEndpointsEndpoint {
      */
     private String parent;
     /**
-     * @return (EndpointSpec) - The desired state of an Endpoint
+     * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     private GetPostgresEndpointsEndpointSpec spec;
     /**
-     * @return (EndpointStatus) - The current status of an Endpoint
+     * @return (EndpointStatus) - Current operational status of the compute endpoint
      * 
      */
     private GetPostgresEndpointsEndpointStatus status;
     /**
-     * @return (string) - System generated unique ID for the endpoint
+     * @return (string) - System-generated unique ID for the endpoint
      * 
      */
     private String uid;
@@ -59,8 +59,8 @@ public final class GetPostgresEndpointsEndpoint {
         return this.createTime;
     }
     /**
-     * @return (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      * 
      */
     public String name() {
@@ -75,21 +75,21 @@ public final class GetPostgresEndpointsEndpoint {
         return this.parent;
     }
     /**
-     * @return (EndpointSpec) - The desired state of an Endpoint
+     * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     public GetPostgresEndpointsEndpointSpec spec() {
         return this.spec;
     }
     /**
-     * @return (EndpointStatus) - The current status of an Endpoint
+     * @return (EndpointStatus) - Current operational status of the compute endpoint
      * 
      */
     public GetPostgresEndpointsEndpointStatus status() {
         return this.status;
     }
     /**
-     * @return (string) - System generated unique ID for the endpoint
+     * @return (string) - System-generated unique ID for the endpoint
      * 
      */
     public String uid() {

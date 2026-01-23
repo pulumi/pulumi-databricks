@@ -14,12 +14,16 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+        /// 
         /// This data source can be used to fetch a quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
         /// 
         /// Referring to a quality monitor by uc object type (currently only support `Schema`) and object id:
         /// 
@@ -51,12 +55,16 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+        /// 
         /// This data source can be used to fetch a quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
         /// 
         /// Referring to a quality monitor by uc object type (currently only support `Schema`) and object id:
         /// 
@@ -88,12 +96,16 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+        /// 
         /// This data source can be used to fetch a quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
         /// 
         /// Referring to a quality monitor by uc object type (currently only support `Schema`) and object id:
         /// 

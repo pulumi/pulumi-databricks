@@ -18,8 +18,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - The resource name of the endpoint.
-        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+        /// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -28,15 +28,15 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Parent;
         /// <summary>
-        /// (EndpointSpec) - The desired state of an Endpoint
+        /// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         /// </summary>
         public readonly Outputs.GetPostgresEndpointsEndpointSpecResult Spec;
         /// <summary>
-        /// (EndpointStatus) - The current status of an Endpoint
+        /// (EndpointStatus) - Current operational status of the compute endpoint
         /// </summary>
         public readonly Outputs.GetPostgresEndpointsEndpointStatusResult Status;
         /// <summary>
-        /// (string) - System generated unique ID for the endpoint
+        /// (string) - System-generated unique ID for the endpoint
         /// </summary>
         public readonly string Uid;
         /// <summary>

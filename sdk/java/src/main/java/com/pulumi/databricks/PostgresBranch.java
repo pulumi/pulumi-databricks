@@ -16,7 +16,135 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Branch Creation
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Project")
+ *                 .build())
+ *             .build());
+ * 
+ *         var dev = new PostgresBranch("dev", PostgresBranchArgs.builder()
+ *             .branchId("dev-branch")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Protected Branch
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var production = new PostgresBranch("production", PostgresBranchArgs.builder()
+ *             .branchId("production")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .isProtected(true)
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Branch with Expiration (TTL)
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var temporary = new PostgresBranch("temporary", PostgresBranchArgs.builder()
+ *             .branchId("temp-feature-test")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .ttl("604800s")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -42,20 +170,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/postgresBranch:PostgresBranch")
 public class PostgresBranch extends com.pulumi.resources.CustomResource {
     /**
-     * The ID to use for the Branch, which will become the final component of
-     * the branch&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
      * 
      */
     @Export(name="branchId", refs={String.class}, tree="[0]")
     private Output<String> branchId;
 
     /**
-     * @return The ID to use for the Branch, which will become the final component of
-     * the branch&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * @return The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
      * 
      */
     public Output<String> branchId() {
@@ -76,46 +206,52 @@ public class PostgresBranch extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * @return (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The project containing this branch.
+     * The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
+     * 
+     * Note: This field indicates where the branch exists in the resource hierarchy.
+     * For point-in-time branching from another branch, see `spec.source_branch`
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
-     * @return The project containing this branch.
+     * @return The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
+     * 
+     * Note: This field indicates where the branch exists in the resource hierarchy.
+     * For point-in-time branching from another branch, see `spec.source_branch`
      * 
      */
     public Output<String> parent() {
         return this.parent;
     }
     /**
-     * The desired state of a Branch
+     * The spec contains the branch configuration
      * 
      */
     @Export(name="spec", refs={PostgresBranchSpec.class}, tree="[0]")
     private Output<PostgresBranchSpec> spec;
 
     /**
-     * @return The desired state of a Branch
+     * @return The spec contains the branch configuration
      * 
      */
     public Output<PostgresBranchSpec> spec() {
@@ -136,14 +272,14 @@ public class PostgresBranch extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * (string) - System generated unique ID for the branch
+     * (string) - System-generated unique ID for the branch
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return (string) - System generated unique ID for the branch
+     * @return (string) - System-generated unique ID for the branch
      * 
      */
     public Output<String> uid() {

@@ -7,7 +7,62 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * ## Example Usage
+ *
+ * ### Basic Branch Creation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresProject("this", {
+ *     projectId: "my-project",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "My Project",
+ *     },
+ * });
+ * const dev = new databricks.PostgresBranch("dev", {
+ *     branchId: "dev-branch",
+ *     parent: _this.name,
+ *     spec: {
+ *         noExpiry: true,
+ *     },
+ * });
+ * ```
+ *
+ * ### Protected Branch
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const production = new databricks.PostgresBranch("production", {
+ *     branchId: "production",
+ *     parent: _this.name,
+ *     spec: {
+ *         isProtected: true,
+ *         noExpiry: true,
+ *     },
+ * });
+ * ```
+ *
+ * ### Branch with Expiration (TTL)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const temporary = new databricks.PostgresBranch("temporary", {
+ *     branchId: "temp-feature-test",
+ *     parent: _this.name,
+ *     spec: {
+ *         ttl: "604800s",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -58,10 +113,11 @@ export class PostgresBranch extends pulumi.CustomResource {
     }
 
     /**
-     * The ID to use for the Branch, which will become the final component of
-     * the branch's resource name.
-     *
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
      */
     declare public readonly branchId: pulumi.Output<string>;
     /**
@@ -69,17 +125,20 @@ export class PostgresBranch extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The project containing this branch.
+     * The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
+     *
+     * Note: This field indicates where the branch exists in the resource hierarchy.
+     * For point-in-time branching from another branch, see `spec.source_branch`
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * The desired state of a Branch
+     * The spec contains the branch configuration
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresBranchSpec>;
     /**
@@ -87,7 +146,7 @@ export class PostgresBranch extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<outputs.PostgresBranchStatus>;
     /**
-     * (string) - System generated unique ID for the branch
+     * (string) - System-generated unique ID for the branch
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
@@ -143,10 +202,11 @@ export class PostgresBranch extends pulumi.CustomResource {
  */
 export interface PostgresBranchState {
     /**
-     * The ID to use for the Branch, which will become the final component of
-     * the branch's resource name.
-     *
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
      */
     branchId?: pulumi.Input<string>;
     /**
@@ -154,17 +214,20 @@ export interface PostgresBranchState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      */
     name?: pulumi.Input<string>;
     /**
-     * The project containing this branch.
+     * The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
+     *
+     * Note: This field indicates where the branch exists in the resource hierarchy.
+     * For point-in-time branching from another branch, see `spec.source_branch`
      */
     parent?: pulumi.Input<string>;
     /**
-     * The desired state of a Branch
+     * The spec contains the branch configuration
      */
     spec?: pulumi.Input<inputs.PostgresBranchSpec>;
     /**
@@ -172,7 +235,7 @@ export interface PostgresBranchState {
      */
     status?: pulumi.Input<inputs.PostgresBranchStatus>;
     /**
-     * (string) - System generated unique ID for the branch
+     * (string) - System-generated unique ID for the branch
      */
     uid?: pulumi.Input<string>;
     /**
@@ -186,19 +249,23 @@ export interface PostgresBranchState {
  */
 export interface PostgresBranchArgs {
     /**
-     * The ID to use for the Branch, which will become the final component of
-     * the branch's resource name.
-     *
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
      */
     branchId: pulumi.Input<string>;
     /**
-     * The project containing this branch.
+     * The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
+     *
+     * Note: This field indicates where the branch exists in the resource hierarchy.
+     * For point-in-time branching from another branch, see `spec.source_branch`
      */
     parent: pulumi.Input<string>;
     /**
-     * The desired state of a Branch
+     * The spec contains the branch configuration
      */
     spec?: pulumi.Input<inputs.PostgresBranchSpec>;
 }

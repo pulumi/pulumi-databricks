@@ -25,7 +25,8 @@ class GitCredentialArgs:
                  git_username: Optional[pulumi.Input[_builtins.str]] = None,
                  is_default_for_provider: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_access_token: Optional[pulumi.Input[_builtins.str]] = None):
+                 personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitCredential resource.
         :param pulumi.Input[_builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
@@ -49,6 +50,8 @@ class GitCredentialArgs:
             pulumi.set(__self__, "name", name)
         if personal_access_token is not None:
             pulumi.set(__self__, "personal_access_token", personal_access_token)
+        if principal_id is not None:
+            pulumi.set(__self__, "principal_id", principal_id)
 
     @_builtins.property
     @pulumi.getter(name="gitProvider")
@@ -134,6 +137,15 @@ class GitCredentialArgs:
     def personal_access_token(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "personal_access_token", value)
 
+    @_builtins.property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "principal_id")
+
+    @principal_id.setter
+    def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "principal_id", value)
+
 
 @pulumi.input_type
 class _GitCredentialState:
@@ -144,7 +156,8 @@ class _GitCredentialState:
                  git_username: Optional[pulumi.Input[_builtins.str]] = None,
                  is_default_for_provider: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_access_token: Optional[pulumi.Input[_builtins.str]] = None):
+                 personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitCredential resources.
         :param pulumi.Input[_builtins.bool] force: specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
@@ -169,6 +182,8 @@ class _GitCredentialState:
             pulumi.set(__self__, "name", name)
         if personal_access_token is not None:
             pulumi.set(__self__, "personal_access_token", personal_access_token)
+        if principal_id is not None:
+            pulumi.set(__self__, "principal_id", principal_id)
 
     @_builtins.property
     @pulumi.getter
@@ -254,6 +269,15 @@ class _GitCredentialState:
     def personal_access_token(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "personal_access_token", value)
 
+    @_builtins.property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "principal_id")
+
+    @principal_id.setter
+    def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "principal_id", value)
+
 
 @pulumi.type_token("databricks:index/gitCredential:GitCredential")
 class GitCredential(pulumi.CustomResource):
@@ -268,6 +292,7 @@ class GitCredential(pulumi.CustomResource):
                  is_default_for_provider: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
@@ -427,6 +452,7 @@ class GitCredential(pulumi.CustomResource):
                  is_default_for_provider: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -445,6 +471,7 @@ class GitCredential(pulumi.CustomResource):
             __props__.__dict__["is_default_for_provider"] = is_default_for_provider
             __props__.__dict__["name"] = name
             __props__.__dict__["personal_access_token"] = personal_access_token
+            __props__.__dict__["principal_id"] = principal_id
         super(GitCredential, __self__).__init__(
             'databricks:index/gitCredential:GitCredential',
             resource_name,
@@ -461,7 +488,8 @@ class GitCredential(pulumi.CustomResource):
             git_username: Optional[pulumi.Input[_builtins.str]] = None,
             is_default_for_provider: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
-            personal_access_token: Optional[pulumi.Input[_builtins.str]] = None) -> 'GitCredential':
+            personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
+            principal_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GitCredential':
         """
         Get an existing GitCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -488,6 +516,7 @@ class GitCredential(pulumi.CustomResource):
         __props__.__dict__["is_default_for_provider"] = is_default_for_provider
         __props__.__dict__["name"] = name
         __props__.__dict__["personal_access_token"] = personal_access_token
+        __props__.__dict__["principal_id"] = principal_id
         return GitCredential(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -545,4 +574,9 @@ class GitCredential(pulumi.CustomResource):
         The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
         """
         return pulumi.get(self, "personal_access_token")
+
+    @_builtins.property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "principal_id")
 

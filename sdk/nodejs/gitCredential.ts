@@ -121,6 +121,7 @@ export class GitCredential extends pulumi.CustomResource {
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     declare public readonly personalAccessToken: pulumi.Output<string | undefined>;
+    declare public readonly principalId: pulumi.Output<string | undefined>;
 
     /**
      * Create a GitCredential resource with the given unique name, arguments, and options.
@@ -142,6 +143,7 @@ export class GitCredential extends pulumi.CustomResource {
             resourceInputs["isDefaultForProvider"] = state?.isDefaultForProvider;
             resourceInputs["name"] = state?.name;
             resourceInputs["personalAccessToken"] = state?.personalAccessToken;
+            resourceInputs["principalId"] = state?.principalId;
         } else {
             const args = argsOrState as GitCredentialArgs | undefined;
             if (args?.gitProvider === undefined && !opts.urn) {
@@ -154,6 +156,7 @@ export class GitCredential extends pulumi.CustomResource {
             resourceInputs["isDefaultForProvider"] = args?.isDefaultForProvider;
             resourceInputs["name"] = args?.name;
             resourceInputs["personalAccessToken"] = args?.personalAccessToken;
+            resourceInputs["principalId"] = args?.principalId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitCredential.__pulumiType, name, resourceInputs, opts);
@@ -192,6 +195,7 @@ export interface GitCredentialState {
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     personalAccessToken?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string>;
 }
 
 /**
@@ -226,4 +230,5 @@ export interface GitCredentialArgs {
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     personalAccessToken?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string>;
 }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionFullRefreshWindowArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionSourceConfigurationArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionTableConfigurationArgs;
@@ -25,6 +26,13 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
     public Optional<Output<String>> connectionName() {
         return Optional.ofNullable(this.connectionName);
+    }
+
+    @Import(name="fullRefreshWindow")
+    private @Nullable Output<PipelineIngestionDefinitionFullRefreshWindowArgs> fullRefreshWindow;
+
+    public Optional<Output<PipelineIngestionDefinitionFullRefreshWindowArgs>> fullRefreshWindow() {
+        return Optional.ofNullable(this.fullRefreshWindow);
     }
 
     @Import(name="ingestFromUcForeignCatalog")
@@ -80,6 +88,7 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
     private PipelineIngestionDefinitionArgs(PipelineIngestionDefinitionArgs $) {
         this.connectionName = $.connectionName;
+        this.fullRefreshWindow = $.fullRefreshWindow;
         this.ingestFromUcForeignCatalog = $.ingestFromUcForeignCatalog;
         this.ingestionGatewayId = $.ingestionGatewayId;
         this.netsuiteJarPath = $.netsuiteJarPath;
@@ -114,6 +123,15 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
         public Builder connectionName(String connectionName) {
             return connectionName(Output.of(connectionName));
+        }
+
+        public Builder fullRefreshWindow(@Nullable Output<PipelineIngestionDefinitionFullRefreshWindowArgs> fullRefreshWindow) {
+            $.fullRefreshWindow = fullRefreshWindow;
+            return this;
+        }
+
+        public Builder fullRefreshWindow(PipelineIngestionDefinitionFullRefreshWindowArgs fullRefreshWindow) {
+            return fullRefreshWindow(Output.of(fullRefreshWindow));
         }
 
         public Builder ingestFromUcForeignCatalog(@Nullable Output<Boolean> ingestFromUcForeignCatalog) {

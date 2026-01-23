@@ -49,6 +49,7 @@ namespace Pulumi.Databricks.Outputs
         /// similar to `InstancePoolId`, but for driver node.
         /// </summary>
         public readonly string? DriverInstancePoolId;
+        public readonly Outputs.GetClusterClusterInfoDriverNodeTypeFlexibilityResult? DriverNodeTypeFlexibility;
         /// <summary>
         /// The node type of the Spark driver.
         /// </summary>
@@ -116,6 +117,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetClusterClusterInfoTerminationReasonResult? TerminationReason;
         public readonly int? TotalInitialRemoteDiskSize;
         public readonly bool? UseMlRuntime;
+        public readonly Outputs.GetClusterClusterInfoWorkerNodeTypeFlexibilityResult? WorkerNodeTypeFlexibility;
         public readonly Outputs.GetClusterClusterInfoWorkloadTypeResult? WorkloadType;
 
         [OutputConstructor]
@@ -155,6 +157,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetClusterClusterInfoDriverResult? driver,
 
             string? driverInstancePoolId,
+
+            Outputs.GetClusterClusterInfoDriverNodeTypeFlexibilityResult? driverNodeTypeFlexibility,
 
             string? driverNodeTypeId,
 
@@ -218,6 +222,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool? useMlRuntime,
 
+            Outputs.GetClusterClusterInfoWorkerNodeTypeFlexibilityResult? workerNodeTypeFlexibility,
+
             Outputs.GetClusterClusterInfoWorkloadTypeResult? workloadType)
         {
             Autoscale = autoscale;
@@ -238,6 +244,7 @@ namespace Pulumi.Databricks.Outputs
             DockerImage = dockerImage;
             Driver = driver;
             DriverInstancePoolId = driverInstancePoolId;
+            DriverNodeTypeFlexibility = driverNodeTypeFlexibility;
             DriverNodeTypeId = driverNodeTypeId;
             EnableElasticDisk = enableElasticDisk;
             EnableLocalDiskEncryption = enableLocalDiskEncryption;
@@ -269,6 +276,7 @@ namespace Pulumi.Databricks.Outputs
             TerminationReason = terminationReason;
             TotalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
             UseMlRuntime = useMlRuntime;
+            WorkerNodeTypeFlexibility = workerNodeTypeFlexibility;
             WorkloadType = workloadType;
         }
     }

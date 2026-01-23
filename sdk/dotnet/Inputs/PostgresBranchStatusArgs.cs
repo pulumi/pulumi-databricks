@@ -25,6 +25,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? Default { get; set; }
 
         /// <summary>
+        /// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
+        /// <summary>
         /// (boolean) - Whether the branch is protected
         /// </summary>
         [Input("isProtected")]

@@ -14,11 +14,16 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+        /// 
         /// This data source can be used to fetch the list of quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
         /// 
+        /// 
         /// ## Example Usage
+        /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
         /// 
         /// Getting a list of all quality monitors:
         /// 
@@ -41,11 +46,16 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+        /// 
         /// This data source can be used to fetch the list of quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
         /// 
+        /// 
         /// ## Example Usage
+        /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
         /// 
         /// Getting a list of all quality monitors:
         /// 
@@ -68,11 +78,16 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+        /// 
         /// This data source can be used to fetch the list of quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
         /// 
+        /// 
         /// ## Example Usage
+        /// 
+        /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
         /// 
         /// Getting a list of all quality monitors:
         /// 

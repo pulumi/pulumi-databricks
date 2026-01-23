@@ -10,7 +10,95 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Project Creation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
+    ///         {
+    ///             PgVersion = 17,
+    ///             DisplayName = "My Application Project",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Project with Custom Settings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     {
+    ///         ProjectId = "analytics-project",
+    ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
+    ///         {
+    ///             PgVersion = 16,
+    ///             DisplayName = "Analytics Workloads",
+    ///             HistoryRetentionDuration = "1209600s",
+    ///             DefaultEndpointSettings = new Databricks.Inputs.PostgresProjectSpecDefaultEndpointSettingsArgs
+    ///             {
+    ///                 AutoscalingLimitMinCu = 1,
+    ///                 AutoscalingLimitMaxCu = 8,
+    ///                 SuspendTimeoutDuration = "300s",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Referencing in Other Resources
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
+    ///         {
+    ///             PgVersion = 17,
+    ///             DisplayName = "My Project",
+    ///         },
+    ///     });
+    /// 
+    ///     var dev = new Databricks.PostgresBranch("dev", new()
+    ///     {
+    ///         BranchId = "dev-branch",
+    ///         Parent = @this.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
+    ///         {
+    ///             NoExpiry = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -42,23 +130,24 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resource name of the project.
-        /// Format: projects/{project_id}
+        /// (string) - The resource name of the project. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID to use for the Project, which will become the final component of
-        /// the project's resource name.
-        /// 
-        /// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        /// The ID to use for the Project. This becomes the final component of the project's resource name.
+        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        /// Examples:
+        /// - With custom ID: `Production` → name becomes `projects/production`
+        /// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The desired state of a Project
+        /// The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
         [Output("spec")]
         public Output<Outputs.PostgresProjectSpec> Spec { get; private set; } = null!;
@@ -70,7 +159,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresProjectStatus> Status { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - System generated unique ID for the project
+        /// (string) - System-generated unique ID for the project
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -128,16 +217,17 @@ namespace Pulumi.Databricks
     public sealed class PostgresProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID to use for the Project, which will become the final component of
-        /// the project's resource name.
-        /// 
-        /// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        /// The ID to use for the Project. This becomes the final component of the project's resource name.
+        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        /// Examples:
+        /// - With custom ID: `Production` → name becomes `projects/production`
+        /// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The desired state of a Project
+        /// The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresProjectSpecArgs>? Spec { get; set; }
@@ -157,23 +247,24 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// (string) - The resource name of the project.
-        /// Format: projects/{project_id}
+        /// (string) - The resource name of the project. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID to use for the Project, which will become the final component of
-        /// the project's resource name.
-        /// 
-        /// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        /// The ID to use for the Project. This becomes the final component of the project's resource name.
+        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        /// Examples:
+        /// - With custom ID: `Production` → name becomes `projects/production`
+        /// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The desired state of a Project
+        /// The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresProjectSpecGetArgs>? Spec { get; set; }
@@ -185,7 +276,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresProjectStatusGetArgs>? Status { get; set; }
 
         /// <summary>
-        /// (string) - System generated unique ID for the project
+        /// (string) - System-generated unique ID for the project
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

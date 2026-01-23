@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PostgresEndpointStatusHosts;
 import com.pulumi.databricks.outputs.PostgresEndpointStatusSettings;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -38,20 +39,15 @@ public final class PostgresEndpointStatus {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     private @Nullable String endpointType;
     /**
-     * @return (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * @return (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
-    private @Nullable String host;
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last active
-     * 
-     */
-    private @Nullable String lastActiveTime;
+    private @Nullable PostgresEndpointStatusHosts hosts;
     /**
      * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
      * 
@@ -62,16 +58,6 @@ public final class PostgresEndpointStatus {
      * 
      */
     private @Nullable PostgresEndpointStatusSettings settings;
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last started
-     * 
-     */
-    private @Nullable String startTime;
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last suspended
-     * 
-     */
-    private @Nullable String suspendTime;
     /**
      * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      * 
@@ -111,25 +97,18 @@ public final class PostgresEndpointStatus {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     public Optional<String> endpointType() {
         return Optional.ofNullable(this.endpointType);
     }
     /**
-     * @return (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * @return (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
-    public Optional<String> host() {
-        return Optional.ofNullable(this.host);
-    }
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last active
-     * 
-     */
-    public Optional<String> lastActiveTime() {
-        return Optional.ofNullable(this.lastActiveTime);
+    public Optional<PostgresEndpointStatusHosts> hosts() {
+        return Optional.ofNullable(this.hosts);
     }
     /**
      * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
@@ -144,20 +123,6 @@ public final class PostgresEndpointStatus {
      */
     public Optional<PostgresEndpointStatusSettings> settings() {
         return Optional.ofNullable(this.settings);
-    }
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last started
-     * 
-     */
-    public Optional<String> startTime() {
-        return Optional.ofNullable(this.startTime);
-    }
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last suspended
-     * 
-     */
-    public Optional<String> suspendTime() {
-        return Optional.ofNullable(this.suspendTime);
     }
     /**
      * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
@@ -181,12 +146,9 @@ public final class PostgresEndpointStatus {
         private @Nullable String currentState;
         private @Nullable Boolean disabled;
         private @Nullable String endpointType;
-        private @Nullable String host;
-        private @Nullable String lastActiveTime;
+        private @Nullable PostgresEndpointStatusHosts hosts;
         private @Nullable String pendingState;
         private @Nullable PostgresEndpointStatusSettings settings;
-        private @Nullable String startTime;
-        private @Nullable String suspendTime;
         private @Nullable String suspendTimeoutDuration;
         public Builder() {}
         public Builder(PostgresEndpointStatus defaults) {
@@ -196,12 +158,9 @@ public final class PostgresEndpointStatus {
     	      this.currentState = defaults.currentState;
     	      this.disabled = defaults.disabled;
     	      this.endpointType = defaults.endpointType;
-    	      this.host = defaults.host;
-    	      this.lastActiveTime = defaults.lastActiveTime;
+    	      this.hosts = defaults.hosts;
     	      this.pendingState = defaults.pendingState;
     	      this.settings = defaults.settings;
-    	      this.startTime = defaults.startTime;
-    	      this.suspendTime = defaults.suspendTime;
     	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
         }
 
@@ -236,15 +195,9 @@ public final class PostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
-        public Builder host(@Nullable String host) {
+        public Builder hosts(@Nullable PostgresEndpointStatusHosts hosts) {
 
-            this.host = host;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder lastActiveTime(@Nullable String lastActiveTime) {
-
-            this.lastActiveTime = lastActiveTime;
+            this.hosts = hosts;
             return this;
         }
         @CustomType.Setter
@@ -260,18 +213,6 @@ public final class PostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
-        public Builder startTime(@Nullable String startTime) {
-
-            this.startTime = startTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder suspendTime(@Nullable String suspendTime) {
-
-            this.suspendTime = suspendTime;
-            return this;
-        }
-        @CustomType.Setter
         public Builder suspendTimeoutDuration(@Nullable String suspendTimeoutDuration) {
 
             this.suspendTimeoutDuration = suspendTimeoutDuration;
@@ -284,12 +225,9 @@ public final class PostgresEndpointStatus {
             _resultValue.currentState = currentState;
             _resultValue.disabled = disabled;
             _resultValue.endpointType = endpointType;
-            _resultValue.host = host;
-            _resultValue.lastActiveTime = lastActiveTime;
+            _resultValue.hosts = hosts;
             _resultValue.pendingState = pendingState;
             _resultValue.settings = settings;
-            _resultValue.startTime = startTime;
-            _resultValue.suspendTime = suspendTime;
             _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;
             return _resultValue;
         }

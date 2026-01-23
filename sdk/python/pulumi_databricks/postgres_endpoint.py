@@ -26,13 +26,14 @@ class PostgresEndpointArgs:
                  spec: Optional[pulumi.Input['PostgresEndpointSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresEndpoint resource.
-        :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint, which will become the final component of
-               the endpoint's resource name.
-               
-               This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-        :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint.
+        :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+               Examples:
+               - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The desired state of an Endpoint
+        :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
         pulumi.set(__self__, "parent", parent)
@@ -43,10 +44,11 @@ class PostgresEndpointArgs:
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID to use for the Endpoint, which will become the final component of
-        the endpoint's resource name.
-
-        This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        Examples:
+        - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+        - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -58,7 +60,7 @@ class PostgresEndpointArgs:
     @pulumi.getter
     def parent(self) -> pulumi.Input[_builtins.str]:
         """
-        The branch containing this endpoint.
+        The branch containing this endpoint (API resource hierarchy).
         Format: projects/{project_id}/branches/{branch_id}
         """
         return pulumi.get(self, "parent")
@@ -71,7 +73,7 @@ class PostgresEndpointArgs:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresEndpointSpecArgs']]:
         """
-        The desired state of an Endpoint
+        The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         return pulumi.get(self, "spec")
 
@@ -94,17 +96,18 @@ class _PostgresEndpointState:
         """
         Input properties used for looking up and filtering PostgresEndpoint resources.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the compute endpoint was created
-        :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint, which will become the final component of
-               the endpoint's resource name.
-               
-               This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the endpoint.
-               Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
-        :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint.
+        :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+               Examples:
+               - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+               Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The desired state of an Endpoint
-        :param pulumi.Input['PostgresEndpointStatusArgs'] status: (EndpointStatus) - The current status of an Endpoint
-        :param pulumi.Input[_builtins.str] uid: (string) - System generated unique ID for the endpoint
+        :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        :param pulumi.Input['PostgresEndpointStatusArgs'] status: (EndpointStatus) - Current operational status of the compute endpoint
+        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the endpoint
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the compute endpoint was last updated
         """
         if create_time is not None:
@@ -140,10 +143,11 @@ class _PostgresEndpointState:
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID to use for the Endpoint, which will become the final component of
-        the endpoint's resource name.
-
-        This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        Examples:
+        - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+        - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -155,8 +159,8 @@ class _PostgresEndpointState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - The resource name of the endpoint.
-        Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+        (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
         """
         return pulumi.get(self, "name")
 
@@ -168,7 +172,7 @@ class _PostgresEndpointState:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The branch containing this endpoint.
+        The branch containing this endpoint (API resource hierarchy).
         Format: projects/{project_id}/branches/{branch_id}
         """
         return pulumi.get(self, "parent")
@@ -181,7 +185,7 @@ class _PostgresEndpointState:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresEndpointSpecArgs']]:
         """
-        The desired state of an Endpoint
+        The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         return pulumi.get(self, "spec")
 
@@ -193,7 +197,7 @@ class _PostgresEndpointState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input['PostgresEndpointStatusArgs']]:
         """
-        (EndpointStatus) - The current status of an Endpoint
+        (EndpointStatus) - Current operational status of the compute endpoint
         """
         return pulumi.get(self, "status")
 
@@ -205,7 +209,7 @@ class _PostgresEndpointState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - System generated unique ID for the endpoint
+        (string) - System-generated unique ID for the endpoint
         """
         return pulumi.get(self, "uid")
 
@@ -237,7 +241,142 @@ class PostgresEndpoint(pulumi.CustomResource):
                  spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        ## Example Usage
+
+        ### Basic Read-Write Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        dev = databricks.PostgresBranch("dev",
+            branch_id="dev-branch",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        primary = databricks.PostgresEndpoint("primary",
+            endpoint_id="primary",
+            parent=dev.name,
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+            })
+        ```
+
+        ### Read-Only Endpoint with Autoscaling
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        read_replica = databricks.PostgresEndpoint("read_replica",
+            endpoint_id="read-replica-1",
+            parent=dev["name"],
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
+            })
+        ```
+
+        ### Endpoint with Custom Autoscaling and Suspension
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        analytics = databricks.PostgresEndpoint("analytics",
+            endpoint_id="analytics",
+            parent=dev["name"],
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
+                "autoscaling_limit_min_cu": 1,
+                "autoscaling_limit_max_cu": 8,
+                "suspend_timeout_duration": "600s",
+            })
+        ```
+
+        ### Disabled Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        maintenance = databricks.PostgresEndpoint("maintenance",
+            endpoint_id="primary",
+            parent=dev["name"],
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "disabled": True,
+            })
+        ```
+
+        ### Endpoint with No Suspension
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        always_on = databricks.PostgresEndpoint("always_on",
+            endpoint_id="always-on",
+            parent=dev["name"],
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "no_suspension": True,
+            })
+        ```
+
+        ### Complete Example
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        prod = databricks.PostgresProject("prod",
+            project_id="production",
+            spec={
+                "pg_version": 17,
+                "display_name": "Production Workloads",
+                "history_retention_duration": "2592000s",
+                "default_endpoint_settings": {
+                    "autoscaling_limit_min_cu": 1,
+                    "autoscaling_limit_max_cu": 8,
+                    "suspend_timeout_duration": "300s",
+                },
+            })
+        main = databricks.PostgresBranch("main",
+            branch_id="main",
+            parent=prod.name,
+            spec={
+                "no_expiry": True,
+            })
+        primary = databricks.PostgresEndpoint("primary",
+            endpoint_id="primary",
+            parent=main.name,
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "autoscaling_limit_min_cu": 1,
+                "autoscaling_limit_max_cu": 9,
+                "no_suspension": True,
+            })
+        read_replica = databricks.PostgresEndpoint("read_replica",
+            endpoint_id="read-replica",
+            parent=main.name,
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 8,
+                "suspend_timeout_duration": "600s",
+            })
+        ```
 
         ## Import
 
@@ -261,13 +400,14 @@ class PostgresEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint, which will become the final component of
-               the endpoint's resource name.
-               
-               This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-        :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint.
+        :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+               Examples:
+               - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The desired state of an Endpoint
+        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         ...
     @overload
@@ -276,7 +416,142 @@ class PostgresEndpoint(pulumi.CustomResource):
                  args: PostgresEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        ## Example Usage
+
+        ### Basic Read-Write Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        dev = databricks.PostgresBranch("dev",
+            branch_id="dev-branch",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        primary = databricks.PostgresEndpoint("primary",
+            endpoint_id="primary",
+            parent=dev.name,
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+            })
+        ```
+
+        ### Read-Only Endpoint with Autoscaling
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        read_replica = databricks.PostgresEndpoint("read_replica",
+            endpoint_id="read-replica-1",
+            parent=dev["name"],
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
+            })
+        ```
+
+        ### Endpoint with Custom Autoscaling and Suspension
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        analytics = databricks.PostgresEndpoint("analytics",
+            endpoint_id="analytics",
+            parent=dev["name"],
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
+                "autoscaling_limit_min_cu": 1,
+                "autoscaling_limit_max_cu": 8,
+                "suspend_timeout_duration": "600s",
+            })
+        ```
+
+        ### Disabled Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        maintenance = databricks.PostgresEndpoint("maintenance",
+            endpoint_id="primary",
+            parent=dev["name"],
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "disabled": True,
+            })
+        ```
+
+        ### Endpoint with No Suspension
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        always_on = databricks.PostgresEndpoint("always_on",
+            endpoint_id="always-on",
+            parent=dev["name"],
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "no_suspension": True,
+            })
+        ```
+
+        ### Complete Example
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        prod = databricks.PostgresProject("prod",
+            project_id="production",
+            spec={
+                "pg_version": 17,
+                "display_name": "Production Workloads",
+                "history_retention_duration": "2592000s",
+                "default_endpoint_settings": {
+                    "autoscaling_limit_min_cu": 1,
+                    "autoscaling_limit_max_cu": 8,
+                    "suspend_timeout_duration": "300s",
+                },
+            })
+        main = databricks.PostgresBranch("main",
+            branch_id="main",
+            parent=prod.name,
+            spec={
+                "no_expiry": True,
+            })
+        primary = databricks.PostgresEndpoint("primary",
+            endpoint_id="primary",
+            parent=main.name,
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "autoscaling_limit_min_cu": 1,
+                "autoscaling_limit_max_cu": 9,
+                "no_suspension": True,
+            })
+        read_replica = databricks.PostgresEndpoint("read_replica",
+            endpoint_id="read-replica",
+            parent=main.name,
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 8,
+                "suspend_timeout_duration": "600s",
+            })
+        ```
 
         ## Import
 
@@ -363,17 +638,18 @@ class PostgresEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the compute endpoint was created
-        :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint, which will become the final component of
-               the endpoint's resource name.
-               
-               This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the endpoint.
-               Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
-        :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint.
+        :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+               Examples:
+               - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+               Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The desired state of an Endpoint
-        :param pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']] status: (EndpointStatus) - The current status of an Endpoint
-        :param pulumi.Input[_builtins.str] uid: (string) - System generated unique ID for the endpoint
+        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        :param pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']] status: (EndpointStatus) - Current operational status of the compute endpoint
+        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the endpoint
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the compute endpoint was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -402,10 +678,11 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID to use for the Endpoint, which will become the final component of
-        the endpoint's resource name.
-
-        This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        Examples:
+        - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+        - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -413,8 +690,8 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resource name of the endpoint.
-        Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+        (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
         """
         return pulumi.get(self, "name")
 
@@ -422,7 +699,7 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
-        The branch containing this endpoint.
+        The branch containing this endpoint (API resource hierarchy).
         Format: projects/{project_id}/branches/{branch_id}
         """
         return pulumi.get(self, "parent")
@@ -431,7 +708,7 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output['outputs.PostgresEndpointSpec']:
         """
-        The desired state of an Endpoint
+        The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         return pulumi.get(self, "spec")
 
@@ -439,7 +716,7 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output['outputs.PostgresEndpointStatus']:
         """
-        (EndpointStatus) - The current status of an Endpoint
+        (EndpointStatus) - Current operational status of the compute endpoint
         """
         return pulumi.get(self, "status")
 
@@ -447,7 +724,7 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - System generated unique ID for the endpoint
+        (string) - System-generated unique ID for the endpoint
         """
         return pulumi.get(self, "uid")
 

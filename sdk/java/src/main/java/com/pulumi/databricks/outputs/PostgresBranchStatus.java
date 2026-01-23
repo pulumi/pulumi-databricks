@@ -24,6 +24,11 @@ public final class PostgresBranchStatus {
      */
     private @Nullable Boolean default_;
     /**
+     * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     * 
+     */
+    private @Nullable String expireTime;
+    /**
      * @return (boolean) - Whether the branch is protected
      * 
      */
@@ -74,6 +79,13 @@ public final class PostgresBranchStatus {
      */
     public Optional<Boolean> default_() {
         return Optional.ofNullable(this.default_);
+    }
+    /**
+     * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     * 
+     */
+    public Optional<String> expireTime() {
+        return Optional.ofNullable(this.expireTime);
     }
     /**
      * @return (boolean) - Whether the branch is protected
@@ -137,6 +149,7 @@ public final class PostgresBranchStatus {
     public static final class Builder {
         private @Nullable String currentState;
         private @Nullable Boolean default_;
+        private @Nullable String expireTime;
         private @Nullable Boolean isProtected;
         private @Nullable Integer logicalSizeBytes;
         private @Nullable String pendingState;
@@ -149,6 +162,7 @@ public final class PostgresBranchStatus {
     	      Objects.requireNonNull(defaults);
     	      this.currentState = defaults.currentState;
     	      this.default_ = defaults.default_;
+    	      this.expireTime = defaults.expireTime;
     	      this.isProtected = defaults.isProtected;
     	      this.logicalSizeBytes = defaults.logicalSizeBytes;
     	      this.pendingState = defaults.pendingState;
@@ -168,6 +182,12 @@ public final class PostgresBranchStatus {
         public Builder default_(@Nullable Boolean default_) {
 
             this.default_ = default_;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expireTime(@Nullable String expireTime) {
+
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
@@ -216,6 +236,7 @@ public final class PostgresBranchStatus {
             final var _resultValue = new PostgresBranchStatus();
             _resultValue.currentState = currentState;
             _resultValue.default_ = default_;
+            _resultValue.expireTime = expireTime;
             _resultValue.isProtected = isProtected;
             _resultValue.logicalSizeBytes = logicalSizeBytes;
             _resultValue.pendingState = pendingState;

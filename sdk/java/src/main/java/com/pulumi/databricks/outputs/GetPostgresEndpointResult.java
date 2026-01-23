@@ -23,29 +23,29 @@ public final class GetPostgresEndpointResult {
      */
     private String id;
     /**
-     * @return (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      * 
      */
     private String name;
     /**
-     * @return (string) - The branch containing this endpoint.
+     * @return (string) - The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
     private String parent;
     /**
-     * @return (EndpointSpec) - The desired state of an Endpoint
+     * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     private GetPostgresEndpointSpec spec;
     /**
-     * @return (EndpointStatus) - The current status of an Endpoint
+     * @return (EndpointStatus) - Current operational status of the compute endpoint
      * 
      */
     private GetPostgresEndpointStatus status;
     /**
-     * @return (string) - System generated unique ID for the endpoint
+     * @return (string) - System-generated unique ID for the endpoint
      * 
      */
     private String uid;
@@ -71,15 +71,15 @@ public final class GetPostgresEndpointResult {
         return this.id;
     }
     /**
-     * @return (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return (string) - The branch containing this endpoint.
+     * @return (string) - The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
@@ -87,21 +87,21 @@ public final class GetPostgresEndpointResult {
         return this.parent;
     }
     /**
-     * @return (EndpointSpec) - The desired state of an Endpoint
+     * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     public GetPostgresEndpointSpec spec() {
         return this.spec;
     }
     /**
-     * @return (EndpointStatus) - The current status of an Endpoint
+     * @return (EndpointStatus) - Current operational status of the compute endpoint
      * 
      */
     public GetPostgresEndpointStatus status() {
         return this.status;
     }
     /**
-     * @return (string) - System generated unique ID for the endpoint
+     * @return (string) - System-generated unique ID for the endpoint
      * 
      */
     public String uid() {

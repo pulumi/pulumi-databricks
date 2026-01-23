@@ -40,22 +40,16 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
 
         /// <summary>
-        /// (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+        /// (EndpointHosts) - Contains host information for connecting to the endpoint
         /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        /// <summary>
-        /// (string) - A timestamp indicating when the compute endpoint was last active
-        /// </summary>
-        [Input("lastActiveTime")]
-        public Input<string>? LastActiveTime { get; set; }
+        [Input("hosts")]
+        public Input<Inputs.PostgresEndpointStatusHostsGetArgs>? Hosts { get; set; }
 
         /// <summary>
         /// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
@@ -68,18 +62,6 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("settings")]
         public Input<Inputs.PostgresEndpointStatusSettingsGetArgs>? Settings { get; set; }
-
-        /// <summary>
-        /// (string) - A timestamp indicating when the compute endpoint was last started
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
-
-        /// <summary>
-        /// (string) - A timestamp indicating when the compute endpoint was last suspended
-        /// </summary>
-        [Input("suspendTime")]
-        public Input<string>? SuspendTime { get; set; }
 
         /// <summary>
         /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended

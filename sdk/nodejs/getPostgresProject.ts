@@ -7,7 +7,25 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres project.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Project by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresProject({
+ *     name: "projects/my-project",
+ * });
+ * export const projectPgVersion = _this.then(_this => _this.status?.pgVersion);
+ * export const projectDisplayName = _this.then(_this => _this.status?.displayName);
+ * export const projectHistoryRetention = _this.then(_this => _this.status?.historyRetentionDuration);
+ * ```
  */
 export function getPostgresProject(args: GetPostgresProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -21,8 +39,8 @@ export function getPostgresProject(args: GetPostgresProjectArgs, opts?: pulumi.I
  */
 export interface GetPostgresProjectArgs {
     /**
-     * The resource name of the project.
-     * Format: projects/{project_id}
+     * The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      */
     name: string;
 }
@@ -40,12 +58,12 @@ export interface GetPostgresProjectResult {
      */
     readonly id: string;
     /**
-     * (string) - The resource name of the project.
-     * Format: projects/{project_id}
+     * (string) - The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      */
     readonly name: string;
     /**
-     * (ProjectSpec) - The desired state of a Project
+     * (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
     readonly spec: outputs.GetPostgresProjectSpec;
     /**
@@ -53,7 +71,7 @@ export interface GetPostgresProjectResult {
      */
     readonly status: outputs.GetPostgresProjectStatus;
     /**
-     * (string) - System generated unique ID for the project
+     * (string) - System-generated unique ID for the project
      */
     readonly uid: string;
     /**
@@ -62,7 +80,25 @@ export interface GetPostgresProjectResult {
     readonly updateTime: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres project.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Project by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresProject({
+ *     name: "projects/my-project",
+ * });
+ * export const projectPgVersion = _this.then(_this => _this.status?.pgVersion);
+ * export const projectDisplayName = _this.then(_this => _this.status?.displayName);
+ * export const projectHistoryRetention = _this.then(_this => _this.status?.historyRetentionDuration);
+ * ```
  */
 export function getPostgresProjectOutput(args: GetPostgresProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,8 +112,8 @@ export function getPostgresProjectOutput(args: GetPostgresProjectOutputArgs, opt
  */
 export interface GetPostgresProjectOutputArgs {
     /**
-     * The resource name of the project.
-     * Format: projects/{project_id}
+     * The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      */
     name: pulumi.Input<string>;
 }

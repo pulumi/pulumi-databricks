@@ -131,6 +131,9 @@ namespace Pulumi.Databricks
         [Output("personalAccessToken")]
         public Output<string?> PersonalAccessToken { get; private set; } = null!;
 
+        [Output("principalId")]
+        public Output<string?> PrincipalId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a GitCredential resource with the given unique name, arguments, and options.
@@ -219,6 +222,9 @@ namespace Pulumi.Databricks
         [Input("personalAccessToken")]
         public Input<string>? PersonalAccessToken { get; set; }
 
+        [Input("principalId")]
+        public Input<string>? PrincipalId { get; set; }
+
         public GitCredentialArgs()
         {
         }
@@ -268,6 +274,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("personalAccessToken")]
         public Input<string>? PersonalAccessToken { get; set; }
+
+        [Input("principalId")]
+        public Input<string>? PrincipalId { get; set; }
 
         public GitCredentialState()
         {

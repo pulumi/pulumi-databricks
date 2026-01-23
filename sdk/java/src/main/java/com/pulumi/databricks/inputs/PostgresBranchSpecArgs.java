@@ -17,18 +17,18 @@ public final class PostgresBranchSpecArgs extends com.pulumi.resources.ResourceA
     public static final PostgresBranchSpecArgs Empty = new PostgresBranchSpecArgs();
 
     /**
-     * (boolean) - Whether the branch is the project&#39;s default branch
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      * 
      */
-    @Import(name="default")
-    private @Nullable Output<Boolean> default_;
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
 
     /**
-     * @return (boolean) - Whether the branch is the project&#39;s default branch
+     * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      * 
      */
-    public Optional<Output<Boolean>> default_() {
-        return Optional.ofNullable(this.default_);
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
     }
 
     /**
@@ -44,6 +44,23 @@ public final class PostgresBranchSpecArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<Boolean>> isProtected() {
         return Optional.ofNullable(this.isProtected);
+    }
+
+    /**
+     * Explicitly disable expiration. When set to true, the branch will not expire.
+     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * 
+     */
+    @Import(name="noExpiry")
+    private @Nullable Output<Boolean> noExpiry;
+
+    /**
+     * @return Explicitly disable expiration. When set to true, the branch will not expire.
+     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * 
+     */
+    public Optional<Output<Boolean>> noExpiry() {
+        return Optional.ofNullable(this.noExpiry);
     }
 
     /**
@@ -93,14 +110,31 @@ public final class PostgresBranchSpecArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.sourceBranchTime);
     }
 
+    /**
+     * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * 
+     */
+    @Import(name="ttl")
+    private @Nullable Output<String> ttl;
+
+    /**
+     * @return Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * 
+     */
+    public Optional<Output<String>> ttl() {
+        return Optional.ofNullable(this.ttl);
+    }
+
     private PostgresBranchSpecArgs() {}
 
     private PostgresBranchSpecArgs(PostgresBranchSpecArgs $) {
-        this.default_ = $.default_;
+        this.expireTime = $.expireTime;
         this.isProtected = $.isProtected;
+        this.noExpiry = $.noExpiry;
         this.sourceBranch = $.sourceBranch;
         this.sourceBranchLsn = $.sourceBranchLsn;
         this.sourceBranchTime = $.sourceBranchTime;
+        this.ttl = $.ttl;
     }
 
     public static Builder builder() {
@@ -122,24 +156,24 @@ public final class PostgresBranchSpecArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param default_ (boolean) - Whether the branch is the project&#39;s default branch
+         * @param expireTime (string) - Absolute expiration time for the branch. Empty if expiration is disabled
          * 
          * @return builder
          * 
          */
-        public Builder default_(@Nullable Output<Boolean> default_) {
-            $.default_ = default_;
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
             return this;
         }
 
         /**
-         * @param default_ (boolean) - Whether the branch is the project&#39;s default branch
+         * @param expireTime (string) - Absolute expiration time for the branch. Empty if expiration is disabled
          * 
          * @return builder
          * 
          */
-        public Builder default_(Boolean default_) {
-            return default_(Output.of(default_));
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
         }
 
         /**
@@ -161,6 +195,29 @@ public final class PostgresBranchSpecArgs extends com.pulumi.resources.ResourceA
          */
         public Builder isProtected(Boolean isProtected) {
             return isProtected(Output.of(isProtected));
+        }
+
+        /**
+         * @param noExpiry Explicitly disable expiration. When set to true, the branch will not expire.
+         * If set to false, the request is invalid; provide either ttl or expireTime instead
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noExpiry(@Nullable Output<Boolean> noExpiry) {
+            $.noExpiry = noExpiry;
+            return this;
+        }
+
+        /**
+         * @param noExpiry Explicitly disable expiration. When set to true, the branch will not expire.
+         * If set to false, the request is invalid; provide either ttl or expireTime instead
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noExpiry(Boolean noExpiry) {
+            return noExpiry(Output.of(noExpiry));
         }
 
         /**
@@ -226,6 +283,27 @@ public final class PostgresBranchSpecArgs extends com.pulumi.resources.ResourceA
          */
         public Builder sourceBranchTime(String sourceBranchTime) {
             return sourceBranchTime(Output.of(sourceBranchTime));
+        }
+
+        /**
+         * @param ttl Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ttl(@Nullable Output<String> ttl) {
+            $.ttl = ttl;
+            return this;
+        }
+
+        /**
+         * @param ttl Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ttl(String ttl) {
+            return ttl(Output.of(ttl));
         }
 
         public PostgresBranchSpecArgs build() {

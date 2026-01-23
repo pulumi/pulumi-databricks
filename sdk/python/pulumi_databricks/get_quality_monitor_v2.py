@@ -104,11 +104,15 @@ def get_quality_monitor_v2(object_id: Optional[_builtins.str] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    > **Deprecated** This data source is deprecated. Please use `DataQualityMonitor` instead.
+
     This data source can be used to fetch a quality monitors v2.
 
     > **Note** This data source can only be used with an workspace-level provider!
 
     ## Example Usage
+
+    > **Deprecated** This data source is deprecated. Please use `DataQualityMonitor` instead.
 
     Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
 
@@ -143,11 +147,15 @@ def get_quality_monitor_v2_output(object_id: Optional[pulumi.Input[_builtins.str
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    > **Deprecated** This data source is deprecated. Please use `DataQualityMonitor` instead.
+
     This data source can be used to fetch a quality monitors v2.
 
     > **Note** This data source can only be used with an workspace-level provider!
 
     ## Example Usage
+
+    > **Deprecated** This data source is deprecated. Please use `DataQualityMonitor` instead.
 
     Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
 

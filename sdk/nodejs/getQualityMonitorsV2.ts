@@ -9,11 +9,15 @@ import * as utilities from "./utilities";
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * > **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+ *
  * This data source can be used to fetch the list of quality monitors v2.
  *
  * > **Note** This data source can only be used with an workspace-level provider!
  *
  * ## Example Usage
+ *
+ * > **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
  *
  * Getting a list of all quality monitors:
  *
@@ -53,11 +57,15 @@ export interface GetQualityMonitorsV2Result {
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * > **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+ *
  * This data source can be used to fetch the list of quality monitors v2.
  *
  * > **Note** This data source can only be used with an workspace-level provider!
  *
  * ## Example Usage
+ *
+ * > **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
  *
  * Getting a list of all quality monitors:
  *

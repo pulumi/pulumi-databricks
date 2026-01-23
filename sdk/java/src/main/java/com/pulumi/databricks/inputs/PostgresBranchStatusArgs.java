@@ -48,6 +48,21 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     * 
+     */
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
+
+    /**
+     * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     * 
+     */
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
+    }
+
+    /**
      * (boolean) - Whether the branch is protected
      * 
      */
@@ -159,6 +174,7 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
     private PostgresBranchStatusArgs(PostgresBranchStatusArgs $) {
         this.currentState = $.currentState;
         this.default_ = $.default_;
+        this.expireTime = $.expireTime;
         this.isProtected = $.isProtected;
         this.logicalSizeBytes = $.logicalSizeBytes;
         this.pendingState = $.pendingState;
@@ -226,6 +242,27 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
          */
         public Builder default_(Boolean default_) {
             return default_(Output.of(default_));
+        }
+
+        /**
+         * @param expireTime (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
+            return this;
+        }
+
+        /**
+         * @param expireTime (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
         }
 
         /**

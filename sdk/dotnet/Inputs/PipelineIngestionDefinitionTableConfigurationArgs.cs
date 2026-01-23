@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionTableConfigurationArgs : global::Pulumi.ResourceArgs
     {
+        [Input("autoFullRefreshPolicy")]
+        public Input<Inputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs>? AutoFullRefreshPolicy { get; set; }
+
         [Input("excludeColumns")]
         private InputList<string>? _excludeColumns;
         public InputList<string> ExcludeColumns

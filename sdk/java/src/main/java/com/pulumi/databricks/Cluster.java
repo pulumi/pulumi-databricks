@@ -16,10 +16,12 @@ import com.pulumi.databricks.outputs.ClusterAzureAttributes;
 import com.pulumi.databricks.outputs.ClusterClusterLogConf;
 import com.pulumi.databricks.outputs.ClusterClusterMountInfo;
 import com.pulumi.databricks.outputs.ClusterDockerImage;
+import com.pulumi.databricks.outputs.ClusterDriverNodeTypeFlexibility;
 import com.pulumi.databricks.outputs.ClusterGcpAttributes;
 import com.pulumi.databricks.outputs.ClusterInitScript;
 import com.pulumi.databricks.outputs.ClusterLibrary;
 import com.pulumi.databricks.outputs.ClusterProviderConfig;
+import com.pulumi.databricks.outputs.ClusterWorkerNodeTypeFlexibility;
 import com.pulumi.databricks.outputs.ClusterWorkloadType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -270,6 +272,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> driverInstancePoolId() {
         return this.driverInstancePoolId;
+    }
+    @Export(name="driverNodeTypeFlexibility", refs={ClusterDriverNodeTypeFlexibility.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterDriverNodeTypeFlexibility> driverNodeTypeFlexibility;
+
+    public Output<Optional<ClusterDriverNodeTypeFlexibility>> driverNodeTypeFlexibility() {
+        return Codegen.optional(this.driverNodeTypeFlexibility);
     }
     /**
      * The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
@@ -604,6 +612,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> useMlRuntime() {
         return Codegen.optional(this.useMlRuntime);
+    }
+    @Export(name="workerNodeTypeFlexibility", refs={ClusterWorkerNodeTypeFlexibility.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterWorkerNodeTypeFlexibility> workerNodeTypeFlexibility;
+
+    public Output<Optional<ClusterWorkerNodeTypeFlexibility>> workerNodeTypeFlexibility() {
+        return Codegen.optional(this.workerNodeTypeFlexibility);
     }
     @Export(name="workloadType", refs={ClusterWorkloadType.class}, tree="[0]")
     private Output</* @Nullable */ ClusterWorkloadType> workloadType;

@@ -25,11 +25,12 @@ class PostgresProjectArgs:
                  spec: Optional[pulumi.Input['PostgresProjectSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresProject resource.
-        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project, which will become the final component of
-               the project's resource name.
-               
-               This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-        :param pulumi.Input['PostgresProjectSpecArgs'] spec: The desired state of a Project
+        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
+               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+               Examples:
+               - With custom ID: `production` → name becomes `projects/production`
+               - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+        :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         pulumi.set(__self__, "project_id", project_id)
         if spec is not None:
@@ -39,10 +40,11 @@ class PostgresProjectArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID to use for the Project, which will become the final component of
-        the project's resource name.
-
-        This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        The ID to use for the Project. This becomes the final component of the project's resource name.
+        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        Examples:
+        - With custom ID: `production` → name becomes `projects/production`
+        - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
         """
         return pulumi.get(self, "project_id")
 
@@ -54,7 +56,7 @@ class PostgresProjectArgs:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresProjectSpecArgs']]:
         """
-        The desired state of a Project
+        The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         return pulumi.get(self, "spec")
 
@@ -76,15 +78,16 @@ class _PostgresProjectState:
         """
         Input properties used for looking up and filtering PostgresProject resources.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the project was created
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the project.
-               Format: projects/{project_id}
-        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project, which will become the final component of
-               the project's resource name.
-               
-               This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-        :param pulumi.Input['PostgresProjectSpecArgs'] spec: The desired state of a Project
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the project. This field is output-only and constructed by the system.
+               Format: `projects/{project_id}`
+        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
+               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+               Examples:
+               - With custom ID: `production` → name becomes `projects/production`
+               - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+        :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         :param pulumi.Input['PostgresProjectStatusArgs'] status: (ProjectStatus) - The current status of a Project
-        :param pulumi.Input[_builtins.str] uid: (string) - System generated unique ID for the project
+        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the project
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the project was last updated
         """
         if create_time is not None:
@@ -118,8 +121,8 @@ class _PostgresProjectState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - The resource name of the project.
-        Format: projects/{project_id}
+        (string) - The resource name of the project. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}`
         """
         return pulumi.get(self, "name")
 
@@ -131,10 +134,11 @@ class _PostgresProjectState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID to use for the Project, which will become the final component of
-        the project's resource name.
-
-        This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        The ID to use for the Project. This becomes the final component of the project's resource name.
+        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        Examples:
+        - With custom ID: `production` → name becomes `projects/production`
+        - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
         """
         return pulumi.get(self, "project_id")
 
@@ -146,7 +150,7 @@ class _PostgresProjectState:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresProjectSpecArgs']]:
         """
-        The desired state of a Project
+        The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         return pulumi.get(self, "spec")
 
@@ -170,7 +174,7 @@ class _PostgresProjectState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - System generated unique ID for the project
+        (string) - System-generated unique ID for the project
         """
         return pulumi.get(self, "uid")
 
@@ -201,7 +205,63 @@ class PostgresProject(pulumi.CustomResource):
                  spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        ## Example Usage
+
+        ### Basic Project Creation
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Application Project",
+            })
+        ```
+
+        ### Project with Custom Settings
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="analytics-project",
+            spec={
+                "pg_version": 16,
+                "display_name": "Analytics Workloads",
+                "history_retention_duration": "1209600s",
+                "default_endpoint_settings": {
+                    "autoscaling_limit_min_cu": 1,
+                    "autoscaling_limit_max_cu": 8,
+                    "suspend_timeout_duration": "300s",
+                },
+            })
+        ```
+
+        ### Referencing in Other Resources
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        dev = databricks.PostgresBranch("dev",
+            branch_id="dev-branch",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        ```
 
         ## Import
 
@@ -225,11 +285,12 @@ class PostgresProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project, which will become the final component of
-               the project's resource name.
-               
-               This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The desired state of a Project
+        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
+               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+               Examples:
+               - With custom ID: `production` → name becomes `projects/production`
+               - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         ...
     @overload
@@ -238,7 +299,63 @@ class PostgresProject(pulumi.CustomResource):
                  args: PostgresProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        ## Example Usage
+
+        ### Basic Project Creation
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Application Project",
+            })
+        ```
+
+        ### Project with Custom Settings
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="analytics-project",
+            spec={
+                "pg_version": 16,
+                "display_name": "Analytics Workloads",
+                "history_retention_duration": "1209600s",
+                "default_endpoint_settings": {
+                    "autoscaling_limit_min_cu": 1,
+                    "autoscaling_limit_max_cu": 8,
+                    "suspend_timeout_duration": "300s",
+                },
+            })
+        ```
+
+        ### Referencing in Other Resources
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        dev = databricks.PostgresBranch("dev",
+            branch_id="dev-branch",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        ```
 
         ## Import
 
@@ -320,15 +437,16 @@ class PostgresProject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the project was created
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the project.
-               Format: projects/{project_id}
-        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project, which will become the final component of
-               the project's resource name.
-               
-               This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
-        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The desired state of a Project
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the project. This field is output-only and constructed by the system.
+               Format: `projects/{project_id}`
+        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
+               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+               Examples:
+               - With custom ID: `production` → name becomes `projects/production`
+               - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         :param pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict']] status: (ProjectStatus) - The current status of a Project
-        :param pulumi.Input[_builtins.str] uid: (string) - System generated unique ID for the project
+        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the project
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the project was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -356,8 +474,8 @@ class PostgresProject(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resource name of the project.
-        Format: projects/{project_id}
+        (string) - The resource name of the project. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}`
         """
         return pulumi.get(self, "name")
 
@@ -365,10 +483,11 @@ class PostgresProject(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID to use for the Project, which will become the final component of
-        the project's resource name.
-
-        This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        The ID to use for the Project. This becomes the final component of the project's resource name.
+        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        Examples:
+        - With custom ID: `production` → name becomes `projects/production`
+        - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
         """
         return pulumi.get(self, "project_id")
 
@@ -376,7 +495,7 @@ class PostgresProject(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output['outputs.PostgresProjectSpec']:
         """
-        The desired state of a Project
+        The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         return pulumi.get(self, "spec")
 
@@ -392,7 +511,7 @@ class PostgresProject(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - System generated unique ID for the project
+        (string) - System-generated unique ID for the project
         """
         return pulumi.get(self, "uid")
 

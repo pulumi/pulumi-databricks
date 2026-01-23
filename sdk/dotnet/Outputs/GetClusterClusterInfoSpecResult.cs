@@ -40,6 +40,7 @@ namespace Pulumi.Databricks.Outputs
         /// similar to `InstancePoolId`, but for driver node.
         /// </summary>
         public readonly string DriverInstancePoolId;
+        public readonly Outputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibilityResult? DriverNodeTypeFlexibility;
         /// <summary>
         /// The node type of the Spark driver.
         /// </summary>
@@ -105,6 +106,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<string> SshPublicKeys;
         public readonly int? TotalInitialRemoteDiskSize;
         public readonly bool? UseMlRuntime;
+        public readonly Outputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityResult? WorkerNodeTypeFlexibility;
         public readonly Outputs.GetClusterClusterInfoSpecWorkloadTypeResult? WorkloadType;
 
         [OutputConstructor]
@@ -132,6 +134,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetClusterClusterInfoSpecDockerImageResult? dockerImage,
 
             string driverInstancePoolId,
+
+            Outputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibilityResult? driverNodeTypeFlexibility,
 
             string driverNodeTypeId,
 
@@ -179,6 +183,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool? useMlRuntime,
 
+            Outputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityResult? workerNodeTypeFlexibility,
+
             Outputs.GetClusterClusterInfoSpecWorkloadTypeResult? workloadType)
         {
             ApplyPolicyDefaultValues = applyPolicyDefaultValues;
@@ -193,6 +199,7 @@ namespace Pulumi.Databricks.Outputs
             DataSecurityMode = dataSecurityMode;
             DockerImage = dockerImage;
             DriverInstancePoolId = driverInstancePoolId;
+            DriverNodeTypeFlexibility = driverNodeTypeFlexibility;
             DriverNodeTypeId = driverNodeTypeId;
             EnableElasticDisk = enableElasticDisk;
             EnableLocalDiskEncryption = enableLocalDiskEncryption;
@@ -216,6 +223,7 @@ namespace Pulumi.Databricks.Outputs
             SshPublicKeys = sshPublicKeys;
             TotalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
             UseMlRuntime = useMlRuntime;
+            WorkerNodeTypeFlexibility = workerNodeTypeFlexibility;
             WorkloadType = workloadType;
         }
     }

@@ -16,7 +16,141 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Project Creation
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Application Project")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Project with Custom Settings
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecDefaultEndpointSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("analytics-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(16)
+ *                 .displayName("Analytics Workloads")
+ *                 .historyRetentionDuration("1209600s")
+ *                 .defaultEndpointSettings(PostgresProjectSpecDefaultEndpointSettingsArgs.builder()
+ *                     .autoscalingLimitMinCu(1.0)
+ *                     .autoscalingLimitMaxCu(8.0)
+ *                     .suspendTimeoutDuration("300s")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Referencing in Other Resources
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Project")
+ *                 .build())
+ *             .build());
+ * 
+ *         var dev = new PostgresBranch("dev", PostgresBranchArgs.builder()
+ *             .branchId("dev-branch")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -56,50 +190,52 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * (string) - The resource name of the project.
-     * Format: projects/{project_id}
+     * (string) - The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The resource name of the project.
-     * Format: projects/{project_id}
+     * @return (string) - The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The ID to use for the Project, which will become the final component of
-     * the project&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `production` → name becomes `projects/production`
+     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return The ID to use for the Project, which will become the final component of
-     * the project&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * @return The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `production` → name becomes `projects/production`
+     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
      * 
      */
     public Output<String> projectId() {
         return this.projectId;
     }
     /**
-     * The desired state of a Project
+     * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      * 
      */
     @Export(name="spec", refs={PostgresProjectSpec.class}, tree="[0]")
     private Output<PostgresProjectSpec> spec;
 
     /**
-     * @return The desired state of a Project
+     * @return The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      * 
      */
     public Output<PostgresProjectSpec> spec() {
@@ -120,14 +256,14 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * (string) - System generated unique ID for the project
+     * (string) - System-generated unique ID for the project
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return (string) - System generated unique ID for the project
+     * @return (string) - System-generated unique ID for the project
      * 
      */
     public Output<String> uid() {

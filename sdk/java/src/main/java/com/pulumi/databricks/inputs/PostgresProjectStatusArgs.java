@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PostgresProjectStatusDefaultEndpointSettingsArgs;
-import com.pulumi.databricks.inputs.PostgresProjectStatusSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -31,21 +30,6 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Integer>> branchLogicalSizeLimitBytes() {
         return Optional.ofNullable(this.branchLogicalSizeLimitBytes);
-    }
-
-    /**
-     * (string) - The most recent time when any endpoint of this project was active
-     * 
-     */
-    @Import(name="computeLastActiveTime")
-    private @Nullable Output<String> computeLastActiveTime;
-
-    /**
-     * @return (string) - The most recent time when any endpoint of this project was active
-     * 
-     */
-    public Optional<Output<String>> computeLastActiveTime() {
-        return Optional.ofNullable(this.computeLastActiveTime);
     }
 
     /**
@@ -124,21 +108,6 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (ProjectSettings) - The effective project settings
-     * 
-     */
-    @Import(name="settings")
-    private @Nullable Output<PostgresProjectStatusSettingsArgs> settings;
-
-    /**
-     * @return (ProjectSettings) - The effective project settings
-     * 
-     */
-    public Optional<Output<PostgresProjectStatusSettingsArgs>> settings() {
-        return Optional.ofNullable(this.settings);
-    }
-
-    /**
      * (integer) - The current space occupied by the project in storage
      * 
      */
@@ -157,13 +126,11 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
 
     private PostgresProjectStatusArgs(PostgresProjectStatusArgs $) {
         this.branchLogicalSizeLimitBytes = $.branchLogicalSizeLimitBytes;
-        this.computeLastActiveTime = $.computeLastActiveTime;
         this.defaultEndpointSettings = $.defaultEndpointSettings;
         this.displayName = $.displayName;
         this.historyRetentionDuration = $.historyRetentionDuration;
         this.owner = $.owner;
         this.pgVersion = $.pgVersion;
-        this.settings = $.settings;
         this.syntheticStorageSizeBytes = $.syntheticStorageSizeBytes;
     }
 
@@ -204,27 +171,6 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
          */
         public Builder branchLogicalSizeLimitBytes(Integer branchLogicalSizeLimitBytes) {
             return branchLogicalSizeLimitBytes(Output.of(branchLogicalSizeLimitBytes));
-        }
-
-        /**
-         * @param computeLastActiveTime (string) - The most recent time when any endpoint of this project was active
-         * 
-         * @return builder
-         * 
-         */
-        public Builder computeLastActiveTime(@Nullable Output<String> computeLastActiveTime) {
-            $.computeLastActiveTime = computeLastActiveTime;
-            return this;
-        }
-
-        /**
-         * @param computeLastActiveTime (string) - The most recent time when any endpoint of this project was active
-         * 
-         * @return builder
-         * 
-         */
-        public Builder computeLastActiveTime(String computeLastActiveTime) {
-            return computeLastActiveTime(Output.of(computeLastActiveTime));
         }
 
         /**
@@ -330,27 +276,6 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
          */
         public Builder pgVersion(Integer pgVersion) {
             return pgVersion(Output.of(pgVersion));
-        }
-
-        /**
-         * @param settings (ProjectSettings) - The effective project settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder settings(@Nullable Output<PostgresProjectStatusSettingsArgs> settings) {
-            $.settings = settings;
-            return this;
-        }
-
-        /**
-         * @param settings (ProjectSettings) - The effective project settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder settings(PostgresProjectStatusSettingsArgs settings) {
-            return settings(Output.of(settings));
         }
 
         /**

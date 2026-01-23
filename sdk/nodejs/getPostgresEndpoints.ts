@@ -7,7 +7,24 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres endpoints in a branch.
+ *
+ * ## Example Usage
+ *
+ * ### List All Endpoints in a Branch
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresEndpoints({
+ *     parent: "projects/my-project/branches/dev-branch",
+ * });
+ * export const endpointNames = all.then(all => .map(endpoint => (endpoint.name)));
+ * export const endpointTypes = all.then(all => .map(endpoint => (endpoint.status?.endpointType)));
+ * ```
  */
 export function getPostgresEndpoints(args: GetPostgresEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresEndpointsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,7 +39,7 @@ export function getPostgresEndpoints(args: GetPostgresEndpointsArgs, opts?: pulu
  */
 export interface GetPostgresEndpointsArgs {
     /**
-     * Upper bound for items returned
+     * Upper bound for items returned. Cannot be negative
      */
     pageSize?: number;
     /**
@@ -43,13 +60,30 @@ export interface GetPostgresEndpointsResult {
     readonly id: string;
     readonly pageSize?: number;
     /**
-     * (string) - The branch containing this endpoint.
+     * (string) - The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      */
     readonly parent: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres endpoints in a branch.
+ *
+ * ## Example Usage
+ *
+ * ### List All Endpoints in a Branch
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresEndpoints({
+ *     parent: "projects/my-project/branches/dev-branch",
+ * });
+ * export const endpointNames = all.then(all => .map(endpoint => (endpoint.name)));
+ * export const endpointTypes = all.then(all => .map(endpoint => (endpoint.status?.endpointType)));
+ * ```
  */
 export function getPostgresEndpointsOutput(args: GetPostgresEndpointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresEndpointsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,7 +98,7 @@ export function getPostgresEndpointsOutput(args: GetPostgresEndpointsOutputArgs,
  */
 export interface GetPostgresEndpointsOutputArgs {
     /**
-     * Upper bound for items returned
+     * Upper bound for items returned. Cannot be negative
      */
     pageSize?: pulumi.Input<number>;
     /**

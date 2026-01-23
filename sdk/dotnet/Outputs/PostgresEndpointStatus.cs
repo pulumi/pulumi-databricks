@@ -33,17 +33,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         /// </summary>
         public readonly string? EndpointType;
         /// <summary>
-        /// (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+        /// (EndpointHosts) - Contains host information for connecting to the endpoint
         /// </summary>
-        public readonly string? Host;
-        /// <summary>
-        /// (string) - A timestamp indicating when the compute endpoint was last active
-        /// </summary>
-        public readonly string? LastActiveTime;
+        public readonly Outputs.PostgresEndpointStatusHosts? Hosts;
         /// <summary>
         /// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
         /// </summary>
@@ -52,14 +48,6 @@ namespace Pulumi.Databricks.Outputs
         /// (EndpointSettings)
         /// </summary>
         public readonly Outputs.PostgresEndpointStatusSettings? Settings;
-        /// <summary>
-        /// (string) - A timestamp indicating when the compute endpoint was last started
-        /// </summary>
-        public readonly string? StartTime;
-        /// <summary>
-        /// (string) - A timestamp indicating when the compute endpoint was last suspended
-        /// </summary>
-        public readonly string? SuspendTime;
         /// <summary>
         /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         /// </summary>
@@ -77,17 +65,11 @@ namespace Pulumi.Databricks.Outputs
 
             string? endpointType,
 
-            string? host,
-
-            string? lastActiveTime,
+            Outputs.PostgresEndpointStatusHosts? hosts,
 
             string? pendingState,
 
             Outputs.PostgresEndpointStatusSettings? settings,
-
-            string? startTime,
-
-            string? suspendTime,
 
             string? suspendTimeoutDuration)
         {
@@ -96,12 +78,9 @@ namespace Pulumi.Databricks.Outputs
             CurrentState = currentState;
             Disabled = disabled;
             EndpointType = endpointType;
-            Host = host;
-            LastActiveTime = lastActiveTime;
+            Hosts = hosts;
             PendingState = pendingState;
             Settings = settings;
-            StartTime = startTime;
-            SuspendTime = suspendTime;
             SuspendTimeoutDuration = suspendTimeoutDuration;
         }
     }
