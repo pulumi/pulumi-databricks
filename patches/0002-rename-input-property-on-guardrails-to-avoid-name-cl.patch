@@ -5,10 +5,10 @@ Subject: [PATCH] rename input property on guardrails to avoid name clash
 
 
 diff --git a/internal/service/serving_tf/legacy_model.go b/internal/service/serving_tf/legacy_model.go
-index b830bbcb..e4dbc8db 100755
+index 7f91723d..a29e96c4 100755
 --- a/internal/service/serving_tf/legacy_model.go
 +++ b/internal/service/serving_tf/legacy_model.go
-@@ -632,7 +632,7 @@ func (m AiGatewayGuardrailPiiBehavior_SdkV2) Type(ctx context.Context) attr.Type
+@@ -633,7 +633,7 @@ func (m AiGatewayGuardrailPiiBehavior_SdkV2) Type(ctx context.Context) attr.Type
  
  type AiGatewayGuardrails_SdkV2 struct {
  	// Configuration for input guardrail filters.
@@ -17,7 +17,7 @@ index b830bbcb..e4dbc8db 100755
  	// Configuration for output guardrail filters.
  	Output types.List `tfsdk:"output"`
  }
-@@ -678,8 +678,8 @@ func (to *AiGatewayGuardrails_SdkV2) SyncFieldsDuringRead(ctx context.Context, f
+@@ -679,8 +679,8 @@ func (to *AiGatewayGuardrails_SdkV2) SyncFieldsDuringRead(ctx context.Context, f
  }
  
  func (m AiGatewayGuardrails_SdkV2) ApplySchemaCustomizations(attrs map[string]tfschema.AttributeBuilder) map[string]tfschema.AttributeBuilder {
@@ -28,7 +28,7 @@ index b830bbcb..e4dbc8db 100755
  	attrs["output"] = attrs["output"].SetOptional()
  	attrs["output"] = attrs["output"].(tfschema.ListNestedAttributeBuilder).AddValidator(listvalidator.SizeAtMost(1)).(tfschema.AttributeBuilder)
  
-@@ -695,8 +695,8 @@ func (m AiGatewayGuardrails_SdkV2) ApplySchemaCustomizations(attrs map[string]tf
+@@ -696,8 +696,8 @@ func (m AiGatewayGuardrails_SdkV2) ApplySchemaCustomizations(attrs map[string]tf
  // SDK values.
  func (m AiGatewayGuardrails_SdkV2) GetComplexFieldTypes(ctx context.Context) map[string]reflect.Type {
  	return map[string]reflect.Type{
@@ -39,7 +39,7 @@ index b830bbcb..e4dbc8db 100755
  	}
  }
  
-@@ -707,8 +707,8 @@ func (m AiGatewayGuardrails_SdkV2) ToObjectValue(ctx context.Context) basetypes.
+@@ -708,8 +708,8 @@ func (m AiGatewayGuardrails_SdkV2) ToObjectValue(ctx context.Context) basetypes.
  	return types.ObjectValueMust(
  		m.Type(ctx).(basetypes.ObjectType).AttrTypes,
  		map[string]attr.Value{
@@ -50,7 +50,7 @@ index b830bbcb..e4dbc8db 100755
  		})
  }
  
-@@ -716,7 +716,7 @@ func (m AiGatewayGuardrails_SdkV2) ToObjectValue(ctx context.Context) basetypes.
+@@ -717,7 +717,7 @@ func (m AiGatewayGuardrails_SdkV2) ToObjectValue(ctx context.Context) basetypes.
  func (m AiGatewayGuardrails_SdkV2) Type(ctx context.Context) attr.Type {
  	return types.ObjectType{
  		AttrTypes: map[string]attr.Type{
@@ -59,7 +59,7 @@ index b830bbcb..e4dbc8db 100755
  				ElemType: AiGatewayGuardrailParameters_SdkV2{}.Type(ctx),
  			},
  			"output": basetypes.ListType{
-@@ -748,7 +748,7 @@ func (m *AiGatewayGuardrails_SdkV2) GetInput(ctx context.Context) (AiGatewayGuar
+@@ -749,7 +749,7 @@ func (m *AiGatewayGuardrails_SdkV2) GetInput(ctx context.Context) (AiGatewayGuar
  // SetInput sets the value of the Input field in AiGatewayGuardrails_SdkV2.
  func (m *AiGatewayGuardrails_SdkV2) SetInput(ctx context.Context, v AiGatewayGuardrailParameters_SdkV2) {
  	vs := []attr.Value{v.ToObjectValue(ctx)}
@@ -69,10 +69,10 @@ index b830bbcb..e4dbc8db 100755
  }
  
 diff --git a/internal/service/serving_tf/model.go b/internal/service/serving_tf/model.go
-index fc1e298d..9e4f60eb 100755
+index ad403c6d..dea4a1b1 100755
 --- a/internal/service/serving_tf/model.go
 +++ b/internal/service/serving_tf/model.go
-@@ -611,7 +611,7 @@ func (m AiGatewayGuardrailPiiBehavior) Type(ctx context.Context) attr.Type {
+@@ -612,7 +612,7 @@ func (m AiGatewayGuardrailPiiBehavior) Type(ctx context.Context) attr.Type {
  
  type AiGatewayGuardrails struct {
  	// Configuration for input guardrail filters.
@@ -81,7 +81,7 @@ index fc1e298d..9e4f60eb 100755
  	// Configuration for output guardrail filters.
  	Output types.Object `tfsdk:"output"`
  }
-@@ -657,7 +657,7 @@ func (to *AiGatewayGuardrails) SyncFieldsDuringRead(ctx context.Context, from Ai
+@@ -658,7 +658,7 @@ func (to *AiGatewayGuardrails) SyncFieldsDuringRead(ctx context.Context, from Ai
  }
  
  func (m AiGatewayGuardrails) ApplySchemaCustomizations(attrs map[string]tfschema.AttributeBuilder) map[string]tfschema.AttributeBuilder {
@@ -90,7 +90,7 @@ index fc1e298d..9e4f60eb 100755
  	attrs["output"] = attrs["output"].SetOptional()
  
  	return attrs
-@@ -672,8 +672,8 @@ func (m AiGatewayGuardrails) ApplySchemaCustomizations(attrs map[string]tfschema
+@@ -673,8 +673,8 @@ func (m AiGatewayGuardrails) ApplySchemaCustomizations(attrs map[string]tfschema
  // SDK values.
  func (m AiGatewayGuardrails) GetComplexFieldTypes(ctx context.Context) map[string]reflect.Type {
  	return map[string]reflect.Type{
@@ -101,7 +101,7 @@ index fc1e298d..9e4f60eb 100755
  	}
  }
  
-@@ -684,8 +684,8 @@ func (m AiGatewayGuardrails) ToObjectValue(ctx context.Context) basetypes.Object
+@@ -685,8 +685,8 @@ func (m AiGatewayGuardrails) ToObjectValue(ctx context.Context) basetypes.Object
  	return types.ObjectValueMust(
  		m.Type(ctx).(basetypes.ObjectType).AttrTypes,
  		map[string]attr.Value{
@@ -112,7 +112,7 @@ index fc1e298d..9e4f60eb 100755
  		})
  }
  
-@@ -693,8 +693,8 @@ func (m AiGatewayGuardrails) ToObjectValue(ctx context.Context) basetypes.Object
+@@ -694,8 +694,8 @@ func (m AiGatewayGuardrails) ToObjectValue(ctx context.Context) basetypes.Object
  func (m AiGatewayGuardrails) Type(ctx context.Context) attr.Type {
  	return types.ObjectType{
  		AttrTypes: map[string]attr.Type{

@@ -57,6 +57,10 @@
                     }
                 }
             },
+            "databricks_account_setting_user_preference_v2": {
+                "current": "databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2",
+                "majorVersion": 1
+            },
             "databricks_account_setting_v2": {
                 "current": "databricks:index/accountSettingV2:AccountSettingV2",
                 "majorVersion": 1,
@@ -376,6 +380,16 @@
                             }
                         }
                     },
+                    "driver_node_type_flexibility": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "alternate_node_type_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "gcp_attributes": {
                         "maxItemsOne": true
                     },
@@ -435,6 +449,16 @@
                     },
                     "ssh_public_keys": {
                         "maxItemsOne": false
+                    },
+                    "worker_node_type_flexibility": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "alternate_node_type_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "workload_type": {
                         "maxItemsOne": true,
@@ -1057,6 +1081,16 @@
                                                     }
                                                 }
                                             },
+                                            "driver_node_type_flexibility": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "alternate_node_type_ids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "gcp_attributes": {
                                                 "maxItemsOne": true
                                             },
@@ -1119,6 +1153,16 @@
                                             },
                                             "ssh_public_keys": {
                                                 "maxItemsOne": false
+                                            },
+                                            "worker_node_type_flexibility": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "alternate_node_type_ids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "workload_type": {
                                                 "maxItemsOne": true,
@@ -1218,6 +1262,16 @@
                                         }
                                     }
                                 },
+                                "driver_node_type_flexibility": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "alternate_node_type_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "gcp_attributes": {
                                     "maxItemsOne": true
                                 },
@@ -1280,6 +1334,16 @@
                                 },
                                 "ssh_public_keys": {
                                     "maxItemsOne": false
+                                },
+                                "worker_node_type_flexibility": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "alternate_node_type_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "workload_type": {
                                     "maxItemsOne": true,
@@ -1603,6 +1667,16 @@
                                                                             }
                                                                         }
                                                                     },
+                                                                    "driver_node_type_flexibility": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "alternate_node_type_ids": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
                                                                     "gcp_attributes": {
                                                                         "maxItemsOne": true
                                                                     },
@@ -1665,6 +1739,16 @@
                                                                     },
                                                                     "ssh_public_keys": {
                                                                         "maxItemsOne": false
+                                                                    },
+                                                                    "worker_node_type_flexibility": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "alternate_node_type_ids": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     },
                                                                     "workload_type": {
                                                                         "maxItemsOne": true,
@@ -1929,6 +2013,16 @@
                                                     }
                                                 }
                                             },
+                                            "driver_node_type_flexibility": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "alternate_node_type_ids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "gcp_attributes": {
                                                 "maxItemsOne": true
                                             },
@@ -1991,6 +2085,16 @@
                                             },
                                             "ssh_public_keys": {
                                                 "maxItemsOne": false
+                                            },
+                                            "worker_node_type_flexibility": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "alternate_node_type_ids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "workload_type": {
                                                 "maxItemsOne": true,
@@ -3113,6 +3217,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "full_refresh_window": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "days_of_week": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "objects": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -3125,6 +3239,9 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "auto_full_refresh_policy": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "exclude_columns": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -3171,6 +3288,9 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "auto_full_refresh_policy": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "exclude_columns": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -3217,6 +3337,9 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "auto_full_refresh_policy": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "exclude_columns": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -3286,6 +3409,9 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "auto_full_refresh_policy": {
+                                                "maxItemsOne": true
+                                            },
                                             "exclude_columns": {
                                                 "maxItemsOne": false
                                             },
@@ -4080,6 +4206,10 @@
                 "current": "databricks:index/volume:Volume",
                 "majorVersion": 1
             },
+            "databricks_warehouses_default_warehouse_override": {
+                "current": "databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride",
+                "majorVersion": 1
+            },
             "databricks_workspace_binding": {
                 "current": "databricks:index/workspaceBinding:WorkspaceBinding",
                 "majorVersion": 1
@@ -4215,6 +4345,10 @@
                         }
                     }
                 }
+            },
+            "databricks_account_setting_user_preference_v2": {
+                "current": "databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2",
+                "majorVersion": 1
             },
             "databricks_account_setting_v2": {
                 "current": "databricks:index/getAccountSettingV2:getAccountSettingV2",
@@ -4544,6 +4678,16 @@
                                         }
                                     }
                                 },
+                                "driver_node_type_flexibility": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "alternate_node_type_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "executors": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -4641,6 +4785,16 @@
                                                     }
                                                 }
                                             },
+                                            "driver_node_type_flexibility": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "alternate_node_type_ids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "gcp_attributes": {
                                                 "maxItemsOne": true
                                             },
@@ -4704,6 +4858,16 @@
                                             "ssh_public_keys": {
                                                 "maxItemsOne": false
                                             },
+                                            "worker_node_type_flexibility": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "alternate_node_type_ids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "workload_type": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -4722,6 +4886,16 @@
                                 },
                                 "termination_reason": {
                                     "maxItemsOne": true
+                                },
+                                "worker_node_type_flexibility": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "alternate_node_type_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "workload_type": {
                                     "maxItemsOne": true,
@@ -7534,6 +7708,19 @@
                     }
                 }
             },
+            "databricks_warehouses_default_warehouse_override": {
+                "current": "databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride",
+                "majorVersion": 1
+            },
+            "databricks_warehouses_default_warehouse_overrides": {
+                "current": "databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides",
+                "majorVersion": 1,
+                "fields": {
+                    "default_warehouse_overrides": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_workspace_entity_tag_assignment": {
                 "current": "databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment",
                 "majorVersion": 1
@@ -7601,6 +7788,9 @@
     },
     "ids": {
         "resources": {
+            "databricks_git_credential": [
+                "principal_id"
+            ],
             "databricks_mws_permission_assignment": [
                 "principal_id"
             ],
@@ -7614,6 +7804,7 @@
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": 0,
             "databricks:index/accountFederationPolicy:AccountFederationPolicy": 1,
             "databricks:index/accountNetworkPolicy:AccountNetworkPolicy": 1,
+            "databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2": 1,
             "databricks:index/accountSettingV2:AccountSettingV2": 1,
             "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting": 0,
             "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting": 0,
@@ -7740,6 +7931,7 @@
             "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint": 0,
             "databricks:index/vectorSearchIndex:VectorSearchIndex": 0,
             "databricks:index/volume:Volume": 0,
+            "databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride": 1,
             "databricks:index/workspaceBinding:WorkspaceBinding": 0,
             "databricks:index/workspaceConf:WorkspaceConf": 0,
             "databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment": 1,
@@ -7752,6 +7944,7 @@
             "databricks:index/getAccountFederationPolicy:getAccountFederationPolicy": 1,
             "databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies": 1,
             "databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy": 1,
+            "databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2": 1,
             "databricks:index/getAccountSettingV2:getAccountSettingV2": 1,
             "databricks:index/getAlertV2:getAlertV2": 1,
             "databricks:index/getAlertsV2:getAlertsV2": 1,
@@ -7860,6 +8053,8 @@
             "databricks:index/getViews:getViews": 0,
             "databricks:index/getVolume:getVolume": 0,
             "databricks:index/getVolumes:getVolumes": 1,
+            "databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride": 1,
+            "databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides": 1,
             "databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment": 1,
             "databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments": 1,
             "databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption": 1,
