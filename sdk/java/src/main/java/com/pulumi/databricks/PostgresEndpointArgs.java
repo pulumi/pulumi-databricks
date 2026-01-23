@@ -18,20 +18,22 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
     public static final PostgresEndpointArgs Empty = new PostgresEndpointArgs();
 
     /**
-     * The ID to use for the Endpoint, which will become the final component of
-     * the endpoint&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
      * 
      */
     @Import(name="endpointId", required=true)
     private Output<String> endpointId;
 
     /**
-     * @return The ID to use for the Endpoint, which will become the final component of
-     * the endpoint&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
      * 
      */
     public Output<String> endpointId() {
@@ -39,7 +41,7 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The branch containing this endpoint.
+     * The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
@@ -47,7 +49,7 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
     private Output<String> parent;
 
     /**
-     * @return The branch containing this endpoint.
+     * @return The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
@@ -56,14 +58,14 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The desired state of an Endpoint
+     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresEndpointSpecArgs> spec;
 
     /**
-     * @return The desired state of an Endpoint
+     * @return The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     public Optional<Output<PostgresEndpointSpecArgs>> spec() {
@@ -97,10 +99,11 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param endpointId The ID to use for the Endpoint, which will become the final component of
-         * the endpoint&#39;s resource name.
-         * 
-         * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+         * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+         * Examples:
+         * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+         * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
          * 
          * @return builder
          * 
@@ -111,10 +114,11 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param endpointId The ID to use for the Endpoint, which will become the final component of
-         * the endpoint&#39;s resource name.
-         * 
-         * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+         * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+         * Examples:
+         * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+         * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
          * 
          * @return builder
          * 
@@ -124,7 +128,7 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param parent The branch containing this endpoint.
+         * @param parent The branch containing this endpoint (API resource hierarchy).
          * Format: projects/{project_id}/branches/{branch_id}
          * 
          * @return builder
@@ -136,7 +140,7 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param parent The branch containing this endpoint.
+         * @param parent The branch containing this endpoint (API resource hierarchy).
          * Format: projects/{project_id}/branches/{branch_id}
          * 
          * @return builder
@@ -147,7 +151,7 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spec The desired state of an Endpoint
+         * @param spec The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
          * 
          * @return builder
          * 
@@ -158,7 +162,7 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spec The desired state of an Endpoint
+         * @param spec The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
          * 
          * @return builder
          * 

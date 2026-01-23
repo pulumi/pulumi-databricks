@@ -7,7 +7,21 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres projects in the workspace.
+ *
+ * ## Example Usage
+ *
+ * ### List All Projects
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresProjects({});
+ * export const projectNames = all.then(all => .map(project => (project.name)));
+ * ```
  */
 export function getPostgresProjects(args?: GetPostgresProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresProjectsResult> {
     args = args || {};
@@ -22,7 +36,7 @@ export function getPostgresProjects(args?: GetPostgresProjectsArgs, opts?: pulum
  */
 export interface GetPostgresProjectsArgs {
     /**
-     * Upper bound for items returned
+     * Upper bound for items returned. Cannot be negative
      */
     pageSize?: number;
 }
@@ -39,7 +53,21 @@ export interface GetPostgresProjectsResult {
     readonly projects: outputs.GetPostgresProjectsProject[];
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres projects in the workspace.
+ *
+ * ## Example Usage
+ *
+ * ### List All Projects
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresProjects({});
+ * export const projectNames = all.then(all => .map(project => (project.name)));
+ * ```
  */
 export function getPostgresProjectsOutput(args?: GetPostgresProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresProjectsResult> {
     args = args || {};
@@ -54,7 +82,7 @@ export function getPostgresProjectsOutput(args?: GetPostgresProjectsOutputArgs, 
  */
 export interface GetPostgresProjectsOutputArgs {
     /**
-     * Upper bound for items returned
+     * Upper bound for items returned. Cannot be negative
      */
     pageSize?: pulumi.Input<number>;
 }

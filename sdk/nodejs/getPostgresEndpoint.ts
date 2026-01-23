@@ -7,7 +7,23 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres endpoint.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Endpoint by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresEndpoint({
+ *     name: "projects/my-project/branches/dev-branch/endpoints/primary",
+ * });
+ * export const endpointType = _this.then(_this => _this.status?.endpointType);
+ * ```
  */
 export function getPostgresEndpoint(args: GetPostgresEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -21,8 +37,8 @@ export function getPostgresEndpoint(args: GetPostgresEndpointArgs, opts?: pulumi
  */
 export interface GetPostgresEndpointArgs {
     /**
-     * The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      */
     name: string;
 }
@@ -40,25 +56,25 @@ export interface GetPostgresEndpointResult {
      */
     readonly id: string;
     /**
-     * (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      */
     readonly name: string;
     /**
-     * (string) - The branch containing this endpoint.
+     * (string) - The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      */
     readonly parent: string;
     /**
-     * (EndpointSpec) - The desired state of an Endpoint
+     * (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     readonly spec: outputs.GetPostgresEndpointSpec;
     /**
-     * (EndpointStatus) - The current status of an Endpoint
+     * (EndpointStatus) - Current operational status of the compute endpoint
      */
     readonly status: outputs.GetPostgresEndpointStatus;
     /**
-     * (string) - System generated unique ID for the endpoint
+     * (string) - System-generated unique ID for the endpoint
      */
     readonly uid: string;
     /**
@@ -67,7 +83,23 @@ export interface GetPostgresEndpointResult {
     readonly updateTime: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres endpoint.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Endpoint by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresEndpoint({
+ *     name: "projects/my-project/branches/dev-branch/endpoints/primary",
+ * });
+ * export const endpointType = _this.then(_this => _this.status?.endpointType);
+ * ```
  */
 export function getPostgresEndpointOutput(args: GetPostgresEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -81,8 +113,8 @@ export function getPostgresEndpointOutput(args: GetPostgresEndpointOutputArgs, o
  */
 export interface GetPostgresEndpointOutputArgs {
     /**
-     * The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      */
     name: pulumi.Input<string>;
 }

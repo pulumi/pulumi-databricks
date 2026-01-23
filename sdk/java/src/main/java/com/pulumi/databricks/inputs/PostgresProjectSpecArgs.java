@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PostgresProjectSpecDefaultEndpointSettingsArgs;
-import com.pulumi.databricks.inputs.PostgresProjectSpecSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -78,21 +77,6 @@ public final class PostgresProjectSpecArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.pgVersion);
     }
 
-    /**
-     * (ProjectSettings) - The effective project settings
-     * 
-     */
-    @Import(name="settings")
-    private @Nullable Output<PostgresProjectSpecSettingsArgs> settings;
-
-    /**
-     * @return (ProjectSettings) - The effective project settings
-     * 
-     */
-    public Optional<Output<PostgresProjectSpecSettingsArgs>> settings() {
-        return Optional.ofNullable(this.settings);
-    }
-
     private PostgresProjectSpecArgs() {}
 
     private PostgresProjectSpecArgs(PostgresProjectSpecArgs $) {
@@ -100,7 +84,6 @@ public final class PostgresProjectSpecArgs extends com.pulumi.resources.Resource
         this.displayName = $.displayName;
         this.historyRetentionDuration = $.historyRetentionDuration;
         this.pgVersion = $.pgVersion;
-        this.settings = $.settings;
     }
 
     public static Builder builder() {
@@ -203,27 +186,6 @@ public final class PostgresProjectSpecArgs extends com.pulumi.resources.Resource
          */
         public Builder pgVersion(Integer pgVersion) {
             return pgVersion(Output.of(pgVersion));
-        }
-
-        /**
-         * @param settings (ProjectSettings) - The effective project settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder settings(@Nullable Output<PostgresProjectSpecSettingsArgs> settings) {
-            $.settings = settings;
-            return this;
-        }
-
-        /**
-         * @param settings (ProjectSettings) - The effective project settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder settings(PostgresProjectSpecSettingsArgs settings) {
-            return settings(Output.of(settings));
         }
 
         public PostgresProjectSpecArgs build() {

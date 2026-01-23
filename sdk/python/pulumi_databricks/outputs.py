@@ -23,6 +23,10 @@ __all__ = [
     'AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination',
     'AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination',
     'AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement',
+    'AccountSettingUserPreferenceV2BooleanVal',
+    'AccountSettingUserPreferenceV2EffectiveBooleanVal',
+    'AccountSettingUserPreferenceV2EffectiveStringVal',
+    'AccountSettingUserPreferenceV2StringVal',
     'AccountSettingV2AibiDashboardEmbeddingAccessPolicy',
     'AccountSettingV2AibiDashboardEmbeddingApprovedDomains',
     'AccountSettingV2AutomaticClusterUpdateWorkspace',
@@ -124,6 +128,7 @@ __all__ = [
     'ClusterClusterMountInfoNetworkFilesystemInfo',
     'ClusterDockerImage',
     'ClusterDockerImageBasicAuth',
+    'ClusterDriverNodeTypeFlexibility',
     'ClusterGcpAttributes',
     'ClusterInitScript',
     'ClusterInitScriptAbfss',
@@ -143,6 +148,7 @@ __all__ = [
     'ClusterPolicyLibraryProviderConfig',
     'ClusterPolicyLibraryPypi',
     'ClusterProviderConfig',
+    'ClusterWorkerNodeTypeFlexibility',
     'ClusterWorkloadType',
     'ClusterWorkloadTypeClients',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace',
@@ -247,6 +253,7 @@ __all__ = [
     'JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobJobClusterNewClusterDockerImage',
     'JobJobClusterNewClusterDockerImageBasicAuth',
+    'JobJobClusterNewClusterDriverNodeTypeFlexibility',
     'JobJobClusterNewClusterGcpAttributes',
     'JobJobClusterNewClusterInitScript',
     'JobJobClusterNewClusterInitScriptAbfss',
@@ -262,6 +269,7 @@ __all__ = [
     'JobJobClusterNewClusterLibraryProviderConfig',
     'JobJobClusterNewClusterLibraryPypi',
     'JobJobClusterNewClusterProviderConfig',
+    'JobJobClusterNewClusterWorkerNodeTypeFlexibility',
     'JobJobClusterNewClusterWorkloadType',
     'JobJobClusterNewClusterWorkloadTypeClients',
     'JobLibrary',
@@ -282,6 +290,7 @@ __all__ = [
     'JobNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobNewClusterDockerImage',
     'JobNewClusterDockerImageBasicAuth',
+    'JobNewClusterDriverNodeTypeFlexibility',
     'JobNewClusterGcpAttributes',
     'JobNewClusterInitScript',
     'JobNewClusterInitScriptAbfss',
@@ -297,6 +306,7 @@ __all__ = [
     'JobNewClusterLibraryProviderConfig',
     'JobNewClusterLibraryPypi',
     'JobNewClusterProviderConfig',
+    'JobNewClusterWorkerNodeTypeFlexibility',
     'JobNewClusterWorkloadType',
     'JobNewClusterWorkloadTypeClients',
     'JobNotebookTask',
@@ -357,6 +367,7 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobTaskForEachTaskTaskNewClusterDockerImage',
     'JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth',
+    'JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility',
     'JobTaskForEachTaskTaskNewClusterGcpAttributes',
     'JobTaskForEachTaskTaskNewClusterInitScript',
     'JobTaskForEachTaskTaskNewClusterInitScriptAbfss',
@@ -372,6 +383,7 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterLibraryProviderConfig',
     'JobTaskForEachTaskTaskNewClusterLibraryPypi',
     'JobTaskForEachTaskTaskNewClusterProviderConfig',
+    'JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility',
     'JobTaskForEachTaskTaskNewClusterWorkloadType',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeClients',
     'JobTaskForEachTaskTaskNotebookTask',
@@ -421,6 +433,7 @@ __all__ = [
     'JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobTaskNewClusterDockerImage',
     'JobTaskNewClusterDockerImageBasicAuth',
+    'JobTaskNewClusterDriverNodeTypeFlexibility',
     'JobTaskNewClusterGcpAttributes',
     'JobTaskNewClusterInitScript',
     'JobTaskNewClusterInitScriptAbfss',
@@ -436,6 +449,7 @@ __all__ = [
     'JobTaskNewClusterLibraryProviderConfig',
     'JobTaskNewClusterLibraryPypi',
     'JobTaskNewClusterProviderConfig',
+    'JobTaskNewClusterWorkerNodeTypeFlexibility',
     'JobTaskNewClusterWorkloadType',
     'JobTaskNewClusterWorkloadTypeClients',
     'JobTaskNotebookTask',
@@ -613,19 +627,23 @@ __all__ = [
     'PipelineGatewayDefinition',
     'PipelineGatewayDefinitionConnectionParameters',
     'PipelineIngestionDefinition',
+    'PipelineIngestionDefinitionFullRefreshWindow',
     'PipelineIngestionDefinitionObject',
     'PipelineIngestionDefinitionObjectReport',
     'PipelineIngestionDefinitionObjectReportTableConfiguration',
+    'PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy',
     'PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig',
     'PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters',
     'PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameter',
     'PipelineIngestionDefinitionObjectSchema',
     'PipelineIngestionDefinitionObjectSchemaTableConfiguration',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameter',
     'PipelineIngestionDefinitionObjectTable',
     'PipelineIngestionDefinitionObjectTableTableConfiguration',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy',
     'PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig',
     'PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters',
     'PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameter',
@@ -634,6 +652,7 @@ __all__ = [
     'PipelineIngestionDefinitionSourceConfigurationCatalogPostgres',
     'PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfig',
     'PipelineIngestionDefinitionTableConfiguration',
+    'PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy',
     'PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig',
     'PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters',
     'PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameter',
@@ -659,13 +678,12 @@ __all__ = [
     'PostgresEndpointSpec',
     'PostgresEndpointSpecSettings',
     'PostgresEndpointStatus',
+    'PostgresEndpointStatusHosts',
     'PostgresEndpointStatusSettings',
     'PostgresProjectSpec',
     'PostgresProjectSpecDefaultEndpointSettings',
-    'PostgresProjectSpecSettings',
     'PostgresProjectStatus',
     'PostgresProjectStatusDefaultEndpointSettings',
-    'PostgresProjectStatusSettings',
     'QualityMonitorCustomMetric',
     'QualityMonitorDataClassificationConfig',
     'QualityMonitorInferenceLog',
@@ -791,6 +809,10 @@ __all__ = [
     'GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationResult',
     'GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationResult',
     'GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementResult',
+    'GetAccountSettingUserPreferenceV2BooleanValResult',
+    'GetAccountSettingUserPreferenceV2EffectiveBooleanValResult',
+    'GetAccountSettingUserPreferenceV2EffectiveStringValResult',
+    'GetAccountSettingUserPreferenceV2StringValResult',
     'GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult',
     'GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult',
     'GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult',
@@ -929,6 +951,7 @@ __all__ = [
     'GetClusterClusterInfoDockerImageBasicAuthResult',
     'GetClusterClusterInfoDriverResult',
     'GetClusterClusterInfoDriverNodeAwsAttributesResult',
+    'GetClusterClusterInfoDriverNodeTypeFlexibilityResult',
     'GetClusterClusterInfoExecutorResult',
     'GetClusterClusterInfoExecutorNodeAwsAttributesResult',
     'GetClusterClusterInfoGcpAttributesResult',
@@ -953,6 +976,7 @@ __all__ = [
     'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoResult',
     'GetClusterClusterInfoSpecDockerImageResult',
     'GetClusterClusterInfoSpecDockerImageBasicAuthResult',
+    'GetClusterClusterInfoSpecDriverNodeTypeFlexibilityResult',
     'GetClusterClusterInfoSpecGcpAttributesResult',
     'GetClusterClusterInfoSpecInitScriptResult',
     'GetClusterClusterInfoSpecInitScriptAbfssResult',
@@ -968,9 +992,11 @@ __all__ = [
     'GetClusterClusterInfoSpecLibraryProviderConfigResult',
     'GetClusterClusterInfoSpecLibraryPypiResult',
     'GetClusterClusterInfoSpecProviderConfigResult',
+    'GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityResult',
     'GetClusterClusterInfoSpecWorkloadTypeResult',
     'GetClusterClusterInfoSpecWorkloadTypeClientsResult',
     'GetClusterClusterInfoTerminationReasonResult',
+    'GetClusterClusterInfoWorkerNodeTypeFlexibilityResult',
     'GetClusterClusterInfoWorkloadTypeResult',
     'GetClusterClusterInfoWorkloadTypeClientsResult',
     'GetClusterPolicyProviderConfigResult',
@@ -1370,25 +1396,23 @@ __all__ = [
     'GetPostgresEndpointSpecResult',
     'GetPostgresEndpointSpecSettingsResult',
     'GetPostgresEndpointStatusResult',
+    'GetPostgresEndpointStatusHostsResult',
     'GetPostgresEndpointStatusSettingsResult',
     'GetPostgresEndpointsEndpointResult',
     'GetPostgresEndpointsEndpointSpecResult',
     'GetPostgresEndpointsEndpointSpecSettingsResult',
     'GetPostgresEndpointsEndpointStatusResult',
+    'GetPostgresEndpointsEndpointStatusHostsResult',
     'GetPostgresEndpointsEndpointStatusSettingsResult',
     'GetPostgresProjectSpecResult',
     'GetPostgresProjectSpecDefaultEndpointSettingsResult',
-    'GetPostgresProjectSpecSettingsResult',
     'GetPostgresProjectStatusResult',
     'GetPostgresProjectStatusDefaultEndpointSettingsResult',
-    'GetPostgresProjectStatusSettingsResult',
     'GetPostgresProjectsProjectResult',
     'GetPostgresProjectsProjectSpecResult',
     'GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult',
-    'GetPostgresProjectsProjectSpecSettingsResult',
     'GetPostgresProjectsProjectStatusResult',
     'GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult',
-    'GetPostgresProjectsProjectStatusSettingsResult',
     'GetQualityMonitorV2AnomalyDetectionConfigResult',
     'GetQualityMonitorV2ValidityCheckConfigurationResult',
     'GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckResult',
@@ -1512,6 +1536,7 @@ __all__ = [
     'GetVolumeVolumeInfoEncryptionDetailsResult',
     'GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsResult',
     'GetVolumesProviderConfigResult',
+    'GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideResult',
     'GetWorkspaceEntityTagAssignmentsTagAssignmentResult',
     'GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyResult',
     'GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsResult',
@@ -2039,6 +2064,58 @@ class AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement(dict):
         defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
         """
         return pulumi.get(self, "enforcement_mode")
+
+
+@pulumi.output_type
+class AccountSettingUserPreferenceV2BooleanVal(dict):
+    def __init__(__self__, *,
+                 value: Optional[_builtins.bool] = None):
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AccountSettingUserPreferenceV2EffectiveBooleanVal(dict):
+    def __init__(__self__, *,
+                 value: Optional[_builtins.bool] = None):
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AccountSettingUserPreferenceV2EffectiveStringVal(dict):
+    def __init__(__self__, *,
+                 value: Optional[_builtins.str] = None):
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AccountSettingUserPreferenceV2StringVal(dict):
+    def __init__(__self__, *,
+                 value: Optional[_builtins.str] = None):
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -6603,6 +6680,36 @@ class ClusterDockerImageBasicAuth(dict):
 
 
 @pulumi.output_type
+class ClusterDriverNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+
+@pulumi.output_type
 class ClusterGcpAttributes(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7404,6 +7511,36 @@ class ClusterProviderConfig(dict):
         ```
         """
         return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class ClusterWorkerNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
 
 
 @pulumi.output_type
@@ -12583,6 +12720,8 @@ class JobJobClusterNewCluster(dict):
             suggest = "docker_image"
         elif key == "driverInstancePoolId":
             suggest = "driver_instance_pool_id"
+        elif key == "driverNodeTypeFlexibility":
+            suggest = "driver_node_type_flexibility"
         elif key == "driverNodeTypeId":
             suggest = "driver_node_type_id"
         elif key == "enableElasticDisk":
@@ -12625,6 +12764,8 @@ class JobJobClusterNewCluster(dict):
             suggest = "total_initial_remote_disk_size"
         elif key == "useMlRuntime":
             suggest = "use_ml_runtime"
+        elif key == "workerNodeTypeFlexibility":
+            suggest = "worker_node_type_flexibility"
         elif key == "workloadType":
             suggest = "workload_type"
 
@@ -12653,6 +12794,7 @@ class JobJobClusterNewCluster(dict):
                  data_security_mode: Optional[_builtins.str] = None,
                  docker_image: Optional['outputs.JobJobClusterNewClusterDockerImage'] = None,
                  driver_instance_pool_id: Optional[_builtins.str] = None,
+                 driver_node_type_flexibility: Optional['outputs.JobJobClusterNewClusterDriverNodeTypeFlexibility'] = None,
                  driver_node_type_id: Optional[_builtins.str] = None,
                  enable_elastic_disk: Optional[_builtins.bool] = None,
                  enable_local_disk_encryption: Optional[_builtins.bool] = None,
@@ -12676,6 +12818,7 @@ class JobJobClusterNewCluster(dict):
                  ssh_public_keys: Optional[Sequence[_builtins.str]] = None,
                  total_initial_remote_disk_size: Optional[_builtins.int] = None,
                  use_ml_runtime: Optional[_builtins.bool] = None,
+                 worker_node_type_flexibility: Optional['outputs.JobJobClusterNewClusterWorkerNodeTypeFlexibility'] = None,
                  workload_type: Optional['outputs.JobJobClusterNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobJobClusterNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -12708,6 +12851,8 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -12754,6 +12899,8 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -12821,6 +12968,11 @@ class JobJobClusterNewCluster(dict):
     @pulumi.getter(name="driverInstancePoolId")
     def driver_instance_pool_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "driver_instance_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional['outputs.JobJobClusterNewClusterDriverNodeTypeFlexibility']:
+        return pulumi.get(self, "driver_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -12942,6 +13094,11 @@ class JobJobClusterNewCluster(dict):
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "use_ml_runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional['outputs.JobJobClusterNewClusterWorkerNodeTypeFlexibility']:
+        return pulumi.get(self, "worker_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -13494,6 +13651,36 @@ class JobJobClusterNewClusterDockerImageBasicAuth(dict):
 
 
 @pulumi.output_type
+class JobJobClusterNewClusterDriverNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobJobClusterNewClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobJobClusterNewClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobJobClusterNewClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+
+@pulumi.output_type
 class JobJobClusterNewClusterGcpAttributes(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -14036,6 +14223,36 @@ class JobJobClusterNewClusterProviderConfig(dict):
 
 
 @pulumi.output_type
+class JobJobClusterNewClusterWorkerNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobJobClusterNewClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobJobClusterNewClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobJobClusterNewClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+
+@pulumi.output_type
 class JobJobClusterNewClusterWorkloadType(dict):
     def __init__(__self__, *,
                  clients: 'outputs.JobJobClusterNewClusterWorkloadTypeClients'):
@@ -14291,6 +14508,8 @@ class JobNewCluster(dict):
             suggest = "docker_image"
         elif key == "driverInstancePoolId":
             suggest = "driver_instance_pool_id"
+        elif key == "driverNodeTypeFlexibility":
+            suggest = "driver_node_type_flexibility"
         elif key == "driverNodeTypeId":
             suggest = "driver_node_type_id"
         elif key == "enableElasticDisk":
@@ -14333,6 +14552,8 @@ class JobNewCluster(dict):
             suggest = "total_initial_remote_disk_size"
         elif key == "useMlRuntime":
             suggest = "use_ml_runtime"
+        elif key == "workerNodeTypeFlexibility":
+            suggest = "worker_node_type_flexibility"
         elif key == "workloadType":
             suggest = "workload_type"
 
@@ -14360,6 +14581,7 @@ class JobNewCluster(dict):
                  data_security_mode: Optional[_builtins.str] = None,
                  docker_image: Optional['outputs.JobNewClusterDockerImage'] = None,
                  driver_instance_pool_id: Optional[_builtins.str] = None,
+                 driver_node_type_flexibility: Optional['outputs.JobNewClusterDriverNodeTypeFlexibility'] = None,
                  driver_node_type_id: Optional[_builtins.str] = None,
                  enable_elastic_disk: Optional[_builtins.bool] = None,
                  enable_local_disk_encryption: Optional[_builtins.bool] = None,
@@ -14383,6 +14605,7 @@ class JobNewCluster(dict):
                  ssh_public_keys: Optional[Sequence[_builtins.str]] = None,
                  total_initial_remote_disk_size: Optional[_builtins.int] = None,
                  use_ml_runtime: Optional[_builtins.bool] = None,
+                 worker_node_type_flexibility: Optional['outputs.JobNewClusterWorkerNodeTypeFlexibility'] = None,
                  workload_type: Optional['outputs.JobNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -14413,6 +14636,8 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -14459,6 +14684,8 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -14521,6 +14748,11 @@ class JobNewCluster(dict):
     @pulumi.getter(name="driverInstancePoolId")
     def driver_instance_pool_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "driver_instance_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional['outputs.JobNewClusterDriverNodeTypeFlexibility']:
+        return pulumi.get(self, "driver_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -14642,6 +14874,11 @@ class JobNewCluster(dict):
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "use_ml_runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional['outputs.JobNewClusterWorkerNodeTypeFlexibility']:
+        return pulumi.get(self, "worker_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -15194,6 +15431,36 @@ class JobNewClusterDockerImageBasicAuth(dict):
 
 
 @pulumi.output_type
+class JobNewClusterDriverNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobNewClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobNewClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobNewClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+
+@pulumi.output_type
 class JobNewClusterGcpAttributes(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -15733,6 +16000,36 @@ class JobNewClusterProviderConfig(dict):
         Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
         return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class JobNewClusterWorkerNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobNewClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobNewClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobNewClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
 
 
 @pulumi.output_type
@@ -19125,6 +19422,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             suggest = "docker_image"
         elif key == "driverInstancePoolId":
             suggest = "driver_instance_pool_id"
+        elif key == "driverNodeTypeFlexibility":
+            suggest = "driver_node_type_flexibility"
         elif key == "driverNodeTypeId":
             suggest = "driver_node_type_id"
         elif key == "enableElasticDisk":
@@ -19167,6 +19466,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             suggest = "total_initial_remote_disk_size"
         elif key == "useMlRuntime":
             suggest = "use_ml_runtime"
+        elif key == "workerNodeTypeFlexibility":
+            suggest = "worker_node_type_flexibility"
         elif key == "workloadType":
             suggest = "workload_type"
 
@@ -19194,6 +19495,7 @@ class JobTaskForEachTaskTaskNewCluster(dict):
                  data_security_mode: Optional[_builtins.str] = None,
                  docker_image: Optional['outputs.JobTaskForEachTaskTaskNewClusterDockerImage'] = None,
                  driver_instance_pool_id: Optional[_builtins.str] = None,
+                 driver_node_type_flexibility: Optional['outputs.JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility'] = None,
                  driver_node_type_id: Optional[_builtins.str] = None,
                  enable_elastic_disk: Optional[_builtins.bool] = None,
                  enable_local_disk_encryption: Optional[_builtins.bool] = None,
@@ -19217,6 +19519,7 @@ class JobTaskForEachTaskTaskNewCluster(dict):
                  ssh_public_keys: Optional[Sequence[_builtins.str]] = None,
                  total_initial_remote_disk_size: Optional[_builtins.int] = None,
                  use_ml_runtime: Optional[_builtins.bool] = None,
+                 worker_node_type_flexibility: Optional['outputs.JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility'] = None,
                  workload_type: Optional['outputs.JobTaskForEachTaskTaskNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobTaskForEachTaskTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -19247,6 +19550,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -19293,6 +19598,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -19355,6 +19662,11 @@ class JobTaskForEachTaskTaskNewCluster(dict):
     @pulumi.getter(name="driverInstancePoolId")
     def driver_instance_pool_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "driver_instance_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility']:
+        return pulumi.get(self, "driver_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -19476,6 +19788,11 @@ class JobTaskForEachTaskTaskNewCluster(dict):
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "use_ml_runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility']:
+        return pulumi.get(self, "worker_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -20028,6 +20345,36 @@ class JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth(dict):
 
 
 @pulumi.output_type
+class JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+
+@pulumi.output_type
 class JobTaskForEachTaskTaskNewClusterGcpAttributes(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -20567,6 +20914,36 @@ class JobTaskForEachTaskTaskNewClusterProviderConfig(dict):
         Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
         return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
 
 
 @pulumi.output_type
@@ -22534,6 +22911,8 @@ class JobTaskNewCluster(dict):
             suggest = "docker_image"
         elif key == "driverInstancePoolId":
             suggest = "driver_instance_pool_id"
+        elif key == "driverNodeTypeFlexibility":
+            suggest = "driver_node_type_flexibility"
         elif key == "driverNodeTypeId":
             suggest = "driver_node_type_id"
         elif key == "enableElasticDisk":
@@ -22576,6 +22955,8 @@ class JobTaskNewCluster(dict):
             suggest = "total_initial_remote_disk_size"
         elif key == "useMlRuntime":
             suggest = "use_ml_runtime"
+        elif key == "workerNodeTypeFlexibility":
+            suggest = "worker_node_type_flexibility"
         elif key == "workloadType":
             suggest = "workload_type"
 
@@ -22604,6 +22985,7 @@ class JobTaskNewCluster(dict):
                  data_security_mode: Optional[_builtins.str] = None,
                  docker_image: Optional['outputs.JobTaskNewClusterDockerImage'] = None,
                  driver_instance_pool_id: Optional[_builtins.str] = None,
+                 driver_node_type_flexibility: Optional['outputs.JobTaskNewClusterDriverNodeTypeFlexibility'] = None,
                  driver_node_type_id: Optional[_builtins.str] = None,
                  enable_elastic_disk: Optional[_builtins.bool] = None,
                  enable_local_disk_encryption: Optional[_builtins.bool] = None,
@@ -22627,6 +23009,7 @@ class JobTaskNewCluster(dict):
                  ssh_public_keys: Optional[Sequence[_builtins.str]] = None,
                  total_initial_remote_disk_size: Optional[_builtins.int] = None,
                  use_ml_runtime: Optional[_builtins.bool] = None,
+                 worker_node_type_flexibility: Optional['outputs.JobTaskNewClusterWorkerNodeTypeFlexibility'] = None,
                  workload_type: Optional['outputs.JobTaskNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -22659,6 +23042,8 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -22705,6 +23090,8 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -22772,6 +23159,11 @@ class JobTaskNewCluster(dict):
     @pulumi.getter(name="driverInstancePoolId")
     def driver_instance_pool_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "driver_instance_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional['outputs.JobTaskNewClusterDriverNodeTypeFlexibility']:
+        return pulumi.get(self, "driver_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -22893,6 +23285,11 @@ class JobTaskNewCluster(dict):
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "use_ml_runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional['outputs.JobTaskNewClusterWorkerNodeTypeFlexibility']:
+        return pulumi.get(self, "worker_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -23445,6 +23842,36 @@ class JobTaskNewClusterDockerImageBasicAuth(dict):
 
 
 @pulumi.output_type
+class JobTaskNewClusterDriverNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskNewClusterDriverNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskNewClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskNewClusterDriverNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+
+@pulumi.output_type
 class JobTaskNewClusterGcpAttributes(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -23984,6 +24411,36 @@ class JobTaskNewClusterProviderConfig(dict):
         Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
         return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class JobTaskNewClusterWorkerNodeTypeFlexibility(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateNodeTypeIds":
+            suggest = "alternate_node_type_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskNewClusterWorkerNodeTypeFlexibility. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskNewClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskNewClusterWorkerNodeTypeFlexibility.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
 
 
 @pulumi.output_type
@@ -31201,13 +31658,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -31479,13 +31936,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -34029,6 +34486,8 @@ class PipelineIngestionDefinition(dict):
         suggest = None
         if key == "connectionName":
             suggest = "connection_name"
+        elif key == "fullRefreshWindow":
+            suggest = "full_refresh_window"
         elif key == "ingestFromUcForeignCatalog":
             suggest = "ingest_from_uc_foreign_catalog"
         elif key == "ingestionGatewayId":
@@ -34055,6 +34514,7 @@ class PipelineIngestionDefinition(dict):
 
     def __init__(__self__, *,
                  connection_name: Optional[_builtins.str] = None,
+                 full_refresh_window: Optional['outputs.PipelineIngestionDefinitionFullRefreshWindow'] = None,
                  ingest_from_uc_foreign_catalog: Optional[_builtins.bool] = None,
                  ingestion_gateway_id: Optional[_builtins.str] = None,
                  netsuite_jar_path: Optional[_builtins.str] = None,
@@ -34064,6 +34524,8 @@ class PipelineIngestionDefinition(dict):
                  table_configuration: Optional['outputs.PipelineIngestionDefinitionTableConfiguration'] = None):
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if full_refresh_window is not None:
+            pulumi.set(__self__, "full_refresh_window", full_refresh_window)
         if ingest_from_uc_foreign_catalog is not None:
             pulumi.set(__self__, "ingest_from_uc_foreign_catalog", ingest_from_uc_foreign_catalog)
         if ingestion_gateway_id is not None:
@@ -34083,6 +34545,11 @@ class PipelineIngestionDefinition(dict):
     @pulumi.getter(name="connectionName")
     def connection_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="fullRefreshWindow")
+    def full_refresh_window(self) -> Optional['outputs.PipelineIngestionDefinitionFullRefreshWindow']:
+        return pulumi.get(self, "full_refresh_window")
 
     @_builtins.property
     @pulumi.getter(name="ingestFromUcForeignCatalog")
@@ -34118,6 +34585,55 @@ class PipelineIngestionDefinition(dict):
     @pulumi.getter(name="tableConfiguration")
     def table_configuration(self) -> Optional['outputs.PipelineIngestionDefinitionTableConfiguration']:
         return pulumi.get(self, "table_configuration")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionFullRefreshWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startHour":
+            suggest = "start_hour"
+        elif key == "daysOfWeeks":
+            suggest = "days_of_weeks"
+        elif key == "timeZoneId":
+            suggest = "time_zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionFullRefreshWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionFullRefreshWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionFullRefreshWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 start_hour: _builtins.int,
+                 days_of_weeks: Optional[Sequence[_builtins.str]] = None,
+                 time_zone_id: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "start_hour", start_hour)
+        if days_of_weeks is not None:
+            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+        if time_zone_id is not None:
+            pulumi.set(__self__, "time_zone_id", time_zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> _builtins.int:
+        return pulumi.get(self, "start_hour")
+
+    @_builtins.property
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "days_of_weeks")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZoneId")
+    def time_zone_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "time_zone_id")
 
 
 @pulumi.output_type
@@ -34227,7 +34743,9 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeColumns":
+        if key == "autoFullRefreshPolicy":
+            suggest = "auto_full_refresh_policy"
+        elif key == "excludeColumns":
             suggest = "exclude_columns"
         elif key == "includeColumns":
             suggest = "include_columns"
@@ -34258,6 +34776,7 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_full_refresh_policy: Optional['outputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy'] = None,
                  exclude_columns: Optional[Sequence[_builtins.str]] = None,
                  include_columns: Optional[Sequence[_builtins.str]] = None,
                  primary_keys: Optional[Sequence[_builtins.str]] = None,
@@ -34267,6 +34786,8 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
                  scd_type: Optional[_builtins.str] = None,
                  sequence_bies: Optional[Sequence[_builtins.str]] = None,
                  workday_report_parameters: Optional['outputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters'] = None):
+        if auto_full_refresh_policy is not None:
+            pulumi.set(__self__, "auto_full_refresh_policy", auto_full_refresh_policy)
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -34285,6 +34806,11 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
             pulumi.set(__self__, "sequence_bies", sequence_bies)
         if workday_report_parameters is not None:
             pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullRefreshPolicy")
+    def auto_full_refresh_policy(self) -> Optional['outputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy']:
+        return pulumi.get(self, "auto_full_refresh_policy")
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -34330,6 +34856,43 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
     @pulumi.getter(name="workdayReportParameters")
     def workday_report_parameters(self) -> Optional['outputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters']:
         return pulumi.get(self, "workday_report_parameters")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minIntervalHours":
+            suggest = "min_interval_hours"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 min_interval_hours: Optional[_builtins.int] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if min_interval_hours is not None:
+            pulumi.set(__self__, "min_interval_hours", min_interval_hours)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="minIntervalHours")
+    def min_interval_hours(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "min_interval_hours")
 
 
 @pulumi.output_type
@@ -34521,7 +35084,9 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeColumns":
+        if key == "autoFullRefreshPolicy":
+            suggest = "auto_full_refresh_policy"
+        elif key == "excludeColumns":
             suggest = "exclude_columns"
         elif key == "includeColumns":
             suggest = "include_columns"
@@ -34552,6 +35117,7 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_full_refresh_policy: Optional['outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy'] = None,
                  exclude_columns: Optional[Sequence[_builtins.str]] = None,
                  include_columns: Optional[Sequence[_builtins.str]] = None,
                  primary_keys: Optional[Sequence[_builtins.str]] = None,
@@ -34561,6 +35127,8 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
                  scd_type: Optional[_builtins.str] = None,
                  sequence_bies: Optional[Sequence[_builtins.str]] = None,
                  workday_report_parameters: Optional['outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters'] = None):
+        if auto_full_refresh_policy is not None:
+            pulumi.set(__self__, "auto_full_refresh_policy", auto_full_refresh_policy)
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -34579,6 +35147,11 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
             pulumi.set(__self__, "sequence_bies", sequence_bies)
         if workday_report_parameters is not None:
             pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullRefreshPolicy")
+    def auto_full_refresh_policy(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy']:
+        return pulumi.get(self, "auto_full_refresh_policy")
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -34624,6 +35197,43 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
     @pulumi.getter(name="workdayReportParameters")
     def workday_report_parameters(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters']:
         return pulumi.get(self, "workday_report_parameters")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minIntervalHours":
+            suggest = "min_interval_hours"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 min_interval_hours: Optional[_builtins.int] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if min_interval_hours is not None:
+            pulumi.set(__self__, "min_interval_hours", min_interval_hours)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="minIntervalHours")
+    def min_interval_hours(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "min_interval_hours")
 
 
 @pulumi.output_type
@@ -34835,7 +35445,9 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeColumns":
+        if key == "autoFullRefreshPolicy":
+            suggest = "auto_full_refresh_policy"
+        elif key == "excludeColumns":
             suggest = "exclude_columns"
         elif key == "includeColumns":
             suggest = "include_columns"
@@ -34866,6 +35478,7 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_full_refresh_policy: Optional['outputs.PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy'] = None,
                  exclude_columns: Optional[Sequence[_builtins.str]] = None,
                  include_columns: Optional[Sequence[_builtins.str]] = None,
                  primary_keys: Optional[Sequence[_builtins.str]] = None,
@@ -34875,6 +35488,8 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
                  scd_type: Optional[_builtins.str] = None,
                  sequence_bies: Optional[Sequence[_builtins.str]] = None,
                  workday_report_parameters: Optional['outputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters'] = None):
+        if auto_full_refresh_policy is not None:
+            pulumi.set(__self__, "auto_full_refresh_policy", auto_full_refresh_policy)
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -34893,6 +35508,11 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
             pulumi.set(__self__, "sequence_bies", sequence_bies)
         if workday_report_parameters is not None:
             pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullRefreshPolicy")
+    def auto_full_refresh_policy(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy']:
+        return pulumi.get(self, "auto_full_refresh_policy")
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -34938,6 +35558,43 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
     @pulumi.getter(name="workdayReportParameters")
     def workday_report_parameters(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters']:
         return pulumi.get(self, "workday_report_parameters")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minIntervalHours":
+            suggest = "min_interval_hours"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 min_interval_hours: Optional[_builtins.int] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if min_interval_hours is not None:
+            pulumi.set(__self__, "min_interval_hours", min_interval_hours)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="minIntervalHours")
+    def min_interval_hours(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "min_interval_hours")
 
 
 @pulumi.output_type
@@ -35189,7 +35846,9 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeColumns":
+        if key == "autoFullRefreshPolicy":
+            suggest = "auto_full_refresh_policy"
+        elif key == "excludeColumns":
             suggest = "exclude_columns"
         elif key == "includeColumns":
             suggest = "include_columns"
@@ -35220,6 +35879,7 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_full_refresh_policy: Optional['outputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy'] = None,
                  exclude_columns: Optional[Sequence[_builtins.str]] = None,
                  include_columns: Optional[Sequence[_builtins.str]] = None,
                  primary_keys: Optional[Sequence[_builtins.str]] = None,
@@ -35229,6 +35889,8 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
                  scd_type: Optional[_builtins.str] = None,
                  sequence_bies: Optional[Sequence[_builtins.str]] = None,
                  workday_report_parameters: Optional['outputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters'] = None):
+        if auto_full_refresh_policy is not None:
+            pulumi.set(__self__, "auto_full_refresh_policy", auto_full_refresh_policy)
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -35247,6 +35909,11 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
             pulumi.set(__self__, "sequence_bies", sequence_bies)
         if workday_report_parameters is not None:
             pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullRefreshPolicy")
+    def auto_full_refresh_policy(self) -> Optional['outputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy']:
+        return pulumi.get(self, "auto_full_refresh_policy")
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -35292,6 +35959,43 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
     @pulumi.getter(name="workdayReportParameters")
     def workday_report_parameters(self) -> Optional['outputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters']:
         return pulumi.get(self, "workday_report_parameters")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minIntervalHours":
+            suggest = "min_interval_hours"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 min_interval_hours: Optional[_builtins.int] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if min_interval_hours is not None:
+            pulumi.set(__self__, "min_interval_hours", min_interval_hours)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="minIntervalHours")
+    def min_interval_hours(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "min_interval_hours")
 
 
 @pulumi.output_type
@@ -35988,8 +36692,12 @@ class PostgresBranchSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "isProtected":
+        if key == "expireTime":
+            suggest = "expire_time"
+        elif key == "isProtected":
             suggest = "is_protected"
+        elif key == "noExpiry":
+            suggest = "no_expiry"
         elif key == "sourceBranch":
             suggest = "source_branch"
         elif key == "sourceBranchLsn":
@@ -36009,37 +36717,46 @@ class PostgresBranchSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 default: Optional[_builtins.bool] = None,
+                 expire_time: Optional[_builtins.str] = None,
                  is_protected: Optional[_builtins.bool] = None,
+                 no_expiry: Optional[_builtins.bool] = None,
                  source_branch: Optional[_builtins.str] = None,
                  source_branch_lsn: Optional[_builtins.str] = None,
-                 source_branch_time: Optional[_builtins.str] = None):
+                 source_branch_time: Optional[_builtins.str] = None,
+                 ttl: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool default: (boolean) - Whether the branch is the project's default branch
+        :param _builtins.str expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         :param _builtins.bool is_protected: (boolean) - Whether the branch is protected
+        :param _builtins.bool no_expiry: Explicitly disable expiration. When set to true, the branch will not expire.
+               If set to false, the request is invalid; provide either ttl or expire_time instead
         :param _builtins.str source_branch: (string) - The name of the source branch from which this branch was created.
                Format: projects/{project_id}/branches/{branch_id}
         :param _builtins.str source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param _builtins.str source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param _builtins.str ttl: Relative time-to-live duration. When set, the branch will expire at creation_time + ttl
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if is_protected is not None:
             pulumi.set(__self__, "is_protected", is_protected)
+        if no_expiry is not None:
+            pulumi.set(__self__, "no_expiry", no_expiry)
         if source_branch is not None:
             pulumi.set(__self__, "source_branch", source_branch)
         if source_branch_lsn is not None:
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
 
     @_builtins.property
-    @pulumi.getter
-    def default(self) -> Optional[_builtins.bool]:
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[_builtins.str]:
         """
-        (boolean) - Whether the branch is the project's default branch
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         """
-        return pulumi.get(self, "default")
+        return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter(name="isProtected")
@@ -36048,6 +36765,15 @@ class PostgresBranchSpec(dict):
         (boolean) - Whether the branch is protected
         """
         return pulumi.get(self, "is_protected")
+
+    @_builtins.property
+    @pulumi.getter(name="noExpiry")
+    def no_expiry(self) -> Optional[_builtins.bool]:
+        """
+        Explicitly disable expiration. When set to true, the branch will not expire.
+        If set to false, the request is invalid; provide either ttl or expire_time instead
+        """
+        return pulumi.get(self, "no_expiry")
 
     @_builtins.property
     @pulumi.getter(name="sourceBranch")
@@ -36074,6 +36800,14 @@ class PostgresBranchSpec(dict):
         """
         return pulumi.get(self, "source_branch_time")
 
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> Optional[_builtins.str]:
+        """
+        Relative time-to-live duration. When set, the branch will expire at creation_time + ttl
+        """
+        return pulumi.get(self, "ttl")
+
 
 @pulumi.output_type
 class PostgresBranchStatus(dict):
@@ -36082,6 +36816,8 @@ class PostgresBranchStatus(dict):
         suggest = None
         if key == "currentState":
             suggest = "current_state"
+        elif key == "expireTime":
+            suggest = "expire_time"
         elif key == "isProtected":
             suggest = "is_protected"
         elif key == "logicalSizeBytes":
@@ -36111,6 +36847,7 @@ class PostgresBranchStatus(dict):
     def __init__(__self__, *,
                  current_state: Optional[_builtins.str] = None,
                  default: Optional[_builtins.bool] = None,
+                 expire_time: Optional[_builtins.str] = None,
                  is_protected: Optional[_builtins.bool] = None,
                  logical_size_bytes: Optional[_builtins.int] = None,
                  pending_state: Optional[_builtins.str] = None,
@@ -36121,6 +36858,7 @@ class PostgresBranchStatus(dict):
         """
         :param _builtins.str current_state: (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         :param _builtins.bool default: (boolean) - Whether the branch is the project's default branch
+        :param _builtins.str expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         :param _builtins.bool is_protected: (boolean) - Whether the branch is protected
         :param _builtins.int logical_size_bytes: (integer) - The logical size of the branch
         :param _builtins.str pending_state: (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
@@ -36134,6 +36872,8 @@ class PostgresBranchStatus(dict):
             pulumi.set(__self__, "current_state", current_state)
         if default is not None:
             pulumi.set(__self__, "default", default)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if is_protected is not None:
             pulumi.set(__self__, "is_protected", is_protected)
         if logical_size_bytes is not None:
@@ -36164,6 +36904,14 @@ class PostgresBranchStatus(dict):
         (boolean) - Whether the branch is the project's default branch
         """
         return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[_builtins.str]:
+        """
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+        """
+        return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter(name="isProtected")
@@ -36234,6 +36982,8 @@ class PostgresEndpointSpec(dict):
             suggest = "autoscaling_limit_max_cu"
         elif key == "autoscalingLimitMinCu":
             suggest = "autoscaling_limit_min_cu"
+        elif key == "noSuspension":
+            suggest = "no_suspension"
         elif key == "suspendTimeoutDuration":
             suggest = "suspend_timeout_duration"
 
@@ -36253,16 +37003,19 @@ class PostgresEndpointSpec(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  disabled: Optional[_builtins.bool] = None,
+                 no_suspension: Optional[_builtins.bool] = None,
                  settings: Optional['outputs.PostgresEndpointSpecSettings'] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
         :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
         :param _builtins.bool disabled: (boolean) - Whether to restrict connections to the compute endpoint.
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
+        :param _builtins.bool no_suspension: When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param 'PostgresEndpointSpecSettingsArgs' settings: (EndpointSettings)
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -36273,6 +37026,8 @@ class PostgresEndpointSpec(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if suspend_timeout_duration is not None:
@@ -36282,7 +37037,7 @@ class PostgresEndpointSpec(dict):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> _builtins.str:
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -36312,6 +37067,15 @@ class PostgresEndpointSpec(dict):
         console action
         """
         return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[_builtins.bool]:
+        """
+        When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
 
     @_builtins.property
     @pulumi.getter
@@ -36379,14 +37143,8 @@ class PostgresEndpointStatus(dict):
             suggest = "current_state"
         elif key == "endpointType":
             suggest = "endpoint_type"
-        elif key == "lastActiveTime":
-            suggest = "last_active_time"
         elif key == "pendingState":
             suggest = "pending_state"
-        elif key == "startTime":
-            suggest = "start_time"
-        elif key == "suspendTime":
-            suggest = "suspend_time"
         elif key == "suspendTimeoutDuration":
             suggest = "suspend_timeout_duration"
 
@@ -36407,12 +37165,9 @@ class PostgresEndpointStatus(dict):
                  current_state: Optional[_builtins.str] = None,
                  disabled: Optional[_builtins.bool] = None,
                  endpoint_type: Optional[_builtins.str] = None,
-                 host: Optional[_builtins.str] = None,
-                 last_active_time: Optional[_builtins.str] = None,
+                 hosts: Optional['outputs.PostgresEndpointStatusHosts'] = None,
                  pending_state: Optional[_builtins.str] = None,
                  settings: Optional['outputs.PostgresEndpointStatusSettings'] = None,
-                 start_time: Optional[_builtins.str] = None,
-                 suspend_time: Optional[_builtins.str] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
@@ -36422,13 +37177,10 @@ class PostgresEndpointStatus(dict):
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
-        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
-        :param _builtins.str host: (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
-        :param _builtins.str last_active_time: (string) - A timestamp indicating when the compute endpoint was last active
+        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+        :param 'PostgresEndpointStatusHostsArgs' hosts: (EndpointHosts) - Contains host information for connecting to the endpoint
         :param _builtins.str pending_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
         :param 'PostgresEndpointStatusSettingsArgs' settings: (EndpointSettings)
-        :param _builtins.str start_time: (string) - A timestamp indicating when the compute endpoint was last started
-        :param _builtins.str suspend_time: (string) - A timestamp indicating when the compute endpoint was last suspended
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -36441,18 +37193,12 @@ class PostgresEndpointStatus(dict):
             pulumi.set(__self__, "disabled", disabled)
         if endpoint_type is not None:
             pulumi.set(__self__, "endpoint_type", endpoint_type)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if last_active_time is not None:
-            pulumi.set(__self__, "last_active_time", last_active_time)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
         if pending_state is not None:
             pulumi.set(__self__, "pending_state", pending_state)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-        if suspend_time is not None:
-            pulumi.set(__self__, "suspend_time", suspend_time)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -36495,25 +37241,17 @@ class PostgresEndpointStatus(dict):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[_builtins.str]:
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
         return pulumi.get(self, "endpoint_type")
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[_builtins.str]:
+    def hosts(self) -> Optional['outputs.PostgresEndpointStatusHosts']:
         """
-        (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+        (EndpointHosts) - Contains host information for connecting to the endpoint
         """
-        return pulumi.get(self, "host")
-
-    @_builtins.property
-    @pulumi.getter(name="lastActiveTime")
-    def last_active_time(self) -> Optional[_builtins.str]:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last active
-        """
-        return pulumi.get(self, "last_active_time")
+        return pulumi.get(self, "hosts")
 
     @_builtins.property
     @pulumi.getter(name="pendingState")
@@ -36532,28 +37270,33 @@ class PostgresEndpointStatus(dict):
         return pulumi.get(self, "settings")
 
     @_builtins.property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[_builtins.str]:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last started
-        """
-        return pulumi.get(self, "start_time")
-
-    @_builtins.property
-    @pulumi.getter(name="suspendTime")
-    def suspend_time(self) -> Optional[_builtins.str]:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last suspended
-        """
-        return pulumi.get(self, "suspend_time")
-
-    @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[_builtins.str]:
         """
         (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         return pulumi.get(self, "suspend_timeout_duration")
+
+
+@pulumi.output_type
+class PostgresEndpointStatusHosts(dict):
+    def __init__(__self__, *,
+                 host: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str host: (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+               to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+        to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        """
+        return pulumi.get(self, "host")
 
 
 @pulumi.output_type
@@ -36621,14 +37364,12 @@ class PostgresProjectSpec(dict):
                  default_endpoint_settings: Optional['outputs.PostgresProjectSpecDefaultEndpointSettings'] = None,
                  display_name: Optional[_builtins.str] = None,
                  history_retention_duration: Optional[_builtins.str] = None,
-                 pg_version: Optional[_builtins.int] = None,
-                 settings: Optional['outputs.PostgresProjectSpecSettings'] = None):
+                 pg_version: Optional[_builtins.int] = None):
         """
         :param 'PostgresProjectSpecDefaultEndpointSettingsArgs' default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param _builtins.str display_name: (string) - The effective human-readable project name
         :param _builtins.str history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
         :param _builtins.int pg_version: (integer) - The effective major Postgres version number
-        :param 'PostgresProjectSpecSettingsArgs' settings: (ProjectSettings) - The effective project settings
         """
         if default_endpoint_settings is not None:
             pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
@@ -36638,8 +37379,6 @@ class PostgresProjectSpec(dict):
             pulumi.set(__self__, "history_retention_duration", history_retention_duration)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
-        if settings is not None:
-            pulumi.set(__self__, "settings", settings)
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -36673,14 +37412,6 @@ class PostgresProjectSpec(dict):
         """
         return pulumi.get(self, "pg_version")
 
-    @_builtins.property
-    @pulumi.getter
-    def settings(self) -> Optional['outputs.PostgresProjectSpecSettings']:
-        """
-        (ProjectSettings) - The effective project settings
-        """
-        return pulumi.get(self, "settings")
-
 
 @pulumi.output_type
 class PostgresProjectSpecDefaultEndpointSettings(dict):
@@ -36691,6 +37422,8 @@ class PostgresProjectSpecDefaultEndpointSettings(dict):
             suggest = "autoscaling_limit_max_cu"
         elif key == "autoscalingLimitMinCu":
             suggest = "autoscaling_limit_min_cu"
+        elif key == "noSuspension":
+            suggest = "no_suspension"
         elif key == "pgSettings":
             suggest = "pg_settings"
         elif key == "suspendTimeoutDuration":
@@ -36710,18 +37443,24 @@ class PostgresProjectSpecDefaultEndpointSettings(dict):
     def __init__(__self__, *,
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
+                 no_suspension: Optional[_builtins.bool] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.float autoscaling_limit_max_cu: The maximum number of Compute Units
-        :param _builtins.float autoscaling_limit_min_cu: The minimum number of Compute Units
+        :param _builtins.float autoscaling_limit_max_cu: The maximum number of Compute Units. Minimum value is 0.5
+        :param _builtins.float autoscaling_limit_min_cu: The minimum number of Compute Units. Minimum value is 0.5
+        :param _builtins.bool no_suspension: When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param Mapping[str, _builtins.str] pg_settings: A raw representation of Postgres settings
-        :param _builtins.str suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended
+        :param _builtins.str suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended.
+               If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         if autoscaling_limit_max_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
         if autoscaling_limit_min_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
         if suspend_timeout_duration is not None:
@@ -36731,7 +37470,7 @@ class PostgresProjectSpecDefaultEndpointSettings(dict):
     @pulumi.getter(name="autoscalingLimitMaxCu")
     def autoscaling_limit_max_cu(self) -> Optional[_builtins.float]:
         """
-        The maximum number of Compute Units
+        The maximum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_max_cu")
 
@@ -36739,9 +37478,18 @@ class PostgresProjectSpecDefaultEndpointSettings(dict):
     @pulumi.getter(name="autoscalingLimitMinCu")
     def autoscaling_limit_min_cu(self) -> Optional[_builtins.float]:
         """
-        The minimum number of Compute Units
+        The minimum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_min_cu")
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[_builtins.bool]:
+        """
+        When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -36755,49 +37503,10 @@ class PostgresProjectSpecDefaultEndpointSettings(dict):
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[_builtins.str]:
         """
-        Duration of inactivity after which the compute endpoint is automatically suspended
+        Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         return pulumi.get(self, "suspend_timeout_duration")
-
-
-@pulumi.output_type
-class PostgresProjectSpecSettings(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enableLogicalReplication":
-            suggest = "enable_logical_replication"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PostgresProjectSpecSettings. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PostgresProjectSpecSettings.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PostgresProjectSpecSettings.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 enable_logical_replication: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool enable_logical_replication: Sets wal_level=logical for all compute endpoints in this project.
-               All active endpoints will be suspended.
-               Once enabled, logical replication cannot be disabled
-        """
-        if enable_logical_replication is not None:
-            pulumi.set(__self__, "enable_logical_replication", enable_logical_replication)
-
-    @_builtins.property
-    @pulumi.getter(name="enableLogicalReplication")
-    def enable_logical_replication(self) -> Optional[_builtins.bool]:
-        """
-        Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-        return pulumi.get(self, "enable_logical_replication")
 
 
 @pulumi.output_type
@@ -36807,8 +37516,6 @@ class PostgresProjectStatus(dict):
         suggest = None
         if key == "branchLogicalSizeLimitBytes":
             suggest = "branch_logical_size_limit_bytes"
-        elif key == "computeLastActiveTime":
-            suggest = "compute_last_active_time"
         elif key == "defaultEndpointSettings":
             suggest = "default_endpoint_settings"
         elif key == "displayName":
@@ -36833,29 +37540,23 @@ class PostgresProjectStatus(dict):
 
     def __init__(__self__, *,
                  branch_logical_size_limit_bytes: Optional[_builtins.int] = None,
-                 compute_last_active_time: Optional[_builtins.str] = None,
                  default_endpoint_settings: Optional['outputs.PostgresProjectStatusDefaultEndpointSettings'] = None,
                  display_name: Optional[_builtins.str] = None,
                  history_retention_duration: Optional[_builtins.str] = None,
                  owner: Optional[_builtins.str] = None,
                  pg_version: Optional[_builtins.int] = None,
-                 settings: Optional['outputs.PostgresProjectStatusSettings'] = None,
                  synthetic_storage_size_bytes: Optional[_builtins.int] = None):
         """
         :param _builtins.int branch_logical_size_limit_bytes: (integer) - The logical size limit for a branch
-        :param _builtins.str compute_last_active_time: (string) - The most recent time when any endpoint of this project was active
         :param 'PostgresProjectStatusDefaultEndpointSettingsArgs' default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param _builtins.str display_name: (string) - The effective human-readable project name
         :param _builtins.str history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
         :param _builtins.str owner: (string) - The email of the project owner
         :param _builtins.int pg_version: (integer) - The effective major Postgres version number
-        :param 'PostgresProjectStatusSettingsArgs' settings: (ProjectSettings) - The effective project settings
         :param _builtins.int synthetic_storage_size_bytes: (integer) - The current space occupied by the project in storage
         """
         if branch_logical_size_limit_bytes is not None:
             pulumi.set(__self__, "branch_logical_size_limit_bytes", branch_logical_size_limit_bytes)
-        if compute_last_active_time is not None:
-            pulumi.set(__self__, "compute_last_active_time", compute_last_active_time)
         if default_endpoint_settings is not None:
             pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
         if display_name is not None:
@@ -36866,8 +37567,6 @@ class PostgresProjectStatus(dict):
             pulumi.set(__self__, "owner", owner)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
-        if settings is not None:
-            pulumi.set(__self__, "settings", settings)
         if synthetic_storage_size_bytes is not None:
             pulumi.set(__self__, "synthetic_storage_size_bytes", synthetic_storage_size_bytes)
 
@@ -36878,14 +37577,6 @@ class PostgresProjectStatus(dict):
         (integer) - The logical size limit for a branch
         """
         return pulumi.get(self, "branch_logical_size_limit_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="computeLastActiveTime")
-    def compute_last_active_time(self) -> Optional[_builtins.str]:
-        """
-        (string) - The most recent time when any endpoint of this project was active
-        """
-        return pulumi.get(self, "compute_last_active_time")
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -36928,14 +37619,6 @@ class PostgresProjectStatus(dict):
         return pulumi.get(self, "pg_version")
 
     @_builtins.property
-    @pulumi.getter
-    def settings(self) -> Optional['outputs.PostgresProjectStatusSettings']:
-        """
-        (ProjectSettings) - The effective project settings
-        """
-        return pulumi.get(self, "settings")
-
-    @_builtins.property
     @pulumi.getter(name="syntheticStorageSizeBytes")
     def synthetic_storage_size_bytes(self) -> Optional[_builtins.int]:
         """
@@ -36953,6 +37636,8 @@ class PostgresProjectStatusDefaultEndpointSettings(dict):
             suggest = "autoscaling_limit_max_cu"
         elif key == "autoscalingLimitMinCu":
             suggest = "autoscaling_limit_min_cu"
+        elif key == "noSuspension":
+            suggest = "no_suspension"
         elif key == "pgSettings":
             suggest = "pg_settings"
         elif key == "suspendTimeoutDuration":
@@ -36972,18 +37657,24 @@ class PostgresProjectStatusDefaultEndpointSettings(dict):
     def __init__(__self__, *,
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
+                 no_suspension: Optional[_builtins.bool] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.float autoscaling_limit_max_cu: The maximum number of Compute Units
-        :param _builtins.float autoscaling_limit_min_cu: The minimum number of Compute Units
+        :param _builtins.float autoscaling_limit_max_cu: The maximum number of Compute Units. Minimum value is 0.5
+        :param _builtins.float autoscaling_limit_min_cu: The minimum number of Compute Units. Minimum value is 0.5
+        :param _builtins.bool no_suspension: When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param Mapping[str, _builtins.str] pg_settings: A raw representation of Postgres settings
-        :param _builtins.str suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended
+        :param _builtins.str suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended.
+               If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         if autoscaling_limit_max_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
         if autoscaling_limit_min_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
         if suspend_timeout_duration is not None:
@@ -36993,7 +37684,7 @@ class PostgresProjectStatusDefaultEndpointSettings(dict):
     @pulumi.getter(name="autoscalingLimitMaxCu")
     def autoscaling_limit_max_cu(self) -> Optional[_builtins.float]:
         """
-        The maximum number of Compute Units
+        The maximum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_max_cu")
 
@@ -37001,9 +37692,18 @@ class PostgresProjectStatusDefaultEndpointSettings(dict):
     @pulumi.getter(name="autoscalingLimitMinCu")
     def autoscaling_limit_min_cu(self) -> Optional[_builtins.float]:
         """
-        The minimum number of Compute Units
+        The minimum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_min_cu")
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[_builtins.bool]:
+        """
+        When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -37017,49 +37717,10 @@ class PostgresProjectStatusDefaultEndpointSettings(dict):
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[_builtins.str]:
         """
-        Duration of inactivity after which the compute endpoint is automatically suspended
+        Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         return pulumi.get(self, "suspend_timeout_duration")
-
-
-@pulumi.output_type
-class PostgresProjectStatusSettings(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enableLogicalReplication":
-            suggest = "enable_logical_replication"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PostgresProjectStatusSettings. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PostgresProjectStatusSettings.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PostgresProjectStatusSettings.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 enable_logical_replication: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool enable_logical_replication: Sets wal_level=logical for all compute endpoints in this project.
-               All active endpoints will be suspended.
-               Once enabled, logical replication cannot be disabled
-        """
-        if enable_logical_replication is not None:
-            pulumi.set(__self__, "enable_logical_replication", enable_logical_replication)
-
-    @_builtins.property
-    @pulumi.getter(name="enableLogicalReplication")
-    def enable_logical_replication(self) -> Optional[_builtins.bool]:
-        """
-        Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-        return pulumi.get(self, "enable_logical_replication")
 
 
 @pulumi.output_type
@@ -43224,6 +43885,82 @@ class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementResult(dict):
 
 
 @pulumi.output_type
+class GetAccountSettingUserPreferenceV2BooleanValResult(dict):
+    def __init__(__self__, *,
+                 value: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool value: (string) - Represents a generic string value
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.bool]:
+        """
+        (string) - Represents a generic string value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAccountSettingUserPreferenceV2EffectiveBooleanValResult(dict):
+    def __init__(__self__, *,
+                 value: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool value: (string) - Represents a generic string value
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.bool]:
+        """
+        (string) - Represents a generic string value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAccountSettingUserPreferenceV2EffectiveStringValResult(dict):
+    def __init__(__self__, *,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str value: (string) - Represents a generic string value
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        (string) - Represents a generic string value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAccountSettingUserPreferenceV2StringValResult(dict):
+    def __init__(__self__, *,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str value: (string) - Represents a generic string value
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        (string) - Represents a generic string value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult(dict):
     def __init__(__self__, *,
                  access_policy_type: _builtins.str):
@@ -48762,6 +49499,7 @@ class GetClusterClusterInfoResult(dict):
                  docker_image: Optional['outputs.GetClusterClusterInfoDockerImageResult'] = None,
                  driver: Optional['outputs.GetClusterClusterInfoDriverResult'] = None,
                  driver_instance_pool_id: Optional[_builtins.str] = None,
+                 driver_node_type_flexibility: Optional['outputs.GetClusterClusterInfoDriverNodeTypeFlexibilityResult'] = None,
                  driver_node_type_id: Optional[_builtins.str] = None,
                  enable_elastic_disk: Optional[_builtins.bool] = None,
                  enable_local_disk_encryption: Optional[_builtins.bool] = None,
@@ -48793,6 +49531,7 @@ class GetClusterClusterInfoResult(dict):
                  termination_reason: Optional['outputs.GetClusterClusterInfoTerminationReasonResult'] = None,
                  total_initial_remote_disk_size: Optional[_builtins.int] = None,
                  use_ml_runtime: Optional[_builtins.bool] = None,
+                 worker_node_type_flexibility: Optional['outputs.GetClusterClusterInfoWorkerNodeTypeFlexibilityResult'] = None,
                  workload_type: Optional['outputs.GetClusterClusterInfoWorkloadTypeResult'] = None):
         """
         :param _builtins.int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
@@ -48850,6 +49589,8 @@ class GetClusterClusterInfoResult(dict):
             pulumi.set(__self__, "driver", driver)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -48912,6 +49653,8 @@ class GetClusterClusterInfoResult(dict):
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -49022,6 +49765,11 @@ class GetClusterClusterInfoResult(dict):
         similar to `instance_pool_id`, but for driver node.
         """
         return pulumi.get(self, "driver_instance_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional['outputs.GetClusterClusterInfoDriverNodeTypeFlexibilityResult']:
+        return pulumi.get(self, "driver_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -49213,6 +49961,11 @@ class GetClusterClusterInfoResult(dict):
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "use_ml_runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional['outputs.GetClusterClusterInfoWorkerNodeTypeFlexibilityResult']:
+        return pulumi.get(self, "worker_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -49635,6 +50388,19 @@ class GetClusterClusterInfoDriverNodeAwsAttributesResult(dict):
 
 
 @pulumi.output_type
+class GetClusterClusterInfoDriverNodeTypeFlexibilityResult(dict):
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+
+@pulumi.output_type
 class GetClusterClusterInfoExecutorResult(dict):
     def __init__(__self__, *,
                  host_private_ip: Optional[_builtins.str] = None,
@@ -49981,6 +50747,7 @@ class GetClusterClusterInfoSpecResult(dict):
                  custom_tags: Optional[Mapping[str, _builtins.str]] = None,
                  data_security_mode: Optional[_builtins.str] = None,
                  docker_image: Optional['outputs.GetClusterClusterInfoSpecDockerImageResult'] = None,
+                 driver_node_type_flexibility: Optional['outputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibilityResult'] = None,
                  gcp_attributes: Optional['outputs.GetClusterClusterInfoSpecGcpAttributesResult'] = None,
                  idempotency_token: Optional[_builtins.str] = None,
                  init_scripts: Optional[Sequence['outputs.GetClusterClusterInfoSpecInitScriptResult']] = None,
@@ -50000,6 +50767,7 @@ class GetClusterClusterInfoSpecResult(dict):
                  ssh_public_keys: Optional[Sequence[_builtins.str]] = None,
                  total_initial_remote_disk_size: Optional[_builtins.int] = None,
                  use_ml_runtime: Optional[_builtins.bool] = None,
+                 worker_node_type_flexibility: Optional['outputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityResult'] = None,
                  workload_type: Optional['outputs.GetClusterClusterInfoSpecWorkloadTypeResult'] = None):
         """
         :param _builtins.str cluster_id: The id of the cluster.
@@ -50048,6 +50816,8 @@ class GetClusterClusterInfoSpecResult(dict):
             pulumi.set(__self__, "data_security_mode", data_security_mode)
         if docker_image is not None:
             pulumi.set(__self__, "docker_image", docker_image)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if gcp_attributes is not None:
             pulumi.set(__self__, "gcp_attributes", gcp_attributes)
         if idempotency_token is not None:
@@ -50086,6 +50856,8 @@ class GetClusterClusterInfoSpecResult(dict):
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -50195,6 +50967,11 @@ class GetClusterClusterInfoSpecResult(dict):
     @pulumi.getter(name="dockerImage")
     def docker_image(self) -> Optional['outputs.GetClusterClusterInfoSpecDockerImageResult']:
         return pulumi.get(self, "docker_image")
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional['outputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibilityResult']:
+        return pulumi.get(self, "driver_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="gcpAttributes")
@@ -50320,6 +51097,11 @@ class GetClusterClusterInfoSpecResult(dict):
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "use_ml_runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional['outputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityResult']:
+        return pulumi.get(self, "worker_node_type_flexibility")
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -50688,6 +51470,19 @@ class GetClusterClusterInfoSpecDockerImageBasicAuthResult(dict):
     @pulumi.getter
     def username(self) -> _builtins.str:
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetClusterClusterInfoSpecDriverNodeTypeFlexibilityResult(dict):
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
 
 
 @pulumi.output_type
@@ -51126,6 +51921,19 @@ class GetClusterClusterInfoSpecProviderConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityResult(dict):
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+
+@pulumi.output_type
 class GetClusterClusterInfoSpecWorkloadTypeResult(dict):
     def __init__(__self__, *,
                  clients: 'outputs.GetClusterClusterInfoSpecWorkloadTypeClientsResult'):
@@ -51185,6 +51993,19 @@ class GetClusterClusterInfoTerminationReasonResult(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetClusterClusterInfoWorkerNodeTypeFlexibilityResult(dict):
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
 
 
 @pulumi.output_type
@@ -67896,37 +68717,46 @@ class GetPolicyInfosPolicyRowFilterUsingResult(dict):
 @pulumi.output_type
 class GetPostgresBranchSpecResult(dict):
     def __init__(__self__, *,
-                 default: Optional[_builtins.bool] = None,
+                 expire_time: Optional[_builtins.str] = None,
                  is_protected: Optional[_builtins.bool] = None,
+                 no_expiry: Optional[_builtins.bool] = None,
                  source_branch: Optional[_builtins.str] = None,
                  source_branch_lsn: Optional[_builtins.str] = None,
-                 source_branch_time: Optional[_builtins.str] = None):
+                 source_branch_time: Optional[_builtins.str] = None,
+                 ttl: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool default: (boolean) - Whether the branch is the project's default branch
+        :param _builtins.str expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         :param _builtins.bool is_protected: (boolean) - Whether the branch is protected
+        :param _builtins.bool no_expiry: (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+               If set to false, the request is invalid; provide either ttl or expire_time instead
         :param _builtins.str source_branch: (string) - The name of the source branch from which this branch was created.
                Format: projects/{project_id}/branches/{branch_id}
         :param _builtins.str source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param _builtins.str source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param _builtins.str ttl: (string) - Relative time-to-live duration. When set, the branch will expire at creation_time + ttl
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if is_protected is not None:
             pulumi.set(__self__, "is_protected", is_protected)
+        if no_expiry is not None:
+            pulumi.set(__self__, "no_expiry", no_expiry)
         if source_branch is not None:
             pulumi.set(__self__, "source_branch", source_branch)
         if source_branch_lsn is not None:
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
 
     @_builtins.property
-    @pulumi.getter
-    def default(self) -> Optional[_builtins.bool]:
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[_builtins.str]:
         """
-        (boolean) - Whether the branch is the project's default branch
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         """
-        return pulumi.get(self, "default")
+        return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter(name="isProtected")
@@ -67935,6 +68765,15 @@ class GetPostgresBranchSpecResult(dict):
         (boolean) - Whether the branch is protected
         """
         return pulumi.get(self, "is_protected")
+
+    @_builtins.property
+    @pulumi.getter(name="noExpiry")
+    def no_expiry(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+        If set to false, the request is invalid; provide either ttl or expire_time instead
+        """
+        return pulumi.get(self, "no_expiry")
 
     @_builtins.property
     @pulumi.getter(name="sourceBranch")
@@ -67961,12 +68800,21 @@ class GetPostgresBranchSpecResult(dict):
         """
         return pulumi.get(self, "source_branch_time")
 
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> Optional[_builtins.str]:
+        """
+        (string) - Relative time-to-live duration. When set, the branch will expire at creation_time + ttl
+        """
+        return pulumi.get(self, "ttl")
+
 
 @pulumi.output_type
 class GetPostgresBranchStatusResult(dict):
     def __init__(__self__, *,
                  current_state: _builtins.str,
                  default: _builtins.bool,
+                 expire_time: _builtins.str,
                  is_protected: _builtins.bool,
                  logical_size_bytes: _builtins.int,
                  pending_state: _builtins.str,
@@ -67977,6 +68825,7 @@ class GetPostgresBranchStatusResult(dict):
         """
         :param _builtins.str current_state: (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         :param _builtins.bool default: (boolean) - Whether the branch is the project's default branch
+        :param _builtins.str expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         :param _builtins.bool is_protected: (boolean) - Whether the branch is protected
         :param _builtins.int logical_size_bytes: (integer) - The logical size of the branch
         :param _builtins.str pending_state: (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
@@ -67988,6 +68837,7 @@ class GetPostgresBranchStatusResult(dict):
         """
         pulumi.set(__self__, "current_state", current_state)
         pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "is_protected", is_protected)
         pulumi.set(__self__, "logical_size_bytes", logical_size_bytes)
         pulumi.set(__self__, "pending_state", pending_state)
@@ -68011,6 +68861,14 @@ class GetPostgresBranchStatusResult(dict):
         (boolean) - Whether the branch is the project's default branch
         """
         return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> _builtins.str:
+        """
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+        """
+        return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter(name="isProtected")
@@ -68082,13 +68940,13 @@ class GetPostgresBranchesBranchResult(dict):
                  update_time: _builtins.str):
         """
         :param _builtins.str create_time: (string) - A timestamp indicating when the branch was created
-        :param _builtins.str name: (string) - The resource name of the branch.
-               Format: projects/{project_id}/branches/{branch_id}
+        :param _builtins.str name: (string) - The resource name of the branch. This field is output-only and constructed by the system.
+               Format: `projects/{project_id}/branches/{branch_id}`
         :param _builtins.str parent: The Project that owns this collection of branches.
                Format: projects/{project_id}
-        :param 'GetPostgresBranchesBranchSpecArgs' spec: (BranchSpec) - The desired state of a Branch
+        :param 'GetPostgresBranchesBranchSpecArgs' spec: (BranchSpec) - The spec contains the branch configuration
         :param 'GetPostgresBranchesBranchStatusArgs' status: (BranchStatus) - The current status of a Branch
-        :param _builtins.str uid: (string) - System generated unique ID for the branch
+        :param _builtins.str uid: (string) - System-generated unique ID for the branch
         :param _builtins.str update_time: (string) - A timestamp indicating when the branch was last updated
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -68111,8 +68969,8 @@ class GetPostgresBranchesBranchResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the branch.
-        Format: projects/{project_id}/branches/{branch_id}
+        (string) - The resource name of the branch. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}/branches/{branch_id}`
         """
         return pulumi.get(self, "name")
 
@@ -68129,7 +68987,7 @@ class GetPostgresBranchesBranchResult(dict):
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresBranchesBranchSpecResult':
         """
-        (BranchSpec) - The desired state of a Branch
+        (BranchSpec) - The spec contains the branch configuration
         """
         return pulumi.get(self, "spec")
 
@@ -68145,7 +69003,7 @@ class GetPostgresBranchesBranchResult(dict):
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string) - System generated unique ID for the branch
+        (string) - System-generated unique ID for the branch
         """
         return pulumi.get(self, "uid")
 
@@ -68161,37 +69019,46 @@ class GetPostgresBranchesBranchResult(dict):
 @pulumi.output_type
 class GetPostgresBranchesBranchSpecResult(dict):
     def __init__(__self__, *,
-                 default: Optional[_builtins.bool] = None,
+                 expire_time: Optional[_builtins.str] = None,
                  is_protected: Optional[_builtins.bool] = None,
+                 no_expiry: Optional[_builtins.bool] = None,
                  source_branch: Optional[_builtins.str] = None,
                  source_branch_lsn: Optional[_builtins.str] = None,
-                 source_branch_time: Optional[_builtins.str] = None):
+                 source_branch_time: Optional[_builtins.str] = None,
+                 ttl: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool default: (boolean) - Whether the branch is the project's default branch
+        :param _builtins.str expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         :param _builtins.bool is_protected: (boolean) - Whether the branch is protected
+        :param _builtins.bool no_expiry: (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+               If set to false, the request is invalid; provide either ttl or expire_time instead
         :param _builtins.str source_branch: (string) - The name of the source branch from which this branch was created.
                Format: projects/{project_id}/branches/{branch_id}
         :param _builtins.str source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param _builtins.str source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param _builtins.str ttl: (string) - Relative time-to-live duration. When set, the branch will expire at creation_time + ttl
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if is_protected is not None:
             pulumi.set(__self__, "is_protected", is_protected)
+        if no_expiry is not None:
+            pulumi.set(__self__, "no_expiry", no_expiry)
         if source_branch is not None:
             pulumi.set(__self__, "source_branch", source_branch)
         if source_branch_lsn is not None:
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
 
     @_builtins.property
-    @pulumi.getter
-    def default(self) -> Optional[_builtins.bool]:
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[_builtins.str]:
         """
-        (boolean) - Whether the branch is the project's default branch
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         """
-        return pulumi.get(self, "default")
+        return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter(name="isProtected")
@@ -68200,6 +69067,15 @@ class GetPostgresBranchesBranchSpecResult(dict):
         (boolean) - Whether the branch is protected
         """
         return pulumi.get(self, "is_protected")
+
+    @_builtins.property
+    @pulumi.getter(name="noExpiry")
+    def no_expiry(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
+        If set to false, the request is invalid; provide either ttl or expire_time instead
+        """
+        return pulumi.get(self, "no_expiry")
 
     @_builtins.property
     @pulumi.getter(name="sourceBranch")
@@ -68226,12 +69102,21 @@ class GetPostgresBranchesBranchSpecResult(dict):
         """
         return pulumi.get(self, "source_branch_time")
 
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> Optional[_builtins.str]:
+        """
+        (string) - Relative time-to-live duration. When set, the branch will expire at creation_time + ttl
+        """
+        return pulumi.get(self, "ttl")
+
 
 @pulumi.output_type
 class GetPostgresBranchesBranchStatusResult(dict):
     def __init__(__self__, *,
                  current_state: _builtins.str,
                  default: _builtins.bool,
+                 expire_time: _builtins.str,
                  is_protected: _builtins.bool,
                  logical_size_bytes: _builtins.int,
                  pending_state: _builtins.str,
@@ -68242,6 +69127,7 @@ class GetPostgresBranchesBranchStatusResult(dict):
         """
         :param _builtins.str current_state: (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         :param _builtins.bool default: (boolean) - Whether the branch is the project's default branch
+        :param _builtins.str expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         :param _builtins.bool is_protected: (boolean) - Whether the branch is protected
         :param _builtins.int logical_size_bytes: (integer) - The logical size of the branch
         :param _builtins.str pending_state: (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
@@ -68253,6 +69139,7 @@ class GetPostgresBranchesBranchStatusResult(dict):
         """
         pulumi.set(__self__, "current_state", current_state)
         pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "is_protected", is_protected)
         pulumi.set(__self__, "logical_size_bytes", logical_size_bytes)
         pulumi.set(__self__, "pending_state", pending_state)
@@ -68276,6 +69163,14 @@ class GetPostgresBranchesBranchStatusResult(dict):
         (boolean) - Whether the branch is the project's default branch
         """
         return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> _builtins.str:
+        """
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+        """
+        return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter(name="isProtected")
@@ -68342,16 +69237,19 @@ class GetPostgresEndpointSpecResult(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  disabled: Optional[_builtins.bool] = None,
+                 no_suspension: Optional[_builtins.bool] = None,
                  settings: Optional['outputs.GetPostgresEndpointSpecSettingsResult'] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
         :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
         :param _builtins.bool disabled: (boolean) - Whether to restrict connections to the compute endpoint.
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
+        :param _builtins.bool no_suspension: (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param 'GetPostgresEndpointSpecSettingsArgs' settings: (EndpointSettings)
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -68362,6 +69260,8 @@ class GetPostgresEndpointSpecResult(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if suspend_timeout_duration is not None:
@@ -68371,7 +69271,7 @@ class GetPostgresEndpointSpecResult(dict):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> _builtins.str:
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -68401,6 +69301,15 @@ class GetPostgresEndpointSpecResult(dict):
         console action
         """
         return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
 
     @_builtins.property
     @pulumi.getter
@@ -68446,12 +69355,9 @@ class GetPostgresEndpointStatusResult(dict):
                  current_state: _builtins.str,
                  disabled: _builtins.bool,
                  endpoint_type: _builtins.str,
-                 host: _builtins.str,
-                 last_active_time: _builtins.str,
+                 hosts: 'outputs.GetPostgresEndpointStatusHostsResult',
                  pending_state: _builtins.str,
                  settings: 'outputs.GetPostgresEndpointStatusSettingsResult',
-                 start_time: _builtins.str,
-                 suspend_time: _builtins.str,
                  suspend_timeout_duration: _builtins.str):
         """
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
@@ -68461,13 +69367,10 @@ class GetPostgresEndpointStatusResult(dict):
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
-        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
-        :param _builtins.str host: (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
-        :param _builtins.str last_active_time: (string) - A timestamp indicating when the compute endpoint was last active
+        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+        :param 'GetPostgresEndpointStatusHostsArgs' hosts: (EndpointHosts) - Contains host information for connecting to the endpoint
         :param _builtins.str pending_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
         :param 'GetPostgresEndpointStatusSettingsArgs' settings: (EndpointSettings)
-        :param _builtins.str start_time: (string) - A timestamp indicating when the compute endpoint was last started
-        :param _builtins.str suspend_time: (string) - A timestamp indicating when the compute endpoint was last suspended
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
@@ -68475,12 +69378,9 @@ class GetPostgresEndpointStatusResult(dict):
         pulumi.set(__self__, "current_state", current_state)
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "endpoint_type", endpoint_type)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "last_active_time", last_active_time)
+        pulumi.set(__self__, "hosts", hosts)
         pulumi.set(__self__, "pending_state", pending_state)
         pulumi.set(__self__, "settings", settings)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "suspend_time", suspend_time)
         pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
     @_builtins.property
@@ -68522,25 +69422,17 @@ class GetPostgresEndpointStatusResult(dict):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> _builtins.str:
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
         return pulumi.get(self, "endpoint_type")
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> _builtins.str:
+    def hosts(self) -> 'outputs.GetPostgresEndpointStatusHostsResult':
         """
-        (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+        (EndpointHosts) - Contains host information for connecting to the endpoint
         """
-        return pulumi.get(self, "host")
-
-    @_builtins.property
-    @pulumi.getter(name="lastActiveTime")
-    def last_active_time(self) -> _builtins.str:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last active
-        """
-        return pulumi.get(self, "last_active_time")
+        return pulumi.get(self, "hosts")
 
     @_builtins.property
     @pulumi.getter(name="pendingState")
@@ -68559,28 +69451,32 @@ class GetPostgresEndpointStatusResult(dict):
         return pulumi.get(self, "settings")
 
     @_builtins.property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> _builtins.str:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last started
-        """
-        return pulumi.get(self, "start_time")
-
-    @_builtins.property
-    @pulumi.getter(name="suspendTime")
-    def suspend_time(self) -> _builtins.str:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last suspended
-        """
-        return pulumi.get(self, "suspend_time")
-
-    @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> _builtins.str:
         """
         (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         return pulumi.get(self, "suspend_timeout_duration")
+
+
+@pulumi.output_type
+class GetPostgresEndpointStatusHostsResult(dict):
+    def __init__(__self__, *,
+                 host: _builtins.str):
+        """
+        :param _builtins.str host: (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+               to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        """
+        pulumi.set(__self__, "host", host)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+        to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        """
+        return pulumi.get(self, "host")
 
 
 @pulumi.output_type
@@ -68614,13 +69510,13 @@ class GetPostgresEndpointsEndpointResult(dict):
                  update_time: _builtins.str):
         """
         :param _builtins.str create_time: (string) - A timestamp indicating when the compute endpoint was created
-        :param _builtins.str name: (string) - The resource name of the endpoint.
-               Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+        :param _builtins.str name: (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+               Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
         :param _builtins.str parent: The Branch that owns this collection of endpoints.
                Format: projects/{project_id}/branches/{branch_id}
-        :param 'GetPostgresEndpointsEndpointSpecArgs' spec: (EndpointSpec) - The desired state of an Endpoint
-        :param 'GetPostgresEndpointsEndpointStatusArgs' status: (EndpointStatus) - The current status of an Endpoint
-        :param _builtins.str uid: (string) - System generated unique ID for the endpoint
+        :param 'GetPostgresEndpointsEndpointSpecArgs' spec: (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        :param 'GetPostgresEndpointsEndpointStatusArgs' status: (EndpointStatus) - Current operational status of the compute endpoint
+        :param _builtins.str uid: (string) - System-generated unique ID for the endpoint
         :param _builtins.str update_time: (string) - A timestamp indicating when the compute endpoint was last updated
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -68643,8 +69539,8 @@ class GetPostgresEndpointsEndpointResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the endpoint.
-        Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+        (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
         """
         return pulumi.get(self, "name")
 
@@ -68661,7 +69557,7 @@ class GetPostgresEndpointsEndpointResult(dict):
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresEndpointsEndpointSpecResult':
         """
-        (EndpointSpec) - The desired state of an Endpoint
+        (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         return pulumi.get(self, "spec")
 
@@ -68669,7 +69565,7 @@ class GetPostgresEndpointsEndpointResult(dict):
     @pulumi.getter
     def status(self) -> 'outputs.GetPostgresEndpointsEndpointStatusResult':
         """
-        (EndpointStatus) - The current status of an Endpoint
+        (EndpointStatus) - Current operational status of the compute endpoint
         """
         return pulumi.get(self, "status")
 
@@ -68677,7 +69573,7 @@ class GetPostgresEndpointsEndpointResult(dict):
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string) - System generated unique ID for the endpoint
+        (string) - System-generated unique ID for the endpoint
         """
         return pulumi.get(self, "uid")
 
@@ -68697,16 +69593,19 @@ class GetPostgresEndpointsEndpointSpecResult(dict):
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
                  disabled: Optional[_builtins.bool] = None,
+                 no_suspension: Optional[_builtins.bool] = None,
                  settings: Optional['outputs.GetPostgresEndpointsEndpointSpecSettingsResult'] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
         :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
         :param _builtins.bool disabled: (boolean) - Whether to restrict connections to the compute endpoint.
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
+        :param _builtins.bool no_suspension: (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param 'GetPostgresEndpointsEndpointSpecSettingsArgs' settings: (EndpointSettings)
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -68717,6 +69616,8 @@ class GetPostgresEndpointsEndpointSpecResult(dict):
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if suspend_timeout_duration is not None:
@@ -68726,7 +69627,7 @@ class GetPostgresEndpointsEndpointSpecResult(dict):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> _builtins.str:
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -68756,6 +69657,15 @@ class GetPostgresEndpointsEndpointSpecResult(dict):
         console action
         """
         return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
 
     @_builtins.property
     @pulumi.getter
@@ -68801,12 +69711,9 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
                  current_state: _builtins.str,
                  disabled: _builtins.bool,
                  endpoint_type: _builtins.str,
-                 host: _builtins.str,
-                 last_active_time: _builtins.str,
+                 hosts: 'outputs.GetPostgresEndpointsEndpointStatusHostsResult',
                  pending_state: _builtins.str,
                  settings: 'outputs.GetPostgresEndpointsEndpointStatusSettingsResult',
-                 start_time: _builtins.str,
-                 suspend_time: _builtins.str,
                  suspend_timeout_duration: _builtins.str):
         """
         :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
@@ -68816,13 +69723,10 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
-        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
-        :param _builtins.str host: (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
-        :param _builtins.str last_active_time: (string) - A timestamp indicating when the compute endpoint was last active
+        :param _builtins.str endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+        :param 'GetPostgresEndpointsEndpointStatusHostsArgs' hosts: (EndpointHosts) - Contains host information for connecting to the endpoint
         :param _builtins.str pending_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
         :param 'GetPostgresEndpointsEndpointStatusSettingsArgs' settings: (EndpointSettings)
-        :param _builtins.str start_time: (string) - A timestamp indicating when the compute endpoint was last started
-        :param _builtins.str suspend_time: (string) - A timestamp indicating when the compute endpoint was last suspended
         :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
@@ -68830,12 +69734,9 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
         pulumi.set(__self__, "current_state", current_state)
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "endpoint_type", endpoint_type)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "last_active_time", last_active_time)
+        pulumi.set(__self__, "hosts", hosts)
         pulumi.set(__self__, "pending_state", pending_state)
         pulumi.set(__self__, "settings", settings)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "suspend_time", suspend_time)
         pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
     @_builtins.property
@@ -68877,25 +69778,17 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> _builtins.str:
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
         return pulumi.get(self, "endpoint_type")
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> _builtins.str:
+    def hosts(self) -> 'outputs.GetPostgresEndpointsEndpointStatusHostsResult':
         """
-        (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+        (EndpointHosts) - Contains host information for connecting to the endpoint
         """
-        return pulumi.get(self, "host")
-
-    @_builtins.property
-    @pulumi.getter(name="lastActiveTime")
-    def last_active_time(self) -> _builtins.str:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last active
-        """
-        return pulumi.get(self, "last_active_time")
+        return pulumi.get(self, "hosts")
 
     @_builtins.property
     @pulumi.getter(name="pendingState")
@@ -68914,28 +69807,32 @@ class GetPostgresEndpointsEndpointStatusResult(dict):
         return pulumi.get(self, "settings")
 
     @_builtins.property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> _builtins.str:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last started
-        """
-        return pulumi.get(self, "start_time")
-
-    @_builtins.property
-    @pulumi.getter(name="suspendTime")
-    def suspend_time(self) -> _builtins.str:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last suspended
-        """
-        return pulumi.get(self, "suspend_time")
-
-    @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> _builtins.str:
         """
         (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         return pulumi.get(self, "suspend_timeout_duration")
+
+
+@pulumi.output_type
+class GetPostgresEndpointsEndpointStatusHostsResult(dict):
+    def __init__(__self__, *,
+                 host: _builtins.str):
+        """
+        :param _builtins.str host: (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+               to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        """
+        pulumi.set(__self__, "host", host)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+        to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        """
+        return pulumi.get(self, "host")
 
 
 @pulumi.output_type
@@ -68963,14 +69860,12 @@ class GetPostgresProjectSpecResult(dict):
                  default_endpoint_settings: Optional['outputs.GetPostgresProjectSpecDefaultEndpointSettingsResult'] = None,
                  display_name: Optional[_builtins.str] = None,
                  history_retention_duration: Optional[_builtins.str] = None,
-                 pg_version: Optional[_builtins.int] = None,
-                 settings: Optional['outputs.GetPostgresProjectSpecSettingsResult'] = None):
+                 pg_version: Optional[_builtins.int] = None):
         """
         :param 'GetPostgresProjectSpecDefaultEndpointSettingsArgs' default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param _builtins.str display_name: (string) - The effective human-readable project name
         :param _builtins.str history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
         :param _builtins.int pg_version: (integer) - The effective major Postgres version number
-        :param 'GetPostgresProjectSpecSettingsArgs' settings: (ProjectSettings) - The effective project settings
         """
         if default_endpoint_settings is not None:
             pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
@@ -68980,8 +69875,6 @@ class GetPostgresProjectSpecResult(dict):
             pulumi.set(__self__, "history_retention_duration", history_retention_duration)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
-        if settings is not None:
-            pulumi.set(__self__, "settings", settings)
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -69015,32 +69908,30 @@ class GetPostgresProjectSpecResult(dict):
         """
         return pulumi.get(self, "pg_version")
 
-    @_builtins.property
-    @pulumi.getter
-    def settings(self) -> Optional['outputs.GetPostgresProjectSpecSettingsResult']:
-        """
-        (ProjectSettings) - The effective project settings
-        """
-        return pulumi.get(self, "settings")
-
 
 @pulumi.output_type
 class GetPostgresProjectSpecDefaultEndpointSettingsResult(dict):
     def __init__(__self__, *,
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
+                 no_suspension: Optional[_builtins.bool] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
-        :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
+        :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units. Minimum value is 0.5
+        :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units. Minimum value is 0.5
+        :param _builtins.bool no_suspension: (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+               If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         if autoscaling_limit_max_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
         if autoscaling_limit_min_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
         if suspend_timeout_duration is not None:
@@ -69050,7 +69941,7 @@ class GetPostgresProjectSpecDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="autoscalingLimitMaxCu")
     def autoscaling_limit_max_cu(self) -> Optional[_builtins.float]:
         """
-        (number) - The maximum number of Compute Units
+        (number) - The maximum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_max_cu")
 
@@ -69058,9 +69949,18 @@ class GetPostgresProjectSpecDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="autoscalingLimitMinCu")
     def autoscaling_limit_min_cu(self) -> Optional[_builtins.float]:
         """
-        (number) - The minimum number of Compute Units
+        (number) - The minimum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_min_cu")
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -69074,65 +69974,37 @@ class GetPostgresProjectSpecDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[_builtins.str]:
         """
-        (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         return pulumi.get(self, "suspend_timeout_duration")
-
-
-@pulumi.output_type
-class GetPostgresProjectSpecSettingsResult(dict):
-    def __init__(__self__, *,
-                 enable_logical_replication: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool enable_logical_replication: (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-               All active endpoints will be suspended.
-               Once enabled, logical replication cannot be disabled
-        """
-        if enable_logical_replication is not None:
-            pulumi.set(__self__, "enable_logical_replication", enable_logical_replication)
-
-    @_builtins.property
-    @pulumi.getter(name="enableLogicalReplication")
-    def enable_logical_replication(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-        return pulumi.get(self, "enable_logical_replication")
 
 
 @pulumi.output_type
 class GetPostgresProjectStatusResult(dict):
     def __init__(__self__, *,
                  branch_logical_size_limit_bytes: _builtins.int,
-                 compute_last_active_time: _builtins.str,
                  default_endpoint_settings: 'outputs.GetPostgresProjectStatusDefaultEndpointSettingsResult',
                  display_name: _builtins.str,
                  history_retention_duration: _builtins.str,
                  owner: _builtins.str,
                  pg_version: _builtins.int,
-                 settings: 'outputs.GetPostgresProjectStatusSettingsResult',
                  synthetic_storage_size_bytes: _builtins.int):
         """
         :param _builtins.int branch_logical_size_limit_bytes: (integer) - The logical size limit for a branch
-        :param _builtins.str compute_last_active_time: (string) - The most recent time when any endpoint of this project was active
         :param 'GetPostgresProjectStatusDefaultEndpointSettingsArgs' default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param _builtins.str display_name: (string) - The effective human-readable project name
         :param _builtins.str history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
         :param _builtins.str owner: (string) - The email of the project owner
         :param _builtins.int pg_version: (integer) - The effective major Postgres version number
-        :param 'GetPostgresProjectStatusSettingsArgs' settings: (ProjectSettings) - The effective project settings
         :param _builtins.int synthetic_storage_size_bytes: (integer) - The current space occupied by the project in storage
         """
         pulumi.set(__self__, "branch_logical_size_limit_bytes", branch_logical_size_limit_bytes)
-        pulumi.set(__self__, "compute_last_active_time", compute_last_active_time)
         pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "history_retention_duration", history_retention_duration)
         pulumi.set(__self__, "owner", owner)
         pulumi.set(__self__, "pg_version", pg_version)
-        pulumi.set(__self__, "settings", settings)
         pulumi.set(__self__, "synthetic_storage_size_bytes", synthetic_storage_size_bytes)
 
     @_builtins.property
@@ -69142,14 +70014,6 @@ class GetPostgresProjectStatusResult(dict):
         (integer) - The logical size limit for a branch
         """
         return pulumi.get(self, "branch_logical_size_limit_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="computeLastActiveTime")
-    def compute_last_active_time(self) -> _builtins.str:
-        """
-        (string) - The most recent time when any endpoint of this project was active
-        """
-        return pulumi.get(self, "compute_last_active_time")
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -69192,14 +70056,6 @@ class GetPostgresProjectStatusResult(dict):
         return pulumi.get(self, "pg_version")
 
     @_builtins.property
-    @pulumi.getter
-    def settings(self) -> 'outputs.GetPostgresProjectStatusSettingsResult':
-        """
-        (ProjectSettings) - The effective project settings
-        """
-        return pulumi.get(self, "settings")
-
-    @_builtins.property
     @pulumi.getter(name="syntheticStorageSizeBytes")
     def synthetic_storage_size_bytes(self) -> _builtins.int:
         """
@@ -69213,18 +70069,24 @@ class GetPostgresProjectStatusDefaultEndpointSettingsResult(dict):
     def __init__(__self__, *,
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
+                 no_suspension: Optional[_builtins.bool] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
-        :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
+        :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units. Minimum value is 0.5
+        :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units. Minimum value is 0.5
+        :param _builtins.bool no_suspension: (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+               If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         if autoscaling_limit_max_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
         if autoscaling_limit_min_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
         if suspend_timeout_duration is not None:
@@ -69234,7 +70096,7 @@ class GetPostgresProjectStatusDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="autoscalingLimitMaxCu")
     def autoscaling_limit_max_cu(self) -> Optional[_builtins.float]:
         """
-        (number) - The maximum number of Compute Units
+        (number) - The maximum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_max_cu")
 
@@ -69242,9 +70104,18 @@ class GetPostgresProjectStatusDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="autoscalingLimitMinCu")
     def autoscaling_limit_min_cu(self) -> Optional[_builtins.float]:
         """
-        (number) - The minimum number of Compute Units
+        (number) - The minimum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_min_cu")
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -69258,32 +70129,10 @@ class GetPostgresProjectStatusDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[_builtins.str]:
         """
-        (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         return pulumi.get(self, "suspend_timeout_duration")
-
-
-@pulumi.output_type
-class GetPostgresProjectStatusSettingsResult(dict):
-    def __init__(__self__, *,
-                 enable_logical_replication: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool enable_logical_replication: (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-               All active endpoints will be suspended.
-               Once enabled, logical replication cannot be disabled
-        """
-        if enable_logical_replication is not None:
-            pulumi.set(__self__, "enable_logical_replication", enable_logical_replication)
-
-    @_builtins.property
-    @pulumi.getter(name="enableLogicalReplication")
-    def enable_logical_replication(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-        return pulumi.get(self, "enable_logical_replication")
 
 
 @pulumi.output_type
@@ -69297,11 +70146,11 @@ class GetPostgresProjectsProjectResult(dict):
                  update_time: _builtins.str):
         """
         :param _builtins.str create_time: (string) - A timestamp indicating when the project was created
-        :param _builtins.str name: (string) - The resource name of the project.
-               Format: projects/{project_id}
-        :param 'GetPostgresProjectsProjectSpecArgs' spec: (ProjectSpec) - The desired state of a Project
+        :param _builtins.str name: (string) - The resource name of the project. This field is output-only and constructed by the system.
+               Format: `projects/{project_id}`
+        :param 'GetPostgresProjectsProjectSpecArgs' spec: (ProjectSpec) - The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         :param 'GetPostgresProjectsProjectStatusArgs' status: (ProjectStatus) - The current status of a Project
-        :param _builtins.str uid: (string) - System generated unique ID for the project
+        :param _builtins.str uid: (string) - System-generated unique ID for the project
         :param _builtins.str update_time: (string) - A timestamp indicating when the project was last updated
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -69323,8 +70172,8 @@ class GetPostgresProjectsProjectResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the project.
-        Format: projects/{project_id}
+        (string) - The resource name of the project. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}`
         """
         return pulumi.get(self, "name")
 
@@ -69332,7 +70181,7 @@ class GetPostgresProjectsProjectResult(dict):
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresProjectsProjectSpecResult':
         """
-        (ProjectSpec) - The desired state of a Project
+        (ProjectSpec) - The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         return pulumi.get(self, "spec")
 
@@ -69348,7 +70197,7 @@ class GetPostgresProjectsProjectResult(dict):
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string) - System generated unique ID for the project
+        (string) - System-generated unique ID for the project
         """
         return pulumi.get(self, "uid")
 
@@ -69367,14 +70216,12 @@ class GetPostgresProjectsProjectSpecResult(dict):
                  default_endpoint_settings: Optional['outputs.GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult'] = None,
                  display_name: Optional[_builtins.str] = None,
                  history_retention_duration: Optional[_builtins.str] = None,
-                 pg_version: Optional[_builtins.int] = None,
-                 settings: Optional['outputs.GetPostgresProjectsProjectSpecSettingsResult'] = None):
+                 pg_version: Optional[_builtins.int] = None):
         """
         :param 'GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs' default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param _builtins.str display_name: (string) - The effective human-readable project name
         :param _builtins.str history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
         :param _builtins.int pg_version: (integer) - The effective major Postgres version number
-        :param 'GetPostgresProjectsProjectSpecSettingsArgs' settings: (ProjectSettings) - The effective project settings
         """
         if default_endpoint_settings is not None:
             pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
@@ -69384,8 +70231,6 @@ class GetPostgresProjectsProjectSpecResult(dict):
             pulumi.set(__self__, "history_retention_duration", history_retention_duration)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
-        if settings is not None:
-            pulumi.set(__self__, "settings", settings)
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -69419,32 +70264,30 @@ class GetPostgresProjectsProjectSpecResult(dict):
         """
         return pulumi.get(self, "pg_version")
 
-    @_builtins.property
-    @pulumi.getter
-    def settings(self) -> Optional['outputs.GetPostgresProjectsProjectSpecSettingsResult']:
-        """
-        (ProjectSettings) - The effective project settings
-        """
-        return pulumi.get(self, "settings")
-
 
 @pulumi.output_type
 class GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult(dict):
     def __init__(__self__, *,
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
+                 no_suspension: Optional[_builtins.bool] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
-        :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
+        :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units. Minimum value is 0.5
+        :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units. Minimum value is 0.5
+        :param _builtins.bool no_suspension: (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+               If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         if autoscaling_limit_max_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
         if autoscaling_limit_min_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
         if suspend_timeout_duration is not None:
@@ -69454,7 +70297,7 @@ class GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="autoscalingLimitMaxCu")
     def autoscaling_limit_max_cu(self) -> Optional[_builtins.float]:
         """
-        (number) - The maximum number of Compute Units
+        (number) - The maximum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_max_cu")
 
@@ -69462,9 +70305,18 @@ class GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="autoscalingLimitMinCu")
     def autoscaling_limit_min_cu(self) -> Optional[_builtins.float]:
         """
-        (number) - The minimum number of Compute Units
+        (number) - The minimum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_min_cu")
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -69478,65 +70330,37 @@ class GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[_builtins.str]:
         """
-        (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         return pulumi.get(self, "suspend_timeout_duration")
-
-
-@pulumi.output_type
-class GetPostgresProjectsProjectSpecSettingsResult(dict):
-    def __init__(__self__, *,
-                 enable_logical_replication: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool enable_logical_replication: (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-               All active endpoints will be suspended.
-               Once enabled, logical replication cannot be disabled
-        """
-        if enable_logical_replication is not None:
-            pulumi.set(__self__, "enable_logical_replication", enable_logical_replication)
-
-    @_builtins.property
-    @pulumi.getter(name="enableLogicalReplication")
-    def enable_logical_replication(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-        return pulumi.get(self, "enable_logical_replication")
 
 
 @pulumi.output_type
 class GetPostgresProjectsProjectStatusResult(dict):
     def __init__(__self__, *,
                  branch_logical_size_limit_bytes: _builtins.int,
-                 compute_last_active_time: _builtins.str,
                  default_endpoint_settings: 'outputs.GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult',
                  display_name: _builtins.str,
                  history_retention_duration: _builtins.str,
                  owner: _builtins.str,
                  pg_version: _builtins.int,
-                 settings: 'outputs.GetPostgresProjectsProjectStatusSettingsResult',
                  synthetic_storage_size_bytes: _builtins.int):
         """
         :param _builtins.int branch_logical_size_limit_bytes: (integer) - The logical size limit for a branch
-        :param _builtins.str compute_last_active_time: (string) - The most recent time when any endpoint of this project was active
         :param 'GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs' default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param _builtins.str display_name: (string) - The effective human-readable project name
         :param _builtins.str history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
         :param _builtins.str owner: (string) - The email of the project owner
         :param _builtins.int pg_version: (integer) - The effective major Postgres version number
-        :param 'GetPostgresProjectsProjectStatusSettingsArgs' settings: (ProjectSettings) - The effective project settings
         :param _builtins.int synthetic_storage_size_bytes: (integer) - The current space occupied by the project in storage
         """
         pulumi.set(__self__, "branch_logical_size_limit_bytes", branch_logical_size_limit_bytes)
-        pulumi.set(__self__, "compute_last_active_time", compute_last_active_time)
         pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "history_retention_duration", history_retention_duration)
         pulumi.set(__self__, "owner", owner)
         pulumi.set(__self__, "pg_version", pg_version)
-        pulumi.set(__self__, "settings", settings)
         pulumi.set(__self__, "synthetic_storage_size_bytes", synthetic_storage_size_bytes)
 
     @_builtins.property
@@ -69546,14 +70370,6 @@ class GetPostgresProjectsProjectStatusResult(dict):
         (integer) - The logical size limit for a branch
         """
         return pulumi.get(self, "branch_logical_size_limit_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="computeLastActiveTime")
-    def compute_last_active_time(self) -> _builtins.str:
-        """
-        (string) - The most recent time when any endpoint of this project was active
-        """
-        return pulumi.get(self, "compute_last_active_time")
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -69596,14 +70412,6 @@ class GetPostgresProjectsProjectStatusResult(dict):
         return pulumi.get(self, "pg_version")
 
     @_builtins.property
-    @pulumi.getter
-    def settings(self) -> 'outputs.GetPostgresProjectsProjectStatusSettingsResult':
-        """
-        (ProjectSettings) - The effective project settings
-        """
-        return pulumi.get(self, "settings")
-
-    @_builtins.property
     @pulumi.getter(name="syntheticStorageSizeBytes")
     def synthetic_storage_size_bytes(self) -> _builtins.int:
         """
@@ -69617,18 +70425,24 @@ class GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult(dict):
     def __init__(__self__, *,
                  autoscaling_limit_max_cu: Optional[_builtins.float] = None,
                  autoscaling_limit_min_cu: Optional[_builtins.float] = None,
+                 no_suspension: Optional[_builtins.bool] = None,
                  pg_settings: Optional[Mapping[str, _builtins.str]] = None,
                  suspend_timeout_duration: Optional[_builtins.str] = None):
         """
-        :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
-        :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
+        :param _builtins.float autoscaling_limit_max_cu: (number) - The maximum number of Compute Units. Minimum value is 0.5
+        :param _builtins.float autoscaling_limit_min_cu: (number) - The minimum number of Compute Units. Minimum value is 0.5
+        :param _builtins.bool no_suspension: (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param Mapping[str, _builtins.str] pg_settings: (object) - A raw representation of Postgres settings
-        :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        :param _builtins.str suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+               If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         if autoscaling_limit_max_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
         if autoscaling_limit_min_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
         if suspend_timeout_duration is not None:
@@ -69638,7 +70452,7 @@ class GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="autoscalingLimitMaxCu")
     def autoscaling_limit_max_cu(self) -> Optional[_builtins.float]:
         """
-        (number) - The maximum number of Compute Units
+        (number) - The maximum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_max_cu")
 
@@ -69646,9 +70460,18 @@ class GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="autoscalingLimitMinCu")
     def autoscaling_limit_min_cu(self) -> Optional[_builtins.float]:
         """
-        (number) - The minimum number of Compute Units
+        (number) - The minimum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_min_cu")
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -69662,32 +70485,10 @@ class GetPostgresProjectsProjectStatusDefaultEndpointSettingsResult(dict):
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[_builtins.str]:
         """
-        (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         return pulumi.get(self, "suspend_timeout_duration")
-
-
-@pulumi.output_type
-class GetPostgresProjectsProjectStatusSettingsResult(dict):
-    def __init__(__self__, *,
-                 enable_logical_replication: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool enable_logical_replication: (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-               All active endpoints will be suspended.
-               Once enabled, logical replication cannot be disabled
-        """
-        if enable_logical_replication is not None:
-            pulumi.set(__self__, "enable_logical_replication", enable_logical_replication)
-
-    @_builtins.property
-    @pulumi.getter(name="enableLogicalReplication")
-    def enable_logical_replication(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-        return pulumi.get(self, "enable_logical_replication")
 
 
 @pulumi.output_type
@@ -75370,6 +76171,61 @@ class GetVolumesProviderConfigResult(dict):
         Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
         return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideResult(dict):
+    def __init__(__self__, *,
+                 default_warehouse_override_id: _builtins.str,
+                 name: _builtins.str,
+                 type: _builtins.str,
+                 warehouse_id: _builtins.str):
+        """
+        :param _builtins.str default_warehouse_override_id: (string) - The ID component of the resource name (user ID)
+        :param _builtins.str name: (string) - The resource name of the default warehouse override.
+               Format: default-warehouse-overrides/{default_warehouse_override_id}
+        :param _builtins.str type: (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
+        :param _builtins.str warehouse_id: (string) - The specific warehouse ID when type is CUSTOM.
+               Not set for LAST_SELECTED type
+        """
+        pulumi.set(__self__, "default_warehouse_override_id", default_warehouse_override_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultWarehouseOverrideId")
+    def default_warehouse_override_id(self) -> _builtins.str:
+        """
+        (string) - The ID component of the resource name (user ID)
+        """
+        return pulumi.get(self, "default_warehouse_override_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The resource name of the default warehouse override.
+        Format: default-warehouse-overrides/{default_warehouse_override_id}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> _builtins.str:
+        """
+        (string) - The specific warehouse ID when type is CUSTOM.
+        Not set for LAST_SELECTED type
+        """
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type

@@ -11,7 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source retrieves a single Postgres project.
+//
+// ## Example Usage
+//
+// ### Retrieve Project by Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.LookupPostgresProject(ctx, &databricks.LookupPostgresProjectArgs{
+//				Name: "projects/my-project",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("projectPgVersion", this.Status.PgVersion)
+//			ctx.Export("projectDisplayName", this.Status.DisplayName)
+//			ctx.Export("projectHistoryRetention", this.Status.HistoryRetentionDuration)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPostgresProject(ctx *pulumi.Context, args *LookupPostgresProjectArgs, opts ...pulumi.InvokeOption) (*LookupPostgresProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresProjectResult
@@ -24,8 +57,8 @@ func LookupPostgresProject(ctx *pulumi.Context, args *LookupPostgresProjectArgs,
 
 // A collection of arguments for invoking getPostgresProject.
 type LookupPostgresProjectArgs struct {
-	// The resource name of the project.
-	// Format: projects/{project_id}
+	// The resource name of the project. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}`
 	Name string `pulumi:"name"`
 }
 
@@ -35,14 +68,14 @@ type LookupPostgresProjectResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (string) - The resource name of the project.
-	// Format: projects/{project_id}
+	// (string) - The resource name of the project. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}`
 	Name string `pulumi:"name"`
-	// (ProjectSpec) - The desired state of a Project
+	// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec GetPostgresProjectSpec `pulumi:"spec"`
 	// (ProjectStatus) - The current status of a Project
 	Status GetPostgresProjectStatus `pulumi:"status"`
-	// (string) - System generated unique ID for the project
+	// (string) - System-generated unique ID for the project
 	Uid string `pulumi:"uid"`
 	// (string) - A timestamp indicating when the project was last updated
 	UpdateTime string `pulumi:"updateTime"`
@@ -59,8 +92,8 @@ func LookupPostgresProjectOutput(ctx *pulumi.Context, args LookupPostgresProject
 
 // A collection of arguments for invoking getPostgresProject.
 type LookupPostgresProjectOutputArgs struct {
-	// The resource name of the project.
-	// Format: projects/{project_id}
+	// The resource name of the project. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -93,13 +126,13 @@ func (o LookupPostgresProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the project.
-// Format: projects/{project_id}
+// (string) - The resource name of the project. This field is output-only and constructed by the system.
+// Format: `projects/{project_id}`
 func (o LookupPostgresProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (ProjectSpec) - The desired state of a Project
+// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 func (o LookupPostgresProjectResultOutput) Spec() GetPostgresProjectSpecOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) GetPostgresProjectSpec { return v.Spec }).(GetPostgresProjectSpecOutput)
 }
@@ -109,7 +142,7 @@ func (o LookupPostgresProjectResultOutput) Status() GetPostgresProjectStatusOutp
 	return o.ApplyT(func(v LookupPostgresProjectResult) GetPostgresProjectStatus { return v.Status }).(GetPostgresProjectStatusOutput)
 }
 
-// (string) - System generated unique ID for the project
+// (string) - System-generated unique ID for the project
 func (o LookupPostgresProjectResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Uid }).(pulumi.StringOutput)
 }

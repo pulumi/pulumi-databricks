@@ -10,7 +10,89 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Branch Creation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
+    ///         {
+    ///             PgVersion = 17,
+    ///             DisplayName = "My Project",
+    ///         },
+    ///     });
+    /// 
+    ///     var dev = new Databricks.PostgresBranch("dev", new()
+    ///     {
+    ///         BranchId = "dev-branch",
+    ///         Parent = @this.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
+    ///         {
+    ///             NoExpiry = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Protected Branch
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var production = new Databricks.PostgresBranch("production", new()
+    ///     {
+    ///         BranchId = "production",
+    ///         Parent = @this.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
+    ///         {
+    ///             IsProtected = true,
+    ///             NoExpiry = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Branch with Expiration (TTL)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var temporary = new Databricks.PostgresBranch("temporary", new()
+    ///     {
+    ///         BranchId = "temp-feature-test",
+    ///         Parent = @this.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
+    ///         {
+    ///             Ttl = "604800s",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -36,10 +118,11 @@ namespace Pulumi.Databricks
     public partial class PostgresBranch : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID to use for the Branch, which will become the final component of
-        /// the branch's resource name.
-        /// 
-        /// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
+        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        /// Examples:
+        /// - With custom ID: `Staging` → name becomes `projects/{project_id}/branches/staging`
+        /// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
         /// </summary>
         [Output("branchId")]
         public Output<string> BranchId { get; private set; } = null!;
@@ -51,21 +134,24 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resource name of the branch.
-        /// Format: projects/{project_id}/branches/{branch_id}
+        /// (string) - The resource name of the branch. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project containing this branch.
+        /// The project containing this branch (API resource hierarchy).
         /// Format: projects/{project_id}
+        /// 
+        /// Note: This field indicates where the branch exists in the resource hierarchy.
+        /// For point-in-time branching from another branch, see `spec.source_branch`
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// The desired state of a Branch
+        /// The spec contains the branch configuration
         /// </summary>
         [Output("spec")]
         public Output<Outputs.PostgresBranchSpec> Spec { get; private set; } = null!;
@@ -77,7 +163,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresBranchStatus> Status { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - System generated unique ID for the branch
+        /// (string) - System-generated unique ID for the branch
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -135,23 +221,27 @@ namespace Pulumi.Databricks
     public sealed class PostgresBranchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID to use for the Branch, which will become the final component of
-        /// the branch's resource name.
-        /// 
-        /// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
+        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        /// Examples:
+        /// - With custom ID: `Staging` → name becomes `projects/{project_id}/branches/staging`
+        /// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
         /// </summary>
         [Input("branchId", required: true)]
         public Input<string> BranchId { get; set; } = null!;
 
         /// <summary>
-        /// The project containing this branch.
+        /// The project containing this branch (API resource hierarchy).
         /// Format: projects/{project_id}
+        /// 
+        /// Note: This field indicates where the branch exists in the resource hierarchy.
+        /// For point-in-time branching from another branch, see `spec.source_branch`
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// The desired state of a Branch
+        /// The spec contains the branch configuration
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresBranchSpecArgs>? Spec { get; set; }
@@ -165,10 +255,11 @@ namespace Pulumi.Databricks
     public sealed class PostgresBranchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID to use for the Branch, which will become the final component of
-        /// the branch's resource name.
-        /// 
-        /// This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+        /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
+        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+        /// Examples:
+        /// - With custom ID: `Staging` → name becomes `projects/{project_id}/branches/staging`
+        /// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
         /// </summary>
         [Input("branchId")]
         public Input<string>? BranchId { get; set; }
@@ -180,21 +271,24 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// (string) - The resource name of the branch.
-        /// Format: projects/{project_id}/branches/{branch_id}
+        /// (string) - The resource name of the branch. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project containing this branch.
+        /// The project containing this branch (API resource hierarchy).
         /// Format: projects/{project_id}
+        /// 
+        /// Note: This field indicates where the branch exists in the resource hierarchy.
+        /// For point-in-time branching from another branch, see `spec.source_branch`
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// The desired state of a Branch
+        /// The spec contains the branch configuration
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresBranchSpecGetArgs>? Spec { get; set; }
@@ -206,7 +300,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresBranchStatusGetArgs>? Status { get; set; }
 
         /// <summary>
-        /// (string) - System generated unique ID for the branch
+        /// (string) - System-generated unique ID for the branch
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

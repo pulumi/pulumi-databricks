@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters;
 import java.lang.Boolean;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
+    private @Nullable PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy autoFullRefreshPolicy;
     private @Nullable List<String> excludeColumns;
     private @Nullable List<String> includeColumns;
     private @Nullable List<String> primaryKeys;
@@ -26,6 +28,9 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
     private @Nullable PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters workdayReportParameters;
 
     private PipelineIngestionDefinitionObjectReportTableConfiguration() {}
+    public Optional<PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy> autoFullRefreshPolicy() {
+        return Optional.ofNullable(this.autoFullRefreshPolicy);
+    }
     public List<String> excludeColumns() {
         return this.excludeColumns == null ? List.of() : this.excludeColumns;
     }
@@ -63,6 +68,7 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy autoFullRefreshPolicy;
         private @Nullable List<String> excludeColumns;
         private @Nullable List<String> includeColumns;
         private @Nullable List<String> primaryKeys;
@@ -75,6 +81,7 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectReportTableConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoFullRefreshPolicy = defaults.autoFullRefreshPolicy;
     	      this.excludeColumns = defaults.excludeColumns;
     	      this.includeColumns = defaults.includeColumns;
     	      this.primaryKeys = defaults.primaryKeys;
@@ -86,6 +93,12 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
     	      this.workdayReportParameters = defaults.workdayReportParameters;
         }
 
+        @CustomType.Setter
+        public Builder autoFullRefreshPolicy(@Nullable PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy autoFullRefreshPolicy) {
+
+            this.autoFullRefreshPolicy = autoFullRefreshPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder excludeColumns(@Nullable List<String> excludeColumns) {
 
@@ -154,6 +167,7 @@ public final class PipelineIngestionDefinitionObjectReportTableConfiguration {
         }
         public PipelineIngestionDefinitionObjectReportTableConfiguration build() {
             final var _resultValue = new PipelineIngestionDefinitionObjectReportTableConfiguration();
+            _resultValue.autoFullRefreshPolicy = autoFullRefreshPolicy;
             _resultValue.excludeColumns = excludeColumns;
             _resultValue.includeColumns = includeColumns;
             _resultValue.primaryKeys = primaryKeys;

@@ -18,10 +18,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? BranchLogicalSizeLimitBytes;
         /// <summary>
-        /// (string) - The most recent time when any endpoint of this project was active
-        /// </summary>
-        public readonly string? ComputeLastActiveTime;
-        /// <summary>
         /// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         /// </summary>
         public readonly Outputs.PostgresProjectStatusDefaultEndpointSettings? DefaultEndpointSettings;
@@ -42,10 +38,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? PgVersion;
         /// <summary>
-        /// (ProjectSettings) - The effective project settings
-        /// </summary>
-        public readonly Outputs.PostgresProjectStatusSettings? Settings;
-        /// <summary>
         /// (integer) - The current space occupied by the project in storage
         /// </summary>
         public readonly int? SyntheticStorageSizeBytes;
@@ -53,8 +45,6 @@ namespace Pulumi.Databricks.Outputs
         [OutputConstructor]
         private PostgresProjectStatus(
             int? branchLogicalSizeLimitBytes,
-
-            string? computeLastActiveTime,
 
             Outputs.PostgresProjectStatusDefaultEndpointSettings? defaultEndpointSettings,
 
@@ -66,18 +56,14 @@ namespace Pulumi.Databricks.Outputs
 
             int? pgVersion,
 
-            Outputs.PostgresProjectStatusSettings? settings,
-
             int? syntheticStorageSizeBytes)
         {
             BranchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
-            ComputeLastActiveTime = computeLastActiveTime;
             DefaultEndpointSettings = defaultEndpointSettings;
             DisplayName = displayName;
             HistoryRetentionDuration = historyRetentionDuration;
             Owner = owner;
             PgVersion = pgVersion;
-            Settings = settings;
             SyntheticStorageSizeBytes = syntheticStorageSizeBytes;
         }
     }

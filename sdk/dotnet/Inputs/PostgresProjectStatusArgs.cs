@@ -19,12 +19,6 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? BranchLogicalSizeLimitBytes { get; set; }
 
         /// <summary>
-        /// (string) - The most recent time when any endpoint of this project was active
-        /// </summary>
-        [Input("computeLastActiveTime")]
-        public Input<string>? ComputeLastActiveTime { get; set; }
-
-        /// <summary>
         /// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         /// </summary>
         [Input("defaultEndpointSettings")]
@@ -53,12 +47,6 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("pgVersion")]
         public Input<int>? PgVersion { get; set; }
-
-        /// <summary>
-        /// (ProjectSettings) - The effective project settings
-        /// </summary>
-        [Input("settings")]
-        public Input<Inputs.PostgresProjectStatusSettingsArgs>? Settings { get; set; }
 
         /// <summary>
         /// (integer) - The current space occupied by the project in storage

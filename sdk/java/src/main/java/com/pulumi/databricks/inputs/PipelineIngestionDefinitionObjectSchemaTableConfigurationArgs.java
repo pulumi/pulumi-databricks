@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs;
 import java.lang.Boolean;
@@ -18,6 +19,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs Empty = new PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs();
+
+    @Import(name="autoFullRefreshPolicy")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs> autoFullRefreshPolicy;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs>> autoFullRefreshPolicy() {
+        return Optional.ofNullable(this.autoFullRefreshPolicy);
+    }
 
     @Import(name="excludeColumns")
     private @Nullable Output<List<String>> excludeColumns;
@@ -85,6 +93,7 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
     private PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs() {}
 
     private PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs(PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs $) {
+        this.autoFullRefreshPolicy = $.autoFullRefreshPolicy;
         this.excludeColumns = $.excludeColumns;
         this.includeColumns = $.includeColumns;
         this.primaryKeys = $.primaryKeys;
@@ -112,6 +121,15 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
 
         public Builder(PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs defaults) {
             $ = new PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder autoFullRefreshPolicy(@Nullable Output<PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs> autoFullRefreshPolicy) {
+            $.autoFullRefreshPolicy = autoFullRefreshPolicy;
+            return this;
+        }
+
+        public Builder autoFullRefreshPolicy(PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs autoFullRefreshPolicy) {
+            return autoFullRefreshPolicy(Output.of(autoFullRefreshPolicy));
         }
 
         public Builder excludeColumns(@Nullable Output<List<String>> excludeColumns) {

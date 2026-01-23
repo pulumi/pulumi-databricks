@@ -5,7 +5,6 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PostgresProjectStatusDefaultEndpointSettings;
-import com.pulumi.databricks.outputs.PostgresProjectStatusSettings;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -19,11 +18,6 @@ public final class PostgresProjectStatus {
      * 
      */
     private @Nullable Integer branchLogicalSizeLimitBytes;
-    /**
-     * @return (string) - The most recent time when any endpoint of this project was active
-     * 
-     */
-    private @Nullable String computeLastActiveTime;
     /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      * 
@@ -50,11 +44,6 @@ public final class PostgresProjectStatus {
      */
     private @Nullable Integer pgVersion;
     /**
-     * @return (ProjectSettings) - The effective project settings
-     * 
-     */
-    private @Nullable PostgresProjectStatusSettings settings;
-    /**
      * @return (integer) - The current space occupied by the project in storage
      * 
      */
@@ -67,13 +56,6 @@ public final class PostgresProjectStatus {
      */
     public Optional<Integer> branchLogicalSizeLimitBytes() {
         return Optional.ofNullable(this.branchLogicalSizeLimitBytes);
-    }
-    /**
-     * @return (string) - The most recent time when any endpoint of this project was active
-     * 
-     */
-    public Optional<String> computeLastActiveTime() {
-        return Optional.ofNullable(this.computeLastActiveTime);
     }
     /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
@@ -111,13 +93,6 @@ public final class PostgresProjectStatus {
         return Optional.ofNullable(this.pgVersion);
     }
     /**
-     * @return (ProjectSettings) - The effective project settings
-     * 
-     */
-    public Optional<PostgresProjectStatusSettings> settings() {
-        return Optional.ofNullable(this.settings);
-    }
-    /**
      * @return (integer) - The current space occupied by the project in storage
      * 
      */
@@ -135,25 +110,21 @@ public final class PostgresProjectStatus {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer branchLogicalSizeLimitBytes;
-        private @Nullable String computeLastActiveTime;
         private @Nullable PostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings;
         private @Nullable String displayName;
         private @Nullable String historyRetentionDuration;
         private @Nullable String owner;
         private @Nullable Integer pgVersion;
-        private @Nullable PostgresProjectStatusSettings settings;
         private @Nullable Integer syntheticStorageSizeBytes;
         public Builder() {}
         public Builder(PostgresProjectStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branchLogicalSizeLimitBytes = defaults.branchLogicalSizeLimitBytes;
-    	      this.computeLastActiveTime = defaults.computeLastActiveTime;
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
     	      this.displayName = defaults.displayName;
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
     	      this.owner = defaults.owner;
     	      this.pgVersion = defaults.pgVersion;
-    	      this.settings = defaults.settings;
     	      this.syntheticStorageSizeBytes = defaults.syntheticStorageSizeBytes;
         }
 
@@ -161,12 +132,6 @@ public final class PostgresProjectStatus {
         public Builder branchLogicalSizeLimitBytes(@Nullable Integer branchLogicalSizeLimitBytes) {
 
             this.branchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder computeLastActiveTime(@Nullable String computeLastActiveTime) {
-
-            this.computeLastActiveTime = computeLastActiveTime;
             return this;
         }
         @CustomType.Setter
@@ -200,12 +165,6 @@ public final class PostgresProjectStatus {
             return this;
         }
         @CustomType.Setter
-        public Builder settings(@Nullable PostgresProjectStatusSettings settings) {
-
-            this.settings = settings;
-            return this;
-        }
-        @CustomType.Setter
         public Builder syntheticStorageSizeBytes(@Nullable Integer syntheticStorageSizeBytes) {
 
             this.syntheticStorageSizeBytes = syntheticStorageSizeBytes;
@@ -214,13 +173,11 @@ public final class PostgresProjectStatus {
         public PostgresProjectStatus build() {
             final var _resultValue = new PostgresProjectStatus();
             _resultValue.branchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
-            _resultValue.computeLastActiveTime = computeLastActiveTime;
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;
             _resultValue.displayName = displayName;
             _resultValue.historyRetentionDuration = historyRetentionDuration;
             _resultValue.owner = owner;
             _resultValue.pgVersion = pgVersion;
-            _resultValue.settings = settings;
             _resultValue.syntheticStorageSizeBytes = syntheticStorageSizeBytes;
             return _resultValue;
         }

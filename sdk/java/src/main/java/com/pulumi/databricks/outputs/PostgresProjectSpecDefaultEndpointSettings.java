@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Map;
@@ -14,40 +15,55 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PostgresProjectSpecDefaultEndpointSettings {
     /**
-     * @return The maximum number of Compute Units
+     * @return The maximum number of Compute Units. Minimum value is 0.5
      * 
      */
     private @Nullable Double autoscalingLimitMaxCu;
     /**
-     * @return The minimum number of Compute Units
+     * @return The minimum number of Compute Units. Minimum value is 0.5
      * 
      */
     private @Nullable Double autoscalingLimitMinCu;
+    /**
+     * @return When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     * 
+     */
+    private @Nullable Boolean noSuspension;
     /**
      * @return A raw representation of Postgres settings
      * 
      */
     private @Nullable Map<String,String> pgSettings;
     /**
-     * @return Duration of inactivity after which the compute endpoint is automatically suspended
+     * @return Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      * 
      */
     private @Nullable String suspendTimeoutDuration;
 
     private PostgresProjectSpecDefaultEndpointSettings() {}
     /**
-     * @return The maximum number of Compute Units
+     * @return The maximum number of Compute Units. Minimum value is 0.5
      * 
      */
     public Optional<Double> autoscalingLimitMaxCu() {
         return Optional.ofNullable(this.autoscalingLimitMaxCu);
     }
     /**
-     * @return The minimum number of Compute Units
+     * @return The minimum number of Compute Units. Minimum value is 0.5
      * 
      */
     public Optional<Double> autoscalingLimitMinCu() {
         return Optional.ofNullable(this.autoscalingLimitMinCu);
+    }
+    /**
+     * @return When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     * 
+     */
+    public Optional<Boolean> noSuspension() {
+        return Optional.ofNullable(this.noSuspension);
     }
     /**
      * @return A raw representation of Postgres settings
@@ -57,7 +73,8 @@ public final class PostgresProjectSpecDefaultEndpointSettings {
         return this.pgSettings == null ? Map.of() : this.pgSettings;
     }
     /**
-     * @return Duration of inactivity after which the compute endpoint is automatically suspended
+     * @return Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      * 
      */
     public Optional<String> suspendTimeoutDuration() {
@@ -75,6 +92,7 @@ public final class PostgresProjectSpecDefaultEndpointSettings {
     public static final class Builder {
         private @Nullable Double autoscalingLimitMaxCu;
         private @Nullable Double autoscalingLimitMinCu;
+        private @Nullable Boolean noSuspension;
         private @Nullable Map<String,String> pgSettings;
         private @Nullable String suspendTimeoutDuration;
         public Builder() {}
@@ -82,6 +100,7 @@ public final class PostgresProjectSpecDefaultEndpointSettings {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingLimitMaxCu = defaults.autoscalingLimitMaxCu;
     	      this.autoscalingLimitMinCu = defaults.autoscalingLimitMinCu;
+    	      this.noSuspension = defaults.noSuspension;
     	      this.pgSettings = defaults.pgSettings;
     	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
         }
@@ -96,6 +115,12 @@ public final class PostgresProjectSpecDefaultEndpointSettings {
         public Builder autoscalingLimitMinCu(@Nullable Double autoscalingLimitMinCu) {
 
             this.autoscalingLimitMinCu = autoscalingLimitMinCu;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder noSuspension(@Nullable Boolean noSuspension) {
+
+            this.noSuspension = noSuspension;
             return this;
         }
         @CustomType.Setter
@@ -114,6 +139,7 @@ public final class PostgresProjectSpecDefaultEndpointSettings {
             final var _resultValue = new PostgresProjectSpecDefaultEndpointSettings();
             _resultValue.autoscalingLimitMaxCu = autoscalingLimitMaxCu;
             _resultValue.autoscalingLimitMinCu = autoscalingLimitMinCu;
+            _resultValue.noSuspension = noSuspension;
             _resultValue.pgSettings = pgSettings;
             _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;
             return _resultValue;

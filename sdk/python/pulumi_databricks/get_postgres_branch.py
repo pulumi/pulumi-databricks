@@ -73,8 +73,8 @@ class GetPostgresBranchResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the branch.
-        Format: projects/{project_id}/branches/{branch_id}
+        (string) - The resource name of the branch. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}/branches/{branch_id}`
         """
         return pulumi.get(self, "name")
 
@@ -82,7 +82,7 @@ class GetPostgresBranchResult:
     @pulumi.getter
     def parent(self) -> _builtins.str:
         """
-        (string) - The project containing this branch.
+        (string) - The project containing this branch (API resource hierarchy).
         Format: projects/{project_id}
         """
         return pulumi.get(self, "parent")
@@ -91,7 +91,7 @@ class GetPostgresBranchResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresBranchSpecResult':
         """
-        (BranchSpec) - The desired state of a Branch
+        (BranchSpec) - The spec contains the branch configuration
         """
         return pulumi.get(self, "spec")
 
@@ -107,7 +107,7 @@ class GetPostgresBranchResult:
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string) - System generated unique ID for the branch
+        (string) - System-generated unique ID for the branch
         """
         return pulumi.get(self, "uid")
 
@@ -139,11 +139,25 @@ class AwaitableGetPostgresBranchResult(GetPostgresBranchResult):
 def get_postgres_branch(name: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresBranchResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source retrieves a single Postgres branch.
+
+    ## Example Usage
+
+    ### Retrieve Branch by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_branch(name="projects/my-project/branches/dev-branch")
+    pulumi.export("branchIsProtected", this.status.is_protected)
+    ```
 
 
-    :param _builtins.str name: The resource name of the branch.
-           Format: projects/{project_id}/branches/{branch_id}
+    :param _builtins.str name: The resource name of the branch. This field is output-only and constructed by the system.
+           Format: `projects/{project_id}/branches/{branch_id}`
     """
     __args__ = dict()
     __args__['name'] = name
@@ -162,11 +176,25 @@ def get_postgres_branch(name: Optional[_builtins.str] = None,
 def get_postgres_branch_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresBranchResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source retrieves a single Postgres branch.
+
+    ## Example Usage
+
+    ### Retrieve Branch by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_branch(name="projects/my-project/branches/dev-branch")
+    pulumi.export("branchIsProtected", this.status.is_protected)
+    ```
 
 
-    :param _builtins.str name: The resource name of the branch.
-           Format: projects/{project_id}/branches/{branch_id}
+    :param _builtins.str name: The resource name of the branch. This field is output-only and constructed by the system.
+           Format: `projects/{project_id}/branches/{branch_id}`
     """
     __args__ = dict()
     __args__['name'] = name

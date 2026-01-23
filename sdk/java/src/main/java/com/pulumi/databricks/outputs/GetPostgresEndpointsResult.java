@@ -23,7 +23,7 @@ public final class GetPostgresEndpointsResult {
     private String id;
     private @Nullable Integer pageSize;
     /**
-     * @return (string) - The branch containing this endpoint.
+     * @return (string) - The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
@@ -44,7 +44,7 @@ public final class GetPostgresEndpointsResult {
         return Optional.ofNullable(this.pageSize);
     }
     /**
-     * @return (string) - The branch containing this endpoint.
+     * @return (string) - The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */

@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObjectReportTableConfiguration
     {
+        public readonly Outputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy? AutoFullRefreshPolicy;
         public readonly ImmutableArray<string> ExcludeColumns;
         public readonly ImmutableArray<string> IncludeColumns;
         public readonly ImmutableArray<string> PrimaryKeys;
@@ -25,6 +26,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectReportTableConfiguration(
+            Outputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy? autoFullRefreshPolicy,
+
             ImmutableArray<string> excludeColumns,
 
             ImmutableArray<string> includeColumns,
@@ -43,6 +46,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters? workdayReportParameters)
         {
+            AutoFullRefreshPolicy = autoFullRefreshPolicy;
             ExcludeColumns = excludeColumns;
             IncludeColumns = includeColumns;
             PrimaryKeys = primaryKeys;

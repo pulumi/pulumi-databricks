@@ -11,7 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source lists all Postgres projects in the workspace.
+//
+// ## Example Usage
+//
+// ### List All Projects
 func GetPostgresProjects(ctx *pulumi.Context, args *GetPostgresProjectsArgs, opts ...pulumi.InvokeOption) (*GetPostgresProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPostgresProjectsResult
@@ -24,7 +30,7 @@ func GetPostgresProjects(ctx *pulumi.Context, args *GetPostgresProjectsArgs, opt
 
 // A collection of arguments for invoking getPostgresProjects.
 type GetPostgresProjectsArgs struct {
-	// Upper bound for items returned
+	// Upper bound for items returned. Cannot be negative
 	PageSize *int `pulumi:"pageSize"`
 }
 
@@ -47,7 +53,7 @@ func GetPostgresProjectsOutput(ctx *pulumi.Context, args GetPostgresProjectsOutp
 
 // A collection of arguments for invoking getPostgresProjects.
 type GetPostgresProjectsOutputArgs struct {
-	// Upper bound for items returned
+	// Upper bound for items returned. Cannot be negative
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 

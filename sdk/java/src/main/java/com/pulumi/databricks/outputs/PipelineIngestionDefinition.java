@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionFullRefreshWindow;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObject;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionSourceConfiguration;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionTableConfiguration;
@@ -17,6 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineIngestionDefinition {
     private @Nullable String connectionName;
+    private @Nullable PipelineIngestionDefinitionFullRefreshWindow fullRefreshWindow;
     private @Nullable Boolean ingestFromUcForeignCatalog;
     private @Nullable String ingestionGatewayId;
     private @Nullable String netsuiteJarPath;
@@ -28,6 +30,9 @@ public final class PipelineIngestionDefinition {
     private PipelineIngestionDefinition() {}
     public Optional<String> connectionName() {
         return Optional.ofNullable(this.connectionName);
+    }
+    public Optional<PipelineIngestionDefinitionFullRefreshWindow> fullRefreshWindow() {
+        return Optional.ofNullable(this.fullRefreshWindow);
     }
     public Optional<Boolean> ingestFromUcForeignCatalog() {
         return Optional.ofNullable(this.ingestFromUcForeignCatalog);
@@ -61,6 +66,7 @@ public final class PipelineIngestionDefinition {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionName;
+        private @Nullable PipelineIngestionDefinitionFullRefreshWindow fullRefreshWindow;
         private @Nullable Boolean ingestFromUcForeignCatalog;
         private @Nullable String ingestionGatewayId;
         private @Nullable String netsuiteJarPath;
@@ -72,6 +78,7 @@ public final class PipelineIngestionDefinition {
         public Builder(PipelineIngestionDefinition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionName = defaults.connectionName;
+    	      this.fullRefreshWindow = defaults.fullRefreshWindow;
     	      this.ingestFromUcForeignCatalog = defaults.ingestFromUcForeignCatalog;
     	      this.ingestionGatewayId = defaults.ingestionGatewayId;
     	      this.netsuiteJarPath = defaults.netsuiteJarPath;
@@ -85,6 +92,12 @@ public final class PipelineIngestionDefinition {
         public Builder connectionName(@Nullable String connectionName) {
 
             this.connectionName = connectionName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fullRefreshWindow(@Nullable PipelineIngestionDefinitionFullRefreshWindow fullRefreshWindow) {
+
+            this.fullRefreshWindow = fullRefreshWindow;
             return this;
         }
         @CustomType.Setter
@@ -138,6 +151,7 @@ public final class PipelineIngestionDefinition {
         public PipelineIngestionDefinition build() {
             final var _resultValue = new PipelineIngestionDefinition();
             _resultValue.connectionName = connectionName;
+            _resultValue.fullRefreshWindow = fullRefreshWindow;
             _resultValue.ingestFromUcForeignCatalog = ingestFromUcForeignCatalog;
             _resultValue.ingestionGatewayId = ingestionGatewayId;
             _resultValue.netsuiteJarPath = netsuiteJarPath;

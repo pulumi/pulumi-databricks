@@ -11,10 +11,12 @@ import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterAzureAttribu
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterDockerImageArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterInitScriptArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterLibraryArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterProviderConfigArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -112,6 +114,13 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
 
     public Optional<Output<String>> driverInstancePoolId() {
         return Optional.ofNullable(this.driverInstancePoolId);
+    }
+
+    @Import(name="driverNodeTypeFlexibility")
+    private @Nullable Output<JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs> driverNodeTypeFlexibility;
+
+    public Optional<Output<JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs>> driverNodeTypeFlexibility() {
+        return Optional.ofNullable(this.driverNodeTypeFlexibility);
     }
 
     @Import(name="driverNodeTypeId")
@@ -291,6 +300,13 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         return Optional.ofNullable(this.useMlRuntime);
     }
 
+    @Import(name="workerNodeTypeFlexibility")
+    private @Nullable Output<JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs> workerNodeTypeFlexibility;
+
+    public Optional<Output<JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs>> workerNodeTypeFlexibility() {
+        return Optional.ofNullable(this.workerNodeTypeFlexibility);
+    }
+
     /**
      * isn&#39;t supported
      * 
@@ -321,6 +337,7 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         this.dataSecurityMode = $.dataSecurityMode;
         this.dockerImage = $.dockerImage;
         this.driverInstancePoolId = $.driverInstancePoolId;
+        this.driverNodeTypeFlexibility = $.driverNodeTypeFlexibility;
         this.driverNodeTypeId = $.driverNodeTypeId;
         this.enableElasticDisk = $.enableElasticDisk;
         this.enableLocalDiskEncryption = $.enableLocalDiskEncryption;
@@ -344,6 +361,7 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         this.sshPublicKeys = $.sshPublicKeys;
         this.totalInitialRemoteDiskSize = $.totalInitialRemoteDiskSize;
         this.useMlRuntime = $.useMlRuntime;
+        this.workerNodeTypeFlexibility = $.workerNodeTypeFlexibility;
         this.workloadType = $.workloadType;
     }
 
@@ -475,6 +493,15 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
 
         public Builder driverInstancePoolId(String driverInstancePoolId) {
             return driverInstancePoolId(Output.of(driverInstancePoolId));
+        }
+
+        public Builder driverNodeTypeFlexibility(@Nullable Output<JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs> driverNodeTypeFlexibility) {
+            $.driverNodeTypeFlexibility = driverNodeTypeFlexibility;
+            return this;
+        }
+
+        public Builder driverNodeTypeFlexibility(JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs driverNodeTypeFlexibility) {
+            return driverNodeTypeFlexibility(Output.of(driverNodeTypeFlexibility));
         }
 
         public Builder driverNodeTypeId(@Nullable Output<String> driverNodeTypeId) {
@@ -724,6 +751,15 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
 
         public Builder useMlRuntime(Boolean useMlRuntime) {
             return useMlRuntime(Output.of(useMlRuntime));
+        }
+
+        public Builder workerNodeTypeFlexibility(@Nullable Output<JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs> workerNodeTypeFlexibility) {
+            $.workerNodeTypeFlexibility = workerNodeTypeFlexibility;
+            return this;
+        }
+
+        public Builder workerNodeTypeFlexibility(JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs workerNodeTypeFlexibility) {
+            return workerNodeTypeFlexibility(Output.of(workerNodeTypeFlexibility));
         }
 
         /**

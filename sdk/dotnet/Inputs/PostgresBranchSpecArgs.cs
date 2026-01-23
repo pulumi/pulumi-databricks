@@ -13,16 +13,23 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PostgresBranchSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (boolean) - Whether the branch is the project's default branch
+        /// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         /// </summary>
-        [Input("default")]
-        public Input<bool>? Default { get; set; }
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
 
         /// <summary>
         /// (boolean) - Whether the branch is protected
         /// </summary>
         [Input("isProtected")]
         public Input<bool>? IsProtected { get; set; }
+
+        /// <summary>
+        /// Explicitly disable expiration. When set to true, the branch will not expire.
+        /// If set to false, the request is invalid; provide either ttl or ExpireTime instead
+        /// </summary>
+        [Input("noExpiry")]
+        public Input<bool>? NoExpiry { get; set; }
 
         /// <summary>
         /// (string) - The name of the source branch from which this branch was created.
@@ -42,6 +49,12 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("sourceBranchTime")]
         public Input<string>? SourceBranchTime { get; set; }
+
+        /// <summary>
+        /// Relative time-to-live duration. When set, the branch will expire at CreationTime + ttl
+        /// </summary>
+        [Input("ttl")]
+        public Input<string>? Ttl { get; set; }
 
         public PostgresBranchSpecArgs()
         {

@@ -11,10 +11,12 @@ import com.pulumi.databricks.inputs.JobJobClusterNewClusterAzureAttributesArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterClusterMountInfoArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterDockerImageArgs;
+import com.pulumi.databricks.inputs.JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterLibraryArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterProviderConfigArgs;
+import com.pulumi.databricks.inputs.JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterWorkloadTypeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -119,6 +121,13 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
 
     public Optional<Output<String>> driverInstancePoolId() {
         return Optional.ofNullable(this.driverInstancePoolId);
+    }
+
+    @Import(name="driverNodeTypeFlexibility")
+    private @Nullable Output<JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs> driverNodeTypeFlexibility;
+
+    public Optional<Output<JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs>> driverNodeTypeFlexibility() {
+        return Optional.ofNullable(this.driverNodeTypeFlexibility);
     }
 
     @Import(name="driverNodeTypeId")
@@ -298,6 +307,13 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.useMlRuntime);
     }
 
+    @Import(name="workerNodeTypeFlexibility")
+    private @Nullable Output<JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs> workerNodeTypeFlexibility;
+
+    public Optional<Output<JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs>> workerNodeTypeFlexibility() {
+        return Optional.ofNullable(this.workerNodeTypeFlexibility);
+    }
+
     /**
      * isn&#39;t supported
      * 
@@ -329,6 +345,7 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
         this.dataSecurityMode = $.dataSecurityMode;
         this.dockerImage = $.dockerImage;
         this.driverInstancePoolId = $.driverInstancePoolId;
+        this.driverNodeTypeFlexibility = $.driverNodeTypeFlexibility;
         this.driverNodeTypeId = $.driverNodeTypeId;
         this.enableElasticDisk = $.enableElasticDisk;
         this.enableLocalDiskEncryption = $.enableLocalDiskEncryption;
@@ -352,6 +369,7 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
         this.sshPublicKeys = $.sshPublicKeys;
         this.totalInitialRemoteDiskSize = $.totalInitialRemoteDiskSize;
         this.useMlRuntime = $.useMlRuntime;
+        this.workerNodeTypeFlexibility = $.workerNodeTypeFlexibility;
         this.workloadType = $.workloadType;
     }
 
@@ -496,6 +514,15 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
 
         public Builder driverInstancePoolId(String driverInstancePoolId) {
             return driverInstancePoolId(Output.of(driverInstancePoolId));
+        }
+
+        public Builder driverNodeTypeFlexibility(@Nullable Output<JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs> driverNodeTypeFlexibility) {
+            $.driverNodeTypeFlexibility = driverNodeTypeFlexibility;
+            return this;
+        }
+
+        public Builder driverNodeTypeFlexibility(JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs driverNodeTypeFlexibility) {
+            return driverNodeTypeFlexibility(Output.of(driverNodeTypeFlexibility));
         }
 
         public Builder driverNodeTypeId(@Nullable Output<String> driverNodeTypeId) {
@@ -745,6 +772,15 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
 
         public Builder useMlRuntime(Boolean useMlRuntime) {
             return useMlRuntime(Output.of(useMlRuntime));
+        }
+
+        public Builder workerNodeTypeFlexibility(@Nullable Output<JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs> workerNodeTypeFlexibility) {
+            $.workerNodeTypeFlexibility = workerNodeTypeFlexibility;
+            return this;
+        }
+
+        public Builder workerNodeTypeFlexibility(JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs workerNodeTypeFlexibility) {
+            return workerNodeTypeFlexibility(Output.of(workerNodeTypeFlexibility));
         }
 
         /**

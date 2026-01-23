@@ -70,8 +70,8 @@ class GetPostgresProjectResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the project.
-        Format: projects/{project_id}
+        (string) - The resource name of the project. This field is output-only and constructed by the system.
+        Format: `projects/{project_id}`
         """
         return pulumi.get(self, "name")
 
@@ -79,7 +79,7 @@ class GetPostgresProjectResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresProjectSpecResult':
         """
-        (ProjectSpec) - The desired state of a Project
+        (ProjectSpec) - The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         return pulumi.get(self, "spec")
 
@@ -95,7 +95,7 @@ class GetPostgresProjectResult:
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string) - System generated unique ID for the project
+        (string) - System-generated unique ID for the project
         """
         return pulumi.get(self, "uid")
 
@@ -126,11 +126,27 @@ class AwaitableGetPostgresProjectResult(GetPostgresProjectResult):
 def get_postgres_project(name: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresProjectResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source retrieves a single Postgres project.
+
+    ## Example Usage
+
+    ### Retrieve Project by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_project(name="projects/my-project")
+    pulumi.export("projectPgVersion", this.status.pg_version)
+    pulumi.export("projectDisplayName", this.status.display_name)
+    pulumi.export("projectHistoryRetention", this.status.history_retention_duration)
+    ```
 
 
-    :param _builtins.str name: The resource name of the project.
-           Format: projects/{project_id}
+    :param _builtins.str name: The resource name of the project. This field is output-only and constructed by the system.
+           Format: `projects/{project_id}`
     """
     __args__ = dict()
     __args__['name'] = name
@@ -148,11 +164,27 @@ def get_postgres_project(name: Optional[_builtins.str] = None,
 def get_postgres_project_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresProjectResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source retrieves a single Postgres project.
+
+    ## Example Usage
+
+    ### Retrieve Project by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_project(name="projects/my-project")
+    pulumi.export("projectPgVersion", this.status.pg_version)
+    pulumi.export("projectDisplayName", this.status.display_name)
+    pulumi.export("projectHistoryRetention", this.status.history_retention_duration)
+    ```
 
 
-    :param _builtins.str name: The resource name of the project.
-           Format: projects/{project_id}
+    :param _builtins.str name: The resource name of the project. This field is output-only and constructed by the system.
+           Format: `projects/{project_id}`
     """
     __args__ = dict()
     __args__['name'] = name

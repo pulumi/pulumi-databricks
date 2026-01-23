@@ -12,6 +12,8 @@ import com.pulumi.databricks.inputs.GetAccountFederationPolicyArgs;
 import com.pulumi.databricks.inputs.GetAccountFederationPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
 import com.pulumi.databricks.inputs.GetAccountNetworkPolicyPlainArgs;
+import com.pulumi.databricks.inputs.GetAccountSettingUserPreferenceV2Args;
+import com.pulumi.databricks.inputs.GetAccountSettingUserPreferenceV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
 import com.pulumi.databricks.inputs.GetAccountSettingV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAlertV2Args;
@@ -224,6 +226,10 @@ import com.pulumi.databricks.inputs.GetVolumeArgs;
 import com.pulumi.databricks.inputs.GetVolumePlainArgs;
 import com.pulumi.databricks.inputs.GetVolumesArgs;
 import com.pulumi.databricks.inputs.GetVolumesPlainArgs;
+import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
+import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridePlainArgs;
+import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
+import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesPlainArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentPlainArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentsArgs;
@@ -238,6 +244,7 @@ import com.pulumi.databricks.outputs.GetAccountFederationPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountFederationPolicyResult;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyResult;
+import com.pulumi.databricks.outputs.GetAccountSettingUserPreferenceV2Result;
 import com.pulumi.databricks.outputs.GetAccountSettingV2Result;
 import com.pulumi.databricks.outputs.GetAlertV2Result;
 import com.pulumi.databricks.outputs.GetAlertsV2Result;
@@ -346,6 +353,8 @@ import com.pulumi.databricks.outputs.GetUsersResult;
 import com.pulumi.databricks.outputs.GetViewsResult;
 import com.pulumi.databricks.outputs.GetVolumeResult;
 import com.pulumi.databricks.outputs.GetVolumesResult;
+import com.pulumi.databricks.outputs.GetWarehousesDefaultWarehouseOverrideResult;
+import com.pulumi.databricks.outputs.GetWarehousesDefaultWarehouseOverridesResult;
 import com.pulumi.databricks.outputs.GetWorkspaceEntityTagAssignmentResult;
 import com.pulumi.databricks.outputs.GetWorkspaceEntityTagAssignmentsResult;
 import com.pulumi.databricks.outputs.GetWorkspaceNetworkOptionResult;
@@ -1123,6 +1132,51 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account user preference setting.
+     * 
+     */
+    public static Output<GetAccountSettingUserPreferenceV2Result> getAccountSettingUserPreferenceV2(GetAccountSettingUserPreferenceV2Args args) {
+        return getAccountSettingUserPreferenceV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account user preference setting.
+     * 
+     */
+    public static CompletableFuture<GetAccountSettingUserPreferenceV2Result> getAccountSettingUserPreferenceV2Plain(GetAccountSettingUserPreferenceV2PlainArgs args) {
+        return getAccountSettingUserPreferenceV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account user preference setting.
+     * 
+     */
+    public static Output<GetAccountSettingUserPreferenceV2Result> getAccountSettingUserPreferenceV2(GetAccountSettingUserPreferenceV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", TypeShape.of(GetAccountSettingUserPreferenceV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account user preference setting.
+     * 
+     */
+    public static Output<GetAccountSettingUserPreferenceV2Result> getAccountSettingUserPreferenceV2(GetAccountSettingUserPreferenceV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", TypeShape.of(GetAccountSettingUserPreferenceV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account user preference setting.
+     * 
+     */
+    public static CompletableFuture<GetAccountSettingUserPreferenceV2Result> getAccountSettingUserPreferenceV2Plain(GetAccountSettingUserPreferenceV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", TypeShape.of(GetAccountSettingUserPreferenceV2Result.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -22981,224 +23035,906 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Branch by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresBranch(GetPostgresBranchArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch")
+     *             .build());
+     * 
+     *         ctx.export("branchIsProtected", this_.status().isProtected());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresBranchResult> getPostgresBranch(GetPostgresBranchArgs args) {
         return getPostgresBranch(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Branch by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresBranch(GetPostgresBranchArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch")
+     *             .build());
+     * 
+     *         ctx.export("branchIsProtected", this_.status().isProtected());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresBranchResult> getPostgresBranchPlain(GetPostgresBranchPlainArgs args) {
         return getPostgresBranchPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Branch by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresBranch(GetPostgresBranchArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch")
+     *             .build());
+     * 
+     *         ctx.export("branchIsProtected", this_.status().isProtected());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresBranchResult> getPostgresBranch(GetPostgresBranchArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresBranch:getPostgresBranch", TypeShape.of(GetPostgresBranchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Branch by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresBranch(GetPostgresBranchArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch")
+     *             .build());
+     * 
+     *         ctx.export("branchIsProtected", this_.status().isProtected());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresBranchResult> getPostgresBranch(GetPostgresBranchArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresBranch:getPostgresBranch", TypeShape.of(GetPostgresBranchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Branch by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresBranch(GetPostgresBranchArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch")
+     *             .build());
+     * 
+     *         ctx.export("branchIsProtected", this_.status().isProtected());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresBranchResult> getPostgresBranchPlain(GetPostgresBranchPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresBranch:getPostgresBranch", TypeShape.of(GetPostgresBranchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres branches in a project.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Branches in a Project
      * 
      */
     public static Output<GetPostgresBranchesResult> getPostgresBranches(GetPostgresBranchesArgs args) {
         return getPostgresBranches(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres branches in a project.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Branches in a Project
      * 
      */
     public static CompletableFuture<GetPostgresBranchesResult> getPostgresBranchesPlain(GetPostgresBranchesPlainArgs args) {
         return getPostgresBranchesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres branches in a project.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Branches in a Project
      * 
      */
     public static Output<GetPostgresBranchesResult> getPostgresBranches(GetPostgresBranchesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres branches in a project.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Branches in a Project
      * 
      */
     public static Output<GetPostgresBranchesResult> getPostgresBranches(GetPostgresBranchesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres branches in a project.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Branches in a Project
      * 
      */
     public static CompletableFuture<GetPostgresBranchesResult> getPostgresBranchesPlain(GetPostgresBranchesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Endpoint by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresEndpoint(GetPostgresEndpointArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch/endpoints/primary")
+     *             .build());
+     * 
+     *         ctx.export("endpointType", this_.status().endpointType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresEndpointResult> getPostgresEndpoint(GetPostgresEndpointArgs args) {
         return getPostgresEndpoint(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Endpoint by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresEndpoint(GetPostgresEndpointArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch/endpoints/primary")
+     *             .build());
+     * 
+     *         ctx.export("endpointType", this_.status().endpointType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresEndpointResult> getPostgresEndpointPlain(GetPostgresEndpointPlainArgs args) {
         return getPostgresEndpointPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Endpoint by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresEndpoint(GetPostgresEndpointArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch/endpoints/primary")
+     *             .build());
+     * 
+     *         ctx.export("endpointType", this_.status().endpointType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresEndpointResult> getPostgresEndpoint(GetPostgresEndpointArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoint:getPostgresEndpoint", TypeShape.of(GetPostgresEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Endpoint by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresEndpoint(GetPostgresEndpointArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch/endpoints/primary")
+     *             .build());
+     * 
+     *         ctx.export("endpointType", this_.status().endpointType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresEndpointResult> getPostgresEndpoint(GetPostgresEndpointArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoint:getPostgresEndpoint", TypeShape.of(GetPostgresEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Endpoint by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresEndpoint(GetPostgresEndpointArgs.builder()
+     *             .name("projects/my-project/branches/dev-branch/endpoints/primary")
+     *             .build());
+     * 
+     *         ctx.export("endpointType", this_.status().endpointType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresEndpointResult> getPostgresEndpointPlain(GetPostgresEndpointPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresEndpoint:getPostgresEndpoint", TypeShape.of(GetPostgresEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres endpoints in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Endpoints in a Branch
      * 
      */
     public static Output<GetPostgresEndpointsResult> getPostgresEndpoints(GetPostgresEndpointsArgs args) {
         return getPostgresEndpoints(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres endpoints in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Endpoints in a Branch
      * 
      */
     public static CompletableFuture<GetPostgresEndpointsResult> getPostgresEndpointsPlain(GetPostgresEndpointsPlainArgs args) {
         return getPostgresEndpointsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres endpoints in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Endpoints in a Branch
      * 
      */
     public static Output<GetPostgresEndpointsResult> getPostgresEndpoints(GetPostgresEndpointsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoints:getPostgresEndpoints", TypeShape.of(GetPostgresEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres endpoints in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Endpoints in a Branch
      * 
      */
     public static Output<GetPostgresEndpointsResult> getPostgresEndpoints(GetPostgresEndpointsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoints:getPostgresEndpoints", TypeShape.of(GetPostgresEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres endpoints in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Endpoints in a Branch
      * 
      */
     public static CompletableFuture<GetPostgresEndpointsResult> getPostgresEndpointsPlain(GetPostgresEndpointsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresEndpoints:getPostgresEndpoints", TypeShape.of(GetPostgresEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres project.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Project by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresProject(GetPostgresProjectArgs.builder()
+     *             .name("projects/my-project")
+     *             .build());
+     * 
+     *         ctx.export("projectPgVersion", this_.status().pgVersion());
+     *         ctx.export("projectDisplayName", this_.status().displayName());
+     *         ctx.export("projectHistoryRetention", this_.status().historyRetentionDuration());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresProjectResult> getPostgresProject(GetPostgresProjectArgs args) {
         return getPostgresProject(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres project.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Project by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresProject(GetPostgresProjectArgs.builder()
+     *             .name("projects/my-project")
+     *             .build());
+     * 
+     *         ctx.export("projectPgVersion", this_.status().pgVersion());
+     *         ctx.export("projectDisplayName", this_.status().displayName());
+     *         ctx.export("projectHistoryRetention", this_.status().historyRetentionDuration());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresProjectResult> getPostgresProjectPlain(GetPostgresProjectPlainArgs args) {
         return getPostgresProjectPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres project.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Project by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresProject(GetPostgresProjectArgs.builder()
+     *             .name("projects/my-project")
+     *             .build());
+     * 
+     *         ctx.export("projectPgVersion", this_.status().pgVersion());
+     *         ctx.export("projectDisplayName", this_.status().displayName());
+     *         ctx.export("projectHistoryRetention", this_.status().historyRetentionDuration());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresProjectResult> getPostgresProject(GetPostgresProjectArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresProject:getPostgresProject", TypeShape.of(GetPostgresProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres project.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Project by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresProject(GetPostgresProjectArgs.builder()
+     *             .name("projects/my-project")
+     *             .build());
+     * 
+     *         ctx.export("projectPgVersion", this_.status().pgVersion());
+     *         ctx.export("projectDisplayName", this_.status().displayName());
+     *         ctx.export("projectHistoryRetention", this_.status().historyRetentionDuration());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresProjectResult> getPostgresProject(GetPostgresProjectArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresProject:getPostgresProject", TypeShape.of(GetPostgresProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres project.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Project by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresProject(GetPostgresProjectArgs.builder()
+     *             .name("projects/my-project")
+     *             .build());
+     * 
+     *         ctx.export("projectPgVersion", this_.status().pgVersion());
+     *         ctx.export("projectDisplayName", this_.status().displayName());
+     *         ctx.export("projectHistoryRetention", this_.status().historyRetentionDuration());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresProjectResult> getPostgresProjectPlain(GetPostgresProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresProject:getPostgresProject", TypeShape.of(GetPostgresProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres projects in the workspace.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Projects
      * 
      */
     public static Output<GetPostgresProjectsResult> getPostgresProjects() {
         return getPostgresProjects(GetPostgresProjectsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres projects in the workspace.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Projects
      * 
      */
     public static CompletableFuture<GetPostgresProjectsResult> getPostgresProjectsPlain() {
         return getPostgresProjectsPlain(GetPostgresProjectsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres projects in the workspace.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Projects
      * 
      */
     public static Output<GetPostgresProjectsResult> getPostgresProjects(GetPostgresProjectsArgs args) {
         return getPostgresProjects(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres projects in the workspace.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Projects
      * 
      */
     public static CompletableFuture<GetPostgresProjectsResult> getPostgresProjectsPlain(GetPostgresProjectsPlainArgs args) {
         return getPostgresProjectsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres projects in the workspace.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Projects
      * 
      */
     public static Output<GetPostgresProjectsResult> getPostgresProjects(GetPostgresProjectsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresProjects:getPostgresProjects", TypeShape.of(GetPostgresProjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres projects in the workspace.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Projects
      * 
      */
     public static Output<GetPostgresProjectsResult> getPostgresProjects(GetPostgresProjectsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresProjects:getPostgresProjects", TypeShape.of(GetPostgresProjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres projects in the workspace.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Projects
      * 
      */
     public static CompletableFuture<GetPostgresProjectsResult> getPostgresProjectsPlain(GetPostgresProjectsPlainArgs args, InvokeOptions options) {
@@ -23207,11 +23943,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
      * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
      * 
@@ -23259,11 +23999,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
      * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
      * 
@@ -23311,11 +24055,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
      * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
      * 
@@ -23363,11 +24111,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
      * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
      * 
@@ -23415,11 +24167,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
      * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
      * 
@@ -23467,11 +24223,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * Getting a list of all quality monitors:
      * 
@@ -23512,11 +24272,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * Getting a list of all quality monitors:
      * 
@@ -23557,11 +24321,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * Getting a list of all quality monitors:
      * 
@@ -23602,11 +24370,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * Getting a list of all quality monitors:
      * 
@@ -23647,11 +24419,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * Getting a list of all quality monitors:
      * 
@@ -23692,11 +24468,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * Getting a list of all quality monitors:
      * 
@@ -23737,11 +24517,15 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * Getting a list of all quality monitors:
      * 
@@ -32312,6 +33096,187 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
+     * 
+     * You can use this data source to:
+     * - Retrieve the current default warehouse override configuration for a user
+     * - Check whether a user has a custom warehouse configured or uses last-selected behavior
+     * - Get the warehouse ID if a custom warehouse is configured
+     * 
+     * &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs args) {
+        return getWarehousesDefaultWarehouseOverride(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
+     * 
+     * You can use this data source to:
+     * - Retrieve the current default warehouse override configuration for a user
+     * - Check whether a user has a custom warehouse configured or uses last-selected behavior
+     * - Get the warehouse ID if a custom warehouse is configured
+     * 
+     * &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverridePlain(GetWarehousesDefaultWarehouseOverridePlainArgs args) {
+        return getWarehousesDefaultWarehouseOverridePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
+     * 
+     * You can use this data source to:
+     * - Retrieve the current default warehouse override configuration for a user
+     * - Check whether a user has a custom warehouse configured or uses last-selected behavior
+     * - Get the warehouse ID if a custom warehouse is configured
+     * 
+     * &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", TypeShape.of(GetWarehousesDefaultWarehouseOverrideResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
+     * 
+     * You can use this data source to:
+     * - Retrieve the current default warehouse override configuration for a user
+     * - Check whether a user has a custom warehouse configured or uses last-selected behavior
+     * - Get the warehouse ID if a custom warehouse is configured
+     * 
+     * &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", TypeShape.of(GetWarehousesDefaultWarehouseOverrideResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
+     * 
+     * You can use this data source to:
+     * - Retrieve the current default warehouse override configuration for a user
+     * - Check whether a user has a custom warehouse configured or uses last-selected behavior
+     * - Get the warehouse ID if a custom warehouse is configured
+     * 
+     * &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverridePlain(GetWarehousesDefaultWarehouseOverridePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", TypeShape.of(GetWarehousesDefaultWarehouseOverrideResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to list all default warehouse overrides in the workspace.
+     * 
+     * &gt; **Note** This data source requires workspace admin permissions.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverrides() {
+        return getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to list all default warehouse overrides in the workspace.
+     * 
+     * &gt; **Note** This data source requires workspace admin permissions.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverridesPlain() {
+        return getWarehousesDefaultWarehouseOverridesPlain(GetWarehousesDefaultWarehouseOverridesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to list all default warehouse overrides in the workspace.
+     * 
+     * &gt; **Note** This data source requires workspace admin permissions.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs args) {
+        return getWarehousesDefaultWarehouseOverrides(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to list all default warehouse overrides in the workspace.
+     * 
+     * &gt; **Note** This data source requires workspace admin permissions.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverridesPlain(GetWarehousesDefaultWarehouseOverridesPlainArgs args) {
+        return getWarehousesDefaultWarehouseOverridesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to list all default warehouse overrides in the workspace.
+     * 
+     * &gt; **Note** This data source requires workspace admin permissions.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", TypeShape.of(GetWarehousesDefaultWarehouseOverridesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to list all default warehouse overrides in the workspace.
+     * 
+     * &gt; **Note** This data source requires workspace admin permissions.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", TypeShape.of(GetWarehousesDefaultWarehouseOverridesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to list all default warehouse overrides in the workspace.
+     * 
+     * &gt; **Note** This data source requires workspace admin permissions.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverridesPlain(GetWarehousesDefaultWarehouseOverridesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", TypeShape.of(GetWarehousesDefaultWarehouseOverridesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

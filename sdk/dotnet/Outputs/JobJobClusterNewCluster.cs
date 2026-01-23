@@ -26,6 +26,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? DataSecurityMode;
         public readonly Outputs.JobJobClusterNewClusterDockerImage? DockerImage;
         public readonly string? DriverInstancePoolId;
+        public readonly Outputs.JobJobClusterNewClusterDriverNodeTypeFlexibility? DriverNodeTypeFlexibility;
         public readonly string? DriverNodeTypeId;
         public readonly bool? EnableElasticDisk;
         public readonly bool? EnableLocalDiskEncryption;
@@ -55,6 +56,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<string> SshPublicKeys;
         public readonly int? TotalInitialRemoteDiskSize;
         public readonly bool? UseMlRuntime;
+        public readonly Outputs.JobJobClusterNewClusterWorkerNodeTypeFlexibility? WorkerNodeTypeFlexibility;
         /// <summary>
         /// isn't supported
         /// </summary>
@@ -87,6 +89,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.JobJobClusterNewClusterDockerImage? dockerImage,
 
             string? driverInstancePoolId,
+
+            Outputs.JobJobClusterNewClusterDriverNodeTypeFlexibility? driverNodeTypeFlexibility,
 
             string? driverNodeTypeId,
 
@@ -134,6 +138,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool? useMlRuntime,
 
+            Outputs.JobJobClusterNewClusterWorkerNodeTypeFlexibility? workerNodeTypeFlexibility,
+
             Outputs.JobJobClusterNewClusterWorkloadType? workloadType)
         {
             this.__applyPolicyDefaultValuesAllowLists = __applyPolicyDefaultValuesAllowLists;
@@ -149,6 +155,7 @@ namespace Pulumi.Databricks.Outputs
             DataSecurityMode = dataSecurityMode;
             DockerImage = dockerImage;
             DriverInstancePoolId = driverInstancePoolId;
+            DriverNodeTypeFlexibility = driverNodeTypeFlexibility;
             DriverNodeTypeId = driverNodeTypeId;
             EnableElasticDisk = enableElasticDisk;
             EnableLocalDiskEncryption = enableLocalDiskEncryption;
@@ -172,6 +179,7 @@ namespace Pulumi.Databricks.Outputs
             SshPublicKeys = sshPublicKeys;
             TotalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
             UseMlRuntime = useMlRuntime;
+            WorkerNodeTypeFlexibility = workerNodeTypeFlexibility;
             WorkloadType = workloadType;
         }
     }

@@ -11,11 +11,13 @@ import com.pulumi.databricks.outputs.GetClusterClusterInfoClusterLogConf;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoClusterLogStatus;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoDockerImage;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoDriver;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoDriverNodeTypeFlexibility;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoExecutor;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoGcpAttributes;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScript;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpec;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoTerminationReason;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoWorkerNodeTypeFlexibility;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoWorkloadType;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -71,6 +73,7 @@ public final class GetClusterClusterInfo {
      * 
      */
     private @Nullable String driverInstancePoolId;
+    private @Nullable GetClusterClusterInfoDriverNodeTypeFlexibility driverNodeTypeFlexibility;
     /**
      * @return The node type of the Spark driver.
      * 
@@ -150,6 +153,7 @@ public final class GetClusterClusterInfo {
     private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
     private @Nullable Integer totalInitialRemoteDiskSize;
     private @Nullable Boolean useMlRuntime;
+    private @Nullable GetClusterClusterInfoWorkerNodeTypeFlexibility workerNodeTypeFlexibility;
     private @Nullable GetClusterClusterInfoWorkloadType workloadType;
 
     private GetClusterClusterInfo() {}
@@ -230,6 +234,9 @@ public final class GetClusterClusterInfo {
      */
     public Optional<String> driverInstancePoolId() {
         return Optional.ofNullable(this.driverInstancePoolId);
+    }
+    public Optional<GetClusterClusterInfoDriverNodeTypeFlexibility> driverNodeTypeFlexibility() {
+        return Optional.ofNullable(this.driverNodeTypeFlexibility);
     }
     /**
      * @return The node type of the Spark driver.
@@ -372,6 +379,9 @@ public final class GetClusterClusterInfo {
     public Optional<Boolean> useMlRuntime() {
         return Optional.ofNullable(this.useMlRuntime);
     }
+    public Optional<GetClusterClusterInfoWorkerNodeTypeFlexibility> workerNodeTypeFlexibility() {
+        return Optional.ofNullable(this.workerNodeTypeFlexibility);
+    }
     public Optional<GetClusterClusterInfoWorkloadType> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }
@@ -403,6 +413,7 @@ public final class GetClusterClusterInfo {
         private @Nullable GetClusterClusterInfoDockerImage dockerImage;
         private @Nullable GetClusterClusterInfoDriver driver;
         private @Nullable String driverInstancePoolId;
+        private @Nullable GetClusterClusterInfoDriverNodeTypeFlexibility driverNodeTypeFlexibility;
         private @Nullable String driverNodeTypeId;
         private @Nullable Boolean enableElasticDisk;
         private @Nullable Boolean enableLocalDiskEncryption;
@@ -434,6 +445,7 @@ public final class GetClusterClusterInfo {
         private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
         private @Nullable Integer totalInitialRemoteDiskSize;
         private @Nullable Boolean useMlRuntime;
+        private @Nullable GetClusterClusterInfoWorkerNodeTypeFlexibility workerNodeTypeFlexibility;
         private @Nullable GetClusterClusterInfoWorkloadType workloadType;
         public Builder() {}
         public Builder(GetClusterClusterInfo defaults) {
@@ -456,6 +468,7 @@ public final class GetClusterClusterInfo {
     	      this.dockerImage = defaults.dockerImage;
     	      this.driver = defaults.driver;
     	      this.driverInstancePoolId = defaults.driverInstancePoolId;
+    	      this.driverNodeTypeFlexibility = defaults.driverNodeTypeFlexibility;
     	      this.driverNodeTypeId = defaults.driverNodeTypeId;
     	      this.enableElasticDisk = defaults.enableElasticDisk;
     	      this.enableLocalDiskEncryption = defaults.enableLocalDiskEncryption;
@@ -487,6 +500,7 @@ public final class GetClusterClusterInfo {
     	      this.terminationReason = defaults.terminationReason;
     	      this.totalInitialRemoteDiskSize = defaults.totalInitialRemoteDiskSize;
     	      this.useMlRuntime = defaults.useMlRuntime;
+    	      this.workerNodeTypeFlexibility = defaults.workerNodeTypeFlexibility;
     	      this.workloadType = defaults.workloadType;
         }
 
@@ -596,6 +610,12 @@ public final class GetClusterClusterInfo {
         public Builder driverInstancePoolId(@Nullable String driverInstancePoolId) {
 
             this.driverInstancePoolId = driverInstancePoolId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder driverNodeTypeFlexibility(@Nullable GetClusterClusterInfoDriverNodeTypeFlexibility driverNodeTypeFlexibility) {
+
+            this.driverNodeTypeFlexibility = driverNodeTypeFlexibility;
             return this;
         }
         @CustomType.Setter
@@ -794,6 +814,12 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder workerNodeTypeFlexibility(@Nullable GetClusterClusterInfoWorkerNodeTypeFlexibility workerNodeTypeFlexibility) {
+
+            this.workerNodeTypeFlexibility = workerNodeTypeFlexibility;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workloadType(@Nullable GetClusterClusterInfoWorkloadType workloadType) {
 
             this.workloadType = workloadType;
@@ -819,6 +845,7 @@ public final class GetClusterClusterInfo {
             _resultValue.dockerImage = dockerImage;
             _resultValue.driver = driver;
             _resultValue.driverInstancePoolId = driverInstancePoolId;
+            _resultValue.driverNodeTypeFlexibility = driverNodeTypeFlexibility;
             _resultValue.driverNodeTypeId = driverNodeTypeId;
             _resultValue.enableElasticDisk = enableElasticDisk;
             _resultValue.enableLocalDiskEncryption = enableLocalDiskEncryption;
@@ -850,6 +877,7 @@ public final class GetClusterClusterInfo {
             _resultValue.terminationReason = terminationReason;
             _resultValue.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
             _resultValue.useMlRuntime = useMlRuntime;
+            _resultValue.workerNodeTypeFlexibility = workerNodeTypeFlexibility;
             _resultValue.workloadType = workloadType;
             return _resultValue;
         }

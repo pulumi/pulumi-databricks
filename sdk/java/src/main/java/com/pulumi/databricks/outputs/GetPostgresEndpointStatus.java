@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresEndpointStatusHosts;
 import com.pulumi.databricks.outputs.GetPostgresEndpointStatusSettings;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -37,20 +38,15 @@ public final class GetPostgresEndpointStatus {
      */
     private Boolean disabled;
     /**
-     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     private String endpointType;
     /**
-     * @return (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * @return (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
-    private String host;
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last active
-     * 
-     */
-    private String lastActiveTime;
+    private GetPostgresEndpointStatusHosts hosts;
     /**
      * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
      * 
@@ -61,16 +57,6 @@ public final class GetPostgresEndpointStatus {
      * 
      */
     private GetPostgresEndpointStatusSettings settings;
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last started
-     * 
-     */
-    private String startTime;
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last suspended
-     * 
-     */
-    private String suspendTime;
     /**
      * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      * 
@@ -110,25 +96,18 @@ public final class GetPostgresEndpointStatus {
         return this.disabled;
     }
     /**
-     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     public String endpointType() {
         return this.endpointType;
     }
     /**
-     * @return (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * @return (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
-    public String host() {
-        return this.host;
-    }
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last active
-     * 
-     */
-    public String lastActiveTime() {
-        return this.lastActiveTime;
+    public GetPostgresEndpointStatusHosts hosts() {
+        return this.hosts;
     }
     /**
      * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
@@ -143,20 +122,6 @@ public final class GetPostgresEndpointStatus {
      */
     public GetPostgresEndpointStatusSettings settings() {
         return this.settings;
-    }
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last started
-     * 
-     */
-    public String startTime() {
-        return this.startTime;
-    }
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last suspended
-     * 
-     */
-    public String suspendTime() {
-        return this.suspendTime;
     }
     /**
      * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
@@ -180,12 +145,9 @@ public final class GetPostgresEndpointStatus {
         private String currentState;
         private Boolean disabled;
         private String endpointType;
-        private String host;
-        private String lastActiveTime;
+        private GetPostgresEndpointStatusHosts hosts;
         private String pendingState;
         private GetPostgresEndpointStatusSettings settings;
-        private String startTime;
-        private String suspendTime;
         private String suspendTimeoutDuration;
         public Builder() {}
         public Builder(GetPostgresEndpointStatus defaults) {
@@ -195,12 +157,9 @@ public final class GetPostgresEndpointStatus {
     	      this.currentState = defaults.currentState;
     	      this.disabled = defaults.disabled;
     	      this.endpointType = defaults.endpointType;
-    	      this.host = defaults.host;
-    	      this.lastActiveTime = defaults.lastActiveTime;
+    	      this.hosts = defaults.hosts;
     	      this.pendingState = defaults.pendingState;
     	      this.settings = defaults.settings;
-    	      this.startTime = defaults.startTime;
-    	      this.suspendTime = defaults.suspendTime;
     	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
         }
 
@@ -245,19 +204,11 @@ public final class GetPostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
-        public Builder host(String host) {
-            if (host == null) {
-              throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "host");
+        public Builder hosts(GetPostgresEndpointStatusHosts hosts) {
+            if (hosts == null) {
+              throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "hosts");
             }
-            this.host = host;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder lastActiveTime(String lastActiveTime) {
-            if (lastActiveTime == null) {
-              throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "lastActiveTime");
-            }
-            this.lastActiveTime = lastActiveTime;
+            this.hosts = hosts;
             return this;
         }
         @CustomType.Setter
@@ -277,22 +228,6 @@ public final class GetPostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
-        public Builder startTime(String startTime) {
-            if (startTime == null) {
-              throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "startTime");
-            }
-            this.startTime = startTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder suspendTime(String suspendTime) {
-            if (suspendTime == null) {
-              throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "suspendTime");
-            }
-            this.suspendTime = suspendTime;
-            return this;
-        }
-        @CustomType.Setter
         public Builder suspendTimeoutDuration(String suspendTimeoutDuration) {
             if (suspendTimeoutDuration == null) {
               throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "suspendTimeoutDuration");
@@ -307,12 +242,9 @@ public final class GetPostgresEndpointStatus {
             _resultValue.currentState = currentState;
             _resultValue.disabled = disabled;
             _resultValue.endpointType = endpointType;
-            _resultValue.host = host;
-            _resultValue.lastActiveTime = lastActiveTime;
+            _resultValue.hosts = hosts;
             _resultValue.pendingState = pendingState;
             _resultValue.settings = settings;
-            _resultValue.startTime = startTime;
-            _resultValue.suspendTime = suspendTime;
             _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;
             return _resultValue;
         }

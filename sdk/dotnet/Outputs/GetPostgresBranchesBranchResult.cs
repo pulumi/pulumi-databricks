@@ -18,8 +18,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - The resource name of the branch.
-        /// Format: projects/{project_id}/branches/{branch_id}
+        /// (string) - The resource name of the branch. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Parent;
         /// <summary>
-        /// (BranchSpec) - The desired state of a Branch
+        /// (BranchSpec) - The spec contains the branch configuration
         /// </summary>
         public readonly Outputs.GetPostgresBranchesBranchSpecResult Spec;
         /// <summary>
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetPostgresBranchesBranchStatusResult Status;
         /// <summary>
-        /// (string) - System generated unique ID for the branch
+        /// (string) - System-generated unique ID for the branch
         /// </summary>
         public readonly string Uid;
         /// <summary>

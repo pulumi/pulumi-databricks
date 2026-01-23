@@ -10,10 +10,12 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecAzureAttributes;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecClusterLogConf;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecClusterMountInfo;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecDockerImage;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibility;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecGcpAttributes;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecInitScript;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibrary;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecProviderConfig;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibility;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecWorkloadType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -152,6 +154,13 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
      */
     public String driverInstancePoolId() {
         return this.driverInstancePoolId;
+    }
+
+    @Import(name="driverNodeTypeFlexibility")
+    private @Nullable GetClusterClusterInfoSpecDriverNodeTypeFlexibility driverNodeTypeFlexibility;
+
+    public Optional<GetClusterClusterInfoSpecDriverNodeTypeFlexibility> driverNodeTypeFlexibility() {
+        return Optional.ofNullable(this.driverNodeTypeFlexibility);
     }
 
     /**
@@ -427,6 +436,13 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.useMlRuntime);
     }
 
+    @Import(name="workerNodeTypeFlexibility")
+    private @Nullable GetClusterClusterInfoSpecWorkerNodeTypeFlexibility workerNodeTypeFlexibility;
+
+    public Optional<GetClusterClusterInfoSpecWorkerNodeTypeFlexibility> workerNodeTypeFlexibility() {
+        return Optional.ofNullable(this.workerNodeTypeFlexibility);
+    }
+
     @Import(name="workloadType")
     private @Nullable GetClusterClusterInfoSpecWorkloadType workloadType;
 
@@ -449,6 +465,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         this.dataSecurityMode = $.dataSecurityMode;
         this.dockerImage = $.dockerImage;
         this.driverInstancePoolId = $.driverInstancePoolId;
+        this.driverNodeTypeFlexibility = $.driverNodeTypeFlexibility;
         this.driverNodeTypeId = $.driverNodeTypeId;
         this.enableElasticDisk = $.enableElasticDisk;
         this.enableLocalDiskEncryption = $.enableLocalDiskEncryption;
@@ -472,6 +489,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         this.sshPublicKeys = $.sshPublicKeys;
         this.totalInitialRemoteDiskSize = $.totalInitialRemoteDiskSize;
         this.useMlRuntime = $.useMlRuntime;
+        this.workerNodeTypeFlexibility = $.workerNodeTypeFlexibility;
         this.workloadType = $.workloadType;
     }
 
@@ -584,6 +602,11 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          */
         public Builder driverInstancePoolId(String driverInstancePoolId) {
             $.driverInstancePoolId = driverInstancePoolId;
+            return this;
+        }
+
+        public Builder driverNodeTypeFlexibility(@Nullable GetClusterClusterInfoSpecDriverNodeTypeFlexibility driverNodeTypeFlexibility) {
+            $.driverNodeTypeFlexibility = driverNodeTypeFlexibility;
             return this;
         }
 
@@ -801,6 +824,11 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
 
         public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {
             $.useMlRuntime = useMlRuntime;
+            return this;
+        }
+
+        public Builder workerNodeTypeFlexibility(@Nullable GetClusterClusterInfoSpecWorkerNodeTypeFlexibility workerNodeTypeFlexibility) {
+            $.workerNodeTypeFlexibility = workerNodeTypeFlexibility;
             return this;
         }
 

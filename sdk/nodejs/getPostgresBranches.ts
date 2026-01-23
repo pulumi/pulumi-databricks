@@ -7,7 +7,23 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres branches in a project.
+ *
+ * ## Example Usage
+ *
+ * ### List All Branches in a Project
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresBranches({
+ *     parent: "projects/my-project",
+ * });
+ * export const branchNames = all.then(all => .map(branch => (branch.name)));
+ * ```
  */
 export function getPostgresBranches(args: GetPostgresBranchesArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresBranchesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,7 +38,7 @@ export function getPostgresBranches(args: GetPostgresBranchesArgs, opts?: pulumi
  */
 export interface GetPostgresBranchesArgs {
     /**
-     * Upper bound for items returned
+     * Upper bound for items returned. Cannot be negative
      */
     pageSize?: number;
     /**
@@ -43,13 +59,29 @@ export interface GetPostgresBranchesResult {
     readonly id: string;
     readonly pageSize?: number;
     /**
-     * (string) - The project containing this branch.
+     * (string) - The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
      */
     readonly parent: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres branches in a project.
+ *
+ * ## Example Usage
+ *
+ * ### List All Branches in a Project
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresBranches({
+ *     parent: "projects/my-project",
+ * });
+ * export const branchNames = all.then(all => .map(branch => (branch.name)));
+ * ```
  */
 export function getPostgresBranchesOutput(args: GetPostgresBranchesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresBranchesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -64,7 +96,7 @@ export function getPostgresBranchesOutput(args: GetPostgresBranchesOutputArgs, o
  */
 export interface GetPostgresBranchesOutputArgs {
     /**
-     * Upper bound for items returned
+     * Upper bound for items returned. Cannot be negative
      */
     pageSize?: pulumi.Input<number>;
     /**

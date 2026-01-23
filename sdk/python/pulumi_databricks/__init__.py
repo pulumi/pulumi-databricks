@@ -9,6 +9,7 @@ import typing
 from .access_control_rule_set import *
 from .account_federation_policy import *
 from .account_network_policy import *
+from .account_setting_user_preference_v2 import *
 from .account_setting_v2 import *
 from .aibi_dashboard_embedding_access_policy_setting import *
 from .aibi_dashboard_embedding_approved_domains_setting import *
@@ -53,6 +54,7 @@ from .get_account_federation_policies import *
 from .get_account_federation_policy import *
 from .get_account_network_policies import *
 from .get_account_network_policy import *
+from .get_account_setting_user_preference_v2 import *
 from .get_account_setting_v2 import *
 from .get_alert_v2 import *
 from .get_alerts_v2 import *
@@ -161,6 +163,8 @@ from .get_users import *
 from .get_views import *
 from .get_volume import *
 from .get_volumes import *
+from .get_warehouses_default_warehouse_override import *
+from .get_warehouses_default_warehouse_overrides import *
 from .get_workspace_entity_tag_assignment import *
 from .get_workspace_entity_tag_assignments import *
 from .get_workspace_network_option import *
@@ -253,6 +257,7 @@ from .user_role import *
 from .vector_search_endpoint import *
 from .vector_search_index import *
 from .volume import *
+from .warehouses_default_warehouse_override import *
 from .workspace_binding import *
 from .workspace_conf import *
 from .workspace_entity_tag_assignment import *
@@ -294,6 +299,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accountNetworkPolicy:AccountNetworkPolicy": "AccountNetworkPolicy"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/accountSettingUserPreferenceV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2": "AccountSettingUserPreferenceV2"
   }
  },
  {
@@ -1302,6 +1315,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/warehousesDefaultWarehouseOverride",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride": "WarehousesDefaultWarehouseOverride"
   }
  },
  {

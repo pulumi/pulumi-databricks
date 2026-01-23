@@ -7,7 +7,67 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * ## Example Usage
+ *
+ * ### Basic Project Creation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresProject("this", {
+ *     projectId: "my-project",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "My Application Project",
+ *     },
+ * });
+ * ```
+ *
+ * ### Project with Custom Settings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresProject("this", {
+ *     projectId: "analytics-project",
+ *     spec: {
+ *         pgVersion: 16,
+ *         displayName: "Analytics Workloads",
+ *         historyRetentionDuration: "1209600s",
+ *         defaultEndpointSettings: {
+ *             autoscalingLimitMinCu: 1,
+ *             autoscalingLimitMaxCu: 8,
+ *             suspendTimeoutDuration: "300s",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Referencing in Other Resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresProject("this", {
+ *     projectId: "my-project",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "My Project",
+ *     },
+ * });
+ * const dev = new databricks.PostgresBranch("dev", {
+ *     branchId: "dev-branch",
+ *     parent: _this.name,
+ *     spec: {
+ *         noExpiry: true,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -62,19 +122,20 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * (string) - The resource name of the project.
-     * Format: projects/{project_id}
+     * (string) - The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The ID to use for the Project, which will become the final component of
-     * the project's resource name.
-     *
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Project. This becomes the final component of the project's resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `production` → name becomes `projects/production`
+     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * The desired state of a Project
+     * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresProjectSpec>;
     /**
@@ -82,7 +143,7 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<outputs.PostgresProjectStatus>;
     /**
-     * (string) - System generated unique ID for the project
+     * (string) - System-generated unique ID for the project
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
@@ -137,19 +198,20 @@ export interface PostgresProjectState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * (string) - The resource name of the project.
-     * Format: projects/{project_id}
+     * (string) - The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID to use for the Project, which will become the final component of
-     * the project's resource name.
-     *
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Project. This becomes the final component of the project's resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `production` → name becomes `projects/production`
+     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The desired state of a Project
+     * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
     spec?: pulumi.Input<inputs.PostgresProjectSpec>;
     /**
@@ -157,7 +219,7 @@ export interface PostgresProjectState {
      */
     status?: pulumi.Input<inputs.PostgresProjectStatus>;
     /**
-     * (string) - System generated unique ID for the project
+     * (string) - System-generated unique ID for the project
      */
     uid?: pulumi.Input<string>;
     /**
@@ -171,14 +233,15 @@ export interface PostgresProjectState {
  */
 export interface PostgresProjectArgs {
     /**
-     * The ID to use for the Project, which will become the final component of
-     * the project's resource name.
-     *
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Project. This becomes the final component of the project's resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `production` → name becomes `projects/production`
+     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
      */
     projectId: pulumi.Input<string>;
     /**
-     * The desired state of a Project
+     * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
     spec?: pulumi.Input<inputs.PostgresProjectSpec>;
 }

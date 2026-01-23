@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountFederationPolicy{}
 	case "databricks:index/accountNetworkPolicy:AccountNetworkPolicy":
 		r = &AccountNetworkPolicy{}
+	case "databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2":
+		r = &AccountSettingUserPreferenceV2{}
 	case "databricks:index/accountSettingV2:AccountSettingV2":
 		r = &AccountSettingV2{}
 	case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
@@ -279,6 +281,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VectorSearchIndex{}
 	case "databricks:index/volume:Volume":
 		r = &Volume{}
+	case "databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride":
+		r = &WarehousesDefaultWarehouseOverride{}
 	case "databricks:index/workspaceBinding:WorkspaceBinding":
 		r = &WorkspaceBinding{}
 	case "databricks:index/workspaceConf:WorkspaceConf":
@@ -335,6 +339,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/accountNetworkPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/accountSettingUserPreferenceV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -965,6 +974,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/volume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/warehousesDefaultWarehouseOverride",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

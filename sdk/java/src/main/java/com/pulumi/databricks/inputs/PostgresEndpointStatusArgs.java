@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresEndpointStatusHostsArgs;
 import com.pulumi.databricks.inputs.PostgresEndpointStatusSettingsArgs;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -85,14 +86,14 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -100,33 +101,18 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
-    @Import(name="host")
-    private @Nullable Output<String> host;
+    @Import(name="hosts")
+    private @Nullable Output<PostgresEndpointStatusHostsArgs> hosts;
 
     /**
-     * @return (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * @return (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
-    public Optional<Output<String>> host() {
-        return Optional.ofNullable(this.host);
-    }
-
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last active
-     * 
-     */
-    @Import(name="lastActiveTime")
-    private @Nullable Output<String> lastActiveTime;
-
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last active
-     * 
-     */
-    public Optional<Output<String>> lastActiveTime() {
-        return Optional.ofNullable(this.lastActiveTime);
+    public Optional<Output<PostgresEndpointStatusHostsArgs>> hosts() {
+        return Optional.ofNullable(this.hosts);
     }
 
     /**
@@ -160,36 +146,6 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - A timestamp indicating when the compute endpoint was last started
-     * 
-     */
-    @Import(name="startTime")
-    private @Nullable Output<String> startTime;
-
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last started
-     * 
-     */
-    public Optional<Output<String>> startTime() {
-        return Optional.ofNullable(this.startTime);
-    }
-
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last suspended
-     * 
-     */
-    @Import(name="suspendTime")
-    private @Nullable Output<String> suspendTime;
-
-    /**
-     * @return (string) - A timestamp indicating when the compute endpoint was last suspended
-     * 
-     */
-    public Optional<Output<String>> suspendTime() {
-        return Optional.ofNullable(this.suspendTime);
-    }
-
-    /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      * 
      */
@@ -212,12 +168,9 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         this.currentState = $.currentState;
         this.disabled = $.disabled;
         this.endpointType = $.endpointType;
-        this.host = $.host;
-        this.lastActiveTime = $.lastActiveTime;
+        this.hosts = $.hosts;
         this.pendingState = $.pendingState;
         this.settings = $.settings;
-        this.startTime = $.startTime;
-        this.suspendTime = $.suspendTime;
         this.suspendTimeoutDuration = $.suspendTimeoutDuration;
     }
 
@@ -330,7 +283,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param endpointType (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+         * @param endpointType (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
          * 
          * @return builder
          * 
@@ -341,7 +294,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param endpointType (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+         * @param endpointType (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
          * 
          * @return builder
          * 
@@ -351,45 +304,24 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param host (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+         * @param hosts (EndpointHosts) - Contains host information for connecting to the endpoint
          * 
          * @return builder
          * 
          */
-        public Builder host(@Nullable Output<String> host) {
-            $.host = host;
+        public Builder hosts(@Nullable Output<PostgresEndpointStatusHostsArgs> hosts) {
+            $.hosts = hosts;
             return this;
         }
 
         /**
-         * @param host (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+         * @param hosts (EndpointHosts) - Contains host information for connecting to the endpoint
          * 
          * @return builder
          * 
          */
-        public Builder host(String host) {
-            return host(Output.of(host));
-        }
-
-        /**
-         * @param lastActiveTime (string) - A timestamp indicating when the compute endpoint was last active
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lastActiveTime(@Nullable Output<String> lastActiveTime) {
-            $.lastActiveTime = lastActiveTime;
-            return this;
-        }
-
-        /**
-         * @param lastActiveTime (string) - A timestamp indicating when the compute endpoint was last active
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lastActiveTime(String lastActiveTime) {
-            return lastActiveTime(Output.of(lastActiveTime));
+        public Builder hosts(PostgresEndpointStatusHostsArgs hosts) {
+            return hosts(Output.of(hosts));
         }
 
         /**
@@ -432,48 +364,6 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
          */
         public Builder settings(PostgresEndpointStatusSettingsArgs settings) {
             return settings(Output.of(settings));
-        }
-
-        /**
-         * @param startTime (string) - A timestamp indicating when the compute endpoint was last started
-         * 
-         * @return builder
-         * 
-         */
-        public Builder startTime(@Nullable Output<String> startTime) {
-            $.startTime = startTime;
-            return this;
-        }
-
-        /**
-         * @param startTime (string) - A timestamp indicating when the compute endpoint was last started
-         * 
-         * @return builder
-         * 
-         */
-        public Builder startTime(String startTime) {
-            return startTime(Output.of(startTime));
-        }
-
-        /**
-         * @param suspendTime (string) - A timestamp indicating when the compute endpoint was last suspended
-         * 
-         * @return builder
-         * 
-         */
-        public Builder suspendTime(@Nullable Output<String> suspendTime) {
-            $.suspendTime = suspendTime;
-            return this;
-        }
-
-        /**
-         * @param suspendTime (string) - A timestamp indicating when the compute endpoint was last suspended
-         * 
-         * @return builder
-         * 
-         */
-        public Builder suspendTime(String suspendTime) {
-            return suspendTime(Output.of(suspendTime));
         }
 
         /**

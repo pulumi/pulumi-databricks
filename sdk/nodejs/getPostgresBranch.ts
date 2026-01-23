@@ -7,7 +7,23 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres branch.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Branch by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresBranch({
+ *     name: "projects/my-project/branches/dev-branch",
+ * });
+ * export const branchIsProtected = _this.then(_this => _this.status?.isProtected);
+ * ```
  */
 export function getPostgresBranch(args: GetPostgresBranchArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresBranchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -21,8 +37,8 @@ export function getPostgresBranch(args: GetPostgresBranchArgs, opts?: pulumi.Inv
  */
 export interface GetPostgresBranchArgs {
     /**
-     * The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      */
     name: string;
 }
@@ -40,17 +56,17 @@ export interface GetPostgresBranchResult {
      */
     readonly id: string;
     /**
-     * (string) - The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * (string) - The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      */
     readonly name: string;
     /**
-     * (string) - The project containing this branch.
+     * (string) - The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
      */
     readonly parent: string;
     /**
-     * (BranchSpec) - The desired state of a Branch
+     * (BranchSpec) - The spec contains the branch configuration
      */
     readonly spec: outputs.GetPostgresBranchSpec;
     /**
@@ -58,7 +74,7 @@ export interface GetPostgresBranchResult {
      */
     readonly status: outputs.GetPostgresBranchStatus;
     /**
-     * (string) - System generated unique ID for the branch
+     * (string) - System-generated unique ID for the branch
      */
     readonly uid: string;
     /**
@@ -67,7 +83,23 @@ export interface GetPostgresBranchResult {
     readonly updateTime: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres branch.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Branch by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresBranch({
+ *     name: "projects/my-project/branches/dev-branch",
+ * });
+ * export const branchIsProtected = _this.then(_this => _this.status?.isProtected);
+ * ```
  */
 export function getPostgresBranchOutput(args: GetPostgresBranchOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresBranchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -81,8 +113,8 @@ export function getPostgresBranchOutput(args: GetPostgresBranchOutputArgs, opts?
  */
 export interface GetPostgresBranchOutputArgs {
     /**
-     * The resource name of the branch.
-     * Format: projects/{project_id}/branches/{branch_id}
+     * The resource name of the branch. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}`
      */
     name: pulumi.Input<string>;
 }

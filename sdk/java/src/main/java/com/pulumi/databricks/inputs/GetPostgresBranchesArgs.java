@@ -18,14 +18,14 @@ public final class GetPostgresBranchesArgs extends com.pulumi.resources.InvokeAr
     public static final GetPostgresBranchesArgs Empty = new GetPostgresBranchesArgs();
 
     /**
-     * Upper bound for items returned
+     * Upper bound for items returned. Cannot be negative
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return Upper bound for items returned
+     * @return Upper bound for items returned. Cannot be negative
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -75,7 +75,7 @@ public final class GetPostgresBranchesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param pageSize Upper bound for items returned
+         * @param pageSize Upper bound for items returned. Cannot be negative
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class GetPostgresBranchesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param pageSize Upper bound for items returned
+         * @param pageSize Upper bound for items returned. Cannot be negative
          * 
          * @return builder
          * 

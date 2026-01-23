@@ -14,19 +14,25 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresProjectStatusDefaultEndpointSettingsResult
     {
         /// <summary>
-        /// (number) - The maximum number of Compute Units
+        /// (number) - The maximum number of Compute Units. Minimum value is 0.5
         /// </summary>
         public readonly double? AutoscalingLimitMaxCu;
         /// <summary>
-        /// (number) - The minimum number of Compute Units
+        /// (number) - The minimum number of Compute Units. Minimum value is 0.5
         /// </summary>
         public readonly double? AutoscalingLimitMinCu;
+        /// <summary>
+        /// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+        /// Should be set to true when provided
+        /// </summary>
+        public readonly bool? NoSuspension;
         /// <summary>
         /// (object) - A raw representation of Postgres settings
         /// </summary>
         public readonly ImmutableDictionary<string, string>? PgSettings;
         /// <summary>
-        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+        /// If specified should be between 60s and 604800s (1 minute to 1 week)
         /// </summary>
         public readonly string? SuspendTimeoutDuration;
 
@@ -36,12 +42,15 @@ namespace Pulumi.Databricks.Outputs
 
             double? autoscalingLimitMinCu,
 
+            bool? noSuspension,
+
             ImmutableDictionary<string, string>? pgSettings,
 
             string? suspendTimeoutDuration)
         {
             AutoscalingLimitMaxCu = autoscalingLimitMaxCu;
             AutoscalingLimitMinCu = autoscalingLimitMinCu;
+            NoSuspension = noSuspension;
             PgSettings = pgSettings;
             SuspendTimeoutDuration = suspendTimeoutDuration;
         }

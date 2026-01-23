@@ -11,7 +11,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source retrieves a single Postgres endpoint.
+//
+// ## Example Usage
+//
+// ### Retrieve Endpoint by Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.LookupPostgresEndpoint(ctx, &databricks.LookupPostgresEndpointArgs{
+//				Name: "projects/my-project/branches/dev-branch/endpoints/primary",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("endpointType", this.Status.EndpointType)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPostgresEndpoint(ctx *pulumi.Context, args *LookupPostgresEndpointArgs, opts ...pulumi.InvokeOption) (*LookupPostgresEndpointResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresEndpointResult
@@ -24,8 +55,8 @@ func LookupPostgresEndpoint(ctx *pulumi.Context, args *LookupPostgresEndpointArg
 
 // A collection of arguments for invoking getPostgresEndpoint.
 type LookupPostgresEndpointArgs struct {
-	// The resource name of the endpoint.
-	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+	// The resource name of the endpoint. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
 	Name string `pulumi:"name"`
 }
 
@@ -35,17 +66,17 @@ type LookupPostgresEndpointResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (string) - The resource name of the endpoint.
-	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+	// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
 	Name string `pulumi:"name"`
-	// (string) - The branch containing this endpoint.
+	// (string) - The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent string `pulumi:"parent"`
-	// (EndpointSpec) - The desired state of an Endpoint
+	// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec GetPostgresEndpointSpec `pulumi:"spec"`
-	// (EndpointStatus) - The current status of an Endpoint
+	// (EndpointStatus) - Current operational status of the compute endpoint
 	Status GetPostgresEndpointStatus `pulumi:"status"`
-	// (string) - System generated unique ID for the endpoint
+	// (string) - System-generated unique ID for the endpoint
 	Uid string `pulumi:"uid"`
 	// (string) - A timestamp indicating when the compute endpoint was last updated
 	UpdateTime string `pulumi:"updateTime"`
@@ -62,8 +93,8 @@ func LookupPostgresEndpointOutput(ctx *pulumi.Context, args LookupPostgresEndpoi
 
 // A collection of arguments for invoking getPostgresEndpoint.
 type LookupPostgresEndpointOutputArgs struct {
-	// The resource name of the endpoint.
-	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+	// The resource name of the endpoint. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -96,29 +127,29 @@ func (o LookupPostgresEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the endpoint.
-// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
 func (o LookupPostgresEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - The branch containing this endpoint.
+// (string) - The branch containing this endpoint (API resource hierarchy).
 // Format: projects/{project_id}/branches/{branch_id}
 func (o LookupPostgresEndpointResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.Parent }).(pulumi.StringOutput)
 }
 
-// (EndpointSpec) - The desired state of an Endpoint
+// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 func (o LookupPostgresEndpointResultOutput) Spec() GetPostgresEndpointSpecOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) GetPostgresEndpointSpec { return v.Spec }).(GetPostgresEndpointSpecOutput)
 }
 
-// (EndpointStatus) - The current status of an Endpoint
+// (EndpointStatus) - Current operational status of the compute endpoint
 func (o LookupPostgresEndpointResultOutput) Status() GetPostgresEndpointStatusOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) GetPostgresEndpointStatus { return v.Status }).(GetPostgresEndpointStatusOutput)
 }
 
-// (string) - System generated unique ID for the endpoint
+// (string) - System-generated unique ID for the endpoint
 func (o LookupPostgresEndpointResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.Uid }).(pulumi.StringOutput)
 }

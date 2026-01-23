@@ -95,6 +95,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("driverInstancePoolId")]
         public Input<string>? DriverInstancePoolId { get; set; }
 
+        [Input("driverNodeTypeFlexibility")]
+        public Input<Inputs.GetClusterClusterInfoDriverNodeTypeFlexibilityInputArgs>? DriverNodeTypeFlexibility { get; set; }
+
         /// <summary>
         /// The node type of the Spark driver.
         /// </summary>
@@ -251,6 +254,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }
+
+        [Input("workerNodeTypeFlexibility")]
+        public Input<Inputs.GetClusterClusterInfoWorkerNodeTypeFlexibilityInputArgs>? WorkerNodeTypeFlexibility { get; set; }
 
         [Input("workloadType")]
         public Input<Inputs.GetClusterClusterInfoWorkloadTypeInputArgs>? WorkloadType { get; set; }

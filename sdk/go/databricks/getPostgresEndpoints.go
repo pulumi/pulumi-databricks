@@ -11,7 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source lists all Postgres endpoints in a branch.
+//
+// ## Example Usage
+//
+// ### List All Endpoints in a Branch
 func GetPostgresEndpoints(ctx *pulumi.Context, args *GetPostgresEndpointsArgs, opts ...pulumi.InvokeOption) (*GetPostgresEndpointsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPostgresEndpointsResult
@@ -24,7 +30,7 @@ func GetPostgresEndpoints(ctx *pulumi.Context, args *GetPostgresEndpointsArgs, o
 
 // A collection of arguments for invoking getPostgresEndpoints.
 type GetPostgresEndpointsArgs struct {
-	// Upper bound for items returned
+	// Upper bound for items returned. Cannot be negative
 	PageSize *int `pulumi:"pageSize"`
 	// The Branch that owns this collection of endpoints.
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -37,7 +43,7 @@ type GetPostgresEndpointsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
 	PageSize *int   `pulumi:"pageSize"`
-	// (string) - The branch containing this endpoint.
+	// (string) - The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent string `pulumi:"parent"`
 }
@@ -53,7 +59,7 @@ func GetPostgresEndpointsOutput(ctx *pulumi.Context, args GetPostgresEndpointsOu
 
 // A collection of arguments for invoking getPostgresEndpoints.
 type GetPostgresEndpointsOutputArgs struct {
-	// Upper bound for items returned
+	// Upper bound for items returned. Cannot be negative
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The Branch that owns this collection of endpoints.
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -92,7 +98,7 @@ func (o GetPostgresEndpointsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPostgresEndpointsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// (string) - The branch containing this endpoint.
+// (string) - The branch containing this endpoint (API resource hierarchy).
 // Format: projects/{project_id}/branches/{branch_id}
 func (o GetPostgresEndpointsResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointsResult) string { return v.Parent }).(pulumi.StringOutput)

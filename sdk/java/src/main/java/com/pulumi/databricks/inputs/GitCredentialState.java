@@ -121,6 +121,13 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.personalAccessToken);
     }
 
+    @Import(name="principalId")
+    private @Nullable Output<String> principalId;
+
+    public Optional<Output<String>> principalId() {
+        return Optional.ofNullable(this.principalId);
+    }
+
     private GitCredentialState() {}
 
     private GitCredentialState(GitCredentialState $) {
@@ -131,6 +138,7 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
         this.isDefaultForProvider = $.isDefaultForProvider;
         this.name = $.name;
         this.personalAccessToken = $.personalAccessToken;
+        this.principalId = $.principalId;
     }
 
     public static Builder builder() {
@@ -296,6 +304,15 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder personalAccessToken(String personalAccessToken) {
             return personalAccessToken(Output.of(personalAccessToken));
+        }
+
+        public Builder principalId(@Nullable Output<String> principalId) {
+            $.principalId = principalId;
+            return this;
+        }
+
+        public Builder principalId(String principalId) {
+            return principalId(Output.of(principalId));
         }
 
         public GitCredentialState build() {

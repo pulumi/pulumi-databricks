@@ -34,10 +34,17 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
+
+        /// <summary>
+        /// When set to true, explicitly disables automatic suspension (never suspend).
+        /// Should be set to true when provided
+        /// </summary>
+        [Input("noSuspension")]
+        public Input<bool>? NoSuspension { get; set; }
 
         /// <summary>
         /// (EndpointSettings)

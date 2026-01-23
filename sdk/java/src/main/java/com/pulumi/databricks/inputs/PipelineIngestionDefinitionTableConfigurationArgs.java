@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs;
 import java.lang.Boolean;
@@ -18,6 +19,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionTableConfigurationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionTableConfigurationArgs Empty = new PipelineIngestionDefinitionTableConfigurationArgs();
+
+    @Import(name="autoFullRefreshPolicy")
+    private @Nullable Output<PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs> autoFullRefreshPolicy;
+
+    public Optional<Output<PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs>> autoFullRefreshPolicy() {
+        return Optional.ofNullable(this.autoFullRefreshPolicy);
+    }
 
     @Import(name="excludeColumns")
     private @Nullable Output<List<String>> excludeColumns;
@@ -85,6 +93,7 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
     private PipelineIngestionDefinitionTableConfigurationArgs() {}
 
     private PipelineIngestionDefinitionTableConfigurationArgs(PipelineIngestionDefinitionTableConfigurationArgs $) {
+        this.autoFullRefreshPolicy = $.autoFullRefreshPolicy;
         this.excludeColumns = $.excludeColumns;
         this.includeColumns = $.includeColumns;
         this.primaryKeys = $.primaryKeys;
@@ -112,6 +121,15 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
 
         public Builder(PipelineIngestionDefinitionTableConfigurationArgs defaults) {
             $ = new PipelineIngestionDefinitionTableConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder autoFullRefreshPolicy(@Nullable Output<PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs> autoFullRefreshPolicy) {
+            $.autoFullRefreshPolicy = autoFullRefreshPolicy;
+            return this;
+        }
+
+        public Builder autoFullRefreshPolicy(PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs autoFullRefreshPolicy) {
+            return autoFullRefreshPolicy(Output.of(autoFullRefreshPolicy));
         }
 
         public Builder excludeColumns(@Nullable Output<List<String>> excludeColumns) {

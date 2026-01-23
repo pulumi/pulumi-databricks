@@ -12,19 +12,100 @@ namespace Pulumi.Databricks
     public static class GetPostgresBranch
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Branch by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresBranch.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/dev-branch",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["branchIsProtected"] = @this.Apply(@this =&gt; @this.Apply(getPostgresBranchResult =&gt; getPostgresBranchResult.Status?.IsProtected)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresBranchResult> InvokeAsync(GetPostgresBranchArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresBranchResult>("databricks:index/getPostgresBranch:getPostgresBranch", args ?? new GetPostgresBranchArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Branch by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresBranch.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/dev-branch",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["branchIsProtected"] = @this.Apply(@this =&gt; @this.Apply(getPostgresBranchResult =&gt; getPostgresBranchResult.Status?.IsProtected)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresBranchResult> Invoke(GetPostgresBranchInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresBranchResult>("databricks:index/getPostgresBranch:getPostgresBranch", args ?? new GetPostgresBranchInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Branch by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresBranch.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/dev-branch",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["branchIsProtected"] = @this.Apply(@this =&gt; @this.Apply(getPostgresBranchResult =&gt; getPostgresBranchResult.Status?.IsProtected)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresBranchResult> Invoke(GetPostgresBranchInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresBranchResult>("databricks:index/getPostgresBranch:getPostgresBranch", args ?? new GetPostgresBranchInvokeArgs(), options.WithDefaults());
@@ -34,8 +115,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresBranchArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the branch.
-        /// Format: projects/{project_id}/branches/{branch_id}
+        /// The resource name of the branch. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -49,8 +130,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresBranchInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the branch.
-        /// Format: projects/{project_id}/branches/{branch_id}
+        /// The resource name of the branch. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -74,17 +155,17 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (string) - The resource name of the branch.
-        /// Format: projects/{project_id}/branches/{branch_id}
+        /// (string) - The resource name of the branch. This field is output-only and constructed by the system.
+        /// Format: `projects/{project_id}/branches/{branch_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - The project containing this branch.
+        /// (string) - The project containing this branch (API resource hierarchy).
         /// Format: projects/{project_id}
         /// </summary>
         public readonly string Parent;
         /// <summary>
-        /// (BranchSpec) - The desired state of a Branch
+        /// (BranchSpec) - The spec contains the branch configuration
         /// </summary>
         public readonly Outputs.GetPostgresBranchSpecResult Spec;
         /// <summary>
@@ -92,7 +173,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetPostgresBranchStatusResult Status;
         /// <summary>
-        /// (string) - System generated unique ID for the branch
+        /// (string) - System-generated unique ID for the branch
         /// </summary>
         public readonly string Uid;
         /// <summary>

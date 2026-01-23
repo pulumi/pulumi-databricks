@@ -29,9 +29,14 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         /// </summary>
         public readonly string EndpointType;
+        /// <summary>
+        /// When set to true, explicitly disables automatic suspension (never suspend).
+        /// Should be set to true when provided
+        /// </summary>
+        public readonly bool? NoSuspension;
         /// <summary>
         /// (EndpointSettings)
         /// </summary>
@@ -51,6 +56,8 @@ namespace Pulumi.Databricks.Outputs
 
             string endpointType,
 
+            bool? noSuspension,
+
             Outputs.PostgresEndpointSpecSettings? settings,
 
             string? suspendTimeoutDuration)
@@ -59,6 +66,7 @@ namespace Pulumi.Databricks.Outputs
             AutoscalingLimitMinCu = autoscalingLimitMinCu;
             Disabled = disabled;
             EndpointType = endpointType;
+            NoSuspension = noSuspension;
             Settings = settings;
             SuspendTimeoutDuration = suspendTimeoutDuration;
         }

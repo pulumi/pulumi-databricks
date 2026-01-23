@@ -29,6 +29,14 @@ __all__ = [
     'AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict',
     'AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs',
     'AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict',
+    'AccountSettingUserPreferenceV2BooleanValArgs',
+    'AccountSettingUserPreferenceV2BooleanValArgsDict',
+    'AccountSettingUserPreferenceV2EffectiveBooleanValArgs',
+    'AccountSettingUserPreferenceV2EffectiveBooleanValArgsDict',
+    'AccountSettingUserPreferenceV2EffectiveStringValArgs',
+    'AccountSettingUserPreferenceV2EffectiveStringValArgsDict',
+    'AccountSettingUserPreferenceV2StringValArgs',
+    'AccountSettingUserPreferenceV2StringValArgsDict',
     'AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs',
     'AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict',
     'AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs',
@@ -231,6 +239,8 @@ __all__ = [
     'ClusterDockerImageArgsDict',
     'ClusterDockerImageBasicAuthArgs',
     'ClusterDockerImageBasicAuthArgsDict',
+    'ClusterDriverNodeTypeFlexibilityArgs',
+    'ClusterDriverNodeTypeFlexibilityArgsDict',
     'ClusterGcpAttributesArgs',
     'ClusterGcpAttributesArgsDict',
     'ClusterInitScriptArgs',
@@ -269,6 +279,8 @@ __all__ = [
     'ClusterPolicyLibraryPypiArgsDict',
     'ClusterProviderConfigArgs',
     'ClusterProviderConfigArgsDict',
+    'ClusterWorkerNodeTypeFlexibilityArgs',
+    'ClusterWorkerNodeTypeFlexibilityArgsDict',
     'ClusterWorkloadTypeArgs',
     'ClusterWorkloadTypeArgsDict',
     'ClusterWorkloadTypeClientsArgs',
@@ -477,6 +489,8 @@ __all__ = [
     'JobJobClusterNewClusterDockerImageArgsDict',
     'JobJobClusterNewClusterDockerImageBasicAuthArgs',
     'JobJobClusterNewClusterDockerImageBasicAuthArgsDict',
+    'JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs',
+    'JobJobClusterNewClusterDriverNodeTypeFlexibilityArgsDict',
     'JobJobClusterNewClusterGcpAttributesArgs',
     'JobJobClusterNewClusterGcpAttributesArgsDict',
     'JobJobClusterNewClusterInitScriptArgs',
@@ -507,6 +521,8 @@ __all__ = [
     'JobJobClusterNewClusterLibraryPypiArgsDict',
     'JobJobClusterNewClusterProviderConfigArgs',
     'JobJobClusterNewClusterProviderConfigArgsDict',
+    'JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs',
+    'JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgsDict',
     'JobJobClusterNewClusterWorkloadTypeArgs',
     'JobJobClusterNewClusterWorkloadTypeArgsDict',
     'JobJobClusterNewClusterWorkloadTypeClientsArgs',
@@ -547,6 +563,8 @@ __all__ = [
     'JobNewClusterDockerImageArgsDict',
     'JobNewClusterDockerImageBasicAuthArgs',
     'JobNewClusterDockerImageBasicAuthArgsDict',
+    'JobNewClusterDriverNodeTypeFlexibilityArgs',
+    'JobNewClusterDriverNodeTypeFlexibilityArgsDict',
     'JobNewClusterGcpAttributesArgs',
     'JobNewClusterGcpAttributesArgsDict',
     'JobNewClusterInitScriptArgs',
@@ -577,6 +595,8 @@ __all__ = [
     'JobNewClusterLibraryPypiArgsDict',
     'JobNewClusterProviderConfigArgs',
     'JobNewClusterProviderConfigArgsDict',
+    'JobNewClusterWorkerNodeTypeFlexibilityArgs',
+    'JobNewClusterWorkerNodeTypeFlexibilityArgsDict',
     'JobNewClusterWorkloadTypeArgs',
     'JobNewClusterWorkloadTypeArgsDict',
     'JobNewClusterWorkloadTypeClientsArgs',
@@ -697,6 +717,8 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterDockerImageArgsDict',
     'JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs',
     'JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgsDict',
+    'JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs',
+    'JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgsDict',
     'JobTaskForEachTaskTaskNewClusterGcpAttributesArgs',
     'JobTaskForEachTaskTaskNewClusterGcpAttributesArgsDict',
     'JobTaskForEachTaskTaskNewClusterInitScriptArgs',
@@ -727,6 +749,8 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterLibraryPypiArgsDict',
     'JobTaskForEachTaskTaskNewClusterProviderConfigArgs',
     'JobTaskForEachTaskTaskNewClusterProviderConfigArgsDict',
+    'JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs',
+    'JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgsDict',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs',
@@ -825,6 +849,8 @@ __all__ = [
     'JobTaskNewClusterDockerImageArgsDict',
     'JobTaskNewClusterDockerImageBasicAuthArgs',
     'JobTaskNewClusterDockerImageBasicAuthArgsDict',
+    'JobTaskNewClusterDriverNodeTypeFlexibilityArgs',
+    'JobTaskNewClusterDriverNodeTypeFlexibilityArgsDict',
     'JobTaskNewClusterGcpAttributesArgs',
     'JobTaskNewClusterGcpAttributesArgsDict',
     'JobTaskNewClusterInitScriptArgs',
@@ -855,6 +881,8 @@ __all__ = [
     'JobTaskNewClusterLibraryPypiArgsDict',
     'JobTaskNewClusterProviderConfigArgs',
     'JobTaskNewClusterProviderConfigArgsDict',
+    'JobTaskNewClusterWorkerNodeTypeFlexibilityArgs',
+    'JobTaskNewClusterWorkerNodeTypeFlexibilityArgsDict',
     'JobTaskNewClusterWorkloadTypeArgs',
     'JobTaskNewClusterWorkloadTypeArgsDict',
     'JobTaskNewClusterWorkloadTypeClientsArgs',
@@ -1209,12 +1237,16 @@ __all__ = [
     'PipelineGatewayDefinitionConnectionParametersArgsDict',
     'PipelineIngestionDefinitionArgs',
     'PipelineIngestionDefinitionArgsDict',
+    'PipelineIngestionDefinitionFullRefreshWindowArgs',
+    'PipelineIngestionDefinitionFullRefreshWindowArgsDict',
     'PipelineIngestionDefinitionObjectArgs',
     'PipelineIngestionDefinitionObjectArgsDict',
     'PipelineIngestionDefinitionObjectReportArgs',
     'PipelineIngestionDefinitionObjectReportArgsDict',
     'PipelineIngestionDefinitionObjectReportTableConfigurationArgs',
     'PipelineIngestionDefinitionObjectReportTableConfigurationArgsDict',
+    'PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs',
+    'PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgsDict',
     'PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfigArgs',
     'PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfigArgsDict',
     'PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgs',
@@ -1225,6 +1257,8 @@ __all__ = [
     'PipelineIngestionDefinitionObjectSchemaArgsDict',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgsDict',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgs',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgsDict',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs',
@@ -1235,6 +1269,8 @@ __all__ = [
     'PipelineIngestionDefinitionObjectTableArgsDict',
     'PipelineIngestionDefinitionObjectTableTableConfigurationArgs',
     'PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicyArgs',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicyArgsDict',
     'PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfigArgs',
     'PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfigArgsDict',
     'PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgs',
@@ -1251,6 +1287,8 @@ __all__ = [
     'PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfigArgsDict',
     'PipelineIngestionDefinitionTableConfigurationArgs',
     'PipelineIngestionDefinitionTableConfigurationArgsDict',
+    'PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs',
+    'PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgsDict',
     'PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgs',
     'PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgsDict',
     'PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs',
@@ -1301,20 +1339,18 @@ __all__ = [
     'PostgresEndpointSpecSettingsArgsDict',
     'PostgresEndpointStatusArgs',
     'PostgresEndpointStatusArgsDict',
+    'PostgresEndpointStatusHostsArgs',
+    'PostgresEndpointStatusHostsArgsDict',
     'PostgresEndpointStatusSettingsArgs',
     'PostgresEndpointStatusSettingsArgsDict',
     'PostgresProjectSpecArgs',
     'PostgresProjectSpecArgsDict',
     'PostgresProjectSpecDefaultEndpointSettingsArgs',
     'PostgresProjectSpecDefaultEndpointSettingsArgsDict',
-    'PostgresProjectSpecSettingsArgs',
-    'PostgresProjectSpecSettingsArgsDict',
     'PostgresProjectStatusArgs',
     'PostgresProjectStatusArgsDict',
     'PostgresProjectStatusDefaultEndpointSettingsArgs',
     'PostgresProjectStatusDefaultEndpointSettingsArgsDict',
-    'PostgresProjectStatusSettingsArgs',
-    'PostgresProjectStatusSettingsArgsDict',
     'QualityMonitorCustomMetricArgs',
     'QualityMonitorCustomMetricArgsDict',
     'QualityMonitorDataClassificationConfigArgs',
@@ -1583,6 +1619,8 @@ __all__ = [
     'GetClusterClusterInfoDriverArgsDict',
     'GetClusterClusterInfoDriverNodeAwsAttributesArgs',
     'GetClusterClusterInfoDriverNodeAwsAttributesArgsDict',
+    'GetClusterClusterInfoDriverNodeTypeFlexibilityArgs',
+    'GetClusterClusterInfoDriverNodeTypeFlexibilityArgsDict',
     'GetClusterClusterInfoExecutorArgs',
     'GetClusterClusterInfoExecutorArgsDict',
     'GetClusterClusterInfoExecutorNodeAwsAttributesArgs',
@@ -1631,6 +1669,8 @@ __all__ = [
     'GetClusterClusterInfoSpecDockerImageArgsDict',
     'GetClusterClusterInfoSpecDockerImageBasicAuthArgs',
     'GetClusterClusterInfoSpecDockerImageBasicAuthArgsDict',
+    'GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs',
+    'GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgsDict',
     'GetClusterClusterInfoSpecGcpAttributesArgs',
     'GetClusterClusterInfoSpecGcpAttributesArgsDict',
     'GetClusterClusterInfoSpecInitScriptArgs',
@@ -1661,12 +1701,16 @@ __all__ = [
     'GetClusterClusterInfoSpecLibraryPypiArgsDict',
     'GetClusterClusterInfoSpecProviderConfigArgs',
     'GetClusterClusterInfoSpecProviderConfigArgsDict',
+    'GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs',
+    'GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgsDict',
     'GetClusterClusterInfoSpecWorkloadTypeArgs',
     'GetClusterClusterInfoSpecWorkloadTypeArgsDict',
     'GetClusterClusterInfoSpecWorkloadTypeClientsArgs',
     'GetClusterClusterInfoSpecWorkloadTypeClientsArgsDict',
     'GetClusterClusterInfoTerminationReasonArgs',
     'GetClusterClusterInfoTerminationReasonArgsDict',
+    'GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs',
+    'GetClusterClusterInfoWorkerNodeTypeFlexibilityArgsDict',
     'GetClusterClusterInfoWorkloadTypeArgs',
     'GetClusterClusterInfoWorkloadTypeArgsDict',
     'GetClusterClusterInfoWorkloadTypeClientsArgs',
@@ -3054,6 +3098,98 @@ class AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs:
     @enforcement_mode.setter
     def enforcement_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "enforcement_mode", value)
+
+
+if not MYPY:
+    class AccountSettingUserPreferenceV2BooleanValArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input[_builtins.bool]]
+elif False:
+    AccountSettingUserPreferenceV2BooleanValArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountSettingUserPreferenceV2BooleanValArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input[_builtins.bool]] = None):
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AccountSettingUserPreferenceV2EffectiveBooleanValArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input[_builtins.bool]]
+elif False:
+    AccountSettingUserPreferenceV2EffectiveBooleanValArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountSettingUserPreferenceV2EffectiveBooleanValArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input[_builtins.bool]] = None):
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AccountSettingUserPreferenceV2EffectiveStringValArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    AccountSettingUserPreferenceV2EffectiveStringValArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountSettingUserPreferenceV2EffectiveStringValArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AccountSettingUserPreferenceV2StringValArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    AccountSettingUserPreferenceV2StringValArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountSettingUserPreferenceV2StringValArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -8839,6 +8975,29 @@ class ClusterDockerImageBasicAuthArgs:
 
 
 if not MYPY:
+    class ClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    ClusterDriverNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterDriverNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
+
+
+if not MYPY:
     class ClusterGcpAttributesArgsDict(TypedDict):
         availability: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -10023,6 +10182,29 @@ class ClusterProviderConfigArgs:
     @workspace_id.setter
     def workspace_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class ClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    ClusterWorkerNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterWorkerNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:
@@ -16129,6 +16311,7 @@ if not MYPY:
         data_security_mode: NotRequired[pulumi.Input[_builtins.str]]
         docker_image: NotRequired[pulumi.Input['JobJobClusterNewClusterDockerImageArgsDict']]
         driver_instance_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+        driver_node_type_flexibility: NotRequired[pulumi.Input['JobJobClusterNewClusterDriverNodeTypeFlexibilityArgsDict']]
         driver_node_type_id: NotRequired[pulumi.Input[_builtins.str]]
         enable_elastic_disk: NotRequired[pulumi.Input[_builtins.bool]]
         enable_local_disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
@@ -16158,6 +16341,7 @@ if not MYPY:
         ssh_public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         total_initial_remote_disk_size: NotRequired[pulumi.Input[_builtins.int]]
         use_ml_runtime: NotRequired[pulumi.Input[_builtins.bool]]
+        worker_node_type_flexibility: NotRequired[pulumi.Input['JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgsDict']]
         workload_type: NotRequired[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgsDict']]
         """
         isn't supported
@@ -16181,6 +16365,7 @@ class JobJobClusterNewClusterArgs:
                  data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  docker_image: Optional[pulumi.Input['JobJobClusterNewClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 driver_node_type_flexibility: Optional[pulumi.Input['JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs']] = None,
                  driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -16204,6 +16389,7 @@ class JobJobClusterNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
+                 worker_node_type_flexibility: Optional[pulumi.Input['JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs']] = None,
                  workload_type: Optional[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -16236,6 +16422,8 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -16282,6 +16470,8 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -16401,6 +16591,15 @@ class JobJobClusterNewClusterArgs:
     @driver_instance_pool_id.setter
     def driver_instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "driver_instance_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional[pulumi.Input['JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "driver_node_type_flexibility")
+
+    @driver_node_type_flexibility.setter
+    def driver_node_type_flexibility(self, value: Optional[pulumi.Input['JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -16614,6 +16813,15 @@ class JobJobClusterNewClusterArgs:
     @use_ml_runtime.setter
     def use_ml_runtime(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "use_ml_runtime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional[pulumi.Input['JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "worker_node_type_flexibility")
+
+    @worker_node_type_flexibility.setter
+    def worker_node_type_flexibility(self, value: Optional[pulumi.Input['JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "worker_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -17253,6 +17461,29 @@ class JobJobClusterNewClusterDockerImageBasicAuthArgs:
     @username.setter
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class JobJobClusterNewClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    JobJobClusterNewClusterDriverNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobJobClusterNewClusterDriverNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:
@@ -18010,6 +18241,29 @@ class JobJobClusterNewClusterProviderConfigArgs:
 
 
 if not MYPY:
+    class JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobJobClusterNewClusterWorkerNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
+
+
+if not MYPY:
     class JobJobClusterNewClusterWorkloadTypeArgsDict(TypedDict):
         clients: pulumi.Input['JobJobClusterNewClusterWorkloadTypeClientsArgsDict']
 elif False:
@@ -18357,6 +18611,7 @@ if not MYPY:
         data_security_mode: NotRequired[pulumi.Input[_builtins.str]]
         docker_image: NotRequired[pulumi.Input['JobNewClusterDockerImageArgsDict']]
         driver_instance_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+        driver_node_type_flexibility: NotRequired[pulumi.Input['JobNewClusterDriverNodeTypeFlexibilityArgsDict']]
         driver_node_type_id: NotRequired[pulumi.Input[_builtins.str]]
         enable_elastic_disk: NotRequired[pulumi.Input[_builtins.bool]]
         enable_local_disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
@@ -18386,6 +18641,7 @@ if not MYPY:
         ssh_public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         total_initial_remote_disk_size: NotRequired[pulumi.Input[_builtins.int]]
         use_ml_runtime: NotRequired[pulumi.Input[_builtins.bool]]
+        worker_node_type_flexibility: NotRequired[pulumi.Input['JobNewClusterWorkerNodeTypeFlexibilityArgsDict']]
         workload_type: NotRequired[pulumi.Input['JobNewClusterWorkloadTypeArgsDict']]
         """
         isn't supported
@@ -18408,6 +18664,7 @@ class JobNewClusterArgs:
                  data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  docker_image: Optional[pulumi.Input['JobNewClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 driver_node_type_flexibility: Optional[pulumi.Input['JobNewClusterDriverNodeTypeFlexibilityArgs']] = None,
                  driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -18431,6 +18688,7 @@ class JobNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
+                 worker_node_type_flexibility: Optional[pulumi.Input['JobNewClusterWorkerNodeTypeFlexibilityArgs']] = None,
                  workload_type: Optional[pulumi.Input['JobNewClusterWorkloadTypeArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -18461,6 +18719,8 @@ class JobNewClusterArgs:
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -18507,6 +18767,8 @@ class JobNewClusterArgs:
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -18617,6 +18879,15 @@ class JobNewClusterArgs:
     @driver_instance_pool_id.setter
     def driver_instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "driver_instance_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional[pulumi.Input['JobNewClusterDriverNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "driver_node_type_flexibility")
+
+    @driver_node_type_flexibility.setter
+    def driver_node_type_flexibility(self, value: Optional[pulumi.Input['JobNewClusterDriverNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -18830,6 +19101,15 @@ class JobNewClusterArgs:
     @use_ml_runtime.setter
     def use_ml_runtime(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "use_ml_runtime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional[pulumi.Input['JobNewClusterWorkerNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "worker_node_type_flexibility")
+
+    @worker_node_type_flexibility.setter
+    def worker_node_type_flexibility(self, value: Optional[pulumi.Input['JobNewClusterWorkerNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "worker_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -19469,6 +19749,29 @@ class JobNewClusterDockerImageBasicAuthArgs:
     @username.setter
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class JobNewClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    JobNewClusterDriverNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobNewClusterDriverNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:
@@ -20223,6 +20526,29 @@ class JobNewClusterProviderConfigArgs:
     @workspace_id.setter
     def workspace_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class JobNewClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    JobNewClusterWorkerNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobNewClusterWorkerNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:
@@ -24546,6 +24872,7 @@ if not MYPY:
         data_security_mode: NotRequired[pulumi.Input[_builtins.str]]
         docker_image: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterDockerImageArgsDict']]
         driver_instance_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+        driver_node_type_flexibility: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgsDict']]
         driver_node_type_id: NotRequired[pulumi.Input[_builtins.str]]
         enable_elastic_disk: NotRequired[pulumi.Input[_builtins.bool]]
         enable_local_disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
@@ -24575,6 +24902,7 @@ if not MYPY:
         ssh_public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         total_initial_remote_disk_size: NotRequired[pulumi.Input[_builtins.int]]
         use_ml_runtime: NotRequired[pulumi.Input[_builtins.bool]]
+        worker_node_type_flexibility: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgsDict']]
         workload_type: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict']]
         """
         isn't supported
@@ -24597,6 +24925,7 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  docker_image: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 driver_node_type_flexibility: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs']] = None,
                  driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -24620,6 +24949,7 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
+                 worker_node_type_flexibility: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs']] = None,
                  workload_type: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -24650,6 +24980,8 @@ class JobTaskForEachTaskTaskNewClusterArgs:
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -24696,6 +25028,8 @@ class JobTaskForEachTaskTaskNewClusterArgs:
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -24806,6 +25140,15 @@ class JobTaskForEachTaskTaskNewClusterArgs:
     @driver_instance_pool_id.setter
     def driver_instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "driver_instance_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "driver_node_type_flexibility")
+
+    @driver_node_type_flexibility.setter
+    def driver_node_type_flexibility(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -25019,6 +25362,15 @@ class JobTaskForEachTaskTaskNewClusterArgs:
     @use_ml_runtime.setter
     def use_ml_runtime(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "use_ml_runtime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "worker_node_type_flexibility")
+
+    @worker_node_type_flexibility.setter
+    def worker_node_type_flexibility(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "worker_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -25658,6 +26010,29 @@ class JobTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs:
     @username.setter
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:
@@ -26412,6 +26787,29 @@ class JobTaskForEachTaskTaskNewClusterProviderConfigArgs:
     @workspace_id.setter
     def workspace_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:
@@ -28908,6 +29306,7 @@ if not MYPY:
         data_security_mode: NotRequired[pulumi.Input[_builtins.str]]
         docker_image: NotRequired[pulumi.Input['JobTaskNewClusterDockerImageArgsDict']]
         driver_instance_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+        driver_node_type_flexibility: NotRequired[pulumi.Input['JobTaskNewClusterDriverNodeTypeFlexibilityArgsDict']]
         driver_node_type_id: NotRequired[pulumi.Input[_builtins.str]]
         enable_elastic_disk: NotRequired[pulumi.Input[_builtins.bool]]
         enable_local_disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
@@ -28937,6 +29336,7 @@ if not MYPY:
         ssh_public_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         total_initial_remote_disk_size: NotRequired[pulumi.Input[_builtins.int]]
         use_ml_runtime: NotRequired[pulumi.Input[_builtins.bool]]
+        worker_node_type_flexibility: NotRequired[pulumi.Input['JobTaskNewClusterWorkerNodeTypeFlexibilityArgsDict']]
         workload_type: NotRequired[pulumi.Input['JobTaskNewClusterWorkloadTypeArgsDict']]
         """
         isn't supported
@@ -28960,6 +29360,7 @@ class JobTaskNewClusterArgs:
                  data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  docker_image: Optional[pulumi.Input['JobTaskNewClusterDockerImageArgs']] = None,
                  driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 driver_node_type_flexibility: Optional[pulumi.Input['JobTaskNewClusterDriverNodeTypeFlexibilityArgs']] = None,
                  driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -28983,6 +29384,7 @@ class JobTaskNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
+                 worker_node_type_flexibility: Optional[pulumi.Input['JobTaskNewClusterWorkerNodeTypeFlexibilityArgs']] = None,
                  workload_type: Optional[pulumi.Input['JobTaskNewClusterWorkloadTypeArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -29015,6 +29417,8 @@ class JobTaskNewClusterArgs:
             pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -29061,6 +29465,8 @@ class JobTaskNewClusterArgs:
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -29180,6 +29586,15 @@ class JobTaskNewClusterArgs:
     @driver_instance_pool_id.setter
     def driver_instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "driver_instance_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional[pulumi.Input['JobTaskNewClusterDriverNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "driver_node_type_flexibility")
+
+    @driver_node_type_flexibility.setter
+    def driver_node_type_flexibility(self, value: Optional[pulumi.Input['JobTaskNewClusterDriverNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -29393,6 +29808,15 @@ class JobTaskNewClusterArgs:
     @use_ml_runtime.setter
     def use_ml_runtime(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "use_ml_runtime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional[pulumi.Input['JobTaskNewClusterWorkerNodeTypeFlexibilityArgs']]:
+        return pulumi.get(self, "worker_node_type_flexibility")
+
+    @worker_node_type_flexibility.setter
+    def worker_node_type_flexibility(self, value: Optional[pulumi.Input['JobTaskNewClusterWorkerNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "worker_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -30032,6 +30456,29 @@ class JobTaskNewClusterDockerImageBasicAuthArgs:
     @username.setter
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class JobTaskNewClusterDriverNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    JobTaskNewClusterDriverNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskNewClusterDriverNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:
@@ -30786,6 +31233,29 @@ class JobTaskNewClusterProviderConfigArgs:
     @workspace_id.setter
     def workspace_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class JobTaskNewClusterWorkerNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+elif False:
+    JobTaskNewClusterWorkerNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskNewClusterWorkerNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:
@@ -39682,13 +40152,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -39742,7 +40212,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -39752,7 +40222,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -40028,13 +40498,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -40049,7 +40519,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -40059,7 +40529,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -43168,6 +43638,7 @@ class PipelineGatewayDefinitionConnectionParametersArgs:
 if not MYPY:
     class PipelineIngestionDefinitionArgsDict(TypedDict):
         connection_name: NotRequired[pulumi.Input[_builtins.str]]
+        full_refresh_window: NotRequired[pulumi.Input['PipelineIngestionDefinitionFullRefreshWindowArgsDict']]
         ingest_from_uc_foreign_catalog: NotRequired[pulumi.Input[_builtins.bool]]
         ingestion_gateway_id: NotRequired[pulumi.Input[_builtins.str]]
         netsuite_jar_path: NotRequired[pulumi.Input[_builtins.str]]
@@ -43182,6 +43653,7 @@ elif False:
 class PipelineIngestionDefinitionArgs:
     def __init__(__self__, *,
                  connection_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 full_refresh_window: Optional[pulumi.Input['PipelineIngestionDefinitionFullRefreshWindowArgs']] = None,
                  ingest_from_uc_foreign_catalog: Optional[pulumi.Input[_builtins.bool]] = None,
                  ingestion_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  netsuite_jar_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -43191,6 +43663,8 @@ class PipelineIngestionDefinitionArgs:
                  table_configuration: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationArgs']] = None):
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if full_refresh_window is not None:
+            pulumi.set(__self__, "full_refresh_window", full_refresh_window)
         if ingest_from_uc_foreign_catalog is not None:
             pulumi.set(__self__, "ingest_from_uc_foreign_catalog", ingest_from_uc_foreign_catalog)
         if ingestion_gateway_id is not None:
@@ -43214,6 +43688,15 @@ class PipelineIngestionDefinitionArgs:
     @connection_name.setter
     def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullRefreshWindow")
+    def full_refresh_window(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionFullRefreshWindowArgs']]:
+        return pulumi.get(self, "full_refresh_window")
+
+    @full_refresh_window.setter
+    def full_refresh_window(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionFullRefreshWindowArgs']]):
+        pulumi.set(self, "full_refresh_window", value)
 
     @_builtins.property
     @pulumi.getter(name="ingestFromUcForeignCatalog")
@@ -43277,6 +43760,54 @@ class PipelineIngestionDefinitionArgs:
     @table_configuration.setter
     def table_configuration(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationArgs']]):
         pulumi.set(self, "table_configuration", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionFullRefreshWindowArgsDict(TypedDict):
+        start_hour: pulumi.Input[_builtins.int]
+        days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        time_zone_id: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    PipelineIngestionDefinitionFullRefreshWindowArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionFullRefreshWindowArgs:
+    def __init__(__self__, *,
+                 start_hour: pulumi.Input[_builtins.int],
+                 days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 time_zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "start_hour", start_hour)
+        if days_of_weeks is not None:
+            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+        if time_zone_id is not None:
+            pulumi.set(__self__, "time_zone_id", time_zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> pulumi.Input[_builtins.int]:
+        return pulumi.get(self, "start_hour")
+
+    @start_hour.setter
+    def start_hour(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "start_hour", value)
+
+    @_builtins.property
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "days_of_weeks")
+
+    @days_of_weeks.setter
+    def days_of_weeks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "days_of_weeks", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeZoneId")
+    def time_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "time_zone_id")
+
+    @time_zone_id.setter
+    def time_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "time_zone_id", value)
 
 
 if not MYPY:
@@ -43411,6 +43942,7 @@ class PipelineIngestionDefinitionObjectReportArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectReportTableConfigurationArgsDict(TypedDict):
+        auto_full_refresh_policy: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgsDict']]
         exclude_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         include_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -43426,6 +43958,7 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
     def __init__(__self__, *,
+                 auto_full_refresh_policy: Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs']] = None,
                  exclude_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  include_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -43435,6 +43968,8 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
                  scd_type: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  workday_report_parameters: Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgs']] = None):
+        if auto_full_refresh_policy is not None:
+            pulumi.set(__self__, "auto_full_refresh_policy", auto_full_refresh_policy)
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -43453,6 +43988,15 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
         if workday_report_parameters is not None:
             pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullRefreshPolicy")
+    def auto_full_refresh_policy(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs']]:
+        return pulumi.get(self, "auto_full_refresh_policy")
+
+    @auto_full_refresh_policy.setter
+    def auto_full_refresh_policy(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs']]):
+        pulumi.set(self, "auto_full_refresh_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -43534,6 +44078,41 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
     @workday_report_parameters.setter
     def workday_report_parameters(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgs']]):
         pulumi.set(self, "workday_report_parameters", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        min_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 min_interval_hours: Optional[pulumi.Input[_builtins.int]] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if min_interval_hours is not None:
+            pulumi.set(__self__, "min_interval_hours", min_interval_hours)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minIntervalHours")
+    def min_interval_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "min_interval_hours")
+
+    @min_interval_hours.setter
+    def min_interval_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_interval_hours", value)
 
 
 if not MYPY:
@@ -43744,6 +44323,7 @@ class PipelineIngestionDefinitionObjectSchemaArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict(TypedDict):
+        auto_full_refresh_policy: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgsDict']]
         exclude_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         include_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -43759,6 +44339,7 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
     def __init__(__self__, *,
+                 auto_full_refresh_policy: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs']] = None,
                  exclude_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  include_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -43768,6 +44349,8 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
                  scd_type: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  workday_report_parameters: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs']] = None):
+        if auto_full_refresh_policy is not None:
+            pulumi.set(__self__, "auto_full_refresh_policy", auto_full_refresh_policy)
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -43786,6 +44369,15 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
         if workday_report_parameters is not None:
             pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullRefreshPolicy")
+    def auto_full_refresh_policy(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs']]:
+        return pulumi.get(self, "auto_full_refresh_policy")
+
+    @auto_full_refresh_policy.setter
+    def auto_full_refresh_policy(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs']]):
+        pulumi.set(self, "auto_full_refresh_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -43867,6 +44459,41 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
     @workday_report_parameters.setter
     def workday_report_parameters(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs']]):
         pulumi.set(self, "workday_report_parameters", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        min_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 min_interval_hours: Optional[pulumi.Input[_builtins.int]] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if min_interval_hours is not None:
+            pulumi.set(__self__, "min_interval_hours", min_interval_hours)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minIntervalHours")
+    def min_interval_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "min_interval_hours")
+
+    @min_interval_hours.setter
+    def min_interval_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_interval_hours", value)
 
 
 if not MYPY:
@@ -44103,6 +44730,7 @@ class PipelineIngestionDefinitionObjectTableArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict(TypedDict):
+        auto_full_refresh_policy: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicyArgsDict']]
         exclude_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         include_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -44118,6 +44746,7 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
     def __init__(__self__, *,
+                 auto_full_refresh_policy: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicyArgs']] = None,
                  exclude_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  include_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -44127,6 +44756,8 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
                  scd_type: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  workday_report_parameters: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgs']] = None):
+        if auto_full_refresh_policy is not None:
+            pulumi.set(__self__, "auto_full_refresh_policy", auto_full_refresh_policy)
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -44145,6 +44776,15 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
         if workday_report_parameters is not None:
             pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullRefreshPolicy")
+    def auto_full_refresh_policy(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicyArgs']]:
+        return pulumi.get(self, "auto_full_refresh_policy")
+
+    @auto_full_refresh_policy.setter
+    def auto_full_refresh_policy(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicyArgs']]):
+        pulumi.set(self, "auto_full_refresh_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -44226,6 +44866,41 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
     @workday_report_parameters.setter
     def workday_report_parameters(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgs']]):
         pulumi.set(self, "workday_report_parameters", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicyArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        min_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicyArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 min_interval_hours: Optional[pulumi.Input[_builtins.int]] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if min_interval_hours is not None:
+            pulumi.set(__self__, "min_interval_hours", min_interval_hours)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minIntervalHours")
+    def min_interval_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "min_interval_hours")
+
+    @min_interval_hours.setter
+    def min_interval_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_interval_hours", value)
 
 
 if not MYPY:
@@ -44491,6 +45166,7 @@ class PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfigArg
 
 if not MYPY:
     class PipelineIngestionDefinitionTableConfigurationArgsDict(TypedDict):
+        auto_full_refresh_policy: NotRequired[pulumi.Input['PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgsDict']]
         exclude_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         include_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -44506,6 +45182,7 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionTableConfigurationArgs:
     def __init__(__self__, *,
+                 auto_full_refresh_policy: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs']] = None,
                  exclude_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  include_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -44515,6 +45192,8 @@ class PipelineIngestionDefinitionTableConfigurationArgs:
                  scd_type: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  workday_report_parameters: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs']] = None):
+        if auto_full_refresh_policy is not None:
+            pulumi.set(__self__, "auto_full_refresh_policy", auto_full_refresh_policy)
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -44533,6 +45212,15 @@ class PipelineIngestionDefinitionTableConfigurationArgs:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
         if workday_report_parameters is not None:
             pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="autoFullRefreshPolicy")
+    def auto_full_refresh_policy(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs']]:
+        return pulumi.get(self, "auto_full_refresh_policy")
+
+    @auto_full_refresh_policy.setter
+    def auto_full_refresh_policy(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs']]):
+        pulumi.set(self, "auto_full_refresh_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -44614,6 +45302,41 @@ class PipelineIngestionDefinitionTableConfigurationArgs:
     @workday_report_parameters.setter
     def workday_report_parameters(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs']]):
         pulumi.set(self, "workday_report_parameters", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        min_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicyArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 min_interval_hours: Optional[pulumi.Input[_builtins.int]] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if min_interval_hours is not None:
+            pulumi.set(__self__, "min_interval_hours", min_interval_hours)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minIntervalHours")
+    def min_interval_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "min_interval_hours")
+
+    @min_interval_hours.setter
+    def min_interval_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_interval_hours", value)
 
 
 if not MYPY:
@@ -45503,13 +46226,18 @@ class PolicyInfoRowFilterUsingArgs:
 
 if not MYPY:
     class PostgresBranchSpecArgsDict(TypedDict):
-        default: NotRequired[pulumi.Input[_builtins.bool]]
+        expire_time: NotRequired[pulumi.Input[_builtins.str]]
         """
-        (boolean) - Whether the branch is the project's default branch
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         """
         is_protected: NotRequired[pulumi.Input[_builtins.bool]]
         """
         (boolean) - Whether the branch is protected
+        """
+        no_expiry: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Explicitly disable expiration. When set to true, the branch will not expire.
+        If set to false, the request is invalid; provide either ttl or expire_time instead
         """
         source_branch: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -45524,47 +46252,60 @@ if not MYPY:
         """
         (string) - The point in time on the source branch from which this branch was created
         """
+        ttl: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Relative time-to-live duration. When set, the branch will expire at creation_time + ttl
+        """
 elif False:
     PostgresBranchSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PostgresBranchSpecArgs:
     def __init__(__self__, *,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
+                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
                  is_protected: Optional[pulumi.Input[_builtins.bool]] = None,
+                 no_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
                  source_branch: Optional[pulumi.Input[_builtins.str]] = None,
                  source_branch_lsn: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_branch_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 source_branch_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.bool] default: (boolean) - Whether the branch is the project's default branch
+        :param pulumi.Input[_builtins.str] expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         :param pulumi.Input[_builtins.bool] is_protected: (boolean) - Whether the branch is protected
+        :param pulumi.Input[_builtins.bool] no_expiry: Explicitly disable expiration. When set to true, the branch will not expire.
+               If set to false, the request is invalid; provide either ttl or expire_time instead
         :param pulumi.Input[_builtins.str] source_branch: (string) - The name of the source branch from which this branch was created.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[_builtins.str] source_branch_lsn: (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
         :param pulumi.Input[_builtins.str] source_branch_time: (string) - The point in time on the source branch from which this branch was created
+        :param pulumi.Input[_builtins.str] ttl: Relative time-to-live duration. When set, the branch will expire at creation_time + ttl
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if is_protected is not None:
             pulumi.set(__self__, "is_protected", is_protected)
+        if no_expiry is not None:
+            pulumi.set(__self__, "no_expiry", no_expiry)
         if source_branch is not None:
             pulumi.set(__self__, "source_branch", source_branch)
         if source_branch_lsn is not None:
             pulumi.set(__self__, "source_branch_lsn", source_branch_lsn)
         if source_branch_time is not None:
             pulumi.set(__self__, "source_branch_time", source_branch_time)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
 
     @_builtins.property
-    @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (boolean) - Whether the branch is the project's default branch
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         """
-        return pulumi.get(self, "default")
+        return pulumi.get(self, "expire_time")
 
-    @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "default", value)
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="isProtected")
@@ -45577,6 +46318,19 @@ class PostgresBranchSpecArgs:
     @is_protected.setter
     def is_protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "is_protected", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noExpiry")
+    def no_expiry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Explicitly disable expiration. When set to true, the branch will not expire.
+        If set to false, the request is invalid; provide either ttl or expire_time instead
+        """
+        return pulumi.get(self, "no_expiry")
+
+    @no_expiry.setter
+    def no_expiry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceBranch")
@@ -45615,6 +46369,18 @@ class PostgresBranchSpecArgs:
     def source_branch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "source_branch_time", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Relative time-to-live duration. When set, the branch will expire at creation_time + ttl
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ttl", value)
+
 
 if not MYPY:
     class PostgresBranchStatusArgsDict(TypedDict):
@@ -45625,6 +46391,10 @@ if not MYPY:
         default: NotRequired[pulumi.Input[_builtins.bool]]
         """
         (boolean) - Whether the branch is the project's default branch
+        """
+        expire_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         """
         is_protected: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -45663,6 +46433,7 @@ class PostgresBranchStatusArgs:
     def __init__(__self__, *,
                  current_state: Optional[pulumi.Input[_builtins.str]] = None,
                  default: Optional[pulumi.Input[_builtins.bool]] = None,
+                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
                  is_protected: Optional[pulumi.Input[_builtins.bool]] = None,
                  logical_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  pending_state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -45673,6 +46444,7 @@ class PostgresBranchStatusArgs:
         """
         :param pulumi.Input[_builtins.str] current_state: (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         :param pulumi.Input[_builtins.bool] default: (boolean) - Whether the branch is the project's default branch
+        :param pulumi.Input[_builtins.str] expire_time: (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         :param pulumi.Input[_builtins.bool] is_protected: (boolean) - Whether the branch is protected
         :param pulumi.Input[_builtins.int] logical_size_bytes: (integer) - The logical size of the branch
         :param pulumi.Input[_builtins.str] pending_state: (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
@@ -45686,6 +46458,8 @@ class PostgresBranchStatusArgs:
             pulumi.set(__self__, "current_state", current_state)
         if default is not None:
             pulumi.set(__self__, "default", default)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if is_protected is not None:
             pulumi.set(__self__, "is_protected", is_protected)
         if logical_size_bytes is not None:
@@ -45724,6 +46498,18 @@ class PostgresBranchStatusArgs:
     @default.setter
     def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="isProtected")
@@ -45815,7 +46601,7 @@ if not MYPY:
     class PostgresEndpointSpecArgsDict(TypedDict):
         endpoint_type: pulumi.Input[_builtins.str]
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
         autoscaling_limit_max_cu: NotRequired[pulumi.Input[_builtins.float]]
         """
@@ -45831,6 +46617,11 @@ if not MYPY:
         Enabling this option schedules a suspend compute operation.
         A disabled compute endpoint cannot be enabled by a connection or
         console action
+        """
+        no_suspension: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
         """
         settings: NotRequired[pulumi.Input['PostgresEndpointSpecSettingsArgsDict']]
         """
@@ -45850,16 +46641,19 @@ class PostgresEndpointSpecArgs:
                  autoscaling_limit_max_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  autoscaling_limit_min_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 no_suspension: Optional[pulumi.Input[_builtins.bool]] = None,
                  settings: Optional[pulumi.Input['PostgresEndpointSpecSettingsArgs']] = None,
                  suspend_timeout_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        :param pulumi.Input[_builtins.str] endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         :param pulumi.Input[_builtins.float] autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
         :param pulumi.Input[_builtins.float] autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
         :param pulumi.Input[_builtins.bool] disabled: (boolean) - Whether to restrict connections to the compute endpoint.
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
+        :param pulumi.Input[_builtins.bool] no_suspension: When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param pulumi.Input['PostgresEndpointSpecSettingsArgs'] settings: (EndpointSettings)
         :param pulumi.Input[_builtins.str] suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -45870,6 +46664,8 @@ class PostgresEndpointSpecArgs:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if suspend_timeout_duration is not None:
@@ -45879,7 +46675,7 @@ class PostgresEndpointSpecArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[_builtins.str]:
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -45925,6 +46721,19 @@ class PostgresEndpointSpecArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
+
+    @no_suspension.setter
+    def no_suspension(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_suspension", value)
 
     @_builtins.property
     @pulumi.getter
@@ -46006,15 +46815,11 @@ if not MYPY:
         """
         endpoint_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
-        host: NotRequired[pulumi.Input[_builtins.str]]
+        hosts: NotRequired[pulumi.Input['PostgresEndpointStatusHostsArgsDict']]
         """
-        (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
-        """
-        last_active_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - A timestamp indicating when the compute endpoint was last active
+        (EndpointHosts) - Contains host information for connecting to the endpoint
         """
         pending_state: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -46023,14 +46828,6 @@ if not MYPY:
         settings: NotRequired[pulumi.Input['PostgresEndpointStatusSettingsArgsDict']]
         """
         (EndpointSettings)
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - A timestamp indicating when the compute endpoint was last started
-        """
-        suspend_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - A timestamp indicating when the compute endpoint was last suspended
         """
         suspend_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -46047,12 +46844,9 @@ class PostgresEndpointStatusArgs:
                  current_state: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_active_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 hosts: Optional[pulumi.Input['PostgresEndpointStatusHostsArgs']] = None,
                  pending_state: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input['PostgresEndpointStatusSettingsArgs']] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 suspend_time: Optional[pulumi.Input[_builtins.str]] = None,
                  suspend_timeout_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
@@ -46062,13 +46856,10 @@ class PostgresEndpointStatusArgs:
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
-        :param pulumi.Input[_builtins.str] endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
-        :param pulumi.Input[_builtins.str] host: (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
-        :param pulumi.Input[_builtins.str] last_active_time: (string) - A timestamp indicating when the compute endpoint was last active
+        :param pulumi.Input[_builtins.str] endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+        :param pulumi.Input['PostgresEndpointStatusHostsArgs'] hosts: (EndpointHosts) - Contains host information for connecting to the endpoint
         :param pulumi.Input[_builtins.str] pending_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
         :param pulumi.Input['PostgresEndpointStatusSettingsArgs'] settings: (EndpointSettings)
-        :param pulumi.Input[_builtins.str] start_time: (string) - A timestamp indicating when the compute endpoint was last started
-        :param pulumi.Input[_builtins.str] suspend_time: (string) - A timestamp indicating when the compute endpoint was last suspended
         :param pulumi.Input[_builtins.str] suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
         if autoscaling_limit_max_cu is not None:
@@ -46081,18 +46872,12 @@ class PostgresEndpointStatusArgs:
             pulumi.set(__self__, "disabled", disabled)
         if endpoint_type is not None:
             pulumi.set(__self__, "endpoint_type", endpoint_type)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if last_active_time is not None:
-            pulumi.set(__self__, "last_active_time", last_active_time)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
         if pending_state is not None:
             pulumi.set(__self__, "pending_state", pending_state)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-        if suspend_time is not None:
-            pulumi.set(__self__, "suspend_time", suspend_time)
         if suspend_timeout_duration is not None:
             pulumi.set(__self__, "suspend_timeout_duration", suspend_timeout_duration)
 
@@ -46151,7 +46936,7 @@ class PostgresEndpointStatusArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+        (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -46161,27 +46946,15 @@ class PostgresEndpointStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hosts(self) -> Optional[pulumi.Input['PostgresEndpointStatusHostsArgs']]:
         """
-        (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+        (EndpointHosts) - Contains host information for connecting to the endpoint
         """
-        return pulumi.get(self, "host")
+        return pulumi.get(self, "hosts")
 
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "host", value)
-
-    @_builtins.property
-    @pulumi.getter(name="lastActiveTime")
-    def last_active_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last active
-        """
-        return pulumi.get(self, "last_active_time")
-
-    @last_active_time.setter
-    def last_active_time(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "last_active_time", value)
+    @hosts.setter
+    def hosts(self, value: Optional[pulumi.Input['PostgresEndpointStatusHostsArgs']]):
+        pulumi.set(self, "hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="pendingState")
@@ -46208,30 +46981,6 @@ class PostgresEndpointStatusArgs:
         pulumi.set(self, "settings", value)
 
     @_builtins.property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last started
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "start_time", value)
-
-    @_builtins.property
-    @pulumi.getter(name="suspendTime")
-    def suspend_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - A timestamp indicating when the compute endpoint was last suspended
-        """
-        return pulumi.get(self, "suspend_time")
-
-    @suspend_time.setter
-    def suspend_time(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "suspend_time", value)
-
-    @_builtins.property
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -46242,6 +46991,41 @@ class PostgresEndpointStatusArgs:
     @suspend_timeout_duration.setter
     def suspend_timeout_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "suspend_timeout_duration", value)
+
+
+if not MYPY:
+    class PostgresEndpointStatusHostsArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+        to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        """
+elif False:
+    PostgresEndpointStatusHostsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PostgresEndpointStatusHostsArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+               to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+        to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
 
 
 if not MYPY:
@@ -46294,10 +47078,6 @@ if not MYPY:
         """
         (integer) - The effective major Postgres version number
         """
-        settings: NotRequired[pulumi.Input['PostgresProjectSpecSettingsArgsDict']]
-        """
-        (ProjectSettings) - The effective project settings
-        """
 elif False:
     PostgresProjectSpecArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -46307,14 +47087,12 @@ class PostgresProjectSpecArgs:
                  default_endpoint_settings: Optional[pulumi.Input['PostgresProjectSpecDefaultEndpointSettingsArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  history_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 pg_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 settings: Optional[pulumi.Input['PostgresProjectSpecSettingsArgs']] = None):
+                 pg_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input['PostgresProjectSpecDefaultEndpointSettingsArgs'] default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param pulumi.Input[_builtins.str] display_name: (string) - The effective human-readable project name
         :param pulumi.Input[_builtins.str] history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
         :param pulumi.Input[_builtins.int] pg_version: (integer) - The effective major Postgres version number
-        :param pulumi.Input['PostgresProjectSpecSettingsArgs'] settings: (ProjectSettings) - The effective project settings
         """
         if default_endpoint_settings is not None:
             pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
@@ -46324,8 +47102,6 @@ class PostgresProjectSpecArgs:
             pulumi.set(__self__, "history_retention_duration", history_retention_duration)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
-        if settings is not None:
-            pulumi.set(__self__, "settings", settings)
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -46375,28 +47151,21 @@ class PostgresProjectSpecArgs:
     def pg_version(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "pg_version", value)
 
-    @_builtins.property
-    @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['PostgresProjectSpecSettingsArgs']]:
-        """
-        (ProjectSettings) - The effective project settings
-        """
-        return pulumi.get(self, "settings")
-
-    @settings.setter
-    def settings(self, value: Optional[pulumi.Input['PostgresProjectSpecSettingsArgs']]):
-        pulumi.set(self, "settings", value)
-
 
 if not MYPY:
     class PostgresProjectSpecDefaultEndpointSettingsArgsDict(TypedDict):
         autoscaling_limit_max_cu: NotRequired[pulumi.Input[_builtins.float]]
         """
-        The maximum number of Compute Units
+        The maximum number of Compute Units. Minimum value is 0.5
         """
         autoscaling_limit_min_cu: NotRequired[pulumi.Input[_builtins.float]]
         """
-        The minimum number of Compute Units
+        The minimum number of Compute Units. Minimum value is 0.5
+        """
+        no_suspension: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
         """
         pg_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -46404,7 +47173,8 @@ if not MYPY:
         """
         suspend_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Duration of inactivity after which the compute endpoint is automatically suspended
+        Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
 elif False:
     PostgresProjectSpecDefaultEndpointSettingsArgsDict: TypeAlias = Mapping[str, Any]
@@ -46414,18 +47184,24 @@ class PostgresProjectSpecDefaultEndpointSettingsArgs:
     def __init__(__self__, *,
                  autoscaling_limit_max_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  autoscaling_limit_min_cu: Optional[pulumi.Input[_builtins.float]] = None,
+                 no_suspension: Optional[pulumi.Input[_builtins.bool]] = None,
                  pg_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  suspend_timeout_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.float] autoscaling_limit_max_cu: The maximum number of Compute Units
-        :param pulumi.Input[_builtins.float] autoscaling_limit_min_cu: The minimum number of Compute Units
+        :param pulumi.Input[_builtins.float] autoscaling_limit_max_cu: The maximum number of Compute Units. Minimum value is 0.5
+        :param pulumi.Input[_builtins.float] autoscaling_limit_min_cu: The minimum number of Compute Units. Minimum value is 0.5
+        :param pulumi.Input[_builtins.bool] no_suspension: When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pg_settings: A raw representation of Postgres settings
-        :param pulumi.Input[_builtins.str] suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended
+        :param pulumi.Input[_builtins.str] suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended.
+               If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         if autoscaling_limit_max_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
         if autoscaling_limit_min_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
         if suspend_timeout_duration is not None:
@@ -46435,7 +47211,7 @@ class PostgresProjectSpecDefaultEndpointSettingsArgs:
     @pulumi.getter(name="autoscalingLimitMaxCu")
     def autoscaling_limit_max_cu(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The maximum number of Compute Units
+        The maximum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_max_cu")
 
@@ -46447,13 +47223,26 @@ class PostgresProjectSpecDefaultEndpointSettingsArgs:
     @pulumi.getter(name="autoscalingLimitMinCu")
     def autoscaling_limit_min_cu(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The minimum number of Compute Units
+        The minimum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_min_cu")
 
     @autoscaling_limit_min_cu.setter
     def autoscaling_limit_min_cu(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "autoscaling_limit_min_cu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
+
+    @no_suspension.setter
+    def no_suspension(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_suspension", value)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -46471,7 +47260,8 @@ class PostgresProjectSpecDefaultEndpointSettingsArgs:
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Duration of inactivity after which the compute endpoint is automatically suspended
+        Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         return pulumi.get(self, "suspend_timeout_duration")
 
@@ -46481,52 +47271,10 @@ class PostgresProjectSpecDefaultEndpointSettingsArgs:
 
 
 if not MYPY:
-    class PostgresProjectSpecSettingsArgsDict(TypedDict):
-        enable_logical_replication: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-elif False:
-    PostgresProjectSpecSettingsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class PostgresProjectSpecSettingsArgs:
-    def __init__(__self__, *,
-                 enable_logical_replication: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] enable_logical_replication: Sets wal_level=logical for all compute endpoints in this project.
-               All active endpoints will be suspended.
-               Once enabled, logical replication cannot be disabled
-        """
-        if enable_logical_replication is not None:
-            pulumi.set(__self__, "enable_logical_replication", enable_logical_replication)
-
-    @_builtins.property
-    @pulumi.getter(name="enableLogicalReplication")
-    def enable_logical_replication(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-        return pulumi.get(self, "enable_logical_replication")
-
-    @enable_logical_replication.setter
-    def enable_logical_replication(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_logical_replication", value)
-
-
-if not MYPY:
     class PostgresProjectStatusArgsDict(TypedDict):
         branch_logical_size_limit_bytes: NotRequired[pulumi.Input[_builtins.int]]
         """
         (integer) - The logical size limit for a branch
-        """
-        compute_last_active_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - The most recent time when any endpoint of this project was active
         """
         default_endpoint_settings: NotRequired[pulumi.Input['PostgresProjectStatusDefaultEndpointSettingsArgsDict']]
         """
@@ -46548,10 +47296,6 @@ if not MYPY:
         """
         (integer) - The effective major Postgres version number
         """
-        settings: NotRequired[pulumi.Input['PostgresProjectStatusSettingsArgsDict']]
-        """
-        (ProjectSettings) - The effective project settings
-        """
         synthetic_storage_size_bytes: NotRequired[pulumi.Input[_builtins.int]]
         """
         (integer) - The current space occupied by the project in storage
@@ -46563,29 +47307,23 @@ elif False:
 class PostgresProjectStatusArgs:
     def __init__(__self__, *,
                  branch_logical_size_limit_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 compute_last_active_time: Optional[pulumi.Input[_builtins.str]] = None,
                  default_endpoint_settings: Optional[pulumi.Input['PostgresProjectStatusDefaultEndpointSettingsArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  history_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  pg_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 settings: Optional[pulumi.Input['PostgresProjectStatusSettingsArgs']] = None,
                  synthetic_storage_size_bytes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] branch_logical_size_limit_bytes: (integer) - The logical size limit for a branch
-        :param pulumi.Input[_builtins.str] compute_last_active_time: (string) - The most recent time when any endpoint of this project was active
         :param pulumi.Input['PostgresProjectStatusDefaultEndpointSettingsArgs'] default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param pulumi.Input[_builtins.str] display_name: (string) - The effective human-readable project name
         :param pulumi.Input[_builtins.str] history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
         :param pulumi.Input[_builtins.str] owner: (string) - The email of the project owner
         :param pulumi.Input[_builtins.int] pg_version: (integer) - The effective major Postgres version number
-        :param pulumi.Input['PostgresProjectStatusSettingsArgs'] settings: (ProjectSettings) - The effective project settings
         :param pulumi.Input[_builtins.int] synthetic_storage_size_bytes: (integer) - The current space occupied by the project in storage
         """
         if branch_logical_size_limit_bytes is not None:
             pulumi.set(__self__, "branch_logical_size_limit_bytes", branch_logical_size_limit_bytes)
-        if compute_last_active_time is not None:
-            pulumi.set(__self__, "compute_last_active_time", compute_last_active_time)
         if default_endpoint_settings is not None:
             pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
         if display_name is not None:
@@ -46596,8 +47334,6 @@ class PostgresProjectStatusArgs:
             pulumi.set(__self__, "owner", owner)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
-        if settings is not None:
-            pulumi.set(__self__, "settings", settings)
         if synthetic_storage_size_bytes is not None:
             pulumi.set(__self__, "synthetic_storage_size_bytes", synthetic_storage_size_bytes)
 
@@ -46612,18 +47348,6 @@ class PostgresProjectStatusArgs:
     @branch_logical_size_limit_bytes.setter
     def branch_logical_size_limit_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "branch_logical_size_limit_bytes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="computeLastActiveTime")
-    def compute_last_active_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - The most recent time when any endpoint of this project was active
-        """
-        return pulumi.get(self, "compute_last_active_time")
-
-    @compute_last_active_time.setter
-    def compute_last_active_time(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "compute_last_active_time", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -46686,18 +47410,6 @@ class PostgresProjectStatusArgs:
         pulumi.set(self, "pg_version", value)
 
     @_builtins.property
-    @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['PostgresProjectStatusSettingsArgs']]:
-        """
-        (ProjectSettings) - The effective project settings
-        """
-        return pulumi.get(self, "settings")
-
-    @settings.setter
-    def settings(self, value: Optional[pulumi.Input['PostgresProjectStatusSettingsArgs']]):
-        pulumi.set(self, "settings", value)
-
-    @_builtins.property
     @pulumi.getter(name="syntheticStorageSizeBytes")
     def synthetic_storage_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -46714,11 +47426,16 @@ if not MYPY:
     class PostgresProjectStatusDefaultEndpointSettingsArgsDict(TypedDict):
         autoscaling_limit_max_cu: NotRequired[pulumi.Input[_builtins.float]]
         """
-        The maximum number of Compute Units
+        The maximum number of Compute Units. Minimum value is 0.5
         """
         autoscaling_limit_min_cu: NotRequired[pulumi.Input[_builtins.float]]
         """
-        The minimum number of Compute Units
+        The minimum number of Compute Units. Minimum value is 0.5
+        """
+        no_suspension: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
         """
         pg_settings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -46726,7 +47443,8 @@ if not MYPY:
         """
         suspend_timeout_duration: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Duration of inactivity after which the compute endpoint is automatically suspended
+        Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
 elif False:
     PostgresProjectStatusDefaultEndpointSettingsArgsDict: TypeAlias = Mapping[str, Any]
@@ -46736,18 +47454,24 @@ class PostgresProjectStatusDefaultEndpointSettingsArgs:
     def __init__(__self__, *,
                  autoscaling_limit_max_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  autoscaling_limit_min_cu: Optional[pulumi.Input[_builtins.float]] = None,
+                 no_suspension: Optional[pulumi.Input[_builtins.bool]] = None,
                  pg_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  suspend_timeout_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.float] autoscaling_limit_max_cu: The maximum number of Compute Units
-        :param pulumi.Input[_builtins.float] autoscaling_limit_min_cu: The minimum number of Compute Units
+        :param pulumi.Input[_builtins.float] autoscaling_limit_max_cu: The maximum number of Compute Units. Minimum value is 0.5
+        :param pulumi.Input[_builtins.float] autoscaling_limit_min_cu: The minimum number of Compute Units. Minimum value is 0.5
+        :param pulumi.Input[_builtins.bool] no_suspension: When set to true, explicitly disables automatic suspension (never suspend).
+               Should be set to true when provided
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pg_settings: A raw representation of Postgres settings
-        :param pulumi.Input[_builtins.str] suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended
+        :param pulumi.Input[_builtins.str] suspend_timeout_duration: Duration of inactivity after which the compute endpoint is automatically suspended.
+               If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         if autoscaling_limit_max_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_max_cu", autoscaling_limit_max_cu)
         if autoscaling_limit_min_cu is not None:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
+        if no_suspension is not None:
+            pulumi.set(__self__, "no_suspension", no_suspension)
         if pg_settings is not None:
             pulumi.set(__self__, "pg_settings", pg_settings)
         if suspend_timeout_duration is not None:
@@ -46757,7 +47481,7 @@ class PostgresProjectStatusDefaultEndpointSettingsArgs:
     @pulumi.getter(name="autoscalingLimitMaxCu")
     def autoscaling_limit_max_cu(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The maximum number of Compute Units
+        The maximum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_max_cu")
 
@@ -46769,13 +47493,26 @@ class PostgresProjectStatusDefaultEndpointSettingsArgs:
     @pulumi.getter(name="autoscalingLimitMinCu")
     def autoscaling_limit_min_cu(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The minimum number of Compute Units
+        The minimum number of Compute Units. Minimum value is 0.5
         """
         return pulumi.get(self, "autoscaling_limit_min_cu")
 
     @autoscaling_limit_min_cu.setter
     def autoscaling_limit_min_cu(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "autoscaling_limit_min_cu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noSuspension")
+    def no_suspension(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When set to true, explicitly disables automatic suspension (never suspend).
+        Should be set to true when provided
+        """
+        return pulumi.get(self, "no_suspension")
+
+    @no_suspension.setter
+    def no_suspension(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_suspension", value)
 
     @_builtins.property
     @pulumi.getter(name="pgSettings")
@@ -46793,51 +47530,14 @@ class PostgresProjectStatusDefaultEndpointSettingsArgs:
     @pulumi.getter(name="suspendTimeoutDuration")
     def suspend_timeout_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Duration of inactivity after which the compute endpoint is automatically suspended
+        Duration of inactivity after which the compute endpoint is automatically suspended.
+        If specified should be between 60s and 604800s (1 minute to 1 week)
         """
         return pulumi.get(self, "suspend_timeout_duration")
 
     @suspend_timeout_duration.setter
     def suspend_timeout_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "suspend_timeout_duration", value)
-
-
-if not MYPY:
-    class PostgresProjectStatusSettingsArgsDict(TypedDict):
-        enable_logical_replication: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-elif False:
-    PostgresProjectStatusSettingsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class PostgresProjectStatusSettingsArgs:
-    def __init__(__self__, *,
-                 enable_logical_replication: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] enable_logical_replication: Sets wal_level=logical for all compute endpoints in this project.
-               All active endpoints will be suspended.
-               Once enabled, logical replication cannot be disabled
-        """
-        if enable_logical_replication is not None:
-            pulumi.set(__self__, "enable_logical_replication", enable_logical_replication)
-
-    @_builtins.property
-    @pulumi.getter(name="enableLogicalReplication")
-    def enable_logical_replication(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Sets wal_level=logical for all compute endpoints in this project.
-        All active endpoints will be suspended.
-        Once enabled, logical replication cannot be disabled
-        """
-        return pulumi.get(self, "enable_logical_replication")
-
-    @enable_logical_replication.setter
-    def enable_logical_replication(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_logical_replication", value)
 
 
 if not MYPY:
@@ -54446,6 +55146,7 @@ if not MYPY:
         """
         similar to `instance_pool_id`, but for driver node.
         """
+        driver_node_type_flexibility: NotRequired['GetClusterClusterInfoDriverNodeTypeFlexibilityArgsDict']
         driver_node_type_id: NotRequired[_builtins.str]
         """
         The node type of the Spark driver.
@@ -54513,6 +55214,7 @@ if not MYPY:
         termination_reason: NotRequired['GetClusterClusterInfoTerminationReasonArgsDict']
         total_initial_remote_disk_size: NotRequired[_builtins.int]
         use_ml_runtime: NotRequired[_builtins.bool]
+        worker_node_type_flexibility: NotRequired['GetClusterClusterInfoWorkerNodeTypeFlexibilityArgsDict']
         workload_type: NotRequired['GetClusterClusterInfoWorkloadTypeArgsDict']
 elif False:
     GetClusterClusterInfoArgsDict: TypeAlias = Mapping[str, Any]
@@ -54538,6 +55240,7 @@ class GetClusterClusterInfoArgs:
                  docker_image: Optional['GetClusterClusterInfoDockerImageArgs'] = None,
                  driver: Optional['GetClusterClusterInfoDriverArgs'] = None,
                  driver_instance_pool_id: Optional[_builtins.str] = None,
+                 driver_node_type_flexibility: Optional['GetClusterClusterInfoDriverNodeTypeFlexibilityArgs'] = None,
                  driver_node_type_id: Optional[_builtins.str] = None,
                  enable_elastic_disk: Optional[_builtins.bool] = None,
                  enable_local_disk_encryption: Optional[_builtins.bool] = None,
@@ -54569,6 +55272,7 @@ class GetClusterClusterInfoArgs:
                  termination_reason: Optional['GetClusterClusterInfoTerminationReasonArgs'] = None,
                  total_initial_remote_disk_size: Optional[_builtins.int] = None,
                  use_ml_runtime: Optional[_builtins.bool] = None,
+                 worker_node_type_flexibility: Optional['GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs'] = None,
                  workload_type: Optional['GetClusterClusterInfoWorkloadTypeArgs'] = None):
         """
         :param _builtins.int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
@@ -54626,6 +55330,8 @@ class GetClusterClusterInfoArgs:
             pulumi.set(__self__, "driver", driver)
         if driver_instance_pool_id is not None:
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
@@ -54688,6 +55394,8 @@ class GetClusterClusterInfoArgs:
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -54870,6 +55578,15 @@ class GetClusterClusterInfoArgs:
     @driver_instance_pool_id.setter
     def driver_instance_pool_id(self, value: Optional[_builtins.str]):
         pulumi.set(self, "driver_instance_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional['GetClusterClusterInfoDriverNodeTypeFlexibilityArgs']:
+        return pulumi.get(self, "driver_node_type_flexibility")
+
+    @driver_node_type_flexibility.setter
+    def driver_node_type_flexibility(self, value: Optional['GetClusterClusterInfoDriverNodeTypeFlexibilityArgs']):
+        pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
@@ -55185,6 +55902,15 @@ class GetClusterClusterInfoArgs:
     @use_ml_runtime.setter
     def use_ml_runtime(self, value: Optional[_builtins.bool]):
         pulumi.set(self, "use_ml_runtime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional['GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs']:
+        return pulumi.get(self, "worker_node_type_flexibility")
+
+    @worker_node_type_flexibility.setter
+    def worker_node_type_flexibility(self, value: Optional['GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs']):
+        pulumi.set(self, "worker_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -55896,6 +56622,29 @@ class GetClusterClusterInfoDriverNodeAwsAttributesArgs:
 
 
 if not MYPY:
+    class GetClusterClusterInfoDriverNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[Sequence[_builtins.str]]
+elif False:
+    GetClusterClusterInfoDriverNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterClusterInfoDriverNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
+
+
+if not MYPY:
     class GetClusterClusterInfoExecutorArgsDict(TypedDict):
         host_private_ip: NotRequired[_builtins.str]
         instance_id: NotRequired[_builtins.str]
@@ -56498,6 +57247,7 @@ if not MYPY:
         Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         """
         docker_image: NotRequired['GetClusterClusterInfoSpecDockerImageArgsDict']
+        driver_node_type_flexibility: NotRequired['GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgsDict']
         gcp_attributes: NotRequired['GetClusterClusterInfoSpecGcpAttributesArgsDict']
         idempotency_token: NotRequired[_builtins.str]
         """
@@ -56547,6 +57297,7 @@ if not MYPY:
         """
         total_initial_remote_disk_size: NotRequired[_builtins.int]
         use_ml_runtime: NotRequired[_builtins.bool]
+        worker_node_type_flexibility: NotRequired['GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgsDict']
         workload_type: NotRequired['GetClusterClusterInfoSpecWorkloadTypeArgsDict']
 elif False:
     GetClusterClusterInfoSpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -56570,6 +57321,7 @@ class GetClusterClusterInfoSpecArgs:
                  custom_tags: Optional[Mapping[str, _builtins.str]] = None,
                  data_security_mode: Optional[_builtins.str] = None,
                  docker_image: Optional['GetClusterClusterInfoSpecDockerImageArgs'] = None,
+                 driver_node_type_flexibility: Optional['GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs'] = None,
                  gcp_attributes: Optional['GetClusterClusterInfoSpecGcpAttributesArgs'] = None,
                  idempotency_token: Optional[_builtins.str] = None,
                  init_scripts: Optional[Sequence['GetClusterClusterInfoSpecInitScriptArgs']] = None,
@@ -56589,6 +57341,7 @@ class GetClusterClusterInfoSpecArgs:
                  ssh_public_keys: Optional[Sequence[_builtins.str]] = None,
                  total_initial_remote_disk_size: Optional[_builtins.int] = None,
                  use_ml_runtime: Optional[_builtins.bool] = None,
+                 worker_node_type_flexibility: Optional['GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs'] = None,
                  workload_type: Optional['GetClusterClusterInfoSpecWorkloadTypeArgs'] = None):
         """
         :param _builtins.str cluster_id: The id of the cluster.
@@ -56637,6 +57390,8 @@ class GetClusterClusterInfoSpecArgs:
             pulumi.set(__self__, "data_security_mode", data_security_mode)
         if docker_image is not None:
             pulumi.set(__self__, "docker_image", docker_image)
+        if driver_node_type_flexibility is not None:
+            pulumi.set(__self__, "driver_node_type_flexibility", driver_node_type_flexibility)
         if gcp_attributes is not None:
             pulumi.set(__self__, "gcp_attributes", gcp_attributes)
         if idempotency_token is not None:
@@ -56675,6 +57430,8 @@ class GetClusterClusterInfoSpecArgs:
             pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
+        if worker_node_type_flexibility is not None:
+            pulumi.set(__self__, "worker_node_type_flexibility", worker_node_type_flexibility)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -56848,6 +57605,15 @@ class GetClusterClusterInfoSpecArgs:
     @docker_image.setter
     def docker_image(self, value: Optional['GetClusterClusterInfoSpecDockerImageArgs']):
         pulumi.set(self, "docker_image", value)
+
+    @_builtins.property
+    @pulumi.getter(name="driverNodeTypeFlexibility")
+    def driver_node_type_flexibility(self) -> Optional['GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs']:
+        return pulumi.get(self, "driver_node_type_flexibility")
+
+    @driver_node_type_flexibility.setter
+    def driver_node_type_flexibility(self, value: Optional['GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs']):
+        pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpAttributes")
@@ -57049,6 +57815,15 @@ class GetClusterClusterInfoSpecArgs:
     @use_ml_runtime.setter
     def use_ml_runtime(self, value: Optional[_builtins.bool]):
         pulumi.set(self, "use_ml_runtime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workerNodeTypeFlexibility")
+    def worker_node_type_flexibility(self) -> Optional['GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs']:
+        return pulumi.get(self, "worker_node_type_flexibility")
+
+    @worker_node_type_flexibility.setter
+    def worker_node_type_flexibility(self, value: Optional['GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs']):
+        pulumi.set(self, "worker_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
@@ -57676,6 +58451,29 @@ class GetClusterClusterInfoSpecDockerImageBasicAuthArgs:
     @username.setter
     def username(self, value: _builtins.str):
         pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[Sequence[_builtins.str]]
+elif False:
+    GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:
@@ -58424,6 +59222,29 @@ class GetClusterClusterInfoSpecProviderConfigArgs:
 
 
 if not MYPY:
+    class GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[Sequence[_builtins.str]]
+elif False:
+    GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
+
+
+if not MYPY:
     class GetClusterClusterInfoSpecWorkloadTypeArgsDict(TypedDict):
         clients: 'GetClusterClusterInfoSpecWorkloadTypeClientsArgsDict'
 elif False:
@@ -58528,6 +59349,29 @@ class GetClusterClusterInfoTerminationReasonArgs:
     @type.setter
     def type(self, value: Optional[_builtins.str]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class GetClusterClusterInfoWorkerNodeTypeFlexibilityArgsDict(TypedDict):
+        alternate_node_type_ids: NotRequired[Sequence[_builtins.str]]
+elif False:
+    GetClusterClusterInfoWorkerNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Optional[Sequence[_builtins.str]] = None):
+        if alternate_node_type_ids is not None:
+            pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 if not MYPY:

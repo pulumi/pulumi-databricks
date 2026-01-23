@@ -18,13 +18,13 @@ public final class GetPostgresProjectsProject {
      */
     private String createTime;
     /**
-     * @return (string) - The resource name of the project.
-     * Format: projects/{project_id}
+     * @return (string) - The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      * 
      */
     private String name;
     /**
-     * @return (ProjectSpec) - The desired state of a Project
+     * @return (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      * 
      */
     private GetPostgresProjectsProjectSpec spec;
@@ -34,7 +34,7 @@ public final class GetPostgresProjectsProject {
      */
     private GetPostgresProjectsProjectStatus status;
     /**
-     * @return (string) - System generated unique ID for the project
+     * @return (string) - System-generated unique ID for the project
      * 
      */
     private String uid;
@@ -53,15 +53,15 @@ public final class GetPostgresProjectsProject {
         return this.createTime;
     }
     /**
-     * @return (string) - The resource name of the project.
-     * Format: projects/{project_id}
+     * @return (string) - The resource name of the project. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}`
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return (ProjectSpec) - The desired state of a Project
+     * @return (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      * 
      */
     public GetPostgresProjectsProjectSpec spec() {
@@ -75,7 +75,7 @@ public final class GetPostgresProjectsProject {
         return this.status;
     }
     /**
-     * @return (string) - System generated unique ID for the project
+     * @return (string) - System-generated unique ID for the project
      * 
      */
     public String uid() {

@@ -23,6 +23,11 @@ public final class GetPostgresBranchStatus {
      */
     private Boolean default_;
     /**
+     * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     * 
+     */
+    private String expireTime;
+    /**
      * @return (boolean) - Whether the branch is protected
      * 
      */
@@ -73,6 +78,13 @@ public final class GetPostgresBranchStatus {
      */
     public Boolean default_() {
         return this.default_;
+    }
+    /**
+     * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     * 
+     */
+    public String expireTime() {
+        return this.expireTime;
     }
     /**
      * @return (boolean) - Whether the branch is protected
@@ -136,6 +148,7 @@ public final class GetPostgresBranchStatus {
     public static final class Builder {
         private String currentState;
         private Boolean default_;
+        private String expireTime;
         private Boolean isProtected;
         private Integer logicalSizeBytes;
         private String pendingState;
@@ -148,6 +161,7 @@ public final class GetPostgresBranchStatus {
     	      Objects.requireNonNull(defaults);
     	      this.currentState = defaults.currentState;
     	      this.default_ = defaults.default_;
+    	      this.expireTime = defaults.expireTime;
     	      this.isProtected = defaults.isProtected;
     	      this.logicalSizeBytes = defaults.logicalSizeBytes;
     	      this.pendingState = defaults.pendingState;
@@ -171,6 +185,14 @@ public final class GetPostgresBranchStatus {
               throw new MissingRequiredPropertyException("GetPostgresBranchStatus", "default_");
             }
             this.default_ = default_;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expireTime(String expireTime) {
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetPostgresBranchStatus", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
@@ -233,6 +255,7 @@ public final class GetPostgresBranchStatus {
             final var _resultValue = new GetPostgresBranchStatus();
             _resultValue.currentState = currentState;
             _resultValue.default_ = default_;
+            _resultValue.expireTime = expireTime;
             _resultValue.isProtected = isProtected;
             _resultValue.logicalSizeBytes = logicalSizeBytes;
             _resultValue.pendingState = pendingState;

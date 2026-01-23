@@ -33,20 +33,22 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID to use for the Endpoint, which will become the final component of
-     * the endpoint&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
      * 
      */
     @Import(name="endpointId")
     private @Nullable Output<String> endpointId;
 
     /**
-     * @return The ID to use for the Endpoint, which will become the final component of
-     * the endpoint&#39;s resource name.
-     * 
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
      * 
      */
     public Optional<Output<String>> endpointId() {
@@ -54,16 +56,16 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,7 +73,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The branch containing this endpoint.
+     * The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
@@ -79,7 +81,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> parent;
 
     /**
-     * @return The branch containing this endpoint.
+     * @return The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
@@ -88,14 +90,14 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The desired state of an Endpoint
+     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresEndpointSpecArgs> spec;
 
     /**
-     * @return The desired state of an Endpoint
+     * @return The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
     public Optional<Output<PostgresEndpointSpecArgs>> spec() {
@@ -103,14 +105,14 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (EndpointStatus) - The current status of an Endpoint
+     * (EndpointStatus) - Current operational status of the compute endpoint
      * 
      */
     @Import(name="status")
     private @Nullable Output<PostgresEndpointStatusArgs> status;
 
     /**
-     * @return (EndpointStatus) - The current status of an Endpoint
+     * @return (EndpointStatus) - Current operational status of the compute endpoint
      * 
      */
     public Optional<Output<PostgresEndpointStatusArgs>> status() {
@@ -118,14 +120,14 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (string) - System generated unique ID for the endpoint
+     * (string) - System-generated unique ID for the endpoint
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return (string) - System generated unique ID for the endpoint
+     * @return (string) - System-generated unique ID for the endpoint
      * 
      */
     public Optional<Output<String>> uid() {
@@ -200,10 +202,11 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endpointId The ID to use for the Endpoint, which will become the final component of
-         * the endpoint&#39;s resource name.
-         * 
-         * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+         * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+         * Examples:
+         * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+         * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
          * 
          * @return builder
          * 
@@ -214,10 +217,11 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endpointId The ID to use for the Endpoint, which will become the final component of
-         * the endpoint&#39;s resource name.
-         * 
-         * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+         * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+         * Examples:
+         * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+         * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
          * 
          * @return builder
          * 
@@ -227,8 +231,8 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name (string) - The resource name of the endpoint.
-         * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+         * @param name (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+         * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
          * 
          * @return builder
          * 
@@ -239,8 +243,8 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name (string) - The resource name of the endpoint.
-         * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+         * @param name (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+         * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
          * 
          * @return builder
          * 
@@ -250,7 +254,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parent The branch containing this endpoint.
+         * @param parent The branch containing this endpoint (API resource hierarchy).
          * Format: projects/{project_id}/branches/{branch_id}
          * 
          * @return builder
@@ -262,7 +266,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parent The branch containing this endpoint.
+         * @param parent The branch containing this endpoint (API resource hierarchy).
          * Format: projects/{project_id}/branches/{branch_id}
          * 
          * @return builder
@@ -273,7 +277,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spec The desired state of an Endpoint
+         * @param spec The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
          * 
          * @return builder
          * 
@@ -284,7 +288,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spec The desired state of an Endpoint
+         * @param spec The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
          * 
          * @return builder
          * 
@@ -294,7 +298,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status (EndpointStatus) - The current status of an Endpoint
+         * @param status (EndpointStatus) - Current operational status of the compute endpoint
          * 
          * @return builder
          * 
@@ -305,7 +309,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status (EndpointStatus) - The current status of an Endpoint
+         * @param status (EndpointStatus) - Current operational status of the compute endpoint
          * 
          * @return builder
          * 
@@ -315,7 +319,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param uid (string) - System generated unique ID for the endpoint
+         * @param uid (string) - System-generated unique ID for the endpoint
          * 
          * @return builder
          * 
@@ -326,7 +330,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param uid (string) - System generated unique ID for the endpoint
+         * @param uid (string) - System-generated unique ID for the endpoint
          * 
          * @return builder
          * 

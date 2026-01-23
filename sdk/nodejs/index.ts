@@ -20,6 +20,11 @@ export type AccountNetworkPolicy = import("./accountNetworkPolicy").AccountNetwo
 export const AccountNetworkPolicy: typeof import("./accountNetworkPolicy").AccountNetworkPolicy = null as any;
 utilities.lazyLoad(exports, ["AccountNetworkPolicy"], () => require("./accountNetworkPolicy"));
 
+export { AccountSettingUserPreferenceV2Args, AccountSettingUserPreferenceV2State } from "./accountSettingUserPreferenceV2";
+export type AccountSettingUserPreferenceV2 = import("./accountSettingUserPreferenceV2").AccountSettingUserPreferenceV2;
+export const AccountSettingUserPreferenceV2: typeof import("./accountSettingUserPreferenceV2").AccountSettingUserPreferenceV2 = null as any;
+utilities.lazyLoad(exports, ["AccountSettingUserPreferenceV2"], () => require("./accountSettingUserPreferenceV2"));
+
 export { AccountSettingV2Args, AccountSettingV2State } from "./accountSettingV2";
 export type AccountSettingV2 = import("./accountSettingV2").AccountSettingV2;
 export const AccountSettingV2: typeof import("./accountSettingV2").AccountSettingV2 = null as any;
@@ -239,6 +244,11 @@ export { GetAccountNetworkPolicyArgs, GetAccountNetworkPolicyResult, GetAccountN
 export const getAccountNetworkPolicy: typeof import("./getAccountNetworkPolicy").getAccountNetworkPolicy = null as any;
 export const getAccountNetworkPolicyOutput: typeof import("./getAccountNetworkPolicy").getAccountNetworkPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountNetworkPolicy","getAccountNetworkPolicyOutput"], () => require("./getAccountNetworkPolicy"));
+
+export { GetAccountSettingUserPreferenceV2Args, GetAccountSettingUserPreferenceV2Result, GetAccountSettingUserPreferenceV2OutputArgs } from "./getAccountSettingUserPreferenceV2";
+export const getAccountSettingUserPreferenceV2: typeof import("./getAccountSettingUserPreferenceV2").getAccountSettingUserPreferenceV2 = null as any;
+export const getAccountSettingUserPreferenceV2Output: typeof import("./getAccountSettingUserPreferenceV2").getAccountSettingUserPreferenceV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountSettingUserPreferenceV2","getAccountSettingUserPreferenceV2Output"], () => require("./getAccountSettingUserPreferenceV2"));
 
 export { GetAccountSettingV2Args, GetAccountSettingV2Result, GetAccountSettingV2OutputArgs } from "./getAccountSettingV2";
 export const getAccountSettingV2: typeof import("./getAccountSettingV2").getAccountSettingV2 = null as any;
@@ -780,6 +790,16 @@ export const getVolumes: typeof import("./getVolumes").getVolumes = null as any;
 export const getVolumesOutput: typeof import("./getVolumes").getVolumesOutput = null as any;
 utilities.lazyLoad(exports, ["getVolumes","getVolumesOutput"], () => require("./getVolumes"));
 
+export { GetWarehousesDefaultWarehouseOverrideArgs, GetWarehousesDefaultWarehouseOverrideResult, GetWarehousesDefaultWarehouseOverrideOutputArgs } from "./getWarehousesDefaultWarehouseOverride";
+export const getWarehousesDefaultWarehouseOverride: typeof import("./getWarehousesDefaultWarehouseOverride").getWarehousesDefaultWarehouseOverride = null as any;
+export const getWarehousesDefaultWarehouseOverrideOutput: typeof import("./getWarehousesDefaultWarehouseOverride").getWarehousesDefaultWarehouseOverrideOutput = null as any;
+utilities.lazyLoad(exports, ["getWarehousesDefaultWarehouseOverride","getWarehousesDefaultWarehouseOverrideOutput"], () => require("./getWarehousesDefaultWarehouseOverride"));
+
+export { GetWarehousesDefaultWarehouseOverridesArgs, GetWarehousesDefaultWarehouseOverridesResult, GetWarehousesDefaultWarehouseOverridesOutputArgs } from "./getWarehousesDefaultWarehouseOverrides";
+export const getWarehousesDefaultWarehouseOverrides: typeof import("./getWarehousesDefaultWarehouseOverrides").getWarehousesDefaultWarehouseOverrides = null as any;
+export const getWarehousesDefaultWarehouseOverridesOutput: typeof import("./getWarehousesDefaultWarehouseOverrides").getWarehousesDefaultWarehouseOverridesOutput = null as any;
+utilities.lazyLoad(exports, ["getWarehousesDefaultWarehouseOverrides","getWarehousesDefaultWarehouseOverridesOutput"], () => require("./getWarehousesDefaultWarehouseOverrides"));
+
 export { GetWorkspaceEntityTagAssignmentArgs, GetWorkspaceEntityTagAssignmentResult, GetWorkspaceEntityTagAssignmentOutputArgs } from "./getWorkspaceEntityTagAssignment";
 export const getWorkspaceEntityTagAssignment: typeof import("./getWorkspaceEntityTagAssignment").getWorkspaceEntityTagAssignment = null as any;
 export const getWorkspaceEntityTagAssignmentOutput: typeof import("./getWorkspaceEntityTagAssignment").getWorkspaceEntityTagAssignmentOutput = null as any;
@@ -1238,6 +1258,11 @@ export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
 utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 
+export { WarehousesDefaultWarehouseOverrideArgs, WarehousesDefaultWarehouseOverrideState } from "./warehousesDefaultWarehouseOverride";
+export type WarehousesDefaultWarehouseOverride = import("./warehousesDefaultWarehouseOverride").WarehousesDefaultWarehouseOverride;
+export const WarehousesDefaultWarehouseOverride: typeof import("./warehousesDefaultWarehouseOverride").WarehousesDefaultWarehouseOverride = null as any;
+utilities.lazyLoad(exports, ["WarehousesDefaultWarehouseOverride"], () => require("./warehousesDefaultWarehouseOverride"));
+
 export { WorkspaceBindingArgs, WorkspaceBindingState } from "./workspaceBinding";
 export type WorkspaceBinding = import("./workspaceBinding").WorkspaceBinding;
 export const WorkspaceBinding: typeof import("./workspaceBinding").WorkspaceBinding = null as any;
@@ -1288,6 +1313,8 @@ const _module = {
                 return new AccountFederationPolicy(name, <any>undefined, { urn })
             case "databricks:index/accountNetworkPolicy:AccountNetworkPolicy":
                 return new AccountNetworkPolicy(name, <any>undefined, { urn })
+            case "databricks:index/accountSettingUserPreferenceV2:AccountSettingUserPreferenceV2":
+                return new AccountSettingUserPreferenceV2(name, <any>undefined, { urn })
             case "databricks:index/accountSettingV2:AccountSettingV2":
                 return new AccountSettingV2(name, <any>undefined, { urn })
             case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
@@ -1540,6 +1567,8 @@ const _module = {
                 return new VectorSearchIndex(name, <any>undefined, { urn })
             case "databricks:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
+            case "databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride":
+                return new WarehousesDefaultWarehouseOverride(name, <any>undefined, { urn })
             case "databricks:index/workspaceBinding:WorkspaceBinding":
                 return new WorkspaceBinding(name, <any>undefined, { urn })
             case "databricks:index/workspaceConf:WorkspaceConf":
@@ -1560,6 +1589,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountFederationPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountNetworkPolicy", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/accountSettingUserPreferenceV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountSettingV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingAccessPolicySetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingApprovedDomainsSetting", _module)
@@ -1686,6 +1716,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/userRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/vectorSearchEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/vectorSearchIndex", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/volume", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/warehousesDefaultWarehouseOverride", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceEntityTagAssignment", _module)

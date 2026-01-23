@@ -15,14 +15,14 @@ public final class GetPostgresProjectsPlainArgs extends com.pulumi.resources.Inv
     public static final GetPostgresProjectsPlainArgs Empty = new GetPostgresProjectsPlainArgs();
 
     /**
-     * Upper bound for items returned
+     * Upper bound for items returned. Cannot be negative
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return Upper bound for items returned
+     * @return Upper bound for items returned. Cannot be negative
      * 
      */
     public Optional<Integer> pageSize() {
@@ -54,7 +54,7 @@ public final class GetPostgresProjectsPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param pageSize Upper bound for items returned
+         * @param pageSize Upper bound for items returned. Cannot be negative
          * 
          * @return builder
          * 

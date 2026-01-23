@@ -80,7 +80,8 @@ type Cluster struct {
 	DefaultTags pulumi.StringMapOutput      `pulumi:"defaultTags"`
 	DockerImage ClusterDockerImagePtrOutput `pulumi:"dockerImage"`
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
-	DriverInstancePoolId pulumi.StringOutput `pulumi:"driverInstancePoolId"`
+	DriverInstancePoolId      pulumi.StringOutput                       `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeFlexibility ClusterDriverNodeTypeFlexibilityPtrOutput `pulumi:"driverNodeTypeFlexibility"`
 	// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
 	DriverNodeTypeId pulumi.StringOutput `pulumi:"driverNodeTypeId"`
 	// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
@@ -130,8 +131,9 @@ type Cluster struct {
 	TotalInitialRemoteDiskSize pulumi.IntPtrOutput `pulumi:"totalInitialRemoteDiskSize"`
 	Url                        pulumi.StringOutput `pulumi:"url"`
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
-	UseMlRuntime pulumi.BoolPtrOutput         `pulumi:"useMlRuntime"`
-	WorkloadType ClusterWorkloadTypePtrOutput `pulumi:"workloadType"`
+	UseMlRuntime              pulumi.BoolPtrOutput                      `pulumi:"useMlRuntime"`
+	WorkerNodeTypeFlexibility ClusterWorkerNodeTypeFlexibilityPtrOutput `pulumi:"workerNodeTypeFlexibility"`
+	WorkloadType              ClusterWorkloadTypePtrOutput              `pulumi:"workloadType"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -223,7 +225,8 @@ type clusterState struct {
 	DefaultTags map[string]string   `pulumi:"defaultTags"`
 	DockerImage *ClusterDockerImage `pulumi:"dockerImage"`
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
-	DriverInstancePoolId *string `pulumi:"driverInstancePoolId"`
+	DriverInstancePoolId      *string                           `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeFlexibility *ClusterDriverNodeTypeFlexibility `pulumi:"driverNodeTypeFlexibility"`
 	// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
 	DriverNodeTypeId *string `pulumi:"driverNodeTypeId"`
 	// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
@@ -273,8 +276,9 @@ type clusterState struct {
 	TotalInitialRemoteDiskSize *int    `pulumi:"totalInitialRemoteDiskSize"`
 	Url                        *string `pulumi:"url"`
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
-	UseMlRuntime *bool                `pulumi:"useMlRuntime"`
-	WorkloadType *ClusterWorkloadType `pulumi:"workloadType"`
+	UseMlRuntime              *bool                             `pulumi:"useMlRuntime"`
+	WorkerNodeTypeFlexibility *ClusterWorkerNodeTypeFlexibility `pulumi:"workerNodeTypeFlexibility"`
+	WorkloadType              *ClusterWorkloadType              `pulumi:"workloadType"`
 }
 
 type ClusterState struct {
@@ -334,7 +338,8 @@ type ClusterState struct {
 	DefaultTags pulumi.StringMapInput
 	DockerImage ClusterDockerImagePtrInput
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
-	DriverInstancePoolId pulumi.StringPtrInput
+	DriverInstancePoolId      pulumi.StringPtrInput
+	DriverNodeTypeFlexibility ClusterDriverNodeTypeFlexibilityPtrInput
 	// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
 	DriverNodeTypeId pulumi.StringPtrInput
 	// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
@@ -384,8 +389,9 @@ type ClusterState struct {
 	TotalInitialRemoteDiskSize pulumi.IntPtrInput
 	Url                        pulumi.StringPtrInput
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
-	UseMlRuntime pulumi.BoolPtrInput
-	WorkloadType ClusterWorkloadTypePtrInput
+	UseMlRuntime              pulumi.BoolPtrInput
+	WorkerNodeTypeFlexibility ClusterWorkerNodeTypeFlexibilityPtrInput
+	WorkloadType              ClusterWorkloadTypePtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -446,7 +452,8 @@ type clusterArgs struct {
 	DataSecurityMode *string             `pulumi:"dataSecurityMode"`
 	DockerImage      *ClusterDockerImage `pulumi:"dockerImage"`
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
-	DriverInstancePoolId *string `pulumi:"driverInstancePoolId"`
+	DriverInstancePoolId      *string                           `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeFlexibility *ClusterDriverNodeTypeFlexibility `pulumi:"driverNodeTypeFlexibility"`
 	// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
 	DriverNodeTypeId *string `pulumi:"driverNodeTypeId"`
 	// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
@@ -493,8 +500,9 @@ type clusterArgs struct {
 	SshPublicKeys              []string `pulumi:"sshPublicKeys"`
 	TotalInitialRemoteDiskSize *int     `pulumi:"totalInitialRemoteDiskSize"`
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
-	UseMlRuntime *bool                `pulumi:"useMlRuntime"`
-	WorkloadType *ClusterWorkloadType `pulumi:"workloadType"`
+	UseMlRuntime              *bool                             `pulumi:"useMlRuntime"`
+	WorkerNodeTypeFlexibility *ClusterWorkerNodeTypeFlexibility `pulumi:"workerNodeTypeFlexibility"`
+	WorkloadType              *ClusterWorkloadType              `pulumi:"workloadType"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -552,7 +560,8 @@ type ClusterArgs struct {
 	DataSecurityMode pulumi.StringPtrInput
 	DockerImage      ClusterDockerImagePtrInput
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
-	DriverInstancePoolId pulumi.StringPtrInput
+	DriverInstancePoolId      pulumi.StringPtrInput
+	DriverNodeTypeFlexibility ClusterDriverNodeTypeFlexibilityPtrInput
 	// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
 	DriverNodeTypeId pulumi.StringPtrInput
 	// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
@@ -599,8 +608,9 @@ type ClusterArgs struct {
 	SshPublicKeys              pulumi.StringArrayInput
 	TotalInitialRemoteDiskSize pulumi.IntPtrInput
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
-	UseMlRuntime pulumi.BoolPtrInput
-	WorkloadType ClusterWorkloadTypePtrInput
+	UseMlRuntime              pulumi.BoolPtrInput
+	WorkerNodeTypeFlexibility ClusterWorkerNodeTypeFlexibilityPtrInput
+	WorkloadType              ClusterWorkloadTypePtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -792,6 +802,10 @@ func (o ClusterOutput) DriverInstancePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DriverInstancePoolId }).(pulumi.StringOutput)
 }
 
+func (o ClusterOutput) DriverNodeTypeFlexibility() ClusterDriverNodeTypeFlexibilityPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterDriverNodeTypeFlexibilityPtrOutput { return v.DriverNodeTypeFlexibility }).(ClusterDriverNodeTypeFlexibilityPtrOutput)
+}
+
 // The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
 func (o ClusterOutput) DriverNodeTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DriverNodeTypeId }).(pulumi.StringOutput)
@@ -921,6 +935,10 @@ func (o ClusterOutput) Url() pulumi.StringOutput {
 // Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 func (o ClusterOutput) UseMlRuntime() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.UseMlRuntime }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterOutput) WorkerNodeTypeFlexibility() ClusterWorkerNodeTypeFlexibilityPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterWorkerNodeTypeFlexibilityPtrOutput { return v.WorkerNodeTypeFlexibility }).(ClusterWorkerNodeTypeFlexibilityPtrOutput)
 }
 
 func (o ClusterOutput) WorkloadType() ClusterWorkloadTypePtrOutput {

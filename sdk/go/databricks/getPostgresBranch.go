@@ -11,7 +11,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source retrieves a single Postgres branch.
+//
+// ## Example Usage
+//
+// ### Retrieve Branch by Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.LookupPostgresBranch(ctx, &databricks.LookupPostgresBranchArgs{
+//				Name: "projects/my-project/branches/dev-branch",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("branchIsProtected", this.Status.IsProtected)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPostgresBranch(ctx *pulumi.Context, args *LookupPostgresBranchArgs, opts ...pulumi.InvokeOption) (*LookupPostgresBranchResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresBranchResult
@@ -24,8 +55,8 @@ func LookupPostgresBranch(ctx *pulumi.Context, args *LookupPostgresBranchArgs, o
 
 // A collection of arguments for invoking getPostgresBranch.
 type LookupPostgresBranchArgs struct {
-	// The resource name of the branch.
-	// Format: projects/{project_id}/branches/{branch_id}
+	// The resource name of the branch. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}/branches/{branch_id}`
 	Name string `pulumi:"name"`
 }
 
@@ -35,17 +66,17 @@ type LookupPostgresBranchResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (string) - The resource name of the branch.
-	// Format: projects/{project_id}/branches/{branch_id}
+	// (string) - The resource name of the branch. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}/branches/{branch_id}`
 	Name string `pulumi:"name"`
-	// (string) - The project containing this branch.
+	// (string) - The project containing this branch (API resource hierarchy).
 	// Format: projects/{project_id}
 	Parent string `pulumi:"parent"`
-	// (BranchSpec) - The desired state of a Branch
+	// (BranchSpec) - The spec contains the branch configuration
 	Spec GetPostgresBranchSpec `pulumi:"spec"`
 	// (BranchStatus) - The current status of a Branch
 	Status GetPostgresBranchStatus `pulumi:"status"`
-	// (string) - System generated unique ID for the branch
+	// (string) - System-generated unique ID for the branch
 	Uid string `pulumi:"uid"`
 	// (string) - A timestamp indicating when the branch was last updated
 	UpdateTime string `pulumi:"updateTime"`
@@ -62,8 +93,8 @@ func LookupPostgresBranchOutput(ctx *pulumi.Context, args LookupPostgresBranchOu
 
 // A collection of arguments for invoking getPostgresBranch.
 type LookupPostgresBranchOutputArgs struct {
-	// The resource name of the branch.
-	// Format: projects/{project_id}/branches/{branch_id}
+	// The resource name of the branch. This field is output-only and constructed by the system.
+	// Format: `projects/{project_id}/branches/{branch_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -96,19 +127,19 @@ func (o LookupPostgresBranchResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the branch.
-// Format: projects/{project_id}/branches/{branch_id}
+// (string) - The resource name of the branch. This field is output-only and constructed by the system.
+// Format: `projects/{project_id}/branches/{branch_id}`
 func (o LookupPostgresBranchResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - The project containing this branch.
+// (string) - The project containing this branch (API resource hierarchy).
 // Format: projects/{project_id}
 func (o LookupPostgresBranchResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.Parent }).(pulumi.StringOutput)
 }
 
-// (BranchSpec) - The desired state of a Branch
+// (BranchSpec) - The spec contains the branch configuration
 func (o LookupPostgresBranchResultOutput) Spec() GetPostgresBranchSpecOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) GetPostgresBranchSpec { return v.Spec }).(GetPostgresBranchSpecOutput)
 }
@@ -118,7 +149,7 @@ func (o LookupPostgresBranchResultOutput) Status() GetPostgresBranchStatusOutput
 	return o.ApplyT(func(v LookupPostgresBranchResult) GetPostgresBranchStatus { return v.Status }).(GetPostgresBranchStatusOutput)
 }
 
-// (string) - System generated unique ID for the branch
+// (string) - System-generated unique ID for the branch
 func (o LookupPostgresBranchResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.Uid }).(pulumi.StringOutput)
 }

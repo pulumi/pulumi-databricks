@@ -7,7 +7,153 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * ## Example Usage
+ *
+ * ### Basic Read-Write Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresProject("this", {
+ *     projectId: "my-project",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "My Project",
+ *     },
+ * });
+ * const dev = new databricks.PostgresBranch("dev", {
+ *     branchId: "dev-branch",
+ *     parent: _this.name,
+ *     spec: {
+ *         noExpiry: true,
+ *     },
+ * });
+ * const primary = new databricks.PostgresEndpoint("primary", {
+ *     endpointId: "primary",
+ *     parent: dev.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *     },
+ * });
+ * ```
+ *
+ * ### Read-Only Endpoint with Autoscaling
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const readReplica = new databricks.PostgresEndpoint("read_replica", {
+ *     endpointId: "read-replica-1",
+ *     parent: dev.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_ONLY",
+ *         autoscalingLimitMinCu: 0.5,
+ *         autoscalingLimitMaxCu: 4,
+ *     },
+ * });
+ * ```
+ *
+ * ### Endpoint with Custom Autoscaling and Suspension
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const analytics = new databricks.PostgresEndpoint("analytics", {
+ *     endpointId: "analytics",
+ *     parent: dev.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_ONLY",
+ *         autoscalingLimitMinCu: 1,
+ *         autoscalingLimitMaxCu: 8,
+ *         suspendTimeoutDuration: "600s",
+ *     },
+ * });
+ * ```
+ *
+ * ### Disabled Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const maintenance = new databricks.PostgresEndpoint("maintenance", {
+ *     endpointId: "primary",
+ *     parent: dev.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *         disabled: true,
+ *     },
+ * });
+ * ```
+ *
+ * ### Endpoint with No Suspension
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const alwaysOn = new databricks.PostgresEndpoint("always_on", {
+ *     endpointId: "always-on",
+ *     parent: dev.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *         noSuspension: true,
+ *     },
+ * });
+ * ```
+ *
+ * ### Complete Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const prod = new databricks.PostgresProject("prod", {
+ *     projectId: "production",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "Production Workloads",
+ *         historyRetentionDuration: "2592000s",
+ *         defaultEndpointSettings: {
+ *             autoscalingLimitMinCu: 1,
+ *             autoscalingLimitMaxCu: 8,
+ *             suspendTimeoutDuration: "300s",
+ *         },
+ *     },
+ * });
+ * const main = new databricks.PostgresBranch("main", {
+ *     branchId: "main",
+ *     parent: prod.name,
+ *     spec: {
+ *         noExpiry: true,
+ *     },
+ * });
+ * const primary = new databricks.PostgresEndpoint("primary", {
+ *     endpointId: "primary",
+ *     parent: main.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *         autoscalingLimitMinCu: 1,
+ *         autoscalingLimitMaxCu: 9,
+ *         noSuspension: true,
+ *     },
+ * });
+ * const readReplica = new databricks.PostgresEndpoint("read_replica", {
+ *     endpointId: "read-replica",
+ *     parent: main.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_ONLY",
+ *         autoscalingLimitMinCu: 0.5,
+ *         autoscalingLimitMaxCu: 8,
+ *         suspendTimeoutDuration: "600s",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -62,32 +208,33 @@ export class PostgresEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The ID to use for the Endpoint, which will become the final component of
-     * the endpoint's resource name.
-     *
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
      */
     declare public readonly endpointId: pulumi.Output<string>;
     /**
-     * (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The branch containing this endpoint.
+     * The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * The desired state of an Endpoint
+     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresEndpointSpec>;
     /**
-     * (EndpointStatus) - The current status of an Endpoint
+     * (EndpointStatus) - Current operational status of the compute endpoint
      */
     declare public /*out*/ readonly status: pulumi.Output<outputs.PostgresEndpointStatus>;
     /**
-     * (string) - System generated unique ID for the endpoint
+     * (string) - System-generated unique ID for the endpoint
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
@@ -147,32 +294,33 @@ export interface PostgresEndpointState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The ID to use for the Endpoint, which will become the final component of
-     * the endpoint's resource name.
-     *
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
      */
     endpointId?: pulumi.Input<string>;
     /**
-     * (string) - The resource name of the endpoint.
-     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     * (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
+     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
      */
     name?: pulumi.Input<string>;
     /**
-     * The branch containing this endpoint.
+     * The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      */
     parent?: pulumi.Input<string>;
     /**
-     * The desired state of an Endpoint
+     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     spec?: pulumi.Input<inputs.PostgresEndpointSpec>;
     /**
-     * (EndpointStatus) - The current status of an Endpoint
+     * (EndpointStatus) - Current operational status of the compute endpoint
      */
     status?: pulumi.Input<inputs.PostgresEndpointStatus>;
     /**
-     * (string) - System generated unique ID for the endpoint
+     * (string) - System-generated unique ID for the endpoint
      */
     uid?: pulumi.Input<string>;
     /**
@@ -186,19 +334,20 @@ export interface PostgresEndpointState {
  */
 export interface PostgresEndpointArgs {
     /**
-     * The ID to use for the Endpoint, which will become the final component of
-     * the endpoint's resource name.
-     *
-     * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
+     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
+     * Examples:
+     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
+     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
      */
     endpointId: pulumi.Input<string>;
     /**
-     * The branch containing this endpoint.
+     * The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      */
     parent: pulumi.Input<string>;
     /**
-     * The desired state of an Endpoint
+     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     spec?: pulumi.Input<inputs.PostgresEndpointSpec>;
 }

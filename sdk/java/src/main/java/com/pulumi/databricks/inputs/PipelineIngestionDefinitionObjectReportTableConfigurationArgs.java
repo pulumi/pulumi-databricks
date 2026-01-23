@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfigArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgs;
 import java.lang.Boolean;
@@ -18,6 +19,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionObjectReportTableConfigurationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionObjectReportTableConfigurationArgs Empty = new PipelineIngestionDefinitionObjectReportTableConfigurationArgs();
+
+    @Import(name="autoFullRefreshPolicy")
+    private @Nullable Output<PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs> autoFullRefreshPolicy;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs>> autoFullRefreshPolicy() {
+        return Optional.ofNullable(this.autoFullRefreshPolicy);
+    }
 
     @Import(name="excludeColumns")
     private @Nullable Output<List<String>> excludeColumns;
@@ -85,6 +93,7 @@ public final class PipelineIngestionDefinitionObjectReportTableConfigurationArgs
     private PipelineIngestionDefinitionObjectReportTableConfigurationArgs() {}
 
     private PipelineIngestionDefinitionObjectReportTableConfigurationArgs(PipelineIngestionDefinitionObjectReportTableConfigurationArgs $) {
+        this.autoFullRefreshPolicy = $.autoFullRefreshPolicy;
         this.excludeColumns = $.excludeColumns;
         this.includeColumns = $.includeColumns;
         this.primaryKeys = $.primaryKeys;
@@ -112,6 +121,15 @@ public final class PipelineIngestionDefinitionObjectReportTableConfigurationArgs
 
         public Builder(PipelineIngestionDefinitionObjectReportTableConfigurationArgs defaults) {
             $ = new PipelineIngestionDefinitionObjectReportTableConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder autoFullRefreshPolicy(@Nullable Output<PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs> autoFullRefreshPolicy) {
+            $.autoFullRefreshPolicy = autoFullRefreshPolicy;
+            return this;
+        }
+
+        public Builder autoFullRefreshPolicy(PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs autoFullRefreshPolicy) {
+            return autoFullRefreshPolicy(Output.of(autoFullRefreshPolicy));
         }
 
         public Builder excludeColumns(@Nullable Output<List<String>> excludeColumns) {

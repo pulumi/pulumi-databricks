@@ -5,7 +5,6 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresProjectSpecDefaultEndpointSettings;
-import com.pulumi.databricks.outputs.GetPostgresProjectSpecSettings;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -34,11 +33,6 @@ public final class GetPostgresProjectSpec {
      * 
      */
     private @Nullable Integer pgVersion;
-    /**
-     * @return (ProjectSettings) - The effective project settings
-     * 
-     */
-    private @Nullable GetPostgresProjectSpecSettings settings;
 
     private GetPostgresProjectSpec() {}
     /**
@@ -69,13 +63,6 @@ public final class GetPostgresProjectSpec {
     public Optional<Integer> pgVersion() {
         return Optional.ofNullable(this.pgVersion);
     }
-    /**
-     * @return (ProjectSettings) - The effective project settings
-     * 
-     */
-    public Optional<GetPostgresProjectSpecSettings> settings() {
-        return Optional.ofNullable(this.settings);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -90,7 +77,6 @@ public final class GetPostgresProjectSpec {
         private @Nullable String displayName;
         private @Nullable String historyRetentionDuration;
         private @Nullable Integer pgVersion;
-        private @Nullable GetPostgresProjectSpecSettings settings;
         public Builder() {}
         public Builder(GetPostgresProjectSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,7 +84,6 @@ public final class GetPostgresProjectSpec {
     	      this.displayName = defaults.displayName;
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
     	      this.pgVersion = defaults.pgVersion;
-    	      this.settings = defaults.settings;
         }
 
         @CustomType.Setter
@@ -125,19 +110,12 @@ public final class GetPostgresProjectSpec {
             this.pgVersion = pgVersion;
             return this;
         }
-        @CustomType.Setter
-        public Builder settings(@Nullable GetPostgresProjectSpecSettings settings) {
-
-            this.settings = settings;
-            return this;
-        }
         public GetPostgresProjectSpec build() {
             final var _resultValue = new GetPostgresProjectSpec();
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;
             _resultValue.displayName = displayName;
             _resultValue.historyRetentionDuration = historyRetentionDuration;
             _resultValue.pgVersion = pgVersion;
-            _resultValue.settings = settings;
             return _resultValue;
         }
     }

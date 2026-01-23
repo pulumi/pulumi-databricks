@@ -223,6 +223,12 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> personalAccessToken() {
         return Codegen.optional(this.personalAccessToken);
     }
+    @Export(name="principalId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> principalId;
+
+    public Output<Optional<String>> principalId() {
+        return Codegen.optional(this.principalId);
+    }
 
     /**
      *

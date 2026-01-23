@@ -147,6 +147,22 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     enforcementMode?: pulumi.Input<string>;
 }
 
+export interface AccountSettingUserPreferenceV2BooleanVal {
+    value?: pulumi.Input<boolean>;
+}
+
+export interface AccountSettingUserPreferenceV2EffectiveBooleanVal {
+    value?: pulumi.Input<boolean>;
+}
+
+export interface AccountSettingUserPreferenceV2EffectiveStringVal {
+    value?: pulumi.Input<string>;
+}
+
+export interface AccountSettingUserPreferenceV2StringVal {
+    value?: pulumi.Input<string>;
+}
+
 export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
      * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
@@ -1227,6 +1243,10 @@ export interface ClusterDockerImageBasicAuth {
     username: pulumi.Input<string>;
 }
 
+export interface ClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ClusterGcpAttributes {
     /**
      * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
@@ -1444,6 +1464,10 @@ export interface ClusterProviderConfig {
      * ```
      */
     workspaceId: pulumi.Input<string>;
+}
+
+export interface ClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ClusterWorkloadType {
@@ -2717,6 +2741,7 @@ export interface GetClusterClusterInfo {
      * similar to `instancePoolId`, but for driver node.
      */
     driverInstancePoolId?: string;
+    driverNodeTypeFlexibility?: inputs.GetClusterClusterInfoDriverNodeTypeFlexibility;
     /**
      * The node type of the Spark driver.
      */
@@ -2784,6 +2809,7 @@ export interface GetClusterClusterInfo {
     terminationReason?: inputs.GetClusterClusterInfoTerminationReason;
     totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
+    workerNodeTypeFlexibility?: inputs.GetClusterClusterInfoWorkerNodeTypeFlexibility;
     workloadType?: inputs.GetClusterClusterInfoWorkloadType;
 }
 
@@ -2824,6 +2850,7 @@ export interface GetClusterClusterInfoArgs {
      * similar to `instancePoolId`, but for driver node.
      */
     driverInstancePoolId?: pulumi.Input<string>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoDriverNodeTypeFlexibilityArgs>;
     /**
      * The node type of the Spark driver.
      */
@@ -2891,6 +2918,7 @@ export interface GetClusterClusterInfoArgs {
     terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs>;
     totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs>;
     workloadType?: pulumi.Input<inputs.GetClusterClusterInfoWorkloadTypeArgs>;
 }
 
@@ -3060,6 +3088,14 @@ export interface GetClusterClusterInfoDriverNodeAwsAttributesArgs {
     isSpot?: pulumi.Input<boolean>;
 }
 
+export interface GetClusterClusterInfoDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
+}
+
+export interface GetClusterClusterInfoDriverNodeTypeFlexibilityArgs {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetClusterClusterInfoExecutor {
     hostPrivateIp?: string;
     instanceId?: string;
@@ -3224,6 +3260,7 @@ export interface GetClusterClusterInfoSpec {
      * similar to `instancePoolId`, but for driver node.
      */
     driverInstancePoolId?: string;
+    driverNodeTypeFlexibility?: inputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibility;
     /**
      * The node type of the Spark driver.
      */
@@ -3289,6 +3326,7 @@ export interface GetClusterClusterInfoSpec {
     sshPublicKeys?: string[];
     totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
+    workerNodeTypeFlexibility?: inputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibility;
     workloadType?: inputs.GetClusterClusterInfoSpecWorkloadType;
 }
 
@@ -3320,6 +3358,7 @@ export interface GetClusterClusterInfoSpecArgs {
      * similar to `instancePoolId`, but for driver node.
      */
     driverInstancePoolId?: pulumi.Input<string>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs>;
     /**
      * The node type of the Spark driver.
      */
@@ -3385,6 +3424,7 @@ export interface GetClusterClusterInfoSpecArgs {
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs>;
     workloadType?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkloadTypeArgs>;
 }
 
@@ -3536,6 +3576,14 @@ export interface GetClusterClusterInfoSpecDockerImageBasicAuth {
 export interface GetClusterClusterInfoSpecDockerImageBasicAuthArgs {
     password: pulumi.Input<string>;
     username: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
+}
+
+export interface GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetClusterClusterInfoSpecGcpAttributes {
@@ -3746,6 +3794,14 @@ export interface GetClusterClusterInfoSpecProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetClusterClusterInfoSpecWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
+}
+
+export interface GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetClusterClusterInfoSpecWorkloadType {
     clients: inputs.GetClusterClusterInfoSpecWorkloadTypeClients;
 }
@@ -3774,6 +3830,14 @@ export interface GetClusterClusterInfoTerminationReasonArgs {
     code?: pulumi.Input<string>;
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     type?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: string[];
+}
+
+export interface GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetClusterClusterInfoWorkloadType {
@@ -11476,6 +11540,7 @@ export interface JobJobClusterNewCluster {
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImage>;
     driverInstancePoolId?: pulumi.Input<string>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobJobClusterNewClusterDriverNodeTypeFlexibility>;
     driverNodeTypeId?: pulumi.Input<string>;
     enableElasticDisk?: pulumi.Input<boolean>;
     enableLocalDiskEncryption?: pulumi.Input<boolean>;
@@ -11505,6 +11570,7 @@ export interface JobJobClusterNewCluster {
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobJobClusterNewClusterWorkerNodeTypeFlexibility>;
     /**
      * isn't supported
      */
@@ -11587,6 +11653,10 @@ export interface JobJobClusterNewClusterDockerImage {
 export interface JobJobClusterNewClusterDockerImageBasicAuth {
     password: pulumi.Input<string>;
     username: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobJobClusterNewClusterGcpAttributes {
@@ -11696,6 +11766,10 @@ export interface JobJobClusterNewClusterProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface JobJobClusterNewClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface JobJobClusterNewClusterWorkloadType {
     clients: pulumi.Input<inputs.JobJobClusterNewClusterWorkloadTypeClients>;
 }
@@ -11758,6 +11832,7 @@ export interface JobNewCluster {
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.JobNewClusterDockerImage>;
     driverInstancePoolId?: pulumi.Input<string>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobNewClusterDriverNodeTypeFlexibility>;
     driverNodeTypeId?: pulumi.Input<string>;
     enableElasticDisk?: pulumi.Input<boolean>;
     enableLocalDiskEncryption?: pulumi.Input<boolean>;
@@ -11787,6 +11862,7 @@ export interface JobNewCluster {
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobNewClusterWorkerNodeTypeFlexibility>;
     /**
      * isn't supported
      */
@@ -11869,6 +11945,10 @@ export interface JobNewClusterDockerImage {
 export interface JobNewClusterDockerImageBasicAuth {
     password: pulumi.Input<string>;
     username: pulumi.Input<string>;
+}
+
+export interface JobNewClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobNewClusterGcpAttributes {
@@ -11976,6 +12056,10 @@ export interface JobNewClusterProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: pulumi.Input<string>;
+}
+
+export interface JobNewClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -12801,6 +12885,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImage>;
     driverInstancePoolId?: pulumi.Input<string>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility>;
     driverNodeTypeId?: pulumi.Input<string>;
     enableElasticDisk?: pulumi.Input<boolean>;
     enableLocalDiskEncryption?: pulumi.Input<boolean>;
@@ -12830,6 +12915,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility>;
     /**
      * isn't supported
      */
@@ -12912,6 +12998,10 @@ export interface JobTaskForEachTaskTaskNewClusterDockerImage {
 export interface JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth {
     password: pulumi.Input<string>;
     username: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
@@ -13019,6 +13109,10 @@ export interface JobTaskForEachTaskTaskNewClusterProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
@@ -13521,6 +13615,7 @@ export interface JobTaskNewCluster {
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.JobTaskNewClusterDockerImage>;
     driverInstancePoolId?: pulumi.Input<string>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskNewClusterDriverNodeTypeFlexibility>;
     driverNodeTypeId?: pulumi.Input<string>;
     enableElasticDisk?: pulumi.Input<boolean>;
     enableLocalDiskEncryption?: pulumi.Input<boolean>;
@@ -13550,6 +13645,7 @@ export interface JobTaskNewCluster {
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskNewClusterWorkerNodeTypeFlexibility>;
     /**
      * isn't supported
      */
@@ -13632,6 +13728,10 @@ export interface JobTaskNewClusterDockerImage {
 export interface JobTaskNewClusterDockerImageBasicAuth {
     password: pulumi.Input<string>;
     username: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterDriverNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskNewClusterGcpAttributes {
@@ -13739,6 +13839,10 @@ export interface JobTaskNewClusterProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterWorkerNodeTypeFlexibility {
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -15474,11 +15578,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -15545,11 +15649,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.103.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -16039,6 +16143,7 @@ export interface PipelineGatewayDefinitionConnectionParameters {
 
 export interface PipelineIngestionDefinition {
     connectionName?: pulumi.Input<string>;
+    fullRefreshWindow?: pulumi.Input<inputs.PipelineIngestionDefinitionFullRefreshWindow>;
     ingestFromUcForeignCatalog?: pulumi.Input<boolean>;
     ingestionGatewayId?: pulumi.Input<string>;
     netsuiteJarPath?: pulumi.Input<string>;
@@ -16046,6 +16151,12 @@ export interface PipelineIngestionDefinition {
     sourceConfigurations?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfiguration>[]>;
     sourceType?: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfiguration>;
+}
+
+export interface PipelineIngestionDefinitionFullRefreshWindow {
+    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+    startHour: pulumi.Input<number>;
+    timeZoneId?: pulumi.Input<string>;
 }
 
 export interface PipelineIngestionDefinitionObject {
@@ -16066,6 +16177,7 @@ export interface PipelineIngestionDefinitionObjectReport {
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
+    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy>;
     excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16075,6 +16187,11 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters>;
+}
+
+export interface PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy {
+    enabled: pulumi.Input<boolean>;
+    minIntervalHours?: pulumi.Input<number>;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig {
@@ -16103,6 +16220,7 @@ export interface PipelineIngestionDefinitionObjectSchema {
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
+    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy>;
     excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16112,6 +16230,11 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy {
+    enabled: pulumi.Input<boolean>;
+    minIntervalHours?: pulumi.Input<number>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig {
@@ -16142,6 +16265,7 @@ export interface PipelineIngestionDefinitionObjectTable {
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
+    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy>;
     excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16151,6 +16275,11 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy {
+    enabled: pulumi.Input<boolean>;
+    minIntervalHours?: pulumi.Input<number>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig {
@@ -16192,6 +16321,7 @@ export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSl
 }
 
 export interface PipelineIngestionDefinitionTableConfiguration {
+    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy>;
     excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16201,6 +16331,11 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters>;
+}
+
+export interface PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy {
+    enabled: pulumi.Input<boolean>;
+    minIntervalHours?: pulumi.Input<number>;
 }
 
 export interface PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig {
@@ -16349,13 +16484,18 @@ export interface PolicyInfoRowFilterUsing {
 
 export interface PostgresBranchSpec {
     /**
-     * (boolean) - Whether the branch is the project's default branch
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      */
-    default?: pulumi.Input<boolean>;
+    expireTime?: pulumi.Input<string>;
     /**
      * (boolean) - Whether the branch is protected
      */
     isProtected?: pulumi.Input<boolean>;
+    /**
+     * Explicitly disable expiration. When set to true, the branch will not expire.
+     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     */
+    noExpiry?: pulumi.Input<boolean>;
     /**
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -16369,6 +16509,10 @@ export interface PostgresBranchSpec {
      * (string) - The point in time on the source branch from which this branch was created
      */
     sourceBranchTime?: pulumi.Input<string>;
+    /**
+     * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     */
+    ttl?: pulumi.Input<string>;
 }
 
 export interface PostgresBranchStatus {
@@ -16380,6 +16524,10 @@ export interface PostgresBranchStatus {
      * (boolean) - Whether the branch is the project's default branch
      */
     default?: pulumi.Input<boolean>;
+    /**
+     * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
+     */
+    expireTime?: pulumi.Input<string>;
     /**
      * (boolean) - Whether the branch is protected
      */
@@ -16428,9 +16576,14 @@ export interface PostgresEndpointSpec {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
     endpointType: pulumi.Input<string>;
+    /**
+     * When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: pulumi.Input<boolean>;
     /**
      * (EndpointSettings)
      */
@@ -16469,17 +16622,13 @@ export interface PostgresEndpointStatus {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
     endpointType?: pulumi.Input<string>;
     /**
-     * (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     * (EndpointHosts) - Contains host information for connecting to the endpoint
      */
-    host?: pulumi.Input<string>;
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last active
-     */
-    lastActiveTime?: pulumi.Input<string>;
+    hosts?: pulumi.Input<inputs.PostgresEndpointStatusHosts>;
     /**
      * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
      */
@@ -16489,17 +16638,17 @@ export interface PostgresEndpointStatus {
      */
     settings?: pulumi.Input<inputs.PostgresEndpointStatusSettings>;
     /**
-     * (string) - A timestamp indicating when the compute endpoint was last started
-     */
-    startTime?: pulumi.Input<string>;
-    /**
-     * (string) - A timestamp indicating when the compute endpoint was last suspended
-     */
-    suspendTime?: pulumi.Input<string>;
-    /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration?: pulumi.Input<string>;
+}
+
+export interface PostgresEndpointStatusHosts {
+    /**
+     * (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
+     * to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+     */
+    host?: pulumi.Input<string>;
 }
 
 export interface PostgresEndpointStatusSettings {
@@ -16526,38 +16675,31 @@ export interface PostgresProjectSpec {
      * (integer) - The effective major Postgres version number
      */
     pgVersion?: pulumi.Input<number>;
-    /**
-     * (ProjectSettings) - The effective project settings
-     */
-    settings?: pulumi.Input<inputs.PostgresProjectSpecSettings>;
 }
 
 export interface PostgresProjectSpecDefaultEndpointSettings {
     /**
-     * The maximum number of Compute Units
+     * The maximum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMaxCu?: pulumi.Input<number>;
     /**
-     * The minimum number of Compute Units
+     * The minimum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMinCu?: pulumi.Input<number>;
+    /**
+     * When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: pulumi.Input<boolean>;
     /**
      * A raw representation of Postgres settings
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Duration of inactivity after which the compute endpoint is automatically suspended
+     * Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: pulumi.Input<string>;
-}
-
-export interface PostgresProjectSpecSettings {
-    /**
-     * Sets wal_level=logical for all compute endpoints in this project.
-     * All active endpoints will be suspended.
-     * Once enabled, logical replication cannot be disabled
-     */
-    enableLogicalReplication?: pulumi.Input<boolean>;
 }
 
 export interface PostgresProjectStatus {
@@ -16565,10 +16707,6 @@ export interface PostgresProjectStatus {
      * (integer) - The logical size limit for a branch
      */
     branchLogicalSizeLimitBytes?: pulumi.Input<number>;
-    /**
-     * (string) - The most recent time when any endpoint of this project was active
-     */
-    computeLastActiveTime?: pulumi.Input<string>;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
@@ -16590,10 +16728,6 @@ export interface PostgresProjectStatus {
      */
     pgVersion?: pulumi.Input<number>;
     /**
-     * (ProjectSettings) - The effective project settings
-     */
-    settings?: pulumi.Input<inputs.PostgresProjectStatusSettings>;
-    /**
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes?: pulumi.Input<number>;
@@ -16601,30 +16735,27 @@ export interface PostgresProjectStatus {
 
 export interface PostgresProjectStatusDefaultEndpointSettings {
     /**
-     * The maximum number of Compute Units
+     * The maximum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMaxCu?: pulumi.Input<number>;
     /**
-     * The minimum number of Compute Units
+     * The minimum number of Compute Units. Minimum value is 0.5
      */
     autoscalingLimitMinCu?: pulumi.Input<number>;
+    /**
+     * When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided
+     */
+    noSuspension?: pulumi.Input<boolean>;
     /**
      * A raw representation of Postgres settings
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Duration of inactivity after which the compute endpoint is automatically suspended
+     * Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: pulumi.Input<string>;
-}
-
-export interface PostgresProjectStatusSettings {
-    /**
-     * Sets wal_level=logical for all compute endpoints in this project.
-     * All active endpoints will be suspended.
-     * Once enabled, logical replication cannot be disabled
-     */
-    enableLogicalReplication?: pulumi.Input<boolean>;
 }
 
 export interface QualityMonitorCustomMetric {

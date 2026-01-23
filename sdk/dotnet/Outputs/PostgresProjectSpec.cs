@@ -29,10 +29,6 @@ namespace Pulumi.Databricks.Outputs
         /// (integer) - The effective major Postgres version number
         /// </summary>
         public readonly int? PgVersion;
-        /// <summary>
-        /// (ProjectSettings) - The effective project settings
-        /// </summary>
-        public readonly Outputs.PostgresProjectSpecSettings? Settings;
 
         [OutputConstructor]
         private PostgresProjectSpec(
@@ -42,15 +38,12 @@ namespace Pulumi.Databricks.Outputs
 
             string? historyRetentionDuration,
 
-            int? pgVersion,
-
-            Outputs.PostgresProjectSpecSettings? settings)
+            int? pgVersion)
         {
             DefaultEndpointSettings = defaultEndpointSettings;
             DisplayName = displayName;
             HistoryRetentionDuration = historyRetentionDuration;
             PgVersion = pgVersion;
-            Settings = settings;
         }
     }
 }

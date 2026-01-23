@@ -9,11 +9,15 @@ import * as utilities from "./utilities";
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * > **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+ *
  * This data source can be used to fetch a quality monitors v2.
  *
  * > **Note** This data source can only be used with an workspace-level provider!
  *
  * ## Example Usage
+ *
+ * > **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
  *
  * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
  *
@@ -80,11 +84,15 @@ export interface GetQualityMonitorV2Result {
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * > **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
+ *
  * This data source can be used to fetch a quality monitors v2.
  *
  * > **Note** This data source can only be used with an workspace-level provider!
  *
  * ## Example Usage
+ *
+ * > **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
  *
  * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
  *
