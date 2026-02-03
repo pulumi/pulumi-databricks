@@ -1196,6 +1196,49 @@ class MwsWorkspaces(pulumi.CustomResource):
 
         In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
 
+        ### Creating a workspace on GCP with Databricks-Managed VPC
+
+        ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
+
+        By default, Databricks creates a VPC in your GCP project for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization's enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_google as google
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        me = google.index.client_openid_userinfo()
+        current = google.index.client_config()
+        this = databricks.MwsWorkspaces("this",
+            account_id=databricks_account_id,
+            workspace_name=prefix,
+            location=current["region"],
+            cloud_resource_container={
+                "gcp": {
+                    "project_id": current["project"],
+                },
+            })
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * Provisioning Databricks on AWS with Private Link guide.
+        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+        * Provisioning Databricks on GCP guide.
+        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+        * MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.
+        * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+        * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+        * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+        * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+
         ## Import
 
         This resource can be imported by Databricks account ID and workspace ID.
@@ -1469,6 +1512,49 @@ class MwsWorkspaces(pulumi.CustomResource):
         ```
 
         In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
+
+        ### Creating a workspace on GCP with Databricks-Managed VPC
+
+        ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
+
+        By default, Databricks creates a VPC in your GCP project for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization's enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_google as google
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        me = google.index.client_openid_userinfo()
+        current = google.index.client_config()
+        this = databricks.MwsWorkspaces("this",
+            account_id=databricks_account_id,
+            workspace_name=prefix,
+            location=current["region"],
+            cloud_resource_container={
+                "gcp": {
+                    "project_id": current["project"],
+                },
+            })
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * Provisioning Databricks on AWS with Private Link guide.
+        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+        * Provisioning Databricks on GCP guide.
+        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+        * MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.
+        * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+        * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+        * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+        * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
 
         ## Import
 
