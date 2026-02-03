@@ -387,6 +387,72 @@ import (
 //
 // In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
 //
+// ### Creating a workspace on GCP with Databricks-Managed VPC
+//
+// ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
+//
+// By default, Databricks creates a VPC in your GCP project for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization's enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-google/sdk/go/google"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			_, err := google.ClientOpenidUserinfo(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			current, err := google.ClientConfig(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//				AccountId:     pulumi.Any(databricksAccountId),
+//				WorkspaceName: pulumi.Any(prefix),
+//				Location:      pulumi.Any(current.Region),
+//				CloudResourceContainer: &databricks.MwsWorkspacesCloudResourceContainerArgs{
+//					Gcp: &databricks.MwsWorkspacesCloudResourceContainerGcpArgs{
+//						ProjectId: pulumi.Any(current.Project),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Provisioning Databricks on AWS guide.
+// * Provisioning Databricks on AWS with Private Link guide.
+// * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+// * Provisioning Databricks on GCP guide.
+// * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+// * MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.
+// * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+// * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+// * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+// * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+// * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+//
 // ## Import
 //
 // This resource can be imported by Databricks account ID and workspace ID.
