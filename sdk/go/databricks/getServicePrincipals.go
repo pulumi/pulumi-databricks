@@ -47,6 +47,8 @@ type GetServicePrincipalsArgs struct {
 	ApplicationIds []string `pulumi:"applicationIds"`
 	// Only return ServicePrincipal display name that match the given name string
 	DisplayNameContains *string `pulumi:"displayNameContains"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetServicePrincipalsProviderConfig `pulumi:"providerConfig"`
 	// List of objects describing individual service principals. Each object has the following attributes:
 	ServicePrincipals []GetServicePrincipalsServicePrincipal `pulumi:"servicePrincipals"`
 }
@@ -57,7 +59,8 @@ type GetServicePrincipalsResult struct {
 	ApplicationIds      []string `pulumi:"applicationIds"`
 	DisplayNameContains string   `pulumi:"displayNameContains"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                              `pulumi:"id"`
+	ProviderConfig *GetServicePrincipalsProviderConfig `pulumi:"providerConfig"`
 	// List of objects describing individual service principals. Each object has the following attributes:
 	ServicePrincipals []GetServicePrincipalsServicePrincipal `pulumi:"servicePrincipals"`
 }
@@ -77,6 +80,8 @@ type GetServicePrincipalsOutputArgs struct {
 	ApplicationIds pulumi.StringArrayInput `pulumi:"applicationIds"`
 	// Only return ServicePrincipal display name that match the given name string
 	DisplayNameContains pulumi.StringPtrInput `pulumi:"displayNameContains"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetServicePrincipalsProviderConfigPtrInput `pulumi:"providerConfig"`
 	// List of objects describing individual service principals. Each object has the following attributes:
 	ServicePrincipals GetServicePrincipalsServicePrincipalArrayInput `pulumi:"servicePrincipals"`
 }
@@ -112,6 +117,10 @@ func (o GetServicePrincipalsResultOutput) DisplayNameContains() pulumi.StringOut
 // The provider-assigned unique ID for this managed resource.
 func (o GetServicePrincipalsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServicePrincipalsResultOutput) ProviderConfig() GetServicePrincipalsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) *GetServicePrincipalsProviderConfig { return v.ProviderConfig }).(GetServicePrincipalsProviderConfigPtrOutput)
 }
 
 // List of objects describing individual service principals. Each object has the following attributes:

@@ -29,6 +29,7 @@ class AlertV2Args:
                  custom_description: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_summary: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  run_as: Optional[pulumi.Input['AlertV2RunAsArgs']] = None,
                  run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -39,6 +40,7 @@ class AlertV2Args:
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
         :param pulumi.Input['AlertV2RunAsArgs'] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
@@ -59,6 +61,8 @@ class AlertV2Args:
             pulumi.set(__self__, "custom_summary", custom_summary)
         if parent_path is not None:
             pulumi.set(__self__, "parent_path", parent_path)
+        if purge_on_delete is not None:
+            pulumi.set(__self__, "purge_on_delete", purge_on_delete)
         if run_as is not None:
             pulumi.set(__self__, "run_as", run_as)
         if run_as_user_name is not None:
@@ -155,6 +159,18 @@ class AlertV2Args:
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
+    @pulumi.getter(name="purgeOnDelete")
+    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Purge the resource on delete
+        """
+        return pulumi.get(self, "purge_on_delete")
+
+    @purge_on_delete.setter
+    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "purge_on_delete", value)
+
+    @_builtins.property
     @pulumi.getter(name="runAs")
     def run_as(self) -> Optional[pulumi.Input['AlertV2RunAsArgs']]:
         """
@@ -197,6 +213,7 @@ class _AlertV2State:
                  lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
                  owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  query_text: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as: Optional[pulumi.Input['AlertV2RunAsArgs']] = None,
                  run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -215,6 +232,7 @@ class _AlertV2State:
         :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
         :param pulumi.Input['AlertV2RunAsArgs'] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
@@ -245,6 +263,8 @@ class _AlertV2State:
             pulumi.set(__self__, "owner_user_name", owner_user_name)
         if parent_path is not None:
             pulumi.set(__self__, "parent_path", parent_path)
+        if purge_on_delete is not None:
+            pulumi.set(__self__, "purge_on_delete", purge_on_delete)
         if query_text is not None:
             pulumi.set(__self__, "query_text", query_text)
         if run_as is not None:
@@ -366,6 +386,18 @@ class _AlertV2State:
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
+    @pulumi.getter(name="purgeOnDelete")
+    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Purge the resource on delete
+        """
+        return pulumi.get(self, "purge_on_delete")
+
+    @purge_on_delete.setter
+    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "purge_on_delete", value)
+
+    @_builtins.property
     @pulumi.getter(name="queryText")
     def query_text(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -452,6 +484,7 @@ class AlertV2(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  query_text: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as: Optional[pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
                  run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -532,6 +565,7 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
         :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
@@ -637,6 +671,7 @@ class AlertV2(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  query_text: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as: Optional[pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
                  run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -660,6 +695,7 @@ class AlertV2(pulumi.CustomResource):
                 raise TypeError("Missing required property 'evaluation'")
             __props__.__dict__["evaluation"] = evaluation
             __props__.__dict__["parent_path"] = parent_path
+            __props__.__dict__["purge_on_delete"] = purge_on_delete
             if query_text is None and not opts.urn:
                 raise TypeError("Missing required property 'query_text'")
             __props__.__dict__["query_text"] = query_text
@@ -695,6 +731,7 @@ class AlertV2(pulumi.CustomResource):
             lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
             owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
             parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+            purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
             query_text: Optional[pulumi.Input[_builtins.str]] = None,
             run_as: Optional[pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
             run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -718,6 +755,7 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
         :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
@@ -743,6 +781,7 @@ class AlertV2(pulumi.CustomResource):
         __props__.__dict__["lifecycle_state"] = lifecycle_state
         __props__.__dict__["owner_user_name"] = owner_user_name
         __props__.__dict__["parent_path"] = parent_path
+        __props__.__dict__["purge_on_delete"] = purge_on_delete
         __props__.__dict__["query_text"] = query_text
         __props__.__dict__["run_as"] = run_as
         __props__.__dict__["run_as_user_name"] = run_as_user_name
@@ -821,6 +860,14 @@ class AlertV2(pulumi.CustomResource):
         The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         """
         return pulumi.get(self, "parent_path")
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDelete")
+    def purge_on_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Purge the resource on delete
+        """
+        return pulumi.get(self, "purge_on_delete")
 
     @_builtins.property
     @pulumi.getter(name="queryText")

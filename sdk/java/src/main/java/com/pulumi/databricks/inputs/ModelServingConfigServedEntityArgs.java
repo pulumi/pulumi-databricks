@@ -19,6 +19,13 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
 
     public static final ModelServingConfigServedEntityArgs Empty = new ModelServingConfigServedEntityArgs();
 
+    @Import(name="burstScalingEnabled")
+    private @Nullable Output<Boolean> burstScalingEnabled;
+
+    public Optional<Output<Boolean>> burstScalingEnabled() {
+        return Optional.ofNullable(this.burstScalingEnabled);
+    }
+
     /**
      * The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
      * 
@@ -224,6 +231,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     private ModelServingConfigServedEntityArgs() {}
 
     private ModelServingConfigServedEntityArgs(ModelServingConfigServedEntityArgs $) {
+        this.burstScalingEnabled = $.burstScalingEnabled;
         this.entityName = $.entityName;
         this.entityVersion = $.entityVersion;
         this.environmentVars = $.environmentVars;
@@ -256,6 +264,15 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
 
         public Builder(ModelServingConfigServedEntityArgs defaults) {
             $ = new ModelServingConfigServedEntityArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder burstScalingEnabled(@Nullable Output<Boolean> burstScalingEnabled) {
+            $.burstScalingEnabled = burstScalingEnabled;
+            return this;
+        }
+
+        public Builder burstScalingEnabled(Boolean burstScalingEnabled) {
+            return burstScalingEnabled(Output.of(burstScalingEnabled));
         }
 
         /**

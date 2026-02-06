@@ -807,7 +807,20 @@
             },
             "databricks_feature_engineering_kafka_config": {
                 "current": "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "backfill_source": {
+                        "fields": {
+                            "delta_table_source": {
+                                "fields": {
+                                    "entity_columns": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "databricks_feature_engineering_materialized_feature": {
                 "current": "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature",
@@ -1432,6 +1445,9 @@
                                 "clean_rooms_notebook_task": {
                                     "maxItemsOne": true
                                 },
+                                "compute": {
+                                    "maxItemsOne": true
+                                },
                                 "condition_task": {
                                     "maxItemsOne": true
                                 },
@@ -1502,6 +1518,9 @@
                                                 "elem": {
                                                     "fields": {
                                                         "clean_rooms_notebook_task": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "compute": {
                                                             "maxItemsOne": true
                                                         },
                                                         "condition_task": {
@@ -4951,7 +4970,12 @@
             },
             "databricks_current_config": {
                 "current": "databricks:index/getCurrentConfig:getCurrentConfig",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_current_metastore": {
                 "current": "databricks:index/getCurrentMetastore:getCurrentMetastore",
@@ -4967,7 +4991,12 @@
             },
             "databricks_current_user": {
                 "current": "databricks:index/getCurrentUser:getCurrentUser",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_dashboards": {
                 "current": "databricks:index/getDashboards:getDashboards",
@@ -5193,7 +5222,12 @@
             },
             "databricks_dbfs_file": {
                 "current": "databricks:index/getDbfsFile:getDbfsFile",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_dbfs_file_paths": {
                 "current": "databricks:index/getDbfsFilePaths:getDbfsFilePaths",
@@ -5201,6 +5235,9 @@
                 "fields": {
                     "path_list": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -5391,14 +5428,42 @@
             },
             "databricks_feature_engineering_kafka_config": {
                 "current": "databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "backfill_source": {
+                        "fields": {
+                            "delta_table_source": {
+                                "fields": {
+                                    "entity_columns": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "databricks_feature_engineering_kafka_configs": {
                 "current": "databricks:index/getFeatureEngineeringKafkaConfigs:getFeatureEngineeringKafkaConfigs",
                 "majorVersion": 1,
                 "fields": {
                     "kafka_configs": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "backfill_source": {
+                                    "fields": {
+                                        "delta_table_source": {
+                                            "fields": {
+                                                "entity_columns": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -5464,6 +5529,9 @@
                     },
                     "members": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     },
                     "service_principals": {
                         "maxItemsOne": false
@@ -5534,6 +5602,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -6601,6 +6672,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -6687,7 +6761,12 @@
             },
             "databricks_mws_credentials": {
                 "current": "databricks:index/getMwsCredentials:getMwsCredentials",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_mws_network_connectivity_config": {
                 "current": "databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig",
@@ -6773,7 +6852,12 @@
             },
             "databricks_mws_workspaces": {
                 "current": "databricks:index/getMwsWorkspaces:getMwsWorkspaces",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_node_type": {
                 "current": "databricks:index/getNodeType:getNodeType",
@@ -6799,6 +6883,9 @@
                 "fields": {
                     "notebook_path_list": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -7129,7 +7216,12 @@
             },
             "databricks_service_principal": {
                 "current": "databricks:index/getServicePrincipal:getServicePrincipal",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_service_principal_federation_policies": {
                 "current": "databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies",
@@ -7170,6 +7262,9 @@
                 "fields": {
                     "application_ids": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     },
                     "service_principals": {
                         "maxItemsOne": false
@@ -7631,7 +7726,12 @@
             },
             "databricks_user": {
                 "current": "databricks:index/getUser:getUser",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_users": {
                 "current": "databricks:index/getUsers:getUsers",
@@ -11075,11 +11175,23 @@
             "databricks_clusters": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_current_config": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_current_metastore": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_current_user": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_dashboards": [
                 "provider_config.workspace_id"
+            ],
+            "databricks_dbfs_file": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_dbfs_file_paths": [
+                "provider_config.$.workspace_id"
             ],
             "databricks_directory": [
                 "provider_config.$.workspace_id"
@@ -11093,13 +11205,20 @@
             "databricks_functions": [
                 "provider_config.workspace_id"
             ],
+            "databricks_group": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_instance_pool": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_instance_profiles": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_job": [
                 "job_settings.$.settings.$.library.$.provider_config.$.workspace_id",
                 "job_settings.$.settings.$.task.$.for_each_task.$.task.$.library.$.provider_config.$.workspace_id",
-                "job_settings.$.settings.$.task.$.library.$.provider_config.$.workspace_id"
+                "job_settings.$.settings.$.task.$.library.$.provider_config.$.workspace_id",
+                "provider_config.$.workspace_id"
             ],
             "databricks_jobs": [
                 "provider_config.$.workspace_id"
@@ -11113,10 +11232,19 @@
             "databricks_mlflow_models": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_mws_credentials": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_mws_workspaces": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_node_type": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_notebook": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_notebook_paths": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_notification_destinations": [
@@ -11135,6 +11263,12 @@
                 "provider_config.$.workspace_id"
             ],
             "databricks_schemas": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_service_principal": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_service_principals": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_serving_endpoints": [
@@ -11165,6 +11299,9 @@
                 "provider_config.$.workspace_id"
             ],
             "databricks_tables": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_user": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_views": [

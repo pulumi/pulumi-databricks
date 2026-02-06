@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string EntityId;
         /// <summary>
-        /// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
         /// </summary>
         public readonly string EntityType;
         /// <summary>

@@ -18,8 +18,8 @@ public final class GetPostgresEndpointsEndpoint {
      */
     private String createTime;
     /**
-     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * @return (string) - Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      * 
      */
     private String name;
@@ -59,8 +59,8 @@ public final class GetPostgresEndpointsEndpoint {
         return this.createTime;
     }
     /**
-     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * @return (string) - Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      * 
      */
     public String name() {

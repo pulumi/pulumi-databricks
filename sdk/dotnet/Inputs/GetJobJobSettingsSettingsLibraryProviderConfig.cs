@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsLibraryProviderConfigArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        /// </summary>
         [Input("workspaceId", required: true)]
         public string WorkspaceId { get; set; } = null!;
 

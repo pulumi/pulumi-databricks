@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetCurrentConfigProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -50,6 +51,21 @@ public final class GetCurrentConfigPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.isAccount);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetCurrentConfigProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetCurrentConfigProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetCurrentConfigPlainArgs() {}
 
     private GetCurrentConfigPlainArgs(GetCurrentConfigPlainArgs $) {
@@ -58,6 +74,7 @@ public final class GetCurrentConfigPlainArgs extends com.pulumi.resources.Invoke
         this.cloudType = $.cloudType;
         this.host = $.host;
         this.isAccount = $.isAccount;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -100,6 +117,17 @@ public final class GetCurrentConfigPlainArgs extends com.pulumi.resources.Invoke
 
         public Builder isAccount(@Nullable Boolean isAccount) {
             $.isAccount = isAccount;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetCurrentConfigProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedModelGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("burstScalingEnabled")]
+        public Input<bool>? BurstScalingEnabled { get; set; }
+
         [Input("environmentVars")]
         private InputMap<string>? _environmentVars;
 

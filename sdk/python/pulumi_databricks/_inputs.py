@@ -405,6 +405,10 @@ __all__ = [
     'FeatureEngineeringFeatureTimeWindowTumblingArgsDict',
     'FeatureEngineeringKafkaConfigAuthConfigArgs',
     'FeatureEngineeringKafkaConfigAuthConfigArgsDict',
+    'FeatureEngineeringKafkaConfigBackfillSourceArgs',
+    'FeatureEngineeringKafkaConfigBackfillSourceArgsDict',
+    'FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs',
+    'FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgsDict',
     'FeatureEngineeringKafkaConfigKeySchemaArgs',
     'FeatureEngineeringKafkaConfigKeySchemaArgsDict',
     'FeatureEngineeringKafkaConfigSubscriptionModeArgs',
@@ -631,6 +635,8 @@ __all__ = [
     'JobTaskArgsDict',
     'JobTaskCleanRoomsNotebookTaskArgs',
     'JobTaskCleanRoomsNotebookTaskArgsDict',
+    'JobTaskComputeArgs',
+    'JobTaskComputeArgsDict',
     'JobTaskConditionTaskArgs',
     'JobTaskConditionTaskArgsDict',
     'JobTaskDashboardTaskArgs',
@@ -655,6 +661,8 @@ __all__ = [
     'JobTaskForEachTaskTaskArgsDict',
     'JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs',
     'JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgsDict',
+    'JobTaskForEachTaskTaskComputeArgs',
+    'JobTaskForEachTaskTaskComputeArgsDict',
     'JobTaskForEachTaskTaskConditionTaskArgs',
     'JobTaskForEachTaskTaskConditionTaskArgsDict',
     'JobTaskForEachTaskTaskDashboardTaskArgs',
@@ -1723,12 +1731,20 @@ __all__ = [
     'GetClustersFilterByArgsDict',
     'GetClustersProviderConfigArgs',
     'GetClustersProviderConfigArgsDict',
+    'GetCurrentConfigProviderConfigArgs',
+    'GetCurrentConfigProviderConfigArgsDict',
     'GetCurrentMetastoreMetastoreInfoArgs',
     'GetCurrentMetastoreMetastoreInfoArgsDict',
     'GetCurrentMetastoreProviderConfigArgs',
     'GetCurrentMetastoreProviderConfigArgsDict',
+    'GetCurrentUserProviderConfigArgs',
+    'GetCurrentUserProviderConfigArgsDict',
     'GetDashboardsProviderConfigArgs',
     'GetDashboardsProviderConfigArgsDict',
+    'GetDbfsFilePathsProviderConfigArgs',
+    'GetDbfsFilePathsProviderConfigArgsDict',
+    'GetDbfsFileProviderConfigArgs',
+    'GetDbfsFileProviderConfigArgsDict',
     'GetDirectoryProviderConfigArgs',
     'GetDirectoryProviderConfigArgsDict',
     'GetExternalLocationExternalLocationInfoArgs',
@@ -1779,6 +1795,8 @@ __all__ = [
     'GetFunctionsFunctionRoutineDependenciesDependencyTableArgsDict',
     'GetFunctionsProviderConfigArgs',
     'GetFunctionsProviderConfigArgsDict',
+    'GetGroupProviderConfigArgs',
+    'GetGroupProviderConfigArgsDict',
     'GetInstancePoolPoolInfoArgs',
     'GetInstancePoolPoolInfoArgsDict',
     'GetInstancePoolPoolInfoAwsAttributesArgs',
@@ -1805,6 +1823,8 @@ __all__ = [
     'GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgsDict',
     'GetInstancePoolPoolInfoStatsArgs',
     'GetInstancePoolPoolInfoStatsArgsDict',
+    'GetInstancePoolProviderConfigArgs',
+    'GetInstancePoolProviderConfigArgsDict',
     'GetInstanceProfilesInstanceProfileArgs',
     'GetInstanceProfilesInstanceProfileArgsDict',
     'GetInstanceProfilesProviderConfigArgs',
@@ -2223,6 +2243,8 @@ __all__ = [
     'GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgsDict',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgsDict',
+    'GetJobProviderConfigArgs',
+    'GetJobProviderConfigArgsDict',
     'GetJobsProviderConfigArgs',
     'GetJobsProviderConfigArgsDict',
     'GetMetastoreMetastoreInfoArgs',
@@ -2241,6 +2263,8 @@ __all__ = [
     'GetMlflowModelTagArgsDict',
     'GetMlflowModelsProviderConfigArgs',
     'GetMlflowModelsProviderConfigArgsDict',
+    'GetMwsCredentialsProviderConfigArgs',
+    'GetMwsCredentialsProviderConfigArgsDict',
     'GetMwsNetworkConnectivityConfigEgressConfigArgs',
     'GetMwsNetworkConnectivityConfigEgressConfigArgsDict',
     'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs',
@@ -2255,8 +2279,12 @@ __all__ = [
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgsDict',
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs',
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict',
+    'GetMwsWorkspacesProviderConfigArgs',
+    'GetMwsWorkspacesProviderConfigArgsDict',
     'GetNodeTypeProviderConfigArgs',
     'GetNodeTypeProviderConfigArgsDict',
+    'GetNotebookPathsProviderConfigArgs',
+    'GetNotebookPathsProviderConfigArgsDict',
     'GetNotebookProviderConfigArgs',
     'GetNotebookProviderConfigArgsDict',
     'GetNotificationDestinationsProviderConfigArgs',
@@ -2295,6 +2323,10 @@ __all__ = [
     'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgsDict',
     'GetSchemasProviderConfigArgs',
     'GetSchemasProviderConfigArgsDict',
+    'GetServicePrincipalProviderConfigArgs',
+    'GetServicePrincipalProviderConfigArgsDict',
+    'GetServicePrincipalsProviderConfigArgs',
+    'GetServicePrincipalsProviderConfigArgsDict',
     'GetServicePrincipalsServicePrincipalArgs',
     'GetServicePrincipalsServicePrincipalArgsDict',
     'GetServingEndpointsEndpointArgs',
@@ -2445,6 +2477,8 @@ __all__ = [
     'GetTableTableInfoViewDependenciesDependencyTableArgsDict',
     'GetTablesProviderConfigArgs',
     'GetTablesProviderConfigArgsDict',
+    'GetUserProviderConfigArgs',
+    'GetUserProviderConfigArgsDict',
     'GetUsersUserArgs',
     'GetUsersUserArgsDict',
     'GetUsersUserEmailArgs',
@@ -5564,6 +5598,7 @@ class AppAppStatusArgs:
 
 if not MYPY:
     class AppComputeStatusArgsDict(TypedDict):
+        active_instances: NotRequired[pulumi.Input[_builtins.int]]
         message: NotRequired[pulumi.Input[_builtins.str]]
         """
         Application status message
@@ -5578,16 +5613,28 @@ elif False:
 @pulumi.input_type
 class AppComputeStatusArgs:
     def __init__(__self__, *,
+                 active_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  message: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] message: Application status message
         :param pulumi.Input[_builtins.str] state: State of the application.
         """
+        if active_instances is not None:
+            pulumi.set(__self__, "active_instances", active_instances)
         if message is not None:
             pulumi.set(__self__, "message", message)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="activeInstances")
+    def active_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "active_instances")
+
+    @active_instances.setter
+    def active_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "active_instances", value)
 
     @_builtins.property
     @pulumi.getter
@@ -14520,6 +14567,110 @@ class FeatureEngineeringKafkaConfigAuthConfigArgs:
 
 
 if not MYPY:
+    class FeatureEngineeringKafkaConfigBackfillSourceArgsDict(TypedDict):
+        delta_table_source: NotRequired[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgsDict']]
+        """
+        The Delta table source containing the historic data to backfill.
+        Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+        """
+elif False:
+    FeatureEngineeringKafkaConfigBackfillSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringKafkaConfigBackfillSourceArgs:
+    def __init__(__self__, *,
+                 delta_table_source: Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs']] = None):
+        """
+        :param pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs'] delta_table_source: The Delta table source containing the historic data to backfill.
+               Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+        """
+        if delta_table_source is not None:
+            pulumi.set(__self__, "delta_table_source", delta_table_source)
+
+    @_builtins.property
+    @pulumi.getter(name="deltaTableSource")
+    def delta_table_source(self) -> Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs']]:
+        """
+        The Delta table source containing the historic data to backfill.
+        Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+        """
+        return pulumi.get(self, "delta_table_source")
+
+    @delta_table_source.setter
+    def delta_table_source(self, value: Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs']]):
+        pulumi.set(self, "delta_table_source", value)
+
+
+if not MYPY:
+    class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgsDict(TypedDict):
+        entity_columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        The entity columns of the Delta table
+        """
+        full_name: pulumi.Input[_builtins.str]
+        """
+        The full three-part (catalog, schema, table) name of the Delta table
+        """
+        timeseries_column: pulumi.Input[_builtins.str]
+        """
+        The timeseries column of the Delta table
+        """
+elif False:
+    FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs:
+    def __init__(__self__, *,
+                 entity_columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 full_name: pulumi.Input[_builtins.str],
+                 timeseries_column: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_columns: The entity columns of the Delta table
+        :param pulumi.Input[_builtins.str] full_name: The full three-part (catalog, schema, table) name of the Delta table
+        :param pulumi.Input[_builtins.str] timeseries_column: The timeseries column of the Delta table
+        """
+        pulumi.set(__self__, "entity_columns", entity_columns)
+        pulumi.set(__self__, "full_name", full_name)
+        pulumi.set(__self__, "timeseries_column", timeseries_column)
+
+    @_builtins.property
+    @pulumi.getter(name="entityColumns")
+    def entity_columns(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The entity columns of the Delta table
+        """
+        return pulumi.get(self, "entity_columns")
+
+    @entity_columns.setter
+    def entity_columns(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "entity_columns", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The full three-part (catalog, schema, table) name of the Delta table
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "full_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumn")
+    def timeseries_column(self) -> pulumi.Input[_builtins.str]:
+        """
+        The timeseries column of the Delta table
+        """
+        return pulumi.get(self, "timeseries_column")
+
+    @timeseries_column.setter
+    def timeseries_column(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "timeseries_column", value)
+
+
+if not MYPY:
     class FeatureEngineeringKafkaConfigKeySchemaArgsDict(TypedDict):
         json_schema: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -21426,6 +21577,7 @@ if not MYPY:
         * `*_task` - (Required) one of the specific task blocks described below:
         """
         clean_rooms_notebook_task: NotRequired[pulumi.Input['JobTaskCleanRoomsNotebookTaskArgsDict']]
+        compute: NotRequired[pulumi.Input['JobTaskComputeArgsDict']]
         condition_task: NotRequired[pulumi.Input['JobTaskConditionTaskArgsDict']]
         dashboard_task: NotRequired[pulumi.Input['JobTaskDashboardTaskArgsDict']]
         dbt_cloud_task: NotRequired[pulumi.Input['JobTaskDbtCloudTaskArgsDict']]
@@ -21521,6 +21673,7 @@ class JobTaskArgs:
     def __init__(__self__, *,
                  task_key: pulumi.Input[_builtins.str],
                  clean_rooms_notebook_task: Optional[pulumi.Input['JobTaskCleanRoomsNotebookTaskArgs']] = None,
+                 compute: Optional[pulumi.Input['JobTaskComputeArgs']] = None,
                  condition_task: Optional[pulumi.Input['JobTaskConditionTaskArgs']] = None,
                  dashboard_task: Optional[pulumi.Input['JobTaskDashboardTaskArgs']] = None,
                  dbt_cloud_task: Optional[pulumi.Input['JobTaskDbtCloudTaskArgs']] = None,
@@ -21581,6 +21734,8 @@ class JobTaskArgs:
         pulumi.set(__self__, "task_key", task_key)
         if clean_rooms_notebook_task is not None:
             pulumi.set(__self__, "clean_rooms_notebook_task", clean_rooms_notebook_task)
+        if compute is not None:
+            pulumi.set(__self__, "compute", compute)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dashboard_task is not None:
@@ -21671,6 +21826,15 @@ class JobTaskArgs:
     @clean_rooms_notebook_task.setter
     def clean_rooms_notebook_task(self, value: Optional[pulumi.Input['JobTaskCleanRoomsNotebookTaskArgs']]):
         pulumi.set(self, "clean_rooms_notebook_task", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def compute(self) -> Optional[pulumi.Input['JobTaskComputeArgs']]:
+        return pulumi.get(self, "compute")
+
+    @compute.setter
+    def compute(self, value: Optional[pulumi.Input['JobTaskComputeArgs']]):
+        pulumi.set(self, "compute", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionTask")
@@ -22120,6 +22284,29 @@ class JobTaskCleanRoomsNotebookTaskArgs:
     @notebook_base_parameters.setter
     def notebook_base_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notebook_base_parameters", value)
+
+
+if not MYPY:
+    class JobTaskComputeArgsDict(TypedDict):
+        hardware_accelerator: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    JobTaskComputeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskComputeArgs:
+    def __init__(__self__, *,
+                 hardware_accelerator: Optional[pulumi.Input[_builtins.str]] = None):
+        if hardware_accelerator is not None:
+            pulumi.set(__self__, "hardware_accelerator", hardware_accelerator)
+
+    @_builtins.property
+    @pulumi.getter(name="hardwareAccelerator")
+    def hardware_accelerator(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "hardware_accelerator")
+
+    @hardware_accelerator.setter
+    def hardware_accelerator(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hardware_accelerator", value)
 
 
 if not MYPY:
@@ -22919,6 +23106,7 @@ if not MYPY:
         * `*_task` - (Required) one of the specific task blocks described below:
         """
         clean_rooms_notebook_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgsDict']]
+        compute: NotRequired[pulumi.Input['JobTaskForEachTaskTaskComputeArgsDict']]
         condition_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskConditionTaskArgsDict']]
         dashboard_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskArgsDict']]
         dbt_cloud_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskDbtCloudTaskArgsDict']]
@@ -23013,6 +23201,7 @@ class JobTaskForEachTaskTaskArgs:
     def __init__(__self__, *,
                  task_key: pulumi.Input[_builtins.str],
                  clean_rooms_notebook_task: Optional[pulumi.Input['JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs']] = None,
+                 compute: Optional[pulumi.Input['JobTaskForEachTaskTaskComputeArgs']] = None,
                  condition_task: Optional[pulumi.Input['JobTaskForEachTaskTaskConditionTaskArgs']] = None,
                  dashboard_task: Optional[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskArgs']] = None,
                  dbt_cloud_task: Optional[pulumi.Input['JobTaskForEachTaskTaskDbtCloudTaskArgs']] = None,
@@ -23072,6 +23261,8 @@ class JobTaskForEachTaskTaskArgs:
         pulumi.set(__self__, "task_key", task_key)
         if clean_rooms_notebook_task is not None:
             pulumi.set(__self__, "clean_rooms_notebook_task", clean_rooms_notebook_task)
+        if compute is not None:
+            pulumi.set(__self__, "compute", compute)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dashboard_task is not None:
@@ -23160,6 +23351,15 @@ class JobTaskForEachTaskTaskArgs:
     @clean_rooms_notebook_task.setter
     def clean_rooms_notebook_task(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs']]):
         pulumi.set(self, "clean_rooms_notebook_task", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def compute(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskComputeArgs']]:
+        return pulumi.get(self, "compute")
+
+    @compute.setter
+    def compute(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskComputeArgs']]):
+        pulumi.set(self, "compute", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionTask")
@@ -23600,6 +23800,29 @@ class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs:
     @notebook_base_parameters.setter
     def notebook_base_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notebook_base_parameters", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskComputeArgsDict(TypedDict):
+        hardware_accelerator: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    JobTaskForEachTaskTaskComputeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskComputeArgs:
+    def __init__(__self__, *,
+                 hardware_accelerator: Optional[pulumi.Input[_builtins.str]] = None):
+        if hardware_accelerator is not None:
+            pulumi.set(__self__, "hardware_accelerator", hardware_accelerator)
+
+    @_builtins.property
+    @pulumi.getter(name="hardwareAccelerator")
+    def hardware_accelerator(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "hardware_accelerator")
+
+    @hardware_accelerator.setter
+    def hardware_accelerator(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hardware_accelerator", value)
 
 
 if not MYPY:
@@ -35968,6 +36191,7 @@ class ModelServingConfigAutoCaptureConfigArgs:
 
 if not MYPY:
     class ModelServingConfigServedEntityArgsDict(TypedDict):
+        burst_scaling_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         entity_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
@@ -36027,6 +36251,7 @@ elif False:
 @pulumi.input_type
 class ModelServingConfigServedEntityArgs:
     def __init__(__self__, *,
+                 burst_scaling_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  entity_name: Optional[pulumi.Input[_builtins.str]] = None,
                  entity_version: Optional[pulumi.Input[_builtins.str]] = None,
                  environment_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -36056,6 +36281,8 @@ class ModelServingConfigServedEntityArgs:
         :param pulumi.Input[_builtins.str] workload_size: The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
         :param pulumi.Input[_builtins.str] workload_type: The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
         """
+        if burst_scaling_enabled is not None:
+            pulumi.set(__self__, "burst_scaling_enabled", burst_scaling_enabled)
         if entity_name is not None:
             pulumi.set(__self__, "entity_name", entity_name)
         if entity_version is not None:
@@ -36084,6 +36311,15 @@ class ModelServingConfigServedEntityArgs:
             pulumi.set(__self__, "workload_size", workload_size)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
+
+    @_builtins.property
+    @pulumi.getter(name="burstScalingEnabled")
+    def burst_scaling_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "burst_scaling_enabled")
+
+    @burst_scaling_enabled.setter
+    def burst_scaling_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "burst_scaling_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="entityName")
@@ -37447,6 +37683,7 @@ if not MYPY:
         """
         The version of the model in Databricks Model Registry to be served.
         """
+        burst_scaling_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         environment_vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
@@ -37496,6 +37733,7 @@ class ModelServingConfigServedModelArgs:
     def __init__(__self__, *,
                  model_name: pulumi.Input[_builtins.str],
                  model_version: pulumi.Input[_builtins.str],
+                 burst_scaling_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  environment_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  max_provisioned_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
@@ -37523,6 +37761,8 @@ class ModelServingConfigServedModelArgs:
         """
         pulumi.set(__self__, "model_name", model_name)
         pulumi.set(__self__, "model_version", model_version)
+        if burst_scaling_enabled is not None:
+            pulumi.set(__self__, "burst_scaling_enabled", burst_scaling_enabled)
         if environment_vars is not None:
             pulumi.set(__self__, "environment_vars", environment_vars)
         if instance_profile_arn is not None:
@@ -37569,6 +37809,15 @@ class ModelServingConfigServedModelArgs:
     @model_version.setter
     def model_version(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "model_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="burstScalingEnabled")
+    def burst_scaling_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "burst_scaling_enabled")
+
+    @burst_scaling_enabled.setter
+    def burst_scaling_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "burst_scaling_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVars")
@@ -40152,13 +40401,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -40212,7 +40461,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -40222,7 +40471,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -40498,13 +40747,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -40519,7 +40768,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -40529,7 +40778,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -59618,6 +59867,37 @@ class GetClustersProviderConfigArgs:
 
 
 if not MYPY:
+    class GetCurrentConfigProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetCurrentConfigProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCurrentConfigProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetCurrentMetastoreMetastoreInfoArgsDict(TypedDict):
         cloud: NotRequired[_builtins.str]
         created_at: NotRequired[_builtins.int]
@@ -60027,6 +60307,37 @@ class GetCurrentMetastoreProviderConfigArgs:
 
 
 if not MYPY:
+    class GetCurrentUserProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetCurrentUserProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCurrentUserProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetDashboardsProviderConfigArgsDict(TypedDict):
         workspace_id: _builtins.str
 elif False:
@@ -60041,6 +60352,68 @@ class GetDashboardsProviderConfigArgs:
     @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetDbfsFilePathsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetDbfsFilePathsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetDbfsFilePathsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetDbfsFileProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetDbfsFileProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetDbfsFileProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -62288,6 +62661,37 @@ class GetFunctionsProviderConfigArgs:
 
 
 if not MYPY:
+    class GetGroupProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetGroupProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGroupProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetInstancePoolPoolInfoArgsDict(TypedDict):
         default_tags: Mapping[str, _builtins.str]
         idle_instance_autotermination_minutes: _builtins.int
@@ -63037,6 +63441,37 @@ class GetInstancePoolPoolInfoStatsArgs:
     @used_count.setter
     def used_count(self, value: Optional[_builtins.int]):
         pulumi.set(self, "used_count", value)
+
+
+if not MYPY:
+    class GetInstancePoolProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetInstancePoolProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetInstancePoolProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -65684,6 +66119,9 @@ if not MYPY:
         jar: NotRequired[_builtins.str]
         maven: NotRequired['GetJobJobSettingsSettingsLibraryMavenArgsDict']
         provider_config: NotRequired['GetJobJobSettingsSettingsLibraryProviderConfigArgsDict']
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired['GetJobJobSettingsSettingsLibraryPypiArgsDict']
         requirements: NotRequired[_builtins.str]
         whl: NotRequired[_builtins.str]
@@ -65701,6 +66139,9 @@ class GetJobJobSettingsSettingsLibraryArgs:
                  pypi: Optional['GetJobJobSettingsSettingsLibraryPypiArgs'] = None,
                  requirements: Optional[_builtins.str] = None,
                  whl: Optional[_builtins.str] = None):
+        """
+        :param 'GetJobJobSettingsSettingsLibraryProviderConfigArgs' provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -65761,6 +66202,9 @@ class GetJobJobSettingsSettingsLibraryArgs:
     @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['GetJobJobSettingsSettingsLibraryProviderConfigArgs']:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
@@ -65881,6 +66325,9 @@ class GetJobJobSettingsSettingsLibraryMavenArgs:
 if not MYPY:
     class GetJobJobSettingsSettingsLibraryProviderConfigArgsDict(TypedDict):
         workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
 elif False:
     GetJobJobSettingsSettingsLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -65888,11 +66335,17 @@ elif False:
 class GetJobJobSettingsSettingsLibraryProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -69524,6 +69977,9 @@ if not MYPY:
         jar: NotRequired[_builtins.str]
         maven: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgsDict']
         provider_config: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgsDict']
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgsDict']
         requirements: NotRequired[_builtins.str]
         whl: NotRequired[_builtins.str]
@@ -69541,6 +69997,9 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs:
                  pypi: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs'] = None,
                  requirements: Optional[_builtins.str] = None,
                  whl: Optional[_builtins.str] = None):
+        """
+        :param 'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs' provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -69601,6 +70060,9 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs:
     @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs']:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
@@ -69721,6 +70183,9 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs:
 if not MYPY:
     class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgsDict(TypedDict):
         workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
 elif False:
     GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -69728,11 +70193,17 @@ elif False:
 class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -72369,6 +72840,9 @@ if not MYPY:
         jar: NotRequired[_builtins.str]
         maven: NotRequired['GetJobJobSettingsSettingsTaskLibraryMavenArgsDict']
         provider_config: NotRequired['GetJobJobSettingsSettingsTaskLibraryProviderConfigArgsDict']
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired['GetJobJobSettingsSettingsTaskLibraryPypiArgsDict']
         requirements: NotRequired[_builtins.str]
         whl: NotRequired[_builtins.str]
@@ -72386,6 +72860,9 @@ class GetJobJobSettingsSettingsTaskLibraryArgs:
                  pypi: Optional['GetJobJobSettingsSettingsTaskLibraryPypiArgs'] = None,
                  requirements: Optional[_builtins.str] = None,
                  whl: Optional[_builtins.str] = None):
+        """
+        :param 'GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs' provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -72446,6 +72923,9 @@ class GetJobJobSettingsSettingsTaskLibraryArgs:
     @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs']:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
@@ -72566,6 +73046,9 @@ class GetJobJobSettingsSettingsTaskLibraryMavenArgs:
 if not MYPY:
     class GetJobJobSettingsSettingsTaskLibraryProviderConfigArgsDict(TypedDict):
         workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
 elif False:
     GetJobJobSettingsSettingsTaskLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -72573,11 +73056,17 @@ elif False:
 class GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -75575,6 +76064,37 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs:
 
 
 if not MYPY:
+    class GetJobProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetJobProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetJobProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetJobsProviderConfigArgsDict(TypedDict):
         workspace_id: _builtins.str
         """
@@ -76408,6 +76928,37 @@ class GetMlflowModelsProviderConfigArgs:
 
 
 if not MYPY:
+    class GetMwsCredentialsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetMwsCredentialsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetMwsCredentialsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetMwsNetworkConnectivityConfigEgressConfigArgsDict(TypedDict):
         default_rules: NotRequired['GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgsDict']
         """
@@ -77149,6 +77700,37 @@ class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpoint
 
 
 if not MYPY:
+    class GetMwsWorkspacesProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetMwsWorkspacesProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetMwsWorkspacesProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetNodeTypeProviderConfigArgsDict(TypedDict):
         workspace_id: _builtins.str
         """
@@ -77159,6 +77741,37 @@ elif False:
 
 @pulumi.input_type
 class GetNodeTypeProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetNotebookPathsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetNotebookPathsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetNotebookPathsProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """
@@ -78880,6 +79493,68 @@ elif False:
 
 @pulumi.input_type
 class GetSchemasProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetServicePrincipalProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetServicePrincipalProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServicePrincipalProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetServicePrincipalsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetServicePrincipalsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServicePrincipalsProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """
@@ -84034,6 +84709,37 @@ elif False:
 
 @pulumi.input_type
 class GetTablesProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetUserProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetUserProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUserProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """

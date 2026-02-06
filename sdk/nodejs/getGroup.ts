@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -51,6 +53,7 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
         "groups": args.groups,
         "instanceProfiles": args.instanceProfiles,
         "members": args.members,
+        "providerConfig": args.providerConfig,
         "recursive": args.recursive,
         "servicePrincipals": args.servicePrincipals,
         "users": args.users,
@@ -100,6 +103,10 @@ export interface GetGroupArgs {
      * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
      */
     members?: string[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetGroupProviderConfig;
     /**
      * Collect information for all nested groups. *Defaults to true.*
      */
@@ -158,6 +165,7 @@ export interface GetGroupResult {
      * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
      */
     readonly members: string[];
+    readonly providerConfig?: outputs.GetGroupProviderConfig;
     readonly recursive?: boolean;
     /**
      * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
@@ -217,6 +225,7 @@ export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOut
         "groups": args.groups,
         "instanceProfiles": args.instanceProfiles,
         "members": args.members,
+        "providerConfig": args.providerConfig,
         "recursive": args.recursive,
         "servicePrincipals": args.servicePrincipals,
         "users": args.users,
@@ -266,6 +275,10 @@ export interface GetGroupOutputArgs {
      * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetGroupProviderConfigArgs>;
     /**
      * Collect information for all nested groups. *Defaults to true.*
      */

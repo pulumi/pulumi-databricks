@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetServicePrincipalProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -121,6 +122,21 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetServicePrincipalProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetServicePrincipalProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      * 
      */
@@ -167,6 +183,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         this.externalId = $.externalId;
         this.home = $.home;
         this.id = $.id;
+        this.providerConfig = $.providerConfig;
         this.repos = $.repos;
         this.scimId = $.scimId;
         this.spId = $.spId;
@@ -264,6 +281,17 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
          */
         public Builder id(@Nullable String id) {
             $.id = id;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetServicePrincipalProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

@@ -33,16 +33,16 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (string) - The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * (string) - Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * @return (string) - Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      * 
      */
     public Optional<Output<String>> name() {
@@ -51,10 +51,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
 
     /**
      * The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-     * Examples:
-     * - With custom ID: `production` → name becomes `projects/production`
-     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
      * 
      */
     @Import(name="projectId")
@@ -62,10 +60,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-     * Examples:
-     * - With custom ID: `production` → name becomes `projects/production`
-     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -184,8 +180,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name (string) - The resource name of the project. This field is output-only and constructed by the system.
-         * Format: `projects/{project_id}`
+         * @param name (string) - Output only. The full resource path of the project.
+         * Format: projects/{project_id}
          * 
          * @return builder
          * 
@@ -196,8 +192,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name (string) - The resource name of the project. This field is output-only and constructed by the system.
-         * Format: `projects/{project_id}`
+         * @param name (string) - Output only. The full resource path of the project.
+         * Format: projects/{project_id}
          * 
          * @return builder
          * 
@@ -208,10 +204,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param projectId The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-         * Examples:
-         * - With custom ID: `production` → name becomes `projects/production`
-         * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `my-app` becomes `projects/my-app`
          * 
          * @return builder
          * 
@@ -223,10 +217,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param projectId The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-         * Examples:
-         * - With custom ID: `production` → name becomes `projects/production`
-         * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `my-app` becomes `projects/my-app`
          * 
          * @return builder
          * 

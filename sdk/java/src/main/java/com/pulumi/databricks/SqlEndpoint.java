@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetCurrentUserArgs;
  * import com.pulumi.databricks.SqlEndpoint;
  * import com.pulumi.databricks.SqlEndpointArgs;
  * import com.pulumi.databricks.inputs.SqlEndpointTagsArgs;
@@ -52,7 +53,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var me = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ *         final var me = DatabricksFunctions.getCurrentUser(GetCurrentUserArgs.builder()
+ *             .build());
  * 
  *         var this_ = new SqlEndpoint("this", SqlEndpointArgs.builder()
  *             .name(String.format("Endpoint of %s", me.alphanumeric()))
@@ -140,14 +142,14 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.channel);
     }
     /**
-     * The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+     * The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;, &#34;5X-Large&#34;.
      * 
      */
     @Export(name="clusterSize", refs={String.class}, tree="[0]")
     private Output<String> clusterSize;
 
     /**
-     * @return The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+     * @return The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;, &#34;5X-Large&#34;.
      * 
      */
     public Output<String> clusterSize() {
@@ -168,14 +170,14 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
         return this.creatorName;
     }
     /**
-     * (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+     * (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      * 
      */
     @Export(name="dataSourceId", refs={String.class}, tree="[0]")
     private Output<String> dataSourceId;
 
     /**
-     * @return (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+     * @return (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      * 
      */
     public Output<String> dataSourceId() {

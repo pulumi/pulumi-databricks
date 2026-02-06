@@ -62,6 +62,12 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
      */
     declare public readonly authConfig: pulumi.Output<outputs.FeatureEngineeringKafkaConfigAuthConfig>;
     /**
+     * A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     */
+    declare public readonly backfillSource: pulumi.Output<outputs.FeatureEngineeringKafkaConfigBackfillSource | undefined>;
+    /**
      * A comma-separated list of host/port pairs pointing to Kafka cluster
      */
     declare public readonly bootstrapServers: pulumi.Output<string>;
@@ -101,6 +107,7 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FeatureEngineeringKafkaConfigState | undefined;
             resourceInputs["authConfig"] = state?.authConfig;
+            resourceInputs["backfillSource"] = state?.backfillSource;
             resourceInputs["bootstrapServers"] = state?.bootstrapServers;
             resourceInputs["extraOptions"] = state?.extraOptions;
             resourceInputs["keySchema"] = state?.keySchema;
@@ -119,6 +126,7 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'subscriptionMode'");
             }
             resourceInputs["authConfig"] = args?.authConfig;
+            resourceInputs["backfillSource"] = args?.backfillSource;
             resourceInputs["bootstrapServers"] = args?.bootstrapServers;
             resourceInputs["extraOptions"] = args?.extraOptions;
             resourceInputs["keySchema"] = args?.keySchema;
@@ -139,6 +147,12 @@ export interface FeatureEngineeringKafkaConfigState {
      * Authentication configuration for connection to topics
      */
     authConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigAuthConfig>;
+    /**
+     * A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     */
+    backfillSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSource>;
     /**
      * A comma-separated list of host/port pairs pointing to Kafka cluster
      */
@@ -174,6 +188,12 @@ export interface FeatureEngineeringKafkaConfigArgs {
      * Authentication configuration for connection to topics
      */
     authConfig: pulumi.Input<inputs.FeatureEngineeringKafkaConfigAuthConfig>;
+    /**
+     * A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     */
+    backfillSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSource>;
     /**
      * A comma-separated list of host/port pairs pointing to Kafka cluster
      */

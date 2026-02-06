@@ -23,8 +23,8 @@ public final class GetPostgresEndpointResult {
      */
     private String id;
     /**
-     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * @return (string) - Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      * 
      */
     private String name;
@@ -71,8 +71,8 @@ public final class GetPostgresEndpointResult {
         return this.id;
     }
     /**
-     * @return (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * @return (string) - Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      * 
      */
     public String name() {

@@ -18,8 +18,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        /// (string) - Output only. The full resource path of the endpoint.
+        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         /// </summary>
         public readonly string Name;
         /// <summary>

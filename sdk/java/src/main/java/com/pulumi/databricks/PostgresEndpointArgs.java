@@ -19,10 +19,8 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-     * Examples:
-     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
      * 
      */
     @Import(name="endpointId", required=true)
@@ -30,10 +28,8 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-     * Examples:
-     * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-     * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
      * 
      */
     public Output<String> endpointId() {
@@ -100,10 +96,8 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-         * Examples:
-         * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-         * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
          * 
          * @return builder
          * 
@@ -115,10 +109,8 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-         * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-         * Examples:
-         * - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-         * - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
          * 
          * @return builder
          * 

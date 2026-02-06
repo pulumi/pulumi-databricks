@@ -210,6 +210,12 @@ namespace Pulumi.Databricks
         [Input("displayNameContains")]
         public string? DisplayNameContains { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetServicePrincipalsProviderConfigArgs? ProviderConfig { get; set; }
+
         [Input("servicePrincipals")]
         private List<Inputs.GetServicePrincipalsServicePrincipalArgs>? _servicePrincipals;
 
@@ -248,6 +254,12 @@ namespace Pulumi.Databricks
         [Input("displayNameContains")]
         public Input<string>? DisplayNameContains { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetServicePrincipalsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         [Input("servicePrincipals")]
         private InputList<Inputs.GetServicePrincipalsServicePrincipalInputArgs>? _servicePrincipals;
 
@@ -279,6 +291,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetServicePrincipalsProviderConfigResult? ProviderConfig;
         /// <summary>
         /// List of objects describing individual service principals. Each object has the following attributes:
         /// </summary>
@@ -292,11 +305,14 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetServicePrincipalsProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetServicePrincipalsServicePrincipalResult> servicePrincipals)
         {
             ApplicationIds = applicationIds;
             DisplayNameContains = displayNameContains;
             Id = id;
+            ProviderConfig = providerConfig;
             ServicePrincipals = servicePrincipals;
         }
     }

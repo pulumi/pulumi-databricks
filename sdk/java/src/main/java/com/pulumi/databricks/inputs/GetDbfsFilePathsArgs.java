@@ -5,10 +5,13 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetDbfsFilePathsProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDbfsFilePathsArgs extends com.pulumi.resources.InvokeArgs {
@@ -31,6 +34,21 @@ public final class GetDbfsFilePathsArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetDbfsFilePathsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetDbfsFilePathsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Either or not recursively list all files
      * 
      */
@@ -49,6 +67,7 @@ public final class GetDbfsFilePathsArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetDbfsFilePathsArgs(GetDbfsFilePathsArgs $) {
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
         this.recursive = $.recursive;
     }
 
@@ -89,6 +108,27 @@ public final class GetDbfsFilePathsArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetDbfsFilePathsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetDbfsFilePathsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

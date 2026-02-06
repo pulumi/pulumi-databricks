@@ -73,8 +73,8 @@ class GetPostgresEndpointResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-        Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        (string) - Output only. The full resource path of the endpoint.
+        Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         """
         return pulumi.get(self, "name")
 
@@ -156,8 +156,8 @@ def get_postgres_endpoint(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: The resource name of the endpoint. This field is output-only and constructed by the system.
-           Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+    :param _builtins.str name: Output only. The full resource path of the endpoint.
+           Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
     """
     __args__ = dict()
     __args__['name'] = name
@@ -193,8 +193,8 @@ def get_postgres_endpoint_output(name: Optional[pulumi.Input[_builtins.str]] = N
     ```
 
 
-    :param _builtins.str name: The resource name of the endpoint. This field is output-only and constructed by the system.
-           Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+    :param _builtins.str name: Output only. The full resource path of the endpoint.
+           Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
     """
     __args__ = dict()
     __args__['name'] = name

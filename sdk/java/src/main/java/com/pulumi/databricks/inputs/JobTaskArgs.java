@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskCleanRoomsNotebookTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskComputeArgs;
 import com.pulumi.databricks.inputs.JobTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDashboardTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDbtCloudTaskArgs;
@@ -48,6 +49,13 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<JobTaskCleanRoomsNotebookTaskArgs>> cleanRoomsNotebookTask() {
         return Optional.ofNullable(this.cleanRoomsNotebookTask);
+    }
+
+    @Import(name="compute")
+    private @Nullable Output<JobTaskComputeArgs> compute;
+
+    public Optional<Output<JobTaskComputeArgs>> compute() {
+        return Optional.ofNullable(this.compute);
     }
 
     @Import(name="conditionTask")
@@ -449,6 +457,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     private JobTaskArgs(JobTaskArgs $) {
         this.cleanRoomsNotebookTask = $.cleanRoomsNotebookTask;
+        this.compute = $.compute;
         this.conditionTask = $.conditionTask;
         this.dashboardTask = $.dashboardTask;
         this.dbtCloudTask = $.dbtCloudTask;
@@ -511,6 +520,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder cleanRoomsNotebookTask(JobTaskCleanRoomsNotebookTaskArgs cleanRoomsNotebookTask) {
             return cleanRoomsNotebookTask(Output.of(cleanRoomsNotebookTask));
+        }
+
+        public Builder compute(@Nullable Output<JobTaskComputeArgs> compute) {
+            $.compute = compute;
+            return this;
+        }
+
+        public Builder compute(JobTaskComputeArgs compute) {
+            return compute(Output.of(compute));
         }
 
         public Builder conditionTask(@Nullable Output<JobTaskConditionTaskArgs> conditionTask) {

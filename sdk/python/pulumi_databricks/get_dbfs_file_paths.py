@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDbfsFilePathsResult',
@@ -27,7 +28,7 @@ class GetDbfsFilePathsResult:
     """
     A collection of values returned by getDbfsFilePaths.
     """
-    def __init__(__self__, id=None, path=None, path_lists=None, recursive=None):
+    def __init__(__self__, id=None, path=None, path_lists=None, provider_config=None, recursive=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -37,6 +38,9 @@ class GetDbfsFilePathsResult:
         if path_lists and not isinstance(path_lists, list):
             raise TypeError("Expected argument 'path_lists' to be a list")
         pulumi.set(__self__, "path_lists", path_lists)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if recursive and not isinstance(recursive, bool):
             raise TypeError("Expected argument 'recursive' to be a bool")
         pulumi.set(__self__, "recursive", recursive)
@@ -63,6 +67,11 @@ class GetDbfsFilePathsResult:
         return pulumi.get(self, "path_lists")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDbfsFilePathsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def recursive(self) -> _builtins.bool:
         return pulumi.get(self, "recursive")
@@ -77,10 +86,12 @@ class AwaitableGetDbfsFilePathsResult(GetDbfsFilePathsResult):
             id=self.id,
             path=self.path,
             path_lists=self.path_lists,
+            provider_config=self.provider_config,
             recursive=self.recursive)
 
 
 def get_dbfs_file_paths(path: Optional[_builtins.str] = None,
+                        provider_config: Optional[Union['GetDbfsFilePathsProviderConfigArgs', 'GetDbfsFilePathsProviderConfigArgsDict']] = None,
                         recursive: Optional[_builtins.bool] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbfsFilePathsResult:
     """
@@ -111,10 +122,12 @@ def get_dbfs_file_paths(path: Optional[_builtins.str] = None,
 
 
     :param _builtins.str path: Path on DBFS for the file to perform listing
+    :param Union['GetDbfsFilePathsProviderConfigArgs', 'GetDbfsFilePathsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool recursive: Either or not recursively list all files
     """
     __args__ = dict()
     __args__['path'] = path
+    __args__['providerConfig'] = provider_config
     __args__['recursive'] = recursive
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDbfsFilePaths:getDbfsFilePaths', __args__, opts=opts, typ=GetDbfsFilePathsResult).value
@@ -123,8 +136,10 @@ def get_dbfs_file_paths(path: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         path=pulumi.get(__ret__, 'path'),
         path_lists=pulumi.get(__ret__, 'path_lists'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         recursive=pulumi.get(__ret__, 'recursive'))
 def get_dbfs_file_paths_output(path: Optional[pulumi.Input[_builtins.str]] = None,
+                               provider_config: Optional[pulumi.Input[Optional[Union['GetDbfsFilePathsProviderConfigArgs', 'GetDbfsFilePathsProviderConfigArgsDict']]]] = None,
                                recursive: Optional[pulumi.Input[_builtins.bool]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFilePathsResult]:
     """
@@ -155,10 +170,12 @@ def get_dbfs_file_paths_output(path: Optional[pulumi.Input[_builtins.str]] = Non
 
 
     :param _builtins.str path: Path on DBFS for the file to perform listing
+    :param Union['GetDbfsFilePathsProviderConfigArgs', 'GetDbfsFilePathsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool recursive: Either or not recursively list all files
     """
     __args__ = dict()
     __args__['path'] = path
+    __args__['providerConfig'] = provider_config
     __args__['recursive'] = recursive
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDbfsFilePaths:getDbfsFilePaths', __args__, opts=opts, typ=GetDbfsFilePathsResult)
@@ -166,4 +183,5 @@ def get_dbfs_file_paths_output(path: Optional[pulumi.Input[_builtins.str]] = Non
         id=pulumi.get(__response__, 'id'),
         path=pulumi.get(__response__, 'path'),
         path_lists=pulumi.get(__response__, 'path_lists'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         recursive=pulumi.get(__response__, 'recursive')))

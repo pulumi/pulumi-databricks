@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetDbfsFileProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbfsFileResult {
@@ -29,6 +32,7 @@ public final class GetDbfsFileResult {
     private String id;
     private Boolean limitFileSize;
     private String path;
+    private @Nullable GetDbfsFileProviderConfig providerConfig;
 
     private GetDbfsFileResult() {}
     /**
@@ -58,6 +62,9 @@ public final class GetDbfsFileResult {
     public String path() {
         return this.path;
     }
+    public Optional<GetDbfsFileProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -73,6 +80,7 @@ public final class GetDbfsFileResult {
         private String id;
         private Boolean limitFileSize;
         private String path;
+        private @Nullable GetDbfsFileProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDbfsFileResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +89,7 @@ public final class GetDbfsFileResult {
     	      this.id = defaults.id;
     	      this.limitFileSize = defaults.limitFileSize;
     	      this.path = defaults.path;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -123,6 +132,12 @@ public final class GetDbfsFileResult {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDbfsFileProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetDbfsFileResult build() {
             final var _resultValue = new GetDbfsFileResult();
             _resultValue.content = content;
@@ -130,6 +145,7 @@ public final class GetDbfsFileResult {
             _resultValue.id = id;
             _resultValue.limitFileSize = limitFileSize;
             _resultValue.path = path;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

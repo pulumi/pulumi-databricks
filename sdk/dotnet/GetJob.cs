@@ -156,6 +156,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetJobProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetJobArgs()
         {
         }
@@ -188,6 +194,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetJobProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetJobInvokeArgs()
         {
         }
@@ -212,6 +224,7 @@ namespace Pulumi.Databricks
         /// the job name of databricks.Job if the resource was matched by id.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetJobProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetJobResult(
@@ -223,13 +236,16 @@ namespace Pulumi.Databricks
 
             Outputs.GetJobJobSettingsResult jobSettings,
 
-            string name)
+            string name,
+
+            Outputs.GetJobProviderConfigResult? providerConfig)
         {
             Id = id;
             JobId = jobId;
             JobName = jobName;
             JobSettings = jobSettings;
             Name = name;
+            ProviderConfig = providerConfig;
         }
     }
 }

@@ -58,9 +58,17 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
         return Optional.ofNullable(this.maven);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     @Import(name="providerConfig")
     private @Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig;
 
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     public Optional<GetJobJobSettingsSettingsLibraryProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -145,6 +153,12 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
             return this;
         }
 
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerConfig(@Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig) {
             $.providerConfig = providerConfig;
             return this;

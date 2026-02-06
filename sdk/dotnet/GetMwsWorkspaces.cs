@@ -44,8 +44,8 @@ namespace Pulumi.Databricks
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
         /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or AzurermDatabricksWorkspace
         /// </summary>
-        public static Task<GetMwsWorkspacesResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetMwsWorkspacesResult> InvokeAsync(GetMwsWorkspacesArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Lists all databricks.MwsWorkspaces in Databricks Account.
@@ -80,8 +80,8 @@ namespace Pulumi.Databricks
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
         /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or AzurermDatabricksWorkspace
         /// </summary>
-        public static Output<GetMwsWorkspacesResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetMwsWorkspacesResult> Invoke(GetMwsWorkspacesInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Lists all databricks.MwsWorkspaces in Databricks Account.
@@ -116,8 +116,37 @@ namespace Pulumi.Databricks
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
         /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or AzurermDatabricksWorkspace
         /// </summary>
-        public static Output<GetMwsWorkspacesResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetMwsWorkspacesResult> Invoke(GetMwsWorkspacesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetMwsWorkspacesArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetMwsWorkspacesProviderConfigArgs? ProviderConfig { get; set; }
+
+        public GetMwsWorkspacesArgs()
+        {
+        }
+        public static new GetMwsWorkspacesArgs Empty => new GetMwsWorkspacesArgs();
+    }
+
+    public sealed class GetMwsWorkspacesInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetMwsWorkspacesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        public GetMwsWorkspacesInvokeArgs()
+        {
+        }
+        public static new GetMwsWorkspacesInvokeArgs Empty => new GetMwsWorkspacesInvokeArgs();
     }
 
 
@@ -132,15 +161,19 @@ namespace Pulumi.Databricks
         /// name-to-id map for all of the workspaces in the account
         /// </summary>
         public readonly ImmutableDictionary<string, string> Ids;
+        public readonly Outputs.GetMwsWorkspacesProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetMwsWorkspacesResult(
             string id,
 
-            ImmutableDictionary<string, string> ids)
+            ImmutableDictionary<string, string> ids,
+
+            Outputs.GetMwsWorkspacesProviderConfigResult? providerConfig)
         {
             Id = id;
             Ids = ids;
+            ProviderConfig = providerConfig;
         }
     }
 }

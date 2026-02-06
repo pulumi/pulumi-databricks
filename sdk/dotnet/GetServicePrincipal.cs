@@ -214,6 +214,12 @@ namespace Pulumi.Databricks
         public string? Id { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetServicePrincipalProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         /// </summary>
         [Input("repos")]
@@ -279,6 +285,12 @@ namespace Pulumi.Databricks
         public Input<string>? Id { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetServicePrincipalProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         /// </summary>
         [Input("repos")]
@@ -331,6 +343,7 @@ namespace Pulumi.Databricks
         /// The id of the service principal (SCIM ID).
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetServicePrincipalProviderConfigResult? ProviderConfig;
         /// <summary>
         /// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         /// </summary>
@@ -357,6 +370,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetServicePrincipalProviderConfigResult? providerConfig,
+
             string repos,
 
             string scimId,
@@ -370,6 +385,7 @@ namespace Pulumi.Databricks
             ExternalId = externalId;
             Home = home;
             Id = id;
+            ProviderConfig = providerConfig;
             Repos = repos;
             ScimId = scimId;
             SpId = spId;

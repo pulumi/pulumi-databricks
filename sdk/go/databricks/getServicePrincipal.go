@@ -94,6 +94,8 @@ type LookupServicePrincipalArgs struct {
 	Home *string `pulumi:"home"`
 	// The id of the service principal (SCIM ID).
 	Id *string `pulumi:"id"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetServicePrincipalProviderConfig `pulumi:"providerConfig"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos *string `pulumi:"repos"`
 	// Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
@@ -116,7 +118,8 @@ type LookupServicePrincipalResult struct {
 	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
 	Home string `pulumi:"home"`
 	// The id of the service principal (SCIM ID).
-	Id string `pulumi:"id"`
+	Id             string                             `pulumi:"id"`
+	ProviderConfig *GetServicePrincipalProviderConfig `pulumi:"providerConfig"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos string `pulumi:"repos"`
 	// same as `id`.
@@ -149,6 +152,8 @@ type LookupServicePrincipalOutputArgs struct {
 	Home pulumi.StringPtrInput `pulumi:"home"`
 	// The id of the service principal (SCIM ID).
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetServicePrincipalProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos pulumi.StringPtrInput `pulumi:"repos"`
 	// Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
@@ -208,6 +213,10 @@ func (o LookupServicePrincipalResultOutput) Home() pulumi.StringOutput {
 // The id of the service principal (SCIM ID).
 func (o LookupServicePrincipalResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupServicePrincipalResultOutput) ProviderConfig() GetServicePrincipalProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) *GetServicePrincipalProviderConfig { return v.ProviderConfig }).(GetServicePrincipalProviderConfigPtrOutput)
 }
 
 // Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.

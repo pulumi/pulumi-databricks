@@ -118,6 +118,8 @@ type AlertV2 struct {
 	OwnerUserName pulumi.StringOutput `pulumi:"ownerUserName"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
+	// Purge the resource on delete
+	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
 	// Text of the query to be run
 	QueryText pulumi.StringOutput `pulumi:"queryText"`
 	// Specifies the identity that will be used to run the alert.
@@ -201,6 +203,8 @@ type alertV2State struct {
 	OwnerUserName *string `pulumi:"ownerUserName"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath *string `pulumi:"parentPath"`
+	// Purge the resource on delete
+	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// Text of the query to be run
 	QueryText *string `pulumi:"queryText"`
 	// Specifies the identity that will be used to run the alert.
@@ -240,6 +244,8 @@ type AlertV2State struct {
 	OwnerUserName pulumi.StringPtrInput
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrInput
+	// Purge the resource on delete
+	PurgeOnDelete pulumi.BoolPtrInput
 	// Text of the query to be run
 	QueryText pulumi.StringPtrInput
 	// Specifies the identity that will be used to run the alert.
@@ -273,6 +279,8 @@ type alertV2Args struct {
 	Evaluation  AlertV2Evaluation `pulumi:"evaluation"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath *string `pulumi:"parentPath"`
+	// Purge the resource on delete
+	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// Text of the query to be run
 	QueryText string `pulumi:"queryText"`
 	// Specifies the identity that will be used to run the alert.
@@ -301,6 +309,8 @@ type AlertV2Args struct {
 	Evaluation  AlertV2EvaluationInput
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrInput
+	// Purge the resource on delete
+	PurgeOnDelete pulumi.BoolPtrInput
 	// Text of the query to be run
 	QueryText pulumi.StringInput
 	// Specifies the identity that will be used to run the alert.
@@ -449,6 +459,11 @@ func (o AlertV2Output) OwnerUserName() pulumi.StringOutput {
 // The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 func (o AlertV2Output) ParentPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.ParentPath }).(pulumi.StringPtrOutput)
+}
+
+// Purge the resource on delete
+func (o AlertV2Output) PurgeOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlertV2) pulumi.BoolPtrOutput { return v.PurgeOnDelete }).(pulumi.BoolPtrOutput)
 }
 
 // Text of the query to be run

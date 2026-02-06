@@ -5,9 +5,12 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetInstancePoolPoolInfo;
+import com.pulumi.databricks.outputs.GetInstancePoolProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancePoolResult {
@@ -22,6 +25,7 @@ public final class GetInstancePoolResult {
      * 
      */
     private GetInstancePoolPoolInfo poolInfo;
+    private @Nullable GetInstancePoolProviderConfig providerConfig;
 
     private GetInstancePoolResult() {}
     /**
@@ -41,6 +45,9 @@ public final class GetInstancePoolResult {
     public GetInstancePoolPoolInfo poolInfo() {
         return this.poolInfo;
     }
+    public Optional<GetInstancePoolProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,12 +61,14 @@ public final class GetInstancePoolResult {
         private String id;
         private String name;
         private GetInstancePoolPoolInfo poolInfo;
+        private @Nullable GetInstancePoolProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetInstancePoolResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.poolInfo = defaults.poolInfo;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -86,11 +95,18 @@ public final class GetInstancePoolResult {
             this.poolInfo = poolInfo;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetInstancePoolProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetInstancePoolResult build() {
             final var _resultValue = new GetInstancePoolResult();
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.poolInfo = poolInfo;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

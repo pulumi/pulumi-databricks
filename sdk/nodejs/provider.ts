@@ -99,6 +99,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["profile"] = args?.profile;
             resourceInputs["rateLimit"] = pulumi.output(args?.rateLimit).apply(JSON.stringify);
             resourceInputs["retryTimeoutSeconds"] = pulumi.output(args?.retryTimeoutSeconds).apply(JSON.stringify);
+            resourceInputs["scopes"] = pulumi.output(args?.scopes).apply(JSON.stringify);
             resourceInputs["serverlessComputeId"] = args?.serverlessComputeId;
             resourceInputs["skipVerify"] = pulumi.output(args?.skipVerify).apply(JSON.stringify);
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
@@ -159,6 +160,7 @@ export interface ProviderArgs {
     profile?: pulumi.Input<string>;
     rateLimit?: pulumi.Input<number>;
     retryTimeoutSeconds?: pulumi.Input<number>;
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
     serverlessComputeId?: pulumi.Input<string>;
     skipVerify?: pulumi.Input<boolean>;
     token?: pulumi.Input<string>;

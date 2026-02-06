@@ -146,14 +146,12 @@ type PostgresProject struct {
 
 	// (string) - A timestamp indicating when the project was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// (string) - The resource name of the project. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}`
+	// (string) - Output only. The full resource path of the project.
+	// Format: projects/{project_id}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `production` → name becomes `projects/production`
-	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `my-app` becomes `projects/my-app`
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecOutput `pulumi:"spec"`
@@ -200,14 +198,12 @@ func GetPostgresProject(ctx *pulumi.Context,
 type postgresProjectState struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime *string `pulumi:"createTime"`
-	// (string) - The resource name of the project. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}`
+	// (string) - Output only. The full resource path of the project.
+	// Format: projects/{project_id}
 	Name *string `pulumi:"name"`
 	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `production` → name becomes `projects/production`
-	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `my-app` becomes `projects/my-app`
 	ProjectId *string `pulumi:"projectId"`
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec *PostgresProjectSpec `pulumi:"spec"`
@@ -222,14 +218,12 @@ type postgresProjectState struct {
 type PostgresProjectState struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime pulumi.StringPtrInput
-	// (string) - The resource name of the project. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}`
+	// (string) - Output only. The full resource path of the project.
+	// Format: projects/{project_id}
 	Name pulumi.StringPtrInput
 	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `production` → name becomes `projects/production`
-	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `my-app` becomes `projects/my-app`
 	ProjectId pulumi.StringPtrInput
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecPtrInput
@@ -247,10 +241,8 @@ func (PostgresProjectState) ElementType() reflect.Type {
 
 type postgresProjectArgs struct {
 	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `production` → name becomes `projects/production`
-	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `my-app` becomes `projects/my-app`
 	ProjectId string `pulumi:"projectId"`
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec *PostgresProjectSpec `pulumi:"spec"`
@@ -259,10 +251,8 @@ type postgresProjectArgs struct {
 // The set of arguments for constructing a PostgresProject resource.
 type PostgresProjectArgs struct {
 	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `production` → name becomes `projects/production`
-	// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `my-app` becomes `projects/my-app`
 	ProjectId pulumi.StringInput
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecPtrInput
@@ -360,17 +350,15 @@ func (o PostgresProjectOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the project. This field is output-only and constructed by the system.
-// Format: `projects/{project_id}`
+// (string) - Output only. The full resource path of the project.
+// Format: projects/{project_id}
 func (o PostgresProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID to use for the Project. This becomes the final component of the project's resource name.
-// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-// Examples:
-// - With custom ID: `production` → name becomes `projects/production`
-// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+// For example, `my-app` becomes `projects/my-app`
 func (o PostgresProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

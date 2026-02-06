@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppComputeStatus {
+    private @Nullable Integer activeInstances;
     /**
      * @return Application status message
      * 
@@ -23,6 +25,9 @@ public final class AppComputeStatus {
     private @Nullable String state;
 
     private AppComputeStatus() {}
+    public Optional<Integer> activeInstances() {
+        return Optional.ofNullable(this.activeInstances);
+    }
     /**
      * @return Application status message
      * 
@@ -47,15 +52,23 @@ public final class AppComputeStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer activeInstances;
         private @Nullable String message;
         private @Nullable String state;
         public Builder() {}
         public Builder(AppComputeStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.activeInstances = defaults.activeInstances;
     	      this.message = defaults.message;
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
+        public Builder activeInstances(@Nullable Integer activeInstances) {
+
+            this.activeInstances = activeInstances;
+            return this;
+        }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
 
@@ -70,6 +83,7 @@ public final class AppComputeStatus {
         }
         public AppComputeStatus build() {
             final var _resultValue = new AppComputeStatus();
+            _resultValue.activeInstances = activeInstances;
             _resultValue.message = message;
             _resultValue.state = state;
             return _resultValue;

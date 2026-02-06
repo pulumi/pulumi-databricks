@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskCompute;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskConditionTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDashboardTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDbtCloudTask;
@@ -39,6 +40,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskForEachTaskTask {
     private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
+    private @Nullable JobTaskForEachTaskTaskCompute compute;
     private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
     private @Nullable JobTaskForEachTaskTaskDashboardTask dashboardTask;
     private @Nullable JobTaskForEachTaskTaskDbtCloudTask dbtCloudTask;
@@ -152,6 +154,9 @@ public final class JobTaskForEachTaskTask {
     private JobTaskForEachTaskTask() {}
     public Optional<JobTaskForEachTaskTaskCleanRoomsNotebookTask> cleanRoomsNotebookTask() {
         return Optional.ofNullable(this.cleanRoomsNotebookTask);
+    }
+    public Optional<JobTaskForEachTaskTaskCompute> compute() {
+        return Optional.ofNullable(this.compute);
     }
     public Optional<JobTaskForEachTaskTaskConditionTask> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
@@ -341,6 +346,7 @@ public final class JobTaskForEachTaskTask {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
+        private @Nullable JobTaskForEachTaskTaskCompute compute;
         private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
         private @Nullable JobTaskForEachTaskTaskDashboardTask dashboardTask;
         private @Nullable JobTaskForEachTaskTaskDbtCloudTask dbtCloudTask;
@@ -379,6 +385,7 @@ public final class JobTaskForEachTaskTask {
         public Builder(JobTaskForEachTaskTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
+    	      this.compute = defaults.compute;
     	      this.conditionTask = defaults.conditionTask;
     	      this.dashboardTask = defaults.dashboardTask;
     	      this.dbtCloudTask = defaults.dbtCloudTask;
@@ -419,6 +426,12 @@ public final class JobTaskForEachTaskTask {
         public Builder cleanRoomsNotebookTask(@Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask) {
 
             this.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder compute(@Nullable JobTaskForEachTaskTaskCompute compute) {
+
+            this.compute = compute;
             return this;
         }
         @CustomType.Setter
@@ -636,6 +649,7 @@ public final class JobTaskForEachTaskTask {
         public JobTaskForEachTaskTask build() {
             final var _resultValue = new JobTaskForEachTaskTask();
             _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
+            _resultValue.compute = compute;
             _resultValue.conditionTask = conditionTask;
             _resultValue.dashboardTask = dashboardTask;
             _resultValue.dbtCloudTask = dbtCloudTask;

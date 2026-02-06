@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -9,10 +11,22 @@ import * as utilities from "./utilities";
  *
  * > This data source can only be used with a workspace-level provider!
  */
-export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentUserResult> {
+export function getCurrentUser(args?: GetCurrentUserArgs, opts?: pulumi.InvokeOptions): Promise<GetCurrentUserResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCurrentUser:getCurrentUser", {
+        "providerConfig": args.providerConfig,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCurrentUser.
+ */
+export interface GetCurrentUserArgs {
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetCurrentUserProviderConfig;
 }
 
 /**
@@ -27,6 +41,7 @@ export interface GetCurrentUserResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetCurrentUserProviderConfig;
     readonly repos: string;
     readonly userName: string;
     readonly workspaceUrl: string;
@@ -36,8 +51,20 @@ export interface GetCurrentUserResult {
  *
  * > This data source can only be used with a workspace-level provider!
  */
-export function getCurrentUserOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCurrentUserResult> {
+export function getCurrentUserOutput(args?: GetCurrentUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCurrentUserResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCurrentUser:getCurrentUser", {
+        "providerConfig": args.providerConfig,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCurrentUser.
+ */
+export interface GetCurrentUserOutputArgs {
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetCurrentUserProviderConfigArgs>;
 }

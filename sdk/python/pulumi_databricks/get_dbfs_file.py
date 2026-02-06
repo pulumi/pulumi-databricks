@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDbfsFileResult',
@@ -26,7 +28,7 @@ class GetDbfsFileResult:
     """
     A collection of values returned by getDbfsFile.
     """
-    def __init__(__self__, content=None, file_size=None, id=None, limit_file_size=None, path=None):
+    def __init__(__self__, content=None, file_size=None, id=None, limit_file_size=None, path=None, provider_config=None):
         if content and not isinstance(content, str):
             raise TypeError("Expected argument 'content' to be a str")
         pulumi.set(__self__, "content", content)
@@ -42,6 +44,9 @@ class GetDbfsFileResult:
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -77,6 +82,11 @@ class GetDbfsFileResult:
     def path(self) -> _builtins.str:
         return pulumi.get(self, "path")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDbfsFileProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetDbfsFileResult(GetDbfsFileResult):
     # pylint: disable=using-constant-test
@@ -88,11 +98,13 @@ class AwaitableGetDbfsFileResult(GetDbfsFileResult):
             file_size=self.file_size,
             id=self.id,
             limit_file_size=self.limit_file_size,
-            path=self.path)
+            path=self.path,
+            provider_config=self.provider_config)
 
 
 def get_dbfs_file(limit_file_size: Optional[_builtins.bool] = None,
                   path: Optional[_builtins.str] = None,
+                  provider_config: Optional[Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbfsFileResult:
     """
     This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -121,10 +133,12 @@ def get_dbfs_file(limit_file_size: Optional[_builtins.bool] = None,
 
     :param _builtins.bool limit_file_size: Do not load content for files larger than 4MB.
     :param _builtins.str path: Path on DBFS for the file from which to get content.
+    :param Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['limitFileSize'] = limit_file_size
     __args__['path'] = path
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDbfsFile:getDbfsFile', __args__, opts=opts, typ=GetDbfsFileResult).value
 
@@ -133,9 +147,11 @@ def get_dbfs_file(limit_file_size: Optional[_builtins.bool] = None,
         file_size=pulumi.get(__ret__, 'file_size'),
         id=pulumi.get(__ret__, 'id'),
         limit_file_size=pulumi.get(__ret__, 'limit_file_size'),
-        path=pulumi.get(__ret__, 'path'))
+        path=pulumi.get(__ret__, 'path'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[_builtins.bool]] = None,
                          path: Optional[pulumi.Input[_builtins.str]] = None,
+                         provider_config: Optional[pulumi.Input[Optional[Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFileResult]:
     """
     This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -164,10 +180,12 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[_builtins.bool]]
 
     :param _builtins.bool limit_file_size: Do not load content for files larger than 4MB.
     :param _builtins.str path: Path on DBFS for the file from which to get content.
+    :param Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['limitFileSize'] = limit_file_size
     __args__['path'] = path
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDbfsFile:getDbfsFile', __args__, opts=opts, typ=GetDbfsFileResult)
     return __ret__.apply(lambda __response__: GetDbfsFileResult(
@@ -175,4 +193,5 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[_builtins.bool]]
         file_size=pulumi.get(__response__, 'file_size'),
         id=pulumi.get(__response__, 'id'),
         limit_file_size=pulumi.get(__response__, 'limit_file_size'),
-        path=pulumi.get(__response__, 'path')))
+        path=pulumi.get(__response__, 'path'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

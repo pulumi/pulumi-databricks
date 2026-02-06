@@ -290,13 +290,11 @@ type PostgresEndpoint struct {
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-	// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
-	// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+	// (string) - Output only. The full resource path of the endpoint.
+	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -350,13 +348,11 @@ type postgresEndpointState struct {
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime *string `pulumi:"createTime"`
 	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-	// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
 	EndpointId *string `pulumi:"endpointId"`
-	// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+	// (string) - Output only. The full resource path of the endpoint.
+	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 	Name *string `pulumi:"name"`
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -375,13 +371,11 @@ type PostgresEndpointState struct {
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime pulumi.StringPtrInput
 	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-	// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
 	EndpointId pulumi.StringPtrInput
-	// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+	// (string) - Output only. The full resource path of the endpoint.
+	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 	Name pulumi.StringPtrInput
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -402,10 +396,8 @@ func (PostgresEndpointState) ElementType() reflect.Type {
 
 type postgresEndpointArgs struct {
 	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-	// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
 	EndpointId string `pulumi:"endpointId"`
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -417,10 +409,8 @@ type postgresEndpointArgs struct {
 // The set of arguments for constructing a PostgresEndpoint resource.
 type PostgresEndpointArgs struct {
 	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-	// Examples:
-	// - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-	// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
 	EndpointId pulumi.StringInput
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -522,16 +512,14 @@ func (o PostgresEndpointOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-// Examples:
-// - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
 func (o PostgresEndpointOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+// (string) - Output only. The full resource path of the endpoint.
+// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 func (o PostgresEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

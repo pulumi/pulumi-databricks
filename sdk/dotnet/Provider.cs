@@ -292,6 +292,14 @@ namespace Pulumi.Databricks
         [Input("retryTimeoutSeconds", json: true)]
         public Input<int>? RetryTimeoutSeconds { get; set; }
 
+        [Input("scopes", json: true)]
+        private InputList<string>? _scopes;
+        public InputList<string> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<string>());
+            set => _scopes = value;
+        }
+
         [Input("serverlessComputeId")]
         public Input<string>? ServerlessComputeId { get; set; }
 

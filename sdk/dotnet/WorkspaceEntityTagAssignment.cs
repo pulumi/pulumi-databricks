@@ -24,6 +24,14 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var appTag = new Databricks.WorkspaceEntityTagAssignment("app_tag", new()
+    ///     {
+    ///         EntityType = "apps",
+    ///         EntityId = "2807324866692453",
+    ///         TagKey = "sensitivity_level",
+    ///         TagValue = "high",
+    ///     });
+    /// 
     ///     var dashboardTag = new Databricks.WorkspaceEntityTagAssignment("dashboard_tag", new()
     ///     {
     ///         EntityType = "dashboards",
@@ -73,7 +81,7 @@ namespace Pulumi.Databricks
         public Output<string> EntityId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
         /// </summary>
         [Output("entityType")]
         public Output<string> EntityType { get; private set; } = null!;
@@ -143,7 +151,7 @@ namespace Pulumi.Databricks
         public Input<string> EntityId { get; set; } = null!;
 
         /// <summary>
-        /// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -175,7 +183,7 @@ namespace Pulumi.Databricks
         public Input<string>? EntityId { get; set; }
 
         /// <summary>
-        /// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+        /// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }

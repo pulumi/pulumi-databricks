@@ -37,8 +37,8 @@ export function getPostgresEndpoint(args: GetPostgresEndpointArgs, opts?: pulumi
  */
 export interface GetPostgresEndpointArgs {
     /**
-     * The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      */
     name: string;
 }
@@ -56,8 +56,8 @@ export interface GetPostgresEndpointResult {
      */
     readonly id: string;
     /**
-     * (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * (string) - Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      */
     readonly name: string;
     /**
@@ -113,8 +113,8 @@ export function getPostgresEndpointOutput(args: GetPostgresEndpointOutputArgs, o
  */
 export interface GetPostgresEndpointOutputArgs {
     /**
-     * The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      */
     name: pulumi.Input<string>;
 }

@@ -147,6 +147,12 @@ namespace Pulumi.Databricks
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetMwsCredentialsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetMwsCredentialsArgs()
         {
         }
@@ -167,6 +173,12 @@ namespace Pulumi.Databricks
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetMwsCredentialsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetMwsCredentialsInvokeArgs()
         {
         }
@@ -185,15 +197,19 @@ namespace Pulumi.Databricks
         /// name-to-id map for all of the credentials in the account
         /// </summary>
         public readonly ImmutableDictionary<string, string> Ids;
+        public readonly Outputs.GetMwsCredentialsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetMwsCredentialsResult(
             string id,
 
-            ImmutableDictionary<string, string> ids)
+            ImmutableDictionary<string, string> ids,
+
+            Outputs.GetMwsCredentialsProviderConfigResult? providerConfig)
         {
             Id = id;
             Ids = ids;
+            ProviderConfig = providerConfig;
         }
     }
 }

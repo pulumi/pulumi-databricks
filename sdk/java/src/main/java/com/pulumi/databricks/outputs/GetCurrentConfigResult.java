@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetCurrentConfigProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCurrentConfigResult {
@@ -21,6 +24,7 @@ public final class GetCurrentConfigResult {
      */
     private String id;
     private Boolean isAccount;
+    private @Nullable GetCurrentConfigProviderConfig providerConfig;
 
     private GetCurrentConfigResult() {}
     public String accountId() {
@@ -45,6 +49,9 @@ public final class GetCurrentConfigResult {
     public Boolean isAccount() {
         return this.isAccount;
     }
+    public Optional<GetCurrentConfigProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,6 +68,7 @@ public final class GetCurrentConfigResult {
         private String host;
         private String id;
         private Boolean isAccount;
+        private @Nullable GetCurrentConfigProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetCurrentConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -70,6 +78,7 @@ public final class GetCurrentConfigResult {
     	      this.host = defaults.host;
     	      this.id = defaults.id;
     	      this.isAccount = defaults.isAccount;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -120,6 +129,12 @@ public final class GetCurrentConfigResult {
             this.isAccount = isAccount;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetCurrentConfigProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetCurrentConfigResult build() {
             final var _resultValue = new GetCurrentConfigResult();
             _resultValue.accountId = accountId;
@@ -128,6 +143,7 @@ public final class GetCurrentConfigResult {
             _resultValue.host = host;
             _resultValue.id = id;
             _resultValue.isAccount = isAccount;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

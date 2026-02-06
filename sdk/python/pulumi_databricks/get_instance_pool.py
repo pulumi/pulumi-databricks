@@ -28,7 +28,7 @@ class GetInstancePoolResult:
     """
     A collection of values returned by getInstancePool.
     """
-    def __init__(__self__, id=None, name=None, pool_info=None):
+    def __init__(__self__, id=None, name=None, pool_info=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -38,6 +38,9 @@ class GetInstancePoolResult:
         if pool_info and not isinstance(pool_info, dict):
             raise TypeError("Expected argument 'pool_info' to be a dict")
         pulumi.set(__self__, "pool_info", pool_info)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -60,6 +63,11 @@ class GetInstancePoolResult:
         """
         return pulumi.get(self, "pool_info")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetInstancePoolProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetInstancePoolResult(GetInstancePoolResult):
     # pylint: disable=using-constant-test
@@ -69,11 +77,13 @@ class AwaitableGetInstancePoolResult(GetInstancePoolResult):
         return GetInstancePoolResult(
             id=self.id,
             name=self.name,
-            pool_info=self.pool_info)
+            pool_info=self.pool_info,
+            provider_config=self.provider_config)
 
 
 def get_instance_pool(name: Optional[_builtins.str] = None,
                       pool_info: Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']] = None,
+                      provider_config: Optional[Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancePoolResult:
     """
     Retrieves information about databricks_instance_pool.
@@ -95,19 +105,23 @@ def get_instance_pool(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
     :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
+    :param Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['poolInfo'] = pool_info
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getInstancePool:getInstancePool', __args__, opts=opts, typ=GetInstancePoolResult).value
 
     return AwaitableGetInstancePoolResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
-        pool_info=pulumi.get(__ret__, 'pool_info'))
+        pool_info=pulumi.get(__ret__, 'pool_info'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_instance_pool_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                              pool_info: Optional[pulumi.Input[Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']]]] = None,
+                             provider_config: Optional[pulumi.Input[Optional[Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancePoolResult]:
     """
     Retrieves information about databricks_instance_pool.
@@ -129,13 +143,16 @@ def get_instance_pool_output(name: Optional[pulumi.Input[_builtins.str]] = None,
 
     :param _builtins.str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
     :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
+    :param Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['poolInfo'] = pool_info
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getInstancePool:getInstancePool', __args__, opts=opts, typ=GetInstancePoolResult)
     return __ret__.apply(lambda __response__: GetInstancePoolResult(
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
-        pool_info=pulumi.get(__response__, 'pool_info')))
+        pool_info=pulumi.get(__response__, 'pool_info'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

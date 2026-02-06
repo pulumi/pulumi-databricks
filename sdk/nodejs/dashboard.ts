@@ -100,7 +100,7 @@ export class Dashboard extends pulumi.CustomResource {
      * Whether to embed credentials in the dashboard. Default is `true`.
      */
     declare public readonly embedCredentials: pulumi.Output<boolean | undefined>;
-    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly etag: pulumi.Output<string | undefined>;
     /**
      * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
      */

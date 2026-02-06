@@ -30,7 +30,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewWorkspaceEntityTagAssignment(ctx, "dashboard_tag", &databricks.WorkspaceEntityTagAssignmentArgs{
+//			_, err := databricks.NewWorkspaceEntityTagAssignment(ctx, "app_tag", &databricks.WorkspaceEntityTagAssignmentArgs{
+//				EntityType: pulumi.String("apps"),
+//				EntityId:   pulumi.String("2807324866692453"),
+//				TagKey:     pulumi.String("sensitivity_level"),
+//				TagValue:   pulumi.String("high"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewWorkspaceEntityTagAssignment(ctx, "dashboard_tag", &databricks.WorkspaceEntityTagAssignmentArgs{
 //				EntityType: pulumi.String("dashboards"),
 //				EntityId:   pulumi.String("2807324866692453"),
 //				TagKey:     pulumi.String("sensitivity_level"),
@@ -78,7 +87,7 @@ type WorkspaceEntityTagAssignment struct {
 
 	// The identifier of the entity to which the tag is assigned
 	EntityId pulumi.StringOutput `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringOutput `pulumi:"tagKey"`
@@ -127,7 +136,7 @@ func GetWorkspaceEntityTagAssignment(ctx *pulumi.Context,
 type workspaceEntityTagAssignmentState struct {
 	// The identifier of the entity to which the tag is assigned
 	EntityId *string `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType *string `pulumi:"entityType"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey *string `pulumi:"tagKey"`
@@ -138,7 +147,7 @@ type workspaceEntityTagAssignmentState struct {
 type WorkspaceEntityTagAssignmentState struct {
 	// The identifier of the entity to which the tag is assigned
 	EntityId pulumi.StringPtrInput
-	// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringPtrInput
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringPtrInput
@@ -153,7 +162,7 @@ func (WorkspaceEntityTagAssignmentState) ElementType() reflect.Type {
 type workspaceEntityTagAssignmentArgs struct {
 	// The identifier of the entity to which the tag is assigned
 	EntityId string `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey string `pulumi:"tagKey"`
@@ -165,7 +174,7 @@ type workspaceEntityTagAssignmentArgs struct {
 type WorkspaceEntityTagAssignmentArgs struct {
 	// The identifier of the entity to which the tag is assigned
 	EntityId pulumi.StringInput
-	// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringInput
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringInput
@@ -265,7 +274,7 @@ func (o WorkspaceEntityTagAssignmentOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceEntityTagAssignment) pulumi.StringOutput { return v.EntityId }).(pulumi.StringOutput)
 }
 
-// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 func (o WorkspaceEntityTagAssignmentOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceEntityTagAssignment) pulumi.StringOutput { return v.EntityType }).(pulumi.StringOutput)
 }

@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("cleanRoomsNotebookTask")]
         public Input<Inputs.JobTaskCleanRoomsNotebookTaskGetArgs>? CleanRoomsNotebookTask { get; set; }
 
+        [Input("compute")]
+        public Input<Inputs.JobTaskComputeGetArgs>? Compute { get; set; }
+
         [Input("conditionTask")]
         public Input<Inputs.JobTaskConditionTaskGetArgs>? ConditionTask { get; set; }
 

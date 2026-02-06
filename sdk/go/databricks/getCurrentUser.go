@@ -14,14 +14,20 @@ import (
 // Retrieves information about User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
 //
 // > This data source can only be used with a workspace-level provider!
-func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
+func GetCurrentUser(ctx *pulumi.Context, args *GetCurrentUserArgs, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentUserResult
-	err := ctx.Invoke("databricks:index/getCurrentUser:getCurrentUser", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getCurrentUser:getCurrentUser", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
+}
+
+// A collection of arguments for invoking getCurrentUser.
+type GetCurrentUserArgs struct {
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetCurrentUserProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getCurrentUser.
@@ -31,17 +37,30 @@ type GetCurrentUserResult struct {
 	ExternalId     string `pulumi:"externalId"`
 	Home           string `pulumi:"home"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
-	Repos        string `pulumi:"repos"`
-	UserName     string `pulumi:"userName"`
-	WorkspaceUrl string `pulumi:"workspaceUrl"`
+	Id             string                        `pulumi:"id"`
+	ProviderConfig *GetCurrentUserProviderConfig `pulumi:"providerConfig"`
+	Repos          string                        `pulumi:"repos"`
+	UserName       string                        `pulumi:"userName"`
+	WorkspaceUrl   string                        `pulumi:"workspaceUrl"`
 }
 
-func GetCurrentUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCurrentUserResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetCurrentUserResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getCurrentUser:getCurrentUser", nil, GetCurrentUserResultOutput{}, options).(GetCurrentUserResultOutput), nil
-	}).(GetCurrentUserResultOutput)
+func GetCurrentUserOutput(ctx *pulumi.Context, args GetCurrentUserOutputArgs, opts ...pulumi.InvokeOption) GetCurrentUserResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetCurrentUserResultOutput, error) {
+			args := v.(GetCurrentUserArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getCurrentUser:getCurrentUser", args, GetCurrentUserResultOutput{}, options).(GetCurrentUserResultOutput), nil
+		}).(GetCurrentUserResultOutput)
+}
+
+// A collection of arguments for invoking getCurrentUser.
+type GetCurrentUserOutputArgs struct {
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetCurrentUserProviderConfigPtrInput `pulumi:"providerConfig"`
+}
+
+func (GetCurrentUserOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCurrentUserArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getCurrentUser.
@@ -78,6 +97,10 @@ func (o GetCurrentUserResultOutput) Home() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetCurrentUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCurrentUserResultOutput) ProviderConfig() GetCurrentUserProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) *GetCurrentUserProviderConfig { return v.ProviderConfig }).(GetCurrentUserProviderConfigPtrOutput)
 }
 
 func (o GetCurrentUserResultOutput) Repos() pulumi.StringOutput {

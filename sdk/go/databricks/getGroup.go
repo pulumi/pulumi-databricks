@@ -97,6 +97,8 @@ type LookupGroupArgs struct {
 	InstanceProfiles []string `pulumi:"instanceProfiles"`
 	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
 	Members []string `pulumi:"members"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetGroupProviderConfig `pulumi:"providerConfig"`
 	// Collect information for all nested groups. *Defaults to true.*
 	Recursive *bool `pulumi:"recursive"`
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
@@ -128,8 +130,9 @@ type LookupGroupResult struct {
 	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
 	InstanceProfiles []string `pulumi:"instanceProfiles"`
 	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
-	Members   []string `pulumi:"members"`
-	Recursive *bool    `pulumi:"recursive"`
+	Members        []string                `pulumi:"members"`
+	ProviderConfig *GetGroupProviderConfig `pulumi:"providerConfig"`
+	Recursive      *bool                   `pulumi:"recursive"`
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals []string `pulumi:"servicePrincipals"`
 	// Set of User identifiers, that can be modified with GroupMember resource.
@@ -168,6 +171,8 @@ type LookupGroupOutputArgs struct {
 	InstanceProfiles pulumi.StringArrayInput `pulumi:"instanceProfiles"`
 	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
 	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetGroupProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Collect information for all nested groups. *Defaults to true.*
 	Recursive pulumi.BoolPtrInput `pulumi:"recursive"`
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
@@ -248,6 +253,10 @@ func (o LookupGroupResultOutput) InstanceProfiles() pulumi.StringArrayOutput {
 // Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
 func (o LookupGroupResultOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupGroupResultOutput) ProviderConfig() GetGroupProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupGroupResult) *GetGroupProviderConfig { return v.ProviderConfig }).(GetGroupProviderConfigPtrOutput)
 }
 
 func (o LookupGroupResultOutput) Recursive() pulumi.BoolPtrOutput {

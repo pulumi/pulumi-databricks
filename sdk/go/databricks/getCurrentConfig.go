@@ -54,6 +54,8 @@ type GetCurrentConfigArgs struct {
 	CloudType *string `pulumi:"cloudType"`
 	Host      *string `pulumi:"host"`
 	IsAccount *bool   `pulumi:"isAccount"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetCurrentConfigProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getCurrentConfig.
@@ -63,8 +65,9 @@ type GetCurrentConfigResult struct {
 	CloudType string `pulumi:"cloudType"`
 	Host      string `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string `pulumi:"id"`
-	IsAccount bool   `pulumi:"isAccount"`
+	Id             string                          `pulumi:"id"`
+	IsAccount      bool                            `pulumi:"isAccount"`
+	ProviderConfig *GetCurrentConfigProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetCurrentConfigOutput(ctx *pulumi.Context, args GetCurrentConfigOutputArgs, opts ...pulumi.InvokeOption) GetCurrentConfigResultOutput {
@@ -83,6 +86,8 @@ type GetCurrentConfigOutputArgs struct {
 	CloudType pulumi.StringPtrInput `pulumi:"cloudType"`
 	Host      pulumi.StringPtrInput `pulumi:"host"`
 	IsAccount pulumi.BoolPtrInput   `pulumi:"isAccount"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetCurrentConfigProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetCurrentConfigOutputArgs) ElementType() reflect.Type {
@@ -127,6 +132,10 @@ func (o GetCurrentConfigResultOutput) Id() pulumi.StringOutput {
 
 func (o GetCurrentConfigResultOutput) IsAccount() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCurrentConfigResult) bool { return v.IsAccount }).(pulumi.BoolOutput)
+}
+
+func (o GetCurrentConfigResultOutput) ProviderConfig() GetCurrentConfigProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetCurrentConfigResult) *GetCurrentConfigProviderConfig { return v.ProviderConfig }).(GetCurrentConfigProviderConfigPtrOutput)
 }
 
 func init() {

@@ -39,8 +39,8 @@ export function getPostgresProject(args: GetPostgresProjectArgs, opts?: pulumi.I
  */
 export interface GetPostgresProjectArgs {
     /**
-     * The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      */
     name: string;
 }
@@ -58,8 +58,8 @@ export interface GetPostgresProjectResult {
      */
     readonly id: string;
     /**
-     * (string) - The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * (string) - Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      */
     readonly name: string;
     /**
@@ -112,8 +112,8 @@ export function getPostgresProjectOutput(args: GetPostgresProjectOutputArgs, opt
  */
 export interface GetPostgresProjectOutputArgs {
     /**
-     * The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      */
     name: pulumi.Input<string>;
 }

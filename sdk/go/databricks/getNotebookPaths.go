@@ -55,6 +55,8 @@ func GetNotebookPaths(ctx *pulumi.Context, args *GetNotebookPathsArgs, opts ...p
 type GetNotebookPathsArgs struct {
 	// Path to workspace directory
 	Path string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetNotebookPathsProviderConfig `pulumi:"providerConfig"`
 	// Either or recursively walk given path
 	Recursive bool `pulumi:"recursive"`
 }
@@ -66,6 +68,7 @@ type GetNotebookPathsResult struct {
 	// list of objects with `path` and `language` attributes
 	NotebookPathLists []GetNotebookPathsNotebookPathList `pulumi:"notebookPathLists"`
 	Path              string                             `pulumi:"path"`
+	ProviderConfig    *GetNotebookPathsProviderConfig    `pulumi:"providerConfig"`
 	Recursive         bool                               `pulumi:"recursive"`
 }
 
@@ -82,6 +85,8 @@ func GetNotebookPathsOutput(ctx *pulumi.Context, args GetNotebookPathsOutputArgs
 type GetNotebookPathsOutputArgs struct {
 	// Path to workspace directory
 	Path pulumi.StringInput `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetNotebookPathsProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Either or recursively walk given path
 	Recursive pulumi.BoolInput `pulumi:"recursive"`
 }
@@ -117,6 +122,10 @@ func (o GetNotebookPathsResultOutput) NotebookPathLists() GetNotebookPathsNotebo
 
 func (o GetNotebookPathsResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotebookPathsResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetNotebookPathsResultOutput) ProviderConfig() GetNotebookPathsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetNotebookPathsResult) *GetNotebookPathsProviderConfig { return v.ProviderConfig }).(GetNotebookPathsProviderConfigPtrOutput)
 }
 
 func (o GetNotebookPathsResultOutput) Recursive() pulumi.BoolOutput {

@@ -4,10 +4,13 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetNotebookPathsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetNotebookPathsPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -30,6 +33,21 @@ public final class GetNotebookPathsPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetNotebookPathsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetNotebookPathsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Either or recursively walk given path
      * 
      */
@@ -48,6 +66,7 @@ public final class GetNotebookPathsPlainArgs extends com.pulumi.resources.Invoke
 
     private GetNotebookPathsPlainArgs(GetNotebookPathsPlainArgs $) {
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
         this.recursive = $.recursive;
     }
 
@@ -77,6 +96,17 @@ public final class GetNotebookPathsPlainArgs extends com.pulumi.resources.Invoke
          */
         public Builder path(String path) {
             $.path = path;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetNotebookPathsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

@@ -3,10 +3,12 @@
 
 package com.pulumi.databricks;
 
+import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 
 public final class Config {
@@ -110,6 +112,9 @@ public final class Config {
     }
     public Optional<Integer> retryTimeoutSeconds() {
         return Codegen.integerProp("retryTimeoutSeconds").config(config).get();
+    }
+    public Optional<List<String>> scopes() {
+        return Codegen.objectProp("scopes", TypeShape.<List<String>>builder(List.class).addParameter(String.class).build()).config(config).get();
     }
     public Optional<String> serverlessComputeId() {
         return Codegen.stringProp("serverlessComputeId").config(config).get();

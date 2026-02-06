@@ -42,6 +42,14 @@ namespace Pulumi.Databricks
         public Output<Outputs.FeatureEngineeringKafkaConfigAuthConfig> AuthConfig { get; private set; } = null!;
 
         /// <summary>
+        /// A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        /// In the future, a separate table will be maintained by Databricks for forward filling data.
+        /// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        /// </summary>
+        [Output("backfillSource")]
+        public Output<Outputs.FeatureEngineeringKafkaConfigBackfillSource?> BackfillSource { get; private set; } = null!;
+
+        /// <summary>
         /// A comma-separated list of host/port pairs pointing to Kafka cluster
         /// </summary>
         [Output("bootstrapServers")]
@@ -131,6 +139,14 @@ namespace Pulumi.Databricks
         public Input<Inputs.FeatureEngineeringKafkaConfigAuthConfigArgs> AuthConfig { get; set; } = null!;
 
         /// <summary>
+        /// A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        /// In the future, a separate table will be maintained by Databricks for forward filling data.
+        /// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        /// </summary>
+        [Input("backfillSource")]
+        public Input<Inputs.FeatureEngineeringKafkaConfigBackfillSourceArgs>? BackfillSource { get; set; }
+
+        /// <summary>
         /// A comma-separated list of host/port pairs pointing to Kafka cluster
         /// </summary>
         [Input("bootstrapServers", required: true)]
@@ -179,6 +195,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("authConfig")]
         public Input<Inputs.FeatureEngineeringKafkaConfigAuthConfigGetArgs>? AuthConfig { get; set; }
+
+        /// <summary>
+        /// A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        /// In the future, a separate table will be maintained by Databricks for forward filling data.
+        /// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        /// </summary>
+        [Input("backfillSource")]
+        public Input<Inputs.FeatureEngineeringKafkaConfigBackfillSourceGetArgs>? BackfillSource { get; set; }
 
         /// <summary>
         /// A comma-separated list of host/port pairs pointing to Kafka cluster

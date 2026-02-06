@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetMwsWorkspacesResult',
@@ -26,13 +28,16 @@ class GetMwsWorkspacesResult:
     """
     A collection of values returned by getMwsWorkspaces.
     """
-    def __init__(__self__, id=None, ids=None):
+    def __init__(__self__, id=None, ids=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, dict):
             raise TypeError("Expected argument 'ids' to be a dict")
         pulumi.set(__self__, "ids", ids)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -50,6 +55,11 @@ class GetMwsWorkspacesResult:
         """
         return pulumi.get(self, "ids")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMwsWorkspacesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetMwsWorkspacesResult(GetMwsWorkspacesResult):
     # pylint: disable=using-constant-test
@@ -58,10 +68,12 @@ class AwaitableGetMwsWorkspacesResult(GetMwsWorkspacesResult):
             yield self
         return GetMwsWorkspacesResult(
             id=self.id,
-            ids=self.ids)
+            ids=self.ids,
+            provider_config=self.provider_config)
 
 
-def get_mws_workspaces(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsWorkspacesResult:
+def get_mws_workspaces(provider_config: Optional[Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict']] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsWorkspacesResult:
     """
     Lists all MwsWorkspaces in Databricks Account.
 
@@ -85,15 +97,21 @@ def get_mws_workspaces(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
 
     * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
     * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
+
+
+    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getMwsWorkspaces:getMwsWorkspaces', __args__, opts=opts, typ=GetMwsWorkspacesResult).value
 
     return AwaitableGetMwsWorkspacesResult(
         id=pulumi.get(__ret__, 'id'),
-        ids=pulumi.get(__ret__, 'ids'))
-def get_mws_workspaces_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
+        ids=pulumi.get(__ret__, 'ids'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
+def get_mws_workspaces_output(provider_config: Optional[pulumi.Input[Optional[Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict']]]] = None,
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
     """
     Lists all MwsWorkspaces in Databricks Account.
 
@@ -117,10 +135,15 @@ def get_mws_workspaces_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.
 
     * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
     * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
+
+
+    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMwsWorkspaces:getMwsWorkspaces', __args__, opts=opts, typ=GetMwsWorkspacesResult)
     return __ret__.apply(lambda __response__: GetMwsWorkspacesResult(
         id=pulumi.get(__response__, 'id'),
-        ids=pulumi.get(__response__, 'ids')))
+        ids=pulumi.get(__response__, 'ids'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

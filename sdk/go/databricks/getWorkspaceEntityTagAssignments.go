@@ -30,6 +30,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetWorkspaceEntityTagAssignments(ctx, &databricks.GetWorkspaceEntityTagAssignmentsArgs{
+//				EntityType: "apps",
+//				EntityId:   "2807324866692453",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetWorkspaceEntityTagAssignments(ctx, &databricks.GetWorkspaceEntityTagAssignmentsArgs{
 //				EntityType: "dashboards",
 //				EntityId:   "2807324866692453",
 //			}, nil)
@@ -62,7 +69,7 @@ func GetWorkspaceEntityTagAssignments(ctx *pulumi.Context, args *GetWorkspaceEnt
 type GetWorkspaceEntityTagAssignmentsArgs struct {
 	// The identifier of the entity to which the tag is assigned
 	EntityId string `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	PageSize *int `pulumi:"pageSize"`
@@ -72,7 +79,7 @@ type GetWorkspaceEntityTagAssignmentsArgs struct {
 type GetWorkspaceEntityTagAssignmentsResult struct {
 	// (string) - The identifier of the entity to which the tag is assigned
 	EntityId string `pulumi:"entityId"`
-	// (string) - The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                                          `pulumi:"id"`
@@ -93,7 +100,7 @@ func GetWorkspaceEntityTagAssignmentsOutput(ctx *pulumi.Context, args GetWorkspa
 type GetWorkspaceEntityTagAssignmentsOutputArgs struct {
 	// The identifier of the entity to which the tag is assigned
 	EntityId pulumi.StringInput `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
@@ -123,7 +130,7 @@ func (o GetWorkspaceEntityTagAssignmentsResultOutput) EntityId() pulumi.StringOu
 	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsResult) string { return v.EntityId }).(pulumi.StringOutput)
 }
 
-// (string) - The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 func (o GetWorkspaceEntityTagAssignmentsResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsResult) string { return v.EntityType }).(pulumi.StringOutput)
 }

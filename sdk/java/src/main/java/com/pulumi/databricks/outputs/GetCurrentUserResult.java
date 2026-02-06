@@ -4,9 +4,12 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetCurrentUserProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCurrentUserResult {
@@ -19,6 +22,7 @@ public final class GetCurrentUserResult {
      * 
      */
     private String id;
+    private @Nullable GetCurrentUserProviderConfig providerConfig;
     private String repos;
     private String userName;
     private String workspaceUrl;
@@ -42,6 +46,9 @@ public final class GetCurrentUserResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<GetCurrentUserProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public String repos() {
         return this.repos;
@@ -67,6 +74,7 @@ public final class GetCurrentUserResult {
         private String externalId;
         private String home;
         private String id;
+        private @Nullable GetCurrentUserProviderConfig providerConfig;
         private String repos;
         private String userName;
         private String workspaceUrl;
@@ -78,6 +86,7 @@ public final class GetCurrentUserResult {
     	      this.externalId = defaults.externalId;
     	      this.home = defaults.home;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.repos = defaults.repos;
     	      this.userName = defaults.userName;
     	      this.workspaceUrl = defaults.workspaceUrl;
@@ -124,6 +133,12 @@ public final class GetCurrentUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetCurrentUserProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder repos(String repos) {
             if (repos == null) {
               throw new MissingRequiredPropertyException("GetCurrentUserResult", "repos");
@@ -154,6 +169,7 @@ public final class GetCurrentUserResult {
             _resultValue.externalId = externalId;
             _resultValue.home = home;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.repos = repos;
             _resultValue.userName = userName;
             _resultValue.workspaceUrl = workspaceUrl;

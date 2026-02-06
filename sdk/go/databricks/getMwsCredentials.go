@@ -66,6 +66,8 @@ func LookupMwsCredentials(ctx *pulumi.Context, args *LookupMwsCredentialsArgs, o
 type LookupMwsCredentialsArgs struct {
 	// name-to-id map for all of the credentials in the account
 	Ids map[string]string `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetMwsCredentialsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getMwsCredentials.
@@ -73,7 +75,8 @@ type LookupMwsCredentialsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// name-to-id map for all of the credentials in the account
-	Ids map[string]string `pulumi:"ids"`
+	Ids            map[string]string                `pulumi:"ids"`
+	ProviderConfig *GetMwsCredentialsProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupMwsCredentialsOutput(ctx *pulumi.Context, args LookupMwsCredentialsOutputArgs, opts ...pulumi.InvokeOption) LookupMwsCredentialsResultOutput {
@@ -89,6 +92,8 @@ func LookupMwsCredentialsOutput(ctx *pulumi.Context, args LookupMwsCredentialsOu
 type LookupMwsCredentialsOutputArgs struct {
 	// name-to-id map for all of the credentials in the account
 	Ids pulumi.StringMapInput `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetMwsCredentialsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupMwsCredentialsOutputArgs) ElementType() reflect.Type {
@@ -118,6 +123,10 @@ func (o LookupMwsCredentialsResultOutput) Id() pulumi.StringOutput {
 // name-to-id map for all of the credentials in the account
 func (o LookupMwsCredentialsResultOutput) Ids() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMwsCredentialsResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
+}
+
+func (o LookupMwsCredentialsResultOutput) ProviderConfig() GetMwsCredentialsProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupMwsCredentialsResult) *GetMwsCredentialsProviderConfig { return v.ProviderConfig }).(GetMwsCredentialsProviderConfigPtrOutput)
 }
 
 func init() {

@@ -55,8 +55,8 @@ func LookupPostgresBranch(ctx *pulumi.Context, args *LookupPostgresBranchArgs, o
 
 // A collection of arguments for invoking getPostgresBranch.
 type LookupPostgresBranchArgs struct {
-	// The resource name of the branch. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}/branches/{branch_id}`
+	// Output only. The full resource path of the branch.
+	// Format: projects/{project_id}/branches/{branch_id}
 	Name string `pulumi:"name"`
 }
 
@@ -66,8 +66,8 @@ type LookupPostgresBranchResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (string) - The resource name of the branch. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}/branches/{branch_id}`
+	// (string) - Output only. The full resource path of the branch.
+	// Format: projects/{project_id}/branches/{branch_id}
 	Name string `pulumi:"name"`
 	// (string) - The project containing this branch (API resource hierarchy).
 	// Format: projects/{project_id}
@@ -93,8 +93,8 @@ func LookupPostgresBranchOutput(ctx *pulumi.Context, args LookupPostgresBranchOu
 
 // A collection of arguments for invoking getPostgresBranch.
 type LookupPostgresBranchOutputArgs struct {
-	// The resource name of the branch. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}/branches/{branch_id}`
+	// Output only. The full resource path of the branch.
+	// Format: projects/{project_id}/branches/{branch_id}
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -127,8 +127,8 @@ func (o LookupPostgresBranchResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the branch. This field is output-only and constructed by the system.
-// Format: `projects/{project_id}/branches/{branch_id}`
+// (string) - Output only. The full resource path of the branch.
+// Format: projects/{project_id}/branches/{branch_id}
 func (o LookupPostgresBranchResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.Name }).(pulumi.StringOutput)
 }

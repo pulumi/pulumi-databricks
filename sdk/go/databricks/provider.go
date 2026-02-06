@@ -93,45 +93,46 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	AccountId                  *string `pulumi:"accountId"`
-	ActionsIdTokenRequestToken *string `pulumi:"actionsIdTokenRequestToken"`
-	ActionsIdTokenRequestUrl   *string `pulumi:"actionsIdTokenRequestUrl"`
-	Audience                   *string `pulumi:"audience"`
-	AuthType                   *string `pulumi:"authType"`
-	AzureClientId              *string `pulumi:"azureClientId"`
-	AzureClientSecret          *string `pulumi:"azureClientSecret"`
-	AzureEnvironment           *string `pulumi:"azureEnvironment"`
-	AzureLoginAppId            *string `pulumi:"azureLoginAppId"`
-	AzureTenantId              *string `pulumi:"azureTenantId"`
-	AzureUseMsi                *bool   `pulumi:"azureUseMsi"`
-	AzureWorkspaceResourceId   *string `pulumi:"azureWorkspaceResourceId"`
-	ClientId                   *string `pulumi:"clientId"`
-	ClientSecret               *string `pulumi:"clientSecret"`
-	ClusterId                  *string `pulumi:"clusterId"`
-	ConfigFile                 *string `pulumi:"configFile"`
-	DatabricksCliPath          *string `pulumi:"databricksCliPath"`
-	DatabricksIdTokenFilepath  *string `pulumi:"databricksIdTokenFilepath"`
-	DebugHeaders               *bool   `pulumi:"debugHeaders"`
-	DebugTruncateBytes         *int    `pulumi:"debugTruncateBytes"`
-	DisableOauthRefreshToken   *bool   `pulumi:"disableOauthRefreshToken"`
-	ExperimentalIsUnifiedHost  *bool   `pulumi:"experimentalIsUnifiedHost"`
-	GoogleCredentials          *string `pulumi:"googleCredentials"`
-	GoogleServiceAccount       *string `pulumi:"googleServiceAccount"`
-	Host                       *string `pulumi:"host"`
-	HttpTimeoutSeconds         *int    `pulumi:"httpTimeoutSeconds"`
-	MetadataServiceUrl         *string `pulumi:"metadataServiceUrl"`
-	OauthCallbackPort          *int    `pulumi:"oauthCallbackPort"`
-	OidcTokenEnv               *string `pulumi:"oidcTokenEnv"`
-	Password                   *string `pulumi:"password"`
-	Profile                    *string `pulumi:"profile"`
-	RateLimit                  *int    `pulumi:"rateLimit"`
-	RetryTimeoutSeconds        *int    `pulumi:"retryTimeoutSeconds"`
-	ServerlessComputeId        *string `pulumi:"serverlessComputeId"`
-	SkipVerify                 *bool   `pulumi:"skipVerify"`
-	Token                      *string `pulumi:"token"`
-	Username                   *string `pulumi:"username"`
-	WarehouseId                *string `pulumi:"warehouseId"`
-	WorkspaceId                *string `pulumi:"workspaceId"`
+	AccountId                  *string  `pulumi:"accountId"`
+	ActionsIdTokenRequestToken *string  `pulumi:"actionsIdTokenRequestToken"`
+	ActionsIdTokenRequestUrl   *string  `pulumi:"actionsIdTokenRequestUrl"`
+	Audience                   *string  `pulumi:"audience"`
+	AuthType                   *string  `pulumi:"authType"`
+	AzureClientId              *string  `pulumi:"azureClientId"`
+	AzureClientSecret          *string  `pulumi:"azureClientSecret"`
+	AzureEnvironment           *string  `pulumi:"azureEnvironment"`
+	AzureLoginAppId            *string  `pulumi:"azureLoginAppId"`
+	AzureTenantId              *string  `pulumi:"azureTenantId"`
+	AzureUseMsi                *bool    `pulumi:"azureUseMsi"`
+	AzureWorkspaceResourceId   *string  `pulumi:"azureWorkspaceResourceId"`
+	ClientId                   *string  `pulumi:"clientId"`
+	ClientSecret               *string  `pulumi:"clientSecret"`
+	ClusterId                  *string  `pulumi:"clusterId"`
+	ConfigFile                 *string  `pulumi:"configFile"`
+	DatabricksCliPath          *string  `pulumi:"databricksCliPath"`
+	DatabricksIdTokenFilepath  *string  `pulumi:"databricksIdTokenFilepath"`
+	DebugHeaders               *bool    `pulumi:"debugHeaders"`
+	DebugTruncateBytes         *int     `pulumi:"debugTruncateBytes"`
+	DisableOauthRefreshToken   *bool    `pulumi:"disableOauthRefreshToken"`
+	ExperimentalIsUnifiedHost  *bool    `pulumi:"experimentalIsUnifiedHost"`
+	GoogleCredentials          *string  `pulumi:"googleCredentials"`
+	GoogleServiceAccount       *string  `pulumi:"googleServiceAccount"`
+	Host                       *string  `pulumi:"host"`
+	HttpTimeoutSeconds         *int     `pulumi:"httpTimeoutSeconds"`
+	MetadataServiceUrl         *string  `pulumi:"metadataServiceUrl"`
+	OauthCallbackPort          *int     `pulumi:"oauthCallbackPort"`
+	OidcTokenEnv               *string  `pulumi:"oidcTokenEnv"`
+	Password                   *string  `pulumi:"password"`
+	Profile                    *string  `pulumi:"profile"`
+	RateLimit                  *int     `pulumi:"rateLimit"`
+	RetryTimeoutSeconds        *int     `pulumi:"retryTimeoutSeconds"`
+	Scopes                     []string `pulumi:"scopes"`
+	ServerlessComputeId        *string  `pulumi:"serverlessComputeId"`
+	SkipVerify                 *bool    `pulumi:"skipVerify"`
+	Token                      *string  `pulumi:"token"`
+	Username                   *string  `pulumi:"username"`
+	WarehouseId                *string  `pulumi:"warehouseId"`
+	WorkspaceId                *string  `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -169,6 +170,7 @@ type ProviderArgs struct {
 	Profile                    pulumi.StringPtrInput
 	RateLimit                  pulumi.IntPtrInput
 	RetryTimeoutSeconds        pulumi.IntPtrInput
+	Scopes                     pulumi.StringArrayInput
 	ServerlessComputeId        pulumi.StringPtrInput
 	SkipVerify                 pulumi.BoolPtrInput
 	Token                      pulumi.StringPtrInput

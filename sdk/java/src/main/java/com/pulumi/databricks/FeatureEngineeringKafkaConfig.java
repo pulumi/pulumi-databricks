@@ -11,6 +11,7 @@ import com.pulumi.databricks.FeatureEngineeringKafkaConfigArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigState;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigAuthConfig;
+import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigBackfillSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigKeySchema;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigSubscriptionMode;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigValueSchema;
@@ -58,6 +59,24 @@ public class FeatureEngineeringKafkaConfig extends com.pulumi.resources.CustomRe
      */
     public Output<FeatureEngineeringKafkaConfigAuthConfig> authConfig() {
         return this.authConfig;
+    }
+    /**
+     * A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * 
+     */
+    @Export(name="backfillSource", refs={FeatureEngineeringKafkaConfigBackfillSource.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringKafkaConfigBackfillSource> backfillSource;
+
+    /**
+     * @return A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * 
+     */
+    public Output<Optional<FeatureEngineeringKafkaConfigBackfillSource>> backfillSource() {
+        return Codegen.optional(this.backfillSource);
     }
     /**
      * A comma-separated list of host/port pairs pointing to Kafka cluster

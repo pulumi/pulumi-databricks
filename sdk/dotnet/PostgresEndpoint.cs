@@ -253,17 +253,15 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        /// Examples:
-        /// - With custom ID: `Primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-        /// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `Primary` becomes `projects/my-app/branches/development/endpoints/primary`
         /// </summary>
         [Output("endpointId")]
         public Output<string> EndpointId { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        /// (string) - Output only. The full resource path of the endpoint.
+        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -347,10 +345,8 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        /// Examples:
-        /// - With custom ID: `Primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-        /// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `Primary` becomes `projects/my-app/branches/development/endpoints/primary`
         /// </summary>
         [Input("endpointId", required: true)]
         public Input<string> EndpointId { get; set; } = null!;
@@ -384,17 +380,15 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        /// Examples:
-        /// - With custom ID: `Primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-        /// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `Primary` becomes `projects/my-app/branches/development/endpoints/primary`
         /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }
 
         /// <summary>
-        /// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        /// (string) - Output only. The full resource path of the endpoint.
+        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -17,6 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const appTags = databricks.getWorkspaceEntityTagAssignments({
+ *     entityType: "apps",
+ *     entityId: "2807324866692453",
+ * });
  * const dashboardTags = databricks.getWorkspaceEntityTagAssignments({
  *     entityType: "dashboards",
  *     entityId: "2807324866692453",
@@ -45,7 +49,7 @@ export interface GetWorkspaceEntityTagAssignmentsArgs {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType: string;
     /**
@@ -63,7 +67,7 @@ export interface GetWorkspaceEntityTagAssignmentsResult {
      */
     readonly entityId: string;
     /**
-     * (string) - The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     readonly entityType: string;
     /**
@@ -84,6 +88,10 @@ export interface GetWorkspaceEntityTagAssignmentsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const appTags = databricks.getWorkspaceEntityTagAssignments({
+ *     entityType: "apps",
+ *     entityId: "2807324866692453",
+ * });
  * const dashboardTags = databricks.getWorkspaceEntityTagAssignments({
  *     entityType: "dashboards",
  *     entityId: "2807324866692453",
@@ -112,7 +120,7 @@ export interface GetWorkspaceEntityTagAssignmentsOutputArgs {
      */
     entityId: pulumi.Input<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType: pulumi.Input<string>;
     /**

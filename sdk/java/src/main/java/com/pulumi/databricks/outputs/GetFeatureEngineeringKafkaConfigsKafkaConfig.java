@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchema;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionMode;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchema;
@@ -20,6 +21,13 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfig {
      * 
      */
     private GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig authConfig;
+    /**
+     * @return (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * 
+     */
+    private GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource backfillSource;
     /**
      * @return (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
      * 
@@ -59,6 +67,15 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfig {
      */
     public GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig authConfig() {
         return this.authConfig;
+    }
+    /**
+     * @return (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * 
+     */
+    public GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource backfillSource() {
+        return this.backfillSource;
     }
     /**
      * @return (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
@@ -114,6 +131,7 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfig {
     @CustomType.Builder
     public static final class Builder {
         private GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig authConfig;
+        private GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource backfillSource;
         private String bootstrapServers;
         private Map<String,String> extraOptions;
         private GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchema keySchema;
@@ -124,6 +142,7 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfig {
         public Builder(GetFeatureEngineeringKafkaConfigsKafkaConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authConfig = defaults.authConfig;
+    	      this.backfillSource = defaults.backfillSource;
     	      this.bootstrapServers = defaults.bootstrapServers;
     	      this.extraOptions = defaults.extraOptions;
     	      this.keySchema = defaults.keySchema;
@@ -138,6 +157,14 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfig {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigsKafkaConfig", "authConfig");
             }
             this.authConfig = authConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backfillSource(GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource backfillSource) {
+            if (backfillSource == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigsKafkaConfig", "backfillSource");
+            }
+            this.backfillSource = backfillSource;
             return this;
         }
         @CustomType.Setter
@@ -191,6 +218,7 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfig {
         public GetFeatureEngineeringKafkaConfigsKafkaConfig build() {
             final var _resultValue = new GetFeatureEngineeringKafkaConfigsKafkaConfig();
             _resultValue.authConfig = authConfig;
+            _resultValue.backfillSource = backfillSource;
             _resultValue.bootstrapServers = bootstrapServers;
             _resultValue.extraOptions = extraOptions;
             _resultValue.keySchema = keySchema;

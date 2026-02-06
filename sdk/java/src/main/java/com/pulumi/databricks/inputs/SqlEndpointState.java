@@ -53,14 +53,14 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+     * The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;, &#34;5X-Large&#34;.
      * 
      */
     @Import(name="clusterSize")
     private @Nullable Output<String> clusterSize;
 
     /**
-     * @return The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+     * @return The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;, &#34;5X-Large&#34;.
      * 
      */
     public Optional<Output<String>> clusterSize() {
@@ -83,14 +83,14 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+     * (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      * 
      */
     @Import(name="dataSourceId")
     private @Nullable Output<String> dataSourceId;
 
     /**
-     * @return (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+     * @return (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      * 
      */
     public Optional<Output<String>> dataSourceId() {
@@ -420,7 +420,7 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSize The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+         * @param clusterSize The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;, &#34;5X-Large&#34;.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSize The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+         * @param clusterSize The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;, &#34;5X-Large&#34;.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataSourceId (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+         * @param dataSourceId (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataSourceId (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+         * @param dataSourceId (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
          * 
          * @return builder
          * 

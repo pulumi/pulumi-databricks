@@ -136,6 +136,12 @@ namespace Pulumi.Databricks
         public string Path { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetDbfsFilePathsProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Either or not recursively list all files
         /// </summary>
         [Input("recursive", required: true)]
@@ -154,6 +160,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetDbfsFilePathsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Either or not recursively list all files
@@ -180,6 +192,7 @@ namespace Pulumi.Databricks
         /// returns list of objects with `Path` and `FileSize` attributes in each
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDbfsFilePathsPathListResult> PathLists;
+        public readonly Outputs.GetDbfsFilePathsProviderConfigResult? ProviderConfig;
         public readonly bool Recursive;
 
         [OutputConstructor]
@@ -190,11 +203,14 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetDbfsFilePathsPathListResult> pathLists,
 
+            Outputs.GetDbfsFilePathsProviderConfigResult? providerConfig,
+
             bool recursive)
         {
             Id = id;
             Path = path;
             PathLists = pathLists;
+            ProviderConfig = providerConfig;
             Recursive = recursive;
         }
     }

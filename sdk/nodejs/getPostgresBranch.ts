@@ -37,8 +37,8 @@ export function getPostgresBranch(args: GetPostgresBranchArgs, opts?: pulumi.Inv
  */
 export interface GetPostgresBranchArgs {
     /**
-     * The resource name of the branch. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}`
+     * Output only. The full resource path of the branch.
+     * Format: projects/{project_id}/branches/{branch_id}
      */
     name: string;
 }
@@ -56,8 +56,8 @@ export interface GetPostgresBranchResult {
      */
     readonly id: string;
     /**
-     * (string) - The resource name of the branch. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}`
+     * (string) - Output only. The full resource path of the branch.
+     * Format: projects/{project_id}/branches/{branch_id}
      */
     readonly name: string;
     /**
@@ -113,8 +113,8 @@ export function getPostgresBranchOutput(args: GetPostgresBranchOutputArgs, opts?
  */
 export interface GetPostgresBranchOutputArgs {
     /**
-     * The resource name of the branch. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}`
+     * Output only. The full resource path of the branch.
+     * Format: projects/{project_id}/branches/{branch_id}
      */
     name: pulumi.Input<string>;
 }

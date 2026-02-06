@@ -30,7 +30,7 @@ public final class GetSqlWarehouseResult {
      */
     private GetSqlWarehouseChannel channel;
     /**
-     * @return The size of the clusters allocated to the warehouse: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+     * @return The size of the clusters allocated to the warehouse: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;, &#34;5X-Large&#34;.
      * 
      */
     private String clusterSize;
@@ -40,7 +40,7 @@ public final class GetSqlWarehouseResult {
      */
     private String creatorName;
     /**
-     * @return ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+     * @return (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      * 
      */
     private String dataSourceId;
@@ -138,7 +138,7 @@ public final class GetSqlWarehouseResult {
         return this.channel;
     }
     /**
-     * @return The size of the clusters allocated to the warehouse: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+     * @return The size of the clusters allocated to the warehouse: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;, &#34;5X-Large&#34;.
      * 
      */
     public String clusterSize() {
@@ -152,7 +152,7 @@ public final class GetSqlWarehouseResult {
         return this.creatorName;
     }
     /**
-     * @return ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+     * @return (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      * 
      */
     public String dataSourceId() {

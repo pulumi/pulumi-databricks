@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			me, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
+//			me, err := databricks.GetCurrentUser(ctx, &databricks.GetCurrentUserArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -101,11 +101,11 @@ type SqlEndpoint struct {
 	AutoStopMins pulumi.IntPtrOutput `pulumi:"autoStopMins"`
 	// block, consisting of following fields:
 	Channel SqlEndpointChannelPtrOutput `pulumi:"channel"`
-	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize pulumi.StringOutput `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
 	CreatorName pulumi.StringOutput `pulumi:"creatorName"`
-	// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton pulumi.BoolPtrOutput `pulumi:"enablePhoton"`
@@ -179,11 +179,11 @@ type sqlEndpointState struct {
 	AutoStopMins *int `pulumi:"autoStopMins"`
 	// block, consisting of following fields:
 	Channel *SqlEndpointChannel `pulumi:"channel"`
-	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize *string `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
 	CreatorName *string `pulumi:"creatorName"`
-	// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton *bool `pulumi:"enablePhoton"`
@@ -225,11 +225,11 @@ type SqlEndpointState struct {
 	AutoStopMins pulumi.IntPtrInput
 	// block, consisting of following fields:
 	Channel SqlEndpointChannelPtrInput
-	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize pulumi.StringPtrInput
 	// The username of the user who created the endpoint.
 	CreatorName pulumi.StringPtrInput
-	// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringPtrInput
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton pulumi.BoolPtrInput
@@ -275,9 +275,9 @@ type sqlEndpointArgs struct {
 	AutoStopMins *int `pulumi:"autoStopMins"`
 	// block, consisting of following fields:
 	Channel *SqlEndpointChannel `pulumi:"channel"`
-	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize string `pulumi:"clusterSize"`
-	// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton *bool `pulumi:"enablePhoton"`
@@ -308,9 +308,9 @@ type SqlEndpointArgs struct {
 	AutoStopMins pulumi.IntPtrInput
 	// block, consisting of following fields:
 	Channel SqlEndpointChannelPtrInput
-	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize pulumi.StringInput
-	// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+	// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringPtrInput
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton pulumi.BoolPtrInput
@@ -432,7 +432,7 @@ func (o SqlEndpointOutput) Channel() SqlEndpointChannelPtrOutput {
 	return o.ApplyT(func(v *SqlEndpoint) SqlEndpointChannelPtrOutput { return v.Channel }).(SqlEndpointChannelPtrOutput)
 }
 
-// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 func (o SqlEndpointOutput) ClusterSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.ClusterSize }).(pulumi.StringOutput)
 }
@@ -442,7 +442,7 @@ func (o SqlEndpointOutput) CreatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.CreatorName }).(pulumi.StringOutput)
 }
 
-// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 func (o SqlEndpointOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
 }

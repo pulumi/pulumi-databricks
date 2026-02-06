@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetMwsCredentialsProviderConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -30,10 +31,26 @@ public final class GetMwsCredentialsPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetMwsCredentialsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetMwsCredentialsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetMwsCredentialsPlainArgs() {}
 
     private GetMwsCredentialsPlainArgs(GetMwsCredentialsPlainArgs $) {
         this.ids = $.ids;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -62,6 +79,17 @@ public final class GetMwsCredentialsPlainArgs extends com.pulumi.resources.Invok
          */
         public Builder ids(@Nullable Map<String,String> ids) {
             $.ids = ids;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetMwsCredentialsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

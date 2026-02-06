@@ -16,7 +16,7 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
      */
     private String entityId;
     /**
-     * @return The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      * 
      */
     private String entityType;
@@ -40,7 +40,7 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
         return this.entityId;
     }
     /**
-     * @return The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      * 
      */
     public String entityType() {

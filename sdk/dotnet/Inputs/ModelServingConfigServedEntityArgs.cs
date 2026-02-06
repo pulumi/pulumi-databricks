@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityArgs : global::Pulumi.ResourceArgs
     {
+        [Input("burstScalingEnabled")]
+        public Input<bool>? BurstScalingEnabled { get; set; }
+
         /// <summary>
         /// The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
         /// </summary>

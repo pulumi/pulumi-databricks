@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
         public Inputs.GetSqlWarehouseChannelArgs? Channel { get; set; }
 
         /// <summary>
-        /// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+        /// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         /// </summary>
         [Input("clusterSize")]
         public string? ClusterSize { get; set; }
@@ -205,7 +205,7 @@ namespace Pulumi.Databricks
         public string? CreatorName { get; set; }
 
         /// <summary>
-        /// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+        /// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         /// </summary>
         [Input("dataSourceId")]
         public string? DataSourceId { get; set; }
@@ -327,7 +327,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetSqlWarehouseChannelInputArgs>? Channel { get; set; }
 
         /// <summary>
-        /// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+        /// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         /// </summary>
         [Input("clusterSize")]
         public Input<string>? ClusterSize { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.Databricks
         public Input<string>? CreatorName { get; set; }
 
         /// <summary>
-        /// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+        /// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
@@ -459,7 +459,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetSqlWarehouseChannelResult Channel;
         /// <summary>
-        /// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+        /// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         /// </summary>
         public readonly string ClusterSize;
         /// <summary>
@@ -467,7 +467,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreatorName;
         /// <summary>
-        /// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+        /// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         /// </summary>
         public readonly string DataSourceId;
         /// <summary>

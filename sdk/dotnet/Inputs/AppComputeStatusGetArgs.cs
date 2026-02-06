@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppComputeStatusGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("activeInstances")]
+        public Input<int>? ActiveInstances { get; set; }
+
         /// <summary>
         /// Application status message
         /// </summary>

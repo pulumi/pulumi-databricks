@@ -14,16 +14,16 @@ public final class GetPostgresEndpointPlainArgs extends com.pulumi.resources.Inv
     public static final GetPostgresEndpointPlainArgs Empty = new GetPostgresEndpointPlainArgs();
 
     /**
-     * The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * @return Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      * 
      */
     public String name() {
@@ -55,8 +55,8 @@ public final class GetPostgresEndpointPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param name The resource name of the endpoint. This field is output-only and constructed by the system.
-         * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+         * @param name Output only. The full resource path of the endpoint.
+         * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
          * 
          * @return builder
          * 

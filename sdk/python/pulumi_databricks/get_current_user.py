@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetCurrentUserResult',
@@ -26,7 +28,7 @@ class GetCurrentUserResult:
     """
     A collection of values returned by getCurrentUser.
     """
-    def __init__(__self__, acl_principal_id=None, alphanumeric=None, external_id=None, home=None, id=None, repos=None, user_name=None, workspace_url=None):
+    def __init__(__self__, acl_principal_id=None, alphanumeric=None, external_id=None, home=None, id=None, provider_config=None, repos=None, user_name=None, workspace_url=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -42,6 +44,9 @@ class GetCurrentUserResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if repos and not isinstance(repos, str):
             raise TypeError("Expected argument 'repos' to be a str")
         pulumi.set(__self__, "repos", repos)
@@ -81,6 +86,11 @@ class GetCurrentUserResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetCurrentUserProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def repos(self) -> _builtins.str:
         return pulumi.get(self, "repos")
@@ -107,18 +117,24 @@ class AwaitableGetCurrentUserResult(GetCurrentUserResult):
             external_id=self.external_id,
             home=self.home,
             id=self.id,
+            provider_config=self.provider_config,
             repos=self.repos,
             user_name=self.user_name,
             workspace_url=self.workspace_url)
 
 
-def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentUserResult:
+def get_current_user(provider_config: Optional[Union['GetCurrentUserProviderConfigArgs', 'GetCurrentUserProviderConfigArgsDict']] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentUserResult:
     """
     Retrieves information about User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
 
     > This data source can only be used with a workspace-level provider!
+
+
+    :param Union['GetCurrentUserProviderConfigArgs', 'GetCurrentUserProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult).value
 
@@ -128,16 +144,22 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         external_id=pulumi.get(__ret__, 'external_id'),
         home=pulumi.get(__ret__, 'home'),
         id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         repos=pulumi.get(__ret__, 'repos'),
         user_name=pulumi.get(__ret__, 'user_name'),
         workspace_url=pulumi.get(__ret__, 'workspace_url'))
-def get_current_user_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentUserResult]:
+def get_current_user_output(provider_config: Optional[pulumi.Input[Optional[Union['GetCurrentUserProviderConfigArgs', 'GetCurrentUserProviderConfigArgsDict']]]] = None,
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentUserResult]:
     """
     Retrieves information about User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
 
     > This data source can only be used with a workspace-level provider!
+
+
+    :param Union['GetCurrentUserProviderConfigArgs', 'GetCurrentUserProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult)
     return __ret__.apply(lambda __response__: GetCurrentUserResult(
@@ -146,6 +168,7 @@ def get_current_user_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.In
         external_id=pulumi.get(__response__, 'external_id'),
         home=pulumi.get(__response__, 'home'),
         id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         repos=pulumi.get(__response__, 'repos'),
         user_name=pulumi.get(__response__, 'user_name'),
         workspace_url=pulumi.get(__response__, 'workspace_url')))

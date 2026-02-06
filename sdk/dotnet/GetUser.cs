@@ -175,6 +175,12 @@ namespace Pulumi.Databricks
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetUserProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// ID of the user.
         /// </summary>
         [Input("userId")]
@@ -194,6 +200,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetUserProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// ID of the user.
         /// </summary>
@@ -245,6 +257,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetUserProviderConfigResult? ProviderConfig;
         /// <summary>
         /// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         /// </summary>
@@ -273,6 +286,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetUserProviderConfigResult? providerConfig,
+
             string repos,
 
             string? userId,
@@ -287,6 +302,7 @@ namespace Pulumi.Databricks
             ExternalId = externalId;
             Home = home;
             Id = id;
+            ProviderConfig = providerConfig;
             Repos = repos;
             UserId = userId;
             UserName = userName;

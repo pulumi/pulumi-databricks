@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.LookupMwsWorkspaces(ctx, map[string]interface{}{}, nil)
+//			all, err := databricks.LookupMwsWorkspaces(ctx, &databricks.LookupMwsWorkspacesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -48,14 +48,20 @@ import (
 //
 // * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
 // * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurermDatabricksWorkspace
-func LookupMwsWorkspaces(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupMwsWorkspacesResult, error) {
+func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opts ...pulumi.InvokeOption) (*LookupMwsWorkspacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMwsWorkspacesResult
-	err := ctx.Invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
+}
+
+// A collection of arguments for invoking getMwsWorkspaces.
+type LookupMwsWorkspacesArgs struct {
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetMwsWorkspacesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getMwsWorkspaces.
@@ -63,14 +69,27 @@ type LookupMwsWorkspacesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// name-to-id map for all of the workspaces in the account
-	Ids map[string]string `pulumi:"ids"`
+	Ids            map[string]string               `pulumi:"ids"`
+	ProviderConfig *GetMwsWorkspacesProviderConfig `pulumi:"providerConfig"`
 }
 
-func LookupMwsWorkspacesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupMwsWorkspacesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupMwsWorkspacesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getMwsWorkspaces:getMwsWorkspaces", nil, LookupMwsWorkspacesResultOutput{}, options).(LookupMwsWorkspacesResultOutput), nil
-	}).(LookupMwsWorkspacesResultOutput)
+func LookupMwsWorkspacesOutput(ctx *pulumi.Context, args LookupMwsWorkspacesOutputArgs, opts ...pulumi.InvokeOption) LookupMwsWorkspacesResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupMwsWorkspacesResultOutput, error) {
+			args := v.(LookupMwsWorkspacesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args, LookupMwsWorkspacesResultOutput{}, options).(LookupMwsWorkspacesResultOutput), nil
+		}).(LookupMwsWorkspacesResultOutput)
+}
+
+// A collection of arguments for invoking getMwsWorkspaces.
+type LookupMwsWorkspacesOutputArgs struct {
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetMwsWorkspacesProviderConfigPtrInput `pulumi:"providerConfig"`
+}
+
+func (LookupMwsWorkspacesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMwsWorkspacesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getMwsWorkspaces.
@@ -96,6 +115,10 @@ func (o LookupMwsWorkspacesResultOutput) Id() pulumi.StringOutput {
 // name-to-id map for all of the workspaces in the account
 func (o LookupMwsWorkspacesResultOutput) Ids() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMwsWorkspacesResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
+}
+
+func (o LookupMwsWorkspacesResultOutput) ProviderConfig() GetMwsWorkspacesProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupMwsWorkspacesResult) *GetMwsWorkspacesProviderConfig { return v.ProviderConfig }).(GetMwsWorkspacesProviderConfigPtrOutput)
 }
 
 func init() {

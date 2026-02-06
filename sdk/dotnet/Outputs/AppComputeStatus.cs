@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppComputeStatus
     {
+        public readonly int? ActiveInstances;
         /// <summary>
         /// Application status message
         /// </summary>
@@ -24,10 +25,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private AppComputeStatus(
+            int? activeInstances,
+
             string? message,
 
             string? state)
         {
+            ActiveInstances = activeInstances;
             Message = message;
             State = state;
         }

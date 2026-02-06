@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetCurrentConfigResult',
@@ -26,7 +28,7 @@ class GetCurrentConfigResult:
     """
     A collection of values returned by getCurrentConfig.
     """
-    def __init__(__self__, account_id=None, auth_type=None, cloud_type=None, host=None, id=None, is_account=None):
+    def __init__(__self__, account_id=None, auth_type=None, cloud_type=None, host=None, id=None, is_account=None, provider_config=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -45,6 +47,9 @@ class GetCurrentConfigResult:
         if is_account and not isinstance(is_account, bool):
             raise TypeError("Expected argument 'is_account' to be a bool")
         pulumi.set(__self__, "is_account", is_account)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -79,6 +84,11 @@ class GetCurrentConfigResult:
     def is_account(self) -> _builtins.bool:
         return pulumi.get(self, "is_account")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetCurrentConfigProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetCurrentConfigResult(GetCurrentConfigResult):
     # pylint: disable=using-constant-test
@@ -91,7 +101,8 @@ class AwaitableGetCurrentConfigResult(GetCurrentConfigResult):
             cloud_type=self.cloud_type,
             host=self.host,
             id=self.id,
-            is_account=self.is_account)
+            is_account=self.is_account,
+            provider_config=self.provider_config)
 
 
 def get_current_config(account_id: Optional[_builtins.str] = None,
@@ -99,6 +110,7 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
                        cloud_type: Optional[_builtins.str] = None,
                        host: Optional[_builtins.str] = None,
                        is_account: Optional[_builtins.bool] = None,
+                       provider_config: Optional[Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentConfigResult:
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
@@ -156,6 +168,9 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
     * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
     * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
     * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+
+
+    :param Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -163,6 +178,7 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
     __args__['cloudType'] = cloud_type
     __args__['host'] = host
     __args__['isAccount'] = is_account
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCurrentConfig:getCurrentConfig', __args__, opts=opts, typ=GetCurrentConfigResult).value
 
@@ -172,12 +188,14 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
         cloud_type=pulumi.get(__ret__, 'cloud_type'),
         host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),
-        is_account=pulumi.get(__ret__, 'is_account'))
+        is_account=pulumi.get(__ret__, 'is_account'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               auth_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               cloud_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               host: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               is_account: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                              provider_config: Optional[pulumi.Input[Optional[Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentConfigResult]:
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
@@ -235,6 +253,9 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
     * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
     * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
     * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+
+
+    :param Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -242,6 +263,7 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
     __args__['cloudType'] = cloud_type
     __args__['host'] = host
     __args__['isAccount'] = is_account
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCurrentConfig:getCurrentConfig', __args__, opts=opts, typ=GetCurrentConfigResult)
     return __ret__.apply(lambda __response__: GetCurrentConfigResult(
@@ -250,4 +272,5 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
         cloud_type=pulumi.get(__response__, 'cloud_type'),
         host=pulumi.get(__response__, 'host'),
         id=pulumi.get(__response__, 'id'),
-        is_account=pulumi.get(__response__, 'is_account')))
+        is_account=pulumi.get(__response__, 'is_account'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

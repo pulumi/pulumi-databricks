@@ -19,6 +19,13 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
 
     public static final ModelServingConfigServedModelArgs Empty = new ModelServingConfigServedModelArgs();
 
+    @Import(name="burstScalingEnabled")
+    private @Nullable Output<Boolean> burstScalingEnabled;
+
+    public Optional<Output<Boolean>> burstScalingEnabled() {
+        return Optional.ofNullable(this.burstScalingEnabled);
+    }
+
     /**
      * a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
@@ -209,6 +216,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     private ModelServingConfigServedModelArgs() {}
 
     private ModelServingConfigServedModelArgs(ModelServingConfigServedModelArgs $) {
+        this.burstScalingEnabled = $.burstScalingEnabled;
         this.environmentVars = $.environmentVars;
         this.instanceProfileArn = $.instanceProfileArn;
         this.maxProvisionedConcurrency = $.maxProvisionedConcurrency;
@@ -240,6 +248,15 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
 
         public Builder(ModelServingConfigServedModelArgs defaults) {
             $ = new ModelServingConfigServedModelArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder burstScalingEnabled(@Nullable Output<Boolean> burstScalingEnabled) {
+            $.burstScalingEnabled = burstScalingEnabled;
+            return this;
+        }
+
+        public Builder burstScalingEnabled(Boolean burstScalingEnabled) {
+            return burstScalingEnabled(Output.of(burstScalingEnabled));
         }
 
         /**

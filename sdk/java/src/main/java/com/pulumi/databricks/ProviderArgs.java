@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -248,6 +249,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retryTimeoutSeconds);
     }
 
+    @Import(name="scopes", json=true)
+    private @Nullable Output<List<String>> scopes;
+
+    public Optional<Output<List<String>>> scopes() {
+        return Optional.ofNullable(this.scopes);
+    }
+
     @Import(name="serverlessComputeId")
     private @Nullable Output<String> serverlessComputeId;
 
@@ -326,6 +334,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.profile = $.profile;
         this.rateLimit = $.rateLimit;
         this.retryTimeoutSeconds = $.retryTimeoutSeconds;
+        this.scopes = $.scopes;
         this.serverlessComputeId = $.serverlessComputeId;
         this.skipVerify = $.skipVerify;
         this.token = $.token;
@@ -647,6 +656,19 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder retryTimeoutSeconds(Integer retryTimeoutSeconds) {
             return retryTimeoutSeconds(Output.of(retryTimeoutSeconds));
+        }
+
+        public Builder scopes(@Nullable Output<List<String>> scopes) {
+            $.scopes = scopes;
+            return this;
+        }
+
+        public Builder scopes(List<String> scopes) {
+            return scopes(Output.of(scopes));
+        }
+
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
         }
 
         public Builder serverlessComputeId(@Nullable Output<String> serverlessComputeId) {

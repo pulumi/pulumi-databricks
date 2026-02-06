@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfo;
+import com.pulumi.databricks.inputs.GetInstancePoolProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -46,11 +47,27 @@ public final class GetInstancePoolPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.poolInfo);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetInstancePoolProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetInstancePoolProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetInstancePoolPlainArgs() {}
 
     private GetInstancePoolPlainArgs(GetInstancePoolPlainArgs $) {
         this.name = $.name;
         this.poolInfo = $.poolInfo;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -90,6 +107,17 @@ public final class GetInstancePoolPlainArgs extends com.pulumi.resources.InvokeA
          */
         public Builder poolInfo(@Nullable GetInstancePoolPoolInfo poolInfo) {
             $.poolInfo = poolInfo;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetInstancePoolProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

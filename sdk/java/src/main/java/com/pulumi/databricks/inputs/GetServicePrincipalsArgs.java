@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetServicePrincipalsProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalsServicePrincipalArgs;
 import java.lang.String;
 import java.util.List;
@@ -48,6 +49,21 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetServicePrincipalsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetServicePrincipalsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * List of objects describing individual service principals. Each object has the following attributes:
      * 
      */
@@ -67,6 +83,7 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
     private GetServicePrincipalsArgs(GetServicePrincipalsArgs $) {
         this.applicationIds = $.applicationIds;
         this.displayNameContains = $.displayNameContains;
+        this.providerConfig = $.providerConfig;
         this.servicePrincipals = $.servicePrincipals;
     }
 
@@ -138,6 +155,27 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
          */
         public Builder displayNameContains(String displayNameContains) {
             return displayNameContains(Output.of(displayNameContains));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetServicePrincipalsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetServicePrincipalsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

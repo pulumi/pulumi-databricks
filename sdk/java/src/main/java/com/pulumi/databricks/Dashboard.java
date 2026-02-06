@@ -167,10 +167,10 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.embedCredentials);
     }
     @Export(name="etag", refs={String.class}, tree="[0]")
-    private Output<String> etag;
+    private Output</* @Nullable */ String> etag;
 
-    public Output<String> etag() {
-        return this.etag;
+    public Output<Optional<String>> etag() {
+        return Codegen.optional(this.etag);
     }
     /**
      * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.

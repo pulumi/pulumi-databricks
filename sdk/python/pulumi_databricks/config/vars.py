@@ -153,6 +153,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('retryTimeoutSeconds')
 
     @_builtins.property
+    def scopes(self) -> Optional[str]:
+        return __config__.get('scopes')
+
+    @_builtins.property
     def serverless_compute_id(self) -> Optional[str]:
         return __config__.get('serverlessComputeId')
 

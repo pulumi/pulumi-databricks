@@ -73,8 +73,8 @@ class GetPostgresBranchResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the branch. This field is output-only and constructed by the system.
-        Format: `projects/{project_id}/branches/{branch_id}`
+        (string) - Output only. The full resource path of the branch.
+        Format: projects/{project_id}/branches/{branch_id}
         """
         return pulumi.get(self, "name")
 
@@ -156,8 +156,8 @@ def get_postgres_branch(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: The resource name of the branch. This field is output-only and constructed by the system.
-           Format: `projects/{project_id}/branches/{branch_id}`
+    :param _builtins.str name: Output only. The full resource path of the branch.
+           Format: projects/{project_id}/branches/{branch_id}
     """
     __args__ = dict()
     __args__['name'] = name
@@ -193,8 +193,8 @@ def get_postgres_branch_output(name: Optional[pulumi.Input[_builtins.str]] = Non
     ```
 
 
-    :param _builtins.str name: The resource name of the branch. This field is output-only and constructed by the system.
-           Format: `projects/{project_id}/branches/{branch_id}`
+    :param _builtins.str name: Output only. The full resource path of the branch.
+           Format: projects/{project_id}/branches/{branch_id}
     """
     __args__ = dict()
     __args__['name'] = name

@@ -5,11 +5,14 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsPathList;
+import com.pulumi.databricks.outputs.GetDbfsFilePathsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbfsFilePathsResult {
@@ -24,6 +27,7 @@ public final class GetDbfsFilePathsResult {
      * 
      */
     private List<GetDbfsFilePathsPathList> pathLists;
+    private @Nullable GetDbfsFilePathsProviderConfig providerConfig;
     private Boolean recursive;
 
     private GetDbfsFilePathsResult() {}
@@ -44,6 +48,9 @@ public final class GetDbfsFilePathsResult {
     public List<GetDbfsFilePathsPathList> pathLists() {
         return this.pathLists;
     }
+    public Optional<GetDbfsFilePathsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public Boolean recursive() {
         return this.recursive;
     }
@@ -60,6 +67,7 @@ public final class GetDbfsFilePathsResult {
         private String id;
         private String path;
         private List<GetDbfsFilePathsPathList> pathLists;
+        private @Nullable GetDbfsFilePathsProviderConfig providerConfig;
         private Boolean recursive;
         public Builder() {}
         public Builder(GetDbfsFilePathsResult defaults) {
@@ -67,6 +75,7 @@ public final class GetDbfsFilePathsResult {
     	      this.id = defaults.id;
     	      this.path = defaults.path;
     	      this.pathLists = defaults.pathLists;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.recursive = defaults.recursive;
         }
 
@@ -98,6 +107,12 @@ public final class GetDbfsFilePathsResult {
             return pathLists(List.of(pathLists));
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDbfsFilePathsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder recursive(Boolean recursive) {
             if (recursive == null) {
               throw new MissingRequiredPropertyException("GetDbfsFilePathsResult", "recursive");
@@ -110,6 +125,7 @@ public final class GetDbfsFilePathsResult {
             _resultValue.id = id;
             _resultValue.path = path;
             _resultValue.pathLists = pathLists;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.recursive = recursive;
             return _resultValue;
         }

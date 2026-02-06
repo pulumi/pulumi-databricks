@@ -355,7 +355,7 @@ export const getCurrentMetastore: typeof import("./getCurrentMetastore").getCurr
 export const getCurrentMetastoreOutput: typeof import("./getCurrentMetastore").getCurrentMetastoreOutput = null as any;
 utilities.lazyLoad(exports, ["getCurrentMetastore","getCurrentMetastoreOutput"], () => require("./getCurrentMetastore"));
 
-export { GetCurrentUserResult } from "./getCurrentUser";
+export { GetCurrentUserArgs, GetCurrentUserResult, GetCurrentUserOutputArgs } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
 utilities.lazyLoad(exports, ["getCurrentUser","getCurrentUserOutput"], () => require("./getCurrentUser"));
@@ -570,7 +570,7 @@ export const getMwsNetworkConnectivityConfigs: typeof import("./getMwsNetworkCon
 export const getMwsNetworkConnectivityConfigsOutput: typeof import("./getMwsNetworkConnectivityConfigs").getMwsNetworkConnectivityConfigsOutput = null as any;
 utilities.lazyLoad(exports, ["getMwsNetworkConnectivityConfigs","getMwsNetworkConnectivityConfigsOutput"], () => require("./getMwsNetworkConnectivityConfigs"));
 
-export { GetMwsWorkspacesResult } from "./getMwsWorkspaces";
+export { GetMwsWorkspacesArgs, GetMwsWorkspacesResult, GetMwsWorkspacesOutputArgs } from "./getMwsWorkspaces";
 export const getMwsWorkspaces: typeof import("./getMwsWorkspaces").getMwsWorkspaces = null as any;
 export const getMwsWorkspacesOutput: typeof import("./getMwsWorkspaces").getMwsWorkspacesOutput = null as any;
 utilities.lazyLoad(exports, ["getMwsWorkspaces","getMwsWorkspacesOutput"], () => require("./getMwsWorkspaces"));

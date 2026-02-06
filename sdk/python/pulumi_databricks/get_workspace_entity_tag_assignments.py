@@ -56,7 +56,7 @@ class GetWorkspaceEntityTagAssignmentsResult:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> _builtins.str:
         """
-        (string) - The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+        (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
         """
         return pulumi.get(self, "entity_type")
 
@@ -107,6 +107,8 @@ def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = No
     import pulumi
     import pulumi_databricks as databricks
 
+    app_tags = databricks.get_workspace_entity_tag_assignments(entity_type="apps",
+        entity_id="2807324866692453")
     dashboard_tags = databricks.get_workspace_entity_tag_assignments(entity_type="dashboards",
         entity_id="2807324866692453")
     geniespace_tags = databricks.get_workspace_entity_tag_assignments(entity_type="geniespaces",
@@ -115,7 +117,7 @@ def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = No
 
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned
-    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
     :param _builtins.int page_size: Optional. Maximum number of tag assignments to return in a single page
     """
     __args__ = dict()
@@ -146,6 +148,8 @@ def get_workspace_entity_tag_assignments_output(entity_id: Optional[pulumi.Input
     import pulumi
     import pulumi_databricks as databricks
 
+    app_tags = databricks.get_workspace_entity_tag_assignments(entity_type="apps",
+        entity_id="2807324866692453")
     dashboard_tags = databricks.get_workspace_entity_tag_assignments(entity_type="dashboards",
         entity_id="2807324866692453")
     geniespace_tags = databricks.get_workspace_entity_tag_assignments(entity_type="geniespaces",
@@ -154,7 +158,7 @@ def get_workspace_entity_tag_assignments_output(entity_id: Optional[pulumi.Input
 
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned
-    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
     :param _builtins.int page_size: Optional. Maximum number of tag assignments to return in a single page
     """
     __args__ = dict()

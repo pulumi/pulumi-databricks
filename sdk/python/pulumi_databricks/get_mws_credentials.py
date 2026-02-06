@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetMwsCredentialsResult',
@@ -26,13 +28,16 @@ class GetMwsCredentialsResult:
     """
     A collection of values returned by getMwsCredentials.
     """
-    def __init__(__self__, id=None, ids=None):
+    def __init__(__self__, id=None, ids=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, dict):
             raise TypeError("Expected argument 'ids' to be a dict")
         pulumi.set(__self__, "ids", ids)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -50,6 +55,11 @@ class GetMwsCredentialsResult:
         """
         return pulumi.get(self, "ids")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMwsCredentialsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetMwsCredentialsResult(GetMwsCredentialsResult):
     # pylint: disable=using-constant-test
@@ -58,10 +68,12 @@ class AwaitableGetMwsCredentialsResult(GetMwsCredentialsResult):
             yield self
         return GetMwsCredentialsResult(
             id=self.id,
-            ids=self.ids)
+            ids=self.ids,
+            provider_config=self.provider_config)
 
 
 def get_mws_credentials(ids: Optional[Mapping[str, _builtins.str]] = None,
+                        provider_config: Optional[Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsCredentialsResult:
     """
     Lists all MwsCredentials in Databricks Account.
@@ -93,16 +105,20 @@ def get_mws_credentials(ids: Optional[Mapping[str, _builtins.str]] = None,
 
 
     :param Mapping[str, _builtins.str] ids: name-to-id map for all of the credentials in the account
+    :param Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getMwsCredentials:getMwsCredentials', __args__, opts=opts, typ=GetMwsCredentialsResult).value
 
     return AwaitableGetMwsCredentialsResult(
         id=pulumi.get(__ret__, 'id'),
-        ids=pulumi.get(__ret__, 'ids'))
+        ids=pulumi.get(__ret__, 'ids'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+                               provider_config: Optional[pulumi.Input[Optional[Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsCredentialsResult]:
     """
     Lists all MwsCredentials in Databricks Account.
@@ -134,11 +150,14 @@ def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, 
 
 
     :param Mapping[str, _builtins.str] ids: name-to-id map for all of the credentials in the account
+    :param Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMwsCredentials:getMwsCredentials', __args__, opts=opts, typ=GetMwsCredentialsResult)
     return __ret__.apply(lambda __response__: GetMwsCredentialsResult(
         id=pulumi.get(__response__, 'id'),
-        ids=pulumi.get(__response__, 'ids')))
+        ids=pulumi.get(__response__, 'ids'),
+        provider_config=pulumi.get(__response__, 'provider_config')))
