@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskComputeArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDashboardTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDbtCloudTaskArgs;
@@ -47,6 +48,13 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
 
     public Optional<Output<JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs>> cleanRoomsNotebookTask() {
         return Optional.ofNullable(this.cleanRoomsNotebookTask);
+    }
+
+    @Import(name="compute")
+    private @Nullable Output<JobTaskForEachTaskTaskComputeArgs> compute;
+
+    public Optional<Output<JobTaskForEachTaskTaskComputeArgs>> compute() {
+        return Optional.ofNullable(this.compute);
     }
 
     @Import(name="conditionTask")
@@ -441,6 +449,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
 
     private JobTaskForEachTaskTaskArgs(JobTaskForEachTaskTaskArgs $) {
         this.cleanRoomsNotebookTask = $.cleanRoomsNotebookTask;
+        this.compute = $.compute;
         this.conditionTask = $.conditionTask;
         this.dashboardTask = $.dashboardTask;
         this.dbtCloudTask = $.dbtCloudTask;
@@ -502,6 +511,15 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
 
         public Builder cleanRoomsNotebookTask(JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs cleanRoomsNotebookTask) {
             return cleanRoomsNotebookTask(Output.of(cleanRoomsNotebookTask));
+        }
+
+        public Builder compute(@Nullable Output<JobTaskForEachTaskTaskComputeArgs> compute) {
+            $.compute = compute;
+            return this;
+        }
+
+        public Builder compute(JobTaskForEachTaskTaskComputeArgs compute) {
+            return compute(Output.of(compute));
         }
 
         public Builder conditionTask(@Nullable Output<JobTaskForEachTaskTaskConditionTaskArgs> conditionTask) {

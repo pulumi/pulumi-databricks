@@ -110,6 +110,9 @@ func GetRateLimit(ctx *pulumi.Context) int {
 func GetRetryTimeoutSeconds(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "databricks:retryTimeoutSeconds")
 }
+func GetScopes(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:scopes")
+}
 func GetServerlessComputeId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:serverlessComputeId")
 }

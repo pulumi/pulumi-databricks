@@ -27,15 +27,13 @@ class PostgresBranchArgs:
         """
         The set of arguments for constructing a PostgresBranch resource.
         :param pulumi.Input[_builtins.str] branch_id: The ID to use for the Branch. This becomes the final component of the branch's resource name.
-               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-               Examples:
-               - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
-               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+               For example, `development` becomes `projects/my-app/branches/development`
         :param pulumi.Input[_builtins.str] parent: The project containing this branch (API resource hierarchy).
                Format: projects/{project_id}
                
                Note: This field indicates where the branch exists in the resource hierarchy.
-               For point-in-time branching from another branch, see `spec.source_branch`
+               For point-in-time branching from another branch, see `status.source_branch`
         :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration
         """
         pulumi.set(__self__, "branch_id", branch_id)
@@ -48,10 +46,8 @@ class PostgresBranchArgs:
     def branch_id(self) -> pulumi.Input[_builtins.str]:
         """
         The ID to use for the Branch. This becomes the final component of the branch's resource name.
-        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        Examples:
-        - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
-        - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+        The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        For example, `development` becomes `projects/my-app/branches/development`
         """
         return pulumi.get(self, "branch_id")
 
@@ -67,7 +63,7 @@ class PostgresBranchArgs:
         Format: projects/{project_id}
 
         Note: This field indicates where the branch exists in the resource hierarchy.
-        For point-in-time branching from another branch, see `spec.source_branch`
+        For point-in-time branching from another branch, see `status.source_branch`
         """
         return pulumi.get(self, "parent")
 
@@ -102,18 +98,16 @@ class _PostgresBranchState:
         """
         Input properties used for looking up and filtering PostgresBranch resources.
         :param pulumi.Input[_builtins.str] branch_id: The ID to use for the Branch. This becomes the final component of the branch's resource name.
-               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-               Examples:
-               - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
-               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+               For example, `development` becomes `projects/my-app/branches/development`
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the branch was created
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the branch. This field is output-only and constructed by the system.
-               Format: `projects/{project_id}/branches/{branch_id}`
+        :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the branch.
+               Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[_builtins.str] parent: The project containing this branch (API resource hierarchy).
                Format: projects/{project_id}
                
                Note: This field indicates where the branch exists in the resource hierarchy.
-               For point-in-time branching from another branch, see `spec.source_branch`
+               For point-in-time branching from another branch, see `status.source_branch`
         :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration
         :param pulumi.Input['PostgresBranchStatusArgs'] status: (BranchStatus) - The current status of a Branch
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the branch
@@ -141,10 +135,8 @@ class _PostgresBranchState:
     def branch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID to use for the Branch. This becomes the final component of the branch's resource name.
-        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        Examples:
-        - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
-        - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+        The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        For example, `development` becomes `projects/my-app/branches/development`
         """
         return pulumi.get(self, "branch_id")
 
@@ -168,8 +160,8 @@ class _PostgresBranchState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - The resource name of the branch. This field is output-only and constructed by the system.
-        Format: `projects/{project_id}/branches/{branch_id}`
+        (string) - Output only. The full resource path of the branch.
+        Format: projects/{project_id}/branches/{branch_id}
         """
         return pulumi.get(self, "name")
 
@@ -185,7 +177,7 @@ class _PostgresBranchState:
         Format: projects/{project_id}
 
         Note: This field indicates where the branch exists in the resource hierarchy.
-        For point-in-time branching from another branch, see `spec.source_branch`
+        For point-in-time branching from another branch, see `status.source_branch`
         """
         return pulumi.get(self, "parent")
 
@@ -329,15 +321,13 @@ class PostgresBranch(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch_id: The ID to use for the Branch. This becomes the final component of the branch's resource name.
-               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-               Examples:
-               - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
-               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+               For example, `development` becomes `projects/my-app/branches/development`
         :param pulumi.Input[_builtins.str] parent: The project containing this branch (API resource hierarchy).
                Format: projects/{project_id}
                
                Note: This field indicates where the branch exists in the resource hierarchy.
-               For point-in-time branching from another branch, see `spec.source_branch`
+               For point-in-time branching from another branch, see `status.source_branch`
         :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']] spec: The spec contains the branch configuration
         """
         ...
@@ -485,18 +475,16 @@ class PostgresBranch(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch_id: The ID to use for the Branch. This becomes the final component of the branch's resource name.
-               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-               Examples:
-               - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
-               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+               For example, `development` becomes `projects/my-app/branches/development`
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the branch was created
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the branch. This field is output-only and constructed by the system.
-               Format: `projects/{project_id}/branches/{branch_id}`
+        :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the branch.
+               Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[_builtins.str] parent: The project containing this branch (API resource hierarchy).
                Format: projects/{project_id}
                
                Note: This field indicates where the branch exists in the resource hierarchy.
-               For point-in-time branching from another branch, see `spec.source_branch`
+               For point-in-time branching from another branch, see `status.source_branch`
         :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']] spec: The spec contains the branch configuration
         :param pulumi.Input[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict']] status: (BranchStatus) - The current status of a Branch
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the branch
@@ -521,10 +509,8 @@ class PostgresBranch(pulumi.CustomResource):
     def branch_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID to use for the Branch. This becomes the final component of the branch's resource name.
-        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        Examples:
-        - With custom ID: `staging` → name becomes `projects/{project_id}/branches/staging`
-        - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+        The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        For example, `development` becomes `projects/my-app/branches/development`
         """
         return pulumi.get(self, "branch_id")
 
@@ -540,8 +526,8 @@ class PostgresBranch(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resource name of the branch. This field is output-only and constructed by the system.
-        Format: `projects/{project_id}/branches/{branch_id}`
+        (string) - Output only. The full resource path of the branch.
+        Format: projects/{project_id}/branches/{branch_id}
         """
         return pulumi.get(self, "name")
 
@@ -553,7 +539,7 @@ class PostgresBranch(pulumi.CustomResource):
         Format: projects/{project_id}
 
         Note: This field indicates where the branch exists in the resource hierarchy.
-        For point-in-time branching from another branch, see `spec.source_branch`
+        For point-in-time branching from another branch, see `status.source_branch`
         """
         return pulumi.get(self, "parent")
 

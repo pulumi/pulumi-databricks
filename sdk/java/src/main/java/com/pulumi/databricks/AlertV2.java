@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.AlertV2EffectiveRunAs;
 import com.pulumi.databricks.outputs.AlertV2Evaluation;
 import com.pulumi.databricks.outputs.AlertV2RunAs;
 import com.pulumi.databricks.outputs.AlertV2Schedule;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -239,6 +240,20 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> parentPath() {
         return Codegen.optional(this.parentPath);
+    }
+    /**
+     * Purge the resource on delete
+     * 
+     */
+    @Export(name="purgeOnDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> purgeOnDelete;
+
+    /**
+     * @return Purge the resource on delete
+     * 
+     */
+    public Output<Optional<Boolean>> purgeOnDelete() {
+        return Codegen.optional(this.purgeOnDelete);
     }
     /**
      * Text of the query to be run

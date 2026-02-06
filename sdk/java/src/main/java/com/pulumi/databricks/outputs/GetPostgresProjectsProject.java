@@ -18,8 +18,8 @@ public final class GetPostgresProjectsProject {
      */
     private String createTime;
     /**
-     * @return (string) - The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * @return (string) - Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      * 
      */
     private String name;
@@ -53,8 +53,8 @@ public final class GetPostgresProjectsProject {
         return this.createTime;
     }
     /**
-     * @return (string) - The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * @return (string) - Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      * 
      */
     public String name() {

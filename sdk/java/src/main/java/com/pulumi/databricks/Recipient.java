@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.Password;
  * import com.pulumi.random.PasswordArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetCurrentUserArgs;
  * import com.pulumi.databricks.Recipient;
  * import com.pulumi.databricks.RecipientArgs;
  * import com.pulumi.databricks.inputs.RecipientIpAccessListArgs;
@@ -67,7 +68,8 @@ import javax.annotation.Nullable;
  *             .special(true)
  *             .build());
  * 
- *         final var current = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ *         final var current = DatabricksFunctions.getCurrentUser(GetCurrentUserArgs.builder()
+ *             .build());
  * 
  *         var db2open = new Recipient("db2open", RecipientArgs.builder()
  *             .name(String.format("%s-recipient", current.alphanumeric()))
@@ -98,6 +100,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetCurrentUserArgs;
  * import com.pulumi.databricks.Metastore;
  * import com.pulumi.databricks.MetastoreArgs;
  * import com.pulumi.std.StdFunctions;
@@ -117,7 +120,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var current = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ *         final var current = DatabricksFunctions.getCurrentUser(GetCurrentUserArgs.builder()
+ *             .build());
  * 
  *         var recipientMetastore = new Metastore("recipientMetastore", MetastoreArgs.builder()
  *             .name("recipient")

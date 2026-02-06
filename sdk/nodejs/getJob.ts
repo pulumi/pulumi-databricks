@@ -41,6 +41,7 @@ export function getJob(args?: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<
         "jobName": args.jobName,
         "jobSettings": args.jobSettings,
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -62,6 +63,10 @@ export interface GetJobArgs {
      * the job name of databricks.Job if the resource was matched by id.
      */
     name?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetJobProviderConfig;
 }
 
 /**
@@ -82,6 +87,7 @@ export interface GetJobResult {
      * the job name of databricks.Job if the resource was matched by id.
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetJobProviderConfig;
 }
 /**
  * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
@@ -118,6 +124,7 @@ export function getJobOutput(args?: GetJobOutputArgs, opts?: pulumi.InvokeOutput
         "jobName": args.jobName,
         "jobSettings": args.jobSettings,
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -139,4 +146,8 @@ export interface GetJobOutputArgs {
      * the job name of databricks.Job if the resource was matched by id.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetJobProviderConfigArgs>;
 }

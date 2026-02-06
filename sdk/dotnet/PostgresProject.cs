@@ -130,18 +130,16 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resource name of the project. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}`
+        /// (string) - Output only. The full resource path of the project.
+        /// Format: projects/{project_id}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// The ID to use for the Project. This becomes the final component of the project's resource name.
-        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        /// Examples:
-        /// - With custom ID: `Production` → name becomes `projects/production`
-        /// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `my-app` becomes `projects/my-app`
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -218,10 +216,8 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The ID to use for the Project. This becomes the final component of the project's resource name.
-        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        /// Examples:
-        /// - With custom ID: `Production` → name becomes `projects/production`
-        /// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `my-app` becomes `projects/my-app`
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -247,18 +243,16 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// (string) - The resource name of the project. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}`
+        /// (string) - Output only. The full resource path of the project.
+        /// Format: projects/{project_id}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The ID to use for the Project. This becomes the final component of the project's resource name.
-        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        /// Examples:
-        /// - With custom ID: `Production` → name becomes `projects/production`
-        /// - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `my-app` becomes `projects/my-app`
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

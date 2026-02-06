@@ -585,6 +585,7 @@ export interface AppAppStatus {
 }
 
 export interface AppComputeStatus {
+    activeInstances: number;
     /**
      * Application status message
      */
@@ -2354,6 +2355,29 @@ export interface FeatureEngineeringKafkaConfigAuthConfig {
     ucServiceCredentialName?: string;
 }
 
+export interface FeatureEngineeringKafkaConfigBackfillSource {
+    /**
+     * The Delta table source containing the historic data to backfill.
+     * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+     */
+    deltaTableSource?: outputs.FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource;
+}
+
+export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
+    /**
+     * The entity columns of the Delta table
+     */
+    entityColumns: string[];
+    /**
+     * The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: string;
+    /**
+     * The timeseries column of the Delta table
+     */
+    timeseriesColumn: string;
+}
+
 export interface FeatureEngineeringKafkaConfigKeySchema {
     /**
      * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
@@ -3509,6 +3533,7 @@ export interface GetAppAppAppStatus {
 }
 
 export interface GetAppAppComputeStatus {
+    activeInstances: number;
     /**
      * Application status message
      */
@@ -3899,6 +3924,7 @@ export interface GetAppsAppAppStatus {
 }
 
 export interface GetAppsAppComputeStatus {
+    activeInstances: number;
     /**
      * Application status message
      */
@@ -5171,6 +5197,13 @@ export interface GetClustersProviderConfig {
     workspaceId: string;
 }
 
+export interface GetCurrentConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetCurrentMetastoreMetastoreInfo {
     cloud?: string;
     /**
@@ -5245,6 +5278,13 @@ export interface GetCurrentMetastoreMetastoreInfo {
 }
 
 export interface GetCurrentMetastoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetCurrentUserProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -6627,6 +6667,20 @@ export interface GetDbfsFilePathsPathList {
     path?: string;
 }
 
+export interface GetDbfsFilePathsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDbfsFileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetDirectoryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -7176,6 +7230,29 @@ export interface GetFeatureEngineeringKafkaConfigAuthConfig {
     ucServiceCredentialName?: string;
 }
 
+export interface GetFeatureEngineeringKafkaConfigBackfillSource {
+    /**
+     * (DeltaTableSource) - The Delta table source containing the historic data to backfill.
+     * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+     */
+    deltaTableSource?: outputs.GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource;
+}
+
+export interface GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
+    /**
+     * (list of string) - The entity columns of the Delta table
+     */
+    entityColumns: string[];
+    /**
+     * (string) - The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: string;
+    /**
+     * (string) - The timeseries column of the Delta table
+     */
+    timeseriesColumn: string;
+}
+
 export interface GetFeatureEngineeringKafkaConfigKeySchema {
     /**
      * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
@@ -7212,6 +7289,12 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfig {
      */
     authConfig: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig;
     /**
+     * (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     */
+    backfillSource: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource;
+    /**
      * (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
      */
     bootstrapServers: string;
@@ -7243,6 +7326,29 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig {
      * (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
      */
     ucServiceCredentialName?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource {
+    /**
+     * (DeltaTableSource) - The Delta table source containing the historic data to backfill.
+     * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+     */
+    deltaTableSource?: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource {
+    /**
+     * (list of string) - The entity columns of the Delta table
+     */
+    entityColumns: string[];
+    /**
+     * (string) - The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: string;
+    /**
+     * (string) - The timeseries column of the Delta table
+     */
+    timeseriesColumn: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchema {
@@ -7653,6 +7759,13 @@ export interface GetFunctionsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetGroupProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: outputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: outputs.GetInstancePoolPoolInfoAzureAttributes;
@@ -7739,6 +7852,13 @@ export interface GetInstancePoolPoolInfoStats {
     pendingIdleCount?: number;
     pendingUsedCount?: number;
     usedCount?: number;
+}
+
+export interface GetInstancePoolProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetInstanceProfilesInstanceProfile {
@@ -8052,6 +8172,9 @@ export interface GetJobJobSettingsSettingsLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.GetJobJobSettingsSettingsLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: outputs.GetJobJobSettingsSettingsLibraryProviderConfig;
     pypi?: outputs.GetJobJobSettingsSettingsLibraryPypi;
     requirements?: string;
@@ -8070,6 +8193,9 @@ export interface GetJobJobSettingsSettingsLibraryMaven {
 }
 
 export interface GetJobJobSettingsSettingsLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
@@ -8486,6 +8612,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig;
     pypi?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
     requirements?: string;
@@ -8504,6 +8633,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
@@ -8843,6 +8975,9 @@ export interface GetJobJobSettingsSettingsTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.GetJobJobSettingsSettingsTaskLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: outputs.GetJobJobSettingsSettingsTaskLibraryProviderConfig;
     pypi?: outputs.GetJobJobSettingsSettingsTaskLibraryPypi;
     requirements?: string;
@@ -8861,6 +8996,9 @@ export interface GetJobJobSettingsSettingsTaskLibraryMaven {
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
@@ -9250,6 +9388,13 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
     id: string;
 }
 
+export interface GetJobProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetJobsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -9411,6 +9556,13 @@ export interface GetMlflowModelsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetMwsCredentialsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetMwsNetworkConnectivityConfigEgressConfig {
     /**
      * Array of default rules.
@@ -9549,6 +9701,13 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
     updatedTime?: number;
 }
 
+export interface GetMwsWorkspacesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetNodeTypeProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -9562,6 +9721,13 @@ export interface GetNotebookPathsNotebookPathList {
      * Path to workspace directory
      */
     path?: string;
+}
+
+export interface GetNotebookPathsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetNotebookProviderConfig {
@@ -9930,8 +10096,8 @@ export interface GetPostgresBranchesBranch {
      */
     createTime: string;
     /**
-     * (string) - The resource name of the branch. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}`
+     * (string) - Output only. The full resource path of the branch.
+     * Format: projects/{project_id}/branches/{branch_id}
      */
     name: string;
     /**
@@ -10139,8 +10305,8 @@ export interface GetPostgresEndpointsEndpoint {
      */
     createTime: string;
     /**
-     * (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+     * (string) - Output only. The full resource path of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      */
     name: string;
     /**
@@ -10371,8 +10537,8 @@ export interface GetPostgresProjectsProject {
      */
     createTime: string;
     /**
-     * (string) - The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * (string) - Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      */
     name: string;
     /**
@@ -11141,6 +11307,20 @@ export interface GetServicePrincipalFederationPolicyOidcPolicy {
      * is 'sub'
      */
     subjectClaim?: string;
+}
+
+export interface GetServicePrincipalProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetServicePrincipalsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetServicePrincipalsServicePrincipal {
@@ -11918,6 +12098,13 @@ export interface GetTagPolicyValue {
     name: string;
 }
 
+export interface GetUserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetUsersUser {
     /**
      * Boolean that represents if this user is active.
@@ -12125,7 +12312,7 @@ export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType: string;
     /**
@@ -13406,6 +13593,7 @@ export interface JobSparkSubmitTask {
 
 export interface JobTask {
     cleanRoomsNotebookTask?: outputs.JobTaskCleanRoomsNotebookTask;
+    compute?: outputs.JobTaskCompute;
     conditionTask?: outputs.JobTaskConditionTask;
     dashboardTask?: outputs.JobTaskDashboardTask;
     dbtCloudTask?: outputs.JobTaskDbtCloudTask;
@@ -13517,6 +13705,10 @@ export interface JobTaskCleanRoomsNotebookTask {
      * Name of the notebook being run.
      */
     notebookName: string;
+}
+
+export interface JobTaskCompute {
+    hardwareAccelerator?: string;
 }
 
 export interface JobTaskConditionTask {
@@ -13687,6 +13879,7 @@ export interface JobTaskForEachTask {
 
 export interface JobTaskForEachTaskTask {
     cleanRoomsNotebookTask?: outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
+    compute?: outputs.JobTaskForEachTaskTaskCompute;
     conditionTask?: outputs.JobTaskForEachTaskTaskConditionTask;
     dashboardTask?: outputs.JobTaskForEachTaskTaskDashboardTask;
     dbtCloudTask?: outputs.JobTaskForEachTaskTaskDbtCloudTask;
@@ -13797,6 +13990,10 @@ export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
      * Name of the notebook being run.
      */
     notebookName: string;
+}
+
+export interface JobTaskForEachTaskTaskCompute {
+    hardwareAccelerator?: string;
 }
 
 export interface JobTaskForEachTaskTaskConditionTask {
@@ -15964,6 +16161,7 @@ export interface ModelServingConfigAutoCaptureConfig {
 }
 
 export interface ModelServingConfigServedEntity {
+    burstScalingEnabled?: boolean;
     /**
      * The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
      */
@@ -16260,6 +16458,7 @@ export interface ModelServingConfigServedEntityExternalModelPalmConfig {
 }
 
 export interface ModelServingConfigServedModel {
+    burstScalingEnabled?: boolean;
     /**
      * a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      */
@@ -16735,11 +16934,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -16806,11 +17005,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;

@@ -90,8 +90,8 @@ type Dashboard struct {
 	// The display name of the dashboard.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Whether to embed credentials in the dashboard. Default is `true`.
-	EmbedCredentials pulumi.BoolPtrOutput `pulumi:"embedCredentials"`
-	Etag             pulumi.StringOutput  `pulumi:"etag"`
+	EmbedCredentials pulumi.BoolPtrOutput   `pulumi:"embedCredentials"`
+	Etag             pulumi.StringPtrOutput `pulumi:"etag"`
 	// The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
 	FilePath       pulumi.StringPtrOutput `pulumi:"filePath"`
 	LifecycleState pulumi.StringOutput    `pulumi:"lifecycleState"`
@@ -376,8 +376,8 @@ func (o DashboardOutput) EmbedCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.BoolPtrOutput { return v.EmbedCredentials }).(pulumi.BoolPtrOutput)
 }
 
-func (o DashboardOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o DashboardOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // The path to the dashboard JSON file. Conflicts with `serializedDashboard`.

@@ -30,6 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.LookupWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
+//				EntityType: "apps",
+//				EntityId:   "2807324866692453",
+//				TagKey:     "sensitivity_level",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.LookupWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
 //				EntityType: "dashboards",
 //				EntityId:   "2807324866692453",
 //				TagKey:     "sensitivity_level",
@@ -64,7 +72,7 @@ func LookupWorkspaceEntityTagAssignment(ctx *pulumi.Context, args *LookupWorkspa
 type LookupWorkspaceEntityTagAssignmentArgs struct {
 	// The identifier of the entity to which the tag is assigned
 	EntityId string `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey string `pulumi:"tagKey"`
@@ -74,7 +82,7 @@ type LookupWorkspaceEntityTagAssignmentArgs struct {
 type LookupWorkspaceEntityTagAssignmentResult struct {
 	// (string) - The identifier of the entity to which the tag is assigned
 	EntityId string `pulumi:"entityId"`
-	// (string) - The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -97,7 +105,7 @@ func LookupWorkspaceEntityTagAssignmentOutput(ctx *pulumi.Context, args LookupWo
 type LookupWorkspaceEntityTagAssignmentOutputArgs struct {
 	// The identifier of the entity to which the tag is assigned
 	EntityId pulumi.StringInput `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringInput `pulumi:"tagKey"`
@@ -127,7 +135,7 @@ func (o LookupWorkspaceEntityTagAssignmentResultOutput) EntityId() pulumi.String
 	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) string { return v.EntityId }).(pulumi.StringOutput)
 }
 
-// (string) - The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 func (o LookupWorkspaceEntityTagAssignmentResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) string { return v.EntityType }).(pulumi.StringOutput)
 }

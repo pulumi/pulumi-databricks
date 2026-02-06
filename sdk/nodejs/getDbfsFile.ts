@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -35,6 +37,7 @@ export function getDbfsFile(args: GetDbfsFileArgs, opts?: pulumi.InvokeOptions):
     return pulumi.runtime.invoke("databricks:index/getDbfsFile:getDbfsFile", {
         "limitFileSize": args.limitFileSize,
         "path": args.path,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -50,6 +53,10 @@ export interface GetDbfsFileArgs {
      * Path on DBFS for the file from which to get content.
      */
     path: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetDbfsFileProviderConfig;
 }
 
 /**
@@ -70,6 +77,7 @@ export interface GetDbfsFileResult {
     readonly id: string;
     readonly limitFileSize: boolean;
     readonly path: string;
+    readonly providerConfig?: outputs.GetDbfsFileProviderConfig;
 }
 /**
  * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -102,6 +110,7 @@ export function getDbfsFileOutput(args: GetDbfsFileOutputArgs, opts?: pulumi.Inv
     return pulumi.runtime.invokeOutput("databricks:index/getDbfsFile:getDbfsFile", {
         "limitFileSize": args.limitFileSize,
         "path": args.path,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -117,4 +126,8 @@ export interface GetDbfsFileOutputArgs {
      * Path on DBFS for the file from which to get content.
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetDbfsFileProviderConfigArgs>;
 }

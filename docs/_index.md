@@ -221,7 +221,7 @@ func notImplemented(message string) pulumi.AnyOutput {
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		me, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
+		me, err := databricks.GetCurrentUser(ctx, &databricks.GetCurrentUserArgs{}, nil)
 		if err != nil {
 			return err
 		}
@@ -306,6 +306,7 @@ import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.databricks.DatabricksFunctions;
+import com.pulumi.databricks.inputs.GetCurrentUserArgs;
 import com.pulumi.databricks.inputs.GetSparkVersionArgs;
 import com.pulumi.databricks.inputs.GetNodeTypeArgs;
 import com.pulumi.databricks.Notebook;
@@ -331,7 +332,8 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var me = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+        final var me = DatabricksFunctions.getCurrentUser(GetCurrentUserArgs.builder()
+            .build());
 
         final var latest = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
             .build());

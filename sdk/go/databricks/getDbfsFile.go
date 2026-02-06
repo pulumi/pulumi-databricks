@@ -66,6 +66,8 @@ type LookupDbfsFileArgs struct {
 	LimitFileSize bool `pulumi:"limitFileSize"`
 	// Path on DBFS for the file from which to get content.
 	Path string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetDbfsFileProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDbfsFile.
@@ -75,9 +77,10 @@ type LookupDbfsFileResult struct {
 	// size of the file in bytes
 	FileSize int `pulumi:"fileSize"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string `pulumi:"id"`
-	LimitFileSize bool   `pulumi:"limitFileSize"`
-	Path          string `pulumi:"path"`
+	Id             string                     `pulumi:"id"`
+	LimitFileSize  bool                       `pulumi:"limitFileSize"`
+	Path           string                     `pulumi:"path"`
+	ProviderConfig *GetDbfsFileProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupDbfsFileOutput(ctx *pulumi.Context, args LookupDbfsFileOutputArgs, opts ...pulumi.InvokeOption) LookupDbfsFileResultOutput {
@@ -95,6 +98,8 @@ type LookupDbfsFileOutputArgs struct {
 	LimitFileSize pulumi.BoolInput `pulumi:"limitFileSize"`
 	// Path on DBFS for the file from which to get content.
 	Path pulumi.StringInput `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetDbfsFileProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupDbfsFileOutputArgs) ElementType() reflect.Type {
@@ -137,6 +142,10 @@ func (o LookupDbfsFileResultOutput) LimitFileSize() pulumi.BoolOutput {
 
 func (o LookupDbfsFileResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbfsFileResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o LookupDbfsFileResultOutput) ProviderConfig() GetDbfsFileProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupDbfsFileResult) *GetDbfsFileProviderConfig { return v.ProviderConfig }).(GetDbfsFileProviderConfigPtrOutput)
 }
 
 func init() {

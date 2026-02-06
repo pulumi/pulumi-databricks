@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class AppComputeStatusArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppComputeStatusArgs Empty = new AppComputeStatusArgs();
+
+    @Import(name="activeInstances")
+    private @Nullable Output<Integer> activeInstances;
+
+    public Optional<Output<Integer>> activeInstances() {
+        return Optional.ofNullable(this.activeInstances);
+    }
 
     /**
      * Application status message
@@ -48,6 +56,7 @@ public final class AppComputeStatusArgs extends com.pulumi.resources.ResourceArg
     private AppComputeStatusArgs() {}
 
     private AppComputeStatusArgs(AppComputeStatusArgs $) {
+        this.activeInstances = $.activeInstances;
         this.message = $.message;
         this.state = $.state;
     }
@@ -68,6 +77,15 @@ public final class AppComputeStatusArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(AppComputeStatusArgs defaults) {
             $ = new AppComputeStatusArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder activeInstances(@Nullable Output<Integer> activeInstances) {
+            $.activeInstances = activeInstances;
+            return this;
+        }
+
+        public Builder activeInstances(Integer activeInstances) {
+            return activeInstances(Output.of(activeInstances));
         }
 
         /**

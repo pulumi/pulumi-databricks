@@ -61,6 +61,7 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
     return pulumi.runtime.invoke("databricks:index/getServicePrincipals:getServicePrincipals", {
         "applicationIds": args.applicationIds,
         "displayNameContains": args.displayNameContains,
+        "providerConfig": args.providerConfig,
         "servicePrincipals": args.servicePrincipals,
     }, opts);
 }
@@ -77,6 +78,10 @@ export interface GetServicePrincipalsArgs {
      * Only return databricks.ServicePrincipal display name that match the given name string
      */
     displayNameContains?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetServicePrincipalsProviderConfig;
     /**
      * List of objects describing individual service principals. Each object has the following attributes:
      */
@@ -96,6 +101,7 @@ export interface GetServicePrincipalsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetServicePrincipalsProviderConfig;
     /**
      * List of objects describing individual service principals. Each object has the following attributes:
      */
@@ -156,6 +162,7 @@ export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs
     return pulumi.runtime.invokeOutput("databricks:index/getServicePrincipals:getServicePrincipals", {
         "applicationIds": args.applicationIds,
         "displayNameContains": args.displayNameContains,
+        "providerConfig": args.providerConfig,
         "servicePrincipals": args.servicePrincipals,
     }, opts);
 }
@@ -172,6 +179,10 @@ export interface GetServicePrincipalsOutputArgs {
      * Only return databricks.ServicePrincipal display name that match the given name string
      */
     displayNameContains?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetServicePrincipalsProviderConfigArgs>;
     /**
      * List of objects describing individual service principals. Each object has the following attributes:
      */

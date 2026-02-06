@@ -5,11 +5,13 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetAppsAppComputeStatus {
+    private Integer activeInstances;
     /**
      * @return Application status message
      * 
@@ -22,6 +24,9 @@ public final class GetAppsAppComputeStatus {
     private String state;
 
     private GetAppsAppComputeStatus() {}
+    public Integer activeInstances() {
+        return this.activeInstances;
+    }
     /**
      * @return Application status message
      * 
@@ -46,15 +51,25 @@ public final class GetAppsAppComputeStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer activeInstances;
         private String message;
         private String state;
         public Builder() {}
         public Builder(GetAppsAppComputeStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.activeInstances = defaults.activeInstances;
     	      this.message = defaults.message;
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
+        public Builder activeInstances(Integer activeInstances) {
+            if (activeInstances == null) {
+              throw new MissingRequiredPropertyException("GetAppsAppComputeStatus", "activeInstances");
+            }
+            this.activeInstances = activeInstances;
+            return this;
+        }
         @CustomType.Setter
         public Builder message(String message) {
             if (message == null) {
@@ -73,6 +88,7 @@ public final class GetAppsAppComputeStatus {
         }
         public GetAppsAppComputeStatus build() {
             final var _resultValue = new GetAppsAppComputeStatus();
+            _resultValue.activeInstances = activeInstances;
             _resultValue.message = message;
             _resultValue.state = state;
             return _resultValue;

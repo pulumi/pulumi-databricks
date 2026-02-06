@@ -5,10 +5,13 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetDbfsFileProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
@@ -45,11 +48,27 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
         return this.path;
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetDbfsFileProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetDbfsFileProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetDbfsFileArgs() {}
 
     private GetDbfsFileArgs(GetDbfsFileArgs $) {
         this.limitFileSize = $.limitFileSize;
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -110,6 +129,27 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetDbfsFileProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetDbfsFileProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetDbfsFileArgs build() {

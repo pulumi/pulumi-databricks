@@ -24,6 +24,7 @@ class FeatureEngineeringKafkaConfigArgs:
                  auth_config: pulumi.Input['FeatureEngineeringKafkaConfigAuthConfigArgs'],
                  bootstrap_servers: pulumi.Input[_builtins.str],
                  subscription_mode: pulumi.Input['FeatureEngineeringKafkaConfigSubscriptionModeArgs'],
+                 backfill_source: Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs']] = None,
                  extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  key_schema: Optional[pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs']] = None,
                  value_schema: Optional[pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs']] = None):
@@ -32,6 +33,9 @@ class FeatureEngineeringKafkaConfigArgs:
         :param pulumi.Input['FeatureEngineeringKafkaConfigAuthConfigArgs'] auth_config: Authentication configuration for connection to topics
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input['FeatureEngineeringKafkaConfigSubscriptionModeArgs'] subscription_mode: Options to configure which Kafka topics to pull data from
+        :param pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs'] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+               In the future, a separate table will be maintained by Databricks for forward filling data.
+               The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
         :param pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs'] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
         :param pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs'] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
@@ -39,6 +43,8 @@ class FeatureEngineeringKafkaConfigArgs:
         pulumi.set(__self__, "auth_config", auth_config)
         pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
         pulumi.set(__self__, "subscription_mode", subscription_mode)
+        if backfill_source is not None:
+            pulumi.set(__self__, "backfill_source", backfill_source)
         if extra_options is not None:
             pulumi.set(__self__, "extra_options", extra_options)
         if key_schema is not None:
@@ -83,6 +89,20 @@ class FeatureEngineeringKafkaConfigArgs:
         pulumi.set(self, "subscription_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="backfillSource")
+    def backfill_source(self) -> Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs']]:
+        """
+        A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        In the future, a separate table will be maintained by Databricks for forward filling data.
+        The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        """
+        return pulumi.get(self, "backfill_source")
+
+    @backfill_source.setter
+    def backfill_source(self, value: Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs']]):
+        pulumi.set(self, "backfill_source", value)
+
+    @_builtins.property
     @pulumi.getter(name="extraOptions")
     def extra_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -123,6 +143,7 @@ class FeatureEngineeringKafkaConfigArgs:
 class _FeatureEngineeringKafkaConfigState:
     def __init__(__self__, *,
                  auth_config: Optional[pulumi.Input['FeatureEngineeringKafkaConfigAuthConfigArgs']] = None,
+                 backfill_source: Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs']] = None,
                  bootstrap_servers: Optional[pulumi.Input[_builtins.str]] = None,
                  extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  key_schema: Optional[pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs']] = None,
@@ -132,6 +153,9 @@ class _FeatureEngineeringKafkaConfigState:
         """
         Input properties used for looking up and filtering FeatureEngineeringKafkaConfig resources.
         :param pulumi.Input['FeatureEngineeringKafkaConfigAuthConfigArgs'] auth_config: Authentication configuration for connection to topics
+        :param pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs'] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+               In the future, a separate table will be maintained by Databricks for forward filling data.
+               The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
         :param pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs'] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
@@ -142,6 +166,8 @@ class _FeatureEngineeringKafkaConfigState:
         """
         if auth_config is not None:
             pulumi.set(__self__, "auth_config", auth_config)
+        if backfill_source is not None:
+            pulumi.set(__self__, "backfill_source", backfill_source)
         if bootstrap_servers is not None:
             pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
         if extra_options is not None:
@@ -166,6 +192,20 @@ class _FeatureEngineeringKafkaConfigState:
     @auth_config.setter
     def auth_config(self, value: Optional[pulumi.Input['FeatureEngineeringKafkaConfigAuthConfigArgs']]):
         pulumi.set(self, "auth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backfillSource")
+    def backfill_source(self) -> Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs']]:
+        """
+        A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        In the future, a separate table will be maintained by Databricks for forward filling data.
+        The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        """
+        return pulumi.get(self, "backfill_source")
+
+    @backfill_source.setter
+    def backfill_source(self, value: Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs']]):
+        pulumi.set(self, "backfill_source", value)
 
     @_builtins.property
     @pulumi.getter(name="bootstrapServers")
@@ -248,6 +288,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_config: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']]] = None,
+                 backfill_source: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']]] = None,
                  bootstrap_servers: Optional[pulumi.Input[_builtins.str]] = None,
                  extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  key_schema: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
@@ -280,6 +321,9 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']] auth_config: Authentication configuration for connection to topics
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+               In the future, a separate table will be maintained by Databricks for forward filling data.
+               The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
@@ -331,6 +375,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_config: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']]] = None,
+                 backfill_source: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']]] = None,
                  bootstrap_servers: Optional[pulumi.Input[_builtins.str]] = None,
                  extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  key_schema: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
@@ -348,6 +393,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
             if auth_config is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_config'")
             __props__.__dict__["auth_config"] = auth_config
+            __props__.__dict__["backfill_source"] = backfill_source
             if bootstrap_servers is None and not opts.urn:
                 raise TypeError("Missing required property 'bootstrap_servers'")
             __props__.__dict__["bootstrap_servers"] = bootstrap_servers
@@ -369,6 +415,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auth_config: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']]] = None,
+            backfill_source: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']]] = None,
             bootstrap_servers: Optional[pulumi.Input[_builtins.str]] = None,
             extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             key_schema: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
@@ -383,6 +430,9 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']] auth_config: Authentication configuration for connection to topics
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+               In the future, a separate table will be maintained by Databricks for forward filling data.
+               The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
@@ -396,6 +446,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         __props__ = _FeatureEngineeringKafkaConfigState.__new__(_FeatureEngineeringKafkaConfigState)
 
         __props__.__dict__["auth_config"] = auth_config
+        __props__.__dict__["backfill_source"] = backfill_source
         __props__.__dict__["bootstrap_servers"] = bootstrap_servers
         __props__.__dict__["extra_options"] = extra_options
         __props__.__dict__["key_schema"] = key_schema
@@ -411,6 +462,16 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         Authentication configuration for connection to topics
         """
         return pulumi.get(self, "auth_config")
+
+    @_builtins.property
+    @pulumi.getter(name="backfillSource")
+    def backfill_source(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringKafkaConfigBackfillSource']]:
+        """
+        A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        In the future, a separate table will be maintained by Databricks for forward filling data.
+        The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        """
+        return pulumi.get(self, "backfill_source")
 
     @_builtins.property
     @pulumi.getter(name="bootstrapServers")

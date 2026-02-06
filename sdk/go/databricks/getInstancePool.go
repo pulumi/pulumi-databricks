@@ -64,6 +64,8 @@ type LookupInstancePoolArgs struct {
 	Name string `pulumi:"name"`
 	// block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
 	PoolInfo *GetInstancePoolPoolInfo `pulumi:"poolInfo"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetInstancePoolProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getInstancePool.
@@ -72,7 +74,8 @@ type LookupInstancePoolResult struct {
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
-	PoolInfo GetInstancePoolPoolInfo `pulumi:"poolInfo"`
+	PoolInfo       GetInstancePoolPoolInfo        `pulumi:"poolInfo"`
+	ProviderConfig *GetInstancePoolProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupInstancePoolOutput(ctx *pulumi.Context, args LookupInstancePoolOutputArgs, opts ...pulumi.InvokeOption) LookupInstancePoolResultOutput {
@@ -90,6 +93,8 @@ type LookupInstancePoolOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
 	PoolInfo GetInstancePoolPoolInfoPtrInput `pulumi:"poolInfo"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetInstancePoolProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupInstancePoolOutputArgs) ElementType() reflect.Type {
@@ -123,6 +128,10 @@ func (o LookupInstancePoolResultOutput) Name() pulumi.StringOutput {
 // block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
 func (o LookupInstancePoolResultOutput) PoolInfo() GetInstancePoolPoolInfoOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) GetInstancePoolPoolInfo { return v.PoolInfo }).(GetInstancePoolPoolInfoOutput)
+}
+
+func (o LookupInstancePoolResultOutput) ProviderConfig() GetInstancePoolProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupInstancePoolResult) *GetInstancePoolProviderConfig { return v.ProviderConfig }).(GetInstancePoolProviderConfigPtrOutput)
 }
 
 func init() {

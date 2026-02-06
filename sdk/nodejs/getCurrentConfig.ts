@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -66,6 +68,7 @@ export function getCurrentConfig(args?: GetCurrentConfigArgs, opts?: pulumi.Invo
         "cloudType": args.cloudType,
         "host": args.host,
         "isAccount": args.isAccount,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -78,6 +81,10 @@ export interface GetCurrentConfigArgs {
     cloudType?: string;
     host?: string;
     isAccount?: boolean;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetCurrentConfigProviderConfig;
 }
 
 /**
@@ -93,6 +100,7 @@ export interface GetCurrentConfigResult {
      */
     readonly id: string;
     readonly isAccount: boolean;
+    readonly providerConfig?: outputs.GetCurrentConfigProviderConfig;
 }
 /**
  * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
@@ -156,6 +164,7 @@ export function getCurrentConfigOutput(args?: GetCurrentConfigOutputArgs, opts?:
         "cloudType": args.cloudType,
         "host": args.host,
         "isAccount": args.isAccount,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -168,4 +177,8 @@ export interface GetCurrentConfigOutputArgs {
     cloudType?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     isAccount?: pulumi.Input<boolean>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetCurrentConfigProviderConfigArgs>;
 }

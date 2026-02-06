@@ -104,7 +104,7 @@ namespace Pulumi.Databricks
         public Output<bool?> EmbedCredentials { get; private set; } = null!;
 
         [Output("etag")]
-        public Output<string> Etag { get; private set; } = null!;
+        public Output<string?> Etag { get; private set; } = null!;
 
         /// <summary>
         /// The path to the dashboard JSON file. Conflicts with `SerializedDashboard`.

@@ -116,7 +116,7 @@ class GetSqlWarehouseResult:
     @pulumi.getter(name="clusterSize")
     def cluster_size(self) -> _builtins.str:
         """
-        The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+        The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         """
         return pulumi.get(self, "cluster_size")
 
@@ -132,7 +132,7 @@ class GetSqlWarehouseResult:
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> _builtins.str:
         """
-        ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+        (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         """
         return pulumi.get(self, "data_source_id")
 
@@ -359,9 +359,9 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
 
     :param _builtins.int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
     :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict'] channel: block, consisting of following fields:
-    :param _builtins.str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+    :param _builtins.str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
     :param _builtins.str creator_name: The username of the user who created the endpoint.
-    :param _builtins.str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+    :param _builtins.str data_source_id: (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param _builtins.bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
     :param _builtins.bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
     :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict'] health: Health status of the endpoint.
@@ -489,9 +489,9 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[_bui
 
     :param _builtins.int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
     :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict'] channel: block, consisting of following fields:
-    :param _builtins.str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+    :param _builtins.str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
     :param _builtins.str creator_name: The username of the user who created the endpoint.
-    :param _builtins.str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+    :param _builtins.str data_source_id: (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param _builtins.bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
     :param _builtins.bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
     :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict'] health: Health status of the endpoint.

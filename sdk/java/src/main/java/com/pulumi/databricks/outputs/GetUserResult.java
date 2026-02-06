@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetUserProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -49,6 +50,7 @@ public final class GetUserResult {
      * 
      */
     private String id;
+    private @Nullable GetUserProviderConfig providerConfig;
     /**
      * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
@@ -114,6 +116,9 @@ public final class GetUserResult {
     public String id() {
         return this.id;
     }
+    public Optional<GetUserProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
@@ -149,6 +154,7 @@ public final class GetUserResult {
         private String externalId;
         private String home;
         private String id;
+        private @Nullable GetUserProviderConfig providerConfig;
         private String repos;
         private @Nullable String userId;
         private @Nullable String userName;
@@ -163,6 +169,7 @@ public final class GetUserResult {
     	      this.externalId = defaults.externalId;
     	      this.home = defaults.home;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.repos = defaults.repos;
     	      this.userId = defaults.userId;
     	      this.userName = defaults.userName;
@@ -233,6 +240,12 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetUserProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder repos(String repos) {
             if (repos == null) {
               throw new MissingRequiredPropertyException("GetUserResult", "repos");
@@ -262,6 +275,7 @@ public final class GetUserResult {
             _resultValue.externalId = externalId;
             _resultValue.home = home;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.repos = repos;
             _resultValue.userId = userId;
             _resultValue.userName = userName;

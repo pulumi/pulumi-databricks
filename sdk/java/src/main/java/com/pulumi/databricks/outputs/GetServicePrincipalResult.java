@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetServicePrincipalProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServicePrincipalResult {
@@ -46,6 +49,7 @@ public final class GetServicePrincipalResult {
      * 
      */
     private String id;
+    private @Nullable GetServicePrincipalProviderConfig providerConfig;
     /**
      * @return Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      * 
@@ -108,6 +112,9 @@ public final class GetServicePrincipalResult {
     public String id() {
         return this.id;
     }
+    public Optional<GetServicePrincipalProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      * 
@@ -142,6 +149,7 @@ public final class GetServicePrincipalResult {
         private String externalId;
         private String home;
         private String id;
+        private @Nullable GetServicePrincipalProviderConfig providerConfig;
         private String repos;
         private String scimId;
         private String spId;
@@ -155,6 +163,7 @@ public final class GetServicePrincipalResult {
     	      this.externalId = defaults.externalId;
     	      this.home = defaults.home;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.repos = defaults.repos;
     	      this.scimId = defaults.scimId;
     	      this.spId = defaults.spId;
@@ -217,6 +226,12 @@ public final class GetServicePrincipalResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetServicePrincipalProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder repos(String repos) {
             if (repos == null) {
               throw new MissingRequiredPropertyException("GetServicePrincipalResult", "repos");
@@ -249,6 +264,7 @@ public final class GetServicePrincipalResult {
             _resultValue.externalId = externalId;
             _resultValue.home = home;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.repos = repos;
             _resultValue.scimId = scimId;
             _resultValue.spId = spId;

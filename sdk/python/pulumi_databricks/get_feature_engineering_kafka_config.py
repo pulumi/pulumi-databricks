@@ -27,10 +27,13 @@ class GetFeatureEngineeringKafkaConfigResult:
     """
     A collection of values returned by getFeatureEngineeringKafkaConfig.
     """
-    def __init__(__self__, auth_config=None, bootstrap_servers=None, extra_options=None, id=None, key_schema=None, name=None, subscription_mode=None, value_schema=None):
+    def __init__(__self__, auth_config=None, backfill_source=None, bootstrap_servers=None, extra_options=None, id=None, key_schema=None, name=None, subscription_mode=None, value_schema=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
+        if backfill_source and not isinstance(backfill_source, dict):
+            raise TypeError("Expected argument 'backfill_source' to be a dict")
+        pulumi.set(__self__, "backfill_source", backfill_source)
         if bootstrap_servers and not isinstance(bootstrap_servers, str):
             raise TypeError("Expected argument 'bootstrap_servers' to be a str")
         pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
@@ -60,6 +63,16 @@ class GetFeatureEngineeringKafkaConfigResult:
         (AuthConfig) - Authentication configuration for connection to topics
         """
         return pulumi.get(self, "auth_config")
+
+    @_builtins.property
+    @pulumi.getter(name="backfillSource")
+    def backfill_source(self) -> 'outputs.GetFeatureEngineeringKafkaConfigBackfillSourceResult':
+        """
+        (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        In the future, a separate table will be maintained by Databricks for forward filling data.
+        The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        """
+        return pulumi.get(self, "backfill_source")
 
     @_builtins.property
     @pulumi.getter(name="bootstrapServers")
@@ -126,6 +139,7 @@ class AwaitableGetFeatureEngineeringKafkaConfigResult(GetFeatureEngineeringKafka
             yield self
         return GetFeatureEngineeringKafkaConfigResult(
             auth_config=self.auth_config,
+            backfill_source=self.backfill_source,
             bootstrap_servers=self.bootstrap_servers,
             extra_options=self.extra_options,
             id=self.id,
@@ -151,6 +165,7 @@ def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
 
     return AwaitableGetFeatureEngineeringKafkaConfigResult(
         auth_config=pulumi.get(__ret__, 'auth_config'),
+        backfill_source=pulumi.get(__ret__, 'backfill_source'),
         bootstrap_servers=pulumi.get(__ret__, 'bootstrap_servers'),
         extra_options=pulumi.get(__ret__, 'extra_options'),
         id=pulumi.get(__ret__, 'id'),
@@ -173,6 +188,7 @@ def get_feature_engineering_kafka_config_output(name: Optional[pulumi.Input[_bui
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig', __args__, opts=opts, typ=GetFeatureEngineeringKafkaConfigResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringKafkaConfigResult(
         auth_config=pulumi.get(__response__, 'auth_config'),
+        backfill_source=pulumi.get(__response__, 'backfill_source'),
         bootstrap_servers=pulumi.get(__response__, 'bootstrap_servers'),
         extra_options=pulumi.get(__response__, 'extra_options'),
         id=pulumi.get(__response__, 'id'),

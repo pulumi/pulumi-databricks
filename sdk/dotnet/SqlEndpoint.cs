@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.SqlEndpointChannel?> Channel { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+        /// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         /// </summary>
         [Output("clusterSize")]
         public Output<string> ClusterSize { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Databricks
         public Output<string> CreatorName { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
         [Output("dataSourceId")]
         public Output<string> DataSourceId { get; private set; } = null!;
@@ -271,13 +271,13 @@ namespace Pulumi.Databricks
         public Input<Inputs.SqlEndpointChannelArgs>? Channel { get; set; }
 
         /// <summary>
-        /// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+        /// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         /// </summary>
         [Input("clusterSize", required: true)]
         public Input<string> ClusterSize { get; set; } = null!;
 
         /// <summary>
-        /// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
@@ -362,7 +362,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.SqlEndpointChannelGetArgs>? Channel { get; set; }
 
         /// <summary>
-        /// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+        /// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         /// </summary>
         [Input("clusterSize")]
         public Input<string>? ClusterSize { get; set; }
@@ -374,7 +374,7 @@ namespace Pulumi.Databricks
         public Input<string>? CreatorName { get; set; }
 
         /// <summary>
-        /// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        /// (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }

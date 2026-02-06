@@ -263,6 +263,13 @@ namespace Pulumi.Databricks
             set => _retryTimeoutSeconds.Set(value);
         }
 
+        private static readonly __Value<ImmutableArray<string>> _scopes = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("scopes"));
+        public static ImmutableArray<string> Scopes
+        {
+            get => _scopes.Get();
+            set => _scopes.Set(value);
+        }
+
         private static readonly __Value<string?> _serverlessComputeId = new __Value<string?>(() => __config.Get("serverlessComputeId"));
         public static string? ServerlessComputeId
         {

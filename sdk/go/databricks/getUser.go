@@ -81,6 +81,8 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetUserProviderConfig `pulumi:"providerConfig"`
 	// ID of the user.
 	UserId *string `pulumi:"userId"`
 	// User name of the user. The user must exist before this resource can be planned.
@@ -103,7 +105,8 @@ type LookupUserResult struct {
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
 	Home string `pulumi:"home"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                 `pulumi:"id"`
+	ProviderConfig *GetUserProviderConfig `pulumi:"providerConfig"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos  string  `pulumi:"repos"`
 	UserId *string `pulumi:"userId"`
@@ -122,6 +125,8 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetUserProviderConfigPtrInput `pulumi:"providerConfig"`
 	// ID of the user.
 	UserId pulumi.StringPtrInput `pulumi:"userId"`
 	// User name of the user. The user must exist before this resource can be planned.
@@ -184,6 +189,10 @@ func (o LookupUserResultOutput) Home() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) ProviderConfig() GetUserProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupUserResult) *GetUserProviderConfig { return v.ProviderConfig }).(GetUserProviderConfigPtrOutput)
 }
 
 // Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.

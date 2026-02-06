@@ -115,8 +115,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresEndpointArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the endpoint. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        /// Output only. The full resource path of the endpoint.
+        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -130,8 +130,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresEndpointInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the endpoint. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        /// Output only. The full resource path of the endpoint.
+        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -155,8 +155,8 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        /// (string) - Output only. The full resource path of the endpoint.
+        /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         /// </summary>
         public readonly string Name;
         /// <summary>

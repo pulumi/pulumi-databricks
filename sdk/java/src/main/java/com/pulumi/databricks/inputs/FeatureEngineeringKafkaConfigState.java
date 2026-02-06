@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigAuthConfigArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigBackfillSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigKeySchemaArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigSubscriptionModeArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigValueSchemaArgs;
@@ -33,6 +34,25 @@ public final class FeatureEngineeringKafkaConfigState extends com.pulumi.resourc
      */
     public Optional<Output<FeatureEngineeringKafkaConfigAuthConfigArgs>> authConfig() {
         return Optional.ofNullable(this.authConfig);
+    }
+
+    /**
+     * A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * 
+     */
+    @Import(name="backfillSource")
+    private @Nullable Output<FeatureEngineeringKafkaConfigBackfillSourceArgs> backfillSource;
+
+    /**
+     * @return A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * 
+     */
+    public Optional<Output<FeatureEngineeringKafkaConfigBackfillSourceArgs>> backfillSource() {
+        return Optional.ofNullable(this.backfillSource);
     }
 
     /**
@@ -131,6 +151,7 @@ public final class FeatureEngineeringKafkaConfigState extends com.pulumi.resourc
 
     private FeatureEngineeringKafkaConfigState(FeatureEngineeringKafkaConfigState $) {
         this.authConfig = $.authConfig;
+        this.backfillSource = $.backfillSource;
         this.bootstrapServers = $.bootstrapServers;
         this.extraOptions = $.extraOptions;
         this.keySchema = $.keySchema;
@@ -176,6 +197,31 @@ public final class FeatureEngineeringKafkaConfigState extends com.pulumi.resourc
          */
         public Builder authConfig(FeatureEngineeringKafkaConfigAuthConfigArgs authConfig) {
             return authConfig(Output.of(authConfig));
+        }
+
+        /**
+         * @param backfillSource A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+         * In the future, a separate table will be maintained by Databricks for forward filling data.
+         * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backfillSource(@Nullable Output<FeatureEngineeringKafkaConfigBackfillSourceArgs> backfillSource) {
+            $.backfillSource = backfillSource;
+            return this;
+        }
+
+        /**
+         * @param backfillSource A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+         * In the future, a separate table will be maintained by Databricks for forward filling data.
+         * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backfillSource(FeatureEngineeringKafkaConfigBackfillSourceArgs backfillSource) {
+            return backfillSource(Output.of(backfillSource));
         }
 
         /**

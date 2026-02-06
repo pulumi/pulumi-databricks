@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -53,6 +55,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
         "externalId": args.externalId,
         "home": args.home,
         "id": args.id,
+        "providerConfig": args.providerConfig,
         "repos": args.repos,
         "scimId": args.scimId,
         "spId": args.spId,
@@ -91,6 +94,10 @@ export interface GetServicePrincipalArgs {
      * The id of the service principal (SCIM ID).
      */
     id?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetServicePrincipalProviderConfig;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
@@ -134,6 +141,7 @@ export interface GetServicePrincipalResult {
      * The id of the service principal (SCIM ID).
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetServicePrincipalProviderConfig;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
@@ -193,6 +201,7 @@ export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, 
         "externalId": args.externalId,
         "home": args.home,
         "id": args.id,
+        "providerConfig": args.providerConfig,
         "repos": args.repos,
         "scimId": args.scimId,
         "spId": args.spId,
@@ -231,6 +240,10 @@ export interface GetServicePrincipalOutputArgs {
      * The id of the service principal (SCIM ID).
      */
     id?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetServicePrincipalProviderConfigArgs>;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */

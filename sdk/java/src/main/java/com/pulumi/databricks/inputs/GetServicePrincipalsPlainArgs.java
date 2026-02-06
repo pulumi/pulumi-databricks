@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetServicePrincipalsProviderConfig;
 import com.pulumi.databricks.inputs.GetServicePrincipalsServicePrincipal;
 import java.lang.String;
 import java.util.List;
@@ -47,6 +48,21 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetServicePrincipalsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetServicePrincipalsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * List of objects describing individual service principals. Each object has the following attributes:
      * 
      */
@@ -66,6 +82,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     private GetServicePrincipalsPlainArgs(GetServicePrincipalsPlainArgs $) {
         this.applicationIds = $.applicationIds;
         this.displayNameContains = $.displayNameContains;
+        this.providerConfig = $.providerConfig;
         this.servicePrincipals = $.servicePrincipals;
     }
 
@@ -116,6 +133,17 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
          */
         public Builder displayNameContains(@Nullable String displayNameContains) {
             $.displayNameContains = displayNameContains;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetServicePrincipalsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

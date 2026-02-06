@@ -14,16 +14,16 @@ public final class GetPostgresBranchPlainArgs extends com.pulumi.resources.Invok
     public static final GetPostgresBranchPlainArgs Empty = new GetPostgresBranchPlainArgs();
 
     /**
-     * The resource name of the branch. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}`
+     * Output only. The full resource path of the branch.
+     * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the branch. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}`
+     * @return Output only. The full resource path of the branch.
+     * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
     public String name() {
@@ -55,8 +55,8 @@ public final class GetPostgresBranchPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param name The resource name of the branch. This field is output-only and constructed by the system.
-         * Format: `projects/{project_id}/branches/{branch_id}`
+         * @param name Output only. The full resource path of the branch.
+         * Format: projects/{project_id}/branches/{branch_id}
          * 
          * @return builder
          * 

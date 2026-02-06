@@ -119,10 +119,8 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        /// Examples:
-        /// - With custom ID: `Staging` → name becomes `projects/{project_id}/branches/staging`
-        /// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `Development` becomes `projects/my-app/branches/development`
         /// </summary>
         [Output("branchId")]
         public Output<string> BranchId { get; private set; } = null!;
@@ -134,8 +132,8 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resource name of the branch. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}/branches/{branch_id}`
+        /// (string) - Output only. The full resource path of the branch.
+        /// Format: projects/{project_id}/branches/{branch_id}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -145,7 +143,7 @@ namespace Pulumi.Databricks
         /// Format: projects/{project_id}
         /// 
         /// Note: This field indicates where the branch exists in the resource hierarchy.
-        /// For point-in-time branching from another branch, see `spec.source_branch`
+        /// For point-in-time branching from another branch, see `status.source_branch`
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -222,10 +220,8 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        /// Examples:
-        /// - With custom ID: `Staging` → name becomes `projects/{project_id}/branches/staging`
-        /// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `Development` becomes `projects/my-app/branches/development`
         /// </summary>
         [Input("branchId", required: true)]
         public Input<string> BranchId { get; set; } = null!;
@@ -235,7 +231,7 @@ namespace Pulumi.Databricks
         /// Format: projects/{project_id}
         /// 
         /// Note: This field indicates where the branch exists in the resource hierarchy.
-        /// For point-in-time branching from another branch, see `spec.source_branch`
+        /// For point-in-time branching from another branch, see `status.source_branch`
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -256,10 +252,8 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-        /// The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        /// Examples:
-        /// - With custom ID: `Staging` → name becomes `projects/{project_id}/branches/staging`
-        /// - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/br-example-name-x1y2z3a4`
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `Development` becomes `projects/my-app/branches/development`
         /// </summary>
         [Input("branchId")]
         public Input<string>? BranchId { get; set; }
@@ -271,8 +265,8 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// (string) - The resource name of the branch. This field is output-only and constructed by the system.
-        /// Format: `projects/{project_id}/branches/{branch_id}`
+        /// (string) - Output only. The full resource path of the branch.
+        /// Format: projects/{project_id}/branches/{branch_id}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -282,7 +276,7 @@ namespace Pulumi.Databricks
         /// Format: projects/{project_id}
         /// 
         /// Note: This field indicates where the branch exists in the resource hierarchy.
-        /// For point-in-time branching from another branch, see `spec.source_branch`
+        /// For point-in-time branching from another branch, see `status.source_branch`
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

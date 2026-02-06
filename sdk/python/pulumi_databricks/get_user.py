@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetUserResult',
@@ -26,7 +28,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, acl_principal_id=None, active=None, alphanumeric=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, user_id=None, user_name=None):
+    def __init__(__self__, acl_principal_id=None, active=None, alphanumeric=None, application_id=None, display_name=None, external_id=None, home=None, id=None, provider_config=None, repos=None, user_id=None, user_name=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -51,6 +53,9 @@ class GetUserResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if repos and not isinstance(repos, str):
             raise TypeError("Expected argument 'repos' to be a str")
         pulumi.set(__self__, "repos", repos)
@@ -123,6 +128,11 @@ class GetUserResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetUserProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def repos(self) -> _builtins.str:
         """
@@ -158,12 +168,14 @@ class AwaitableGetUserResult(GetUserResult):
             external_id=self.external_id,
             home=self.home,
             id=self.id,
+            provider_config=self.provider_config,
             repos=self.repos,
             user_id=self.user_id,
             user_name=self.user_name)
 
 
-def get_user(user_id: Optional[_builtins.str] = None,
+def get_user(provider_config: Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']] = None,
+             user_id: Optional[_builtins.str] = None,
              user_name: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
@@ -201,10 +213,12 @@ def get_user(user_id: Optional[_builtins.str] = None,
     - UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
 
 
+    :param Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str user_id: ID of the user.
     :param _builtins.str user_name: User name of the user. The user must exist before this resource can be planned.
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     __args__['userId'] = user_id
     __args__['userName'] = user_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -219,10 +233,12 @@ def get_user(user_id: Optional[_builtins.str] = None,
         external_id=pulumi.get(__ret__, 'external_id'),
         home=pulumi.get(__ret__, 'home'),
         id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         repos=pulumi.get(__ret__, 'repos'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_name=pulumi.get(__ret__, 'user_name'))
-def get_user_output(user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_output(provider_config: Optional[pulumi.Input[Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']]]] = None,
+                    user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     user_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
@@ -260,10 +276,12 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = N
     - UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
 
 
+    :param Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str user_id: ID of the user.
     :param _builtins.str user_name: User name of the user. The user must exist before this resource can be planned.
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     __args__['userId'] = user_id
     __args__['userName'] = user_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -277,6 +295,7 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = N
         external_id=pulumi.get(__response__, 'external_id'),
         home=pulumi.get(__response__, 'home'),
         id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         repos=pulumi.get(__response__, 'repos'),
         user_id=pulumi.get(__response__, 'user_id'),
         user_name=pulumi.get(__response__, 'user_name')))

@@ -55,8 +55,8 @@ func LookupPostgresEndpoint(ctx *pulumi.Context, args *LookupPostgresEndpointArg
 
 // A collection of arguments for invoking getPostgresEndpoint.
 type LookupPostgresEndpointArgs struct {
-	// The resource name of the endpoint. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+	// Output only. The full resource path of the endpoint.
+	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 	Name string `pulumi:"name"`
 }
 
@@ -66,8 +66,8 @@ type LookupPostgresEndpointResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+	// (string) - Output only. The full resource path of the endpoint.
+	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 	Name string `pulumi:"name"`
 	// (string) - The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -93,8 +93,8 @@ func LookupPostgresEndpointOutput(ctx *pulumi.Context, args LookupPostgresEndpoi
 
 // A collection of arguments for invoking getPostgresEndpoint.
 type LookupPostgresEndpointOutputArgs struct {
-	// The resource name of the endpoint. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+	// Output only. The full resource path of the endpoint.
+	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -127,8 +127,8 @@ func (o LookupPostgresEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-// Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+// (string) - Output only. The full resource path of the endpoint.
+// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 func (o LookupPostgresEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }

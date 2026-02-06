@@ -57,8 +57,8 @@ func LookupPostgresProject(ctx *pulumi.Context, args *LookupPostgresProjectArgs,
 
 // A collection of arguments for invoking getPostgresProject.
 type LookupPostgresProjectArgs struct {
-	// The resource name of the project. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}`
+	// Output only. The full resource path of the project.
+	// Format: projects/{project_id}
 	Name string `pulumi:"name"`
 }
 
@@ -68,8 +68,8 @@ type LookupPostgresProjectResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (string) - The resource name of the project. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}`
+	// (string) - Output only. The full resource path of the project.
+	// Format: projects/{project_id}
 	Name string `pulumi:"name"`
 	// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec GetPostgresProjectSpec `pulumi:"spec"`
@@ -92,8 +92,8 @@ func LookupPostgresProjectOutput(ctx *pulumi.Context, args LookupPostgresProject
 
 // A collection of arguments for invoking getPostgresProject.
 type LookupPostgresProjectOutputArgs struct {
-	// The resource name of the project. This field is output-only and constructed by the system.
-	// Format: `projects/{project_id}`
+	// Output only. The full resource path of the project.
+	// Format: projects/{project_id}
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -126,8 +126,8 @@ func (o LookupPostgresProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the project. This field is output-only and constructed by the system.
-// Format: `projects/{project_id}`
+// (string) - Output only. The full resource path of the project.
+// Format: projects/{project_id}
 func (o LookupPostgresProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }

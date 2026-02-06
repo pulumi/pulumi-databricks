@@ -36,6 +36,12 @@ export interface GetFeatureEngineeringKafkaConfigResult {
      */
     readonly authConfig: outputs.GetFeatureEngineeringKafkaConfigAuthConfig;
     /**
+     * (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     */
+    readonly backfillSource: outputs.GetFeatureEngineeringKafkaConfigBackfillSource;
+    /**
      * (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
      */
     readonly bootstrapServers: string;

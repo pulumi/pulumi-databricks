@@ -126,6 +126,12 @@ namespace Pulumi.Databricks
         [Input("poolInfo")]
         public Inputs.GetInstancePoolPoolInfoArgs? PoolInfo { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetInstancePoolProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetInstancePoolArgs()
         {
         }
@@ -146,6 +152,12 @@ namespace Pulumi.Databricks
         [Input("poolInfo")]
         public Input<Inputs.GetInstancePoolPoolInfoInputArgs>? PoolInfo { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetInstancePoolProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetInstancePoolInvokeArgs()
         {
         }
@@ -165,6 +177,7 @@ namespace Pulumi.Databricks
         /// block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
         /// </summary>
         public readonly Outputs.GetInstancePoolPoolInfoResult PoolInfo;
+        public readonly Outputs.GetInstancePoolProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetInstancePoolResult(
@@ -172,11 +185,14 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetInstancePoolPoolInfoResult poolInfo)
+            Outputs.GetInstancePoolPoolInfoResult poolInfo,
+
+            Outputs.GetInstancePoolProviderConfigResult? providerConfig)
         {
             Id = id;
             Name = name;
             PoolInfo = poolInfo;
+            ProviderConfig = providerConfig;
         }
     }
 }

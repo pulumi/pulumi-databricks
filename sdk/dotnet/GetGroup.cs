@@ -244,6 +244,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetGroupProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Collect information for all nested groups. *Defaults to true.*
         /// </summary>
         [Input("recursive")]
@@ -366,6 +372,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetGroupProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Collect information for all nested groups. *Defaults to true.*
         /// </summary>
         [Input("recursive")]
@@ -446,6 +458,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<string> InstanceProfiles;
         public readonly ImmutableArray<string> Members;
+        public readonly Outputs.GetGroupProviderConfigResult? ProviderConfig;
         public readonly bool? Recursive;
         /// <summary>
         /// Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
@@ -482,6 +495,8 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> members,
 
+            Outputs.GetGroupProviderConfigResult? providerConfig,
+
             bool? recursive,
 
             ImmutableArray<string> servicePrincipals,
@@ -503,6 +518,7 @@ namespace Pulumi.Databricks
             Id = id;
             InstanceProfiles = instanceProfiles;
             Members = members;
+            ProviderConfig = providerConfig;
             Recursive = recursive;
             ServicePrincipals = servicePrincipals;
             Users = users;

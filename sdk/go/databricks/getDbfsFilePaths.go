@@ -66,6 +66,8 @@ func GetDbfsFilePaths(ctx *pulumi.Context, args *GetDbfsFilePathsArgs, opts ...p
 type GetDbfsFilePathsArgs struct {
 	// Path on DBFS for the file to perform listing
 	Path string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetDbfsFilePathsProviderConfig `pulumi:"providerConfig"`
 	// Either or not recursively list all files
 	Recursive bool `pulumi:"recursive"`
 }
@@ -76,8 +78,9 @@ type GetDbfsFilePathsResult struct {
 	Id   string `pulumi:"id"`
 	Path string `pulumi:"path"`
 	// returns list of objects with `path` and `fileSize` attributes in each
-	PathLists []GetDbfsFilePathsPathList `pulumi:"pathLists"`
-	Recursive bool                       `pulumi:"recursive"`
+	PathLists      []GetDbfsFilePathsPathList      `pulumi:"pathLists"`
+	ProviderConfig *GetDbfsFilePathsProviderConfig `pulumi:"providerConfig"`
+	Recursive      bool                            `pulumi:"recursive"`
 }
 
 func GetDbfsFilePathsOutput(ctx *pulumi.Context, args GetDbfsFilePathsOutputArgs, opts ...pulumi.InvokeOption) GetDbfsFilePathsResultOutput {
@@ -93,6 +96,8 @@ func GetDbfsFilePathsOutput(ctx *pulumi.Context, args GetDbfsFilePathsOutputArgs
 type GetDbfsFilePathsOutputArgs struct {
 	// Path on DBFS for the file to perform listing
 	Path pulumi.StringInput `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetDbfsFilePathsProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Either or not recursively list all files
 	Recursive pulumi.BoolInput `pulumi:"recursive"`
 }
@@ -128,6 +133,10 @@ func (o GetDbfsFilePathsResultOutput) Path() pulumi.StringOutput {
 // returns list of objects with `path` and `fileSize` attributes in each
 func (o GetDbfsFilePathsResultOutput) PathLists() GetDbfsFilePathsPathListArrayOutput {
 	return o.ApplyT(func(v GetDbfsFilePathsResult) []GetDbfsFilePathsPathList { return v.PathLists }).(GetDbfsFilePathsPathListArrayOutput)
+}
+
+func (o GetDbfsFilePathsResultOutput) ProviderConfig() GetDbfsFilePathsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetDbfsFilePathsResult) *GetDbfsFilePathsProviderConfig { return v.ProviderConfig }).(GetDbfsFilePathsProviderConfigPtrOutput)
 }
 
 func (o GetDbfsFilePathsResultOutput) Recursive() pulumi.BoolOutput {

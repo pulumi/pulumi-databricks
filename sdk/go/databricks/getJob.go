@@ -70,6 +70,8 @@ type LookupJobArgs struct {
 	JobSettings *GetJobJobSettings `pulumi:"jobSettings"`
 	// the job name of Job if the resource was matched by id.
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetJobProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getJob.
@@ -81,7 +83,8 @@ type LookupJobResult struct {
 	// the same fields as in databricks_job.
 	JobSettings GetJobJobSettings `pulumi:"jobSettings"`
 	// the job name of Job if the resource was matched by id.
-	Name string `pulumi:"name"`
+	Name           string                `pulumi:"name"`
+	ProviderConfig *GetJobProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulumi.InvokeOption) LookupJobResultOutput {
@@ -103,6 +106,8 @@ type LookupJobOutputArgs struct {
 	JobSettings GetJobJobSettingsPtrInput `pulumi:"jobSettings"`
 	// the job name of Job if the resource was matched by id.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetJobProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupJobOutputArgs) ElementType() reflect.Type {
@@ -145,6 +150,10 @@ func (o LookupJobResultOutput) JobSettings() GetJobJobSettingsOutput {
 // the job name of Job if the resource was matched by id.
 func (o LookupJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupJobResultOutput) ProviderConfig() GetJobProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupJobResult) *GetJobProviderConfig { return v.ProviderConfig }).(GetJobProviderConfigPtrOutput)
 }
 
 func init() {

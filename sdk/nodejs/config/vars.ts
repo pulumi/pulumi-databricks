@@ -271,6 +271,14 @@ Object.defineProperty(exports, "retryTimeoutSeconds", {
     enumerable: true,
 });
 
+export declare const scopes: string[] | undefined;
+Object.defineProperty(exports, "scopes", {
+    get() {
+        return __config.getObject<string[]>("scopes");
+    },
+    enumerable: true,
+});
+
 export declare const serverlessComputeId: string | undefined;
 Object.defineProperty(exports, "serverlessComputeId", {
     get() {

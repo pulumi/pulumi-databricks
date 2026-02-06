@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoArgs;
+import com.pulumi.databricks.inputs.GetInstancePoolProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -47,11 +48,27 @@ public final class GetInstancePoolArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.poolInfo);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetInstancePoolProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetInstancePoolProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetInstancePoolArgs() {}
 
     private GetInstancePoolArgs(GetInstancePoolArgs $) {
         this.name = $.name;
         this.poolInfo = $.poolInfo;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -112,6 +129,27 @@ public final class GetInstancePoolArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder poolInfo(GetInstancePoolPoolInfoArgs poolInfo) {
             return poolInfo(Output.of(poolInfo));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetInstancePoolProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetInstancePoolProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetInstancePoolArgs build() {

@@ -122,16 +122,14 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * (string) - The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * (string) - Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID to use for the Project. This becomes the final component of the project's resource name.
-     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-     * Examples:
-     * - With custom ID: `production` → name becomes `projects/production`
-     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
@@ -198,16 +196,14 @@ export interface PostgresProjectState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * (string) - The resource name of the project. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}`
+     * (string) - Output only. The full resource path of the project.
+     * Format: projects/{project_id}
      */
     name?: pulumi.Input<string>;
     /**
      * The ID to use for the Project. This becomes the final component of the project's resource name.
-     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-     * Examples:
-     * - With custom ID: `production` → name becomes `projects/production`
-     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -234,10 +230,8 @@ export interface PostgresProjectState {
 export interface PostgresProjectArgs {
     /**
      * The ID to use for the Project. This becomes the final component of the project's resource name.
-     * The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-     * Examples:
-     * - With custom ID: `production` → name becomes `projects/production`
-     * - Without custom ID: system generates UUID → name becomes `projects/a7f89b2c-3d4e-5f6g-7h8i-9j0k1l2m3n4o`
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
      */
     projectId: pulumi.Input<string>;
     /**

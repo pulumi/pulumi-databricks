@@ -103,6 +103,12 @@ namespace Pulumi.Databricks
         public string Path { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetNotebookPathsProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Either or recursively walk given path
         /// </summary>
         [Input("recursive", required: true)]
@@ -121,6 +127,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetNotebookPathsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Either or recursively walk given path
@@ -147,6 +159,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNotebookPathsNotebookPathListResult> NotebookPathLists;
         public readonly string Path;
+        public readonly Outputs.GetNotebookPathsProviderConfigResult? ProviderConfig;
         public readonly bool Recursive;
 
         [OutputConstructor]
@@ -157,11 +170,14 @@ namespace Pulumi.Databricks
 
             string path,
 
+            Outputs.GetNotebookPathsProviderConfigResult? providerConfig,
+
             bool recursive)
         {
             Id = id;
             NotebookPathLists = notebookPathLists;
             Path = path;
+            ProviderConfig = providerConfig;
             Recursive = recursive;
         }
     }

@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntity
     {
+        public readonly bool? BurstScalingEnabled;
         /// <summary>
         /// The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
         /// </summary>
@@ -69,6 +70,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingConfigServedEntity(
+            bool? burstScalingEnabled,
+
             string? entityName,
 
             string? entityVersion,
@@ -97,6 +100,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? workloadType)
         {
+            BurstScalingEnabled = burstScalingEnabled;
             EntityName = entityName;
             EntityVersion = entityVersion;
             EnvironmentVars = environmentVars;

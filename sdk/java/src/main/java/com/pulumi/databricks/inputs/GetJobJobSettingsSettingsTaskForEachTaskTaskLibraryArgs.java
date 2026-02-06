@@ -59,9 +59,17 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs exten
         return Optional.ofNullable(this.maven);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     @Import(name="providerConfig")
     private @Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs> providerConfig;
 
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     public Optional<Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs>> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -170,11 +178,23 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs exten
             return maven(Output.of(maven));
         }
 
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerConfig(@Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs> providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
 
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerConfig(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
         }

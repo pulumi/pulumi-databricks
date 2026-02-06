@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetGroupProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -164,6 +165,21 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetGroupProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetGroupProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Collect information for all nested groups. *Defaults to true.*
      * 
      */
@@ -235,6 +251,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.groups = $.groups;
         this.instanceProfiles = $.instanceProfiles;
         this.members = $.members;
+        this.providerConfig = $.providerConfig;
         this.recursive = $.recursive;
         this.servicePrincipals = $.servicePrincipals;
         this.users = $.users;
@@ -406,6 +423,17 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
         public Builder members(String... members) {
             return members(List.of(members));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetGroupProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
         }
 
         /**

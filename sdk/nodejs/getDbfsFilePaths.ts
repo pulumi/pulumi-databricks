@@ -38,6 +38,7 @@ export function getDbfsFilePaths(args: GetDbfsFilePathsArgs, opts?: pulumi.Invok
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDbfsFilePaths:getDbfsFilePaths", {
         "path": args.path,
+        "providerConfig": args.providerConfig,
         "recursive": args.recursive,
     }, opts);
 }
@@ -50,6 +51,10 @@ export interface GetDbfsFilePathsArgs {
      * Path on DBFS for the file to perform listing
      */
     path: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetDbfsFilePathsProviderConfig;
     /**
      * Either or not recursively list all files
      */
@@ -69,6 +74,7 @@ export interface GetDbfsFilePathsResult {
      * returns list of objects with `path` and `fileSize` attributes in each
      */
     readonly pathLists: outputs.GetDbfsFilePathsPathList[];
+    readonly providerConfig?: outputs.GetDbfsFilePathsProviderConfig;
     readonly recursive: boolean;
 }
 /**
@@ -103,6 +109,7 @@ export function getDbfsFilePathsOutput(args: GetDbfsFilePathsOutputArgs, opts?: 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDbfsFilePaths:getDbfsFilePaths", {
         "path": args.path,
+        "providerConfig": args.providerConfig,
         "recursive": args.recursive,
     }, opts);
 }
@@ -115,6 +122,10 @@ export interface GetDbfsFilePathsOutputArgs {
      * Path on DBFS for the file to perform listing
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetDbfsFilePathsProviderConfigArgs>;
     /**
      * Either or not recursively list all files
      */

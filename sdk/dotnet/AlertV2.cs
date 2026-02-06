@@ -152,6 +152,12 @@ namespace Pulumi.Databricks
         public Output<string?> ParentPath { get; private set; } = null!;
 
         /// <summary>
+        /// Purge the resource on delete
+        /// </summary>
+        [Output("purgeOnDelete")]
+        public Output<bool?> PurgeOnDelete { get; private set; } = null!;
+
+        /// <summary>
         /// Text of the query to be run
         /// </summary>
         [Output("queryText")]
@@ -264,6 +270,12 @@ namespace Pulumi.Databricks
         public Input<string>? ParentPath { get; set; }
 
         /// <summary>
+        /// Purge the resource on delete
+        /// </summary>
+        [Input("purgeOnDelete")]
+        public Input<bool>? PurgeOnDelete { get; set; }
+
+        /// <summary>
         /// Text of the query to be run
         /// </summary>
         [Input("queryText", required: true)]
@@ -356,6 +368,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
+
+        /// <summary>
+        /// Purge the resource on delete
+        /// </summary>
+        [Input("purgeOnDelete")]
+        public Input<bool>? PurgeOnDelete { get; set; }
 
         /// <summary>
         /// Text of the query to be run

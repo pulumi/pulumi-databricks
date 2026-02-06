@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsLibraryProviderConfigResult
     {
+        /// <summary>
+        /// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        /// </summary>
         public readonly string WorkspaceId;
 
         [OutputConstructor]

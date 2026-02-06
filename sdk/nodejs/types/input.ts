@@ -585,6 +585,7 @@ export interface AppAppStatus {
 }
 
 export interface AppComputeStatus {
+    activeInstances?: pulumi.Input<number>;
     /**
      * Application status message
      */
@@ -2354,6 +2355,29 @@ export interface FeatureEngineeringKafkaConfigAuthConfig {
     ucServiceCredentialName?: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringKafkaConfigBackfillSource {
+    /**
+     * The Delta table source containing the historic data to backfill.
+     * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+     */
+    deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource>;
+}
+
+export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
+    /**
+     * The entity columns of the Delta table
+     */
+    entityColumns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: pulumi.Input<string>;
+    /**
+     * The timeseries column of the Delta table
+     */
+    timeseriesColumn: pulumi.Input<string>;
+}
+
 export interface FeatureEngineeringKafkaConfigKeySchema {
     /**
      * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
@@ -3938,6 +3962,20 @@ export interface GetClustersProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetCurrentConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetCurrentConfigProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetCurrentMetastoreMetastoreInfo {
     cloud?: string;
     /**
@@ -4098,11 +4136,53 @@ export interface GetCurrentMetastoreProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetCurrentUserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetCurrentUserProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetDashboardsProviderConfig {
     workspaceId: string;
 }
 
 export interface GetDashboardsProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetDbfsFilePathsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDbfsFilePathsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetDbfsFileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDbfsFileProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: pulumi.Input<string>;
 }
 
@@ -4930,6 +5010,20 @@ export interface GetFunctionsProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetGroupProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetGroupProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: inputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: inputs.GetInstancePoolPoolInfoAzureAttributes;
@@ -5104,6 +5198,20 @@ export interface GetInstancePoolPoolInfoStatsArgs {
     pendingIdleCount?: pulumi.Input<number>;
     pendingUsedCount?: pulumi.Input<number>;
     usedCount?: pulumi.Input<number>;
+}
+
+export interface GetInstancePoolProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetInstancePoolProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetInstanceProfilesInstanceProfile {
@@ -5720,6 +5828,9 @@ export interface GetJobJobSettingsSettingsLibrary {
     egg?: string;
     jar?: string;
     maven?: inputs.GetJobJobSettingsSettingsLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: inputs.GetJobJobSettingsSettingsLibraryProviderConfig;
     pypi?: inputs.GetJobJobSettingsSettingsLibraryPypi;
     requirements?: string;
@@ -5734,6 +5845,9 @@ export interface GetJobJobSettingsSettingsLibraryArgs {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryMavenArgs>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryProviderConfigArgs>;
     pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryPypiArgs>;
     requirements?: pulumi.Input<string>;
@@ -5763,10 +5877,16 @@ export interface GetJobJobSettingsSettingsLibraryMavenArgs {
 }
 
 export interface GetJobJobSettingsSettingsLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
 export interface GetJobJobSettingsSettingsLibraryProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: pulumi.Input<string>;
 }
 
@@ -6588,6 +6708,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig;
     pypi?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
     requirements?: string;
@@ -6602,6 +6725,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs>;
     pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs>;
     requirements?: pulumi.Input<string>;
@@ -6631,10 +6757,16 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: pulumi.Input<string>;
 }
 
@@ -7302,6 +7434,9 @@ export interface GetJobJobSettingsSettingsTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: inputs.GetJobJobSettingsSettingsTaskLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: inputs.GetJobJobSettingsSettingsTaskLibraryProviderConfig;
     pypi?: inputs.GetJobJobSettingsSettingsTaskLibraryPypi;
     requirements?: string;
@@ -7316,6 +7451,9 @@ export interface GetJobJobSettingsSettingsTaskLibraryArgs {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryMavenArgs>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs>;
     pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryPypiArgs>;
     requirements?: pulumi.Input<string>;
@@ -7345,10 +7483,16 @@ export interface GetJobJobSettingsSettingsTaskLibraryMavenArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: pulumi.Input<string>;
 }
 
@@ -8124,6 +8268,20 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs {
     id: pulumi.Input<string>;
 }
 
+export interface GetJobProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetJobProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetJobsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -8424,6 +8582,20 @@ export interface GetMlflowModelsProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetMwsCredentialsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMwsCredentialsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetMwsNetworkConnectivityConfigEgressConfig {
     /**
      * Array of default rules.
@@ -8700,6 +8872,20 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
     updatedTime?: pulumi.Input<number>;
 }
 
+export interface GetMwsWorkspacesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMwsWorkspacesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetNodeTypeProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -8708,6 +8894,20 @@ export interface GetNodeTypeProviderConfig {
 }
 
 export interface GetNodeTypeProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetNotebookPathsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetNotebookPathsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -9380,6 +9580,34 @@ export interface GetSchemasProviderConfig {
 }
 
 export interface GetSchemasProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetServicePrincipalProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetServicePrincipalProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetServicePrincipalsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetServicePrincipalsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -10854,6 +11082,20 @@ export interface GetTablesProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetUserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetUserProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetUsersUser {
     /**
      * Boolean that represents if this user is active.
@@ -12249,6 +12491,7 @@ export interface JobSparkSubmitTask {
 
 export interface JobTask {
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask>;
+    compute?: pulumi.Input<inputs.JobTaskCompute>;
     conditionTask?: pulumi.Input<inputs.JobTaskConditionTask>;
     dashboardTask?: pulumi.Input<inputs.JobTaskDashboardTask>;
     dbtCloudTask?: pulumi.Input<inputs.JobTaskDbtCloudTask>;
@@ -12360,6 +12603,10 @@ export interface JobTaskCleanRoomsNotebookTask {
      * Name of the notebook being run.
      */
     notebookName: pulumi.Input<string>;
+}
+
+export interface JobTaskCompute {
+    hardwareAccelerator?: pulumi.Input<string>;
 }
 
 export interface JobTaskConditionTask {
@@ -12530,6 +12777,7 @@ export interface JobTaskForEachTask {
 
 export interface JobTaskForEachTaskTask {
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask>;
+    compute?: pulumi.Input<inputs.JobTaskForEachTaskTaskCompute>;
     conditionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskConditionTask>;
     dashboardTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTask>;
     dbtCloudTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtCloudTask>;
@@ -12640,6 +12888,10 @@ export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
      * Name of the notebook being run.
      */
     notebookName: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskCompute {
+    hardwareAccelerator?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskConditionTask {
@@ -14807,6 +15059,7 @@ export interface ModelServingConfigAutoCaptureConfig {
 }
 
 export interface ModelServingConfigServedEntity {
+    burstScalingEnabled?: pulumi.Input<boolean>;
     /**
      * The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
      */
@@ -15103,6 +15356,7 @@ export interface ModelServingConfigServedEntityExternalModelPalmConfig {
 }
 
 export interface ModelServingConfigServedModel {
+    burstScalingEnabled?: pulumi.Input<boolean>;
     /**
      * a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      */
@@ -15578,11 +15832,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -15649,11 +15903,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.104.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;

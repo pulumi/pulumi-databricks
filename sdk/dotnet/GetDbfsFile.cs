@@ -135,6 +135,12 @@ namespace Pulumi.Databricks
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetDbfsFileProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetDbfsFileArgs()
         {
         }
@@ -154,6 +160,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetDbfsFileProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetDbfsFileInvokeArgs()
         {
@@ -179,6 +191,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly bool LimitFileSize;
         public readonly string Path;
+        public readonly Outputs.GetDbfsFileProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetDbfsFileResult(
@@ -190,13 +203,16 @@ namespace Pulumi.Databricks
 
             bool limitFileSize,
 
-            string path)
+            string path,
+
+            Outputs.GetDbfsFileProviderConfigResult? providerConfig)
         {
             Content = content;
             FileSize = fileSize;
             Id = id;
             LimitFileSize = limitFileSize;
             Path = path;
+            ProviderConfig = providerConfig;
         }
     }
 }

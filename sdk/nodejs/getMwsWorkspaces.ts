@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -28,10 +30,22 @@ import * as utilities from "./utilities";
  * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
  * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
  */
-export function getMwsWorkspaces(opts?: pulumi.InvokeOptions): Promise<GetMwsWorkspacesResult> {
+export function getMwsWorkspaces(args?: GetMwsWorkspacesArgs, opts?: pulumi.InvokeOptions): Promise<GetMwsWorkspacesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", {
+        "providerConfig": args.providerConfig,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getMwsWorkspaces.
+ */
+export interface GetMwsWorkspacesArgs {
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetMwsWorkspacesProviderConfig;
 }
 
 /**
@@ -46,6 +60,7 @@ export interface GetMwsWorkspacesResult {
      * name-to-id map for all of the workspaces in the account
      */
     readonly ids: {[key: string]: string};
+    readonly providerConfig?: outputs.GetMwsWorkspacesProviderConfig;
 }
 /**
  * Lists all databricks.MwsWorkspaces in Databricks Account.
@@ -71,8 +86,20 @@ export interface GetMwsWorkspacesResult {
  * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
  * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
  */
-export function getMwsWorkspacesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMwsWorkspacesResult> {
+export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMwsWorkspacesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMwsWorkspaces:getMwsWorkspaces", {
+        "providerConfig": args.providerConfig,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getMwsWorkspaces.
+ */
+export interface GetMwsWorkspacesOutputArgs {
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetMwsWorkspacesProviderConfigArgs>;
 }

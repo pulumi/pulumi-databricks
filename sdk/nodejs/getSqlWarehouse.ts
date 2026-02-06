@@ -88,7 +88,7 @@ export interface GetSqlWarehouseArgs {
      */
     channel?: inputs.GetSqlWarehouseChannel;
     /**
-     * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+     * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
      */
     clusterSize?: string;
     /**
@@ -96,7 +96,7 @@ export interface GetSqlWarehouseArgs {
      */
     creatorName?: string;
     /**
-     * ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+     * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
     dataSourceId?: string;
     /**
@@ -176,7 +176,7 @@ export interface GetSqlWarehouseResult {
      */
     readonly channel: outputs.GetSqlWarehouseChannel;
     /**
-     * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+     * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
      */
     readonly clusterSize: string;
     /**
@@ -184,7 +184,7 @@ export interface GetSqlWarehouseResult {
      */
     readonly creatorName: string;
     /**
-     * ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+     * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
     readonly dataSourceId: string;
     /**
@@ -332,7 +332,7 @@ export interface GetSqlWarehouseOutputArgs {
      */
     channel?: pulumi.Input<inputs.GetSqlWarehouseChannelArgs>;
     /**
-     * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+     * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
      */
     clusterSize?: pulumi.Input<string>;
     /**
@@ -340,7 +340,7 @@ export interface GetSqlWarehouseOutputArgs {
      */
     creatorName?: pulumi.Input<string>;
     /**
-     * ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+     * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
     dataSourceId?: pulumi.Input<string>;
     /**

@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetMwsCredentialsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMwsCredentialsResult {
@@ -21,6 +24,7 @@ public final class GetMwsCredentialsResult {
      * 
      */
     private Map<String,String> ids;
+    private @Nullable GetMwsCredentialsProviderConfig providerConfig;
 
     private GetMwsCredentialsResult() {}
     /**
@@ -37,6 +41,9 @@ public final class GetMwsCredentialsResult {
     public Map<String,String> ids() {
         return this.ids;
     }
+    public Optional<GetMwsCredentialsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +56,13 @@ public final class GetMwsCredentialsResult {
     public static final class Builder {
         private String id;
         private Map<String,String> ids;
+        private @Nullable GetMwsCredentialsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetMwsCredentialsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -72,10 +81,17 @@ public final class GetMwsCredentialsResult {
             this.ids = ids;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetMwsCredentialsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetMwsCredentialsResult build() {
             final var _resultValue = new GetMwsCredentialsResult();
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

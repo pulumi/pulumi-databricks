@@ -59,9 +59,17 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
         return Optional.ofNullable(this.maven);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     @Import(name="providerConfig")
     private @Nullable Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs> providerConfig;
 
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     public Optional<Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs>> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -170,11 +178,23 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
             return maven(Output.of(maven));
         }
 
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerConfig(@Nullable Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs> providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
 
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerConfig(GetJobJobSettingsSettingsLibraryProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
         }

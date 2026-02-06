@@ -27,10 +27,8 @@ class PostgresEndpointArgs:
         """
         The set of arguments for constructing a PostgresEndpoint resource.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-               Examples:
-               - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+               For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
@@ -45,10 +43,8 @@ class PostgresEndpointArgs:
     def endpoint_id(self) -> pulumi.Input[_builtins.str]:
         """
         The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        Examples:
-        - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-        - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -97,12 +93,10 @@ class _PostgresEndpointState:
         Input properties used for looking up and filtering PostgresEndpoint resources.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the compute endpoint was created
         :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-               Examples:
-               - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-               Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+               For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+        :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the endpoint.
+               Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
@@ -144,10 +138,8 @@ class _PostgresEndpointState:
     def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        Examples:
-        - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-        - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -159,8 +151,8 @@ class _PostgresEndpointState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-        Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        (string) - Output only. The full resource path of the endpoint.
+        Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         """
         return pulumi.get(self, "name")
 
@@ -401,10 +393,8 @@ class PostgresEndpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-               Examples:
-               - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+               For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
@@ -639,12 +629,10 @@ class PostgresEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the compute endpoint was created
         :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-               The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-               Examples:
-               - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-               - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-               Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+               For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+        :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the endpoint.
+               Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
@@ -679,10 +667,8 @@ class PostgresEndpoint(pulumi.CustomResource):
     def endpoint_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-        The ID must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens (RFC 1123).
-        Examples:
-        - With custom ID: `primary` → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/primary`
-        - Without custom ID: system generates slug → name becomes `projects/{project_id}/branches/{branch_id}/endpoints/ep-example-name-x1y2z3a4`
+        The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -690,8 +676,8 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resource name of the endpoint. This field is output-only and constructed by the system.
-        Format: `projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}`
+        (string) - Output only. The full resource path of the endpoint.
+        Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         """
         return pulumi.get(self, "name")
 

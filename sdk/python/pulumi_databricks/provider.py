@@ -52,6 +52,7 @@ class ProviderArgs:
                  profile: Optional[pulumi.Input[_builtins.str]] = None,
                  rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  retry_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  serverless_compute_id: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -127,6 +128,8 @@ class ProviderArgs:
             pulumi.set(__self__, "rate_limit", rate_limit)
         if retry_timeout_seconds is not None:
             pulumi.set(__self__, "retry_timeout_seconds", retry_timeout_seconds)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
         if serverless_compute_id is not None:
             pulumi.set(__self__, "serverless_compute_id", serverless_compute_id)
         if skip_verify is not None:
@@ -438,6 +441,15 @@ class ProviderArgs:
         pulumi.set(self, "retry_timeout_seconds", value)
 
     @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
     @pulumi.getter(name="serverlessComputeId")
     def serverless_compute_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "serverless_compute_id")
@@ -531,6 +543,7 @@ class Provider(pulumi.ProviderResource):
                  profile: Optional[pulumi.Input[_builtins.str]] = None,
                  rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  retry_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  serverless_compute_id: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -607,6 +620,7 @@ class Provider(pulumi.ProviderResource):
                  profile: Optional[pulumi.Input[_builtins.str]] = None,
                  rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  retry_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  serverless_compute_id: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -655,6 +669,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["profile"] = profile
             __props__.__dict__["rate_limit"] = pulumi.Output.from_input(rate_limit).apply(pulumi.runtime.to_json) if rate_limit is not None else None
             __props__.__dict__["retry_timeout_seconds"] = pulumi.Output.from_input(retry_timeout_seconds).apply(pulumi.runtime.to_json) if retry_timeout_seconds is not None else None
+            __props__.__dict__["scopes"] = pulumi.Output.from_input(scopes).apply(pulumi.runtime.to_json) if scopes is not None else None
             __props__.__dict__["serverless_compute_id"] = serverless_compute_id
             __props__.__dict__["skip_verify"] = pulumi.Output.from_input(skip_verify).apply(pulumi.runtime.to_json) if skip_verify is not None else None
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)

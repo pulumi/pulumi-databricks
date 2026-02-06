@@ -23,8 +23,8 @@ public final class GetPostgresBranchResult {
      */
     private String id;
     /**
-     * @return (string) - The resource name of the branch. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}`
+     * @return (string) - Output only. The full resource path of the branch.
+     * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
     private String name;
@@ -71,8 +71,8 @@ public final class GetPostgresBranchResult {
         return this.id;
     }
     /**
-     * @return (string) - The resource name of the branch. This field is output-only and constructed by the system.
-     * Format: `projects/{project_id}/branches/{branch_id}`
+     * @return (string) - Output only. The full resource path of the branch.
+     * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
     public String name() {

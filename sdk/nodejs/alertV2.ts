@@ -139,6 +139,10 @@ export class AlertV2 extends pulumi.CustomResource {
      */
     declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
+     * Purge the resource on delete
+     */
+    declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
+    /**
      * Text of the query to be run
      */
     declare public readonly queryText: pulumi.Output<string>;
@@ -188,6 +192,7 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["lifecycleState"] = state?.lifecycleState;
             resourceInputs["ownerUserName"] = state?.ownerUserName;
             resourceInputs["parentPath"] = state?.parentPath;
+            resourceInputs["purgeOnDelete"] = state?.purgeOnDelete;
             resourceInputs["queryText"] = state?.queryText;
             resourceInputs["runAs"] = state?.runAs;
             resourceInputs["runAsUserName"] = state?.runAsUserName;
@@ -216,6 +221,7 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["evaluation"] = args?.evaluation;
             resourceInputs["parentPath"] = args?.parentPath;
+            resourceInputs["purgeOnDelete"] = args?.purgeOnDelete;
             resourceInputs["queryText"] = args?.queryText;
             resourceInputs["runAs"] = args?.runAs;
             resourceInputs["runAsUserName"] = args?.runAsUserName;
@@ -272,6 +278,10 @@ export interface AlertV2State {
      */
     parentPath?: pulumi.Input<string>;
     /**
+     * Purge the resource on delete
+     */
+    purgeOnDelete?: pulumi.Input<boolean>;
+    /**
      * Text of the query to be run
      */
     queryText?: pulumi.Input<string>;
@@ -321,6 +331,10 @@ export interface AlertV2Args {
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
     parentPath?: pulumi.Input<string>;
+    /**
+     * Purge the resource on delete
+     */
+    purgeOnDelete?: pulumi.Input<boolean>;
     /**
      * Text of the query to be run
      */

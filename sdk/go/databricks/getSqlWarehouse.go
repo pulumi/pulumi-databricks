@@ -70,11 +70,11 @@ type GetSqlWarehouseArgs struct {
 	AutoStopMins *int `pulumi:"autoStopMins"`
 	// block, consisting of following fields:
 	Channel *GetSqlWarehouseChannel `pulumi:"channel"`
-	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize *string `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
 	CreatorName *string `pulumi:"creatorName"`
-	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+	// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 	EnablePhoton *bool `pulumi:"enablePhoton"`
@@ -116,11 +116,11 @@ type GetSqlWarehouseResult struct {
 	AutoStopMins int `pulumi:"autoStopMins"`
 	// block, consisting of following fields:
 	Channel GetSqlWarehouseChannel `pulumi:"channel"`
-	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize string `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
 	CreatorName string `pulumi:"creatorName"`
-	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+	// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId string `pulumi:"dataSourceId"`
 	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 	EnablePhoton bool `pulumi:"enablePhoton"`
@@ -171,11 +171,11 @@ type GetSqlWarehouseOutputArgs struct {
 	AutoStopMins pulumi.IntPtrInput `pulumi:"autoStopMins"`
 	// block, consisting of following fields:
 	Channel GetSqlWarehouseChannelPtrInput `pulumi:"channel"`
-	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 	ClusterSize pulumi.StringPtrInput `pulumi:"clusterSize"`
 	// The username of the user who created the endpoint.
 	CreatorName pulumi.StringPtrInput `pulumi:"creatorName"`
-	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+	// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId pulumi.StringPtrInput `pulumi:"dataSourceId"`
 	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 	EnablePhoton pulumi.BoolPtrInput `pulumi:"enablePhoton"`
@@ -240,7 +240,7 @@ func (o GetSqlWarehouseResultOutput) Channel() GetSqlWarehouseChannelOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseChannel { return v.Channel }).(GetSqlWarehouseChannelOutput)
 }
 
-// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
 func (o GetSqlWarehouseResultOutput) ClusterSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.ClusterSize }).(pulumi.StringOutput)
 }
@@ -250,7 +250,7 @@ func (o GetSqlWarehouseResultOutput) CreatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.CreatorName }).(pulumi.StringOutput)
 }
 
-// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+// (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 func (o GetSqlWarehouseResultOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.DataSourceId }).(pulumi.StringOutput)
 }

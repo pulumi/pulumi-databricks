@@ -784,7 +784,7 @@ class Dashboard(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> pulumi.Output[_builtins.str]:
+    def etag(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @_builtins.property

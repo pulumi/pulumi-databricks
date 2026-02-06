@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigAuthConfig;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigBackfillSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigKeySchema;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigSubscriptionMode;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigValueSchema;
@@ -20,6 +21,13 @@ public final class GetFeatureEngineeringKafkaConfigResult {
      * 
      */
     private GetFeatureEngineeringKafkaConfigAuthConfig authConfig;
+    /**
+     * @return (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * 
+     */
+    private GetFeatureEngineeringKafkaConfigBackfillSource backfillSource;
     /**
      * @return (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
      * 
@@ -64,6 +72,15 @@ public final class GetFeatureEngineeringKafkaConfigResult {
      */
     public GetFeatureEngineeringKafkaConfigAuthConfig authConfig() {
         return this.authConfig;
+    }
+    /**
+     * @return (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * 
+     */
+    public GetFeatureEngineeringKafkaConfigBackfillSource backfillSource() {
+        return this.backfillSource;
     }
     /**
      * @return (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
@@ -126,6 +143,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
     @CustomType.Builder
     public static final class Builder {
         private GetFeatureEngineeringKafkaConfigAuthConfig authConfig;
+        private GetFeatureEngineeringKafkaConfigBackfillSource backfillSource;
         private String bootstrapServers;
         private Map<String,String> extraOptions;
         private String id;
@@ -137,6 +155,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
         public Builder(GetFeatureEngineeringKafkaConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authConfig = defaults.authConfig;
+    	      this.backfillSource = defaults.backfillSource;
     	      this.bootstrapServers = defaults.bootstrapServers;
     	      this.extraOptions = defaults.extraOptions;
     	      this.id = defaults.id;
@@ -152,6 +171,14 @@ public final class GetFeatureEngineeringKafkaConfigResult {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigResult", "authConfig");
             }
             this.authConfig = authConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backfillSource(GetFeatureEngineeringKafkaConfigBackfillSource backfillSource) {
+            if (backfillSource == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigResult", "backfillSource");
+            }
+            this.backfillSource = backfillSource;
             return this;
         }
         @CustomType.Setter
@@ -213,6 +240,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
         public GetFeatureEngineeringKafkaConfigResult build() {
             final var _resultValue = new GetFeatureEngineeringKafkaConfigResult();
             _resultValue.authConfig = authConfig;
+            _resultValue.backfillSource = backfillSource;
             _resultValue.bootstrapServers = bootstrapServers;
             _resultValue.extraOptions = extraOptions;
             _resultValue.id = id;

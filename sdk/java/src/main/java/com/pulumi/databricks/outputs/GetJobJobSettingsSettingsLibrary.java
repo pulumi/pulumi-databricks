@@ -25,6 +25,10 @@ public final class GetJobJobSettingsSettingsLibrary {
     private @Nullable String egg;
     private @Nullable String jar;
     private @Nullable GetJobJobSettingsSettingsLibraryMaven maven;
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     private @Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig;
     private @Nullable GetJobJobSettingsSettingsLibraryPypi pypi;
     private @Nullable String requirements;
@@ -49,6 +53,10 @@ public final class GetJobJobSettingsSettingsLibrary {
     public Optional<GetJobJobSettingsSettingsLibraryMaven> maven() {
         return Optional.ofNullable(this.maven);
     }
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     public Optional<GetJobJobSettingsSettingsLibraryProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }

@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetServicePrincipalsProviderConfig;
 import com.pulumi.databricks.outputs.GetServicePrincipalsServicePrincipal;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServicePrincipalsResult {
@@ -23,6 +26,7 @@ public final class GetServicePrincipalsResult {
      * 
      */
     private String id;
+    private @Nullable GetServicePrincipalsProviderConfig providerConfig;
     /**
      * @return List of objects describing individual service principals. Each object has the following attributes:
      * 
@@ -47,6 +51,9 @@ public final class GetServicePrincipalsResult {
     public String id() {
         return this.id;
     }
+    public Optional<GetServicePrincipalsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return List of objects describing individual service principals. Each object has the following attributes:
      * 
@@ -67,6 +74,7 @@ public final class GetServicePrincipalsResult {
         private List<String> applicationIds;
         private String displayNameContains;
         private String id;
+        private @Nullable GetServicePrincipalsProviderConfig providerConfig;
         private List<GetServicePrincipalsServicePrincipal> servicePrincipals;
         public Builder() {}
         public Builder(GetServicePrincipalsResult defaults) {
@@ -74,6 +82,7 @@ public final class GetServicePrincipalsResult {
     	      this.applicationIds = defaults.applicationIds;
     	      this.displayNameContains = defaults.displayNameContains;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.servicePrincipals = defaults.servicePrincipals;
         }
 
@@ -105,6 +114,12 @@ public final class GetServicePrincipalsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetServicePrincipalsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder servicePrincipals(List<GetServicePrincipalsServicePrincipal> servicePrincipals) {
             if (servicePrincipals == null) {
               throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "servicePrincipals");
@@ -120,6 +135,7 @@ public final class GetServicePrincipalsResult {
             _resultValue.applicationIds = applicationIds;
             _resultValue.displayNameContains = displayNameContains;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.servicePrincipals = servicePrincipals;
             return _resultValue;
         }

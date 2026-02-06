@@ -189,6 +189,12 @@ namespace Pulumi.Databricks
         [Input("isAccount")]
         public bool? IsAccount { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetCurrentConfigProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetCurrentConfigArgs()
         {
         }
@@ -212,6 +218,12 @@ namespace Pulumi.Databricks
         [Input("isAccount")]
         public Input<bool>? IsAccount { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetCurrentConfigProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetCurrentConfigInvokeArgs()
         {
         }
@@ -231,6 +243,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly bool IsAccount;
+        public readonly Outputs.GetCurrentConfigProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetCurrentConfigResult(
@@ -244,7 +257,9 @@ namespace Pulumi.Databricks
 
             string id,
 
-            bool isAccount)
+            bool isAccount,
+
+            Outputs.GetCurrentConfigProviderConfigResult? providerConfig)
         {
             AccountId = accountId;
             AuthType = authType;
@@ -252,6 +267,7 @@ namespace Pulumi.Databricks
             Host = host;
             Id = id;
             IsAccount = isAccount;
+            ProviderConfig = providerConfig;
         }
     }
 }

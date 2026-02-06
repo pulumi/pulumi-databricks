@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -37,6 +39,7 @@ export function getMwsCredentials(args?: GetMwsCredentialsArgs, opts?: pulumi.In
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMwsCredentials:getMwsCredentials", {
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -48,6 +51,10 @@ export interface GetMwsCredentialsArgs {
      * name-to-id map for all of the credentials in the account
      */
     ids?: {[key: string]: string};
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetMwsCredentialsProviderConfig;
 }
 
 /**
@@ -62,6 +69,7 @@ export interface GetMwsCredentialsResult {
      * name-to-id map for all of the credentials in the account
      */
     readonly ids: {[key: string]: string};
+    readonly providerConfig?: outputs.GetMwsCredentialsProviderConfig;
 }
 /**
  * Lists all databricks.MwsCredentials in Databricks Account.
@@ -96,6 +104,7 @@ export function getMwsCredentialsOutput(args?: GetMwsCredentialsOutputArgs, opts
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMwsCredentials:getMwsCredentials", {
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -107,4 +116,8 @@ export interface GetMwsCredentialsOutputArgs {
      * name-to-id map for all of the credentials in the account
      */
     ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetMwsCredentialsProviderConfigArgs>;
 }

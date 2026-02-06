@@ -38,6 +38,10 @@ type FeatureEngineeringKafkaConfig struct {
 
 	// Authentication configuration for connection to topics
 	AuthConfig FeatureEngineeringKafkaConfigAuthConfigOutput `pulumi:"authConfig"`
+	// A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+	// In the future, a separate table will be maintained by Databricks for forward filling data.
+	// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+	BackfillSource FeatureEngineeringKafkaConfigBackfillSourcePtrOutput `pulumi:"backfillSource"`
 	// A comma-separated list of host/port pairs pointing to Kafka cluster
 	BootstrapServers pulumi.StringOutput `pulumi:"bootstrapServers"`
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
@@ -94,6 +98,10 @@ func GetFeatureEngineeringKafkaConfig(ctx *pulumi.Context,
 type featureEngineeringKafkaConfigState struct {
 	// Authentication configuration for connection to topics
 	AuthConfig *FeatureEngineeringKafkaConfigAuthConfig `pulumi:"authConfig"`
+	// A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+	// In the future, a separate table will be maintained by Databricks for forward filling data.
+	// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+	BackfillSource *FeatureEngineeringKafkaConfigBackfillSource `pulumi:"backfillSource"`
 	// A comma-separated list of host/port pairs pointing to Kafka cluster
 	BootstrapServers *string `pulumi:"bootstrapServers"`
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
@@ -112,6 +120,10 @@ type featureEngineeringKafkaConfigState struct {
 type FeatureEngineeringKafkaConfigState struct {
 	// Authentication configuration for connection to topics
 	AuthConfig FeatureEngineeringKafkaConfigAuthConfigPtrInput
+	// A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+	// In the future, a separate table will be maintained by Databricks for forward filling data.
+	// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+	BackfillSource FeatureEngineeringKafkaConfigBackfillSourcePtrInput
 	// A comma-separated list of host/port pairs pointing to Kafka cluster
 	BootstrapServers pulumi.StringPtrInput
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
@@ -134,6 +146,10 @@ func (FeatureEngineeringKafkaConfigState) ElementType() reflect.Type {
 type featureEngineeringKafkaConfigArgs struct {
 	// Authentication configuration for connection to topics
 	AuthConfig FeatureEngineeringKafkaConfigAuthConfig `pulumi:"authConfig"`
+	// A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+	// In the future, a separate table will be maintained by Databricks for forward filling data.
+	// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+	BackfillSource *FeatureEngineeringKafkaConfigBackfillSource `pulumi:"backfillSource"`
 	// A comma-separated list of host/port pairs pointing to Kafka cluster
 	BootstrapServers string `pulumi:"bootstrapServers"`
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
@@ -150,6 +166,10 @@ type featureEngineeringKafkaConfigArgs struct {
 type FeatureEngineeringKafkaConfigArgs struct {
 	// Authentication configuration for connection to topics
 	AuthConfig FeatureEngineeringKafkaConfigAuthConfigInput
+	// A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+	// In the future, a separate table will be maintained by Databricks for forward filling data.
+	// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+	BackfillSource FeatureEngineeringKafkaConfigBackfillSourcePtrInput
 	// A comma-separated list of host/port pairs pointing to Kafka cluster
 	BootstrapServers pulumi.StringInput
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
@@ -254,6 +274,15 @@ func (o FeatureEngineeringKafkaConfigOutput) AuthConfig() FeatureEngineeringKafk
 	return o.ApplyT(func(v *FeatureEngineeringKafkaConfig) FeatureEngineeringKafkaConfigAuthConfigOutput {
 		return v.AuthConfig
 	}).(FeatureEngineeringKafkaConfigAuthConfigOutput)
+}
+
+// A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+// In the future, a separate table will be maintained by Databricks for forward filling data.
+// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+func (o FeatureEngineeringKafkaConfigOutput) BackfillSource() FeatureEngineeringKafkaConfigBackfillSourcePtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringKafkaConfig) FeatureEngineeringKafkaConfigBackfillSourcePtrOutput {
+		return v.BackfillSource
+	}).(FeatureEngineeringKafkaConfigBackfillSourcePtrOutput)
 }
 
 // A comma-separated list of host/port pairs pointing to Kafka cluster

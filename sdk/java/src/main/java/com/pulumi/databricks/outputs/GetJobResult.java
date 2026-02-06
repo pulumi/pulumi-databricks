@@ -5,9 +5,12 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettings;
+import com.pulumi.databricks.outputs.GetJobProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobResult {
@@ -28,6 +31,7 @@ public final class GetJobResult {
      * 
      */
     private String name;
+    private @Nullable GetJobProviderConfig providerConfig;
 
     private GetJobResult() {}
     /**
@@ -57,6 +61,9 @@ public final class GetJobResult {
     public String name() {
         return this.name;
     }
+    public Optional<GetJobProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -72,6 +79,7 @@ public final class GetJobResult {
         private String jobName;
         private GetJobJobSettings jobSettings;
         private String name;
+        private @Nullable GetJobProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetJobResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -80,6 +88,7 @@ public final class GetJobResult {
     	      this.jobName = defaults.jobName;
     	      this.jobSettings = defaults.jobSettings;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -122,6 +131,12 @@ public final class GetJobResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetJobProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetJobResult build() {
             final var _resultValue = new GetJobResult();
             _resultValue.id = id;
@@ -129,6 +144,7 @@ public final class GetJobResult {
             _resultValue.jobName = jobName;
             _resultValue.jobSettings = jobSettings;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

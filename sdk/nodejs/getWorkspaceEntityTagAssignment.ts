@@ -15,6 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const appTag = databricks.getWorkspaceEntityTagAssignment({
+ *     entityType: "apps",
+ *     entityId: "2807324866692453",
+ *     tagKey: "sensitivity_level",
+ * });
  * const dashboardTag = databricks.getWorkspaceEntityTagAssignment({
  *     entityType: "dashboards",
  *     entityId: "2807324866692453",
@@ -45,7 +50,7 @@ export interface GetWorkspaceEntityTagAssignmentArgs {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType: string;
     /**
@@ -63,7 +68,7 @@ export interface GetWorkspaceEntityTagAssignmentResult {
      */
     readonly entityId: string;
     /**
-     * (string) - The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     readonly entityType: string;
     /**
@@ -90,6 +95,11 @@ export interface GetWorkspaceEntityTagAssignmentResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const appTag = databricks.getWorkspaceEntityTagAssignment({
+ *     entityType: "apps",
+ *     entityId: "2807324866692453",
+ *     tagKey: "sensitivity_level",
+ * });
  * const dashboardTag = databricks.getWorkspaceEntityTagAssignment({
  *     entityType: "dashboards",
  *     entityId: "2807324866692453",
@@ -120,7 +130,7 @@ export interface GetWorkspaceEntityTagAssignmentOutputArgs {
      */
     entityId: pulumi.Input<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType: pulumi.Input<string>;
     /**

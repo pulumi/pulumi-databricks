@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -47,6 +49,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getUser:getUser", {
+        "providerConfig": args.providerConfig,
         "userId": args.userId,
         "userName": args.userName,
     }, opts);
@@ -56,6 +59,10 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetUserProviderConfig;
     /**
      * ID of the user.
      */
@@ -99,6 +106,7 @@ export interface GetUserResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetUserProviderConfig;
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      */
@@ -152,6 +160,7 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getUser:getUser", {
+        "providerConfig": args.providerConfig,
         "userId": args.userId,
         "userName": args.userName,
     }, opts);
@@ -161,6 +170,10 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetUserProviderConfigArgs>;
     /**
      * ID of the user.
      */

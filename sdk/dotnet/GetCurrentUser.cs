@@ -16,24 +16,53 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// </summary>
-        public static Task<GetCurrentUserResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetCurrentUserResult> InvokeAsync(GetCurrentUserArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", args ?? new GetCurrentUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// </summary>
-        public static Output<GetCurrentUserResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCurrentUserResult> Invoke(GetCurrentUserInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", args ?? new GetCurrentUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// </summary>
-        public static Output<GetCurrentUserResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCurrentUserResult> Invoke(GetCurrentUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", args ?? new GetCurrentUserInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetCurrentUserArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetCurrentUserProviderConfigArgs? ProviderConfig { get; set; }
+
+        public GetCurrentUserArgs()
+        {
+        }
+        public static new GetCurrentUserArgs Empty => new GetCurrentUserArgs();
+    }
+
+    public sealed class GetCurrentUserInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetCurrentUserProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        public GetCurrentUserInvokeArgs()
+        {
+        }
+        public static new GetCurrentUserInvokeArgs Empty => new GetCurrentUserInvokeArgs();
     }
 
 
@@ -48,6 +77,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetCurrentUserProviderConfigResult? ProviderConfig;
         public readonly string Repos;
         public readonly string UserName;
         public readonly string WorkspaceUrl;
@@ -64,6 +94,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetCurrentUserProviderConfigResult? providerConfig,
+
             string repos,
 
             string userName,
@@ -75,6 +107,7 @@ namespace Pulumi.Databricks
             ExternalId = externalId;
             Home = home;
             Id = id;
+            ProviderConfig = providerConfig;
             Repos = repos;
             UserName = userName;
             WorkspaceUrl = workspaceUrl;

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetGroupProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -63,6 +64,7 @@ public final class GetGroupResult {
      */
     @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
     private List<String> members;
+    private @Nullable GetGroupProviderConfig providerConfig;
     private @Nullable Boolean recursive;
     /**
      * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
@@ -149,6 +151,9 @@ public final class GetGroupResult {
     public List<String> members() {
         return this.members;
     }
+    public Optional<GetGroupProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public Optional<Boolean> recursive() {
         return Optional.ofNullable(this.recursive);
     }
@@ -193,6 +198,7 @@ public final class GetGroupResult {
         private String id;
         private List<String> instanceProfiles;
         private List<String> members;
+        private @Nullable GetGroupProviderConfig providerConfig;
         private @Nullable Boolean recursive;
         private List<String> servicePrincipals;
         private List<String> users;
@@ -212,6 +218,7 @@ public final class GetGroupResult {
     	      this.id = defaults.id;
     	      this.instanceProfiles = defaults.instanceProfiles;
     	      this.members = defaults.members;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.recursive = defaults.recursive;
     	      this.servicePrincipals = defaults.servicePrincipals;
     	      this.users = defaults.users;
@@ -314,6 +321,12 @@ public final class GetGroupResult {
             return members(List.of(members));
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetGroupProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder recursive(@Nullable Boolean recursive) {
 
             this.recursive = recursive;
@@ -366,6 +379,7 @@ public final class GetGroupResult {
             _resultValue.id = id;
             _resultValue.instanceProfiles = instanceProfiles;
             _resultValue.members = members;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.recursive = recursive;
             _resultValue.servicePrincipals = servicePrincipals;
             _resultValue.users = users;

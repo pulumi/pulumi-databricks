@@ -70,6 +70,12 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringKafkaConfigAuthConfigResult AuthConfig;
         /// <summary>
+        /// (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+        /// In the future, a separate table will be maintained by Databricks for forward filling data.
+        /// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringKafkaConfigBackfillSourceResult BackfillSource;
+        /// <summary>
         /// (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
         /// </summary>
         public readonly string BootstrapServers;
@@ -103,6 +109,8 @@ namespace Pulumi.Databricks
         private GetFeatureEngineeringKafkaConfigResult(
             Outputs.GetFeatureEngineeringKafkaConfigAuthConfigResult authConfig,
 
+            Outputs.GetFeatureEngineeringKafkaConfigBackfillSourceResult backfillSource,
+
             string bootstrapServers,
 
             ImmutableDictionary<string, string> extraOptions,
@@ -118,6 +126,7 @@ namespace Pulumi.Databricks
             Outputs.GetFeatureEngineeringKafkaConfigValueSchemaResult valueSchema)
         {
             AuthConfig = authConfig;
+            BackfillSource = backfillSource;
             BootstrapServers = bootstrapServers;
             ExtraOptions = extraOptions;
             Id = id;

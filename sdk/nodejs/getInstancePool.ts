@@ -30,6 +30,7 @@ export function getInstancePool(args: GetInstancePoolArgs, opts?: pulumi.InvokeO
     return pulumi.runtime.invoke("databricks:index/getInstancePool:getInstancePool", {
         "name": args.name,
         "poolInfo": args.poolInfo,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -45,6 +46,10 @@ export interface GetInstancePoolArgs {
      * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
      */
     poolInfo?: inputs.GetInstancePoolPoolInfo;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetInstancePoolProviderConfig;
 }
 
 /**
@@ -60,6 +65,7 @@ export interface GetInstancePoolResult {
      * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
      */
     readonly poolInfo: outputs.GetInstancePoolPoolInfo;
+    readonly providerConfig?: outputs.GetInstancePoolProviderConfig;
 }
 /**
  * Retrieves information about databricks_instance_pool.
@@ -85,6 +91,7 @@ export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pu
     return pulumi.runtime.invokeOutput("databricks:index/getInstancePool:getInstancePool", {
         "name": args.name,
         "poolInfo": args.poolInfo,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -100,4 +107,8 @@ export interface GetInstancePoolOutputArgs {
      * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
      */
     poolInfo?: pulumi.Input<inputs.GetInstancePoolPoolInfoArgs>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetInstancePoolProviderConfigArgs>;
 }

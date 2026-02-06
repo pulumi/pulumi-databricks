@@ -33,6 +33,10 @@ type LookupFeatureEngineeringKafkaConfigArgs struct {
 type LookupFeatureEngineeringKafkaConfigResult struct {
 	// (AuthConfig) - Authentication configuration for connection to topics
 	AuthConfig GetFeatureEngineeringKafkaConfigAuthConfig `pulumi:"authConfig"`
+	// (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+	// In the future, a separate table will be maintained by Databricks for forward filling data.
+	// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+	BackfillSource GetFeatureEngineeringKafkaConfigBackfillSource `pulumi:"backfillSource"`
 	// (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
 	BootstrapServers string `pulumi:"bootstrapServers"`
 	// (object) - Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
@@ -90,6 +94,15 @@ func (o LookupFeatureEngineeringKafkaConfigResultOutput) AuthConfig() GetFeature
 	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) GetFeatureEngineeringKafkaConfigAuthConfig {
 		return v.AuthConfig
 	}).(GetFeatureEngineeringKafkaConfigAuthConfigOutput)
+}
+
+// (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+// In the future, a separate table will be maintained by Databricks for forward filling data.
+// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+func (o LookupFeatureEngineeringKafkaConfigResultOutput) BackfillSource() GetFeatureEngineeringKafkaConfigBackfillSourceOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) GetFeatureEngineeringKafkaConfigBackfillSource {
+		return v.BackfillSource
+	}).(GetFeatureEngineeringKafkaConfigBackfillSourceOutput)
 }
 
 // (string) - A comma-separated list of host/port pairs pointing to Kafka cluster

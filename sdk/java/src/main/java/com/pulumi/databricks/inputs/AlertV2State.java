@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.AlertV2EffectiveRunAsArgs;
 import com.pulumi.databricks.inputs.AlertV2EvaluationArgs;
 import com.pulumi.databricks.inputs.AlertV2RunAsArgs;
 import com.pulumi.databricks.inputs.AlertV2ScheduleArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -151,6 +152,21 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Purge the resource on delete
+     * 
+     */
+    @Import(name="purgeOnDelete")
+    private @Nullable Output<Boolean> purgeOnDelete;
+
+    /**
+     * @return Purge the resource on delete
+     * 
+     */
+    public Optional<Output<Boolean>> purgeOnDelete() {
+        return Optional.ofNullable(this.purgeOnDelete);
+    }
+
+    /**
      * Text of the query to be run
      * 
      */
@@ -256,6 +272,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         this.lifecycleState = $.lifecycleState;
         this.ownerUserName = $.ownerUserName;
         this.parentPath = $.parentPath;
+        this.purgeOnDelete = $.purgeOnDelete;
         this.queryText = $.queryText;
         this.runAs = $.runAs;
         this.runAsUserName = $.runAsUserName;
@@ -461,6 +478,27 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parentPath(String parentPath) {
             return parentPath(Output.of(parentPath));
+        }
+
+        /**
+         * @param purgeOnDelete Purge the resource on delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(@Nullable Output<Boolean> purgeOnDelete) {
+            $.purgeOnDelete = purgeOnDelete;
+            return this;
+        }
+
+        /**
+         * @param purgeOnDelete Purge the resource on delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(Boolean purgeOnDelete) {
+            return purgeOnDelete(Output.of(purgeOnDelete));
         }
 
         /**

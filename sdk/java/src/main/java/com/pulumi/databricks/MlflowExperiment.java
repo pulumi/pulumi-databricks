@@ -32,6 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetCurrentUserArgs;
  * import com.pulumi.databricks.MlflowExperiment;
  * import com.pulumi.databricks.MlflowExperimentArgs;
  * import com.pulumi.databricks.inputs.MlflowExperimentTagArgs;
@@ -48,7 +49,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var me = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ *         final var me = DatabricksFunctions.getCurrentUser(GetCurrentUserArgs.builder()
+ *             .build());
  * 
  *         var this_ = new MlflowExperiment("this", MlflowExperimentArgs.builder()
  *             .name(String.format("%s/Sample", me.home()))

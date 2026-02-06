@@ -15,6 +15,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const appTag = new databricks.WorkspaceEntityTagAssignment("app_tag", {
+ *     entityType: "apps",
+ *     entityId: "2807324866692453",
+ *     tagKey: "sensitivity_level",
+ *     tagValue: "high",
+ * });
  * const dashboardTag = new databricks.WorkspaceEntityTagAssignment("dashboard_tag", {
  *     entityType: "dashboards",
  *     entityId: "2807324866692453",
@@ -82,7 +88,7 @@ export class WorkspaceEntityTagAssignment extends pulumi.CustomResource {
      */
     declare public readonly entityId: pulumi.Output<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     declare public readonly entityType: pulumi.Output<string>;
     /**
@@ -141,7 +147,7 @@ export interface WorkspaceEntityTagAssignmentState {
      */
     entityId?: pulumi.Input<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType?: pulumi.Input<string>;
     /**
@@ -163,7 +169,7 @@ export interface WorkspaceEntityTagAssignmentArgs {
      */
     entityId: pulumi.Input<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType: pulumi.Input<string>;
     /**

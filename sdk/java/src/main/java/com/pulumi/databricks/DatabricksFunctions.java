@@ -56,6 +56,8 @@ import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
 import com.pulumi.databricks.inputs.GetCurrentConfigPlainArgs;
 import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
 import com.pulumi.databricks.inputs.GetCurrentMetastorePlainArgs;
+import com.pulumi.databricks.inputs.GetCurrentUserArgs;
+import com.pulumi.databricks.inputs.GetCurrentUserPlainArgs;
 import com.pulumi.databricks.inputs.GetDashboardsArgs;
 import com.pulumi.databricks.inputs.GetDashboardsPlainArgs;
 import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
@@ -140,6 +142,8 @@ import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
 import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
 import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsPlainArgs;
+import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
+import com.pulumi.databricks.inputs.GetMwsWorkspacesPlainArgs;
 import com.pulumi.databricks.inputs.GetNodeTypeArgs;
 import com.pulumi.databricks.inputs.GetNodeTypePlainArgs;
 import com.pulumi.databricks.inputs.GetNotebookArgs;
@@ -8514,7 +8518,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser() {
-        return getCurrentUser(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getCurrentUser(GetCurrentUserArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
@@ -8523,7 +8527,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain() {
-        return getCurrentUserPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getCurrentUserPlain(GetCurrentUserPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about databricks.User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
@@ -8531,7 +8535,7 @@ public final class DatabricksFunctions {
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      */
-    public static Output<GetCurrentUserResult> getCurrentUser(InvokeArgs args) {
+    public static Output<GetCurrentUserResult> getCurrentUser(GetCurrentUserArgs args) {
         return getCurrentUser(args, InvokeOptions.Empty);
     }
     /**
@@ -8540,7 +8544,7 @@ public final class DatabricksFunctions {
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      */
-    public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args) {
+    public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(GetCurrentUserPlainArgs args) {
         return getCurrentUserPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -8549,7 +8553,7 @@ public final class DatabricksFunctions {
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      */
-    public static Output<GetCurrentUserResult> getCurrentUser(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetCurrentUserResult> getCurrentUser(GetCurrentUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -8558,7 +8562,7 @@ public final class DatabricksFunctions {
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      */
-    public static Output<GetCurrentUserResult> getCurrentUser(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetCurrentUserResult> getCurrentUser(GetCurrentUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -8567,7 +8571,7 @@ public final class DatabricksFunctions {
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      */
-    public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(GetCurrentUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -19829,6 +19833,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -19842,7 +19847,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(GetMwsWorkspacesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
@@ -19859,7 +19865,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces() {
-        return getMwsWorkspaces(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getMwsWorkspaces(GetMwsWorkspacesArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Lists all databricks.MwsWorkspaces in Databricks Account.
@@ -19878,6 +19884,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -19891,7 +19898,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(GetMwsWorkspacesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
@@ -19908,7 +19916,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain() {
-        return getMwsWorkspacesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Lists all databricks.MwsWorkspaces in Databricks Account.
@@ -19927,6 +19935,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -19940,7 +19949,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(GetMwsWorkspacesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
@@ -19956,7 +19966,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
-    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(InvokeArgs args) {
+    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args) {
         return getMwsWorkspaces(args, InvokeOptions.Empty);
     }
     /**
@@ -19976,6 +19986,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -19989,7 +20000,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(GetMwsWorkspacesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
@@ -20005,7 +20017,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
-    public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(InvokeArgs args) {
+    public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs args) {
         return getMwsWorkspacesPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -20025,6 +20037,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20038,7 +20051,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(GetMwsWorkspacesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
@@ -20054,7 +20068,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
-    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -20074,6 +20088,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20087,7 +20102,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(GetMwsWorkspacesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
@@ -20103,7 +20119,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
-    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -20123,6 +20139,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20136,7 +20153,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(GetMwsWorkspacesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
@@ -20152,7 +20170,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
-    public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -33307,6 +33325,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var dashboardTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")
@@ -33357,6 +33381,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var dashboardTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")
@@ -33407,6 +33437,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var dashboardTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")
@@ -33457,6 +33493,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var dashboardTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")
@@ -33507,6 +33549,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var dashboardTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")
@@ -33557,6 +33605,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")
@@ -33605,6 +33658,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")
@@ -33653,6 +33711,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")
@@ -33701,6 +33764,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")
@@ -33749,6 +33817,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("apps")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("dashboards")
      *             .entityId("2807324866692453")

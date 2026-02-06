@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetServicePrincipalResult',
@@ -26,7 +28,7 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, acl_principal_id=None, active=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, scim_id=None, sp_id=None):
+    def __init__(__self__, acl_principal_id=None, active=None, application_id=None, display_name=None, external_id=None, home=None, id=None, provider_config=None, repos=None, scim_id=None, sp_id=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -48,6 +50,9 @@ class GetServicePrincipalResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if repos and not isinstance(repos, str):
             raise TypeError("Expected argument 'repos' to be a str")
         pulumi.set(__self__, "repos", repos)
@@ -115,6 +120,11 @@ class GetServicePrincipalResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetServicePrincipalProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def repos(self) -> _builtins.str:
         """
@@ -149,6 +159,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             external_id=self.external_id,
             home=self.home,
             id=self.id,
+            provider_config=self.provider_config,
             repos=self.repos,
             scim_id=self.scim_id,
             sp_id=self.sp_id)
@@ -161,6 +172,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
                           external_id: Optional[_builtins.str] = None,
                           home: Optional[_builtins.str] = None,
                           id: Optional[_builtins.str] = None,
+                          provider_config: Optional[Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict']] = None,
                           repos: Optional[_builtins.str] = None,
                           scim_id: Optional[_builtins.str] = None,
                           sp_id: Optional[_builtins.str] = None,
@@ -206,6 +218,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
     :param _builtins.str external_id: ID of the service principal in an external identity provider.
     :param _builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
     :param _builtins.str id: The id of the service principal (SCIM ID).
+    :param Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
     :param _builtins.str scim_id: Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
     """
@@ -217,6 +230,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
     __args__['externalId'] = external_id
     __args__['home'] = home
     __args__['id'] = id
+    __args__['providerConfig'] = provider_config
     __args__['repos'] = repos
     __args__['scimId'] = scim_id
     __args__['spId'] = sp_id
@@ -231,6 +245,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
         external_id=pulumi.get(__ret__, 'external_id'),
         home=pulumi.get(__ret__, 'home'),
         id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         repos=pulumi.get(__ret__, 'repos'),
         scim_id=pulumi.get(__ret__, 'scim_id'),
         sp_id=pulumi.get(__ret__, 'sp_id'))
@@ -241,6 +256,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
                                  external_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  home: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 provider_config: Optional[pulumi.Input[Optional[Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict']]]] = None,
                                  repos: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  scim_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  sp_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -286,6 +302,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
     :param _builtins.str external_id: ID of the service principal in an external identity provider.
     :param _builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
     :param _builtins.str id: The id of the service principal (SCIM ID).
+    :param Union['GetServicePrincipalProviderConfigArgs', 'GetServicePrincipalProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
     :param _builtins.str scim_id: Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
     """
@@ -297,6 +314,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
     __args__['externalId'] = external_id
     __args__['home'] = home
     __args__['id'] = id
+    __args__['providerConfig'] = provider_config
     __args__['repos'] = repos
     __args__['scimId'] = scim_id
     __args__['spId'] = sp_id
@@ -310,6 +328,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
         external_id=pulumi.get(__response__, 'external_id'),
         home=pulumi.get(__response__, 'home'),
         id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         repos=pulumi.get(__response__, 'repos'),
         scim_id=pulumi.get(__response__, 'scim_id'),
         sp_id=pulumi.get(__response__, 'sp_id')))

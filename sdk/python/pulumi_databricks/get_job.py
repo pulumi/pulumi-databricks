@@ -28,7 +28,7 @@ class GetJobResult:
     """
     A collection of values returned by getJob.
     """
-    def __init__(__self__, id=None, job_id=None, job_name=None, job_settings=None, name=None):
+    def __init__(__self__, id=None, job_id=None, job_name=None, job_settings=None, name=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -44,6 +44,9 @@ class GetJobResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -79,6 +82,11 @@ class GetJobResult:
         """
         return pulumi.get(self, "name")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetJobProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetJobResult(GetJobResult):
     # pylint: disable=using-constant-test
@@ -90,7 +98,8 @@ class AwaitableGetJobResult(GetJobResult):
             job_id=self.job_id,
             job_name=self.job_name,
             job_settings=self.job_settings,
-            name=self.name)
+            name=self.name,
+            provider_config=self.provider_config)
 
 
 def get_job(id: Optional[_builtins.str] = None,
@@ -98,6 +107,7 @@ def get_job(id: Optional[_builtins.str] = None,
             job_name: Optional[_builtins.str] = None,
             job_settings: Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict']] = None,
             name: Optional[_builtins.str] = None,
+            provider_config: Optional[Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict']] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
     Retrieves the settings of Job by name or by id. Complements the feature of the get_jobs data source.
@@ -127,6 +137,7 @@ def get_job(id: Optional[_builtins.str] = None,
     :param _builtins.str id: the id of Job if the resource was matched by name.
     :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict'] job_settings: the same fields as in databricks_job.
     :param _builtins.str name: the job name of Job if the resource was matched by id.
+    :param Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['id'] = id
@@ -134,6 +145,7 @@ def get_job(id: Optional[_builtins.str] = None,
     __args__['jobName'] = job_name
     __args__['jobSettings'] = job_settings
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getJob:getJob', __args__, opts=opts, typ=GetJobResult).value
 
@@ -142,12 +154,14 @@ def get_job(id: Optional[_builtins.str] = None,
         job_id=pulumi.get(__ret__, 'job_id'),
         job_name=pulumi.get(__ret__, 'job_name'),
         job_settings=pulumi.get(__ret__, 'job_settings'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_job_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    job_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    job_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    job_settings: Optional[pulumi.Input[Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict']]]] = None,
                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                   provider_config: Optional[pulumi.Input[Optional[Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict']]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobResult]:
     """
     Retrieves the settings of Job by name or by id. Complements the feature of the get_jobs data source.
@@ -177,6 +191,7 @@ def get_job_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
     :param _builtins.str id: the id of Job if the resource was matched by name.
     :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict'] job_settings: the same fields as in databricks_job.
     :param _builtins.str name: the job name of Job if the resource was matched by id.
+    :param Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['id'] = id
@@ -184,6 +199,7 @@ def get_job_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
     __args__['jobName'] = job_name
     __args__['jobSettings'] = job_settings
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getJob:getJob', __args__, opts=opts, typ=GetJobResult)
     return __ret__.apply(lambda __response__: GetJobResult(
@@ -191,4 +207,5 @@ def get_job_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
         job_id=pulumi.get(__response__, 'job_id'),
         job_name=pulumi.get(__response__, 'job_name'),
         job_settings=pulumi.get(__response__, 'job_settings'),
-        name=pulumi.get(__response__, 'name')))
+        name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

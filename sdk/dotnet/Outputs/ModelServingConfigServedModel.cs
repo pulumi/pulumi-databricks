@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedModel
     {
+        public readonly bool? BurstScalingEnabled;
         /// <summary>
         /// a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         /// </summary>
@@ -65,6 +66,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingConfigServedModel(
+            bool? burstScalingEnabled,
+
             ImmutableDictionary<string, string>? environmentVars,
 
             string? instanceProfileArn,
@@ -91,6 +94,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? workloadType)
         {
+            BurstScalingEnabled = burstScalingEnabled;
             EnvironmentVars = environmentVars;
             InstanceProfileArn = instanceProfileArn;
             MaxProvisionedConcurrency = maxProvisionedConcurrency;

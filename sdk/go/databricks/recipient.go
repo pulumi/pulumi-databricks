@@ -49,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			current, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
+//			current, err := databricks.GetCurrentUser(ctx, &databricks.GetCurrentUserArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -92,7 +92,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
+//			current, err := databricks.GetCurrentUser(ctx, &databricks.GetCurrentUserArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

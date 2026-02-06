@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedModel {
+    private @Nullable Boolean burstScalingEnabled;
     /**
      * @return a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
@@ -78,6 +79,9 @@ public final class ModelServingConfigServedModel {
     private @Nullable String workloadType;
 
     private ModelServingConfigServedModel() {}
+    public Optional<Boolean> burstScalingEnabled() {
+        return Optional.ofNullable(this.burstScalingEnabled);
+    }
     /**
      * @return a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
@@ -175,6 +179,7 @@ public final class ModelServingConfigServedModel {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean burstScalingEnabled;
         private @Nullable Map<String,String> environmentVars;
         private @Nullable String instanceProfileArn;
         private @Nullable Integer maxProvisionedConcurrency;
@@ -191,6 +196,7 @@ public final class ModelServingConfigServedModel {
         public Builder() {}
         public Builder(ModelServingConfigServedModel defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.burstScalingEnabled = defaults.burstScalingEnabled;
     	      this.environmentVars = defaults.environmentVars;
     	      this.instanceProfileArn = defaults.instanceProfileArn;
     	      this.maxProvisionedConcurrency = defaults.maxProvisionedConcurrency;
@@ -206,6 +212,12 @@ public final class ModelServingConfigServedModel {
     	      this.workloadType = defaults.workloadType;
         }
 
+        @CustomType.Setter
+        public Builder burstScalingEnabled(@Nullable Boolean burstScalingEnabled) {
+
+            this.burstScalingEnabled = burstScalingEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder environmentVars(@Nullable Map<String,String> environmentVars) {
 
@@ -290,6 +302,7 @@ public final class ModelServingConfigServedModel {
         }
         public ModelServingConfigServedModel build() {
             final var _resultValue = new ModelServingConfigServedModel();
+            _resultValue.burstScalingEnabled = burstScalingEnabled;
             _resultValue.environmentVars = environmentVars;
             _resultValue.instanceProfileArn = instanceProfileArn;
             _resultValue.maxProvisionedConcurrency = maxProvisionedConcurrency;

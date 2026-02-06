@@ -13,9 +13,17 @@ public final class GetJobJobSettingsSettingsLibraryProviderConfig extends com.pu
 
     public static final GetJobJobSettingsSettingsLibraryProviderConfig Empty = new GetJobJobSettingsSettingsLibraryProviderConfig();
 
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * 
+     */
     @Import(name="workspaceId", required=true)
     private String workspaceId;
 
+    /**
+     * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * 
+     */
     public String workspaceId() {
         return this.workspaceId;
     }
@@ -44,6 +52,12 @@ public final class GetJobJobSettingsSettingsLibraryProviderConfig extends com.pu
             $ = new GetJobJobSettingsSettingsLibraryProviderConfig(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param workspaceId Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(String workspaceId) {
             $.workspaceId = workspaceId;
             return this;

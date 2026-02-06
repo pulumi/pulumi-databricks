@@ -27,6 +27,7 @@ export function getNotebookPaths(args: GetNotebookPathsArgs, opts?: pulumi.Invok
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotebookPaths:getNotebookPaths", {
         "path": args.path,
+        "providerConfig": args.providerConfig,
         "recursive": args.recursive,
     }, opts);
 }
@@ -39,6 +40,10 @@ export interface GetNotebookPathsArgs {
      * Path to workspace directory
      */
     path: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetNotebookPathsProviderConfig;
     /**
      * Either or recursively walk given path
      */
@@ -58,6 +63,7 @@ export interface GetNotebookPathsResult {
      */
     readonly notebookPathLists: outputs.GetNotebookPathsNotebookPathList[];
     readonly path: string;
+    readonly providerConfig?: outputs.GetNotebookPathsProviderConfig;
     readonly recursive: boolean;
 }
 /**
@@ -81,6 +87,7 @@ export function getNotebookPathsOutput(args: GetNotebookPathsOutputArgs, opts?: 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNotebookPaths:getNotebookPaths", {
         "path": args.path,
+        "providerConfig": args.providerConfig,
         "recursive": args.recursive,
     }, opts);
 }
@@ -93,6 +100,10 @@ export interface GetNotebookPathsOutputArgs {
      * Path to workspace directory
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetNotebookPathsProviderConfigArgs>;
     /**
      * Either or recursively walk given path
      */
