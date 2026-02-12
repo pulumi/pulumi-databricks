@@ -219,28 +219,6 @@ class NotificationDestination(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        This resource can be imported by notification ID:
-
-        hcl
-
-        import {
-
-          to = databricks_notification_destination.this
-
-          id = "<notification-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/notificationDestination:NotificationDestination this <notification-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NotificationDestinationConfigArgs', 'NotificationDestinationConfigArgsDict']] config: The configuration of the Notification Destination. It must contain exactly one of the following blocks:
@@ -331,28 +309,6 @@ class NotificationDestination(pulumi.CustomResource):
                     "password": "password",
                 },
             })
-        ```
-
-        ## Import
-
-        This resource can be imported by notification ID:
-
-        hcl
-
-        import {
-
-          to = databricks_notification_destination.this
-
-          id = "<notification-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/notificationDestination:NotificationDestination this <notification-id>
         ```
 
         :param str resource_name: The name of the resource.

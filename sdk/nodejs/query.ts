@@ -7,27 +7,102 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Import
+ * This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes databricks.SqlQuery resource - see migration guide below for more details.
  *
- * This resource can be imported using query ID:
+ * > This resource can only be used with a workspace-level provider!
  *
- * hcl
+ * ## Example Usage
  *
- * import {
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
  *
- *   to = databricks_query.this
- *
- *   id = "<query-id>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/query:Query this <query-id>
+ * const sharedDir = new databricks.Directory("shared_dir", {path: "/Shared/Queries"});
+ * // This will be replaced with new databricks_query resource
+ * const _this = new databricks.Query("this", {
+ *     warehouseId: example.id,
+ *     displayName: "My Query Name",
+ *     queryText: "SELECT 42 as value",
+ *     parentPath: sharedDir.path,
+ * });
  * ```
+ *
+ * ## Migrating from `databricks.SqlQuery` resource
+ *
+ * Under the hood, the new resource uses the same data as the `databricks.SqlQuery`, but exposed via different API. This means that we can migrate existing queries without recreating them.  This operation is done in few steps:
+ *
+ * * Record the ID of existing `databricks.SqlQuery`, for example, by executing the `terraform state show databricks_sql_query.query` command.
+ * * Create the code for the new implementation performing following changes:
+ *   * the `name` attribute is now named `displayName`
+ *   * the `parent` (if exists) is renamed to `parentPath` attribute, and should be converted from `folders/object_id` to the actual path.
+ *   * Blocks that specify values in the `parameter` block were renamed (see above).
+ *
+ * For example, if we have the original `databricks.SqlQuery` defined as:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const query = new databricks.SqlQuery("query", {
+ *     dataSourceId: example.dataSourceId,
+ *     query: "select 42 as value",
+ *     name: "My Query",
+ *     parent: `folders/${sharedDir.objectId}`,
+ *     parameters: [{
+ *         name: "p1",
+ *         title: "Title for p1",
+ *         text: {
+ *             value: "default",
+ *         },
+ *     }],
+ * });
+ * ```
+ *
+ * we'll have a new resource defined as:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const query = new databricks.Query("query", {
+ *     warehouseId: example.id,
+ *     queryText: "select 42 as value",
+ *     displayName: "My Query",
+ *     parentPath: sharedDir.path,
+ *     parameters: [{
+ *         name: "p1",
+ *         title: "Title for p1",
+ *         textValue: {
+ *             value: "default",
+ *         },
+ *     }],
+ * });
+ * ```
+ *
+ * ## Access Control
+ *
+ * databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual queries.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const queryUsage = new databricks.Permissions("query_usage", {
+ *     sqlQueryId: query.id,
+ *     accessControls: [{
+ *         groupName: "users",
+ *         permissionLevel: "CAN_RUN",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * databricks.Alert to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).
+ * * databricks.SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
  */
 export class Query extends pulumi.CustomResource {
     /**

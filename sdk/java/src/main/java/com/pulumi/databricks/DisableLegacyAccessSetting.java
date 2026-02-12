@@ -67,12 +67,6 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by predefined name `global`:
  * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
- * ```
- * 
  */
 @ResourceType(type="databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting")
 public class DisableLegacyAccessSetting extends com.pulumi.resources.CustomResource {

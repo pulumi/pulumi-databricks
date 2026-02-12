@@ -63,26 +63,6 @@ import * as utilities from "./utilities";
  *     objectId: myTestTable.id,
  * });
  * ```
- *
- * ## Import
- *
- * As of Pulumi v1.5, resources can be imported through configuration.
- *
- * hcl
- *
- * import {
- *
- *   id = "object_type,object_id,refresh_id"
- *
- *   to = databricks_data_quality_refresh.this
- *
- * }
- *
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- *
- * ```sh
- * $ pulumi import databricks:index/dataQualityRefresh:DataQualityRefresh this "object_type,object_id,refresh_id"
- * ```
  */
 export class DataQualityRefresh extends pulumi.CustomResource {
     /**

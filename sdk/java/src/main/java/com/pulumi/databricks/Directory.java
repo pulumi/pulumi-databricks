@@ -72,28 +72,6 @@ import javax.annotation.Nullable;
  * - databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources.
  * - databricks.WorkspaceConf to manage workspace configuration for expert usage.
  * 
- * ## Import
- * 
- * The resource directory can be imported using directory path:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_directory.this
- * 
- *   id = &#34;/path/to/directory&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/directory:Directory this /path/to/directory
- * ```
- * 
  */
 @ResourceType(type="databricks:index/directory:Directory")
 public class Directory extends com.pulumi.resources.CustomResource {

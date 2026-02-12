@@ -41,28 +41,6 @@ namespace Pulumi.Databricks
     /// * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
     /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
     /// * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-    /// 
-    /// ## Import
-    /// 
-    /// The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_secret_scope.this
-    /// 
-    ///   id = "&lt;scopeName&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/secretScope:SecretScope this "&lt;scopeName&gt;"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/secretScope:SecretScope")]
     public partial class SecretScope : global::Pulumi.CustomResource

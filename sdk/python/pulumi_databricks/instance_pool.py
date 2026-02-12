@@ -519,28 +519,6 @@ class InstancePool(pulumi.CustomResource):
         * Group and User can control which groups or individual users can create instance pools.
         * Permissions can control which groups or individual users can *Manage* or *Attach to* individual instance pools.
 
-        ## Import
-
-        The resource instance pool can be imported using its id:
-
-        hcl
-
-        import {
-
-          to = databricks_instance_pool.this
-
-          id = "<instance-pool-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
@@ -598,28 +576,6 @@ class InstancePool(pulumi.CustomResource):
 
         * Group and User can control which groups or individual users can create instance pools.
         * Permissions can control which groups or individual users can *Manage* or *Attach to* individual instance pools.
-
-        ## Import
-
-        The resource instance pool can be imported using its id:
-
-        hcl
-
-        import {
-
-          to = databricks_instance_pool.this
-
-          id = "<instance-pool-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param InstancePoolArgs args: The arguments to use to populate this resource's properties.

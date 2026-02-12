@@ -96,26 +96,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;id&#34;
- * 
- *   to = databricks_alert_v2.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/alertV2:AlertV2 this &#34;id&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/alertV2:AlertV2")
 public class AlertV2 extends com.pulumi.resources.CustomResource {

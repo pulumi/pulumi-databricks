@@ -91,26 +91,6 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "key"
-
-          to = databricks_materialized_features_feature_tag.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag this "key"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -122,26 +102,6 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "key"
-
-          to = databricks_materialized_features_feature_tag.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag this "key"
-        ```
 
         :param str resource_name: The name of the resource.
         :param MaterializedFeaturesFeatureTagArgs args: The arguments to use to populate this resource's properties.

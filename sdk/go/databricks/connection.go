@@ -245,28 +245,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// This resource can be imported by `id`:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_connection.this
-//
-//	id = "<metastore_id>|<name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/connection:Connection this "<metastore_id>|<name>"
-// ```
 type Connection struct {
 	pulumi.CustomResourceState
 

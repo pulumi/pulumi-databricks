@@ -41,7 +41,11 @@ type LookupFeatureEngineeringFeatureResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (list of string) - The input columns from which the feature is computed
-	Inputs         []string                                   `pulumi:"inputs"`
+	Inputs []string `pulumi:"inputs"`
+	// (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+	// is automatically populated when features are created through Databricks notebooks or jobs.
+	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext GetFeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
 	// (DataSource) - The data source of the feature
 	Source GetFeatureEngineeringFeatureSource `pulumi:"source"`
@@ -113,6 +117,10 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Inputs() pulumi.StringArray
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
+// (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+// is automatically populated when features are created through Databricks notebooks or jobs.
+// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 func (o LookupFeatureEngineeringFeatureResultOutput) LineageContext() GetFeatureEngineeringFeatureLineageContextOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureLineageContext {
 		return v.LineageContext

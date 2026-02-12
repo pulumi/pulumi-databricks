@@ -33,9 +33,17 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.catalogName);
     }
 
+    /**
+     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+     * 
+     */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
+    /**
+     * @return All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+     * 
+     */
     public Optional<Output<String>> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
@@ -342,11 +350,23 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
             return catalogName(Output.of(catalogName));
         }
 
+        /**
+         * @param clusterId All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterId(@Nullable Output<String> clusterId) {
             $.clusterId = clusterId;
             return this;
         }
 
+        /**
+         * @param clusterId All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
         }

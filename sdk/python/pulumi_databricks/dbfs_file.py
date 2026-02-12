@@ -201,28 +201,6 @@ class DbfsFile(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
-        ## Import
-
-        The resource dbfs file can be imported using the path of the file:
-
-        hcl
-
-        import {
-
-          to = databricks_dbfs_file.this
-
-          id = "<path>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
@@ -241,28 +219,6 @@ class DbfsFile(pulumi.CustomResource):
         This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and get_dbfs_file_paths data sources.
 
         > This resource can only be used with a workspace-level provider!
-
-        ## Import
-
-        The resource dbfs file can be imported using the path of the file:
-
-        hcl
-
-        import {
-
-          to = databricks_dbfs_file.this
-
-          id = "<path>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
-        ```
 
         :param str resource_name: The name of the resource.
         :param DbfsFileArgs args: The arguments to use to populate this resource's properties.

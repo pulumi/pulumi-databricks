@@ -143,26 +143,6 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
             network_policy_id="default-policy")
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "workspace_id"
-
-          to = databricks_workspace_network_option.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption this "workspace_id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_policy_id: The network policy ID to apply to the workspace. This controls the network access rules
@@ -201,26 +181,6 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
         example_workspace_network_option = databricks.WorkspaceNetworkOption("example_workspace_network_option",
             workspace_id="9999999999999999",
             network_policy_id="default-policy")
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "workspace_id"
-
-          to = databricks_workspace_network_option.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption this "workspace_id"
         ```
 
         :param str resource_name: The name of the resource.

@@ -66,28 +66,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * This resource can be imported by using combination of workspace ID, securable type and name:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_catalog_workspace_binding.this
- * 
- *   id = &#34;&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this &#34;&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding")
 public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource {

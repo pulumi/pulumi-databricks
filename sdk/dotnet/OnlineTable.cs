@@ -40,28 +40,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// The resource can be imported using the name of the Online Table:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_online_table.this
-    /// 
-    ///   id = "&lt;endpoint-name&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/onlineTable:OnlineTable this "&lt;endpoint-name&gt;"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/onlineTable:OnlineTable")]
     public partial class OnlineTable : global::Pulumi.CustomResource

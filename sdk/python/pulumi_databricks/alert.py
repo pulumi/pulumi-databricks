@@ -416,27 +416,142 @@ class Alert(pulumi.CustomResource):
                  seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        ## Import
+        This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).  It supersedes SqlAlert resource - see migration guide below for more details.
 
-        This resource can be imported using alert ID:
+        > This resource can only be used with a workspace-level provider!
 
-        hcl
+        ## Example Usage
 
-        import {
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
 
-          to = databricks_alert.this
-
-          id = "<alert-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/alert:Alert this <alert-id>
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
+        # This will be replaced with new databricks_query resource
+        this = databricks.Query("this",
+            warehouse_id=example["id"],
+            display_name="My Query Name",
+            query_text="SELECT 42 as value",
+            parent_path=shared_dir.path)
+        alert = databricks.Alert("alert",
+            query_id=this.id,
+            display_name="TF new alert",
+            parent_path=shared_dir.path,
+            condition={
+                "op": "GREATER_THAN",
+                "operand": {
+                    "column": {
+                        "name": "value",
+                    },
+                },
+                "threshold": {
+                    "value": {
+                        "double_value": 42,
+                    },
+                },
+            })
         ```
+
+        ## Migrating from `SqlAlert` resource
+
+        Under the hood, the new resource uses the same data as the `SqlAlert`, but is exposed via a different API. This means that we can migrate existing alerts without recreating them.
+
+        > It's also recommended to migrate to the `Query` resource - see Query for more details.
+
+        This operation is done in few steps:
+
+        * Record the ID of existing `SqlAlert`, for example, by executing the `terraform state show databricks_sql_alert.alert` command.
+        * Create the code for the new implementation by performing the following changes:
+          * the `name` attribute is now named `display_name`
+          * the `parent` (if exists) is renamed to `parent_path` attribute and should be converted from `folders/object_id` to the actual path.
+          * the `options` block is converted into the `condition` block with the following changes:
+            * the value of the `op` attribute should be converted from a mathematical operator into a string name, like, `>` is becoming `GREATER_THAN`, `==` is becoming `EQUAL`, etc.
+            * the `column` attribute is becoming the `operand` block
+            * the `value` attribute is becoming the `threshold` block.  **Please note that the old implementation always used strings so you may have changes after import if you use `double_value` or `bool_value` inside the block.**
+          * the `rearm` attribute is renamed to `seconds_to_retrigger`.
+
+        For example, if we have the original `SqlAlert` defined as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        alert = databricks.SqlAlert("alert",
+            query_id=this["id"],
+            name="My Alert",
+            parent=f"folders/{shared_dir['objectId']}",
+            options={
+                "column": "value",
+                "op": ">",
+                "value": "42",
+                "muted": False,
+            })
+        ```
+
+        we'll have a new resource defined as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        alert = databricks.Alert("alert",
+            query_id=this["id"],
+            display_name="My Alert",
+            parent_path=shared_dir["path"],
+            condition={
+                "op": "GREATER_THAN",
+                "operand": {
+                    "column": {
+                        "name": "value",
+                    },
+                },
+                "threshold": {
+                    "value": {
+                        "double_value": 42,
+                    },
+                },
+            })
+        ```
+
+        ## Access Control
+
+        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        alert_usage = databricks.Permissions("alert_usage",
+            sql_alert_id=alert["id"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_RUN",
+            }])
+        ```
+
+        ## Access Control
+
+        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        alert_usage = databricks.Permissions("alert_usage",
+            sql_alert_id=alert["id"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_RUN",
+            }])
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Query to manage [Databricks SQL Queries](https://docs.databricks.com/sql/user/queries/index.html).
+        * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -457,27 +572,142 @@ class Alert(pulumi.CustomResource):
                  args: AlertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
+        This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).  It supersedes SqlAlert resource - see migration guide below for more details.
 
-        This resource can be imported using alert ID:
+        > This resource can only be used with a workspace-level provider!
 
-        hcl
+        ## Example Usage
 
-        import {
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
 
-          to = databricks_alert.this
-
-          id = "<alert-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/alert:Alert this <alert-id>
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
+        # This will be replaced with new databricks_query resource
+        this = databricks.Query("this",
+            warehouse_id=example["id"],
+            display_name="My Query Name",
+            query_text="SELECT 42 as value",
+            parent_path=shared_dir.path)
+        alert = databricks.Alert("alert",
+            query_id=this.id,
+            display_name="TF new alert",
+            parent_path=shared_dir.path,
+            condition={
+                "op": "GREATER_THAN",
+                "operand": {
+                    "column": {
+                        "name": "value",
+                    },
+                },
+                "threshold": {
+                    "value": {
+                        "double_value": 42,
+                    },
+                },
+            })
         ```
+
+        ## Migrating from `SqlAlert` resource
+
+        Under the hood, the new resource uses the same data as the `SqlAlert`, but is exposed via a different API. This means that we can migrate existing alerts without recreating them.
+
+        > It's also recommended to migrate to the `Query` resource - see Query for more details.
+
+        This operation is done in few steps:
+
+        * Record the ID of existing `SqlAlert`, for example, by executing the `terraform state show databricks_sql_alert.alert` command.
+        * Create the code for the new implementation by performing the following changes:
+          * the `name` attribute is now named `display_name`
+          * the `parent` (if exists) is renamed to `parent_path` attribute and should be converted from `folders/object_id` to the actual path.
+          * the `options` block is converted into the `condition` block with the following changes:
+            * the value of the `op` attribute should be converted from a mathematical operator into a string name, like, `>` is becoming `GREATER_THAN`, `==` is becoming `EQUAL`, etc.
+            * the `column` attribute is becoming the `operand` block
+            * the `value` attribute is becoming the `threshold` block.  **Please note that the old implementation always used strings so you may have changes after import if you use `double_value` or `bool_value` inside the block.**
+          * the `rearm` attribute is renamed to `seconds_to_retrigger`.
+
+        For example, if we have the original `SqlAlert` defined as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        alert = databricks.SqlAlert("alert",
+            query_id=this["id"],
+            name="My Alert",
+            parent=f"folders/{shared_dir['objectId']}",
+            options={
+                "column": "value",
+                "op": ">",
+                "value": "42",
+                "muted": False,
+            })
+        ```
+
+        we'll have a new resource defined as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        alert = databricks.Alert("alert",
+            query_id=this["id"],
+            display_name="My Alert",
+            parent_path=shared_dir["path"],
+            condition={
+                "op": "GREATER_THAN",
+                "operand": {
+                    "column": {
+                        "name": "value",
+                    },
+                },
+                "threshold": {
+                    "value": {
+                        "double_value": 42,
+                    },
+                },
+            })
+        ```
+
+        ## Access Control
+
+        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        alert_usage = databricks.Permissions("alert_usage",
+            sql_alert_id=alert["id"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_RUN",
+            }])
+        ```
+
+        ## Access Control
+
+        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        alert_usage = databricks.Permissions("alert_usage",
+            sql_alert_id=alert["id"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_RUN",
+            }])
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Query to manage [Databricks SQL Queries](https://docs.databricks.com/sql/user/queries/index.html).
+        * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
         :param str resource_name: The name of the resource.
         :param AlertArgs args: The arguments to use to populate this resource's properties.

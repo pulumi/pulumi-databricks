@@ -298,26 +298,6 @@ class PostgresBranch(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_postgres_branch.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/postgresBranch:PostgresBranch this "name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch_id: The ID to use for the Branch. This becomes the final component of the branch's resource name.
@@ -388,26 +368,6 @@ class PostgresBranch(pulumi.CustomResource):
             spec={
                 "ttl": "604800s",
             })
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_postgres_branch.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/postgresBranch:PostgresBranch this "name"
         ```
 
         :param str resource_name: The name of the resource.

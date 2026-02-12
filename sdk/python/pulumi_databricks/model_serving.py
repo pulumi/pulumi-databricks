@@ -520,28 +520,6 @@ class ModelServing(pulumi.CustomResource):
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
-        ## Import
-
-        The model serving resource can be imported using the name of the endpoint.
-
-        hcl
-
-        import {
-
-          to = databricks_model_serving.this
-
-          id = "<model-serving-endpoint-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
@@ -701,28 +679,6 @@ class ModelServing(pulumi.CustomResource):
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-
-        ## Import
-
-        The model serving resource can be imported using the name of the endpoint.
-
-        hcl
-
-        import {
-
-          to = databricks_model_serving.this
-
-          id = "<model-serving-endpoint-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
-        ```
 
         :param str resource_name: The name of the resource.
         :param ModelServingArgs args: The arguments to use to populate this resource's properties.

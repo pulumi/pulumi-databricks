@@ -52,28 +52,6 @@ namespace Pulumi.Databricks
     /// * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
     /// * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
     /// * databricks.WorkspaceConf to manage workspace configuration for expert usage.
-    /// 
-    /// ## Import
-    /// 
-    /// The resource can be imported using the Git folder ID (obtained via UI or using API)
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_repo.this
-    /// 
-    ///   id = "repo_id"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/repo:Repo this repo_id
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/repo:Repo")]
     public partial class Repo : global::Pulumi.CustomResource

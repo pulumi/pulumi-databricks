@@ -81,28 +81,6 @@ import javax.annotation.Nullable;
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
  * * databricks.Grants to manage data access in Unity Catalog.
  * 
- * ## Import
- * 
- * The databricks_ip_access_list can be imported using id:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_ip_access_list.this
- * 
- *   id = &#34;&lt;list-id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/ipAccessList:IpAccessList this &lt;list-id&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/ipAccessList:IpAccessList")
 public class IpAccessList extends com.pulumi.resources.CustomResource {

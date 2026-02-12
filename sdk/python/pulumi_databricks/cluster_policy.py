@@ -410,28 +410,6 @@ class ClusterPolicy(pulumi.CustomResource):
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
         * WorkspaceConf to manage workspace configuration for expert usage.
 
-        ## Import
-
-        The resource cluster policy can be imported using the policy id:
-
-        hcl
-
-        import {
-
-          to = databricks_cluster_policy.this
-
-          id = "<cluster-policy-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
@@ -576,28 +554,6 @@ class ClusterPolicy(pulumi.CustomResource):
         * get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
         * WorkspaceConf to manage workspace configuration for expert usage.
-
-        ## Import
-
-        The resource cluster policy can be imported using the policy id:
-
-        hcl
-
-        import {
-
-          to = databricks_cluster_policy.this
-
-          id = "<cluster-policy-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param ClusterPolicyArgs args: The arguments to use to populate this resource's properties.

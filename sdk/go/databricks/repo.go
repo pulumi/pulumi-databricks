@@ -62,28 +62,6 @@ import (
 // * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 // * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 // * WorkspaceConf to manage workspace configuration for expert usage.
-//
-// ## Import
-//
-// The resource can be imported using the Git folder ID (obtained via UI or using API)
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_repo.this
-//
-//	id = "repo_id"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/repo:Repo this repo_id
-// ```
 type Repo struct {
 	pulumi.CustomResourceState
 

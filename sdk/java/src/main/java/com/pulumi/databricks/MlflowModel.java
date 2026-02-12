@@ -84,28 +84,6 @@ import javax.annotation.Nullable;
  * * databricks.Notebook data to export a notebook from Databricks Workspace.
  * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
  * 
- * ## Import
- * 
- * The model resource can be imported using the name
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_mlflow_model.this
- * 
- *   id = &#34;&lt;name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/mlflowModel:MlflowModel this &lt;name&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/mlflowModel:MlflowModel")
 public class MlflowModel extends com.pulumi.resources.CustomResource {

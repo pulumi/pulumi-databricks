@@ -19,6 +19,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource to configure KMS keys for new workspaces within AWS or GCP. This is to support the following features:
+ * 
+ * * [Customer-managed keys for managed services](https://docs.databricks.com/security/keys/customer-managed-keys-managed-services-aws.html): Encrypt the workspace&#39;s managed services data in the control plane, including notebooks, secrets, Databricks SQL queries, and Databricks SQL query history  with a CMK.
+ * * [Customer-managed keys for workspace storage](https://docs.databricks.com/security/keys/customer-managed-keys-storage-aws.html): Encrypt the workspace&#39;s root S3 bucket and clusters&#39; EBS volumes with a CMK.
+ * 
+ * &gt; This resource can only be used with an account-level provider!
+ * 
+ * Please follow this complete runnable example with new VPC and new workspace setup. Please pay special attention to the fact that there you have two different instances of a databricks provider - one for deploying workspaces (with `host=&#34;https://accounts.cloud.databricks.com/&#34;`) and another for the workspace you&#39;ve created with databricks.MwsWorkspaces resource. If you want both creation of workspaces &amp; clusters within workspace within the same terraform module (essentially same directory), you should use the provider aliasing feature of Pulumi. We strongly recommend having one Pulumi module for creation of workspace + PAT token and the rest in different modules.
+ * 
  * ## Example Usage
  * 
  * &gt; If you&#39;ve used the resource before, please add `useCases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.
@@ -121,32 +130,6 @@ import javax.annotation.Nullable;
  * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
  * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
  * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
- * 
- * ## Import
- * 
- * This resource can be imported by Databricks account ID and customer managed key ID.
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_mws_customer_managed_keys.this
- * 
- *   id = &#34;&lt;account_id&gt;/&lt;customer_managed_key_id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * ```sh
- * $ pulumi import databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys this &#39;&lt;account_id&gt;/&lt;customer_managed_key_id&gt;&#39;
- * ```
- * 
- * ~&gt; This resource does not support updates. If your configuration does not match the existing resource,
- * 
- *    the next `pulumi up` will cause the resource to be destroyed and recreated. After importing,
- * 
- *    verify that the configuration matches the existing resource by running `pulumi preview`.
  * 
  */
 @ResourceType(type="databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys")

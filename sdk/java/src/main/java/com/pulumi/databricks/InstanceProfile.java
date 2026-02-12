@@ -113,28 +113,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * The resource instance profile can be imported using the ARN of it
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_instance_profile.this
- * 
- *   id = &#34;&lt;instance-profile-arn&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/instanceProfile:InstanceProfile this &lt;instance-profile-arn&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/instanceProfile:InstanceProfile")
 public class InstanceProfile extends com.pulumi.resources.CustomResource {

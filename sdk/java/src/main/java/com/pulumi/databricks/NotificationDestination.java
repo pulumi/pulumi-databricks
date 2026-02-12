@@ -220,28 +220,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * This resource can be imported by notification ID:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_notification_destination.this
- * 
- *   id = &#34;&lt;notification-id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/notificationDestination:NotificationDestination this &lt;notification-id&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/notificationDestination:NotificationDestination")
 public class NotificationDestination extends com.pulumi.resources.CustomResource {

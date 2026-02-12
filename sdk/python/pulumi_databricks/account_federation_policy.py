@@ -264,26 +264,6 @@ class AccountFederationPolicy(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "policy_id"
-
-          to = databricks_account_federation_policy.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/accountFederationPolicy:AccountFederationPolicy this "policy_id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the federation policy
@@ -319,26 +299,6 @@ class AccountFederationPolicy(pulumi.CustomResource):
                 "issuer": "https://myidp.example.com",
                 "subject_claim": "sub",
             })
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "policy_id"
-
-          to = databricks_account_federation_policy.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/accountFederationPolicy:AccountFederationPolicy this "policy_id"
         ```
 
         :param str resource_name: The name of the resource.

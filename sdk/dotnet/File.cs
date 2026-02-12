@@ -102,28 +102,6 @@ namespace Pulumi.Databricks
     /// * databricks.WorkspaceFile
     /// * End to end workspace management guide.
     /// * databricks.Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
-    /// 
-    /// ## Import
-    /// 
-    /// The resource `databricks_file` can be imported using the path of the file:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_file.this
-    /// 
-    ///   id = "&lt;path&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/file:File this &lt;path&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/file:File")]
     public partial class File : global::Pulumi.CustomResource

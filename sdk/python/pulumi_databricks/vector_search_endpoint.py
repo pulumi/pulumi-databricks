@@ -283,28 +283,6 @@ class VectorSearchEndpoint(pulumi.CustomResource):
             endpoint_type="STANDARD")
         ```
 
-        ## Import
-
-        The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
-
-        hcl
-
-        import {
-
-          to = databricks_vector_search_endpoint.this
-
-          id = "<endpoint-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this <endpoint-name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
@@ -331,28 +309,6 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         this = databricks.VectorSearchEndpoint("this",
             name="vector-search-test",
             endpoint_type="STANDARD")
-        ```
-
-        ## Import
-
-        The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
-
-        hcl
-
-        import {
-
-          to = databricks_vector_search_endpoint.this
-
-          id = "<endpoint-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this <endpoint-name>
         ```
 
         :param str resource_name: The name of the resource.

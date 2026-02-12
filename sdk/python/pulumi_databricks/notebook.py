@@ -358,28 +358,6 @@ class Notebook(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
-        ## Import
-
-        The resource notebook can be imported using notebook path
-
-        hcl
-
-        import {
-
-          to = databricks_notebook.this
-
-          id = "/path/to/notebook"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
@@ -399,28 +377,6 @@ class Notebook(pulumi.CustomResource):
         This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and get_notebook_paths data sources.
 
         > This resource can only be used with a workspace-level provider!
-
-        ## Import
-
-        The resource notebook can be imported using notebook path
-
-        hcl
-
-        import {
-
-          to = databricks_notebook.this
-
-          id = "/path/to/notebook"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
-        ```
 
         :param str resource_name: The name of the resource.
         :param NotebookArgs args: The arguments to use to populate this resource's properties.

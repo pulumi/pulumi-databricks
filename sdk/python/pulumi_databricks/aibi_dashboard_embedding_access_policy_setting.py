@@ -145,28 +145,6 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
 
         - AibiDashboardEmbeddingApprovedDomainsSetting is used to control approved domains.
 
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_aibi_dashboard_embedding_access_policy_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting this global
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs', 'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict']] aibi_dashboard_embedding_access_policy: block with following attributes:
@@ -198,28 +176,6 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         - AibiDashboardEmbeddingApprovedDomainsSetting is used to control approved domains.
-
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_aibi_dashboard_embedding_access_policy_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting this global
-        ```
 
         :param str resource_name: The name of the resource.
         :param AibiDashboardEmbeddingAccessPolicySettingArgs args: The arguments to use to populate this resource's properties.

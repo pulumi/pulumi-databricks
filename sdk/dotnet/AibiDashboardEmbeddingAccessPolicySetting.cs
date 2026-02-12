@@ -40,28 +40,6 @@ namespace Pulumi.Databricks
     /// The following resources are often used in the same context:
     /// 
     /// - databricks.AibiDashboardEmbeddingApprovedDomainsSetting is used to control approved domains.
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by predefined name `global`:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_aibi_dashboard_embedding_access_policy_setting.this
-    /// 
-    ///   id = "global"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting this global
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting")]
     public partial class AibiDashboardEmbeddingAccessPolicySetting : global::Pulumi.CustomResource

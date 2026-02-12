@@ -71,28 +71,6 @@ import javax.annotation.Nullable;
  * * databricks.Schema to manage schemas within Unity Catalog.
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  * 
- * ## Import
- * 
- * The registered model resource can be imported using the full (3-level) name of the model.
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_registered_model.this
- * 
- *   id = &#34;&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;model_name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/registeredModel:RegisteredModel this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;model_name&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/registeredModel:RegisteredModel")
 public class RegisteredModel extends com.pulumi.resources.CustomResource {

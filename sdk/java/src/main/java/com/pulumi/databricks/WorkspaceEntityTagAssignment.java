@@ -69,26 +69,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;entity_type,entity_id,tag_key&#34;
- * 
- *   to = databricks_workspace_entity_tag_assignment.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment this &#34;entity_type,entity_id,tag_key&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment")
 public class WorkspaceEntityTagAssignment extends com.pulumi.resources.CustomResource {

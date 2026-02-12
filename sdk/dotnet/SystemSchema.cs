@@ -35,28 +35,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by the metastore id and schema name:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_system_schema.this
-    /// 
-    ///   id = "&lt;metastore_id&gt;|&lt;schema_name&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/systemSchema:SystemSchema this '&lt;metastore_id&gt;|&lt;schema_name&gt;'
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/systemSchema:SystemSchema")]
     public partial class SystemSchema : global::Pulumi.CustomResource

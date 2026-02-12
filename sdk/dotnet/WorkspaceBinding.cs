@@ -10,27 +10,44 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// ## Import
+    /// If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
     /// 
-    /// This resource can be imported by using combination of workspace ID, securable type and name:
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    /// hcl
+    /// By default, Databricks assigns the securable to all workspaces attached to the current metastore. By using `databricks.WorkspaceBinding`, the securable will be unassigned from all workspaces and only assigned explicitly using this resource.
     /// 
-    /// import {
+    /// &gt; To use this resource the securable must have its isolation mode set to `ISOLATED` (for databricks_catalog) or `ISOLATION_MODE_ISOLATED` (for  (for databricks_external_location, databricks.StorageCredential or databricks_credential) for the `IsolationMode` attribute. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration), [this guide](https://docs.databricks.com/en/connect/unity-catalog/external-locations.html#workspace-binding) or [this guide](https://docs.databricks.com/en/connect/unity-catalog/storage-credentials.html#optional-assign-a-storage-credential-to-specific-workspaces).
     /// 
-    ///   to = databricks_workspace_binding.this
+    /// &gt; If the securable's isolation mode was set to `ISOLATED` using Pulumi then the securable will have been automatically bound to the workspace it was created from.
     /// 
-    ///   id = "&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;"
+    /// ## Example Usage
     /// 
-    /// }
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
     /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         Name = "sandbox",
+    ///         IsolationMode = "ISOLATED",
+    ///     });
     /// 
-    /// bash
+    ///     var sandboxWorkspaceBinding = new Databricks.WorkspaceBinding("sandbox", new()
+    ///     {
+    ///         SecurableName = sandbox.Name,
+    ///         WorkspaceId = other.WorkspaceId,
+    ///     });
     /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/workspaceBinding:WorkspaceBinding this "&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;"
+    /// });
     /// ```
+    /// 
+    /// ## Migration from databricks.CatalogWorkspaceBinding
+    /// 
+    /// You can migrate from the deprecated `databricks.CatalogWorkspaceBinding` to `databricks.WorkspaceBinding` without re-binding catalog.
     /// </summary>
     [DatabricksResourceType("databricks:index/workspaceBinding:WorkspaceBinding")]
     public partial class WorkspaceBinding : global::Pulumi.CustomResource

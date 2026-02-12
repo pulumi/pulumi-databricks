@@ -94,28 +94,6 @@ import javax.annotation.Nullable;
  * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
  * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
  * 
- * ## Import
- * 
- * This resource can be imported using alert ID:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_sql_alert.this
- * 
- *   id = &#34;&lt;alert-id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/sqlAlert:SqlAlert this &#34;&lt;alert-id&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/sqlAlert:SqlAlert")
 public class SqlAlert extends com.pulumi.resources.CustomResource {

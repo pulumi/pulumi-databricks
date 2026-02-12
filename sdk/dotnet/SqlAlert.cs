@@ -69,28 +69,6 @@ namespace Pulumi.Databricks
     /// * databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
     /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
     /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported using alert ID:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_sql_alert.this
-    /// 
-    ///   id = "&lt;alert-id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/sqlAlert:SqlAlert this "&lt;alert-id&gt;"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlAlert:SqlAlert")]
     public partial class SqlAlert : global::Pulumi.CustomResource

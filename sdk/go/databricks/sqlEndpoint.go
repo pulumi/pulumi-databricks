@@ -23,8 +23,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -72,28 +70,6 @@ import (
 // * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
 // * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
 // * Grants to manage data access in Unity Catalog.
-//
-// ## Import
-//
-// You can import a `databricks_sql_endpoint` resource with ID like the following:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_sql_endpoint.this
-//
-//	id = "<endpoint-id>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this <endpoint-id>
-// ```
 type SqlEndpoint struct {
 	pulumi.CustomResourceState
 

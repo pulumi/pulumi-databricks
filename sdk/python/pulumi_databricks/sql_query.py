@@ -472,28 +472,6 @@ class SqlQuery(pulumi.CustomResource):
         * Grants to manage data access in Unity Catalog.
         * Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
 
-        ## Import
-
-        You can import a `databricks_sql_query` resource with ID like the following:
-
-        hcl
-
-        import {
-
-          to = databricks_sql_query.this
-
-          id = "<query-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlQuery:SqlQuery this "<query-id>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_source_id: Data source ID of a SQL warehouse
@@ -610,28 +588,6 @@ class SqlQuery(pulumi.CustomResource):
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
         * Grants to manage data access in Unity Catalog.
         * Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
-
-        ## Import
-
-        You can import a `databricks_sql_query` resource with ID like the following:
-
-        hcl
-
-        import {
-
-          to = databricks_sql_query.this
-
-          id = "<query-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlQuery:SqlQuery this "<query-id>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param SqlQueryArgs args: The arguments to use to populate this resource's properties.

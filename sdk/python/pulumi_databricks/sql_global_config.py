@@ -290,28 +290,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
         * SqlEndpoint to manage Databricks SQL [Warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Grants to manage data access in Unity Catalog.
 
-        ## Import
-
-        You can import a `databricks_sql_global_config` resource with command like the following (you need to use `global` as ID):
-
-        hcl
-
-        import {
-
-          to = databricks_sql_global_config.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data_access_config: Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
@@ -378,28 +356,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
         * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
         * SqlEndpoint to manage Databricks SQL [Warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Grants to manage data access in Unity Catalog.
-
-        ## Import
-
-        You can import a `databricks_sql_global_config` resource with command like the following (you need to use `global` as ID):
-
-        hcl
-
-        import {
-
-          to = databricks_sql_global_config.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global
-        ```
 
         :param str resource_name: The name of the resource.
         :param SqlGlobalConfigArgs args: The arguments to use to populate this resource's properties.

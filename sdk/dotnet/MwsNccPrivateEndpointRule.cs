@@ -105,26 +105,6 @@ namespace Pulumi.Databricks
     /// 
     /// * databricks.MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
     /// * databricks.MwsNccBinding to attach an NCC to a workspace.
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by Databricks account ID and Network Connectivity Config ID.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_mws_ncc_private_endpoint_rule.this
-    /// 
-    ///   id = "&lt;network_connectivity_config_id&gt;/&lt;rule_id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule this "&lt;network_connectivity_config_id&gt;/&lt;rule_id&gt;"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule")]
     public partial class MwsNccPrivateEndpointRule : global::Pulumi.CustomResource

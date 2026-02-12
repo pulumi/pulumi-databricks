@@ -62,28 +62,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * This resource can be imported by combination of workspace id and metastore id:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_metastore_assignment.this
- * 
- *   id = &#34;&lt;workspace_id&gt;|&lt;metastore_id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this &#34;&lt;workspace_id&gt;|&lt;metastore_id&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/metastoreAssignment:MetastoreAssignment")
 public class MetastoreAssignment extends com.pulumi.resources.CustomResource {

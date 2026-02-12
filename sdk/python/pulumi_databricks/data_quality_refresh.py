@@ -286,26 +286,6 @@ class DataQualityRefresh(pulumi.CustomResource):
             object_id=my_test_table.id)
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "object_type,object_id,refresh_id"
-
-          to = databricks_data_quality_refresh.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/dataQualityRefresh:DataQualityRefresh this "object_type,object_id,refresh_id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
@@ -378,26 +358,6 @@ class DataQualityRefresh(pulumi.CustomResource):
         this_data_quality_refresh = databricks.DataQualityRefresh("this",
             object_type="table",
             object_id=my_test_table.id)
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "object_type,object_id,refresh_id"
-
-          to = databricks_data_quality_refresh.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/dataQualityRefresh:DataQualityRefresh this "object_type,object_id,refresh_id"
         ```
 
         :param str resource_name: The name of the resource.

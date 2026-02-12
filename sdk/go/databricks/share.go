@@ -164,28 +164,6 @@ import (
 // * Recipient to create Delta Sharing recipients.
 // * Grants to manage Delta Sharing permissions.
 // * getShares to read existing Delta Sharing shares.
-//
-// ## Import
-//
-// The share resource can be imported using the name of the share.
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_share.this
-//
-//	id = "<share_name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/share:Share this <share_name>
-// ```
 type Share struct {
 	pulumi.CustomResourceState
 

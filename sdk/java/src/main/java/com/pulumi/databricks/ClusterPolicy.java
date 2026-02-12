@@ -204,28 +204,6 @@ import javax.annotation.Nullable;
  * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
  * * databricks.WorkspaceConf to manage workspace configuration for expert usage.
  * 
- * ## Import
- * 
- * The resource cluster policy can be imported using the policy id:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_cluster_policy.this
- * 
- *   id = &#34;&lt;cluster-policy-id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this &lt;cluster-policy-id&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/clusterPolicy:ClusterPolicy")
 public class ClusterPolicy extends com.pulumi.resources.CustomResource {

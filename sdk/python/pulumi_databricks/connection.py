@@ -581,28 +581,6 @@ class Connection(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        This resource can be imported by `id`:
-
-        hcl
-
-        import {
-
-          to = databricks_connection.this
-
-          id = "<metastore_id>|<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/connection:Connection this "<metastore_id>|<name>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Free-form text. Change forces creation of a new resource.
@@ -754,28 +732,6 @@ class Connection(pulumi.CustomResource):
                 "client_id": "client_id",
                 "client_secret": "client_secret",
             })
-        ```
-
-        ## Import
-
-        This resource can be imported by `id`:
-
-        hcl
-
-        import {
-
-          to = databricks_connection.this
-
-          id = "<metastore_id>|<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/connection:Connection this "<metastore_id>|<name>"
         ```
 
         :param str resource_name: The name of the resource.

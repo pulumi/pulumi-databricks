@@ -283,28 +283,6 @@ class File(pulumi.CustomResource):
         * End to end workspace management guide.
         * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
 
-        ## Import
-
-        The resource `databricks_file` can be imported using the path of the file:
-
-        hcl
-
-        import {
-
-          to = databricks_file.this
-
-          id = "<path>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/file:File this <path>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: Contents in base 64 format. Conflicts with `source`.
@@ -380,28 +358,6 @@ class File(pulumi.CustomResource):
         * WorkspaceFile
         * End to end workspace management guide.
         * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
-
-        ## Import
-
-        The resource `databricks_file` can be imported using the path of the file:
-
-        hcl
-
-        import {
-
-          to = databricks_file.this
-
-          id = "<path>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/file:File this <path>
-        ```
 
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.

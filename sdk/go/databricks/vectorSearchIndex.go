@@ -54,28 +54,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// The resource can be imported using the name of the Mosaic AI Vector Search Index:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_vector_search_index.this
-//
-//	id = "<index-name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/vectorSearchIndex:VectorSearchIndex this <index-name>
-// ```
 type VectorSearchIndex struct {
 	pulumi.CustomResourceState
 

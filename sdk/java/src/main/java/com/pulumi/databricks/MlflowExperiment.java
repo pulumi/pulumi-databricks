@@ -87,28 +87,6 @@ import javax.annotation.Nullable;
  * * databricks.Notebook data to export a notebook from Databricks Workspace.
  * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
  * 
- * ## Import
- * 
- * The experiment resource can be imported using the id of the experiment:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_mlflow_experiment.this
- * 
- *   id = &#34;&lt;experiment-id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this &#34;&lt;experiment-id&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/mlflowExperiment:MlflowExperiment")
 public class MlflowExperiment extends com.pulumi.resources.CustomResource {

@@ -701,28 +701,6 @@ class Credential(pulumi.CustomResource):
             }])
         ```
 
-        ## Import
-
-        This resource can be imported by name:
-
-        hcl
-
-        import {
-
-          to = databricks_credential.this
-
-          id = "<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/credential:Credential this <name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force_destroy: Delete credential regardless of its dependencies.
@@ -813,28 +791,6 @@ class Credential(pulumi.CustomResource):
                 "principal": "Data Engineers",
                 "privileges": ["ACCESS"],
             }])
-        ```
-
-        ## Import
-
-        This resource can be imported by name:
-
-        hcl
-
-        import {
-
-          to = databricks_credential.this
-
-          id = "<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/credential:Credential this <name>
         ```
 
         :param str resource_name: The name of the resource.

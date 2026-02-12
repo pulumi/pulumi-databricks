@@ -181,28 +181,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * This resource can be imported by name:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_credential.this
- * 
- *   id = &#34;&lt;name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/credential:Credential this &lt;name&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/credential:Credential")
 public class Credential extends com.pulumi.resources.CustomResource {

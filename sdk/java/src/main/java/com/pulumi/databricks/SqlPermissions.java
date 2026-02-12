@@ -122,40 +122,6 @@ import javax.annotation.Nullable;
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
  * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
  * 
- * ## Import
- * 
- * The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
- * 
- * * `table/default.foo` - table `foo` in a `default` database. The `database` is always mandatory.
- * 
- * * `view/bar.foo` - view `foo` in `bar` database.
- * 
- * * `database/bar` - `bar` database.
- * 
- * * `catalog/` - entire catalog. `/` suffix is mandatory.
- * 
- * * `any file/` - direct access to any file. `/` suffix is mandatory.
- * 
- * * `anonymous function/` - anonymous function. `/` suffix is mandatory.
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_sql_permissions.foo
- * 
- *   id = &#34;/&lt;object-type&gt;/&lt;object-name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /&lt;object-type&gt;/&lt;object-name&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/sqlPermissions:SqlPermissions")
 public class SqlPermissions extends com.pulumi.resources.CustomResource {
@@ -201,9 +167,83 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> catalog() {
         return Codegen.optional(this.catalog);
     }
+    /**
+     * Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `clusterId` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.SqlPermissions;
+     * import com.pulumi.databricks.SqlPermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
+     *             .clusterId(clusterName.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
+     * 
+     */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
+    /**
+     * @return Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `clusterId` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.SqlPermissions;
+     * import com.pulumi.databricks.SqlPermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var fooTable = new SqlPermissions("fooTable", SqlPermissionsArgs.builder()
+     *             .clusterId(clusterName.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
+     * 
+     */
     public Output<String> clusterId() {
         return this.clusterId;
     }

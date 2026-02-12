@@ -23,26 +23,6 @@ import javax.annotation.Nullable;
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;name&#34;
- * 
- *   to = databricks_feature_engineering_kafka_config.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig this &#34;name&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig")
 public class FeatureEngineeringKafkaConfig extends com.pulumi.resources.CustomResource {

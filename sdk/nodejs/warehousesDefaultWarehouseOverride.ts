@@ -44,26 +44,6 @@ import * as utilities from "./utilities";
  *     warehouseId: exampleDatabricksSqlEndpoint.id,
  * });
  * ```
- *
- * ## Import
- *
- * As of Pulumi v1.5, resources can be imported through configuration.
- *
- * hcl
- *
- * import {
- *
- *   id = "name"
- *
- *   to = databricks_warehouses_default_warehouse_override.this
- *
- * }
- *
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- *
- * ```sh
- * $ pulumi import databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride this "name"
- * ```
  */
 export class WarehousesDefaultWarehouseOverride extends pulumi.CustomResource {
     /**

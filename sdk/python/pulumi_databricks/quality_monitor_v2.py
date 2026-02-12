@@ -179,26 +179,6 @@ class QualityMonitorV2(pulumi.CustomResource):
             object_id=this.schema_id)
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "object_type,object_id"
-
-          to = databricks_quality_monitor_v2.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 this "object_type,object_id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
@@ -234,26 +214,6 @@ class QualityMonitorV2(pulumi.CustomResource):
         this_quality_monitor_v2 = databricks.QualityMonitorV2("this",
             object_type="schema",
             object_id=this.schema_id)
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "object_type,object_id"
-
-          to = databricks_quality_monitor_v2.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 this "object_type,object_id"
         ```
 
         :param str resource_name: The name of the resource.

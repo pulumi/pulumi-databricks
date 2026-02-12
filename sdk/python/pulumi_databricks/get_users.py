@@ -104,7 +104,7 @@ def get_users(extra_attributes: Optional[_builtins.str] = None,
     for range in [{"key": k, "value": v} for [k, v] in enumerate({user.id: user for user in company_users.users})]:
         add_users_to_group.append(databricks.GroupMember(f"add_users_to_group-{range['key']}",
             group_id=data_users_group.id,
-            member_id=%!v(PANIC=Format method: runtime error: index out of range [-1])))
+            member_id=range["value"].id))
     ```
 
     ## Related Resources
@@ -160,7 +160,7 @@ def get_users_output(extra_attributes: Optional[pulumi.Input[Optional[_builtins.
     for range in [{"key": k, "value": v} for [k, v] in enumerate({user.id: user for user in company_users.users})]:
         add_users_to_group.append(databricks.GroupMember(f"add_users_to_group-{range['key']}",
             group_id=data_users_group.id,
-            member_id=%!v(PANIC=Format method: runtime error: index out of range [-1])))
+            member_id=range["value"].id))
     ```
 
     ## Related Resources

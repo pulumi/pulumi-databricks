@@ -86,26 +86,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;securable_type,full_name&#34;
- * 
- *   to = databricks_rfa_access_request_destinations.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this &#34;securable_type,full_name&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations")
 public class RfaAccessRequestDestinations extends com.pulumi.resources.CustomResource {

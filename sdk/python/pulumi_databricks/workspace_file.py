@@ -232,28 +232,6 @@ class WorkspaceFile(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
-        ## Import
-
-        The workspace file resource can be imported using workspace file path
-
-        hcl
-
-        import {
-
-          to = databricks_workspace_file.this
-
-          id = "/path/to/file"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
@@ -271,28 +249,6 @@ class WorkspaceFile(pulumi.CustomResource):
         This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
 
         > This resource can only be used with a workspace-level provider!
-
-        ## Import
-
-        The workspace file resource can be imported using workspace file path
-
-        hcl
-
-        import {
-
-          to = databricks_workspace_file.this
-
-          id = "/path/to/file"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
-        ```
 
         :param str resource_name: The name of the resource.
         :param WorkspaceFileArgs args: The arguments to use to populate this resource's properties.

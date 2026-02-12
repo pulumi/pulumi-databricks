@@ -23,8 +23,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -63,28 +61,6 @@ import (
 // * MwsWorkspaces to set up Databricks workspaces.
 // * MwsNccBinding to attach an NCC to a workspace.
 // * MwsNccPrivateEndpointRule to create a private endpoint rule.
-//
-// ## Import
-//
-// This resource can be imported by Databricks account ID and Network Connectivity Config ID.
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_mws_network_connectivity_config.this
-//
-//	id = "<account_id>/<network_connectivity_config_id>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig this "<account_id>/<network_connectivity_config_id>"
-// ```
 type MwsNetworkConnectivityConfig struct {
 	pulumi.CustomResourceState
 

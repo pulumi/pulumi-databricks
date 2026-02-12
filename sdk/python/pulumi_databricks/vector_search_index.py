@@ -302,28 +302,6 @@ class VectorSearchIndex(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        The resource can be imported using the name of the Mosaic AI Vector Search Index:
-
-        hcl
-
-        import {
-
-          to = databricks_vector_search_index.this
-
-          id = "<index-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/vectorSearchIndex:VectorSearchIndex this <index-name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
@@ -365,28 +343,6 @@ class VectorSearchIndex(pulumi.CustomResource):
                     "embedding_model_endpoint_name": this["name"],
                 }],
             })
-        ```
-
-        ## Import
-
-        The resource can be imported using the name of the Mosaic AI Vector Search Index:
-
-        hcl
-
-        import {
-
-          to = databricks_vector_search_index.this
-
-          id = "<index-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/vectorSearchIndex:VectorSearchIndex this <index-name>
         ```
 
         :param str resource_name: The name of the resource.

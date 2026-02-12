@@ -70,28 +70,6 @@ import (
 // * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 // * Notebook data to export a notebook from Databricks Workspace.
 // * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-//
-// ## Import
-//
-// # The model resource can be imported using the name
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_mlflow_model.this
-//
-//	id = "<name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
-// ```
 type MlflowModel struct {
 	pulumi.CustomResourceState
 

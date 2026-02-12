@@ -224,28 +224,6 @@ class ArtifactAllowlist(pulumi.CustomResource):
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
 
-        ## Import
-
-        This resource can be imported by name:
-
-        hcl
-
-        import {
-
-          to = databricks_artifact_allowlist.this
-
-          id = "<metastore_id>|<artifact_type>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this "<metastore_id>|<artifact_type>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
@@ -286,28 +264,6 @@ class ArtifactAllowlist(pulumi.CustomResource):
 
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-
-        ## Import
-
-        This resource can be imported by name:
-
-        hcl
-
-        import {
-
-          to = databricks_artifact_allowlist.this
-
-          id = "<metastore_id>|<artifact_type>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this "<metastore_id>|<artifact_type>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param ArtifactAllowlistArgs args: The arguments to use to populate this resource's properties.

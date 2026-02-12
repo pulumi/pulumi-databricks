@@ -160,28 +160,6 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
         * DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
         * DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
 
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_disable_legacy_features_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting this global
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs', 'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict']] disable_legacy_features: block with following attributes:
@@ -228,28 +206,6 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
 
         * DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
         * DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
-
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_disable_legacy_features_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting this global
-        ```
 
         :param str resource_name: The name of the resource.
         :param DisableLegacyFeaturesSettingArgs args: The arguments to use to populate this resource's properties.

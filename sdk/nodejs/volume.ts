@@ -74,28 +74,6 @@ import * as utilities from "./utilities";
  *     comment: "this volume is managed by terraform",
  * });
  * ```
- *
- * ## Import
- *
- * This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_volume.this
- *
- *   id = "<catalog_name>.<schema_name>.<name>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
- * ```
  */
 export class Volume extends pulumi.CustomResource {
     /**

@@ -44,28 +44,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by using combination of workspace ID, securable type and name:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_catalog_workspace_binding.this
-    /// 
-    ///   id = "&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this "&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding")]
     public partial class CatalogWorkspaceBinding : global::Pulumi.CustomResource

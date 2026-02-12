@@ -28,8 +28,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -155,8 +153,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -202,28 +198,6 @@ import (
 // ```
 //
 // Example `encryptionDetails` specifying SSE_S3 encryption:
-//
-// ## Import
-//
-// This resource can be imported by `name`:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_external_location.this
-//
-//	id = "<name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
-// ```
 type ExternalLocation struct {
 	pulumi.CustomResourceState
 

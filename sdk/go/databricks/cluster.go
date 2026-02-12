@@ -12,15 +12,85 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+//
+// > This resource can only be used with a workspace-level provider!
+//
+// > In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` errors, please upgrade to v0.5.5 or later. If for some reason you cannot upgrade the version of provider, then the other viable option to unblock the apply pipeline is `terraform state rm path.to.databricks_cluster.resource` command.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+//				LocalDisk: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+//				LongTermSupport: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
+//				ClusterName:            pulumi.String("Shared Autoscaling"),
+//				SparkVersion:           pulumi.String(latestLts.Id),
+//				NodeTypeId:             pulumi.String(smallest.Id),
+//				AutoterminationMinutes: pulumi.Int(20),
+//				Autoscale: &databricks.ClusterAutoscaleArgs{
+//					MinWorkers: pulumi.Int(1),
+//					MaxWorkers: pulumi.Int(50),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Access Control
+//
+// * Group and User can control which groups or individual users can create clusters.
+// * ClusterPolicy can control which kinds of clusters users can create.
+// * Users, who have access to Cluster Policy, but do not have an `allowClusterCreate` argument set would still be able to create clusters, but within the boundary of the policy.
+// * Permissions can control which groups or individual users can *Manage*, *Restart* or *Attach to* individual clusters.
+// * `instanceProfileArn` *(AWS only)* can control which data a given cluster can access through cloud-native controls.
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * Dynamic Passthrough Clusters for a Group guide.
+// * End to end workspace management guide.
+// * getClusters data to retrieve a list of Cluster ids.
+// * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+// * getCurrentUser data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+// * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
+// * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+// * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+// * getNodeType data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
+// * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
+// * getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in Cluster and other resources.
+// * getZones data to fetch all available AWS availability zones on your workspace on AWS.
+//
 // ## Import
 //
 // The resource cluster can be imported using cluster id.
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
-// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

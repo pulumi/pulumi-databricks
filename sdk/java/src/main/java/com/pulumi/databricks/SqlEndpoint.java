@@ -88,28 +88,6 @@ import javax.annotation.Nullable;
  * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
  * * databricks.Grants to manage data access in Unity Catalog.
  * 
- * ## Import
- * 
- * You can import a `databricks_sql_endpoint` resource with ID like the following:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_sql_endpoint.this
- * 
- *   id = &#34;&lt;endpoint-id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this &lt;endpoint-id&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/sqlEndpoint:SqlEndpoint")
 public class SqlEndpoint extends com.pulumi.resources.CustomResource {

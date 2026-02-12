@@ -524,28 +524,6 @@ class Dashboard(pulumi.CustomResource):
 
         Dashboard using `file_path` attribute:
 
-        ## Import
-
-        You can import a `databricks_dashboard` resource with ID like the following:
-
-        hcl
-
-        import {
-
-          to = databricks_dashboard.this
-
-          id = "<dashboard-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/dashboard:Dashboard this <dashboard-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataset_catalog: Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
@@ -586,28 +564,6 @@ class Dashboard(pulumi.CustomResource):
         ```
 
         Dashboard using `file_path` attribute:
-
-        ## Import
-
-        You can import a `databricks_dashboard` resource with ID like the following:
-
-        hcl
-
-        import {
-
-          to = databricks_dashboard.this
-
-          id = "<dashboard-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/dashboard:Dashboard this <dashboard-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param DashboardArgs args: The arguments to use to populate this resource's properties.

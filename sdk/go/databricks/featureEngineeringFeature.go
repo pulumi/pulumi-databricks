@@ -13,26 +13,6 @@ import (
 )
 
 // [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-//
-// ## Import
-//
-// As of Pulumi v1.5, resources can be imported through configuration.
-//
-// hcl
-//
-// import {
-//
-//	id = "full_name"
-//
-//	to = databricks_feature_engineering_feature.this
-//
-// }
-//
-// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-//
-// ```sh
-// $ pulumi import databricks:index/featureEngineeringFeature:FeatureEngineeringFeature this "full_name"
-// ```
 type FeatureEngineeringFeature struct {
 	pulumi.CustomResourceState
 
@@ -45,7 +25,11 @@ type FeatureEngineeringFeature struct {
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionOutput `pulumi:"function"`
 	// The input columns from which the feature is computed
-	Inputs         pulumi.StringArrayOutput                         `pulumi:"inputs"`
+	Inputs pulumi.StringArrayOutput `pulumi:"inputs"`
+	// WARNING: This field is primarily intended for internal use by Databricks systems and
+	// is automatically populated when features are created through Databricks notebooks or jobs.
+	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext FeatureEngineeringFeatureLineageContextPtrOutput `pulumi:"lineageContext"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceOutput `pulumi:"source"`
@@ -104,7 +88,11 @@ type featureEngineeringFeatureState struct {
 	// The function by which the feature is computed
 	Function *FeatureEngineeringFeatureFunction `pulumi:"function"`
 	// The input columns from which the feature is computed
-	Inputs         []string                                 `pulumi:"inputs"`
+	Inputs []string `pulumi:"inputs"`
+	// WARNING: This field is primarily intended for internal use by Databricks systems and
+	// is automatically populated when features are created through Databricks notebooks or jobs.
+	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext *FeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
 	// The data source of the feature
 	Source *FeatureEngineeringFeatureSource `pulumi:"source"`
@@ -122,7 +110,11 @@ type FeatureEngineeringFeatureState struct {
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionPtrInput
 	// The input columns from which the feature is computed
-	Inputs         pulumi.StringArrayInput
+	Inputs pulumi.StringArrayInput
+	// WARNING: This field is primarily intended for internal use by Databricks systems and
+	// is automatically populated when features are created through Databricks notebooks or jobs.
+	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext FeatureEngineeringFeatureLineageContextPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourcePtrInput
@@ -144,7 +136,11 @@ type featureEngineeringFeatureArgs struct {
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunction `pulumi:"function"`
 	// The input columns from which the feature is computed
-	Inputs         []string                                 `pulumi:"inputs"`
+	Inputs []string `pulumi:"inputs"`
+	// WARNING: This field is primarily intended for internal use by Databricks systems and
+	// is automatically populated when features are created through Databricks notebooks or jobs.
+	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext *FeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSource `pulumi:"source"`
@@ -163,7 +159,11 @@ type FeatureEngineeringFeatureArgs struct {
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionInput
 	// The input columns from which the feature is computed
-	Inputs         pulumi.StringArrayInput
+	Inputs pulumi.StringArrayInput
+	// WARNING: This field is primarily intended for internal use by Databricks systems and
+	// is automatically populated when features are created through Databricks notebooks or jobs.
+	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext FeatureEngineeringFeatureLineageContextPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceInput
@@ -283,6 +283,10 @@ func (o FeatureEngineeringFeatureOutput) Inputs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringArrayOutput { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
+// WARNING: This field is primarily intended for internal use by Databricks systems and
+// is automatically populated when features are created through Databricks notebooks or jobs.
+// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 func (o FeatureEngineeringFeatureOutput) LineageContext() FeatureEngineeringFeatureLineageContextPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureLineageContextPtrOutput {
 		return v.LineageContext

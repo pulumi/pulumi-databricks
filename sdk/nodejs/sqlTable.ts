@@ -7,27 +7,213 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Import
+ * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
  *
- * This resource can be imported by its full name:
+ * A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
  *
- * hcl
+ * This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
  *
- * import {
+ * > This resource can only be used with a workspace-level provider!
  *
- *   to = databricks_sql_table.this
+ * > This resource doesn't handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it's recommended to use specialized tools, such as, [Liquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
  *
- *   id = "<catalog_name>.<schema_name>.<name>"
+ * ## Example Usage
  *
- * }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
  *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/sqlTable:SqlTable this "<catalog_name>.<schema_name>.<name>"
+ * const sandbox = new databricks.Catalog("sandbox", {
+ *     name: "sandbox",
+ *     comment: "this catalog is managed by terraform",
+ *     properties: {
+ *         purpose: "testing",
+ *     },
+ * });
+ * const things = new databricks.Schema("things", {
+ *     catalogName: sandbox.id,
+ *     name: "things",
+ *     comment: "this database is managed by terraform",
+ *     properties: {
+ *         kind: "various",
+ *     },
+ * });
+ * const thing = new databricks.SqlTable("thing", {
+ *     name: "quickstart_table",
+ *     catalogName: sandbox.name,
+ *     schemaName: things.name,
+ *     tableType: "MANAGED",
+ *     columns: [
+ *         {
+ *             name: "id",
+ *             type: "int",
+ *         },
+ *         {
+ *             name: "name",
+ *             type: "string",
+ *             comment: "name of thing",
+ *         },
+ *     ],
+ *     comment: "this table is managed by terraform",
+ * });
+ * const thingView = new databricks.SqlTable("thing_view", {
+ *     name: "quickstart_table_view",
+ *     catalogName: sandbox.name,
+ *     schemaName: things.name,
+ *     tableType: "VIEW",
+ *     clusterId: "0423-201305-xsrt82qn",
+ *     viewDefinition: std.format({
+ *         input: "SELECT name FROM %s WHERE id == 1",
+ *         args: [thing.id],
+ *     }).then(invoke => invoke.result),
+ *     comment: "this view is managed by terraform",
+ * });
  * ```
+ *
+ * ### Use an existing warehouse to create a table
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const _this = new databricks.SqlEndpoint("this", {
+ *     name: "endpoint",
+ *     clusterSize: "2X-Small",
+ *     maxNumClusters: 1,
+ * });
+ * const thing = new databricks.SqlTable("thing", {
+ *     name: "quickstart_table",
+ *     catalogName: sandbox.name,
+ *     schemaName: things.name,
+ *     tableType: "MANAGED",
+ *     warehouseId: _this.id,
+ *     columns: [
+ *         {
+ *             name: "id",
+ *             type: "int",
+ *         },
+ *         {
+ *             name: "name",
+ *             type: "string",
+ *             comment: "name of thing",
+ *         },
+ *     ],
+ *     comment: "this table is managed by terraform",
+ * });
+ * const thingView = new databricks.SqlTable("thing_view", {
+ *     name: "quickstart_table_view",
+ *     catalogName: sandbox.name,
+ *     schemaName: things.name,
+ *     tableType: "VIEW",
+ *     warehouseId: _this.id,
+ *     viewDefinition: std.format({
+ *         input: "SELECT name FROM %s WHERE id == 1",
+ *         args: [thing.id],
+ *     }).then(invoke => invoke.result),
+ *     comment: "this view is managed by terraform",
+ * });
+ * ```
+ *
+ * ## Use an Identity Column
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sandbox = new databricks.Catalog("sandbox", {
+ *     name: "sandbox",
+ *     comment: "this catalog is managed by terraform",
+ *     properties: {
+ *         purpose: "testing",
+ *     },
+ * });
+ * const things = new databricks.Schema("things", {
+ *     catalogName: sandbox.id,
+ *     name: "things",
+ *     comment: "this database is managed by terraform",
+ *     properties: {
+ *         kind: "various",
+ *     },
+ * });
+ * const thing = new databricks.SqlTable("thing", {
+ *     name: "identity_table",
+ *     catalogName: sandbox.name,
+ *     schemaName: things.name,
+ *     tableType: "MANAGED",
+ *     columns: [
+ *         {
+ *             name: "id",
+ *             type: "bigint",
+ *             identity: "default",
+ *         },
+ *         {
+ *             name: "name",
+ *             type: "string",
+ *             comment: "name of thing",
+ *         },
+ *     ],
+ *     comment: "this table is managed by terraform",
+ * });
+ * ```
+ *
+ * ## Enable automatic clustering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thing = new databricks.SqlTable("thing", {
+ *     name: "auto_cluster_table",
+ *     catalogName: sandbox.name,
+ *     schemaName: things.name,
+ *     tableType: "MANAGED",
+ *     clusterKeys: ["AUTO"],
+ *     columns: [{
+ *         name: "name",
+ *         type: "string",
+ *         comment: "name of thing",
+ *     }],
+ *     comment: "this table is managed by terraform",
+ * });
+ * ```
+ *
+ * ## Migration from `databricks.Table`
+ *
+ * The `databricks.Table` resource has been deprecated in favor of `databricks.SqlTable`. To migrate from `databricks.Table` to `databricks.SqlTable`:
+ *
+ * 1. Define a `databricks.SqlTable` resource with arguments corresponding to `databricks.Table`.
+ * 2. Add a `removed` block to remove the `databricks.Table` resource without deleting the existing table by using the `lifecycle` block. If you're using Pulumi version below v1.7.0, you will need to use the `terraform state rm` command instead.
+ * 3. Add an `import` block to add the `databricks.SqlTable` resource, corresponding to the existing table. If you're using Pulumi version below v1.5.0, you will need to use `pulumi import` command instead.
+ *
+ * For example, suppose we have the following `databricks.Table` resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.Table("this", {
+ *     catalogName: "catalog",
+ *     schemaName: "schema",
+ *     name: "table",
+ *     tableType: "MANAGED",
+ *     dataSourceFormat: "DELTA",
+ *     columns: [{
+ *         name: "col1",
+ *         typeName: "STRING",
+ *         typeJson: "{\"type\":\"STRING\"}",
+ *         comment: "comment",
+ *         nullable: true,
+ *     }],
+ *     comment: "comment",
+ *     properties: {
+ *         key: "value",
+ *     },
+ * });
+ * ```
+ *
+ * The migration would look like this:
  */
 export class SqlTable extends pulumi.CustomResource {
     /**
@@ -61,6 +247,9 @@ export class SqlTable extends pulumi.CustomResource {
      * Name of parent catalog. Change forces the creation of a new resource.
      */
     declare public readonly catalogName: pulumi.Output<string>;
+    /**
+     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+     */
     declare public readonly clusterId: pulumi.Output<string>;
     /**
      * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
@@ -201,6 +390,9 @@ export interface SqlTableState {
      * Name of parent catalog. Change forces the creation of a new resource.
      */
     catalogName?: pulumi.Input<string>;
+    /**
+     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+     */
     clusterId?: pulumi.Input<string>;
     /**
      * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
@@ -274,6 +466,9 @@ export interface SqlTableArgs {
      * Name of parent catalog. Change forces the creation of a new resource.
      */
     catalogName: pulumi.Input<string>;
+    /**
+     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+     */
     clusterId?: pulumi.Input<string>;
     /**
      * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.

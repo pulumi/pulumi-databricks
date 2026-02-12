@@ -211,28 +211,6 @@ namespace Pulumi.Databricks
     /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
     /// * databricks.Notebook data to export a notebook from Databricks Workspace.
     /// * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-    /// 
-    /// ## Import
-    /// 
-    /// The model serving resource can be imported using the name of the endpoint.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_model_serving.this
-    /// 
-    ///   id = "&lt;model-serving-endpoint-name&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/modelServing:ModelServing this &lt;model-serving-endpoint-name&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/modelServing:ModelServing")]
     public partial class ModelServing : global::Pulumi.CustomResource

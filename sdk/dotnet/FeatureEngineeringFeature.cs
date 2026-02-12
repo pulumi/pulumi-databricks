@@ -11,26 +11,6 @@ namespace Pulumi.Databricks
 {
     /// <summary>
     /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-    /// 
-    /// ## Import
-    /// 
-    /// As of Pulumi v1.5, resources can be imported through configuration.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   id = "full_name"
-    /// 
-    ///   to = databricks_feature_engineering_feature.this
-    /// 
-    /// }
-    /// 
-    /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/featureEngineeringFeature:FeatureEngineeringFeature this "full_name"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/featureEngineeringFeature:FeatureEngineeringFeature")]
     public partial class FeatureEngineeringFeature : global::Pulumi.CustomResource
@@ -65,6 +45,12 @@ namespace Pulumi.Databricks
         [Output("inputs")]
         public Output<ImmutableArray<string>> Inputs { get; private set; } = null!;
 
+        /// <summary>
+        /// WARNING: This field is primarily intended for internal use by Databricks systems and
+        /// is automatically populated when features are created through Databricks notebooks or jobs.
+        /// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+        /// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        /// </summary>
         [Output("lineageContext")]
         public Output<Outputs.FeatureEngineeringFeatureLineageContext?> LineageContext { get; private set; } = null!;
 
@@ -162,6 +148,12 @@ namespace Pulumi.Databricks
             set => _inputs = value;
         }
 
+        /// <summary>
+        /// WARNING: This field is primarily intended for internal use by Databricks systems and
+        /// is automatically populated when features are created through Databricks notebooks or jobs.
+        /// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+        /// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        /// </summary>
         [Input("lineageContext")]
         public Input<Inputs.FeatureEngineeringFeatureLineageContextArgs>? LineageContext { get; set; }
 
@@ -221,6 +213,12 @@ namespace Pulumi.Databricks
             set => _inputs = value;
         }
 
+        /// <summary>
+        /// WARNING: This field is primarily intended for internal use by Databricks systems and
+        /// is automatically populated when features are created through Databricks notebooks or jobs.
+        /// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+        /// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        /// </summary>
         [Input("lineageContext")]
         public Input<Inputs.FeatureEngineeringFeatureLineageContextGetArgs>? LineageContext { get; set; }
 

@@ -18,27 +18,334 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Import
+ * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
  * 
- * This resource can be imported by its full name:
+ * A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
  * 
- * hcl
+ * This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
  * 
- * import {
+ * &gt; This resource can only be used with a workspace-level provider!
  * 
- *   to = databricks_sql_table.this
+ * &gt; This resource doesn&#39;t handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it&#39;s recommended to use specialized tools, such as, [Liquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
  * 
- *   id = &#34;&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;&#34;
+ * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Catalog;
+ * import com.pulumi.databricks.CatalogArgs;
+ * import com.pulumi.databricks.Schema;
+ * import com.pulumi.databricks.SchemaArgs;
+ * import com.pulumi.databricks.SqlTable;
+ * import com.pulumi.databricks.SqlTableArgs;
+ * import com.pulumi.databricks.inputs.SqlTableColumnArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
+ *             .name("sandbox")
+ *             .comment("this catalog is managed by terraform")
+ *             .properties(Map.of("purpose", "testing"))
+ *             .build());
+ * 
+ *         var things = new Schema("things", SchemaArgs.builder()
+ *             .catalogName(sandbox.id())
+ *             .name("things")
+ *             .comment("this database is managed by terraform")
+ *             .properties(Map.of("kind", "various"))
+ *             .build());
+ * 
+ *         var thing = new SqlTable("thing", SqlTableArgs.builder()
+ *             .name("quickstart_table")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .tableType("MANAGED")
+ *             .columns(            
+ *                 SqlTableColumnArgs.builder()
+ *                     .name("id")
+ *                     .type("int")
+ *                     .build(),
+ *                 SqlTableColumnArgs.builder()
+ *                     .name("name")
+ *                     .type("string")
+ *                     .comment("name of thing")
+ *                     .build())
+ *             .comment("this table is managed by terraform")
+ *             .build());
+ * 
+ *         var thingView = new SqlTable("thingView", SqlTableArgs.builder()
+ *             .name("quickstart_table_view")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .tableType("VIEW")
+ *             .clusterId("0423-201305-xsrt82qn")
+ *             .viewDefinition(StdFunctions.format(FormatArgs.builder()
+ *                 .input("SELECT name FROM %s WHERE id == 1")
+ *                 .args(thing.id())
+ *                 .build()).result())
+ *             .comment("this view is managed by terraform")
+ *             .build());
+ * 
+ *     }
  * }
+ * }
+ * </pre>
  * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * ### Use an existing warehouse to create a table
  * 
- * bash
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
- * ```sh
- * $ pulumi import databricks:index/sqlTable:SqlTable this &#34;&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;&#34;
- * ```
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.SqlEndpoint;
+ * import com.pulumi.databricks.SqlEndpointArgs;
+ * import com.pulumi.databricks.SqlTable;
+ * import com.pulumi.databricks.SqlTableArgs;
+ * import com.pulumi.databricks.inputs.SqlTableColumnArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new SqlEndpoint("this", SqlEndpointArgs.builder()
+ *             .name("endpoint")
+ *             .clusterSize("2X-Small")
+ *             .maxNumClusters(1)
+ *             .build());
+ * 
+ *         var thing = new SqlTable("thing", SqlTableArgs.builder()
+ *             .name("quickstart_table")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .tableType("MANAGED")
+ *             .warehouseId(this_.id())
+ *             .columns(            
+ *                 SqlTableColumnArgs.builder()
+ *                     .name("id")
+ *                     .type("int")
+ *                     .build(),
+ *                 SqlTableColumnArgs.builder()
+ *                     .name("name")
+ *                     .type("string")
+ *                     .comment("name of thing")
+ *                     .build())
+ *             .comment("this table is managed by terraform")
+ *             .build());
+ * 
+ *         var thingView = new SqlTable("thingView", SqlTableArgs.builder()
+ *             .name("quickstart_table_view")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .tableType("VIEW")
+ *             .warehouseId(this_.id())
+ *             .viewDefinition(StdFunctions.format(FormatArgs.builder()
+ *                 .input("SELECT name FROM %s WHERE id == 1")
+ *                 .args(thing.id())
+ *                 .build()).result())
+ *             .comment("this view is managed by terraform")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Use an Identity Column
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Catalog;
+ * import com.pulumi.databricks.CatalogArgs;
+ * import com.pulumi.databricks.Schema;
+ * import com.pulumi.databricks.SchemaArgs;
+ * import com.pulumi.databricks.SqlTable;
+ * import com.pulumi.databricks.SqlTableArgs;
+ * import com.pulumi.databricks.inputs.SqlTableColumnArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
+ *             .name("sandbox")
+ *             .comment("this catalog is managed by terraform")
+ *             .properties(Map.of("purpose", "testing"))
+ *             .build());
+ * 
+ *         var things = new Schema("things", SchemaArgs.builder()
+ *             .catalogName(sandbox.id())
+ *             .name("things")
+ *             .comment("this database is managed by terraform")
+ *             .properties(Map.of("kind", "various"))
+ *             .build());
+ * 
+ *         var thing = new SqlTable("thing", SqlTableArgs.builder()
+ *             .name("identity_table")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .tableType("MANAGED")
+ *             .columns(            
+ *                 SqlTableColumnArgs.builder()
+ *                     .name("id")
+ *                     .type("bigint")
+ *                     .identity("default")
+ *                     .build(),
+ *                 SqlTableColumnArgs.builder()
+ *                     .name("name")
+ *                     .type("string")
+ *                     .comment("name of thing")
+ *                     .build())
+ *             .comment("this table is managed by terraform")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Enable automatic clustering
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.SqlTable;
+ * import com.pulumi.databricks.SqlTableArgs;
+ * import com.pulumi.databricks.inputs.SqlTableColumnArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var thing = new SqlTable("thing", SqlTableArgs.builder()
+ *             .name("auto_cluster_table")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .tableType("MANAGED")
+ *             .clusterKeys("AUTO")
+ *             .columns(SqlTableColumnArgs.builder()
+ *                 .name("name")
+ *                 .type("string")
+ *                 .comment("name of thing")
+ *                 .build())
+ *             .comment("this table is managed by terraform")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Migration from `databricks.Table`
+ * 
+ * The `databricks.Table` resource has been deprecated in favor of `databricks.SqlTable`. To migrate from `databricks.Table` to `databricks.SqlTable`:
+ * 
+ * 1. Define a `databricks.SqlTable` resource with arguments corresponding to `databricks.Table`.
+ * 2. Add a `removed` block to remove the `databricks.Table` resource without deleting the existing table by using the `lifecycle` block. If you&#39;re using Pulumi version below v1.7.0, you will need to use the `terraform state rm` command instead.
+ * 3. Add an `import` block to add the `databricks.SqlTable` resource, corresponding to the existing table. If you&#39;re using Pulumi version below v1.5.0, you will need to use `pulumi import` command instead.
+ * 
+ * For example, suppose we have the following `databricks.Table` resource:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Table;
+ * import com.pulumi.databricks.TableArgs;
+ * import com.pulumi.databricks.inputs.TableColumnArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Table("this", TableArgs.builder()
+ *             .catalogName("catalog")
+ *             .schemaName("schema")
+ *             .name("table")
+ *             .tableType("MANAGED")
+ *             .dataSourceFormat("DELTA")
+ *             .columns(TableColumnArgs.builder()
+ *                 .name("col1")
+ *                 .typeName("STRING")
+ *                 .typeJson("{\"type\":\"STRING\"}")
+ *                 .comment("comment")
+ *                 .nullable(true)
+ *                 .build())
+ *             .comment("comment")
+ *             .properties(Map.of("key", "value"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * The migration would look like this:
  * 
  */
 @ResourceType(type="databricks:index/sqlTable:SqlTable")
@@ -57,9 +364,17 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
     public Output<String> catalogName() {
         return this.catalogName;
     }
+    /**
+     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+     * 
+     */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
+    /**
+     * @return All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+     * 
+     */
     public Output<String> clusterId() {
         return this.clusterId;
     }

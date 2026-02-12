@@ -370,26 +370,6 @@ class PostgresEndpoint(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_postgres_endpoint.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/postgresEndpoint:PostgresEndpoint this "name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
@@ -541,26 +521,6 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "autoscaling_limit_max_cu": 8,
                 "suspend_timeout_duration": "600s",
             })
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_postgres_endpoint.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/postgresEndpoint:PostgresEndpoint this "name"
         ```
 
         :param str resource_name: The name of the resource.

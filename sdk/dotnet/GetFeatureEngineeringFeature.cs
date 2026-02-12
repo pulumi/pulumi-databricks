@@ -87,6 +87,12 @@ namespace Pulumi.Databricks
         /// (list of string) - The input columns from which the feature is computed
         /// </summary>
         public readonly ImmutableArray<string> Inputs;
+        /// <summary>
+        /// (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+        /// is automatically populated when features are created through Databricks notebooks or jobs.
+        /// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+        /// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureLineageContextResult LineageContext;
         /// <summary>
         /// (DataSource) - The data source of the feature

@@ -45,13 +45,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by predefined name `global`:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
-    /// ```
+    /// This resource can be imported by predefined name `Global`:
     /// </summary>
     [DatabricksResourceType("databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting")]
     public partial class DisableLegacyAccessSetting : global::Pulumi.CustomResource

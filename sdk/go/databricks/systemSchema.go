@@ -45,28 +45,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// This resource can be imported by the metastore id and schema name:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_system_schema.this
-//
-//	id = "<metastore_id>|<schema_name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
-// ```
 type SystemSchema struct {
 	pulumi.CustomResourceState
 

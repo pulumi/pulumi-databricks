@@ -22,28 +22,6 @@ import * as utilities from "./utilities";
  *     endpointType: "STANDARD",
  * });
  * ```
- *
- * ## Import
- *
- * The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_vector_search_endpoint.this
- *
- *   id = "<endpoint-name>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this <endpoint-name>
- * ```
  */
 export class VectorSearchEndpoint extends pulumi.CustomResource {
     /**

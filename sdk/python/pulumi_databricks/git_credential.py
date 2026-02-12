@@ -332,28 +332,6 @@ class GitCredential(pulumi.CustomResource):
 
         * Repo to manage Databricks Repos.
 
-        ## Import
-
-        The resource cluster can be imported using ID of Git credential that could be obtained via REST API:
-
-        hcl
-
-        import {
-
-          to = databricks_git_credential.this
-
-          id = "<git-credential-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/gitCredential:GitCredential this <git-credential-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force: specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
@@ -407,28 +385,6 @@ class GitCredential(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * Repo to manage Databricks Repos.
-
-        ## Import
-
-        The resource cluster can be imported using ID of Git credential that could be obtained via REST API:
-
-        hcl
-
-        import {
-
-          to = databricks_git_credential.this
-
-          id = "<git-credential-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/gitCredential:GitCredential this <git-credential-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param GitCredentialArgs args: The arguments to use to populate this resource's properties.

@@ -197,28 +197,6 @@ class MlflowModel(pulumi.CustomResource):
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
-        ## Import
-
-        The model resource can be imported using the name
-
-        hcl
-
-        import {
-
-          to = databricks_mlflow_model.this
-
-          id = "<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the MLflow model.
@@ -275,28 +253,6 @@ class MlflowModel(pulumi.CustomResource):
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-
-        ## Import
-
-        The model resource can be imported using the name
-
-        hcl
-
-        import {
-
-          to = databricks_mlflow_model.this
-
-          id = "<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
-        ```
 
         :param str resource_name: The name of the resource.
         :param MlflowModelArgs args: The arguments to use to populate this resource's properties.

@@ -837,28 +837,6 @@ import javax.annotation.Nullable;
  * 
  * You can control Databricks General Permissions through databricks.Permissions resource.
  * 
- * ## Import
- * 
- * The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and its name:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_grants.this
- * 
- *   id = &#34;catalog/abc&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/grants:Grants this catalog/abc
- * ```
- * 
  */
 @ResourceType(type="databricks:index/grants:Grants")
 public class Grants extends com.pulumi.resources.CustomResource {

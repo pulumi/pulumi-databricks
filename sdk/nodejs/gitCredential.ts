@@ -42,28 +42,6 @@ import * as utilities from "./utilities";
  * The following resources are often used in the same context:
  *
  * * databricks.Repo to manage Databricks Repos.
- *
- * ## Import
- *
- * The resource cluster can be imported using ID of Git credential that could be obtained via REST API:
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_git_credential.this
- *
- *   id = "<git-credential-id>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/gitCredential:GitCredential this <git-credential-id>
- * ```
  */
 export class GitCredential extends pulumi.CustomResource {
     /**

@@ -66,28 +66,6 @@ import (
 // * getTables data to list tables within Unity Catalog.
 // * getSchemas data to list schemas within Unity Catalog.
 // * getCatalogs data to list catalogs within Unity Catalog.
-//
-// ## Import
-//
-// This resource can be imported by its full name:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_schema.this
-//
-//	id = "<catalog_name>.<name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/schema:Schema this "<catalog_name>.<name>"
-// ```
 type Schema struct {
 	pulumi.CustomResourceState
 

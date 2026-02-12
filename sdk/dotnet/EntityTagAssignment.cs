@@ -68,26 +68,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// As of Pulumi v1.5, resources can be imported through configuration.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   id = "entity_type,entity_name,tag_key"
-    /// 
-    ///   to = databricks_entity_tag_assignment.this
-    /// 
-    /// }
-    /// 
-    /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment this "entity_type,entity_name,tag_key"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/entityTagAssignment:EntityTagAssignment")]
     public partial class EntityTagAssignment : global::Pulumi.CustomResource

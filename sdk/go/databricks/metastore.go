@@ -28,8 +28,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -115,8 +113,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -145,28 +141,6 @@ import (
 //		})
 //	}
 //
-// ```
-//
-// ## Import
-//
-// This resource can be imported by ID:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_metastore.this
-//
-//	id = "<id>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/metastore:Metastore this <id>
 // ```
 type Metastore struct {
 	pulumi.CustomResourceState

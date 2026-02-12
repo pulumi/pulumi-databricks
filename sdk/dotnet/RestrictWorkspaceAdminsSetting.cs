@@ -48,28 +48,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by predefined name `global`:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_restrict_workspace_admins_setting.this
-    /// 
-    ///   id = "global"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting")]
     public partial class RestrictWorkspaceAdminsSetting : global::Pulumi.CustomResource

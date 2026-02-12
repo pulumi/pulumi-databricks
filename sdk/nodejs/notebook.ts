@@ -10,28 +10,6 @@ import * as utilities from "./utilities";
  * This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with databricks.Notebook and databricks.getNotebookPaths data sources.
  *
  * > This resource can only be used with a workspace-level provider!
- *
- * ## Import
- *
- * The resource notebook can be imported using notebook path
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_notebook.this
- *
- *   id = "/path/to/notebook"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
- * ```
  */
 export class Notebook extends pulumi.CustomResource {
     /**

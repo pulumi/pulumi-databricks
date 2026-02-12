@@ -13,28 +13,6 @@ namespace Pulumi.Databricks
     /// This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
-    /// ## Import
-    /// 
-    /// The workspace file resource can be imported using workspace file path
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_workspace_file.this
-    /// 
-    ///   id = "/path/to/file"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/workspaceFile:WorkspaceFile")]
     public partial class WorkspaceFile : global::Pulumi.CustomResource

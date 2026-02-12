@@ -15,27 +15,81 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Import
+ * !&gt; This resource is deprecated and will be removed in future.
  * 
- * You can import a `databricks_sql_visualization` resource with ID like the following:
+ * &gt; Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling
  * 
- * hcl
+ * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
  * 
- * import {
+ * &gt; documentation for this resource is a work in progress.
  * 
- *   to = databricks_sql_visualization.this
+ * A visualization is always tied to a query. Every query may have one or more visualizations.
  * 
- *   id = &#34;&lt;query-id&gt;/&lt;visualization-id&gt;&#34;
+ * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.SqlVisualization;
+ * import com.pulumi.databricks.SqlVisualizationArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var q1v1 = new SqlVisualization("q1v1", SqlVisualizationArgs.builder()
+ *             .queryId(q1.id())
+ *             .type("table")
+ *             .name("My Table")
+ *             .description("Some Description")
+ *             .options(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("itemsPerPage", 25),
+ *                     jsonProperty("columns", jsonArray(
+ *                         jsonObject(
+ *                             jsonProperty("name", "p1"),
+ *                             jsonProperty("type", "string"),
+ *                             jsonProperty("title", "Parameter 1"),
+ *                             jsonProperty("displayAs", "string")
+ *                         ), 
+ *                         jsonObject(
+ *                             jsonProperty("name", "p2"),
+ *                             jsonProperty("type", "string"),
+ *                             jsonProperty("title", "Parameter 2"),
+ *                             jsonProperty("displayAs", "link"),
+ *                             jsonProperty("highlightLinks", true)
+ *                         )
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *     }
  * }
+ * }
+ * </pre>
  * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * ## Separating `visualization definition` from IAC configuration
  * 
- * bash
+ * Since `options` field contains the full JSON encoded string definition of how to render a visualization for the backend API - `sql/api/visualizations`, they can get quite verbose.
  * 
- * ```sh
- * $ pulumi import databricks:index/sqlVisualization:SqlVisualization this &lt;query-id&gt;/&lt;visualization-id&gt;
- * ```
+ * If you have lots of visualizations to declare, it might be cleaner to separate the `options` field and store them as separate `.json` files to be referenced.
+ * 
+ * ### Example
+ * 
+ * - directory tree
  * 
  */
 @ResourceType(type="databricks:index/sqlVisualization:SqlVisualization")

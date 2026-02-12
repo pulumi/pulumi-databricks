@@ -649,28 +649,6 @@ class ServicePrincipal(pulumi.CustomResource):
         * Grants to manage data access in Unity Catalog.
         * ServicePrincipalSecret to manage secrets for a service principal.
 
-        ## Import
-
-        The resource scim service principal can be imported using its SCIM id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
-
-        hcl
-
-        import {
-
-          to = databricks_service_principal.me
-
-          id = "<service-principal-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
@@ -777,28 +755,6 @@ class ServicePrincipal(pulumi.CustomResource):
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * Grants to manage data access in Unity Catalog.
         * ServicePrincipalSecret to manage secrets for a service principal.
-
-        ## Import
-
-        The resource scim service principal can be imported using its SCIM id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
-
-        hcl
-
-        import {
-
-          to = databricks_service_principal.me
-
-          id = "<service-principal-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalArgs args: The arguments to use to populate this resource's properties.

@@ -459,28 +459,6 @@ import * as utilities from "./utilities";
  * ## Other access control
  *
  * You can control Databricks General Permissions through databricks.Permissions resource.
- *
- * ## Import
- *
- * The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and its name:
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_grants.this
- *
- *   id = "catalog/abc"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/grants:Grants this catalog/abc
- * ```
  */
 export class Grants extends pulumi.CustomResource {
     /**

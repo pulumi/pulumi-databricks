@@ -49,28 +49,6 @@ namespace Pulumi.Databricks
     /// - databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
     /// - databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `SparkVersion` parameter in databricks.Cluster and other resources.
     /// - databricks.WorkspaceConf to manage workspace configuration for expert usage.
-    /// 
-    /// ## Import
-    /// 
-    /// The resource directory can be imported using directory path:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_directory.this
-    /// 
-    ///   id = "/path/to/directory"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/directory:Directory this /path/to/directory
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/directory:Directory")]
     public partial class Directory : global::Pulumi.CustomResource

@@ -418,28 +418,6 @@ class Share(pulumi.CustomResource):
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
 
-        ## Import
-
-        The share resource can be imported using the name of the share.
-
-        hcl
-
-        import {
-
-          to = databricks_share.this
-
-          id = "<share_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/share:Share this <share_name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
@@ -567,28 +545,6 @@ class Share(pulumi.CustomResource):
         * Recipient to create Delta Sharing recipients.
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
-
-        ## Import
-
-        The share resource can be imported using the name of the share.
-
-        hcl
-
-        import {
-
-          to = databricks_share.this
-
-          id = "<share_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/share:Share this <share_name>
-        ```
 
         :param str resource_name: The name of the resource.
         :param ShareArgs args: The arguments to use to populate this resource's properties.

@@ -188,28 +188,6 @@ import javax.annotation.Nullable;
  * * databricks.Grants to manage Delta Sharing permissions.
  * * databricks.getShares to read existing Delta Sharing shares.
  * 
- * ## Import
- * 
- * The share resource can be imported using the name of the share.
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_share.this
- * 
- *   id = &#34;&lt;share_name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/share:Share this &lt;share_name&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/share:Share")
 public class Share extends com.pulumi.resources.CustomResource {

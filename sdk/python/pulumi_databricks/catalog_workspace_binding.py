@@ -228,28 +228,6 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
             workspace_id=other["workspaceId"])
         ```
 
-        ## Import
-
-        This resource can be imported by using combination of workspace ID, securable type and name:
-
-        hcl
-
-        import {
-
-          to = databricks_catalog_workspace_binding.this
-
-          id = "<workspace_id>|<securable_type>|<securable_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
@@ -286,28 +264,6 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
         sandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding("sandbox",
             securable_name=sandbox.name,
             workspace_id=other["workspaceId"])
-        ```
-
-        ## Import
-
-        This resource can be imported by using combination of workspace ID, securable type and name:
-
-        hcl
-
-        import {
-
-          to = databricks_catalog_workspace_binding.this
-
-          id = "<workspace_id>|<securable_type>|<securable_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
         ```
 
         :param str resource_name: The name of the resource.

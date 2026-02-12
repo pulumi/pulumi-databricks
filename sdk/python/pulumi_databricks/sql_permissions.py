@@ -34,6 +34,16 @@ class SqlPermissionsArgs:
         :param pulumi.Input[_builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] cluster_id: Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `cluster_id` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               foo_table = databricks.SqlPermissions("foo_table", cluster_id=cluster_name["id"])
+               ```
+               
+               The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
         :param pulumi.Input[_builtins.str] database: Name of the database. Has a default value of `default`.
         :param pulumi.Input[_builtins.str] table: Name of the table. Can be combined with the `database`.
         :param pulumi.Input[_builtins.str] view: Name of the view. Can be combined with the `database`.
@@ -94,6 +104,18 @@ class SqlPermissionsArgs:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `cluster_id` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        foo_table = databricks.SqlPermissions("foo_table", cluster_id=cluster_name["id"])
+        ```
+
+        The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -162,6 +184,16 @@ class _SqlPermissionsState:
         :param pulumi.Input[_builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] cluster_id: Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `cluster_id` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               foo_table = databricks.SqlPermissions("foo_table", cluster_id=cluster_name["id"])
+               ```
+               
+               The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
         :param pulumi.Input[_builtins.str] database: Name of the database. Has a default value of `default`.
         :param pulumi.Input[_builtins.str] table: Name of the table. Can be combined with the `database`.
         :param pulumi.Input[_builtins.str] view: Name of the view. Can be combined with the `database`.
@@ -222,6 +254,18 @@ class _SqlPermissionsState:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `cluster_id` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        foo_table = databricks.SqlPermissions("foo_table", cluster_id=cluster_name["id"])
+        ```
+
+        The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -348,45 +392,21 @@ class SqlPermissions(pulumi.CustomResource):
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
 
-        ## Import
-
-        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
-
-        * `table/default.foo` - table `foo` in a `default` database. The `database` is always mandatory.
-
-        * `view/bar.foo` - view `foo` in `bar` database.
-
-        * `database/bar` - `bar` database.
-
-        * `catalog/` - entire catalog. `/` suffix is mandatory.
-
-        * `any file/` - direct access to any file. `/` suffix is mandatory.
-
-        * `anonymous function/` - anonymous function. `/` suffix is mandatory.
-
-        hcl
-
-        import {
-
-          to = databricks_sql_permissions.foo
-
-          id = "/<object-type>/<object-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] cluster_id: Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `cluster_id` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               foo_table = databricks.SqlPermissions("foo_table", cluster_id=cluster_name["id"])
+               ```
+               
+               The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
         :param pulumi.Input[_builtins.str] database: Name of the database. Has a default value of `default`.
         :param pulumi.Input[_builtins.str] table: Name of the table. Can be combined with the `database`.
         :param pulumi.Input[_builtins.str] view: Name of the view. Can be combined with the `database`.
@@ -456,40 +476,6 @@ class SqlPermissions(pulumi.CustomResource):
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
 
-        ## Import
-
-        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
-
-        * `table/default.foo` - table `foo` in a `default` database. The `database` is always mandatory.
-
-        * `view/bar.foo` - view `foo` in `bar` database.
-
-        * `database/bar` - `bar` database.
-
-        * `catalog/` - entire catalog. `/` suffix is mandatory.
-
-        * `any file/` - direct access to any file. `/` suffix is mandatory.
-
-        * `anonymous function/` - anonymous function. `/` suffix is mandatory.
-
-        hcl
-
-        import {
-
-          to = databricks_sql_permissions.foo
-
-          id = "/<object-type>/<object-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param SqlPermissionsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -558,6 +544,16 @@ class SqlPermissions(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] cluster_id: Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `cluster_id` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               foo_table = databricks.SqlPermissions("foo_table", cluster_id=cluster_name["id"])
+               ```
+               
+               The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
         :param pulumi.Input[_builtins.str] database: Name of the database. Has a default value of `default`.
         :param pulumi.Input[_builtins.str] table: Name of the table. Can be combined with the `database`.
         :param pulumi.Input[_builtins.str] view: Name of the view. Can be combined with the `database`.
@@ -603,6 +599,18 @@ class SqlPermissions(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `cluster_id` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        foo_table = databricks.SqlPermissions("foo_table", cluster_id=cluster_name["id"])
+        ```
+
+        The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
+        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property

@@ -68,28 +68,6 @@ import javax.annotation.Nullable;
  * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
  * 
- * ## Import
- * 
- * This resource can be imported by name:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_artifact_allowlist.this
- * 
- *   id = &#34;&lt;metastore_id&gt;|&lt;artifact_type&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this &#34;&lt;metastore_id&gt;|&lt;artifact_type&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/artifactAllowlist:ArtifactAllowlist")
 public class ArtifactAllowlist extends com.pulumi.resources.CustomResource {

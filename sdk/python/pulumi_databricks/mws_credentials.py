@@ -236,6 +236,12 @@ class MwsCredentials(pulumi.CustomResource):
                  role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        This resource to configure the cross-account role for creation of new workspaces within AWS.
+
+        > This resource can only be used with an account-level provider!
+
+        Please follow this complete runnable example with new VPC and new workspace setup. Please pay special attention to the fact that there you have two different instances of a databricks provider - one for deploying workspaces (with `host="https://accounts.cloud.databricks.com/"`) and another for the workspace you've created with `MwsWorkspaces` resource. If you want both creation of workspaces & clusters within workspace within the same terraform module (essentially same directory), you should use the provider aliasing feature of Pulumi. We strongly recommend having one terraform module for creation of workspace + PAT token and the rest in different modules.
+
         ## Example Usage
 
         ```python
@@ -273,28 +279,6 @@ class MwsCredentials(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
-
-        ## Import
-
-        This resource can be imported by the combination of its identifier and the account id:
-
-        hcl
-
-        import {
-
-          to = databricks_mws_credentials.this
-
-          id = "<account_id>/<credentials_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -311,6 +295,12 @@ class MwsCredentials(pulumi.CustomResource):
                  args: MwsCredentialsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource to configure the cross-account role for creation of new workspaces within AWS.
+
+        > This resource can only be used with an account-level provider!
+
+        Please follow this complete runnable example with new VPC and new workspace setup. Please pay special attention to the fact that there you have two different instances of a databricks provider - one for deploying workspaces (with `host="https://accounts.cloud.databricks.com/"`) and another for the workspace you've created with `MwsWorkspaces` resource. If you want both creation of workspaces & clusters within workspace within the same terraform module (essentially same directory), you should use the provider aliasing feature of Pulumi. We strongly recommend having one terraform module for creation of workspace + PAT token and the rest in different modules.
+
         ## Example Usage
 
         ```python
@@ -348,28 +338,6 @@ class MwsCredentials(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
-
-        ## Import
-
-        This resource can be imported by the combination of its identifier and the account id:
-
-        hcl
-
-        import {
-
-          to = databricks_mws_credentials.this
-
-          id = "<account_id>/<credentials_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param MwsCredentialsArgs args: The arguments to use to populate this resource's properties.

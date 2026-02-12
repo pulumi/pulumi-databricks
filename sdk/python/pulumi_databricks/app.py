@@ -655,28 +655,6 @@ class App(pulumi.CustomResource):
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
 
-        ## Import
-
-        This resource can be imported by name:
-
-        hcl
-
-        import {
-
-          to = databricks_app.this
-
-          id = "<app_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/app:App this <app_name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
@@ -739,28 +717,6 @@ class App(pulumi.CustomResource):
         * ModelServing to serve this model on a Databricks serving endpoint.
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
-
-        ## Import
-
-        This resource can be imported by name:
-
-        hcl
-
-        import {
-
-          to = databricks_app.this
-
-          id = "<app_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/app:App this <app_name>
-        ```
 
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.

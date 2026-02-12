@@ -8,26 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
- *
- * ## Import
- *
- * As of Pulumi v1.5, resources can be imported through configuration.
- *
- * hcl
- *
- * import {
- *
- *   id = "full_name"
- *
- *   to = databricks_feature_engineering_feature.this
- *
- * }
- *
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- *
- * ```sh
- * $ pulumi import databricks:index/featureEngineeringFeature:FeatureEngineeringFeature this "full_name"
- * ```
  */
 export class FeatureEngineeringFeature extends pulumi.CustomResource {
     /**
@@ -77,6 +57,12 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      * The input columns from which the feature is computed
      */
     declare public readonly inputs: pulumi.Output<string[]>;
+    /**
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
+     * is automatically populated when features are created through Databricks notebooks or jobs.
+     * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+     * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+     */
     declare public readonly lineageContext: pulumi.Output<outputs.FeatureEngineeringFeatureLineageContext | undefined>;
     /**
      * The data source of the feature
@@ -160,6 +146,12 @@ export interface FeatureEngineeringFeatureState {
      * The input columns from which the feature is computed
      */
     inputs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
+     * is automatically populated when features are created through Databricks notebooks or jobs.
+     * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+     * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+     */
     lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext>;
     /**
      * The data source of the feature
@@ -195,6 +187,12 @@ export interface FeatureEngineeringFeatureArgs {
      * The input columns from which the feature is computed
      */
     inputs: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
+     * is automatically populated when features are created through Databricks notebooks or jobs.
+     * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+     * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+     */
     lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext>;
     /**
      * The data source of the feature

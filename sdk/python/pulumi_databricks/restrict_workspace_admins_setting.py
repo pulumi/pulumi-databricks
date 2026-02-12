@@ -153,28 +153,6 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         })
         ```
 
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_restrict_workspace_admins_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: The configuration details.
@@ -213,28 +191,6 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         this = databricks.RestrictWorkspaceAdminsSetting("this", restrict_workspace_admins={
             "status": "RESTRICT_TOKENS_AND_JOB_RUN_AS",
         })
-        ```
-
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_restrict_workspace_admins_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
         ```
 
         :param str resource_name: The name of the resource.

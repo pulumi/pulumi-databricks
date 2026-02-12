@@ -151,12 +151,6 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
 
         This resource can be imported by predefined name `global`:
 
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']] disable_legacy_access: The configuration details.
@@ -194,12 +188,6 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by predefined name `global`:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
-        ```
 
         :param str resource_name: The name of the resource.
         :param DisableLegacyAccessSettingArgs args: The arguments to use to populate this resource's properties.

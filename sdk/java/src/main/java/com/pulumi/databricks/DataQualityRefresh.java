@@ -106,26 +106,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;object_type,object_id,refresh_id&#34;
- * 
- *   to = databricks_data_quality_refresh.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/dataQualityRefresh:DataQualityRefresh this &#34;object_type,object_id,refresh_id&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/dataQualityRefresh:DataQualityRefresh")
 public class DataQualityRefresh extends com.pulumi.resources.CustomResource {

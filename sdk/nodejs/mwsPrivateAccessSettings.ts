@@ -81,26 +81,6 @@ import * as utilities from "./utilities";
  * * databricks.MwsVpcEndpoint to register awsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
  * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
  * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
- *
- * ## Import
- *
- * This resource can be imported by Databricks account ID and private access settings ID.
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_mws_private_access_settings.this
- *
- *   id = "<account_id>/<private_access_settings_id>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * ```sh
- * $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this '<account_id>/<private_access_settings_id>'
- * ```
  */
 export class MwsPrivateAccessSettings extends pulumi.CustomResource {
     /**

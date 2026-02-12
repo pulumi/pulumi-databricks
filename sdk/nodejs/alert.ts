@@ -7,27 +7,148 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Import
+ * This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).  It supersedes databricks.SqlAlert resource - see migration guide below for more details.
  *
- * This resource can be imported using alert ID:
+ * > This resource can only be used with a workspace-level provider!
  *
- * hcl
+ * ## Example Usage
  *
- * import {
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
  *
- *   to = databricks_alert.this
- *
- *   id = "<alert-id>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/alert:Alert this <alert-id>
+ * const sharedDir = new databricks.Directory("shared_dir", {path: "/Shared/Queries"});
+ * // This will be replaced with new databricks_query resource
+ * const _this = new databricks.Query("this", {
+ *     warehouseId: example.id,
+ *     displayName: "My Query Name",
+ *     queryText: "SELECT 42 as value",
+ *     parentPath: sharedDir.path,
+ * });
+ * const alert = new databricks.Alert("alert", {
+ *     queryId: _this.id,
+ *     displayName: "TF new alert",
+ *     parentPath: sharedDir.path,
+ *     condition: {
+ *         op: "GREATER_THAN",
+ *         operand: {
+ *             column: {
+ *                 name: "value",
+ *             },
+ *         },
+ *         threshold: {
+ *             value: {
+ *                 doubleValue: 42,
+ *             },
+ *         },
+ *     },
+ * });
  * ```
+ *
+ * ## Migrating from `databricks.SqlAlert` resource
+ *
+ * Under the hood, the new resource uses the same data as the `databricks.SqlAlert`, but is exposed via a different API. This means that we can migrate existing alerts without recreating them.
+ *
+ * > It's also recommended to migrate to the `databricks.Query` resource - see databricks.Query for more details.
+ *
+ * This operation is done in few steps:
+ *
+ * * Record the ID of existing `databricks.SqlAlert`, for example, by executing the `terraform state show databricks_sql_alert.alert` command.
+ * * Create the code for the new implementation by performing the following changes:
+ *   * the `name` attribute is now named `displayName`
+ *   * the `parent` (if exists) is renamed to `parentPath` attribute and should be converted from `folders/object_id` to the actual path.
+ *   * the `options` block is converted into the `condition` block with the following changes:
+ *     * the value of the `op` attribute should be converted from a mathematical operator into a string name, like, `>` is becoming `GREATER_THAN`, `==` is becoming `EQUAL`, etc.
+ *     * the `column` attribute is becoming the `operand` block
+ *     * the `value` attribute is becoming the `threshold` block.  **Please note that the old implementation always used strings so you may have changes after import if you use `doubleValue` or `boolValue` inside the block.**
+ *   * the `rearm` attribute is renamed to `secondsToRetrigger`.
+ *
+ * For example, if we have the original `databricks.SqlAlert` defined as:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const alert = new databricks.SqlAlert("alert", {
+ *     queryId: _this.id,
+ *     name: "My Alert",
+ *     parent: `folders/${sharedDir.objectId}`,
+ *     options: {
+ *         column: "value",
+ *         op: ">",
+ *         value: "42",
+ *         muted: false,
+ *     },
+ * });
+ * ```
+ *
+ * we'll have a new resource defined as:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const alert = new databricks.Alert("alert", {
+ *     queryId: _this.id,
+ *     displayName: "My Alert",
+ *     parentPath: sharedDir.path,
+ *     condition: {
+ *         op: "GREATER_THAN",
+ *         operand: {
+ *             column: {
+ *                 name: "value",
+ *             },
+ *         },
+ *         threshold: {
+ *             value: {
+ *                 doubleValue: 42,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Access Control
+ *
+ * databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const alertUsage = new databricks.Permissions("alert_usage", {
+ *     sqlAlertId: alert.id,
+ *     accessControls: [{
+ *         groupName: "users",
+ *         permissionLevel: "CAN_RUN",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Access Control
+ *
+ * databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const alertUsage = new databricks.Permissions("alert_usage", {
+ *     sqlAlertId: alert.id,
+ *     accessControls: [{
+ *         groupName: "users",
+ *         permissionLevel: "CAN_RUN",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * databricks.Query to manage [Databricks SQL Queries](https://docs.databricks.com/sql/user/queries/index.html).
+ * * databricks.SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
  */
 export class Alert extends pulumi.CustomResource {
     /**

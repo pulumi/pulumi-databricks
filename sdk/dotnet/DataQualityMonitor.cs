@@ -49,26 +49,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// As of Pulumi v1.5, resources can be imported through configuration.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   id = "object_type,object_id"
-    /// 
-    ///   to = databricks_data_quality_monitor.this
-    /// 
-    /// }
-    /// 
-    /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/dataQualityMonitor:DataQualityMonitor this "object_type,object_id"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/dataQualityMonitor:DataQualityMonitor")]
     public partial class DataQualityMonitor : global::Pulumi.CustomResource

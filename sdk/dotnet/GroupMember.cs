@@ -71,28 +71,6 @@ namespace Pulumi.Databricks
     /// * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
     /// * databricks.User data to retrieve information about databricks_user.
     /// * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
-    /// 
-    /// ## Import
-    /// 
-    /// You can import a `databricks_group_member` resource with name `my_group_member` like the following:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_group_member.my_group_member
-    /// 
-    ///   id = "&lt;group_id&gt;|&lt;member_id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/groupMember:GroupMember my_group_member "&lt;group_id&gt;|&lt;member_id&gt;"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/groupMember:GroupMember")]
     public partial class GroupMember : global::Pulumi.CustomResource

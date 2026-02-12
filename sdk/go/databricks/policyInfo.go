@@ -119,26 +119,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// As of Pulumi v1.5, resources can be imported through configuration.
-//
-// hcl
-//
-// import {
-//
-//	id = "on_securable_type,on_securable_fullname,name"
-//
-//	to = databricks_policy_info.this
-//
-// }
-//
-// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-//
-// ```sh
-// $ pulumi import databricks:index/policyInfo:PolicyInfo this "on_securable_type,on_securable_fullname,name"
-// ```
 type PolicyInfo struct {
 	pulumi.CustomResourceState
 

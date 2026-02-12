@@ -214,26 +214,6 @@ class BudgetPolicy(pulumi.CustomResource):
             }])
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "policy_id"
-
-          to = databricks_budget_policy.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/budgetPolicy:BudgetPolicy this "policy_id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] binding_workspace_ids: List of workspaces that this budget policy will be exclusively bound to.
@@ -274,26 +254,6 @@ class BudgetPolicy(pulumi.CustomResource):
                 "key": "mykey",
                 "value": "myvalue",
             }])
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "policy_id"
-
-          to = databricks_budget_policy.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/budgetPolicy:BudgetPolicy this "policy_id"
         ```
 
         :param str resource_name: The name of the resource.

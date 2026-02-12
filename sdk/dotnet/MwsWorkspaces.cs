@@ -392,40 +392,6 @@ namespace Pulumi.Databricks
     /// * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
     /// * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
     /// * databricks.MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by Databricks account ID and workspace ID.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_mws_workspaces.this
-    /// 
-    ///   id = "&lt;account_id&gt;/&lt;workspace_id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this "&lt;account_id&gt;/&lt;workspace_id&gt;"
-    /// ```
-    /// 
-    /// ~&gt; Not all fields of `databricks_mws_workspaces` can be updated without causing the workspace to be recreated.
-    /// 
-    ///    If the configuration for these immutable fields does not match the existing workspace, the workspace will
-    /// 
-    ///    be deleted and recreated in the next `pulumi up`. After importing, verify that the configuration
-    /// 
-    ///    matches the existing resource by running `pulumi preview`. The only fields that can be updated are
-    /// 
-    ///    `credentials_id`, `network_id`, `storage_customer_managed_key_id`, `private_access_settings_id`,
-    /// 
-    ///    `managed_services_customer_managed_key_id`, and `custom_tags`.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsWorkspaces:MwsWorkspaces")]
     public partial class MwsWorkspaces : global::Pulumi.CustomResource

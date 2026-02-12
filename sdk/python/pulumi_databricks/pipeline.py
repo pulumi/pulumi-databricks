@@ -1279,28 +1279,6 @@ class Pipeline(pulumi.CustomResource):
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 
-        ## Import
-
-        The resource job can be imported using the id of the pipeline
-
-        hcl
-
-        import {
-
-          to = databricks_pipeline.this
-
-          id = "<pipeline-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
@@ -1411,28 +1389,6 @@ class Pipeline(pulumi.CustomResource):
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-
-        ## Import
-
-        The resource job can be imported using the id of the pipeline
-
-        hcl
-
-        import {
-
-          to = databricks_pipeline.this
-
-          id = "<pipeline-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param PipelineArgs args: The arguments to use to populate this resource's properties.

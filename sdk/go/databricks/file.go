@@ -92,8 +92,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -128,28 +126,6 @@ import (
 // * WorkspaceFile
 // * End to end workspace management guide.
 // * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
-//
-// ## Import
-//
-// The resource `databricks_file` can be imported using the path of the file:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_file.this
-//
-//	id = "<path>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/file:File this <path>
-// ```
 type File struct {
 	pulumi.CustomResourceState
 

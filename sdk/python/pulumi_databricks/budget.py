@@ -295,28 +295,6 @@ class Budget(pulumi.CustomResource):
 
         * MwsWorkspaces to set up Databricks workspaces.
 
-        ## Import
-
-        This resource can be imported by Databricks account ID and Budget:
-
-        hcl
-
-        import {
-
-          to = databricks_budget.this
-
-          id = "<account_id>|<budget_configuration_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/budget:Budget this "<account_id>|<budget_configuration_id>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The ID of the Databricks Account.
@@ -383,28 +361,6 @@ class Budget(pulumi.CustomResource):
         The following resources are used in the context:
 
         * MwsWorkspaces to set up Databricks workspaces.
-
-        ## Import
-
-        This resource can be imported by Databricks account ID and Budget:
-
-        hcl
-
-        import {
-
-          to = databricks_budget.this
-
-          id = "<account_id>|<budget_configuration_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/budget:Budget this "<account_id>|<budget_configuration_id>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param BudgetArgs args: The arguments to use to populate this resource's properties.

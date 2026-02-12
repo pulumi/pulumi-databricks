@@ -143,28 +143,6 @@ class GroupMember(pulumi.CustomResource):
         * User data to retrieve information about databricks_user.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
 
-        ## Import
-
-        You can import a `databricks_group_member` resource with name `my_group_member` like the following:
-
-        hcl
-
-        import {
-
-          to = databricks_group_member.my_group_member
-
-          id = "<group_id>|<member_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/groupMember:GroupMember my_group_member "<group_id>|<member_id>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
@@ -215,28 +193,6 @@ class GroupMember(pulumi.CustomResource):
         * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
         * User data to retrieve information about databricks_user.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
-
-        ## Import
-
-        You can import a `databricks_group_member` resource with name `my_group_member` like the following:
-
-        hcl
-
-        import {
-
-          to = databricks_group_member.my_group_member
-
-          id = "<group_id>|<member_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/groupMember:GroupMember my_group_member "<group_id>|<member_id>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param GroupMemberArgs args: The arguments to use to populate this resource's properties.

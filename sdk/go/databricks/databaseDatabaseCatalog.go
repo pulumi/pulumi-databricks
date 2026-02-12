@@ -109,26 +109,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// As of Pulumi v1.5, resources can be imported through configuration.
-//
-// hcl
-//
-// import {
-//
-//	id = "name"
-//
-//	to = databricks_database_database_catalog.this
-//
-// }
-//
-// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-//
-// ```sh
-// $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog this "name"
-// ```
 type DatabaseDatabaseCatalog struct {
 	pulumi.CustomResourceState
 

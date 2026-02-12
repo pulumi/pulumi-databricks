@@ -150,48 +150,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// When using a workspace-level provider to manage storage credentials, this resource can be imported by name:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_storage_credential.this
-//
-//	id = "<storage_credential_name>"
-//
-// }
-//
-// When using an account-level provider to manage storage credentials, use the format `<metastore_id>|<storage_credential_name>`:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_storage_credential.this
-//
-//	id = "<metastore_id>|<storage_credential_name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// # When using a workspace-level provider
-//
-// ```sh
-// $ pulumi import databricks:index/storageCredential:StorageCredential this <storage_credential_name>
-// ```
-//
-// # When using an account-level provider
-//
-// ```sh
-// $ pulumi import databricks:index/storageCredential:StorageCredential this '<metastore_id>|<storage_credential_name>'
-// ```
 type StorageCredential struct {
 	pulumi.CustomResourceState
 

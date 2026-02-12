@@ -18,27 +18,279 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Import
+ * This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).  It supersedes databricks.SqlAlert resource - see migration guide below for more details.
  * 
- * This resource can be imported using alert ID:
+ * &gt; This resource can only be used with a workspace-level provider!
  * 
- * hcl
+ * ## Example Usage
  * 
- * import {
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
- *   to = databricks_alert.this
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Directory;
+ * import com.pulumi.databricks.DirectoryArgs;
+ * import com.pulumi.databricks.Query;
+ * import com.pulumi.databricks.QueryArgs;
+ * import com.pulumi.databricks.Alert;
+ * import com.pulumi.databricks.AlertArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionOperandArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionOperandColumnArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionThresholdArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionThresholdValueArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
- *   id = &#34;&lt;alert-id&gt;&#34;
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
  * 
+ *     public static void stack(Context ctx) {
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()
+ *             .path("/Shared/Queries")
+ *             .build());
+ * 
+ *         // This will be replaced with new databricks_query resource
+ *         var this_ = new Query("this", QueryArgs.builder()
+ *             .warehouseId(example.id())
+ *             .displayName("My Query Name")
+ *             .queryText("SELECT 42 as value")
+ *             .parentPath(sharedDir.path())
+ *             .build());
+ * 
+ *         var alert = new Alert("alert", AlertArgs.builder()
+ *             .queryId(this_.id())
+ *             .displayName("TF new alert")
+ *             .parentPath(sharedDir.path())
+ *             .condition(AlertConditionArgs.builder()
+ *                 .op("GREATER_THAN")
+ *                 .operand(AlertConditionOperandArgs.builder()
+ *                     .column(AlertConditionOperandColumnArgs.builder()
+ *                         .name("value")
+ *                         .build())
+ *                     .build())
+ *                 .threshold(AlertConditionThresholdArgs.builder()
+ *                     .value(AlertConditionThresholdValueArgs.builder()
+ *                         .doubleValue(42.0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
  * }
+ * }
+ * </pre>
  * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * ## Migrating from `databricks.SqlAlert` resource
  * 
- * bash
+ * Under the hood, the new resource uses the same data as the `databricks.SqlAlert`, but is exposed via a different API. This means that we can migrate existing alerts without recreating them.
  * 
- * ```sh
- * $ pulumi import databricks:index/alert:Alert this &lt;alert-id&gt;
- * ```
+ * &gt; It&#39;s also recommended to migrate to the `databricks.Query` resource - see databricks.Query for more details.
+ * 
+ * This operation is done in few steps:
+ * 
+ * * Record the ID of existing `databricks.SqlAlert`, for example, by executing the `terraform state show databricks_sql_alert.alert` command.
+ * * Create the code for the new implementation by performing the following changes:
+ *   * the `name` attribute is now named `displayName`
+ *   * the `parent` (if exists) is renamed to `parentPath` attribute and should be converted from `folders/object_id` to the actual path.
+ *   * the `options` block is converted into the `condition` block with the following changes:
+ *     * the value of the `op` attribute should be converted from a mathematical operator into a string name, like, `&gt;` is becoming `GREATER_THAN`, `==` is becoming `EQUAL`, etc.
+ *     * the `column` attribute is becoming the `operand` block
+ *     * the `value` attribute is becoming the `threshold` block.  **Please note that the old implementation always used strings so you may have changes after import if you use `doubleValue` or `boolValue` inside the block.**
+ *   * the `rearm` attribute is renamed to `secondsToRetrigger`.
+ * 
+ * For example, if we have the original `databricks.SqlAlert` defined as:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.SqlAlert;
+ * import com.pulumi.databricks.SqlAlertArgs;
+ * import com.pulumi.databricks.inputs.SqlAlertOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var alert = new SqlAlert("alert", SqlAlertArgs.builder()
+ *             .queryId(this_.id())
+ *             .name("My Alert")
+ *             .parent(String.format("folders/%s", sharedDir.objectId()))
+ *             .options(SqlAlertOptionsArgs.builder()
+ *                 .column("value")
+ *                 .op(">")
+ *                 .value("42")
+ *                 .muted(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * we&#39;ll have a new resource defined as:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Alert;
+ * import com.pulumi.databricks.AlertArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionOperandArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionOperandColumnArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionThresholdArgs;
+ * import com.pulumi.databricks.inputs.AlertConditionThresholdValueArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var alert = new Alert("alert", AlertArgs.builder()
+ *             .queryId(this_.id())
+ *             .displayName("My Alert")
+ *             .parentPath(sharedDir.path())
+ *             .condition(AlertConditionArgs.builder()
+ *                 .op("GREATER_THAN")
+ *                 .operand(AlertConditionOperandArgs.builder()
+ *                     .column(AlertConditionOperandColumnArgs.builder()
+ *                         .name("value")
+ *                         .build())
+ *                     .build())
+ *                 .threshold(AlertConditionThresholdArgs.builder()
+ *                     .value(AlertConditionThresholdValueArgs.builder()
+ *                         .doubleValue(42.0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Access Control
+ * 
+ * databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var alertUsage = new Permissions("alertUsage", PermissionsArgs.builder()
+ *             .sqlAlertId(alert.id())
+ *             .accessControls(PermissionsAccessControlArgs.builder()
+ *                 .groupName("users")
+ *                 .permissionLevel("CAN_RUN")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Access Control
+ * 
+ * databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var alertUsage = new Permissions("alertUsage", PermissionsArgs.builder()
+ *             .sqlAlertId(alert.id())
+ *             .accessControls(PermissionsAccessControlArgs.builder()
+ *                 .groupName("users")
+ *                 .permissionLevel("CAN_RUN")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.Query to manage [Databricks SQL Queries](https://docs.databricks.com/sql/user/queries/index.html).
+ * * databricks.SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
  * 
  */
 @ResourceType(type="databricks:index/alert:Alert")

@@ -44,28 +44,6 @@ namespace Pulumi.Databricks
     /// ```
     /// 
     /// Dashboard using `FilePath` attribute:
-    /// 
-    /// ## Import
-    /// 
-    /// You can import a `databricks_dashboard` resource with ID like the following:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_dashboard.this
-    /// 
-    ///   id = "&lt;dashboard-id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/dashboard:Dashboard this &lt;dashboard-id&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/dashboard:Dashboard")]
     public partial class Dashboard : global::Pulumi.CustomResource

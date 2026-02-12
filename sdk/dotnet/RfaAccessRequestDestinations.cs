@@ -66,26 +66,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// As of Pulumi v1.5, resources can be imported through configuration.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   id = "securable_type,full_name"
-    /// 
-    ///   to = databricks_rfa_access_request_destinations.this
-    /// 
-    /// }
-    /// 
-    /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this "securable_type,full_name"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations")]
     public partial class RfaAccessRequestDestinations : global::Pulumi.CustomResource

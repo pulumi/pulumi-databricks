@@ -55,12 +55,6 @@ import (
 // ## Import
 //
 // This resource can be imported by predefined name `global`:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
-// ```
 type DisableLegacyAccessSetting struct {
 	pulumi.CustomResourceState
 

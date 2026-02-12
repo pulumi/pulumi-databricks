@@ -62,26 +62,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// As of Pulumi v1.5, resources can be imported through configuration.
-//
-// hcl
-//
-// import {
-//
-//	id = "entity_type,entity_id,tag_key"
-//
-//	to = databricks_workspace_entity_tag_assignment.this
-//
-// }
-//
-// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-//
-// ```sh
-// $ pulumi import databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment this "entity_type,entity_id,tag_key"
-// ```
 type WorkspaceEntityTagAssignment struct {
 	pulumi.CustomResourceState
 

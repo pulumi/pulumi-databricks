@@ -879,7 +879,7 @@ import * as utilities from "./utilities";
  * The resource permissions can be imported using the object id
  *
  * ```sh
- * $ pulumi import databricks:index/permissions:Permissions databricks_permissions <object type>/<object id>
+ * terraform import databricks_permissions <object type>/<object id>
  * ```
  */
 export class Permissions extends pulumi.CustomResource {

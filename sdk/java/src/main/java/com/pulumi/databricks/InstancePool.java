@@ -95,28 +95,6 @@ import javax.annotation.Nullable;
  * * databricks.Group and databricks.User can control which groups or individual users can create instance pools.
  * * databricks.Permissions can control which groups or individual users can *Manage* or *Attach to* individual instance pools.
  * 
- * ## Import
- * 
- * The resource instance pool can be imported using its id:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_instance_pool.this
- * 
- *   id = &#34;&lt;instance-pool-id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/instancePool:InstancePool this &lt;instance-pool-id&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/instancePool:InstancePool")
 public class InstancePool extends com.pulumi.resources.CustomResource {

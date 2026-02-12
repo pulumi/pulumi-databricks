@@ -92,28 +92,6 @@ import * as utilities from "./utilities";
  * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
  * * databricks.User data to retrieve information about databricks_user.
- *
- * ## Import
- *
- * The resource scim user can be imported using its SCIM id:
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_user.this
- *
- *   id = "<user-id>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/user:User this "<user-id>"
- * ```
  */
 export class User extends pulumi.CustomResource {
     /**

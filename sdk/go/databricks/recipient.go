@@ -32,8 +32,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -81,8 +79,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
@@ -138,28 +134,6 @@ import (
 // * Share to create Delta Sharing shares.
 // * Grants to manage Delta Sharing permissions.
 // * getShares to read existing Delta Sharing shares.
-//
-// ## Import
-//
-// The recipient resource can be imported using the name of the recipient:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_recipient.this
-//
-//	id = "<recipient_name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/recipient:Recipient this "<recipient_name>"
-// ```
 type Recipient struct {
 	pulumi.CustomResourceState
 

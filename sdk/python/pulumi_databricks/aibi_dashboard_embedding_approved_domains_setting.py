@@ -149,28 +149,6 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
 
         - AibiDashboardEmbeddingAccessPolicySetting is used to control embedding policy.
 
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_aibi_dashboard_embedding_approved_domains_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting this global
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']] aibi_dashboard_embedding_approved_domains: block with following attributes:
@@ -206,28 +184,6 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         - AibiDashboardEmbeddingAccessPolicySetting is used to control embedding policy.
-
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_aibi_dashboard_embedding_approved_domains_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting this global
-        ```
 
         :param str resource_name: The name of the resource.
         :param AibiDashboardEmbeddingApprovedDomainsSettingArgs args: The arguments to use to populate this resource's properties.
