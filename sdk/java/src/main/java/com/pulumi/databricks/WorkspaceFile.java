@@ -20,28 +20,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
- * ## Import
- * 
- * The workspace file resource can be imported using workspace file path
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_workspace_file.this
- * 
- *   id = &#34;/path/to/file&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
- * ```
- * 
  */
 @ResourceType(type="databricks:index/workspaceFile:WorkspaceFile")
 public class WorkspaceFile extends com.pulumi.resources.CustomResource {

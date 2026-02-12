@@ -100,28 +100,6 @@ import (
 //
 // * Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
 // * ClusterPolicy can control which kinds of clusters users can create for jobs.
-//
-// ## Import
-//
-// The resource job can be imported using the id of the job:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_job.this
-//
-//	id = "<job-id>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/job:Job this <job-id>
-// ```
 type Job struct {
 	pulumi.CustomResourceState
 

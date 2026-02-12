@@ -211,28 +211,6 @@ class InstanceProfile(pulumi.CustomResource):
             instance_profile_id=this.id)
         ```
 
-        ## Import
-
-        The resource instance profile can be imported using the ARN of it
-
-        hcl
-
-        import {
-
-          to = databricks_instance_profile.this
-
-          id = "<instance-profile-arn>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/instanceProfile:InstanceProfile this <instance-profile-arn>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
@@ -285,28 +263,6 @@ class InstanceProfile(pulumi.CustomResource):
         all = databricks.GroupInstanceProfile("all",
             group_id=users.id,
             instance_profile_id=this.id)
-        ```
-
-        ## Import
-
-        The resource instance profile can be imported using the ARN of it
-
-        hcl
-
-        import {
-
-          to = databricks_instance_profile.this
-
-          id = "<instance-profile-arn>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/instanceProfile:InstanceProfile this <instance-profile-arn>
         ```
 
         :param str resource_name: The name of the resource.

@@ -99,26 +99,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;name&#34;
- * 
- *   to = databricks_warehouses_default_warehouse_override.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride this &#34;name&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride")
 public class WarehousesDefaultWarehouseOverride extends com.pulumi.resources.CustomResource {

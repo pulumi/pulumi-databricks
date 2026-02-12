@@ -132,34 +132,6 @@ import (
 // * GroupMember to attach users and groups as group members.
 // * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 // * User data to retrieve information about databricks_user.
-//
-// ## Import
-//
-// The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
-//
-// * `user/user_id` - user `user_id`.
-//
-// * `group/group_id` - group `group_id`.
-//
-// * `spn/spn_id` - service principal `spn_id`.
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_entitlements.me
-//
-//	id = "user/<user-id>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>
-// ```
 type Entitlements struct {
 	pulumi.CustomResourceState
 

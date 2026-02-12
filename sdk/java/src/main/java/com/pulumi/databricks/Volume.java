@@ -116,28 +116,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * This resource can be imported by `full_name` which is the 3-level Volume identifier: `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_volume.this
- * 
- *   id = &#34;&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/volume:Volume this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/volume:Volume")
 public class Volume extends com.pulumi.resources.CustomResource {

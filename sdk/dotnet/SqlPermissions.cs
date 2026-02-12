@@ -92,40 +92,6 @@ namespace Pulumi.Databricks
     /// * databricks.Grants to manage data access in Unity Catalog.
     /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     /// * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
-    /// 
-    /// ## Import
-    /// 
-    /// The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
-    /// 
-    /// * `table/default.foo` - table `foo` in a `default` database. The `database` is always mandatory.
-    /// 
-    /// * `view/bar.foo` - view `foo` in `bar` database.
-    /// 
-    /// * `database/bar` - `bar` database.
-    /// 
-    /// * `catalog/` - entire catalog. `/` suffix is mandatory.
-    /// 
-    /// * `any file/` - direct access to any file. `/` suffix is mandatory.
-    /// 
-    /// * `anonymous function/` - anonymous function. `/` suffix is mandatory.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_sql_permissions.foo
-    /// 
-    ///   id = "/&lt;object-type&gt;/&lt;object-name&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /&lt;object-type&gt;/&lt;object-name&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlPermissions:SqlPermissions")]
     public partial class SqlPermissions : global::Pulumi.CustomResource
@@ -148,6 +114,27 @@ namespace Pulumi.Databricks
         [Output("catalog")]
         public Output<bool?> Catalog { get; private set; } = null!;
 
+        /// <summary>
+        /// Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `ClusterId` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fooTable = new Databricks.SqlPermissions("foo_table", new()
+        ///     {
+        ///         ClusterId = clusterName.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `Table` and `View`), otherwise resource creation will fail.
+        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
@@ -236,6 +223,27 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<bool>? Catalog { get; set; }
 
+        /// <summary>
+        /// Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `ClusterId` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fooTable = new Databricks.SqlPermissions("foo_table", new()
+        ///     {
+        ///         ClusterId = clusterName.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `Table` and `View`), otherwise resource creation will fail.
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
@@ -291,6 +299,27 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<bool>? Catalog { get; set; }
 
+        /// <summary>
+        /// Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `ClusterId` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fooTable = new Databricks.SqlPermissions("foo_table", new()
+        ///     {
+        ///         ClusterId = clusterName.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `Table` and `View`), otherwise resource creation will fail.
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 

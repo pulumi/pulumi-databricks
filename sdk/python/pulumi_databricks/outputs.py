@@ -57568,6 +57568,10 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
         :param _builtins.str full_name: (string) - The full three-part (catalog, schema, table) name of the Delta table
         :param 'GetFeatureEngineeringFeaturesFeatureFunctionArgs' function: (Function) - The function by which the feature is computed
         :param Sequence[_builtins.str] inputs: (list of string) - The input columns from which the feature is computed
+        :param 'GetFeatureEngineeringFeaturesFeatureLineageContextArgs' lineage_context: (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+               is automatically populated when features are created through Databricks notebooks or jobs.
+               Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+               This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param 'GetFeatureEngineeringFeaturesFeatureSourceArgs' source: (DataSource) - The data source of the feature
         :param 'GetFeatureEngineeringFeaturesFeatureTimeWindowArgs' time_window: (TimeWindow) - The time window in which the feature is computed
         """
@@ -57623,6 +57627,12 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
     @_builtins.property
     @pulumi.getter(name="lineageContext")
     def lineage_context(self) -> 'outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult':
+        """
+        (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+        is automatically populated when features are created through Databricks notebooks or jobs.
+        Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+        This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        """
         return pulumi.get(self, "lineage_context")
 
     @_builtins.property

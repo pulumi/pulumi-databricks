@@ -42,26 +42,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- *
- * ## Import
- *
- * As of Pulumi v1.5, resources can be imported through configuration.
- *
- * hcl
- *
- * import {
- *
- *   id = "tag_key"
- *
- *   to = databricks_tag_policy.this
- *
- * }
- *
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- *
- * ```sh
- * $ pulumi import databricks:index/tagPolicy:TagPolicy this "tag_key"
- * ```
  */
 export class TagPolicy extends pulumi.CustomResource {
     /**

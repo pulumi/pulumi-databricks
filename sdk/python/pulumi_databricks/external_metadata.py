@@ -416,26 +416,6 @@ class ExternalMetadata(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_external_metadata.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/externalMetadata:ExternalMetadata this "name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
@@ -486,26 +466,6 @@ class ExternalMetadata(pulumi.CustomResource):
                 "enabled": "true",
                 "format": "zstd",
             })
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_external_metadata.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/externalMetadata:ExternalMetadata this "name"
         ```
 
         :param str resource_name: The name of the resource.

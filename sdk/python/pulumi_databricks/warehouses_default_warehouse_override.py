@@ -197,26 +197,6 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
             warehouse_id=example_databricks_sql_endpoint.id)
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_warehouses_default_warehouse_override.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride this "name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
@@ -267,26 +247,6 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
             default_warehouse_override_id=example.id,
             type=CUSTOM,
             warehouse_id=example_databricks_sql_endpoint.id)
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_warehouses_default_warehouse_override.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride this "name"
         ```
 
         :param str resource_name: The name of the resource.

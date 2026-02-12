@@ -58,28 +58,6 @@ import * as utilities from "./utilities";
  * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
  * * databricks.SqlEndpoint to manage Databricks SQL [Warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html).
  * * databricks.Grants to manage data access in Unity Catalog.
- *
- * ## Import
- *
- * You can import a `databricks_sql_global_config` resource with command like the following (you need to use `global` as ID):
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_sql_global_config.this
- *
- *   id = "global"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global
- * ```
  */
 export class SqlGlobalConfig extends pulumi.CustomResource {
     /**

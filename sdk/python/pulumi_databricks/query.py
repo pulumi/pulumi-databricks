@@ -499,27 +499,98 @@ class Query(pulumi.CustomResource):
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Import
+        This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes SqlQuery resource - see migration guide below for more details.
 
-        This resource can be imported using query ID:
+        > This resource can only be used with a workspace-level provider!
 
-        hcl
+        ## Example Usage
 
-        import {
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
 
-          to = databricks_query.this
-
-          id = "<query-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/query:Query this <query-id>
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
+        # This will be replaced with new databricks_query resource
+        this = databricks.Query("this",
+            warehouse_id=example["id"],
+            display_name="My Query Name",
+            query_text="SELECT 42 as value",
+            parent_path=shared_dir.path)
         ```
+
+        ## Migrating from `SqlQuery` resource
+
+        Under the hood, the new resource uses the same data as the `SqlQuery`, but exposed via different API. This means that we can migrate existing queries without recreating them.  This operation is done in few steps:
+
+        * Record the ID of existing `SqlQuery`, for example, by executing the `terraform state show databricks_sql_query.query` command.
+        * Create the code for the new implementation performing following changes:
+          * the `name` attribute is now named `display_name`
+          * the `parent` (if exists) is renamed to `parent_path` attribute, and should be converted from `folders/object_id` to the actual path.
+          * Blocks that specify values in the `parameter` block were renamed (see above).
+
+        For example, if we have the original `SqlQuery` defined as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        query = databricks.SqlQuery("query",
+            data_source_id=example["dataSourceId"],
+            query="select 42 as value",
+            name="My Query",
+            parent=f"folders/{shared_dir['objectId']}",
+            parameters=[{
+                "name": "p1",
+                "title": "Title for p1",
+                "text": {
+                    "value": "default",
+                },
+            }])
+        ```
+
+        we'll have a new resource defined as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        query = databricks.Query("query",
+            warehouse_id=example["id"],
+            query_text="select 42 as value",
+            display_name="My Query",
+            parent_path=shared_dir["path"],
+            parameters=[{
+                "name": "p1",
+                "title": "Title for p1",
+                "text_value": {
+                    "value": "default",
+                },
+            }])
+        ```
+
+        ## Access Control
+
+        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual queries.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        query_usage = databricks.Permissions("query_usage",
+            sql_query_id=query["id"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_RUN",
+            }])
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Alert to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).
+        * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -543,27 +614,98 @@ class Query(pulumi.CustomResource):
                  args: QueryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
+        This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes SqlQuery resource - see migration guide below for more details.
 
-        This resource can be imported using query ID:
+        > This resource can only be used with a workspace-level provider!
 
-        hcl
+        ## Example Usage
 
-        import {
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
 
-          to = databricks_query.this
-
-          id = "<query-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/query:Query this <query-id>
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
+        # This will be replaced with new databricks_query resource
+        this = databricks.Query("this",
+            warehouse_id=example["id"],
+            display_name="My Query Name",
+            query_text="SELECT 42 as value",
+            parent_path=shared_dir.path)
         ```
+
+        ## Migrating from `SqlQuery` resource
+
+        Under the hood, the new resource uses the same data as the `SqlQuery`, but exposed via different API. This means that we can migrate existing queries without recreating them.  This operation is done in few steps:
+
+        * Record the ID of existing `SqlQuery`, for example, by executing the `terraform state show databricks_sql_query.query` command.
+        * Create the code for the new implementation performing following changes:
+          * the `name` attribute is now named `display_name`
+          * the `parent` (if exists) is renamed to `parent_path` attribute, and should be converted from `folders/object_id` to the actual path.
+          * Blocks that specify values in the `parameter` block were renamed (see above).
+
+        For example, if we have the original `SqlQuery` defined as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        query = databricks.SqlQuery("query",
+            data_source_id=example["dataSourceId"],
+            query="select 42 as value",
+            name="My Query",
+            parent=f"folders/{shared_dir['objectId']}",
+            parameters=[{
+                "name": "p1",
+                "title": "Title for p1",
+                "text": {
+                    "value": "default",
+                },
+            }])
+        ```
+
+        we'll have a new resource defined as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        query = databricks.Query("query",
+            warehouse_id=example["id"],
+            query_text="select 42 as value",
+            display_name="My Query",
+            parent_path=shared_dir["path"],
+            parameters=[{
+                "name": "p1",
+                "title": "Title for p1",
+                "text_value": {
+                    "value": "default",
+                },
+            }])
+        ```
+
+        ## Access Control
+
+        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual queries.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        query_usage = databricks.Permissions("query_usage",
+            sql_query_id=query["id"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_RUN",
+            }])
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Alert to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).
+        * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
         :param str resource_name: The name of the resource.
         :param QueryArgs args: The arguments to use to populate this resource's properties.

@@ -47,28 +47,6 @@ import * as utilities from "./utilities";
  *     instanceProfileId: _this.id,
  * });
  * ```
- *
- * ## Import
- *
- * The resource instance profile can be imported using the ARN of it
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_instance_profile.this
- *
- *   id = "<instance-profile-arn>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/instanceProfile:InstanceProfile this <instance-profile-arn>
- * ```
  */
 export class InstanceProfile extends pulumi.CustomResource {
     /**

@@ -31,26 +31,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- *
- * ## Import
- *
- * As of Pulumi v1.5, resources can be imported through configuration.
- *
- * hcl
- *
- * import {
- *
- *   id = "policy_id"
- *
- *   to = databricks_budget_policy.this
- *
- * }
- *
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- *
- * ```sh
- * $ pulumi import databricks:index/budgetPolicy:BudgetPolicy this "policy_id"
- * ```
  */
 export class BudgetPolicy extends pulumi.CustomResource {
     /**

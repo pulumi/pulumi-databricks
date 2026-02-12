@@ -242,6 +242,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -323,6 +325,8 @@ import (
 // package main
 //
 // import (
+//
+//	"fmt"
 //
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -597,8 +601,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -762,28 +764,6 @@ import (
 // ## Other access control
 //
 // You can control Databricks General Permissions through Permissions resource.
-//
-// ## Import
-//
-// The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and its name:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_grants.this
-//
-//	id = "catalog/abc"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/grants:Grants this catalog/abc
-// ```
 type Grants struct {
 	pulumi.CustomResourceState
 

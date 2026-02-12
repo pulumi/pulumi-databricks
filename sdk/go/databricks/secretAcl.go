@@ -76,28 +76,6 @@ import (
 // * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 // * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 // * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-//
-// ## Import
-//
-// The resource secret acl can be imported using `scopeName|||principalName` combination.
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_secret_acl.object
-//
-//	id = "scopeName|||principalName"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
-// ```
 type SecretAcl struct {
 	pulumi.CustomResourceState
 

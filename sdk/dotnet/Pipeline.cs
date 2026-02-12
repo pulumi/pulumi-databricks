@@ -116,28 +116,6 @@ namespace Pulumi.Databricks
     /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
     /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
     /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-    /// 
-    /// ## Import
-    /// 
-    /// The resource job can be imported using the id of the pipeline
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_pipeline.this
-    /// 
-    ///   id = "&lt;pipeline-id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/pipeline:Pipeline this &lt;pipeline-id&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/pipeline:Pipeline")]
     public partial class Pipeline : global::Pulumi.CustomResource

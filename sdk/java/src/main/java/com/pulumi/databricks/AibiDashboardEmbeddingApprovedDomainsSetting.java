@@ -73,28 +73,6 @@ import javax.annotation.Nullable;
  * 
  * - databricks.AibiDashboardEmbeddingAccessPolicySetting is used to control embedding policy.
  * 
- * ## Import
- * 
- * This resource can be imported by predefined name `global`:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_aibi_dashboard_embedding_approved_domains_setting.this
- * 
- *   id = &#34;global&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting this global
- * ```
- * 
  */
 @ResourceType(type="databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting")
 public class AibiDashboardEmbeddingApprovedDomainsSetting extends com.pulumi.resources.CustomResource {

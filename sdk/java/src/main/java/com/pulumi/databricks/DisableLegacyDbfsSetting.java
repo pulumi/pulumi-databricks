@@ -68,28 +68,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * This resource can be imported by predefined name `global`:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_disable_legacy_dbfs_setting.this
- * 
- *   id = &#34;global&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting this global
- * ```
- * 
  */
 @ResourceType(type="databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting")
 public class DisableLegacyDbfsSetting extends com.pulumi.resources.CustomResource {

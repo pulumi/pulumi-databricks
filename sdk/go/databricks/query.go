@@ -12,27 +12,173 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes SqlQuery resource - see migration guide below for more details.
 //
-// This resource can be imported using query ID:
+// > This resource can only be used with a workspace-level provider!
 //
-// hcl
+// ## Example Usage
 //
-// import {
+// ```go
+// package main
 //
-//	to = databricks_query.this
+// import (
 //
-//	id = "<query-id>"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
-// }
+// )
 //
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sharedDir, err := databricks.NewDirectory(ctx, "shared_dir", &databricks.DirectoryArgs{
+//				Path: pulumi.String("/Shared/Queries"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// This will be replaced with new databricks_query resource
+//			_, err = databricks.NewQuery(ctx, "this", &databricks.QueryArgs{
+//				WarehouseId: pulumi.Any(example.Id),
+//				DisplayName: pulumi.String("My Query Name"),
+//				QueryText:   pulumi.String("SELECT 42 as value"),
+//				ParentPath:  sharedDir.Path,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
 //
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/query:Query this <query-id>
 // ```
+//
+// ## Migrating from `SqlQuery` resource
+//
+// Under the hood, the new resource uses the same data as the `SqlQuery`, but exposed via different API. This means that we can migrate existing queries without recreating them.  This operation is done in few steps:
+//
+// * Record the ID of existing `SqlQuery`, for example, by executing the `terraform state show databricks_sql_query.query` command.
+// * Create the code for the new implementation performing following changes:
+//   - the `name` attribute is now named `displayName`
+//   - the `parent` (if exists) is renamed to `parentPath` attribute, and should be converted from `folders/object_id` to the actual path.
+//   - Blocks that specify values in the `parameter` block were renamed (see above).
+//
+// For example, if we have the original `SqlQuery` defined as:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewSqlQuery(ctx, "query", &databricks.SqlQueryArgs{
+//				DataSourceId: pulumi.Any(example.DataSourceId),
+//				Query:        pulumi.String("select 42 as value"),
+//				Name:         pulumi.String("My Query"),
+//				Parent:       pulumi.Sprintf("folders/%v", sharedDir.ObjectId),
+//				Parameters: databricks.SqlQueryParameterArray{
+//					&databricks.SqlQueryParameterArgs{
+//						Name:  pulumi.String("p1"),
+//						Title: pulumi.String("Title for p1"),
+//						Text: &databricks.SqlQueryParameterTextArgs{
+//							Value: pulumi.String("default"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// we'll have a new resource defined as:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewQuery(ctx, "query", &databricks.QueryArgs{
+//				WarehouseId: pulumi.Any(example.Id),
+//				QueryText:   pulumi.String("select 42 as value"),
+//				DisplayName: pulumi.String("My Query"),
+//				ParentPath:  pulumi.Any(sharedDir.Path),
+//				Parameters: databricks.QueryParameterArray{
+//					&databricks.QueryParameterArgs{
+//						Name:  pulumi.String("p1"),
+//						Title: pulumi.String("Title for p1"),
+//						TextValue: &databricks.QueryParameterTextValueArgs{
+//							Value: pulumi.String("default"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Access Control
+//
+// Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual queries.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPermissions(ctx, "query_usage", &databricks.PermissionsArgs{
+//				SqlQueryId: pulumi.Any(query.Id),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * Alert to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).
+// * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+// * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 type Query struct {
 	pulumi.CustomResourceState
 

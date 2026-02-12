@@ -267,28 +267,6 @@ import javax.annotation.Nullable;
  * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.MwsPermissionAssignment to manage permission assignment from an account context
  * 
- * ## Import
- * 
- * The resource `databricks_permission_assignment` can be imported using the principal id:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_permission_assignment.this
- * 
- *   id = &#34;&lt;principal_id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this &#34;&lt;principal_id&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/permissionAssignment:PermissionAssignment")
 public class PermissionAssignment extends com.pulumi.resources.CustomResource {

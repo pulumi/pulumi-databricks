@@ -69,28 +69,6 @@ import (
 //
 // * DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disableLegacyFeatures` account level setting turned on.
 // * DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disableLegacyFeatures` account level setting turned on.
-//
-// ## Import
-//
-// This resource can be imported by predefined name `global`:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_disable_legacy_features_setting.this
-//
-//	id = "global"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting this global
-// ```
 type DisableLegacyFeaturesSetting struct {
 	pulumi.CustomResourceState
 

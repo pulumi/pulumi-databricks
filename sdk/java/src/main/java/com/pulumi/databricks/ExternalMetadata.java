@@ -73,26 +73,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;name&#34;
- * 
- *   to = databricks_external_metadata.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/externalMetadata:ExternalMetadata this &#34;name&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/externalMetadata:ExternalMetadata")
 public class ExternalMetadata extends com.pulumi.resources.CustomResource {

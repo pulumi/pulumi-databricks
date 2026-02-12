@@ -48,26 +48,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
- * ## Import
- *
- * As of Pulumi v1.5, resources can be imported through configuration.
- *
- * hcl
- *
- * import {
- *
- *   id = "network_policy_id"
- *
- *   to = databricks_account_network_policy.this
- *
- * }
- *
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- *
- * ```sh
- * $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy this "network_policy_id"
- * ```
  */
 export class AccountNetworkPolicy extends pulumi.CustomResource {
     /**

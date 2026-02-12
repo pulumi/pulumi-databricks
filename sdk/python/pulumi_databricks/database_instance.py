@@ -799,26 +799,6 @@ class DatabaseInstance(pulumi.CustomResource):
             ])
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_database_instance.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/databaseInstance:DatabaseInstance this "name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
@@ -918,26 +898,6 @@ class DatabaseInstance(pulumi.CustomResource):
                     "value": "custom_tag_value2",
                 },
             ])
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_database_instance.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/databaseInstance:DatabaseInstance this "name"
         ```
 
         :param str resource_name: The name of the resource.

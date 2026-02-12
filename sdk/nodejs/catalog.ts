@@ -35,28 +35,6 @@ import * as utilities from "./utilities";
  * * databricks.getTables data to list tables within Unity Catalog.
  * * databricks.getSchemas data to list schemas within Unity Catalog.
  * * databricks.getCatalogs data to list catalogs within Unity Catalog.
- *
- * ## Import
- *
- * This resource can be imported by name:
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_catalog.this
- *
- *   id = "<name>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/catalog:Catalog this <name>
- * ```
  */
 export class Catalog extends pulumi.CustomResource {
     /**

@@ -175,28 +175,6 @@ class OnlineTable(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        The resource can be imported using the name of the Online Table:
-
-        hcl
-
-        import {
-
-          to = databricks_online_table.this
-
-          id = "<endpoint-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/onlineTable:OnlineTable this "<endpoint-name>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
@@ -226,28 +204,6 @@ class OnlineTable(pulumi.CustomResource):
                 "primary_key_columns": ["id"],
                 "run_triggered": {},
             })
-        ```
-
-        ## Import
-
-        The resource can be imported using the name of the Online Table:
-
-        hcl
-
-        import {
-
-          to = databricks_online_table.this
-
-          id = "<endpoint-name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/onlineTable:OnlineTable this "<endpoint-name>"
         ```
 
         :param str resource_name: The name of the resource.

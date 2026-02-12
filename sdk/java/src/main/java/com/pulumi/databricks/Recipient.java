@@ -156,28 +156,6 @@ import javax.annotation.Nullable;
  * * databricks.Grants to manage Delta Sharing permissions.
  * * databricks.getShares to read existing Delta Sharing shares.
  * 
- * ## Import
- * 
- * The recipient resource can be imported using the name of the recipient:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_recipient.this
- * 
- *   id = &#34;&lt;recipient_name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/recipient:Recipient this &#34;&lt;recipient_name&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/recipient:Recipient")
 public class Recipient extends com.pulumi.resources.CustomResource {

@@ -10,28 +10,6 @@ import * as utilities from "./utilities";
  * This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for databricks.Cluster or databricks_job. You can also use databricks.DbfsFile and databricks.getDbfsFilePaths data sources.
  *
  * > This resource can only be used with a workspace-level provider!
- *
- * ## Import
- *
- * The resource dbfs file can be imported using the path of the file:
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_dbfs_file.this
- *
- *   id = "<path>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
- * ```
  */
 export class DbfsFile extends pulumi.CustomResource {
     /**

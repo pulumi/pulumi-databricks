@@ -10,27 +10,69 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// ## Import
+    /// !&gt; This resource is deprecated and will be removed in future.
     /// 
-    /// You can import a `databricks_sql_visualization` resource with ID like the following:
+    /// &gt; Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling
     /// 
-    /// hcl
+    /// To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `DatabricksSqlAccess` on your databricks.Group or databricks_user.
     /// 
-    /// import {
+    /// &gt; documentation for this resource is a work in progress.
     /// 
-    ///   to = databricks_sql_visualization.this
+    /// A visualization is always tied to a query. Every query may have one or more visualizations.
     /// 
-    ///   id = "&lt;query-id&gt;/&lt;visualization-id&gt;"
+    /// ## Example Usage
     /// 
-    /// }
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
     /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var q1v1 = new Databricks.SqlVisualization("q1v1", new()
+    ///     {
+    ///         QueryId = q1.Id,
+    ///         Type = "table",
+    ///         Name = "My Table",
+    ///         Description = "Some Description",
+    ///         Options = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["itemsPerPage"] = 25,
+    ///             ["columns"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "p1",
+    ///                     ["type"] = "string",
+    ///                     ["title"] = "Parameter 1",
+    ///                     ["displayAs"] = "string",
+    ///                 },
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "p2",
+    ///                     ["type"] = "string",
+    ///                     ["title"] = "Parameter 2",
+    ///                     ["displayAs"] = "link",
+    ///                     ["highlightLinks"] = true,
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
     /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/sqlVisualization:SqlVisualization this &lt;query-id&gt;/&lt;visualization-id&gt;
+    /// });
     /// ```
+    /// 
+    /// ## Separating `visualization definition` from IAC configuration
+    /// 
+    /// Since `Options` field contains the full JSON encoded string definition of how to render a visualization for the backend API - `sql/api/visualizations`, they can get quite verbose.
+    /// 
+    /// If you have lots of visualizations to declare, it might be cleaner to separate the `Options` field and store them as separate `.json` files to be referenced.
+    /// 
+    /// ### Example
+    /// 
+    /// - directory tree
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlVisualization:SqlVisualization")]
     public partial class SqlVisualization : global::Pulumi.CustomResource

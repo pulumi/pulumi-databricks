@@ -268,26 +268,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;name&#34;
- * 
- *   to = databricks_database_synced_database_table.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable this &#34;name&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable")
 public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomResource {

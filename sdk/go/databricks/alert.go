@@ -12,27 +12,235 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).  It supersedes SqlAlert resource - see migration guide below for more details.
 //
-// This resource can be imported using alert ID:
+// > This resource can only be used with a workspace-level provider!
 //
-// hcl
+// ## Example Usage
 //
-// import {
+// ```go
+// package main
 //
-//	to = databricks_alert.this
+// import (
 //
-//	id = "<alert-id>"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
-// }
+// )
 //
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sharedDir, err := databricks.NewDirectory(ctx, "shared_dir", &databricks.DirectoryArgs{
+//				Path: pulumi.String("/Shared/Queries"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// This will be replaced with new databricks_query resource
+//			this, err := databricks.NewQuery(ctx, "this", &databricks.QueryArgs{
+//				WarehouseId: pulumi.Any(example.Id),
+//				DisplayName: pulumi.String("My Query Name"),
+//				QueryText:   pulumi.String("SELECT 42 as value"),
+//				ParentPath:  sharedDir.Path,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewAlert(ctx, "alert", &databricks.AlertArgs{
+//				QueryId:     this.ID(),
+//				DisplayName: pulumi.String("TF new alert"),
+//				ParentPath:  sharedDir.Path,
+//				Condition: &databricks.AlertConditionArgs{
+//					Op: pulumi.String("GREATER_THAN"),
+//					Operand: &databricks.AlertConditionOperandArgs{
+//						Column: &databricks.AlertConditionOperandColumnArgs{
+//							Name: pulumi.String("value"),
+//						},
+//					},
+//					Threshold: &databricks.AlertConditionThresholdArgs{
+//						Value: &databricks.AlertConditionThresholdValueArgs{
+//							DoubleValue: pulumi.Float64(42),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
 //
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/alert:Alert this <alert-id>
 // ```
+//
+// ## Migrating from `SqlAlert` resource
+//
+// Under the hood, the new resource uses the same data as the `SqlAlert`, but is exposed via a different API. This means that we can migrate existing alerts without recreating them.
+//
+// > It's also recommended to migrate to the `Query` resource - see Query for more details.
+//
+// This operation is done in few steps:
+//
+// * Record the ID of existing `SqlAlert`, for example, by executing the `terraform state show databricks_sql_alert.alert` command.
+// * Create the code for the new implementation by performing the following changes:
+//   - the `name` attribute is now named `displayName`
+//   - the `parent` (if exists) is renamed to `parentPath` attribute and should be converted from `folders/object_id` to the actual path.
+//   - the `options` block is converted into the `condition` block with the following changes:
+//   - the value of the `op` attribute should be converted from a mathematical operator into a string name, like, `>` is becoming `GREATER_THAN`, `==` is becoming `EQUAL`, etc.
+//   - the `column` attribute is becoming the `operand` block
+//   - the `value` attribute is becoming the `threshold` block.  **Please note that the old implementation always used strings so you may have changes after import if you use `doubleValue` or `boolValue` inside the block.**
+//   - the `rearm` attribute is renamed to `secondsToRetrigger`.
+//
+// For example, if we have the original `SqlAlert` defined as:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewSqlAlert(ctx, "alert", &databricks.SqlAlertArgs{
+//				QueryId: pulumi.Any(this.Id),
+//				Name:    pulumi.String("My Alert"),
+//				Parent:  pulumi.Sprintf("folders/%v", sharedDir.ObjectId),
+//				Options: &databricks.SqlAlertOptionsArgs{
+//					Column: pulumi.String("value"),
+//					Op:     pulumi.String(">"),
+//					Value:  pulumi.String("42"),
+//					Muted:  pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// we'll have a new resource defined as:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAlert(ctx, "alert", &databricks.AlertArgs{
+//				QueryId:     pulumi.Any(this.Id),
+//				DisplayName: pulumi.String("My Alert"),
+//				ParentPath:  pulumi.Any(sharedDir.Path),
+//				Condition: &databricks.AlertConditionArgs{
+//					Op: pulumi.String("GREATER_THAN"),
+//					Operand: &databricks.AlertConditionOperandArgs{
+//						Column: &databricks.AlertConditionOperandColumnArgs{
+//							Name: pulumi.String("value"),
+//						},
+//					},
+//					Threshold: &databricks.AlertConditionThresholdArgs{
+//						Value: &databricks.AlertConditionThresholdValueArgs{
+//							DoubleValue: pulumi.Float64(42),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Access Control
+//
+// Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPermissions(ctx, "alert_usage", &databricks.PermissionsArgs{
+//				SqlAlertId: pulumi.Any(alert.Id),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Access Control
+//
+// Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPermissions(ctx, "alert_usage", &databricks.PermissionsArgs{
+//				SqlAlertId: pulumi.Any(alert.Id),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * Query to manage [Databricks SQL Queries](https://docs.databricks.com/sql/user/queries/index.html).
+// * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+// * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 type Alert struct {
 	pulumi.CustomResourceState
 

@@ -817,28 +817,6 @@ class Grant(pulumi.CustomResource):
 
         You can control Databricks General Permissions through Permissions resource.
 
-        ## Import
-
-        The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it's name and `principal`:
-
-        hcl
-
-        import {
-
-          to = databricks_grant.this
-
-          id = "<securable_type>/<securable_name>/<principal>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/grant:Grant this <securable_type>/<securable_name>/<principal>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -1227,28 +1205,6 @@ class Grant(pulumi.CustomResource):
         ## Other access control
 
         You can control Databricks General Permissions through Permissions resource.
-
-        ## Import
-
-        The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it's name and `principal`:
-
-        hcl
-
-        import {
-
-          to = databricks_grant.this
-
-          id = "<securable_type>/<securable_name>/<principal>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/grant:Grant this <securable_type>/<securable_name>/<principal>
-        ```
 
         :param str resource_name: The name of the resource.
         :param GrantArgs args: The arguments to use to populate this resource's properties.

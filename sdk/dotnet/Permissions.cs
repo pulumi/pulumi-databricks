@@ -1401,7 +1401,7 @@ namespace Pulumi.Databricks
     /// The resource permissions can be imported using the object id
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/permissions:Permissions databricks_permissions &lt;object type&gt;/&lt;object id&gt;
+    /// terraform import databricks_permissions &lt;object type&gt;/&lt;object id&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/permissions:Permissions")]

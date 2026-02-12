@@ -5,27 +5,57 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Import
+ * !> This resource is deprecated and will be removed in future.
  *
- * You can import a `databricks_sql_visualization` resource with ID like the following:
+ * > Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling
  *
- * hcl
+ * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
  *
- * import {
+ * > documentation for this resource is a work in progress.
  *
- *   to = databricks_sql_visualization.this
+ * A visualization is always tied to a query. Every query may have one or more visualizations.
  *
- *   id = "<query-id>/<visualization-id>"
+ * ## Example Usage
  *
- * }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
  *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/sqlVisualization:SqlVisualization this <query-id>/<visualization-id>
+ * const q1v1 = new databricks.SqlVisualization("q1v1", {
+ *     queryId: q1.id,
+ *     type: "table",
+ *     name: "My Table",
+ *     description: "Some Description",
+ *     options: JSON.stringify({
+ *         itemsPerPage: 25,
+ *         columns: [
+ *             {
+ *                 name: "p1",
+ *                 type: "string",
+ *                 title: "Parameter 1",
+ *                 displayAs: "string",
+ *             },
+ *             {
+ *                 name: "p2",
+ *                 type: "string",
+ *                 title: "Parameter 2",
+ *                 displayAs: "link",
+ *                 highlightLinks: true,
+ *             },
+ *         ],
+ *     }),
+ * });
  * ```
+ *
+ * ## Separating `visualization definition` from IAC configuration
+ *
+ * Since `options` field contains the full JSON encoded string definition of how to render a visualization for the backend API - `sql/api/visualizations`, they can get quite verbose.
+ *
+ * If you have lots of visualizations to declare, it might be cleaner to separate the `options` field and store them as separate `.json` files to be referenced.
+ *
+ * ### Example
+ *
+ * - directory tree
  */
 export class SqlVisualization extends pulumi.CustomResource {
     /**

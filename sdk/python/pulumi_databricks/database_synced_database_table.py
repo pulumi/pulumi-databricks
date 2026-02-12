@@ -430,26 +430,6 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_database_synced_database_table.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable this "name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_instance_name: Name of the target database instance. This is required when creating synced database tables in standard catalogs.
@@ -611,26 +591,6 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                 "quartz_cron_expression": "0 0 0 * * ?",
                 "timezone_id": "Europe/Helsinki",
             })
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_database_synced_database_table.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable this "name"
         ```
 
         :param str resource_name: The name of the resource.

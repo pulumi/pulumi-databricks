@@ -18,27 +18,200 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Import
+ * This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes databricks.SqlQuery resource - see migration guide below for more details.
  * 
- * This resource can be imported using query ID:
+ * &gt; This resource can only be used with a workspace-level provider!
  * 
- * hcl
+ * ## Example Usage
  * 
- * import {
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
- *   to = databricks_query.this
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Directory;
+ * import com.pulumi.databricks.DirectoryArgs;
+ * import com.pulumi.databricks.Query;
+ * import com.pulumi.databricks.QueryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
- *   id = &#34;&lt;query-id&gt;&#34;
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
  * 
+ *     public static void stack(Context ctx) {
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()
+ *             .path("/Shared/Queries")
+ *             .build());
+ * 
+ *         // This will be replaced with new databricks_query resource
+ *         var this_ = new Query("this", QueryArgs.builder()
+ *             .warehouseId(example.id())
+ *             .displayName("My Query Name")
+ *             .queryText("SELECT 42 as value")
+ *             .parentPath(sharedDir.path())
+ *             .build());
+ * 
+ *     }
  * }
+ * }
+ * </pre>
  * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * ## Migrating from `databricks.SqlQuery` resource
  * 
- * bash
+ * Under the hood, the new resource uses the same data as the `databricks.SqlQuery`, but exposed via different API. This means that we can migrate existing queries without recreating them.  This operation is done in few steps:
  * 
- * ```sh
- * $ pulumi import databricks:index/query:Query this &lt;query-id&gt;
- * ```
+ * * Record the ID of existing `databricks.SqlQuery`, for example, by executing the `terraform state show databricks_sql_query.query` command.
+ * * Create the code for the new implementation performing following changes:
+ *   * the `name` attribute is now named `displayName`
+ *   * the `parent` (if exists) is renamed to `parentPath` attribute, and should be converted from `folders/object_id` to the actual path.
+ *   * Blocks that specify values in the `parameter` block were renamed (see above).
+ * 
+ * For example, if we have the original `databricks.SqlQuery` defined as:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.SqlQuery;
+ * import com.pulumi.databricks.SqlQueryArgs;
+ * import com.pulumi.databricks.inputs.SqlQueryParameterArgs;
+ * import com.pulumi.databricks.inputs.SqlQueryParameterTextArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var query = new SqlQuery("query", SqlQueryArgs.builder()
+ *             .dataSourceId(example.dataSourceId())
+ *             .query("select 42 as value")
+ *             .name("My Query")
+ *             .parent(String.format("folders/%s", sharedDir.objectId()))
+ *             .parameters(SqlQueryParameterArgs.builder()
+ *                 .name("p1")
+ *                 .title("Title for p1")
+ *                 .text(SqlQueryParameterTextArgs.builder()
+ *                     .value("default")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * we&#39;ll have a new resource defined as:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Query;
+ * import com.pulumi.databricks.QueryArgs;
+ * import com.pulumi.databricks.inputs.QueryParameterArgs;
+ * import com.pulumi.databricks.inputs.QueryParameterTextValueArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var query = new Query("query", QueryArgs.builder()
+ *             .warehouseId(example.id())
+ *             .queryText("select 42 as value")
+ *             .displayName("My Query")
+ *             .parentPath(sharedDir.path())
+ *             .parameters(QueryParameterArgs.builder()
+ *                 .name("p1")
+ *                 .title("Title for p1")
+ *                 .textValue(QueryParameterTextValueArgs.builder()
+ *                     .value("default")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Access Control
+ * 
+ * databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual queries.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var queryUsage = new Permissions("queryUsage", PermissionsArgs.builder()
+ *             .sqlQueryId(query.id())
+ *             .accessControls(PermissionsAccessControlArgs.builder()
+ *                 .groupName("users")
+ *                 .permissionLevel("CAN_RUN")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.Alert to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).
+ * * databricks.SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
  * 
  */
 @ResourceType(type="databricks:index/query:Query")

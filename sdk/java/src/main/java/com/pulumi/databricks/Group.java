@@ -183,28 +183,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * You can import a `databricks_group` resource by its SCIM ID:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_group.my_group
- * 
- *   id = &#34;&lt;group_id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/group:Group my_group &lt;group_id&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {

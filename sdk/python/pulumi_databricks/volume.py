@@ -349,28 +349,6 @@ class Volume(pulumi.CustomResource):
             comment="this volume is managed by terraform")
         ```
 
-        ## Import
-
-        This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
-
-        hcl
-
-        import {
-
-          to = databricks_volume.this
-
-          id = "<catalog_name>.<schema_name>.<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
@@ -451,28 +429,6 @@ class Volume(pulumi.CustomResource):
             volume_type="EXTERNAL",
             storage_location=some.url,
             comment="this volume is managed by terraform")
-        ```
-
-        ## Import
-
-        This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
-
-        hcl
-
-        import {
-
-          to = databricks_volume.this
-
-          id = "<catalog_name>.<schema_name>.<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
         ```
 
         :param str resource_name: The name of the resource.

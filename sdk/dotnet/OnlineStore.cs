@@ -11,26 +11,6 @@ namespace Pulumi.Databricks
 {
     /// <summary>
     /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-    /// 
-    /// ## Import
-    /// 
-    /// As of Pulumi v1.5, resources can be imported through configuration.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   id = "name"
-    /// 
-    ///   to = databricks_online_store.this
-    /// 
-    /// }
-    /// 
-    /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/onlineStore:OnlineStore this "name"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/onlineStore:OnlineStore")]
     public partial class OnlineStore : global::Pulumi.CustomResource

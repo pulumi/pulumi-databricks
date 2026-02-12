@@ -237,26 +237,6 @@ class DataQualityMonitor(pulumi.CustomResource):
             anomaly_detection_config={})
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "object_type,object_id"
-
-          to = databricks_data_quality_monitor.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/dataQualityMonitor:DataQualityMonitor this "object_type,object_id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
@@ -307,26 +287,6 @@ class DataQualityMonitor(pulumi.CustomResource):
             object_type="schema",
             object_id=this.schema_id,
             anomaly_detection_config={})
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "object_type,object_id"
-
-          to = databricks_data_quality_monitor.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/dataQualityMonitor:DataQualityMonitor this "object_type,object_id"
         ```
 
         :param str resource_name: The name of the resource.

@@ -95,9 +95,23 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         return Optional.ofNullable(this.inputs);
     }
 
+    /**
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
+     * is automatically populated when features are created through Databricks notebooks or jobs.
+     * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+     * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+     * 
+     */
     @Import(name="lineageContext")
     private @Nullable Output<FeatureEngineeringFeatureLineageContextArgs> lineageContext;
 
+    /**
+     * @return WARNING: This field is primarily intended for internal use by Databricks systems and
+     * is automatically populated when features are created through Databricks notebooks or jobs.
+     * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+     * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+     * 
+     */
     public Optional<Output<FeatureEngineeringFeatureLineageContextArgs>> lineageContext() {
         return Optional.ofNullable(this.lineageContext);
     }
@@ -278,11 +292,29 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
             return inputs(List.of(inputs));
         }
 
+        /**
+         * @param lineageContext WARNING: This field is primarily intended for internal use by Databricks systems and
+         * is automatically populated when features are created through Databricks notebooks or jobs.
+         * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+         * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+         * 
+         * @return builder
+         * 
+         */
         public Builder lineageContext(@Nullable Output<FeatureEngineeringFeatureLineageContextArgs> lineageContext) {
             $.lineageContext = lineageContext;
             return this;
         }
 
+        /**
+         * @param lineageContext WARNING: This field is primarily intended for internal use by Databricks systems and
+         * is automatically populated when features are created through Databricks notebooks or jobs.
+         * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+         * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+         * 
+         * @return builder
+         * 
+         */
         public Builder lineageContext(FeatureEngineeringFeatureLineageContextArgs lineageContext) {
             return lineageContext(Output.of(lineageContext));
         }

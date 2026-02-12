@@ -69,28 +69,6 @@ import javax.annotation.Nullable;
  * * databricks.getSchemas data to list schemas within Unity Catalog.
  * * databricks.getCatalogs data to list catalogs within Unity Catalog.
  * 
- * ## Import
- * 
- * This resource can be imported by name:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_catalog.this
- * 
- *   id = &#34;&lt;name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/catalog:Catalog this &lt;name&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/catalog:Catalog")
 public class Catalog extends com.pulumi.resources.CustomResource {

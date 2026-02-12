@@ -10,27 +10,295 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// ## Import
+    /// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
     /// 
-    /// This resource can be imported by its full name:
+    /// A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
     /// 
-    /// hcl
+    /// This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
     /// 
-    /// import {
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    ///   to = databricks_sql_table.this
+    /// &gt; This resource doesn't handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it's recommended to use specialized tools, such as, [Liquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
     /// 
-    ///   id = "&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;"
+    /// ## Example Usage
     /// 
-    /// }
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
     /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         Name = "sandbox",
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
     /// 
-    /// bash
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         Name = "things",
+    ///         Comment = "this database is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
     /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/sqlTable:SqlTable this "&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;"
+    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     {
+    ///         Name = "quickstart_table",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         TableType = "MANAGED",
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "id",
+    ///                 Type = "int",
+    ///             },
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "name",
+    ///                 Type = "string",
+    ///                 Comment = "name of thing",
+    ///             },
+    ///         },
+    ///         Comment = "this table is managed by terraform",
+    ///     });
+    /// 
+    ///     var thingView = new Databricks.SqlTable("thing_view", new()
+    ///     {
+    ///         Name = "quickstart_table_view",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         TableType = "VIEW",
+    ///         ClusterId = "0423-201305-xsrt82qn",
+    ///         ViewDefinition = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "SELECT name FROM %s WHERE id == 1",
+    ///             Args = new[]
+    ///             {
+    ///                 thing.Id,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Comment = "this view is managed by terraform",
+    ///     });
+    /// 
+    /// });
     /// ```
+    /// 
+    /// ### Use an existing warehouse to create a table
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.SqlEndpoint("this", new()
+    ///     {
+    ///         Name = "endpoint",
+    ///         ClusterSize = "2X-Small",
+    ///         MaxNumClusters = 1,
+    ///     });
+    /// 
+    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     {
+    ///         Name = "quickstart_table",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         TableType = "MANAGED",
+    ///         WarehouseId = @this.Id,
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "id",
+    ///                 Type = "int",
+    ///             },
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "name",
+    ///                 Type = "string",
+    ///                 Comment = "name of thing",
+    ///             },
+    ///         },
+    ///         Comment = "this table is managed by terraform",
+    ///     });
+    /// 
+    ///     var thingView = new Databricks.SqlTable("thing_view", new()
+    ///     {
+    ///         Name = "quickstart_table_view",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         TableType = "VIEW",
+    ///         WarehouseId = @this.Id,
+    ///         ViewDefinition = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "SELECT name FROM %s WHERE id == 1",
+    ///             Args = new[]
+    ///             {
+    ///                 thing.Id,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Comment = "this view is managed by terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Use an Identity Column
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         Name = "sandbox",
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         Name = "things",
+    ///         Comment = "this database is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     {
+    ///         Name = "identity_table",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         TableType = "MANAGED",
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "id",
+    ///                 Type = "bigint",
+    ///                 Identity = "default",
+    ///             },
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "name",
+    ///                 Type = "string",
+    ///                 Comment = "name of thing",
+    ///             },
+    ///         },
+    ///         Comment = "this table is managed by terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Enable automatic clustering
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     {
+    ///         Name = "auto_cluster_table",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         TableType = "MANAGED",
+    ///         ClusterKeys = new[]
+    ///         {
+    ///             "AUTO",
+    ///         },
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "name",
+    ///                 Type = "string",
+    ///                 Comment = "name of thing",
+    ///             },
+    ///         },
+    ///         Comment = "this table is managed by terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Migration from `databricks.Table`
+    /// 
+    /// The `databricks.Table` resource has been deprecated in favor of `databricks.SqlTable`. To migrate from `databricks.Table` to `databricks.SqlTable`:
+    /// 
+    /// 1. Define a `databricks.SqlTable` resource with arguments corresponding to `databricks.Table`.
+    /// 2. Add a `Removed` block to remove the `databricks.Table` resource without deleting the existing table by using the `Lifecycle` block. If you're using Pulumi version below v1.7.0, you will need to use the `terraform state rm` command instead.
+    /// 3. Add an `Import` block to add the `databricks.SqlTable` resource, corresponding to the existing table. If you're using Pulumi version below v1.5.0, you will need to use `pulumi import` command instead.
+    /// 
+    /// For example, suppose we have the following `databricks.Table` resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Table("this", new()
+    ///     {
+    ///         CatalogName = "catalog",
+    ///         SchemaName = "schema",
+    ///         Name = "table",
+    ///         TableType = "MANAGED",
+    ///         DataSourceFormat = "DELTA",
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.TableColumnArgs
+    ///             {
+    ///                 Name = "col1",
+    ///                 TypeName = "STRING",
+    ///                 TypeJson = "{\"type\":\"STRING\"}",
+    ///                 Comment = "comment",
+    ///                 Nullable = true,
+    ///             },
+    ///         },
+    ///         Comment = "comment",
+    ///         Properties = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The migration would look like this:
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlTable:SqlTable")]
     public partial class SqlTable : global::Pulumi.CustomResource
@@ -41,6 +309,9 @@ namespace Pulumi.Databricks
         [Output("catalogName")]
         public Output<string> CatalogName { get; private set; } = null!;
 
+        /// <summary>
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a ClusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `WarehouseId`.
+        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
@@ -192,6 +463,9 @@ namespace Pulumi.Databricks
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
 
+        /// <summary>
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a ClusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `WarehouseId`.
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
@@ -325,6 +599,9 @@ namespace Pulumi.Databricks
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
 
+        /// <summary>
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a ClusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `WarehouseId`.
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 

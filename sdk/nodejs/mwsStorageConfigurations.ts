@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * This resource to configure root bucket new workspaces within AWS.
+ *
+ * > This resource can only be used with an account-level provider!
+ *
+ * It is important to understand that this will require you to configure your provider separately for the multiple workspaces resources. This will point to <https://accounts.cloud.databricks.com> for the HOST and it will use basic auth as that is the only authentication method available for multiple workspaces api.
+ *
+ * Please follow this complete runnable example with new VPC and new workspace setup. Please pay special attention to the fact that there you have two different instances of a databricks provider - one for deploying workspaces (with `host="https://accounts.cloud.databricks.com/"`) and another for the workspace you've created with databricks.MwsWorkspaces resource. If you want both creation of workspaces & clusters within workspace within the same terraform module (essentially same directory), you should use the provider aliasing feature of Pulumi. We strongly recommend having one terraform module for creation of workspace + PAT token and the rest in different modules.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -43,34 +51,6 @@ import * as utilities from "./utilities";
  * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
  * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
  * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
- *
- * ## Import
- *
- * This resource can be imported by Databricks account ID and storage configuration ID.
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_mws_storage_configurations.this
- *
- *   id = "<account_id>/<storage_configuration_id>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/mwsStorageConfigurations:MwsStorageConfigurations this "<account_id>/<storage_configuration_id>"
- * ```
- *
- * ~> This resource does not support updates. If your configuration does not match the existing resource,
- *
- *    the next `pulumi up` will cause the resource to be destroyed and recreated. After importing,
- *
- *    verify that the configuration matches the existing resource by running `pulumi preview`.
  */
 export class MwsStorageConfigurations extends pulumi.CustomResource {
     /**

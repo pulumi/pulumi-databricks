@@ -40,6 +40,13 @@ public final class GetFeatureEngineeringFeaturesFeature {
      * 
      */
     private List<String> inputs;
+    /**
+     * @return (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+     * is automatically populated when features are created through Databricks notebooks or jobs.
+     * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+     * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+     * 
+     */
     private GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext;
     /**
      * @return (DataSource) - The data source of the feature
@@ -88,6 +95,13 @@ public final class GetFeatureEngineeringFeaturesFeature {
     public List<String> inputs() {
         return this.inputs;
     }
+    /**
+     * @return (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+     * is automatically populated when features are created through Databricks notebooks or jobs.
+     * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+     * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+     * 
+     */
     public GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext() {
         return this.lineageContext;
     }

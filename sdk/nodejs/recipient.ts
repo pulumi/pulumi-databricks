@@ -83,28 +83,6 @@ import * as utilities from "./utilities";
  * * databricks.Share to create Delta Sharing shares.
  * * databricks.Grants to manage Delta Sharing permissions.
  * * databricks.getShares to read existing Delta Sharing shares.
- *
- * ## Import
- *
- * The recipient resource can be imported using the name of the recipient:
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_recipient.this
- *
- *   id = "<recipient_name>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/recipient:Recipient this "<recipient_name>"
- * ```
  */
 export class Recipient extends pulumi.CustomResource {
     /**

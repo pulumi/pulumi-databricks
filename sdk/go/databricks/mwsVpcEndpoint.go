@@ -145,8 +145,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -328,7 +326,7 @@ import (
 //
 // ## Import
 //
-// -> Importing this resource is not currently supported.
+// > Importing this resource is not currently supported.
 type MwsVpcEndpoint struct {
 	pulumi.CustomResourceState
 

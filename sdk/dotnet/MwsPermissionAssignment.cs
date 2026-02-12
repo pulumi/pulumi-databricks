@@ -108,28 +108,6 @@ namespace Pulumi.Databricks
     /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
     /// * databricks.GroupMember to attach users and groups as group members.
     /// * databricks.PermissionAssignment to manage permission assignment from a workspace context
-    /// 
-    /// ## Import
-    /// 
-    /// The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_mws_permission_assignment.this
-    /// 
-    ///   id = "workspace_id|principal_id"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this "workspace_id|principal_id"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsPermissionAssignment:MwsPermissionAssignment")]
     public partial class MwsPermissionAssignment : global::Pulumi.CustomResource

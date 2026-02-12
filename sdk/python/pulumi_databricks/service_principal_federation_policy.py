@@ -264,26 +264,6 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "service_principal_id,policy_id"
-
-          to = databricks_service_principal_federation_policy.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy this "service_principal_id,policy_id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the federation policy
@@ -319,26 +299,6 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
                 "subject_claim": "sub",
                 "subject": "subject-in-token-from-myidp",
             })
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "service_principal_id,policy_id"
-
-          to = databricks_service_principal_federation_policy.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy this "service_principal_id,policy_id"
         ```
 
         :param str resource_name: The name of the resource.

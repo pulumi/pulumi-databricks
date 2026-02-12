@@ -539,26 +539,6 @@ class AlertV2(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "id"
-
-          to = databricks_alert_v2.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/alertV2:AlertV2 this "id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
@@ -629,26 +609,6 @@ class AlertV2(pulumi.CustomResource):
                 "timezone_id": "America/Los_Angeles",
                 "pause_status": "UNPAUSED",
             })
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "id"
-
-          to = databricks_alert_v2.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/alertV2:AlertV2 this "id"
         ```
 
         :param str resource_name: The name of the resource.

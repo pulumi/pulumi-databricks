@@ -242,26 +242,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "materialized_feature_id"
-
-          to = databricks_feature_engineering_materialized_feature.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature this "materialized_feature_id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
@@ -276,26 +256,6 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "materialized_feature_id"
-
-          to = databricks_feature_engineering_materialized_feature.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature this "materialized_feature_id"
-        ```
 
         :param str resource_name: The name of the resource.
         :param FeatureEngineeringMaterializedFeatureArgs args: The arguments to use to populate this resource's properties.

@@ -143,28 +143,6 @@ namespace Pulumi.Databricks
     /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
     /// * databricks.Grants to manage data access in Unity Catalog.
     /// * databricks.Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
-    /// 
-    /// ## Import
-    /// 
-    /// You can import a `databricks_sql_query` resource with ID like the following:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_sql_query.this
-    /// 
-    ///   id = "&lt;query-id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/sqlQuery:SqlQuery this "&lt;query-id&gt;"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlQuery:SqlQuery")]
     public partial class SqlQuery : global::Pulumi.CustomResource

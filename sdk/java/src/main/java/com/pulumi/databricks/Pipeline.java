@@ -135,28 +135,6 @@ import javax.annotation.Nullable;
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
  * 
- * ## Import
- * 
- * The resource job can be imported using the id of the pipeline
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_pipeline.this
- * 
- *   id = &#34;&lt;pipeline-id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/pipeline:Pipeline this &lt;pipeline-id&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/pipeline:Pipeline")
 public class Pipeline extends com.pulumi.resources.CustomResource {

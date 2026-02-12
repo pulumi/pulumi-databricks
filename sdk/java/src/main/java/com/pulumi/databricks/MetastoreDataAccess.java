@@ -133,28 +133,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * This resource can be imported by combination of metastore id and the data access name.
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_metastore_data_access.this
- * 
- *   id = &#34;&lt;metastore_id&gt;|&lt;name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this &#34;&lt;metastore_id&gt;|&lt;name&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/metastoreDataAccess:MetastoreDataAccess")
 public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {

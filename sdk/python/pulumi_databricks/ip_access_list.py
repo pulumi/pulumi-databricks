@@ -206,28 +206,6 @@ class IpAccessList(pulumi.CustomResource):
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * Grants to manage data access in Unity Catalog.
 
-        ## Import
-
-        The databricks_ip_access_list can be imported using id:
-
-        hcl
-
-        import {
-
-          to = databricks_ip_access_list.this
-
-          id = "<list-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
@@ -278,28 +256,6 @@ class IpAccessList(pulumi.CustomResource):
         * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * Grants to manage data access in Unity Catalog.
-
-        ## Import
-
-        The databricks_ip_access_list can be imported using id:
-
-        hcl
-
-        import {
-
-          to = databricks_ip_access_list.this
-
-          id = "<list-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param IpAccessListArgs args: The arguments to use to populate this resource's properties.

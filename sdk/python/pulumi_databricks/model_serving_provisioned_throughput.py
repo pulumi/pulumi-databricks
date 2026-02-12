@@ -301,30 +301,6 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
-        ## Import
-
-        The model serving provisioned throughput resource can be imported using the name of the endpoint:
-
-        hcl
-
-        import {
-
-          to = databricks_model_serving_provisioned_throughput.this
-
-          id = "<model-serving-endpoint-name>"
-
-        }
-
-        ```sh
-        $ pulumi import databricks:index/modelServingProvisionedThroughput:ModelServingProvisionedThroughput Alternatively, when using Pulumi version 1.4 or earlier, import using the command:
-        ```
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/modelServingProvisionedThroughput:ModelServingProvisionedThroughput this <model-serving-endpoint-name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ModelServingProvisionedThroughputAiGatewayArgs', 'ModelServingProvisionedThroughputAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
@@ -386,30 +362,6 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-
-        ## Import
-
-        The model serving provisioned throughput resource can be imported using the name of the endpoint:
-
-        hcl
-
-        import {
-
-          to = databricks_model_serving_provisioned_throughput.this
-
-          id = "<model-serving-endpoint-name>"
-
-        }
-
-        ```sh
-        $ pulumi import databricks:index/modelServingProvisionedThroughput:ModelServingProvisionedThroughput Alternatively, when using Pulumi version 1.4 or earlier, import using the command:
-        ```
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/modelServingProvisionedThroughput:ModelServingProvisionedThroughput this <model-serving-endpoint-name>
-        ```
 
         :param str resource_name: The name of the resource.
         :param ModelServingProvisionedThroughputArgs args: The arguments to use to populate this resource's properties.

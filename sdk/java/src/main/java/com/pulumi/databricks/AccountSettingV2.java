@@ -77,26 +77,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;name&#34;
- * 
- *   to = databricks_account_setting_v2.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/accountSettingV2:AccountSettingV2 this &#34;name&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/accountSettingV2:AccountSettingV2")
 public class AccountSettingV2 extends com.pulumi.resources.CustomResource {

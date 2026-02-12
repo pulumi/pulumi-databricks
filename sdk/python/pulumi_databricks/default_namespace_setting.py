@@ -145,28 +145,6 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
         })
         ```
 
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_default_namespace_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']] namespace: The configuration details.
@@ -197,28 +175,6 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
         this = databricks.DefaultNamespaceSetting("this", namespace={
             "value": "namespace_value",
         })
-        ```
-
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_default_namespace_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
         ```
 
         :param str resource_name: The name of the resource.

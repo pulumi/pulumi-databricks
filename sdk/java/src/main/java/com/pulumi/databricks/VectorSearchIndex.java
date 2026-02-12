@@ -68,28 +68,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * The resource can be imported using the name of the Mosaic AI Vector Search Index:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_vector_search_index.this
- * 
- *   id = &#34;&lt;index-name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/vectorSearchIndex:VectorSearchIndex this &lt;index-name&gt;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/vectorSearchIndex:VectorSearchIndex")
 public class VectorSearchIndex extends com.pulumi.resources.CustomResource {

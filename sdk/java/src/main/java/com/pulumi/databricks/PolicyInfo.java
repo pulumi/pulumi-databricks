@@ -132,26 +132,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;on_securable_type,on_securable_fullname,name&#34;
- * 
- *   to = databricks_policy_info.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/policyInfo:PolicyInfo this &#34;on_securable_type,on_securable_fullname,name&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/policyInfo:PolicyInfo")
 public class PolicyInfo extends com.pulumi.resources.CustomResource {

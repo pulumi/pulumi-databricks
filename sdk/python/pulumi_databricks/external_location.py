@@ -704,28 +704,6 @@ class ExternalLocation(pulumi.CustomResource):
 
         Example `encryption_details` specifying SSE_S3 encryption:
 
-        ## Import
-
-        This resource can be imported by `name`:
-
-        hcl
-
-        import {
-
-          to = databricks_external_location.this
-
-          id = "<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
@@ -848,28 +826,6 @@ class ExternalLocation(pulumi.CustomResource):
         ```
 
         Example `encryption_details` specifying SSE_S3 encryption:
-
-        ## Import
-
-        This resource can be imported by `name`:
-
-        hcl
-
-        import {
-
-          to = databricks_external_location.this
-
-          id = "<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
-        ```
 
         :param str resource_name: The name of the resource.
         :param ExternalLocationArgs args: The arguments to use to populate this resource's properties.

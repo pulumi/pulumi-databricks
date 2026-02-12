@@ -582,28 +582,6 @@ class Recipient(pulumi.CustomResource):
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
 
-        ## Import
-
-        The recipient resource can be imported using the name of the recipient:
-
-        hcl
-
-        import {
-
-          to = databricks_recipient.this
-
-          id = "<recipient_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/recipient:Recipient this "<recipient_name>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
@@ -694,28 +672,6 @@ class Recipient(pulumi.CustomResource):
         * Share to create Delta Sharing shares.
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
-
-        ## Import
-
-        The recipient resource can be imported using the name of the recipient:
-
-        hcl
-
-        import {
-
-          to = databricks_recipient.this
-
-          id = "<recipient_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/recipient:Recipient this "<recipient_name>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param RecipientArgs args: The arguments to use to populate this resource's properties.

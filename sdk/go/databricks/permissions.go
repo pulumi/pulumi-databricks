@@ -359,8 +359,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -798,8 +796,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -1147,8 +1143,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -1578,7 +1572,7 @@ import (
 // # The resource permissions can be imported using the object id
 //
 // ```sh
-// $ pulumi import databricks:index/permissions:Permissions databricks_permissions <object type>/<object id>
+// terraform import databricks_permissions <object type>/<object id>
 // ```
 type Permissions struct {
 	pulumi.CustomResourceState

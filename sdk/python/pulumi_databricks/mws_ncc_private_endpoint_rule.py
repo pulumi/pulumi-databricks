@@ -671,26 +671,6 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         * MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
         * MwsNccBinding to attach an NCC to a workspace.
 
-        ## Import
-
-        This resource can be imported by Databricks account ID and Network Connectivity Config ID.
-
-        hcl
-
-        import {
-
-          to = databricks_mws_ncc_private_endpoint_rule.this
-
-          id = "<network_connectivity_config_id>/<rule_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        ```sh
-        $ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule this "<network_connectivity_config_id>/<rule_id>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
@@ -781,26 +761,6 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
 
         * MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
         * MwsNccBinding to attach an NCC to a workspace.
-
-        ## Import
-
-        This resource can be imported by Databricks account ID and Network Connectivity Config ID.
-
-        hcl
-
-        import {
-
-          to = databricks_mws_ncc_private_endpoint_rule.this
-
-          id = "<network_connectivity_config_id>/<rule_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        ```sh
-        $ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule this "<network_connectivity_config_id>/<rule_id>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param MwsNccPrivateEndpointRuleArgs args: The arguments to use to populate this resource's properties.

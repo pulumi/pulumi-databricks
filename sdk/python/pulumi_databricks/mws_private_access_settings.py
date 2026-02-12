@@ -341,26 +341,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
 
-        ## Import
-
-        This resource can be imported by Databricks account ID and private access settings ID.
-
-        hcl
-
-        import {
-
-          to = databricks_mws_private_access_settings.this
-
-          id = "<account_id>/<private_access_settings_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        ```sh
-        $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this '<account_id>/<private_access_settings_id>'
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
@@ -448,26 +428,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         * MwsVpcEndpoint to register aws_vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
-
-        ## Import
-
-        This resource can be imported by Databricks account ID and private access settings ID.
-
-        hcl
-
-        import {
-
-          to = databricks_mws_private_access_settings.this
-
-          id = "<account_id>/<private_access_settings_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        ```sh
-        $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this '<account_id>/<private_access_settings_id>'
-        ```
 
         :param str resource_name: The name of the resource.
         :param MwsPrivateAccessSettingsArgs args: The arguments to use to populate this resource's properties.

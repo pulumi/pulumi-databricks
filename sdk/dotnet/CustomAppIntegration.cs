@@ -50,28 +50,6 @@ namespace Pulumi.Databricks
     /// The following resources are used in the context:
     /// 
     /// * databricks.MwsWorkspaces to set up Databricks workspaces.
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by its integration ID:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_custom_app_integration.this
-    /// 
-    ///   id = "&lt;integration_id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/customAppIntegration:CustomAppIntegration this "&lt;integration_id&gt;"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/customAppIntegration:CustomAppIntegration")]
     public partial class CustomAppIntegration : global::Pulumi.CustomResource

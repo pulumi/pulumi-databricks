@@ -316,28 +316,6 @@ class MlflowExperiment(pulumi.CustomResource):
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
-        ## Import
-
-        The experiment resource can be imported using the id of the experiment:
-
-        hcl
-
-        import {
-
-          to = databricks_mlflow_experiment.this
-
-          id = "<experiment-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this "<experiment-id>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
@@ -392,28 +370,6 @@ class MlflowExperiment(pulumi.CustomResource):
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-
-        ## Import
-
-        The experiment resource can be imported using the id of the experiment:
-
-        hcl
-
-        import {
-
-          to = databricks_mlflow_experiment.this
-
-          id = "<experiment-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this "<experiment-id>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param MlflowExperimentArgs args: The arguments to use to populate this resource's properties.

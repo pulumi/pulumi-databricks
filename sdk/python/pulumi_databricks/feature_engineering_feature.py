@@ -37,6 +37,10 @@ class FeatureEngineeringFeatureArgs:
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
         :param pulumi.Input[_builtins.str] description: The description of the feature
         :param pulumi.Input[_builtins.str] filter_condition: The filter condition applied to the source data before aggregation
+        :param pulumi.Input['FeatureEngineeringFeatureLineageContextArgs'] lineage_context: WARNING: This field is primarily intended for internal use by Databricks systems and
+               is automatically populated when features are created through Databricks notebooks or jobs.
+               Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+               This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'] time_window: The time window in which the feature is computed
         """
         pulumi.set(__self__, "full_name", full_name)
@@ -127,6 +131,12 @@ class FeatureEngineeringFeatureArgs:
     @_builtins.property
     @pulumi.getter(name="lineageContext")
     def lineage_context(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]:
+        """
+        WARNING: This field is primarily intended for internal use by Databricks systems and
+        is automatically populated when features are created through Databricks notebooks or jobs.
+        Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+        This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        """
         return pulumi.get(self, "lineage_context")
 
     @lineage_context.setter
@@ -164,6 +174,10 @@ class _FeatureEngineeringFeatureState:
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: The input columns from which the feature is computed
+        :param pulumi.Input['FeatureEngineeringFeatureLineageContextArgs'] lineage_context: WARNING: This field is primarily intended for internal use by Databricks systems and
+               is automatically populated when features are created through Databricks notebooks or jobs.
+               Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+               This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
         :param pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'] time_window: The time window in which the feature is computed
         """
@@ -247,6 +261,12 @@ class _FeatureEngineeringFeatureState:
     @_builtins.property
     @pulumi.getter(name="lineageContext")
     def lineage_context(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]:
+        """
+        WARNING: This field is primarily intended for internal use by Databricks systems and
+        is automatically populated when features are created through Databricks notebooks or jobs.
+        Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+        This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        """
         return pulumi.get(self, "lineage_context")
 
     @lineage_context.setter
@@ -296,26 +316,6 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "full_name"
-
-          to = databricks_feature_engineering_feature.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/featureEngineeringFeature:FeatureEngineeringFeature this "full_name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the feature
@@ -323,6 +323,10 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']] function: The function by which the feature is computed
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: The input columns from which the feature is computed
+        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']] lineage_context: WARNING: This field is primarily intended for internal use by Databricks systems and
+               is automatically populated when features are created through Databricks notebooks or jobs.
+               Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+               This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']] source: The data source of the feature
         :param pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']] time_window: The time window in which the feature is computed
         """
@@ -334,26 +338,6 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "full_name"
-
-          to = databricks_feature_engineering_feature.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/featureEngineeringFeature:FeatureEngineeringFeature this "full_name"
-        ```
 
         :param str resource_name: The name of the resource.
         :param FeatureEngineeringFeatureArgs args: The arguments to use to populate this resource's properties.
@@ -433,6 +417,10 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']] function: The function by which the feature is computed
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: The input columns from which the feature is computed
+        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']] lineage_context: WARNING: This field is primarily intended for internal use by Databricks systems and
+               is automatically populated when features are created through Databricks notebooks or jobs.
+               Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+               This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']] source: The data source of the feature
         :param pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']] time_window: The time window in which the feature is computed
         """
@@ -493,6 +481,12 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="lineageContext")
     def lineage_context(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringFeatureLineageContext']]:
+        """
+        WARNING: This field is primarily intended for internal use by Databricks systems and
+        is automatically populated when features are created through Databricks notebooks or jobs.
+        Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+        This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        """
         return pulumi.get(self, "lineage_context")
 
     @_builtins.property

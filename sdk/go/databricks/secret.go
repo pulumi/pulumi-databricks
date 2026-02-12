@@ -68,28 +68,6 @@ import (
 // * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 // * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 // * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-//
-// ## Import
-//
-// The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_secret.app
-//
-//	id = "<scopeName>|||<secretKey>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/secret:Secret app "<scopeName>|||<secretKey>"
-// ```
 type Secret struct {
 	pulumi.CustomResourceState
 

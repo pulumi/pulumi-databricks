@@ -341,26 +341,6 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
             })
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_apps_settings_custom_template.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate this "name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the template
@@ -461,26 +441,6 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
                     },
                 ],
             })
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_apps_settings_custom_template.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate this "name"
         ```
 
         :param str resource_name: The name of the resource.

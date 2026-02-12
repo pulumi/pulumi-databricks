@@ -30,26 +30,6 @@ import * as utilities from "./utilities";
  *     networkPolicyId: "default-policy",
  * });
  * ```
- *
- * ## Import
- *
- * As of Pulumi v1.5, resources can be imported through configuration.
- *
- * hcl
- *
- * import {
- *
- *   id = "workspace_id"
- *
- *   to = databricks_workspace_network_option.this
- *
- * }
- *
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- *
- * ```sh
- * $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption this "workspace_id"
- * ```
  */
 export class WorkspaceNetworkOption extends pulumi.CustomResource {
     /**

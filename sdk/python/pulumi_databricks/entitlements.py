@@ -371,34 +371,6 @@ class Entitlements(pulumi.CustomResource):
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
 
-        ## Import
-
-        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
-
-        * `user/user_id` - user `user_id`.
-
-        * `group/group_id` - group `group_id`.
-
-        * `spn/spn_id` - service principal `spn_id`.
-
-        hcl
-
-        import {
-
-          to = databricks_entitlements.me
-
-          id = "user/<user-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -477,34 +449,6 @@ class Entitlements(pulumi.CustomResource):
         * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
-
-        ## Import
-
-        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
-
-        * `user/user_id` - user `user_id`.
-
-        * `group/group_id` - group `group_id`.
-
-        * `spn/spn_id` - service principal `spn_id`.
-
-        hcl
-
-        import {
-
-          to = databricks_entitlements.me
-
-          id = "user/<user-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param EntitlementsArgs args: The arguments to use to populate this resource's properties.

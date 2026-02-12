@@ -114,28 +114,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// You can import a `databricks_group` resource by its SCIM ID:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_group.my_group
-    /// 
-    ///   id = "&lt;group_id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/group:Group my_group &lt;group_id&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/group:Group")]
     public partial class Group : global::Pulumi.CustomResource

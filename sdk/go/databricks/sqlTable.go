@@ -12,33 +12,334 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
 //
-// This resource can be imported by its full name:
+// A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
 //
-// hcl
+// This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
 //
-// import {
+// > This resource can only be used with a workspace-level provider!
 //
-//	to = databricks_sql_table.this
+// > This resource doesn't handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it's recommended to use specialized tools, such as, [Liquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
 //
-//	id = "<catalog_name>.<schema_name>.<name>"
+// ## Example Usage
 //
-// }
+// ```go
+// package main
 //
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+// import (
 //
-// bash
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
-// ```sh
-// $ pulumi import databricks:index/sqlTable:SqlTable this "<catalog_name>.<schema_name>.<name>"
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.ID(),
+//				Name:        pulumi.String("things"),
+//				Comment:     pulumi.String("this database is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thing, err := databricks.NewSqlTable(ctx, "thing", &databricks.SqlTableArgs{
+//				Name:        pulumi.String("quickstart_table"),
+//				CatalogName: sandbox.Name,
+//				SchemaName:  things.Name,
+//				TableType:   pulumi.String("MANAGED"),
+//				Columns: databricks.SqlTableColumnArray{
+//					&databricks.SqlTableColumnArgs{
+//						Name: pulumi.String("id"),
+//						Type: pulumi.String("int"),
+//					},
+//					&databricks.SqlTableColumnArgs{
+//						Name:    pulumi.String("name"),
+//						Type:    pulumi.String("string"),
+//						Comment: pulumi.String("name of thing"),
+//					},
+//				},
+//				Comment: pulumi.String("this table is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "SELECT name FROM %s WHERE id == 1",
+//				Args: pulumi.StringArray{
+//					thing.ID(),
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlTable(ctx, "thing_view", &databricks.SqlTableArgs{
+//				Name:           pulumi.String("quickstart_table_view"),
+//				CatalogName:    sandbox.Name,
+//				SchemaName:     things.Name,
+//				TableType:      pulumi.String("VIEW"),
+//				ClusterId:      pulumi.String("0423-201305-xsrt82qn"),
+//				ViewDefinition: pulumi.String(invokeFormat.Result),
+//				Comment:        pulumi.String("this view is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
+//
+// ### Use an existing warehouse to create a table
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewSqlEndpoint(ctx, "this", &databricks.SqlEndpointArgs{
+//				Name:           pulumi.String("endpoint"),
+//				ClusterSize:    pulumi.String("2X-Small"),
+//				MaxNumClusters: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thing, err := databricks.NewSqlTable(ctx, "thing", &databricks.SqlTableArgs{
+//				Name:        pulumi.String("quickstart_table"),
+//				CatalogName: pulumi.Any(sandbox.Name),
+//				SchemaName:  pulumi.Any(things.Name),
+//				TableType:   pulumi.String("MANAGED"),
+//				WarehouseId: this.ID(),
+//				Columns: databricks.SqlTableColumnArray{
+//					&databricks.SqlTableColumnArgs{
+//						Name: pulumi.String("id"),
+//						Type: pulumi.String("int"),
+//					},
+//					&databricks.SqlTableColumnArgs{
+//						Name:    pulumi.String("name"),
+//						Type:    pulumi.String("string"),
+//						Comment: pulumi.String("name of thing"),
+//					},
+//				},
+//				Comment: pulumi.String("this table is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "SELECT name FROM %s WHERE id == 1",
+//				Args: pulumi.StringArray{
+//					thing.ID(),
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlTable(ctx, "thing_view", &databricks.SqlTableArgs{
+//				Name:           pulumi.String("quickstart_table_view"),
+//				CatalogName:    pulumi.Any(sandbox.Name),
+//				SchemaName:     pulumi.Any(things.Name),
+//				TableType:      pulumi.String("VIEW"),
+//				WarehouseId:    this.ID(),
+//				ViewDefinition: pulumi.String(invokeFormat.Result),
+//				Comment:        pulumi.String("this view is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Use an Identity Column
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.ID(),
+//				Name:        pulumi.String("things"),
+//				Comment:     pulumi.String("this database is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlTable(ctx, "thing", &databricks.SqlTableArgs{
+//				Name:        pulumi.String("identity_table"),
+//				CatalogName: sandbox.Name,
+//				SchemaName:  things.Name,
+//				TableType:   pulumi.String("MANAGED"),
+//				Columns: databricks.SqlTableColumnArray{
+//					&databricks.SqlTableColumnArgs{
+//						Name:     pulumi.String("id"),
+//						Type:     pulumi.String("bigint"),
+//						Identity: pulumi.String("default"),
+//					},
+//					&databricks.SqlTableColumnArgs{
+//						Name:    pulumi.String("name"),
+//						Type:    pulumi.String("string"),
+//						Comment: pulumi.String("name of thing"),
+//					},
+//				},
+//				Comment: pulumi.String("this table is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Enable automatic clustering
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewSqlTable(ctx, "thing", &databricks.SqlTableArgs{
+//				Name:        pulumi.String("auto_cluster_table"),
+//				CatalogName: pulumi.Any(sandbox.Name),
+//				SchemaName:  pulumi.Any(things.Name),
+//				TableType:   pulumi.String("MANAGED"),
+//				ClusterKeys: pulumi.StringArray{
+//					pulumi.String("AUTO"),
+//				},
+//				Columns: databricks.SqlTableColumnArray{
+//					&databricks.SqlTableColumnArgs{
+//						Name:    pulumi.String("name"),
+//						Type:    pulumi.String("string"),
+//						Comment: pulumi.String("name of thing"),
+//					},
+//				},
+//				Comment: pulumi.String("this table is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Migration from `Table`
+//
+// The `Table` resource has been deprecated in favor of `SqlTable`. To migrate from `Table` to `SqlTable`:
+//
+// 1. Define a `SqlTable` resource with arguments corresponding to `Table`.
+// 2. Add a `removed` block to remove the `Table` resource without deleting the existing table by using the `lifecycle` block. If you're using Pulumi version below v1.7.0, you will need to use the `terraform state rm` command instead.
+// 3. Add an `import` block to add the `SqlTable` resource, corresponding to the existing table. If you're using Pulumi version below v1.5.0, you will need to use `pulumi import` command instead.
+//
+// For example, suppose we have the following `Table` resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewTable(ctx, "this", &databricks.TableArgs{
+//				CatalogName:      pulumi.String("catalog"),
+//				SchemaName:       pulumi.String("schema"),
+//				Name:             pulumi.String("table"),
+//				TableType:        pulumi.String("MANAGED"),
+//				DataSourceFormat: pulumi.String("DELTA"),
+//				Columns: databricks.TableColumnArray{
+//					&databricks.TableColumnArgs{
+//						Name:     pulumi.String("col1"),
+//						TypeName: pulumi.String("STRING"),
+//						TypeJson: pulumi.String("{\"type\":\"STRING\"}"),
+//						Comment:  pulumi.String("comment"),
+//						Nullable: pulumi.Bool(true),
+//					},
+//				},
+//				Comment: pulumi.String("comment"),
+//				Properties: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The migration would look like this:
 type SqlTable struct {
 	pulumi.CustomResourceState
 
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
-	ClusterId   pulumi.StringOutput `pulumi:"clusterId"`
+	// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys pulumi.StringArrayOutput  `pulumi:"clusterKeys"`
 	Columns     SqlTableColumnArrayOutput `pulumi:"columns"`
@@ -114,7 +415,8 @@ func GetSqlTable(ctx *pulumi.Context,
 type sqlTableState struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName *string `pulumi:"catalogName"`
-	ClusterId   *string `pulumi:"clusterId"`
+	// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+	ClusterId *string `pulumi:"clusterId"`
 	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys []string         `pulumi:"clusterKeys"`
 	Columns     []SqlTableColumn `pulumi:"columns"`
@@ -152,7 +454,8 @@ type sqlTableState struct {
 type SqlTableState struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName pulumi.StringPtrInput
-	ClusterId   pulumi.StringPtrInput
+	// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+	ClusterId pulumi.StringPtrInput
 	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys pulumi.StringArrayInput
 	Columns     SqlTableColumnArrayInput
@@ -193,8 +496,9 @@ func (SqlTableState) ElementType() reflect.Type {
 
 type sqlTableArgs struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
-	CatalogName string  `pulumi:"catalogName"`
-	ClusterId   *string `pulumi:"clusterId"`
+	CatalogName string `pulumi:"catalogName"`
+	// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+	ClusterId *string `pulumi:"clusterId"`
 	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys []string         `pulumi:"clusterKeys"`
 	Columns     []SqlTableColumn `pulumi:"columns"`
@@ -230,7 +534,8 @@ type sqlTableArgs struct {
 type SqlTableArgs struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName pulumi.StringInput
-	ClusterId   pulumi.StringPtrInput
+	// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
+	ClusterId pulumi.StringPtrInput
 	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys pulumi.StringArrayInput
 	Columns     SqlTableColumnArrayInput
@@ -354,6 +659,7 @@ func (o SqlTableOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
 }
 
+// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
 func (o SqlTableOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }

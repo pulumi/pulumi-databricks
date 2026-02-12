@@ -287,28 +287,6 @@ class SqlWidget(pulumi.CustomResource):
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
         * Grants to manage data access in Unity Catalog.
 
-        ## Import
-
-        You can import a `databricks_sql_widget` resource with ID like the following:
-
-        hcl
-
-        import {
-
-          to = databricks_sql_widget.this
-
-          id = "<dashboard-id>/<widget-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -364,28 +342,6 @@ class SqlWidget(pulumi.CustomResource):
         * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
         * Grants to manage data access in Unity Catalog.
-
-        ## Import
-
-        You can import a `databricks_sql_widget` resource with ID like the following:
-
-        hcl
-
-        import {
-
-          to = databricks_sql_widget.this
-
-          id = "<dashboard-id>/<widget-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param SqlWidgetArgs args: The arguments to use to populate this resource's properties.

@@ -106,28 +106,6 @@ namespace Pulumi.Databricks
     /// 
     /// * databricks.Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
     /// * databricks.ClusterPolicy can control which kinds of clusters users can create for jobs.
-    /// 
-    /// ## Import
-    /// 
-    /// The resource job can be imported using the id of the job:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_job.this
-    /// 
-    ///   id = "&lt;job-id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/job:Job this &lt;job-id&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/job:Job")]
     public partial class Job : global::Pulumi.CustomResource

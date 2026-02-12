@@ -70,28 +70,6 @@ import (
 //
 // * Group and User can control which groups or individual users can create instance pools.
 // * Permissions can control which groups or individual users can *Manage* or *Attach to* individual instance pools.
-//
-// ## Import
-//
-// The resource instance pool can be imported using its id:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_instance_pool.this
-//
-//	id = "<instance-pool-id>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>
-// ```
 type InstancePool struct {
 	pulumi.CustomResourceState
 

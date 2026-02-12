@@ -189,28 +189,6 @@ class SecretScope(pulumi.CustomResource):
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 
-        ## Import
-
-        The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
-
-        hcl
-
-        import {
-
-          to = databricks_secret_scope.this
-
-          id = "<scopeName>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/secretScope:SecretScope this "<scopeName>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_type: Either `DATABRICKS` or `AZURE_KEYVAULT`
@@ -246,28 +224,6 @@ class SecretScope(pulumi.CustomResource):
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-
-        ## Import
-
-        The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
-
-        hcl
-
-        import {
-
-          to = databricks_secret_scope.this
-
-          id = "<scopeName>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/secretScope:SecretScope this "<scopeName>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param SecretScopeArgs args: The arguments to use to populate this resource's properties.

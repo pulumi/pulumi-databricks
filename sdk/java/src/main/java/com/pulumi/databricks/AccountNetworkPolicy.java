@@ -83,26 +83,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;network_policy_id&#34;
- * 
- *   to = databricks_account_network_policy.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy this &#34;network_policy_id&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/accountNetworkPolicy:AccountNetworkPolicy")
 public class AccountNetworkPolicy extends com.pulumi.resources.CustomResource {

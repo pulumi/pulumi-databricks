@@ -10,27 +10,208 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// ## Import
+    /// This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).  It supersedes databricks.SqlAlert resource - see migration guide below for more details.
     /// 
-    /// This resource can be imported using alert ID:
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    /// hcl
+    /// ## Example Usage
     /// 
-    /// import {
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
     /// 
-    ///   to = databricks_alert.this
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
+    ///     {
+    ///         Path = "/Shared/Queries",
+    ///     });
     /// 
-    ///   id = "&lt;alert-id&gt;"
+    ///     // This will be replaced with new databricks_query resource
+    ///     var @this = new Databricks.Query("this", new()
+    ///     {
+    ///         WarehouseId = example.Id,
+    ///         DisplayName = "My Query Name",
+    ///         QueryText = "SELECT 42 as value",
+    ///         ParentPath = sharedDir.Path,
+    ///     });
     /// 
-    /// }
+    ///     var alert = new Databricks.Alert("alert", new()
+    ///     {
+    ///         QueryId = @this.Id,
+    ///         DisplayName = "TF new alert",
+    ///         ParentPath = sharedDir.Path,
+    ///         Condition = new Databricks.Inputs.AlertConditionArgs
+    ///         {
+    ///             Op = "GREATER_THAN",
+    ///             Operand = new Databricks.Inputs.AlertConditionOperandArgs
+    ///             {
+    ///                 Column = new Databricks.Inputs.AlertConditionOperandColumnArgs
+    ///                 {
+    ///                     Name = "value",
+    ///                 },
+    ///             },
+    ///             Threshold = new Databricks.Inputs.AlertConditionThresholdArgs
+    ///             {
+    ///                 Value = new Databricks.Inputs.AlertConditionThresholdValueArgs
+    ///                 {
+    ///                     DoubleValue = 42,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/alert:Alert this &lt;alert-id&gt;
+    /// });
     /// ```
+    /// 
+    /// ## Migrating from `databricks.SqlAlert` resource
+    /// 
+    /// Under the hood, the new resource uses the same data as the `databricks.SqlAlert`, but is exposed via a different API. This means that we can migrate existing alerts without recreating them.
+    /// 
+    /// &gt; It's also recommended to migrate to the `databricks.Query` resource - see databricks.Query for more details.
+    /// 
+    /// This operation is done in few steps:
+    /// 
+    /// * Record the ID of existing `databricks.SqlAlert`, for example, by executing the `terraform state show databricks_sql_alert.alert` command.
+    /// * Create the code for the new implementation by performing the following changes:
+    ///   * the `Name` attribute is now named `DisplayName`
+    ///   * the `Parent` (if exists) is renamed to `ParentPath` attribute and should be converted from `folders/object_id` to the actual path.
+    ///   * the `Options` block is converted into the `Condition` block with the following changes:
+    ///     * the value of the `Op` attribute should be converted from a mathematical operator into a string name, like, `&gt;` is becoming `GREATER_THAN`, `==` is becoming `EQUAL`, etc.
+    ///     * the `Column` attribute is becoming the `Operand` block
+    ///     * the `Value` attribute is becoming the `Threshold` block.  **Please note that the old implementation always used strings so you may have changes after import if you use `DoubleValue` or `BoolValue` inside the block.**
+    ///   * the `Rearm` attribute is renamed to `SecondsToRetrigger`.
+    /// 
+    /// For example, if we have the original `databricks.SqlAlert` defined as:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alert = new Databricks.SqlAlert("alert", new()
+    ///     {
+    ///         QueryId = @this.Id,
+    ///         Name = "My Alert",
+    ///         Parent = $"folders/{sharedDir.ObjectId}",
+    ///         Options = new Databricks.Inputs.SqlAlertOptionsArgs
+    ///         {
+    ///             Column = "value",
+    ///             Op = "&gt;",
+    ///             Value = "42",
+    ///             Muted = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// we'll have a new resource defined as:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alert = new Databricks.Alert("alert", new()
+    ///     {
+    ///         QueryId = @this.Id,
+    ///         DisplayName = "My Alert",
+    ///         ParentPath = sharedDir.Path,
+    ///         Condition = new Databricks.Inputs.AlertConditionArgs
+    ///         {
+    ///             Op = "GREATER_THAN",
+    ///             Operand = new Databricks.Inputs.AlertConditionOperandArgs
+    ///             {
+    ///                 Column = new Databricks.Inputs.AlertConditionOperandColumnArgs
+    ///                 {
+    ///                     Name = "value",
+    ///                 },
+    ///             },
+    ///             Threshold = new Databricks.Inputs.AlertConditionThresholdArgs
+    ///             {
+    ///                 Value = new Databricks.Inputs.AlertConditionThresholdValueArgs
+    ///                 {
+    ///                     DoubleValue = 42,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Access Control
+    /// 
+    /// databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alertUsage = new Databricks.Permissions("alert_usage", new()
+    ///     {
+    ///         SqlAlertId = alert.Id,
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = "users",
+    ///                 PermissionLevel = "CAN_RUN",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Access Control
+    /// 
+    /// databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alertUsage = new Databricks.Permissions("alert_usage", new()
+    ///     {
+    ///         SqlAlertId = alert.Id,
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = "users",
+    ///                 PermissionLevel = "CAN_RUN",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * databricks.Query to manage [Databricks SQL Queries](https://docs.databricks.com/sql/user/queries/index.html).
+    /// * databricks.SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+    /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
     /// </summary>
     [DatabricksResourceType("databricks:index/alert:Alert")]
     public partial class Alert : global::Pulumi.CustomResource

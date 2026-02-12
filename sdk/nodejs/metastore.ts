@@ -78,28 +78,6 @@ import * as utilities from "./utilities";
  *     workspaceId: workspaceId,
  * });
  * ```
- *
- * ## Import
- *
- * This resource can be imported by ID:
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_metastore.this
- *
- *   id = "<id>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/metastore:Metastore this <id>
- * ```
  */
 export class Metastore extends pulumi.CustomResource {
     /**

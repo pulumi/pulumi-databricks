@@ -355,7 +355,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * -&gt; Importing this resource is not currently supported.
+ * &gt; Importing this resource is not currently supported.
  * 
  */
 @ResourceType(type="databricks:index/mwsVpcEndpoint:MwsVpcEndpoint")

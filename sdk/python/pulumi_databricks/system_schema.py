@@ -145,28 +145,6 @@ class SystemSchema(pulumi.CustomResource):
         this = databricks.SystemSchema("this", schema="access")
         ```
 
-        ## Import
-
-        This resource can be imported by the metastore id and schema name:
-
-        hcl
-
-        import {
-
-          to = databricks_system_schema.this
-
-          id = "<metastore_id>|<schema_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] schema: name of the system schema.
@@ -193,28 +171,6 @@ class SystemSchema(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.SystemSchema("this", schema="access")
-        ```
-
-        ## Import
-
-        This resource can be imported by the metastore id and schema name:
-
-        hcl
-
-        import {
-
-          to = databricks_system_schema.this
-
-          id = "<metastore_id>|<schema_name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
         ```
 
         :param str resource_name: The name of the resource.

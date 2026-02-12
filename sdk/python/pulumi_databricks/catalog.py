@@ -698,28 +698,6 @@ class Catalog(pulumi.CustomResource):
         * get_schemas data to list schemas within Unity Catalog.
         * get_catalogs data to list catalogs within Unity Catalog.
 
-        ## Import
-
-        This resource can be imported by name:
-
-        hcl
-
-        import {
-
-          to = databricks_catalog.this
-
-          id = "<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/catalog:Catalog this <name>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
@@ -770,28 +748,6 @@ class Catalog(pulumi.CustomResource):
         * get_tables data to list tables within Unity Catalog.
         * get_schemas data to list schemas within Unity Catalog.
         * get_catalogs data to list catalogs within Unity Catalog.
-
-        ## Import
-
-        This resource can be imported by name:
-
-        hcl
-
-        import {
-
-          to = databricks_catalog.this
-
-          id = "<name>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/catalog:Catalog this <name>
-        ```
 
         :param str resource_name: The name of the resource.
         :param CatalogArgs args: The arguments to use to populate this resource's properties.

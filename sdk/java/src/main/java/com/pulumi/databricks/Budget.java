@@ -98,28 +98,6 @@ import javax.annotation.Nullable;
  * 
  * * databricks.MwsWorkspaces to set up Databricks workspaces.
  * 
- * ## Import
- * 
- * This resource can be imported by Databricks account ID and Budget:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_budget.this
- * 
- *   id = &#34;&lt;account_id&gt;|&lt;budget_configuration_id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/budget:Budget this &#34;&lt;account_id&gt;|&lt;budget_configuration_id&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/budget:Budget")
 public class Budget extends com.pulumi.resources.CustomResource {

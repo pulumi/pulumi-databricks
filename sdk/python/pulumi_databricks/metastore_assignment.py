@@ -166,28 +166,6 @@ class MetastoreAssignment(pulumi.CustomResource):
             workspace_id=workspace_id)
         ```
 
-        ## Import
-
-        This resource can be imported by combination of workspace id and metastore id:
-
-        hcl
-
-        import {
-
-          to = databricks_metastore_assignment.this
-
-          id = "<workspace_id>|<metastore_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this "<workspace_id>|<metastore_id>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_catalog_name: Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
@@ -220,28 +198,6 @@ class MetastoreAssignment(pulumi.CustomResource):
         this_metastore_assignment = databricks.MetastoreAssignment("this",
             metastore_id=this.id,
             workspace_id=workspace_id)
-        ```
-
-        ## Import
-
-        This resource can be imported by combination of workspace id and metastore id:
-
-        hcl
-
-        import {
-
-          to = databricks_metastore_assignment.this
-
-          id = "<workspace_id>|<metastore_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this "<workspace_id>|<metastore_id>"
         ```
 
         :param str resource_name: The name of the resource.

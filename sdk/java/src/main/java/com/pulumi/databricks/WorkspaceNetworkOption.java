@@ -63,26 +63,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;workspace_id&#34;
- * 
- *   to = databricks_workspace_network_option.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption this &#34;workspace_id&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/workspaceNetworkOption:WorkspaceNetworkOption")
 public class WorkspaceNetworkOption extends com.pulumi.resources.CustomResource {

@@ -649,28 +649,6 @@ class User(pulumi.CustomResource):
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
 
-        ## Import
-
-        The resource scim user can be imported using its SCIM id:
-
-        hcl
-
-        import {
-
-          to = databricks_user.this
-
-          id = "<user-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/user:User this "<user-id>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
@@ -778,28 +756,6 @@ class User(pulumi.CustomResource):
         * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
-
-        ## Import
-
-        The resource scim user can be imported using its SCIM id:
-
-        hcl
-
-        import {
-
-          to = databricks_user.this
-
-          id = "<user-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/user:User this "<user-id>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

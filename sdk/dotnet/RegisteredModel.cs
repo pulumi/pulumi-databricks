@@ -46,28 +46,6 @@ namespace Pulumi.Databricks
     /// * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
     /// * databricks.Schema to manage schemas within Unity Catalog.
     /// * databricks.Catalog to manage catalogs within Unity Catalog.
-    /// 
-    /// ## Import
-    /// 
-    /// The registered model resource can be imported using the full (3-level) name of the model.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_registered_model.this
-    /// 
-    ///   id = "&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;model_name&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/registeredModel:RegisteredModel this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;model_name&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/registeredModel:RegisteredModel")]
     public partial class RegisteredModel : global::Pulumi.CustomResource

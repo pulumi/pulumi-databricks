@@ -293,28 +293,6 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
         * MwsNccBinding to attach an NCC to a workspace.
         * MwsNccPrivateEndpointRule to create a private endpoint rule.
 
-        ## Import
-
-        This resource can be imported by Databricks account ID and Network Connectivity Config ID.
-
-        hcl
-
-        import {
-
-          to = databricks_mws_network_connectivity_config.this
-
-          id = "<account_id>/<network_connectivity_config_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig this "<account_id>/<network_connectivity_config_id>"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] creation_time: time in epoch milliseconds when this object was created.
@@ -359,28 +337,6 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
         * MwsWorkspaces to set up Databricks workspaces.
         * MwsNccBinding to attach an NCC to a workspace.
         * MwsNccPrivateEndpointRule to create a private endpoint rule.
-
-        ## Import
-
-        This resource can be imported by Databricks account ID and Network Connectivity Config ID.
-
-        hcl
-
-        import {
-
-          to = databricks_mws_network_connectivity_config.this
-
-          id = "<account_id>/<network_connectivity_config_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig this "<account_id>/<network_connectivity_config_id>"
-        ```
 
         :param str resource_name: The name of the resource.
         :param MwsNetworkConnectivityConfigArgs args: The arguments to use to populate this resource's properties.

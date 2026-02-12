@@ -90,28 +90,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by combination of metastore id and the data access name.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_metastore_data_access.this
-    /// 
-    ///   id = "&lt;metastore_id&gt;|&lt;name&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this "&lt;metastore_id&gt;|&lt;name&gt;"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/metastoreDataAccess:MetastoreDataAccess")]
     public partial class MetastoreDataAccess : global::Pulumi.CustomResource

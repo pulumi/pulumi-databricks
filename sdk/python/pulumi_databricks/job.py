@@ -1498,28 +1498,6 @@ class Job(pulumi.CustomResource):
         * Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
         * ClusterPolicy can control which kinds of clusters users can create for jobs.
 
-        ## Import
-
-        The resource job can be imported using the id of the job:
-
-        hcl
-
-        import {
-
-          to = databricks_job.this
-
-          id = "<job-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/job:Job this <job-id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
@@ -1629,28 +1607,6 @@ class Job(pulumi.CustomResource):
 
         * Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
         * ClusterPolicy can control which kinds of clusters users can create for jobs.
-
-        ## Import
-
-        The resource job can be imported using the id of the job:
-
-        hcl
-
-        import {
-
-          to = databricks_job.this
-
-          id = "<job-id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/job:Job this <job-id>
-        ```
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

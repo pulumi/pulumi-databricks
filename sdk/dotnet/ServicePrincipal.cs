@@ -141,28 +141,6 @@ namespace Pulumi.Databricks
     /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     /// * databricks.Grants to manage data access in Unity Catalog.
     /// * databricks.ServicePrincipalSecret to manage secrets for a service principal.
-    /// 
-    /// ## Import
-    /// 
-    /// The resource scim service principal can be imported using its SCIM id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_service_principal.me
-    /// 
-    ///   id = "&lt;service-principal-id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me &lt;service-principal-id&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/servicePrincipal:ServicePrincipal")]
     public partial class ServicePrincipal : global::Pulumi.CustomResource

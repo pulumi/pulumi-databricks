@@ -155,28 +155,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// This resource can be imported by name:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_credential.this
-//
-//	id = "<name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/credential:Credential this <name>
-// ```
 type Credential struct {
 	pulumi.CustomResourceState
 

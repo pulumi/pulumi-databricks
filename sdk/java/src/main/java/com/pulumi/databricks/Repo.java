@@ -74,28 +74,6 @@ import javax.annotation.Nullable;
  * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
  * * databricks.WorkspaceConf to manage workspace configuration for expert usage.
  * 
- * ## Import
- * 
- * The resource can be imported using the Git folder ID (obtained via UI or using API)
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_repo.this
- * 
- *   id = &#34;repo_id&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/repo:Repo this repo_id
- * ```
- * 
  */
 @ResourceType(type="databricks:index/repo:Repo")
 public class Repo extends com.pulumi.resources.CustomResource {

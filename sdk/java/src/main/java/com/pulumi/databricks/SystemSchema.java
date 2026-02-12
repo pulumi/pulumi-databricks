@@ -56,28 +56,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * This resource can be imported by the metastore id and schema name:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_system_schema.this
- * 
- *   id = &#34;&lt;metastore_id&gt;|&lt;schema_name&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/systemSchema:SystemSchema this &#39;&lt;metastore_id&gt;|&lt;schema_name&gt;&#39;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/systemSchema:SystemSchema")
 public class SystemSchema extends com.pulumi.resources.CustomResource {

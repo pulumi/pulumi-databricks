@@ -224,26 +224,6 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
             create_database_if_not_exists=True)
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_database_database_catalog.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog this "name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
@@ -301,26 +281,6 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
             database_instance_name=instance.name,
             database_name="new_registered_catalog_database",
             create_database_if_not_exists=True)
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_database_database_catalog.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog this "name"
         ```
 
         :param str resource_name: The name of the resource.

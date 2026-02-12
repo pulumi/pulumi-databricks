@@ -152,28 +152,6 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
         })
         ```
 
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_disable_legacy_dbfs_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting this global
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']] disable_legacy_dbfs: block with following attributes:
@@ -211,28 +189,6 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
         this = databricks.DisableLegacyDbfsSetting("this", disable_legacy_dbfs={
             "value": True,
         })
-        ```
-
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        hcl
-
-        import {
-
-          to = databricks_disable_legacy_dbfs_setting.this
-
-          id = "global"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting this global
         ```
 
         :param str resource_name: The name of the resource.

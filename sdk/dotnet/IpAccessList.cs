@@ -65,28 +65,6 @@ namespace Pulumi.Databricks
     /// * databricks.MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
     /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     /// * databricks.Grants to manage data access in Unity Catalog.
-    /// 
-    /// ## Import
-    /// 
-    /// The databricks_ip_access_list can be imported using id:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_ip_access_list.this
-    /// 
-    ///   id = "&lt;list-id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/ipAccessList:IpAccessList this &lt;list-id&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/ipAccessList:IpAccessList")]
     public partial class IpAccessList : global::Pulumi.CustomResource

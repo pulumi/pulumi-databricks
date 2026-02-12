@@ -35,28 +35,6 @@ import * as utilities from "./utilities";
  *     status: "RESTRICT_TOKENS_AND_JOB_RUN_AS",
  * }});
  * ```
- *
- * ## Import
- *
- * This resource can be imported by predefined name `global`:
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_restrict_workspace_admins_setting.this
- *
- *   id = "global"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
- * ```
  */
 export class RestrictWorkspaceAdminsSetting extends pulumi.CustomResource {
     /**

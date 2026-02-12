@@ -12,6 +12,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Databricks on AWS usage
+//
+// Use this resource to configure VPC & subnets for new workspaces within AWS and GCP.
+//
+// > This resource can only be used with an account-level provider!
+//
+// > The `gkeClusterServiceIpRange` and `gkePodServiceIpRange` arguments in `gcpManagedNetworkConfig` are now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
+//
+// * Databricks must have access to at least two subnets for each workspace, with each subnet in a different Availability Zone. You cannot specify more than one Databricks workspace subnet per Availability Zone in the Create network configuration API call. You can have more than one subnet per Availability Zone as part of your network setup, but you can choose only one subnet per Availability Zone for the Databricks workspace.
+// * Databricks assigns two IP addresses per node, one for management traffic and one for Spark applications. The total number of instances for each subnet is equal to half of the available IP addresses.
+// * Each subnet must have a netmask between /17 and /25.
+// * Subnets must be private.
+// * Subnets must have outbound access to the public network using a awsNatGateway and aws_internet_gateway, or other similar customer-managed appliance infrastructure.
+// * The NAT gateway must be set up in its subnet (public_subnets in the example below) that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or other customer-managed appliance infrastructure.
+//
+// > The NAT gateway needs only one IP address per AZ. Hence, the public subnet only needs two IP addresses. In order to limit the number of IP addresses in the public subnet, you can specify a secondary CIDR block (cidr_block_public) using the argument secondaryCidrBlocks then pass it to the publicSubnets argument. Please review the [IPv4 CIDR block association restrictions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) when choosing the secondary cidr block.
+//
+// Please follow this complete runnable example with new VPC and new workspace setup. Please pay special attention to the fact that there you have two different instances of a databricks provider - one for deploying workspaces (with `host="https://accounts.cloud.databricks.com/"`) and another for the workspace you've created with `MwsWorkspaces` resource. If you want both creations of workspaces & clusters within the same Pulumi module (essentially the same directory), you should use the provider aliasing feature of Pulumi. We strongly recommend having one terraform module to create workspace + PAT token and the rest in different modules.
+//
+// ## Databricks on GCP usage
+//
+// > Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
+//
+// Use this resource to [configure VPC](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/customer-managed-vpc.html) & subnet for new workspaces within GCP. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.
+//
+// * Databricks must have access to a subnet in the same region as the workspace, of which IP range will be used to allocate your workspace's GCE cluster nodes.
+// * The subnet must have a netmask between /29 and /9.
+// * Subnet must have outbound access to the public network using a gcpComputeRouterNat or other similar customer-managed appliance infrastructure.
+//
+// Please follow this complete runnable example with new VPC and new workspace setup. Please pay special attention to the fact that there you have two different instances of a databricks provider - one for deploying workspaces (with `host="https://accounts.gcp.databricks.com/"`) and another for the workspace you've created with `MwsWorkspaces` resource. If you want both creations of workspaces & clusters within the same Pulumi module (essentially the same directory), you should use the provider aliasing feature of Pulumi. We strongly recommend having one terraform module to create workspace + PAT token and the rest in different modules.
+//
 // ## Example Usage
 //
 // ### Creating a Databricks on GCP workspace
@@ -97,8 +128,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -153,32 +182,6 @@ import (
 // * MwsVpcEndpoint to register awsVpcEndpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
 // * MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
 // * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
-//
-// ## Import
-//
-// This resource can be imported by Databricks account ID and network ID.
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_mws_networks.this
-//
-//	id = "<account_id>/<network_id>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// ```sh
-// $ pulumi import databricks:index/mwsNetworks:MwsNetworks this '<account_id>/<network_id>'
-// ```
-//
-// ~> This resource does not support updates. If your configuration does not match the existing resource,
-//
-//	the next `pulumi up` will cause the resource to be destroyed and recreated. After importing,
-//
-//	verify that the configuration matches the existing resource by running `pulumi preview`.
 type MwsNetworks struct {
 	pulumi.CustomResourceState
 

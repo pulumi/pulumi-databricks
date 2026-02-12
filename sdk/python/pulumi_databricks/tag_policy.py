@@ -183,26 +183,6 @@ class TagPolicy(pulumi.CustomResource):
             ])
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "tag_key"
-
-          to = databricks_tag_policy.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/tagPolicy:TagPolicy this "tag_key"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -246,26 +226,6 @@ class TagPolicy(pulumi.CustomResource):
                     "name": "example_value_3",
                 },
             ])
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "tag_key"
-
-          to = databricks_tag_policy.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/tagPolicy:TagPolicy this "tag_key"
         ```
 
         :param str resource_name: The name of the resource.

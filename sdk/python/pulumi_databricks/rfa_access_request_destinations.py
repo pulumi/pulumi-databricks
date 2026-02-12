@@ -217,26 +217,6 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
             are_any_destinations_hidden=False)
         ```
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "securable_type,full_name"
-
-          to = databricks_rfa_access_request_destinations.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this "securable_type,full_name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]] destinations: The access request destinations for the securable
@@ -289,26 +269,6 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
                 "full_name": "main.customer_data",
             },
             are_any_destinations_hidden=False)
-        ```
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "securable_type,full_name"
-
-          to = databricks_rfa_access_request_destinations.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this "securable_type,full_name"
         ```
 
         :param str resource_name: The name of the resource.

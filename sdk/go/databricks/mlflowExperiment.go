@@ -22,8 +22,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -73,28 +71,6 @@ import (
 // * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 // * Notebook data to export a notebook from Databricks Workspace.
 // * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-//
-// ## Import
-//
-// The experiment resource can be imported using the id of the experiment:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_mlflow_experiment.this
-//
-//	id = "<experiment-id>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this "<experiment-id>"
-// ```
 type MlflowExperiment struct {
 	pulumi.CustomResourceState
 

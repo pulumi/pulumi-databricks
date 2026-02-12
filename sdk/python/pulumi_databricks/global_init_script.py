@@ -234,28 +234,6 @@ class GlobalInitScript(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
-        ## Import
-
-        The resource global init script can be imported using script ID:
-
-        hcl
-
-        import {
-
-          to = databricks_global_init_script.this
-
-          id = "script_id"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
@@ -274,28 +252,6 @@ class GlobalInitScript(pulumi.CustomResource):
         This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
 
         > This resource can only be used with a workspace-level provider!
-
-        ## Import
-
-        The resource global init script can be imported using script ID:
-
-        hcl
-
-        import {
-
-          to = databricks_global_init_script.this
-
-          id = "script_id"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
-        ```
 
         :param str resource_name: The name of the resource.
         :param GlobalInitScriptArgs args: The arguments to use to populate this resource's properties.

@@ -78,28 +78,6 @@ import javax.annotation.Nullable;
  * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
  * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
  * 
- * ## Import
- * 
- * The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_secret.app
- * 
- *   id = &#34;&lt;scopeName&gt;|||&lt;secretKey&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/secret:Secret app &#34;&lt;scopeName&gt;|||&lt;secretKey&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/secret:Secret")
 public class Secret extends com.pulumi.resources.CustomResource {

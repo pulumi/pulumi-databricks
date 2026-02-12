@@ -47,8 +47,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -109,28 +107,6 @@ import (
 //		})
 //	}
 //
-// ```
-//
-// ## Import
-//
-// This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_volume.this
-//
-//	id = "<catalog_name>.<schema_name>.<name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
 // ```
 type Volume struct {
 	pulumi.CustomResourceState

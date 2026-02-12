@@ -141,28 +141,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by notification ID:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_notification_destination.this
-    /// 
-    ///   id = "&lt;notification-id&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/notificationDestination:NotificationDestination this &lt;notification-id&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/notificationDestination:NotificationDestination")]
     public partial class NotificationDestination : global::Pulumi.CustomResource

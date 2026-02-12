@@ -164,26 +164,6 @@ import javax.annotation.Nullable;
  * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
  * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
  * 
- * ## Import
- * 
- * This resource can be imported by Databricks account ID and private access settings ID.
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_mws_private_access_settings.this
- * 
- *   id = &#34;&lt;account_id&gt;/&lt;private_access_settings_id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * ```sh
- * $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this &#39;&lt;account_id&gt;/&lt;private_access_settings_id&gt;&#39;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings")
 public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResource {

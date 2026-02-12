@@ -34,28 +34,6 @@ import * as utilities from "./utilities";
  *
  * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
- *
- * ## Import
- *
- * This resource can be imported by name:
- *
- * hcl
- *
- * import {
- *
- *   to = databricks_artifact_allowlist.this
- *
- *   id = "<metastore_id>|<artifact_type>"
- *
- * }
- *
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this "<metastore_id>|<artifact_type>"
- * ```
  */
 export class ArtifactAllowlist extends pulumi.CustomResource {
     /**

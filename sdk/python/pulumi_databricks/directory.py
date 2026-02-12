@@ -185,28 +185,6 @@ class Directory(pulumi.CustomResource):
         - get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         - WorkspaceConf to manage workspace configuration for expert usage.
 
-        ## Import
-
-        The resource directory can be imported using directory path:
-
-        hcl
-
-        import {
-
-          to = databricks_directory.this
-
-          id = "/path/to/directory"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/directory:Directory this /path/to/directory
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
@@ -250,28 +228,6 @@ class Directory(pulumi.CustomResource):
         - Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         - get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         - WorkspaceConf to manage workspace configuration for expert usage.
-
-        ## Import
-
-        The resource directory can be imported using directory path:
-
-        hcl
-
-        import {
-
-          to = databricks_directory.this
-
-          id = "/path/to/directory"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/directory:Directory this /path/to/directory
-        ```
 
         :param str resource_name: The name of the resource.
         :param DirectoryArgs args: The arguments to use to populate this resource's properties.

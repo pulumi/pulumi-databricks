@@ -22,26 +22,6 @@ import javax.annotation.Nullable;
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
- * ## Import
- * 
- * As of Pulumi v1.5, resources can be imported through configuration.
- * 
- * hcl
- * 
- * import {
- * 
- *   id = &#34;full_name&#34;
- * 
- *   to = databricks_feature_engineering_feature.this
- * 
- * }
- * 
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- * 
- * ```sh
- * $ pulumi import databricks:index/featureEngineeringFeature:FeatureEngineeringFeature this &#34;full_name&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/featureEngineeringFeature:FeatureEngineeringFeature")
 public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResource {
@@ -115,9 +95,23 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
     public Output<List<String>> inputs() {
         return this.inputs;
     }
+    /**
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
+     * is automatically populated when features are created through Databricks notebooks or jobs.
+     * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+     * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+     * 
+     */
     @Export(name="lineageContext", refs={FeatureEngineeringFeatureLineageContext.class}, tree="[0]")
     private Output</* @Nullable */ FeatureEngineeringFeatureLineageContext> lineageContext;
 
+    /**
+     * @return WARNING: This field is primarily intended for internal use by Databricks systems and
+     * is automatically populated when features are created through Databricks notebooks or jobs.
+     * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
+     * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+     * 
+     */
     public Output<Optional<FeatureEngineeringFeatureLineageContext>> lineageContext() {
         return Codegen.optional(this.lineageContext);
     }

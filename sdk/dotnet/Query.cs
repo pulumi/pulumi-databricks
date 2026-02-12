@@ -10,27 +10,148 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// ## Import
+    /// This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes databricks.SqlQuery resource - see migration guide below for more details.
     /// 
-    /// This resource can be imported using query ID:
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    /// hcl
+    /// ## Example Usage
     /// 
-    /// import {
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
     /// 
-    ///   to = databricks_query.this
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
+    ///     {
+    ///         Path = "/Shared/Queries",
+    ///     });
     /// 
-    ///   id = "&lt;query-id&gt;"
+    ///     // This will be replaced with new databricks_query resource
+    ///     var @this = new Databricks.Query("this", new()
+    ///     {
+    ///         WarehouseId = example.Id,
+    ///         DisplayName = "My Query Name",
+    ///         QueryText = "SELECT 42 as value",
+    ///         ParentPath = sharedDir.Path,
+    ///     });
     /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/query:Query this &lt;query-id&gt;
+    /// });
     /// ```
+    /// 
+    /// ## Migrating from `databricks.SqlQuery` resource
+    /// 
+    /// Under the hood, the new resource uses the same data as the `databricks.SqlQuery`, but exposed via different API. This means that we can migrate existing queries without recreating them.  This operation is done in few steps:
+    /// 
+    /// * Record the ID of existing `databricks.SqlQuery`, for example, by executing the `terraform state show databricks_sql_query.query` command.
+    /// * Create the code for the new implementation performing following changes:
+    ///   * the `Name` attribute is now named `DisplayName`
+    ///   * the `Parent` (if exists) is renamed to `ParentPath` attribute, and should be converted from `folders/object_id` to the actual path.
+    ///   * Blocks that specify values in the `Parameter` block were renamed (see above).
+    /// 
+    /// For example, if we have the original `databricks.SqlQuery` defined as:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var query = new Databricks.SqlQuery("query", new()
+    ///     {
+    ///         DataSourceId = example.DataSourceId,
+    ///         Query = "select 42 as value",
+    ///         Name = "My Query",
+    ///         Parent = $"folders/{sharedDir.ObjectId}",
+    ///         Parameters = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlQueryParameterArgs
+    ///             {
+    ///                 Name = "p1",
+    ///                 Title = "Title for p1",
+    ///                 Text = new Databricks.Inputs.SqlQueryParameterTextArgs
+    ///                 {
+    ///                     Value = "default",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// we'll have a new resource defined as:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var query = new Databricks.Query("query", new()
+    ///     {
+    ///         WarehouseId = example.Id,
+    ///         QueryText = "select 42 as value",
+    ///         DisplayName = "My Query",
+    ///         ParentPath = sharedDir.Path,
+    ///         Parameters = new[]
+    ///         {
+    ///             new Databricks.Inputs.QueryParameterArgs
+    ///             {
+    ///                 Name = "p1",
+    ///                 Title = "Title for p1",
+    ///                 TextValue = new Databricks.Inputs.QueryParameterTextValueArgs
+    ///                 {
+    ///                     Value = "default",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Access Control
+    /// 
+    /// databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual queries.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var queryUsage = new Databricks.Permissions("query_usage", new()
+    ///     {
+    ///         SqlQueryId = query.Id,
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = "users",
+    ///                 PermissionLevel = "CAN_RUN",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * databricks.Alert to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).
+    /// * databricks.SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+    /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
     /// </summary>
     [DatabricksResourceType("databricks:index/query:Query")]
     public partial class Query : global::Pulumi.CustomResource

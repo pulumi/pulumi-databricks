@@ -29,26 +29,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
- * ## Import
- *
- * As of Pulumi v1.5, resources can be imported through configuration.
- *
- * hcl
- *
- * import {
- *
- *   id = "name"
- *
- *   to = databricks_account_setting_v2.this
- *
- * }
- *
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- *
- * ```sh
- * $ pulumi import databricks:index/accountSettingV2:AccountSettingV2 this "name"
- * ```
  */
 export class AccountSettingV2 extends pulumi.CustomResource {
     /**

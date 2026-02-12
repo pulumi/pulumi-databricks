@@ -21,28 +21,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
- * ## Import
- * 
- * The resource notebook can be imported using notebook path
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_notebook.this
- * 
- *   id = &#34;/path/to/notebook&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
- * ```
- * 
  */
 @ResourceType(type="databricks:index/notebook:Notebook")
 public class Notebook extends com.pulumi.resources.CustomResource {

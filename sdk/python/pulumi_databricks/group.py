@@ -426,28 +426,6 @@ class Group(pulumi.CustomResource):
         this = databricks.Group("this", display_name="Some Group")
         ```
 
-        ## Import
-
-        You can import a `databricks_group` resource by its SCIM ID:
-
-        hcl
-
-        import {
-
-          to = databricks_group.my_group
-
-          id = "<group_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/group:Group my_group <group_id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
@@ -529,28 +507,6 @@ class Group(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.Group("this", display_name="Some Group")
-        ```
-
-        ## Import
-
-        You can import a `databricks_group` resource by its SCIM ID:
-
-        hcl
-
-        import {
-
-          to = databricks_group.my_group
-
-          id = "<group_id>"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/group:Group my_group <group_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -183,28 +183,6 @@ namespace Pulumi.Databricks
     /// ```
     /// 
     /// Example `EncryptionDetails` specifying SSE_S3 encryption:
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by `name`:
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   to = databricks_external_location.this
-    /// 
-    ///   id = "&lt;name&gt;"
-    /// 
-    /// }
-    /// 
-    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/externalLocation:ExternalLocation this &lt;name&gt;
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/externalLocation:ExternalLocation")]
     public partial class ExternalLocation : global::Pulumi.CustomResource

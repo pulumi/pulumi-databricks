@@ -198,28 +198,6 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         * GroupMember to attach users and groups as group members.
         * PermissionAssignment to manage permission assignment from a workspace context
 
-        ## Import
-
-        The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id
-
-        hcl
-
-        import {
-
-          to = databricks_mws_permission_assignment.this
-
-          id = "workspace_id|principal_id"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this "workspace_id|principal_id"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
@@ -288,28 +266,6 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupMember to attach users and groups as group members.
         * PermissionAssignment to manage permission assignment from a workspace context
-
-        ## Import
-
-        The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id
-
-        hcl
-
-        import {
-
-          to = databricks_mws_permission_assignment.this
-
-          id = "workspace_id|principal_id"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this "workspace_id|principal_id"
-        ```
 
         :param str resource_name: The name of the resource.
         :param MwsPermissionAssignmentArgs args: The arguments to use to populate this resource's properties.

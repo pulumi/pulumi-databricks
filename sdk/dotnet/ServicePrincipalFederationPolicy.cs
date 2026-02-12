@@ -42,26 +42,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// As of Pulumi v1.5, resources can be imported through configuration.
-    /// 
-    /// hcl
-    /// 
-    /// import {
-    /// 
-    ///   id = "service_principal_id,policy_id"
-    /// 
-    ///   to = databricks_service_principal_federation_policy.this
-    /// 
-    /// }
-    /// 
-    /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy this "service_principal_id,policy_id"
-    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy")]
     public partial class ServicePrincipalFederationPolicy : global::Pulumi.CustomResource

@@ -298,26 +298,6 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_feature_engineering_kafka_config.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig this "name"
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']] auth_config: Authentication configuration for connection to topics
@@ -338,26 +318,6 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-
-        ## Import
-
-        As of Pulumi v1.5, resources can be imported through configuration.
-
-        hcl
-
-        import {
-
-          id = "name"
-
-          to = databricks_feature_engineering_kafka_config.this
-
-        }
-
-        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
-
-        ```sh
-        $ pulumi import databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig this "name"
-        ```
 
         :param str resource_name: The name of the resource.
         :param FeatureEngineeringKafkaConfigArgs args: The arguments to use to populate this resource's properties.

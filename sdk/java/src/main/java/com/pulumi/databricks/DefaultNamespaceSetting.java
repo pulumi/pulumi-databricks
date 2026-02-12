@@ -61,28 +61,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * This resource can be imported by predefined name `global`:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_default_namespace_setting.this
- * 
- *   id = &#34;global&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
- * ```
- * 
  */
 @ResourceType(type="databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting")
 public class DefaultNamespaceSetting extends com.pulumi.resources.CustomResource {

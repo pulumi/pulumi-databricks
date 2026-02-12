@@ -173,28 +173,6 @@ import javax.annotation.Nullable;
  * * databricks.Grants to manage data access in Unity Catalog.
  * * databricks.Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
  * 
- * ## Import
- * 
- * You can import a `databricks_sql_query` resource with ID like the following:
- * 
- * hcl
- * 
- * import {
- * 
- *   to = databricks_sql_query.this
- * 
- *   id = &#34;&lt;query-id&gt;&#34;
- * 
- * }
- * 
- * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/sqlQuery:SqlQuery this &#34;&lt;query-id&gt;&#34;
- * ```
- * 
  */
 @ResourceType(type="databricks:index/sqlQuery:SqlQuery")
 public class SqlQuery extends com.pulumi.resources.CustomResource {

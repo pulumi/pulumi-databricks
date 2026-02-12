@@ -12,27 +12,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
 //
-// This resource can be imported by using combination of workspace ID, securable type and name:
+// > This resource can only be used with a workspace-level provider!
 //
-// hcl
+// By default, Databricks assigns the securable to all workspaces attached to the current metastore. By using `WorkspaceBinding`, the securable will be unassigned from all workspaces and only assigned explicitly using this resource.
 //
-// import {
+// > To use this resource the securable must have its isolation mode set to `ISOLATED` (for databricks_catalog) or `ISOLATION_MODE_ISOLATED` (for  (for databricks_external_location, StorageCredential or databricks_credential) for the `isolationMode` attribute. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration), [this guide](https://docs.databricks.com/en/connect/unity-catalog/external-locations.html#workspace-binding) or [this guide](https://docs.databricks.com/en/connect/unity-catalog/storage-credentials.html#optional-assign-a-storage-credential-to-specific-workspaces).
 //
-//	to = databricks_workspace_binding.this
+// > If the securable's isolation mode was set to `ISOLATED` using Pulumi then the securable will have been automatically bound to the workspace it was created from.
 //
-//	id = "<workspace_id>|<securable_type>|<securable_name>"
+// ## Example Usage
 //
-// }
+// ```go
+// package main
 //
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+// import (
 //
-// bash
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
-// ```sh
-// $ pulumi import databricks:index/workspaceBinding:WorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:          pulumi.String("sandbox"),
+//				IsolationMode: pulumi.String("ISOLATED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewWorkspaceBinding(ctx, "sandbox", &databricks.WorkspaceBindingArgs{
+//				SecurableName: sandbox.Name,
+//				WorkspaceId:   pulumi.Any(other.WorkspaceId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
+//
+// ## Migration from CatalogWorkspaceBinding
+//
+// You can migrate from the deprecated `CatalogWorkspaceBinding` to `WorkspaceBinding` without re-binding catalog.
 type WorkspaceBinding struct {
 	pulumi.CustomResourceState
 

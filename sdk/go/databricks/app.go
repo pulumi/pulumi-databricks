@@ -73,28 +73,6 @@ import (
 // * ModelServing to serve this model on a Databricks serving endpoint.
 // * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 // * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
-//
-// ## Import
-//
-// This resource can be imported by name:
-//
-// hcl
-//
-// import {
-//
-//	to = databricks_app.this
-//
-//	id = "<app_name>"
-//
-// }
-//
-// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/app:App this <app_name>
-// ```
 type App struct {
 	pulumi.CustomResourceState
 

@@ -32,26 +32,6 @@ import * as utilities from "./utilities";
  *     objectId: _this.schemaId,
  * });
  * ```
- *
- * ## Import
- *
- * As of Pulumi v1.5, resources can be imported through configuration.
- *
- * hcl
- *
- * import {
- *
- *   id = "object_type,object_id"
- *
- *   to = databricks_quality_monitor_v2.this
- *
- * }
- *
- * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
- *
- * ```sh
- * $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 this "object_type,object_id"
- * ```
  */
 export class QualityMonitorV2 extends pulumi.CustomResource {
     /**

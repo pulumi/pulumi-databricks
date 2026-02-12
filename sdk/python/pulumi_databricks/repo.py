@@ -314,28 +314,6 @@ class Repo(pulumi.CustomResource):
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * WorkspaceConf to manage workspace configuration for expert usage.
 
-        ## Import
-
-        The resource can be imported using the Git folder ID (obtained via UI or using API)
-
-        hcl
-
-        import {
-
-          to = databricks_repo.this
-
-          id = "repo_id"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/repo:Repo this repo_id
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
@@ -385,28 +363,6 @@ class Repo(pulumi.CustomResource):
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * WorkspaceConf to manage workspace configuration for expert usage.
-
-        ## Import
-
-        The resource can be imported using the Git folder ID (obtained via UI or using API)
-
-        hcl
-
-        import {
-
-          to = databricks_repo.this
-
-          id = "repo_id"
-
-        }
-
-        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/repo:Repo this repo_id
-        ```
 
         :param str resource_name: The name of the resource.
         :param RepoArgs args: The arguments to use to populate this resource's properties.
