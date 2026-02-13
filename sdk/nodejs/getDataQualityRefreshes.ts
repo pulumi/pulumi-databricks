@@ -44,6 +44,7 @@ export function getDataQualityRefreshes(args: GetDataQualityRefreshesArgs, opts?
         "objectId": args.objectId,
         "objectType": args.objectType,
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -68,6 +69,10 @@ export interface GetDataQualityRefreshesArgs {
      */
     objectType: string;
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetDataQualityRefreshesProviderConfig;
 }
 
 /**
@@ -87,6 +92,7 @@ export interface GetDataQualityRefreshesResult {
      */
     readonly objectType: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetDataQualityRefreshesProviderConfig;
     readonly refreshes: outputs.GetDataQualityRefreshesRefresh[];
 }
 /**
@@ -127,6 +133,7 @@ export function getDataQualityRefreshesOutput(args: GetDataQualityRefreshesOutpu
         "objectId": args.objectId,
         "objectType": args.objectType,
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -151,4 +158,8 @@ export interface GetDataQualityRefreshesOutputArgs {
      */
     objectType: pulumi.Input<string>;
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetDataQualityRefreshesProviderConfigArgs>;
 }

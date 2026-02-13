@@ -7,12 +7,15 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigAuthConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigBackfillSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigKeySchema;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigProviderConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigSubscriptionMode;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigValueSchema;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringKafkaConfigResult {
@@ -54,6 +57,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
      * 
      */
     private String name;
+    private @Nullable GetFeatureEngineeringKafkaConfigProviderConfig providerConfig;
     /**
      * @return (SubscriptionMode) - Options to configure which Kafka topics to pull data from
      * 
@@ -118,6 +122,9 @@ public final class GetFeatureEngineeringKafkaConfigResult {
     public String name() {
         return this.name;
     }
+    public Optional<GetFeatureEngineeringKafkaConfigProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (SubscriptionMode) - Options to configure which Kafka topics to pull data from
      * 
@@ -149,6 +156,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
         private String id;
         private GetFeatureEngineeringKafkaConfigKeySchema keySchema;
         private String name;
+        private @Nullable GetFeatureEngineeringKafkaConfigProviderConfig providerConfig;
         private GetFeatureEngineeringKafkaConfigSubscriptionMode subscriptionMode;
         private GetFeatureEngineeringKafkaConfigValueSchema valueSchema;
         public Builder() {}
@@ -161,6 +169,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
     	      this.id = defaults.id;
     	      this.keySchema = defaults.keySchema;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.subscriptionMode = defaults.subscriptionMode;
     	      this.valueSchema = defaults.valueSchema;
         }
@@ -222,6 +231,12 @@ public final class GetFeatureEngineeringKafkaConfigResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetFeatureEngineeringKafkaConfigProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subscriptionMode(GetFeatureEngineeringKafkaConfigSubscriptionMode subscriptionMode) {
             if (subscriptionMode == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigResult", "subscriptionMode");
@@ -246,6 +261,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
             _resultValue.id = id;
             _resultValue.keySchema = keySchema;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.subscriptionMode = subscriptionMode;
             _resultValue.valueSchema = valueSchema;
             return _resultValue;

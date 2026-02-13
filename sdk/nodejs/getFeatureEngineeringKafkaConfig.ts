@@ -13,6 +13,7 @@ export function getFeatureEngineeringKafkaConfig(args: GetFeatureEngineeringKafk
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -25,6 +26,10 @@ export interface GetFeatureEngineeringKafkaConfigArgs {
      * Can be distinct from topic name
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetFeatureEngineeringKafkaConfigProviderConfig;
 }
 
 /**
@@ -62,6 +67,7 @@ export interface GetFeatureEngineeringKafkaConfigResult {
      * Can be distinct from topic name
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetFeatureEngineeringKafkaConfigProviderConfig;
     /**
      * (SubscriptionMode) - Options to configure which Kafka topics to pull data from
      */
@@ -78,6 +84,7 @@ export function getFeatureEngineeringKafkaConfigOutput(args: GetFeatureEngineeri
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -90,4 +97,8 @@ export interface GetFeatureEngineeringKafkaConfigOutputArgs {
      * Can be distinct from topic name
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringKafkaConfigProviderConfigArgs>;
 }

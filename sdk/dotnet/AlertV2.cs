@@ -132,6 +132,12 @@ namespace Pulumi.Databricks
         public Output<string?> ParentPath { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.AlertV2ProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Purge the resource on delete
         /// </summary>
         [Output("purgeOnDelete")]
@@ -250,6 +256,12 @@ namespace Pulumi.Databricks
         public Input<string>? ParentPath { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.AlertV2ProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Purge the resource on delete
         /// </summary>
         [Input("purgeOnDelete")]
@@ -348,6 +360,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.AlertV2ProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Purge the resource on delete

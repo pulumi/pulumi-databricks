@@ -76,6 +76,10 @@ export class TagPolicy extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.TagPolicyProviderConfig | undefined>;
     declare public readonly tagKey: pulumi.Output<string>;
     /**
      * (string) - Timestamp when the tag policy was last updated
@@ -98,6 +102,7 @@ export class TagPolicy extends pulumi.CustomResource {
             const state = argsOrState as TagPolicyState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["tagKey"] = state?.tagKey;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["values"] = state?.values;
@@ -107,6 +112,7 @@ export class TagPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tagKey'");
             }
             resourceInputs["description"] = args?.description;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tagKey"] = args?.tagKey;
             resourceInputs["values"] = args?.values;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -126,6 +132,10 @@ export interface TagPolicyState {
      */
     createTime?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.TagPolicyProviderConfig>;
     tagKey?: pulumi.Input<string>;
     /**
      * (string) - Timestamp when the tag policy was last updated
@@ -139,6 +149,10 @@ export interface TagPolicyState {
  */
 export interface TagPolicyArgs {
     description?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.TagPolicyProviderConfig>;
     tagKey: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[]>;
 }

@@ -67,6 +67,10 @@ export class DisableLegacyAccessSetting extends pulumi.CustomResource {
      */
     declare public readonly disableLegacyAccess: pulumi.Output<outputs.DisableLegacyAccessSettingDisableLegacyAccess>;
     declare public readonly etag: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DisableLegacyAccessSettingProviderConfig | undefined>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -84,6 +88,7 @@ export class DisableLegacyAccessSetting extends pulumi.CustomResource {
             const state = argsOrState as DisableLegacyAccessSettingState | undefined;
             resourceInputs["disableLegacyAccess"] = state?.disableLegacyAccess;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as DisableLegacyAccessSettingArgs | undefined;
@@ -92,6 +97,7 @@ export class DisableLegacyAccessSetting extends pulumi.CustomResource {
             }
             resourceInputs["disableLegacyAccess"] = args?.disableLegacyAccess;
             resourceInputs["etag"] = args?.etag;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -108,6 +114,10 @@ export interface DisableLegacyAccessSettingState {
      */
     disableLegacyAccess?: pulumi.Input<inputs.DisableLegacyAccessSettingDisableLegacyAccess>;
     etag?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DisableLegacyAccessSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }
 
@@ -120,5 +130,9 @@ export interface DisableLegacyAccessSettingArgs {
      */
     disableLegacyAccess: pulumi.Input<inputs.DisableLegacyAccessSettingDisableLegacyAccess>;
     etag?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DisableLegacyAccessSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }

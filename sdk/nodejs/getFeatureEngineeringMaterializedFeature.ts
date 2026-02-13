@@ -13,6 +13,7 @@ export function getFeatureEngineeringMaterializedFeature(args: GetFeatureEnginee
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature", {
         "materializedFeatureId": args.materializedFeatureId,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -24,6 +25,10 @@ export interface GetFeatureEngineeringMaterializedFeatureArgs {
      * Unique identifier for the materialized feature
      */
     materializedFeatureId: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetFeatureEngineeringMaterializedFeatureProviderConfig;
 }
 
 /**
@@ -63,6 +68,7 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      * (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
     readonly pipelineScheduleState: string;
+    readonly providerConfig?: outputs.GetFeatureEngineeringMaterializedFeatureProviderConfig;
     /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      */
@@ -75,6 +81,7 @@ export function getFeatureEngineeringMaterializedFeatureOutput(args: GetFeatureE
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature", {
         "materializedFeatureId": args.materializedFeatureId,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -86,4 +93,8 @@ export interface GetFeatureEngineeringMaterializedFeatureOutputArgs {
      * Unique identifier for the materialized feature
      */
     materializedFeatureId: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringMaterializedFeatureProviderConfigArgs>;
 }

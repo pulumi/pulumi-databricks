@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDatabaseDatabaseCatalogResult',
@@ -26,7 +28,7 @@ class GetDatabaseDatabaseCatalogResult:
     """
     A collection of values returned by getDatabaseDatabaseCatalog.
     """
-    def __init__(__self__, create_database_if_not_exists=None, database_instance_name=None, database_name=None, id=None, name=None, uid=None):
+    def __init__(__self__, create_database_if_not_exists=None, database_instance_name=None, database_name=None, id=None, name=None, provider_config=None, uid=None):
         if create_database_if_not_exists and not isinstance(create_database_if_not_exists, bool):
             raise TypeError("Expected argument 'create_database_if_not_exists' to be a bool")
         pulumi.set(__self__, "create_database_if_not_exists", create_database_if_not_exists)
@@ -42,6 +44,9 @@ class GetDatabaseDatabaseCatalogResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
@@ -87,6 +92,11 @@ class GetDatabaseDatabaseCatalogResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDatabaseDatabaseCatalogProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
@@ -106,10 +116,12 @@ class AwaitableGetDatabaseDatabaseCatalogResult(GetDatabaseDatabaseCatalogResult
             database_name=self.database_name,
             id=self.id,
             name=self.name,
+            provider_config=self.provider_config,
             uid=self.uid)
 
 
 def get_database_database_catalog(name: Optional[_builtins.str] = None,
+                                  provider_config: Optional[Union['GetDatabaseDatabaseCatalogProviderConfigArgs', 'GetDatabaseDatabaseCatalogProviderConfigArgsDict']] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseDatabaseCatalogResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -129,9 +141,11 @@ def get_database_database_catalog(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: The name of the catalog in UC
+    :param Union['GetDatabaseDatabaseCatalogProviderConfigArgs', 'GetDatabaseDatabaseCatalogProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog', __args__, opts=opts, typ=GetDatabaseDatabaseCatalogResult).value
 
@@ -141,8 +155,10 @@ def get_database_database_catalog(name: Optional[_builtins.str] = None,
         database_name=pulumi.get(__ret__, 'database_name'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         uid=pulumi.get(__ret__, 'uid'))
 def get_database_database_catalog_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                                         provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseDatabaseCatalogProviderConfigArgs', 'GetDatabaseDatabaseCatalogProviderConfigArgsDict']]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseDatabaseCatalogResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -162,9 +178,11 @@ def get_database_database_catalog_output(name: Optional[pulumi.Input[_builtins.s
 
 
     :param _builtins.str name: The name of the catalog in UC
+    :param Union['GetDatabaseDatabaseCatalogProviderConfigArgs', 'GetDatabaseDatabaseCatalogProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog', __args__, opts=opts, typ=GetDatabaseDatabaseCatalogResult)
     return __ret__.apply(lambda __response__: GetDatabaseDatabaseCatalogResult(
@@ -173,4 +191,5 @@ def get_database_database_catalog_output(name: Optional[pulumi.Input[_builtins.s
         database_name=pulumi.get(__response__, 'database_name'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         uid=pulumi.get(__response__, 'uid')))

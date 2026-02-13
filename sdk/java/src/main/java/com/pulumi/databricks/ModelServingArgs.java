@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingAiGatewayArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingEmailNotificationsArgs;
+import com.pulumi.databricks.inputs.ModelServingProviderConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingRateLimitArgs;
 import com.pulumi.databricks.inputs.ModelServingTagArgs;
 import java.lang.Boolean;
@@ -113,6 +114,21 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<ModelServingProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<ModelServingProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      * 
      * @deprecated
@@ -174,6 +190,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.rateLimits = $.rateLimits;
         this.routeOptimized = $.routeOptimized;
         this.tags = $.tags;
@@ -321,6 +338,27 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<ModelServingProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(ModelServingProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

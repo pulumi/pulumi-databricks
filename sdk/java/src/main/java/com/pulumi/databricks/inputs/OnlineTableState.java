@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.OnlineTableProviderConfigArgs;
 import com.pulumi.databricks.inputs.OnlineTableSpecArgs;
 import com.pulumi.databricks.inputs.OnlineTableStatusArgs;
 import java.lang.String;
@@ -31,6 +32,21 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<OnlineTableProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<OnlineTableProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -97,6 +113,7 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
 
     private OnlineTableState(OnlineTableState $) {
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.spec = $.spec;
         this.statuses = $.statuses;
         this.tableServingUrl = $.tableServingUrl;
@@ -140,6 +157,27 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<OnlineTableProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(OnlineTableProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

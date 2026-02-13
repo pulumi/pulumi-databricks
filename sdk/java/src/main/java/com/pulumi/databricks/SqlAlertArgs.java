@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlAlertOptionsArgs;
+import com.pulumi.databricks.inputs.SqlAlertProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -70,6 +71,13 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parent);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<SqlAlertProviderConfigArgs> providerConfig;
+
+    public Optional<Output<SqlAlertProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * ID of the query evaluated by the alert.
      * 
@@ -114,6 +122,7 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.options = $.options;
         this.parent = $.parent;
+        this.providerConfig = $.providerConfig;
         this.queryId = $.queryId;
         this.rearm = $.rearm;
         this.updatedAt = $.updatedAt;
@@ -207,6 +216,15 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        public Builder providerConfig(@Nullable Output<SqlAlertProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(SqlAlertProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

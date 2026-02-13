@@ -108,6 +108,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetAlertsV2ProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetAlertsV2Args()
         {
         }
@@ -118,6 +124,12 @@ namespace Pulumi.Databricks
     {
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetAlertsV2ProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetAlertsV2InvokeArgs()
         {
@@ -135,6 +147,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly int? PageSize;
+        public readonly Outputs.GetAlertsV2ProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetAlertsV2Result(
@@ -142,11 +155,14 @@ namespace Pulumi.Databricks
 
             string id,
 
-            int? pageSize)
+            int? pageSize,
+
+            Outputs.GetAlertsV2ProviderConfigResult? providerConfig)
         {
             Alerts = alerts;
             Id = id;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
         }
     }
 }

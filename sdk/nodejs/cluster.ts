@@ -153,6 +153,9 @@ export class Cluster extends pulumi.CustomResource {
      * similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
      */
     declare public readonly driverInstancePoolId: pulumi.Output<string>;
+    /**
+     * a block describing the alternative driver node types if `driverNodeTypeId` isn't available.
+     */
     declare public readonly driverNodeTypeFlexibility: pulumi.Output<outputs.ClusterDriverNodeTypeFlexibility | undefined>;
     /**
      * The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
@@ -246,6 +249,9 @@ export class Cluster extends pulumi.CustomResource {
      * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
      */
     declare public readonly useMlRuntime: pulumi.Output<boolean | undefined>;
+    /**
+     * a block describing the alternative driver node types if `nodeTypeId` isn't available.
+     */
     declare public readonly workerNodeTypeFlexibility: pulumi.Output<outputs.ClusterWorkerNodeTypeFlexibility | undefined>;
     declare public readonly workloadType: pulumi.Output<outputs.ClusterWorkloadType | undefined>;
 
@@ -424,6 +430,9 @@ export interface ClusterState {
      * similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
      */
     driverInstancePoolId?: pulumi.Input<string>;
+    /**
+     * a block describing the alternative driver node types if `driverNodeTypeId` isn't available.
+     */
     driverNodeTypeFlexibility?: pulumi.Input<inputs.ClusterDriverNodeTypeFlexibility>;
     /**
      * The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
@@ -517,6 +526,9 @@ export interface ClusterState {
      * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
      */
     useMlRuntime?: pulumi.Input<boolean>;
+    /**
+     * a block describing the alternative driver node types if `nodeTypeId` isn't available.
+     */
     workerNodeTypeFlexibility?: pulumi.Input<inputs.ClusterWorkerNodeTypeFlexibility>;
     workloadType?: pulumi.Input<inputs.ClusterWorkloadType>;
 }
@@ -579,6 +591,9 @@ export interface ClusterArgs {
      * similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
      */
     driverInstancePoolId?: pulumi.Input<string>;
+    /**
+     * a block describing the alternative driver node types if `driverNodeTypeId` isn't available.
+     */
     driverNodeTypeFlexibility?: pulumi.Input<inputs.ClusterDriverNodeTypeFlexibility>;
     /**
      * The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
@@ -667,6 +682,9 @@ export interface ClusterArgs {
      * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
      */
     useMlRuntime?: pulumi.Input<boolean>;
+    /**
+     * a block describing the alternative driver node types if `nodeTypeId` isn't available.
+     */
     workerNodeTypeFlexibility?: pulumi.Input<inputs.ClusterWorkerNodeTypeFlexibility>;
     workloadType?: pulumi.Input<inputs.ClusterWorkloadType>;
 }

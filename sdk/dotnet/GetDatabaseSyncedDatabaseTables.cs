@@ -45,6 +45,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetDatabaseSyncedDatabaseTablesProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetDatabaseSyncedDatabaseTablesArgs()
         {
         }
@@ -65,6 +71,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetDatabaseSyncedDatabaseTablesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetDatabaseSyncedDatabaseTablesInvokeArgs()
         {
         }
@@ -81,6 +93,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly string InstanceName;
         public readonly int? PageSize;
+        public readonly Outputs.GetDatabaseSyncedDatabaseTablesProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult> SyncedTables;
 
         [OutputConstructor]
@@ -91,11 +104,14 @@ namespace Pulumi.Databricks
 
             int? pageSize,
 
+            Outputs.GetDatabaseSyncedDatabaseTablesProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult> syncedTables)
         {
             Id = id;
             InstanceName = instanceName;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
             SyncedTables = syncedTables;
         }
     }

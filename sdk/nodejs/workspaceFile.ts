@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -51,6 +53,10 @@ export class WorkspaceFile extends pulumi.CustomResource {
      */
     declare public readonly path: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceFileProviderConfig | undefined>;
+    /**
      * Path to file on local filesystem. Conflicts with `contentBase64`.
      */
     declare public readonly source: pulumi.Output<string | undefined>;
@@ -80,6 +86,7 @@ export class WorkspaceFile extends pulumi.CustomResource {
             resourceInputs["md5"] = state?.md5;
             resourceInputs["objectId"] = state?.objectId;
             resourceInputs["path"] = state?.path;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["source"] = state?.source;
             resourceInputs["url"] = state?.url;
             resourceInputs["workspacePath"] = state?.workspacePath;
@@ -92,6 +99,7 @@ export class WorkspaceFile extends pulumi.CustomResource {
             resourceInputs["md5"] = args?.md5;
             resourceInputs["objectId"] = args?.objectId;
             resourceInputs["path"] = args?.path;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["source"] = args?.source;
             resourceInputs["url"] = undefined /*out*/;
             resourceInputs["workspacePath"] = undefined /*out*/;
@@ -118,6 +126,10 @@ export interface WorkspaceFileState {
      * The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
      */
     path?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceFileProviderConfig>;
     /**
      * Path to file on local filesystem. Conflicts with `contentBase64`.
      */
@@ -149,6 +161,10 @@ export interface WorkspaceFileArgs {
      * The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceFileProviderConfig>;
     /**
      * Path to file on local filesystem. Conflicts with `contentBase64`.
      */

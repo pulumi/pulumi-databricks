@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         /// The identifier of the dashboard to refresh
         /// </summary>
         public readonly string? DashboardId;
+        public readonly ImmutableDictionary<string, string>? Filters;
         /// <summary>
         /// Represents a subscription configuration for scheduled dashboard snapshots.
         /// </summary>
@@ -30,11 +31,14 @@ namespace Pulumi.Databricks.Outputs
         private JobTaskDashboardTask(
             string? dashboardId,
 
+            ImmutableDictionary<string, string>? filters,
+
             Outputs.JobTaskDashboardTaskSubscription? subscription,
 
             string? warehouseId)
         {
             DashboardId = dashboardId;
+            Filters = filters;
             Subscription = subscription;
             WarehouseId = warehouseId;
         }

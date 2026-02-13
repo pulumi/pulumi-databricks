@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetExternalMetadataProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalMetadataResult {
@@ -62,6 +65,7 @@ public final class GetExternalMetadataResult {
      * 
      */
     private Map<String,String> properties;
+    private @Nullable GetExternalMetadataProviderConfig providerConfig;
     /**
      * @return (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      * 
@@ -154,6 +158,9 @@ public final class GetExternalMetadataResult {
     public Map<String,String> properties() {
         return this.properties;
     }
+    public Optional<GetExternalMetadataProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      * 
@@ -202,6 +209,7 @@ public final class GetExternalMetadataResult {
         private String name;
         private String owner;
         private Map<String,String> properties;
+        private @Nullable GetExternalMetadataProviderConfig providerConfig;
         private String systemType;
         private String updateTime;
         private String updatedBy;
@@ -219,6 +227,7 @@ public final class GetExternalMetadataResult {
     	      this.name = defaults.name;
     	      this.owner = defaults.owner;
     	      this.properties = defaults.properties;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.systemType = defaults.systemType;
     	      this.updateTime = defaults.updateTime;
     	      this.updatedBy = defaults.updatedBy;
@@ -309,6 +318,12 @@ public final class GetExternalMetadataResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetExternalMetadataProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder systemType(String systemType) {
             if (systemType == null) {
               throw new MissingRequiredPropertyException("GetExternalMetadataResult", "systemType");
@@ -352,6 +367,7 @@ public final class GetExternalMetadataResult {
             _resultValue.name = name;
             _resultValue.owner = owner;
             _resultValue.properties = properties;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.systemType = systemType;
             _resultValue.updateTime = updateTime;
             _resultValue.updatedBy = updatedBy;

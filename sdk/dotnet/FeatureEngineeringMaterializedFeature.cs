@@ -53,6 +53,12 @@ namespace Pulumi.Databricks
         public Output<string?> PipelineScheduleState { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.FeatureEngineeringMaterializedFeatureProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         /// </summary>
         [Output("tableName")]
@@ -128,6 +134,12 @@ namespace Pulumi.Databricks
         [Input("pipelineScheduleState")]
         public Input<string>? PipelineScheduleState { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.FeatureEngineeringMaterializedFeatureProviderConfigArgs>? ProviderConfig { get; set; }
+
         public FeatureEngineeringMaterializedFeatureArgs()
         {
         }
@@ -172,6 +184,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("pipelineScheduleState")]
         public Input<string>? PipelineScheduleState { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.FeatureEngineeringMaterializedFeatureProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only

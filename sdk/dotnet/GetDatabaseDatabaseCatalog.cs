@@ -108,6 +108,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetDatabaseDatabaseCatalogProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetDatabaseDatabaseCatalogArgs()
         {
         }
@@ -121,6 +127,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetDatabaseDatabaseCatalogProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetDatabaseDatabaseCatalogInvokeArgs()
         {
@@ -152,6 +164,7 @@ namespace Pulumi.Databricks
         /// (string) - The name of the catalog in UC
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetDatabaseDatabaseCatalogProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string)
         /// </summary>
@@ -169,6 +182,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetDatabaseDatabaseCatalogProviderConfigResult? providerConfig,
+
             string uid)
         {
             CreateDatabaseIfNotExists = createDatabaseIfNotExists;
@@ -176,6 +191,7 @@ namespace Pulumi.Databricks
             DatabaseName = databaseName;
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
             Uid = uid;
         }
     }

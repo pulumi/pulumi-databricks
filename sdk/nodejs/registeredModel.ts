@@ -88,6 +88,10 @@ export class RegisteredModel extends pulumi.CustomResource {
      */
     declare public readonly owner: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.RegisteredModelProviderConfig | undefined>;
+    /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
     declare public readonly schemaName: pulumi.Output<string | undefined>;
@@ -121,6 +125,7 @@ export class RegisteredModel extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schemaName"] = state?.schemaName;
             resourceInputs["storageLocation"] = state?.storageLocation;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -137,6 +142,7 @@ export class RegisteredModel extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = args?.metastoreId;
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schemaName"] = args?.schemaName;
             resourceInputs["storageLocation"] = args?.storageLocation;
             resourceInputs["updatedAt"] = args?.updatedAt;
@@ -173,6 +179,10 @@ export interface RegisteredModelState {
      * Name of the registered model owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.RegisteredModelProviderConfig>;
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
@@ -211,6 +221,10 @@ export interface RegisteredModelArgs {
      * Name of the registered model owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.RegisteredModelProviderConfig>;
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */

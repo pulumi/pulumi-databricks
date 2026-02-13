@@ -6,9 +6,12 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDataQualityMonitorAnomalyDetectionConfig;
 import com.pulumi.databricks.outputs.GetDataQualityMonitorDataProfilingConfig;
+import com.pulumi.databricks.outputs.GetDataQualityMonitorProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDataQualityMonitorResult {
@@ -38,6 +41,7 @@ public final class GetDataQualityMonitorResult {
      * 
      */
     private String objectType;
+    private @Nullable GetDataQualityMonitorProviderConfig providerConfig;
 
     private GetDataQualityMonitorResult() {}
     /**
@@ -76,6 +80,9 @@ public final class GetDataQualityMonitorResult {
     public String objectType() {
         return this.objectType;
     }
+    public Optional<GetDataQualityMonitorProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -91,6 +98,7 @@ public final class GetDataQualityMonitorResult {
         private String id;
         private String objectId;
         private String objectType;
+        private @Nullable GetDataQualityMonitorProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDataQualityMonitorResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -99,6 +107,7 @@ public final class GetDataQualityMonitorResult {
     	      this.id = defaults.id;
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -141,6 +150,12 @@ public final class GetDataQualityMonitorResult {
             this.objectType = objectType;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDataQualityMonitorProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetDataQualityMonitorResult build() {
             final var _resultValue = new GetDataQualityMonitorResult();
             _resultValue.anomalyDetectionConfig = anomalyDetectionConfig;
@@ -148,6 +163,7 @@ public final class GetDataQualityMonitorResult {
             _resultValue.id = id;
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

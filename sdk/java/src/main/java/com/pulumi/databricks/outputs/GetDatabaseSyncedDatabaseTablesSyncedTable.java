@@ -5,10 +5,13 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatus;
+import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfig;
 import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpec;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
@@ -50,6 +53,11 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
      * 
      */
     private String name;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfig providerConfig;
     /**
      * @return (SyncedTableSpec)
      * 
@@ -115,6 +123,13 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
         return this.name;
     }
     /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    /**
      * @return (SyncedTableSpec)
      * 
      */
@@ -146,6 +161,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
         private String effectiveLogicalDatabaseName;
         private String logicalDatabaseName;
         private String name;
+        private @Nullable GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfig providerConfig;
         private GetDatabaseSyncedDatabaseTablesSyncedTableSpec spec;
         private String unityCatalogProvisioningState;
         public Builder() {}
@@ -157,6 +173,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
     	      this.effectiveLogicalDatabaseName = defaults.effectiveLogicalDatabaseName;
     	      this.logicalDatabaseName = defaults.logicalDatabaseName;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
     	      this.unityCatalogProvisioningState = defaults.unityCatalogProvisioningState;
         }
@@ -210,6 +227,12 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spec(GetDatabaseSyncedDatabaseTablesSyncedTableSpec spec) {
             if (spec == null) {
               throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTablesSyncedTable", "spec");
@@ -233,6 +256,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
             _resultValue.effectiveLogicalDatabaseName = effectiveLogicalDatabaseName;
             _resultValue.logicalDatabaseName = logicalDatabaseName;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;
             _resultValue.unityCatalogProvisioningState = unityCatalogProvisioningState;
             return _resultValue;

@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAppsSettingsCustomTemplateResult',
@@ -27,7 +28,7 @@ class GetAppsSettingsCustomTemplateResult:
     """
     A collection of values returned by getAppsSettingsCustomTemplate.
     """
-    def __init__(__self__, creator=None, description=None, git_provider=None, git_repo=None, id=None, manifest=None, name=None, path=None):
+    def __init__(__self__, creator=None, description=None, git_provider=None, git_repo=None, id=None, manifest=None, name=None, path=None, provider_config=None):
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
@@ -52,6 +53,9 @@ class GetAppsSettingsCustomTemplateResult:
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -117,6 +121,11 @@ class GetAppsSettingsCustomTemplateResult:
         """
         return pulumi.get(self, "path")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetAppsSettingsCustomTemplateProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetAppsSettingsCustomTemplateResult(GetAppsSettingsCustomTemplateResult):
     # pylint: disable=using-constant-test
@@ -131,10 +140,12 @@ class AwaitableGetAppsSettingsCustomTemplateResult(GetAppsSettingsCustomTemplate
             id=self.id,
             manifest=self.manifest,
             name=self.name,
-            path=self.path)
+            path=self.path,
+            provider_config=self.provider_config)
 
 
 def get_apps_settings_custom_template(name: Optional[_builtins.str] = None,
+                                      provider_config: Optional[Union['GetAppsSettingsCustomTemplateProviderConfigArgs', 'GetAppsSettingsCustomTemplateProviderConfigArgsDict']] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsSettingsCustomTemplateResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -155,9 +166,11 @@ def get_apps_settings_custom_template(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
            It must be unique within the workspace
+    :param Union['GetAppsSettingsCustomTemplateProviderConfigArgs', 'GetAppsSettingsCustomTemplateProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate', __args__, opts=opts, typ=GetAppsSettingsCustomTemplateResult).value
 
@@ -169,8 +182,10 @@ def get_apps_settings_custom_template(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         manifest=pulumi.get(__ret__, 'manifest'),
         name=pulumi.get(__ret__, 'name'),
-        path=pulumi.get(__ret__, 'path'))
+        path=pulumi.get(__ret__, 'path'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_apps_settings_custom_template_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                                             provider_config: Optional[pulumi.Input[Optional[Union['GetAppsSettingsCustomTemplateProviderConfigArgs', 'GetAppsSettingsCustomTemplateProviderConfigArgsDict']]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsSettingsCustomTemplateResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -191,9 +206,11 @@ def get_apps_settings_custom_template_output(name: Optional[pulumi.Input[_builti
 
     :param _builtins.str name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
            It must be unique within the workspace
+    :param Union['GetAppsSettingsCustomTemplateProviderConfigArgs', 'GetAppsSettingsCustomTemplateProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate', __args__, opts=opts, typ=GetAppsSettingsCustomTemplateResult)
     return __ret__.apply(lambda __response__: GetAppsSettingsCustomTemplateResult(
@@ -204,4 +221,5 @@ def get_apps_settings_custom_template_output(name: Optional[pulumi.Input[_builti
         id=pulumi.get(__response__, 'id'),
         manifest=pulumi.get(__response__, 'manifest'),
         name=pulumi.get(__response__, 'name'),
-        path=pulumi.get(__response__, 'path')))
+        path=pulumi.get(__response__, 'path'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

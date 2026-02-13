@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  *
  * - `principal` - User name, group name or service principal application ID.
  * - `privileges` - One or more privileges that are specific to a securable type.
+ * - `providerConfig` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+ *   - `workspaceId` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
  *
  * For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
  *
@@ -497,6 +499,7 @@ export class Grants extends pulumi.CustomResource {
     declare public readonly metastore: pulumi.Output<string | undefined>;
     declare public readonly model: pulumi.Output<string | undefined>;
     declare public readonly pipeline: pulumi.Output<string | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GrantsProviderConfig | undefined>;
     declare public readonly recipient: pulumi.Output<string | undefined>;
     declare public readonly schema: pulumi.Output<string | undefined>;
     declare public readonly share: pulumi.Output<string | undefined>;
@@ -526,6 +529,7 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["metastore"] = state?.metastore;
             resourceInputs["model"] = state?.model;
             resourceInputs["pipeline"] = state?.pipeline;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["recipient"] = state?.recipient;
             resourceInputs["schema"] = state?.schema;
             resourceInputs["share"] = state?.share;
@@ -546,6 +550,7 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["metastore"] = args?.metastore;
             resourceInputs["model"] = args?.model;
             resourceInputs["pipeline"] = args?.pipeline;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["recipient"] = args?.recipient;
             resourceInputs["schema"] = args?.schema;
             resourceInputs["share"] = args?.share;
@@ -571,6 +576,7 @@ export interface GrantsState {
     metastore?: pulumi.Input<string>;
     model?: pulumi.Input<string>;
     pipeline?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GrantsProviderConfig>;
     recipient?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
     share?: pulumi.Input<string>;
@@ -592,6 +598,7 @@ export interface GrantsArgs {
     metastore?: pulumi.Input<string>;
     model?: pulumi.Input<string>;
     pipeline?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GrantsProviderConfig>;
     recipient?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
     share?: pulumi.Input<string>;

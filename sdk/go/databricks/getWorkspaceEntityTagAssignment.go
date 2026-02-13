@@ -74,6 +74,8 @@ type LookupWorkspaceEntityTagAssignmentArgs struct {
 	EntityId string `pulumi:"entityId"`
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetWorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey string `pulumi:"tagKey"`
 }
@@ -85,7 +87,8 @@ type LookupWorkspaceEntityTagAssignmentResult struct {
 	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                                         `pulumi:"id"`
+	ProviderConfig *GetWorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey string `pulumi:"tagKey"`
 	// (string) - The value of the tag
@@ -107,6 +110,8 @@ type LookupWorkspaceEntityTagAssignmentOutputArgs struct {
 	EntityId pulumi.StringInput `pulumi:"entityId"`
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetWorkspaceEntityTagAssignmentProviderConfigPtrInput `pulumi:"providerConfig"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringInput `pulumi:"tagKey"`
 }
@@ -143,6 +148,12 @@ func (o LookupWorkspaceEntityTagAssignmentResultOutput) EntityType() pulumi.Stri
 // The provider-assigned unique ID for this managed resource.
 func (o LookupWorkspaceEntityTagAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceEntityTagAssignmentResultOutput) ProviderConfig() GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) *GetWorkspaceEntityTagAssignmentProviderConfig {
+		return v.ProviderConfig
+	}).(GetWorkspaceEntityTagAssignmentProviderConfigPtrOutput)
 }
 
 // (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed

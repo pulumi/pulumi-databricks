@@ -18,6 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (string)
         /// </summary>
         public readonly string Value;
@@ -26,9 +30,12 @@ namespace Pulumi.Databricks.Outputs
         private GetMaterializedFeaturesFeatureTagsFeatureTagResult(
             string key,
 
+            Outputs.GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfigResult? providerConfig,
+
             string value)
         {
             Key = key;
+            ProviderConfig = providerConfig;
             Value = value;
         }
     }

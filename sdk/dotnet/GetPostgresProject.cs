@@ -127,6 +127,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetPostgresProjectProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetPostgresProjectArgs()
         {
         }
@@ -141,6 +147,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetPostgresProjectProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetPostgresProjectInvokeArgs()
         {
@@ -165,6 +177,7 @@ namespace Pulumi.Databricks
         /// Format: projects/{project_id}
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetPostgresProjectProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (ProjectSpec) - The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
@@ -190,6 +203,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetPostgresProjectProviderConfigResult? providerConfig,
+
             Outputs.GetPostgresProjectSpecResult spec,
 
             Outputs.GetPostgresProjectStatusResult status,
@@ -201,6 +216,7 @@ namespace Pulumi.Databricks
             CreateTime = createTime;
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
             Spec = spec;
             Status = status;
             Uid = uid;

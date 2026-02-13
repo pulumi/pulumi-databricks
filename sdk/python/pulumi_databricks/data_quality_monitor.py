@@ -24,7 +24,8 @@ class DataQualityMonitorArgs:
                  object_id: pulumi.Input[_builtins.str],
                  object_type: pulumi.Input[_builtins.str],
                  anomaly_detection_config: Optional[pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs']] = None,
-                 data_profiling_config: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']] = None):
+                 data_profiling_config: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']] = None,
+                 provider_config: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DataQualityMonitor resource.
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
@@ -40,6 +41,7 @@ class DataQualityMonitorArgs:
         :param pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs'] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
         :param pulumi.Input['DataQualityMonitorDataProfilingConfigArgs'] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
                must be present
+        :param pulumi.Input['DataQualityMonitorProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "object_type", object_type)
@@ -47,6 +49,8 @@ class DataQualityMonitorArgs:
             pulumi.set(__self__, "anomaly_detection_config", anomaly_detection_config)
         if data_profiling_config is not None:
             pulumi.set(__self__, "data_profiling_config", data_profiling_config)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
@@ -105,6 +109,18 @@ class DataQualityMonitorArgs:
     def data_profiling_config(self, value: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']]):
         pulumi.set(self, "data_profiling_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _DataQualityMonitorState:
@@ -112,7 +128,8 @@ class _DataQualityMonitorState:
                  anomaly_detection_config: Optional[pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs']] = None,
                  data_profiling_config: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DataQualityMonitor resources.
         :param pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs'] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
@@ -128,6 +145,7 @@ class _DataQualityMonitorState:
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
+        :param pulumi.Input['DataQualityMonitorProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         if anomaly_detection_config is not None:
             pulumi.set(__self__, "anomaly_detection_config", anomaly_detection_config)
@@ -137,6 +155,8 @@ class _DataQualityMonitorState:
             pulumi.set(__self__, "object_id", object_id)
         if object_type is not None:
             pulumi.set(__self__, "object_type", object_type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionConfig")
@@ -195,6 +215,18 @@ class _DataQualityMonitorState:
     def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.type_token("databricks:index/dataQualityMonitor:DataQualityMonitor")
 class DataQualityMonitor(pulumi.CustomResource):
@@ -206,6 +238,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                  data_profiling_config: Optional[pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -252,6 +285,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
+        :param pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -308,6 +342,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                  data_profiling_config: Optional[pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -325,6 +360,7 @@ class DataQualityMonitor(pulumi.CustomResource):
             if object_type is None and not opts.urn:
                 raise TypeError("Missing required property 'object_type'")
             __props__.__dict__["object_type"] = object_type
+            __props__.__dict__["provider_config"] = provider_config
         super(DataQualityMonitor, __self__).__init__(
             'databricks:index/dataQualityMonitor:DataQualityMonitor',
             resource_name,
@@ -338,7 +374,8 @@ class DataQualityMonitor(pulumi.CustomResource):
             anomaly_detection_config: Optional[pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
             data_profiling_config: Optional[pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
             object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            object_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DataQualityMonitor':
+            object_type: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None) -> 'DataQualityMonitor':
         """
         Get an existing DataQualityMonitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -359,6 +396,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
+        :param pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -368,6 +406,7 @@ class DataQualityMonitor(pulumi.CustomResource):
         __props__.__dict__["data_profiling_config"] = data_profiling_config
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["object_type"] = object_type
+        __props__.__dict__["provider_config"] = provider_config
         return DataQualityMonitor(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -410,4 +449,12 @@ class DataQualityMonitor(pulumi.CustomResource):
         The type of the monitored object. Can be one of the following: `schema` or `table`
         """
         return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.DataQualityMonitorProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 

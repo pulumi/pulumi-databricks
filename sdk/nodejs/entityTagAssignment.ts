@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -86,6 +88,10 @@ export class EntityTagAssignment extends pulumi.CustomResource {
      */
     declare public readonly entityType: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.EntityTagAssignmentProviderConfig | undefined>;
+    /**
      * The key of the tag
      */
     declare public readonly tagKey: pulumi.Output<string>;
@@ -109,6 +115,7 @@ export class EntityTagAssignment extends pulumi.CustomResource {
             const state = argsOrState as EntityTagAssignmentState | undefined;
             resourceInputs["entityName"] = state?.entityName;
             resourceInputs["entityType"] = state?.entityType;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["tagKey"] = state?.tagKey;
             resourceInputs["tagValue"] = state?.tagValue;
         } else {
@@ -124,6 +131,7 @@ export class EntityTagAssignment extends pulumi.CustomResource {
             }
             resourceInputs["entityName"] = args?.entityName;
             resourceInputs["entityType"] = args?.entityType;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tagKey"] = args?.tagKey;
             resourceInputs["tagValue"] = args?.tagValue;
         }
@@ -144,6 +152,10 @@ export interface EntityTagAssignmentState {
      * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
      */
     entityType?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.EntityTagAssignmentProviderConfig>;
     /**
      * The key of the tag
      */
@@ -166,6 +178,10 @@ export interface EntityTagAssignmentArgs {
      * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
      */
     entityType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.EntityTagAssignmentProviderConfig>;
     /**
      * The key of the tag
      */

@@ -136,6 +136,12 @@ namespace Pulumi.Databricks
         [Input("parent", required: true)]
         public string Parent { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetPostgresBranchesProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetPostgresBranchesArgs()
         {
         }
@@ -156,6 +162,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetPostgresBranchesProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetPostgresBranchesInvokeArgs()
         {
@@ -178,6 +190,7 @@ namespace Pulumi.Databricks
         /// Format: projects/{project_id}
         /// </summary>
         public readonly string Parent;
+        public readonly Outputs.GetPostgresBranchesProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetPostgresBranchesResult(
@@ -187,12 +200,15 @@ namespace Pulumi.Databricks
 
             int? pageSize,
 
-            string parent)
+            string parent,
+
+            Outputs.GetPostgresBranchesProviderConfigResult? providerConfig)
         {
             Branches = branches;
             Id = id;
             PageSize = pageSize;
             Parent = parent;
+            ProviderConfig = providerConfig;
         }
     }
 }

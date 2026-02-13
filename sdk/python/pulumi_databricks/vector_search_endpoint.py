@@ -23,18 +23,22 @@ class VectorSearchEndpointArgs:
     def __init__(__self__, *,
                  endpoint_type: pulumi.Input[_builtins.str],
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a VectorSearchEndpoint resource.
         :param pulumi.Input[_builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
+        :param pulumi.Input['VectorSearchEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "endpoint_type", endpoint_type)
         if budget_policy_id is not None:
             pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
@@ -72,6 +76,18 @@ class VectorSearchEndpointArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _VectorSearchEndpointState:
@@ -86,7 +102,8 @@ class _VectorSearchEndpointState:
                  last_updated_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
                  last_updated_user: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_indexes: Optional[pulumi.Input[_builtins.int]] = None):
+                 num_indexes: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering VectorSearchEndpoint resources.
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
@@ -100,6 +117,7 @@ class _VectorSearchEndpointState:
         :param pulumi.Input[_builtins.str] last_updated_user: User who last updated the endpoint.
         :param pulumi.Input[_builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         :param pulumi.Input[_builtins.int] num_indexes: Number of indexes on the endpoint.
+        :param pulumi.Input['VectorSearchEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if budget_policy_id is not None:
             pulumi.set(__self__, "budget_policy_id", budget_policy_id)
@@ -123,6 +141,8 @@ class _VectorSearchEndpointState:
             pulumi.set(__self__, "name", name)
         if num_indexes is not None:
             pulumi.set(__self__, "num_indexes", num_indexes)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
@@ -256,6 +276,18 @@ class _VectorSearchEndpointState:
     def num_indexes(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "num_indexes", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.type_token("databricks:index/vectorSearchEndpoint:VectorSearchEndpoint")
 class VectorSearchEndpoint(pulumi.CustomResource):
@@ -266,6 +298,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
@@ -288,6 +321,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         :param pulumi.Input[_builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
+        :param pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -329,6 +363,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -343,6 +378,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                 raise TypeError("Missing required property 'endpoint_type'")
             __props__.__dict__["endpoint_type"] = endpoint_type
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["creator"] = None
             __props__.__dict__["effective_budget_policy_id"] = None
@@ -371,7 +407,8 @@ class VectorSearchEndpoint(pulumi.CustomResource):
             last_updated_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
             last_updated_user: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
-            num_indexes: Optional[pulumi.Input[_builtins.int]] = None) -> 'VectorSearchEndpoint':
+            num_indexes: Optional[pulumi.Input[_builtins.int]] = None,
+            provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None) -> 'VectorSearchEndpoint':
         """
         Get an existing VectorSearchEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -390,6 +427,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] last_updated_user: User who last updated the endpoint.
         :param pulumi.Input[_builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         :param pulumi.Input[_builtins.int] num_indexes: Number of indexes on the endpoint.
+        :param pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -406,6 +444,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         __props__.__dict__["last_updated_user"] = last_updated_user
         __props__.__dict__["name"] = name
         __props__.__dict__["num_indexes"] = num_indexes
+        __props__.__dict__["provider_config"] = provider_config
         return VectorSearchEndpoint(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -495,4 +534,12 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         Number of indexes on the endpoint.
         """
         return pulumi.get(self, "num_indexes")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.VectorSearchEndpointProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 

@@ -37,6 +37,7 @@ export function getTagPolicies(args?: GetTagPoliciesArgs, opts?: pulumi.InvokeOp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getTagPolicies:getTagPolicies", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -50,6 +51,10 @@ export interface GetTagPoliciesArgs {
      * to 1000
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetTagPoliciesProviderConfig;
 }
 
 /**
@@ -61,6 +66,7 @@ export interface GetTagPoliciesResult {
      */
     readonly id: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetTagPoliciesProviderConfig;
     readonly tagPolicies: outputs.GetTagPoliciesTagPolicy[];
 }
 /**
@@ -94,6 +100,7 @@ export function getTagPoliciesOutput(args?: GetTagPoliciesOutputArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getTagPolicies:getTagPolicies", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -107,4 +114,8 @@ export interface GetTagPoliciesOutputArgs {
      * to 1000
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetTagPoliciesProviderConfigArgs>;
 }

@@ -193,6 +193,9 @@ export class Pipeline extends pulumi.CustomResource {
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
      */
     declare public readonly rootPath: pulumi.Output<string | undefined>;
+    /**
+     * The user or the service principal the pipeline runs as. See runAs Configuration Block below.
+     */
     declare public readonly runAs: pulumi.Output<outputs.PipelineRunAs | undefined>;
     declare public readonly runAsUserName: pulumi.Output<string>;
     /**
@@ -405,6 +408,9 @@ export interface PipelineState {
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
      */
     rootPath?: pulumi.Input<string>;
+    /**
+     * The user or the service principal the pipeline runs as. See runAs Configuration Block below.
+     */
     runAs?: pulumi.Input<inputs.PipelineRunAs>;
     runAsUserName?: pulumi.Input<string>;
     /**
@@ -519,6 +525,9 @@ export interface PipelineArgs {
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
      */
     rootPath?: pulumi.Input<string>;
+    /**
+     * The user or the service principal the pipeline runs as. See runAs Configuration Block below.
+     */
     runAs?: pulumi.Input<inputs.PipelineRunAs>;
     runAsUserName?: pulumi.Input<string>;
     /**

@@ -80,6 +80,12 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.MlflowModelProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("registeredModelId")]
         public Output<string> RegisteredModelId { get; private set; } = null!;
 
@@ -147,6 +153,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MlflowModelProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("tags")]
         private InputList<Inputs.MlflowModelTagArgs>? _tags;
 
@@ -178,6 +190,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MlflowModelProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("registeredModelId")]
         public Input<string>? RegisteredModelId { get; set; }

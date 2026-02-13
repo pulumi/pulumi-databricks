@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetFeatureEngineeringFeatureResult',
@@ -27,7 +28,7 @@ class GetFeatureEngineeringFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringFeature.
     """
-    def __init__(__self__, description=None, filter_condition=None, full_name=None, function=None, id=None, inputs=None, lineage_context=None, source=None, time_window=None):
+    def __init__(__self__, description=None, filter_condition=None, full_name=None, function=None, id=None, inputs=None, lineage_context=None, provider_config=None, source=None, time_window=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -49,6 +50,9 @@ class GetFeatureEngineeringFeatureResult:
         if lineage_context and not isinstance(lineage_context, dict):
             raise TypeError("Expected argument 'lineage_context' to be a dict")
         pulumi.set(__self__, "lineage_context", lineage_context)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if source and not isinstance(source, dict):
             raise TypeError("Expected argument 'source' to be a dict")
         pulumi.set(__self__, "source", source)
@@ -116,6 +120,11 @@ class GetFeatureEngineeringFeatureResult:
         return pulumi.get(self, "lineage_context")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetFeatureEngineeringFeatureProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def source(self) -> 'outputs.GetFeatureEngineeringFeatureSourceResult':
         """
@@ -145,20 +154,24 @@ class AwaitableGetFeatureEngineeringFeatureResult(GetFeatureEngineeringFeatureRe
             id=self.id,
             inputs=self.inputs,
             lineage_context=self.lineage_context,
+            provider_config=self.provider_config,
             source=self.source,
             time_window=self.time_window)
 
 
 def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
+                                    provider_config: Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict']] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringFeatureResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature
+    :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['fullName'] = full_name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature', __args__, opts=opts, typ=GetFeatureEngineeringFeatureResult).value
 
@@ -170,18 +183,22 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         inputs=pulumi.get(__ret__, 'inputs'),
         lineage_context=pulumi.get(__ret__, 'lineage_context'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         source=pulumi.get(__ret__, 'source'),
         time_window=pulumi.get(__ret__, 'time_window'))
 def get_feature_engineering_feature_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                                           provider_config: Optional[pulumi.Input[Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict']]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringFeatureResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature
+    :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['fullName'] = full_name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature', __args__, opts=opts, typ=GetFeatureEngineeringFeatureResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringFeatureResult(
@@ -192,5 +209,6 @@ def get_feature_engineering_feature_output(full_name: Optional[pulumi.Input[_bui
         id=pulumi.get(__response__, 'id'),
         inputs=pulumi.get(__response__, 'inputs'),
         lineage_context=pulumi.get(__response__, 'lineage_context'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         source=pulumi.get(__response__, 'source'),
         time_window=pulumi.get(__response__, 'time_window')))

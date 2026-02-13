@@ -14,6 +14,7 @@ export function getDatabaseSyncedDatabaseTables(args: GetDatabaseSyncedDatabaseT
     return pulumi.runtime.invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", {
         "instanceName": args.instanceName,
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -29,6 +30,10 @@ export interface GetDatabaseSyncedDatabaseTablesArgs {
      * Upper bound for items returned
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetDatabaseSyncedDatabaseTablesProviderConfig;
 }
 
 /**
@@ -41,6 +46,7 @@ export interface GetDatabaseSyncedDatabaseTablesResult {
     readonly id: string;
     readonly instanceName: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetDatabaseSyncedDatabaseTablesProviderConfig;
     readonly syncedTables: outputs.GetDatabaseSyncedDatabaseTablesSyncedTable[];
 }
 /**
@@ -51,6 +57,7 @@ export function getDatabaseSyncedDatabaseTablesOutput(args: GetDatabaseSyncedDat
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", {
         "instanceName": args.instanceName,
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -66,4 +73,8 @@ export interface GetDatabaseSyncedDatabaseTablesOutputArgs {
      * Upper bound for items returned
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetDatabaseSyncedDatabaseTablesProviderConfigArgs>;
 }

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.VolumeArgs;
 import com.pulumi.databricks.inputs.VolumeState;
+import com.pulumi.databricks.outputs.VolumeProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -174,6 +175,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> owner() {
         return this.owner;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={VolumeProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ VolumeProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<VolumeProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.

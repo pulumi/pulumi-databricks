@@ -32,6 +32,7 @@ class SqlEndpointArgs:
                  min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input['SqlEndpointProviderConfigArgs']] = None,
                  spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
                  warehouse_type: Optional[pulumi.Input[_builtins.str]] = None):
@@ -49,6 +50,7 @@ class SqlEndpointArgs:
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[_builtins.str] name: Name of the SQL warehouse. Must be unique.
         :param pulumi.Input[_builtins.bool] no_wait: Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        :param pulumi.Input['SqlEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input['SqlEndpointTagsArgs'] tags: Databricks tags all endpoint resources with these tags.
         :param pulumi.Input[_builtins.str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -74,6 +76,8 @@ class SqlEndpointArgs:
             pulumi.set(__self__, "name", name)
         if no_wait is not None:
             pulumi.set(__self__, "no_wait", no_wait)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spot_instance_policy is not None:
             pulumi.set(__self__, "spot_instance_policy", spot_instance_policy)
         if tags is not None:
@@ -213,6 +217,18 @@ class SqlEndpointArgs:
         pulumi.set(self, "no_wait", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlEndpointProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlEndpointProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
     def spot_instance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -269,6 +285,7 @@ class _SqlEndpointState:
                  num_active_sessions: Optional[pulumi.Input[_builtins.int]] = None,
                  num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  odbc_params: Optional[pulumi.Input['SqlEndpointOdbcParamsArgs']] = None,
+                 provider_config: Optional[pulumi.Input['SqlEndpointProviderConfigArgs']] = None,
                  spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
@@ -293,6 +310,7 @@ class _SqlEndpointState:
         :param pulumi.Input[_builtins.int] num_active_sessions: The current number of clusters used by the endpoint.
         :param pulumi.Input[_builtins.int] num_clusters: The current number of clusters used by the endpoint.
         :param pulumi.Input['SqlEndpointOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+        :param pulumi.Input['SqlEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[_builtins.str] state: The current state of the endpoint.
         :param pulumi.Input['SqlEndpointTagsArgs'] tags: Databricks tags all endpoint resources with these tags.
@@ -332,6 +350,8 @@ class _SqlEndpointState:
             pulumi.set(__self__, "num_clusters", num_clusters)
         if odbc_params is not None:
             pulumi.set(__self__, "odbc_params", odbc_params)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spot_instance_policy is not None:
             pulumi.set(__self__, "spot_instance_policy", spot_instance_policy)
         if state is not None:
@@ -545,6 +565,18 @@ class _SqlEndpointState:
         pulumi.set(self, "odbc_params", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlEndpointProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlEndpointProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
     def spot_instance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -610,6 +642,7 @@ class SqlEndpoint(pulumi.CustomResource):
                  min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
                  spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
                  warehouse_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -667,6 +700,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[_builtins.str] name: Name of the SQL warehouse. Must be unique.
         :param pulumi.Input[_builtins.bool] no_wait: Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        :param pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']] tags: Databricks tags all endpoint resources with these tags.
         :param pulumi.Input[_builtins.str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -742,6 +776,7 @@ class SqlEndpoint(pulumi.CustomResource):
                  min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
                  spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
                  warehouse_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -767,6 +802,7 @@ class SqlEndpoint(pulumi.CustomResource):
             __props__.__dict__["min_num_clusters"] = min_num_clusters
             __props__.__dict__["name"] = name
             __props__.__dict__["no_wait"] = no_wait
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["spot_instance_policy"] = spot_instance_policy
             __props__.__dict__["tags"] = tags
             __props__.__dict__["warehouse_type"] = warehouse_type
@@ -804,6 +840,7 @@ class SqlEndpoint(pulumi.CustomResource):
             num_active_sessions: Optional[pulumi.Input[_builtins.int]] = None,
             num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
             odbc_params: Optional[pulumi.Input[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict']]] = None,
+            provider_config: Optional[pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
             spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
@@ -833,6 +870,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] num_active_sessions: The current number of clusters used by the endpoint.
         :param pulumi.Input[_builtins.int] num_clusters: The current number of clusters used by the endpoint.
         :param pulumi.Input[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict']] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+        :param pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[_builtins.str] state: The current state of the endpoint.
         :param pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']] tags: Databricks tags all endpoint resources with these tags.
@@ -859,6 +897,7 @@ class SqlEndpoint(pulumi.CustomResource):
         __props__.__dict__["num_active_sessions"] = num_active_sessions
         __props__.__dict__["num_clusters"] = num_clusters
         __props__.__dict__["odbc_params"] = odbc_params
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["spot_instance_policy"] = spot_instance_policy
         __props__.__dict__["state"] = state
         __props__.__dict__["tags"] = tags
@@ -999,6 +1038,14 @@ class SqlEndpoint(pulumi.CustomResource):
         ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         """
         return pulumi.get(self, "odbc_params")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlEndpointProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")

@@ -58,6 +58,8 @@ func LookupExternalMetadata(ctx *pulumi.Context, args *LookupExternalMetadataArg
 type LookupExternalMetadataArgs struct {
 	// Name of the external metadata object
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetExternalMetadataProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getExternalMetadata.
@@ -81,7 +83,8 @@ type LookupExternalMetadataResult struct {
 	// (string) - Owner of the external metadata object
 	Owner string `pulumi:"owner"`
 	// (object) - A map of key-value properties attached to the external metadata object
-	Properties map[string]string `pulumi:"properties"`
+	Properties     map[string]string                  `pulumi:"properties"`
+	ProviderConfig *GetExternalMetadataProviderConfig `pulumi:"providerConfig"`
 	// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType string `pulumi:"systemType"`
 	// (string) - Time at which this external metadata object was last modified
@@ -105,6 +108,8 @@ func LookupExternalMetadataOutput(ctx *pulumi.Context, args LookupExternalMetada
 type LookupExternalMetadataOutputArgs struct {
 	// Name of the external metadata object
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetExternalMetadataProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupExternalMetadataOutputArgs) ElementType() reflect.Type {
@@ -174,6 +179,10 @@ func (o LookupExternalMetadataResultOutput) Owner() pulumi.StringOutput {
 // (object) - A map of key-value properties attached to the external metadata object
 func (o LookupExternalMetadataResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o LookupExternalMetadataResultOutput) ProviderConfig() GetExternalMetadataProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupExternalMetadataResult) *GetExternalMetadataProviderConfig { return v.ProviderConfig }).(GetExternalMetadataProviderConfigPtrOutput)
 }
 
 // (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetDataQualityMonitorsProviderConfigArgs;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,10 +23,26 @@ public final class GetDataQualityMonitorsArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetDataQualityMonitorsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetDataQualityMonitorsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetDataQualityMonitorsArgs() {}
 
     private GetDataQualityMonitorsArgs(GetDataQualityMonitorsArgs $) {
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -53,6 +70,27 @@ public final class GetDataQualityMonitorsArgs extends com.pulumi.resources.Invok
 
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetDataQualityMonitorsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetDataQualityMonitorsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetDataQualityMonitorsArgs build() {

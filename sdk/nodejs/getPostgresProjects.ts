@@ -28,6 +28,7 @@ export function getPostgresProjects(args?: GetPostgresProjectsArgs, opts?: pulum
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getPostgresProjects:getPostgresProjects", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -39,6 +40,10 @@ export interface GetPostgresProjectsArgs {
      * Upper bound for items returned. Cannot be negative
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetPostgresProjectsProviderConfig;
 }
 
 /**
@@ -51,6 +56,7 @@ export interface GetPostgresProjectsResult {
     readonly id: string;
     readonly pageSize?: number;
     readonly projects: outputs.GetPostgresProjectsProject[];
+    readonly providerConfig?: outputs.GetPostgresProjectsProviderConfig;
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -74,6 +80,7 @@ export function getPostgresProjectsOutput(args?: GetPostgresProjectsOutputArgs, 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getPostgresProjects:getPostgresProjects", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -85,4 +92,8 @@ export interface GetPostgresProjectsOutputArgs {
      * Upper bound for items returned. Cannot be negative
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetPostgresProjectsProviderConfigArgs>;
 }

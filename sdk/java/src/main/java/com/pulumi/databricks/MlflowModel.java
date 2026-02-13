@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MlflowModelArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MlflowModelState;
+import com.pulumi.databricks.outputs.MlflowModelProviderConfig;
 import com.pulumi.databricks.outputs.MlflowModelTag;
 import java.lang.String;
 import java.util.List;
@@ -114,6 +115,20 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={MlflowModelProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ MlflowModelProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<MlflowModelProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="registeredModelId", refs={String.class}, tree="[0]")
     private Output<String> registeredModelId;

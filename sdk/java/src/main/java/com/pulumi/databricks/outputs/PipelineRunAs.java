@@ -11,13 +11,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineRunAs {
+    /**
+     * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+     * 
+     * Example:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Pipeline;
+     * import com.pulumi.databricks.PipelineArgs;
+     * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var this_ = new Pipeline("this", PipelineArgs.builder()
+     *             .runAs(PipelineRunAsArgs.builder()
+     *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     private @Nullable String servicePrincipalName;
+    /**
+     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * 
+     */
     private @Nullable String userName;
 
     private PipelineRunAs() {}
+    /**
+     * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+     * 
+     * Example:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Pipeline;
+     * import com.pulumi.databricks.PipelineArgs;
+     * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var this_ = new Pipeline("this", PipelineArgs.builder()
+     *             .runAs(PipelineRunAsArgs.builder()
+     *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public Optional<String> servicePrincipalName() {
         return Optional.ofNullable(this.servicePrincipalName);
     }
+    /**
+     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * 
+     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }

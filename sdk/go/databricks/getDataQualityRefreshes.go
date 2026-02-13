@@ -84,6 +84,8 @@ type GetDataQualityRefreshesArgs struct {
 	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType string `pulumi:"objectType"`
 	PageSize   *int   `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDataQualityRefreshesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDataQualityRefreshes.
@@ -93,9 +95,10 @@ type GetDataQualityRefreshesResult struct {
 	// (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	ObjectId string `pulumi:"objectId"`
 	// (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
-	ObjectType string                           `pulumi:"objectType"`
-	PageSize   *int                             `pulumi:"pageSize"`
-	Refreshes  []GetDataQualityRefreshesRefresh `pulumi:"refreshes"`
+	ObjectType     string                                 `pulumi:"objectType"`
+	PageSize       *int                                   `pulumi:"pageSize"`
+	ProviderConfig *GetDataQualityRefreshesProviderConfig `pulumi:"providerConfig"`
+	Refreshes      []GetDataQualityRefreshesRefresh       `pulumi:"refreshes"`
 }
 
 func GetDataQualityRefreshesOutput(ctx *pulumi.Context, args GetDataQualityRefreshesOutputArgs, opts ...pulumi.InvokeOption) GetDataQualityRefreshesResultOutput {
@@ -122,6 +125,8 @@ type GetDataQualityRefreshesOutputArgs struct {
 	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType pulumi.StringInput `pulumi:"objectType"`
 	PageSize   pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDataQualityRefreshesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetDataQualityRefreshesOutputArgs) ElementType() reflect.Type {
@@ -160,6 +165,10 @@ func (o GetDataQualityRefreshesResultOutput) ObjectType() pulumi.StringOutput {
 
 func (o GetDataQualityRefreshesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDataQualityRefreshesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetDataQualityRefreshesResultOutput) ProviderConfig() GetDataQualityRefreshesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetDataQualityRefreshesResult) *GetDataQualityRefreshesProviderConfig { return v.ProviderConfig }).(GetDataQualityRefreshesProviderConfigPtrOutput)
 }
 
 func (o GetDataQualityRefreshesResultOutput) Refreshes() GetDataQualityRefreshesRefreshArrayOutput {

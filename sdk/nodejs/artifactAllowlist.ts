@@ -80,6 +80,7 @@ export class ArtifactAllowlist extends pulumi.CustomResource {
      * ID of the parent metastore.
      */
     declare public readonly metastoreId: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ArtifactAllowlistProviderConfig | undefined>;
 
     /**
      * Create a ArtifactAllowlist resource with the given unique name, arguments, and options.
@@ -99,6 +100,7 @@ export class ArtifactAllowlist extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as ArtifactAllowlistArgs | undefined;
             if (args?.artifactMatchers === undefined && !opts.urn) {
@@ -112,6 +114,7 @@ export class ArtifactAllowlist extends pulumi.CustomResource {
             resourceInputs["createdAt"] = args?.createdAt;
             resourceInputs["createdBy"] = args?.createdBy;
             resourceInputs["metastoreId"] = args?.metastoreId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ArtifactAllowlist.__pulumiType, name, resourceInputs, opts);
@@ -139,6 +142,7 @@ export interface ArtifactAllowlistState {
      * ID of the parent metastore.
      */
     metastoreId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ArtifactAllowlistProviderConfig>;
 }
 
 /**
@@ -162,4 +166,5 @@ export interface ArtifactAllowlistArgs {
      * ID of the parent metastore.
      */
     metastoreId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ArtifactAllowlistProviderConfig>;
 }

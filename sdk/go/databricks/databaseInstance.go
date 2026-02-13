@@ -212,6 +212,8 @@ type DatabaseInstance struct {
 	ParentInstanceRef DatabaseInstanceParentInstanceRefPtrOutput `pulumi:"parentInstanceRef"`
 	// (string) - The version of Postgres running on the instance
 	PgVersion pulumi.StringOutput `pulumi:"pgVersion"`
+	// Configure the provider for management through account provider.
+	ProviderConfig DatabaseInstanceProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Purge the resource on delete
 	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
@@ -324,6 +326,8 @@ type databaseInstanceState struct {
 	ParentInstanceRef *DatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
 	// (string) - The version of Postgres running on the instance
 	PgVersion *string `pulumi:"pgVersion"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *DatabaseInstanceProviderConfig `pulumi:"providerConfig"`
 	// Purge the resource on delete
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
@@ -407,6 +411,8 @@ type DatabaseInstanceState struct {
 	ParentInstanceRef DatabaseInstanceParentInstanceRefPtrInput
 	// (string) - The version of Postgres running on the instance
 	PgVersion pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig DatabaseInstanceProviderConfigPtrInput
 	// Purge the resource on delete
 	PurgeOnDelete pulumi.BoolPtrInput
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
@@ -451,6 +457,8 @@ type databaseInstanceArgs struct {
 	// Input: For specifying the parent instance to create a child instance. Optional.
 	// Output: Only populated if provided as input to create a child instance
 	ParentInstanceRef *DatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *DatabaseInstanceProviderConfig `pulumi:"providerConfig"`
 	// Purge the resource on delete
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// The retention window for the instance. This is the time window in days
@@ -483,6 +491,8 @@ type DatabaseInstanceArgs struct {
 	// Input: For specifying the parent instance to create a child instance. Optional.
 	// Output: Only populated if provided as input to create a child instance
 	ParentInstanceRef DatabaseInstanceParentInstanceRefPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig DatabaseInstanceProviderConfigPtrInput
 	// Purge the resource on delete
 	PurgeOnDelete pulumi.BoolPtrInput
 	// The retention window for the instance. This is the time window in days
@@ -698,6 +708,11 @@ func (o DatabaseInstanceOutput) ParentInstanceRef() DatabaseInstanceParentInstan
 // (string) - The version of Postgres running on the instance
 func (o DatabaseInstanceOutput) PgVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PgVersion }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o DatabaseInstanceOutput) ProviderConfig() DatabaseInstanceProviderConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceProviderConfigPtrOutput { return v.ProviderConfig }).(DatabaseInstanceProviderConfigPtrOutput)
 }
 
 // Purge the resource on delete

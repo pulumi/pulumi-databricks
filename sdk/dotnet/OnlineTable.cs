@@ -51,6 +51,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.OnlineTableProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// object containing specification of the online table:
         /// </summary>
         [Output("spec")]
@@ -127,6 +133,12 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.OnlineTableProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// object containing specification of the online table:
         /// </summary>
         [Input("spec")]
@@ -145,6 +157,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.OnlineTableProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// object containing specification of the online table:

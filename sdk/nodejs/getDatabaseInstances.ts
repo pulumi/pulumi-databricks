@@ -29,6 +29,7 @@ export function getDatabaseInstances(args?: GetDatabaseInstancesArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -40,6 +41,10 @@ export interface GetDatabaseInstancesArgs {
      * Upper bound for items returned
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetDatabaseInstancesProviderConfig;
 }
 
 /**
@@ -52,6 +57,7 @@ export interface GetDatabaseInstancesResult {
      */
     readonly id: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetDatabaseInstancesProviderConfig;
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -76,6 +82,7 @@ export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseInstances:getDatabaseInstances", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -87,4 +94,8 @@ export interface GetDatabaseInstancesOutputArgs {
      * Upper bound for items returned
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetDatabaseInstancesProviderConfigArgs>;
 }

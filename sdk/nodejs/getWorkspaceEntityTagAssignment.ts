@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -37,6 +39,7 @@ export function getWorkspaceEntityTagAssignment(args: GetWorkspaceEntityTagAssig
     return pulumi.runtime.invoke("databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment", {
         "entityId": args.entityId,
         "entityType": args.entityType,
+        "providerConfig": args.providerConfig,
         "tagKey": args.tagKey,
     }, opts);
 }
@@ -53,6 +56,10 @@ export interface GetWorkspaceEntityTagAssignmentArgs {
      * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetWorkspaceEntityTagAssignmentProviderConfig;
     /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */
@@ -75,6 +82,7 @@ export interface GetWorkspaceEntityTagAssignmentResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetWorkspaceEntityTagAssignmentProviderConfig;
     /**
      * (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */
@@ -117,6 +125,7 @@ export function getWorkspaceEntityTagAssignmentOutput(args: GetWorkspaceEntityTa
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment", {
         "entityId": args.entityId,
         "entityType": args.entityType,
+        "providerConfig": args.providerConfig,
         "tagKey": args.tagKey,
     }, opts);
 }
@@ -133,6 +142,10 @@ export interface GetWorkspaceEntityTagAssignmentOutputArgs {
      * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetWorkspaceEntityTagAssignmentProviderConfigArgs>;
     /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */

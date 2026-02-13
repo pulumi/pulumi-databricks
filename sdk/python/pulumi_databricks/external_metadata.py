@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ExternalMetadataArgs', 'ExternalMetadata']
 
@@ -26,6 +28,7 @@ class ExternalMetadataArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['ExternalMetadataProviderConfigArgs']] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalMetadata resource.
@@ -36,6 +39,7 @@ class ExternalMetadataArgs:
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
+        :param pulumi.Input['ExternalMetadataProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -50,6 +54,8 @@ class ExternalMetadataArgs:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if url is not None:
             pulumi.set(__self__, "url", url)
 
@@ -138,6 +144,18 @@ class ExternalMetadataArgs:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ExternalMetadataProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ExternalMetadataProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -162,6 +180,7 @@ class _ExternalMetadataState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['ExternalMetadataProviderConfigArgs']] = None,
                  system_type: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -177,6 +196,7 @@ class _ExternalMetadataState:
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
+        :param pulumi.Input['ExternalMetadataProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] update_time: (string) - Time at which this external metadata object was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Username of user who last modified external metadata object
@@ -200,6 +220,8 @@ class _ExternalMetadataState:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if system_type is not None:
             pulumi.set(__self__, "system_type", system_type)
         if update_time is not None:
@@ -318,6 +340,18 @@ class _ExternalMetadataState:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ExternalMetadataProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ExternalMetadataProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="systemType")
     def system_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -378,6 +412,7 @@ class ExternalMetadata(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']]] = None,
                  system_type: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -424,6 +459,7 @@ class ExternalMetadata(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
+        :param pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
         """
@@ -489,6 +525,7 @@ class ExternalMetadata(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']]] = None,
                  system_type: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -508,6 +545,7 @@ class ExternalMetadata(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["provider_config"] = provider_config
             if system_type is None and not opts.urn:
                 raise TypeError("Missing required property 'system_type'")
             __props__.__dict__["system_type"] = system_type
@@ -536,6 +574,7 @@ class ExternalMetadata(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: Optional[pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']]] = None,
             system_type: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None,
             updated_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -556,6 +595,7 @@ class ExternalMetadata(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
+        :param pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] update_time: (string) - Time at which this external metadata object was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Username of user who last modified external metadata object
@@ -574,6 +614,7 @@ class ExternalMetadata(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties"] = properties
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["system_type"] = system_type
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["updated_by"] = updated_by
@@ -651,6 +692,14 @@ class ExternalMetadata(pulumi.CustomResource):
         A map of key-value properties attached to the external metadata object
         """
         return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ExternalMetadataProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="systemType")

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresBranchProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
 import com.pulumi.databricks.inputs.PostgresBranchStatusArgs;
 import java.lang.String;
@@ -92,6 +93,21 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<PostgresBranchProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<PostgresBranchProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The spec contains the branch configuration
      * 
      */
@@ -158,6 +174,7 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         this.createTime = $.createTime;
         this.name = $.name;
         this.parent = $.parent;
+        this.providerConfig = $.providerConfig;
         this.spec = $.spec;
         this.status = $.status;
         this.uid = $.uid;
@@ -278,6 +295,27 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<PostgresBranchProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(PostgresBranchProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

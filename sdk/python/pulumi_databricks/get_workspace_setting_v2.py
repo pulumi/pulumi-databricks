@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetWorkspaceSettingV2Result',
@@ -27,7 +28,7 @@ class GetWorkspaceSettingV2Result:
     """
     A collection of values returned by getWorkspaceSettingV2.
     """
-    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, automatic_cluster_update_workspace=None, boolean_val=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_integer_val=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, id=None, integer_val=None, name=None, personal_compute=None, restrict_workspace_admins=None, string_val=None):
+    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, automatic_cluster_update_workspace=None, boolean_val=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_integer_val=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, id=None, integer_val=None, name=None, personal_compute=None, provider_config=None, restrict_workspace_admins=None, string_val=None):
         if aibi_dashboard_embedding_access_policy and not isinstance(aibi_dashboard_embedding_access_policy, dict):
             raise TypeError("Expected argument 'aibi_dashboard_embedding_access_policy' to be a dict")
         pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
@@ -76,6 +77,9 @@ class GetWorkspaceSettingV2Result:
         if personal_compute and not isinstance(personal_compute, dict):
             raise TypeError("Expected argument 'personal_compute' to be a dict")
         pulumi.set(__self__, "personal_compute", personal_compute)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if restrict_workspace_admins and not isinstance(restrict_workspace_admins, dict):
             raise TypeError("Expected argument 'restrict_workspace_admins' to be a dict")
         pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
@@ -212,6 +216,11 @@ class GetWorkspaceSettingV2Result:
         return pulumi.get(self, "personal_compute")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetWorkspaceSettingV2ProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="restrictWorkspaceAdmins")
     def restrict_workspace_admins(self) -> 'outputs.GetWorkspaceSettingV2RestrictWorkspaceAdminsResult':
         """
@@ -250,14 +259,16 @@ class AwaitableGetWorkspaceSettingV2Result(GetWorkspaceSettingV2Result):
             integer_val=self.integer_val,
             name=self.name,
             personal_compute=self.personal_compute,
+            provider_config=self.provider_config,
             restrict_workspace_admins=self.restrict_workspace_admins,
             string_val=self.string_val)
 
 
 def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
+                             provider_config: Optional[Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceSettingV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source can be used to get a single account setting.
 
@@ -267,9 +278,11 @@ def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Name of the setting
+    :param Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2', __args__, opts=opts, typ=GetWorkspaceSettingV2Result).value
 
@@ -290,12 +303,14 @@ def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
         integer_val=pulumi.get(__ret__, 'integer_val'),
         name=pulumi.get(__ret__, 'name'),
         personal_compute=pulumi.get(__ret__, 'personal_compute'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         restrict_workspace_admins=pulumi.get(__ret__, 'restrict_workspace_admins'),
         string_val=pulumi.get(__ret__, 'string_val'))
 def get_workspace_setting_v2_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                                    provider_config: Optional[pulumi.Input[Optional[Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceSettingV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source can be used to get a single account setting.
 
@@ -305,9 +320,11 @@ def get_workspace_setting_v2_output(name: Optional[pulumi.Input[_builtins.str]] 
 
 
     :param _builtins.str name: Name of the setting
+    :param Union['GetWorkspaceSettingV2ProviderConfigArgs', 'GetWorkspaceSettingV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2', __args__, opts=opts, typ=GetWorkspaceSettingV2Result)
     return __ret__.apply(lambda __response__: GetWorkspaceSettingV2Result(
@@ -327,5 +344,6 @@ def get_workspace_setting_v2_output(name: Optional[pulumi.Input[_builtins.str]] 
         integer_val=pulumi.get(__response__, 'integer_val'),
         name=pulumi.get(__response__, 'name'),
         personal_compute=pulumi.get(__response__, 'personal_compute'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         restrict_workspace_admins=pulumi.get(__response__, 'restrict_workspace_admins'),
         string_val=pulumi.get(__response__, 'string_val')))

@@ -39,6 +39,7 @@ export function getQualityMonitorV2(args: GetQualityMonitorV2Args, opts?: pulumi
     return pulumi.runtime.invoke("databricks:index/getQualityMonitorV2:getQualityMonitorV2", {
         "objectId": args.objectId,
         "objectType": args.objectType,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -54,6 +55,10 @@ export interface GetQualityMonitorV2Args {
      * The type of the monitored object. Can be one of the following: schema
      */
     objectType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetQualityMonitorV2ProviderConfig;
 }
 
 /**
@@ -76,6 +81,7 @@ export interface GetQualityMonitorV2Result {
      * (string) - The type of the monitored object. Can be one of the following: schema
      */
     readonly objectType: string;
+    readonly providerConfig?: outputs.GetQualityMonitorV2ProviderConfig;
     /**
      * (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
      */
@@ -114,6 +120,7 @@ export function getQualityMonitorV2Output(args: GetQualityMonitorV2OutputArgs, o
     return pulumi.runtime.invokeOutput("databricks:index/getQualityMonitorV2:getQualityMonitorV2", {
         "objectId": args.objectId,
         "objectType": args.objectType,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -129,4 +136,8 @@ export interface GetQualityMonitorV2OutputArgs {
      * The type of the monitored object. Can be one of the following: schema
      */
     objectType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetQualityMonitorV2ProviderConfigArgs>;
 }

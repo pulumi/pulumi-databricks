@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetTagPolicyResult',
@@ -27,7 +28,7 @@ class GetTagPolicyResult:
     """
     A collection of values returned by getTagPolicy.
     """
-    def __init__(__self__, create_time=None, description=None, id=None, tag_key=None, update_time=None, values=None):
+    def __init__(__self__, create_time=None, description=None, id=None, provider_config=None, tag_key=None, update_time=None, values=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,6 +38,9 @@ class GetTagPolicyResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if tag_key and not isinstance(tag_key, str):
             raise TypeError("Expected argument 'tag_key' to be a str")
         pulumi.set(__self__, "tag_key", tag_key)
@@ -72,6 +76,11 @@ class GetTagPolicyResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetTagPolicyProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="tagKey")
     def tag_key(self) -> _builtins.str:
         """
@@ -105,12 +114,14 @@ class AwaitableGetTagPolicyResult(GetTagPolicyResult):
             create_time=self.create_time,
             description=self.description,
             id=self.id,
+            provider_config=self.provider_config,
             tag_key=self.tag_key,
             update_time=self.update_time,
             values=self.values)
 
 
-def get_tag_policy(tag_key: Optional[_builtins.str] = None,
+def get_tag_policy(provider_config: Optional[Union['GetTagPolicyProviderConfigArgs', 'GetTagPolicyProviderConfigArgsDict']] = None,
+                   tag_key: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagPolicyResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -136,8 +147,12 @@ def get_tag_policy(tag_key: Optional[_builtins.str] = None,
 
     example_tag_policy = databricks.get_tag_policy(tag_key="example_tag_key")
     ```
+
+
+    :param Union['GetTagPolicyProviderConfigArgs', 'GetTagPolicyProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     __args__['tagKey'] = tag_key
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getTagPolicy:getTagPolicy', __args__, opts=opts, typ=GetTagPolicyResult).value
@@ -146,10 +161,12 @@ def get_tag_policy(tag_key: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         tag_key=pulumi.get(__ret__, 'tag_key'),
         update_time=pulumi.get(__ret__, 'update_time'),
         values=pulumi.get(__ret__, 'values'))
-def get_tag_policy_output(tag_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_policy_output(provider_config: Optional[pulumi.Input[Optional[Union['GetTagPolicyProviderConfigArgs', 'GetTagPolicyProviderConfigArgsDict']]]] = None,
+                          tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagPolicyResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -175,8 +192,12 @@ def get_tag_policy_output(tag_key: Optional[pulumi.Input[_builtins.str]] = None,
 
     example_tag_policy = databricks.get_tag_policy(tag_key="example_tag_key")
     ```
+
+
+    :param Union['GetTagPolicyProviderConfigArgs', 'GetTagPolicyProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     __args__['tagKey'] = tag_key
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getTagPolicy:getTagPolicy', __args__, opts=opts, typ=GetTagPolicyResult)
@@ -184,6 +205,7 @@ def get_tag_policy_output(tag_key: Optional[pulumi.Input[_builtins.str]] = None,
         create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         tag_key=pulumi.get(__response__, 'tag_key'),
         update_time=pulumi.get(__response__, 'update_time'),
         values=pulumi.get(__response__, 'values')))

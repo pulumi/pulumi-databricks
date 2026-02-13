@@ -95,6 +95,10 @@ export class MlflowExperiment extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.MlflowExperimentProviderConfig | undefined>;
+    /**
      * Tags for the MLflow experiment.
      */
     declare public readonly tags: pulumi.Output<outputs.MlflowExperimentTag[]>;
@@ -119,6 +123,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
             resourceInputs["lastUpdateTime"] = state?.lastUpdateTime;
             resourceInputs["lifecycleStage"] = state?.lifecycleStage;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as MlflowExperimentArgs | undefined;
@@ -129,6 +134,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
             resourceInputs["lastUpdateTime"] = args?.lastUpdateTime;
             resourceInputs["lifecycleStage"] = args?.lifecycleStage;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -157,6 +163,10 @@ export interface MlflowExperimentState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MlflowExperimentProviderConfig>;
+    /**
      * Tags for the MLflow experiment.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[]>;
@@ -182,6 +192,10 @@ export interface MlflowExperimentArgs {
      * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MlflowExperimentProviderConfig>;
     /**
      * Tags for the MLflow experiment.
      */

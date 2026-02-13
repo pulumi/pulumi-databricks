@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MlflowWebhookHttpUrlSpecArgs;
 import com.pulumi.databricks.inputs.MlflowWebhookJobSpecArgs;
+import com.pulumi.databricks.inputs.MlflowWebhookProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -81,6 +82,13 @@ public final class MlflowWebhookState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.modelName);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<MlflowWebhookProviderConfigArgs> providerConfig;
+
+    public Optional<Output<MlflowWebhookProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
      * 
@@ -104,6 +112,7 @@ public final class MlflowWebhookState extends com.pulumi.resources.ResourceArgs 
         this.httpUrlSpec = $.httpUrlSpec;
         this.jobSpec = $.jobSpec;
         this.modelName = $.modelName;
+        this.providerConfig = $.providerConfig;
         this.status = $.status;
     }
 
@@ -220,6 +229,15 @@ public final class MlflowWebhookState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder modelName(String modelName) {
             return modelName(Output.of(modelName));
+        }
+
+        public Builder providerConfig(@Nullable Output<MlflowWebhookProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(MlflowWebhookProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

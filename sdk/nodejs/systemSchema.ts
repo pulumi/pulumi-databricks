@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -57,6 +59,10 @@ export class SystemSchema extends pulumi.CustomResource {
     declare public /*out*/ readonly fullName: pulumi.Output<string>;
     declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SystemSchemaProviderConfig | undefined>;
+    /**
      * name of the system schema.
      */
     declare public readonly schema: pulumi.Output<string>;
@@ -81,6 +87,7 @@ export class SystemSchema extends pulumi.CustomResource {
             resourceInputs["autoEnabled"] = state?.autoEnabled;
             resourceInputs["fullName"] = state?.fullName;
             resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schema"] = state?.schema;
             resourceInputs["state"] = state?.state;
         } else {
@@ -88,6 +95,7 @@ export class SystemSchema extends pulumi.CustomResource {
             if (args?.schema === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schema'");
             }
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schema"] = args?.schema;
             resourceInputs["autoEnabled"] = undefined /*out*/;
             resourceInputs["fullName"] = undefined /*out*/;
@@ -110,6 +118,10 @@ export interface SystemSchemaState {
     fullName?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SystemSchemaProviderConfig>;
+    /**
      * name of the system schema.
      */
     schema?: pulumi.Input<string>;
@@ -123,6 +135,10 @@ export interface SystemSchemaState {
  * The set of arguments for constructing a SystemSchema resource.
  */
 export interface SystemSchemaArgs {
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SystemSchemaProviderConfig>;
     /**
      * name of the system schema.
      */

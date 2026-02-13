@@ -23,14 +23,18 @@ class AibiDashboardEmbeddingAccessPolicySettingArgs:
     def __init__(__self__, *,
                  aibi_dashboard_embedding_access_policy: pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs'],
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AibiDashboardEmbeddingAccessPolicySetting resource.
         :param pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs'] aibi_dashboard_embedding_access_policy: block with following attributes:
+        :param pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
 
@@ -56,6 +60,18 @@ class AibiDashboardEmbeddingAccessPolicySettingArgs:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="settingName")
     def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "setting_name")
@@ -70,15 +86,19 @@ class _AibiDashboardEmbeddingAccessPolicySettingState:
     def __init__(__self__, *,
                  aibi_dashboard_embedding_access_policy: Optional[pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AibiDashboardEmbeddingAccessPolicySetting resources.
         :param pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs'] aibi_dashboard_embedding_access_policy: block with following attributes:
+        :param pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if aibi_dashboard_embedding_access_policy is not None:
             pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
 
@@ -104,6 +124,18 @@ class _AibiDashboardEmbeddingAccessPolicySettingState:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="settingName")
     def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "setting_name")
@@ -121,6 +153,7 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs', 'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs', 'AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -148,6 +181,7 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs', 'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict']] aibi_dashboard_embedding_access_policy: block with following attributes:
+        :param pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs', 'AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -194,6 +228,7 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs', 'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs', 'AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -208,6 +243,7 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
                 raise TypeError("Missing required property 'aibi_dashboard_embedding_access_policy'")
             __props__.__dict__["aibi_dashboard_embedding_access_policy"] = aibi_dashboard_embedding_access_policy
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["setting_name"] = setting_name
         super(AibiDashboardEmbeddingAccessPolicySetting, __self__).__init__(
             'databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting',
@@ -221,6 +257,7 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs', 'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs', 'AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgsDict']]] = None,
             setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AibiDashboardEmbeddingAccessPolicySetting':
         """
         Get an existing AibiDashboardEmbeddingAccessPolicySetting resource's state with the given name, id, and optional extra
@@ -230,6 +267,7 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs', 'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict']] aibi_dashboard_embedding_access_policy: block with following attributes:
+        :param pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs', 'AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -237,6 +275,7 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
 
         __props__.__dict__["aibi_dashboard_embedding_access_policy"] = aibi_dashboard_embedding_access_policy
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["setting_name"] = setting_name
         return AibiDashboardEmbeddingAccessPolicySetting(resource_name, opts=opts, __props__=__props__)
 
@@ -252,6 +291,14 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="settingName")

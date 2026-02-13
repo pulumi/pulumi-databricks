@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresEndpointsEndpoint;
+import com.pulumi.databricks.outputs.GetPostgresEndpointsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -28,6 +29,7 @@ public final class GetPostgresEndpointsResult {
      * 
      */
     private String parent;
+    private @Nullable GetPostgresEndpointsProviderConfig providerConfig;
 
     private GetPostgresEndpointsResult() {}
     public List<GetPostgresEndpointsEndpoint> endpoints() {
@@ -51,6 +53,9 @@ public final class GetPostgresEndpointsResult {
     public String parent() {
         return this.parent;
     }
+    public Optional<GetPostgresEndpointsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,6 +70,7 @@ public final class GetPostgresEndpointsResult {
         private String id;
         private @Nullable Integer pageSize;
         private String parent;
+        private @Nullable GetPostgresEndpointsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetPostgresEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,6 +78,7 @@ public final class GetPostgresEndpointsResult {
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -107,12 +114,19 @@ public final class GetPostgresEndpointsResult {
             this.parent = parent;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPostgresEndpointsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetPostgresEndpointsResult build() {
             final var _resultValue = new GetPostgresEndpointsResult();
             _resultValue.endpoints = endpoints;
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

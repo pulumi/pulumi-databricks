@@ -33,6 +33,7 @@ export function getQualityMonitorsV2(args?: GetQualityMonitorsV2Args, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -41,6 +42,10 @@ export function getQualityMonitorsV2(args?: GetQualityMonitorsV2Args, opts?: pul
  */
 export interface GetQualityMonitorsV2Args {
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetQualityMonitorsV2ProviderConfig;
 }
 
 /**
@@ -52,6 +57,7 @@ export interface GetQualityMonitorsV2Result {
      */
     readonly id: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetQualityMonitorsV2ProviderConfig;
     readonly qualityMonitors: outputs.GetQualityMonitorsV2QualityMonitor[];
 }
 /**
@@ -81,6 +87,7 @@ export function getQualityMonitorsV2Output(args?: GetQualityMonitorsV2OutputArgs
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -89,4 +96,8 @@ export function getQualityMonitorsV2Output(args?: GetQualityMonitorsV2OutputArgs
  */
 export interface GetQualityMonitorsV2OutputArgs {
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetQualityMonitorsV2ProviderConfigArgs>;
 }

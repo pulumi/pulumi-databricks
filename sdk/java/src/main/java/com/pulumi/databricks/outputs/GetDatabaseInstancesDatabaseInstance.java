@@ -8,12 +8,15 @@ import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceChildIn
 import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceCustomTag;
 import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag;
 import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRef;
+import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseInstancesDatabaseInstance {
@@ -135,6 +138,11 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * 
      */
     private String pgVersion;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetDatabaseInstancesDatabaseInstanceProviderConfig providerConfig;
     /**
      * @return (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
      * enableReadableSecondaries is true
@@ -332,6 +340,13 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return this.pgVersion;
     }
     /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetDatabaseInstancesDatabaseInstanceProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    /**
      * @return (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
      * enableReadableSecondaries is true
      * 
@@ -412,6 +427,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
         private Integer nodeCount;
         private GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef;
         private String pgVersion;
+        private @Nullable GetDatabaseInstancesDatabaseInstanceProviderConfig providerConfig;
         private String readOnlyDns;
         private String readWriteDns;
         private Integer retentionWindowInDays;
@@ -441,6 +457,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
     	      this.nodeCount = defaults.nodeCount;
     	      this.parentInstanceRef = defaults.parentInstanceRef;
     	      this.pgVersion = defaults.pgVersion;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.readOnlyDns = defaults.readOnlyDns;
     	      this.readWriteDns = defaults.readWriteDns;
     	      this.retentionWindowInDays = defaults.retentionWindowInDays;
@@ -612,6 +629,12 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDatabaseInstancesDatabaseInstanceProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder readOnlyDns(String readOnlyDns) {
             if (readOnlyDns == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "readOnlyDns");
@@ -688,6 +711,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
             _resultValue.nodeCount = nodeCount;
             _resultValue.parentInstanceRef = parentInstanceRef;
             _resultValue.pgVersion = pgVersion;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.readOnlyDns = readOnlyDns;
             _resultValue.readWriteDns = readWriteDns;
             _resultValue.retentionWindowInDays = retentionWindowInDays;

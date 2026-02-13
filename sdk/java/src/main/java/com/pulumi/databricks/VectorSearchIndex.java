@@ -12,6 +12,7 @@ import com.pulumi.databricks.VectorSearchIndexArgs;
 import com.pulumi.databricks.inputs.VectorSearchIndexState;
 import com.pulumi.databricks.outputs.VectorSearchIndexDeltaSyncIndexSpec;
 import com.pulumi.databricks.outputs.VectorSearchIndexDirectAccessIndexSpec;
+import com.pulumi.databricks.outputs.VectorSearchIndexProviderConfig;
 import com.pulumi.databricks.outputs.VectorSearchIndexStatus;
 import java.lang.String;
 import java.util.List;
@@ -172,6 +173,12 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
      */
     public Output<String> primaryKey() {
         return this.primaryKey;
+    }
+    @Export(name="providerConfig", refs={VectorSearchIndexProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ VectorSearchIndexProviderConfig> providerConfig;
+
+    public Output<Optional<VectorSearchIndexProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Object describing the current status of the index consisting of the following fields:

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesProviderConfig;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,10 +36,26 @@ public final class GetWarehousesDefaultWarehouseOverridesPlainArgs extends com.p
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetWarehousesDefaultWarehouseOverridesProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetWarehousesDefaultWarehouseOverridesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetWarehousesDefaultWarehouseOverridesPlainArgs() {}
 
     private GetWarehousesDefaultWarehouseOverridesPlainArgs(GetWarehousesDefaultWarehouseOverridesPlainArgs $) {
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -70,6 +87,17 @@ public final class GetWarehousesDefaultWarehouseOverridesPlainArgs extends com.p
          */
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetWarehousesDefaultWarehouseOverridesProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

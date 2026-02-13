@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ExternalMetadataArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ExternalMetadataState;
+import com.pulumi.databricks.outputs.ExternalMetadataProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -201,6 +202,20 @@ public class ExternalMetadata extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={ExternalMetadataProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ExternalMetadataProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<ExternalMetadataProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`

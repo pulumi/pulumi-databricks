@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.QueryParameterArgs;
+import com.pulumi.databricks.inputs.QueryProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -169,6 +170,21 @@ public final class QueryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<QueryProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<QueryProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Text of SQL query.
      * 
      */
@@ -271,6 +287,7 @@ public final class QueryState extends com.pulumi.resources.ResourceArgs {
         this.ownerUserName = $.ownerUserName;
         this.parameters = $.parameters;
         this.parentPath = $.parentPath;
+        this.providerConfig = $.providerConfig;
         this.queryText = $.queryText;
         this.runAsMode = $.runAsMode;
         this.schema = $.schema;
@@ -515,6 +532,27 @@ public final class QueryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parentPath(String parentPath) {
             return parentPath(Output.of(parentPath));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<QueryProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(QueryProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

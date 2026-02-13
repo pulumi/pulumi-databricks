@@ -5,9 +5,12 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DataQualityRefreshProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DataQualityRefreshArgs extends com.pulumi.resources.ResourceArgs {
@@ -60,11 +63,27 @@ public final class DataQualityRefreshArgs extends com.pulumi.resources.ResourceA
         return this.objectType;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DataQualityRefreshProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<DataQualityRefreshProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private DataQualityRefreshArgs() {}
 
     private DataQualityRefreshArgs(DataQualityRefreshArgs $) {
         this.objectId = $.objectId;
         this.objectType = $.objectType;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -141,6 +160,27 @@ public final class DataQualityRefreshArgs extends com.pulumi.resources.ResourceA
          */
         public Builder objectType(String objectType) {
             return objectType(Output.of(objectType));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DataQualityRefreshProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DataQualityRefreshProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public DataQualityRefreshArgs build() {

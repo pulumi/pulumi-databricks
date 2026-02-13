@@ -11,6 +11,7 @@ import com.pulumi.databricks.SqlTableArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlTableState;
 import com.pulumi.databricks.outputs.SqlTableColumn;
+import com.pulumi.databricks.outputs.SqlTableProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -501,6 +502,20 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={SqlTableProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SqlTableProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<SqlTableProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.

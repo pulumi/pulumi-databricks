@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source can be used to get a single account setting.
  *
@@ -19,6 +19,7 @@ export function getWorkspaceSettingV2(args: GetWorkspaceSettingV2Args, opts?: pu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -30,6 +31,10 @@ export interface GetWorkspaceSettingV2Args {
      * Name of the setting
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetWorkspaceSettingV2ProviderConfig;
 }
 
 /**
@@ -100,6 +105,7 @@ export interface GetWorkspaceSettingV2Result {
      * (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      */
     readonly personalCompute: outputs.GetWorkspaceSettingV2PersonalCompute;
+    readonly providerConfig?: outputs.GetWorkspaceSettingV2ProviderConfig;
     /**
      * (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      */
@@ -110,7 +116,7 @@ export interface GetWorkspaceSettingV2Result {
     readonly stringVal: outputs.GetWorkspaceSettingV2StringVal;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source can be used to get a single account setting.
  *
@@ -122,6 +128,7 @@ export function getWorkspaceSettingV2Output(args: GetWorkspaceSettingV2OutputArg
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -133,4 +140,8 @@ export interface GetWorkspaceSettingV2OutputArgs {
      * Name of the setting
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetWorkspaceSettingV2ProviderConfigArgs>;
 }

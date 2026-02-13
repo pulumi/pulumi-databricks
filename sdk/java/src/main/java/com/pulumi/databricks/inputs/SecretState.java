@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.SecretProviderConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -62,6 +63,21 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SecretProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SecretProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      * 
      */
@@ -97,6 +113,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
         this.configReference = $.configReference;
         this.key = $.key;
         this.lastUpdatedTimestamp = $.lastUpdatedTimestamp;
+        this.providerConfig = $.providerConfig;
         this.scope = $.scope;
         this.stringValue = $.stringValue;
     }
@@ -180,6 +197,27 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lastUpdatedTimestamp(Integer lastUpdatedTimestamp) {
             return lastUpdatedTimestamp(Output.of(lastUpdatedTimestamp));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SecretProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SecretProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

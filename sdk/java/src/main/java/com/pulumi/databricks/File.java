@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.FileArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.FileState;
+import com.pulumi.databricks.outputs.FileProviderConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -202,6 +203,20 @@ public class File extends com.pulumi.resources.CustomResource {
      */
     public Output<String> path() {
         return this.path;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={FileProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ FileProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<FileProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="remoteFileModified", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> remoteFileModified;

@@ -165,7 +165,8 @@ type Pipeline struct {
 	Photon        pulumi.BoolPtrOutput           `pulumi:"photon"`
 	RestartWindow PipelineRestartWindowPtrOutput `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
-	RootPath      pulumi.StringPtrOutput `pulumi:"rootPath"`
+	RootPath pulumi.StringPtrOutput `pulumi:"rootPath"`
+	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
 	RunAs         PipelineRunAsPtrOutput `pulumi:"runAs"`
 	RunAsUserName pulumi.StringOutput    `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
@@ -259,7 +260,8 @@ type pipelineState struct {
 	Photon        *bool                  `pulumi:"photon"`
 	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
-	RootPath      *string        `pulumi:"rootPath"`
+	RootPath *string `pulumi:"rootPath"`
+	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
 	RunAs         *PipelineRunAs `pulumi:"runAs"`
 	RunAsUserName *string        `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
@@ -324,7 +326,8 @@ type PipelineState struct {
 	Photon        pulumi.BoolPtrInput
 	RestartWindow PipelineRestartWindowPtrInput
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
-	RootPath      pulumi.StringPtrInput
+	RootPath pulumi.StringPtrInput
+	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
 	RunAs         PipelineRunAsPtrInput
 	RunAsUserName pulumi.StringPtrInput
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
@@ -393,7 +396,8 @@ type pipelineArgs struct {
 	Photon        *bool                  `pulumi:"photon"`
 	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
-	RootPath      *string        `pulumi:"rootPath"`
+	RootPath *string `pulumi:"rootPath"`
+	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
 	RunAs         *PipelineRunAs `pulumi:"runAs"`
 	RunAsUserName *string        `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
@@ -459,7 +463,8 @@ type PipelineArgs struct {
 	Photon        pulumi.BoolPtrInput
 	RestartWindow PipelineRestartWindowPtrInput
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
-	RootPath      pulumi.StringPtrInput
+	RootPath pulumi.StringPtrInput
+	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
 	RunAs         PipelineRunAsPtrInput
 	RunAsUserName pulumi.StringPtrInput
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
@@ -695,6 +700,7 @@ func (o PipelineOutput) RootPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.RootPath }).(pulumi.StringPtrOutput)
 }
 
+// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
 func (o PipelineOutput) RunAs() PipelineRunAsPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineRunAsPtrOutput { return v.RunAs }).(PipelineRunAsPtrOutput)
 }

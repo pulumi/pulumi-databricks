@@ -18,6 +18,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("dashboardId")]
         public Input<string>? DashboardId { get; set; }
 
+        [Input("filters")]
+        private InputMap<string>? _filters;
+        public InputMap<string> Filters
+        {
+            get => _filters ?? (_filters = new InputMap<string>());
+            set => _filters = value;
+        }
+
         /// <summary>
         /// Represents a subscription configuration for scheduled dashboard snapshots.
         /// </summary>

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.OnlineTableArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.OnlineTableState;
+import com.pulumi.databricks.outputs.OnlineTableProviderConfig;
 import com.pulumi.databricks.outputs.OnlineTableSpec;
 import com.pulumi.databricks.outputs.OnlineTableStatus;
 import java.lang.String;
@@ -79,6 +80,20 @@ public class OnlineTable extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={OnlineTableProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ OnlineTableProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<OnlineTableProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * object containing specification of the online table:

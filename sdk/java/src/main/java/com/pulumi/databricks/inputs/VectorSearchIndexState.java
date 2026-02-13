@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.VectorSearchIndexDeltaSyncIndexSpecArgs;
 import com.pulumi.databricks.inputs.VectorSearchIndexDirectAccessIndexSpecArgs;
+import com.pulumi.databricks.inputs.VectorSearchIndexProviderConfigArgs;
 import com.pulumi.databricks.inputs.VectorSearchIndexStatusArgs;
 import java.lang.String;
 import java.util.List;
@@ -128,6 +129,13 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.primaryKey);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<VectorSearchIndexProviderConfigArgs> providerConfig;
+
+    public Optional<Output<VectorSearchIndexProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * Object describing the current status of the index consisting of the following fields:
      * 
@@ -153,6 +161,7 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
         this.indexType = $.indexType;
         this.name = $.name;
         this.primaryKey = $.primaryKey;
+        this.providerConfig = $.providerConfig;
         this.statuses = $.statuses;
     }
 
@@ -323,6 +332,15 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
          */
         public Builder primaryKey(String primaryKey) {
             return primaryKey(Output.of(primaryKey));
+        }
+
+        public Builder providerConfig(@Nullable Output<VectorSearchIndexProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(VectorSearchIndexProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

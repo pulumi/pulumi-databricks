@@ -14,6 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskForEachTaskTaskGenAiComputeTask
     {
         public readonly string? Command;
+        /// <summary>
+        /// Task level compute configuration. This block is documented below.
+        /// 
+        /// &gt; If no `JobClusterKey`, `ExistingClusterId`, or `NewCluster` were specified in task definition, then task will executed using serverless compute.
+        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskGenAiComputeTaskCompute? Compute;
         public readonly string DlRuntimeImage;
         public readonly string? MlflowExperimentName;

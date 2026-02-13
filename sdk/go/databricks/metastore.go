@@ -155,7 +155,7 @@ type Metastore struct {
 	DefaultDataAccessConfigId pulumi.StringPtrOutput `pulumi:"defaultDataAccessConfigId"`
 	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
 	DeltaSharingOrganizationName pulumi.StringPtrOutput `pulumi:"deltaSharingOrganizationName"`
-	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrOutput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
 	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
 	DeltaSharingScope pulumi.StringPtrOutput `pulumi:"deltaSharingScope"`
@@ -227,7 +227,7 @@ type metastoreState struct {
 	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
 	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
 	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
-	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
 	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
 	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
 	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
@@ -270,7 +270,7 @@ type MetastoreState struct {
 	DefaultDataAccessConfigId pulumi.StringPtrInput
 	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
 	DeltaSharingOrganizationName pulumi.StringPtrInput
-	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput
 	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
 	DeltaSharingScope pulumi.StringPtrInput
@@ -311,7 +311,7 @@ type metastoreArgs struct {
 	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
 	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
 	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
-	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
 	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
 	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
 	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
@@ -341,7 +341,7 @@ type MetastoreArgs struct {
 	DefaultDataAccessConfigId pulumi.StringPtrInput
 	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
 	DeltaSharingOrganizationName pulumi.StringPtrInput
-	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput
 	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
 	DeltaSharingScope pulumi.StringPtrInput
@@ -477,7 +477,7 @@ func (o MetastoreOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringPtrOutput { return v.DeltaSharingOrganizationName }).(pulumi.StringPtrOutput)
 }
 
-// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
 func (o MetastoreOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.IntPtrOutput { return v.DeltaSharingRecipientTokenLifetimeInSeconds }).(pulumi.IntPtrOutput)
 }

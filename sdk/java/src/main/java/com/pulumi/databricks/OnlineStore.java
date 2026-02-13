@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.OnlineStoreArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.OnlineStoreState;
+import com.pulumi.databricks.outputs.OnlineStoreProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -76,6 +77,20 @@ public class OnlineStore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={OnlineStoreProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ OnlineStoreProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<OnlineStoreProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The number of read replicas for the online store. Defaults to 0

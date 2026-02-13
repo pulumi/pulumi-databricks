@@ -34,6 +34,7 @@ class ExternalLocationArgs:
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ExternalLocationProviderConfigArgs']] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -75,6 +76,8 @@ class ExternalLocationArgs:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
@@ -228,6 +231,15 @@ class ExternalLocationArgs:
         pulumi.set(self, "owner", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ExternalLocationProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ExternalLocationProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -271,6 +283,7 @@ class _ExternalLocationState:
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ExternalLocationProviderConfigArgs']] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.int]] = None,
@@ -328,6 +341,8 @@ class _ExternalLocationState:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
@@ -520,6 +535,15 @@ class _ExternalLocationState:
         pulumi.set(self, "owner", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ExternalLocationProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ExternalLocationProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -598,6 +622,7 @@ class ExternalLocation(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ExternalLocationProviderConfigArgs', 'ExternalLocationProviderConfigArgsDict']]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -854,6 +879,7 @@ class ExternalLocation(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ExternalLocationProviderConfigArgs', 'ExternalLocationProviderConfigArgsDict']]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -880,6 +906,7 @@ class ExternalLocation(pulumi.CustomResource):
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["read_only"] = read_only
             __props__.__dict__["skip_validation"] = skip_validation
             if url is None and not opts.urn:
@@ -917,6 +944,7 @@ class ExternalLocation(pulumi.CustomResource):
             metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['ExternalLocationProviderConfigArgs', 'ExternalLocationProviderConfigArgsDict']]] = None,
             read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
             updated_at: Optional[pulumi.Input[_builtins.int]] = None,
@@ -967,6 +995,7 @@ class ExternalLocation(pulumi.CustomResource):
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["skip_validation"] = skip_validation
         __props__.__dict__["updated_at"] = updated_at
@@ -1089,6 +1118,11 @@ class ExternalLocation(pulumi.CustomResource):
         Username/groupname/sp application_id of the external location owner.
         """
         return pulumi.get(self, "owner")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ExternalLocationProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="readOnly")

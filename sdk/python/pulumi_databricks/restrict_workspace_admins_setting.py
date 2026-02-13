@@ -23,14 +23,18 @@ class RestrictWorkspaceAdminsSettingArgs:
     def __init__(__self__, *,
                  restrict_workspace_admins: pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs'],
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RestrictWorkspaceAdminsSetting resource.
         :param pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs'] restrict_workspace_admins: The configuration details.
+        :param pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
 
@@ -56,6 +60,18 @@ class RestrictWorkspaceAdminsSettingArgs:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="settingName")
     def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "setting_name")
@@ -69,14 +85,18 @@ class RestrictWorkspaceAdminsSettingArgs:
 class _RestrictWorkspaceAdminsSettingState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs']] = None,
                  restrict_workspace_admins: Optional[pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RestrictWorkspaceAdminsSetting resources.
+        :param pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs'] restrict_workspace_admins: The configuration details.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if restrict_workspace_admins is not None:
             pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
         if setting_name is not None:
@@ -90,6 +110,18 @@ class _RestrictWorkspaceAdminsSettingState:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "etag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="restrictWorkspaceAdmins")
@@ -120,6 +152,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']]] = None,
                  restrict_workspace_admins: Optional[pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -155,6 +188,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: The configuration details.
         """
         ...
@@ -209,6 +243,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']]] = None,
                  restrict_workspace_admins: Optional[pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -221,6 +256,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
             __props__ = RestrictWorkspaceAdminsSettingArgs.__new__(RestrictWorkspaceAdminsSettingArgs)
 
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["provider_config"] = provider_config
             if restrict_workspace_admins is None and not opts.urn:
                 raise TypeError("Missing required property 'restrict_workspace_admins'")
             __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
@@ -236,6 +272,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']]] = None,
             restrict_workspace_admins: Optional[pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']]] = None,
             setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'RestrictWorkspaceAdminsSetting':
         """
@@ -245,6 +282,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: The configuration details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -252,6 +290,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         __props__ = _RestrictWorkspaceAdminsSettingState.__new__(_RestrictWorkspaceAdminsSettingState)
 
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
         __props__.__dict__["setting_name"] = setting_name
         return RestrictWorkspaceAdminsSetting(resource_name, opts=opts, __props__=__props__)
@@ -260,6 +299,14 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.RestrictWorkspaceAdminsSettingProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="restrictWorkspaceAdmins")

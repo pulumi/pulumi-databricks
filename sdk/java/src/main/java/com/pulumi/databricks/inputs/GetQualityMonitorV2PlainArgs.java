@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetQualityMonitorV2ProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetQualityMonitorV2PlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -43,11 +46,27 @@ public final class GetQualityMonitorV2PlainArgs extends com.pulumi.resources.Inv
         return this.objectType;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetQualityMonitorV2ProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetQualityMonitorV2ProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetQualityMonitorV2PlainArgs() {}
 
     private GetQualityMonitorV2PlainArgs(GetQualityMonitorV2PlainArgs $) {
         this.objectId = $.objectId;
         this.objectType = $.objectType;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -87,6 +106,17 @@ public final class GetQualityMonitorV2PlainArgs extends com.pulumi.resources.Inv
          */
         public Builder objectType(String objectType) {
             $.objectType = objectType;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetQualityMonitorV2ProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

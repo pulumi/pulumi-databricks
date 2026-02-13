@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetDataQualityRefreshesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -69,12 +70,28 @@ public final class GetDataQualityRefreshesPlainArgs extends com.pulumi.resources
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetDataQualityRefreshesProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetDataQualityRefreshesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetDataQualityRefreshesPlainArgs() {}
 
     private GetDataQualityRefreshesPlainArgs(GetDataQualityRefreshesPlainArgs $) {
         this.objectId = $.objectId;
         this.objectType = $.objectType;
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -127,6 +144,17 @@ public final class GetDataQualityRefreshesPlainArgs extends com.pulumi.resources
 
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetDataQualityRefreshesProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

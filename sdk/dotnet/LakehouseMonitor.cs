@@ -224,6 +224,9 @@ namespace Pulumi.Databricks
         [Output("profileMetricsTableName")]
         public Output<string> ProfileMetricsTableName { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.LakehouseMonitorProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         /// <summary>
         /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         /// </summary>
@@ -370,6 +373,9 @@ namespace Pulumi.Databricks
         [Input("outputSchemaName", required: true)]
         public Input<string> OutputSchemaName { get; set; } = null!;
 
+        [Input("providerConfig")]
+        public Input<Inputs.LakehouseMonitorProviderConfigArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         /// </summary>
@@ -501,6 +507,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("profileMetricsTableName")]
         public Input<string>? ProfileMetricsTableName { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.LakehouseMonitorProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:

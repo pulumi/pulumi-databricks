@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstance;
+import com.pulumi.databricks.outputs.GetDatabaseInstancesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,6 +23,7 @@ public final class GetDatabaseInstancesResult {
      */
     private String id;
     private @Nullable Integer pageSize;
+    private @Nullable GetDatabaseInstancesProviderConfig providerConfig;
 
     private GetDatabaseInstancesResult() {}
     public List<GetDatabaseInstancesDatabaseInstance> databaseInstances() {
@@ -37,6 +39,9 @@ public final class GetDatabaseInstancesResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    public Optional<GetDatabaseInstancesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,12 +55,14 @@ public final class GetDatabaseInstancesResult {
         private List<GetDatabaseInstancesDatabaseInstance> databaseInstances;
         private String id;
         private @Nullable Integer pageSize;
+        private @Nullable GetDatabaseInstancesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDatabaseInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseInstances = defaults.databaseInstances;
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -83,11 +90,18 @@ public final class GetDatabaseInstancesResult {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDatabaseInstancesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetDatabaseInstancesResult build() {
             final var _resultValue = new GetDatabaseInstancesResult();
             _resultValue.databaseInstances = databaseInstances;
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

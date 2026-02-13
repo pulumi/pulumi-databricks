@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresEndpointProviderConfig;
 import com.pulumi.databricks.outputs.GetPostgresEndpointSpec;
 import com.pulumi.databricks.outputs.GetPostgresEndpointStatus;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPostgresEndpointResult {
@@ -34,6 +37,7 @@ public final class GetPostgresEndpointResult {
      * 
      */
     private String parent;
+    private @Nullable GetPostgresEndpointProviderConfig providerConfig;
     /**
      * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
@@ -86,6 +90,9 @@ public final class GetPostgresEndpointResult {
     public String parent() {
         return this.parent;
     }
+    public Optional<GetPostgresEndpointProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
@@ -128,6 +135,7 @@ public final class GetPostgresEndpointResult {
         private String id;
         private String name;
         private String parent;
+        private @Nullable GetPostgresEndpointProviderConfig providerConfig;
         private GetPostgresEndpointSpec spec;
         private GetPostgresEndpointStatus status;
         private String uid;
@@ -139,6 +147,7 @@ public final class GetPostgresEndpointResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
     	      this.status = defaults.status;
     	      this.uid = defaults.uid;
@@ -175,6 +184,12 @@ public final class GetPostgresEndpointResult {
               throw new MissingRequiredPropertyException("GetPostgresEndpointResult", "parent");
             }
             this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPostgresEndpointProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -215,6 +230,7 @@ public final class GetPostgresEndpointResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.parent = parent;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;
             _resultValue.status = status;
             _resultValue.uid = uid;

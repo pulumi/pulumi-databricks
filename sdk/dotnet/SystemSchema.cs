@@ -52,6 +52,12 @@ namespace Pulumi.Databricks
         public Output<string> MetastoreId { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SystemSchemaProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// name of the system schema.
         /// </summary>
         [Output("schema")]
@@ -110,6 +116,12 @@ namespace Pulumi.Databricks
     public sealed class SystemSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SystemSchemaProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// name of the system schema.
         /// </summary>
         [Input("schema", required: true)]
@@ -134,6 +146,12 @@ namespace Pulumi.Databricks
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SystemSchemaProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// name of the system schema.

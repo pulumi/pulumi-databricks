@@ -73,6 +73,37 @@ import (
 //
 // ```
 //
+// ### Example Usage with Role ARN
+//
+// When sharing an S3 bucket between root storage and a Unity Catalog metastore, you can specify a role ARN:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsStorageConfigurations(ctx, "this", &databricks.MwsStorageConfigurationsArgs{
+//				AccountId:                pulumi.Any(databricksAccountId),
+//				StorageConfigurationName: pulumi.Sprintf("%v-storage", prefix),
+//				BucketName:               pulumi.Any(rootStorageBucket.Bucket),
+//				RoleArn:                  pulumi.Any(unityCatalogRole.Arn),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:
@@ -92,9 +123,13 @@ type MwsStorageConfigurations struct {
 	// name of AWS S3 bucket
 	BucketName   pulumi.StringOutput `pulumi:"bucketName"`
 	CreationTime pulumi.IntOutput    `pulumi:"creationTime"`
+	// The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
 	// (String) id of storage config to be used for `databricksMwsWorkspace` resource.
 	StorageConfigurationId pulumi.StringOutput `pulumi:"storageConfigurationId"`
 	// name under which this storage configuration is stored
+	//
+	// The following arguments are optional:
 	StorageConfigurationName pulumi.StringOutput `pulumi:"storageConfigurationName"`
 }
 
@@ -149,9 +184,13 @@ type mwsStorageConfigurationsState struct {
 	// name of AWS S3 bucket
 	BucketName   *string `pulumi:"bucketName"`
 	CreationTime *int    `pulumi:"creationTime"`
+	// The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+	RoleArn *string `pulumi:"roleArn"`
 	// (String) id of storage config to be used for `databricksMwsWorkspace` resource.
 	StorageConfigurationId *string `pulumi:"storageConfigurationId"`
 	// name under which this storage configuration is stored
+	//
+	// The following arguments are optional:
 	StorageConfigurationName *string `pulumi:"storageConfigurationName"`
 }
 
@@ -161,9 +200,13 @@ type MwsStorageConfigurationsState struct {
 	// name of AWS S3 bucket
 	BucketName   pulumi.StringPtrInput
 	CreationTime pulumi.IntPtrInput
+	// The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+	RoleArn pulumi.StringPtrInput
 	// (String) id of storage config to be used for `databricksMwsWorkspace` resource.
 	StorageConfigurationId pulumi.StringPtrInput
 	// name under which this storage configuration is stored
+	//
+	// The following arguments are optional:
 	StorageConfigurationName pulumi.StringPtrInput
 }
 
@@ -176,7 +219,11 @@ type mwsStorageConfigurationsArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// name of AWS S3 bucket
 	BucketName string `pulumi:"bucketName"`
+	// The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+	RoleArn *string `pulumi:"roleArn"`
 	// name under which this storage configuration is stored
+	//
+	// The following arguments are optional:
 	StorageConfigurationName string `pulumi:"storageConfigurationName"`
 }
 
@@ -186,7 +233,11 @@ type MwsStorageConfigurationsArgs struct {
 	AccountId pulumi.StringInput
 	// name of AWS S3 bucket
 	BucketName pulumi.StringInput
+	// The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+	RoleArn pulumi.StringPtrInput
 	// name under which this storage configuration is stored
+	//
+	// The following arguments are optional:
 	StorageConfigurationName pulumi.StringInput
 }
 
@@ -291,12 +342,19 @@ func (o MwsStorageConfigurationsOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
 
+// The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+func (o MwsStorageConfigurationsOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
 // (String) id of storage config to be used for `databricksMwsWorkspace` resource.
 func (o MwsStorageConfigurationsOutput) StorageConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.StringOutput { return v.StorageConfigurationId }).(pulumi.StringOutput)
 }
 
 // name under which this storage configuration is stored
+//
+// The following arguments are optional:
 func (o MwsStorageConfigurationsOutput) StorageConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.StringOutput { return v.StorageConfigurationName }).(pulumi.StringOutput)
 }

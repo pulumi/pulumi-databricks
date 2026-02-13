@@ -35,6 +35,8 @@ type GetPostgresEndpointsArgs struct {
 	// The Branch that owns this collection of endpoints.
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresEndpointsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getPostgresEndpoints.
@@ -45,7 +47,8 @@ type GetPostgresEndpointsResult struct {
 	PageSize *int   `pulumi:"pageSize"`
 	// (string) - The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
-	Parent string `pulumi:"parent"`
+	Parent         string                              `pulumi:"parent"`
+	ProviderConfig *GetPostgresEndpointsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetPostgresEndpointsOutput(ctx *pulumi.Context, args GetPostgresEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetPostgresEndpointsResultOutput {
@@ -64,6 +67,8 @@ type GetPostgresEndpointsOutputArgs struct {
 	// The Branch that owns this collection of endpoints.
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent pulumi.StringInput `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresEndpointsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetPostgresEndpointsOutputArgs) ElementType() reflect.Type {
@@ -102,6 +107,10 @@ func (o GetPostgresEndpointsResultOutput) PageSize() pulumi.IntPtrOutput {
 // Format: projects/{project_id}/branches/{branch_id}
 func (o GetPostgresEndpointsResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointsResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+func (o GetPostgresEndpointsResultOutput) ProviderConfig() GetPostgresEndpointsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsResult) *GetPostgresEndpointsProviderConfig { return v.ProviderConfig }).(GetPostgresEndpointsProviderConfigPtrOutput)
 }
 
 func init() {

@@ -56,6 +56,8 @@ func LookupDatabaseDatabaseCatalog(ctx *pulumi.Context, args *LookupDatabaseData
 type LookupDatabaseDatabaseCatalogArgs struct {
 	// The name of the catalog in UC
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDatabaseDatabaseCatalogProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDatabaseDatabaseCatalog.
@@ -69,7 +71,8 @@ type LookupDatabaseDatabaseCatalogResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string) - The name of the catalog in UC
-	Name string `pulumi:"name"`
+	Name           string                                    `pulumi:"name"`
+	ProviderConfig *GetDatabaseDatabaseCatalogProviderConfig `pulumi:"providerConfig"`
 	// (string)
 	Uid string `pulumi:"uid"`
 }
@@ -87,6 +90,8 @@ func LookupDatabaseDatabaseCatalogOutput(ctx *pulumi.Context, args LookupDatabas
 type LookupDatabaseDatabaseCatalogOutputArgs struct {
 	// The name of the catalog in UC
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDatabaseDatabaseCatalogProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupDatabaseDatabaseCatalogOutputArgs) ElementType() reflect.Type {
@@ -131,6 +136,12 @@ func (o LookupDatabaseDatabaseCatalogResultOutput) Id() pulumi.StringOutput {
 // (string) - The name of the catalog in UC
 func (o LookupDatabaseDatabaseCatalogResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseDatabaseCatalogResultOutput) ProviderConfig() GetDatabaseDatabaseCatalogProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) *GetDatabaseDatabaseCatalogProviderConfig {
+		return v.ProviderConfig
+	}).(GetDatabaseDatabaseCatalogProviderConfigPtrOutput)
 }
 
 // (string)

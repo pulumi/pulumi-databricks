@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.SchemaArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SchemaState;
+import com.pulumi.databricks.outputs.SchemaProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -181,6 +182,20 @@ public class Schema extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={SchemaProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SchemaProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<SchemaProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The unique identifier of the schema.

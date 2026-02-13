@@ -26,14 +26,17 @@ func GetOnlineStores(ctx *pulumi.Context, args *GetOnlineStoresArgs, opts ...pul
 type GetOnlineStoresArgs struct {
 	// The maximum number of results to return. Defaults to 100 if not specified
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetOnlineStoresProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getOnlineStores.
 type GetOnlineStoresResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                       `pulumi:"id"`
-	OnlineStores []GetOnlineStoresOnlineStore `pulumi:"onlineStores"`
-	PageSize     *int                         `pulumi:"pageSize"`
+	Id             string                         `pulumi:"id"`
+	OnlineStores   []GetOnlineStoresOnlineStore   `pulumi:"onlineStores"`
+	PageSize       *int                           `pulumi:"pageSize"`
+	ProviderConfig *GetOnlineStoresProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetOnlineStoresOutput(ctx *pulumi.Context, args GetOnlineStoresOutputArgs, opts ...pulumi.InvokeOption) GetOnlineStoresResultOutput {
@@ -49,6 +52,8 @@ func GetOnlineStoresOutput(ctx *pulumi.Context, args GetOnlineStoresOutputArgs, 
 type GetOnlineStoresOutputArgs struct {
 	// The maximum number of results to return. Defaults to 100 if not specified
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetOnlineStoresProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetOnlineStoresOutputArgs) ElementType() reflect.Type {
@@ -81,6 +86,10 @@ func (o GetOnlineStoresResultOutput) OnlineStores() GetOnlineStoresOnlineStoreAr
 
 func (o GetOnlineStoresResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetOnlineStoresResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetOnlineStoresResultOutput) ProviderConfig() GetOnlineStoresProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetOnlineStoresResult) *GetOnlineStoresProviderConfig { return v.ProviderConfig }).(GetOnlineStoresProviderConfigPtrOutput)
 }
 
 func init() {

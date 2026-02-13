@@ -22,14 +22,18 @@ __all__ = ['OnlineTableArgs', 'OnlineTable']
 class OnlineTableArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['OnlineTableProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None):
         """
         The set of arguments for constructing a OnlineTable resource.
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
+        :param pulumi.Input['OnlineTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['OnlineTableSpecArgs'] spec: object containing specification of the online table:
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -44,6 +48,18 @@ class OnlineTableArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['OnlineTableProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['OnlineTableProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -62,6 +78,7 @@ class OnlineTableArgs:
 class _OnlineTableState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['OnlineTableProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]]] = None,
                  table_serving_url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -69,6 +86,7 @@ class _OnlineTableState:
         """
         Input properties used for looking up and filtering OnlineTable resources.
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
+        :param pulumi.Input['OnlineTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['OnlineTableSpecArgs'] spec: object containing specification of the online table:
         :param pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]] statuses: object describing status of the online table:
         :param pulumi.Input[_builtins.str] table_serving_url: Data serving REST API URL for this table.
@@ -76,6 +94,8 @@ class _OnlineTableState:
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if statuses is not None:
@@ -96,6 +116,18 @@ class _OnlineTableState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['OnlineTableProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['OnlineTableProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -153,6 +185,7 @@ class OnlineTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
                  __props__=None):
         """
@@ -178,6 +211,7 @@ class OnlineTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
+        :param pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']] spec: object containing specification of the online table:
         """
         ...
@@ -222,6 +256,7 @@ class OnlineTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -233,6 +268,7 @@ class OnlineTable(pulumi.CustomResource):
             __props__ = OnlineTableArgs.__new__(OnlineTableArgs)
 
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["spec"] = spec
             __props__.__dict__["statuses"] = None
             __props__.__dict__["table_serving_url"] = None
@@ -248,6 +284,7 @@ class OnlineTable(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
             spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]]] = None,
             table_serving_url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -260,6 +297,7 @@ class OnlineTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
+        :param pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']] spec: object containing specification of the online table:
         :param pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]] statuses: object describing status of the online table:
         :param pulumi.Input[_builtins.str] table_serving_url: Data serving REST API URL for this table.
@@ -270,6 +308,7 @@ class OnlineTable(pulumi.CustomResource):
         __props__ = _OnlineTableState.__new__(_OnlineTableState)
 
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["spec"] = spec
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["table_serving_url"] = table_serving_url
@@ -283,6 +322,14 @@ class OnlineTable(pulumi.CustomResource):
         3-level name of the Online Table to create.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.OnlineTableProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

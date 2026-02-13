@@ -69,6 +69,12 @@ namespace Pulumi.Databricks
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.TagPolicyProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("tagKey")]
         public Output<string> TagKey { get; private set; } = null!;
 
@@ -130,6 +136,12 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.TagPolicyProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
 
@@ -157,6 +169,12 @@ namespace Pulumi.Databricks
 
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.TagPolicyProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("tagKey")]
         public Input<string>? TagKey { get; set; }

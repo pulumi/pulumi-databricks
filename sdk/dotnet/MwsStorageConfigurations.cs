@@ -60,6 +60,29 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ### Example Usage with Role ARN
+    /// 
+    /// When sharing an S3 bucket between root storage and a Unity Catalog metastore, you can specify a role ARN:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.MwsStorageConfigurations("this", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         StorageConfigurationName = $"{prefix}-storage",
+    ///         BucketName = rootStorageBucket.Bucket,
+    ///         RoleArn = unityCatalogRole.Arn,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are used in the same context:
@@ -91,6 +114,12 @@ namespace Pulumi.Databricks
         public Output<int> CreationTime { get; private set; } = null!;
 
         /// <summary>
+        /// The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+        /// </summary>
+        [Output("roleArn")]
+        public Output<string?> RoleArn { get; private set; } = null!;
+
+        /// <summary>
         /// (String) id of storage config to be used for `DatabricksMwsWorkspace` resource.
         /// </summary>
         [Output("storageConfigurationId")]
@@ -98,6 +127,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// name under which this storage configuration is stored
+        /// 
+        /// The following arguments are optional:
         /// </summary>
         [Output("storageConfigurationName")]
         public Output<string> StorageConfigurationName { get; private set; } = null!;
@@ -175,7 +206,15 @@ namespace Pulumi.Databricks
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
+        /// The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
+
+        /// <summary>
         /// name under which this storage configuration is stored
+        /// 
+        /// The following arguments are optional:
         /// </summary>
         [Input("storageConfigurationName", required: true)]
         public Input<string> StorageConfigurationName { get; set; } = null!;
@@ -214,6 +253,12 @@ namespace Pulumi.Databricks
         public Input<int>? CreationTime { get; set; }
 
         /// <summary>
+        /// The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
+
+        /// <summary>
         /// (String) id of storage config to be used for `DatabricksMwsWorkspace` resource.
         /// </summary>
         [Input("storageConfigurationId")]
@@ -221,6 +266,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// name under which this storage configuration is stored
+        /// 
+        /// The following arguments are optional:
         /// </summary>
         [Input("storageConfigurationName")]
         public Input<string>? StorageConfigurationName { get; set; }

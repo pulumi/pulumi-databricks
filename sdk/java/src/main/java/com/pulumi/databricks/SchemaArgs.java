@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.SchemaProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -131,6 +132,21 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SchemaProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SchemaProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */
@@ -156,6 +172,7 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.owner = $.owner;
         this.properties = $.properties;
+        this.providerConfig = $.providerConfig;
         this.storageRoot = $.storageRoot;
     }
 
@@ -331,6 +348,27 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SchemaProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SchemaProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

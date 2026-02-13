@@ -82,6 +82,8 @@ type ExternalMetadata struct {
 	Owner pulumi.StringPtrOutput `pulumi:"owner"`
 	// A map of key-value properties attached to the external metadata object
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
+	// Configure the provider for management through account provider.
+	ProviderConfig ExternalMetadataProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType pulumi.StringOutput `pulumi:"systemType"`
 	// (string) - Time at which this external metadata object was last modified
@@ -146,6 +148,8 @@ type externalMetadataState struct {
 	Owner *string `pulumi:"owner"`
 	// A map of key-value properties attached to the external metadata object
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *ExternalMetadataProviderConfig `pulumi:"providerConfig"`
 	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType *string `pulumi:"systemType"`
 	// (string) - Time at which this external metadata object was last modified
@@ -175,6 +179,8 @@ type ExternalMetadataState struct {
 	Owner pulumi.StringPtrInput
 	// A map of key-value properties attached to the external metadata object
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider.
+	ProviderConfig ExternalMetadataProviderConfigPtrInput
 	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType pulumi.StringPtrInput
 	// (string) - Time at which this external metadata object was last modified
@@ -202,6 +208,8 @@ type externalMetadataArgs struct {
 	Owner *string `pulumi:"owner"`
 	// A map of key-value properties attached to the external metadata object
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *ExternalMetadataProviderConfig `pulumi:"providerConfig"`
 	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType string `pulumi:"systemType"`
 	// URL associated with the external metadata object
@@ -222,6 +230,8 @@ type ExternalMetadataArgs struct {
 	Owner pulumi.StringPtrInput
 	// A map of key-value properties attached to the external metadata object
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider.
+	ProviderConfig ExternalMetadataProviderConfigPtrInput
 	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType pulumi.StringInput
 	// URL associated with the external metadata object
@@ -358,6 +368,11 @@ func (o ExternalMetadataOutput) Owner() pulumi.StringPtrOutput {
 // A map of key-value properties attached to the external metadata object
 func (o ExternalMetadataOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ExternalMetadata) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o ExternalMetadataOutput) ProviderConfig() ExternalMetadataProviderConfigPtrOutput {
+	return o.ApplyT(func(v *ExternalMetadata) ExternalMetadataProviderConfigPtrOutput { return v.ProviderConfig }).(ExternalMetadataProviderConfigPtrOutput)
 }
 
 // Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`

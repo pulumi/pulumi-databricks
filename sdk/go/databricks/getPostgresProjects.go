@@ -32,14 +32,17 @@ func GetPostgresProjects(ctx *pulumi.Context, args *GetPostgresProjectsArgs, opt
 type GetPostgresProjectsArgs struct {
 	// Upper bound for items returned. Cannot be negative
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresProjectsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getPostgresProjects.
 type GetPostgresProjectsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id       string                       `pulumi:"id"`
-	PageSize *int                         `pulumi:"pageSize"`
-	Projects []GetPostgresProjectsProject `pulumi:"projects"`
+	Id             string                             `pulumi:"id"`
+	PageSize       *int                               `pulumi:"pageSize"`
+	Projects       []GetPostgresProjectsProject       `pulumi:"projects"`
+	ProviderConfig *GetPostgresProjectsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetPostgresProjectsOutput(ctx *pulumi.Context, args GetPostgresProjectsOutputArgs, opts ...pulumi.InvokeOption) GetPostgresProjectsResultOutput {
@@ -55,6 +58,8 @@ func GetPostgresProjectsOutput(ctx *pulumi.Context, args GetPostgresProjectsOutp
 type GetPostgresProjectsOutputArgs struct {
 	// Upper bound for items returned. Cannot be negative
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresProjectsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetPostgresProjectsOutputArgs) ElementType() reflect.Type {
@@ -87,6 +92,10 @@ func (o GetPostgresProjectsResultOutput) PageSize() pulumi.IntPtrOutput {
 
 func (o GetPostgresProjectsResultOutput) Projects() GetPostgresProjectsProjectArrayOutput {
 	return o.ApplyT(func(v GetPostgresProjectsResult) []GetPostgresProjectsProject { return v.Projects }).(GetPostgresProjectsProjectArrayOutput)
+}
+
+func (o GetPostgresProjectsResultOutput) ProviderConfig() GetPostgresProjectsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsResult) *GetPostgresProjectsProviderConfig { return v.ProviderConfig }).(GetPostgresProjectsProviderConfigPtrOutput)
 }
 
 func init() {

@@ -66,14 +66,17 @@ type GetTagPoliciesArgs struct {
 	// unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
 	// to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetTagPoliciesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getTagPolicies.
 type GetTagPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                    `pulumi:"id"`
-	PageSize    *int                      `pulumi:"pageSize"`
-	TagPolicies []GetTagPoliciesTagPolicy `pulumi:"tagPolicies"`
+	Id             string                        `pulumi:"id"`
+	PageSize       *int                          `pulumi:"pageSize"`
+	ProviderConfig *GetTagPoliciesProviderConfig `pulumi:"providerConfig"`
+	TagPolicies    []GetTagPoliciesTagPolicy     `pulumi:"tagPolicies"`
 }
 
 func GetTagPoliciesOutput(ctx *pulumi.Context, args GetTagPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTagPoliciesResultOutput {
@@ -91,6 +94,8 @@ type GetTagPoliciesOutputArgs struct {
 	// unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
 	// to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetTagPoliciesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetTagPoliciesOutputArgs) ElementType() reflect.Type {
@@ -119,6 +124,10 @@ func (o GetTagPoliciesResultOutput) Id() pulumi.StringOutput {
 
 func (o GetTagPoliciesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetTagPoliciesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetTagPoliciesResultOutput) ProviderConfig() GetTagPoliciesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetTagPoliciesResult) *GetTagPoliciesProviderConfig { return v.ProviderConfig }).(GetTagPoliciesProviderConfigPtrOutput)
 }
 
 func (o GetTagPoliciesResultOutput) TagPolicies() GetTagPoliciesTagPolicyArrayOutput {

@@ -114,6 +114,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetQualityMonitorsV2ProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetQualityMonitorsV2Args()
         {
         }
@@ -124,6 +130,12 @@ namespace Pulumi.Databricks
     {
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetQualityMonitorsV2ProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetQualityMonitorsV2InvokeArgs()
         {
@@ -140,6 +152,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly int? PageSize;
+        public readonly Outputs.GetQualityMonitorsV2ProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> QualityMonitors;
 
         [OutputConstructor]
@@ -148,10 +161,13 @@ namespace Pulumi.Databricks
 
             int? pageSize,
 
+            Outputs.GetQualityMonitorsV2ProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> qualityMonitors)
         {
             Id = id;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
             QualityMonitors = qualityMonitors;
         }
     }

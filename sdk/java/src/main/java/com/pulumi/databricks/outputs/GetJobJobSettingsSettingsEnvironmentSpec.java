@@ -12,12 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsEnvironmentSpec {
+    private @Nullable String baseEnvironment;
     private @Nullable String client;
     private @Nullable List<String> dependencies;
     private @Nullable String environmentVersion;
     private @Nullable List<String> javaDependencies;
 
     private GetJobJobSettingsSettingsEnvironmentSpec() {}
+    public Optional<String> baseEnvironment() {
+        return Optional.ofNullable(this.baseEnvironment);
+    }
     public Optional<String> client() {
         return Optional.ofNullable(this.client);
     }
@@ -40,6 +44,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String baseEnvironment;
         private @Nullable String client;
         private @Nullable List<String> dependencies;
         private @Nullable String environmentVersion;
@@ -47,12 +52,19 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsEnvironmentSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.baseEnvironment = defaults.baseEnvironment;
     	      this.client = defaults.client;
     	      this.dependencies = defaults.dependencies;
     	      this.environmentVersion = defaults.environmentVersion;
     	      this.javaDependencies = defaults.javaDependencies;
         }
 
+        @CustomType.Setter
+        public Builder baseEnvironment(@Nullable String baseEnvironment) {
+
+            this.baseEnvironment = baseEnvironment;
+            return this;
+        }
         @CustomType.Setter
         public Builder client(@Nullable String client) {
 
@@ -85,6 +97,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
         }
         public GetJobJobSettingsSettingsEnvironmentSpec build() {
             final var _resultValue = new GetJobJobSettingsSettingsEnvironmentSpec();
+            _resultValue.baseEnvironment = baseEnvironment;
             _resultValue.client = client;
             _resultValue.dependencies = dependencies;
             _resultValue.environmentVersion = environmentVersion;

@@ -39,6 +39,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetOnlineStoresProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetOnlineStoresArgs()
         {
         }
@@ -52,6 +58,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetOnlineStoresProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetOnlineStoresInvokeArgs()
         {
@@ -69,6 +81,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetOnlineStoresOnlineStoreResult> OnlineStores;
         public readonly int? PageSize;
+        public readonly Outputs.GetOnlineStoresProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetOnlineStoresResult(
@@ -76,11 +89,14 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetOnlineStoresOnlineStoreResult> onlineStores,
 
-            int? pageSize)
+            int? pageSize,
+
+            Outputs.GetOnlineStoresProviderConfigResult? providerConfig)
         {
             Id = id;
             OnlineStores = onlineStores;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
         }
     }
 }

@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.WarehousesDefaultWarehouseOverrideProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -29,6 +30,21 @@ public final class WarehousesDefaultWarehouseOverrideArgs extends com.pulumi.res
      */
     public Output<String> defaultWarehouseOverrideId() {
         return this.defaultWarehouseOverrideId;
+    }
+
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<WarehousesDefaultWarehouseOverrideProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<WarehousesDefaultWarehouseOverrideProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -67,6 +83,7 @@ public final class WarehousesDefaultWarehouseOverrideArgs extends com.pulumi.res
 
     private WarehousesDefaultWarehouseOverrideArgs(WarehousesDefaultWarehouseOverrideArgs $) {
         this.defaultWarehouseOverrideId = $.defaultWarehouseOverrideId;
+        this.providerConfig = $.providerConfig;
         this.type = $.type;
         this.warehouseId = $.warehouseId;
     }
@@ -108,6 +125,27 @@ public final class WarehousesDefaultWarehouseOverrideArgs extends com.pulumi.res
          */
         public Builder defaultWarehouseOverrideId(String defaultWarehouseOverrideId) {
             return defaultWarehouseOverrideId(Output.of(defaultWarehouseOverrideId));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<WarehousesDefaultWarehouseOverrideProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(WarehousesDefaultWarehouseOverrideProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

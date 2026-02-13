@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetTagPoliciesProviderConfig;
 import com.pulumi.databricks.outputs.GetTagPoliciesTagPolicy;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -21,6 +22,7 @@ public final class GetTagPoliciesResult {
      */
     private String id;
     private @Nullable Integer pageSize;
+    private @Nullable GetTagPoliciesProviderConfig providerConfig;
     private List<GetTagPoliciesTagPolicy> tagPolicies;
 
     private GetTagPoliciesResult() {}
@@ -33,6 +35,9 @@ public final class GetTagPoliciesResult {
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    public Optional<GetTagPoliciesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public List<GetTagPoliciesTagPolicy> tagPolicies() {
         return this.tagPolicies;
@@ -49,12 +54,14 @@ public final class GetTagPoliciesResult {
     public static final class Builder {
         private String id;
         private @Nullable Integer pageSize;
+        private @Nullable GetTagPoliciesProviderConfig providerConfig;
         private List<GetTagPoliciesTagPolicy> tagPolicies;
         public Builder() {}
         public Builder(GetTagPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tagPolicies = defaults.tagPolicies;
         }
 
@@ -73,6 +80,12 @@ public final class GetTagPoliciesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetTagPoliciesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagPolicies(List<GetTagPoliciesTagPolicy> tagPolicies) {
             if (tagPolicies == null) {
               throw new MissingRequiredPropertyException("GetTagPoliciesResult", "tagPolicies");
@@ -87,6 +100,7 @@ public final class GetTagPoliciesResult {
             final var _resultValue = new GetTagPoliciesResult();
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tagPolicies = tagPolicies;
             return _resultValue;
         }

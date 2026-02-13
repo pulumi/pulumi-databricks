@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetWorkspaceEntityTagAssignmentsResult',
@@ -27,7 +28,7 @@ class GetWorkspaceEntityTagAssignmentsResult:
     """
     A collection of values returned by getWorkspaceEntityTagAssignments.
     """
-    def __init__(__self__, entity_id=None, entity_type=None, id=None, page_size=None, tag_assignments=None):
+    def __init__(__self__, entity_id=None, entity_type=None, id=None, page_size=None, provider_config=None, tag_assignments=None):
         if entity_id and not isinstance(entity_id, str):
             raise TypeError("Expected argument 'entity_id' to be a str")
         pulumi.set(__self__, "entity_id", entity_id)
@@ -40,6 +41,9 @@ class GetWorkspaceEntityTagAssignmentsResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if tag_assignments and not isinstance(tag_assignments, list):
             raise TypeError("Expected argument 'tag_assignments' to be a list")
         pulumi.set(__self__, "tag_assignments", tag_assignments)
@@ -74,6 +78,11 @@ class GetWorkspaceEntityTagAssignmentsResult:
         return pulumi.get(self, "page_size")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetWorkspaceEntityTagAssignmentsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="tagAssignments")
     def tag_assignments(self) -> Sequence['outputs.GetWorkspaceEntityTagAssignmentsTagAssignmentResult']:
         return pulumi.get(self, "tag_assignments")
@@ -89,12 +98,14 @@ class AwaitableGetWorkspaceEntityTagAssignmentsResult(GetWorkspaceEntityTagAssig
             entity_type=self.entity_type,
             id=self.id,
             page_size=self.page_size,
+            provider_config=self.provider_config,
             tag_assignments=self.tag_assignments)
 
 
 def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = None,
                                          entity_type: Optional[_builtins.str] = None,
                                          page_size: Optional[_builtins.int] = None,
+                                         provider_config: Optional[Union['GetWorkspaceEntityTagAssignmentsProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentsProviderConfigArgsDict']] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceEntityTagAssignmentsResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -119,11 +130,13 @@ def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = No
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
     :param _builtins.int page_size: Optional. Maximum number of tag assignments to return in a single page
+    :param Union['GetWorkspaceEntityTagAssignmentsProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['entityId'] = entity_id
     __args__['entityType'] = entity_type
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments', __args__, opts=opts, typ=GetWorkspaceEntityTagAssignmentsResult).value
 
@@ -132,10 +145,12 @@ def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = No
         entity_type=pulumi.get(__ret__, 'entity_type'),
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         tag_assignments=pulumi.get(__ret__, 'tag_assignments'))
 def get_workspace_entity_tag_assignments_output(entity_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
                                                 page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                                provider_config: Optional[pulumi.Input[Optional[Union['GetWorkspaceEntityTagAssignmentsProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentsProviderConfigArgsDict']]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceEntityTagAssignmentsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -160,11 +175,13 @@ def get_workspace_entity_tag_assignments_output(entity_id: Optional[pulumi.Input
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
     :param _builtins.int page_size: Optional. Maximum number of tag assignments to return in a single page
+    :param Union['GetWorkspaceEntityTagAssignmentsProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['entityId'] = entity_id
     __args__['entityType'] = entity_type
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments', __args__, opts=opts, typ=GetWorkspaceEntityTagAssignmentsResult)
     return __ret__.apply(lambda __response__: GetWorkspaceEntityTagAssignmentsResult(
@@ -172,4 +189,5 @@ def get_workspace_entity_tag_assignments_output(entity_id: Optional[pulumi.Input
         entity_type=pulumi.get(__response__, 'entity_type'),
         id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         tag_assignments=pulumi.get(__response__, 'tag_assignments')))

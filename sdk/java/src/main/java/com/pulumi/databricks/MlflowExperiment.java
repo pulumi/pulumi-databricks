@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MlflowExperimentArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MlflowExperimentState;
+import com.pulumi.databricks.outputs.MlflowExperimentProviderConfig;
 import com.pulumi.databricks.outputs.MlflowExperimentTag;
 import java.lang.Integer;
 import java.lang.String;
@@ -153,6 +154,20 @@ public class MlflowExperiment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={MlflowExperimentProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ MlflowExperimentProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<MlflowExperimentProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Tags for the MLflow experiment.

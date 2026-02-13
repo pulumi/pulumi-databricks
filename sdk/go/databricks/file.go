@@ -137,8 +137,10 @@ type File struct {
 	// The last time stamp when the file was modified
 	ModificationTime pulumi.StringOutput `pulumi:"modificationTime"`
 	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-	Path               pulumi.StringOutput  `pulumi:"path"`
-	RemoteFileModified pulumi.BoolPtrOutput `pulumi:"remoteFileModified"`
+	Path pulumi.StringOutput `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig     FileProviderConfigPtrOutput `pulumi:"providerConfig"`
+	RemoteFileModified pulumi.BoolPtrOutput        `pulumi:"remoteFileModified"`
 	// The full absolute path to the file. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 }
@@ -184,8 +186,10 @@ type fileState struct {
 	// The last time stamp when the file was modified
 	ModificationTime *string `pulumi:"modificationTime"`
 	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-	Path               *string `pulumi:"path"`
-	RemoteFileModified *bool   `pulumi:"remoteFileModified"`
+	Path *string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig     *FileProviderConfig `pulumi:"providerConfig"`
+	RemoteFileModified *bool               `pulumi:"remoteFileModified"`
 	// The full absolute path to the file. Conflicts with `contentBase64`.
 	Source *string `pulumi:"source"`
 }
@@ -199,7 +203,9 @@ type FileState struct {
 	// The last time stamp when the file was modified
 	ModificationTime pulumi.StringPtrInput
 	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-	Path               pulumi.StringPtrInput
+	Path pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig     FileProviderConfigPtrInput
 	RemoteFileModified pulumi.BoolPtrInput
 	// The full absolute path to the file. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrInput
@@ -214,8 +220,10 @@ type fileArgs struct {
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Md5           *string `pulumi:"md5"`
 	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-	Path               string `pulumi:"path"`
-	RemoteFileModified *bool  `pulumi:"remoteFileModified"`
+	Path string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig     *FileProviderConfig `pulumi:"providerConfig"`
+	RemoteFileModified *bool               `pulumi:"remoteFileModified"`
 	// The full absolute path to the file. Conflicts with `contentBase64`.
 	Source *string `pulumi:"source"`
 }
@@ -226,7 +234,9 @@ type FileArgs struct {
 	ContentBase64 pulumi.StringPtrInput
 	Md5           pulumi.StringPtrInput
 	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-	Path               pulumi.StringInput
+	Path pulumi.StringInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig     FileProviderConfigPtrInput
 	RemoteFileModified pulumi.BoolPtrInput
 	// The full absolute path to the file. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrInput
@@ -341,6 +351,11 @@ func (o FileOutput) ModificationTime() pulumi.StringOutput {
 // The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
 func (o FileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o FileOutput) ProviderConfig() FileProviderConfigPtrOutput {
+	return o.ApplyT(func(v *File) FileProviderConfigPtrOutput { return v.ProviderConfig }).(FileProviderConfigPtrOutput)
 }
 
 func (o FileOutput) RemoteFileModified() pulumi.BoolPtrOutput {

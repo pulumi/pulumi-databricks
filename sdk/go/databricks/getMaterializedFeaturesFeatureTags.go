@@ -26,8 +26,10 @@ func GetMaterializedFeaturesFeatureTags(ctx *pulumi.Context, args *GetMaterializ
 type GetMaterializedFeaturesFeatureTagsArgs struct {
 	FeatureName string `pulumi:"featureName"`
 	// The maximum number of results to return
-	PageSize  *int   `pulumi:"pageSize"`
-	TableName string `pulumi:"tableName"`
+	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetMaterializedFeaturesFeatureTagsProviderConfig `pulumi:"providerConfig"`
+	TableName      string                                            `pulumi:"tableName"`
 }
 
 // A collection of values returned by getMaterializedFeaturesFeatureTags.
@@ -35,9 +37,10 @@ type GetMaterializedFeaturesFeatureTagsResult struct {
 	FeatureName string                                         `pulumi:"featureName"`
 	FeatureTags []GetMaterializedFeaturesFeatureTagsFeatureTag `pulumi:"featureTags"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string `pulumi:"id"`
-	PageSize  *int   `pulumi:"pageSize"`
-	TableName string `pulumi:"tableName"`
+	Id             string                                            `pulumi:"id"`
+	PageSize       *int                                              `pulumi:"pageSize"`
+	ProviderConfig *GetMaterializedFeaturesFeatureTagsProviderConfig `pulumi:"providerConfig"`
+	TableName      string                                            `pulumi:"tableName"`
 }
 
 func GetMaterializedFeaturesFeatureTagsOutput(ctx *pulumi.Context, args GetMaterializedFeaturesFeatureTagsOutputArgs, opts ...pulumi.InvokeOption) GetMaterializedFeaturesFeatureTagsResultOutput {
@@ -53,8 +56,10 @@ func GetMaterializedFeaturesFeatureTagsOutput(ctx *pulumi.Context, args GetMater
 type GetMaterializedFeaturesFeatureTagsOutputArgs struct {
 	FeatureName pulumi.StringInput `pulumi:"featureName"`
 	// The maximum number of results to return
-	PageSize  pulumi.IntPtrInput `pulumi:"pageSize"`
-	TableName pulumi.StringInput `pulumi:"tableName"`
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetMaterializedFeaturesFeatureTagsProviderConfigPtrInput `pulumi:"providerConfig"`
+	TableName      pulumi.StringInput                                       `pulumi:"tableName"`
 }
 
 func (GetMaterializedFeaturesFeatureTagsOutputArgs) ElementType() reflect.Type {
@@ -93,6 +98,12 @@ func (o GetMaterializedFeaturesFeatureTagsResultOutput) Id() pulumi.StringOutput
 
 func (o GetMaterializedFeaturesFeatureTagsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetMaterializedFeaturesFeatureTagsResultOutput) ProviderConfig() GetMaterializedFeaturesFeatureTagsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) *GetMaterializedFeaturesFeatureTagsProviderConfig {
+		return v.ProviderConfig
+	}).(GetMaterializedFeaturesFeatureTagsProviderConfigPtrOutput)
 }
 
 func (o GetMaterializedFeaturesFeatureTagsResultOutput) TableName() pulumi.StringOutput {

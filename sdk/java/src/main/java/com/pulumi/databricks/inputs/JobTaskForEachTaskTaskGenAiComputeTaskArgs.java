@@ -24,9 +24,21 @@ public final class JobTaskForEachTaskTaskGenAiComputeTaskArgs extends com.pulumi
         return Optional.ofNullable(this.command);
     }
 
+    /**
+     * Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     @Import(name="compute")
     private @Nullable Output<JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs> compute;
 
+    /**
+     * @return Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     public Optional<Output<JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs>> compute() {
         return Optional.ofNullable(this.compute);
     }
@@ -113,11 +125,27 @@ public final class JobTaskForEachTaskTaskGenAiComputeTaskArgs extends com.pulumi
             return command(Output.of(command));
         }
 
+        /**
+         * @param compute Task level compute configuration. This block is documented below.
+         * 
+         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder compute(@Nullable Output<JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs> compute) {
             $.compute = compute;
             return this;
         }
 
+        /**
+         * @param compute Task level compute configuration. This block is documented below.
+         * 
+         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder compute(JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs compute) {
             return compute(Output.of(compute));
         }

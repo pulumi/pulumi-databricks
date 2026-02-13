@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.GlobalInitScriptArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.GlobalInitScriptState;
+import com.pulumi.databricks.outputs.GlobalInitScriptProviderConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -85,6 +86,20 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> position() {
         return this.position;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={GlobalInitScriptProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ GlobalInitScriptProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<GlobalInitScriptProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Path to script&#39;s source code on local filesystem. Conflicts with `contentBase64`

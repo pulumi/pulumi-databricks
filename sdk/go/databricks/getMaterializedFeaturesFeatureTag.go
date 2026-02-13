@@ -25,6 +25,8 @@ func LookupMaterializedFeaturesFeatureTag(ctx *pulumi.Context, args *LookupMater
 // A collection of arguments for invoking getMaterializedFeaturesFeatureTag.
 type LookupMaterializedFeaturesFeatureTagArgs struct {
 	Key string `pulumi:"key"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetMaterializedFeaturesFeatureTagProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getMaterializedFeaturesFeatureTag.
@@ -32,7 +34,8 @@ type LookupMaterializedFeaturesFeatureTagResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string)
-	Key string `pulumi:"key"`
+	Key            string                                           `pulumi:"key"`
+	ProviderConfig *GetMaterializedFeaturesFeatureTagProviderConfig `pulumi:"providerConfig"`
 	// (string)
 	Value string `pulumi:"value"`
 }
@@ -49,6 +52,8 @@ func LookupMaterializedFeaturesFeatureTagOutput(ctx *pulumi.Context, args Lookup
 // A collection of arguments for invoking getMaterializedFeaturesFeatureTag.
 type LookupMaterializedFeaturesFeatureTagOutputArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetMaterializedFeaturesFeatureTagProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupMaterializedFeaturesFeatureTagOutputArgs) ElementType() reflect.Type {
@@ -78,6 +83,12 @@ func (o LookupMaterializedFeaturesFeatureTagResultOutput) Id() pulumi.StringOutp
 // (string)
 func (o LookupMaterializedFeaturesFeatureTagResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMaterializedFeaturesFeatureTagResult) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o LookupMaterializedFeaturesFeatureTagResultOutput) ProviderConfig() GetMaterializedFeaturesFeatureTagProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupMaterializedFeaturesFeatureTagResult) *GetMaterializedFeaturesFeatureTagProviderConfig {
+		return v.ProviderConfig
+	}).(GetMaterializedFeaturesFeatureTagProviderConfigPtrOutput)
 }
 
 // (string)

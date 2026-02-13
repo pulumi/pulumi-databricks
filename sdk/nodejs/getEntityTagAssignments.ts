@@ -47,6 +47,7 @@ export function getEntityTagAssignments(args: GetEntityTagAssignmentsArgs, opts?
         "entityName": args.entityName,
         "entityType": args.entityType,
         "maxResults": args.maxResults,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -66,6 +67,10 @@ export interface GetEntityTagAssignmentsArgs {
      * Optional. Maximum number of tag assignments to return in a single page
      */
     maxResults?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetEntityTagAssignmentsProviderConfig;
 }
 
 /**
@@ -85,6 +90,7 @@ export interface GetEntityTagAssignmentsResult {
      */
     readonly id: string;
     readonly maxResults?: number;
+    readonly providerConfig?: outputs.GetEntityTagAssignmentsProviderConfig;
     readonly tagAssignments: outputs.GetEntityTagAssignmentsTagAssignment[];
 }
 /**
@@ -128,6 +134,7 @@ export function getEntityTagAssignmentsOutput(args: GetEntityTagAssignmentsOutpu
         "entityName": args.entityName,
         "entityType": args.entityType,
         "maxResults": args.maxResults,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -147,4 +154,8 @@ export interface GetEntityTagAssignmentsOutputArgs {
      * Optional. Maximum number of tag assignments to return in a single page
      */
     maxResults?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetEntityTagAssignmentsProviderConfigArgs>;
 }

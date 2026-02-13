@@ -15,6 +15,7 @@ export function getFeatureEngineeringMaterializedFeatures(args?: GetFeatureEngin
     return pulumi.runtime.invoke("databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures", {
         "featureName": args.featureName,
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -30,6 +31,10 @@ export interface GetFeatureEngineeringMaterializedFeaturesArgs {
      * The maximum number of results to return. Defaults to 100 if not specified. Cannot be greater than 1000
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetFeatureEngineeringMaterializedFeaturesProviderConfig;
 }
 
 /**
@@ -46,6 +51,7 @@ export interface GetFeatureEngineeringMaterializedFeaturesResult {
     readonly id: string;
     readonly materializedFeatures: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeature[];
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfig;
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -56,6 +62,7 @@ export function getFeatureEngineeringMaterializedFeaturesOutput(args?: GetFeatur
     return pulumi.runtime.invokeOutput("databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures", {
         "featureName": args.featureName,
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -71,4 +78,8 @@ export interface GetFeatureEngineeringMaterializedFeaturesOutputArgs {
      * The maximum number of results to return. Defaults to 100 if not specified. Cannot be greater than 1000
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs>;
 }

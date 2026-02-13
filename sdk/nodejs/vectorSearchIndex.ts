@@ -91,6 +91,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
      * The column name that will be used as a primary key.
      */
     declare public readonly primaryKey: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.VectorSearchIndexProviderConfig | undefined>;
     /**
      * Object describing the current status of the index consisting of the following fields:
      */
@@ -116,6 +117,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
             resourceInputs["indexType"] = state?.indexType;
             resourceInputs["name"] = state?.name;
             resourceInputs["primaryKey"] = state?.primaryKey;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["statuses"] = state?.statuses;
         } else {
             const args = argsOrState as VectorSearchIndexArgs | undefined;
@@ -134,6 +136,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
             resourceInputs["indexType"] = args?.indexType;
             resourceInputs["name"] = args?.name;
             resourceInputs["primaryKey"] = args?.primaryKey;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
         }
@@ -176,6 +179,7 @@ export interface VectorSearchIndexState {
      * The column name that will be used as a primary key.
      */
     primaryKey?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.VectorSearchIndexProviderConfig>;
     /**
      * Object describing the current status of the index consisting of the following fields:
      */
@@ -212,4 +216,5 @@ export interface VectorSearchIndexArgs {
      * The column name that will be used as a primary key.
      */
     primaryKey: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.VectorSearchIndexProviderConfig>;
 }

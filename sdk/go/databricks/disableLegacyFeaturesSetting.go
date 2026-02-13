@@ -75,6 +75,7 @@ type DisableLegacyFeaturesSetting struct {
 	// block with following attributes:
 	DisableLegacyFeatures DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput `pulumi:"disableLegacyFeatures"`
 	Etag                  pulumi.StringOutput                                     `pulumi:"etag"`
+	ProviderConfig        DisableLegacyFeaturesSettingProviderConfigPtrOutput     `pulumi:"providerConfig"`
 	SettingName           pulumi.StringOutput                                     `pulumi:"settingName"`
 }
 
@@ -114,6 +115,7 @@ type disableLegacyFeaturesSettingState struct {
 	// block with following attributes:
 	DisableLegacyFeatures *DisableLegacyFeaturesSettingDisableLegacyFeatures `pulumi:"disableLegacyFeatures"`
 	Etag                  *string                                            `pulumi:"etag"`
+	ProviderConfig        *DisableLegacyFeaturesSettingProviderConfig        `pulumi:"providerConfig"`
 	SettingName           *string                                            `pulumi:"settingName"`
 }
 
@@ -121,6 +123,7 @@ type DisableLegacyFeaturesSettingState struct {
 	// block with following attributes:
 	DisableLegacyFeatures DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput
 	Etag                  pulumi.StringPtrInput
+	ProviderConfig        DisableLegacyFeaturesSettingProviderConfigPtrInput
 	SettingName           pulumi.StringPtrInput
 }
 
@@ -132,6 +135,7 @@ type disableLegacyFeaturesSettingArgs struct {
 	// block with following attributes:
 	DisableLegacyFeatures DisableLegacyFeaturesSettingDisableLegacyFeatures `pulumi:"disableLegacyFeatures"`
 	Etag                  *string                                           `pulumi:"etag"`
+	ProviderConfig        *DisableLegacyFeaturesSettingProviderConfig       `pulumi:"providerConfig"`
 	SettingName           *string                                           `pulumi:"settingName"`
 }
 
@@ -140,6 +144,7 @@ type DisableLegacyFeaturesSettingArgs struct {
 	// block with following attributes:
 	DisableLegacyFeatures DisableLegacyFeaturesSettingDisableLegacyFeaturesInput
 	Etag                  pulumi.StringPtrInput
+	ProviderConfig        DisableLegacyFeaturesSettingProviderConfigPtrInput
 	SettingName           pulumi.StringPtrInput
 }
 
@@ -239,6 +244,12 @@ func (o DisableLegacyFeaturesSettingOutput) DisableLegacyFeatures() DisableLegac
 
 func (o DisableLegacyFeaturesSettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisableLegacyFeaturesSetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+func (o DisableLegacyFeaturesSettingOutput) ProviderConfig() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyFeaturesSetting) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(DisableLegacyFeaturesSettingProviderConfigPtrOutput)
 }
 
 func (o DisableLegacyFeaturesSettingOutput) SettingName() pulumi.StringOutput {

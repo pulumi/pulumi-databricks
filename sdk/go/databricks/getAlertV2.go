@@ -63,6 +63,8 @@ func LookupAlertV2(ctx *pulumi.Context, args *LookupAlertV2Args, opts ...pulumi.
 type LookupAlertV2Args struct {
 	// UUID identifying the alert
 	Id string `pulumi:"id"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetAlertV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getAlertV2.
@@ -88,7 +90,8 @@ type LookupAlertV2Result struct {
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName string `pulumi:"ownerUserName"`
 	// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-	ParentPath string `pulumi:"parentPath"`
+	ParentPath     string                    `pulumi:"parentPath"`
+	ProviderConfig *GetAlertV2ProviderConfig `pulumi:"providerConfig"`
 	// (string) - Text of the query to be run
 	QueryText string `pulumi:"queryText"`
 	// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
@@ -122,6 +125,8 @@ func LookupAlertV2Output(ctx *pulumi.Context, args LookupAlertV2OutputArgs, opts
 type LookupAlertV2OutputArgs struct {
 	// UUID identifying the alert
 	Id pulumi.StringInput `pulumi:"id"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetAlertV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupAlertV2OutputArgs) ElementType() reflect.Type {
@@ -193,6 +198,10 @@ func (o LookupAlertV2ResultOutput) OwnerUserName() pulumi.StringOutput {
 // (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 func (o LookupAlertV2ResultOutput) ParentPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.ParentPath }).(pulumi.StringOutput)
+}
+
+func (o LookupAlertV2ResultOutput) ProviderConfig() GetAlertV2ProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupAlertV2Result) *GetAlertV2ProviderConfig { return v.ProviderConfig }).(GetAlertV2ProviderConfigPtrOutput)
 }
 
 // (string) - Text of the query to be run

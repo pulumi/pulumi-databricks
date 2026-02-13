@@ -72,7 +72,8 @@ type VectorSearchIndex struct {
 	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The column name that will be used as a primary key.
-	PrimaryKey pulumi.StringOutput `pulumi:"primaryKey"`
+	PrimaryKey     pulumi.StringOutput                      `pulumi:"primaryKey"`
+	ProviderConfig VectorSearchIndexProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Object describing the current status of the index consisting of the following fields:
 	Statuses VectorSearchIndexStatusArrayOutput `pulumi:"statuses"`
 }
@@ -131,7 +132,8 @@ type vectorSearchIndexState struct {
 	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 	// The column name that will be used as a primary key.
-	PrimaryKey *string `pulumi:"primaryKey"`
+	PrimaryKey     *string                          `pulumi:"primaryKey"`
+	ProviderConfig *VectorSearchIndexProviderConfig `pulumi:"providerConfig"`
 	// Object describing the current status of the index consisting of the following fields:
 	Statuses []VectorSearchIndexStatus `pulumi:"statuses"`
 }
@@ -152,7 +154,8 @@ type VectorSearchIndexState struct {
 	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput
 	// The column name that will be used as a primary key.
-	PrimaryKey pulumi.StringPtrInput
+	PrimaryKey     pulumi.StringPtrInput
+	ProviderConfig VectorSearchIndexProviderConfigPtrInput
 	// Object describing the current status of the index consisting of the following fields:
 	Statuses VectorSearchIndexStatusArrayInput
 }
@@ -175,7 +178,8 @@ type vectorSearchIndexArgs struct {
 	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name *string `pulumi:"name"`
 	// The column name that will be used as a primary key.
-	PrimaryKey string `pulumi:"primaryKey"`
+	PrimaryKey     string                           `pulumi:"primaryKey"`
+	ProviderConfig *VectorSearchIndexProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a VectorSearchIndex resource.
@@ -193,7 +197,8 @@ type VectorSearchIndexArgs struct {
 	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
 	Name pulumi.StringPtrInput
 	// The column name that will be used as a primary key.
-	PrimaryKey pulumi.StringInput
+	PrimaryKey     pulumi.StringInput
+	ProviderConfig VectorSearchIndexProviderConfigPtrInput
 }
 
 func (VectorSearchIndexArgs) ElementType() reflect.Type {
@@ -320,6 +325,10 @@ func (o VectorSearchIndexOutput) Name() pulumi.StringOutput {
 // The column name that will be used as a primary key.
 func (o VectorSearchIndexOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchIndex) pulumi.StringOutput { return v.PrimaryKey }).(pulumi.StringOutput)
+}
+
+func (o VectorSearchIndexOutput) ProviderConfig() VectorSearchIndexProviderConfigPtrOutput {
+	return o.ApplyT(func(v *VectorSearchIndex) VectorSearchIndexProviderConfigPtrOutput { return v.ProviderConfig }).(VectorSearchIndexProviderConfigPtrOutput)
 }
 
 // Object describing the current status of the index consisting of the following fields:

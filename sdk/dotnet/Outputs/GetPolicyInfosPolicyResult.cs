@@ -65,9 +65,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string OnSecurableType;
         /// <summary>
-        /// (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        /// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
         public readonly string PolicyType;
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetPolicyInfosPolicyProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (RowFilterOptions) - Options for row filter policies. Valid only if `PolicyType` is `POLICY_TYPE_ROW_FILTER`.
         /// Required on create and optional on update. When specified on update,
@@ -118,6 +122,8 @@ namespace Pulumi.Databricks.Outputs
 
             string policyType,
 
+            Outputs.GetPolicyInfosPolicyProviderConfigResult? providerConfig,
+
             Outputs.GetPolicyInfosPolicyRowFilterResult rowFilter,
 
             ImmutableArray<string> toPrincipals,
@@ -140,6 +146,7 @@ namespace Pulumi.Databricks.Outputs
             OnSecurableFullname = onSecurableFullname;
             OnSecurableType = onSecurableType;
             PolicyType = policyType;
+            ProviderConfig = providerConfig;
             RowFilter = rowFilter;
             ToPrincipals = toPrincipals;
             UpdatedAt = updatedAt;

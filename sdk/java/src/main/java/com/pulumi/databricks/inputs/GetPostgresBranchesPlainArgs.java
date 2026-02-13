@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetPostgresBranchesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -48,11 +49,27 @@ public final class GetPostgresBranchesPlainArgs extends com.pulumi.resources.Inv
         return this.parent;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetPostgresBranchesProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetPostgresBranchesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetPostgresBranchesPlainArgs() {}
 
     private GetPostgresBranchesPlainArgs(GetPostgresBranchesPlainArgs $) {
         this.pageSize = $.pageSize;
         this.parent = $.parent;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -93,6 +110,17 @@ public final class GetPostgresBranchesPlainArgs extends com.pulumi.resources.Inv
          */
         public Builder parent(String parent) {
             $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetPostgresBranchesProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOnlineStoreResult',
@@ -26,7 +28,7 @@ class GetOnlineStoreResult:
     """
     A collection of values returned by getOnlineStore.
     """
-    def __init__(__self__, capacity=None, creation_time=None, creator=None, id=None, name=None, read_replica_count=None, state=None, usage_policy_id=None):
+    def __init__(__self__, capacity=None, creation_time=None, creator=None, id=None, name=None, provider_config=None, read_replica_count=None, state=None, usage_policy_id=None):
         if capacity and not isinstance(capacity, str):
             raise TypeError("Expected argument 'capacity' to be a str")
         pulumi.set(__self__, "capacity", capacity)
@@ -42,6 +44,9 @@ class GetOnlineStoreResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if read_replica_count and not isinstance(read_replica_count, int):
             raise TypeError("Expected argument 'read_replica_count' to be a int")
         pulumi.set(__self__, "read_replica_count", read_replica_count)
@@ -93,6 +98,11 @@ class GetOnlineStoreResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetOnlineStoreProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="readReplicaCount")
     def read_replica_count(self) -> _builtins.int:
         """
@@ -128,21 +138,25 @@ class AwaitableGetOnlineStoreResult(GetOnlineStoreResult):
             creator=self.creator,
             id=self.id,
             name=self.name,
+            provider_config=self.provider_config,
             read_replica_count=self.read_replica_count,
             state=self.state,
             usage_policy_id=self.usage_policy_id)
 
 
 def get_online_store(name: Optional[_builtins.str] = None,
+                     provider_config: Optional[Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict']] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOnlineStoreResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.str name: The name of the online store. This is the unique identifier for the online store
+    :param Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getOnlineStore:getOnlineStore', __args__, opts=opts, typ=GetOnlineStoreResult).value
 
@@ -152,19 +166,23 @@ def get_online_store(name: Optional[_builtins.str] = None,
         creator=pulumi.get(__ret__, 'creator'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         read_replica_count=pulumi.get(__ret__, 'read_replica_count'),
         state=pulumi.get(__ret__, 'state'),
         usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'))
 def get_online_store_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                            provider_config: Optional[pulumi.Input[Optional[Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOnlineStoreResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.str name: The name of the online store. This is the unique identifier for the online store
+    :param Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getOnlineStore:getOnlineStore', __args__, opts=opts, typ=GetOnlineStoreResult)
     return __ret__.apply(lambda __response__: GetOnlineStoreResult(
@@ -173,6 +191,7 @@ def get_online_store_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         creator=pulumi.get(__response__, 'creator'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         read_replica_count=pulumi.get(__response__, 'read_replica_count'),
         state=pulumi.get(__response__, 'state'),
         usage_policy_id=pulumi.get(__response__, 'usage_policy_id')))

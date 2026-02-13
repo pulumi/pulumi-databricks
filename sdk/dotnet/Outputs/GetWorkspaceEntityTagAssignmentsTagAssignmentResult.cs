@@ -22,6 +22,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string EntityType;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         /// </summary>
         public readonly string TagKey;
@@ -36,12 +40,15 @@ namespace Pulumi.Databricks.Outputs
 
             string entityType,
 
+            Outputs.GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfigResult? providerConfig,
+
             string tagKey,
 
             string tagValue)
         {
             EntityId = entityId;
             EntityType = entityType;
+            ProviderConfig = providerConfig;
             TagKey = tagKey;
             TagValue = tagValue;
         }

@@ -108,6 +108,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetDatabaseSyncedDatabaseTableProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetDatabaseSyncedDatabaseTableArgs()
         {
         }
@@ -121,6 +127,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetDatabaseSyncedDatabaseTableProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetDatabaseSyncedDatabaseTableInvokeArgs()
         {
@@ -168,6 +180,7 @@ namespace Pulumi.Databricks
         /// (string) - Full three-part (catalog, schema, table) name of the table
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetDatabaseSyncedDatabaseTableProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (SyncedTableSpec)
         /// </summary>
@@ -195,6 +208,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetDatabaseSyncedDatabaseTableProviderConfigResult? providerConfig,
+
             Outputs.GetDatabaseSyncedDatabaseTableSpecResult spec,
 
             string unityCatalogProvisioningState)
@@ -206,6 +221,7 @@ namespace Pulumi.Databricks
             Id = id;
             LogicalDatabaseName = logicalDatabaseName;
             Name = name;
+            ProviderConfig = providerConfig;
             Spec = spec;
             UnityCatalogProvisioningState = unityCatalogProvisioningState;
         }

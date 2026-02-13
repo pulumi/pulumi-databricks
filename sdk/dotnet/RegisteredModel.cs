@@ -93,6 +93,12 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.RegisteredModelProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         /// </summary>
         [Output("schemaName")]
@@ -204,6 +210,12 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.RegisteredModelProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         /// </summary>
         [Input("schemaName")]
@@ -275,6 +287,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.RegisteredModelProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*

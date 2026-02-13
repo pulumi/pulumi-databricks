@@ -142,6 +142,10 @@ export class SqlEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly odbcParams: pulumi.Output<outputs.SqlEndpointOdbcParams>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlEndpointProviderConfig | undefined>;
+    /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */
     declare public readonly spotInstancePolicy: pulumi.Output<string | undefined>;
@@ -188,6 +192,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["numActiveSessions"] = state?.numActiveSessions;
             resourceInputs["numClusters"] = state?.numClusters;
             resourceInputs["odbcParams"] = state?.odbcParams;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["spotInstancePolicy"] = state?.spotInstancePolicy;
             resourceInputs["state"] = state?.state;
             resourceInputs["tags"] = state?.tags;
@@ -208,6 +213,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["minNumClusters"] = args?.minNumClusters;
             resourceInputs["name"] = args?.name;
             resourceInputs["noWait"] = args?.noWait;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["spotInstancePolicy"] = args?.spotInstancePolicy;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["warehouseType"] = args?.warehouseType;
@@ -296,6 +302,10 @@ export interface SqlEndpointState {
      */
     odbcParams?: pulumi.Input<inputs.SqlEndpointOdbcParams>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlEndpointProviderConfig>;
+    /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */
     spotInstancePolicy?: pulumi.Input<string>;
@@ -360,6 +370,10 @@ export interface SqlEndpointArgs {
      * Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
      */
     noWait?: pulumi.Input<boolean>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlEndpointProviderConfig>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */

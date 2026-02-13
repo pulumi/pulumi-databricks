@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetEntityTagAssignmentsResult',
@@ -27,7 +28,7 @@ class GetEntityTagAssignmentsResult:
     """
     A collection of values returned by getEntityTagAssignments.
     """
-    def __init__(__self__, entity_name=None, entity_type=None, id=None, max_results=None, tag_assignments=None):
+    def __init__(__self__, entity_name=None, entity_type=None, id=None, max_results=None, provider_config=None, tag_assignments=None):
         if entity_name and not isinstance(entity_name, str):
             raise TypeError("Expected argument 'entity_name' to be a str")
         pulumi.set(__self__, "entity_name", entity_name)
@@ -40,6 +41,9 @@ class GetEntityTagAssignmentsResult:
         if max_results and not isinstance(max_results, int):
             raise TypeError("Expected argument 'max_results' to be a int")
         pulumi.set(__self__, "max_results", max_results)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if tag_assignments and not isinstance(tag_assignments, list):
             raise TypeError("Expected argument 'tag_assignments' to be a list")
         pulumi.set(__self__, "tag_assignments", tag_assignments)
@@ -74,6 +78,11 @@ class GetEntityTagAssignmentsResult:
         return pulumi.get(self, "max_results")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetEntityTagAssignmentsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="tagAssignments")
     def tag_assignments(self) -> Sequence['outputs.GetEntityTagAssignmentsTagAssignmentResult']:
         return pulumi.get(self, "tag_assignments")
@@ -89,12 +98,14 @@ class AwaitableGetEntityTagAssignmentsResult(GetEntityTagAssignmentsResult):
             entity_type=self.entity_type,
             id=self.id,
             max_results=self.max_results,
+            provider_config=self.provider_config,
             tag_assignments=self.tag_assignments)
 
 
 def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
                                entity_type: Optional[_builtins.str] = None,
                                max_results: Optional[_builtins.int] = None,
+                               provider_config: Optional[Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEntityTagAssignmentsResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -125,11 +136,13 @@ def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
     :param _builtins.int max_results: Optional. Maximum number of tag assignments to return in a single page
+    :param Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['entityName'] = entity_name
     __args__['entityType'] = entity_type
     __args__['maxResults'] = max_results
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getEntityTagAssignments:getEntityTagAssignments', __args__, opts=opts, typ=GetEntityTagAssignmentsResult).value
 
@@ -138,10 +151,12 @@ def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
         entity_type=pulumi.get(__ret__, 'entity_type'),
         id=pulumi.get(__ret__, 'id'),
         max_results=pulumi.get(__ret__, 'max_results'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         tag_assignments=pulumi.get(__ret__, 'tag_assignments'))
 def get_entity_tag_assignments_output(entity_name: Optional[pulumi.Input[_builtins.str]] = None,
                                       entity_type: Optional[pulumi.Input[_builtins.str]] = None,
                                       max_results: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                      provider_config: Optional[pulumi.Input[Optional[Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntityTagAssignmentsResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -172,11 +187,13 @@ def get_entity_tag_assignments_output(entity_name: Optional[pulumi.Input[_builti
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
     :param _builtins.int max_results: Optional. Maximum number of tag assignments to return in a single page
+    :param Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['entityName'] = entity_name
     __args__['entityType'] = entity_type
     __args__['maxResults'] = max_results
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getEntityTagAssignments:getEntityTagAssignments', __args__, opts=opts, typ=GetEntityTagAssignmentsResult)
     return __ret__.apply(lambda __response__: GetEntityTagAssignmentsResult(
@@ -184,4 +201,5 @@ def get_entity_tag_assignments_output(entity_name: Optional[pulumi.Input[_builti
         entity_type=pulumi.get(__response__, 'entity_type'),
         id=pulumi.get(__response__, 'id'),
         max_results=pulumi.get(__response__, 'max_results'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         tag_assignments=pulumi.get(__response__, 'tag_assignments')))

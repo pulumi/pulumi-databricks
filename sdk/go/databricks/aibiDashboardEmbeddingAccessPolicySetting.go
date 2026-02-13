@@ -55,7 +55,9 @@ type AibiDashboardEmbeddingAccessPolicySetting struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingAccessPolicy AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
 	Etag                               pulumi.StringOutput                                                               `pulumi:"etag"`
-	SettingName                        pulumi.StringOutput                                                               `pulumi:"settingName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrOutput `pulumi:"providerConfig"`
+	SettingName    pulumi.StringOutput                                              `pulumi:"settingName"`
 }
 
 // NewAibiDashboardEmbeddingAccessPolicySetting registers a new resource with the given unique name, arguments, and options.
@@ -94,14 +96,18 @@ type aibiDashboardEmbeddingAccessPolicySettingState struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingAccessPolicy *AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
 	Etag                               *string                                                                      `pulumi:"etag"`
-	SettingName                        *string                                                                      `pulumi:"settingName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *AibiDashboardEmbeddingAccessPolicySettingProviderConfig `pulumi:"providerConfig"`
+	SettingName    *string                                                  `pulumi:"settingName"`
 }
 
 type AibiDashboardEmbeddingAccessPolicySettingState struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingAccessPolicy AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrInput
 	Etag                               pulumi.StringPtrInput
-	SettingName                        pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrInput
+	SettingName    pulumi.StringPtrInput
 }
 
 func (AibiDashboardEmbeddingAccessPolicySettingState) ElementType() reflect.Type {
@@ -112,7 +118,9 @@ type aibiDashboardEmbeddingAccessPolicySettingArgs struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingAccessPolicy AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
 	Etag                               *string                                                                     `pulumi:"etag"`
-	SettingName                        *string                                                                     `pulumi:"settingName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *AibiDashboardEmbeddingAccessPolicySettingProviderConfig `pulumi:"providerConfig"`
+	SettingName    *string                                                  `pulumi:"settingName"`
 }
 
 // The set of arguments for constructing a AibiDashboardEmbeddingAccessPolicySetting resource.
@@ -120,7 +128,9 @@ type AibiDashboardEmbeddingAccessPolicySettingArgs struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingAccessPolicy AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyInput
 	Etag                               pulumi.StringPtrInput
-	SettingName                        pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrInput
+	SettingName    pulumi.StringPtrInput
 }
 
 func (AibiDashboardEmbeddingAccessPolicySettingArgs) ElementType() reflect.Type {
@@ -219,6 +229,13 @@ func (o AibiDashboardEmbeddingAccessPolicySettingOutput) AibiDashboardEmbeddingA
 
 func (o AibiDashboardEmbeddingAccessPolicySettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AibiDashboardEmbeddingAccessPolicySetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o AibiDashboardEmbeddingAccessPolicySettingOutput) ProviderConfig() AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *AibiDashboardEmbeddingAccessPolicySetting) AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrOutput)
 }
 
 func (o AibiDashboardEmbeddingAccessPolicySettingOutput) SettingName() pulumi.StringOutput {

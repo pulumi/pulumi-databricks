@@ -30,6 +30,7 @@ export function getPostgresBranches(args: GetPostgresBranchesArgs, opts?: pulumi
     return pulumi.runtime.invoke("databricks:index/getPostgresBranches:getPostgresBranches", {
         "pageSize": args.pageSize,
         "parent": args.parent,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -46,6 +47,10 @@ export interface GetPostgresBranchesArgs {
      * Format: projects/{project_id}
      */
     parent: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetPostgresBranchesProviderConfig;
 }
 
 /**
@@ -63,6 +68,7 @@ export interface GetPostgresBranchesResult {
      * Format: projects/{project_id}
      */
     readonly parent: string;
+    readonly providerConfig?: outputs.GetPostgresBranchesProviderConfig;
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -88,6 +94,7 @@ export function getPostgresBranchesOutput(args: GetPostgresBranchesOutputArgs, o
     return pulumi.runtime.invokeOutput("databricks:index/getPostgresBranches:getPostgresBranches", {
         "pageSize": args.pageSize,
         "parent": args.parent,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -104,4 +111,8 @@ export interface GetPostgresBranchesOutputArgs {
      * Format: projects/{project_id}
      */
     parent: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetPostgresBranchesProviderConfigArgs>;
 }

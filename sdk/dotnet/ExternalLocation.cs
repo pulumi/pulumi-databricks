@@ -271,6 +271,9 @@ namespace Pulumi.Databricks
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.ExternalLocationProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         /// <summary>
         /// Indicates whether the external location is read-only.
         /// </summary>
@@ -410,6 +413,9 @@ namespace Pulumi.Databricks
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.ExternalLocationProviderConfigArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// Indicates whether the external location is read-only.
         /// </summary>
@@ -519,6 +525,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.ExternalLocationProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Indicates whether the external location is read-only.

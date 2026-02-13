@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SecretArgs', 'Secret']
 
@@ -21,16 +23,20 @@ class SecretArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  scope: pulumi.Input[_builtins.str],
-                 string_value: pulumi.Input[_builtins.str]):
+                 string_value: pulumi.Input[_builtins.str],
+                 provider_config: Optional[pulumi.Input['SecretProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a Secret resource.
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
+        :param pulumi.Input['SecretProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "scope", scope)
         pulumi.set(__self__, "string_value", string_value)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -68,6 +74,18 @@ class SecretArgs:
     def string_value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "string_value", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SecretProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SecretProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _SecretState:
@@ -75,6 +93,7 @@ class _SecretState:
                  config_reference: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  last_updated_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input['SecretProviderConfigArgs']] = None,
                  scope: Optional[pulumi.Input[_builtins.str]] = None,
                  string_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -82,6 +101,7 @@ class _SecretState:
         :param pulumi.Input[_builtins.str] config_reference: (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.int] last_updated_timestamp: (Integer) time secret was updated
+        :param pulumi.Input['SecretProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
         """
@@ -91,6 +111,8 @@ class _SecretState:
             pulumi.set(__self__, "key", key)
         if last_updated_timestamp is not None:
             pulumi.set(__self__, "last_updated_timestamp", last_updated_timestamp)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if string_value is not None:
@@ -133,6 +155,18 @@ class _SecretState:
         pulumi.set(self, "last_updated_timestamp", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SecretProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SecretProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -164,6 +198,7 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']]] = None,
                  scope: Optional[pulumi.Input[_builtins.str]] = None,
                  string_value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -202,6 +237,7 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
+        :param pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
         """
@@ -259,6 +295,7 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']]] = None,
                  scope: Optional[pulumi.Input[_builtins.str]] = None,
                  string_value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -273,6 +310,7 @@ class Secret(pulumi.CustomResource):
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
+            __props__.__dict__["provider_config"] = provider_config
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
             __props__.__dict__["scope"] = scope
@@ -296,6 +334,7 @@ class Secret(pulumi.CustomResource):
             config_reference: Optional[pulumi.Input[_builtins.str]] = None,
             key: Optional[pulumi.Input[_builtins.str]] = None,
             last_updated_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
+            provider_config: Optional[pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']]] = None,
             scope: Optional[pulumi.Input[_builtins.str]] = None,
             string_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'Secret':
         """
@@ -308,6 +347,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config_reference: (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.int] last_updated_timestamp: (Integer) time secret was updated
+        :param pulumi.Input[Union['SecretProviderConfigArgs', 'SecretProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
         """
@@ -318,6 +358,7 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["config_reference"] = config_reference
         __props__.__dict__["key"] = key
         __props__.__dict__["last_updated_timestamp"] = last_updated_timestamp
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["scope"] = scope
         __props__.__dict__["string_value"] = string_value
         return Secret(resource_name, opts=opts, __props__=__props__)
@@ -345,6 +386,14 @@ class Secret(pulumi.CustomResource):
         (Integer) time secret was updated
         """
         return pulumi.get(self, "last_updated_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.SecretProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

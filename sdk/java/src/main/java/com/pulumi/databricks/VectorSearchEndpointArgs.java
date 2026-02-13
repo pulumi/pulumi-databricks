@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.VectorSearchEndpointProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -61,12 +62,28 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<VectorSearchEndpointProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<VectorSearchEndpointProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private VectorSearchEndpointArgs() {}
 
     private VectorSearchEndpointArgs(VectorSearchEndpointArgs $) {
         this.budgetPolicyId = $.budgetPolicyId;
         this.endpointType = $.endpointType;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -148,6 +165,27 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<VectorSearchEndpointProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(VectorSearchEndpointProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public VectorSearchEndpointArgs build() {

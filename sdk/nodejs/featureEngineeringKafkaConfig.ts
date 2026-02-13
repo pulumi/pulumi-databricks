@@ -65,6 +65,10 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringKafkaConfigProviderConfig | undefined>;
+    /**
      * Options to configure which Kafka topics to pull data from
      */
     declare public readonly subscriptionMode: pulumi.Output<outputs.FeatureEngineeringKafkaConfigSubscriptionMode>;
@@ -92,6 +96,7 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
             resourceInputs["extraOptions"] = state?.extraOptions;
             resourceInputs["keySchema"] = state?.keySchema;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["subscriptionMode"] = state?.subscriptionMode;
             resourceInputs["valueSchema"] = state?.valueSchema;
         } else {
@@ -110,6 +115,7 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
             resourceInputs["bootstrapServers"] = args?.bootstrapServers;
             resourceInputs["extraOptions"] = args?.extraOptions;
             resourceInputs["keySchema"] = args?.keySchema;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["subscriptionMode"] = args?.subscriptionMode;
             resourceInputs["valueSchema"] = args?.valueSchema;
             resourceInputs["name"] = undefined /*out*/;
@@ -151,6 +157,10 @@ export interface FeatureEngineeringKafkaConfigState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigProviderConfig>;
+    /**
      * Options to configure which Kafka topics to pull data from
      */
     subscriptionMode?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigSubscriptionMode>;
@@ -186,6 +196,10 @@ export interface FeatureEngineeringKafkaConfigArgs {
      * Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      */
     keySchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigKeySchema>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigProviderConfig>;
     /**
      * Options to configure which Kafka topics to pull data from
      */

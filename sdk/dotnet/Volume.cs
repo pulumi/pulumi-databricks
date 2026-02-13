@@ -126,6 +126,12 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.VolumeProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Output("schemaName")]
@@ -220,6 +226,12 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.VolumeProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("schemaName", required: true)]
@@ -268,6 +280,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.VolumeProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.

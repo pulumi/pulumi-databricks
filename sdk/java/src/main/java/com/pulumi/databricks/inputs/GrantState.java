@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GrantProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,6 +87,13 @@ public final class GrantState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.privileges);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GrantProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GrantProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="recipient")
     private @Nullable Output<String> recipient;
 
@@ -141,6 +149,7 @@ public final class GrantState extends com.pulumi.resources.ResourceArgs {
         this.pipeline = $.pipeline;
         this.principal = $.principal;
         this.privileges = $.privileges;
+        this.providerConfig = $.providerConfig;
         this.recipient = $.recipient;
         this.schema = $.schema;
         this.share = $.share;
@@ -259,6 +268,15 @@ public final class GrantState extends com.pulumi.resources.ResourceArgs {
 
         public Builder privileges(String... privileges) {
             return privileges(List.of(privileges));
+        }
+
+        public Builder providerConfig(@Nullable Output<GrantProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GrantProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder recipient(@Nullable Output<String> recipient) {

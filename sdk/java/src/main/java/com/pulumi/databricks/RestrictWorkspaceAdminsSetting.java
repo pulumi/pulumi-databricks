@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.RestrictWorkspaceAdminsSettingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RestrictWorkspaceAdminsSettingState;
+import com.pulumi.databricks.outputs.RestrictWorkspaceAdminsSettingProviderConfig;
 import com.pulumi.databricks.outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -77,6 +79,20 @@ public class RestrictWorkspaceAdminsSetting extends com.pulumi.resources.CustomR
 
     public Output<String> etag() {
         return this.etag;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={RestrictWorkspaceAdminsSettingProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RestrictWorkspaceAdminsSettingProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<RestrictWorkspaceAdminsSettingProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The configuration details.

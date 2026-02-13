@@ -113,6 +113,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string PgVersion;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetDatabaseInstancesDatabaseInstanceProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
         /// EnableReadableSecondaries is true
         /// </summary>
@@ -184,6 +188,8 @@ namespace Pulumi.Databricks.Outputs
 
             string pgVersion,
 
+            Outputs.GetDatabaseInstancesDatabaseInstanceProviderConfigResult? providerConfig,
+
             string readOnlyDns,
 
             string readWriteDns,
@@ -217,6 +223,7 @@ namespace Pulumi.Databricks.Outputs
             NodeCount = nodeCount;
             ParentInstanceRef = parentInstanceRef;
             PgVersion = pgVersion;
+            ProviderConfig = providerConfig;
             ReadOnlyDns = readOnlyDns;
             ReadWriteDns = readWriteDns;
             RetentionWindowInDays = retentionWindowInDays;

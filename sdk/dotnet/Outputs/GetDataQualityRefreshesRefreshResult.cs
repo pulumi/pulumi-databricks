@@ -38,6 +38,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ObjectType;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetDataQualityRefreshesRefreshProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (integer) - Unique id of the refresh operation
         /// </summary>
         public readonly int RefreshId;
@@ -64,6 +68,8 @@ namespace Pulumi.Databricks.Outputs
 
             string objectType,
 
+            Outputs.GetDataQualityRefreshesRefreshProviderConfigResult? providerConfig,
+
             int refreshId,
 
             int startTimeMs,
@@ -76,6 +82,7 @@ namespace Pulumi.Databricks.Outputs
             Message = message;
             ObjectId = objectId;
             ObjectType = objectType;
+            ProviderConfig = providerConfig;
             RefreshId = refreshId;
             StartTimeMs = startTimeMs;
             State = state;

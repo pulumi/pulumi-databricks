@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureLineageContextArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureProviderConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowArgs;
 import java.lang.String;
@@ -117,6 +118,21 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<FeatureEngineeringFeatureProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The data source of the feature
      * 
      */
@@ -155,6 +171,7 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         this.function = $.function;
         this.inputs = $.inputs;
         this.lineageContext = $.lineageContext;
+        this.providerConfig = $.providerConfig;
         this.source = $.source;
         this.timeWindow = $.timeWindow;
     }
@@ -317,6 +334,27 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
          */
         public Builder lineageContext(FeatureEngineeringFeatureLineageContextArgs lineageContext) {
             return lineageContext(Output.of(lineageContext));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<FeatureEngineeringFeatureProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(FeatureEngineeringFeatureProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

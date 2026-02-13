@@ -11,9 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTaskCompute {
+    /**
+     * @return Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+     * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+     * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+     * 
+     */
     private @Nullable String hardwareAccelerator;
 
     private JobTaskForEachTaskTaskCompute() {}
+    /**
+     * @return Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+     * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+     * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+     * 
+     */
     public Optional<String> hardwareAccelerator() {
         return Optional.ofNullable(this.hardwareAccelerator);
     }

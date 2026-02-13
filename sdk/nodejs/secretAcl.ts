@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -79,6 +81,10 @@ export class SecretAcl extends pulumi.CustomResource {
      */
     declare public readonly principal: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SecretAclProviderConfig | undefined>;
+    /**
      * name of the scope
      */
     declare public readonly scope: pulumi.Output<string>;
@@ -98,6 +104,7 @@ export class SecretAcl extends pulumi.CustomResource {
             const state = argsOrState as SecretAclState | undefined;
             resourceInputs["permission"] = state?.permission;
             resourceInputs["principal"] = state?.principal;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["scope"] = state?.scope;
         } else {
             const args = argsOrState as SecretAclArgs | undefined;
@@ -112,6 +119,7 @@ export class SecretAcl extends pulumi.CustomResource {
             }
             resourceInputs["permission"] = args?.permission;
             resourceInputs["principal"] = args?.principal;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["scope"] = args?.scope;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -132,6 +140,10 @@ export interface SecretAclState {
      */
     principal?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SecretAclProviderConfig>;
+    /**
      * name of the scope
      */
     scope?: pulumi.Input<string>;
@@ -149,6 +161,10 @@ export interface SecretAclArgs {
      * principal's identifier. It can be:
      */
     principal: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SecretAclProviderConfig>;
     /**
      * name of the scope
      */

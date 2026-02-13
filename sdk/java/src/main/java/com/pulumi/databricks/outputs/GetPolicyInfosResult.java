@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPolicyInfosPolicy;
+import com.pulumi.databricks.outputs.GetPolicyInfosProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -25,18 +26,19 @@ public final class GetPolicyInfosResult {
     private @Nullable Integer maxResults;
     /**
      * @return (string) - Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     private String onSecurableFullname;
     /**
      * @return (string) - Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     private String onSecurableType;
     private List<GetPolicyInfosPolicy> policies;
+    private @Nullable GetPolicyInfosProviderConfig providerConfig;
 
     private GetPolicyInfosResult() {}
     /**
@@ -54,7 +56,7 @@ public final class GetPolicyInfosResult {
     }
     /**
      * @return (string) - Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     public String onSecurableFullname() {
@@ -63,7 +65,7 @@ public final class GetPolicyInfosResult {
     /**
      * @return (string) - Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     public String onSecurableType() {
@@ -71,6 +73,9 @@ public final class GetPolicyInfosResult {
     }
     public List<GetPolicyInfosPolicy> policies() {
         return this.policies;
+    }
+    public Optional<GetPolicyInfosProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     public static Builder builder() {
@@ -88,6 +93,7 @@ public final class GetPolicyInfosResult {
         private String onSecurableFullname;
         private String onSecurableType;
         private List<GetPolicyInfosPolicy> policies;
+        private @Nullable GetPolicyInfosProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetPolicyInfosResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -97,6 +103,7 @@ public final class GetPolicyInfosResult {
     	      this.onSecurableFullname = defaults.onSecurableFullname;
     	      this.onSecurableType = defaults.onSecurableType;
     	      this.policies = defaults.policies;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -146,6 +153,12 @@ public final class GetPolicyInfosResult {
         public Builder policies(GetPolicyInfosPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPolicyInfosProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetPolicyInfosResult build() {
             final var _resultValue = new GetPolicyInfosResult();
             _resultValue.id = id;
@@ -154,6 +167,7 @@ public final class GetPolicyInfosResult {
             _resultValue.onSecurableFullname = onSecurableFullname;
             _resultValue.onSecurableType = onSecurableType;
             _resultValue.policies = policies;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetMaterializedFeaturesFeatureTagResult',
@@ -26,13 +28,16 @@ class GetMaterializedFeaturesFeatureTagResult:
     """
     A collection of values returned by getMaterializedFeaturesFeatureTag.
     """
-    def __init__(__self__, id=None, key=None, value=None):
+    def __init__(__self__, id=None, key=None, provider_config=None, value=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if key and not isinstance(key, str):
             raise TypeError("Expected argument 'key' to be a str")
         pulumi.set(__self__, "key", key)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if value and not isinstance(value, str):
             raise TypeError("Expected argument 'value' to be a str")
         pulumi.set(__self__, "value", value)
@@ -54,6 +59,11 @@ class GetMaterializedFeaturesFeatureTagResult:
         return pulumi.get(self, "key")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMaterializedFeaturesFeatureTagProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
@@ -70,33 +80,46 @@ class AwaitableGetMaterializedFeaturesFeatureTagResult(GetMaterializedFeaturesFe
         return GetMaterializedFeaturesFeatureTagResult(
             id=self.id,
             key=self.key,
+            provider_config=self.provider_config,
             value=self.value)
 
 
 def get_materialized_features_feature_tag(key: Optional[_builtins.str] = None,
+                                          provider_config: Optional[Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict']] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaterializedFeaturesFeatureTagResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+
+    :param Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['key'] = key
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag', __args__, opts=opts, typ=GetMaterializedFeaturesFeatureTagResult).value
 
     return AwaitableGetMaterializedFeaturesFeatureTagResult(
         id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         value=pulumi.get(__ret__, 'value'))
 def get_materialized_features_feature_tag_output(key: Optional[pulumi.Input[_builtins.str]] = None,
+                                                 provider_config: Optional[pulumi.Input[Optional[Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict']]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaterializedFeaturesFeatureTagResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+
+    :param Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['key'] = key
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag', __args__, opts=opts, typ=GetMaterializedFeaturesFeatureTagResult)
     return __ret__.apply(lambda __response__: GetMaterializedFeaturesFeatureTagResult(
         id=pulumi.get(__response__, 'id'),
         key=pulumi.get(__response__, 'key'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         value=pulumi.get(__response__, 'value')))

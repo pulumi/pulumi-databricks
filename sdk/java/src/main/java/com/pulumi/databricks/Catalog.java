@@ -11,6 +11,7 @@ import com.pulumi.databricks.CatalogArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.CatalogState;
 import com.pulumi.databricks.outputs.CatalogEffectivePredictiveOptimizationFlag;
+import com.pulumi.databricks.outputs.CatalogProviderConfig;
 import com.pulumi.databricks.outputs.CatalogProvisioningInfo;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -271,6 +272,20 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={CatalogProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ CatalogProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<CatalogProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.

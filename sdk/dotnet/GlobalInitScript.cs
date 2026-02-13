@@ -45,6 +45,12 @@ namespace Pulumi.Databricks
         public Output<int> Position { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.GlobalInitScriptProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Path to script's source code on local filesystem. Conflicts with `ContentBase64`
         /// </summary>
         [Output("source")]
@@ -124,6 +130,12 @@ namespace Pulumi.Databricks
         public Input<int>? Position { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GlobalInitScriptProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Path to script's source code on local filesystem. Conflicts with `ContentBase64`
         /// </summary>
         [Input("source")]
@@ -163,6 +175,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("position")]
         public Input<int>? Position { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GlobalInitScriptProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Path to script's source code on local filesystem. Conflicts with `ContentBase64`

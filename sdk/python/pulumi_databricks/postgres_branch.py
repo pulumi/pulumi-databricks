@@ -23,6 +23,7 @@ class PostgresBranchArgs:
     def __init__(__self__, *,
                  branch_id: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
+                 provider_config: Optional[pulumi.Input['PostgresBranchProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['PostgresBranchSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresBranch resource.
@@ -34,10 +35,13 @@ class PostgresBranchArgs:
                
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
+        :param pulumi.Input['PostgresBranchProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration
         """
         pulumi.set(__self__, "branch_id", branch_id)
         pulumi.set(__self__, "parent", parent)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -72,6 +76,18 @@ class PostgresBranchArgs:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PostgresBranchProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PostgresBranchProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresBranchSpecArgs']]:
         """
@@ -91,6 +107,7 @@ class _PostgresBranchState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['PostgresBranchProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['PostgresBranchSpecArgs']] = None,
                  status: Optional[pulumi.Input['PostgresBranchStatusArgs']] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -108,6 +125,7 @@ class _PostgresBranchState:
                
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
+        :param pulumi.Input['PostgresBranchProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration
         :param pulumi.Input['PostgresBranchStatusArgs'] status: (BranchStatus) - The current status of a Branch
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the branch
@@ -121,6 +139,8 @@ class _PostgresBranchState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
@@ -186,6 +206,18 @@ class _PostgresBranchState:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PostgresBranchProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PostgresBranchProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresBranchSpecArgs']]:
         """
@@ -242,6 +274,7 @@ class PostgresBranch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
                  __props__=None):
         """
@@ -308,6 +341,7 @@ class PostgresBranch(pulumi.CustomResource):
                
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
+        :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']] spec: The spec contains the branch configuration
         """
         ...
@@ -387,6 +421,7 @@ class PostgresBranch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -403,6 +438,7 @@ class PostgresBranch(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -423,6 +459,7 @@ class PostgresBranch(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             parent: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
             spec: Optional[pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
             status: Optional[pulumi.Input[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict']]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -445,6 +482,7 @@ class PostgresBranch(pulumi.CustomResource):
                
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
+        :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']] spec: The spec contains the branch configuration
         :param pulumi.Input[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict']] status: (BranchStatus) - The current status of a Branch
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the branch
@@ -458,6 +496,7 @@ class PostgresBranch(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["uid"] = uid
@@ -502,6 +541,14 @@ class PostgresBranch(pulumi.CustomResource):
         For point-in-time branching from another branch, see `status.source_branch`
         """
         return pulumi.get(self, "parent")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.PostgresBranchProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

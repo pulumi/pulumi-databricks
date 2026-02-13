@@ -29,6 +29,7 @@ export function getPostgresEndpoint(args: GetPostgresEndpointArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getPostgresEndpoint:getPostgresEndpoint", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -41,6 +42,10 @@ export interface GetPostgresEndpointArgs {
      * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetPostgresEndpointProviderConfig;
 }
 
 /**
@@ -65,6 +70,7 @@ export interface GetPostgresEndpointResult {
      * Format: projects/{project_id}/branches/{branch_id}
      */
     readonly parent: string;
+    readonly providerConfig?: outputs.GetPostgresEndpointProviderConfig;
     /**
      * (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
@@ -105,6 +111,7 @@ export function getPostgresEndpointOutput(args: GetPostgresEndpointOutputArgs, o
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getPostgresEndpoint:getPostgresEndpoint", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -117,4 +124,8 @@ export interface GetPostgresEndpointOutputArgs {
      * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetPostgresEndpointProviderConfigArgs>;
 }

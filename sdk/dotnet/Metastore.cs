@@ -147,7 +147,7 @@ namespace Pulumi.Databricks
         public Output<string?> DeltaSharingOrganizationName { get; private set; } = null!;
 
         /// <summary>
-        /// Required along with `DeltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        /// Required along with `DeltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         /// </summary>
         [Output("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Output<int?> DeltaSharingRecipientTokenLifetimeInSeconds { get; private set; } = null!;
@@ -295,7 +295,7 @@ namespace Pulumi.Databricks
         public Input<string>? DeltaSharingOrganizationName { get; set; }
 
         /// <summary>
-        /// Required along with `DeltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        /// Required along with `DeltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         /// </summary>
         [Input("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
@@ -399,7 +399,7 @@ namespace Pulumi.Databricks
         public Input<string>? DeltaSharingOrganizationName { get; set; }
 
         /// <summary>
-        /// Required along with `DeltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        /// Required along with `DeltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         /// </summary>
         [Input("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }

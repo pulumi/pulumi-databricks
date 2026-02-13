@@ -80,6 +80,12 @@ namespace Pulumi.Databricks
         public Output<int> LastUpdatedTimestamp { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SecretProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         /// </summary>
         [Output("scope")]
@@ -148,6 +154,12 @@ namespace Pulumi.Databricks
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SecretProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         /// </summary>
         [Input("scope", required: true)]
@@ -194,6 +206,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("lastUpdatedTimestamp")]
         public Input<int>? LastUpdatedTimestamp { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SecretProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.

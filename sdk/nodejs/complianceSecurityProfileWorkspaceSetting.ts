@@ -36,6 +36,7 @@ export class ComplianceSecurityProfileWorkspaceSetting extends pulumi.CustomReso
 
     declare public readonly complianceSecurityProfileWorkspace: pulumi.Output<outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace>;
     declare public readonly etag: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig | undefined>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -53,6 +54,7 @@ export class ComplianceSecurityProfileWorkspaceSetting extends pulumi.CustomReso
             const state = argsOrState as ComplianceSecurityProfileWorkspaceSettingState | undefined;
             resourceInputs["complianceSecurityProfileWorkspace"] = state?.complianceSecurityProfileWorkspace;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as ComplianceSecurityProfileWorkspaceSettingArgs | undefined;
@@ -61,6 +63,7 @@ export class ComplianceSecurityProfileWorkspaceSetting extends pulumi.CustomReso
             }
             resourceInputs["complianceSecurityProfileWorkspace"] = args?.complianceSecurityProfileWorkspace;
             resourceInputs["etag"] = args?.etag;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -74,6 +77,7 @@ export class ComplianceSecurityProfileWorkspaceSetting extends pulumi.CustomReso
 export interface ComplianceSecurityProfileWorkspaceSettingState {
     complianceSecurityProfileWorkspace?: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace>;
     etag?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }
 
@@ -83,5 +87,6 @@ export interface ComplianceSecurityProfileWorkspaceSettingState {
 export interface ComplianceSecurityProfileWorkspaceSettingArgs {
     complianceSecurityProfileWorkspace: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace>;
     etag?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }

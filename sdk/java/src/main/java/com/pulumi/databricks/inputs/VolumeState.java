@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.VolumeProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,6 +77,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<VolumeProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<VolumeProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
@@ -142,6 +158,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.comment = $.comment;
         this.name = $.name;
         this.owner = $.owner;
+        this.providerConfig = $.providerConfig;
         this.schemaName = $.schemaName;
         this.storageLocation = $.storageLocation;
         this.volumePath = $.volumePath;
@@ -248,6 +265,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<VolumeProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(VolumeProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

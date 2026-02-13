@@ -13,18 +13,24 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SystemSchemaArgs', 'SystemSchema']
 
 @pulumi.input_type
 class SystemSchemaArgs:
     def __init__(__self__, *,
-                 schema: pulumi.Input[_builtins.str]):
+                 schema: pulumi.Input[_builtins.str],
+                 provider_config: Optional[pulumi.Input['SystemSchemaProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a SystemSchema resource.
         :param pulumi.Input[_builtins.str] schema: name of the system schema.
+        :param pulumi.Input['SystemSchemaProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "schema", schema)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -38,6 +44,18 @@ class SystemSchemaArgs:
     def schema(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "schema", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SystemSchemaProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SystemSchemaProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _SystemSchemaState:
@@ -45,11 +63,13 @@ class _SystemSchemaState:
                  auto_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  full_name: Optional[pulumi.Input[_builtins.str]] = None,
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['SystemSchemaProviderConfigArgs']] = None,
                  schema: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SystemSchema resources.
         :param pulumi.Input[_builtins.str] full_name: the full name of the system schema, in form of `system.<schema>`.
+        :param pulumi.Input['SystemSchemaProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema: name of the system schema.
         :param pulumi.Input[_builtins.str] state: The current state of enablement for the system schema.
         """
@@ -59,6 +79,8 @@ class _SystemSchemaState:
             pulumi.set(__self__, "full_name", full_name)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if state is not None:
@@ -95,6 +117,18 @@ class _SystemSchemaState:
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SystemSchemaProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SystemSchemaProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -125,6 +159,7 @@ class SystemSchema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 provider_config: Optional[pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
                  schema: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -147,6 +182,7 @@ class SystemSchema(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema: name of the system schema.
         """
         ...
@@ -188,6 +224,7 @@ class SystemSchema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 provider_config: Optional[pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
                  schema: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -198,6 +235,7 @@ class SystemSchema(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SystemSchemaArgs.__new__(SystemSchemaArgs)
 
+            __props__.__dict__["provider_config"] = provider_config
             if schema is None and not opts.urn:
                 raise TypeError("Missing required property 'schema'")
             __props__.__dict__["schema"] = schema
@@ -218,6 +256,7 @@ class SystemSchema(pulumi.CustomResource):
             auto_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             full_name: Optional[pulumi.Input[_builtins.str]] = None,
             metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
             schema: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None) -> 'SystemSchema':
         """
@@ -228,6 +267,7 @@ class SystemSchema(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] full_name: the full name of the system schema, in form of `system.<schema>`.
+        :param pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema: name of the system schema.
         :param pulumi.Input[_builtins.str] state: The current state of enablement for the system schema.
         """
@@ -238,6 +278,7 @@ class SystemSchema(pulumi.CustomResource):
         __props__.__dict__["auto_enabled"] = auto_enabled
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["metastore_id"] = metastore_id
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["schema"] = schema
         __props__.__dict__["state"] = state
         return SystemSchema(resource_name, opts=opts, __props__=__props__)
@@ -259,6 +300,14 @@ class SystemSchema(pulumi.CustomResource):
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "metastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.SystemSchemaProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

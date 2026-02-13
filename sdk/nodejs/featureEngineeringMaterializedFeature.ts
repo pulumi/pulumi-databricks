@@ -61,6 +61,10 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
      */
     declare public readonly pipelineScheduleState: pulumi.Output<string | undefined>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureProviderConfig | undefined>;
+    /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      */
     declare public /*out*/ readonly tableName: pulumi.Output<string>;
@@ -85,6 +89,7 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
             resourceInputs["offlineStoreConfig"] = state?.offlineStoreConfig;
             resourceInputs["onlineStoreConfig"] = state?.onlineStoreConfig;
             resourceInputs["pipelineScheduleState"] = state?.pipelineScheduleState;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["tableName"] = state?.tableName;
         } else {
             const args = argsOrState as FeatureEngineeringMaterializedFeatureArgs | undefined;
@@ -96,6 +101,7 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
             resourceInputs["offlineStoreConfig"] = args?.offlineStoreConfig;
             resourceInputs["onlineStoreConfig"] = args?.onlineStoreConfig;
             resourceInputs["pipelineScheduleState"] = args?.pipelineScheduleState;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["lastMaterializationTime"] = undefined /*out*/;
             resourceInputs["materializedFeatureId"] = undefined /*out*/;
             resourceInputs["tableName"] = undefined /*out*/;
@@ -133,6 +139,10 @@ export interface FeatureEngineeringMaterializedFeatureState {
      */
     pipelineScheduleState?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureProviderConfig>;
+    /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      */
     tableName?: pulumi.Input<string>;
@@ -156,4 +166,8 @@ export interface FeatureEngineeringMaterializedFeatureArgs {
      * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
     pipelineScheduleState?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureProviderConfig>;
 }

@@ -23,13 +23,17 @@ class TagPolicyArgs:
     def __init__(__self__, *,
                  tag_key: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['TagPolicyProviderConfigArgs']] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]] = None):
         """
         The set of arguments for constructing a TagPolicy resource.
+        :param pulumi.Input['TagPolicyProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "tag_key", tag_key)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if values is not None:
             pulumi.set(__self__, "values", values)
 
@@ -52,6 +56,18 @@ class TagPolicyArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['TagPolicyProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['TagPolicyProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]]:
         return pulumi.get(self, "values")
@@ -66,18 +82,22 @@ class _TagPolicyState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['TagPolicyProviderConfigArgs']] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]] = None):
         """
         Input properties used for looking up and filtering TagPolicy resources.
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the tag policy was created
+        :param pulumi.Input['TagPolicyProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the tag policy was last updated
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if tag_key is not None:
             pulumi.set(__self__, "tag_key", tag_key)
         if update_time is not None:
@@ -105,6 +125,18 @@ class _TagPolicyState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['TagPolicyProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['TagPolicyProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tagKey")
@@ -144,6 +176,7 @@ class TagPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None,
                  __props__=None):
@@ -185,6 +218,7 @@ class TagPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -244,6 +278,7 @@ class TagPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None,
                  __props__=None):
@@ -256,6 +291,7 @@ class TagPolicy(pulumi.CustomResource):
             __props__ = TagPolicyArgs.__new__(TagPolicyArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["provider_config"] = provider_config
             if tag_key is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_key'")
             __props__.__dict__["tag_key"] = tag_key
@@ -274,6 +310,7 @@ class TagPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']]] = None,
             tag_key: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None,
             values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None) -> 'TagPolicy':
@@ -285,6 +322,7 @@ class TagPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the tag policy was created
+        :param pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the tag policy was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -293,6 +331,7 @@ class TagPolicy(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["tag_key"] = tag_key
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["values"] = values
@@ -310,6 +349,14 @@ class TagPolicy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.TagPolicyProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="tagKey")

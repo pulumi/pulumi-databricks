@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ConnectionProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -108,6 +109,21 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<ConnectionProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<ConnectionProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Indicates whether the connection is read-only. Change forces creation of a new resource.
      * 
      */
@@ -131,6 +147,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.options = $.options;
         this.owner = $.owner;
         this.properties = $.properties;
+        this.providerConfig = $.providerConfig;
         this.readOnly = $.readOnly;
     }
 
@@ -276,6 +293,27 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<ConnectionProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(ConnectionProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

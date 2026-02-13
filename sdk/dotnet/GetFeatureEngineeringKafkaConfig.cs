@@ -40,6 +40,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetFeatureEngineeringKafkaConfigProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetFeatureEngineeringKafkaConfigArgs()
         {
         }
@@ -54,6 +60,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetFeatureEngineeringKafkaConfigProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetFeatureEngineeringKafkaConfigInvokeArgs()
         {
@@ -96,6 +108,7 @@ namespace Pulumi.Databricks
         /// Can be distinct from topic name
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetFeatureEngineeringKafkaConfigProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (SubscriptionMode) - Options to configure which Kafka topics to pull data from
         /// </summary>
@@ -121,6 +134,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetFeatureEngineeringKafkaConfigProviderConfigResult? providerConfig,
+
             Outputs.GetFeatureEngineeringKafkaConfigSubscriptionModeResult subscriptionMode,
 
             Outputs.GetFeatureEngineeringKafkaConfigValueSchemaResult valueSchema)
@@ -132,6 +147,7 @@ namespace Pulumi.Databricks
             Id = id;
             KeySchema = keySchema;
             Name = name;
+            ProviderConfig = providerConfig;
             SubscriptionMode = subscriptionMode;
             ValueSchema = valueSchema;
         }

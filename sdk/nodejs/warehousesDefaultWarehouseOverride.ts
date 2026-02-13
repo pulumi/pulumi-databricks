@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * The Default Warehouse Override resource allows you to configure a user's default warehouse selection behavior in Databricks SQL. This resource enables customization of how a user's default warehouse is selected for SQL operations.
  *
@@ -83,6 +85,10 @@ export class WarehousesDefaultWarehouseOverride extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.WarehousesDefaultWarehouseOverrideProviderConfig | undefined>;
+    /**
      * The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      */
     declare public readonly type: pulumi.Output<string>;
@@ -107,6 +113,7 @@ export class WarehousesDefaultWarehouseOverride extends pulumi.CustomResource {
             const state = argsOrState as WarehousesDefaultWarehouseOverrideState | undefined;
             resourceInputs["defaultWarehouseOverrideId"] = state?.defaultWarehouseOverrideId;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["type"] = state?.type;
             resourceInputs["warehouseId"] = state?.warehouseId;
         } else {
@@ -118,6 +125,7 @@ export class WarehousesDefaultWarehouseOverride extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["defaultWarehouseOverrideId"] = args?.defaultWarehouseOverrideId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["type"] = args?.type;
             resourceInputs["warehouseId"] = args?.warehouseId;
             resourceInputs["name"] = undefined /*out*/;
@@ -141,6 +149,10 @@ export interface WarehousesDefaultWarehouseOverrideState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.WarehousesDefaultWarehouseOverrideProviderConfig>;
+    /**
      * The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      */
     type?: pulumi.Input<string>;
@@ -159,6 +171,10 @@ export interface WarehousesDefaultWarehouseOverrideArgs {
      * The ID component of the resource name (user ID)
      */
     defaultWarehouseOverrideId: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.WarehousesDefaultWarehouseOverrideProviderConfig>;
     /**
      * The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      */

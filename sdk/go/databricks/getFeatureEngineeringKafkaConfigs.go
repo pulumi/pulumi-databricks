@@ -26,14 +26,17 @@ func GetFeatureEngineeringKafkaConfigs(ctx *pulumi.Context, args *GetFeatureEngi
 type GetFeatureEngineeringKafkaConfigsArgs struct {
 	// The maximum number of results to return
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetFeatureEngineeringKafkaConfigsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getFeatureEngineeringKafkaConfigs.
 type GetFeatureEngineeringKafkaConfigsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                                         `pulumi:"id"`
-	KafkaConfigs []GetFeatureEngineeringKafkaConfigsKafkaConfig `pulumi:"kafkaConfigs"`
-	PageSize     *int                                           `pulumi:"pageSize"`
+	Id             string                                           `pulumi:"id"`
+	KafkaConfigs   []GetFeatureEngineeringKafkaConfigsKafkaConfig   `pulumi:"kafkaConfigs"`
+	PageSize       *int                                             `pulumi:"pageSize"`
+	ProviderConfig *GetFeatureEngineeringKafkaConfigsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetFeatureEngineeringKafkaConfigsOutput(ctx *pulumi.Context, args GetFeatureEngineeringKafkaConfigsOutputArgs, opts ...pulumi.InvokeOption) GetFeatureEngineeringKafkaConfigsResultOutput {
@@ -49,6 +52,8 @@ func GetFeatureEngineeringKafkaConfigsOutput(ctx *pulumi.Context, args GetFeatur
 type GetFeatureEngineeringKafkaConfigsOutputArgs struct {
 	// The maximum number of results to return
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetFeatureEngineeringKafkaConfigsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetFeatureEngineeringKafkaConfigsOutputArgs) ElementType() reflect.Type {
@@ -83,6 +88,12 @@ func (o GetFeatureEngineeringKafkaConfigsResultOutput) KafkaConfigs() GetFeature
 
 func (o GetFeatureEngineeringKafkaConfigsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFeatureEngineeringKafkaConfigsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetFeatureEngineeringKafkaConfigsResultOutput) ProviderConfig() GetFeatureEngineeringKafkaConfigsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringKafkaConfigsResult) *GetFeatureEngineeringKafkaConfigsProviderConfig {
+		return v.ProviderConfig
+	}).(GetFeatureEngineeringKafkaConfigsProviderConfigPtrOutput)
 }
 
 func init() {

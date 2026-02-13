@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeature;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -27,6 +28,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
     private String id;
     private List<GetFeatureEngineeringMaterializedFeaturesMaterializedFeature> materializedFeatures;
     private @Nullable Integer pageSize;
+    private @Nullable GetFeatureEngineeringMaterializedFeaturesProviderConfig providerConfig;
 
     private GetFeatureEngineeringMaterializedFeaturesResult() {}
     /**
@@ -49,6 +51,9 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    public Optional<GetFeatureEngineeringMaterializedFeaturesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,6 +68,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
         private String id;
         private List<GetFeatureEngineeringMaterializedFeaturesMaterializedFeature> materializedFeatures;
         private @Nullable Integer pageSize;
+        private @Nullable GetFeatureEngineeringMaterializedFeaturesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeaturesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -70,6 +76,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
     	      this.id = defaults.id;
     	      this.materializedFeatures = defaults.materializedFeatures;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -103,12 +110,19 @@ public final class GetFeatureEngineeringMaterializedFeaturesResult {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetFeatureEngineeringMaterializedFeaturesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetFeatureEngineeringMaterializedFeaturesResult build() {
             final var _resultValue = new GetFeatureEngineeringMaterializedFeaturesResult();
             _resultValue.featureName = featureName;
             _resultValue.id = id;
             _resultValue.materializedFeatures = materializedFeatures;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

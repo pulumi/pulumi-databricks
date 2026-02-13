@@ -4,14 +4,32 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetTagPolicyProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTagPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetTagPolicyPlainArgs Empty = new GetTagPolicyPlainArgs();
+
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetTagPolicyProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetTagPolicyProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     @Import(name="tagKey", required=true)
     private String tagKey;
@@ -23,6 +41,7 @@ public final class GetTagPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
     private GetTagPolicyPlainArgs() {}
 
     private GetTagPolicyPlainArgs(GetTagPolicyPlainArgs $) {
+        this.providerConfig = $.providerConfig;
         this.tagKey = $.tagKey;
     }
 
@@ -42,6 +61,17 @@ public final class GetTagPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder(GetTagPolicyPlainArgs defaults) {
             $ = new GetTagPolicyPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetTagPolicyProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
         }
 
         public Builder tagKey(String tagKey) {

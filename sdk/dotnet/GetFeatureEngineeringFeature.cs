@@ -39,6 +39,12 @@ namespace Pulumi.Databricks
         [Input("fullName", required: true)]
         public string FullName { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetFeatureEngineeringFeatureProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetFeatureEngineeringFeatureArgs()
         {
         }
@@ -52,6 +58,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetFeatureEngineeringFeatureProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetFeatureEngineeringFeatureInvokeArgs()
         {
@@ -94,6 +106,7 @@ namespace Pulumi.Databricks
         /// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureLineageContextResult LineageContext;
+        public readonly Outputs.GetFeatureEngineeringFeatureProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (DataSource) - The data source of the feature
         /// </summary>
@@ -119,6 +132,8 @@ namespace Pulumi.Databricks
 
             Outputs.GetFeatureEngineeringFeatureLineageContextResult lineageContext,
 
+            Outputs.GetFeatureEngineeringFeatureProviderConfigResult? providerConfig,
+
             Outputs.GetFeatureEngineeringFeatureSourceResult source,
 
             Outputs.GetFeatureEngineeringFeatureTimeWindowResult timeWindow)
@@ -130,6 +145,7 @@ namespace Pulumi.Databricks
             Id = id;
             Inputs = inputs;
             LineageContext = lineageContext;
+            ProviderConfig = providerConfig;
             Source = source;
             TimeWindow = timeWindow;
         }

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
  *
@@ -119,6 +119,10 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
      */
     declare public readonly personalCompute: pulumi.Output<outputs.WorkspaceSettingV2PersonalCompute | undefined>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceSettingV2ProviderConfig | undefined>;
+    /**
      * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      */
     declare public readonly restrictWorkspaceAdmins: pulumi.Output<outputs.WorkspaceSettingV2RestrictWorkspaceAdmins | undefined>;
@@ -155,6 +159,7 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
             resourceInputs["integerVal"] = state?.integerVal;
             resourceInputs["name"] = state?.name;
             resourceInputs["personalCompute"] = state?.personalCompute;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["restrictWorkspaceAdmins"] = state?.restrictWorkspaceAdmins;
             resourceInputs["stringVal"] = state?.stringVal;
         } else {
@@ -171,6 +176,7 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
             resourceInputs["integerVal"] = args?.integerVal;
             resourceInputs["name"] = args?.name;
             resourceInputs["personalCompute"] = args?.personalCompute;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["restrictWorkspaceAdmins"] = args?.restrictWorkspaceAdmins;
             resourceInputs["stringVal"] = args?.stringVal;
             resourceInputs["effectiveBooleanVal"] = undefined /*out*/;
@@ -247,6 +253,10 @@ export interface WorkspaceSettingV2State {
      */
     personalCompute?: pulumi.Input<inputs.WorkspaceSettingV2PersonalCompute>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceSettingV2ProviderConfig>;
+    /**
      * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      */
     restrictWorkspaceAdmins?: pulumi.Input<inputs.WorkspaceSettingV2RestrictWorkspaceAdmins>;
@@ -308,6 +318,10 @@ export interface WorkspaceSettingV2Args {
      * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      */
     personalCompute?: pulumi.Input<inputs.WorkspaceSettingV2PersonalCompute>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceSettingV2ProviderConfig>;
     /**
      * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      */

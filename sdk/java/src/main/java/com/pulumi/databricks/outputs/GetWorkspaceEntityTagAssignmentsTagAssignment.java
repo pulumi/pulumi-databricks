@@ -4,9 +4,12 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
@@ -20,6 +23,11 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
      * 
      */
     private String entityType;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfig providerConfig;
     /**
      * @return (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      * 
@@ -47,6 +55,13 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
         return this.entityType;
     }
     /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    /**
      * @return (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      * 
      */
@@ -72,6 +87,7 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
     public static final class Builder {
         private String entityId;
         private String entityType;
+        private @Nullable GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfig providerConfig;
         private String tagKey;
         private String tagValue;
         public Builder() {}
@@ -79,6 +95,7 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
     	      Objects.requireNonNull(defaults);
     	      this.entityId = defaults.entityId;
     	      this.entityType = defaults.entityType;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tagKey = defaults.tagKey;
     	      this.tagValue = defaults.tagValue;
         }
@@ -97,6 +114,12 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
               throw new MissingRequiredPropertyException("GetWorkspaceEntityTagAssignmentsTagAssignment", "entityType");
             }
             this.entityType = entityType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -119,6 +142,7 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
             final var _resultValue = new GetWorkspaceEntityTagAssignmentsTagAssignment();
             _resultValue.entityId = entityId;
             _resultValue.entityType = entityType;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tagKey = tagKey;
             _resultValue.tagValue = tagValue;
             return _resultValue;

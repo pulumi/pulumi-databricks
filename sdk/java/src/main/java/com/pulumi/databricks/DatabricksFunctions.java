@@ -1183,7 +1183,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", TypeShape.of(GetAccountSettingUserPreferenceV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -1196,7 +1196,7 @@ public final class DatabricksFunctions {
         return getAccountSettingV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -1209,7 +1209,7 @@ public final class DatabricksFunctions {
         return getAccountSettingV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -1222,7 +1222,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -1235,7 +1235,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -22611,7 +22611,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var piiPolicy = DatabricksFunctions.getPolicyInfo(GetPolicyInfoArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .name("pii_data_policy")
      *             .build());
@@ -22659,7 +22659,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var piiPolicy = DatabricksFunctions.getPolicyInfo(GetPolicyInfoArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .name("pii_data_policy")
      *             .build());
@@ -22707,7 +22707,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var piiPolicy = DatabricksFunctions.getPolicyInfo(GetPolicyInfoArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .name("pii_data_policy")
      *             .build());
@@ -22755,7 +22755,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var piiPolicy = DatabricksFunctions.getPolicyInfo(GetPolicyInfoArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .name("pii_data_policy")
      *             .build());
@@ -22803,7 +22803,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var piiPolicy = DatabricksFunctions.getPolicyInfo(GetPolicyInfoArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .name("pii_data_policy")
      *             .build());
@@ -22851,7 +22851,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var catalogPolicies = DatabricksFunctions.getPolicyInfos(GetPolicyInfosArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .build());
      * 
@@ -22898,7 +22898,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var catalogPolicies = DatabricksFunctions.getPolicyInfos(GetPolicyInfosArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .build());
      * 
@@ -22945,7 +22945,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var catalogPolicies = DatabricksFunctions.getPolicyInfos(GetPolicyInfosArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .build());
      * 
@@ -22992,7 +22992,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var catalogPolicies = DatabricksFunctions.getPolicyInfos(GetPolicyInfosArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .build());
      * 
@@ -23039,7 +23039,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var catalogPolicies = DatabricksFunctions.getPolicyInfos(GetPolicyInfosArgs.builder()
-     *             .onSecurableType("catalog")
+     *             .onSecurableType("CATALOG")
      *             .onSecurableFullname("main")
      *             .build());
      * 
@@ -33116,7 +33116,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
@@ -33134,7 +33134,7 @@ public final class DatabricksFunctions {
         return getWarehousesDefaultWarehouseOverride(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
@@ -33152,7 +33152,7 @@ public final class DatabricksFunctions {
         return getWarehousesDefaultWarehouseOverridePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
@@ -33170,7 +33170,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", TypeShape.of(GetWarehousesDefaultWarehouseOverrideResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
@@ -33188,7 +33188,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", TypeShape.of(GetWarehousesDefaultWarehouseOverrideResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
@@ -33206,7 +33206,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", TypeShape.of(GetWarehousesDefaultWarehouseOverrideResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -33219,7 +33219,7 @@ public final class DatabricksFunctions {
         return getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -33232,7 +33232,7 @@ public final class DatabricksFunctions {
         return getWarehousesDefaultWarehouseOverridesPlain(GetWarehousesDefaultWarehouseOverridesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -33245,7 +33245,7 @@ public final class DatabricksFunctions {
         return getWarehousesDefaultWarehouseOverrides(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -33258,7 +33258,7 @@ public final class DatabricksFunctions {
         return getWarehousesDefaultWarehouseOverridesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -33271,7 +33271,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", TypeShape.of(GetWarehousesDefaultWarehouseOverridesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -33284,7 +33284,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", TypeShape.of(GetWarehousesDefaultWarehouseOverridesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -34072,7 +34072,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -34085,7 +34085,7 @@ public final class DatabricksFunctions {
         return getWorkspaceSettingV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -34098,7 +34098,7 @@ public final class DatabricksFunctions {
         return getWorkspaceSettingV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -34111,7 +34111,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -34124,7 +34124,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account setting.
      * 

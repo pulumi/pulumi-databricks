@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.DatabaseInstanceChildInstanceRef;
 import com.pulumi.databricks.outputs.DatabaseInstanceCustomTag;
 import com.pulumi.databricks.outputs.DatabaseInstanceEffectiveCustomTag;
 import com.pulumi.databricks.outputs.DatabaseInstanceParentInstanceRef;
+import com.pulumi.databricks.outputs.DatabaseInstanceProviderConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -503,6 +504,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> pgVersion() {
         return this.pgVersion;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={DatabaseInstanceProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseInstanceProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<DatabaseInstanceProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Purge the resource on delete

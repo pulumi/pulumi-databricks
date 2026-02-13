@@ -61,7 +61,8 @@ type CatalogWorkspaceBinding struct {
 	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType pulumi.StringPtrOutput `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName pulumi.StringPtrOutput `pulumi:"catalogName"`
+	CatalogName    pulumi.StringPtrOutput                         `pulumi:"catalogName"`
+	ProviderConfig CatalogWorkspaceBindingProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringOutput `pulumi:"securableName"`
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
@@ -106,7 +107,8 @@ type catalogWorkspaceBindingState struct {
 	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName *string `pulumi:"catalogName"`
+	CatalogName    *string                                `pulumi:"catalogName"`
+	ProviderConfig *CatalogWorkspaceBindingProviderConfig `pulumi:"providerConfig"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `pulumi:"securableName"`
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
@@ -119,7 +121,8 @@ type CatalogWorkspaceBindingState struct {
 	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName pulumi.StringPtrInput
+	CatalogName    pulumi.StringPtrInput
+	ProviderConfig CatalogWorkspaceBindingProviderConfigPtrInput
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringPtrInput
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
@@ -136,7 +139,8 @@ type catalogWorkspaceBindingArgs struct {
 	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName *string `pulumi:"catalogName"`
+	CatalogName    *string                                `pulumi:"catalogName"`
+	ProviderConfig *CatalogWorkspaceBindingProviderConfig `pulumi:"providerConfig"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `pulumi:"securableName"`
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
@@ -150,7 +154,8 @@ type CatalogWorkspaceBindingArgs struct {
 	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName pulumi.StringPtrInput
+	CatalogName    pulumi.StringPtrInput
+	ProviderConfig CatalogWorkspaceBindingProviderConfigPtrInput
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringPtrInput
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
@@ -254,6 +259,12 @@ func (o CatalogWorkspaceBindingOutput) BindingType() pulumi.StringPtrOutput {
 // Deprecated: Please use 'securable_name' and 'securable_type instead.
 func (o CatalogWorkspaceBindingOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringPtrOutput { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+func (o CatalogWorkspaceBindingOutput) ProviderConfig() CatalogWorkspaceBindingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *CatalogWorkspaceBinding) CatalogWorkspaceBindingProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(CatalogWorkspaceBindingProviderConfigPtrOutput)
 }
 
 // Name of securable. Change forces creation of a new resource.

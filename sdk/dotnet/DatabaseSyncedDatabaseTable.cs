@@ -275,6 +275,12 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.DatabaseSyncedDatabaseTableProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("spec")]
         public Output<Outputs.DatabaseSyncedDatabaseTableSpec?> Spec { get; private set; } = null!;
 
@@ -362,6 +368,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DatabaseSyncedDatabaseTableProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("spec")]
         public Input<Inputs.DatabaseSyncedDatabaseTableSpecArgs>? Spec { get; set; }
 
@@ -425,6 +437,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DatabaseSyncedDatabaseTableProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("spec")]
         public Input<Inputs.DatabaseSyncedDatabaseTableSpecGetArgs>? Spec { get; set; }

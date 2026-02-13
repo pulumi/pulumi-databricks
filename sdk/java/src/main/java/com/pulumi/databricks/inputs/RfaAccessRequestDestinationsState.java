@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsDestinationArgs;
 import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsDestinationSourceSecurableArgs;
+import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsProviderConfigArgs;
 import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsSecurableArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -85,6 +86,21 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<RfaAccessRequestDestinationsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<RfaAccessRequestDestinationsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The securable for which the access request destinations are being modified or read
      * 
      */
@@ -121,6 +137,7 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
         this.destinationSourceSecurable = $.destinationSourceSecurable;
         this.destinations = $.destinations;
         this.fullName = $.fullName;
+        this.providerConfig = $.providerConfig;
         this.securable = $.securable;
         this.securableType = $.securableType;
     }
@@ -239,6 +256,27 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
          */
         public Builder fullName(String fullName) {
             return fullName(Output.of(fullName));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<RfaAccessRequestDestinationsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(RfaAccessRequestDestinationsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

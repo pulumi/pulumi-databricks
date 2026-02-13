@@ -28,6 +28,7 @@ class DatabaseInstanceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  parent_instance_ref: Optional[pulumi.Input['DatabaseInstanceParentInstanceRefArgs']] = None,
+                 provider_config: Optional[pulumi.Input['DatabaseInstanceProviderConfigArgs']] = None,
                  purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  retention_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
                  stopped: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -45,6 +46,7 @@ class DatabaseInstanceArgs:
                child instance.
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
+        :param pulumi.Input['DatabaseInstanceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
         :param pulumi.Input[_builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
                for which the historical data is retained. The default value is 7 days.
@@ -66,6 +68,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "node_count", node_count)
         if parent_instance_ref is not None:
             pulumi.set(__self__, "parent_instance_ref", parent_instance_ref)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if purge_on_delete is not None:
             pulumi.set(__self__, "purge_on_delete", purge_on_delete)
         if retention_window_in_days is not None:
@@ -164,6 +168,18 @@ class DatabaseInstanceArgs:
         pulumi.set(self, "parent_instance_ref", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DatabaseInstanceProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DatabaseInstanceProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -236,6 +252,7 @@ class _DatabaseInstanceState:
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  parent_instance_ref: Optional[pulumi.Input['DatabaseInstanceParentInstanceRefArgs']] = None,
                  pg_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DatabaseInstanceProviderConfigArgs']] = None,
                  purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  read_only_dns: Optional[pulumi.Input[_builtins.str]] = None,
                  read_write_dns: Optional[pulumi.Input[_builtins.str]] = None,
@@ -288,6 +305,7 @@ class _DatabaseInstanceState:
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[_builtins.str] pg_version: (string) - The version of Postgres running on the instance
+        :param pulumi.Input['DatabaseInstanceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
         :param pulumi.Input[_builtins.str] read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
                enable_readable_secondaries is true
@@ -338,6 +356,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "parent_instance_ref", parent_instance_ref)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if purge_on_delete is not None:
             pulumi.set(__self__, "purge_on_delete", purge_on_delete)
         if read_only_dns is not None:
@@ -607,6 +627,18 @@ class _DatabaseInstanceState:
         pulumi.set(self, "pg_version", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DatabaseInstanceProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DatabaseInstanceProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -719,6 +751,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  parent_instance_ref: Optional[pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']]] = None,
                  purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  retention_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
                  stopped: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -812,6 +845,7 @@ class DatabaseInstance(pulumi.CustomResource):
                child instance.
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
+        :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
         :param pulumi.Input[_builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
                for which the historical data is retained. The default value is 7 days.
@@ -922,6 +956,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  parent_instance_ref: Optional[pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']]] = None,
                  purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  retention_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
                  stopped: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -942,6 +977,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["parent_instance_ref"] = parent_instance_ref
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["purge_on_delete"] = purge_on_delete
             __props__.__dict__["retention_window_in_days"] = retention_window_in_days
             __props__.__dict__["stopped"] = stopped
@@ -991,6 +1027,7 @@ class DatabaseInstance(pulumi.CustomResource):
             node_count: Optional[pulumi.Input[_builtins.int]] = None,
             parent_instance_ref: Optional[pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']]] = None,
             pg_version: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']]] = None,
             purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
             read_only_dns: Optional[pulumi.Input[_builtins.str]] = None,
             read_write_dns: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1048,6 +1085,7 @@ class DatabaseInstance(pulumi.CustomResource):
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[_builtins.str] pg_version: (string) - The version of Postgres running on the instance
+        :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
         :param pulumi.Input[_builtins.str] read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
                enable_readable_secondaries is true
@@ -1083,6 +1121,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["node_count"] = node_count
         __props__.__dict__["parent_instance_ref"] = parent_instance_ref
         __props__.__dict__["pg_version"] = pg_version
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["purge_on_delete"] = purge_on_delete
         __props__.__dict__["read_only_dns"] = read_only_dns
         __props__.__dict__["read_write_dns"] = read_write_dns
@@ -1267,6 +1306,14 @@ class DatabaseInstance(pulumi.CustomResource):
         (string) - The version of Postgres running on the instance
         """
         return pulumi.get(self, "pg_version")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="purgeOnDelete")

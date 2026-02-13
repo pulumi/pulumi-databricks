@@ -67,6 +67,12 @@ namespace Pulumi.Databricks
         public Output<string> ObjectType { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.QualityMonitorV2ProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Validity check configurations for anomaly detection
         /// </summary>
         [Output("validityCheckConfigurations")]
@@ -130,6 +136,12 @@ namespace Pulumi.Databricks
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.QualityMonitorV2ProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("validityCheckConfigurations")]
         private InputList<Inputs.QualityMonitorV2ValidityCheckConfigurationArgs>? _validityCheckConfigurations;
 
@@ -167,6 +179,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.QualityMonitorV2ProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("validityCheckConfigurations")]
         private InputList<Inputs.QualityMonitorV2ValidityCheckConfigurationGetArgs>? _validityCheckConfigurations;

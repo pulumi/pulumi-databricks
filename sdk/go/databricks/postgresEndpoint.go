@@ -279,6 +279,8 @@ type PostgresEndpoint struct {
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig PostgresEndpointProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec PostgresEndpointSpecOutput `pulumi:"spec"`
 	// (EndpointStatus) - Current operational status of the compute endpoint
@@ -337,6 +339,8 @@ type postgresEndpointState struct {
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent *string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *PostgresEndpointProviderConfig `pulumi:"providerConfig"`
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec *PostgresEndpointSpec `pulumi:"spec"`
 	// (EndpointStatus) - Current operational status of the compute endpoint
@@ -360,6 +364,8 @@ type PostgresEndpointState struct {
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig PostgresEndpointProviderConfigPtrInput
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec PostgresEndpointSpecPtrInput
 	// (EndpointStatus) - Current operational status of the compute endpoint
@@ -382,6 +388,8 @@ type postgresEndpointArgs struct {
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *PostgresEndpointProviderConfig `pulumi:"providerConfig"`
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec *PostgresEndpointSpec `pulumi:"spec"`
 }
@@ -395,6 +403,8 @@ type PostgresEndpointArgs struct {
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig PostgresEndpointProviderConfigPtrInput
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec PostgresEndpointSpecPtrInput
 }
@@ -508,6 +518,11 @@ func (o PostgresEndpointOutput) Name() pulumi.StringOutput {
 // Format: projects/{project_id}/branches/{branch_id}
 func (o PostgresEndpointOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o PostgresEndpointOutput) ProviderConfig() PostgresEndpointProviderConfigPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpoint) PostgresEndpointProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresEndpointProviderConfigPtrOutput)
 }
 
 // The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state

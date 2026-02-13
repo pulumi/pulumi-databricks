@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetFeatureEngineeringFeaturesResult',
@@ -27,7 +28,7 @@ class GetFeatureEngineeringFeaturesResult:
     """
     A collection of values returned by getFeatureEngineeringFeatures.
     """
-    def __init__(__self__, features=None, id=None, page_size=None):
+    def __init__(__self__, features=None, id=None, page_size=None, provider_config=None):
         if features and not isinstance(features, list):
             raise TypeError("Expected argument 'features' to be a list")
         pulumi.set(__self__, "features", features)
@@ -37,6 +38,9 @@ class GetFeatureEngineeringFeaturesResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -56,6 +60,11 @@ class GetFeatureEngineeringFeaturesResult:
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetFeatureEngineeringFeaturesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetFeatureEngineeringFeaturesResult(GetFeatureEngineeringFeaturesResult):
     # pylint: disable=using-constant-test
@@ -65,39 +74,48 @@ class AwaitableGetFeatureEngineeringFeaturesResult(GetFeatureEngineeringFeatures
         return GetFeatureEngineeringFeaturesResult(
             features=self.features,
             id=self.id,
-            page_size=self.page_size)
+            page_size=self.page_size,
+            provider_config=self.provider_config)
 
 
 def get_feature_engineering_features(page_size: Optional[_builtins.int] = None,
+                                     provider_config: Optional[Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict']] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringFeaturesResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.int page_size: The maximum number of results to return
+    :param Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures', __args__, opts=opts, typ=GetFeatureEngineeringFeaturesResult).value
 
     return AwaitableGetFeatureEngineeringFeaturesResult(
         features=pulumi.get(__ret__, 'features'),
         id=pulumi.get(__ret__, 'id'),
-        page_size=pulumi.get(__ret__, 'page_size'))
+        page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_feature_engineering_features_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                            provider_config: Optional[pulumi.Input[Optional[Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict']]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringFeaturesResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.int page_size: The maximum number of results to return
+    :param Union['GetFeatureEngineeringFeaturesProviderConfigArgs', 'GetFeatureEngineeringFeaturesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures', __args__, opts=opts, typ=GetFeatureEngineeringFeaturesResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringFeaturesResult(
         features=pulumi.get(__response__, 'features'),
         id=pulumi.get(__response__, 'id'),
-        page_size=pulumi.get(__response__, 'page_size')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

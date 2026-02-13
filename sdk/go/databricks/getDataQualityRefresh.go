@@ -83,6 +83,8 @@ type LookupDataQualityRefreshArgs struct {
 	ObjectId string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: `schema`or `table`
 	ObjectType string `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDataQualityRefreshProviderConfig `pulumi:"providerConfig"`
 	// Unique id of the refresh operation
 	RefreshId int `pulumi:"refreshId"`
 }
@@ -98,7 +100,8 @@ type LookupDataQualityRefreshResult struct {
 	// (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	ObjectId string `pulumi:"objectId"`
 	// (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
-	ObjectType string `pulumi:"objectType"`
+	ObjectType     string                               `pulumi:"objectType"`
+	ProviderConfig *GetDataQualityRefreshProviderConfig `pulumi:"providerConfig"`
 	// (integer) - Unique id of the refresh operation
 	RefreshId int `pulumi:"refreshId"`
 	// (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
@@ -132,6 +135,8 @@ type LookupDataQualityRefreshOutputArgs struct {
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: `schema`or `table`
 	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDataQualityRefreshProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Unique id of the refresh operation
 	RefreshId pulumi.IntInput `pulumi:"refreshId"`
 }
@@ -178,6 +183,10 @@ func (o LookupDataQualityRefreshResultOutput) ObjectId() pulumi.StringOutput {
 // (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
 func (o LookupDataQualityRefreshResultOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataQualityRefreshResult) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+func (o LookupDataQualityRefreshResultOutput) ProviderConfig() GetDataQualityRefreshProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupDataQualityRefreshResult) *GetDataQualityRefreshProviderConfig { return v.ProviderConfig }).(GetDataQualityRefreshProviderConfigPtrOutput)
 }
 
 // (integer) - Unique id of the refresh operation

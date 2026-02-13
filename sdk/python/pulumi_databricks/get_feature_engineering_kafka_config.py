@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetFeatureEngineeringKafkaConfigResult',
@@ -27,7 +28,7 @@ class GetFeatureEngineeringKafkaConfigResult:
     """
     A collection of values returned by getFeatureEngineeringKafkaConfig.
     """
-    def __init__(__self__, auth_config=None, backfill_source=None, bootstrap_servers=None, extra_options=None, id=None, key_schema=None, name=None, subscription_mode=None, value_schema=None):
+    def __init__(__self__, auth_config=None, backfill_source=None, bootstrap_servers=None, extra_options=None, id=None, key_schema=None, name=None, provider_config=None, subscription_mode=None, value_schema=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -49,6 +50,9 @@ class GetFeatureEngineeringKafkaConfigResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if subscription_mode and not isinstance(subscription_mode, dict):
             raise TypeError("Expected argument 'subscription_mode' to be a dict")
         pulumi.set(__self__, "subscription_mode", subscription_mode)
@@ -116,6 +120,11 @@ class GetFeatureEngineeringKafkaConfigResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetFeatureEngineeringKafkaConfigProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="subscriptionMode")
     def subscription_mode(self) -> 'outputs.GetFeatureEngineeringKafkaConfigSubscriptionModeResult':
         """
@@ -145,11 +154,13 @@ class AwaitableGetFeatureEngineeringKafkaConfigResult(GetFeatureEngineeringKafka
             id=self.id,
             key_schema=self.key_schema,
             name=self.name,
+            provider_config=self.provider_config,
             subscription_mode=self.subscription_mode,
             value_schema=self.value_schema)
 
 
 def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
+                                         provider_config: Optional[Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict']] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringKafkaConfigResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -157,9 +168,11 @@ def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
            Can be distinct from topic name
+    :param Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig', __args__, opts=opts, typ=GetFeatureEngineeringKafkaConfigResult).value
 
@@ -171,9 +184,11 @@ def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         key_schema=pulumi.get(__ret__, 'key_schema'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         subscription_mode=pulumi.get(__ret__, 'subscription_mode'),
         value_schema=pulumi.get(__ret__, 'value_schema'))
 def get_feature_engineering_kafka_config_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                                                provider_config: Optional[pulumi.Input[Optional[Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict']]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringKafkaConfigResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -181,9 +196,11 @@ def get_feature_engineering_kafka_config_output(name: Optional[pulumi.Input[_bui
 
     :param _builtins.str name: Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
            Can be distinct from topic name
+    :param Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig', __args__, opts=opts, typ=GetFeatureEngineeringKafkaConfigResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringKafkaConfigResult(
@@ -194,5 +211,6 @@ def get_feature_engineering_kafka_config_output(name: Optional[pulumi.Input[_bui
         id=pulumi.get(__response__, 'id'),
         key_schema=pulumi.get(__response__, 'key_schema'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         subscription_mode=pulumi.get(__response__, 'subscription_mode'),
         value_schema=pulumi.get(__response__, 'value_schema')))

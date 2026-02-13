@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAlertV2Result',
@@ -27,7 +28,7 @@ class GetAlertV2Result:
     """
     A collection of values returned by getAlertV2.
     """
-    def __init__(__self__, create_time=None, custom_description=None, custom_summary=None, display_name=None, effective_run_as=None, evaluation=None, id=None, lifecycle_state=None, owner_user_name=None, parent_path=None, query_text=None, run_as=None, run_as_user_name=None, schedule=None, update_time=None, warehouse_id=None):
+    def __init__(__self__, create_time=None, custom_description=None, custom_summary=None, display_name=None, effective_run_as=None, evaluation=None, id=None, lifecycle_state=None, owner_user_name=None, parent_path=None, provider_config=None, query_text=None, run_as=None, run_as_user_name=None, schedule=None, update_time=None, warehouse_id=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -58,6 +59,9 @@ class GetAlertV2Result:
         if parent_path and not isinstance(parent_path, str):
             raise TypeError("Expected argument 'parent_path' to be a str")
         pulumi.set(__self__, "parent_path", parent_path)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if query_text and not isinstance(query_text, str):
             raise TypeError("Expected argument 'query_text' to be a str")
         pulumi.set(__self__, "query_text", query_text)
@@ -160,6 +164,11 @@ class GetAlertV2Result:
         return pulumi.get(self, "parent_path")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetAlertV2ProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="queryText")
     def query_text(self) -> _builtins.str:
         """
@@ -230,6 +239,7 @@ class AwaitableGetAlertV2Result(GetAlertV2Result):
             lifecycle_state=self.lifecycle_state,
             owner_user_name=self.owner_user_name,
             parent_path=self.parent_path,
+            provider_config=self.provider_config,
             query_text=self.query_text,
             run_as=self.run_as,
             run_as_user_name=self.run_as_user_name,
@@ -239,6 +249,7 @@ class AwaitableGetAlertV2Result(GetAlertV2Result):
 
 
 def get_alert_v2(id: Optional[_builtins.str] = None,
+                 provider_config: Optional[Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict']] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertV2Result:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -265,9 +276,11 @@ def get_alert_v2(id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str id: UUID identifying the alert
+    :param Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['id'] = id
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAlertV2:getAlertV2', __args__, opts=opts, typ=GetAlertV2Result).value
 
@@ -282,6 +295,7 @@ def get_alert_v2(id: Optional[_builtins.str] = None,
         lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
         owner_user_name=pulumi.get(__ret__, 'owner_user_name'),
         parent_path=pulumi.get(__ret__, 'parent_path'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         query_text=pulumi.get(__ret__, 'query_text'),
         run_as=pulumi.get(__ret__, 'run_as'),
         run_as_user_name=pulumi.get(__ret__, 'run_as_user_name'),
@@ -289,6 +303,7 @@ def get_alert_v2(id: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         warehouse_id=pulumi.get(__ret__, 'warehouse_id'))
 def get_alert_v2_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+                        provider_config: Optional[pulumi.Input[Optional[Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertV2Result]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -315,9 +330,11 @@ def get_alert_v2_output(id: Optional[pulumi.Input[_builtins.str]] = None,
 
 
     :param _builtins.str id: UUID identifying the alert
+    :param Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['id'] = id
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAlertV2:getAlertV2', __args__, opts=opts, typ=GetAlertV2Result)
     return __ret__.apply(lambda __response__: GetAlertV2Result(
@@ -331,6 +348,7 @@ def get_alert_v2_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         lifecycle_state=pulumi.get(__response__, 'lifecycle_state'),
         owner_user_name=pulumi.get(__response__, 'owner_user_name'),
         parent_path=pulumi.get(__response__, 'parent_path'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         query_text=pulumi.get(__response__, 'query_text'),
         run_as=pulumi.get(__response__, 'run_as'),
         run_as_user_name=pulumi.get(__response__, 'run_as_user_name'),

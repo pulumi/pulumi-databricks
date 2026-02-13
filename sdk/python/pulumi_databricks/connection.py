@@ -27,6 +27,7 @@ class ConnectionArgs:
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['ConnectionProviderConfigArgs']] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
@@ -36,6 +37,7 @@ class ConnectionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[_builtins.str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Free-form connection properties. Change forces creation of a new resource.
+        :param pulumi.Input['ConnectionProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the connection is read-only. Change forces creation of a new resource.
         """
         if comment is not None:
@@ -50,6 +52,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
 
@@ -126,6 +130,18 @@ class ConnectionArgs:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ConnectionProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ConnectionProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -153,6 +169,7 @@ class _ConnectionState:
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['ConnectionProviderConfigArgs']] = None,
                  provisioning_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -173,6 +190,7 @@ class _ConnectionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[_builtins.str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Free-form connection properties. Change forces creation of a new resource.
+        :param pulumi.Input['ConnectionProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]] provisioning_infos: Object with the status of an asynchronously provisioned resource.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the connection is read-only. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] updated_at: Time at which connection this was last modified, in epoch milliseconds.
@@ -203,6 +221,8 @@ class _ConnectionState:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if provisioning_infos is not None:
             pulumi.set(__self__, "provisioning_infos", provisioning_infos)
         if read_only is not None:
@@ -361,6 +381,18 @@ class _ConnectionState:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ConnectionProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ConnectionProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="provisioningInfos")
     def provisioning_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]]:
         """
@@ -442,6 +474,7 @@ class Connection(pulumi.CustomResource):
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -589,6 +622,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[_builtins.str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Free-form connection properties. Change forces creation of a new resource.
+        :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the connection is read-only. Change forces creation of a new resource.
         """
         ...
@@ -755,6 +789,7 @@ class Connection(pulumi.CustomResource):
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -771,6 +806,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["options"] = None if options is None else pulumi.Output.secret(options)
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["read_only"] = read_only
             __props__.__dict__["connection_id"] = None
             __props__.__dict__["created_at"] = None
@@ -807,6 +843,7 @@ class Connection(pulumi.CustomResource):
             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: Optional[pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
             provisioning_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]]] = None,
             read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             securable_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -832,6 +869,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[_builtins.str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Free-form connection properties. Change forces creation of a new resource.
+        :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]] provisioning_infos: Object with the status of an asynchronously provisioned resource.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the connection is read-only. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] updated_at: Time at which connection this was last modified, in epoch milliseconds.
@@ -854,6 +892,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["options"] = options
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties"] = properties
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["provisioning_infos"] = provisioning_infos
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["securable_type"] = securable_type
@@ -957,6 +996,14 @@ class Connection(pulumi.CustomResource):
         Free-form connection properties. Change forces creation of a new resource.
         """
         return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ConnectionProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="provisioningInfos")

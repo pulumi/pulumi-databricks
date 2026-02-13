@@ -23,17 +23,21 @@ class MlflowModelArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MlflowModelProviderConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None):
         """
         The set of arguments for constructing a MlflowModel resource.
         :param pulumi.Input[_builtins.str] description: The description of the MLflow model.
         :param pulumi.Input[_builtins.str] name: Name of MLflow model. Change of name triggers new resource.
+        :param pulumi.Input['MlflowModelProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]] tags: Tags for the MLflow model.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -62,6 +66,18 @@ class MlflowModelArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MlflowModelProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MlflowModelProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]]:
         """
@@ -79,18 +95,22 @@ class _MlflowModelState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MlflowModelProviderConfigArgs']] = None,
                  registered_model_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering MlflowModel resources.
         :param pulumi.Input[_builtins.str] description: The description of the MLflow model.
         :param pulumi.Input[_builtins.str] name: Name of MLflow model. Change of name triggers new resource.
+        :param pulumi.Input['MlflowModelProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]] tags: Tags for the MLflow model.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if registered_model_id is not None:
             pulumi.set(__self__, "registered_model_id", registered_model_id)
         if tags is not None:
@@ -119,6 +139,18 @@ class _MlflowModelState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MlflowModelProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MlflowModelProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="registeredModelId")
@@ -150,6 +182,7 @@ class MlflowModel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MlflowModelProviderConfigArgs', 'MlflowModelProviderConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -201,6 +234,7 @@ class MlflowModel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the MLflow model.
         :param pulumi.Input[_builtins.str] name: Name of MLflow model. Change of name triggers new resource.
+        :param pulumi.Input[Union['MlflowModelProviderConfigArgs', 'MlflowModelProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]] tags: Tags for the MLflow model.
         """
         ...
@@ -271,6 +305,7 @@ class MlflowModel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MlflowModelProviderConfigArgs', 'MlflowModelProviderConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -283,6 +318,7 @@ class MlflowModel(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["tags"] = tags
             __props__.__dict__["registered_model_id"] = None
         super(MlflowModel, __self__).__init__(
@@ -297,6 +333,7 @@ class MlflowModel(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['MlflowModelProviderConfigArgs', 'MlflowModelProviderConfigArgsDict']]] = None,
             registered_model_id: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]]] = None) -> 'MlflowModel':
         """
@@ -308,6 +345,7 @@ class MlflowModel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the MLflow model.
         :param pulumi.Input[_builtins.str] name: Name of MLflow model. Change of name triggers new resource.
+        :param pulumi.Input[Union['MlflowModelProviderConfigArgs', 'MlflowModelProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]] tags: Tags for the MLflow model.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -316,6 +354,7 @@ class MlflowModel(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["registered_model_id"] = registered_model_id
         __props__.__dict__["tags"] = tags
         return MlflowModel(resource_name, opts=opts, __props__=__props__)
@@ -335,6 +374,14 @@ class MlflowModel(pulumi.CustomResource):
         Name of MLflow model. Change of name triggers new resource.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.MlflowModelProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="registeredModelId")

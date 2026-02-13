@@ -43,6 +43,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string PipelineScheduleState;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         /// </summary>
         public readonly string TableName;
@@ -63,6 +67,8 @@ namespace Pulumi.Databricks.Outputs
 
             string pipelineScheduleState,
 
+            Outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfigResult? providerConfig,
+
             string tableName)
         {
             CronSchedule = cronSchedule;
@@ -72,6 +78,7 @@ namespace Pulumi.Databricks.Outputs
             OfflineStoreConfig = offlineStoreConfig;
             OnlineStoreConfig = onlineStoreConfig;
             PipelineScheduleState = pipelineScheduleState;
+            ProviderConfig = providerConfig;
             TableName = tableName;
         }
     }

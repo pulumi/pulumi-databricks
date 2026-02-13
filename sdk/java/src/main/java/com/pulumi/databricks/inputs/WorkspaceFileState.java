@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.WorkspaceFileProviderConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -69,6 +70,21 @@ public final class WorkspaceFileState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<WorkspaceFileProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<WorkspaceFileProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Path to file on local filesystem. Conflicts with `contentBase64`.
      * 
      */
@@ -120,6 +136,7 @@ public final class WorkspaceFileState extends com.pulumi.resources.ResourceArgs 
         this.md5 = $.md5;
         this.objectId = $.objectId;
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
         this.source = $.source;
         this.url = $.url;
         this.workspacePath = $.workspacePath;
@@ -213,6 +230,27 @@ public final class WorkspaceFileState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<WorkspaceFileProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(WorkspaceFileProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

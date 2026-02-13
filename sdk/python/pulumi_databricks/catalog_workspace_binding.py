@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['CatalogWorkspaceBindingArgs', 'CatalogWorkspaceBinding']
 
@@ -22,6 +24,7 @@ class CatalogWorkspaceBindingArgs:
                  workspace_id: pulumi.Input[_builtins.str],
                  binding_type: Optional[pulumi.Input[_builtins.str]] = None,
                  catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['CatalogWorkspaceBindingProviderConfigArgs']] = None,
                  securable_name: Optional[pulumi.Input[_builtins.str]] = None,
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -39,6 +42,8 @@ class CatalogWorkspaceBindingArgs:
             pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if securable_name is not None:
             pulumi.set(__self__, "securable_name", securable_name)
         if securable_type is not None:
@@ -79,6 +84,15 @@ class CatalogWorkspaceBindingArgs:
         pulumi.set(self, "catalog_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['CatalogWorkspaceBindingProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['CatalogWorkspaceBindingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="securableName")
     def securable_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -108,6 +122,7 @@ class _CatalogWorkspaceBindingState:
     def __init__(__self__, *,
                  binding_type: Optional[pulumi.Input[_builtins.str]] = None,
                  catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['CatalogWorkspaceBindingProviderConfigArgs']] = None,
                  securable_name: Optional[pulumi.Input[_builtins.str]] = None,
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -125,6 +140,8 @@ class _CatalogWorkspaceBindingState:
             pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if securable_name is not None:
             pulumi.set(__self__, "securable_name", securable_name)
         if securable_type is not None:
@@ -153,6 +170,15 @@ class _CatalogWorkspaceBindingState:
     @catalog_name.setter
     def catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "catalog_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['CatalogWorkspaceBindingProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['CatalogWorkspaceBindingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securableName")
@@ -199,6 +225,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  binding_type: Optional[pulumi.Input[_builtins.str]] = None,
                  catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['CatalogWorkspaceBindingProviderConfigArgs', 'CatalogWorkspaceBindingProviderConfigArgsDict']]] = None,
                  securable_name: Optional[pulumi.Input[_builtins.str]] = None,
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -283,6 +310,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  binding_type: Optional[pulumi.Input[_builtins.str]] = None,
                  catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['CatalogWorkspaceBindingProviderConfigArgs', 'CatalogWorkspaceBindingProviderConfigArgsDict']]] = None,
                  securable_name: Optional[pulumi.Input[_builtins.str]] = None,
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -297,6 +325,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
 
             __props__.__dict__["binding_type"] = binding_type
             __props__.__dict__["catalog_name"] = catalog_name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["securable_name"] = securable_name
             __props__.__dict__["securable_type"] = securable_type
             if workspace_id is None and not opts.urn:
@@ -314,6 +343,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             binding_type: Optional[pulumi.Input[_builtins.str]] = None,
             catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['CatalogWorkspaceBindingProviderConfigArgs', 'CatalogWorkspaceBindingProviderConfigArgsDict']]] = None,
             securable_name: Optional[pulumi.Input[_builtins.str]] = None,
             securable_type: Optional[pulumi.Input[_builtins.str]] = None,
             workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'CatalogWorkspaceBinding':
@@ -335,6 +365,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
 
         __props__.__dict__["binding_type"] = binding_type
         __props__.__dict__["catalog_name"] = catalog_name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["securable_name"] = securable_name
         __props__.__dict__["securable_type"] = securable_type
         __props__.__dict__["workspace_id"] = workspace_id
@@ -353,6 +384,11 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
     @_utilities.deprecated("""Please use 'securable_name' and 'securable_type instead.""")
     def catalog_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "catalog_name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.CatalogWorkspaceBindingProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="securableName")

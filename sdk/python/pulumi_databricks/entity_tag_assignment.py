@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['EntityTagAssignmentArgs', 'EntityTagAssignment']
 
@@ -22,17 +24,21 @@ class EntityTagAssignmentArgs:
                  entity_name: pulumi.Input[_builtins.str],
                  entity_type: pulumi.Input[_builtins.str],
                  tag_key: pulumi.Input[_builtins.str],
+                 provider_config: Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']] = None,
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntityTagAssignment resource.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
+        :param pulumi.Input['EntityTagAssignmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
         """
         pulumi.set(__self__, "entity_name", entity_name)
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "tag_key", tag_key)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if tag_value is not None:
             pulumi.set(__self__, "tag_value", tag_value)
 
@@ -73,6 +79,18 @@ class EntityTagAssignmentArgs:
         pulumi.set(self, "tag_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -90,12 +108,14 @@ class _EntityTagAssignmentState:
     def __init__(__self__, *,
                  entity_name: Optional[pulumi.Input[_builtins.str]] = None,
                  entity_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntityTagAssignment resources.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        :param pulumi.Input['EntityTagAssignmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
         """
@@ -103,6 +123,8 @@ class _EntityTagAssignmentState:
             pulumi.set(__self__, "entity_name", entity_name)
         if entity_type is not None:
             pulumi.set(__self__, "entity_type", entity_type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if tag_key is not None:
             pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
@@ -131,6 +153,18 @@ class _EntityTagAssignmentState:
     @entity_type.setter
     def entity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "entity_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tagKey")
@@ -165,6 +199,7 @@ class EntityTagAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_name: Optional[pulumi.Input[_builtins.str]] = None,
                  entity_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -212,6 +247,7 @@ class EntityTagAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        :param pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
         """
@@ -278,6 +314,7 @@ class EntityTagAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_name: Optional[pulumi.Input[_builtins.str]] = None,
                  entity_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -295,6 +332,7 @@ class EntityTagAssignment(pulumi.CustomResource):
             if entity_type is None and not opts.urn:
                 raise TypeError("Missing required property 'entity_type'")
             __props__.__dict__["entity_type"] = entity_type
+            __props__.__dict__["provider_config"] = provider_config
             if tag_key is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_key'")
             __props__.__dict__["tag_key"] = tag_key
@@ -311,6 +349,7 @@ class EntityTagAssignment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             entity_name: Optional[pulumi.Input[_builtins.str]] = None,
             entity_type: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
             tag_key: Optional[pulumi.Input[_builtins.str]] = None,
             tag_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'EntityTagAssignment':
         """
@@ -322,6 +361,7 @@ class EntityTagAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        :param pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
         """
@@ -331,6 +371,7 @@ class EntityTagAssignment(pulumi.CustomResource):
 
         __props__.__dict__["entity_name"] = entity_name
         __props__.__dict__["entity_type"] = entity_type
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["tag_key"] = tag_key
         __props__.__dict__["tag_value"] = tag_value
         return EntityTagAssignment(resource_name, opts=opts, __props__=__props__)
@@ -350,6 +391,14 @@ class EntityTagAssignment(pulumi.CustomResource):
         The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
         """
         return pulumi.get(self, "entity_type")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.EntityTagAssignmentProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="tagKey")

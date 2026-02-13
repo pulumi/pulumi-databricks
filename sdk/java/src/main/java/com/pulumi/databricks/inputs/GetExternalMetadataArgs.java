@@ -5,9 +5,12 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetExternalMetadataProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,10 +32,26 @@ public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeAr
         return this.name;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetExternalMetadataProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetExternalMetadataProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetExternalMetadataArgs() {}
 
     private GetExternalMetadataArgs(GetExternalMetadataArgs $) {
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -72,6 +91,27 @@ public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetExternalMetadataProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetExternalMetadataProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetExternalMetadataArgs build() {

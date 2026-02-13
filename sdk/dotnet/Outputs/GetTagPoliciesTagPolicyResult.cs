@@ -26,6 +26,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetTagPoliciesTagPolicyProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (string)
         /// </summary>
         public readonly string TagKey;
@@ -46,6 +50,8 @@ namespace Pulumi.Databricks.Outputs
 
             string id,
 
+            Outputs.GetTagPoliciesTagPolicyProviderConfigResult? providerConfig,
+
             string tagKey,
 
             string updateTime,
@@ -55,6 +61,7 @@ namespace Pulumi.Databricks.Outputs
             CreateTime = createTime;
             Description = description;
             Id = id;
+            ProviderConfig = providerConfig;
             TagKey = tagKey;
             UpdateTime = updateTime;
             Values = values;

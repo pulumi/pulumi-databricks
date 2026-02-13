@@ -11,6 +11,7 @@ import com.pulumi.databricks.RegisteredModelArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RegisteredModelState;
 import com.pulumi.databricks.outputs.RegisteredModelAlias;
+import com.pulumi.databricks.outputs.RegisteredModelProviderConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -165,6 +166,20 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> owner() {
         return this.owner;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={RegisteredModelProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RegisteredModelProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<RegisteredModelProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*

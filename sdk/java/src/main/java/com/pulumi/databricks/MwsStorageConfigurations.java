@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.MwsStorageConfigurationsState;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -75,6 +76,44 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Example Usage with Role ARN
+ * 
+ * When sharing an S3 bucket between root storage and a Unity Catalog metastore, you can specify a role ARN:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsStorageConfigurations;
+ * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new MwsStorageConfigurations("this", MwsStorageConfigurationsArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .storageConfigurationName(String.format("%s-storage", prefix))
+ *             .bucketName(rootStorageBucket.bucket())
+ *             .roleArn(unityCatalogRole.arn())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Related Resources
  * 
  * The following resources are used in the same context:
@@ -125,6 +164,20 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
         return this.creationTime;
     }
     /**
+     * The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+     * 
+     */
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> roleArn;
+
+    /**
+     * @return The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+     * 
+     */
+    public Output<Optional<String>> roleArn() {
+        return Codegen.optional(this.roleArn);
+    }
+    /**
      * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      * 
      */
@@ -141,12 +194,16 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
     /**
      * name under which this storage configuration is stored
      * 
+     * The following arguments are optional:
+     * 
      */
     @Export(name="storageConfigurationName", refs={String.class}, tree="[0]")
     private Output<String> storageConfigurationName;
 
     /**
      * @return name under which this storage configuration is stored
+     * 
+     * The following arguments are optional:
      * 
      */
     public Output<String> storageConfigurationName() {

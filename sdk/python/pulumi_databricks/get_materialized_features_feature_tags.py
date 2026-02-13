@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetMaterializedFeaturesFeatureTagsResult',
@@ -27,7 +28,7 @@ class GetMaterializedFeaturesFeatureTagsResult:
     """
     A collection of values returned by getMaterializedFeaturesFeatureTags.
     """
-    def __init__(__self__, feature_name=None, feature_tags=None, id=None, page_size=None, table_name=None):
+    def __init__(__self__, feature_name=None, feature_tags=None, id=None, page_size=None, provider_config=None, table_name=None):
         if feature_name and not isinstance(feature_name, str):
             raise TypeError("Expected argument 'feature_name' to be a str")
         pulumi.set(__self__, "feature_name", feature_name)
@@ -40,6 +41,9 @@ class GetMaterializedFeaturesFeatureTagsResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if table_name and not isinstance(table_name, str):
             raise TypeError("Expected argument 'table_name' to be a str")
         pulumi.set(__self__, "table_name", table_name)
@@ -68,6 +72,11 @@ class GetMaterializedFeaturesFeatureTagsResult:
         return pulumi.get(self, "page_size")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMaterializedFeaturesFeatureTagsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="tableName")
     def table_name(self) -> _builtins.str:
         return pulumi.get(self, "table_name")
@@ -83,11 +92,13 @@ class AwaitableGetMaterializedFeaturesFeatureTagsResult(GetMaterializedFeaturesF
             feature_tags=self.feature_tags,
             id=self.id,
             page_size=self.page_size,
+            provider_config=self.provider_config,
             table_name=self.table_name)
 
 
 def get_materialized_features_feature_tags(feature_name: Optional[_builtins.str] = None,
                                            page_size: Optional[_builtins.int] = None,
+                                           provider_config: Optional[Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict']] = None,
                                            table_name: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaterializedFeaturesFeatureTagsResult:
     """
@@ -95,10 +106,12 @@ def get_materialized_features_feature_tags(feature_name: Optional[_builtins.str]
 
 
     :param _builtins.int page_size: The maximum number of results to return
+    :param Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['featureName'] = feature_name
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     __args__['tableName'] = table_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags', __args__, opts=opts, typ=GetMaterializedFeaturesFeatureTagsResult).value
@@ -108,9 +121,11 @@ def get_materialized_features_feature_tags(feature_name: Optional[_builtins.str]
         feature_tags=pulumi.get(__ret__, 'feature_tags'),
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         table_name=pulumi.get(__ret__, 'table_name'))
 def get_materialized_features_feature_tags_output(feature_name: Optional[pulumi.Input[_builtins.str]] = None,
                                                   page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                                  provider_config: Optional[pulumi.Input[Optional[Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict']]]] = None,
                                                   table_name: Optional[pulumi.Input[_builtins.str]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaterializedFeaturesFeatureTagsResult]:
     """
@@ -118,10 +133,12 @@ def get_materialized_features_feature_tags_output(feature_name: Optional[pulumi.
 
 
     :param _builtins.int page_size: The maximum number of results to return
+    :param Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['featureName'] = feature_name
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     __args__['tableName'] = table_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags', __args__, opts=opts, typ=GetMaterializedFeaturesFeatureTagsResult)
@@ -130,4 +147,5 @@ def get_materialized_features_feature_tags_output(feature_name: Optional[pulumi.
         feature_tags=pulumi.get(__response__, 'feature_tags'),
         id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         table_name=pulumi.get(__response__, 'table_name')))

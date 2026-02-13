@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlTableColumnArgs;
+import com.pulumi.databricks.inputs.SqlTableProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -183,6 +184,21 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SqlTableProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SqlTableProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      * 
      */
@@ -302,6 +318,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         this.owner = $.owner;
         this.partitions = $.partitions;
         this.properties = $.properties;
+        this.providerConfig = $.providerConfig;
         this.schemaName = $.schemaName;
         this.storageCredentialName = $.storageCredentialName;
         this.storageLocation = $.storageLocation;
@@ -579,6 +596,27 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SqlTableProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SqlTableProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

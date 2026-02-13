@@ -105,6 +105,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.ModelServingProvisionedThroughputProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         /// </summary>
         [Output("servingEndpointId")]
@@ -192,6 +198,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ModelServingProvisionedThroughputProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("tags")]
         private InputList<Inputs.ModelServingProvisionedThroughputTagArgs>? _tags;
 
@@ -241,6 +253,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ModelServingProvisionedThroughputProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

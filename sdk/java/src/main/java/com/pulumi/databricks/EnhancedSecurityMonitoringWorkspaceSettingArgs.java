@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs;
+import com.pulumi.databricks.inputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -31,6 +32,13 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingArgs extends com.pu
         return Optional.ofNullable(this.etag);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs> providerConfig;
+
+    public Optional<Output<EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="settingName")
     private @Nullable Output<String> settingName;
 
@@ -43,6 +51,7 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingArgs extends com.pu
     private EnhancedSecurityMonitoringWorkspaceSettingArgs(EnhancedSecurityMonitoringWorkspaceSettingArgs $) {
         this.enhancedSecurityMonitoringWorkspace = $.enhancedSecurityMonitoringWorkspace;
         this.etag = $.etag;
+        this.providerConfig = $.providerConfig;
         this.settingName = $.settingName;
     }
 
@@ -80,6 +89,15 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingArgs extends com.pu
 
         public Builder etag(String etag) {
             return etag(Output.of(etag));
+        }
+
+        public Builder providerConfig(@Nullable Output<EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder settingName(@Nullable Output<String> settingName) {

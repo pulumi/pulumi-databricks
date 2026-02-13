@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetPolicyInfosProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -84,6 +85,21 @@ public final class GetPolicyInfosArgs extends com.pulumi.resources.InvokeArgs {
         return this.onSecurableType;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetPolicyInfosProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetPolicyInfosProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetPolicyInfosArgs() {}
 
     private GetPolicyInfosArgs(GetPolicyInfosArgs $) {
@@ -91,6 +107,7 @@ public final class GetPolicyInfosArgs extends com.pulumi.resources.InvokeArgs {
         this.maxResults = $.maxResults;
         this.onSecurableFullname = $.onSecurableFullname;
         this.onSecurableType = $.onSecurableType;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -199,6 +216,27 @@ public final class GetPolicyInfosArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder onSecurableType(String onSecurableType) {
             return onSecurableType(Output.of(onSecurableType));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetPolicyInfosProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetPolicyInfosProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetPolicyInfosArgs build() {

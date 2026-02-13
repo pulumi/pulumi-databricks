@@ -14,6 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskForEachTaskTaskGenAiComputeTask {
     private @Nullable String command;
+    /**
+     * @return Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     private @Nullable JobTaskForEachTaskTaskGenAiComputeTaskCompute compute;
     private String dlRuntimeImage;
     private @Nullable String mlflowExperimentName;
@@ -26,6 +32,12 @@ public final class JobTaskForEachTaskTaskGenAiComputeTask {
     public Optional<String> command() {
         return Optional.ofNullable(this.command);
     }
+    /**
+     * @return Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     public Optional<JobTaskForEachTaskTaskGenAiComputeTaskCompute> compute() {
         return Optional.ofNullable(this.compute);
     }

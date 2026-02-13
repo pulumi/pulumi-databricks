@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputState;
 import com.pulumi.databricks.outputs.ModelServingProvisionedThroughputAiGateway;
 import com.pulumi.databricks.outputs.ModelServingProvisionedThroughputConfig;
 import com.pulumi.databricks.outputs.ModelServingProvisionedThroughputEmailNotifications;
+import com.pulumi.databricks.outputs.ModelServingProvisionedThroughputProviderConfig;
 import com.pulumi.databricks.outputs.ModelServingProvisionedThroughputTag;
 import java.lang.String;
 import java.util.List;
@@ -164,6 +165,20 @@ public class ModelServingProvisionedThroughput extends com.pulumi.resources.Cust
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={ModelServingProvisionedThroughputProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ModelServingProvisionedThroughputProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<ModelServingProvisionedThroughputProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

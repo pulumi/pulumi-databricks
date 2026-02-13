@@ -31,6 +31,8 @@ type FeatureEngineeringFeature struct {
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext FeatureEngineeringFeatureLineageContextPtrOutput `pulumi:"lineageContext"`
+	// Configure the provider for management through account provider.
+	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceOutput `pulumi:"source"`
 	// The time window in which the feature is computed
@@ -94,6 +96,8 @@ type featureEngineeringFeatureState struct {
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext *FeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *FeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// The data source of the feature
 	Source *FeatureEngineeringFeatureSource `pulumi:"source"`
 	// The time window in which the feature is computed
@@ -116,6 +120,8 @@ type FeatureEngineeringFeatureState struct {
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext FeatureEngineeringFeatureLineageContextPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourcePtrInput
 	// The time window in which the feature is computed
@@ -142,6 +148,8 @@ type featureEngineeringFeatureArgs struct {
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext *FeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *FeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSource `pulumi:"source"`
 	// The time window in which the feature is computed
@@ -165,6 +173,8 @@ type FeatureEngineeringFeatureArgs struct {
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext FeatureEngineeringFeatureLineageContextPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceInput
 	// The time window in which the feature is computed
@@ -291,6 +301,13 @@ func (o FeatureEngineeringFeatureOutput) LineageContext() FeatureEngineeringFeat
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureLineageContextPtrOutput {
 		return v.LineageContext
 	}).(FeatureEngineeringFeatureLineageContextPtrOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o FeatureEngineeringFeatureOutput) ProviderConfig() FeatureEngineeringFeatureProviderConfigPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(FeatureEngineeringFeatureProviderConfigPtrOutput)
 }
 
 // The data source of the feature

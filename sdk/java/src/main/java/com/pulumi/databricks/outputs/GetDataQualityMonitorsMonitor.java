@@ -6,9 +6,12 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfig;
 import com.pulumi.databricks.outputs.GetDataQualityMonitorsMonitorDataProfilingConfig;
+import com.pulumi.databricks.outputs.GetDataQualityMonitorsMonitorProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDataQualityMonitorsMonitor {
@@ -33,6 +36,11 @@ public final class GetDataQualityMonitorsMonitor {
      * 
      */
     private String objectType;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetDataQualityMonitorsMonitorProviderConfig providerConfig;
 
     private GetDataQualityMonitorsMonitor() {}
     /**
@@ -64,6 +72,13 @@ public final class GetDataQualityMonitorsMonitor {
     public String objectType() {
         return this.objectType;
     }
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetDataQualityMonitorsMonitorProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -78,6 +93,7 @@ public final class GetDataQualityMonitorsMonitor {
         private GetDataQualityMonitorsMonitorDataProfilingConfig dataProfilingConfig;
         private String objectId;
         private String objectType;
+        private @Nullable GetDataQualityMonitorsMonitorProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDataQualityMonitorsMonitor defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,6 +101,7 @@ public final class GetDataQualityMonitorsMonitor {
     	      this.dataProfilingConfig = defaults.dataProfilingConfig;
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -119,12 +136,19 @@ public final class GetDataQualityMonitorsMonitor {
             this.objectType = objectType;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDataQualityMonitorsMonitorProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetDataQualityMonitorsMonitor build() {
             final var _resultValue = new GetDataQualityMonitorsMonitor();
             _resultValue.anomalyDetectionConfig = anomalyDetectionConfig;
             _resultValue.dataProfilingConfig = dataProfilingConfig;
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

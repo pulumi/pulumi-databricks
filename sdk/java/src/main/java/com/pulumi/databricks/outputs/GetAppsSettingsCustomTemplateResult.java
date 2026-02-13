@@ -5,9 +5,12 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplateManifest;
+import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplateProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsSettingsCustomTemplateResult {
@@ -51,6 +54,7 @@ public final class GetAppsSettingsCustomTemplateResult {
      * 
      */
     private String path;
+    private @Nullable GetAppsSettingsCustomTemplateProviderConfig providerConfig;
 
     private GetAppsSettingsCustomTemplateResult() {}
     /**
@@ -109,6 +113,9 @@ public final class GetAppsSettingsCustomTemplateResult {
     public String path() {
         return this.path;
     }
+    public Optional<GetAppsSettingsCustomTemplateProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -127,6 +134,7 @@ public final class GetAppsSettingsCustomTemplateResult {
         private GetAppsSettingsCustomTemplateManifest manifest;
         private String name;
         private String path;
+        private @Nullable GetAppsSettingsCustomTemplateProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetAppsSettingsCustomTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -138,6 +146,7 @@ public final class GetAppsSettingsCustomTemplateResult {
     	      this.manifest = defaults.manifest;
     	      this.name = defaults.name;
     	      this.path = defaults.path;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -204,6 +213,12 @@ public final class GetAppsSettingsCustomTemplateResult {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetAppsSettingsCustomTemplateProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetAppsSettingsCustomTemplateResult build() {
             final var _resultValue = new GetAppsSettingsCustomTemplateResult();
             _resultValue.creator = creator;
@@ -214,6 +229,7 @@ public final class GetAppsSettingsCustomTemplateResult {
             _resultValue.manifest = manifest;
             _resultValue.name = name;
             _resultValue.path = path;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

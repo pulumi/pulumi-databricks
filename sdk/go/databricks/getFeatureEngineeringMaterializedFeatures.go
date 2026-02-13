@@ -28,6 +28,8 @@ type GetFeatureEngineeringMaterializedFeaturesArgs struct {
 	FeatureName *string `pulumi:"featureName"`
 	// The maximum number of results to return. Defaults to 100 if not specified. Cannot be greater than 1000
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetFeatureEngineeringMaterializedFeaturesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getFeatureEngineeringMaterializedFeatures.
@@ -38,6 +40,7 @@ type GetFeatureEngineeringMaterializedFeaturesResult struct {
 	Id                   string                                                         `pulumi:"id"`
 	MaterializedFeatures []GetFeatureEngineeringMaterializedFeaturesMaterializedFeature `pulumi:"materializedFeatures"`
 	PageSize             *int                                                           `pulumi:"pageSize"`
+	ProviderConfig       *GetFeatureEngineeringMaterializedFeaturesProviderConfig       `pulumi:"providerConfig"`
 }
 
 func GetFeatureEngineeringMaterializedFeaturesOutput(ctx *pulumi.Context, args GetFeatureEngineeringMaterializedFeaturesOutputArgs, opts ...pulumi.InvokeOption) GetFeatureEngineeringMaterializedFeaturesResultOutput {
@@ -55,6 +58,8 @@ type GetFeatureEngineeringMaterializedFeaturesOutputArgs struct {
 	FeatureName pulumi.StringPtrInput `pulumi:"featureName"`
 	// The maximum number of results to return. Defaults to 100 if not specified. Cannot be greater than 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetFeatureEngineeringMaterializedFeaturesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetFeatureEngineeringMaterializedFeaturesOutputArgs) ElementType() reflect.Type {
@@ -94,6 +99,12 @@ func (o GetFeatureEngineeringMaterializedFeaturesResultOutput) MaterializedFeatu
 
 func (o GetFeatureEngineeringMaterializedFeaturesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetFeatureEngineeringMaterializedFeaturesResultOutput) ProviderConfig() GetFeatureEngineeringMaterializedFeaturesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesResult) *GetFeatureEngineeringMaterializedFeaturesProviderConfig {
+		return v.ProviderConfig
+	}).(GetFeatureEngineeringMaterializedFeaturesProviderConfigPtrOutput)
 }
 
 func init() {

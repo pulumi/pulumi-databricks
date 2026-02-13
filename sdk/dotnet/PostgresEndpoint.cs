@@ -254,6 +254,12 @@ namespace Pulumi.Databricks
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.PostgresEndpointProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         /// </summary>
         [Output("spec")]
@@ -339,6 +345,12 @@ namespace Pulumi.Databricks
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.PostgresEndpointProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         /// </summary>
         [Input("spec")]
@@ -379,6 +391,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.PostgresEndpointProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DashboardProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -156,6 +157,21 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DashboardProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<DashboardProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      * 
      */
@@ -208,6 +224,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         this.md5 = $.md5;
         this.parentPath = $.parentPath;
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
         this.serializedDashboard = $.serializedDashboard;
         this.updateTime = $.updateTime;
         this.warehouseId = $.warehouseId;
@@ -418,6 +435,27 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
 
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DashboardProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DashboardProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

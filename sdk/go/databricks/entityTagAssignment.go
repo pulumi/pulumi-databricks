@@ -89,6 +89,8 @@ type EntityTagAssignment struct {
 	EntityName pulumi.StringOutput `pulumi:"entityName"`
 	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig EntityTagAssignmentProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The key of the tag
 	TagKey pulumi.StringOutput `pulumi:"tagKey"`
 	// The value of the tag
@@ -138,6 +140,8 @@ type entityTagAssignmentState struct {
 	EntityName *string `pulumi:"entityName"`
 	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType *string `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *EntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// The key of the tag
 	TagKey *string `pulumi:"tagKey"`
 	// The value of the tag
@@ -149,6 +153,8 @@ type EntityTagAssignmentState struct {
 	EntityName pulumi.StringPtrInput
 	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig EntityTagAssignmentProviderConfigPtrInput
 	// The key of the tag
 	TagKey pulumi.StringPtrInput
 	// The value of the tag
@@ -164,6 +170,8 @@ type entityTagAssignmentArgs struct {
 	EntityName string `pulumi:"entityName"`
 	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType string `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *EntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// The key of the tag
 	TagKey string `pulumi:"tagKey"`
 	// The value of the tag
@@ -176,6 +184,8 @@ type EntityTagAssignmentArgs struct {
 	EntityName pulumi.StringInput
 	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig EntityTagAssignmentProviderConfigPtrInput
 	// The key of the tag
 	TagKey pulumi.StringInput
 	// The value of the tag
@@ -277,6 +287,11 @@ func (o EntityTagAssignmentOutput) EntityName() pulumi.StringOutput {
 // The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 func (o EntityTagAssignmentOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringOutput { return v.EntityType }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o EntityTagAssignmentOutput) ProviderConfig() EntityTagAssignmentProviderConfigPtrOutput {
+	return o.ApplyT(func(v *EntityTagAssignment) EntityTagAssignmentProviderConfigPtrOutput { return v.ProviderConfig }).(EntityTagAssignmentProviderConfigPtrOutput)
 }
 
 // The key of the tag

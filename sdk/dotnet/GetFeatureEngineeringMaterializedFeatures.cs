@@ -45,6 +45,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetFeatureEngineeringMaterializedFeaturesArgs()
         {
         }
@@ -64,6 +70,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetFeatureEngineeringMaterializedFeaturesInvokeArgs()
         {
@@ -85,6 +97,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult> MaterializedFeatures;
         public readonly int? PageSize;
+        public readonly Outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetFeatureEngineeringMaterializedFeaturesResult(
@@ -94,12 +107,15 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult> materializedFeatures,
 
-            int? pageSize)
+            int? pageSize,
+
+            Outputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigResult? providerConfig)
         {
             FeatureName = featureName;
             Id = id;
             MaterializedFeatures = materializedFeatures;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
         }
     }
 }

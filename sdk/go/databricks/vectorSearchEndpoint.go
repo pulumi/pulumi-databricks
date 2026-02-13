@@ -67,6 +67,8 @@ type VectorSearchEndpoint struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of indexes on the endpoint.
 	NumIndexes pulumi.IntOutput `pulumi:"numIndexes"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig VectorSearchEndpointProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewVectorSearchEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -124,6 +126,8 @@ type vectorSearchEndpointState struct {
 	Name *string `pulumi:"name"`
 	// Number of indexes on the endpoint.
 	NumIndexes *int `pulumi:"numIndexes"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *VectorSearchEndpointProviderConfig `pulumi:"providerConfig"`
 }
 
 type VectorSearchEndpointState struct {
@@ -149,6 +153,8 @@ type VectorSearchEndpointState struct {
 	Name pulumi.StringPtrInput
 	// Number of indexes on the endpoint.
 	NumIndexes pulumi.IntPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig VectorSearchEndpointProviderConfigPtrInput
 }
 
 func (VectorSearchEndpointState) ElementType() reflect.Type {
@@ -162,6 +168,8 @@ type vectorSearchEndpointArgs struct {
 	EndpointType string `pulumi:"endpointType"`
 	// Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *VectorSearchEndpointProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a VectorSearchEndpoint resource.
@@ -172,6 +180,8 @@ type VectorSearchEndpointArgs struct {
 	EndpointType pulumi.StringInput
 	// Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig VectorSearchEndpointProviderConfigPtrInput
 }
 
 func (VectorSearchEndpointArgs) ElementType() reflect.Type {
@@ -314,6 +324,11 @@ func (o VectorSearchEndpointOutput) Name() pulumi.StringOutput {
 // Number of indexes on the endpoint.
 func (o VectorSearchEndpointOutput) NumIndexes() pulumi.IntOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.IntOutput { return v.NumIndexes }).(pulumi.IntOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o VectorSearchEndpointOutput) ProviderConfig() VectorSearchEndpointProviderConfigPtrOutput {
+	return o.ApplyT(func(v *VectorSearchEndpoint) VectorSearchEndpointProviderConfigPtrOutput { return v.ProviderConfig }).(VectorSearchEndpointProviderConfigPtrOutput)
 }
 
 type VectorSearchEndpointArrayOutput struct{ *pulumi.OutputState }

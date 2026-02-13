@@ -67,7 +67,9 @@ type AibiDashboardEmbeddingApprovedDomainsSetting struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingApprovedDomains AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	Etag                                  pulumi.StringOutput                                                                     `pulumi:"etag"`
-	SettingName                           pulumi.StringOutput                                                                     `pulumi:"settingName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrOutput `pulumi:"providerConfig"`
+	SettingName    pulumi.StringOutput                                                 `pulumi:"settingName"`
 }
 
 // NewAibiDashboardEmbeddingApprovedDomainsSetting registers a new resource with the given unique name, arguments, and options.
@@ -106,14 +108,18 @@ type aibiDashboardEmbeddingApprovedDomainsSettingState struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingApprovedDomains *AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	Etag                                  *string                                                                            `pulumi:"etag"`
-	SettingName                           *string                                                                            `pulumi:"settingName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig `pulumi:"providerConfig"`
+	SettingName    *string                                                     `pulumi:"settingName"`
 }
 
 type AibiDashboardEmbeddingApprovedDomainsSettingState struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingApprovedDomains AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrInput
 	Etag                                  pulumi.StringPtrInput
-	SettingName                           pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrInput
+	SettingName    pulumi.StringPtrInput
 }
 
 func (AibiDashboardEmbeddingApprovedDomainsSettingState) ElementType() reflect.Type {
@@ -124,7 +130,9 @@ type aibiDashboardEmbeddingApprovedDomainsSettingArgs struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingApprovedDomains AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	Etag                                  *string                                                                           `pulumi:"etag"`
-	SettingName                           *string                                                                           `pulumi:"settingName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig `pulumi:"providerConfig"`
+	SettingName    *string                                                     `pulumi:"settingName"`
 }
 
 // The set of arguments for constructing a AibiDashboardEmbeddingApprovedDomainsSetting resource.
@@ -132,7 +140,9 @@ type AibiDashboardEmbeddingApprovedDomainsSettingArgs struct {
 	// block with following attributes:
 	AibiDashboardEmbeddingApprovedDomains AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsInput
 	Etag                                  pulumi.StringPtrInput
-	SettingName                           pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrInput
+	SettingName    pulumi.StringPtrInput
 }
 
 func (AibiDashboardEmbeddingApprovedDomainsSettingArgs) ElementType() reflect.Type {
@@ -231,6 +241,13 @@ func (o AibiDashboardEmbeddingApprovedDomainsSettingOutput) AibiDashboardEmbeddi
 
 func (o AibiDashboardEmbeddingApprovedDomainsSettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AibiDashboardEmbeddingApprovedDomainsSetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o AibiDashboardEmbeddingApprovedDomainsSettingOutput) ProviderConfig() AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *AibiDashboardEmbeddingApprovedDomainsSetting) AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrOutput)
 }
 
 func (o AibiDashboardEmbeddingApprovedDomainsSettingOutput) SettingName() pulumi.StringOutput {

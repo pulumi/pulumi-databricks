@@ -54,6 +54,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Properties;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetExternalMetadatasExternalMetadataProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         /// </summary>
         public readonly string SystemType;
@@ -92,6 +96,8 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableDictionary<string, string> properties,
 
+            Outputs.GetExternalMetadatasExternalMetadataProviderConfigResult? providerConfig,
+
             string systemType,
 
             string updateTime,
@@ -110,6 +116,7 @@ namespace Pulumi.Databricks.Outputs
             Name = name;
             Owner = owner;
             Properties = properties;
+            ProviderConfig = providerConfig;
             SystemType = systemType;
             UpdateTime = updateTime;
             UpdatedBy = updatedBy;

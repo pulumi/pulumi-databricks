@@ -112,6 +112,12 @@ namespace Pulumi.Databricks
         public string FullName { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetRfaAccessRequestDestinationsProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
         /// </summary>
         [Input("securableType", required: true)]
@@ -130,6 +136,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetRfaAccessRequestDestinationsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
@@ -170,6 +182,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetRfaAccessRequestDestinationsProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (Securable) - The securable for which the access request destinations are being modified or read
         /// </summary>
@@ -191,6 +204,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetRfaAccessRequestDestinationsProviderConfigResult? providerConfig,
+
             Outputs.GetRfaAccessRequestDestinationsSecurableResult securable,
 
             string securableType)
@@ -200,6 +215,7 @@ namespace Pulumi.Databricks
             Destinations = destinations;
             FullName = fullName;
             Id = id;
+            ProviderConfig = providerConfig;
             Securable = securable;
             SecurableType = securableType;
         }

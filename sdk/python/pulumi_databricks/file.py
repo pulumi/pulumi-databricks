@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['FileArgs', 'File']
 
@@ -22,12 +24,14 @@ class FileArgs:
                  path: pulumi.Input[_builtins.str],
                  content_base64: Optional[pulumi.Input[_builtins.str]] = None,
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['FileProviderConfigArgs']] = None,
                  remote_file_modified: Optional[pulumi.Input[_builtins.bool]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a File resource.
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
         :param pulumi.Input[_builtins.str] content_base64: Contents in base 64 format. Conflicts with `source`.
+        :param pulumi.Input['FileProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         pulumi.set(__self__, "path", path)
@@ -35,6 +39,8 @@ class FileArgs:
             pulumi.set(__self__, "content_base64", content_base64)
         if md5 is not None:
             pulumi.set(__self__, "md5", md5)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if remote_file_modified is not None:
             pulumi.set(__self__, "remote_file_modified", remote_file_modified)
         if source is not None:
@@ -74,6 +80,18 @@ class FileArgs:
         pulumi.set(self, "md5", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['FileProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['FileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="remoteFileModified")
     def remote_file_modified(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "remote_file_modified")
@@ -103,6 +121,7 @@ class _FileState:
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  modification_time: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['FileProviderConfigArgs']] = None,
                  remote_file_modified: Optional[pulumi.Input[_builtins.bool]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -111,6 +130,7 @@ class _FileState:
         :param pulumi.Input[_builtins.int] file_size: The file size of the file that is being tracked by this resource in bytes.
         :param pulumi.Input[_builtins.str] modification_time: The last time stamp when the file was modified
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        :param pulumi.Input['FileProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         if content_base64 is not None:
@@ -123,6 +143,8 @@ class _FileState:
             pulumi.set(__self__, "modification_time", modification_time)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if remote_file_modified is not None:
             pulumi.set(__self__, "remote_file_modified", remote_file_modified)
         if source is not None:
@@ -186,6 +208,18 @@ class _FileState:
         pulumi.set(self, "path", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['FileProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['FileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="remoteFileModified")
     def remote_file_modified(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "remote_file_modified")
@@ -216,6 +250,7 @@ class File(pulumi.CustomResource):
                  content_base64: Optional[pulumi.Input[_builtins.str]] = None,
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']]] = None,
                  remote_file_modified: Optional[pulumi.Input[_builtins.bool]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -287,6 +322,7 @@ class File(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: Contents in base 64 format. Conflicts with `source`.
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        :param pulumi.Input[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         ...
@@ -377,6 +413,7 @@ class File(pulumi.CustomResource):
                  content_base64: Optional[pulumi.Input[_builtins.str]] = None,
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']]] = None,
                  remote_file_modified: Optional[pulumi.Input[_builtins.bool]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -393,6 +430,7 @@ class File(pulumi.CustomResource):
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["remote_file_modified"] = remote_file_modified
             __props__.__dict__["source"] = source
             __props__.__dict__["file_size"] = None
@@ -412,6 +450,7 @@ class File(pulumi.CustomResource):
             md5: Optional[pulumi.Input[_builtins.str]] = None,
             modification_time: Optional[pulumi.Input[_builtins.str]] = None,
             path: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']]] = None,
             remote_file_modified: Optional[pulumi.Input[_builtins.bool]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None) -> 'File':
         """
@@ -425,6 +464,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] file_size: The file size of the file that is being tracked by this resource in bytes.
         :param pulumi.Input[_builtins.str] modification_time: The last time stamp when the file was modified
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        :param pulumi.Input[Union['FileProviderConfigArgs', 'FileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -436,6 +476,7 @@ class File(pulumi.CustomResource):
         __props__.__dict__["md5"] = md5
         __props__.__dict__["modification_time"] = modification_time
         __props__.__dict__["path"] = path
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["remote_file_modified"] = remote_file_modified
         __props__.__dict__["source"] = source
         return File(resource_name, opts=opts, __props__=__props__)
@@ -476,6 +517,14 @@ class File(pulumi.CustomResource):
         The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
         """
         return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.FileProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="remoteFileModified")

@@ -28,11 +28,13 @@ class MlflowExperimentArgs:
                  last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         The set of arguments for constructing a MlflowExperiment resource.
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        :param pulumi.Input['MlflowExperimentProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]] tags: Tags for the MLflow experiment.
         """
         if artifact_location is not None:
@@ -52,6 +54,8 @@ class MlflowExperimentArgs:
             pulumi.set(__self__, "lifecycle_stage", lifecycle_stage)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -124,6 +128,18 @@ class MlflowExperimentArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -148,11 +164,13 @@ class _MlflowExperimentState:
                  last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering MlflowExperiment resources.
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        :param pulumi.Input['MlflowExperimentProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]] tags: Tags for the MLflow experiment.
         """
         if artifact_location is not None:
@@ -172,6 +190,8 @@ class _MlflowExperimentState:
             pulumi.set(__self__, "lifecycle_stage", lifecycle_stage)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -244,6 +264,18 @@ class _MlflowExperimentState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -271,6 +303,7 @@ class MlflowExperiment(pulumi.CustomResource):
                  last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -320,6 +353,7 @@ class MlflowExperiment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        :param pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
         """
         ...
@@ -393,6 +427,7 @@ class MlflowExperiment(pulumi.CustomResource):
                  last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -410,6 +445,7 @@ class MlflowExperiment(pulumi.CustomResource):
             __props__.__dict__["last_update_time"] = last_update_time
             __props__.__dict__["lifecycle_stage"] = lifecycle_stage
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["tags"] = tags
         super(MlflowExperiment, __self__).__init__(
             'databricks:index/mlflowExperiment:MlflowExperiment',
@@ -428,6 +464,7 @@ class MlflowExperiment(pulumi.CustomResource):
             last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
             lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None) -> 'MlflowExperiment':
         """
         Get an existing MlflowExperiment resource's state with the given name, id, and optional extra
@@ -438,6 +475,7 @@ class MlflowExperiment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        :param pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -451,6 +489,7 @@ class MlflowExperiment(pulumi.CustomResource):
         __props__.__dict__["last_update_time"] = last_update_time
         __props__.__dict__["lifecycle_stage"] = lifecycle_stage
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["tags"] = tags
         return MlflowExperiment(resource_name, opts=opts, __props__=__props__)
 
@@ -495,6 +534,14 @@ class MlflowExperiment(pulumi.CustomResource):
         Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.MlflowExperimentProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

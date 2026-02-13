@@ -128,7 +128,7 @@ export class Metastore extends pulumi.CustomResource {
      */
     declare public readonly deltaSharingOrganizationName: pulumi.Output<string | undefined>;
     /**
-     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
      */
     declare public readonly deltaSharingRecipientTokenLifetimeInSeconds: pulumi.Output<number | undefined>;
     /**
@@ -274,7 +274,7 @@ export interface MetastoreState {
      */
     deltaSharingOrganizationName?: pulumi.Input<string>;
     /**
-     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
      */
     deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
     /**
@@ -348,7 +348,7 @@ export interface MetastoreArgs {
      */
     deltaSharingOrganizationName?: pulumi.Input<string>;
     /**
-     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
      */
     deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
     /**

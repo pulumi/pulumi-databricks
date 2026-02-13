@@ -28,15 +28,18 @@ type GetDatabaseDatabaseCatalogsArgs struct {
 	InstanceName string `pulumi:"instanceName"`
 	// Upper bound for items returned
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDatabaseDatabaseCatalogsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDatabaseDatabaseCatalogs.
 type GetDatabaseDatabaseCatalogsResult struct {
 	DatabaseCatalogs []GetDatabaseDatabaseCatalogsDatabaseCatalog `pulumi:"databaseCatalogs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
-	InstanceName string `pulumi:"instanceName"`
-	PageSize     *int   `pulumi:"pageSize"`
+	Id             string                                     `pulumi:"id"`
+	InstanceName   string                                     `pulumi:"instanceName"`
+	PageSize       *int                                       `pulumi:"pageSize"`
+	ProviderConfig *GetDatabaseDatabaseCatalogsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetDatabaseDatabaseCatalogsOutput(ctx *pulumi.Context, args GetDatabaseDatabaseCatalogsOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseDatabaseCatalogsResultOutput {
@@ -54,6 +57,8 @@ type GetDatabaseDatabaseCatalogsOutputArgs struct {
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// Upper bound for items returned
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDatabaseDatabaseCatalogsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetDatabaseDatabaseCatalogsOutputArgs) ElementType() reflect.Type {
@@ -92,6 +97,12 @@ func (o GetDatabaseDatabaseCatalogsResultOutput) InstanceName() pulumi.StringOut
 
 func (o GetDatabaseDatabaseCatalogsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetDatabaseDatabaseCatalogsResultOutput) ProviderConfig() GetDatabaseDatabaseCatalogsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) *GetDatabaseDatabaseCatalogsProviderConfig {
+		return v.ProviderConfig
+	}).(GetDatabaseDatabaseCatalogsProviderConfigPtrOutput)
 }
 
 func init() {

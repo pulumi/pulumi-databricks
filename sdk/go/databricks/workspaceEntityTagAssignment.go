@@ -69,6 +69,8 @@ type WorkspaceEntityTagAssignment struct {
 	EntityId pulumi.StringOutput `pulumi:"entityId"`
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig WorkspaceEntityTagAssignmentProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringOutput `pulumi:"tagKey"`
 	// The value of the tag
@@ -118,6 +120,8 @@ type workspaceEntityTagAssignmentState struct {
 	EntityId *string `pulumi:"entityId"`
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType *string `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *WorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey *string `pulumi:"tagKey"`
 	// The value of the tag
@@ -129,6 +133,8 @@ type WorkspaceEntityTagAssignmentState struct {
 	EntityId pulumi.StringPtrInput
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig WorkspaceEntityTagAssignmentProviderConfigPtrInput
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringPtrInput
 	// The value of the tag
@@ -144,6 +150,8 @@ type workspaceEntityTagAssignmentArgs struct {
 	EntityId string `pulumi:"entityId"`
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *WorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey string `pulumi:"tagKey"`
 	// The value of the tag
@@ -156,6 +164,8 @@ type WorkspaceEntityTagAssignmentArgs struct {
 	EntityId pulumi.StringInput
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig WorkspaceEntityTagAssignmentProviderConfigPtrInput
 	// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey pulumi.StringInput
 	// The value of the tag
@@ -257,6 +267,13 @@ func (o WorkspaceEntityTagAssignmentOutput) EntityId() pulumi.StringOutput {
 // The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 func (o WorkspaceEntityTagAssignmentOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceEntityTagAssignment) pulumi.StringOutput { return v.EntityType }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o WorkspaceEntityTagAssignmentOutput) ProviderConfig() WorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+	return o.ApplyT(func(v *WorkspaceEntityTagAssignment) WorkspaceEntityTagAssignmentProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(WorkspaceEntityTagAssignmentProviderConfigPtrOutput)
 }
 
 // The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed

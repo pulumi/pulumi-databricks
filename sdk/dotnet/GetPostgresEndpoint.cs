@@ -121,6 +121,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetPostgresEndpointProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetPostgresEndpointArgs()
         {
         }
@@ -135,6 +141,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetPostgresEndpointProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetPostgresEndpointInvokeArgs()
         {
@@ -164,6 +176,7 @@ namespace Pulumi.Databricks
         /// Format: projects/{project_id}/branches/{branch_id}
         /// </summary>
         public readonly string Parent;
+        public readonly Outputs.GetPostgresEndpointProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         /// </summary>
@@ -191,6 +204,8 @@ namespace Pulumi.Databricks
 
             string parent,
 
+            Outputs.GetPostgresEndpointProviderConfigResult? providerConfig,
+
             Outputs.GetPostgresEndpointSpecResult spec,
 
             Outputs.GetPostgresEndpointStatusResult status,
@@ -203,6 +218,7 @@ namespace Pulumi.Databricks
             Id = id;
             Name = name;
             Parent = parent;
+            ProviderConfig = providerConfig;
             Spec = spec;
             Status = status;
             Uid = uid;

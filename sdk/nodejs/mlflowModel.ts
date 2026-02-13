@@ -88,6 +88,10 @@ export class MlflowModel extends pulumi.CustomResource {
      * Name of MLflow model. Change of name triggers new resource.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.MlflowModelProviderConfig | undefined>;
     declare public /*out*/ readonly registeredModelId: pulumi.Output<string>;
     /**
      * Tags for the MLflow model.
@@ -109,12 +113,14 @@ export class MlflowModel extends pulumi.CustomResource {
             const state = argsOrState as MlflowModelState | undefined;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["registeredModelId"] = state?.registeredModelId;
             resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as MlflowModelArgs | undefined;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["registeredModelId"] = undefined /*out*/;
         }
@@ -135,6 +141,10 @@ export interface MlflowModelState {
      * Name of MLflow model. Change of name triggers new resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MlflowModelProviderConfig>;
     registeredModelId?: pulumi.Input<string>;
     /**
      * Tags for the MLflow model.
@@ -154,6 +164,10 @@ export interface MlflowModelArgs {
      * Name of MLflow model. Change of name triggers new resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MlflowModelProviderConfig>;
     /**
      * Tags for the MLflow model.
      */

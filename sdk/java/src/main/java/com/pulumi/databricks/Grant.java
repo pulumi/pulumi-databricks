@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.GrantArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.GrantState;
+import com.pulumi.databricks.outputs.GrantProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +31,8 @@ import javax.annotation.Nullable;
  * 
  * - `principal` - User name, group name or service principal application ID.
  * - `privileges` - One or more privileges that are specific to a securable type.
+ * - `providerConfig` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+ *   - `workspaceId` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
  * 
  * For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
  * 
@@ -865,6 +868,12 @@ public class Grant extends com.pulumi.resources.CustomResource {
 
     public Output<List<String>> privileges() {
         return this.privileges;
+    }
+    @Export(name="providerConfig", refs={GrantProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ GrantProviderConfig> providerConfig;
+
+    public Output<Optional<GrantProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="recipient", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> recipient;

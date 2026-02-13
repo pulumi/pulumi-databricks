@@ -113,6 +113,10 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.PostgresProjectProviderConfig | undefined>;
+    /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresProjectSpec>;
@@ -145,6 +149,7 @@ export class PostgresProject extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
             resourceInputs["uid"] = state?.uid;
@@ -155,6 +160,7 @@ export class PostgresProject extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -187,6 +193,10 @@ export interface PostgresProjectState {
      */
     projectId?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig>;
+    /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
     spec?: pulumi.Input<inputs.PostgresProjectSpec>;
@@ -214,6 +224,10 @@ export interface PostgresProjectArgs {
      * For example, `my-app` becomes `projects/my-app`
      */
     projectId: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig>;
     /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */

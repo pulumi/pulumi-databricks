@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.DatabaseInstanceChildInstanceRefArgs;
 import com.pulumi.databricks.inputs.DatabaseInstanceCustomTagArgs;
 import com.pulumi.databricks.inputs.DatabaseInstanceEffectiveCustomTagArgs;
 import com.pulumi.databricks.inputs.DatabaseInstanceParentInstanceRefArgs;
+import com.pulumi.databricks.inputs.DatabaseInstanceProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -354,6 +355,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DatabaseInstanceProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<DatabaseInstanceProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Purge the resource on delete
      * 
      */
@@ -501,6 +517,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.nodeCount = $.nodeCount;
         this.parentInstanceRef = $.parentInstanceRef;
         this.pgVersion = $.pgVersion;
+        this.providerConfig = $.providerConfig;
         this.purgeOnDelete = $.purgeOnDelete;
         this.readOnlyDns = $.readOnlyDns;
         this.readWriteDns = $.readWriteDns;
@@ -1005,6 +1022,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder pgVersion(String pgVersion) {
             return pgVersion(Output.of(pgVersion));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DatabaseInstanceProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DatabaseInstanceProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -41,6 +41,10 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - The path to the template within the Git repository
         /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetAppsSettingsCustomTemplatesTemplateProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetAppsSettingsCustomTemplatesTemplateResult(
@@ -56,7 +60,9 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
-            string path)
+            string path,
+
+            Outputs.GetAppsSettingsCustomTemplatesTemplateProviderConfigResult? providerConfig)
         {
             Creator = creator;
             Description = description;
@@ -65,6 +71,7 @@ namespace Pulumi.Databricks.Outputs
             Manifest = manifest;
             Name = name;
             Path = path;
+            ProviderConfig = providerConfig;
         }
     }
 }

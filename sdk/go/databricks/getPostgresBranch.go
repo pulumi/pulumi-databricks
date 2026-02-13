@@ -58,6 +58,8 @@ type LookupPostgresBranchArgs struct {
 	// Output only. The full resource path of the branch.
 	// Format: projects/{project_id}/branches/{branch_id}
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresBranchProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getPostgresBranch.
@@ -71,7 +73,8 @@ type LookupPostgresBranchResult struct {
 	Name string `pulumi:"name"`
 	// (string) - The project containing this branch (API resource hierarchy).
 	// Format: projects/{project_id}
-	Parent string `pulumi:"parent"`
+	Parent         string                           `pulumi:"parent"`
+	ProviderConfig *GetPostgresBranchProviderConfig `pulumi:"providerConfig"`
 	// (BranchSpec) - The spec contains the branch configuration
 	Spec GetPostgresBranchSpec `pulumi:"spec"`
 	// (BranchStatus) - The current status of a Branch
@@ -96,6 +99,8 @@ type LookupPostgresBranchOutputArgs struct {
 	// Output only. The full resource path of the branch.
 	// Format: projects/{project_id}/branches/{branch_id}
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresBranchProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupPostgresBranchOutputArgs) ElementType() reflect.Type {
@@ -137,6 +142,10 @@ func (o LookupPostgresBranchResultOutput) Name() pulumi.StringOutput {
 // Format: projects/{project_id}
 func (o LookupPostgresBranchResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+func (o LookupPostgresBranchResultOutput) ProviderConfig() GetPostgresBranchProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupPostgresBranchResult) *GetPostgresBranchProviderConfig { return v.ProviderConfig }).(GetPostgresBranchProviderConfigPtrOutput)
 }
 
 // (BranchSpec) - The spec contains the branch configuration

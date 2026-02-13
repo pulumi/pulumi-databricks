@@ -30,6 +30,7 @@ class LakehouseMonitorArgs:
                  inference_log: Optional[pulumi.Input['LakehouseMonitorInferenceLogArgs']] = None,
                  latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input['LakehouseMonitorNotificationsArgs']] = None,
+                 provider_config: Optional[pulumi.Input['LakehouseMonitorProviderConfigArgs']] = None,
                  schedule: Optional[pulumi.Input['LakehouseMonitorScheduleArgs']] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -69,6 +70,8 @@ class LakehouseMonitorArgs:
             pulumi.set(__self__, "latest_monitor_failure_msg", latest_monitor_failure_msg)
         if notifications is not None:
             pulumi.set(__self__, "notifications", notifications)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if skip_builtin_dashboard is not None:
@@ -189,6 +192,15 @@ class LakehouseMonitorArgs:
         pulumi.set(self, "notifications", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['LakehouseMonitorProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['LakehouseMonitorProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['LakehouseMonitorScheduleArgs']]:
         """
@@ -276,6 +288,7 @@ class _LakehouseMonitorState:
                  notifications: Optional[pulumi.Input['LakehouseMonitorNotificationsArgs']] = None,
                  output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['LakehouseMonitorProviderConfigArgs']] = None,
                  schedule: Optional[pulumi.Input['LakehouseMonitorScheduleArgs']] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -331,6 +344,8 @@ class _LakehouseMonitorState:
             pulumi.set(__self__, "output_schema_name", output_schema_name)
         if profile_metrics_table_name is not None:
             pulumi.set(__self__, "profile_metrics_table_name", profile_metrics_table_name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if skip_builtin_dashboard is not None:
@@ -491,6 +506,15 @@ class _LakehouseMonitorState:
         pulumi.set(self, "profile_metrics_table_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['LakehouseMonitorProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['LakehouseMonitorProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['LakehouseMonitorScheduleArgs']]:
         """
@@ -601,6 +625,7 @@ class LakehouseMonitor(pulumi.CustomResource):
                  latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']]] = None,
                  output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['LakehouseMonitorProviderConfigArgs', 'LakehouseMonitorProviderConfigArgsDict']]] = None,
                  schedule: Optional[pulumi.Input[Union['LakehouseMonitorScheduleArgs', 'LakehouseMonitorScheduleArgsDict']]] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -842,6 +867,7 @@ class LakehouseMonitor(pulumi.CustomResource):
                  latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']]] = None,
                  output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['LakehouseMonitorProviderConfigArgs', 'LakehouseMonitorProviderConfigArgsDict']]] = None,
                  schedule: Optional[pulumi.Input[Union['LakehouseMonitorScheduleArgs', 'LakehouseMonitorScheduleArgsDict']]] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -870,6 +896,7 @@ class LakehouseMonitor(pulumi.CustomResource):
             if output_schema_name is None and not opts.urn:
                 raise TypeError("Missing required property 'output_schema_name'")
             __props__.__dict__["output_schema_name"] = output_schema_name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["skip_builtin_dashboard"] = skip_builtin_dashboard
             __props__.__dict__["slicing_exprs"] = slicing_exprs
@@ -906,6 +933,7 @@ class LakehouseMonitor(pulumi.CustomResource):
             notifications: Optional[pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']]] = None,
             output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
             profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['LakehouseMonitorProviderConfigArgs', 'LakehouseMonitorProviderConfigArgsDict']]] = None,
             schedule: Optional[pulumi.Input[Union['LakehouseMonitorScheduleArgs', 'LakehouseMonitorScheduleArgsDict']]] = None,
             skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
             slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -958,6 +986,7 @@ class LakehouseMonitor(pulumi.CustomResource):
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["output_schema_name"] = output_schema_name
         __props__.__dict__["profile_metrics_table_name"] = profile_metrics_table_name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["skip_builtin_dashboard"] = skip_builtin_dashboard
         __props__.__dict__["slicing_exprs"] = slicing_exprs
@@ -1061,6 +1090,11 @@ class LakehouseMonitor(pulumi.CustomResource):
         The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         """
         return pulumi.get(self, "profile_metrics_table_name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.LakehouseMonitorProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

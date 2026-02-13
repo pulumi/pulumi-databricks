@@ -11,7 +11,9 @@ import com.pulumi.databricks.AutomaticClusterUpdateWorkspaceSettingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AutomaticClusterUpdateWorkspaceSettingState;
 import com.pulumi.databricks.outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace;
+import com.pulumi.databricks.outputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @ResourceType(type="databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting")
@@ -27,6 +29,12 @@ public class AutomaticClusterUpdateWorkspaceSetting extends com.pulumi.resources
 
     public Output<String> etag() {
         return this.etag;
+    }
+    @Export(name="providerConfig", refs={AutomaticClusterUpdateWorkspaceSettingProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AutomaticClusterUpdateWorkspaceSettingProviderConfig> providerConfig;
+
+    public Output<Optional<AutomaticClusterUpdateWorkspaceSettingProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="settingName", refs={String.class}, tree="[0]")
     private Output<String> settingName;

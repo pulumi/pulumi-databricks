@@ -5,10 +5,13 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatus;
+import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTableProviderConfig;
 import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTableSpec;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseSyncedDatabaseTableResult {
@@ -55,6 +58,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
      * 
      */
     private String name;
+    private @Nullable GetDatabaseSyncedDatabaseTableProviderConfig providerConfig;
     /**
      * @return (SyncedTableSpec)
      * 
@@ -126,6 +130,9 @@ public final class GetDatabaseSyncedDatabaseTableResult {
     public String name() {
         return this.name;
     }
+    public Optional<GetDatabaseSyncedDatabaseTableProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (SyncedTableSpec)
      * 
@@ -159,6 +166,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
         private String id;
         private String logicalDatabaseName;
         private String name;
+        private @Nullable GetDatabaseSyncedDatabaseTableProviderConfig providerConfig;
         private GetDatabaseSyncedDatabaseTableSpec spec;
         private String unityCatalogProvisioningState;
         public Builder() {}
@@ -171,6 +179,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
     	      this.id = defaults.id;
     	      this.logicalDatabaseName = defaults.logicalDatabaseName;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
     	      this.unityCatalogProvisioningState = defaults.unityCatalogProvisioningState;
         }
@@ -232,6 +241,12 @@ public final class GetDatabaseSyncedDatabaseTableResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDatabaseSyncedDatabaseTableProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spec(GetDatabaseSyncedDatabaseTableSpec spec) {
             if (spec == null) {
               throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTableResult", "spec");
@@ -256,6 +271,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
             _resultValue.id = id;
             _resultValue.logicalDatabaseName = logicalDatabaseName;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;
             _resultValue.unityCatalogProvisioningState = unityCatalogProvisioningState;
             return _resultValue;

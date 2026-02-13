@@ -26,6 +26,7 @@ class ModelServingProvisionedThroughputArgs:
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  email_notifications: Optional[pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ModelServingProvisionedThroughputProviderConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]]] = None):
         """
         The set of arguments for constructing a ModelServingProvisionedThroughput resource.
@@ -34,6 +35,7 @@ class ModelServingProvisionedThroughputArgs:
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
         :param pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs'] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+        :param pulumi.Input['ModelServingProvisionedThroughputProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         pulumi.set(__self__, "config", config)
@@ -45,6 +47,8 @@ class ModelServingProvisionedThroughputArgs:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -109,6 +113,18 @@ class ModelServingProvisionedThroughputArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]]]:
         """
@@ -129,6 +145,7 @@ class _ModelServingProvisionedThroughputState:
                  config: Optional[pulumi.Input['ModelServingProvisionedThroughputConfigArgs']] = None,
                  email_notifications: Optional[pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ModelServingProvisionedThroughputProviderConfigArgs']] = None,
                  serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]]] = None):
         """
@@ -138,6 +155,7 @@ class _ModelServingProvisionedThroughputState:
         :param pulumi.Input['ModelServingProvisionedThroughputConfigArgs'] config: The model serving endpoint configuration.
         :param pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs'] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+        :param pulumi.Input['ModelServingProvisionedThroughputProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
@@ -151,6 +169,8 @@ class _ModelServingProvisionedThroughputState:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if serving_endpoint_id is not None:
             pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
         if tags is not None:
@@ -217,6 +237,18 @@ class _ModelServingProvisionedThroughputState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="servingEndpointId")
     def serving_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -252,6 +284,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
                  config: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']]] = None,
                  email_notifications: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputProviderConfigArgs', 'ModelServingProvisionedThroughputProviderConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -308,6 +341,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         :param pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']] config: The model serving endpoint configuration.
         :param pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+        :param pulumi.Input[Union['ModelServingProvisionedThroughputProviderConfigArgs', 'ModelServingProvisionedThroughputProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         ...
@@ -383,6 +417,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
                  config: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']]] = None,
                  email_notifications: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputProviderConfigArgs', 'ModelServingProvisionedThroughputProviderConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -400,6 +435,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
             __props__.__dict__["config"] = config
             __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["tags"] = tags
             __props__.__dict__["serving_endpoint_id"] = None
         super(ModelServingProvisionedThroughput, __self__).__init__(
@@ -417,6 +453,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
             config: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']]] = None,
             email_notifications: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputProviderConfigArgs', 'ModelServingProvisionedThroughputProviderConfigArgsDict']]] = None,
             serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]]] = None) -> 'ModelServingProvisionedThroughput':
         """
@@ -431,6 +468,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         :param pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']] config: The model serving endpoint configuration.
         :param pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+        :param pulumi.Input[Union['ModelServingProvisionedThroughputProviderConfigArgs', 'ModelServingProvisionedThroughputProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
@@ -443,6 +481,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         __props__.__dict__["config"] = config
         __props__.__dict__["email_notifications"] = email_notifications
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
         __props__.__dict__["tags"] = tags
         return ModelServingProvisionedThroughput(resource_name, opts=opts, __props__=__props__)
@@ -486,6 +525,14 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ModelServingProvisionedThroughputProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="servingEndpointId")

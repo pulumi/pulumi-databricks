@@ -150,6 +150,12 @@ namespace Pulumi.Databricks
         [Input("objectType", required: true)]
         public string ObjectType { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetQualityMonitorV2ProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetQualityMonitorV2Args()
         {
         }
@@ -169,6 +175,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetQualityMonitorV2ProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetQualityMonitorV2InvokeArgs()
         {
@@ -196,6 +208,7 @@ namespace Pulumi.Databricks
         /// (string) - The type of the monitored object. Can be one of the following: schema
         /// </summary>
         public readonly string ObjectType;
+        public readonly Outputs.GetQualityMonitorV2ProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
         /// </summary>
@@ -211,12 +224,15 @@ namespace Pulumi.Databricks
 
             string objectType,
 
+            Outputs.GetQualityMonitorV2ProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetQualityMonitorV2ValidityCheckConfigurationResult> validityCheckConfigurations)
         {
             AnomalyDetectionConfig = anomalyDetectionConfig;
             Id = id;
             ObjectId = objectId;
             ObjectType = objectType;
+            ProviderConfig = providerConfig;
             ValidityCheckConfigurations = validityCheckConfigurations;
         }
     }

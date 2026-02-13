@@ -166,6 +166,10 @@ export class Recipient extends pulumi.CustomResource {
      */
     declare public readonly propertiesKvpairs: pulumi.Output<outputs.RecipientPropertiesKvpairs | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.RecipientProviderConfig | undefined>;
+    /**
      * Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      */
     declare public /*out*/ readonly region: pulumi.Output<string>;
@@ -213,6 +217,7 @@ export class Recipient extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["propertiesKvpairs"] = state?.propertiesKvpairs;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["region"] = state?.region;
             resourceInputs["sharingCode"] = state?.sharingCode;
             resourceInputs["tokens"] = state?.tokens;
@@ -231,6 +236,7 @@ export class Recipient extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["propertiesKvpairs"] = args?.propertiesKvpairs;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["sharingCode"] = args?.sharingCode ? pulumi.secret(args.sharingCode) : undefined;
             resourceInputs["tokens"] = args?.tokens;
             resourceInputs["activated"] = undefined /*out*/;
@@ -308,6 +314,10 @@ export interface RecipientState {
      */
     propertiesKvpairs?: pulumi.Input<inputs.RecipientPropertiesKvpairs>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.RecipientProviderConfig>;
+    /**
      * Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      */
     region?: pulumi.Input<string>;
@@ -365,6 +375,10 @@ export interface RecipientArgs {
      * Recipient properties - object consisting of following fields:
      */
     propertiesKvpairs?: pulumi.Input<inputs.RecipientPropertiesKvpairs>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.RecipientProviderConfig>;
     /**
      * The one-time sharing code provided by the data recipient.
      */

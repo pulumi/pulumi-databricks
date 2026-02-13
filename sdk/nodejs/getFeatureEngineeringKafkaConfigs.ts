@@ -14,6 +14,7 @@ export function getFeatureEngineeringKafkaConfigs(args?: GetFeatureEngineeringKa
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getFeatureEngineeringKafkaConfigs:getFeatureEngineeringKafkaConfigs", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -25,6 +26,10 @@ export interface GetFeatureEngineeringKafkaConfigsArgs {
      * The maximum number of results to return
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetFeatureEngineeringKafkaConfigsProviderConfig;
 }
 
 /**
@@ -37,6 +42,7 @@ export interface GetFeatureEngineeringKafkaConfigsResult {
     readonly id: string;
     readonly kafkaConfigs: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfig[];
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetFeatureEngineeringKafkaConfigsProviderConfig;
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -46,6 +52,7 @@ export function getFeatureEngineeringKafkaConfigsOutput(args?: GetFeatureEnginee
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getFeatureEngineeringKafkaConfigs:getFeatureEngineeringKafkaConfigs", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -57,4 +64,8 @@ export interface GetFeatureEngineeringKafkaConfigsOutputArgs {
      * The maximum number of results to return
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringKafkaConfigsProviderConfigArgs>;
 }

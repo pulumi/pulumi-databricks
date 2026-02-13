@@ -102,6 +102,12 @@ namespace Pulumi.Databricks
         [Output("numIndexes")]
         public Output<int> NumIndexes { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.VectorSearchEndpointProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a VectorSearchEndpoint resource with the given unique name, arguments, and options.
@@ -165,6 +171,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.VectorSearchEndpointProviderConfigArgs>? ProviderConfig { get; set; }
 
         public VectorSearchEndpointArgs()
         {
@@ -245,6 +257,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("numIndexes")]
         public Input<int>? NumIndexes { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.VectorSearchEndpointProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public VectorSearchEndpointState()
         {

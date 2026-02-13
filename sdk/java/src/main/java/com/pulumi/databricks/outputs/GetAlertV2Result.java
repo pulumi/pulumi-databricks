@@ -6,11 +6,14 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAlertV2EffectiveRunAs;
 import com.pulumi.databricks.outputs.GetAlertV2Evaluation;
+import com.pulumi.databricks.outputs.GetAlertV2ProviderConfig;
 import com.pulumi.databricks.outputs.GetAlertV2RunAs;
 import com.pulumi.databricks.outputs.GetAlertV2Schedule;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertV2Result {
@@ -66,6 +69,7 @@ public final class GetAlertV2Result {
      * 
      */
     private String parentPath;
+    private @Nullable GetAlertV2ProviderConfig providerConfig;
     /**
      * @return (string) - Text of the query to be run
      * 
@@ -176,6 +180,9 @@ public final class GetAlertV2Result {
     public String parentPath() {
         return this.parentPath;
     }
+    public Optional<GetAlertV2ProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (string) - Text of the query to be run
      * 
@@ -244,6 +251,7 @@ public final class GetAlertV2Result {
         private String lifecycleState;
         private String ownerUserName;
         private String parentPath;
+        private @Nullable GetAlertV2ProviderConfig providerConfig;
         private String queryText;
         private GetAlertV2RunAs runAs;
         private String runAsUserName;
@@ -263,6 +271,7 @@ public final class GetAlertV2Result {
     	      this.lifecycleState = defaults.lifecycleState;
     	      this.ownerUserName = defaults.ownerUserName;
     	      this.parentPath = defaults.parentPath;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.queryText = defaults.queryText;
     	      this.runAs = defaults.runAs;
     	      this.runAsUserName = defaults.runAsUserName;
@@ -352,6 +361,12 @@ public final class GetAlertV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetAlertV2ProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder queryText(String queryText) {
             if (queryText == null) {
               throw new MissingRequiredPropertyException("GetAlertV2Result", "queryText");
@@ -411,6 +426,7 @@ public final class GetAlertV2Result {
             _resultValue.lifecycleState = lifecycleState;
             _resultValue.ownerUserName = ownerUserName;
             _resultValue.parentPath = parentPath;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.queryText = queryText;
             _resultValue.runAs = runAs;
             _resultValue.runAsUserName = runAsUserName;

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GlobalInitScriptArgs', 'GlobalInitScript']
 
@@ -24,6 +26,7 @@ class GlobalInitScriptArgs:
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  position: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalInitScript resource.
@@ -31,6 +34,7 @@ class GlobalInitScriptArgs:
         :param pulumi.Input[_builtins.bool] enabled: specifies if the script is enabled for execution, or not
         :param pulumi.Input[_builtins.str] name: the name of the script.  It should be unique
         :param pulumi.Input[_builtins.int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input['GlobalInitScriptProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         if content_base64 is not None:
@@ -43,6 +47,8 @@ class GlobalInitScriptArgs:
             pulumi.set(__self__, "name", name)
         if position is not None:
             pulumi.set(__self__, "position", position)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -102,6 +108,18 @@ class GlobalInitScriptArgs:
     @position.setter
     def position(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "position", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -124,6 +142,7 @@ class _GlobalInitScriptState:
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  position: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalInitScript resources.
@@ -131,6 +150,7 @@ class _GlobalInitScriptState:
         :param pulumi.Input[_builtins.bool] enabled: specifies if the script is enabled for execution, or not
         :param pulumi.Input[_builtins.str] name: the name of the script.  It should be unique
         :param pulumi.Input[_builtins.int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input['GlobalInitScriptProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         if content_base64 is not None:
@@ -143,6 +163,8 @@ class _GlobalInitScriptState:
             pulumi.set(__self__, "name", name)
         if position is not None:
             pulumi.set(__self__, "position", position)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -202,6 +224,18 @@ class _GlobalInitScriptState:
     @position.setter
     def position(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "position", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -227,6 +261,7 @@ class GlobalInitScript(pulumi.CustomResource):
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  position: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -240,6 +275,7 @@ class GlobalInitScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: specifies if the script is enabled for execution, or not
         :param pulumi.Input[_builtins.str] name: the name of the script.  It should be unique
         :param pulumi.Input[_builtins.int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         ...
@@ -273,6 +309,7 @@ class GlobalInitScript(pulumi.CustomResource):
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  position: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -288,6 +325,7 @@ class GlobalInitScript(pulumi.CustomResource):
             __props__.__dict__["md5"] = md5
             __props__.__dict__["name"] = name
             __props__.__dict__["position"] = position
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["source"] = source
         super(GlobalInitScript, __self__).__init__(
             'databricks:index/globalInitScript:GlobalInitScript',
@@ -304,6 +342,7 @@ class GlobalInitScript(pulumi.CustomResource):
             md5: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             position: Optional[pulumi.Input[_builtins.int]] = None,
+            provider_config: Optional[pulumi.Input[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None) -> 'GlobalInitScript':
         """
         Get an existing GlobalInitScript resource's state with the given name, id, and optional extra
@@ -316,6 +355,7 @@ class GlobalInitScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: specifies if the script is enabled for execution, or not
         :param pulumi.Input[_builtins.str] name: the name of the script.  It should be unique
         :param pulumi.Input[_builtins.int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -327,6 +367,7 @@ class GlobalInitScript(pulumi.CustomResource):
         __props__.__dict__["md5"] = md5
         __props__.__dict__["name"] = name
         __props__.__dict__["position"] = position
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["source"] = source
         return GlobalInitScript(resource_name, opts=opts, __props__=__props__)
 
@@ -366,6 +407,14 @@ class GlobalInitScript(pulumi.CustomResource):
         the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         """
         return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.GlobalInitScriptProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

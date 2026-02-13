@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -117,6 +119,10 @@ export class DataQualityRefresh extends pulumi.CustomResource {
      */
     declare public readonly objectType: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DataQualityRefreshProviderConfig | undefined>;
+    /**
      * (integer) - Unique id of the refresh operation
      */
     declare public /*out*/ readonly refreshId: pulumi.Output<number>;
@@ -150,6 +156,7 @@ export class DataQualityRefresh extends pulumi.CustomResource {
             resourceInputs["message"] = state?.message;
             resourceInputs["objectId"] = state?.objectId;
             resourceInputs["objectType"] = state?.objectType;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["refreshId"] = state?.refreshId;
             resourceInputs["startTimeMs"] = state?.startTimeMs;
             resourceInputs["state"] = state?.state;
@@ -164,6 +171,7 @@ export class DataQualityRefresh extends pulumi.CustomResource {
             }
             resourceInputs["objectId"] = args?.objectId;
             resourceInputs["objectType"] = args?.objectType;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["endTimeMs"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;
             resourceInputs["refreshId"] = undefined /*out*/;
@@ -205,6 +213,10 @@ export interface DataQualityRefreshState {
      */
     objectType?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DataQualityRefreshProviderConfig>;
+    /**
      * (integer) - Unique id of the refresh operation
      */
     refreshId?: pulumi.Input<number>;
@@ -242,4 +254,8 @@ export interface DataQualityRefreshArgs {
      * The type of the monitored object. Can be one of the following: `schema`or `table`
      */
     objectType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DataQualityRefreshProviderConfig>;
 }

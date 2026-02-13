@@ -94,6 +94,7 @@ export class SqlAlert extends pulumi.CustomResource {
      * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
      */
     declare public readonly parent: pulumi.Output<string | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlAlertProviderConfig | undefined>;
     /**
      * ID of the query evaluated by the alert.
      */
@@ -121,6 +122,7 @@ export class SqlAlert extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["options"] = state?.options;
             resourceInputs["parent"] = state?.parent;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["queryId"] = state?.queryId;
             resourceInputs["rearm"] = state?.rearm;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -136,6 +138,7 @@ export class SqlAlert extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["options"] = args?.options;
             resourceInputs["parent"] = args?.parent;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["queryId"] = args?.queryId;
             resourceInputs["rearm"] = args?.rearm;
             resourceInputs["updatedAt"] = args?.updatedAt;
@@ -162,6 +165,7 @@ export interface SqlAlertState {
      * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
      */
     parent?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.SqlAlertProviderConfig>;
     /**
      * ID of the query evaluated by the alert.
      */
@@ -190,6 +194,7 @@ export interface SqlAlertArgs {
      * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
      */
     parent?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.SqlAlertProviderConfig>;
     /**
      * ID of the query evaluated by the alert.
      */

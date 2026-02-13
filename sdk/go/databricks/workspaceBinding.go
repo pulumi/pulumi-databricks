@@ -66,6 +66,8 @@ type WorkspaceBinding struct {
 	BindingType pulumi.StringPtrOutput `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrOutput `pulumi:"catalogName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig WorkspaceBindingProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringOutput `pulumi:"securableName"`
 	// Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -111,6 +113,8 @@ type workspaceBindingState struct {
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName *string `pulumi:"catalogName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *WorkspaceBindingProviderConfig `pulumi:"providerConfig"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `pulumi:"securableName"`
 	// Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -124,6 +128,8 @@ type WorkspaceBindingState struct {
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig WorkspaceBindingProviderConfigPtrInput
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringPtrInput
 	// Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -141,6 +147,8 @@ type workspaceBindingArgs struct {
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName *string `pulumi:"catalogName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *WorkspaceBindingProviderConfig `pulumi:"providerConfig"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `pulumi:"securableName"`
 	// Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -155,6 +163,8 @@ type WorkspaceBindingArgs struct {
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig WorkspaceBindingProviderConfigPtrInput
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringPtrInput
 	// Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -258,6 +268,11 @@ func (o WorkspaceBindingOutput) BindingType() pulumi.StringPtrOutput {
 // Deprecated: Please use 'securable_name' and 'securable_type instead.
 func (o WorkspaceBindingOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceBinding) pulumi.StringPtrOutput { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o WorkspaceBindingOutput) ProviderConfig() WorkspaceBindingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *WorkspaceBinding) WorkspaceBindingProviderConfigPtrOutput { return v.ProviderConfig }).(WorkspaceBindingProviderConfigPtrOutput)
 }
 
 // Name of securable. Change forces creation of a new resource.

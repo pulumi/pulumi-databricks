@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // This data source can be used to get a single account setting.
 //
@@ -32,6 +32,8 @@ func LookupWorkspaceSettingV2(ctx *pulumi.Context, args *LookupWorkspaceSettingV
 type LookupWorkspaceSettingV2Args struct {
 	// Name of the setting
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetWorkspaceSettingV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getWorkspaceSettingV2.
@@ -68,6 +70,7 @@ type LookupWorkspaceSettingV2Result struct {
 	Name string `pulumi:"name"`
 	// (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 	PersonalCompute GetWorkspaceSettingV2PersonalCompute `pulumi:"personalCompute"`
+	ProviderConfig  *GetWorkspaceSettingV2ProviderConfig `pulumi:"providerConfig"`
 	// (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 	RestrictWorkspaceAdmins GetWorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	// (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
@@ -87,6 +90,8 @@ func LookupWorkspaceSettingV2Output(ctx *pulumi.Context, args LookupWorkspaceSet
 type LookupWorkspaceSettingV2OutputArgs struct {
 	// Name of the setting
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetWorkspaceSettingV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupWorkspaceSettingV2OutputArgs) ElementType() reflect.Type {
@@ -208,6 +213,10 @@ func (o LookupWorkspaceSettingV2ResultOutput) Name() pulumi.StringOutput {
 // (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) PersonalCompute() GetWorkspaceSettingV2PersonalComputeOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2PersonalCompute { return v.PersonalCompute }).(GetWorkspaceSettingV2PersonalComputeOutput)
+}
+
+func (o LookupWorkspaceSettingV2ResultOutput) ProviderConfig() GetWorkspaceSettingV2ProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) *GetWorkspaceSettingV2ProviderConfig { return v.ProviderConfig }).(GetWorkspaceSettingV2ProviderConfigPtrOutput)
 }
 
 // (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value

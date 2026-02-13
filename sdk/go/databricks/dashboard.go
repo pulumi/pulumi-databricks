@@ -77,6 +77,8 @@ type Dashboard struct {
 	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath pulumi.StringOutput `pulumi:"parentPath"`
 	Path       pulumi.StringOutput `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig DashboardProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
 	SerializedDashboard pulumi.StringPtrOutput `pulumi:"serializedDashboard"`
 	UpdateTime          pulumi.StringOutput    `pulumi:"updateTime"`
@@ -142,6 +144,8 @@ type dashboardState struct {
 	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath *string `pulumi:"parentPath"`
 	Path       *string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *DashboardProviderConfig `pulumi:"providerConfig"`
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
 	SerializedDashboard *string `pulumi:"serializedDashboard"`
 	UpdateTime          *string `pulumi:"updateTime"`
@@ -169,6 +173,8 @@ type DashboardState struct {
 	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath pulumi.StringPtrInput
 	Path       pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig DashboardProviderConfigPtrInput
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
 	SerializedDashboard pulumi.StringPtrInput
 	UpdateTime          pulumi.StringPtrInput
@@ -200,6 +206,8 @@ type dashboardArgs struct {
 	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath string  `pulumi:"parentPath"`
 	Path       *string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *DashboardProviderConfig `pulumi:"providerConfig"`
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
 	SerializedDashboard *string `pulumi:"serializedDashboard"`
 	UpdateTime          *string `pulumi:"updateTime"`
@@ -228,6 +236,8 @@ type DashboardArgs struct {
 	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 	ParentPath pulumi.StringInput
 	Path       pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig DashboardProviderConfigPtrInput
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
 	SerializedDashboard pulumi.StringPtrInput
 	UpdateTime          pulumi.StringPtrInput
@@ -378,6 +388,11 @@ func (o DashboardOutput) ParentPath() pulumi.StringOutput {
 
 func (o DashboardOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o DashboardOutput) ProviderConfig() DashboardProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardProviderConfigPtrOutput { return v.ProviderConfig }).(DashboardProviderConfigPtrOutput)
 }
 
 // The contents of the dashboard in serialized string form. Conflicts with `filePath`.

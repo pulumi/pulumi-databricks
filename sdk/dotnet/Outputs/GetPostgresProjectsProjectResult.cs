@@ -23,6 +23,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetPostgresProjectsProjectProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (ProjectSpec) - The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
         public readonly Outputs.GetPostgresProjectsProjectSpecResult Spec;
@@ -45,6 +49,8 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            Outputs.GetPostgresProjectsProjectProviderConfigResult? providerConfig,
+
             Outputs.GetPostgresProjectsProjectSpecResult spec,
 
             Outputs.GetPostgresProjectsProjectStatusResult status,
@@ -55,6 +61,7 @@ namespace Pulumi.Databricks.Outputs
         {
             CreateTime = createTime;
             Name = name;
+            ProviderConfig = providerConfig;
             Spec = spec;
             Status = status;
             Uid = uid;

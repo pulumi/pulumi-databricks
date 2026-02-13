@@ -6,9 +6,12 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
@@ -48,6 +51,11 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
      * 
      */
     private String pipelineScheduleState;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfig providerConfig;
     /**
      * @return (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      * 
@@ -106,6 +114,13 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
         return this.pipelineScheduleState;
     }
     /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    /**
      * @return (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      * 
      */
@@ -129,6 +144,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
         private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig offlineStoreConfig;
         private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig onlineStoreConfig;
         private String pipelineScheduleState;
+        private @Nullable GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfig providerConfig;
         private String tableName;
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeaturesMaterializedFeature defaults) {
@@ -140,6 +156,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
     	      this.offlineStoreConfig = defaults.offlineStoreConfig;
     	      this.onlineStoreConfig = defaults.onlineStoreConfig;
     	      this.pipelineScheduleState = defaults.pipelineScheduleState;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tableName = defaults.tableName;
         }
 
@@ -200,6 +217,12 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableName(String tableName) {
             if (tableName == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeaturesMaterializedFeature", "tableName");
@@ -216,6 +239,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
             _resultValue.offlineStoreConfig = offlineStoreConfig;
             _resultValue.onlineStoreConfig = onlineStoreConfig;
             _resultValue.pipelineScheduleState = pipelineScheduleState;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tableName = tableName;
             return _resultValue;
         }

@@ -76,6 +76,7 @@ export class DisableLegacyFeaturesSetting extends pulumi.CustomResource {
      */
     declare public readonly disableLegacyFeatures: pulumi.Output<outputs.DisableLegacyFeaturesSettingDisableLegacyFeatures>;
     declare public readonly etag: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DisableLegacyFeaturesSettingProviderConfig | undefined>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -93,6 +94,7 @@ export class DisableLegacyFeaturesSetting extends pulumi.CustomResource {
             const state = argsOrState as DisableLegacyFeaturesSettingState | undefined;
             resourceInputs["disableLegacyFeatures"] = state?.disableLegacyFeatures;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as DisableLegacyFeaturesSettingArgs | undefined;
@@ -101,6 +103,7 @@ export class DisableLegacyFeaturesSetting extends pulumi.CustomResource {
             }
             resourceInputs["disableLegacyFeatures"] = args?.disableLegacyFeatures;
             resourceInputs["etag"] = args?.etag;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -117,6 +120,7 @@ export interface DisableLegacyFeaturesSettingState {
      */
     disableLegacyFeatures?: pulumi.Input<inputs.DisableLegacyFeaturesSettingDisableLegacyFeatures>;
     etag?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.DisableLegacyFeaturesSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }
 
@@ -129,5 +133,6 @@ export interface DisableLegacyFeaturesSettingArgs {
      */
     disableLegacyFeatures: pulumi.Input<inputs.DisableLegacyFeaturesSettingDisableLegacyFeatures>;
     etag?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.DisableLegacyFeaturesSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }

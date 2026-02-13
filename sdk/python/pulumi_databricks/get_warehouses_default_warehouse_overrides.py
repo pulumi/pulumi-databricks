@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetWarehousesDefaultWarehouseOverridesResult',
@@ -27,7 +28,7 @@ class GetWarehousesDefaultWarehouseOverridesResult:
     """
     A collection of values returned by getWarehousesDefaultWarehouseOverrides.
     """
-    def __init__(__self__, default_warehouse_overrides=None, id=None, page_size=None):
+    def __init__(__self__, default_warehouse_overrides=None, id=None, page_size=None, provider_config=None):
         if default_warehouse_overrides and not isinstance(default_warehouse_overrides, list):
             raise TypeError("Expected argument 'default_warehouse_overrides' to be a list")
         pulumi.set(__self__, "default_warehouse_overrides", default_warehouse_overrides)
@@ -37,6 +38,9 @@ class GetWarehousesDefaultWarehouseOverridesResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="defaultWarehouseOverrides")
@@ -56,6 +60,11 @@ class GetWarehousesDefaultWarehouseOverridesResult:
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetWarehousesDefaultWarehouseOverridesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetWarehousesDefaultWarehouseOverridesResult(GetWarehousesDefaultWarehouseOverridesResult):
     # pylint: disable=using-constant-test
@@ -65,13 +74,15 @@ class AwaitableGetWarehousesDefaultWarehouseOverridesResult(GetWarehousesDefault
         return GetWarehousesDefaultWarehouseOverridesResult(
             default_warehouse_overrides=self.default_warehouse_overrides,
             id=self.id,
-            page_size=self.page_size)
+            page_size=self.page_size,
+            provider_config=self.provider_config)
 
 
 def get_warehouses_default_warehouse_overrides(page_size: Optional[_builtins.int] = None,
+                                               provider_config: Optional[Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict']] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWarehousesDefaultWarehouseOverridesResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source can be used to list all default warehouse overrides in the workspace.
 
@@ -84,20 +95,24 @@ def get_warehouses_default_warehouse_overrides(page_size: Optional[_builtins.int
            this value.
            If unspecified, at most 100 overrides will be returned.
            The maximum value is 1000; values above 1000 will be coerced to 1000
+    :param Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides', __args__, opts=opts, typ=GetWarehousesDefaultWarehouseOverridesResult).value
 
     return AwaitableGetWarehousesDefaultWarehouseOverridesResult(
         default_warehouse_overrides=pulumi.get(__ret__, 'default_warehouse_overrides'),
         id=pulumi.get(__ret__, 'id'),
-        page_size=pulumi.get(__ret__, 'page_size'))
+        page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_warehouses_default_warehouse_overrides_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                                      provider_config: Optional[pulumi.Input[Optional[Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict']]]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWarehousesDefaultWarehouseOverridesResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source can be used to list all default warehouse overrides in the workspace.
 
@@ -110,12 +125,15 @@ def get_warehouses_default_warehouse_overrides_output(page_size: Optional[pulumi
            this value.
            If unspecified, at most 100 overrides will be returned.
            The maximum value is 1000; values above 1000 will be coerced to 1000
+    :param Union['GetWarehousesDefaultWarehouseOverridesProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverridesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides', __args__, opts=opts, typ=GetWarehousesDefaultWarehouseOverridesResult)
     return __ret__.apply(lambda __response__: GetWarehousesDefaultWarehouseOverridesResult(
         default_warehouse_overrides=pulumi.get(__response__, 'default_warehouse_overrides'),
         id=pulumi.get(__response__, 'id'),
-        page_size=pulumi.get(__response__, 'page_size')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

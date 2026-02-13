@@ -326,11 +326,25 @@ export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbedding
     accessPolicyType: string;
 }
 
+export interface AibiDashboardEmbeddingAccessPolicySettingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains {
     /**
      * the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
      */
     approvedDomains: string[];
+}
+
+export interface AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface AlertCondition {
@@ -386,6 +400,13 @@ export interface AlertConditionThresholdValue {
      * string value to compare against string results.
      */
     stringValue?: string;
+}
+
+export interface AlertProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface AlertV2EffectiveRunAs {
@@ -478,6 +499,13 @@ export interface AlertV2EvaluationThresholdValue {
     boolValue?: boolean;
     doubleValue?: number;
     stringValue?: string;
+}
+
+export interface AlertV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface AlertV2RunAs {
@@ -872,6 +900,13 @@ export interface AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     securableType: string;
 }
 
+export interface AppsSettingsCustomTemplateProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
     /**
      * The artifact path or maven coordinate.
@@ -881,6 +916,13 @@ export interface ArtifactAllowlistArtifactMatcher {
      * The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
      */
     matchType: string;
+}
+
+export interface ArtifactAllowlistProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace {
@@ -910,6 +952,10 @@ export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWor
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
     hours: number;
     minutes: number;
+}
+
+export interface AutomaticClusterUpdateWorkspaceSettingProviderConfig {
+    workspaceId: string;
 }
 
 export interface BudgetAlertConfiguration {
@@ -1012,8 +1058,22 @@ export interface CatalogEffectivePredictiveOptimizationFlag {
     value: string;
 }
 
+export interface CatalogProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface CatalogProvisioningInfo {
     state?: string;
+}
+
+export interface CatalogWorkspaceBindingProviderConfig {
+    /**
+     * ID of the workspace. Change forces creation of a new resource.
+     */
+    workspaceId: string;
 }
 
 export interface ClusterAutoscale {
@@ -1245,6 +1305,9 @@ export interface ClusterDockerImageBasicAuth {
 }
 
 export interface ClusterDriverNodeTypeFlexibility {
+    /**
+     * list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+     */
     alternateNodeTypeIds?: string[];
 }
 
@@ -1468,6 +1531,9 @@ export interface ClusterProviderConfig {
 }
 
 export interface ClusterWorkerNodeTypeFlexibility {
+    /**
+     * list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+     */
     alternateNodeTypeIds?: string[];
 }
 
@@ -1501,6 +1567,17 @@ export interface ClusterWorkloadTypeClients {
 export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
     complianceStandards: string[];
     isEnabled: boolean;
+}
+
+export interface ComplianceSecurityProfileWorkspaceSettingProviderConfig {
+    workspaceId: string;
+}
+
+export interface ConnectionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface ConnectionProvisioningInfo {
@@ -1575,6 +1652,13 @@ export interface CustomAppIntegrationTokenAccessPolicy {
      * refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
      */
     refreshTokenTtlInMinutes?: number;
+}
+
+export interface DashboardProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface DataQualityMonitorAnomalyDetectionConfig {
@@ -1733,6 +1817,27 @@ export interface DataQualityMonitorDataProfilingConfigTimeSeries {
     timestampColumn: string;
 }
 
+export interface DataQualityMonitorProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface DataQualityRefreshProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface DatabaseDatabaseCatalogProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface DatabaseInstanceChildInstanceRef {
     /**
      * Branch time of the ref database instance.
@@ -1827,6 +1932,13 @@ export interface DatabaseInstanceParentInstanceRef {
      * (string) - Id of the ref database instance
      */
     uid: string;
+}
+
+export interface DatabaseInstanceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatus {
@@ -2021,6 +2133,13 @@ export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUp
     totalRowCount: number;
 }
 
+export interface DatabaseSyncedDatabaseTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface DatabaseSyncedDatabaseTableSpec {
     /**
      * If true, the synced table's logical database and schema resources in PG
@@ -2090,11 +2209,32 @@ export interface DefaultNamespaceSettingNamespace {
     value?: string;
 }
 
+export interface DefaultNamespaceSettingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface DirectoryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface DisableLegacyAccessSettingDisableLegacyAccess {
     /**
      * The boolean value for the setting.
      */
     value: boolean;
+}
+
+export interface DisableLegacyAccessSettingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface DisableLegacyDbfsSettingDisableLegacyDbfs {
@@ -2104,6 +2244,13 @@ export interface DisableLegacyDbfsSettingDisableLegacyDbfs {
     value: boolean;
 }
 
+export interface DisableLegacyDbfsSettingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface DisableLegacyFeaturesSettingDisableLegacyFeatures {
     /**
      * The boolean value for the setting.
@@ -2111,8 +2258,23 @@ export interface DisableLegacyFeaturesSettingDisableLegacyFeatures {
     value: boolean;
 }
 
+export interface DisableLegacyFeaturesSettingProviderConfig {
+    workspaceId: string;
+}
+
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
     isEnabled: boolean;
+}
+
+export interface EnhancedSecurityMonitoringWorkspaceSettingProviderConfig {
+    workspaceId: string;
+}
+
+export interface EntityTagAssignmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface ExternalLocationEncryptionDetails {
@@ -2227,6 +2389,20 @@ export interface ExternalLocationFileEventQueueProvidedSqs {
     queueUrl: string;
 }
 
+export interface ExternalLocationProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface ExternalMetadataProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface FeatureEngineeringFeatureFunction {
     /**
      * Extra parameters for parameterized functions
@@ -2269,6 +2445,13 @@ export interface FeatureEngineeringFeatureLineageContextJobContext {
      * The job run ID where this API was invoked
      */
     jobRunId?: number;
+}
+
+export interface FeatureEngineeringFeatureProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface FeatureEngineeringFeatureSource {
@@ -2385,6 +2568,13 @@ export interface FeatureEngineeringKafkaConfigKeySchema {
     jsonSchema?: string;
 }
 
+export interface FeatureEngineeringKafkaConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface FeatureEngineeringKafkaConfigSubscriptionMode {
     /**
      * A JSON string that contains the specific topic-partitions to consume from.
@@ -2422,6 +2612,20 @@ export interface FeatureEngineeringMaterializedFeatureOnlineStoreConfig {
     onlineStoreName: string;
     schemaName: string;
     tableNamePrefix: string;
+}
+
+export interface FeatureEngineeringMaterializedFeatureProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface FileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetAccountFederationPoliciesPolicy {
@@ -3109,6 +3313,13 @@ export interface GetAlertV2EvaluationThresholdValue {
     stringValue?: string;
 }
 
+export interface GetAlertV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetAlertV2RunAs {
     /**
      * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
@@ -3181,6 +3392,10 @@ export interface GetAlertsV2Alert {
      * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
     parentPath: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAlertsV2AlertProviderConfig;
     /**
      * (string) - Text of the query to be run
      */
@@ -3341,6 +3556,13 @@ export interface GetAlertsV2AlertEvaluationThresholdValue {
     stringValue?: string;
 }
 
+export interface GetAlertsV2AlertProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetAlertsV2AlertRunAs {
     /**
      * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
@@ -3368,6 +3590,13 @@ export interface GetAlertsV2AlertSchedule {
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      */
     timezoneId: string;
+}
+
+export interface GetAlertsV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetAppApp {
@@ -4254,6 +4483,20 @@ export interface GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpe
     securableType: string;
 }
 
+export interface GetAppsSettingsCustomTemplateProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppsSettingsCustomTemplatesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetAppsSettingsCustomTemplatesTemplate {
     /**
      * (string)
@@ -4283,6 +4526,10 @@ export interface GetAppsSettingsCustomTemplatesTemplate {
      * (string) - The path to the template within the Git repository
      */
     path: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAppsSettingsCustomTemplatesTemplateProviderConfig;
 }
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifest {
@@ -4383,6 +4630,13 @@ export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecUcSec
      * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
     securableType: string;
+}
+
+export interface GetAppsSettingsCustomTemplatesTemplateProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetBudgetPoliciesFilterBy {
@@ -5515,6 +5769,13 @@ export interface GetDataQualityMonitorDataProfilingConfigTimeSeries {
     timestampColumn: string;
 }
 
+export interface GetDataQualityMonitorProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetDataQualityMonitorsMonitor {
     /**
      * (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `schema` object types
@@ -5533,6 +5794,10 @@ export interface GetDataQualityMonitorsMonitor {
      * (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetDataQualityMonitorsMonitorProviderConfig;
 }
 
 export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfig {
@@ -5733,6 +5998,34 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeries {
     timestampColumn: string;
 }
 
+export interface GetDataQualityMonitorsMonitorProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDataQualityMonitorsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDataQualityRefreshProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDataQualityRefreshesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetDataQualityRefreshesRefresh {
     /**
      * (integer) - Time when the refresh ended (milliseconds since 1/1/1970 UTC)
@@ -5759,6 +6052,10 @@ export interface GetDataQualityRefreshesRefresh {
      */
     objectType: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetDataQualityRefreshesRefreshProviderConfig;
+    /**
      * (integer) - Unique id of the refresh operation
      */
     refreshId: number;
@@ -5774,6 +6071,20 @@ export interface GetDataQualityRefreshesRefresh {
      * (string) - What triggered the refresh. Possible values are: `MONITOR_REFRESH_TRIGGER_DATA_CHANGE`, `MONITOR_REFRESH_TRIGGER_MANUAL`, `MONITOR_REFRESH_TRIGGER_SCHEDULE`, `MONITOR_REFRESH_TRIGGER_UNKNOWN`
      */
     trigger: string;
+}
+
+export interface GetDataQualityRefreshesRefreshProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDatabaseDatabaseCatalogProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetDatabaseDatabaseCatalogsDatabaseCatalog {
@@ -5794,9 +6105,27 @@ export interface GetDatabaseDatabaseCatalogsDatabaseCatalog {
      */
     name: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetDatabaseDatabaseCatalogsDatabaseCatalogProviderConfig;
+    /**
      * (string)
      */
     uid: string;
+}
+
+export interface GetDatabaseDatabaseCatalogsDatabaseCatalogProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDatabaseDatabaseCatalogsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetDatabaseInstanceChildInstanceRef {
@@ -5887,6 +6216,13 @@ export interface GetDatabaseInstanceParentInstanceRef {
      * (string) - Id of the ref database instance
      */
     uid: string;
+}
+
+export interface GetDatabaseInstanceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetDatabaseInstancesDatabaseInstance {
@@ -5989,6 +6325,10 @@ export interface GetDatabaseInstancesDatabaseInstance {
      * (string) - The version of Postgres running on the instance
      */
     pgVersion: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetDatabaseInstancesDatabaseInstanceProviderConfig;
     /**
      * (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
      * enableReadableSecondaries is true
@@ -6110,6 +6450,20 @@ export interface GetDatabaseInstancesDatabaseInstanceParentInstanceRef {
      * (string) - Id of the ref database instance
      */
     uid: string;
+}
+
+export interface GetDatabaseInstancesDatabaseInstanceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDatabaseInstancesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetDatabaseSyncedDatabaseTableDataSynchronizationStatus {
@@ -6316,6 +6670,13 @@ export interface GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggere
     totalRowCount: number;
 }
 
+export interface GetDatabaseSyncedDatabaseTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetDatabaseSyncedDatabaseTableSpec {
     /**
      * (boolean) - If true, the synced table's logical database and schema resources in PG
@@ -6363,6 +6724,13 @@ export interface GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec {
     storageSchema?: string;
 }
 
+export interface GetDatabaseSyncedDatabaseTablesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetDatabaseSyncedDatabaseTablesSyncedTable {
     /**
      * (SyncedTableStatus) - Synced Table data synchronization status
@@ -6396,6 +6764,10 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTable {
      * (string) - Full three-part (catalog, schema, table) name of the table
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfig;
     /**
      * (SyncedTableSpec)
      */
@@ -6612,6 +6984,13 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationSt
     totalRowCount: number;
 }
 
+export interface GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
     /**
      * (boolean) - If true, the synced table's logical database and schema resources in PG
@@ -6688,6 +7067,20 @@ export interface GetDirectoryProviderConfig {
     workspaceId: string;
 }
 
+export interface GetEntityTagAssignmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetEntityTagAssignmentsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetEntityTagAssignmentsTagAssignment {
     /**
      * The fully qualified name of the entity to which the tag is assigned
@@ -6698,6 +7091,10 @@ export interface GetEntityTagAssignmentsTagAssignment {
      */
     entityType: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetEntityTagAssignmentsTagAssignmentProviderConfig;
+    /**
      * (string) - The key of the tag
      */
     tagKey: string;
@@ -6705,6 +7102,13 @@ export interface GetEntityTagAssignmentsTagAssignment {
      * (string) - The value of the tag
      */
     tagValue: string;
+}
+
+export interface GetEntityTagAssignmentsTagAssignmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetExternalLocationExternalLocationInfo {
@@ -6842,6 +7246,13 @@ export interface GetExternalLocationsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetExternalMetadataProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetExternalMetadatasExternalMetadata {
     /**
      * (list of string) - List of columns associated with the external metadata object
@@ -6884,6 +7295,10 @@ export interface GetExternalMetadatasExternalMetadata {
      */
     properties: {[key: string]: string};
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetExternalMetadatasExternalMetadataProviderConfig;
+    /**
      * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
     systemType: string;
@@ -6899,6 +7314,20 @@ export interface GetExternalMetadatasExternalMetadata {
      * (string) - URL associated with the external metadata object
      */
     url: string;
+}
+
+export interface GetExternalMetadatasExternalMetadataProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetExternalMetadatasProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetFeatureEngineeringFeatureFunction {
@@ -6943,6 +7372,13 @@ export interface GetFeatureEngineeringFeatureLineageContextJobContext {
      * (integer) - The job run ID where this API was invoked
      */
     jobRunId?: number;
+}
+
+export interface GetFeatureEngineeringFeatureProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetFeatureEngineeringFeatureSource {
@@ -7075,6 +7511,10 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     lineageContext: outputs.GetFeatureEngineeringFeaturesFeatureLineageContext;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetFeatureEngineeringFeaturesFeatureProviderConfig;
+    /**
      * (DataSource) - The data source of the feature
      */
     source: outputs.GetFeatureEngineeringFeaturesFeatureSource;
@@ -7126,6 +7566,13 @@ export interface GetFeatureEngineeringFeaturesFeatureLineageContextJobContext {
      * (integer) - The job run ID where this API was invoked
      */
     jobRunId?: number;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSource {
@@ -7229,6 +7676,13 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowTumbling {
     windowDuration: string;
 }
 
+export interface GetFeatureEngineeringFeaturesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetFeatureEngineeringKafkaConfigAuthConfig {
     /**
      * (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
@@ -7264,6 +7718,13 @@ export interface GetFeatureEngineeringKafkaConfigKeySchema {
      * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigSubscriptionMode {
@@ -7318,6 +7779,10 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfig {
      */
     name: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigProviderConfig;
+    /**
      * (SubscriptionMode) - Options to configure which Kafka topics to pull data from
      */
     subscriptionMode: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionMode;
@@ -7364,6 +7829,13 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchema {
     jsonSchema?: string;
 }
 
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionMode {
     /**
      * (string) - A JSON string that contains the specific topic-partitions to consume from.
@@ -7385,6 +7857,13 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchema {
      * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
     jsonSchema?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
@@ -7423,6 +7902,13 @@ export interface GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig {
     tableNamePrefix: string;
 }
 
+export interface GetFeatureEngineeringMaterializedFeatureProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
     /**
      * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
@@ -7453,6 +7939,10 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
      * (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
     pipelineScheduleState: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfig;
     /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      */
@@ -7493,6 +7983,20 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnl
      * The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
      */
     tableNamePrefix: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeaturesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetFunctionsFunction {
@@ -7977,6 +8481,7 @@ export interface GetJobJobSettingsSettingsEnvironment {
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpec {
+    baseEnvironment?: string;
     client?: string;
     dependencies?: string[];
     environmentVersion?: string;
@@ -8476,6 +8981,7 @@ export interface GetJobJobSettingsSettingsTaskConditionTask {
 
 export interface GetJobJobSettingsSettingsTaskDashboardTask {
     dashboardId?: string;
+    filters?: {[key: string]: string};
     subscription?: outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscription;
     warehouseId?: string;
 }
@@ -8561,6 +9067,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask {
     dashboardId?: string;
+    filters?: {[key: string]: string};
     subscription?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription;
     warehouseId?: string;
 }
@@ -9408,15 +9915,40 @@ export interface GetJobsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetMaterializedFeaturesFeatureTagProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetMaterializedFeaturesFeatureTagsFeatureTag {
     /**
      * (string)
      */
     key: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfig;
+    /**
      * (string)
      */
     value: string;
+}
+
+export interface GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMaterializedFeaturesFeatureTagsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetMetastoreMetastoreInfo {
@@ -9762,6 +10294,13 @@ export interface GetNotificationDestinationsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetOnlineStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetOnlineStoresOnlineStore {
     /**
      * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
@@ -9780,6 +10319,10 @@ export interface GetOnlineStoresOnlineStore {
      */
     name: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetOnlineStoresOnlineStoreProviderConfig;
+    /**
      * (integer) - The number of read replicas for the online store. Defaults to 0
      */
     readReplicaCount: number;
@@ -9791,6 +10334,20 @@ export interface GetOnlineStoresOnlineStore {
      * (string) - The usage policy applied to the online store to track billing
      */
     usagePolicyId: string;
+}
+
+export interface GetOnlineStoresOnlineStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetOnlineStoresProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetPipelinesProviderConfig {
@@ -9841,6 +10398,13 @@ export interface GetPolicyInfoMatchColumn {
      * (string) - The condition expression used to match a table column
      */
     condition?: string;
+}
+
+export interface GetPolicyInfoProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetPolicyInfoRowFilter {
@@ -9922,9 +10486,13 @@ export interface GetPolicyInfosPolicy {
      */
     onSecurableType: string;
     /**
-     * (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      */
     policyType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetPolicyInfosPolicyProviderConfig;
     /**
      * (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
@@ -9993,6 +10561,13 @@ export interface GetPolicyInfosPolicyMatchColumn {
     condition?: string;
 }
 
+export interface GetPolicyInfosPolicyProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetPolicyInfosPolicyRowFilter {
     /**
      * (string) - The fully qualified name of the row filter function.
@@ -10017,6 +10592,20 @@ export interface GetPolicyInfosPolicyRowFilterUsing {
      * (string) - A constant literal
      */
     constant?: string;
+}
+
+export interface GetPolicyInfosProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresBranchProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetPostgresBranchSpec {
@@ -10112,6 +10701,10 @@ export interface GetPostgresBranchesBranch {
      */
     parent: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetPostgresBranchesBranchProviderConfig;
+    /**
      * (BranchSpec) - The spec contains the branch configuration
      */
     spec: outputs.GetPostgresBranchesBranchSpec;
@@ -10127,6 +10720,13 @@ export interface GetPostgresBranchesBranch {
      * (string) - A timestamp indicating when the branch was last updated
      */
     updateTime: string;
+}
+
+export interface GetPostgresBranchesBranchProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetPostgresBranchesBranchSpec {
@@ -10204,6 +10804,20 @@ export interface GetPostgresBranchesBranchStatus {
      * (string) - A timestamp indicating when the `currentState` began
      */
     stateChangeTime: string;
+}
+
+export interface GetPostgresBranchesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetPostgresEndpointSpec {
@@ -10321,6 +10935,10 @@ export interface GetPostgresEndpointsEndpoint {
      */
     parent: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetPostgresEndpointsEndpointProviderConfig;
+    /**
      * (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     spec: outputs.GetPostgresEndpointsEndpointSpec;
@@ -10336,6 +10954,13 @@ export interface GetPostgresEndpointsEndpoint {
      * (string) - A timestamp indicating when the compute endpoint was last updated
      */
     updateTime: string;
+}
+
+export interface GetPostgresEndpointsEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetPostgresEndpointsEndpointSpec {
@@ -10435,6 +11060,20 @@ export interface GetPostgresEndpointsEndpointStatusSettings {
      * (object) - A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
+}
+
+export interface GetPostgresEndpointsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresProjectProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetPostgresProjectSpec {
@@ -10548,6 +11187,10 @@ export interface GetPostgresProjectsProject {
      */
     name: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetPostgresProjectsProjectProviderConfig;
+    /**
      * (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
     spec: outputs.GetPostgresProjectsProjectSpec;
@@ -10563,6 +11206,13 @@ export interface GetPostgresProjectsProject {
      * (string) - A timestamp indicating when the project was last updated
      */
     updateTime: string;
+}
+
+export interface GetPostgresProjectsProjectProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetPostgresProjectsProjectSpec {
@@ -10665,6 +11315,13 @@ export interface GetPostgresProjectsProjectStatusDefaultEndpointSettings {
     suspendTimeoutDuration?: string;
 }
 
+export interface GetPostgresProjectsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetQualityMonitorV2AnomalyDetectionConfig {
     /**
      * (list of string) - List of fully qualified table names to exclude from anomaly detection
@@ -10678,6 +11335,13 @@ export interface GetQualityMonitorV2AnomalyDetectionConfig {
      * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
      */
     latestRunStatus: string;
+}
+
+export interface GetQualityMonitorV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetQualityMonitorV2ValidityCheckConfiguration {
@@ -10732,6 +11396,13 @@ export interface GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidity
     columnNames?: string[];
 }
 
+export interface GetQualityMonitorsV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetQualityMonitorsV2QualityMonitor {
     /**
      * (AnomalyDetectionConfig)
@@ -10745,6 +11416,10 @@ export interface GetQualityMonitorsV2QualityMonitor {
      * (string) - The type of the monitored object. Can be one of the following: schema
      */
     objectType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetQualityMonitorsV2QualityMonitorProviderConfig;
     /**
      * (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
      */
@@ -10764,6 +11439,13 @@ export interface GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig {
      * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
      */
     latestRunStatus: string;
+}
+
+export interface GetQualityMonitorsV2QualityMonitorProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration {
@@ -11075,6 +11757,13 @@ export interface GetRfaAccessRequestDestinationsDestinationSourceSecurable {
      * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
+}
+
+export interface GetRfaAccessRequestDestinationsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetRfaAccessRequestDestinationsSecurable {
@@ -12063,6 +12752,13 @@ export interface GetTablesProviderConfig {
     workspaceId: string;
 }
 
+export interface GetTagPoliciesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetTagPoliciesTagPolicy {
     /**
      * (string) - Timestamp when the tag policy was created
@@ -12077,6 +12773,10 @@ export interface GetTagPoliciesTagPolicy {
      */
     id: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetTagPoliciesTagPolicyProviderConfig;
+    /**
      * (string)
      */
     tagKey: string;
@@ -12090,11 +12790,25 @@ export interface GetTagPoliciesTagPolicy {
     values: outputs.GetTagPoliciesTagPolicyValue[];
 }
 
+export interface GetTagPoliciesTagPolicyProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetTagPoliciesTagPolicyValue {
     /**
      * (string)
      */
     name: string;
+}
+
+export interface GetTagPolicyProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetTagPolicyValue {
@@ -12291,6 +13005,13 @@ export interface GetVolumesProviderConfig {
     workspaceId: string;
 }
 
+export interface GetWarehousesDefaultWarehouseOverrideProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride {
     /**
      * (string) - The ID component of the resource name (user ID)
@@ -12302,6 +13023,10 @@ export interface GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride 
      */
     name: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig;
+    /**
      * (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      */
     type: string;
@@ -12310,6 +13035,34 @@ export interface GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride 
      * Not set for LAST_SELECTED type
      */
     warehouseId: string;
+}
+
+export interface GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWarehousesDefaultWarehouseOverridesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceEntityTagAssignmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetWorkspaceEntityTagAssignmentsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
@@ -12322,6 +13075,10 @@ export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
      */
     entityType: string;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfig;
+    /**
      * (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */
     tagKey: string;
@@ -12329,6 +13086,13 @@ export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
      * (string) - The value of the tag
      */
     tagValue: string;
+}
+
+export interface GetWorkspaceEntityTagAssignmentsTagAssignmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
@@ -12557,6 +13321,13 @@ export interface GetWorkspaceSettingV2PersonalCompute {
     value?: string;
 }
 
+export interface GetWorkspaceSettingV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetWorkspaceSettingV2RestrictWorkspaceAdmins {
     /**
      * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
@@ -12578,9 +13349,31 @@ export interface GetZonesProviderConfig {
     workspaceId: string;
 }
 
+export interface GitCredentialProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GlobalInitScriptProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GrantProviderConfig {
+    workspaceId: string;
+}
+
 export interface GrantsGrant {
     principal: string;
     privileges: string[];
+}
+
+export interface GrantsProviderConfig {
+    workspaceId: string;
 }
 
 export interface InstancePoolAwsAttributes {
@@ -12702,6 +13495,13 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
     username: string;
 }
 
+export interface IpAccessListProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface JobContinuous {
     /**
      * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
@@ -12796,6 +13596,7 @@ export interface JobEnvironment {
 }
 
 export interface JobEnvironmentSpec {
+    baseEnvironment?: string;
     client?: string;
     /**
      * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
@@ -13599,6 +14400,11 @@ export interface JobSparkSubmitTask {
 
 export interface JobTask {
     cleanRoomsNotebookTask?: outputs.JobTaskCleanRoomsNotebookTask;
+    /**
+     * Task level compute configuration. This block is documented below.
+     *
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     */
     compute?: outputs.JobTaskCompute;
     conditionTask?: outputs.JobTaskConditionTask;
     dashboardTask?: outputs.JobTaskDashboardTask;
@@ -13688,8 +14494,6 @@ export interface JobTask {
     timeoutSeconds?: number;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     *
-     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: outputs.JobTaskWebhookNotifications;
 }
@@ -13714,6 +14518,11 @@ export interface JobTaskCleanRoomsNotebookTask {
 }
 
 export interface JobTaskCompute {
+    /**
+     * Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+     * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+     * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+     */
     hardwareAccelerator?: string;
 }
 
@@ -13739,6 +14548,7 @@ export interface JobTaskDashboardTask {
      * The identifier of the dashboard to refresh
      */
     dashboardId?: string;
+    filters?: {[key: string]: string};
     /**
      * Represents a subscription configuration for scheduled dashboard snapshots.
      */
@@ -13885,6 +14695,11 @@ export interface JobTaskForEachTask {
 
 export interface JobTaskForEachTaskTask {
     cleanRoomsNotebookTask?: outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
+    /**
+     * Task level compute configuration. This block is documented below.
+     *
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     */
     compute?: outputs.JobTaskForEachTaskTaskCompute;
     conditionTask?: outputs.JobTaskForEachTaskTaskConditionTask;
     dashboardTask?: outputs.JobTaskForEachTaskTaskDashboardTask;
@@ -13973,8 +14788,6 @@ export interface JobTaskForEachTaskTask {
     timeoutSeconds?: number;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     *
-     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: outputs.JobTaskForEachTaskTaskWebhookNotifications;
 }
@@ -13999,6 +14812,11 @@ export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
 }
 
 export interface JobTaskForEachTaskTaskCompute {
+    /**
+     * Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+     * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+     * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+     */
     hardwareAccelerator?: string;
 }
 
@@ -14024,6 +14842,7 @@ export interface JobTaskForEachTaskTaskDashboardTask {
      * The identifier of the dashboard to refresh
      */
     dashboardId?: string;
+    filters?: {[key: string]: string};
     /**
      * Represents a subscription configuration for scheduled dashboard snapshots.
      */
@@ -14155,6 +14974,11 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
 
 export interface JobTaskForEachTaskTaskGenAiComputeTask {
     command?: string;
+    /**
+     * Task level compute configuration. This block is documented below.
+     *
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     */
     compute?: outputs.JobTaskForEachTaskTaskGenAiComputeTaskCompute;
     dlRuntimeImage: string;
     mlflowExperimentName?: string;
@@ -14884,6 +15708,11 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
 
 export interface JobTaskGenAiComputeTask {
     command?: string;
+    /**
+     * Task level compute configuration. This block is documented below.
+     *
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     */
     compute?: outputs.JobTaskGenAiComputeTaskCompute;
     dlRuntimeImage: string;
     mlflowExperimentName?: string;
@@ -15827,6 +16656,10 @@ export interface LakehouseMonitorNotificationsOnNewClassificationTagDetected {
     emailAddresses?: string[];
 }
 
+export interface LakehouseMonitorProviderConfig {
+    workspaceId: string;
+}
+
 export interface LakehouseMonitorSchedule {
     /**
      * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
@@ -15900,6 +16733,13 @@ export interface LibraryPypi {
     repo?: string;
 }
 
+export interface MaterializedFeaturesFeatureTagProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface MetastoreDataAccessAwsIamRole {
     externalId: string;
     roleArn: string;
@@ -15935,9 +16775,23 @@ export interface MetastoreDataAccessGcpServiceAccountKey {
     privateKeyId: string;
 }
 
+export interface MlflowExperimentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface MlflowExperimentTag {
     key?: string;
     value?: string;
+}
+
+export interface MlflowModelProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface MlflowModelTag {
@@ -15977,6 +16831,13 @@ export interface MlflowWebhookJobSpec {
      * URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
      */
     workspaceUrl?: string;
+}
+
+export interface MlflowWebhookProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface ModelServingAiGateway {
@@ -16546,6 +17407,13 @@ export interface ModelServingEmailNotifications {
     onUpdateSuccesses?: string[];
 }
 
+export interface ModelServingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface ModelServingProvisionedThroughputAiGateway {
     fallbackConfig?: outputs.ModelServingProvisionedThroughputAiGatewayFallbackConfig;
     /**
@@ -16723,6 +17591,13 @@ export interface ModelServingProvisionedThroughputEmailNotifications {
      * a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
      */
     onUpdateSuccesses?: string[];
+}
+
+export interface ModelServingProvisionedThroughputProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface ModelServingProvisionedThroughputTag {
@@ -16940,11 +17815,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -17011,11 +17886,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.105.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -17148,6 +18023,20 @@ export interface NotificationDestinationConfigSlack {
      */
     url?: string;
     urlSet: boolean;
+}
+
+export interface OnlineStoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface OnlineTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface OnlineTableSpec {
@@ -17787,7 +18676,24 @@ export interface PipelineRestartWindow {
 }
 
 export interface PipelineRunAs {
+    /**
+     * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+     *
+     * Example:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const _this = new databricks.Pipeline("this", {runAs: {
+     *     servicePrincipalName: "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
+     * }});
+     * ```
+     */
     servicePrincipalName?: string;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
     userName?: string;
 }
 
@@ -17831,6 +18737,13 @@ export interface PolicyInfoMatchColumn {
     condition?: string;
 }
 
+export interface PolicyInfoProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface PolicyInfoRowFilter {
     functionName: string;
     usings?: outputs.PolicyInfoRowFilterUsing[];
@@ -17842,6 +18755,13 @@ export interface PolicyInfoRowFilterUsing {
      * A constant literal
      */
     constant?: string;
+}
+
+export interface PostgresBranchProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface PostgresBranchSpec {
@@ -17919,6 +18839,13 @@ export interface PostgresBranchStatus {
      * (string) - A timestamp indicating when the `currentState` began
      */
     stateChangeTime: string;
+}
+
+export interface PostgresEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface PostgresEndpointSpec {
@@ -18018,6 +18945,13 @@ export interface PostgresEndpointStatusSettings {
      * A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
+}
+
+export interface PostgresProjectProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface PostgresProjectSpec {
@@ -18248,6 +19182,13 @@ export interface QualityMonitorV2AnomalyDetectionConfig {
     latestRunStatus: string;
 }
 
+export interface QualityMonitorV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface QualityMonitorV2ValidityCheckConfiguration {
     /**
      * Can be set by system. Does not need to be user facing
@@ -18430,6 +19371,13 @@ export interface QueryParameterTextValue {
     value: string;
 }
 
+export interface QueryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface RecipientIpAccessList {
     /**
      * Allowed IP Addresses in CIDR notation. Limit of 100.
@@ -18442,6 +19390,13 @@ export interface RecipientPropertiesKvpairs {
      * a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
      */
     properties: {[key: string]: string};
+}
+
+export interface RecipientProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface RecipientToken {
@@ -18493,6 +19448,13 @@ export interface RegisteredModelAlias {
     versionNum?: number;
 }
 
+export interface RegisteredModelProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface RepoSparseCheckout {
     /**
      * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
@@ -18500,6 +19462,13 @@ export interface RepoSparseCheckout {
      * Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the Git folder.
      */
     patterns: string[];
+}
+
+export interface RestrictWorkspaceAdminsSettingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
@@ -18545,6 +19514,13 @@ export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
     type?: string;
 }
 
+export interface RfaAccessRequestDestinationsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface RfaAccessRequestDestinationsSecurable {
     /**
      * Required. The full name of the catalog/schema/table.
@@ -18561,6 +19537,27 @@ export interface RfaAccessRequestDestinationsSecurable {
      * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     type?: string;
+}
+
+export interface SchemaProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface SecretAclProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface SecretProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface SecretScopeKeyvaultMetadata {
@@ -18731,6 +19728,10 @@ export interface SqlAlertOptions {
     value: string;
 }
 
+export interface SqlAlertProviderConfig {
+    workspaceId: string;
+}
+
 export interface SqlEndpointChannel {
     dbsqlVersion?: string;
     /**
@@ -18758,6 +19759,13 @@ export interface SqlEndpointOdbcParams {
     path?: string;
     port?: number;
     protocol?: string;
+}
+
+export interface SqlEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface SqlEndpointTags {
@@ -18985,6 +19993,13 @@ export interface SqlTableColumn {
     typeJson: string;
 }
 
+export interface SqlTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface SqlWidgetParameter {
     mapTo?: string;
     name: string;
@@ -19086,6 +20101,13 @@ export interface StorageCredentialGcpServiceAccountKey {
     privateKeyId: string;
 }
 
+export interface SystemSchemaProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface TableColumn {
     comment?: string;
     name: string;
@@ -19098,6 +20120,13 @@ export interface TableColumn {
     typePrecision?: number;
     typeScale?: number;
     typeText: string;
+}
+
+export interface TagPolicyProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface TagPolicyValue {
@@ -19113,6 +20142,13 @@ export interface VectorSearchEndpointEndpointStatus {
      * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      */
     state?: string;
+}
+
+export interface VectorSearchEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpec {
@@ -19211,6 +20247,13 @@ export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     name?: string;
 }
 
+export interface VectorSearchIndexProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface VectorSearchIndexStatus {
     /**
      * Index API Url to be used to perform operations on the index
@@ -19228,6 +20271,41 @@ export interface VectorSearchIndexStatus {
      * Whether the index is ready for search
      */
     ready?: boolean;
+}
+
+export interface VolumeProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WarehousesDefaultWarehouseOverrideProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceBindingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceEntityTagAssignmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceFileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
@@ -19373,6 +20451,13 @@ export interface WorkspaceSettingV2IntegerVal {
 
 export interface WorkspaceSettingV2PersonalCompute {
     value?: string;
+}
+
+export interface WorkspaceSettingV2ProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface WorkspaceSettingV2RestrictWorkspaceAdmins {

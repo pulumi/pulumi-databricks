@@ -28,6 +28,7 @@ export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -39,6 +40,10 @@ export interface GetDatabaseInstanceArgs {
      * The name of the instance. This is the unique identifier for the instance
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetDatabaseInstanceProviderConfig;
 }
 
 /**
@@ -148,6 +153,7 @@ export interface GetDatabaseInstanceResult {
      * (string) - The version of Postgres running on the instance
      */
     readonly pgVersion: string;
+    readonly providerConfig?: outputs.GetDatabaseInstanceProviderConfig;
     /**
      * (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
      * enableReadableSecondaries is true
@@ -202,6 +208,7 @@ export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, o
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseInstance:getDatabaseInstance", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -213,4 +220,8 @@ export interface GetDatabaseInstanceOutputArgs {
      * The name of the instance. This is the unique identifier for the instance
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetDatabaseInstanceProviderConfigArgs>;
 }

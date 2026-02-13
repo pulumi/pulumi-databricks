@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['WarehousesDefaultWarehouseOverrideArgs', 'WarehousesDefaultWarehouseOverride']
 
@@ -21,16 +23,20 @@ class WarehousesDefaultWarehouseOverrideArgs:
     def __init__(__self__, *,
                  default_warehouse_override_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 provider_config: Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']] = None,
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WarehousesDefaultWarehouseOverride resource.
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
         :param pulumi.Input[_builtins.str] type: The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
+        :param pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] warehouse_id: The specific warehouse ID when type is CUSTOM.
                Not set for LAST_SELECTED type
         """
         pulumi.set(__self__, "default_warehouse_override_id", default_warehouse_override_id)
         pulumi.set(__self__, "type", type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if warehouse_id is not None:
             pulumi.set(__self__, "warehouse_id", warehouse_id)
 
@@ -59,6 +65,18 @@ class WarehousesDefaultWarehouseOverrideArgs:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -77,6 +95,7 @@ class _WarehousesDefaultWarehouseOverrideState:
     def __init__(__self__, *,
                  default_warehouse_override_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -84,6 +103,7 @@ class _WarehousesDefaultWarehouseOverrideState:
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the default warehouse override.
                Format: default-warehouse-overrides/{default_warehouse_override_id}
+        :param pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] type: The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         :param pulumi.Input[_builtins.str] warehouse_id: The specific warehouse ID when type is CUSTOM.
                Not set for LAST_SELECTED type
@@ -92,6 +112,8 @@ class _WarehousesDefaultWarehouseOverrideState:
             pulumi.set(__self__, "default_warehouse_override_id", default_warehouse_override_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if warehouse_id is not None:
@@ -121,6 +143,18 @@ class _WarehousesDefaultWarehouseOverrideState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -155,11 +189,12 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_warehouse_override_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         The Default Warehouse Override resource allows you to configure a user's default warehouse selection behavior in Databricks SQL. This resource enables customization of how a user's default warehouse is selected for SQL operations.
 
@@ -200,6 +235,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
+        :param pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] type: The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         :param pulumi.Input[_builtins.str] warehouse_id: The specific warehouse ID when type is CUSTOM.
                Not set for LAST_SELECTED type
@@ -211,7 +247,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
                  args: WarehousesDefaultWarehouseOverrideArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         The Default Warehouse Override resource allows you to configure a user's default warehouse selection behavior in Databricks SQL. This resource enables customization of how a user's default warehouse is selected for SQL operations.
 
@@ -265,6 +301,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_warehouse_override_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -279,6 +316,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
             if default_warehouse_override_id is None and not opts.urn:
                 raise TypeError("Missing required property 'default_warehouse_override_id'")
             __props__.__dict__["default_warehouse_override_id"] = default_warehouse_override_id
+            __props__.__dict__["provider_config"] = provider_config
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -296,6 +334,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             default_warehouse_override_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             warehouse_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WarehousesDefaultWarehouseOverride':
         """
@@ -308,6 +347,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the default warehouse override.
                Format: default-warehouse-overrides/{default_warehouse_override_id}
+        :param pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] type: The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         :param pulumi.Input[_builtins.str] warehouse_id: The specific warehouse ID when type is CUSTOM.
                Not set for LAST_SELECTED type
@@ -318,6 +358,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
 
         __props__.__dict__["default_warehouse_override_id"] = default_warehouse_override_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["type"] = type
         __props__.__dict__["warehouse_id"] = warehouse_id
         return WarehousesDefaultWarehouseOverride(resource_name, opts=opts, __props__=__props__)
@@ -338,6 +379,14 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         Format: default-warehouse-overrides/{default_warehouse_override_id}
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.WarehousesDefaultWarehouseOverrideProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

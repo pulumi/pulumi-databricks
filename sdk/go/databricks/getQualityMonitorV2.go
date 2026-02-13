@@ -71,6 +71,8 @@ type LookupQualityMonitorV2Args struct {
 	ObjectId string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType string `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetQualityMonitorV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getQualityMonitorV2.
@@ -82,7 +84,8 @@ type LookupQualityMonitorV2Result struct {
 	// (string) - The uuid of the request object. For example, schema id
 	ObjectId string `pulumi:"objectId"`
 	// (string) - The type of the monitored object. Can be one of the following: schema
-	ObjectType string `pulumi:"objectType"`
+	ObjectType     string                             `pulumi:"objectType"`
+	ProviderConfig *GetQualityMonitorV2ProviderConfig `pulumi:"providerConfig"`
 	// (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
 	ValidityCheckConfigurations []GetQualityMonitorV2ValidityCheckConfiguration `pulumi:"validityCheckConfigurations"`
 }
@@ -102,6 +105,8 @@ type LookupQualityMonitorV2OutputArgs struct {
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetQualityMonitorV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupQualityMonitorV2OutputArgs) ElementType() reflect.Type {
@@ -143,6 +148,10 @@ func (o LookupQualityMonitorV2ResultOutput) ObjectId() pulumi.StringOutput {
 // (string) - The type of the monitored object. Can be one of the following: schema
 func (o LookupQualityMonitorV2ResultOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQualityMonitorV2Result) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+func (o LookupQualityMonitorV2ResultOutput) ProviderConfig() GetQualityMonitorV2ProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupQualityMonitorV2Result) *GetQualityMonitorV2ProviderConfig { return v.ProviderConfig }).(GetQualityMonitorV2ProviderConfigPtrOutput)
 }
 
 // (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection

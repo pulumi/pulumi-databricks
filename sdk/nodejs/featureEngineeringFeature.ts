@@ -65,6 +65,10 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      */
     declare public readonly lineageContext: pulumi.Output<outputs.FeatureEngineeringFeatureLineageContext | undefined>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringFeatureProviderConfig | undefined>;
+    /**
      * The data source of the feature
      */
     declare public readonly source: pulumi.Output<outputs.FeatureEngineeringFeatureSource>;
@@ -92,6 +96,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["function"] = state?.function;
             resourceInputs["inputs"] = state?.inputs;
             resourceInputs["lineageContext"] = state?.lineageContext;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["source"] = state?.source;
             resourceInputs["timeWindow"] = state?.timeWindow;
         } else {
@@ -114,6 +119,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["function"] = args?.function;
             resourceInputs["inputs"] = args?.inputs;
             resourceInputs["lineageContext"] = args?.lineageContext;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["source"] = args?.source;
             resourceInputs["timeWindow"] = args?.timeWindow;
         }
@@ -153,6 +159,10 @@ export interface FeatureEngineeringFeatureState {
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
      */
     lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringFeatureProviderConfig>;
     /**
      * The data source of the feature
      */
@@ -194,6 +204,10 @@ export interface FeatureEngineeringFeatureArgs {
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
      */
     lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringFeatureProviderConfig>;
     /**
      * The data source of the feature
      */

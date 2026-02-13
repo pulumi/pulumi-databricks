@@ -56,6 +56,12 @@ namespace Pulumi.Databricks
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.RestrictWorkspaceAdminsSettingProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The configuration details.
         /// </summary>
         [Output("restrictWorkspaceAdmins")]
@@ -114,6 +120,12 @@ namespace Pulumi.Databricks
         public Input<string>? Etag { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.RestrictWorkspaceAdminsSettingProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The configuration details.
         /// </summary>
         [Input("restrictWorkspaceAdmins", required: true)]
@@ -132,6 +144,12 @@ namespace Pulumi.Databricks
     {
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.RestrictWorkspaceAdminsSettingProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The configuration details.

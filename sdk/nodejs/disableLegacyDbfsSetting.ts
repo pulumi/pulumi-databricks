@@ -68,6 +68,10 @@ export class DisableLegacyDbfsSetting extends pulumi.CustomResource {
      */
     declare public readonly disableLegacyDbfs: pulumi.Output<outputs.DisableLegacyDbfsSettingDisableLegacyDbfs>;
     declare public readonly etag: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DisableLegacyDbfsSettingProviderConfig | undefined>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -85,6 +89,7 @@ export class DisableLegacyDbfsSetting extends pulumi.CustomResource {
             const state = argsOrState as DisableLegacyDbfsSettingState | undefined;
             resourceInputs["disableLegacyDbfs"] = state?.disableLegacyDbfs;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as DisableLegacyDbfsSettingArgs | undefined;
@@ -93,6 +98,7 @@ export class DisableLegacyDbfsSetting extends pulumi.CustomResource {
             }
             resourceInputs["disableLegacyDbfs"] = args?.disableLegacyDbfs;
             resourceInputs["etag"] = args?.etag;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -109,6 +115,10 @@ export interface DisableLegacyDbfsSettingState {
      */
     disableLegacyDbfs?: pulumi.Input<inputs.DisableLegacyDbfsSettingDisableLegacyDbfs>;
     etag?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DisableLegacyDbfsSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }
 
@@ -121,5 +131,9 @@ export interface DisableLegacyDbfsSettingArgs {
      */
     disableLegacyDbfs: pulumi.Input<inputs.DisableLegacyDbfsSettingDisableLegacyDbfs>;
     etag?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DisableLegacyDbfsSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }

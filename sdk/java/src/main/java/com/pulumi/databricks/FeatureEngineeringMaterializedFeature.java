@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureState;
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig;
+import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -105,6 +106,20 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
      */
     public Output<Optional<String>> pipelineScheduleState() {
         return Codegen.optional(this.pipelineScheduleState);
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={FeatureEngineeringMaterializedFeatureProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<FeatureEngineeringMaterializedFeatureProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only

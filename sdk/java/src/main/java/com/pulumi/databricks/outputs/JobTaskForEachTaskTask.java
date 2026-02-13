@@ -40,6 +40,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskForEachTaskTask {
     private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
+    /**
+     * @return Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     private @Nullable JobTaskForEachTaskTaskCompute compute;
     private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
     private @Nullable JobTaskForEachTaskTaskDashboardTask dashboardTask;
@@ -146,8 +152,6 @@ public final class JobTaskForEachTaskTask {
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
-     * 
      */
     private @Nullable JobTaskForEachTaskTaskWebhookNotifications webhookNotifications;
 
@@ -155,6 +159,12 @@ public final class JobTaskForEachTaskTask {
     public Optional<JobTaskForEachTaskTaskCleanRoomsNotebookTask> cleanRoomsNotebookTask() {
         return Optional.ofNullable(this.cleanRoomsNotebookTask);
     }
+    /**
+     * @return Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     public Optional<JobTaskForEachTaskTaskCompute> compute() {
         return Optional.ofNullable(this.compute);
     }
@@ -328,8 +338,6 @@ public final class JobTaskForEachTaskTask {
     }
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     * 
-     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<JobTaskForEachTaskTaskWebhookNotifications> webhookNotifications() {

@@ -36,6 +36,7 @@ export class EnhancedSecurityMonitoringWorkspaceSetting extends pulumi.CustomRes
 
     declare public readonly enhancedSecurityMonitoringWorkspace: pulumi.Output<outputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace>;
     declare public readonly etag: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig | undefined>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -53,6 +54,7 @@ export class EnhancedSecurityMonitoringWorkspaceSetting extends pulumi.CustomRes
             const state = argsOrState as EnhancedSecurityMonitoringWorkspaceSettingState | undefined;
             resourceInputs["enhancedSecurityMonitoringWorkspace"] = state?.enhancedSecurityMonitoringWorkspace;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as EnhancedSecurityMonitoringWorkspaceSettingArgs | undefined;
@@ -61,6 +63,7 @@ export class EnhancedSecurityMonitoringWorkspaceSetting extends pulumi.CustomRes
             }
             resourceInputs["enhancedSecurityMonitoringWorkspace"] = args?.enhancedSecurityMonitoringWorkspace;
             resourceInputs["etag"] = args?.etag;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -74,6 +77,7 @@ export class EnhancedSecurityMonitoringWorkspaceSetting extends pulumi.CustomRes
 export interface EnhancedSecurityMonitoringWorkspaceSettingState {
     enhancedSecurityMonitoringWorkspace?: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace>;
     etag?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }
 
@@ -83,5 +87,6 @@ export interface EnhancedSecurityMonitoringWorkspaceSettingState {
 export interface EnhancedSecurityMonitoringWorkspaceSettingArgs {
     enhancedSecurityMonitoringWorkspace: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace>;
     etag?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }

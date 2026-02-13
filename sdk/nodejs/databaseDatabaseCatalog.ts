@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -97,6 +99,10 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DatabaseDatabaseCatalogProviderConfig | undefined>;
+    /**
      * (string)
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
@@ -118,6 +124,7 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
             resourceInputs["databaseInstanceName"] = state?.databaseInstanceName;
             resourceInputs["databaseName"] = state?.databaseName;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as DatabaseDatabaseCatalogArgs | undefined;
@@ -131,6 +138,7 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
             resourceInputs["databaseInstanceName"] = args?.databaseInstanceName;
             resourceInputs["databaseName"] = args?.databaseName;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -156,6 +164,10 @@ export interface DatabaseDatabaseCatalogState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DatabaseDatabaseCatalogProviderConfig>;
+    /**
      * (string)
      */
     uid?: pulumi.Input<string>;
@@ -178,4 +190,8 @@ export interface DatabaseDatabaseCatalogArgs {
      * The name of the catalog in UC
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DatabaseDatabaseCatalogProviderConfig>;
 }

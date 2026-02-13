@@ -170,6 +170,12 @@ namespace Pulumi.Databricks
         [Input("objectType", required: true)]
         public string ObjectType { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetDataQualityMonitorProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetDataQualityMonitorArgs()
         {
         }
@@ -197,6 +203,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetDataQualityMonitorProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetDataQualityMonitorInvokeArgs()
         {
@@ -229,6 +241,7 @@ namespace Pulumi.Databricks
         /// (string) - The type of the monitored object. Can be one of the following: `Schema` or `Table`
         /// </summary>
         public readonly string ObjectType;
+        public readonly Outputs.GetDataQualityMonitorProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetDataQualityMonitorResult(
@@ -240,13 +253,16 @@ namespace Pulumi.Databricks
 
             string objectId,
 
-            string objectType)
+            string objectType,
+
+            Outputs.GetDataQualityMonitorProviderConfigResult? providerConfig)
         {
             AnomalyDetectionConfig = anomalyDetectionConfig;
             DataProfilingConfig = dataProfilingConfig;
             Id = id;
             ObjectId = objectId;
             ObjectType = objectType;
+            ProviderConfig = providerConfig;
         }
     }
 }

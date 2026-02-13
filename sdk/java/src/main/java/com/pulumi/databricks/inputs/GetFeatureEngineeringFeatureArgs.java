@@ -5,9 +5,12 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringFeatureProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetFeatureEngineeringFeatureArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,10 +32,26 @@ public final class GetFeatureEngineeringFeatureArgs extends com.pulumi.resources
         return this.fullName;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetFeatureEngineeringFeatureProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetFeatureEngineeringFeatureProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetFeatureEngineeringFeatureArgs() {}
 
     private GetFeatureEngineeringFeatureArgs(GetFeatureEngineeringFeatureArgs $) {
         this.fullName = $.fullName;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -72,6 +91,27 @@ public final class GetFeatureEngineeringFeatureArgs extends com.pulumi.resources
          */
         public Builder fullName(String fullName) {
             return fullName(Output.of(fullName));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetFeatureEngineeringFeatureProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetFeatureEngineeringFeatureProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetFeatureEngineeringFeatureArgs build() {

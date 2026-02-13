@@ -358,6 +358,8 @@ type SqlTable struct {
 	Partitions pulumi.StringArrayOutput `pulumi:"partitions"`
 	// A map of table properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlTableProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
@@ -435,6 +437,8 @@ type sqlTableState struct {
 	Partitions []string `pulumi:"partitions"`
 	// A map of table properties.
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SqlTableProviderConfig `pulumi:"providerConfig"`
 	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName *string `pulumi:"schemaName"`
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
@@ -474,6 +478,8 @@ type SqlTableState struct {
 	Partitions pulumi.StringArrayInput
 	// A map of table properties.
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlTableProviderConfigPtrInput
 	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName pulumi.StringPtrInput
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
@@ -516,6 +522,8 @@ type sqlTableArgs struct {
 	Partitions []string `pulumi:"partitions"`
 	// A map of table properties.
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SqlTableProviderConfig `pulumi:"providerConfig"`
 	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName string `pulumi:"schemaName"`
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
@@ -553,6 +561,8 @@ type SqlTableArgs struct {
 	Partitions pulumi.StringArrayInput
 	// A map of table properties.
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlTableProviderConfigPtrInput
 	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName pulumi.StringInput
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
@@ -710,6 +720,11 @@ func (o SqlTableOutput) Partitions() pulumi.StringArrayOutput {
 // A map of table properties.
 func (o SqlTableOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o SqlTableOutput) ProviderConfig() SqlTableProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SqlTable) SqlTableProviderConfigPtrOutput { return v.ProviderConfig }).(SqlTableProviderConfigPtrOutput)
 }
 
 // Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.

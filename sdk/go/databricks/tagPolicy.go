@@ -68,7 +68,9 @@ type TagPolicy struct {
 	// (string) - Timestamp when the tag policy was created
 	CreateTime  pulumi.StringOutput    `pulumi:"createTime"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	TagKey      pulumi.StringOutput    `pulumi:"tagKey"`
+	// Configure the provider for management through account provider.
+	ProviderConfig TagPolicyProviderConfigPtrOutput `pulumi:"providerConfig"`
+	TagKey         pulumi.StringOutput              `pulumi:"tagKey"`
 	// (string) - Timestamp when the tag policy was last updated
 	UpdateTime pulumi.StringOutput       `pulumi:"updateTime"`
 	Values     TagPolicyValueArrayOutput `pulumi:"values"`
@@ -110,7 +112,9 @@ type tagPolicyState struct {
 	// (string) - Timestamp when the tag policy was created
 	CreateTime  *string `pulumi:"createTime"`
 	Description *string `pulumi:"description"`
-	TagKey      *string `pulumi:"tagKey"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *TagPolicyProviderConfig `pulumi:"providerConfig"`
+	TagKey         *string                  `pulumi:"tagKey"`
 	// (string) - Timestamp when the tag policy was last updated
 	UpdateTime *string          `pulumi:"updateTime"`
 	Values     []TagPolicyValue `pulumi:"values"`
@@ -120,7 +124,9 @@ type TagPolicyState struct {
 	// (string) - Timestamp when the tag policy was created
 	CreateTime  pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	TagKey      pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig TagPolicyProviderConfigPtrInput
+	TagKey         pulumi.StringPtrInput
 	// (string) - Timestamp when the tag policy was last updated
 	UpdateTime pulumi.StringPtrInput
 	Values     TagPolicyValueArrayInput
@@ -131,16 +137,20 @@ func (TagPolicyState) ElementType() reflect.Type {
 }
 
 type tagPolicyArgs struct {
-	Description *string          `pulumi:"description"`
-	TagKey      string           `pulumi:"tagKey"`
-	Values      []TagPolicyValue `pulumi:"values"`
+	Description *string `pulumi:"description"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *TagPolicyProviderConfig `pulumi:"providerConfig"`
+	TagKey         string                   `pulumi:"tagKey"`
+	Values         []TagPolicyValue         `pulumi:"values"`
 }
 
 // The set of arguments for constructing a TagPolicy resource.
 type TagPolicyArgs struct {
 	Description pulumi.StringPtrInput
-	TagKey      pulumi.StringInput
-	Values      TagPolicyValueArrayInput
+	// Configure the provider for management through account provider.
+	ProviderConfig TagPolicyProviderConfigPtrInput
+	TagKey         pulumi.StringInput
+	Values         TagPolicyValueArrayInput
 }
 
 func (TagPolicyArgs) ElementType() reflect.Type {
@@ -237,6 +247,11 @@ func (o TagPolicyOutput) CreateTime() pulumi.StringOutput {
 
 func (o TagPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o TagPolicyOutput) ProviderConfig() TagPolicyProviderConfigPtrOutput {
+	return o.ApplyT(func(v *TagPolicy) TagPolicyProviderConfigPtrOutput { return v.ProviderConfig }).(TagPolicyProviderConfigPtrOutput)
 }
 
 func (o TagPolicyOutput) TagKey() pulumi.StringOutput {

@@ -25,6 +25,8 @@ type WorkspaceFile struct {
 	ObjectId pulumi.IntOutput `pulumi:"objectId"`
 	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
 	Path pulumi.StringOutput `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig WorkspaceFileProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Path to file on local filesystem. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// Routable URL of the workspace file
@@ -73,6 +75,8 @@ type workspaceFileState struct {
 	ObjectId *int `pulumi:"objectId"`
 	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
 	Path *string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *WorkspaceFileProviderConfig `pulumi:"providerConfig"`
 	// Path to file on local filesystem. Conflicts with `contentBase64`.
 	Source *string `pulumi:"source"`
 	// Routable URL of the workspace file
@@ -89,6 +93,8 @@ type WorkspaceFileState struct {
 	ObjectId pulumi.IntPtrInput
 	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
 	Path pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig WorkspaceFileProviderConfigPtrInput
 	// Path to file on local filesystem. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrInput
 	// Routable URL of the workspace file
@@ -109,6 +115,8 @@ type workspaceFileArgs struct {
 	ObjectId *int `pulumi:"objectId"`
 	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
 	Path string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *WorkspaceFileProviderConfig `pulumi:"providerConfig"`
 	// Path to file on local filesystem. Conflicts with `contentBase64`.
 	Source *string `pulumi:"source"`
 }
@@ -122,6 +130,8 @@ type WorkspaceFileArgs struct {
 	ObjectId pulumi.IntPtrInput
 	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
 	Path pulumi.StringInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig WorkspaceFileProviderConfigPtrInput
 	// Path to file on local filesystem. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrInput
 }
@@ -230,6 +240,11 @@ func (o WorkspaceFileOutput) ObjectId() pulumi.IntOutput {
 // The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
 func (o WorkspaceFileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o WorkspaceFileOutput) ProviderConfig() WorkspaceFileProviderConfigPtrOutput {
+	return o.ApplyT(func(v *WorkspaceFile) WorkspaceFileProviderConfigPtrOutput { return v.ProviderConfig }).(WorkspaceFileProviderConfigPtrOutput)
 }
 
 // Path to file on local filesystem. Conflicts with `contentBase64`.

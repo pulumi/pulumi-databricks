@@ -118,6 +118,8 @@ type DataQualityRefresh struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: `schema`or `table`
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig DataQualityRefreshProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// (integer) - Unique id of the refresh operation
 	RefreshId pulumi.IntOutput `pulumi:"refreshId"`
 	// (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
@@ -180,6 +182,8 @@ type dataQualityRefreshState struct {
 	ObjectId *string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: `schema`or `table`
 	ObjectType *string `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *DataQualityRefreshProviderConfig `pulumi:"providerConfig"`
 	// (integer) - Unique id of the refresh operation
 	RefreshId *int `pulumi:"refreshId"`
 	// (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
@@ -207,6 +211,8 @@ type DataQualityRefreshState struct {
 	ObjectId pulumi.StringPtrInput
 	// The type of the monitored object. Can be one of the following: `schema`or `table`
 	ObjectType pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig DataQualityRefreshProviderConfigPtrInput
 	// (integer) - Unique id of the refresh operation
 	RefreshId pulumi.IntPtrInput
 	// (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
@@ -234,6 +240,8 @@ type dataQualityRefreshArgs struct {
 	ObjectId string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: `schema`or `table`
 	ObjectType string `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *DataQualityRefreshProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a DataQualityRefresh resource.
@@ -250,6 +258,8 @@ type DataQualityRefreshArgs struct {
 	ObjectId pulumi.StringInput
 	// The type of the monitored object. Can be one of the following: `schema`or `table`
 	ObjectType pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig DataQualityRefreshProviderConfigPtrInput
 }
 
 func (DataQualityRefreshArgs) ElementType() reflect.Type {
@@ -365,6 +375,11 @@ func (o DataQualityRefreshOutput) ObjectId() pulumi.StringOutput {
 // The type of the monitored object. Can be one of the following: `schema`or `table`
 func (o DataQualityRefreshOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataQualityRefresh) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o DataQualityRefreshOutput) ProviderConfig() DataQualityRefreshProviderConfigPtrOutput {
+	return o.ApplyT(func(v *DataQualityRefresh) DataQualityRefreshProviderConfigPtrOutput { return v.ProviderConfig }).(DataQualityRefreshProviderConfigPtrOutput)
 }
 
 // (integer) - Unique id of the refresh operation

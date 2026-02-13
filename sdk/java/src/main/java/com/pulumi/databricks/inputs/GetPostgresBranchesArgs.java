@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetPostgresBranchesProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -49,11 +50,27 @@ public final class GetPostgresBranchesArgs extends com.pulumi.resources.InvokeAr
         return this.parent;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetPostgresBranchesProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetPostgresBranchesProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetPostgresBranchesArgs() {}
 
     private GetPostgresBranchesArgs(GetPostgresBranchesArgs $) {
         this.pageSize = $.pageSize;
         this.parent = $.parent;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -116,6 +133,27 @@ public final class GetPostgresBranchesArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetPostgresBranchesProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetPostgresBranchesProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetPostgresBranchesArgs build() {

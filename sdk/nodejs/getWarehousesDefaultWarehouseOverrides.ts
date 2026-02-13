@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source can be used to list all default warehouse overrides in the workspace.
  *
@@ -20,6 +20,7 @@ export function getWarehousesDefaultWarehouseOverrides(args?: GetWarehousesDefau
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -34,6 +35,10 @@ export interface GetWarehousesDefaultWarehouseOverridesArgs {
      * The maximum value is 1000; values above 1000 will be coerced to 1000
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetWarehousesDefaultWarehouseOverridesProviderConfig;
 }
 
 /**
@@ -46,9 +51,10 @@ export interface GetWarehousesDefaultWarehouseOverridesResult {
      */
     readonly id: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetWarehousesDefaultWarehouseOverridesProviderConfig;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source can be used to list all default warehouse overrides in the workspace.
  *
@@ -61,6 +67,7 @@ export function getWarehousesDefaultWarehouseOverridesOutput(args?: GetWarehouse
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -75,4 +82,8 @@ export interface GetWarehousesDefaultWarehouseOverridesOutputArgs {
      * The maximum value is 1000; values above 1000 will be coerced to 1000
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetWarehousesDefaultWarehouseOverridesProviderConfigArgs>;
 }

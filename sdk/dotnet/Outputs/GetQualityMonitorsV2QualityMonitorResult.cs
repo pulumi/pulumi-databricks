@@ -26,6 +26,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ObjectType;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetQualityMonitorsV2QualityMonitorProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
         /// </summary>
         public readonly ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationResult> ValidityCheckConfigurations;
@@ -38,11 +42,14 @@ namespace Pulumi.Databricks.Outputs
 
             string objectType,
 
+            Outputs.GetQualityMonitorsV2QualityMonitorProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationResult> validityCheckConfigurations)
         {
             AnomalyDetectionConfig = anomalyDetectionConfig;
             ObjectId = objectId;
             ObjectType = objectType;
+            ProviderConfig = providerConfig;
             ValidityCheckConfigurations = validityCheckConfigurations;
         }
     }

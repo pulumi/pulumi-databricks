@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DatabaseDatabaseCatalogProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -69,6 +70,21 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DatabaseDatabaseCatalogProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<DatabaseDatabaseCatalogProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * (string)
      * 
      */
@@ -90,6 +106,7 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
         this.databaseInstanceName = $.databaseInstanceName;
         this.databaseName = $.databaseName;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.uid = $.uid;
     }
 
@@ -181,6 +198,27 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DatabaseDatabaseCatalogProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DatabaseDatabaseCatalogProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -24,6 +24,7 @@ class DatabaseSyncedDatabaseTableArgs:
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']] = None):
         """
         The set of arguments for constructing a DatabaseSyncedDatabaseTable resource.
@@ -42,6 +43,7 @@ class DatabaseSyncedDatabaseTableArgs:
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
                Note that this has implications for the `create_database_objects_is_missing` field in `spec`
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
+        :param pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         if database_instance_name is not None:
             pulumi.set(__self__, "database_instance_name", database_instance_name)
@@ -49,6 +51,8 @@ class DatabaseSyncedDatabaseTableArgs:
             pulumi.set(__self__, "logical_database_name", logical_database_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -101,6 +105,18 @@ class DatabaseSyncedDatabaseTableArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']]:
         return pulumi.get(self, "spec")
@@ -119,6 +135,7 @@ class _DatabaseSyncedDatabaseTableState:
                  effective_logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']] = None,
                  unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -146,6 +163,7 @@ class _DatabaseSyncedDatabaseTableState:
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
                Note that this has implications for the `create_database_objects_is_missing` field in `spec`
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
+        :param pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] unity_catalog_provisioning_state: (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
                state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
                may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -162,6 +180,8 @@ class _DatabaseSyncedDatabaseTableState:
             pulumi.set(__self__, "logical_database_name", logical_database_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if unity_catalog_provisioning_state is not None:
@@ -257,6 +277,18 @@ class _DatabaseSyncedDatabaseTableState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']]:
         return pulumi.get(self, "spec")
@@ -289,6 +321,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
                  __props__=None):
         """
@@ -447,6 +480,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
                Note that this has implications for the `create_database_objects_is_missing` field in `spec`
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
+        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -611,6 +645,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -624,6 +659,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
             __props__.__dict__["database_instance_name"] = database_instance_name
             __props__.__dict__["logical_database_name"] = logical_database_name
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["spec"] = spec
             __props__.__dict__["data_synchronization_status"] = None
             __props__.__dict__["effective_database_instance_name"] = None
@@ -645,6 +681,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
             effective_logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
             logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
             spec: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
             unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseSyncedDatabaseTable':
         """
@@ -677,6 +714,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
                Note that this has implications for the `create_database_objects_is_missing` field in `spec`
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
+        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] unity_catalog_provisioning_state: (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
                state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
                may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -691,6 +729,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         __props__.__dict__["effective_logical_database_name"] = effective_logical_database_name
         __props__.__dict__["logical_database_name"] = logical_database_name
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["spec"] = spec
         __props__.__dict__["unity_catalog_provisioning_state"] = unity_catalog_provisioning_state
         return DatabaseSyncedDatabaseTable(resource_name, opts=opts, __props__=__props__)
@@ -759,6 +798,14 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         Full three-part (catalog, schema, table) name of the table
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.DatabaseSyncedDatabaseTableProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

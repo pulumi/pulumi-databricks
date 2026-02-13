@@ -176,6 +176,12 @@ namespace Pulumi.Databricks
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.AppsSettingsCustomTemplateProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AppsSettingsCustomTemplate resource with the given unique name, arguments, and options.
@@ -259,6 +265,12 @@ namespace Pulumi.Databricks
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.AppsSettingsCustomTemplateProviderConfigArgs>? ProviderConfig { get; set; }
+
         public AppsSettingsCustomTemplateArgs()
         {
         }
@@ -309,6 +321,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.AppsSettingsCustomTemplateProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public AppsSettingsCustomTemplateState()
         {

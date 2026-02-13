@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.PostgresEndpointArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PostgresEndpointState;
+import com.pulumi.databricks.outputs.PostgresEndpointProviderConfig;
 import com.pulumi.databricks.outputs.PostgresEndpointSpec;
 import com.pulumi.databricks.outputs.PostgresEndpointStatus;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -386,6 +388,20 @@ public class PostgresEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> parent() {
         return this.parent;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={PostgresEndpointProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ PostgresEndpointProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<PostgresEndpointProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state

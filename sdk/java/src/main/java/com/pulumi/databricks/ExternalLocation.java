@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ExternalLocationState;
 import com.pulumi.databricks.outputs.ExternalLocationEncryptionDetails;
 import com.pulumi.databricks.outputs.ExternalLocationFileEventQueue;
+import com.pulumi.databricks.outputs.ExternalLocationProviderConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -416,6 +417,12 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> owner() {
         return this.owner;
+    }
+    @Export(name="providerConfig", refs={ExternalLocationProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ExternalLocationProviderConfig> providerConfig;
+
+    public Output<Optional<ExternalLocationProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Indicates whether the external location is read-only.

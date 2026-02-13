@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetEntityTagAssignmentsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -61,12 +62,28 @@ public final class GetEntityTagAssignmentsPlainArgs extends com.pulumi.resources
         return Optional.ofNullable(this.maxResults);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetEntityTagAssignmentsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetEntityTagAssignmentsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetEntityTagAssignmentsPlainArgs() {}
 
     private GetEntityTagAssignmentsPlainArgs(GetEntityTagAssignmentsPlainArgs $) {
         this.entityName = $.entityName;
         this.entityType = $.entityType;
         this.maxResults = $.maxResults;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -117,6 +134,17 @@ public final class GetEntityTagAssignmentsPlainArgs extends com.pulumi.resources
          */
         public Builder maxResults(@Nullable Integer maxResults) {
             $.maxResults = maxResults;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetEntityTagAssignmentsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

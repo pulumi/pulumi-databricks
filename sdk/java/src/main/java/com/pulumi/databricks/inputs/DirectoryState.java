@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DirectoryProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -63,6 +64,21 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DirectoryProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<DirectoryProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      * 
      */
@@ -83,6 +99,7 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         this.deleteRecursive = $.deleteRecursive;
         this.objectId = $.objectId;
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
         this.workspacePath = $.workspacePath;
     }
 
@@ -165,6 +182,27 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DirectoryProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DirectoryProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -16,9 +16,17 @@ public final class ClusterWorkerNodeTypeFlexibilityArgs extends com.pulumi.resou
 
     public static final ClusterWorkerNodeTypeFlexibilityArgs Empty = new ClusterWorkerNodeTypeFlexibilityArgs();
 
+    /**
+     * list of alternative node types that will be used if main node type isn&#39;t available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+     * 
+     */
     @Import(name="alternateNodeTypeIds")
     private @Nullable Output<List<String>> alternateNodeTypeIds;
 
+    /**
+     * @return list of alternative node types that will be used if main node type isn&#39;t available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+     * 
+     */
     public Optional<Output<List<String>>> alternateNodeTypeIds() {
         return Optional.ofNullable(this.alternateNodeTypeIds);
     }
@@ -47,15 +55,33 @@ public final class ClusterWorkerNodeTypeFlexibilityArgs extends com.pulumi.resou
             $ = new ClusterWorkerNodeTypeFlexibilityArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alternateNodeTypeIds list of alternative node types that will be used if main node type isn&#39;t available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alternateNodeTypeIds(@Nullable Output<List<String>> alternateNodeTypeIds) {
             $.alternateNodeTypeIds = alternateNodeTypeIds;
             return this;
         }
 
+        /**
+         * @param alternateNodeTypeIds list of alternative node types that will be used if main node type isn&#39;t available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alternateNodeTypeIds(List<String> alternateNodeTypeIds) {
             return alternateNodeTypeIds(Output.of(alternateNodeTypeIds));
         }
 
+        /**
+         * @param alternateNodeTypeIds list of alternative node types that will be used if main node type isn&#39;t available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alternateNodeTypeIds(String... alternateNodeTypeIds) {
             return alternateNodeTypeIds(List.of(alternateNodeTypeIds));
         }

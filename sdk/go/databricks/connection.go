@@ -272,6 +272,8 @@ type Connection struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Free-form connection properties. Change forces creation of a new resource.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ConnectionProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Object with the status of an asynchronously provisioned resource.
 	ProvisioningInfos ConnectionProvisioningInfoArrayOutput `pulumi:"provisioningInfos"`
 	// Indicates whether the connection is read-only. Change forces creation of a new resource.
@@ -346,6 +348,8 @@ type connectionState struct {
 	Owner *string `pulumi:"owner"`
 	// Free-form connection properties. Change forces creation of a new resource.
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *ConnectionProviderConfig `pulumi:"providerConfig"`
 	// Object with the status of an asynchronously provisioned resource.
 	ProvisioningInfos []ConnectionProvisioningInfo `pulumi:"provisioningInfos"`
 	// Indicates whether the connection is read-only. Change forces creation of a new resource.
@@ -384,6 +388,8 @@ type ConnectionState struct {
 	Owner pulumi.StringPtrInput
 	// Free-form connection properties. Change forces creation of a new resource.
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ConnectionProviderConfigPtrInput
 	// Object with the status of an asynchronously provisioned resource.
 	ProvisioningInfos ConnectionProvisioningInfoArrayInput
 	// Indicates whether the connection is read-only. Change forces creation of a new resource.
@@ -414,6 +420,8 @@ type connectionArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Free-form connection properties. Change forces creation of a new resource.
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *ConnectionProviderConfig `pulumi:"providerConfig"`
 	// Indicates whether the connection is read-only. Change forces creation of a new resource.
 	ReadOnly *bool `pulumi:"readOnly"`
 }
@@ -432,6 +440,8 @@ type ConnectionArgs struct {
 	Owner pulumi.StringPtrInput
 	// Free-form connection properties. Change forces creation of a new resource.
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ConnectionProviderConfigPtrInput
 	// Indicates whether the connection is read-only. Change forces creation of a new resource.
 	ReadOnly pulumi.BoolPtrInput
 }
@@ -581,6 +591,11 @@ func (o ConnectionOutput) Owner() pulumi.StringOutput {
 // Free-form connection properties. Change forces creation of a new resource.
 func (o ConnectionOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o ConnectionOutput) ProviderConfig() ConnectionProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionProviderConfigPtrOutput { return v.ProviderConfig }).(ConnectionProviderConfigPtrOutput)
 }
 
 // Object with the status of an asynchronously provisioned resource.

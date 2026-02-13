@@ -180,6 +180,9 @@ namespace Pulumi.Databricks
         [Output("driverInstancePoolId")]
         public Output<string> DriverInstancePoolId { get; private set; } = null!;
 
+        /// <summary>
+        /// a block describing the alternative driver node types if `DriverNodeTypeId` isn't available.
+        /// </summary>
         [Output("driverNodeTypeFlexibility")]
         public Output<Outputs.ClusterDriverNodeTypeFlexibility?> DriverNodeTypeFlexibility { get; private set; } = null!;
 
@@ -329,6 +332,9 @@ namespace Pulumi.Databricks
         [Output("useMlRuntime")]
         public Output<bool?> UseMlRuntime { get; private set; } = null!;
 
+        /// <summary>
+        /// a block describing the alternative driver node types if `NodeTypeId` isn't available.
+        /// </summary>
         [Output("workerNodeTypeFlexibility")]
         public Output<Outputs.ClusterWorkerNodeTypeFlexibility?> WorkerNodeTypeFlexibility { get; private set; } = null!;
 
@@ -479,6 +485,9 @@ namespace Pulumi.Databricks
         [Input("driverInstancePoolId")]
         public Input<string>? DriverInstancePoolId { get; set; }
 
+        /// <summary>
+        /// a block describing the alternative driver node types if `DriverNodeTypeId` isn't available.
+        /// </summary>
         [Input("driverNodeTypeFlexibility")]
         public Input<Inputs.ClusterDriverNodeTypeFlexibilityArgs>? DriverNodeTypeFlexibility { get; set; }
 
@@ -647,6 +656,9 @@ namespace Pulumi.Databricks
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }
 
+        /// <summary>
+        /// a block describing the alternative driver node types if `NodeTypeId` isn't available.
+        /// </summary>
         [Input("workerNodeTypeFlexibility")]
         public Input<Inputs.ClusterWorkerNodeTypeFlexibilityArgs>? WorkerNodeTypeFlexibility { get; set; }
 
@@ -774,6 +786,9 @@ namespace Pulumi.Databricks
         [Input("driverInstancePoolId")]
         public Input<string>? DriverInstancePoolId { get; set; }
 
+        /// <summary>
+        /// a block describing the alternative driver node types if `DriverNodeTypeId` isn't available.
+        /// </summary>
         [Input("driverNodeTypeFlexibility")]
         public Input<Inputs.ClusterDriverNodeTypeFlexibilityGetArgs>? DriverNodeTypeFlexibility { get; set; }
 
@@ -951,6 +966,9 @@ namespace Pulumi.Databricks
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }
 
+        /// <summary>
+        /// a block describing the alternative driver node types if `NodeTypeId` isn't available.
+        /// </summary>
         [Input("workerNodeTypeFlexibility")]
         public Input<Inputs.ClusterWorkerNodeTypeFlexibilityGetArgs>? WorkerNodeTypeFlexibility { get; set; }
 

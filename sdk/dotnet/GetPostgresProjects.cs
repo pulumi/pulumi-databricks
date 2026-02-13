@@ -120,6 +120,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetPostgresProjectsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetPostgresProjectsArgs()
         {
         }
@@ -133,6 +139,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetPostgresProjectsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetPostgresProjectsInvokeArgs()
         {
@@ -150,6 +162,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetPostgresProjectsProjectResult> Projects;
+        public readonly Outputs.GetPostgresProjectsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetPostgresProjectsResult(
@@ -157,11 +170,14 @@ namespace Pulumi.Databricks
 
             int? pageSize,
 
-            ImmutableArray<Outputs.GetPostgresProjectsProjectResult> projects)
+            ImmutableArray<Outputs.GetPostgresProjectsProjectResult> projects,
+
+            Outputs.GetPostgresProjectsProviderConfigResult? providerConfig)
         {
             Id = id;
             PageSize = pageSize;
             Projects = projects;
+            ProviderConfig = providerConfig;
         }
     }
 }

@@ -94,6 +94,9 @@ namespace Pulumi.Databricks
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.SqlAlertProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         /// <summary>
         /// ID of the query evaluated by the alert.
         /// </summary>
@@ -176,6 +179,9 @@ namespace Pulumi.Databricks
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.SqlAlertProviderConfigArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// ID of the query evaluated by the alert.
         /// </summary>
@@ -219,6 +225,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.SqlAlertProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// ID of the query evaluated by the alert.

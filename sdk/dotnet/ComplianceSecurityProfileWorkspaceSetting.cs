@@ -18,6 +18,9 @@ namespace Pulumi.Databricks
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("settingName")]
         public Output<string> SettingName { get; private set; } = null!;
 
@@ -73,6 +76,9 @@ namespace Pulumi.Databricks
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("settingName")]
         public Input<string>? SettingName { get; set; }
 
@@ -89,6 +95,9 @@ namespace Pulumi.Databricks
 
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.ComplianceSecurityProfileWorkspaceSettingProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("settingName")]
         public Input<string>? SettingName { get; set; }

@@ -173,6 +173,9 @@ namespace Pulumi.Databricks
         [Output("modelName")]
         public Output<string?> ModelName { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.MlflowWebhookProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         /// <summary>
         /// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         /// </summary>
@@ -257,6 +260,9 @@ namespace Pulumi.Databricks
         [Input("modelName")]
         public Input<string>? ModelName { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.MlflowWebhookProviderConfigArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         /// </summary>
@@ -302,6 +308,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("modelName")]
         public Input<string>? ModelName { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.MlflowWebhookProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.

@@ -120,6 +120,10 @@ export class Catalog extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.CatalogProviderConfig | undefined>;
+    /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
     declare public readonly providerName: pulumi.Output<string | undefined>;
@@ -178,6 +182,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["options"] = state?.options;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["providerName"] = state?.providerName;
             resourceInputs["provisioningInfo"] = state?.provisioningInfo;
             resourceInputs["securableType"] = state?.securableType;
@@ -200,6 +205,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["options"] = args?.options;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["providerName"] = args?.providerName;
             resourceInputs["provisioningInfo"] = args?.provisioningInfo;
             resourceInputs["shareName"] = args?.shareName;
@@ -278,6 +284,10 @@ export interface CatalogState {
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.CatalogProviderConfig>;
+    /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
     providerName?: pulumi.Input<string>;
@@ -354,6 +364,10 @@ export interface CatalogArgs {
      * Extensible Catalog properties.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.CatalogProviderConfig>;
     /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */

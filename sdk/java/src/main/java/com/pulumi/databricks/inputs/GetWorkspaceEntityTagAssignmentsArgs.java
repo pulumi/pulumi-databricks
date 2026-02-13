@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentsProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -62,12 +63,28 @@ public final class GetWorkspaceEntityTagAssignmentsArgs extends com.pulumi.resou
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetWorkspaceEntityTagAssignmentsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetWorkspaceEntityTagAssignmentsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetWorkspaceEntityTagAssignmentsArgs() {}
 
     private GetWorkspaceEntityTagAssignmentsArgs(GetWorkspaceEntityTagAssignmentsArgs $) {
         this.entityId = $.entityId;
         this.entityType = $.entityType;
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -149,6 +166,27 @@ public final class GetWorkspaceEntityTagAssignmentsArgs extends com.pulumi.resou
          */
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetWorkspaceEntityTagAssignmentsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetWorkspaceEntityTagAssignmentsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetWorkspaceEntityTagAssignmentsArgs build() {

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -72,6 +74,10 @@ export class WorkspaceBinding extends pulumi.CustomResource {
      */
     declare public readonly catalogName: pulumi.Output<string | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceBindingProviderConfig | undefined>;
+    /**
      * Name of securable. Change forces creation of a new resource.
      */
     declare public readonly securableName: pulumi.Output<string>;
@@ -99,6 +105,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
             const state = argsOrState as WorkspaceBindingState | undefined;
             resourceInputs["bindingType"] = state?.bindingType;
             resourceInputs["catalogName"] = state?.catalogName;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["securableName"] = state?.securableName;
             resourceInputs["securableType"] = state?.securableType;
             resourceInputs["workspaceId"] = state?.workspaceId;
@@ -109,6 +116,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
             }
             resourceInputs["bindingType"] = args?.bindingType;
             resourceInputs["catalogName"] = args?.catalogName;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["securableName"] = args?.securableName;
             resourceInputs["securableType"] = args?.securableType;
             resourceInputs["workspaceId"] = args?.workspaceId;
@@ -130,6 +138,10 @@ export interface WorkspaceBindingState {
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     catalogName?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceBindingProviderConfig>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */
@@ -156,6 +168,10 @@ export interface WorkspaceBindingArgs {
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     catalogName?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceBindingProviderConfig>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */

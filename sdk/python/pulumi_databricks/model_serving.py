@@ -27,6 +27,7 @@ class ModelServingArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  email_notifications: Optional[pulumi.Input['ModelServingEmailNotificationsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ModelServingProviderConfigArgs']] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
@@ -38,6 +39,7 @@ class ModelServingArgs:
         :param pulumi.Input[_builtins.str] description: The description of the model serving endpoint.
         :param pulumi.Input['ModelServingEmailNotificationsArgs'] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+        :param pulumi.Input['ModelServingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
@@ -54,6 +56,8 @@ class ModelServingArgs:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if rate_limits is not None:
             warnings.warn("""Please use AI Gateway to manage rate limits.""", DeprecationWarning)
             pulumi.log.warn("""rate_limits is deprecated: Please use AI Gateway to manage rate limits.""")
@@ -137,6 +141,18 @@ class ModelServingArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ModelServingProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ModelServingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="rateLimits")
     @_utilities.deprecated("""Please use AI Gateway to manage rate limits.""")
     def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
@@ -184,6 +200,7 @@ class _ModelServingState:
                  email_notifications: Optional[pulumi.Input['ModelServingEmailNotificationsArgs']] = None,
                  endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ModelServingProviderConfigArgs']] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
                  serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -197,6 +214,7 @@ class _ModelServingState:
         :param pulumi.Input['ModelServingEmailNotificationsArgs'] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] endpoint_url: Invocation url of the endpoint.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+        :param pulumi.Input['ModelServingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
         :param pulumi.Input[_builtins.str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
@@ -216,6 +234,8 @@ class _ModelServingState:
             pulumi.set(__self__, "endpoint_url", endpoint_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if rate_limits is not None:
             warnings.warn("""Please use AI Gateway to manage rate limits.""", DeprecationWarning)
             pulumi.log.warn("""rate_limits is deprecated: Please use AI Gateway to manage rate limits.""")
@@ -313,6 +333,18 @@ class _ModelServingState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ModelServingProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ModelServingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="rateLimits")
     @_utilities.deprecated("""Please use AI Gateway to manage rate limits.""")
     def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
@@ -374,6 +406,7 @@ class ModelServing(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  email_notifications: Optional[pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
                  route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
@@ -528,6 +561,7 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the model serving endpoint.
         :param pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+        :param pulumi.Input[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
@@ -701,6 +735,7 @@ class ModelServing(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  email_notifications: Optional[pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
                  route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
@@ -719,6 +754,7 @@ class ModelServing(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["rate_limits"] = rate_limits
             __props__.__dict__["route_optimized"] = route_optimized
             __props__.__dict__["tags"] = tags
@@ -741,6 +777,7 @@ class ModelServing(pulumi.CustomResource):
             email_notifications: Optional[pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']]] = None,
             endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']]] = None,
             rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
             route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
             serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -759,6 +796,7 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] endpoint_url: Invocation url of the endpoint.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+        :param pulumi.Input[Union['ModelServingProviderConfigArgs', 'ModelServingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
         :param pulumi.Input[_builtins.str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
@@ -775,6 +813,7 @@ class ModelServing(pulumi.CustomResource):
         __props__.__dict__["email_notifications"] = email_notifications
         __props__.__dict__["endpoint_url"] = endpoint_url
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["rate_limits"] = rate_limits
         __props__.__dict__["route_optimized"] = route_optimized
         __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
@@ -836,6 +875,14 @@ class ModelServing(pulumi.CustomResource):
         The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ModelServingProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="rateLimits")

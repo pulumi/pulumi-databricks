@@ -93,6 +93,12 @@ namespace Pulumi.Databricks
         [Output("listType")]
         public Output<string> ListType { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.IpAccessListProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a IpAccessList resource with the given unique name, arguments, and options.
@@ -169,6 +175,12 @@ namespace Pulumi.Databricks
         [Input("listType", required: true)]
         public Input<string> ListType { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.IpAccessListProviderConfigArgs>? ProviderConfig { get; set; }
+
         public IpAccessListArgs()
         {
         }
@@ -206,6 +218,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("listType")]
         public Input<string>? ListType { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.IpAccessListProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public IpAccessListState()
         {

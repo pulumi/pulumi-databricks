@@ -58,6 +58,8 @@ type LookupPostgresEndpointArgs struct {
 	// Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresEndpointProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getPostgresEndpoint.
@@ -71,7 +73,8 @@ type LookupPostgresEndpointResult struct {
 	Name string `pulumi:"name"`
 	// (string) - The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
-	Parent string `pulumi:"parent"`
+	Parent         string                             `pulumi:"parent"`
+	ProviderConfig *GetPostgresEndpointProviderConfig `pulumi:"providerConfig"`
 	// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec GetPostgresEndpointSpec `pulumi:"spec"`
 	// (EndpointStatus) - Current operational status of the compute endpoint
@@ -96,6 +99,8 @@ type LookupPostgresEndpointOutputArgs struct {
 	// Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresEndpointProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupPostgresEndpointOutputArgs) ElementType() reflect.Type {
@@ -137,6 +142,10 @@ func (o LookupPostgresEndpointResultOutput) Name() pulumi.StringOutput {
 // Format: projects/{project_id}/branches/{branch_id}
 func (o LookupPostgresEndpointResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+func (o LookupPostgresEndpointResultOutput) ProviderConfig() GetPostgresEndpointProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupPostgresEndpointResult) *GetPostgresEndpointProviderConfig { return v.ProviderConfig }).(GetPostgresEndpointProviderConfigPtrOutput)
 }
 
 // (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state

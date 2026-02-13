@@ -72,6 +72,12 @@ namespace Pulumi.Databricks
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.DirectoryProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Output("workspacePath")]
@@ -141,6 +147,12 @@ namespace Pulumi.Databricks
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DirectoryProviderConfigArgs>? ProviderConfig { get; set; }
+
         public DirectoryArgs()
         {
         }
@@ -166,6 +178,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DirectoryProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`

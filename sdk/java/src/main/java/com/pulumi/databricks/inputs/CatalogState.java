@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.CatalogEffectivePredictiveOptimizationFlagArgs;
+import com.pulumi.databricks.inputs.CatalogProviderConfigArgs;
 import com.pulumi.databricks.inputs.CatalogProvisioningInfoArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -237,6 +238,21 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<CatalogProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<CatalogProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      * 
      */
@@ -367,6 +383,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         this.options = $.options;
         this.owner = $.owner;
         this.properties = $.properties;
+        this.providerConfig = $.providerConfig;
         this.providerName = $.providerName;
         this.provisioningInfo = $.provisioningInfo;
         this.securableType = $.securableType;
@@ -693,6 +710,27 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<CatalogProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(CatalogProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -133,6 +133,12 @@ namespace Pulumi.Databricks
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.FileProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("remoteFileModified")]
         public Output<bool?> RemoteFileModified { get; private set; } = null!;
 
@@ -203,6 +209,12 @@ namespace Pulumi.Databricks
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.FileProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("remoteFileModified")]
         public Input<bool>? RemoteFileModified { get; set; }
 
@@ -246,6 +258,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.FileProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("remoteFileModified")]
         public Input<bool>? RemoteFileModified { get; set; }

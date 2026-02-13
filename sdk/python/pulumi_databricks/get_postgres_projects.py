@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetPostgresProjectsResult',
@@ -27,7 +28,7 @@ class GetPostgresProjectsResult:
     """
     A collection of values returned by getPostgresProjects.
     """
-    def __init__(__self__, id=None, page_size=None, projects=None):
+    def __init__(__self__, id=None, page_size=None, projects=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -37,6 +38,9 @@ class GetPostgresProjectsResult:
         if projects and not isinstance(projects, list):
             raise TypeError("Expected argument 'projects' to be a list")
         pulumi.set(__self__, "projects", projects)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -56,6 +60,11 @@ class GetPostgresProjectsResult:
     def projects(self) -> Sequence['outputs.GetPostgresProjectsProjectResult']:
         return pulumi.get(self, "projects")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetPostgresProjectsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetPostgresProjectsResult(GetPostgresProjectsResult):
     # pylint: disable=using-constant-test
@@ -65,10 +74,12 @@ class AwaitableGetPostgresProjectsResult(GetPostgresProjectsResult):
         return GetPostgresProjectsResult(
             id=self.id,
             page_size=self.page_size,
-            projects=self.projects)
+            projects=self.projects,
+            provider_config=self.provider_config)
 
 
 def get_postgres_projects(page_size: Optional[_builtins.int] = None,
+                          provider_config: Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresProjectsResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -89,17 +100,21 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
 
 
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
+    :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresProjects:getPostgresProjects', __args__, opts=opts, typ=GetPostgresProjectsResult).value
 
     return AwaitableGetPostgresProjectsResult(
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
-        projects=pulumi.get(__ret__, 'projects'))
+        projects=pulumi.get(__ret__, 'projects'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_postgres_projects_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                 provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresProjectsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -120,12 +135,15 @@ def get_postgres_projects_output(page_size: Optional[pulumi.Input[Optional[_buil
 
 
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
+    :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresProjects:getPostgresProjects', __args__, opts=opts, typ=GetPostgresProjectsResult)
     return __ret__.apply(lambda __response__: GetPostgresProjectsResult(
         id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
-        projects=pulumi.get(__response__, 'projects')))
+        projects=pulumi.get(__response__, 'projects'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

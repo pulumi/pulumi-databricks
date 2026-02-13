@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.IpAccessListProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -78,6 +79,21 @@ public final class IpAccessListArgs extends com.pulumi.resources.ResourceArgs {
         return this.listType;
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<IpAccessListProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<IpAccessListProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private IpAccessListArgs() {}
 
     private IpAccessListArgs(IpAccessListArgs $) {
@@ -85,6 +101,7 @@ public final class IpAccessListArgs extends com.pulumi.resources.ResourceArgs {
         this.ipAddresses = $.ipAddresses;
         this.label = $.label;
         this.listType = $.listType;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -197,6 +214,27 @@ public final class IpAccessListArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder listType(String listType) {
             return listType(Output.of(listType));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<IpAccessListProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(IpAccessListProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public IpAccessListArgs build() {

@@ -32,6 +32,7 @@ export function getAlertsV2(args?: GetAlertsV2Args, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAlertsV2:getAlertsV2", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -40,6 +41,10 @@ export function getAlertsV2(args?: GetAlertsV2Args, opts?: pulumi.InvokeOptions)
  */
 export interface GetAlertsV2Args {
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetAlertsV2ProviderConfig;
 }
 
 /**
@@ -52,6 +57,7 @@ export interface GetAlertsV2Result {
      */
     readonly id: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetAlertsV2ProviderConfig;
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -79,6 +85,7 @@ export function getAlertsV2Output(args?: GetAlertsV2OutputArgs, opts?: pulumi.In
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAlertsV2:getAlertsV2", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -87,4 +94,8 @@ export function getAlertsV2Output(args?: GetAlertsV2OutputArgs, opts?: pulumi.In
  */
 export interface GetAlertsV2OutputArgs {
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetAlertsV2ProviderConfigArgs>;
 }

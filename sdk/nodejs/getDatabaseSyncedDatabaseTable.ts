@@ -28,6 +28,7 @@ export function getDatabaseSyncedDatabaseTable(args: GetDatabaseSyncedDatabaseTa
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -39,6 +40,10 @@ export interface GetDatabaseSyncedDatabaseTableArgs {
      * Full three-part (catalog, schema, table) name of the table
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetDatabaseSyncedDatabaseTableProviderConfig;
 }
 
 /**
@@ -81,6 +86,7 @@ export interface GetDatabaseSyncedDatabaseTableResult {
      * (string) - Full three-part (catalog, schema, table) name of the table
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetDatabaseSyncedDatabaseTableProviderConfig;
     /**
      * (SyncedTableSpec)
      */
@@ -114,6 +120,7 @@ export function getDatabaseSyncedDatabaseTableOutput(args: GetDatabaseSyncedData
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -125,4 +132,8 @@ export interface GetDatabaseSyncedDatabaseTableOutputArgs {
      * Full three-part (catalog, schema, table) name of the table
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetDatabaseSyncedDatabaseTableProviderConfigArgs>;
 }

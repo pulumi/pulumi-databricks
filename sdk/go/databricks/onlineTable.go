@@ -52,6 +52,8 @@ type OnlineTable struct {
 
 	// 3-level name of the Online Table to create.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig OnlineTableProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// object containing specification of the online table:
 	Spec OnlineTableSpecPtrOutput `pulumi:"spec"`
 	// object describing status of the online table:
@@ -94,6 +96,8 @@ func GetOnlineTable(ctx *pulumi.Context,
 type onlineTableState struct {
 	// 3-level name of the Online Table to create.
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *OnlineTableProviderConfig `pulumi:"providerConfig"`
 	// object containing specification of the online table:
 	Spec *OnlineTableSpec `pulumi:"spec"`
 	// object describing status of the online table:
@@ -107,6 +111,8 @@ type onlineTableState struct {
 type OnlineTableState struct {
 	// 3-level name of the Online Table to create.
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig OnlineTableProviderConfigPtrInput
 	// object containing specification of the online table:
 	Spec OnlineTableSpecPtrInput
 	// object describing status of the online table:
@@ -124,6 +130,8 @@ func (OnlineTableState) ElementType() reflect.Type {
 type onlineTableArgs struct {
 	// 3-level name of the Online Table to create.
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *OnlineTableProviderConfig `pulumi:"providerConfig"`
 	// object containing specification of the online table:
 	Spec *OnlineTableSpec `pulumi:"spec"`
 }
@@ -132,6 +140,8 @@ type onlineTableArgs struct {
 type OnlineTableArgs struct {
 	// 3-level name of the Online Table to create.
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig OnlineTableProviderConfigPtrInput
 	// object containing specification of the online table:
 	Spec OnlineTableSpecPtrInput
 }
@@ -226,6 +236,11 @@ func (o OnlineTableOutput) ToOnlineTableOutputWithContext(ctx context.Context) O
 // 3-level name of the Online Table to create.
 func (o OnlineTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnlineTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o OnlineTableOutput) ProviderConfig() OnlineTableProviderConfigPtrOutput {
+	return o.ApplyT(func(v *OnlineTable) OnlineTableProviderConfigPtrOutput { return v.ProviderConfig }).(OnlineTableProviderConfigPtrOutput)
 }
 
 // object containing specification of the online table:

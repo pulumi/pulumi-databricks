@@ -97,6 +97,10 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly fullName: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.RfaAccessRequestDestinationsProviderConfig | undefined>;
+    /**
      * The securable for which the access request destinations are being modified or read
      */
     declare public readonly securable: pulumi.Output<outputs.RfaAccessRequestDestinationsSecurable>;
@@ -122,6 +126,7 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
             resourceInputs["destinationSourceSecurable"] = state?.destinationSourceSecurable;
             resourceInputs["destinations"] = state?.destinations;
             resourceInputs["fullName"] = state?.fullName;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["securable"] = state?.securable;
             resourceInputs["securableType"] = state?.securableType;
         } else {
@@ -130,6 +135,7 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
                 throw new Error("Missing required property 'securable'");
             }
             resourceInputs["destinations"] = args?.destinations;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["securable"] = args?.securable;
             resourceInputs["areAnyDestinationsHidden"] = undefined /*out*/;
             resourceInputs["destinationSourceSecurable"] = undefined /*out*/;
@@ -164,6 +170,10 @@ export interface RfaAccessRequestDestinationsState {
      */
     fullName?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.RfaAccessRequestDestinationsProviderConfig>;
+    /**
      * The securable for which the access request destinations are being modified or read
      */
     securable?: pulumi.Input<inputs.RfaAccessRequestDestinationsSecurable>;
@@ -181,6 +191,10 @@ export interface RfaAccessRequestDestinationsArgs {
      * The access request destinations for the securable
      */
     destinations?: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[]>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.RfaAccessRequestDestinationsProviderConfig>;
     /**
      * The securable for which the access request destinations are being modified or read
      */

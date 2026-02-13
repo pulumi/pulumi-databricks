@@ -261,6 +261,12 @@ namespace Pulumi.Databricks
         public Output<string> PgVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.DatabaseInstanceProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Purge the resource on delete
         /// </summary>
         [Output("purgeOnDelete")]
@@ -408,6 +414,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("parentInstanceRef")]
         public Input<Inputs.DatabaseInstanceParentInstanceRefArgs>? ParentInstanceRef { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DatabaseInstanceProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Purge the resource on delete
@@ -597,6 +609,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("pgVersion")]
         public Input<string>? PgVersion { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DatabaseInstanceProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Purge the resource on delete

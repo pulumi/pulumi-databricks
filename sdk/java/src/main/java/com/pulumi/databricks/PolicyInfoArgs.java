@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PolicyInfoColumnMaskArgs;
 import com.pulumi.databricks.inputs.PolicyInfoMatchColumnArgs;
+import com.pulumi.databricks.inputs.PolicyInfoProviderConfigArgs;
 import com.pulumi.databricks.inputs.PolicyInfoRowFilterArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -126,7 +127,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     @Import(name="onSecurableFullname")
@@ -134,7 +135,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     public Optional<Output<String>> onSecurableFullname() {
@@ -144,7 +145,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     @Import(name="onSecurableType")
@@ -153,7 +154,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     public Optional<Output<String>> onSecurableType() {
@@ -161,18 +162,33 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     @Import(name="policyType", required=true)
     private Output<String> policyType;
 
     /**
-     * @return Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     public Output<String> policyType() {
         return this.policyType;
+    }
+
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<PolicyInfoProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<PolicyInfoProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -238,6 +254,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         this.onSecurableFullname = $.onSecurableFullname;
         this.onSecurableType = $.onSecurableType;
         this.policyType = $.policyType;
+        this.providerConfig = $.providerConfig;
         this.rowFilter = $.rowFilter;
         this.toPrincipals = $.toPrincipals;
         this.whenCondition = $.whenCondition;
@@ -425,7 +442,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param onSecurableFullname Full name of the securable on which the policy is defined.
-         * Required on create and ignored on update
+         * Required on create
          * 
          * @return builder
          * 
@@ -437,7 +454,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param onSecurableFullname Full name of the securable on which the policy is defined.
-         * Required on create and ignored on update
+         * Required on create
          * 
          * @return builder
          * 
@@ -449,7 +466,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param onSecurableType Type of the securable on which the policy is defined.
          * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-         * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+         * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
          * 
          * @return builder
          * 
@@ -462,7 +479,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param onSecurableType Type of the securable on which the policy is defined.
          * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-         * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+         * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
          * 
          * @return builder
          * 
@@ -472,7 +489,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyType Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
          * 
          * @return builder
          * 
@@ -483,13 +500,34 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyType Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+         * @param policyType Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
          * 
          * @return builder
          * 
          */
         public Builder policyType(String policyType) {
             return policyType(Output.of(policyType));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<PolicyInfoProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(PolicyInfoProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

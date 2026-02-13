@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GrantsGrantArgs;
+import com.pulumi.databricks.inputs.GrantsProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -80,6 +81,13 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pipeline);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GrantsProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GrantsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="recipient")
     private @Nullable Output<String> recipient;
 
@@ -134,6 +142,7 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         this.metastore = $.metastore;
         this.model = $.model;
         this.pipeline = $.pipeline;
+        this.providerConfig = $.providerConfig;
         this.recipient = $.recipient;
         this.schema = $.schema;
         this.share = $.share;
@@ -243,6 +252,15 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder pipeline(String pipeline) {
             return pipeline(Output.of(pipeline));
+        }
+
+        public Builder providerConfig(@Nullable Output<GrantsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GrantsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder recipient(@Nullable Output<String> recipient) {

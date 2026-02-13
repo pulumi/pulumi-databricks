@@ -56,6 +56,8 @@ func LookupDatabaseSyncedDatabaseTable(ctx *pulumi.Context, args *LookupDatabase
 type LookupDatabaseSyncedDatabaseTableArgs struct {
 	// Full three-part (catalog, schema, table) name of the table
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDatabaseSyncedDatabaseTableProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDatabaseSyncedDatabaseTable.
@@ -81,7 +83,8 @@ type LookupDatabaseSyncedDatabaseTableResult struct {
 	// (string) - Target Postgres database object (logical database) name for this table.
 	LogicalDatabaseName string `pulumi:"logicalDatabaseName"`
 	// (string) - Full three-part (catalog, schema, table) name of the table
-	Name string `pulumi:"name"`
+	Name           string                                        `pulumi:"name"`
+	ProviderConfig *GetDatabaseSyncedDatabaseTableProviderConfig `pulumi:"providerConfig"`
 	// (SyncedTableSpec)
 	Spec GetDatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
@@ -103,6 +106,8 @@ func LookupDatabaseSyncedDatabaseTableOutput(ctx *pulumi.Context, args LookupDat
 type LookupDatabaseSyncedDatabaseTableOutputArgs struct {
 	// Full three-part (catalog, schema, table) name of the table
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDatabaseSyncedDatabaseTableProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupDatabaseSyncedDatabaseTableOutputArgs) ElementType() reflect.Type {
@@ -167,6 +172,12 @@ func (o LookupDatabaseSyncedDatabaseTableResultOutput) LogicalDatabaseName() pul
 // (string) - Full three-part (catalog, schema, table) name of the table
 func (o LookupDatabaseSyncedDatabaseTableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseSyncedDatabaseTableResultOutput) ProviderConfig() GetDatabaseSyncedDatabaseTableProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) *GetDatabaseSyncedDatabaseTableProviderConfig {
+		return v.ProviderConfig
+	}).(GetDatabaseSyncedDatabaseTableProviderConfigPtrOutput)
 }
 
 // (SyncedTableSpec)

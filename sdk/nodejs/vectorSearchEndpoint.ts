@@ -95,6 +95,10 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
      * Number of indexes on the endpoint.
      */
     declare public /*out*/ readonly numIndexes: pulumi.Output<number>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.VectorSearchEndpointProviderConfig | undefined>;
 
     /**
      * Create a VectorSearchEndpoint resource with the given unique name, arguments, and options.
@@ -120,6 +124,7 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
             resourceInputs["lastUpdatedUser"] = state?.lastUpdatedUser;
             resourceInputs["name"] = state?.name;
             resourceInputs["numIndexes"] = state?.numIndexes;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as VectorSearchEndpointArgs | undefined;
             if (args?.endpointType === undefined && !opts.urn) {
@@ -128,6 +133,7 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
             resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
             resourceInputs["endpointType"] = args?.endpointType;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["effectiveBudgetPolicyId"] = undefined /*out*/;
@@ -190,6 +196,10 @@ export interface VectorSearchEndpointState {
      * Number of indexes on the endpoint.
      */
     numIndexes?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.VectorSearchEndpointProviderConfig>;
 }
 
 /**
@@ -208,4 +218,8 @@ export interface VectorSearchEndpointArgs {
      * Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.VectorSearchEndpointProviderConfig>;
 }

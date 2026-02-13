@@ -15,6 +15,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("command")]
         public Input<string>? Command { get; set; }
 
+        /// <summary>
+        /// Task level compute configuration. This block is documented below.
+        /// 
+        /// &gt; If no `JobClusterKey`, `ExistingClusterId`, or `NewCluster` were specified in task definition, then task will executed using serverless compute.
+        /// </summary>
         [Input("compute")]
         public Input<Inputs.JobTaskGenAiComputeTaskComputeArgs>? Compute { get; set; }
 

@@ -56,14 +56,17 @@ func GetAppsSettingsCustomTemplates(ctx *pulumi.Context, args *GetAppsSettingsCu
 type GetAppsSettingsCustomTemplatesArgs struct {
 	// Upper bound for items returned
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetAppsSettingsCustomTemplatesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getAppsSettingsCustomTemplates.
 type GetAppsSettingsCustomTemplatesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                                   `pulumi:"id"`
-	PageSize  *int                                     `pulumi:"pageSize"`
-	Templates []GetAppsSettingsCustomTemplatesTemplate `pulumi:"templates"`
+	Id             string                                        `pulumi:"id"`
+	PageSize       *int                                          `pulumi:"pageSize"`
+	ProviderConfig *GetAppsSettingsCustomTemplatesProviderConfig `pulumi:"providerConfig"`
+	Templates      []GetAppsSettingsCustomTemplatesTemplate      `pulumi:"templates"`
 }
 
 func GetAppsSettingsCustomTemplatesOutput(ctx *pulumi.Context, args GetAppsSettingsCustomTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetAppsSettingsCustomTemplatesResultOutput {
@@ -79,6 +82,8 @@ func GetAppsSettingsCustomTemplatesOutput(ctx *pulumi.Context, args GetAppsSetti
 type GetAppsSettingsCustomTemplatesOutputArgs struct {
 	// Upper bound for items returned
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetAppsSettingsCustomTemplatesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetAppsSettingsCustomTemplatesOutputArgs) ElementType() reflect.Type {
@@ -107,6 +112,12 @@ func (o GetAppsSettingsCustomTemplatesResultOutput) Id() pulumi.StringOutput {
 
 func (o GetAppsSettingsCustomTemplatesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAppsSettingsCustomTemplatesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetAppsSettingsCustomTemplatesResultOutput) ProviderConfig() GetAppsSettingsCustomTemplatesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetAppsSettingsCustomTemplatesResult) *GetAppsSettingsCustomTemplatesProviderConfig {
+		return v.ProviderConfig
+	}).(GetAppsSettingsCustomTemplatesProviderConfigPtrOutput)
 }
 
 func (o GetAppsSettingsCustomTemplatesResultOutput) Templates() GetAppsSettingsCustomTemplatesTemplateArrayOutput {

@@ -133,6 +133,8 @@ type PostgresProject struct {
 	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
 	// For example, `my-app` becomes `projects/my-app`
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// Configure the provider for management through account provider.
+	ProviderConfig PostgresProjectProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecOutput `pulumi:"spec"`
 	// (ProjectStatus) - The current status of a Project
@@ -185,6 +187,8 @@ type postgresProjectState struct {
 	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
 	// For example, `my-app` becomes `projects/my-app`
 	ProjectId *string `pulumi:"projectId"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *PostgresProjectProviderConfig `pulumi:"providerConfig"`
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec *PostgresProjectSpec `pulumi:"spec"`
 	// (ProjectStatus) - The current status of a Project
@@ -205,6 +209,8 @@ type PostgresProjectState struct {
 	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
 	// For example, `my-app` becomes `projects/my-app`
 	ProjectId pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig PostgresProjectProviderConfigPtrInput
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecPtrInput
 	// (ProjectStatus) - The current status of a Project
@@ -224,6 +230,8 @@ type postgresProjectArgs struct {
 	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
 	// For example, `my-app` becomes `projects/my-app`
 	ProjectId string `pulumi:"projectId"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *PostgresProjectProviderConfig `pulumi:"providerConfig"`
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec *PostgresProjectSpec `pulumi:"spec"`
 }
@@ -234,6 +242,8 @@ type PostgresProjectArgs struct {
 	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
 	// For example, `my-app` becomes `projects/my-app`
 	ProjectId pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig PostgresProjectProviderConfigPtrInput
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecPtrInput
 }
@@ -341,6 +351,11 @@ func (o PostgresProjectOutput) Name() pulumi.StringOutput {
 // For example, `my-app` becomes `projects/my-app`
 func (o PostgresProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o PostgresProjectOutput) ProviderConfig() PostgresProjectProviderConfigPtrOutput {
+	return o.ApplyT(func(v *PostgresProject) PostgresProjectProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresProjectProviderConfigPtrOutput)
 }
 
 // The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings

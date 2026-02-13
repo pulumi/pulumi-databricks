@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MwsStorageConfigurationsArgs extends com.pulumi.resources.ResourceArgs {
@@ -45,7 +47,24 @@ public final class MwsStorageConfigurationsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+     * 
+     */
+    @Import(name="roleArn")
+    private @Nullable Output<String> roleArn;
+
+    /**
+     * @return The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+     * 
+     */
+    public Optional<Output<String>> roleArn() {
+        return Optional.ofNullable(this.roleArn);
+    }
+
+    /**
      * name under which this storage configuration is stored
+     * 
+     * The following arguments are optional:
      * 
      */
     @Import(name="storageConfigurationName", required=true)
@@ -53,6 +72,8 @@ public final class MwsStorageConfigurationsArgs extends com.pulumi.resources.Res
 
     /**
      * @return name under which this storage configuration is stored
+     * 
+     * The following arguments are optional:
      * 
      */
     public Output<String> storageConfigurationName() {
@@ -64,6 +85,7 @@ public final class MwsStorageConfigurationsArgs extends com.pulumi.resources.Res
     private MwsStorageConfigurationsArgs(MwsStorageConfigurationsArgs $) {
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
+        this.roleArn = $.roleArn;
         this.storageConfigurationName = $.storageConfigurationName;
     }
 
@@ -128,7 +150,30 @@ public final class MwsStorageConfigurationsArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param roleArn The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(@Nullable Output<String> roleArn) {
+            $.roleArn = roleArn;
+            return this;
+        }
+
+        /**
+         * @param roleArn The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(String roleArn) {
+            return roleArn(Output.of(roleArn));
+        }
+
+        /**
          * @param storageConfigurationName name under which this storage configuration is stored
+         * 
+         * The following arguments are optional:
          * 
          * @return builder
          * 
@@ -140,6 +185,8 @@ public final class MwsStorageConfigurationsArgs extends com.pulumi.resources.Res
 
         /**
          * @param storageConfigurationName name under which this storage configuration is stored
+         * 
+         * The following arguments are optional:
          * 
          * @return builder
          * 

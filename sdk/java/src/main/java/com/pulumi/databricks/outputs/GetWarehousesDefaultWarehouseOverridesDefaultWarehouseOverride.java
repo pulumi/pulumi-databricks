@@ -4,9 +4,12 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride {
@@ -21,6 +24,11 @@ public final class GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrid
      * 
      */
     private String name;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig providerConfig;
     /**
      * @return (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      * 
@@ -50,6 +58,13 @@ public final class GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrid
         return this.name;
     }
     /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    /**
      * @return (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      * 
      */
@@ -76,6 +91,7 @@ public final class GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrid
     public static final class Builder {
         private String defaultWarehouseOverrideId;
         private String name;
+        private @Nullable GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig providerConfig;
         private String type;
         private String warehouseId;
         public Builder() {}
@@ -83,6 +99,7 @@ public final class GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrid
     	      Objects.requireNonNull(defaults);
     	      this.defaultWarehouseOverrideId = defaults.defaultWarehouseOverrideId;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.type = defaults.type;
     	      this.warehouseId = defaults.warehouseId;
         }
@@ -101,6 +118,12 @@ public final class GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrid
               throw new MissingRequiredPropertyException("GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -123,6 +146,7 @@ public final class GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrid
             final var _resultValue = new GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverride();
             _resultValue.defaultWarehouseOverrideId = defaultWarehouseOverrideId;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.type = type;
             _resultValue.warehouseId = warehouseId;
             return _resultValue;

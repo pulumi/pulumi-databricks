@@ -15,9 +15,21 @@ public final class JobTaskComputeArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final JobTaskComputeArgs Empty = new JobTaskComputeArgs();
 
+    /**
+     * Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+     * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+     * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+     * 
+     */
     @Import(name="hardwareAccelerator")
     private @Nullable Output<String> hardwareAccelerator;
 
+    /**
+     * @return Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+     * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+     * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+     * 
+     */
     public Optional<Output<String>> hardwareAccelerator() {
         return Optional.ofNullable(this.hardwareAccelerator);
     }
@@ -46,11 +58,27 @@ public final class JobTaskComputeArgs extends com.pulumi.resources.ResourceArgs 
             $ = new JobTaskComputeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hardwareAccelerator Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+         * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+         * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hardwareAccelerator(@Nullable Output<String> hardwareAccelerator) {
             $.hardwareAccelerator = hardwareAccelerator;
             return this;
         }
 
+        /**
+         * @param hardwareAccelerator Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+         * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+         * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hardwareAccelerator(String hardwareAccelerator) {
             return hardwareAccelerator(Output.of(hardwareAccelerator));
         }

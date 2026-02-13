@@ -57,14 +57,17 @@ type GetExternalMetadatasArgs struct {
 	// Specifies the maximum number of external metadata objects to return in a single response.
 	// The value must be less than or equal to 1000
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetExternalMetadatasProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getExternalMetadatas.
 type GetExternalMetadatasResult struct {
 	ExternalMetadatas []GetExternalMetadatasExternalMetadata `pulumi:"externalMetadatas"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	PageSize *int   `pulumi:"pageSize"`
+	Id             string                              `pulumi:"id"`
+	PageSize       *int                                `pulumi:"pageSize"`
+	ProviderConfig *GetExternalMetadatasProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetExternalMetadatasOutput(ctx *pulumi.Context, args GetExternalMetadatasOutputArgs, opts ...pulumi.InvokeOption) GetExternalMetadatasResultOutput {
@@ -81,6 +84,8 @@ type GetExternalMetadatasOutputArgs struct {
 	// Specifies the maximum number of external metadata objects to return in a single response.
 	// The value must be less than or equal to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetExternalMetadatasProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetExternalMetadatasOutputArgs) ElementType() reflect.Type {
@@ -113,6 +118,10 @@ func (o GetExternalMetadatasResultOutput) Id() pulumi.StringOutput {
 
 func (o GetExternalMetadatasResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetExternalMetadatasResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetExternalMetadatasResultOutput) ProviderConfig() GetExternalMetadatasProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetExternalMetadatasResult) *GetExternalMetadatasProviderConfig { return v.ProviderConfig }).(GetExternalMetadatasProviderConfigPtrOutput)
 }
 
 func init() {

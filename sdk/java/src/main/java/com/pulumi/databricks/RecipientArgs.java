@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.RecipientIpAccessListArgs;
 import com.pulumi.databricks.inputs.RecipientPropertiesKvpairsArgs;
+import com.pulumi.databricks.inputs.RecipientProviderConfigArgs;
 import com.pulumi.databricks.inputs.RecipientTokenArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -142,6 +143,21 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<RecipientProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<RecipientProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The one-time sharing code provided by the data recipient.
      * 
      */
@@ -182,6 +198,7 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.owner = $.owner;
         this.propertiesKvpairs = $.propertiesKvpairs;
+        this.providerConfig = $.providerConfig;
         this.sharingCode = $.sharingCode;
         this.tokens = $.tokens;
     }
@@ -370,6 +387,27 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder propertiesKvpairs(RecipientPropertiesKvpairsArgs propertiesKvpairs) {
             return propertiesKvpairs(Output.of(propertiesKvpairs));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<RecipientProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(RecipientProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

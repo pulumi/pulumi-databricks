@@ -116,6 +116,10 @@ export class PostgresBranch extends pulumi.CustomResource {
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.PostgresBranchProviderConfig | undefined>;
+    /**
      * The spec contains the branch configuration
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresBranchSpec>;
@@ -149,6 +153,7 @@ export class PostgresBranch extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
             resourceInputs["uid"] = state?.uid;
@@ -163,6 +168,7 @@ export class PostgresBranch extends pulumi.CustomResource {
             }
             resourceInputs["branchId"] = args?.branchId;
             resourceInputs["parent"] = args?.parent;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -203,6 +209,10 @@ export interface PostgresBranchState {
      */
     parent?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig>;
+    /**
      * The spec contains the branch configuration
      */
     spec?: pulumi.Input<inputs.PostgresBranchSpec>;
@@ -238,6 +248,10 @@ export interface PostgresBranchArgs {
      * For point-in-time branching from another branch, see `status.source_branch`
      */
     parent: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig>;
     /**
      * The spec contains the branch configuration
      */

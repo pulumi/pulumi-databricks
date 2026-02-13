@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -41,6 +43,7 @@ export function getDataQualityRefresh(args: GetDataQualityRefreshArgs, opts?: pu
     return pulumi.runtime.invoke("databricks:index/getDataQualityRefresh:getDataQualityRefresh", {
         "objectId": args.objectId,
         "objectType": args.objectType,
+        "providerConfig": args.providerConfig,
         "refreshId": args.refreshId,
     }, opts);
 }
@@ -65,6 +68,10 @@ export interface GetDataQualityRefreshArgs {
      * The type of the monitored object. Can be one of the following: `schema`or `table`
      */
     objectType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetDataQualityRefreshProviderConfig;
     /**
      * Unique id of the refresh operation
      */
@@ -95,6 +102,7 @@ export interface GetDataQualityRefreshResult {
      * (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
      */
     readonly objectType: string;
+    readonly providerConfig?: outputs.GetDataQualityRefreshProviderConfig;
     /**
      * (integer) - Unique id of the refresh operation
      */
@@ -149,6 +157,7 @@ export function getDataQualityRefreshOutput(args: GetDataQualityRefreshOutputArg
     return pulumi.runtime.invokeOutput("databricks:index/getDataQualityRefresh:getDataQualityRefresh", {
         "objectId": args.objectId,
         "objectType": args.objectType,
+        "providerConfig": args.providerConfig,
         "refreshId": args.refreshId,
     }, opts);
 }
@@ -173,6 +182,10 @@ export interface GetDataQualityRefreshOutputArgs {
      * The type of the monitored object. Can be one of the following: `schema`or `table`
      */
     objectType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetDataQualityRefreshProviderConfigArgs>;
     /**
      * Unique id of the refresh operation
      */

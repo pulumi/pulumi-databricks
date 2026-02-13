@@ -15,6 +15,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("dashboardId")]
         public string? DashboardId { get; set; }
 
+        [Input("filters")]
+        private Dictionary<string, string>? _filters;
+        public Dictionary<string, string> Filters
+        {
+            get => _filters ?? (_filters = new Dictionary<string, string>());
+            set => _filters = value;
+        }
+
         [Input("subscription")]
         public Inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs? Subscription { get; set; }
 

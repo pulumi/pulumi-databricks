@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetExternalMetadatasResult',
@@ -27,7 +28,7 @@ class GetExternalMetadatasResult:
     """
     A collection of values returned by getExternalMetadatas.
     """
-    def __init__(__self__, external_metadatas=None, id=None, page_size=None):
+    def __init__(__self__, external_metadatas=None, id=None, page_size=None, provider_config=None):
         if external_metadatas and not isinstance(external_metadatas, list):
             raise TypeError("Expected argument 'external_metadatas' to be a list")
         pulumi.set(__self__, "external_metadatas", external_metadatas)
@@ -37,6 +38,9 @@ class GetExternalMetadatasResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="externalMetadatas")
@@ -56,6 +60,11 @@ class GetExternalMetadatasResult:
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetExternalMetadatasProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetExternalMetadatasResult(GetExternalMetadatasResult):
     # pylint: disable=using-constant-test
@@ -65,10 +74,12 @@ class AwaitableGetExternalMetadatasResult(GetExternalMetadatasResult):
         return GetExternalMetadatasResult(
             external_metadatas=self.external_metadatas,
             id=self.id,
-            page_size=self.page_size)
+            page_size=self.page_size,
+            provider_config=self.provider_config)
 
 
 def get_external_metadatas(page_size: Optional[_builtins.int] = None,
+                           provider_config: Optional[Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalMetadatasResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -91,17 +102,21 @@ def get_external_metadatas(page_size: Optional[_builtins.int] = None,
 
     :param _builtins.int page_size: Specifies the maximum number of external metadata objects to return in a single response.
            The value must be less than or equal to 1000
+    :param Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getExternalMetadatas:getExternalMetadatas', __args__, opts=opts, typ=GetExternalMetadatasResult).value
 
     return AwaitableGetExternalMetadatasResult(
         external_metadatas=pulumi.get(__ret__, 'external_metadatas'),
         id=pulumi.get(__ret__, 'id'),
-        page_size=pulumi.get(__ret__, 'page_size'))
+        page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_external_metadatas_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                  provider_config: Optional[pulumi.Input[Optional[Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalMetadatasResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -124,12 +139,15 @@ def get_external_metadatas_output(page_size: Optional[pulumi.Input[Optional[_bui
 
     :param _builtins.int page_size: Specifies the maximum number of external metadata objects to return in a single response.
            The value must be less than or equal to 1000
+    :param Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getExternalMetadatas:getExternalMetadatas', __args__, opts=opts, typ=GetExternalMetadatasResult)
     return __ret__.apply(lambda __response__: GetExternalMetadatasResult(
         external_metadatas=pulumi.get(__response__, 'external_metadatas'),
         id=pulumi.get(__response__, 'id'),
-        page_size=pulumi.get(__response__, 'page_size')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

@@ -138,6 +138,12 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.CatalogProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         /// </summary>
         [Output("providerName")]
@@ -307,6 +313,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.CatalogProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         /// </summary>
         [Input("providerName")]
@@ -433,6 +445,12 @@ namespace Pulumi.Databricks
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.CatalogProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.

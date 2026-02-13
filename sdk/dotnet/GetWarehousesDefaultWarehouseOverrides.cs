@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetWarehousesDefaultWarehouseOverrides
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to list all default warehouse overrides in the workspace.
         /// 
@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWarehousesDefaultWarehouseOverridesResult>("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", args ?? new GetWarehousesDefaultWarehouseOverridesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to list all default warehouse overrides in the workspace.
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetWarehousesDefaultWarehouseOverridesResult>("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", args ?? new GetWarehousesDefaultWarehouseOverridesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to list all default warehouse overrides in the workspace.
         /// 
@@ -81,6 +81,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetWarehousesDefaultWarehouseOverridesProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetWarehousesDefaultWarehouseOverridesArgs()
         {
         }
@@ -98,6 +104,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetWarehousesDefaultWarehouseOverridesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetWarehousesDefaultWarehouseOverridesInvokeArgs()
         {
         }
@@ -114,6 +126,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly int? PageSize;
+        public readonly Outputs.GetWarehousesDefaultWarehouseOverridesProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetWarehousesDefaultWarehouseOverridesResult(
@@ -121,11 +134,14 @@ namespace Pulumi.Databricks
 
             string id,
 
-            int? pageSize)
+            int? pageSize,
+
+            Outputs.GetWarehousesDefaultWarehouseOverridesProviderConfigResult? providerConfig)
         {
             DefaultWarehouseOverrides = defaultWarehouseOverrides;
             Id = id;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetWorkspaceSettingV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single account setting. 
         /// 
@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceSettingV2Result>("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", args ?? new GetWorkspaceSettingV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single account setting. 
         /// 
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceSettingV2Result>("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", args ?? new GetWorkspaceSettingV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single account setting. 
         /// 
@@ -57,6 +57,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetWorkspaceSettingV2ProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetWorkspaceSettingV2Args()
         {
         }
@@ -70,6 +76,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetWorkspaceSettingV2ProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetWorkspaceSettingV2InvokeArgs()
         {
@@ -145,6 +157,7 @@ namespace Pulumi.Databricks
         /// (PersonalComputeMessage) - Setting value for PersonalCompute setting. This is the setting value set by consumers, check EffectivePersonalCompute for final setting value
         /// </summary>
         public readonly Outputs.GetWorkspaceSettingV2PersonalComputeResult PersonalCompute;
+        public readonly Outputs.GetWorkspaceSettingV2ProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (RestrictWorkspaceAdminsMessage) - Setting value for RestrictWorkspaceAdmins setting. This is the setting value set by consumers, check EffectiveRestrictWorkspaceAdmins for final setting value
         /// </summary>
@@ -188,6 +201,8 @@ namespace Pulumi.Databricks
 
             Outputs.GetWorkspaceSettingV2PersonalComputeResult personalCompute,
 
+            Outputs.GetWorkspaceSettingV2ProviderConfigResult? providerConfig,
+
             Outputs.GetWorkspaceSettingV2RestrictWorkspaceAdminsResult restrictWorkspaceAdmins,
 
             Outputs.GetWorkspaceSettingV2StringValResult stringVal)
@@ -208,6 +223,7 @@ namespace Pulumi.Databricks
             IntegerVal = integerVal;
             Name = name;
             PersonalCompute = personalCompute;
+            ProviderConfig = providerConfig;
             RestrictWorkspaceAdmins = restrictWorkspaceAdmins;
             StringVal = stringVal;
         }

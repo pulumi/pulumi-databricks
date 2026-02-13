@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobEnvironmentSpecGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("baseEnvironment")]
+        public Input<string>? BaseEnvironment { get; set; }
+
         [Input("client")]
         public Input<string>? Client { get; set; }
 

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -72,6 +74,10 @@ export class WorkspaceEntityTagAssignment extends pulumi.CustomResource {
      */
     declare public readonly entityType: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceEntityTagAssignmentProviderConfig | undefined>;
+    /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */
     declare public readonly tagKey: pulumi.Output<string>;
@@ -95,6 +101,7 @@ export class WorkspaceEntityTagAssignment extends pulumi.CustomResource {
             const state = argsOrState as WorkspaceEntityTagAssignmentState | undefined;
             resourceInputs["entityId"] = state?.entityId;
             resourceInputs["entityType"] = state?.entityType;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["tagKey"] = state?.tagKey;
             resourceInputs["tagValue"] = state?.tagValue;
         } else {
@@ -110,6 +117,7 @@ export class WorkspaceEntityTagAssignment extends pulumi.CustomResource {
             }
             resourceInputs["entityId"] = args?.entityId;
             resourceInputs["entityType"] = args?.entityType;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tagKey"] = args?.tagKey;
             resourceInputs["tagValue"] = args?.tagValue;
         }
@@ -130,6 +138,10 @@ export interface WorkspaceEntityTagAssignmentState {
      * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceEntityTagAssignmentProviderConfig>;
     /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */
@@ -152,6 +164,10 @@ export interface WorkspaceEntityTagAssignmentArgs {
      * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
      */
     entityType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceEntityTagAssignmentProviderConfig>;
     /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */

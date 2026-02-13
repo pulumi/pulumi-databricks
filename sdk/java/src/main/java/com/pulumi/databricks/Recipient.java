@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RecipientState;
 import com.pulumi.databricks.outputs.RecipientIpAccessList;
 import com.pulumi.databricks.outputs.RecipientPropertiesKvpairs;
+import com.pulumi.databricks.outputs.RecipientProviderConfig;
 import com.pulumi.databricks.outputs.RecipientToken;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -346,6 +347,20 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RecipientPropertiesKvpairs>> propertiesKvpairs() {
         return Codegen.optional(this.propertiesKvpairs);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={RecipientProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RecipientProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<RecipientProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.

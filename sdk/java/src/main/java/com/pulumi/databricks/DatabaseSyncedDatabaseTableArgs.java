@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableProviderConfigArgs;
 import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -85,6 +86,21 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DatabaseSyncedDatabaseTableProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<DatabaseSyncedDatabaseTableProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="spec")
     private @Nullable Output<DatabaseSyncedDatabaseTableSpecArgs> spec;
 
@@ -98,6 +114,7 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
         this.databaseInstanceName = $.databaseInstanceName;
         this.logicalDatabaseName = $.logicalDatabaseName;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.spec = $.spec;
     }
 
@@ -204,6 +221,27 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DatabaseSyncedDatabaseTableProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DatabaseSyncedDatabaseTableProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder spec(@Nullable Output<DatabaseSyncedDatabaseTableSpecArgs> spec) {

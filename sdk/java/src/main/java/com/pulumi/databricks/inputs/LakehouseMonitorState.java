@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.LakehouseMonitorCustomMetricArgs;
 import com.pulumi.databricks.inputs.LakehouseMonitorDataClassificationConfigArgs;
 import com.pulumi.databricks.inputs.LakehouseMonitorInferenceLogArgs;
 import com.pulumi.databricks.inputs.LakehouseMonitorNotificationsArgs;
+import com.pulumi.databricks.inputs.LakehouseMonitorProviderConfigArgs;
 import com.pulumi.databricks.inputs.LakehouseMonitorScheduleArgs;
 import com.pulumi.databricks.inputs.LakehouseMonitorSnapshotArgs;
 import com.pulumi.databricks.inputs.LakehouseMonitorTimeSeriesArgs;
@@ -199,6 +200,13 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.profileMetricsTableName);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<LakehouseMonitorProviderConfigArgs> providerConfig;
+
+    public Optional<Output<LakehouseMonitorProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      * 
@@ -334,6 +342,7 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         this.notifications = $.notifications;
         this.outputSchemaName = $.outputSchemaName;
         this.profileMetricsTableName = $.profileMetricsTableName;
+        this.providerConfig = $.providerConfig;
         this.schedule = $.schedule;
         this.skipBuiltinDashboard = $.skipBuiltinDashboard;
         this.slicingExprs = $.slicingExprs;
@@ -612,6 +621,15 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
          */
         public Builder profileMetricsTableName(String profileMetricsTableName) {
             return profileMetricsTableName(Output.of(profileMetricsTableName));
+        }
+
+        public Builder providerConfig(@Nullable Output<LakehouseMonitorProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(LakehouseMonitorProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

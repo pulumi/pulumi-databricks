@@ -56,6 +56,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ParentPath;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetAlertsV2AlertProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (string) - Text of the query to be run
         /// </summary>
         public readonly string QueryText;
@@ -108,6 +112,8 @@ namespace Pulumi.Databricks.Outputs
 
             string parentPath,
 
+            Outputs.GetAlertsV2AlertProviderConfigResult? providerConfig,
+
             string queryText,
 
             Outputs.GetAlertsV2AlertRunAsResult runAs,
@@ -130,6 +136,7 @@ namespace Pulumi.Databricks.Outputs
             LifecycleState = lifecycleState;
             OwnerUserName = ownerUserName;
             ParentPath = parentPath;
+            ProviderConfig = providerConfig;
             QueryText = queryText;
             RunAs = runAs;
             RunAsUserName = runAsUserName;

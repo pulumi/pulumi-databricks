@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DataQualityRefreshArgs', 'DataQualityRefresh']
 
@@ -20,7 +22,8 @@ __all__ = ['DataQualityRefreshArgs', 'DataQualityRefresh']
 class DataQualityRefreshArgs:
     def __init__(__self__, *,
                  object_id: pulumi.Input[_builtins.str],
-                 object_type: pulumi.Input[_builtins.str]):
+                 object_type: pulumi.Input[_builtins.str],
+                 provider_config: Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DataQualityRefresh resource.
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
@@ -33,9 +36,12 @@ class DataQualityRefreshArgs:
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+        :param pulumi.Input['DataQualityRefreshProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "object_type", object_type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
@@ -69,6 +75,18 @@ class DataQualityRefreshArgs:
     def object_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "object_type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _DataQualityRefreshState:
@@ -77,6 +95,7 @@ class _DataQualityRefreshState:
                  message: Optional[pulumi.Input[_builtins.str]] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']] = None,
                  refresh_id: Optional[pulumi.Input[_builtins.int]] = None,
                  start_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -95,6 +114,7 @@ class _DataQualityRefreshState:
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+        :param pulumi.Input['DataQualityRefreshProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] refresh_id: (integer) - Unique id of the refresh operation
         :param pulumi.Input[_builtins.int] start_time_ms: (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the refresh. Possible values are: `MONITOR_REFRESH_STATE_CANCELED`, `MONITOR_REFRESH_STATE_FAILED`, `MONITOR_REFRESH_STATE_PENDING`, `MONITOR_REFRESH_STATE_RUNNING`, `MONITOR_REFRESH_STATE_SUCCESS`, `MONITOR_REFRESH_STATE_UNKNOWN`
@@ -108,6 +128,8 @@ class _DataQualityRefreshState:
             pulumi.set(__self__, "object_id", object_id)
         if object_type is not None:
             pulumi.set(__self__, "object_type", object_type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if refresh_id is not None:
             pulumi.set(__self__, "refresh_id", refresh_id)
         if start_time_ms is not None:
@@ -174,6 +196,18 @@ class _DataQualityRefreshState:
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="refreshId")
     def refresh_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -230,6 +264,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -298,6 +333,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+        :param pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -377,6 +413,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -392,6 +429,7 @@ class DataQualityRefresh(pulumi.CustomResource):
             if object_type is None and not opts.urn:
                 raise TypeError("Missing required property 'object_type'")
             __props__.__dict__["object_type"] = object_type
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["end_time_ms"] = None
             __props__.__dict__["message"] = None
             __props__.__dict__["refresh_id"] = None
@@ -412,6 +450,7 @@ class DataQualityRefresh(pulumi.CustomResource):
             message: Optional[pulumi.Input[_builtins.str]] = None,
             object_id: Optional[pulumi.Input[_builtins.str]] = None,
             object_type: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
             refresh_id: Optional[pulumi.Input[_builtins.int]] = None,
             start_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -435,6 +474,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+        :param pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] refresh_id: (integer) - Unique id of the refresh operation
         :param pulumi.Input[_builtins.int] start_time_ms: (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the refresh. Possible values are: `MONITOR_REFRESH_STATE_CANCELED`, `MONITOR_REFRESH_STATE_FAILED`, `MONITOR_REFRESH_STATE_PENDING`, `MONITOR_REFRESH_STATE_RUNNING`, `MONITOR_REFRESH_STATE_SUCCESS`, `MONITOR_REFRESH_STATE_UNKNOWN`
@@ -448,6 +488,7 @@ class DataQualityRefresh(pulumi.CustomResource):
         __props__.__dict__["message"] = message
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["object_type"] = object_type
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["refresh_id"] = refresh_id
         __props__.__dict__["start_time_ms"] = start_time_ms
         __props__.__dict__["state"] = state
@@ -493,6 +534,14 @@ class DataQualityRefresh(pulumi.CustomResource):
         The type of the monitored object. Can be one of the following: `schema`or `table`
         """
         return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.DataQualityRefreshProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="refreshId")

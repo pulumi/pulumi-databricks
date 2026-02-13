@@ -126,6 +126,12 @@ namespace Pulumi.Databricks
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetAlertV2ProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetAlertV2Args()
         {
         }
@@ -139,6 +145,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetAlertV2ProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetAlertV2InvokeArgs()
         {
@@ -192,6 +204,7 @@ namespace Pulumi.Databricks
         /// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         /// </summary>
         public readonly string ParentPath;
+        public readonly Outputs.GetAlertV2ProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - Text of the query to be run
         /// </summary>
@@ -245,6 +258,8 @@ namespace Pulumi.Databricks
 
             string parentPath,
 
+            Outputs.GetAlertV2ProviderConfigResult? providerConfig,
+
             string queryText,
 
             Outputs.GetAlertV2RunAsResult runAs,
@@ -267,6 +282,7 @@ namespace Pulumi.Databricks
             LifecycleState = lifecycleState;
             OwnerUserName = ownerUserName;
             ParentPath = parentPath;
+            ProviderConfig = providerConfig;
             QueryText = queryText;
             RunAs = runAs;
             RunAsUserName = runAsUserName;

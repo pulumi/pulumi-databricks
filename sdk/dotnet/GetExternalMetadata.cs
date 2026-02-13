@@ -111,6 +111,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetExternalMetadataProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetExternalMetadataArgs()
         {
         }
@@ -124,6 +130,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetExternalMetadataProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetExternalMetadataInvokeArgs()
         {
@@ -175,6 +187,7 @@ namespace Pulumi.Databricks
         /// (object) - A map of key-value properties attached to the external metadata object
         /// </summary>
         public readonly ImmutableDictionary<string, string> Properties;
+        public readonly Outputs.GetExternalMetadataProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         /// </summary>
@@ -214,6 +227,8 @@ namespace Pulumi.Databricks
 
             ImmutableDictionary<string, string> properties,
 
+            Outputs.GetExternalMetadataProviderConfigResult? providerConfig,
+
             string systemType,
 
             string updateTime,
@@ -232,6 +247,7 @@ namespace Pulumi.Databricks
             Name = name;
             Owner = owner;
             Properties = properties;
+            ProviderConfig = providerConfig;
             SystemType = systemType;
             UpdateTime = updateTime;
             UpdatedBy = updatedBy;

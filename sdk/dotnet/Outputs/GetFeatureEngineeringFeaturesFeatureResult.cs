@@ -41,6 +41,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult LineageContext;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (DataSource) - The data source of the feature
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureSourceResult Source;
@@ -63,6 +67,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult lineageContext,
 
+            Outputs.GetFeatureEngineeringFeaturesFeatureProviderConfigResult? providerConfig,
+
             Outputs.GetFeatureEngineeringFeaturesFeatureSourceResult source,
 
             Outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowResult timeWindow)
@@ -73,6 +79,7 @@ namespace Pulumi.Databricks.Outputs
             Function = function;
             Inputs = inputs;
             LineageContext = lineageContext;
+            ProviderConfig = providerConfig;
             Source = source;
             TimeWindow = timeWindow;
         }

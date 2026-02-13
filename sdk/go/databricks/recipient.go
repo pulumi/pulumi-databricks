@@ -164,6 +164,8 @@ type Recipient struct {
 	Owner pulumi.StringPtrOutput `pulumi:"owner"`
 	// Recipient properties - object consisting of following fields:
 	PropertiesKvpairs RecipientPropertiesKvpairsPtrOutput `pulumi:"propertiesKvpairs"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig RecipientProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The one-time sharing code provided by the data recipient.
@@ -243,6 +245,8 @@ type recipientState struct {
 	Owner *string `pulumi:"owner"`
 	// Recipient properties - object consisting of following fields:
 	PropertiesKvpairs *RecipientPropertiesKvpairs `pulumi:"propertiesKvpairs"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *RecipientProviderConfig `pulumi:"providerConfig"`
 	// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
 	Region *string `pulumi:"region"`
 	// The one-time sharing code provided by the data recipient.
@@ -283,6 +287,8 @@ type RecipientState struct {
 	Owner pulumi.StringPtrInput
 	// Recipient properties - object consisting of following fields:
 	PropertiesKvpairs RecipientPropertiesKvpairsPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig RecipientProviderConfigPtrInput
 	// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
 	Region pulumi.StringPtrInput
 	// The one-time sharing code provided by the data recipient.
@@ -316,6 +322,8 @@ type recipientArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Recipient properties - object consisting of following fields:
 	PropertiesKvpairs *RecipientPropertiesKvpairs `pulumi:"propertiesKvpairs"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *RecipientProviderConfig `pulumi:"providerConfig"`
 	// The one-time sharing code provided by the data recipient.
 	SharingCode *string `pulumi:"sharingCode"`
 	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
@@ -340,6 +348,8 @@ type RecipientArgs struct {
 	Owner pulumi.StringPtrInput
 	// Recipient properties - object consisting of following fields:
 	PropertiesKvpairs RecipientPropertiesKvpairsPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig RecipientProviderConfigPtrInput
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrInput
 	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
@@ -500,6 +510,11 @@ func (o RecipientOutput) Owner() pulumi.StringPtrOutput {
 // Recipient properties - object consisting of following fields:
 func (o RecipientOutput) PropertiesKvpairs() RecipientPropertiesKvpairsPtrOutput {
 	return o.ApplyT(func(v *Recipient) RecipientPropertiesKvpairsPtrOutput { return v.PropertiesKvpairs }).(RecipientPropertiesKvpairsPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o RecipientOutput) ProviderConfig() RecipientProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Recipient) RecipientProviderConfigPtrOutput { return v.ProviderConfig }).(RecipientProviderConfigPtrOutput)
 }
 
 // Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.

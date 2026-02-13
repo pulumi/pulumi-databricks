@@ -177,7 +177,8 @@ type MlflowWebhook struct {
 	HttpUrlSpec MlflowWebhookHttpUrlSpecPtrOutput `pulumi:"httpUrlSpec"`
 	JobSpec     MlflowWebhookJobSpecPtrOutput     `pulumi:"jobSpec"`
 	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
-	ModelName pulumi.StringPtrOutput `pulumi:"modelName"`
+	ModelName      pulumi.StringPtrOutput               `pulumi:"modelName"`
+	ProviderConfig MlflowWebhookProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 }
@@ -224,7 +225,8 @@ type mlflowWebhookState struct {
 	HttpUrlSpec *MlflowWebhookHttpUrlSpec `pulumi:"httpUrlSpec"`
 	JobSpec     *MlflowWebhookJobSpec     `pulumi:"jobSpec"`
 	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
-	ModelName *string `pulumi:"modelName"`
+	ModelName      *string                      `pulumi:"modelName"`
+	ProviderConfig *MlflowWebhookProviderConfig `pulumi:"providerConfig"`
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status *string `pulumi:"status"`
 }
@@ -239,7 +241,8 @@ type MlflowWebhookState struct {
 	HttpUrlSpec MlflowWebhookHttpUrlSpecPtrInput
 	JobSpec     MlflowWebhookJobSpecPtrInput
 	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
-	ModelName pulumi.StringPtrInput
+	ModelName      pulumi.StringPtrInput
+	ProviderConfig MlflowWebhookProviderConfigPtrInput
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status pulumi.StringPtrInput
 }
@@ -258,7 +261,8 @@ type mlflowWebhookArgs struct {
 	HttpUrlSpec *MlflowWebhookHttpUrlSpec `pulumi:"httpUrlSpec"`
 	JobSpec     *MlflowWebhookJobSpec     `pulumi:"jobSpec"`
 	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
-	ModelName *string `pulumi:"modelName"`
+	ModelName      *string                      `pulumi:"modelName"`
+	ProviderConfig *MlflowWebhookProviderConfig `pulumi:"providerConfig"`
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status *string `pulumi:"status"`
 }
@@ -274,7 +278,8 @@ type MlflowWebhookArgs struct {
 	HttpUrlSpec MlflowWebhookHttpUrlSpecPtrInput
 	JobSpec     MlflowWebhookJobSpecPtrInput
 	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
-	ModelName pulumi.StringPtrInput
+	ModelName      pulumi.StringPtrInput
+	ProviderConfig MlflowWebhookProviderConfigPtrInput
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status pulumi.StringPtrInput
 }
@@ -389,6 +394,10 @@ func (o MlflowWebhookOutput) JobSpec() MlflowWebhookJobSpecPtrOutput {
 // Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
 func (o MlflowWebhookOutput) ModelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MlflowWebhook) pulumi.StringPtrOutput { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+func (o MlflowWebhookOutput) ProviderConfig() MlflowWebhookProviderConfigPtrOutput {
+	return o.ApplyT(func(v *MlflowWebhook) MlflowWebhookProviderConfigPtrOutput { return v.ProviderConfig }).(MlflowWebhookProviderConfigPtrOutput)
 }
 
 // Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.

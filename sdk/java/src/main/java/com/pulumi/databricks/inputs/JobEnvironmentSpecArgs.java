@@ -16,6 +16,13 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
 
     public static final JobEnvironmentSpecArgs Empty = new JobEnvironmentSpecArgs();
 
+    @Import(name="baseEnvironment")
+    private @Nullable Output<String> baseEnvironment;
+
+    public Optional<Output<String>> baseEnvironment() {
+        return Optional.ofNullable(this.baseEnvironment);
+    }
+
     @Import(name="client")
     private @Nullable Output<String> client;
 
@@ -63,6 +70,7 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
     private JobEnvironmentSpecArgs() {}
 
     private JobEnvironmentSpecArgs(JobEnvironmentSpecArgs $) {
+        this.baseEnvironment = $.baseEnvironment;
         this.client = $.client;
         this.dependencies = $.dependencies;
         this.environmentVersion = $.environmentVersion;
@@ -85,6 +93,15 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
 
         public Builder(JobEnvironmentSpecArgs defaults) {
             $ = new JobEnvironmentSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder baseEnvironment(@Nullable Output<String> baseEnvironment) {
+            $.baseEnvironment = baseEnvironment;
+            return this;
+        }
+
+        public Builder baseEnvironment(String baseEnvironment) {
+            return baseEnvironment(Output.of(baseEnvironment));
         }
 
         public Builder client(@Nullable Output<String> client) {

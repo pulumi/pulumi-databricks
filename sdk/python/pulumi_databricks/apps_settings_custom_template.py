@@ -26,7 +26,8 @@ class AppsSettingsCustomTemplateArgs:
                  manifest: pulumi.Input['AppsSettingsCustomTemplateManifestArgs'],
                  path: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a AppsSettingsCustomTemplate resource.
         :param pulumi.Input[_builtins.str] git_provider: The Git provider of the template
@@ -36,6 +37,7 @@ class AppsSettingsCustomTemplateArgs:
         :param pulumi.Input[_builtins.str] description: The description of the template
         :param pulumi.Input[_builtins.str] name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
                It must be unique within the workspace
+        :param pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "git_provider", git_provider)
         pulumi.set(__self__, "git_repo", git_repo)
@@ -45,6 +47,8 @@ class AppsSettingsCustomTemplateArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="gitProvider")
@@ -119,6 +123,18 @@ class AppsSettingsCustomTemplateArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _AppsSettingsCustomTemplateState:
@@ -129,7 +145,8 @@ class _AppsSettingsCustomTemplateState:
                  git_repo: Optional[pulumi.Input[_builtins.str]] = None,
                  manifest: Optional[pulumi.Input['AppsSettingsCustomTemplateManifestArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AppsSettingsCustomTemplate resources.
         :param pulumi.Input[_builtins.str] creator: (string)
@@ -140,6 +157,7 @@ class _AppsSettingsCustomTemplateState:
         :param pulumi.Input[_builtins.str] name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
                It must be unique within the workspace
         :param pulumi.Input[_builtins.str] path: The path to the template within the Git repository
+        :param pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
@@ -155,6 +173,8 @@ class _AppsSettingsCustomTemplateState:
             pulumi.set(__self__, "name", name)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -241,6 +261,18 @@ class _AppsSettingsCustomTemplateState:
     def path(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "path", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.type_token("databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate")
 class AppsSettingsCustomTemplate(pulumi.CustomResource):
@@ -254,6 +286,7 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
                  manifest: Optional[pulumi.Input[Union['AppsSettingsCustomTemplateManifestArgs', 'AppsSettingsCustomTemplateManifestArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['AppsSettingsCustomTemplateProviderConfigArgs', 'AppsSettingsCustomTemplateProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -350,6 +383,7 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
                It must be unique within the workspace
         :param pulumi.Input[_builtins.str] path: The path to the template within the Git repository
+        :param pulumi.Input[Union['AppsSettingsCustomTemplateProviderConfigArgs', 'AppsSettingsCustomTemplateProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -464,6 +498,7 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
                  manifest: Optional[pulumi.Input[Union['AppsSettingsCustomTemplateManifestArgs', 'AppsSettingsCustomTemplateManifestArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['AppsSettingsCustomTemplateProviderConfigArgs', 'AppsSettingsCustomTemplateProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -487,6 +522,7 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["creator"] = None
         super(AppsSettingsCustomTemplate, __self__).__init__(
             'databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate',
@@ -504,7 +540,8 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
             git_repo: Optional[pulumi.Input[_builtins.str]] = None,
             manifest: Optional[pulumi.Input[Union['AppsSettingsCustomTemplateManifestArgs', 'AppsSettingsCustomTemplateManifestArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppsSettingsCustomTemplate':
+            path: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['AppsSettingsCustomTemplateProviderConfigArgs', 'AppsSettingsCustomTemplateProviderConfigArgsDict']]] = None) -> 'AppsSettingsCustomTemplate':
         """
         Get an existing AppsSettingsCustomTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -520,6 +557,7 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
                It must be unique within the workspace
         :param pulumi.Input[_builtins.str] path: The path to the template within the Git repository
+        :param pulumi.Input[Union['AppsSettingsCustomTemplateProviderConfigArgs', 'AppsSettingsCustomTemplateProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -532,6 +570,7 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
         __props__.__dict__["manifest"] = manifest
         __props__.__dict__["name"] = name
         __props__.__dict__["path"] = path
+        __props__.__dict__["provider_config"] = provider_config
         return AppsSettingsCustomTemplate(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -590,4 +629,12 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
         The path to the template within the Git repository
         """
         return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.AppsSettingsCustomTemplateProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 

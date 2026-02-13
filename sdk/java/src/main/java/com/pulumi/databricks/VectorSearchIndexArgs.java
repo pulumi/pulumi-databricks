@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.VectorSearchIndexDeltaSyncIndexSpecArgs;
 import com.pulumi.databricks.inputs.VectorSearchIndexDirectAccessIndexSpecArgs;
+import com.pulumi.databricks.inputs.VectorSearchIndexProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -112,6 +113,13 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         return this.primaryKey;
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<VectorSearchIndexProviderConfigArgs> providerConfig;
+
+    public Optional<Output<VectorSearchIndexProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private VectorSearchIndexArgs() {}
 
     private VectorSearchIndexArgs(VectorSearchIndexArgs $) {
@@ -121,6 +129,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         this.indexType = $.indexType;
         this.name = $.name;
         this.primaryKey = $.primaryKey;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -269,6 +278,15 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder primaryKey(String primaryKey) {
             return primaryKey(Output.of(primaryKey));
+        }
+
+        public Builder providerConfig(@Nullable Output<VectorSearchIndexProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(VectorSearchIndexProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public VectorSearchIndexArgs build() {

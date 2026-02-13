@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.OnlineStoreProviderConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -77,6 +78,21 @@ public final class OnlineStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<OnlineStoreProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<OnlineStoreProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The number of read replicas for the online store. Defaults to 0
      * 
      */
@@ -128,6 +144,7 @@ public final class OnlineStoreState extends com.pulumi.resources.ResourceArgs {
         this.creationTime = $.creationTime;
         this.creator = $.creator;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.readReplicaCount = $.readReplicaCount;
         this.state = $.state;
         this.usagePolicyId = $.usagePolicyId;
@@ -233,6 +250,27 @@ public final class OnlineStoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<OnlineStoreProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(OnlineStoreProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

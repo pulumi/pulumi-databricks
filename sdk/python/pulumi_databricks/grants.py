@@ -30,6 +30,7 @@ class GrantsArgs:
                  metastore: Optional[pulumi.Input[_builtins.str]] = None,
                  model: Optional[pulumi.Input[_builtins.str]] = None,
                  pipeline: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GrantsProviderConfigArgs']] = None,
                  recipient: Optional[pulumi.Input[_builtins.str]] = None,
                  schema: Optional[pulumi.Input[_builtins.str]] = None,
                  share: Optional[pulumi.Input[_builtins.str]] = None,
@@ -56,6 +57,8 @@ class GrantsArgs:
             pulumi.set(__self__, "model", model)
         if pipeline is not None:
             pulumi.set(__self__, "pipeline", pipeline)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if recipient is not None:
             pulumi.set(__self__, "recipient", recipient)
         if schema is not None:
@@ -151,6 +154,15 @@ class GrantsArgs:
         pulumi.set(self, "pipeline", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GrantsProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GrantsProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def recipient(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "recipient")
@@ -217,6 +229,7 @@ class _GrantsState:
                  metastore: Optional[pulumi.Input[_builtins.str]] = None,
                  model: Optional[pulumi.Input[_builtins.str]] = None,
                  pipeline: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GrantsProviderConfigArgs']] = None,
                  recipient: Optional[pulumi.Input[_builtins.str]] = None,
                  schema: Optional[pulumi.Input[_builtins.str]] = None,
                  share: Optional[pulumi.Input[_builtins.str]] = None,
@@ -244,6 +257,8 @@ class _GrantsState:
             pulumi.set(__self__, "model", model)
         if pipeline is not None:
             pulumi.set(__self__, "pipeline", pipeline)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if recipient is not None:
             pulumi.set(__self__, "recipient", recipient)
         if schema is not None:
@@ -339,6 +354,15 @@ class _GrantsState:
         pulumi.set(self, "pipeline", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GrantsProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GrantsProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def recipient(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "recipient")
@@ -408,6 +432,7 @@ class Grants(pulumi.CustomResource):
                  metastore: Optional[pulumi.Input[_builtins.str]] = None,
                  model: Optional[pulumi.Input[_builtins.str]] = None,
                  pipeline: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
                  recipient: Optional[pulumi.Input[_builtins.str]] = None,
                  schema: Optional[pulumi.Input[_builtins.str]] = None,
                  share: Optional[pulumi.Input[_builtins.str]] = None,
@@ -430,6 +455,8 @@ class Grants(pulumi.CustomResource):
 
         - `principal` - User name, group name or service principal application ID.
         - `privileges` - One or more privileges that are specific to a securable type.
+        - `provider_config` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+          - `workspace_id` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
 
         For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
 
@@ -861,6 +888,8 @@ class Grants(pulumi.CustomResource):
 
         - `principal` - User name, group name or service principal application ID.
         - `privileges` - One or more privileges that are specific to a securable type.
+        - `provider_config` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+          - `workspace_id` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
 
         For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
 
@@ -1292,6 +1321,7 @@ class Grants(pulumi.CustomResource):
                  metastore: Optional[pulumi.Input[_builtins.str]] = None,
                  model: Optional[pulumi.Input[_builtins.str]] = None,
                  pipeline: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
                  recipient: Optional[pulumi.Input[_builtins.str]] = None,
                  schema: Optional[pulumi.Input[_builtins.str]] = None,
                  share: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1318,6 +1348,7 @@ class Grants(pulumi.CustomResource):
             __props__.__dict__["metastore"] = metastore
             __props__.__dict__["model"] = model
             __props__.__dict__["pipeline"] = pipeline
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["recipient"] = recipient
             __props__.__dict__["schema"] = schema
             __props__.__dict__["share"] = share
@@ -1343,6 +1374,7 @@ class Grants(pulumi.CustomResource):
             metastore: Optional[pulumi.Input[_builtins.str]] = None,
             model: Optional[pulumi.Input[_builtins.str]] = None,
             pipeline: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
             recipient: Optional[pulumi.Input[_builtins.str]] = None,
             schema: Optional[pulumi.Input[_builtins.str]] = None,
             share: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1370,6 +1402,7 @@ class Grants(pulumi.CustomResource):
         __props__.__dict__["metastore"] = metastore
         __props__.__dict__["model"] = model
         __props__.__dict__["pipeline"] = pipeline
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["recipient"] = recipient
         __props__.__dict__["schema"] = schema
         __props__.__dict__["share"] = share
@@ -1422,6 +1455,11 @@ class Grants(pulumi.CustomResource):
     @pulumi.getter
     def pipeline(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "pipeline")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.GrantsProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

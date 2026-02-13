@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("alternateNodeTypeIds")]
         private InputList<string>? _alternateNodeTypeIds;
+
+        /// <summary>
+        /// list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+        /// </summary>
         public InputList<string> AlternateNodeTypeIds
         {
             get => _alternateNodeTypeIds ?? (_alternateNodeTypeIds = new InputList<string>());

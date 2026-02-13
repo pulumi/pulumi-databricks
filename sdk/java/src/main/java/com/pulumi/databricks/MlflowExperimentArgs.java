@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.MlflowExperimentProviderConfigArgs;
 import com.pulumi.databricks.inputs.MlflowExperimentTagArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -96,6 +97,21 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<MlflowExperimentProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<MlflowExperimentProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Tags for the MLflow experiment.
      * 
      */
@@ -120,6 +136,7 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
         this.lastUpdateTime = $.lastUpdateTime;
         this.lifecycleStage = $.lifecycleStage;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.tags = $.tags;
     }
 
@@ -242,6 +259,27 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<MlflowExperimentProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(MlflowExperimentProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -213,6 +213,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pgVersion: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DatabaseInstanceProviderConfig | undefined>;
+    /**
      * Purge the resource on delete
      */
     declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
@@ -280,6 +284,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["nodeCount"] = state?.nodeCount;
             resourceInputs["parentInstanceRef"] = state?.parentInstanceRef;
             resourceInputs["pgVersion"] = state?.pgVersion;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["purgeOnDelete"] = state?.purgeOnDelete;
             resourceInputs["readOnlyDns"] = state?.readOnlyDns;
             resourceInputs["readWriteDns"] = state?.readWriteDns;
@@ -297,6 +302,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["nodeCount"] = args?.nodeCount;
             resourceInputs["parentInstanceRef"] = args?.parentInstanceRef;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["purgeOnDelete"] = args?.purgeOnDelete;
             resourceInputs["retentionWindowInDays"] = args?.retentionWindowInDays;
             resourceInputs["stopped"] = args?.stopped;
@@ -427,6 +433,10 @@ export interface DatabaseInstanceState {
      */
     pgVersion?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig>;
+    /**
      * Purge the resource on delete
      */
     purgeOnDelete?: pulumi.Input<boolean>;
@@ -499,6 +509,10 @@ export interface DatabaseInstanceArgs {
      * Output: Only populated if provided as input to create a child instance
      */
     parentInstanceRef?: pulumi.Input<inputs.DatabaseInstanceParentInstanceRef>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig>;
     /**
      * Purge the resource on delete
      */

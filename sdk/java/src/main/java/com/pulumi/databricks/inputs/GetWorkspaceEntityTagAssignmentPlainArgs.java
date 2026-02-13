@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetWorkspaceEntityTagAssignmentPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -44,6 +47,21 @@ public final class GetWorkspaceEntityTagAssignmentPlainArgs extends com.pulumi.r
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetWorkspaceEntityTagAssignmentProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetWorkspaceEntityTagAssignmentProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      * 
      */
@@ -63,6 +81,7 @@ public final class GetWorkspaceEntityTagAssignmentPlainArgs extends com.pulumi.r
     private GetWorkspaceEntityTagAssignmentPlainArgs(GetWorkspaceEntityTagAssignmentPlainArgs $) {
         this.entityId = $.entityId;
         this.entityType = $.entityType;
+        this.providerConfig = $.providerConfig;
         this.tagKey = $.tagKey;
     }
 
@@ -103,6 +122,17 @@ public final class GetWorkspaceEntityTagAssignmentPlainArgs extends com.pulumi.r
          */
         public Builder entityType(String entityType) {
             $.entityType = entityType;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetWorkspaceEntityTagAssignmentProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

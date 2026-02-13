@@ -274,9 +274,17 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.driverInstancePoolId);
     }
 
+    /**
+     * a block describing the alternative driver node types if `driverNodeTypeId` isn&#39;t available.
+     * 
+     */
     @Import(name="driverNodeTypeFlexibility")
     private @Nullable Output<ClusterDriverNodeTypeFlexibilityArgs> driverNodeTypeFlexibility;
 
+    /**
+     * @return a block describing the alternative driver node types if `driverNodeTypeId` isn&#39;t available.
+     * 
+     */
     public Optional<Output<ClusterDriverNodeTypeFlexibilityArgs>> driverNodeTypeFlexibility() {
         return Optional.ofNullable(this.driverNodeTypeFlexibility);
     }
@@ -642,9 +650,17 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.useMlRuntime);
     }
 
+    /**
+     * a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+     * 
+     */
     @Import(name="workerNodeTypeFlexibility")
     private @Nullable Output<ClusterWorkerNodeTypeFlexibilityArgs> workerNodeTypeFlexibility;
 
+    /**
+     * @return a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+     * 
+     */
     public Optional<Output<ClusterWorkerNodeTypeFlexibilityArgs>> workerNodeTypeFlexibility() {
         return Optional.ofNullable(this.workerNodeTypeFlexibility);
     }
@@ -1025,11 +1041,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return driverInstancePoolId(Output.of(driverInstancePoolId));
         }
 
+        /**
+         * @param driverNodeTypeFlexibility a block describing the alternative driver node types if `driverNodeTypeId` isn&#39;t available.
+         * 
+         * @return builder
+         * 
+         */
         public Builder driverNodeTypeFlexibility(@Nullable Output<ClusterDriverNodeTypeFlexibilityArgs> driverNodeTypeFlexibility) {
             $.driverNodeTypeFlexibility = driverNodeTypeFlexibility;
             return this;
         }
 
+        /**
+         * @param driverNodeTypeFlexibility a block describing the alternative driver node types if `driverNodeTypeId` isn&#39;t available.
+         * 
+         * @return builder
+         * 
+         */
         public Builder driverNodeTypeFlexibility(ClusterDriverNodeTypeFlexibilityArgs driverNodeTypeFlexibility) {
             return driverNodeTypeFlexibility(Output.of(driverNodeTypeFlexibility));
         }
@@ -1551,11 +1579,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return useMlRuntime(Output.of(useMlRuntime));
         }
 
+        /**
+         * @param workerNodeTypeFlexibility a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workerNodeTypeFlexibility(@Nullable Output<ClusterWorkerNodeTypeFlexibilityArgs> workerNodeTypeFlexibility) {
             $.workerNodeTypeFlexibility = workerNodeTypeFlexibility;
             return this;
         }
 
+        /**
+         * @param workerNodeTypeFlexibility a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workerNodeTypeFlexibility(ClusterWorkerNodeTypeFlexibilityArgs workerNodeTypeFlexibility) {
             return workerNodeTypeFlexibility(Output.of(workerNodeTypeFlexibility));
         }

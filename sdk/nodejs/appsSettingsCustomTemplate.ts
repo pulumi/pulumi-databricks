@@ -152,6 +152,10 @@ export class AppsSettingsCustomTemplate extends pulumi.CustomResource {
      * The path to the template within the Git repository
      */
     declare public readonly path: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.AppsSettingsCustomTemplateProviderConfig | undefined>;
 
     /**
      * Create a AppsSettingsCustomTemplate resource with the given unique name, arguments, and options.
@@ -173,6 +177,7 @@ export class AppsSettingsCustomTemplate extends pulumi.CustomResource {
             resourceInputs["manifest"] = state?.manifest;
             resourceInputs["name"] = state?.name;
             resourceInputs["path"] = state?.path;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as AppsSettingsCustomTemplateArgs | undefined;
             if (args?.gitProvider === undefined && !opts.urn) {
@@ -193,6 +198,7 @@ export class AppsSettingsCustomTemplate extends pulumi.CustomResource {
             resourceInputs["manifest"] = args?.manifest;
             resourceInputs["name"] = args?.name;
             resourceInputs["path"] = args?.path;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["creator"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -233,6 +239,10 @@ export interface AppsSettingsCustomTemplateState {
      * The path to the template within the Git repository
      */
     path?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.AppsSettingsCustomTemplateProviderConfig>;
 }
 
 /**
@@ -264,4 +274,8 @@ export interface AppsSettingsCustomTemplateArgs {
      * The path to the template within the Git repository
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.AppsSettingsCustomTemplateProviderConfig>;
 }

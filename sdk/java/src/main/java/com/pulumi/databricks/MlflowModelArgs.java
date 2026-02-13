@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.MlflowModelProviderConfigArgs;
 import com.pulumi.databricks.inputs.MlflowModelTagArgs;
 import java.lang.String;
 import java.util.List;
@@ -48,6 +49,21 @@ public final class MlflowModelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<MlflowModelProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<MlflowModelProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Tags for the MLflow model.
      * 
      */
@@ -67,6 +83,7 @@ public final class MlflowModelArgs extends com.pulumi.resources.ResourceArgs {
     private MlflowModelArgs(MlflowModelArgs $) {
         this.description = $.description;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.tags = $.tags;
     }
 
@@ -128,6 +145,27 @@ public final class MlflowModelArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<MlflowModelProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(MlflowModelProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

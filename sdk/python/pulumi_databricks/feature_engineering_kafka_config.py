@@ -27,6 +27,7 @@ class FeatureEngineeringKafkaConfigArgs:
                  backfill_source: Optional[pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs']] = None,
                  extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  key_schema: Optional[pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs']] = None,
+                 provider_config: Optional[pulumi.Input['FeatureEngineeringKafkaConfigProviderConfigArgs']] = None,
                  value_schema: Optional[pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs']] = None):
         """
         The set of arguments for constructing a FeatureEngineeringKafkaConfig resource.
@@ -38,6 +39,7 @@ class FeatureEngineeringKafkaConfigArgs:
                The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
         :param pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs'] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
+        :param pulumi.Input['FeatureEngineeringKafkaConfigProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs'] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
         """
         pulumi.set(__self__, "auth_config", auth_config)
@@ -49,6 +51,8 @@ class FeatureEngineeringKafkaConfigArgs:
             pulumi.set(__self__, "extra_options", extra_options)
         if key_schema is not None:
             pulumi.set(__self__, "key_schema", key_schema)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if value_schema is not None:
             pulumi.set(__self__, "value_schema", value_schema)
 
@@ -127,6 +131,18 @@ class FeatureEngineeringKafkaConfigArgs:
         pulumi.set(self, "key_schema", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['FeatureEngineeringKafkaConfigProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['FeatureEngineeringKafkaConfigProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="valueSchema")
     def value_schema(self) -> Optional[pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs']]:
         """
@@ -148,6 +164,7 @@ class _FeatureEngineeringKafkaConfigState:
                  extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  key_schema: Optional[pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['FeatureEngineeringKafkaConfigProviderConfigArgs']] = None,
                  subscription_mode: Optional[pulumi.Input['FeatureEngineeringKafkaConfigSubscriptionModeArgs']] = None,
                  value_schema: Optional[pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs']] = None):
         """
@@ -161,6 +178,7 @@ class _FeatureEngineeringKafkaConfigState:
         :param pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs'] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
         :param pulumi.Input[_builtins.str] name: (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
                Can be distinct from topic name
+        :param pulumi.Input['FeatureEngineeringKafkaConfigProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['FeatureEngineeringKafkaConfigSubscriptionModeArgs'] subscription_mode: Options to configure which Kafka topics to pull data from
         :param pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs'] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
         """
@@ -176,6 +194,8 @@ class _FeatureEngineeringKafkaConfigState:
             pulumi.set(__self__, "key_schema", key_schema)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if subscription_mode is not None:
             pulumi.set(__self__, "subscription_mode", subscription_mode)
         if value_schema is not None:
@@ -257,6 +277,18 @@ class _FeatureEngineeringKafkaConfigState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['FeatureEngineeringKafkaConfigProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['FeatureEngineeringKafkaConfigProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="subscriptionMode")
     def subscription_mode(self) -> Optional[pulumi.Input['FeatureEngineeringKafkaConfigSubscriptionModeArgs']]:
         """
@@ -292,6 +324,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                  bootstrap_servers: Optional[pulumi.Input[_builtins.str]] = None,
                  extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  key_schema: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']]] = None,
                  subscription_mode: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']]] = None,
                  value_schema: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']]] = None,
                  __props__=None):
@@ -307,6 +340,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']] subscription_mode: Options to configure which Kafka topics to pull data from
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
         """
@@ -339,6 +373,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                  bootstrap_servers: Optional[pulumi.Input[_builtins.str]] = None,
                  extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  key_schema: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']]] = None,
                  subscription_mode: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']]] = None,
                  value_schema: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']]] = None,
                  __props__=None):
@@ -359,6 +394,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
             __props__.__dict__["bootstrap_servers"] = bootstrap_servers
             __props__.__dict__["extra_options"] = extra_options
             __props__.__dict__["key_schema"] = key_schema
+            __props__.__dict__["provider_config"] = provider_config
             if subscription_mode is None and not opts.urn:
                 raise TypeError("Missing required property 'subscription_mode'")
             __props__.__dict__["subscription_mode"] = subscription_mode
@@ -380,6 +416,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
             extra_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             key_schema: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']]] = None,
             subscription_mode: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']]] = None,
             value_schema: Optional[pulumi.Input[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']]] = None) -> 'FeatureEngineeringKafkaConfig':
         """
@@ -398,6 +435,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
         :param pulumi.Input[_builtins.str] name: (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
                Can be distinct from topic name
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']] subscription_mode: Options to configure which Kafka topics to pull data from
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigValueSchemaArgs', 'FeatureEngineeringKafkaConfigValueSchemaArgsDict']] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
         """
@@ -411,6 +449,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         __props__.__dict__["extra_options"] = extra_options
         __props__.__dict__["key_schema"] = key_schema
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["subscription_mode"] = subscription_mode
         __props__.__dict__["value_schema"] = value_schema
         return FeatureEngineeringKafkaConfig(resource_name, opts=opts, __props__=__props__)
@@ -465,6 +504,14 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         Can be distinct from topic name
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringKafkaConfigProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="subscriptionMode")

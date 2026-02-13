@@ -134,6 +134,8 @@ type PostgresBranch struct {
 	// Note: This field indicates where the branch exists in the resource hierarchy.
 	// For point-in-time branching from another branch, see `status.source_branch`
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig PostgresBranchProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The spec contains the branch configuration
 	Spec PostgresBranchSpecOutput `pulumi:"spec"`
 	// (BranchStatus) - The current status of a Branch
@@ -195,6 +197,8 @@ type postgresBranchState struct {
 	// Note: This field indicates where the branch exists in the resource hierarchy.
 	// For point-in-time branching from another branch, see `status.source_branch`
 	Parent *string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *PostgresBranchProviderConfig `pulumi:"providerConfig"`
 	// The spec contains the branch configuration
 	Spec *PostgresBranchSpec `pulumi:"spec"`
 	// (BranchStatus) - The current status of a Branch
@@ -221,6 +225,8 @@ type PostgresBranchState struct {
 	// Note: This field indicates where the branch exists in the resource hierarchy.
 	// For point-in-time branching from another branch, see `status.source_branch`
 	Parent pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig PostgresBranchProviderConfigPtrInput
 	// The spec contains the branch configuration
 	Spec PostgresBranchSpecPtrInput
 	// (BranchStatus) - The current status of a Branch
@@ -246,6 +252,8 @@ type postgresBranchArgs struct {
 	// Note: This field indicates where the branch exists in the resource hierarchy.
 	// For point-in-time branching from another branch, see `status.source_branch`
 	Parent string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *PostgresBranchProviderConfig `pulumi:"providerConfig"`
 	// The spec contains the branch configuration
 	Spec *PostgresBranchSpec `pulumi:"spec"`
 }
@@ -262,6 +270,8 @@ type PostgresBranchArgs struct {
 	// Note: This field indicates where the branch exists in the resource hierarchy.
 	// For point-in-time branching from another branch, see `status.source_branch`
 	Parent pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig PostgresBranchProviderConfigPtrInput
 	// The spec contains the branch configuration
 	Spec PostgresBranchSpecPtrInput
 }
@@ -378,6 +388,11 @@ func (o PostgresBranchOutput) Name() pulumi.StringOutput {
 // For point-in-time branching from another branch, see `status.source_branch`
 func (o PostgresBranchOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresBranch) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o PostgresBranchOutput) ProviderConfig() PostgresBranchProviderConfigPtrOutput {
+	return o.ApplyT(func(v *PostgresBranch) PostgresBranchProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresBranchProviderConfigPtrOutput)
 }
 
 // The spec contains the branch configuration

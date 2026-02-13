@@ -108,6 +108,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.DatabaseDatabaseCatalogProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// (string)
         /// </summary>
         [Output("uid")]
@@ -180,6 +186,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DatabaseDatabaseCatalogProviderConfigArgs>? ProviderConfig { get; set; }
+
         public DatabaseDatabaseCatalogArgs()
         {
         }
@@ -208,6 +220,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DatabaseDatabaseCatalogProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// (string)

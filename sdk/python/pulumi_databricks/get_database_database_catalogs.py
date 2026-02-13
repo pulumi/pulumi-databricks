@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDatabaseDatabaseCatalogsResult',
@@ -27,7 +28,7 @@ class GetDatabaseDatabaseCatalogsResult:
     """
     A collection of values returned by getDatabaseDatabaseCatalogs.
     """
-    def __init__(__self__, database_catalogs=None, id=None, instance_name=None, page_size=None):
+    def __init__(__self__, database_catalogs=None, id=None, instance_name=None, page_size=None, provider_config=None):
         if database_catalogs and not isinstance(database_catalogs, list):
             raise TypeError("Expected argument 'database_catalogs' to be a list")
         pulumi.set(__self__, "database_catalogs", database_catalogs)
@@ -40,6 +41,9 @@ class GetDatabaseDatabaseCatalogsResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="databaseCatalogs")
@@ -64,6 +68,11 @@ class GetDatabaseDatabaseCatalogsResult:
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDatabaseDatabaseCatalogsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetDatabaseDatabaseCatalogsResult(GetDatabaseDatabaseCatalogsResult):
     # pylint: disable=using-constant-test
@@ -74,11 +83,13 @@ class AwaitableGetDatabaseDatabaseCatalogsResult(GetDatabaseDatabaseCatalogsResu
             database_catalogs=self.database_catalogs,
             id=self.id,
             instance_name=self.instance_name,
-            page_size=self.page_size)
+            page_size=self.page_size,
+            provider_config=self.provider_config)
 
 
 def get_database_database_catalogs(instance_name: Optional[_builtins.str] = None,
                                    page_size: Optional[_builtins.int] = None,
+                                   provider_config: Optional[Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict']] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseDatabaseCatalogsResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -86,10 +97,12 @@ def get_database_database_catalogs(instance_name: Optional[_builtins.str] = None
 
     :param _builtins.str instance_name: Name of the instance to get database catalogs for
     :param _builtins.int page_size: Upper bound for items returned
+    :param Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['instanceName'] = instance_name
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs', __args__, opts=opts, typ=GetDatabaseDatabaseCatalogsResult).value
 
@@ -97,9 +110,11 @@ def get_database_database_catalogs(instance_name: Optional[_builtins.str] = None
         database_catalogs=pulumi.get(__ret__, 'database_catalogs'),
         id=pulumi.get(__ret__, 'id'),
         instance_name=pulumi.get(__ret__, 'instance_name'),
-        page_size=pulumi.get(__ret__, 'page_size'))
+        page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_database_database_catalogs_output(instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                                           page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                          provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict']]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseDatabaseCatalogsResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -107,14 +122,17 @@ def get_database_database_catalogs_output(instance_name: Optional[pulumi.Input[_
 
     :param _builtins.str instance_name: Name of the instance to get database catalogs for
     :param _builtins.int page_size: Upper bound for items returned
+    :param Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['instanceName'] = instance_name
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs', __args__, opts=opts, typ=GetDatabaseDatabaseCatalogsResult)
     return __ret__.apply(lambda __response__: GetDatabaseDatabaseCatalogsResult(
         database_catalogs=pulumi.get(__response__, 'database_catalogs'),
         id=pulumi.get(__response__, 'id'),
         instance_name=pulumi.get(__response__, 'instance_name'),
-        page_size=pulumi.get(__response__, 'page_size')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

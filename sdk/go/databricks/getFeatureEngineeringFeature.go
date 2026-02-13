@@ -26,6 +26,8 @@ func LookupFeatureEngineeringFeature(ctx *pulumi.Context, args *LookupFeatureEng
 type LookupFeatureEngineeringFeatureArgs struct {
 	// The full three-part name (catalog, schema, name) of the feature
 	FullName string `pulumi:"fullName"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetFeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getFeatureEngineeringFeature.
@@ -46,7 +48,8 @@ type LookupFeatureEngineeringFeatureResult struct {
 	// is automatically populated when features are created through Databricks notebooks or jobs.
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
-	LineageContext GetFeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
+	LineageContext GetFeatureEngineeringFeatureLineageContext  `pulumi:"lineageContext"`
+	ProviderConfig *GetFeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// (DataSource) - The data source of the feature
 	Source GetFeatureEngineeringFeatureSource `pulumi:"source"`
 	// (TimeWindow) - The time window in which the feature is computed
@@ -66,6 +69,8 @@ func LookupFeatureEngineeringFeatureOutput(ctx *pulumi.Context, args LookupFeatu
 type LookupFeatureEngineeringFeatureOutputArgs struct {
 	// The full three-part name (catalog, schema, name) of the feature
 	FullName pulumi.StringInput `pulumi:"fullName"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetFeatureEngineeringFeatureProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupFeatureEngineeringFeatureOutputArgs) ElementType() reflect.Type {
@@ -125,6 +130,12 @@ func (o LookupFeatureEngineeringFeatureResultOutput) LineageContext() GetFeature
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureLineageContext {
 		return v.LineageContext
 	}).(GetFeatureEngineeringFeatureLineageContextOutput)
+}
+
+func (o LookupFeatureEngineeringFeatureResultOutput) ProviderConfig() GetFeatureEngineeringFeatureProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) *GetFeatureEngineeringFeatureProviderConfig {
+		return v.ProviderConfig
+	}).(GetFeatureEngineeringFeatureProviderConfigPtrOutput)
 }
 
 // (DataSource) - The data source of the feature

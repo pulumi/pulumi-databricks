@@ -36,7 +36,7 @@ class MetastoreArgs:
         The set of arguments for constructing a Metastore resource.
         :param pulumi.Input[_builtins.str] default_data_access_config_id: (Optional) Unique identifier of the metastore's default data access configuration.
         :param pulumi.Input[_builtins.str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         :param pulumi.Input[_builtins.str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
         :param pulumi.Input[_builtins.bool] external_access_enabled: Whether to allow non-DBR clients to directly access entities under the metastore.
         :param pulumi.Input[_builtins.bool] force_destroy: Destroy metastore regardless of its contents.
@@ -103,7 +103,7 @@ class MetastoreArgs:
     @pulumi.getter(name="deltaSharingRecipientTokenLifetimeInSeconds")
     def delta_sharing_recipient_token_lifetime_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         """
         return pulumi.get(self, "delta_sharing_recipient_token_lifetime_in_seconds")
 
@@ -262,7 +262,7 @@ class _MetastoreState:
         :param pulumi.Input[_builtins.str] created_by: Username of metastore creator.
         :param pulumi.Input[_builtins.str] default_data_access_config_id: (Optional) Unique identifier of the metastore's default data access configuration.
         :param pulumi.Input[_builtins.str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         :param pulumi.Input[_builtins.str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
         :param pulumi.Input[_builtins.bool] external_access_enabled: Whether to allow non-DBR clients to directly access entities under the metastore.
         :param pulumi.Input[_builtins.bool] force_destroy: Destroy metastore regardless of its contents.
@@ -383,7 +383,7 @@ class _MetastoreState:
     @pulumi.getter(name="deltaSharingRecipientTokenLifetimeInSeconds")
     def delta_sharing_recipient_token_lifetime_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         """
         return pulumi.get(self, "delta_sharing_recipient_token_lifetime_in_seconds")
 
@@ -651,7 +651,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_data_access_config_id: (Optional) Unique identifier of the metastore's default data access configuration.
         :param pulumi.Input[_builtins.str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         :param pulumi.Input[_builtins.str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
         :param pulumi.Input[_builtins.bool] external_access_enabled: Whether to allow non-DBR clients to directly access entities under the metastore.
         :param pulumi.Input[_builtins.bool] force_destroy: Destroy metastore regardless of its contents.
@@ -835,7 +835,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_by: Username of metastore creator.
         :param pulumi.Input[_builtins.str] default_data_access_config_id: (Optional) Unique identifier of the metastore's default data access configuration.
         :param pulumi.Input[_builtins.str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         :param pulumi.Input[_builtins.str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
         :param pulumi.Input[_builtins.bool] external_access_enabled: Whether to allow non-DBR clients to directly access entities under the metastore.
         :param pulumi.Input[_builtins.bool] force_destroy: Destroy metastore regardless of its contents.
@@ -921,7 +921,7 @@ class Metastore(pulumi.CustomResource):
     @pulumi.getter(name="deltaSharingRecipientTokenLifetimeInSeconds")
     def delta_sharing_recipient_token_lifetime_in_seconds(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         """
         return pulumi.get(self, "delta_sharing_recipient_token_lifetime_in_seconds")
 

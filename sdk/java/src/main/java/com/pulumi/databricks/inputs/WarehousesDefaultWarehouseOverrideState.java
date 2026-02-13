@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.WarehousesDefaultWarehouseOverrideProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,6 +49,21 @@ public final class WarehousesDefaultWarehouseOverrideState extends com.pulumi.re
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<WarehousesDefaultWarehouseOverrideProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<WarehousesDefaultWarehouseOverrideProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      * 
      */
@@ -84,6 +100,7 @@ public final class WarehousesDefaultWarehouseOverrideState extends com.pulumi.re
     private WarehousesDefaultWarehouseOverrideState(WarehousesDefaultWarehouseOverrideState $) {
         this.defaultWarehouseOverrideId = $.defaultWarehouseOverrideId;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.type = $.type;
         this.warehouseId = $.warehouseId;
     }
@@ -148,6 +165,27 @@ public final class WarehousesDefaultWarehouseOverrideState extends com.pulumi.re
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<WarehousesDefaultWarehouseOverrideProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(WarehousesDefaultWarehouseOverrideProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

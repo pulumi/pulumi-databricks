@@ -146,6 +146,7 @@ export class MlflowWebhook extends pulumi.CustomResource {
      * Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
      */
     declare public readonly modelName: pulumi.Output<string | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MlflowWebhookProviderConfig | undefined>;
     /**
      * Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
      */
@@ -169,6 +170,7 @@ export class MlflowWebhook extends pulumi.CustomResource {
             resourceInputs["httpUrlSpec"] = state?.httpUrlSpec;
             resourceInputs["jobSpec"] = state?.jobSpec;
             resourceInputs["modelName"] = state?.modelName;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as MlflowWebhookArgs | undefined;
@@ -180,6 +182,7 @@ export class MlflowWebhook extends pulumi.CustomResource {
             resourceInputs["httpUrlSpec"] = args?.httpUrlSpec;
             resourceInputs["jobSpec"] = args?.jobSpec;
             resourceInputs["modelName"] = args?.modelName;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -207,6 +210,7 @@ export interface MlflowWebhookState {
      * Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
      */
     modelName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.MlflowWebhookProviderConfig>;
     /**
      * Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
      */
@@ -233,6 +237,7 @@ export interface MlflowWebhookArgs {
      * Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
      */
     modelName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.MlflowWebhookProviderConfig>;
     /**
      * Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
      */

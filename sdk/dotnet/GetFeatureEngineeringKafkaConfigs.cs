@@ -39,6 +39,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetFeatureEngineeringKafkaConfigsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetFeatureEngineeringKafkaConfigsArgs()
         {
         }
@@ -52,6 +58,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetFeatureEngineeringKafkaConfigsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetFeatureEngineeringKafkaConfigsInvokeArgs()
         {
@@ -69,6 +81,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigResult> KafkaConfigs;
         public readonly int? PageSize;
+        public readonly Outputs.GetFeatureEngineeringKafkaConfigsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetFeatureEngineeringKafkaConfigsResult(
@@ -76,11 +89,14 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigResult> kafkaConfigs,
 
-            int? pageSize)
+            int? pageSize,
+
+            Outputs.GetFeatureEngineeringKafkaConfigsProviderConfigResult? providerConfig)
         {
             Id = id;
             KafkaConfigs = kafkaConfigs;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
         }
     }
 }

@@ -24,6 +24,8 @@ namespace Pulumi.Databricks
     /// 
     /// - `Principal` - User name, group name or service principal application ID.
     /// - `Privileges` - One or more privileges that are specific to a securable type.
+    /// - `ProviderConfig` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+    ///   - `WorkspaceId` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
     /// 
     /// For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
     /// 
@@ -727,6 +729,9 @@ namespace Pulumi.Databricks
         [Output("pipeline")]
         public Output<string?> Pipeline { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.GrantsProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("recipient")]
         public Output<string?> Recipient { get; private set; } = null!;
 
@@ -823,6 +828,9 @@ namespace Pulumi.Databricks
         [Input("pipeline")]
         public Input<string>? Pipeline { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.GrantsProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("recipient")]
         public Input<string>? Recipient { get; set; }
 
@@ -880,6 +888,9 @@ namespace Pulumi.Databricks
 
         [Input("pipeline")]
         public Input<string>? Pipeline { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.GrantsProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("recipient")]
         public Input<string>? Recipient { get; set; }

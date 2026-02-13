@@ -35,6 +35,8 @@ type GetPostgresBranchesArgs struct {
 	// The Project that owns this collection of branches.
 	// Format: projects/{project_id}
 	Parent string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresBranchesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getPostgresBranches.
@@ -45,7 +47,8 @@ type GetPostgresBranchesResult struct {
 	PageSize *int   `pulumi:"pageSize"`
 	// (string) - The project containing this branch (API resource hierarchy).
 	// Format: projects/{project_id}
-	Parent string `pulumi:"parent"`
+	Parent         string                             `pulumi:"parent"`
+	ProviderConfig *GetPostgresBranchesProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetPostgresBranchesOutput(ctx *pulumi.Context, args GetPostgresBranchesOutputArgs, opts ...pulumi.InvokeOption) GetPostgresBranchesResultOutput {
@@ -64,6 +67,8 @@ type GetPostgresBranchesOutputArgs struct {
 	// The Project that owns this collection of branches.
 	// Format: projects/{project_id}
 	Parent pulumi.StringInput `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresBranchesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetPostgresBranchesOutputArgs) ElementType() reflect.Type {
@@ -102,6 +107,10 @@ func (o GetPostgresBranchesResultOutput) PageSize() pulumi.IntPtrOutput {
 // Format: projects/{project_id}
 func (o GetPostgresBranchesResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresBranchesResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+func (o GetPostgresBranchesResultOutput) ProviderConfig() GetPostgresBranchesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesResult) *GetPostgresBranchesProviderConfig { return v.ProviderConfig }).(GetPostgresBranchesProviderConfigPtrOutput)
 }
 
 func init() {

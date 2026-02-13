@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetAlertsV2ProviderConfigArgs;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,10 +23,26 @@ public final class GetAlertsV2Args extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetAlertsV2ProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetAlertsV2ProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetAlertsV2Args() {}
 
     private GetAlertsV2Args(GetAlertsV2Args $) {
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -53,6 +70,27 @@ public final class GetAlertsV2Args extends com.pulumi.resources.InvokeArgs {
 
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetAlertsV2ProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetAlertsV2ProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetAlertsV2Args build() {

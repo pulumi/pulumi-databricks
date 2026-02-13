@@ -29,6 +29,7 @@ export function getAppsSettingsCustomTemplates(args?: GetAppsSettingsCustomTempl
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -40,6 +41,10 @@ export interface GetAppsSettingsCustomTemplatesArgs {
      * Upper bound for items returned
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetAppsSettingsCustomTemplatesProviderConfig;
 }
 
 /**
@@ -51,6 +56,7 @@ export interface GetAppsSettingsCustomTemplatesResult {
      */
     readonly id: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetAppsSettingsCustomTemplatesProviderConfig;
     readonly templates: outputs.GetAppsSettingsCustomTemplatesTemplate[];
 }
 /**
@@ -76,6 +82,7 @@ export function getAppsSettingsCustomTemplatesOutput(args?: GetAppsSettingsCusto
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -87,4 +94,8 @@ export interface GetAppsSettingsCustomTemplatesOutputArgs {
      * Upper bound for items returned
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetAppsSettingsCustomTemplatesProviderConfigArgs>;
 }

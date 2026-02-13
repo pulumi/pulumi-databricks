@@ -28,6 +28,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Parent;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetPostgresEndpointsEndpointProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         /// </summary>
         public readonly Outputs.GetPostgresEndpointsEndpointSpecResult Spec;
@@ -52,6 +56,8 @@ namespace Pulumi.Databricks.Outputs
 
             string parent,
 
+            Outputs.GetPostgresEndpointsEndpointProviderConfigResult? providerConfig,
+
             Outputs.GetPostgresEndpointsEndpointSpecResult spec,
 
             Outputs.GetPostgresEndpointsEndpointStatusResult status,
@@ -63,6 +69,7 @@ namespace Pulumi.Databricks.Outputs
             CreateTime = createTime;
             Name = name;
             Parent = parent;
+            ProviderConfig = providerConfig;
             Spec = spec;
             Status = status;
             Uid = uid;

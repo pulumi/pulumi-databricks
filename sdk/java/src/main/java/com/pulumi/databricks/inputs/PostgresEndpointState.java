@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresEndpointProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
 import com.pulumi.databricks.inputs.PostgresEndpointStatusArgs;
 import java.lang.String;
@@ -86,6 +87,21 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<PostgresEndpointProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<PostgresEndpointProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
@@ -152,6 +168,7 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
         this.endpointId = $.endpointId;
         this.name = $.name;
         this.parent = $.parent;
+        this.providerConfig = $.providerConfig;
         this.spec = $.spec;
         this.status = $.status;
         this.uid = $.uid;
@@ -266,6 +283,27 @@ public final class PostgresEndpointState extends com.pulumi.resources.ResourceAr
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<PostgresEndpointProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(PostgresEndpointProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

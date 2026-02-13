@@ -215,6 +215,10 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.AlertProviderConfig | undefined>;
+    /**
      * ID of the query evaluated by the alert.
      */
     declare public readonly queryId: pulumi.Output<string>;
@@ -257,6 +261,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["notifyOnOk"] = state?.notifyOnOk;
             resourceInputs["ownerUserName"] = state?.ownerUserName;
             resourceInputs["parentPath"] = state?.parentPath;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["queryId"] = state?.queryId;
             resourceInputs["secondsToRetrigger"] = state?.secondsToRetrigger;
             resourceInputs["state"] = state?.state;
@@ -280,6 +285,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["notifyOnOk"] = args?.notifyOnOk;
             resourceInputs["ownerUserName"] = args?.ownerUserName;
             resourceInputs["parentPath"] = args?.parentPath;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["queryId"] = args?.queryId;
             resourceInputs["secondsToRetrigger"] = args?.secondsToRetrigger;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -334,6 +340,10 @@ export interface AlertState {
      */
     parentPath?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.AlertProviderConfig>;
+    /**
      * ID of the query evaluated by the alert.
      */
     queryId?: pulumi.Input<string>;
@@ -387,6 +397,10 @@ export interface AlertArgs {
      * The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
      */
     parentPath?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.AlertProviderConfig>;
     /**
      * ID of the query evaluated by the alert.
      */

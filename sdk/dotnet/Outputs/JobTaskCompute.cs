@@ -13,6 +13,11 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskCompute
     {
+        /// <summary>
+        /// Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+        /// * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+        /// * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+        /// </summary>
         public readonly string? HardwareAccelerator;
 
         [OutputConstructor]

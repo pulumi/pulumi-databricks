@@ -93,14 +93,14 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
      * 
      */
     @Import(name="deltaSharingRecipientTokenLifetimeInSeconds")
     private @Nullable Output<Integer> deltaSharingRecipientTokenLifetimeInSeconds;
 
     /**
-     * @return Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * @return Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
      * 
      */
     public Optional<Output<Integer>> deltaSharingRecipientTokenLifetimeInSeconds() {
@@ -466,7 +466,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
          * 
          * @return builder
          * 
@@ -477,7 +477,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
          * 
          * @return builder
          * 

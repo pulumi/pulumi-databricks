@@ -208,6 +208,10 @@ export class ModelServing extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.ModelServingProviderConfig | undefined>;
+    /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      *
      * @deprecated Please use AI Gateway to manage rate limits.
@@ -246,6 +250,7 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["emailNotifications"] = state?.emailNotifications;
             resourceInputs["endpointUrl"] = state?.endpointUrl;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["rateLimits"] = state?.rateLimits;
             resourceInputs["routeOptimized"] = state?.routeOptimized;
             resourceInputs["servingEndpointId"] = state?.servingEndpointId;
@@ -258,6 +263,7 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["emailNotifications"] = args?.emailNotifications;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["rateLimits"] = args?.rateLimits;
             resourceInputs["routeOptimized"] = args?.routeOptimized;
             resourceInputs["tags"] = args?.tags;
@@ -301,6 +307,10 @@ export interface ModelServingState {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ModelServingProviderConfig>;
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      *
@@ -349,6 +359,10 @@ export interface ModelServingArgs {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ModelServingProviderConfig>;
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      *

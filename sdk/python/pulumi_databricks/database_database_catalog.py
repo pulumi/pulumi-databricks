@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DatabaseDatabaseCatalogArgs', 'DatabaseDatabaseCatalog']
 
@@ -22,12 +24,14 @@ class DatabaseDatabaseCatalogArgs:
                  database_instance_name: pulumi.Input[_builtins.str],
                  database_name: pulumi.Input[_builtins.str],
                  create_database_if_not_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DatabaseDatabaseCatalog resource.
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
+        :param pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "database_instance_name", database_instance_name)
         pulumi.set(__self__, "database_name", database_name)
@@ -35,6 +39,8 @@ class DatabaseDatabaseCatalogArgs:
             pulumi.set(__self__, "create_database_if_not_exists", create_database_if_not_exists)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="databaseInstanceName")
@@ -81,6 +87,18 @@ class DatabaseDatabaseCatalogArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _DatabaseDatabaseCatalogState:
@@ -89,12 +107,14 @@ class _DatabaseDatabaseCatalogState:
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs']] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseDatabaseCatalog resources.
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
+        :param pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] uid: (string)
         """
         if create_database_if_not_exists is not None:
@@ -105,6 +125,8 @@ class _DatabaseDatabaseCatalogState:
             pulumi.set(__self__, "database_name", database_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
 
@@ -154,6 +176,18 @@ class _DatabaseDatabaseCatalogState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -176,6 +210,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -229,6 +264,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
+        :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
         ...
     @overload
@@ -302,6 +338,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -319,6 +356,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
                 raise TypeError("Missing required property 'database_name'")
             __props__.__dict__["database_name"] = database_name
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["uid"] = None
         super(DatabaseDatabaseCatalog, __self__).__init__(
             'databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog',
@@ -334,6 +372,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
             database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
             database_name: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseDatabaseCatalog':
         """
         Get an existing DatabaseDatabaseCatalog resource's state with the given name, id, and optional extra
@@ -345,6 +384,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
+        :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] uid: (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -355,6 +395,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         __props__.__dict__["database_instance_name"] = database_instance_name
         __props__.__dict__["database_name"] = database_name
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["uid"] = uid
         return DatabaseDatabaseCatalog(resource_name, opts=opts, __props__=__props__)
 
@@ -386,6 +427,14 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         The name of the catalog in UC
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.DatabaseDatabaseCatalogProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

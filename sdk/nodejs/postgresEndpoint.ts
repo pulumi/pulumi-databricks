@@ -204,6 +204,10 @@ export class PostgresEndpoint extends pulumi.CustomResource {
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.PostgresEndpointProviderConfig | undefined>;
+    /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresEndpointSpec>;
@@ -237,6 +241,7 @@ export class PostgresEndpoint extends pulumi.CustomResource {
             resourceInputs["endpointId"] = state?.endpointId;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
             resourceInputs["uid"] = state?.uid;
@@ -251,6 +256,7 @@ export class PostgresEndpoint extends pulumi.CustomResource {
             }
             resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["parent"] = args?.parent;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -288,6 +294,10 @@ export interface PostgresEndpointState {
      */
     parent?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig>;
+    /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     spec?: pulumi.Input<inputs.PostgresEndpointSpec>;
@@ -320,6 +330,10 @@ export interface PostgresEndpointArgs {
      * Format: projects/{project_id}/branches/{branch_id}
      */
     parent: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig>;
     /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */

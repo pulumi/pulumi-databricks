@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigState;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigAuthConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigBackfillSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigKeySchema;
+import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigProviderConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigSubscriptionMode;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigValueSchema;
 import java.lang.String;
@@ -115,6 +116,20 @@ public class FeatureEngineeringKafkaConfig extends com.pulumi.resources.CustomRe
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={FeatureEngineeringKafkaConfigProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringKafkaConfigProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<FeatureEngineeringKafkaConfigProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Options to configure which Kafka topics to pull data from

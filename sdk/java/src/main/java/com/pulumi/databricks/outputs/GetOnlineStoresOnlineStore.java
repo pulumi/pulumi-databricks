@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetOnlineStoresOnlineStoreProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOnlineStoresOnlineStore {
@@ -31,6 +34,11 @@ public final class GetOnlineStoresOnlineStore {
      * 
      */
     private String name;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetOnlineStoresOnlineStoreProviderConfig providerConfig;
     /**
      * @return (integer) - The number of read replicas for the online store. Defaults to 0
      * 
@@ -77,6 +85,13 @@ public final class GetOnlineStoresOnlineStore {
         return this.name;
     }
     /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetOnlineStoresOnlineStoreProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    /**
      * @return (integer) - The number of read replicas for the online store. Defaults to 0
      * 
      */
@@ -111,6 +126,7 @@ public final class GetOnlineStoresOnlineStore {
         private String creationTime;
         private String creator;
         private String name;
+        private @Nullable GetOnlineStoresOnlineStoreProviderConfig providerConfig;
         private Integer readReplicaCount;
         private String state;
         private String usagePolicyId;
@@ -121,6 +137,7 @@ public final class GetOnlineStoresOnlineStore {
     	      this.creationTime = defaults.creationTime;
     	      this.creator = defaults.creator;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.readReplicaCount = defaults.readReplicaCount;
     	      this.state = defaults.state;
     	      this.usagePolicyId = defaults.usagePolicyId;
@@ -159,6 +176,12 @@ public final class GetOnlineStoresOnlineStore {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetOnlineStoresOnlineStoreProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder readReplicaCount(Integer readReplicaCount) {
             if (readReplicaCount == null) {
               throw new MissingRequiredPropertyException("GetOnlineStoresOnlineStore", "readReplicaCount");
@@ -188,6 +211,7 @@ public final class GetOnlineStoresOnlineStore {
             _resultValue.creationTime = creationTime;
             _resultValue.creator = creator;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.readReplicaCount = readReplicaCount;
             _resultValue.state = state;
             _resultValue.usagePolicyId = usagePolicyId;

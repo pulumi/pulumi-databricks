@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.DataQualityMonitorAnomalyDetectionConfigArgs;
 import com.pulumi.databricks.inputs.DataQualityMonitorDataProfilingConfigArgs;
+import com.pulumi.databricks.inputs.DataQualityMonitorProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -96,6 +97,21 @@ public final class DataQualityMonitorArgs extends com.pulumi.resources.ResourceA
         return this.objectType;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DataQualityMonitorProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<DataQualityMonitorProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private DataQualityMonitorArgs() {}
 
     private DataQualityMonitorArgs(DataQualityMonitorArgs $) {
@@ -103,6 +119,7 @@ public final class DataQualityMonitorArgs extends com.pulumi.resources.ResourceA
         this.dataProfilingConfig = $.dataProfilingConfig;
         this.objectId = $.objectId;
         this.objectType = $.objectType;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -223,6 +240,27 @@ public final class DataQualityMonitorArgs extends com.pulumi.resources.ResourceA
          */
         public Builder objectType(String objectType) {
             return objectType(Output.of(objectType));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DataQualityMonitorProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DataQualityMonitorProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public DataQualityMonitorArgs build() {

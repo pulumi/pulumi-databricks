@@ -56,6 +56,8 @@ func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArg
 type LookupDatabaseInstanceArgs struct {
 	// The name of the instance. This is the unique identifier for the instance
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDatabaseInstanceProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDatabaseInstance.
@@ -122,7 +124,8 @@ type LookupDatabaseInstanceResult struct {
 	// Output: Only populated if provided as input to create a child instance
 	ParentInstanceRef GetDatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
 	// (string) - The version of Postgres running on the instance
-	PgVersion string `pulumi:"pgVersion"`
+	PgVersion      string                             `pulumi:"pgVersion"`
+	ProviderConfig *GetDatabaseInstanceProviderConfig `pulumi:"providerConfig"`
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
 	// enableReadableSecondaries is true
 	ReadOnlyDns string `pulumi:"readOnlyDns"`
@@ -155,6 +158,8 @@ func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstan
 type LookupDatabaseInstanceOutputArgs struct {
 	// The name of the instance. This is the unique identifier for the instance
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDatabaseInstanceProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupDatabaseInstanceOutputArgs) ElementType() reflect.Type {
@@ -299,6 +304,10 @@ func (o LookupDatabaseInstanceResultOutput) ParentInstanceRef() GetDatabaseInsta
 // (string) - The version of Postgres running on the instance
 func (o LookupDatabaseInstanceResultOutput) PgVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.PgVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) ProviderConfig() GetDatabaseInstanceProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) *GetDatabaseInstanceProviderConfig { return v.ProviderConfig }).(GetDatabaseInstanceProviderConfigPtrOutput)
 }
 
 // (string) - The DNS endpoint to connect to the instance for read only access. This is only available if

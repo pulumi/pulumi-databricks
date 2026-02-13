@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // The Default Warehouse Override resource allows you to configure a user's default warehouse selection behavior in Databricks SQL. This resource enables customization of how a user's default warehouse is selected for SQL operations.
 //
@@ -89,6 +89,8 @@ type WarehousesDefaultWarehouseOverride struct {
 	// (string) - The resource name of the default warehouse override.
 	// Format: default-warehouse-overrides/{default_warehouse_override_id}
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig WarehousesDefaultWarehouseOverrideProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The specific warehouse ID when type is CUSTOM.
@@ -137,6 +139,8 @@ type warehousesDefaultWarehouseOverrideState struct {
 	// (string) - The resource name of the default warehouse override.
 	// Format: default-warehouse-overrides/{default_warehouse_override_id}
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *WarehousesDefaultWarehouseOverrideProviderConfig `pulumi:"providerConfig"`
 	// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
 	Type *string `pulumi:"type"`
 	// The specific warehouse ID when type is CUSTOM.
@@ -150,6 +154,8 @@ type WarehousesDefaultWarehouseOverrideState struct {
 	// (string) - The resource name of the default warehouse override.
 	// Format: default-warehouse-overrides/{default_warehouse_override_id}
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig WarehousesDefaultWarehouseOverrideProviderConfigPtrInput
 	// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
 	Type pulumi.StringPtrInput
 	// The specific warehouse ID when type is CUSTOM.
@@ -164,6 +170,8 @@ func (WarehousesDefaultWarehouseOverrideState) ElementType() reflect.Type {
 type warehousesDefaultWarehouseOverrideArgs struct {
 	// The ID component of the resource name (user ID)
 	DefaultWarehouseOverrideId string `pulumi:"defaultWarehouseOverrideId"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *WarehousesDefaultWarehouseOverrideProviderConfig `pulumi:"providerConfig"`
 	// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
 	Type string `pulumi:"type"`
 	// The specific warehouse ID when type is CUSTOM.
@@ -175,6 +183,8 @@ type warehousesDefaultWarehouseOverrideArgs struct {
 type WarehousesDefaultWarehouseOverrideArgs struct {
 	// The ID component of the resource name (user ID)
 	DefaultWarehouseOverrideId pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig WarehousesDefaultWarehouseOverrideProviderConfigPtrInput
 	// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
 	Type pulumi.StringInput
 	// The specific warehouse ID when type is CUSTOM.
@@ -278,6 +288,13 @@ func (o WarehousesDefaultWarehouseOverrideOutput) DefaultWarehouseOverrideId() p
 // Format: default-warehouse-overrides/{default_warehouse_override_id}
 func (o WarehousesDefaultWarehouseOverrideOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WarehousesDefaultWarehouseOverride) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o WarehousesDefaultWarehouseOverrideOutput) ProviderConfig() WarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+	return o.ApplyT(func(v *WarehousesDefaultWarehouseOverride) WarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(WarehousesDefaultWarehouseOverrideProviderConfigPtrOutput)
 }
 
 // The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`

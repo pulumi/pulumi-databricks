@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -46,11 +47,27 @@ public final class GetFeatureEngineeringMaterializedFeaturesArgs extends com.pul
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetFeatureEngineeringMaterializedFeaturesArgs() {}
 
     private GetFeatureEngineeringMaterializedFeaturesArgs(GetFeatureEngineeringMaterializedFeaturesArgs $) {
         this.featureName = $.featureName;
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -111,6 +128,27 @@ public final class GetFeatureEngineeringMaterializedFeaturesArgs extends com.pul
          */
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetFeatureEngineeringMaterializedFeaturesArgs build() {

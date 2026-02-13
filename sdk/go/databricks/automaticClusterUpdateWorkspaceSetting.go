@@ -17,6 +17,7 @@ type AutomaticClusterUpdateWorkspaceSetting struct {
 
 	AutomaticClusterUpdateWorkspace AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceOutput `pulumi:"automaticClusterUpdateWorkspace"`
 	Etag                            pulumi.StringOutput                                                         `pulumi:"etag"`
+	ProviderConfig                  AutomaticClusterUpdateWorkspaceSettingProviderConfigPtrOutput               `pulumi:"providerConfig"`
 	SettingName                     pulumi.StringOutput                                                         `pulumi:"settingName"`
 }
 
@@ -55,12 +56,14 @@ func GetAutomaticClusterUpdateWorkspaceSetting(ctx *pulumi.Context,
 type automaticClusterUpdateWorkspaceSettingState struct {
 	AutomaticClusterUpdateWorkspace *AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
 	Etag                            *string                                                                `pulumi:"etag"`
+	ProviderConfig                  *AutomaticClusterUpdateWorkspaceSettingProviderConfig                  `pulumi:"providerConfig"`
 	SettingName                     *string                                                                `pulumi:"settingName"`
 }
 
 type AutomaticClusterUpdateWorkspaceSettingState struct {
 	AutomaticClusterUpdateWorkspace AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspacePtrInput
 	Etag                            pulumi.StringPtrInput
+	ProviderConfig                  AutomaticClusterUpdateWorkspaceSettingProviderConfigPtrInput
 	SettingName                     pulumi.StringPtrInput
 }
 
@@ -71,6 +74,7 @@ func (AutomaticClusterUpdateWorkspaceSettingState) ElementType() reflect.Type {
 type automaticClusterUpdateWorkspaceSettingArgs struct {
 	AutomaticClusterUpdateWorkspace AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
 	Etag                            *string                                                               `pulumi:"etag"`
+	ProviderConfig                  *AutomaticClusterUpdateWorkspaceSettingProviderConfig                 `pulumi:"providerConfig"`
 	SettingName                     *string                                                               `pulumi:"settingName"`
 }
 
@@ -78,6 +82,7 @@ type automaticClusterUpdateWorkspaceSettingArgs struct {
 type AutomaticClusterUpdateWorkspaceSettingArgs struct {
 	AutomaticClusterUpdateWorkspace AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceInput
 	Etag                            pulumi.StringPtrInput
+	ProviderConfig                  AutomaticClusterUpdateWorkspaceSettingProviderConfigPtrInput
 	SettingName                     pulumi.StringPtrInput
 }
 
@@ -176,6 +181,12 @@ func (o AutomaticClusterUpdateWorkspaceSettingOutput) AutomaticClusterUpdateWork
 
 func (o AutomaticClusterUpdateWorkspaceSettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutomaticClusterUpdateWorkspaceSetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+func (o AutomaticClusterUpdateWorkspaceSettingOutput) ProviderConfig() AutomaticClusterUpdateWorkspaceSettingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *AutomaticClusterUpdateWorkspaceSetting) AutomaticClusterUpdateWorkspaceSettingProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(AutomaticClusterUpdateWorkspaceSettingProviderConfigPtrOutput)
 }
 
 func (o AutomaticClusterUpdateWorkspaceSettingOutput) SettingName() pulumi.StringOutput {

@@ -119,6 +119,8 @@ type DatabaseDatabaseCatalog struct {
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig DatabaseDatabaseCatalogProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// (string)
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -166,6 +168,8 @@ type databaseDatabaseCatalogState struct {
 	DatabaseName *string `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *DatabaseDatabaseCatalogProviderConfig `pulumi:"providerConfig"`
 	// (string)
 	Uid *string `pulumi:"uid"`
 }
@@ -178,6 +182,8 @@ type DatabaseDatabaseCatalogState struct {
 	DatabaseName pulumi.StringPtrInput
 	// The name of the catalog in UC
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig DatabaseDatabaseCatalogProviderConfigPtrInput
 	// (string)
 	Uid pulumi.StringPtrInput
 }
@@ -194,6 +200,8 @@ type databaseDatabaseCatalogArgs struct {
 	DatabaseName string `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *DatabaseDatabaseCatalogProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a DatabaseDatabaseCatalog resource.
@@ -205,6 +213,8 @@ type DatabaseDatabaseCatalogArgs struct {
 	DatabaseName pulumi.StringInput
 	// The name of the catalog in UC
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig DatabaseDatabaseCatalogProviderConfigPtrInput
 }
 
 func (DatabaseDatabaseCatalogArgs) ElementType() reflect.Type {
@@ -311,6 +321,13 @@ func (o DatabaseDatabaseCatalogOutput) DatabaseName() pulumi.StringOutput {
 // The name of the catalog in UC
 func (o DatabaseDatabaseCatalogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o DatabaseDatabaseCatalogOutput) ProviderConfig() DatabaseDatabaseCatalogProviderConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseDatabaseCatalog) DatabaseDatabaseCatalogProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(DatabaseDatabaseCatalogProviderConfigPtrOutput)
 }
 
 // (string)

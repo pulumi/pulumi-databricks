@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var catalogPolicies = Databricks.GetPolicyInfos.Invoke(new()
         ///     {
-        ///         OnSecurableType = "catalog",
+        ///         OnSecurableType = "CATALOG",
         ///         OnSecurableFullname = "main",
         ///     });
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var catalogPolicies = Databricks.GetPolicyInfos.Invoke(new()
         ///     {
-        ///         OnSecurableType = "catalog",
+        ///         OnSecurableType = "CATALOG",
         ///         OnSecurableFullname = "main",
         ///     });
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var catalogPolicies = Databricks.GetPolicyInfos.Invoke(new()
         ///     {
-        ///         OnSecurableType = "catalog",
+        ///         OnSecurableType = "CATALOG",
         ///         OnSecurableFullname = "main",
         ///     });
         /// 
@@ -141,6 +141,12 @@ namespace Pulumi.Databricks
         [Input("onSecurableType", required: true)]
         public string OnSecurableType { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetPolicyInfosProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetPolicyInfosArgs()
         {
         }
@@ -176,6 +182,12 @@ namespace Pulumi.Databricks
         [Input("onSecurableType", required: true)]
         public Input<string> OnSecurableType { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetPolicyInfosProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetPolicyInfosInvokeArgs()
         {
         }
@@ -194,16 +206,17 @@ namespace Pulumi.Databricks
         public readonly int? MaxResults;
         /// <summary>
         /// (string) - Full name of the securable on which the policy is defined.
-        /// Required on create and ignored on update
+        /// Required on create
         /// </summary>
         public readonly string OnSecurableFullname;
         /// <summary>
         /// (string) - Type of the securable on which the policy is defined.
         /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-        /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        /// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         public readonly string OnSecurableType;
         public readonly ImmutableArray<Outputs.GetPolicyInfosPolicyResult> Policies;
+        public readonly Outputs.GetPolicyInfosProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetPolicyInfosResult(
@@ -217,7 +230,9 @@ namespace Pulumi.Databricks
 
             string onSecurableType,
 
-            ImmutableArray<Outputs.GetPolicyInfosPolicyResult> policies)
+            ImmutableArray<Outputs.GetPolicyInfosPolicyResult> policies,
+
+            Outputs.GetPolicyInfosProviderConfigResult? providerConfig)
         {
             Id = id;
             IncludeInherited = includeInherited;
@@ -225,6 +240,7 @@ namespace Pulumi.Databricks
             OnSecurableFullname = onSecurableFullname;
             OnSecurableType = onSecurableType;
             Policies = policies;
+            ProviderConfig = providerConfig;
         }
     }
 }

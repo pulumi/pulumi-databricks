@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.WorkspaceEntityTagAssignmentArgs;
 import com.pulumi.databricks.inputs.WorkspaceEntityTagAssignmentState;
+import com.pulumi.databricks.outputs.WorkspaceEntityTagAssignmentProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -99,6 +100,20 @@ public class WorkspaceEntityTagAssignment extends com.pulumi.resources.CustomRes
      */
     public Output<String> entityType() {
         return this.entityType;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={WorkspaceEntityTagAssignmentProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WorkspaceEntityTagAssignmentProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<WorkspaceEntityTagAssignmentProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
