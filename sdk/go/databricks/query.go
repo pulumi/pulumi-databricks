@@ -202,6 +202,8 @@ type Query struct {
 	Parameters QueryParameterArrayOutput `pulumi:"parameters"`
 	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig QueryProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Text of SQL query.
 	QueryText pulumi.StringOutput `pulumi:"queryText"`
 	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
@@ -275,6 +277,8 @@ type queryState struct {
 	Parameters []QueryParameter `pulumi:"parameters"`
 	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
 	ParentPath *string `pulumi:"parentPath"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *QueryProviderConfig `pulumi:"providerConfig"`
 	// Text of SQL query.
 	QueryText *string `pulumi:"queryText"`
 	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
@@ -310,6 +314,8 @@ type QueryState struct {
 	Parameters QueryParameterArrayInput
 	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
 	ParentPath pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig QueryProviderConfigPtrInput
 	// Text of SQL query.
 	QueryText pulumi.StringPtrInput
 	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
@@ -343,6 +349,8 @@ type queryArgs struct {
 	Parameters []QueryParameter `pulumi:"parameters"`
 	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
 	ParentPath *string `pulumi:"parentPath"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *QueryProviderConfig `pulumi:"providerConfig"`
 	// Text of SQL query.
 	QueryText string `pulumi:"queryText"`
 	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
@@ -371,6 +379,8 @@ type QueryArgs struct {
 	Parameters QueryParameterArrayInput
 	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
 	ParentPath pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig QueryProviderConfigPtrInput
 	// Text of SQL query.
 	QueryText pulumi.StringInput
 	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
@@ -518,6 +528,11 @@ func (o QueryOutput) Parameters() QueryParameterArrayOutput {
 // The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
 func (o QueryOutput) ParentPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringPtrOutput { return v.ParentPath }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o QueryOutput) ProviderConfig() QueryProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Query) QueryProviderConfigPtrOutput { return v.ProviderConfig }).(QueryProviderConfigPtrOutput)
 }
 
 // Text of SQL query.

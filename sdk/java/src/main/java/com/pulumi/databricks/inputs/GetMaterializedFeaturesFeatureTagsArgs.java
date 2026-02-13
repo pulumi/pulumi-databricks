@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagsProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -39,6 +40,21 @@ public final class GetMaterializedFeaturesFeatureTagsArgs extends com.pulumi.res
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetMaterializedFeaturesFeatureTagsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetMaterializedFeaturesFeatureTagsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="tableName", required=true)
     private Output<String> tableName;
 
@@ -51,6 +67,7 @@ public final class GetMaterializedFeaturesFeatureTagsArgs extends com.pulumi.res
     private GetMaterializedFeaturesFeatureTagsArgs(GetMaterializedFeaturesFeatureTagsArgs $) {
         this.featureName = $.featureName;
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
         this.tableName = $.tableName;
     }
 
@@ -100,6 +117,27 @@ public final class GetMaterializedFeaturesFeatureTagsArgs extends com.pulumi.res
          */
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetMaterializedFeaturesFeatureTagsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetMaterializedFeaturesFeatureTagsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder tableName(Output<String> tableName) {

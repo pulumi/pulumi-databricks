@@ -173,6 +173,10 @@ export class Query extends pulumi.CustomResource {
      */
     declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.QueryProviderConfig | undefined>;
+    /**
      * Text of SQL query.
      */
     declare public readonly queryText: pulumi.Output<string>;
@@ -220,6 +224,7 @@ export class Query extends pulumi.CustomResource {
             resourceInputs["ownerUserName"] = state?.ownerUserName;
             resourceInputs["parameters"] = state?.parameters;
             resourceInputs["parentPath"] = state?.parentPath;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["queryText"] = state?.queryText;
             resourceInputs["runAsMode"] = state?.runAsMode;
             resourceInputs["schema"] = state?.schema;
@@ -244,6 +249,7 @@ export class Query extends pulumi.CustomResource {
             resourceInputs["ownerUserName"] = args?.ownerUserName;
             resourceInputs["parameters"] = args?.parameters;
             resourceInputs["parentPath"] = args?.parentPath;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["queryText"] = args?.queryText;
             resourceInputs["runAsMode"] = args?.runAsMode;
             resourceInputs["schema"] = args?.schema;
@@ -304,6 +310,10 @@ export interface QueryState {
      */
     parentPath?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.QueryProviderConfig>;
+    /**
      * Text of SQL query.
      */
     queryText?: pulumi.Input<string>;
@@ -361,6 +371,10 @@ export interface QueryArgs {
      * The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
      */
     parentPath?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.QueryProviderConfig>;
     /**
      * Text of SQL query.
      */

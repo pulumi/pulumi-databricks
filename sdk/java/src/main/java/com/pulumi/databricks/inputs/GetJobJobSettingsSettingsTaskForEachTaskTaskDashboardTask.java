@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,6 +21,13 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask ext
 
     public Optional<String> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
+    }
+
+    @Import(name="filters")
+    private @Nullable Map<String,String> filters;
+
+    public Optional<Map<String,String>> filters() {
+        return Optional.ofNullable(this.filters);
     }
 
     @Import(name="subscription")
@@ -40,6 +48,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask ext
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask(GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask $) {
         this.dashboardId = $.dashboardId;
+        this.filters = $.filters;
         this.subscription = $.subscription;
         this.warehouseId = $.warehouseId;
     }
@@ -64,6 +73,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask ext
 
         public Builder dashboardId(@Nullable String dashboardId) {
             $.dashboardId = dashboardId;
+            return this;
+        }
+
+        public Builder filters(@Nullable Map<String,String> filters) {
+            $.filters = filters;
             return this;
         }
 

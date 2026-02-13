@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.ModelServingState;
 import com.pulumi.databricks.outputs.ModelServingAiGateway;
 import com.pulumi.databricks.outputs.ModelServingConfig;
 import com.pulumi.databricks.outputs.ModelServingEmailNotifications;
+import com.pulumi.databricks.outputs.ModelServingProviderConfig;
 import com.pulumi.databricks.outputs.ModelServingRateLimit;
 import com.pulumi.databricks.outputs.ModelServingTag;
 import java.lang.Boolean;
@@ -344,6 +345,20 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={ModelServingProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ModelServingProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<ModelServingProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*

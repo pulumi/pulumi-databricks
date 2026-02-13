@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -11,6 +13,7 @@ export function getMaterializedFeaturesFeatureTag(args: GetMaterializedFeaturesF
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", {
         "key": args.key,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -19,6 +22,10 @@ export function getMaterializedFeaturesFeatureTag(args: GetMaterializedFeaturesF
  */
 export interface GetMaterializedFeaturesFeatureTagArgs {
     key: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetMaterializedFeaturesFeatureTagProviderConfig;
 }
 
 /**
@@ -33,6 +40,7 @@ export interface GetMaterializedFeaturesFeatureTagResult {
      * (string)
      */
     readonly key: string;
+    readonly providerConfig?: outputs.GetMaterializedFeaturesFeatureTagProviderConfig;
     /**
      * (string)
      */
@@ -45,6 +53,7 @@ export function getMaterializedFeaturesFeatureTagOutput(args: GetMaterializedFea
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", {
         "key": args.key,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -53,4 +62,8 @@ export function getMaterializedFeaturesFeatureTagOutput(args: GetMaterializedFea
  */
 export interface GetMaterializedFeaturesFeatureTagOutputArgs {
     key: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetMaterializedFeaturesFeatureTagProviderConfigArgs>;
 }

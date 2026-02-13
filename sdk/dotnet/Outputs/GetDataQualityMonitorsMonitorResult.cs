@@ -30,6 +30,10 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - The type of the monitored object. Can be one of the following: `Schema` or `Table`
         /// </summary>
         public readonly string ObjectType;
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetDataQualityMonitorsMonitorProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetDataQualityMonitorsMonitorResult(
@@ -39,12 +43,15 @@ namespace Pulumi.Databricks.Outputs
 
             string objectId,
 
-            string objectType)
+            string objectType,
+
+            Outputs.GetDataQualityMonitorsMonitorProviderConfigResult? providerConfig)
         {
             AnomalyDetectionConfig = anomalyDetectionConfig;
             DataProfilingConfig = dataProfilingConfig;
             ObjectId = objectId;
             ObjectType = objectType;
+            ProviderConfig = providerConfig;
         }
     }
 }

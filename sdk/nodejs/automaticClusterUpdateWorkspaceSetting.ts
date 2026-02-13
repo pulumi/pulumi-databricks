@@ -36,6 +36,7 @@ export class AutomaticClusterUpdateWorkspaceSetting extends pulumi.CustomResourc
 
     declare public readonly automaticClusterUpdateWorkspace: pulumi.Output<outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace>;
     declare public readonly etag: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig | undefined>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -53,6 +54,7 @@ export class AutomaticClusterUpdateWorkspaceSetting extends pulumi.CustomResourc
             const state = argsOrState as AutomaticClusterUpdateWorkspaceSettingState | undefined;
             resourceInputs["automaticClusterUpdateWorkspace"] = state?.automaticClusterUpdateWorkspace;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as AutomaticClusterUpdateWorkspaceSettingArgs | undefined;
@@ -61,6 +63,7 @@ export class AutomaticClusterUpdateWorkspaceSetting extends pulumi.CustomResourc
             }
             resourceInputs["automaticClusterUpdateWorkspace"] = args?.automaticClusterUpdateWorkspace;
             resourceInputs["etag"] = args?.etag;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -74,6 +77,7 @@ export class AutomaticClusterUpdateWorkspaceSetting extends pulumi.CustomResourc
 export interface AutomaticClusterUpdateWorkspaceSettingState {
     automaticClusterUpdateWorkspace?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace>;
     etag?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }
 
@@ -83,5 +87,6 @@ export interface AutomaticClusterUpdateWorkspaceSettingState {
 export interface AutomaticClusterUpdateWorkspaceSettingArgs {
     automaticClusterUpdateWorkspace: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace>;
     etag?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }

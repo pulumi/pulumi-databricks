@@ -16,6 +16,7 @@ import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectivePersonalComputeAr
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2IntegerValArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2PersonalComputeArgs;
+import com.pulumi.databricks.inputs.WorkspaceSettingV2ProviderConfigArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2RestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2StringValArgs;
 import java.lang.String;
@@ -209,6 +210,21 @@ public final class WorkspaceSettingV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<WorkspaceSettingV2ProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<WorkspaceSettingV2ProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      * 
      */
@@ -253,6 +269,7 @@ public final class WorkspaceSettingV2Args extends com.pulumi.resources.ResourceA
         this.integerVal = $.integerVal;
         this.name = $.name;
         this.personalCompute = $.personalCompute;
+        this.providerConfig = $.providerConfig;
         this.restrictWorkspaceAdmins = $.restrictWorkspaceAdmins;
         this.stringVal = $.stringVal;
     }
@@ -525,6 +542,27 @@ public final class WorkspaceSettingV2Args extends com.pulumi.resources.ResourceA
          */
         public Builder personalCompute(WorkspaceSettingV2PersonalComputeArgs personalCompute) {
             return personalCompute(Output.of(personalCompute));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<WorkspaceSettingV2ProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(WorkspaceSettingV2ProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

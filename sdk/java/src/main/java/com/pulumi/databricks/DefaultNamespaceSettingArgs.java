@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.DefaultNamespaceSettingNamespaceArgs;
+import com.pulumi.databricks.inputs.DefaultNamespaceSettingProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -39,6 +40,21 @@ public final class DefaultNamespaceSettingArgs extends com.pulumi.resources.Reso
         return this.namespace;
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DefaultNamespaceSettingProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<DefaultNamespaceSettingProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="settingName")
     private @Nullable Output<String> settingName;
 
@@ -51,6 +67,7 @@ public final class DefaultNamespaceSettingArgs extends com.pulumi.resources.Reso
     private DefaultNamespaceSettingArgs(DefaultNamespaceSettingArgs $) {
         this.etag = $.etag;
         this.namespace = $.namespace;
+        this.providerConfig = $.providerConfig;
         this.settingName = $.settingName;
     }
 
@@ -100,6 +117,27 @@ public final class DefaultNamespaceSettingArgs extends com.pulumi.resources.Reso
          */
         public Builder namespace(DefaultNamespaceSettingNamespaceArgs namespace) {
             return namespace(Output.of(namespace));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DefaultNamespaceSettingProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DefaultNamespaceSettingProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder settingName(@Nullable Output<String> settingName) {

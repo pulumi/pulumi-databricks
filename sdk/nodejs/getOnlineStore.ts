@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -11,6 +13,7 @@ export function getOnlineStore(args: GetOnlineStoreArgs, opts?: pulumi.InvokeOpt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getOnlineStore:getOnlineStore", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -22,6 +25,10 @@ export interface GetOnlineStoreArgs {
      * The name of the online store. This is the unique identifier for the online store
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetOnlineStoreProviderConfig;
 }
 
 /**
@@ -48,6 +55,7 @@ export interface GetOnlineStoreResult {
      * (string) - The name of the online store. This is the unique identifier for the online store
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetOnlineStoreProviderConfig;
     /**
      * (integer) - The number of read replicas for the online store. Defaults to 0
      */
@@ -68,6 +76,7 @@ export function getOnlineStoreOutput(args: GetOnlineStoreOutputArgs, opts?: pulu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getOnlineStore:getOnlineStore", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -79,4 +88,8 @@ export interface GetOnlineStoreOutputArgs {
      * The name of the online store. This is the unique identifier for the online store
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetOnlineStoreProviderConfigArgs>;
 }

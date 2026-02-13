@@ -4,9 +4,12 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetEntityTagAssignmentProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEntityTagAssignmentResult {
@@ -25,6 +28,7 @@ public final class GetEntityTagAssignmentResult {
      * 
      */
     private String id;
+    private @Nullable GetEntityTagAssignmentProviderConfig providerConfig;
     /**
      * @return (string) - The key of the tag
      * 
@@ -58,6 +62,9 @@ public final class GetEntityTagAssignmentResult {
     public String id() {
         return this.id;
     }
+    public Optional<GetEntityTagAssignmentProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (string) - The key of the tag
      * 
@@ -85,6 +92,7 @@ public final class GetEntityTagAssignmentResult {
         private String entityName;
         private String entityType;
         private String id;
+        private @Nullable GetEntityTagAssignmentProviderConfig providerConfig;
         private String tagKey;
         private String tagValue;
         public Builder() {}
@@ -93,6 +101,7 @@ public final class GetEntityTagAssignmentResult {
     	      this.entityName = defaults.entityName;
     	      this.entityType = defaults.entityType;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tagKey = defaults.tagKey;
     	      this.tagValue = defaults.tagValue;
         }
@@ -122,6 +131,12 @@ public final class GetEntityTagAssignmentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetEntityTagAssignmentProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagKey(String tagKey) {
             if (tagKey == null) {
               throw new MissingRequiredPropertyException("GetEntityTagAssignmentResult", "tagKey");
@@ -142,6 +157,7 @@ public final class GetEntityTagAssignmentResult {
             _resultValue.entityName = entityName;
             _resultValue.entityType = entityType;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tagKey = tagKey;
             _resultValue.tagValue = tagValue;
             return _resultValue;

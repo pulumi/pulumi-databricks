@@ -26,6 +26,8 @@ func LookupOnlineStore(ctx *pulumi.Context, args *LookupOnlineStoreArgs, opts ..
 type LookupOnlineStoreArgs struct {
 	// The name of the online store. This is the unique identifier for the online store
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetOnlineStoreProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getOnlineStore.
@@ -39,7 +41,8 @@ type LookupOnlineStoreResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string) - The name of the online store. This is the unique identifier for the online store
-	Name string `pulumi:"name"`
+	Name           string                        `pulumi:"name"`
+	ProviderConfig *GetOnlineStoreProviderConfig `pulumi:"providerConfig"`
 	// (integer) - The number of read replicas for the online store. Defaults to 0
 	ReadReplicaCount int `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -61,6 +64,8 @@ func LookupOnlineStoreOutput(ctx *pulumi.Context, args LookupOnlineStoreOutputAr
 type LookupOnlineStoreOutputArgs struct {
 	// The name of the online store. This is the unique identifier for the online store
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetOnlineStoreProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupOnlineStoreOutputArgs) ElementType() reflect.Type {
@@ -105,6 +110,10 @@ func (o LookupOnlineStoreResultOutput) Id() pulumi.StringOutput {
 // (string) - The name of the online store. This is the unique identifier for the online store
 func (o LookupOnlineStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOnlineStoreResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupOnlineStoreResultOutput) ProviderConfig() GetOnlineStoreProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupOnlineStoreResult) *GetOnlineStoreProviderConfig { return v.ProviderConfig }).(GetOnlineStoreProviderConfigPtrOutput)
 }
 
 // (integer) - The number of read replicas for the online store. Defaults to 0

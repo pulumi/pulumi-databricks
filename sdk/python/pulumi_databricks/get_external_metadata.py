@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetExternalMetadataResult',
@@ -26,7 +28,7 @@ class GetExternalMetadataResult:
     """
     A collection of values returned by getExternalMetadata.
     """
-    def __init__(__self__, columns=None, create_time=None, created_by=None, description=None, entity_type=None, id=None, metastore_id=None, name=None, owner=None, properties=None, system_type=None, update_time=None, updated_by=None, url=None):
+    def __init__(__self__, columns=None, create_time=None, created_by=None, description=None, entity_type=None, id=None, metastore_id=None, name=None, owner=None, properties=None, provider_config=None, system_type=None, update_time=None, updated_by=None, url=None):
         if columns and not isinstance(columns, list):
             raise TypeError("Expected argument 'columns' to be a list")
         pulumi.set(__self__, "columns", columns)
@@ -57,6 +59,9 @@ class GetExternalMetadataResult:
         if properties and not isinstance(properties, dict):
             raise TypeError("Expected argument 'properties' to be a dict")
         pulumi.set(__self__, "properties", properties)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if system_type and not isinstance(system_type, str):
             raise TypeError("Expected argument 'system_type' to be a str")
         pulumi.set(__self__, "system_type", system_type)
@@ -151,6 +156,11 @@ class GetExternalMetadataResult:
         return pulumi.get(self, "properties")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetExternalMetadataProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="systemType")
     def system_type(self) -> _builtins.str:
         """
@@ -199,6 +209,7 @@ class AwaitableGetExternalMetadataResult(GetExternalMetadataResult):
             name=self.name,
             owner=self.owner,
             properties=self.properties,
+            provider_config=self.provider_config,
             system_type=self.system_type,
             update_time=self.update_time,
             updated_by=self.updated_by,
@@ -206,6 +217,7 @@ class AwaitableGetExternalMetadataResult(GetExternalMetadataResult):
 
 
 def get_external_metadata(name: Optional[_builtins.str] = None,
+                          provider_config: Optional[Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalMetadataResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -227,9 +239,11 @@ def get_external_metadata(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Name of the external metadata object
+    :param Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getExternalMetadata:getExternalMetadata', __args__, opts=opts, typ=GetExternalMetadataResult).value
 
@@ -244,11 +258,13 @@ def get_external_metadata(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         owner=pulumi.get(__ret__, 'owner'),
         properties=pulumi.get(__ret__, 'properties'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         system_type=pulumi.get(__ret__, 'system_type'),
         update_time=pulumi.get(__ret__, 'update_time'),
         updated_by=pulumi.get(__ret__, 'updated_by'),
         url=pulumi.get(__ret__, 'url'))
 def get_external_metadata_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                                 provider_config: Optional[pulumi.Input[Optional[Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalMetadataResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -270,9 +286,11 @@ def get_external_metadata_output(name: Optional[pulumi.Input[_builtins.str]] = N
 
 
     :param _builtins.str name: Name of the external metadata object
+    :param Union['GetExternalMetadataProviderConfigArgs', 'GetExternalMetadataProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getExternalMetadata:getExternalMetadata', __args__, opts=opts, typ=GetExternalMetadataResult)
     return __ret__.apply(lambda __response__: GetExternalMetadataResult(
@@ -286,6 +304,7 @@ def get_external_metadata_output(name: Optional[pulumi.Input[_builtins.str]] = N
         name=pulumi.get(__response__, 'name'),
         owner=pulumi.get(__response__, 'owner'),
         properties=pulumi.get(__response__, 'properties'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         system_type=pulumi.get(__response__, 'system_type'),
         update_time=pulumi.get(__response__, 'update_time'),
         updated_by=pulumi.get(__response__, 'updated_by'),

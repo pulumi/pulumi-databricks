@@ -11,7 +11,9 @@ import com.pulumi.databricks.ComplianceSecurityProfileWorkspaceSettingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ComplianceSecurityProfileWorkspaceSettingState;
 import com.pulumi.databricks.outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace;
+import com.pulumi.databricks.outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @ResourceType(type="databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting")
@@ -27,6 +29,12 @@ public class ComplianceSecurityProfileWorkspaceSetting extends com.pulumi.resour
 
     public Output<String> etag() {
         return this.etag;
+    }
+    @Export(name="providerConfig", refs={ComplianceSecurityProfileWorkspaceSettingProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ComplianceSecurityProfileWorkspaceSettingProviderConfig> providerConfig;
+
+    public Output<Optional<ComplianceSecurityProfileWorkspaceSettingProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="settingName", refs={String.class}, tree="[0]")
     private Output<String> settingName;

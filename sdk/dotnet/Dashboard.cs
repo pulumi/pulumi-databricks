@@ -106,6 +106,12 @@ namespace Pulumi.Databricks
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.DashboardProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The contents of the dashboard in serialized string form. Conflicts with `FilePath`.
         /// </summary>
         [Output("serializedDashboard")]
@@ -224,6 +230,12 @@ namespace Pulumi.Databricks
         public Input<string>? Path { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DashboardProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The contents of the dashboard in serialized string form. Conflicts with `FilePath`.
         /// </summary>
         [Input("serializedDashboard")]
@@ -302,6 +314,12 @@ namespace Pulumi.Databricks
 
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DashboardProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The contents of the dashboard in serialized string form. Conflicts with `FilePath`.

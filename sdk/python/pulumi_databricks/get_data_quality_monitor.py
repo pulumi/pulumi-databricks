@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDataQualityMonitorResult',
@@ -27,7 +28,7 @@ class GetDataQualityMonitorResult:
     """
     A collection of values returned by getDataQualityMonitor.
     """
-    def __init__(__self__, anomaly_detection_config=None, data_profiling_config=None, id=None, object_id=None, object_type=None):
+    def __init__(__self__, anomaly_detection_config=None, data_profiling_config=None, id=None, object_id=None, object_type=None, provider_config=None):
         if anomaly_detection_config and not isinstance(anomaly_detection_config, dict):
             raise TypeError("Expected argument 'anomaly_detection_config' to be a dict")
         pulumi.set(__self__, "anomaly_detection_config", anomaly_detection_config)
@@ -43,6 +44,9 @@ class GetDataQualityMonitorResult:
         if object_type and not isinstance(object_type, str):
             raise TypeError("Expected argument 'object_type' to be a str")
         pulumi.set(__self__, "object_type", object_type)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionConfig")
@@ -85,6 +89,11 @@ class GetDataQualityMonitorResult:
         """
         return pulumi.get(self, "object_type")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDataQualityMonitorProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetDataQualityMonitorResult(GetDataQualityMonitorResult):
     # pylint: disable=using-constant-test
@@ -96,11 +105,13 @@ class AwaitableGetDataQualityMonitorResult(GetDataQualityMonitorResult):
             data_profiling_config=self.data_profiling_config,
             id=self.id,
             object_id=self.object_id,
-            object_type=self.object_type)
+            object_type=self.object_type,
+            provider_config=self.provider_config)
 
 
 def get_data_quality_monitor(object_id: Optional[_builtins.str] = None,
                              object_type: Optional[_builtins.str] = None,
+                             provider_config: Optional[Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataQualityMonitorResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -141,10 +152,12 @@ def get_data_quality_monitor(object_id: Optional[_builtins.str] = None,
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
+    :param Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id
     __args__['objectType'] = object_type
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDataQualityMonitor:getDataQualityMonitor', __args__, opts=opts, typ=GetDataQualityMonitorResult).value
 
@@ -153,9 +166,11 @@ def get_data_quality_monitor(object_id: Optional[_builtins.str] = None,
         data_profiling_config=pulumi.get(__ret__, 'data_profiling_config'),
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
-        object_type=pulumi.get(__ret__, 'object_type'))
+        object_type=pulumi.get(__ret__, 'object_type'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_data_quality_monitor_output(object_id: Optional[pulumi.Input[_builtins.str]] = None,
                                     object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                                    provider_config: Optional[pulumi.Input[Optional[Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityMonitorResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -196,10 +211,12 @@ def get_data_quality_monitor_output(object_id: Optional[pulumi.Input[_builtins.s
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
+    :param Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id
     __args__['objectType'] = object_type
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDataQualityMonitor:getDataQualityMonitor', __args__, opts=opts, typ=GetDataQualityMonitorResult)
     return __ret__.apply(lambda __response__: GetDataQualityMonitorResult(
@@ -207,4 +224,5 @@ def get_data_quality_monitor_output(object_id: Optional[pulumi.Input[_builtins.s
         data_profiling_config=pulumi.get(__response__, 'data_profiling_config'),
         id=pulumi.get(__response__, 'id'),
         object_id=pulumi.get(__response__, 'object_id'),
-        object_type=pulumi.get(__response__, 'object_type')))
+        object_type=pulumi.get(__response__, 'object_type'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDatabaseSyncedDatabaseTablesResult',
@@ -27,7 +28,7 @@ class GetDatabaseSyncedDatabaseTablesResult:
     """
     A collection of values returned by getDatabaseSyncedDatabaseTables.
     """
-    def __init__(__self__, id=None, instance_name=None, page_size=None, synced_tables=None):
+    def __init__(__self__, id=None, instance_name=None, page_size=None, provider_config=None, synced_tables=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -37,6 +38,9 @@ class GetDatabaseSyncedDatabaseTablesResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if synced_tables and not isinstance(synced_tables, list):
             raise TypeError("Expected argument 'synced_tables' to be a list")
         pulumi.set(__self__, "synced_tables", synced_tables)
@@ -60,6 +64,11 @@ class GetDatabaseSyncedDatabaseTablesResult:
         return pulumi.get(self, "page_size")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTablesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="syncedTables")
     def synced_tables(self) -> Sequence['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult']:
         return pulumi.get(self, "synced_tables")
@@ -74,11 +83,13 @@ class AwaitableGetDatabaseSyncedDatabaseTablesResult(GetDatabaseSyncedDatabaseTa
             id=self.id,
             instance_name=self.instance_name,
             page_size=self.page_size,
+            provider_config=self.provider_config,
             synced_tables=self.synced_tables)
 
 
 def get_database_synced_database_tables(instance_name: Optional[_builtins.str] = None,
                                         page_size: Optional[_builtins.int] = None,
+                                        provider_config: Optional[Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict']] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseSyncedDatabaseTablesResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -86,10 +97,12 @@ def get_database_synced_database_tables(instance_name: Optional[_builtins.str] =
 
     :param _builtins.str instance_name: Name of the instance to get synced tables for
     :param _builtins.int page_size: Upper bound for items returned
+    :param Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['instanceName'] = instance_name
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTablesResult).value
 
@@ -97,9 +110,11 @@ def get_database_synced_database_tables(instance_name: Optional[_builtins.str] =
         id=pulumi.get(__ret__, 'id'),
         instance_name=pulumi.get(__ret__, 'instance_name'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         synced_tables=pulumi.get(__ret__, 'synced_tables'))
 def get_database_synced_database_tables_output(instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                                                page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                               provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict']]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseSyncedDatabaseTablesResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -107,14 +122,17 @@ def get_database_synced_database_tables_output(instance_name: Optional[pulumi.In
 
     :param _builtins.str instance_name: Name of the instance to get synced tables for
     :param _builtins.int page_size: Upper bound for items returned
+    :param Union['GetDatabaseSyncedDatabaseTablesProviderConfigArgs', 'GetDatabaseSyncedDatabaseTablesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['instanceName'] = instance_name
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTablesResult)
     return __ret__.apply(lambda __response__: GetDatabaseSyncedDatabaseTablesResult(
         id=pulumi.get(__response__, 'id'),
         instance_name=pulumi.get(__response__, 'instance_name'),
         page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         synced_tables=pulumi.get(__response__, 'synced_tables')))

@@ -11,6 +11,7 @@ import com.pulumi.databricks.AppsSettingsCustomTemplateArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateState;
 import com.pulumi.databricks.outputs.AppsSettingsCustomTemplateManifest;
+import com.pulumi.databricks.outputs.AppsSettingsCustomTemplateProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -274,6 +275,20 @@ public class AppsSettingsCustomTemplate extends com.pulumi.resources.CustomResou
      */
     public Output<String> path() {
         return this.path;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={AppsSettingsCustomTemplateProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AppsSettingsCustomTemplateProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<AppsSettingsCustomTemplateProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

@@ -258,6 +258,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.ModelServingProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         /// </summary>
         [Output("rateLimits")]
@@ -363,6 +369,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ModelServingProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("rateLimits")]
         private InputList<Inputs.ModelServingRateLimitArgs>? _rateLimits;
 
@@ -443,6 +455,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ModelServingProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("rateLimits")]
         private InputList<Inputs.ModelServingRateLimitGetArgs>? _rateLimits;

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesProviderConfig;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesTemplate;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -21,6 +22,7 @@ public final class GetAppsSettingsCustomTemplatesResult {
      */
     private String id;
     private @Nullable Integer pageSize;
+    private @Nullable GetAppsSettingsCustomTemplatesProviderConfig providerConfig;
     private List<GetAppsSettingsCustomTemplatesTemplate> templates;
 
     private GetAppsSettingsCustomTemplatesResult() {}
@@ -33,6 +35,9 @@ public final class GetAppsSettingsCustomTemplatesResult {
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    public Optional<GetAppsSettingsCustomTemplatesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public List<GetAppsSettingsCustomTemplatesTemplate> templates() {
         return this.templates;
@@ -49,12 +54,14 @@ public final class GetAppsSettingsCustomTemplatesResult {
     public static final class Builder {
         private String id;
         private @Nullable Integer pageSize;
+        private @Nullable GetAppsSettingsCustomTemplatesProviderConfig providerConfig;
         private List<GetAppsSettingsCustomTemplatesTemplate> templates;
         public Builder() {}
         public Builder(GetAppsSettingsCustomTemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.templates = defaults.templates;
         }
 
@@ -73,6 +80,12 @@ public final class GetAppsSettingsCustomTemplatesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetAppsSettingsCustomTemplatesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder templates(List<GetAppsSettingsCustomTemplatesTemplate> templates) {
             if (templates == null) {
               throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplatesResult", "templates");
@@ -87,6 +100,7 @@ public final class GetAppsSettingsCustomTemplatesResult {
             final var _resultValue = new GetAppsSettingsCustomTemplatesResult();
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.templates = templates;
             return _resultValue;
         }

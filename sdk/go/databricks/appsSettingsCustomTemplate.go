@@ -164,6 +164,8 @@ type AppsSettingsCustomTemplate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The path to the template within the Git repository
 	Path pulumi.StringOutput `pulumi:"path"`
+	// Configure the provider for management through account provider.
+	ProviderConfig AppsSettingsCustomTemplateProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewAppsSettingsCustomTemplate registers a new resource with the given unique name, arguments, and options.
@@ -223,6 +225,8 @@ type appsSettingsCustomTemplateState struct {
 	Name *string `pulumi:"name"`
 	// The path to the template within the Git repository
 	Path *string `pulumi:"path"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *AppsSettingsCustomTemplateProviderConfig `pulumi:"providerConfig"`
 }
 
 type AppsSettingsCustomTemplateState struct {
@@ -241,6 +245,8 @@ type AppsSettingsCustomTemplateState struct {
 	Name pulumi.StringPtrInput
 	// The path to the template within the Git repository
 	Path pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig AppsSettingsCustomTemplateProviderConfigPtrInput
 }
 
 func (AppsSettingsCustomTemplateState) ElementType() reflect.Type {
@@ -261,6 +267,8 @@ type appsSettingsCustomTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// The path to the template within the Git repository
 	Path string `pulumi:"path"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *AppsSettingsCustomTemplateProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a AppsSettingsCustomTemplate resource.
@@ -278,6 +286,8 @@ type AppsSettingsCustomTemplateArgs struct {
 	Name pulumi.StringPtrInput
 	// The path to the template within the Git repository
 	Path pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig AppsSettingsCustomTemplateProviderConfigPtrInput
 }
 
 func (AppsSettingsCustomTemplateArgs) ElementType() reflect.Type {
@@ -401,6 +411,13 @@ func (o AppsSettingsCustomTemplateOutput) Name() pulumi.StringOutput {
 // The path to the template within the Git repository
 func (o AppsSettingsCustomTemplateOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppsSettingsCustomTemplate) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o AppsSettingsCustomTemplateOutput) ProviderConfig() AppsSettingsCustomTemplateProviderConfigPtrOutput {
+	return o.ApplyT(func(v *AppsSettingsCustomTemplate) AppsSettingsCustomTemplateProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(AppsSettingsCustomTemplateProviderConfigPtrOutput)
 }
 
 type AppsSettingsCustomTemplateArrayOutput struct{ *pulumi.OutputState }

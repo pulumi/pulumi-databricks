@@ -22,11 +22,11 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const piiRowFilter = new databricks.PolicyInfo("pii_row_filter", {
- *     onSecurableType: "catalog",
+ *     onSecurableType: "CATALOG",
  *     onSecurableFullname: "main",
  *     name: "pii_data_policy",
  *     policyType: "POLICY_TYPE_ROW_FILTER",
- *     forSecurableType: "table",
+ *     forSecurableType: "TABLE",
  *     toPrincipals: ["account users"],
  *     whenCondition: "hasTag('pii')",
  *     matchColumns: [{
@@ -49,11 +49,11 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sensitiveColumnMask = new databricks.PolicyInfo("sensitive_column_mask", {
- *     onSecurableType: "schema",
+ *     onSecurableType: "SCHEMA",
  *     onSecurableFullname: "main.finance",
  *     name: "sensitive_data_mask",
  *     policyType: "POLICY_TYPE_COLUMN_MASK",
- *     forSecurableType: "table",
+ *     forSecurableType: "TABLE",
  *     toPrincipals: ["account users"],
  *     exceptPrincipals: ["finance_admins"],
  *     whenCondition: "hasTag('pii')",
@@ -140,19 +140,23 @@ export class PolicyInfo extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      */
     declare public readonly onSecurableFullname: pulumi.Output<string | undefined>;
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     declare public readonly onSecurableType: pulumi.Output<string | undefined>;
     /**
-     * Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      */
     declare public readonly policyType: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.PolicyInfoProviderConfig | undefined>;
     /**
      * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
@@ -201,6 +205,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["onSecurableFullname"] = state?.onSecurableFullname;
             resourceInputs["onSecurableType"] = state?.onSecurableType;
             resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["rowFilter"] = state?.rowFilter;
             resourceInputs["toPrincipals"] = state?.toPrincipals;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -226,6 +231,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["onSecurableFullname"] = args?.onSecurableFullname;
             resourceInputs["onSecurableType"] = args?.onSecurableType;
             resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["rowFilter"] = args?.rowFilter;
             resourceInputs["toPrincipals"] = args?.toPrincipals;
             resourceInputs["whenCondition"] = args?.whenCondition;
@@ -284,19 +290,23 @@ export interface PolicyInfoState {
     name?: pulumi.Input<string>;
     /**
      * Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      */
     onSecurableFullname?: pulumi.Input<string>;
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     onSecurableType?: pulumi.Input<string>;
     /**
-     * Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      */
     policyType?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.PolicyInfoProviderConfig>;
     /**
      * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
@@ -359,19 +369,23 @@ export interface PolicyInfoArgs {
     name?: pulumi.Input<string>;
     /**
      * Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      */
     onSecurableFullname?: pulumi.Input<string>;
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     onSecurableType?: pulumi.Input<string>;
     /**
-     * Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      */
     policyType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.PolicyInfoProviderConfig>;
     /**
      * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,

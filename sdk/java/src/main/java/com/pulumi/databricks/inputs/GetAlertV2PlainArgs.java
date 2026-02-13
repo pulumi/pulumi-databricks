@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetAlertV2ProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +31,26 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetAlertV2ProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetAlertV2ProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetAlertV2PlainArgs() {}
 
     private GetAlertV2PlainArgs(GetAlertV2PlainArgs $) {
         this.id = $.id;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -60,6 +79,17 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder id(String id) {
             $.id = id;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetAlertV2ProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

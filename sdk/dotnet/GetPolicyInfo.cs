@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var piiPolicy = Databricks.GetPolicyInfo.Invoke(new()
         ///     {
-        ///         OnSecurableType = "catalog",
+        ///         OnSecurableType = "CATALOG",
         ///         OnSecurableFullname = "main",
         ///         Name = "pii_data_policy",
         ///     });
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var piiPolicy = Databricks.GetPolicyInfo.Invoke(new()
         ///     {
-        ///         OnSecurableType = "catalog",
+        ///         OnSecurableType = "CATALOG",
         ///         OnSecurableFullname = "main",
         ///         Name = "pii_data_policy",
         ///     });
@@ -102,7 +102,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var piiPolicy = Databricks.GetPolicyInfo.Invoke(new()
         ///     {
-        ///         OnSecurableType = "catalog",
+        ///         OnSecurableType = "CATALOG",
         ///         OnSecurableFullname = "main",
         ///         Name = "pii_data_policy",
         ///     });
@@ -126,7 +126,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Full name of the securable on which the policy is defined.
-        /// Required on create and ignored on update
+        /// Required on create
         /// </summary>
         [Input("onSecurableFullname", required: true)]
         public string OnSecurableFullname { get; set; } = null!;
@@ -134,10 +134,16 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Type of the securable on which the policy is defined.
         /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-        /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        /// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         [Input("onSecurableType", required: true)]
         public string OnSecurableType { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetPolicyInfoProviderConfigArgs? ProviderConfig { get; set; }
 
         public GetPolicyInfoArgs()
         {
@@ -156,7 +162,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Full name of the securable on which the policy is defined.
-        /// Required on create and ignored on update
+        /// Required on create
         /// </summary>
         [Input("onSecurableFullname", required: true)]
         public Input<string> OnSecurableFullname { get; set; } = null!;
@@ -164,10 +170,16 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Type of the securable on which the policy is defined.
         /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-        /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        /// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         [Input("onSecurableType", required: true)]
         public Input<string> OnSecurableType { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetPolicyInfoProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetPolicyInfoInvokeArgs()
         {
@@ -224,19 +236,20 @@ namespace Pulumi.Databricks
         public readonly string Name;
         /// <summary>
         /// (string) - Full name of the securable on which the policy is defined.
-        /// Required on create and ignored on update
+        /// Required on create
         /// </summary>
         public readonly string OnSecurableFullname;
         /// <summary>
         /// (string) - Type of the securable on which the policy is defined.
         /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-        /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        /// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         public readonly string OnSecurableType;
         /// <summary>
-        /// (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        /// (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
         public readonly string PolicyType;
+        public readonly Outputs.GetPolicyInfoProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (RowFilterOptions) - Options for row filter policies. Valid only if `PolicyType` is `POLICY_TYPE_ROW_FILTER`.
         /// Required on create and optional on update. When specified on update,
@@ -287,6 +300,8 @@ namespace Pulumi.Databricks
 
             string policyType,
 
+            Outputs.GetPolicyInfoProviderConfigResult? providerConfig,
+
             Outputs.GetPolicyInfoRowFilterResult rowFilter,
 
             ImmutableArray<string> toPrincipals,
@@ -309,6 +324,7 @@ namespace Pulumi.Databricks
             OnSecurableFullname = onSecurableFullname;
             OnSecurableType = onSecurableType;
             PolicyType = policyType;
+            ProviderConfig = providerConfig;
             RowFilter = rowFilter;
             ToPrincipals = toPrincipals;
             UpdatedAt = updatedAt;

@@ -63,7 +63,9 @@ func LookupTagPolicy(ctx *pulumi.Context, args *LookupTagPolicyArgs, opts ...pul
 
 // A collection of arguments for invoking getTagPolicy.
 type LookupTagPolicyArgs struct {
-	TagKey string `pulumi:"tagKey"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetTagPolicyProviderConfig `pulumi:"providerConfig"`
+	TagKey         string                      `pulumi:"tagKey"`
 }
 
 // A collection of values returned by getTagPolicy.
@@ -73,7 +75,8 @@ type LookupTagPolicyResult struct {
 	// (string)
 	Description string `pulumi:"description"`
 	// (string)
-	Id string `pulumi:"id"`
+	Id             string                      `pulumi:"id"`
+	ProviderConfig *GetTagPolicyProviderConfig `pulumi:"providerConfig"`
 	// (string)
 	TagKey string `pulumi:"tagKey"`
 	// (string) - Timestamp when the tag policy was last updated
@@ -93,7 +96,9 @@ func LookupTagPolicyOutput(ctx *pulumi.Context, args LookupTagPolicyOutputArgs, 
 
 // A collection of arguments for invoking getTagPolicy.
 type LookupTagPolicyOutputArgs struct {
-	TagKey pulumi.StringInput `pulumi:"tagKey"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetTagPolicyProviderConfigPtrInput `pulumi:"providerConfig"`
+	TagKey         pulumi.StringInput                 `pulumi:"tagKey"`
 }
 
 func (LookupTagPolicyOutputArgs) ElementType() reflect.Type {
@@ -128,6 +133,10 @@ func (o LookupTagPolicyResultOutput) Description() pulumi.StringOutput {
 // (string)
 func (o LookupTagPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTagPolicyResultOutput) ProviderConfig() GetTagPolicyProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupTagPolicyResult) *GetTagPolicyProviderConfig { return v.ProviderConfig }).(GetTagPolicyProviderConfigPtrOutput)
 }
 
 // (string)

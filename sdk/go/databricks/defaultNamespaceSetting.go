@@ -54,8 +54,10 @@ type DefaultNamespaceSetting struct {
 
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The configuration details.
-	Namespace   DefaultNamespaceSettingNamespaceOutput `pulumi:"namespace"`
-	SettingName pulumi.StringOutput                    `pulumi:"settingName"`
+	Namespace DefaultNamespaceSettingNamespaceOutput `pulumi:"namespace"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig DefaultNamespaceSettingProviderConfigPtrOutput `pulumi:"providerConfig"`
+	SettingName    pulumi.StringOutput                            `pulumi:"settingName"`
 }
 
 // NewDefaultNamespaceSetting registers a new resource with the given unique name, arguments, and options.
@@ -93,15 +95,19 @@ func GetDefaultNamespaceSetting(ctx *pulumi.Context,
 type defaultNamespaceSettingState struct {
 	Etag *string `pulumi:"etag"`
 	// The configuration details.
-	Namespace   *DefaultNamespaceSettingNamespace `pulumi:"namespace"`
-	SettingName *string                           `pulumi:"settingName"`
+	Namespace *DefaultNamespaceSettingNamespace `pulumi:"namespace"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *DefaultNamespaceSettingProviderConfig `pulumi:"providerConfig"`
+	SettingName    *string                                `pulumi:"settingName"`
 }
 
 type DefaultNamespaceSettingState struct {
 	Etag pulumi.StringPtrInput
 	// The configuration details.
-	Namespace   DefaultNamespaceSettingNamespacePtrInput
-	SettingName pulumi.StringPtrInput
+	Namespace DefaultNamespaceSettingNamespacePtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig DefaultNamespaceSettingProviderConfigPtrInput
+	SettingName    pulumi.StringPtrInput
 }
 
 func (DefaultNamespaceSettingState) ElementType() reflect.Type {
@@ -111,16 +117,20 @@ func (DefaultNamespaceSettingState) ElementType() reflect.Type {
 type defaultNamespaceSettingArgs struct {
 	Etag *string `pulumi:"etag"`
 	// The configuration details.
-	Namespace   DefaultNamespaceSettingNamespace `pulumi:"namespace"`
-	SettingName *string                          `pulumi:"settingName"`
+	Namespace DefaultNamespaceSettingNamespace `pulumi:"namespace"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *DefaultNamespaceSettingProviderConfig `pulumi:"providerConfig"`
+	SettingName    *string                                `pulumi:"settingName"`
 }
 
 // The set of arguments for constructing a DefaultNamespaceSetting resource.
 type DefaultNamespaceSettingArgs struct {
 	Etag pulumi.StringPtrInput
 	// The configuration details.
-	Namespace   DefaultNamespaceSettingNamespaceInput
-	SettingName pulumi.StringPtrInput
+	Namespace DefaultNamespaceSettingNamespaceInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig DefaultNamespaceSettingProviderConfigPtrInput
+	SettingName    pulumi.StringPtrInput
 }
 
 func (DefaultNamespaceSettingArgs) ElementType() reflect.Type {
@@ -217,6 +227,13 @@ func (o DefaultNamespaceSettingOutput) Etag() pulumi.StringOutput {
 // The configuration details.
 func (o DefaultNamespaceSettingOutput) Namespace() DefaultNamespaceSettingNamespaceOutput {
 	return o.ApplyT(func(v *DefaultNamespaceSetting) DefaultNamespaceSettingNamespaceOutput { return v.Namespace }).(DefaultNamespaceSettingNamespaceOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o DefaultNamespaceSettingOutput) ProviderConfig() DefaultNamespaceSettingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *DefaultNamespaceSetting) DefaultNamespaceSettingProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(DefaultNamespaceSettingProviderConfigPtrOutput)
 }
 
 func (o DefaultNamespaceSettingOutput) SettingName() pulumi.StringOutput {

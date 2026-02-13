@@ -24,9 +24,21 @@ public final class JobTaskGenAiComputeTaskArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.command);
     }
 
+    /**
+     * Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     @Import(name="compute")
     private @Nullable Output<JobTaskGenAiComputeTaskComputeArgs> compute;
 
+    /**
+     * @return Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     public Optional<Output<JobTaskGenAiComputeTaskComputeArgs>> compute() {
         return Optional.ofNullable(this.compute);
     }
@@ -113,11 +125,27 @@ public final class JobTaskGenAiComputeTaskArgs extends com.pulumi.resources.Reso
             return command(Output.of(command));
         }
 
+        /**
+         * @param compute Task level compute configuration. This block is documented below.
+         * 
+         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder compute(@Nullable Output<JobTaskGenAiComputeTaskComputeArgs> compute) {
             $.compute = compute;
             return this;
         }
 
+        /**
+         * @param compute Task level compute configuration. This block is documented below.
+         * 
+         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder compute(JobTaskGenAiComputeTaskComputeArgs compute) {
             return compute(Output.of(compute));
         }

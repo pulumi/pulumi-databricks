@@ -12,6 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskComputeGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hardware accelerator configuration for Serverless GPU workloads. Supported values are:
+        /// * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
+        /// * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
+        /// </summary>
         [Input("hardwareAccelerator")]
         public Input<string>? HardwareAccelerator { get; set; }
 

@@ -37,6 +37,7 @@ export function getDataQualityMonitors(args?: GetDataQualityMonitorsArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDataQualityMonitors:getDataQualityMonitors", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -45,6 +46,10 @@ export function getDataQualityMonitors(args?: GetDataQualityMonitorsArgs, opts?:
  */
 export interface GetDataQualityMonitorsArgs {
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetDataQualityMonitorsProviderConfig;
 }
 
 /**
@@ -57,6 +62,7 @@ export interface GetDataQualityMonitorsResult {
     readonly id: string;
     readonly monitors: outputs.GetDataQualityMonitorsMonitor[];
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetDataQualityMonitorsProviderConfig;
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -89,6 +95,7 @@ export function getDataQualityMonitorsOutput(args?: GetDataQualityMonitorsOutput
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDataQualityMonitors:getDataQualityMonitors", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -97,4 +104,8 @@ export function getDataQualityMonitorsOutput(args?: GetDataQualityMonitorsOutput
  */
 export interface GetDataQualityMonitorsOutputArgs {
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetDataQualityMonitorsProviderConfigArgs>;
 }

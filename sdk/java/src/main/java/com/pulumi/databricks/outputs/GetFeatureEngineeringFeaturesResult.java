@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeature;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,6 +23,7 @@ public final class GetFeatureEngineeringFeaturesResult {
      */
     private String id;
     private @Nullable Integer pageSize;
+    private @Nullable GetFeatureEngineeringFeaturesProviderConfig providerConfig;
 
     private GetFeatureEngineeringFeaturesResult() {}
     public List<GetFeatureEngineeringFeaturesFeature> features() {
@@ -37,6 +39,9 @@ public final class GetFeatureEngineeringFeaturesResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    public Optional<GetFeatureEngineeringFeaturesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,12 +55,14 @@ public final class GetFeatureEngineeringFeaturesResult {
         private List<GetFeatureEngineeringFeaturesFeature> features;
         private String id;
         private @Nullable Integer pageSize;
+        private @Nullable GetFeatureEngineeringFeaturesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.features = defaults.features;
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -83,11 +90,18 @@ public final class GetFeatureEngineeringFeaturesResult {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetFeatureEngineeringFeaturesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetFeatureEngineeringFeaturesResult build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesResult();
             _resultValue.features = features;
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

@@ -86,6 +86,8 @@ type Catalog struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Catalog properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig CatalogProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName     pulumi.StringPtrOutput        `pulumi:"providerName"`
 	ProvisioningInfo CatalogProvisioningInfoOutput `pulumi:"provisioningInfo"`
@@ -162,6 +164,8 @@ type catalogState struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *CatalogProviderConfig `pulumi:"providerConfig"`
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName     *string                  `pulumi:"providerName"`
 	ProvisioningInfo *CatalogProvisioningInfo `pulumi:"provisioningInfo"`
@@ -209,6 +213,8 @@ type CatalogState struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig CatalogProviderConfigPtrInput
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName     pulumi.StringPtrInput
 	ProvisioningInfo CatalogProvisioningInfoPtrInput
@@ -253,6 +259,8 @@ type catalogArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *CatalogProviderConfig `pulumi:"providerConfig"`
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName     *string                  `pulumi:"providerName"`
 	ProvisioningInfo *CatalogProvisioningInfo `pulumi:"provisioningInfo"`
@@ -286,6 +294,8 @@ type CatalogArgs struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig CatalogProviderConfigPtrInput
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName     pulumi.StringPtrInput
 	ProvisioningInfo CatalogProvisioningInfoPtrInput
@@ -459,6 +469,11 @@ func (o CatalogOutput) Owner() pulumi.StringOutput {
 // Extensible Catalog properties.
 func (o CatalogOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o CatalogOutput) ProviderConfig() CatalogProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Catalog) CatalogProviderConfigPtrOutput { return v.ProviderConfig }).(CatalogProviderConfigPtrOutput)
 }
 
 // For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.

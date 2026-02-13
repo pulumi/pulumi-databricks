@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -55,6 +57,10 @@ export class GlobalInitScript extends pulumi.CustomResource {
      */
     declare public readonly position: pulumi.Output<number>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.GlobalInitScriptProviderConfig | undefined>;
+    /**
      * Path to script's source code on local filesystem. Conflicts with `contentBase64`
      */
     declare public readonly source: pulumi.Output<string | undefined>;
@@ -77,6 +83,7 @@ export class GlobalInitScript extends pulumi.CustomResource {
             resourceInputs["md5"] = state?.md5;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as GlobalInitScriptArgs | undefined;
@@ -85,6 +92,7 @@ export class GlobalInitScript extends pulumi.CustomResource {
             resourceInputs["md5"] = args?.md5;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["source"] = args?.source;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -114,6 +122,10 @@ export interface GlobalInitScriptState {
      */
     position?: pulumi.Input<number>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GlobalInitScriptProviderConfig>;
+    /**
      * Path to script's source code on local filesystem. Conflicts with `contentBase64`
      */
     source?: pulumi.Input<string>;
@@ -140,6 +152,10 @@ export interface GlobalInitScriptArgs {
      * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
     position?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GlobalInitScriptProviderConfig>;
     /**
      * Path to script's source code on local filesystem. Conflicts with `contentBase64`
      */

@@ -89,6 +89,8 @@ type GetEntityTagAssignmentsArgs struct {
 	EntityType string `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	MaxResults *int `pulumi:"maxResults"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetEntityTagAssignmentsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getEntityTagAssignments.
@@ -100,6 +102,7 @@ type GetEntityTagAssignmentsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                                 `pulumi:"id"`
 	MaxResults     *int                                   `pulumi:"maxResults"`
+	ProviderConfig *GetEntityTagAssignmentsProviderConfig `pulumi:"providerConfig"`
 	TagAssignments []GetEntityTagAssignmentsTagAssignment `pulumi:"tagAssignments"`
 }
 
@@ -120,6 +123,8 @@ type GetEntityTagAssignmentsOutputArgs struct {
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetEntityTagAssignmentsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetEntityTagAssignmentsOutputArgs) ElementType() reflect.Type {
@@ -158,6 +163,10 @@ func (o GetEntityTagAssignmentsResultOutput) Id() pulumi.StringOutput {
 
 func (o GetEntityTagAssignmentsResultOutput) MaxResults() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetEntityTagAssignmentsResult) *int { return v.MaxResults }).(pulumi.IntPtrOutput)
+}
+
+func (o GetEntityTagAssignmentsResultOutput) ProviderConfig() GetEntityTagAssignmentsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetEntityTagAssignmentsResult) *GetEntityTagAssignmentsProviderConfig { return v.ProviderConfig }).(GetEntityTagAssignmentsProviderConfigPtrOutput)
 }
 
 func (o GetEntityTagAssignmentsResultOutput) TagAssignments() GetEntityTagAssignmentsTagAssignmentArrayOutput {

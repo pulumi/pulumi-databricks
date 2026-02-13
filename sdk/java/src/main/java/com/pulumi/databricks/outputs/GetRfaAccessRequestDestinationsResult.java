@@ -6,12 +6,15 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsDestination;
 import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsDestinationSourceSecurable;
+import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsProviderConfig;
 import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsSecurable;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRfaAccessRequestDestinationsResult {
@@ -43,6 +46,7 @@ public final class GetRfaAccessRequestDestinationsResult {
      * 
      */
     private String id;
+    private @Nullable GetRfaAccessRequestDestinationsProviderConfig providerConfig;
     /**
      * @return (Securable) - The securable for which the access request destinations are being modified or read
      * 
@@ -93,6 +97,9 @@ public final class GetRfaAccessRequestDestinationsResult {
     public String id() {
         return this.id;
     }
+    public Optional<GetRfaAccessRequestDestinationsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (Securable) - The securable for which the access request destinations are being modified or read
      * 
@@ -122,6 +129,7 @@ public final class GetRfaAccessRequestDestinationsResult {
         private List<GetRfaAccessRequestDestinationsDestination> destinations;
         private String fullName;
         private String id;
+        private @Nullable GetRfaAccessRequestDestinationsProviderConfig providerConfig;
         private GetRfaAccessRequestDestinationsSecurable securable;
         private String securableType;
         public Builder() {}
@@ -132,6 +140,7 @@ public final class GetRfaAccessRequestDestinationsResult {
     	      this.destinations = defaults.destinations;
     	      this.fullName = defaults.fullName;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.securable = defaults.securable;
     	      this.securableType = defaults.securableType;
         }
@@ -180,6 +189,12 @@ public final class GetRfaAccessRequestDestinationsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetRfaAccessRequestDestinationsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder securable(GetRfaAccessRequestDestinationsSecurable securable) {
             if (securable == null) {
               throw new MissingRequiredPropertyException("GetRfaAccessRequestDestinationsResult", "securable");
@@ -202,6 +217,7 @@ public final class GetRfaAccessRequestDestinationsResult {
             _resultValue.destinations = destinations;
             _resultValue.fullName = fullName;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.securable = securable;
             _resultValue.securableType = securableType;
             return _resultValue;

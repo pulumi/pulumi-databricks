@@ -28,6 +28,7 @@ export function getAppsSettingsCustomTemplate(args: GetAppsSettingsCustomTemplat
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -40,6 +41,10 @@ export interface GetAppsSettingsCustomTemplateArgs {
      * It must be unique within the workspace
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetAppsSettingsCustomTemplateProviderConfig;
 }
 
 /**
@@ -78,6 +83,7 @@ export interface GetAppsSettingsCustomTemplateResult {
      * (string) - The path to the template within the Git repository
      */
     readonly path: string;
+    readonly providerConfig?: outputs.GetAppsSettingsCustomTemplateProviderConfig;
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -101,6 +107,7 @@ export function getAppsSettingsCustomTemplateOutput(args: GetAppsSettingsCustomT
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -113,4 +120,8 @@ export interface GetAppsSettingsCustomTemplateOutputArgs {
      * It must be unique within the workspace
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateProviderConfigArgs>;
 }

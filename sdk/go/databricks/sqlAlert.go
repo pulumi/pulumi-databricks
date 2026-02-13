@@ -95,7 +95,8 @@ type SqlAlert struct {
 	// Alert configuration options.
 	Options SqlAlertOptionsOutput `pulumi:"options"`
 	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-	Parent pulumi.StringPtrOutput `pulumi:"parent"`
+	Parent         pulumi.StringPtrOutput          `pulumi:"parent"`
+	ProviderConfig SqlAlertProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringOutput `pulumi:"queryId"`
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
@@ -145,7 +146,8 @@ type sqlAlertState struct {
 	// Alert configuration options.
 	Options *SqlAlertOptions `pulumi:"options"`
 	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-	Parent *string `pulumi:"parent"`
+	Parent         *string                 `pulumi:"parent"`
+	ProviderConfig *SqlAlertProviderConfig `pulumi:"providerConfig"`
 	// ID of the query evaluated by the alert.
 	QueryId *string `pulumi:"queryId"`
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
@@ -160,7 +162,8 @@ type SqlAlertState struct {
 	// Alert configuration options.
 	Options SqlAlertOptionsPtrInput
 	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-	Parent pulumi.StringPtrInput
+	Parent         pulumi.StringPtrInput
+	ProviderConfig SqlAlertProviderConfigPtrInput
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringPtrInput
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
@@ -179,7 +182,8 @@ type sqlAlertArgs struct {
 	// Alert configuration options.
 	Options SqlAlertOptions `pulumi:"options"`
 	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-	Parent *string `pulumi:"parent"`
+	Parent         *string                 `pulumi:"parent"`
+	ProviderConfig *SqlAlertProviderConfig `pulumi:"providerConfig"`
 	// ID of the query evaluated by the alert.
 	QueryId string `pulumi:"queryId"`
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
@@ -195,7 +199,8 @@ type SqlAlertArgs struct {
 	// Alert configuration options.
 	Options SqlAlertOptionsInput
 	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-	Parent pulumi.StringPtrInput
+	Parent         pulumi.StringPtrInput
+	ProviderConfig SqlAlertProviderConfigPtrInput
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringInput
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
@@ -307,6 +312,10 @@ func (o SqlAlertOutput) Options() SqlAlertOptionsOutput {
 // The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
 func (o SqlAlertOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlAlert) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
+}
+
+func (o SqlAlertOutput) ProviderConfig() SqlAlertProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SqlAlert) SqlAlertProviderConfigPtrOutput { return v.ProviderConfig }).(SqlAlertProviderConfigPtrOutput)
 }
 
 // ID of the query evaluated by the alert.

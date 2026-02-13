@@ -60,6 +60,10 @@ export class OnlineTable extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.OnlineTableProviderConfig | undefined>;
+    /**
      * object containing specification of the online table:
      */
     declare public readonly spec: pulumi.Output<outputs.OnlineTableSpec | undefined>;
@@ -90,6 +94,7 @@ export class OnlineTable extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OnlineTableState | undefined;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["statuses"] = state?.statuses;
             resourceInputs["tableServingUrl"] = state?.tableServingUrl;
@@ -97,6 +102,7 @@ export class OnlineTable extends pulumi.CustomResource {
         } else {
             const args = argsOrState as OnlineTableArgs | undefined;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["statuses"] = undefined /*out*/;
             resourceInputs["tableServingUrl"] = undefined /*out*/;
@@ -115,6 +121,10 @@ export interface OnlineTableState {
      * 3-level name of the Online Table to create.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.OnlineTableProviderConfig>;
     /**
      * object containing specification of the online table:
      */
@@ -141,6 +151,10 @@ export interface OnlineTableArgs {
      * 3-level name of the Online Table to create.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.OnlineTableProviderConfig>;
     /**
      * object containing specification of the online table:
      */

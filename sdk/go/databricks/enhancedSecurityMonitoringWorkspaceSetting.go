@@ -17,6 +17,7 @@ type EnhancedSecurityMonitoringWorkspaceSetting struct {
 
 	EnhancedSecurityMonitoringWorkspace EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput `pulumi:"enhancedSecurityMonitoringWorkspace"`
 	Etag                                pulumi.StringOutput                                                                 `pulumi:"etag"`
+	ProviderConfig                      EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput                   `pulumi:"providerConfig"`
 	SettingName                         pulumi.StringOutput                                                                 `pulumi:"settingName"`
 }
 
@@ -55,12 +56,14 @@ func GetEnhancedSecurityMonitoringWorkspaceSetting(ctx *pulumi.Context,
 type enhancedSecurityMonitoringWorkspaceSettingState struct {
 	EnhancedSecurityMonitoringWorkspace *EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace `pulumi:"enhancedSecurityMonitoringWorkspace"`
 	Etag                                *string                                                                        `pulumi:"etag"`
+	ProviderConfig                      *EnhancedSecurityMonitoringWorkspaceSettingProviderConfig                      `pulumi:"providerConfig"`
 	SettingName                         *string                                                                        `pulumi:"settingName"`
 }
 
 type EnhancedSecurityMonitoringWorkspaceSettingState struct {
 	EnhancedSecurityMonitoringWorkspace EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput
 	Etag                                pulumi.StringPtrInput
+	ProviderConfig                      EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput
 	SettingName                         pulumi.StringPtrInput
 }
 
@@ -71,6 +74,7 @@ func (EnhancedSecurityMonitoringWorkspaceSettingState) ElementType() reflect.Typ
 type enhancedSecurityMonitoringWorkspaceSettingArgs struct {
 	EnhancedSecurityMonitoringWorkspace EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace `pulumi:"enhancedSecurityMonitoringWorkspace"`
 	Etag                                *string                                                                       `pulumi:"etag"`
+	ProviderConfig                      *EnhancedSecurityMonitoringWorkspaceSettingProviderConfig                     `pulumi:"providerConfig"`
 	SettingName                         *string                                                                       `pulumi:"settingName"`
 }
 
@@ -78,6 +82,7 @@ type enhancedSecurityMonitoringWorkspaceSettingArgs struct {
 type EnhancedSecurityMonitoringWorkspaceSettingArgs struct {
 	EnhancedSecurityMonitoringWorkspace EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput
 	Etag                                pulumi.StringPtrInput
+	ProviderConfig                      EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrInput
 	SettingName                         pulumi.StringPtrInput
 }
 
@@ -176,6 +181,12 @@ func (o EnhancedSecurityMonitoringWorkspaceSettingOutput) EnhancedSecurityMonito
 
 func (o EnhancedSecurityMonitoringWorkspaceSettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+func (o EnhancedSecurityMonitoringWorkspaceSettingOutput) ProviderConfig() EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *EnhancedSecurityMonitoringWorkspaceSetting) EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigPtrOutput)
 }
 
 func (o EnhancedSecurityMonitoringWorkspaceSettingOutput) SettingName() pulumi.StringOutput {

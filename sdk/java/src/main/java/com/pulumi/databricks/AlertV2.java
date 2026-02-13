@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AlertV2State;
 import com.pulumi.databricks.outputs.AlertV2EffectiveRunAs;
 import com.pulumi.databricks.outputs.AlertV2Evaluation;
+import com.pulumi.databricks.outputs.AlertV2ProviderConfig;
 import com.pulumi.databricks.outputs.AlertV2RunAs;
 import com.pulumi.databricks.outputs.AlertV2Schedule;
 import java.lang.Boolean;
@@ -220,6 +221,20 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> parentPath() {
         return Codegen.optional(this.parentPath);
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={AlertV2ProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AlertV2ProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<AlertV2ProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Purge the resource on delete

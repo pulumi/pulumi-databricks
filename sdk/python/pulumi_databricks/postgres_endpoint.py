@@ -23,6 +23,7 @@ class PostgresEndpointArgs:
     def __init__(__self__, *,
                  endpoint_id: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
+                 provider_config: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['PostgresEndpointSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresEndpoint resource.
@@ -31,10 +32,13 @@ class PostgresEndpointArgs:
                For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
+        :param pulumi.Input['PostgresEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
         pulumi.set(__self__, "parent", parent)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -66,6 +70,18 @@ class PostgresEndpointArgs:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresEndpointSpecArgs']]:
         """
@@ -85,6 +101,7 @@ class _PostgresEndpointState:
                  endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['PostgresEndpointSpecArgs']] = None,
                  status: Optional[pulumi.Input['PostgresEndpointStatusArgs']] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -99,6 +116,7 @@ class _PostgresEndpointState:
                Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
+        :param pulumi.Input['PostgresEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         :param pulumi.Input['PostgresEndpointStatusArgs'] status: (EndpointStatus) - Current operational status of the compute endpoint
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the endpoint
@@ -112,6 +130,8 @@ class _PostgresEndpointState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
@@ -174,6 +194,18 @@ class _PostgresEndpointState:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresEndpointSpecArgs']]:
         """
@@ -230,6 +262,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
                  __props__=None):
         """
@@ -377,6 +410,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
+        :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         ...
@@ -540,6 +574,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -556,6 +591,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -576,6 +612,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             parent: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
             spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
             status: Optional[pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -595,6 +632,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
+        :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         :param pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']] status: (EndpointStatus) - Current operational status of the compute endpoint
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the endpoint
@@ -608,6 +646,7 @@ class PostgresEndpoint(pulumi.CustomResource):
         __props__.__dict__["endpoint_id"] = endpoint_id
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["uid"] = uid
@@ -649,6 +688,14 @@ class PostgresEndpoint(pulumi.CustomResource):
         Format: projects/{project_id}/branches/{branch_id}
         """
         return pulumi.get(self, "parent")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.PostgresEndpointProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

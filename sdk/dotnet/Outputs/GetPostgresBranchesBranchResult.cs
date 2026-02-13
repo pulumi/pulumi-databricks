@@ -28,6 +28,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Parent;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetPostgresBranchesBranchProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (BranchSpec) - The spec contains the branch configuration
         /// </summary>
         public readonly Outputs.GetPostgresBranchesBranchSpecResult Spec;
@@ -52,6 +56,8 @@ namespace Pulumi.Databricks.Outputs
 
             string parent,
 
+            Outputs.GetPostgresBranchesBranchProviderConfigResult? providerConfig,
+
             Outputs.GetPostgresBranchesBranchSpecResult spec,
 
             Outputs.GetPostgresBranchesBranchStatusResult status,
@@ -63,6 +69,7 @@ namespace Pulumi.Databricks.Outputs
             CreateTime = createTime;
             Name = name;
             Parent = parent;
+            ProviderConfig = providerConfig;
             Spec = spec;
             Status = status;
             Uid = uid;

@@ -84,6 +84,8 @@ type MlflowExperiment struct {
 	LifecycleStage pulumi.StringOutput    `pulumi:"lifecycleStage"`
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MlflowExperimentProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
 	Tags MlflowExperimentTagArrayOutput `pulumi:"tags"`
 }
@@ -128,6 +130,8 @@ type mlflowExperimentState struct {
 	LifecycleStage *string `pulumi:"lifecycleStage"`
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *MlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
 	Tags []MlflowExperimentTag `pulumi:"tags"`
 }
@@ -143,6 +147,8 @@ type MlflowExperimentState struct {
 	LifecycleStage pulumi.StringPtrInput
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MlflowExperimentProviderConfigPtrInput
 	// Tags for the MLflow experiment.
 	Tags MlflowExperimentTagArrayInput
 }
@@ -162,6 +168,8 @@ type mlflowExperimentArgs struct {
 	LifecycleStage *string `pulumi:"lifecycleStage"`
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *MlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
 	Tags []MlflowExperimentTag `pulumi:"tags"`
 }
@@ -178,6 +186,8 @@ type MlflowExperimentArgs struct {
 	LifecycleStage pulumi.StringPtrInput
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MlflowExperimentProviderConfigPtrInput
 	// Tags for the MLflow experiment.
 	Tags MlflowExperimentTagArrayInput
 }
@@ -298,6 +308,11 @@ func (o MlflowExperimentOutput) LifecycleStage() pulumi.StringOutput {
 // Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 func (o MlflowExperimentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MlflowExperiment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o MlflowExperimentOutput) ProviderConfig() MlflowExperimentProviderConfigPtrOutput {
+	return o.ApplyT(func(v *MlflowExperiment) MlflowExperimentProviderConfigPtrOutput { return v.ProviderConfig }).(MlflowExperimentProviderConfigPtrOutput)
 }
 
 // Tags for the MLflow experiment.

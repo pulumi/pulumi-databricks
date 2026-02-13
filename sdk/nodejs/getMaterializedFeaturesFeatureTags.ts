@@ -14,6 +14,7 @@ export function getMaterializedFeaturesFeatureTags(args: GetMaterializedFeatures
     return pulumi.runtime.invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", {
         "featureName": args.featureName,
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
         "tableName": args.tableName,
     }, opts);
 }
@@ -27,6 +28,10 @@ export interface GetMaterializedFeaturesFeatureTagsArgs {
      * The maximum number of results to return
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetMaterializedFeaturesFeatureTagsProviderConfig;
     tableName: string;
 }
 
@@ -41,6 +46,7 @@ export interface GetMaterializedFeaturesFeatureTagsResult {
      */
     readonly id: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetMaterializedFeaturesFeatureTagsProviderConfig;
     readonly tableName: string;
 }
 /**
@@ -51,6 +57,7 @@ export function getMaterializedFeaturesFeatureTagsOutput(args: GetMaterializedFe
     return pulumi.runtime.invokeOutput("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", {
         "featureName": args.featureName,
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
         "tableName": args.tableName,
     }, opts);
 }
@@ -64,5 +71,9 @@ export interface GetMaterializedFeaturesFeatureTagsOutputArgs {
      * The maximum number of results to return
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetMaterializedFeaturesFeatureTagsProviderConfigArgs>;
     tableName: pulumi.Input<string>;
 }

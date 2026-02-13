@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetDataQualityRefreshesProviderConfig;
 import com.pulumi.databricks.outputs.GetDataQualityRefreshesRefresh;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -31,6 +32,7 @@ public final class GetDataQualityRefreshesResult {
      */
     private String objectType;
     private @Nullable Integer pageSize;
+    private @Nullable GetDataQualityRefreshesProviderConfig providerConfig;
     private List<GetDataQualityRefreshesRefresh> refreshes;
 
     private GetDataQualityRefreshesResult() {}
@@ -58,6 +60,9 @@ public final class GetDataQualityRefreshesResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    public Optional<GetDataQualityRefreshesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public List<GetDataQualityRefreshesRefresh> refreshes() {
         return this.refreshes;
     }
@@ -75,6 +80,7 @@ public final class GetDataQualityRefreshesResult {
         private String objectId;
         private String objectType;
         private @Nullable Integer pageSize;
+        private @Nullable GetDataQualityRefreshesProviderConfig providerConfig;
         private List<GetDataQualityRefreshesRefresh> refreshes;
         public Builder() {}
         public Builder(GetDataQualityRefreshesResult defaults) {
@@ -83,6 +89,7 @@ public final class GetDataQualityRefreshesResult {
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.refreshes = defaults.refreshes;
         }
 
@@ -117,6 +124,12 @@ public final class GetDataQualityRefreshesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDataQualityRefreshesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder refreshes(List<GetDataQualityRefreshesRefresh> refreshes) {
             if (refreshes == null) {
               throw new MissingRequiredPropertyException("GetDataQualityRefreshesResult", "refreshes");
@@ -133,6 +146,7 @@ public final class GetDataQualityRefreshesResult {
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.refreshes = refreshes;
             return _resultValue;
         }

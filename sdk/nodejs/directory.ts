@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -77,6 +79,10 @@ export class Directory extends pulumi.CustomResource {
      */
     declare public readonly path: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DirectoryProviderConfig | undefined>;
+    /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
     declare public /*out*/ readonly workspacePath: pulumi.Output<string>;
@@ -97,6 +103,7 @@ export class Directory extends pulumi.CustomResource {
             resourceInputs["deleteRecursive"] = state?.deleteRecursive;
             resourceInputs["objectId"] = state?.objectId;
             resourceInputs["path"] = state?.path;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["workspacePath"] = state?.workspacePath;
         } else {
             const args = argsOrState as DirectoryArgs | undefined;
@@ -106,6 +113,7 @@ export class Directory extends pulumi.CustomResource {
             resourceInputs["deleteRecursive"] = args?.deleteRecursive;
             resourceInputs["objectId"] = args?.objectId;
             resourceInputs["path"] = args?.path;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["workspacePath"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,6 +138,10 @@ export interface DirectoryState {
      */
     path?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DirectoryProviderConfig>;
+    /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
     workspacePath?: pulumi.Input<string>;
@@ -151,4 +163,8 @@ export interface DirectoryArgs {
      * The absolute path of the directory, beginning with "/", e.g. "/Demo".
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DirectoryProviderConfig>;
 }

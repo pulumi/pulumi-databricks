@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GitCredentialProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -129,6 +130,21 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.principalId);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GitCredentialProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GitCredentialProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GitCredentialArgs() {}
 
     private GitCredentialArgs(GitCredentialArgs $) {
@@ -140,6 +156,7 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.personalAccessToken = $.personalAccessToken;
         this.principalId = $.principalId;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -314,6 +331,27 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GitCredentialProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GitCredentialProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GitCredentialArgs build() {

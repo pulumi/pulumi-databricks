@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetWarehousesDefaultWarehouseOverride
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// The Default Warehouse Override data source allows you to retrieve information about a user's default warehouse selection configuration in Databricks SQL.
         /// 
@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWarehousesDefaultWarehouseOverrideResult>("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", args ?? new GetWarehousesDefaultWarehouseOverrideArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// The Default Warehouse Override data source allows you to retrieve information about a user's default warehouse selection configuration in Databricks SQL.
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetWarehousesDefaultWarehouseOverrideResult>("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", args ?? new GetWarehousesDefaultWarehouseOverrideInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// The Default Warehouse Override data source allows you to retrieve information about a user's default warehouse selection configuration in Databricks SQL.
         /// 
@@ -76,6 +76,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetWarehousesDefaultWarehouseOverrideProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetWarehousesDefaultWarehouseOverrideArgs()
         {
         }
@@ -90,6 +96,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetWarehousesDefaultWarehouseOverrideProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetWarehousesDefaultWarehouseOverrideInvokeArgs()
         {
@@ -114,6 +126,7 @@ namespace Pulumi.Databricks
         /// Format: default-warehouse-overrides/{default_warehouse_override_id}
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetWarehousesDefaultWarehouseOverrideProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         /// </summary>
@@ -132,6 +145,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetWarehousesDefaultWarehouseOverrideProviderConfigResult? providerConfig,
+
             string type,
 
             string warehouseId)
@@ -139,6 +154,7 @@ namespace Pulumi.Databricks
             DefaultWarehouseOverrideId = defaultWarehouseOverrideId;
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
             Type = type;
             WarehouseId = warehouseId;
         }

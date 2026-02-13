@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringMaterializedFeatureProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetFeatureEngineeringMaterializedFeaturePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +31,26 @@ public final class GetFeatureEngineeringMaterializedFeaturePlainArgs extends com
         return this.materializedFeatureId;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetFeatureEngineeringMaterializedFeatureProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetFeatureEngineeringMaterializedFeatureProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetFeatureEngineeringMaterializedFeaturePlainArgs() {}
 
     private GetFeatureEngineeringMaterializedFeaturePlainArgs(GetFeatureEngineeringMaterializedFeaturePlainArgs $) {
         this.materializedFeatureId = $.materializedFeatureId;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -60,6 +79,17 @@ public final class GetFeatureEngineeringMaterializedFeaturePlainArgs extends com
          */
         public Builder materializedFeatureId(String materializedFeatureId) {
             $.materializedFeatureId = materializedFeatureId;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetFeatureEngineeringMaterializedFeatureProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

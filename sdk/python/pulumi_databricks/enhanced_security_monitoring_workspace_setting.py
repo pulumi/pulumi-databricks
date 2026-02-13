@@ -23,6 +23,7 @@ class EnhancedSecurityMonitoringWorkspaceSettingArgs:
     def __init__(__self__, *,
                  enhanced_security_monitoring_workspace: pulumi.Input['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs'],
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnhancedSecurityMonitoringWorkspaceSetting resource.
@@ -30,6 +31,8 @@ class EnhancedSecurityMonitoringWorkspaceSettingArgs:
         pulumi.set(__self__, "enhanced_security_monitoring_workspace", enhanced_security_monitoring_workspace)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
 
@@ -52,6 +55,15 @@ class EnhancedSecurityMonitoringWorkspaceSettingArgs:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="settingName")
     def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "setting_name")
@@ -66,6 +78,7 @@ class _EnhancedSecurityMonitoringWorkspaceSettingState:
     def __init__(__self__, *,
                  enhanced_security_monitoring_workspace: Optional[pulumi.Input['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnhancedSecurityMonitoringWorkspaceSetting resources.
@@ -74,6 +87,8 @@ class _EnhancedSecurityMonitoringWorkspaceSettingState:
             pulumi.set(__self__, "enhanced_security_monitoring_workspace", enhanced_security_monitoring_workspace)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
 
@@ -96,6 +111,15 @@ class _EnhancedSecurityMonitoringWorkspaceSettingState:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="settingName")
     def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "setting_name")
@@ -113,6 +137,7 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enhanced_security_monitoring_workspace: Optional[pulumi.Input[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs', 'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -145,6 +170,7 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enhanced_security_monitoring_workspace: Optional[pulumi.Input[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs', 'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -159,6 +185,7 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
                 raise TypeError("Missing required property 'enhanced_security_monitoring_workspace'")
             __props__.__dict__["enhanced_security_monitoring_workspace"] = enhanced_security_monitoring_workspace
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["setting_name"] = setting_name
         super(EnhancedSecurityMonitoringWorkspaceSetting, __self__).__init__(
             'databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting',
@@ -172,6 +199,7 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             enhanced_security_monitoring_workspace: Optional[pulumi.Input[Union['EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs', 'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict']]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs', 'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict']]] = None,
             setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnhancedSecurityMonitoringWorkspaceSetting':
         """
         Get an existing EnhancedSecurityMonitoringWorkspaceSetting resource's state with the given name, id, and optional extra
@@ -187,6 +215,7 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
 
         __props__.__dict__["enhanced_security_monitoring_workspace"] = enhanced_security_monitoring_workspace
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["setting_name"] = setting_name
         return EnhancedSecurityMonitoringWorkspaceSetting(resource_name, opts=opts, __props__=__props__)
 
@@ -199,6 +228,11 @@ class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="settingName")

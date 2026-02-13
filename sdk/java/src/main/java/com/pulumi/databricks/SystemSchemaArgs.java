@@ -5,14 +5,32 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.SystemSchemaProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SystemSchemaArgs Empty = new SystemSchemaArgs();
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SystemSchemaProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SystemSchemaProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     /**
      * name of the system schema.
@@ -32,6 +50,7 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
     private SystemSchemaArgs() {}
 
     private SystemSchemaArgs(SystemSchemaArgs $) {
+        this.providerConfig = $.providerConfig;
         this.schema = $.schema;
     }
 
@@ -51,6 +70,27 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SystemSchemaArgs defaults) {
             $ = new SystemSchemaArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SystemSchemaProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SystemSchemaProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

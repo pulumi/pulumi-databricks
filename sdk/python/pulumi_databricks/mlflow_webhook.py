@@ -26,6 +26,7 @@ class MlflowWebhookArgs:
                  http_url_spec: Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']] = None,
                  job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
                  model_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MlflowWebhook resource.
@@ -45,6 +46,8 @@ class MlflowWebhookArgs:
             pulumi.set(__self__, "job_spec", job_spec)
         if model_name is not None:
             pulumi.set(__self__, "model_name", model_name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -105,6 +108,15 @@ class MlflowWebhookArgs:
         pulumi.set(self, "model_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -125,6 +137,7 @@ class _MlflowWebhookState:
                  http_url_spec: Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']] = None,
                  job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
                  model_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MlflowWebhook resources.
@@ -145,6 +158,8 @@ class _MlflowWebhookState:
             pulumi.set(__self__, "job_spec", job_spec)
         if model_name is not None:
             pulumi.set(__self__, "model_name", model_name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -205,6 +220,15 @@ class _MlflowWebhookState:
         pulumi.set(self, "model_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -228,6 +252,7 @@ class MlflowWebhook(pulumi.CustomResource):
                  http_url_spec: Optional[pulumi.Input[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
                  job_spec: Optional[pulumi.Input[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
                  model_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -439,6 +464,7 @@ class MlflowWebhook(pulumi.CustomResource):
                  http_url_spec: Optional[pulumi.Input[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
                  job_spec: Optional[pulumi.Input[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
                  model_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -456,6 +482,7 @@ class MlflowWebhook(pulumi.CustomResource):
             __props__.__dict__["http_url_spec"] = http_url_spec
             __props__.__dict__["job_spec"] = job_spec
             __props__.__dict__["model_name"] = model_name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["status"] = status
         super(MlflowWebhook, __self__).__init__(
             'databricks:index/mlflowWebhook:MlflowWebhook',
@@ -472,6 +499,7 @@ class MlflowWebhook(pulumi.CustomResource):
             http_url_spec: Optional[pulumi.Input[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
             job_spec: Optional[pulumi.Input[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
             model_name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'MlflowWebhook':
         """
         Get an existing MlflowWebhook resource's state with the given name, id, and optional extra
@@ -496,6 +524,7 @@ class MlflowWebhook(pulumi.CustomResource):
         __props__.__dict__["http_url_spec"] = http_url_spec
         __props__.__dict__["job_spec"] = job_spec
         __props__.__dict__["model_name"] = model_name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["status"] = status
         return MlflowWebhook(resource_name, opts=opts, __props__=__props__)
 
@@ -534,6 +563,11 @@ class MlflowWebhook(pulumi.CustomResource):
         Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         """
         return pulumi.get(self, "model_name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.MlflowWebhookProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

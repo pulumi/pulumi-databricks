@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.SecretArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SecretState;
+import com.pulumi.databricks.outputs.SecretProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -122,6 +124,20 @@ public class Secret extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> lastUpdatedTimestamp() {
         return this.lastUpdatedTimestamp;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={SecretProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SecretProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<SecretProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.

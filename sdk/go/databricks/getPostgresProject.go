@@ -60,6 +60,8 @@ type LookupPostgresProjectArgs struct {
 	// Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresProjectProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getPostgresProject.
@@ -70,7 +72,8 @@ type LookupPostgresProjectResult struct {
 	Id string `pulumi:"id"`
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
-	Name string `pulumi:"name"`
+	Name           string                            `pulumi:"name"`
+	ProviderConfig *GetPostgresProjectProviderConfig `pulumi:"providerConfig"`
 	// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec GetPostgresProjectSpec `pulumi:"spec"`
 	// (ProjectStatus) - The current status of a Project
@@ -95,6 +98,8 @@ type LookupPostgresProjectOutputArgs struct {
 	// Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresProjectProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupPostgresProjectOutputArgs) ElementType() reflect.Type {
@@ -130,6 +135,10 @@ func (o LookupPostgresProjectResultOutput) Id() pulumi.StringOutput {
 // Format: projects/{project_id}
 func (o LookupPostgresProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupPostgresProjectResultOutput) ProviderConfig() GetPostgresProjectProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupPostgresProjectResult) *GetPostgresProjectProviderConfig { return v.ProviderConfig }).(GetPostgresProjectProviderConfigPtrOutput)
 }
 
 // (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings

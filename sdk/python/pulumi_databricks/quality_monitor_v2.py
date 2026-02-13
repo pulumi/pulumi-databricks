@@ -23,15 +23,19 @@ class QualityMonitorV2Args:
     def __init__(__self__, *,
                  object_id: pulumi.Input[_builtins.str],
                  object_type: pulumi.Input[_builtins.str],
+                 provider_config: Optional[pulumi.Input['QualityMonitorV2ProviderConfigArgs']] = None,
                  validity_check_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationArgs']]]] = None):
         """
         The set of arguments for constructing a QualityMonitorV2 resource.
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
+        :param pulumi.Input['QualityMonitorV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationArgs']]] validity_check_configurations: Validity check configurations for anomaly detection
         """
         pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "object_type", object_type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if validity_check_configurations is not None:
             pulumi.set(__self__, "validity_check_configurations", validity_check_configurations)
 
@@ -60,6 +64,18 @@ class QualityMonitorV2Args:
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['QualityMonitorV2ProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['QualityMonitorV2ProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="validityCheckConfigurations")
     def validity_check_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationArgs']]]]:
         """
@@ -78,12 +94,14 @@ class _QualityMonitorV2State:
                  anomaly_detection_config: Optional[pulumi.Input['QualityMonitorV2AnomalyDetectionConfigArgs']] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['QualityMonitorV2ProviderConfigArgs']] = None,
                  validity_check_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationArgs']]]] = None):
         """
         Input properties used for looking up and filtering QualityMonitorV2 resources.
         :param pulumi.Input['QualityMonitorV2AnomalyDetectionConfigArgs'] anomaly_detection_config: (AnomalyDetectionConfig)
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
+        :param pulumi.Input['QualityMonitorV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationArgs']]] validity_check_configurations: Validity check configurations for anomaly detection
         """
         if anomaly_detection_config is not None:
@@ -92,6 +110,8 @@ class _QualityMonitorV2State:
             pulumi.set(__self__, "object_id", object_id)
         if object_type is not None:
             pulumi.set(__self__, "object_type", object_type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if validity_check_configurations is not None:
             pulumi.set(__self__, "validity_check_configurations", validity_check_configurations)
 
@@ -132,6 +152,18 @@ class _QualityMonitorV2State:
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['QualityMonitorV2ProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['QualityMonitorV2ProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="validityCheckConfigurations")
     def validity_check_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationArgs']]]]:
         """
@@ -152,6 +184,7 @@ class QualityMonitorV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['QualityMonitorV2ProviderConfigArgs', 'QualityMonitorV2ProviderConfigArgsDict']]] = None,
                  validity_check_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorV2ValidityCheckConfigurationArgs', 'QualityMonitorV2ValidityCheckConfigurationArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -183,6 +216,7 @@ class QualityMonitorV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
+        :param pulumi.Input[Union['QualityMonitorV2ProviderConfigArgs', 'QualityMonitorV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorV2ValidityCheckConfigurationArgs', 'QualityMonitorV2ValidityCheckConfigurationArgsDict']]]] validity_check_configurations: Validity check configurations for anomaly detection
         """
         ...
@@ -233,6 +267,7 @@ class QualityMonitorV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['QualityMonitorV2ProviderConfigArgs', 'QualityMonitorV2ProviderConfigArgsDict']]] = None,
                  validity_check_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorV2ValidityCheckConfigurationArgs', 'QualityMonitorV2ValidityCheckConfigurationArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -249,6 +284,7 @@ class QualityMonitorV2(pulumi.CustomResource):
             if object_type is None and not opts.urn:
                 raise TypeError("Missing required property 'object_type'")
             __props__.__dict__["object_type"] = object_type
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["validity_check_configurations"] = validity_check_configurations
             __props__.__dict__["anomaly_detection_config"] = None
         super(QualityMonitorV2, __self__).__init__(
@@ -264,6 +300,7 @@ class QualityMonitorV2(pulumi.CustomResource):
             anomaly_detection_config: Optional[pulumi.Input[Union['QualityMonitorV2AnomalyDetectionConfigArgs', 'QualityMonitorV2AnomalyDetectionConfigArgsDict']]] = None,
             object_id: Optional[pulumi.Input[_builtins.str]] = None,
             object_type: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['QualityMonitorV2ProviderConfigArgs', 'QualityMonitorV2ProviderConfigArgsDict']]] = None,
             validity_check_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorV2ValidityCheckConfigurationArgs', 'QualityMonitorV2ValidityCheckConfigurationArgsDict']]]]] = None) -> 'QualityMonitorV2':
         """
         Get an existing QualityMonitorV2 resource's state with the given name, id, and optional extra
@@ -275,6 +312,7 @@ class QualityMonitorV2(pulumi.CustomResource):
         :param pulumi.Input[Union['QualityMonitorV2AnomalyDetectionConfigArgs', 'QualityMonitorV2AnomalyDetectionConfigArgsDict']] anomaly_detection_config: (AnomalyDetectionConfig)
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
+        :param pulumi.Input[Union['QualityMonitorV2ProviderConfigArgs', 'QualityMonitorV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorV2ValidityCheckConfigurationArgs', 'QualityMonitorV2ValidityCheckConfigurationArgsDict']]]] validity_check_configurations: Validity check configurations for anomaly detection
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -284,6 +322,7 @@ class QualityMonitorV2(pulumi.CustomResource):
         __props__.__dict__["anomaly_detection_config"] = anomaly_detection_config
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["object_type"] = object_type
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["validity_check_configurations"] = validity_check_configurations
         return QualityMonitorV2(resource_name, opts=opts, __props__=__props__)
 
@@ -310,6 +349,14 @@ class QualityMonitorV2(pulumi.CustomResource):
         The type of the monitored object. Can be one of the following: schema
         """
         return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.QualityMonitorV2ProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="validityCheckConfigurations")

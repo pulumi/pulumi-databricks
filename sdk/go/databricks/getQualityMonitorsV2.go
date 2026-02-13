@@ -59,6 +59,8 @@ func GetQualityMonitorsV2(ctx *pulumi.Context, args *GetQualityMonitorsV2Args, o
 // A collection of arguments for invoking getQualityMonitorsV2.
 type GetQualityMonitorsV2Args struct {
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetQualityMonitorsV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getQualityMonitorsV2.
@@ -66,6 +68,7 @@ type GetQualityMonitorsV2Result struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id              string                               `pulumi:"id"`
 	PageSize        *int                                 `pulumi:"pageSize"`
+	ProviderConfig  *GetQualityMonitorsV2ProviderConfig  `pulumi:"providerConfig"`
 	QualityMonitors []GetQualityMonitorsV2QualityMonitor `pulumi:"qualityMonitors"`
 }
 
@@ -81,6 +84,8 @@ func GetQualityMonitorsV2Output(ctx *pulumi.Context, args GetQualityMonitorsV2Ou
 // A collection of arguments for invoking getQualityMonitorsV2.
 type GetQualityMonitorsV2OutputArgs struct {
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetQualityMonitorsV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetQualityMonitorsV2OutputArgs) ElementType() reflect.Type {
@@ -109,6 +114,10 @@ func (o GetQualityMonitorsV2ResultOutput) Id() pulumi.StringOutput {
 
 func (o GetQualityMonitorsV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetQualityMonitorsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetQualityMonitorsV2ResultOutput) ProviderConfig() GetQualityMonitorsV2ProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2Result) *GetQualityMonitorsV2ProviderConfig { return v.ProviderConfig }).(GetQualityMonitorsV2ProviderConfigPtrOutput)
 }
 
 func (o GetQualityMonitorsV2ResultOutput) QualityMonitors() GetQualityMonitorsV2QualityMonitorArrayOutput {

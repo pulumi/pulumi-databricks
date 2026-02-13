@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.QualityMonitorV2ProviderConfigArgs;
 import com.pulumi.databricks.inputs.QualityMonitorV2ValidityCheckConfigurationArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -49,6 +50,21 @@ public final class QualityMonitorV2Args extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<QualityMonitorV2ProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<QualityMonitorV2ProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Validity check configurations for anomaly detection
      * 
      */
@@ -68,6 +84,7 @@ public final class QualityMonitorV2Args extends com.pulumi.resources.ResourceArg
     private QualityMonitorV2Args(QualityMonitorV2Args $) {
         this.objectId = $.objectId;
         this.objectType = $.objectType;
+        this.providerConfig = $.providerConfig;
         this.validityCheckConfigurations = $.validityCheckConfigurations;
     }
 
@@ -129,6 +146,27 @@ public final class QualityMonitorV2Args extends com.pulumi.resources.ResourceArg
          */
         public Builder objectType(String objectType) {
             return objectType(Output.of(objectType));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<QualityMonitorV2ProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(QualityMonitorV2ProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

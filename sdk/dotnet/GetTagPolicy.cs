@@ -129,6 +129,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetTagPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetTagPolicyProviderConfigArgs? ProviderConfig { get; set; }
+
         [Input("tagKey", required: true)]
         public string TagKey { get; set; } = null!;
 
@@ -140,6 +146,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetTagPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetTagPolicyProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
 
@@ -165,6 +177,7 @@ namespace Pulumi.Databricks
         /// (string)
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetTagPolicyProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string)
         /// </summary>
@@ -186,6 +199,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetTagPolicyProviderConfigResult? providerConfig,
+
             string tagKey,
 
             string updateTime,
@@ -195,6 +210,7 @@ namespace Pulumi.Databricks
             CreateTime = createTime;
             Description = description;
             Id = id;
+            ProviderConfig = providerConfig;
             TagKey = tagKey;
             UpdateTime = updateTime;
             Values = values;

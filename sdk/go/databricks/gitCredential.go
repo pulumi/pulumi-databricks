@@ -99,6 +99,8 @@ type GitCredential struct {
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrOutput `pulumi:"personalAccessToken"`
 	PrincipalId         pulumi.StringPtrOutput `pulumi:"principalId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GitCredentialProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewGitCredential registers a new resource with the given unique name, arguments, and options.
@@ -149,6 +151,8 @@ type gitCredentialState struct {
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 	PrincipalId         *string `pulumi:"principalId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GitCredentialProviderConfig `pulumi:"providerConfig"`
 }
 
 type GitCredentialState struct {
@@ -167,6 +171,8 @@ type GitCredentialState struct {
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
 	PrincipalId         pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GitCredentialProviderConfigPtrInput
 }
 
 func (GitCredentialState) ElementType() reflect.Type {
@@ -189,6 +195,8 @@ type gitCredentialArgs struct {
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 	PrincipalId         *string `pulumi:"principalId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GitCredentialProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a GitCredential resource.
@@ -208,6 +216,8 @@ type GitCredentialArgs struct {
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
 	PrincipalId         pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GitCredentialProviderConfigPtrInput
 }
 
 func (GitCredentialArgs) ElementType() reflect.Type {
@@ -334,6 +344,11 @@ func (o GitCredentialOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 
 func (o GitCredentialOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PrincipalId }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o GitCredentialOutput) ProviderConfig() GitCredentialProviderConfigPtrOutput {
+	return o.ApplyT(func(v *GitCredential) GitCredentialProviderConfigPtrOutput { return v.ProviderConfig }).(GitCredentialProviderConfigPtrOutput)
 }
 
 type GitCredentialArrayOutput struct{ *pulumi.OutputState }

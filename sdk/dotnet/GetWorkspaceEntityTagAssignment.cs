@@ -154,6 +154,12 @@ namespace Pulumi.Databricks
         public string EntityType { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetWorkspaceEntityTagAssignmentProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         /// </summary>
         [Input("tagKey", required: true)]
@@ -178,6 +184,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetWorkspaceEntityTagAssignmentProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
@@ -207,6 +219,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         /// </summary>
@@ -224,6 +237,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetWorkspaceEntityTagAssignmentProviderConfigResult? providerConfig,
+
             string tagKey,
 
             string tagValue)
@@ -231,6 +246,7 @@ namespace Pulumi.Databricks
             EntityId = entityId;
             EntityType = entityType;
             Id = id;
+            ProviderConfig = providerConfig;
             TagKey = tagKey;
             TagValue = tagValue;
         }

@@ -119,6 +119,10 @@ export class AlertV2 extends pulumi.CustomResource {
      */
     declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.AlertV2ProviderConfig | undefined>;
+    /**
      * Purge the resource on delete
      */
     declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
@@ -172,6 +176,7 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["lifecycleState"] = state?.lifecycleState;
             resourceInputs["ownerUserName"] = state?.ownerUserName;
             resourceInputs["parentPath"] = state?.parentPath;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["purgeOnDelete"] = state?.purgeOnDelete;
             resourceInputs["queryText"] = state?.queryText;
             resourceInputs["runAs"] = state?.runAs;
@@ -201,6 +206,7 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["evaluation"] = args?.evaluation;
             resourceInputs["parentPath"] = args?.parentPath;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["purgeOnDelete"] = args?.purgeOnDelete;
             resourceInputs["queryText"] = args?.queryText;
             resourceInputs["runAs"] = args?.runAs;
@@ -258,6 +264,10 @@ export interface AlertV2State {
      */
     parentPath?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.AlertV2ProviderConfig>;
+    /**
      * Purge the resource on delete
      */
     purgeOnDelete?: pulumi.Input<boolean>;
@@ -311,6 +321,10 @@ export interface AlertV2Args {
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
     parentPath?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.AlertV2ProviderConfig>;
     /**
      * Purge the resource on delete
      */

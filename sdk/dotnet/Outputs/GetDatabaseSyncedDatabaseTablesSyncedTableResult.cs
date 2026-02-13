@@ -46,6 +46,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (SyncedTableSpec)
         /// </summary>
         public readonly Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult Spec;
@@ -70,6 +74,8 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfigResult? providerConfig,
+
             Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult spec,
 
             string unityCatalogProvisioningState)
@@ -80,6 +86,7 @@ namespace Pulumi.Databricks.Outputs
             EffectiveLogicalDatabaseName = effectiveLogicalDatabaseName;
             LogicalDatabaseName = logicalDatabaseName;
             Name = name;
+            ProviderConfig = providerConfig;
             Spec = spec;
             UnityCatalogProvisioningState = unityCatalogProvisioningState;
         }

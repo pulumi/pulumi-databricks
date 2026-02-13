@@ -279,6 +279,12 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.ConnectionProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Object with the status of an asynchronously provisioned resource.
         /// </summary>
         [Output("provisioningInfos")]
@@ -414,6 +420,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ConnectionProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Indicates whether the connection is read-only. Change forces creation of a new resource.
         /// </summary>
         [Input("readOnly")]
@@ -514,6 +526,12 @@ namespace Pulumi.Databricks
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ConnectionProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("provisioningInfos")]
         private InputList<Inputs.ConnectionProvisioningInfoGetArgs>? _provisioningInfos;

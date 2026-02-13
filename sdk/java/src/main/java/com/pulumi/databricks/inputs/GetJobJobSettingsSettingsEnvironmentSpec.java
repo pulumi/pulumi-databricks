@@ -15,6 +15,13 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec extends com.pulumi.r
 
     public static final GetJobJobSettingsSettingsEnvironmentSpec Empty = new GetJobJobSettingsSettingsEnvironmentSpec();
 
+    @Import(name="baseEnvironment")
+    private @Nullable String baseEnvironment;
+
+    public Optional<String> baseEnvironment() {
+        return Optional.ofNullable(this.baseEnvironment);
+    }
+
     @Import(name="client")
     private @Nullable String client;
 
@@ -46,6 +53,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec extends com.pulumi.r
     private GetJobJobSettingsSettingsEnvironmentSpec() {}
 
     private GetJobJobSettingsSettingsEnvironmentSpec(GetJobJobSettingsSettingsEnvironmentSpec $) {
+        this.baseEnvironment = $.baseEnvironment;
         this.client = $.client;
         this.dependencies = $.dependencies;
         this.environmentVersion = $.environmentVersion;
@@ -68,6 +76,11 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec extends com.pulumi.r
 
         public Builder(GetJobJobSettingsSettingsEnvironmentSpec defaults) {
             $ = new GetJobJobSettingsSettingsEnvironmentSpec(Objects.requireNonNull(defaults));
+        }
+
+        public Builder baseEnvironment(@Nullable String baseEnvironment) {
+            $.baseEnvironment = baseEnvironment;
+            return this;
         }
 
         public Builder client(@Nullable String client) {

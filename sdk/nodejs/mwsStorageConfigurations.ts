@@ -40,6 +40,22 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Example Usage with Role ARN
+ *
+ * When sharing an S3 bucket between root storage and a Unity Catalog metastore, you can specify a role ARN:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.MwsStorageConfigurations("this", {
+ *     accountId: databricksAccountId,
+ *     storageConfigurationName: `${prefix}-storage`,
+ *     bucketName: rootStorageBucket.bucket,
+ *     roleArn: unityCatalogRole.arn,
+ * });
+ * ```
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -90,11 +106,17 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
     declare public readonly bucketName: pulumi.Output<string>;
     declare public /*out*/ readonly creationTime: pulumi.Output<number>;
     /**
+     * The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+     */
+    declare public readonly roleArn: pulumi.Output<string | undefined>;
+    /**
      * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      */
     declare public /*out*/ readonly storageConfigurationId: pulumi.Output<string>;
     /**
      * name under which this storage configuration is stored
+     *
+     * The following arguments are optional:
      */
     declare public readonly storageConfigurationName: pulumi.Output<string>;
 
@@ -114,6 +136,7 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["bucketName"] = state?.bucketName;
             resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["roleArn"] = state?.roleArn;
             resourceInputs["storageConfigurationId"] = state?.storageConfigurationId;
             resourceInputs["storageConfigurationName"] = state?.storageConfigurationName;
         } else {
@@ -129,6 +152,7 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
             resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["roleArn"] = args?.roleArn;
             resourceInputs["storageConfigurationName"] = args?.storageConfigurationName;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["storageConfigurationId"] = undefined /*out*/;
@@ -154,11 +178,17 @@ export interface MwsStorageConfigurationsState {
     bucketName?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
     /**
+     * The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
      * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      */
     storageConfigurationId?: pulumi.Input<string>;
     /**
      * name under which this storage configuration is stored
+     *
+     * The following arguments are optional:
      */
     storageConfigurationName?: pulumi.Input<string>;
 }
@@ -176,7 +206,13 @@ export interface MwsStorageConfigurationsArgs {
      */
     bucketName: pulumi.Input<string>;
     /**
+     * The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
      * name under which this storage configuration is stored
+     *
+     * The following arguments are optional:
      */
     storageConfigurationName: pulumi.Input<string>;
 }

@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.SqlEndpointState;
 import com.pulumi.databricks.outputs.SqlEndpointChannel;
 import com.pulumi.databricks.outputs.SqlEndpointHealth;
 import com.pulumi.databricks.outputs.SqlEndpointOdbcParams;
+import com.pulumi.databricks.outputs.SqlEndpointProviderConfig;
 import com.pulumi.databricks.outputs.SqlEndpointTags;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -324,6 +325,20 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<SqlEndpointOdbcParams> odbcParams() {
         return this.odbcParams;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={SqlEndpointProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SqlEndpointProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<SqlEndpointProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.

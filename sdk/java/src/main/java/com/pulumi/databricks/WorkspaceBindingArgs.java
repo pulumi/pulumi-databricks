@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.WorkspaceBindingProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -48,6 +49,21 @@ public final class WorkspaceBindingArgs extends com.pulumi.resources.ResourceArg
     @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
     public Optional<Output<String>> catalogName() {
         return Optional.ofNullable(this.catalogName);
+    }
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<WorkspaceBindingProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<WorkspaceBindingProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -100,6 +116,7 @@ public final class WorkspaceBindingArgs extends com.pulumi.resources.ResourceArg
     private WorkspaceBindingArgs(WorkspaceBindingArgs $) {
         this.bindingType = $.bindingType;
         this.catalogName = $.catalogName;
+        this.providerConfig = $.providerConfig;
         this.securableName = $.securableName;
         this.securableType = $.securableType;
         this.workspaceId = $.workspaceId;
@@ -167,6 +184,27 @@ public final class WorkspaceBindingArgs extends com.pulumi.resources.ResourceArg
         @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<WorkspaceBindingProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(WorkspaceBindingProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

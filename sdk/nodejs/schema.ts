@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -100,6 +102,10 @@ export class Schema extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SchemaProviderConfig | undefined>;
+    /**
      * The unique identifier of the schema.
      */
     declare public /*out*/ readonly schemaId: pulumi.Output<string>;
@@ -129,6 +135,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schemaId"] = state?.schemaId;
             resourceInputs["storageRoot"] = state?.storageRoot;
         } else {
@@ -144,6 +151,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["storageRoot"] = args?.storageRoot;
             resourceInputs["schemaId"] = undefined /*out*/;
         }
@@ -185,6 +193,10 @@ export interface SchemaState {
      * Extensible Schema properties.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SchemaProviderConfig>;
     /**
      * The unique identifier of the schema.
      */
@@ -228,6 +240,10 @@ export interface SchemaArgs {
      * Extensible Schema properties.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SchemaProviderConfig>;
     /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */

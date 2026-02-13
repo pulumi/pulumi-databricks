@@ -17,6 +17,7 @@ type ComplianceSecurityProfileWorkspaceSetting struct {
 
 	ComplianceSecurityProfileWorkspace ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceOutput `pulumi:"complianceSecurityProfileWorkspace"`
 	Etag                               pulumi.StringOutput                                                               `pulumi:"etag"`
+	ProviderConfig                     ComplianceSecurityProfileWorkspaceSettingProviderConfigPtrOutput                  `pulumi:"providerConfig"`
 	SettingName                        pulumi.StringOutput                                                               `pulumi:"settingName"`
 }
 
@@ -55,12 +56,14 @@ func GetComplianceSecurityProfileWorkspaceSetting(ctx *pulumi.Context,
 type complianceSecurityProfileWorkspaceSettingState struct {
 	ComplianceSecurityProfileWorkspace *ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace `pulumi:"complianceSecurityProfileWorkspace"`
 	Etag                               *string                                                                      `pulumi:"etag"`
+	ProviderConfig                     *ComplianceSecurityProfileWorkspaceSettingProviderConfig                     `pulumi:"providerConfig"`
 	SettingName                        *string                                                                      `pulumi:"settingName"`
 }
 
 type ComplianceSecurityProfileWorkspaceSettingState struct {
 	ComplianceSecurityProfileWorkspace ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspacePtrInput
 	Etag                               pulumi.StringPtrInput
+	ProviderConfig                     ComplianceSecurityProfileWorkspaceSettingProviderConfigPtrInput
 	SettingName                        pulumi.StringPtrInput
 }
 
@@ -71,6 +74,7 @@ func (ComplianceSecurityProfileWorkspaceSettingState) ElementType() reflect.Type
 type complianceSecurityProfileWorkspaceSettingArgs struct {
 	ComplianceSecurityProfileWorkspace ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace `pulumi:"complianceSecurityProfileWorkspace"`
 	Etag                               *string                                                                     `pulumi:"etag"`
+	ProviderConfig                     *ComplianceSecurityProfileWorkspaceSettingProviderConfig                    `pulumi:"providerConfig"`
 	SettingName                        *string                                                                     `pulumi:"settingName"`
 }
 
@@ -78,6 +82,7 @@ type complianceSecurityProfileWorkspaceSettingArgs struct {
 type ComplianceSecurityProfileWorkspaceSettingArgs struct {
 	ComplianceSecurityProfileWorkspace ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceInput
 	Etag                               pulumi.StringPtrInput
+	ProviderConfig                     ComplianceSecurityProfileWorkspaceSettingProviderConfigPtrInput
 	SettingName                        pulumi.StringPtrInput
 }
 
@@ -176,6 +181,12 @@ func (o ComplianceSecurityProfileWorkspaceSettingOutput) ComplianceSecurityProfi
 
 func (o ComplianceSecurityProfileWorkspaceSettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComplianceSecurityProfileWorkspaceSetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+func (o ComplianceSecurityProfileWorkspaceSettingOutput) ProviderConfig() ComplianceSecurityProfileWorkspaceSettingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *ComplianceSecurityProfileWorkspaceSetting) ComplianceSecurityProfileWorkspaceSettingProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(ComplianceSecurityProfileWorkspaceSettingProviderConfigPtrOutput)
 }
 
 func (o ComplianceSecurityProfileWorkspaceSettingOutput) SettingName() pulumi.StringOutput {

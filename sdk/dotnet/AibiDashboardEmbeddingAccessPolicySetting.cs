@@ -53,6 +53,12 @@ namespace Pulumi.Databricks
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("settingName")]
         public Output<string> SettingName { get; private set; } = null!;
 
@@ -111,6 +117,12 @@ namespace Pulumi.Databricks
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("settingName")]
         public Input<string>? SettingName { get; set; }
 
@@ -130,6 +142,12 @@ namespace Pulumi.Databricks
 
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("settingName")]
         public Input<string>? SettingName { get; set; }

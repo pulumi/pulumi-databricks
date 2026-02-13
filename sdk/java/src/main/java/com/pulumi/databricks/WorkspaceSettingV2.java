@@ -24,6 +24,7 @@ import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveRestrictWorkspac
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveStringVal;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2IntegerVal;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2PersonalCompute;
+import com.pulumi.databricks.outputs.WorkspaceSettingV2ProviderConfig;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2RestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2StringVal;
 import java.lang.String;
@@ -31,7 +32,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
  * 
@@ -289,6 +290,20 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<WorkspaceSettingV2PersonalCompute>> personalCompute() {
         return Codegen.optional(this.personalCompute);
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={WorkspaceSettingV2ProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WorkspaceSettingV2ProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<WorkspaceSettingV2ProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value

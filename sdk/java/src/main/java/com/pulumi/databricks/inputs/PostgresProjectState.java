@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresProjectProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
 import com.pulumi.databricks.inputs.PostgresProjectStatusArgs;
 import java.lang.String;
@@ -66,6 +67,21 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
+    }
+
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<PostgresProjectProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<PostgresProjectProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -134,6 +150,7 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         this.createTime = $.createTime;
         this.name = $.name;
         this.projectId = $.projectId;
+        this.providerConfig = $.providerConfig;
         this.spec = $.spec;
         this.status = $.status;
         this.uid = $.uid;
@@ -225,6 +242,27 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<PostgresProjectProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(PostgresProjectProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

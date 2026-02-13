@@ -34,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetPolicyInfos(ctx, &databricks.GetPolicyInfosArgs{
-//				OnSecurableType:     "catalog",
+//				OnSecurableType:     "CATALOG",
 //				OnSecurableFullname: "main",
 //			}, nil)
 //			if err != nil {
@@ -68,6 +68,8 @@ type GetPolicyInfosArgs struct {
 	OnSecurableFullname string `pulumi:"onSecurableFullname"`
 	// Required. The type of the securable to list policies for
 	OnSecurableType string `pulumi:"onSecurableType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPolicyInfosProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getPolicyInfos.
@@ -77,13 +79,14 @@ type GetPolicyInfosResult struct {
 	IncludeInherited *bool  `pulumi:"includeInherited"`
 	MaxResults       *int   `pulumi:"maxResults"`
 	// (string) - Full name of the securable on which the policy is defined.
-	// Required on create and ignored on update
+	// Required on create
 	OnSecurableFullname string `pulumi:"onSecurableFullname"`
 	// (string) - Type of the securable on which the policy is defined.
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-	OnSecurableType string                 `pulumi:"onSecurableType"`
-	Policies        []GetPolicyInfosPolicy `pulumi:"policies"`
+	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	OnSecurableType string                        `pulumi:"onSecurableType"`
+	Policies        []GetPolicyInfosPolicy        `pulumi:"policies"`
+	ProviderConfig  *GetPolicyInfosProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetPolicyInfosOutput(ctx *pulumi.Context, args GetPolicyInfosOutputArgs, opts ...pulumi.InvokeOption) GetPolicyInfosResultOutput {
@@ -108,6 +111,8 @@ type GetPolicyInfosOutputArgs struct {
 	OnSecurableFullname pulumi.StringInput `pulumi:"onSecurableFullname"`
 	// Required. The type of the securable to list policies for
 	OnSecurableType pulumi.StringInput `pulumi:"onSecurableType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPolicyInfosProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetPolicyInfosOutputArgs) ElementType() reflect.Type {
@@ -143,20 +148,24 @@ func (o GetPolicyInfosResultOutput) MaxResults() pulumi.IntPtrOutput {
 }
 
 // (string) - Full name of the securable on which the policy is defined.
-// Required on create and ignored on update
+// Required on create
 func (o GetPolicyInfosResultOutput) OnSecurableFullname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyInfosResult) string { return v.OnSecurableFullname }).(pulumi.StringOutput)
 }
 
 // (string) - Type of the securable on which the policy is defined.
 // Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 func (o GetPolicyInfosResultOutput) OnSecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyInfosResult) string { return v.OnSecurableType }).(pulumi.StringOutput)
 }
 
 func (o GetPolicyInfosResultOutput) Policies() GetPolicyInfosPolicyArrayOutput {
 	return o.ApplyT(func(v GetPolicyInfosResult) []GetPolicyInfosPolicy { return v.Policies }).(GetPolicyInfosPolicyArrayOutput)
+}
+
+func (o GetPolicyInfosResultOutput) ProviderConfig() GetPolicyInfosProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosResult) *GetPolicyInfosProviderConfig { return v.ProviderConfig }).(GetPolicyInfosProviderConfigPtrOutput)
 }
 
 func init() {

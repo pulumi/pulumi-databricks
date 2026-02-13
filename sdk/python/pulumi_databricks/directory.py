@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DirectoryArgs', 'Directory']
 
@@ -21,18 +23,22 @@ class DirectoryArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 object_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input['DirectoryProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a Directory resource.
         :param pulumi.Input[_builtins.str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
         :param pulumi.Input[_builtins.bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a DIRECTORY
+        :param pulumi.Input['DirectoryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "path", path)
         if delete_recursive is not None:
             pulumi.set(__self__, "delete_recursive", delete_recursive)
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -70,6 +76,18 @@ class DirectoryArgs:
     def object_id(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "object_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DirectoryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DirectoryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _DirectoryState:
@@ -77,12 +95,14 @@ class _DirectoryState:
                  delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
                  object_id: Optional[pulumi.Input[_builtins.int]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DirectoryProviderConfigArgs']] = None,
                  workspace_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Directory resources.
         :param pulumi.Input[_builtins.bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a DIRECTORY
         :param pulumi.Input[_builtins.str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input['DirectoryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         if delete_recursive is not None:
@@ -91,6 +111,8 @@ class _DirectoryState:
             pulumi.set(__self__, "object_id", object_id)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if workspace_path is not None:
             pulumi.set(__self__, "workspace_path", workspace_path)
 
@@ -131,6 +153,18 @@ class _DirectoryState:
         pulumi.set(self, "path", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DirectoryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DirectoryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -152,6 +186,7 @@ class Directory(pulumi.CustomResource):
                  delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
                  object_id: Optional[pulumi.Input[_builtins.int]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
@@ -190,6 +225,7 @@ class Directory(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a DIRECTORY
         :param pulumi.Input[_builtins.str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -247,6 +283,7 @@ class Directory(pulumi.CustomResource):
                  delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
                  object_id: Optional[pulumi.Input[_builtins.int]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -261,6 +298,7 @@ class Directory(pulumi.CustomResource):
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["workspace_path"] = None
         super(Directory, __self__).__init__(
             'databricks:index/directory:Directory',
@@ -275,6 +313,7 @@ class Directory(pulumi.CustomResource):
             delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
             object_id: Optional[pulumi.Input[_builtins.int]] = None,
             path: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
             workspace_path: Optional[pulumi.Input[_builtins.str]] = None) -> 'Directory':
         """
         Get an existing Directory resource's state with the given name, id, and optional extra
@@ -286,6 +325,7 @@ class Directory(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a DIRECTORY
         :param pulumi.Input[_builtins.str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -295,6 +335,7 @@ class Directory(pulumi.CustomResource):
         __props__.__dict__["delete_recursive"] = delete_recursive
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["path"] = path
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["workspace_path"] = workspace_path
         return Directory(resource_name, opts=opts, __props__=__props__)
 
@@ -321,6 +362,14 @@ class Directory(pulumi.CustomResource):
         The absolute path of the directory, beginning with "/", e.g. "/Demo".
         """
         return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.DirectoryProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="workspacePath")

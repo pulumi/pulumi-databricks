@@ -6,12 +6,15 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPolicyInfosPolicyColumnMask;
 import com.pulumi.databricks.outputs.GetPolicyInfosPolicyMatchColumn;
+import com.pulumi.databricks.outputs.GetPolicyInfosPolicyProviderConfig;
 import com.pulumi.databricks.outputs.GetPolicyInfosPolicyRowFilter;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPolicyInfosPolicy {
@@ -78,10 +81,15 @@ public final class GetPolicyInfosPolicy {
      */
     private String onSecurableType;
     /**
-     * @return (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * @return (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     private String policyType;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetPolicyInfosPolicyProviderConfig providerConfig;
     /**
      * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
@@ -197,11 +205,18 @@ public final class GetPolicyInfosPolicy {
         return this.onSecurableType;
     }
     /**
-     * @return (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * @return (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     public String policyType() {
         return this.policyType;
+    }
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetPolicyInfosPolicyProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     /**
      * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
@@ -263,6 +278,7 @@ public final class GetPolicyInfosPolicy {
         private String onSecurableFullname;
         private String onSecurableType;
         private String policyType;
+        private @Nullable GetPolicyInfosPolicyProviderConfig providerConfig;
         private GetPolicyInfosPolicyRowFilter rowFilter;
         private List<String> toPrincipals;
         private Integer updatedAt;
@@ -283,6 +299,7 @@ public final class GetPolicyInfosPolicy {
     	      this.onSecurableFullname = defaults.onSecurableFullname;
     	      this.onSecurableType = defaults.onSecurableType;
     	      this.policyType = defaults.policyType;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.rowFilter = defaults.rowFilter;
     	      this.toPrincipals = defaults.toPrincipals;
     	      this.updatedAt = defaults.updatedAt;
@@ -393,6 +410,12 @@ public final class GetPolicyInfosPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPolicyInfosPolicyProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rowFilter(GetPolicyInfosPolicyRowFilter rowFilter) {
             if (rowFilter == null) {
               throw new MissingRequiredPropertyException("GetPolicyInfosPolicy", "rowFilter");
@@ -449,6 +472,7 @@ public final class GetPolicyInfosPolicy {
             _resultValue.onSecurableFullname = onSecurableFullname;
             _resultValue.onSecurableType = onSecurableType;
             _resultValue.policyType = policyType;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.rowFilter = rowFilter;
             _resultValue.toPrincipals = toPrincipals;
             _resultValue.updatedAt = updatedAt;

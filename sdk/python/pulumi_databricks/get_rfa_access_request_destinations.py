@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetRfaAccessRequestDestinationsResult',
@@ -27,7 +28,7 @@ class GetRfaAccessRequestDestinationsResult:
     """
     A collection of values returned by getRfaAccessRequestDestinations.
     """
-    def __init__(__self__, are_any_destinations_hidden=None, destination_source_securable=None, destinations=None, full_name=None, id=None, securable=None, securable_type=None):
+    def __init__(__self__, are_any_destinations_hidden=None, destination_source_securable=None, destinations=None, full_name=None, id=None, provider_config=None, securable=None, securable_type=None):
         if are_any_destinations_hidden and not isinstance(are_any_destinations_hidden, bool):
             raise TypeError("Expected argument 'are_any_destinations_hidden' to be a bool")
         pulumi.set(__self__, "are_any_destinations_hidden", are_any_destinations_hidden)
@@ -43,6 +44,9 @@ class GetRfaAccessRequestDestinationsResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if securable and not isinstance(securable, dict):
             raise TypeError("Expected argument 'securable' to be a dict")
         pulumi.set(__self__, "securable", securable)
@@ -94,6 +98,11 @@ class GetRfaAccessRequestDestinationsResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetRfaAccessRequestDestinationsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def securable(self) -> 'outputs.GetRfaAccessRequestDestinationsSecurableResult':
         """
@@ -121,11 +130,13 @@ class AwaitableGetRfaAccessRequestDestinationsResult(GetRfaAccessRequestDestinat
             destinations=self.destinations,
             full_name=self.full_name,
             id=self.id,
+            provider_config=self.provider_config,
             securable=self.securable,
             securable_type=self.securable_type)
 
 
 def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = None,
+                                        provider_config: Optional[Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict']] = None,
                                         securable_type: Optional[_builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRfaAccessRequestDestinationsResult:
     """
@@ -147,10 +158,12 @@ def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = Non
 
 
     :param _builtins.str full_name: The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+    :param Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str securable_type: The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
     """
     __args__ = dict()
     __args__['fullName'] = full_name
+    __args__['providerConfig'] = provider_config
     __args__['securableType'] = securable_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations', __args__, opts=opts, typ=GetRfaAccessRequestDestinationsResult).value
@@ -161,9 +174,11 @@ def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = Non
         destinations=pulumi.get(__ret__, 'destinations'),
         full_name=pulumi.get(__ret__, 'full_name'),
         id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         securable=pulumi.get(__ret__, 'securable'),
         securable_type=pulumi.get(__ret__, 'securable_type'))
 def get_rfa_access_request_destinations_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                                               provider_config: Optional[pulumi.Input[Optional[Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict']]]] = None,
                                                securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRfaAccessRequestDestinationsResult]:
     """
@@ -185,10 +200,12 @@ def get_rfa_access_request_destinations_output(full_name: Optional[pulumi.Input[
 
 
     :param _builtins.str full_name: The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+    :param Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     :param _builtins.str securable_type: The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
     """
     __args__ = dict()
     __args__['fullName'] = full_name
+    __args__['providerConfig'] = provider_config
     __args__['securableType'] = securable_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations', __args__, opts=opts, typ=GetRfaAccessRequestDestinationsResult)
@@ -198,5 +215,6 @@ def get_rfa_access_request_destinations_output(full_name: Optional[pulumi.Input[
         destinations=pulumi.get(__response__, 'destinations'),
         full_name=pulumi.get(__response__, 'full_name'),
         id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         securable=pulumi.get(__response__, 'securable'),
         securable_type=pulumi.get(__response__, 'securable_type')))

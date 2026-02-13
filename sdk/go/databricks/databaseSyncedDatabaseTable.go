@@ -271,8 +271,10 @@ type DatabaseSyncedDatabaseTable struct {
 	// Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
 	LogicalDatabaseName pulumi.StringOutput `pulumi:"logicalDatabaseName"`
 	// Full three-part (catalog, schema, table) name of the table
-	Name pulumi.StringOutput                      `pulumi:"name"`
-	Spec DatabaseSyncedDatabaseTableSpecPtrOutput `pulumi:"spec"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig DatabaseSyncedDatabaseTableProviderConfigPtrOutput `pulumi:"providerConfig"`
+	Spec           DatabaseSyncedDatabaseTableSpecPtrOutput           `pulumi:"spec"`
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -337,8 +339,10 @@ type databaseSyncedDatabaseTableState struct {
 	// Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
 	LogicalDatabaseName *string `pulumi:"logicalDatabaseName"`
 	// Full three-part (catalog, schema, table) name of the table
-	Name *string                          `pulumi:"name"`
-	Spec *DatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
+	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *DatabaseSyncedDatabaseTableProviderConfig `pulumi:"providerConfig"`
+	Spec           *DatabaseSyncedDatabaseTableSpec           `pulumi:"spec"`
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -375,7 +379,9 @@ type DatabaseSyncedDatabaseTableState struct {
 	LogicalDatabaseName pulumi.StringPtrInput
 	// Full three-part (catalog, schema, table) name of the table
 	Name pulumi.StringPtrInput
-	Spec DatabaseSyncedDatabaseTableSpecPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig DatabaseSyncedDatabaseTableProviderConfigPtrInput
+	Spec           DatabaseSyncedDatabaseTableSpecPtrInput
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -404,8 +410,10 @@ type databaseSyncedDatabaseTableArgs struct {
 	// Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
 	LogicalDatabaseName *string `pulumi:"logicalDatabaseName"`
 	// Full three-part (catalog, schema, table) name of the table
-	Name *string                          `pulumi:"name"`
-	Spec *DatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
+	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *DatabaseSyncedDatabaseTableProviderConfig `pulumi:"providerConfig"`
+	Spec           *DatabaseSyncedDatabaseTableSpec           `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a DatabaseSyncedDatabaseTable resource.
@@ -428,7 +436,9 @@ type DatabaseSyncedDatabaseTableArgs struct {
 	LogicalDatabaseName pulumi.StringPtrInput
 	// Full three-part (catalog, schema, table) name of the table
 	Name pulumi.StringPtrInput
-	Spec DatabaseSyncedDatabaseTableSpecPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig DatabaseSyncedDatabaseTableProviderConfigPtrInput
+	Spec           DatabaseSyncedDatabaseTableSpecPtrInput
 }
 
 func (DatabaseSyncedDatabaseTableArgs) ElementType() reflect.Type {
@@ -565,6 +575,13 @@ func (o DatabaseSyncedDatabaseTableOutput) LogicalDatabaseName() pulumi.StringOu
 // Full three-part (catalog, schema, table) name of the table
 func (o DatabaseSyncedDatabaseTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o DatabaseSyncedDatabaseTableOutput) ProviderConfig() DatabaseSyncedDatabaseTableProviderConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) DatabaseSyncedDatabaseTableProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(DatabaseSyncedDatabaseTableProviderConfigPtrOutput)
 }
 
 func (o DatabaseSyncedDatabaseTableOutput) Spec() DatabaseSyncedDatabaseTableSpecPtrOutput {

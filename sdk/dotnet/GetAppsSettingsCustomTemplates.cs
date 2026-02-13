@@ -114,6 +114,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetAppsSettingsCustomTemplatesProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetAppsSettingsCustomTemplatesArgs()
         {
         }
@@ -127,6 +133,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetAppsSettingsCustomTemplatesProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetAppsSettingsCustomTemplatesInvokeArgs()
         {
@@ -143,6 +155,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly int? PageSize;
+        public readonly Outputs.GetAppsSettingsCustomTemplatesProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetAppsSettingsCustomTemplatesTemplateResult> Templates;
 
         [OutputConstructor]
@@ -151,10 +164,13 @@ namespace Pulumi.Databricks
 
             int? pageSize,
 
+            Outputs.GetAppsSettingsCustomTemplatesProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetAppsSettingsCustomTemplatesTemplateResult> templates)
         {
             Id = id;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
             Templates = templates;
         }
     }

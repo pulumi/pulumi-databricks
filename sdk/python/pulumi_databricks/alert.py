@@ -29,6 +29,7 @@ class AlertArgs:
                  notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
                  owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['AlertProviderConfigArgs']] = None,
                  seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Alert resource.
@@ -40,6 +41,7 @@ class AlertArgs:
         :param pulumi.Input[_builtins.bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
         :param pulumi.Input[_builtins.str] owner_user_name: Alert owner's username.
         :param pulumi.Input[_builtins.str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
+        :param pulumi.Input['AlertProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         """
         pulumi.set(__self__, "condition", condition)
@@ -55,6 +57,8 @@ class AlertArgs:
             pulumi.set(__self__, "owner_user_name", owner_user_name)
         if parent_path is not None:
             pulumi.set(__self__, "parent_path", parent_path)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if seconds_to_retrigger is not None:
             pulumi.set(__self__, "seconds_to_retrigger", seconds_to_retrigger)
 
@@ -155,6 +159,18 @@ class AlertArgs:
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['AlertProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['AlertProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="secondsToRetrigger")
     def seconds_to_retrigger(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -179,6 +195,7 @@ class _AlertState:
                  notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
                  owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['AlertProviderConfigArgs']] = None,
                  query_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -195,6 +212,7 @@ class _AlertState:
         :param pulumi.Input[_builtins.bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
         :param pulumi.Input[_builtins.str] owner_user_name: Alert owner's username.
         :param pulumi.Input[_builtins.str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
+        :param pulumi.Input['AlertProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] query_id: ID of the query evaluated by the alert.
         :param pulumi.Input[_builtins.int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         :param pulumi.Input[_builtins.str] state: Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
@@ -219,6 +237,8 @@ class _AlertState:
             pulumi.set(__self__, "owner_user_name", owner_user_name)
         if parent_path is not None:
             pulumi.set(__self__, "parent_path", parent_path)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if query_id is not None:
             pulumi.set(__self__, "query_id", query_id)
         if seconds_to_retrigger is not None:
@@ -339,6 +359,18 @@ class _AlertState:
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['AlertProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['AlertProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="queryId")
     def query_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -412,6 +444,7 @@ class Alert(pulumi.CustomResource):
                  notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
                  owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
                  query_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -562,6 +595,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
         :param pulumi.Input[_builtins.str] owner_user_name: Alert owner's username.
         :param pulumi.Input[_builtins.str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
+        :param pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] query_id: ID of the query evaluated by the alert.
         :param pulumi.Input[_builtins.int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         """
@@ -731,6 +765,7 @@ class Alert(pulumi.CustomResource):
                  notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
                  owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
                  query_id: Optional[pulumi.Input[_builtins.str]] = None,
                  seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -753,6 +788,7 @@ class Alert(pulumi.CustomResource):
             __props__.__dict__["notify_on_ok"] = notify_on_ok
             __props__.__dict__["owner_user_name"] = owner_user_name
             __props__.__dict__["parent_path"] = parent_path
+            __props__.__dict__["provider_config"] = provider_config
             if query_id is None and not opts.urn:
                 raise TypeError("Missing required property 'query_id'")
             __props__.__dict__["query_id"] = query_id
@@ -781,6 +817,7 @@ class Alert(pulumi.CustomResource):
             notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
             owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
             parent_path: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
             query_id: Optional[pulumi.Input[_builtins.str]] = None,
             seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -802,6 +839,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
         :param pulumi.Input[_builtins.str] owner_user_name: Alert owner's username.
         :param pulumi.Input[_builtins.str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
+        :param pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] query_id: ID of the query evaluated by the alert.
         :param pulumi.Input[_builtins.int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         :param pulumi.Input[_builtins.str] state: Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
@@ -821,6 +859,7 @@ class Alert(pulumi.CustomResource):
         __props__.__dict__["notify_on_ok"] = notify_on_ok
         __props__.__dict__["owner_user_name"] = owner_user_name
         __props__.__dict__["parent_path"] = parent_path
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["query_id"] = query_id
         __props__.__dict__["seconds_to_retrigger"] = seconds_to_retrigger
         __props__.__dict__["state"] = state
@@ -899,6 +938,14 @@ class Alert(pulumi.CustomResource):
         The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
         """
         return pulumi.get(self, "parent_path")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.AlertProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="queryId")

@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ArtifactAllowlistArtifactMatcherArgs;
+import com.pulumi.databricks.inputs.ArtifactAllowlistProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -86,6 +87,13 @@ public final class ArtifactAllowlistArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.metastoreId);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<ArtifactAllowlistProviderConfigArgs> providerConfig;
+
+    public Optional<Output<ArtifactAllowlistProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private ArtifactAllowlistArgs() {}
 
     private ArtifactAllowlistArgs(ArtifactAllowlistArgs $) {
@@ -94,6 +102,7 @@ public final class ArtifactAllowlistArgs extends com.pulumi.resources.ResourceAr
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.metastoreId = $.metastoreId;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -209,6 +218,15 @@ public final class ArtifactAllowlistArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
+        }
+
+        public Builder providerConfig(@Nullable Output<ArtifactAllowlistProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(ArtifactAllowlistProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public ArtifactAllowlistArgs build() {

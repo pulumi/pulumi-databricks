@@ -262,6 +262,8 @@ type Alert struct {
 	OwnerUserName pulumi.StringPtrOutput `pulumi:"ownerUserName"`
 	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig AlertProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringOutput `pulumi:"queryId"`
 	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
@@ -331,6 +333,8 @@ type alertState struct {
 	OwnerUserName *string `pulumi:"ownerUserName"`
 	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
 	ParentPath *string `pulumi:"parentPath"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *AlertProviderConfig `pulumi:"providerConfig"`
 	// ID of the query evaluated by the alert.
 	QueryId *string `pulumi:"queryId"`
 	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
@@ -362,6 +366,8 @@ type AlertState struct {
 	OwnerUserName pulumi.StringPtrInput
 	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
 	ParentPath pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig AlertProviderConfigPtrInput
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringPtrInput
 	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
@@ -393,6 +399,8 @@ type alertArgs struct {
 	OwnerUserName *string `pulumi:"ownerUserName"`
 	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
 	ParentPath *string `pulumi:"parentPath"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *AlertProviderConfig `pulumi:"providerConfig"`
 	// ID of the query evaluated by the alert.
 	QueryId string `pulumi:"queryId"`
 	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
@@ -415,6 +423,8 @@ type AlertArgs struct {
 	OwnerUserName pulumi.StringPtrInput
 	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
 	ParentPath pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig AlertProviderConfigPtrInput
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringInput
 	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
@@ -551,6 +561,11 @@ func (o AlertOutput) OwnerUserName() pulumi.StringPtrOutput {
 // The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
 func (o AlertOutput) ParentPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.ParentPath }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o AlertOutput) ProviderConfig() AlertProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Alert) AlertProviderConfigPtrOutput { return v.ProviderConfig }).(AlertProviderConfigPtrOutput)
 }
 
 // ID of the query evaluated by the alert.

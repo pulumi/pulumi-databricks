@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlEndpointChannelArgs;
 import com.pulumi.databricks.inputs.SqlEndpointHealthArgs;
 import com.pulumi.databricks.inputs.SqlEndpointOdbcParamsArgs;
+import com.pulumi.databricks.inputs.SqlEndpointProviderConfigArgs;
 import com.pulumi.databricks.inputs.SqlEndpointTagsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -274,6 +275,21 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SqlEndpointProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SqlEndpointProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      * 
      */
@@ -353,6 +369,7 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
         this.numActiveSessions = $.numActiveSessions;
         this.numClusters = $.numClusters;
         this.odbcParams = $.odbcParams;
+        this.providerConfig = $.providerConfig;
         this.spotInstancePolicy = $.spotInstancePolicy;
         this.state = $.state;
         this.tags = $.tags;
@@ -734,6 +751,27 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder odbcParams(SqlEndpointOdbcParamsArgs odbcParams) {
             return odbcParams(Output.of(odbcParams));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SqlEndpointProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SqlEndpointProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

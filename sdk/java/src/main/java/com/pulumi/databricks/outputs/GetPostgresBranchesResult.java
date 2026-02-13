@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresBranchesBranch;
+import com.pulumi.databricks.outputs.GetPostgresBranchesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -28,6 +29,7 @@ public final class GetPostgresBranchesResult {
      * 
      */
     private String parent;
+    private @Nullable GetPostgresBranchesProviderConfig providerConfig;
 
     private GetPostgresBranchesResult() {}
     public List<GetPostgresBranchesBranch> branches() {
@@ -51,6 +53,9 @@ public final class GetPostgresBranchesResult {
     public String parent() {
         return this.parent;
     }
+    public Optional<GetPostgresBranchesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,6 +70,7 @@ public final class GetPostgresBranchesResult {
         private String id;
         private @Nullable Integer pageSize;
         private String parent;
+        private @Nullable GetPostgresBranchesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetPostgresBranchesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,6 +78,7 @@ public final class GetPostgresBranchesResult {
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -107,12 +114,19 @@ public final class GetPostgresBranchesResult {
             this.parent = parent;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPostgresBranchesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetPostgresBranchesResult build() {
             final var _resultValue = new GetPostgresBranchesResult();
             _resultValue.branches = branches;
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

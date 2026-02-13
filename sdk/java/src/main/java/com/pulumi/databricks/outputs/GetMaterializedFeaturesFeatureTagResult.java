@@ -4,9 +4,12 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMaterializedFeaturesFeatureTagResult {
@@ -20,6 +23,7 @@ public final class GetMaterializedFeaturesFeatureTagResult {
      * 
      */
     private String key;
+    private @Nullable GetMaterializedFeaturesFeatureTagProviderConfig providerConfig;
     /**
      * @return (string)
      * 
@@ -41,6 +45,9 @@ public final class GetMaterializedFeaturesFeatureTagResult {
     public String key() {
         return this.key;
     }
+    public Optional<GetMaterializedFeaturesFeatureTagProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (string)
      * 
@@ -60,12 +67,14 @@ public final class GetMaterializedFeaturesFeatureTagResult {
     public static final class Builder {
         private String id;
         private String key;
+        private @Nullable GetMaterializedFeaturesFeatureTagProviderConfig providerConfig;
         private String value;
         public Builder() {}
         public Builder(GetMaterializedFeaturesFeatureTagResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.key = defaults.key;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.value = defaults.value;
         }
 
@@ -86,6 +95,12 @@ public final class GetMaterializedFeaturesFeatureTagResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetMaterializedFeaturesFeatureTagProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder value(String value) {
             if (value == null) {
               throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagResult", "value");
@@ -97,6 +112,7 @@ public final class GetMaterializedFeaturesFeatureTagResult {
             final var _resultValue = new GetMaterializedFeaturesFeatureTagResult();
             _resultValue.id = id;
             _resultValue.key = key;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.value = value;
             return _resultValue;
         }

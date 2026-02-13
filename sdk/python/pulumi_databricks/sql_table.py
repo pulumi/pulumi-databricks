@@ -34,6 +34,7 @@ class SqlTableArgs:
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['SqlTableProviderConfigArgs']] = None,
                  storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  view_definition: Optional[pulumi.Input[_builtins.str]] = None,
@@ -52,6 +53,7 @@ class SqlTableArgs:
         :param pulumi.Input[_builtins.str] owner: User name/group name/sp application_id of the table owner.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
+        :param pulumi.Input['SqlTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[_builtins.str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
@@ -80,6 +82,8 @@ class SqlTableArgs:
             pulumi.set(__self__, "partitions", partitions)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if storage_credential_name is not None:
             pulumi.set(__self__, "storage_credential_name", storage_credential_name)
         if storage_location is not None:
@@ -243,6 +247,18 @@ class SqlTableArgs:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlTableProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlTableProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -306,6 +322,7 @@ class _SqlTableState:
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['SqlTableProviderConfigArgs']] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -325,6 +342,7 @@ class _SqlTableState:
         :param pulumi.Input[_builtins.str] owner: User name/group name/sp application_id of the table owner.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
+        :param pulumi.Input['SqlTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
@@ -357,6 +375,8 @@ class _SqlTableState:
             pulumi.set(__self__, "partitions", partitions)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if schema_name is not None:
             pulumi.set(__self__, "schema_name", schema_name)
         if storage_credential_name is not None:
@@ -511,6 +531,18 @@ class _SqlTableState:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlTableProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlTableProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -612,6 +644,7 @@ class SqlTable(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -824,6 +857,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner: User name/group name/sp application_id of the table owner.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
+        :param pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
@@ -1056,6 +1090,7 @@ class SqlTable(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1084,6 +1119,7 @@ class SqlTable(pulumi.CustomResource):
             __props__.__dict__["owner"] = owner
             __props__.__dict__["partitions"] = partitions
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["provider_config"] = provider_config
             if schema_name is None and not opts.urn:
                 raise TypeError("Missing required property 'schema_name'")
             __props__.__dict__["schema_name"] = schema_name
@@ -1118,6 +1154,7 @@ class SqlTable(pulumi.CustomResource):
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: Optional[pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
             schema_name: Optional[pulumi.Input[_builtins.str]] = None,
             storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
             storage_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1142,6 +1179,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner: User name/group name/sp application_id of the table owner.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
+        :param pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
@@ -1166,6 +1204,7 @@ class SqlTable(pulumi.CustomResource):
         __props__.__dict__["owner"] = owner
         __props__.__dict__["partitions"] = partitions
         __props__.__dict__["properties"] = properties
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["schema_name"] = schema_name
         __props__.__dict__["storage_credential_name"] = storage_credential_name
         __props__.__dict__["storage_location"] = storage_location
@@ -1264,6 +1303,14 @@ class SqlTable(pulumi.CustomResource):
         A map of table properties.
         """
         return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlTableProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="schemaName")

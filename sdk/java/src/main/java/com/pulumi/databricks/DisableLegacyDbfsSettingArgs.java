@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.DisableLegacyDbfsSettingDisableLegacyDbfsArgs;
+import com.pulumi.databricks.inputs.DisableLegacyDbfsSettingProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -39,6 +40,21 @@ public final class DisableLegacyDbfsSettingArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DisableLegacyDbfsSettingProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<DisableLegacyDbfsSettingProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="settingName")
     private @Nullable Output<String> settingName;
 
@@ -51,6 +67,7 @@ public final class DisableLegacyDbfsSettingArgs extends com.pulumi.resources.Res
     private DisableLegacyDbfsSettingArgs(DisableLegacyDbfsSettingArgs $) {
         this.disableLegacyDbfs = $.disableLegacyDbfs;
         this.etag = $.etag;
+        this.providerConfig = $.providerConfig;
         this.settingName = $.settingName;
     }
 
@@ -100,6 +117,27 @@ public final class DisableLegacyDbfsSettingArgs extends com.pulumi.resources.Res
 
         public Builder etag(String etag) {
             return etag(Output.of(etag));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DisableLegacyDbfsSettingProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DisableLegacyDbfsSettingProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder settingName(@Nullable Output<String> settingName) {

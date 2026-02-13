@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.PostgresProjectArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PostgresProjectState;
+import com.pulumi.databricks.outputs.PostgresProjectProviderConfig;
 import com.pulumi.databricks.outputs.PostgresProjectSpec;
 import com.pulumi.databricks.outputs.PostgresProjectStatus;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -202,6 +204,20 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
      */
     public Output<String> projectId() {
         return this.projectId;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={PostgresProjectProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ PostgresProjectProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<PostgresProjectProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings

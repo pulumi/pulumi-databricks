@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureState;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunction;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureLineageContext;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureProviderConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureTimeWindow;
 import java.lang.String;
@@ -114,6 +115,20 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
      */
     public Output<Optional<FeatureEngineeringFeatureLineageContext>> lineageContext() {
         return Codegen.optional(this.lineageContext);
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={FeatureEngineeringFeatureProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringFeatureProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<FeatureEngineeringFeatureProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The data source of the feature

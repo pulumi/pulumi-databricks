@@ -42,6 +42,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetMaterializedFeaturesFeatureTagsProviderConfigArgs? ProviderConfig { get; set; }
+
         [Input("tableName", required: true)]
         public string TableName { get; set; } = null!;
 
@@ -61,6 +67,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetMaterializedFeaturesFeatureTagsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         [Input("tableName", required: true)]
         public Input<string> TableName { get; set; } = null!;
@@ -82,6 +94,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly int? PageSize;
+        public readonly Outputs.GetMaterializedFeaturesFeatureTagsProviderConfigResult? ProviderConfig;
         public readonly string TableName;
 
         [OutputConstructor]
@@ -94,12 +107,15 @@ namespace Pulumi.Databricks
 
             int? pageSize,
 
+            Outputs.GetMaterializedFeaturesFeatureTagsProviderConfigResult? providerConfig,
+
             string tableName)
         {
             FeatureName = featureName;
             FeatureTags = featureTags;
             Id = id;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
             TableName = tableName;
         }
     }

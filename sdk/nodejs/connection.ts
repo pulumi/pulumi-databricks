@@ -225,6 +225,10 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.ConnectionProviderConfig | undefined>;
+    /**
      * Object with the status of an asynchronously provisioned resource.
      */
     declare public /*out*/ readonly provisioningInfos: pulumi.Output<outputs.ConnectionProvisioningInfo[]>;
@@ -271,6 +275,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["options"] = state?.options;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["provisioningInfos"] = state?.provisioningInfos;
             resourceInputs["readOnly"] = state?.readOnly;
             resourceInputs["securableType"] = state?.securableType;
@@ -285,6 +290,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["options"] = args?.options ? pulumi.secret(args.options) : undefined;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["readOnly"] = args?.readOnly;
             resourceInputs["connectionId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -358,6 +364,10 @@ export interface ConnectionState {
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ConnectionProviderConfig>;
+    /**
      * Object with the status of an asynchronously provisioned resource.
      */
     provisioningInfos?: pulumi.Input<pulumi.Input<inputs.ConnectionProvisioningInfo>[]>;
@@ -408,6 +418,10 @@ export interface ConnectionArgs {
      * Free-form connection properties. Change forces creation of a new resource.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ConnectionProviderConfig>;
     /**
      * Indicates whether the connection is read-only. Change forces creation of a new resource.
      */

@@ -112,6 +112,12 @@ namespace Pulumi.Databricks
         [Output("principalId")]
         public Output<string?> PrincipalId { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.GitCredentialProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a GitCredential resource with the given unique name, arguments, and options.
@@ -203,6 +209,12 @@ namespace Pulumi.Databricks
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GitCredentialProviderConfigArgs>? ProviderConfig { get; set; }
+
         public GitCredentialArgs()
         {
         }
@@ -255,6 +267,12 @@ namespace Pulumi.Databricks
 
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GitCredentialProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public GitCredentialState()
         {

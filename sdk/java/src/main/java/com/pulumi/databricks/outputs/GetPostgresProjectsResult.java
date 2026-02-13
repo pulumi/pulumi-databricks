@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProject;
+import com.pulumi.databricks.outputs.GetPostgresProjectsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,6 +23,7 @@ public final class GetPostgresProjectsResult {
     private String id;
     private @Nullable Integer pageSize;
     private List<GetPostgresProjectsProject> projects;
+    private @Nullable GetPostgresProjectsProviderConfig providerConfig;
 
     private GetPostgresProjectsResult() {}
     /**
@@ -37,6 +39,9 @@ public final class GetPostgresProjectsResult {
     public List<GetPostgresProjectsProject> projects() {
         return this.projects;
     }
+    public Optional<GetPostgresProjectsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,12 +55,14 @@ public final class GetPostgresProjectsResult {
         private String id;
         private @Nullable Integer pageSize;
         private List<GetPostgresProjectsProject> projects;
+        private @Nullable GetPostgresProjectsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetPostgresProjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.projects = defaults.projects;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -83,11 +90,18 @@ public final class GetPostgresProjectsResult {
         public Builder projects(GetPostgresProjectsProject... projects) {
             return projects(List.of(projects));
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPostgresProjectsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetPostgresProjectsResult build() {
             final var _resultValue = new GetPostgresProjectsResult();
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.projects = projects;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

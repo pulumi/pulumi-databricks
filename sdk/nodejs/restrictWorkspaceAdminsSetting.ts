@@ -66,6 +66,10 @@ export class RestrictWorkspaceAdminsSetting extends pulumi.CustomResource {
 
     declare public readonly etag: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.RestrictWorkspaceAdminsSettingProviderConfig | undefined>;
+    /**
      * The configuration details.
      */
     declare public readonly restrictWorkspaceAdmins: pulumi.Output<outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins>;
@@ -85,6 +89,7 @@ export class RestrictWorkspaceAdminsSetting extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RestrictWorkspaceAdminsSettingState | undefined;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["restrictWorkspaceAdmins"] = state?.restrictWorkspaceAdmins;
             resourceInputs["settingName"] = state?.settingName;
         } else {
@@ -93,6 +98,7 @@ export class RestrictWorkspaceAdminsSetting extends pulumi.CustomResource {
                 throw new Error("Missing required property 'restrictWorkspaceAdmins'");
             }
             resourceInputs["etag"] = args?.etag;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["restrictWorkspaceAdmins"] = args?.restrictWorkspaceAdmins;
             resourceInputs["settingName"] = args?.settingName;
         }
@@ -107,6 +113,10 @@ export class RestrictWorkspaceAdminsSetting extends pulumi.CustomResource {
 export interface RestrictWorkspaceAdminsSettingState {
     etag?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingProviderConfig>;
+    /**
      * The configuration details.
      */
     restrictWorkspaceAdmins?: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins>;
@@ -118,6 +128,10 @@ export interface RestrictWorkspaceAdminsSettingState {
  */
 export interface RestrictWorkspaceAdminsSettingArgs {
     etag?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingProviderConfig>;
     /**
      * The configuration details.
      */

@@ -64,6 +64,8 @@ type QualityMonitorV2 struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig QualityMonitorV2ProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Validity check configurations for anomaly detection
 	ValidityCheckConfigurations QualityMonitorV2ValidityCheckConfigurationArrayOutput `pulumi:"validityCheckConfigurations"`
 }
@@ -110,6 +112,8 @@ type qualityMonitorV2State struct {
 	ObjectId *string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType *string `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *QualityMonitorV2ProviderConfig `pulumi:"providerConfig"`
 	// Validity check configurations for anomaly detection
 	ValidityCheckConfigurations []QualityMonitorV2ValidityCheckConfiguration `pulumi:"validityCheckConfigurations"`
 }
@@ -121,6 +125,8 @@ type QualityMonitorV2State struct {
 	ObjectId pulumi.StringPtrInput
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig QualityMonitorV2ProviderConfigPtrInput
 	// Validity check configurations for anomaly detection
 	ValidityCheckConfigurations QualityMonitorV2ValidityCheckConfigurationArrayInput
 }
@@ -134,6 +140,8 @@ type qualityMonitorV2Args struct {
 	ObjectId string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType string `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *QualityMonitorV2ProviderConfig `pulumi:"providerConfig"`
 	// Validity check configurations for anomaly detection
 	ValidityCheckConfigurations []QualityMonitorV2ValidityCheckConfiguration `pulumi:"validityCheckConfigurations"`
 }
@@ -144,6 +152,8 @@ type QualityMonitorV2Args struct {
 	ObjectId pulumi.StringInput
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig QualityMonitorV2ProviderConfigPtrInput
 	// Validity check configurations for anomaly detection
 	ValidityCheckConfigurations QualityMonitorV2ValidityCheckConfigurationArrayInput
 }
@@ -250,6 +260,11 @@ func (o QualityMonitorV2Output) ObjectId() pulumi.StringOutput {
 // The type of the monitored object. Can be one of the following: schema
 func (o QualityMonitorV2Output) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitorV2) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o QualityMonitorV2Output) ProviderConfig() QualityMonitorV2ProviderConfigPtrOutput {
+	return o.ApplyT(func(v *QualityMonitorV2) QualityMonitorV2ProviderConfigPtrOutput { return v.ProviderConfig }).(QualityMonitorV2ProviderConfigPtrOutput)
 }
 
 // Validity check configurations for anomaly detection

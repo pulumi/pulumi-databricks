@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.LakehouseMonitorCustomMetric;
 import com.pulumi.databricks.outputs.LakehouseMonitorDataClassificationConfig;
 import com.pulumi.databricks.outputs.LakehouseMonitorInferenceLog;
 import com.pulumi.databricks.outputs.LakehouseMonitorNotifications;
+import com.pulumi.databricks.outputs.LakehouseMonitorProviderConfig;
 import com.pulumi.databricks.outputs.LakehouseMonitorSchedule;
 import com.pulumi.databricks.outputs.LakehouseMonitorSnapshot;
 import com.pulumi.databricks.outputs.LakehouseMonitorTimeSeries;
@@ -363,6 +364,12 @@ public class LakehouseMonitor extends com.pulumi.resources.CustomResource {
      */
     public Output<String> profileMetricsTableName() {
         return this.profileMetricsTableName;
+    }
+    @Export(name="providerConfig", refs={LakehouseMonitorProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ LakehouseMonitorProviderConfig> providerConfig;
+
+    public Output<Optional<LakehouseMonitorProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:

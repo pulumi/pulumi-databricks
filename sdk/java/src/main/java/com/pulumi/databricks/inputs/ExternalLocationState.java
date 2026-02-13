@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ExternalLocationEncryptionDetailsArgs;
 import com.pulumi.databricks.inputs.ExternalLocationFileEventQueueArgs;
+import com.pulumi.databricks.inputs.ExternalLocationProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -227,6 +228,13 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.owner);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<ExternalLocationProviderConfigArgs> providerConfig;
+
+    public Optional<Output<ExternalLocationProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * Indicates whether the external location is read-only.
      * 
@@ -321,6 +329,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
+        this.providerConfig = $.providerConfig;
         this.readOnly = $.readOnly;
         this.skipValidation = $.skipValidation;
         this.updatedAt = $.updatedAt;
@@ -632,6 +641,15 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        public Builder providerConfig(@Nullable Output<ExternalLocationProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(ExternalLocationProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

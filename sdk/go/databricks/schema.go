@@ -84,6 +84,8 @@ type Schema struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SchemaProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The unique identifier of the schema.
 	SchemaId pulumi.StringOutput `pulumi:"schemaId"`
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
@@ -138,6 +140,8 @@ type schemaState struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SchemaProviderConfig `pulumi:"providerConfig"`
 	// The unique identifier of the schema.
 	SchemaId *string `pulumi:"schemaId"`
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
@@ -160,6 +164,8 @@ type SchemaState struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SchemaProviderConfigPtrInput
 	// The unique identifier of the schema.
 	SchemaId pulumi.StringPtrInput
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
@@ -186,6 +192,8 @@ type schemaArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]string `pulumi:"properties"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SchemaProviderConfig `pulumi:"providerConfig"`
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
@@ -207,6 +215,8 @@ type SchemaArgs struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SchemaProviderConfigPtrInput
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
@@ -335,6 +345,11 @@ func (o SchemaOutput) Owner() pulumi.StringOutput {
 // Extensible Schema properties.
 func (o SchemaOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o SchemaOutput) ProviderConfig() SchemaProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Schema) SchemaProviderConfigPtrOutput { return v.ProviderConfig }).(SchemaProviderConfigPtrOutput)
 }
 
 // The unique identifier of the schema.

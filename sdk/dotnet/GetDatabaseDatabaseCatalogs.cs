@@ -45,6 +45,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetDatabaseDatabaseCatalogsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetDatabaseDatabaseCatalogsArgs()
         {
         }
@@ -65,6 +71,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetDatabaseDatabaseCatalogsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetDatabaseDatabaseCatalogsInvokeArgs()
         {
         }
@@ -82,6 +94,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly string InstanceName;
         public readonly int? PageSize;
+        public readonly Outputs.GetDatabaseDatabaseCatalogsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetDatabaseDatabaseCatalogsResult(
@@ -91,12 +104,15 @@ namespace Pulumi.Databricks
 
             string instanceName,
 
-            int? pageSize)
+            int? pageSize,
+
+            Outputs.GetDatabaseDatabaseCatalogsProviderConfigResult? providerConfig)
         {
             DatabaseCatalogs = databaseCatalogs;
             Id = id;
             InstanceName = instanceName;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
         }
     }
 }

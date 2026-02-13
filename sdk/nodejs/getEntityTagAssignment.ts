@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -49,6 +51,7 @@ export function getEntityTagAssignment(args: GetEntityTagAssignmentArgs, opts?: 
     return pulumi.runtime.invoke("databricks:index/getEntityTagAssignment:getEntityTagAssignment", {
         "entityName": args.entityName,
         "entityType": args.entityType,
+        "providerConfig": args.providerConfig,
         "tagKey": args.tagKey,
     }, opts);
 }
@@ -65,6 +68,10 @@ export interface GetEntityTagAssignmentArgs {
      * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
      */
     entityType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetEntityTagAssignmentProviderConfig;
     /**
      * The key of the tag
      */
@@ -87,6 +94,7 @@ export interface GetEntityTagAssignmentResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetEntityTagAssignmentProviderConfig;
     /**
      * (string) - The key of the tag
      */
@@ -141,6 +149,7 @@ export function getEntityTagAssignmentOutput(args: GetEntityTagAssignmentOutputA
     return pulumi.runtime.invokeOutput("databricks:index/getEntityTagAssignment:getEntityTagAssignment", {
         "entityName": args.entityName,
         "entityType": args.entityType,
+        "providerConfig": args.providerConfig,
         "tagKey": args.tagKey,
     }, opts);
 }
@@ -157,6 +166,10 @@ export interface GetEntityTagAssignmentOutputArgs {
      * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
      */
     entityType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetEntityTagAssignmentProviderConfigArgs>;
     /**
      * The key of the tag
      */

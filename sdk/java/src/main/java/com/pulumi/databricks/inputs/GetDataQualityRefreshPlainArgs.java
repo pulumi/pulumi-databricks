@@ -4,10 +4,13 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetDataQualityRefreshProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDataQualityRefreshPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -61,6 +64,21 @@ public final class GetDataQualityRefreshPlainArgs extends com.pulumi.resources.I
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetDataQualityRefreshProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetDataQualityRefreshProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Unique id of the refresh operation
      * 
      */
@@ -80,6 +98,7 @@ public final class GetDataQualityRefreshPlainArgs extends com.pulumi.resources.I
     private GetDataQualityRefreshPlainArgs(GetDataQualityRefreshPlainArgs $) {
         this.objectId = $.objectId;
         this.objectType = $.objectType;
+        this.providerConfig = $.providerConfig;
         this.refreshId = $.refreshId;
     }
 
@@ -128,6 +147,17 @@ public final class GetDataQualityRefreshPlainArgs extends com.pulumi.resources.I
          */
         public Builder objectType(String objectType) {
             $.objectType = objectType;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetDataQualityRefreshProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

@@ -11,6 +11,7 @@ import com.pulumi.databricks.QueryArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.QueryState;
 import com.pulumi.databricks.outputs.QueryParameter;
+import com.pulumi.databricks.outputs.QueryProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -355,6 +356,20 @@ public class Query extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> parentPath() {
         return Codegen.optional(this.parentPath);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={QueryProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ QueryProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<QueryProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Text of SQL query.

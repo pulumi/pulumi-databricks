@@ -39,6 +39,12 @@ namespace Pulumi.Databricks
         [Input("materializedFeatureId", required: true)]
         public string MaterializedFeatureId { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetFeatureEngineeringMaterializedFeatureProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetFeatureEngineeringMaterializedFeatureArgs()
         {
         }
@@ -52,6 +58,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("materializedFeatureId", required: true)]
         public Input<string> MaterializedFeatureId { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetFeatureEngineeringMaterializedFeatureProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetFeatureEngineeringMaterializedFeatureInvokeArgs()
         {
@@ -96,6 +108,7 @@ namespace Pulumi.Databricks
         /// (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         /// </summary>
         public readonly string PipelineScheduleState;
+        public readonly Outputs.GetFeatureEngineeringMaterializedFeatureProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         /// </summary>
@@ -119,6 +132,8 @@ namespace Pulumi.Databricks
 
             string pipelineScheduleState,
 
+            Outputs.GetFeatureEngineeringMaterializedFeatureProviderConfigResult? providerConfig,
+
             string tableName)
         {
             CronSchedule = cronSchedule;
@@ -129,6 +144,7 @@ namespace Pulumi.Databricks
             OfflineStoreConfig = offlineStoreConfig;
             OnlineStoreConfig = onlineStoreConfig;
             PipelineScheduleState = pipelineScheduleState;
+            ProviderConfig = providerConfig;
             TableName = tableName;
         }
     }

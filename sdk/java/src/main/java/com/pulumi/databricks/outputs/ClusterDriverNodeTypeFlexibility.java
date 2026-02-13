@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterDriverNodeTypeFlexibility {
+    /**
+     * @return list of alternative node types that will be used if main node type isn&#39;t available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+     * 
+     */
     private @Nullable List<String> alternateNodeTypeIds;
 
     private ClusterDriverNodeTypeFlexibility() {}
+    /**
+     * @return list of alternative node types that will be used if main node type isn&#39;t available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+     * 
+     */
     public List<String> alternateNodeTypeIds() {
         return this.alternateNodeTypeIds == null ? List.of() : this.alternateNodeTypeIds;
     }

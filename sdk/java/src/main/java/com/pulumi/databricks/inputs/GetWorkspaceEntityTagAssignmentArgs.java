@@ -5,9 +5,12 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetWorkspaceEntityTagAssignmentArgs extends com.pulumi.resources.InvokeArgs {
@@ -45,6 +48,21 @@ public final class GetWorkspaceEntityTagAssignmentArgs extends com.pulumi.resour
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetWorkspaceEntityTagAssignmentProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetWorkspaceEntityTagAssignmentProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      * 
      */
@@ -64,6 +82,7 @@ public final class GetWorkspaceEntityTagAssignmentArgs extends com.pulumi.resour
     private GetWorkspaceEntityTagAssignmentArgs(GetWorkspaceEntityTagAssignmentArgs $) {
         this.entityId = $.entityId;
         this.entityType = $.entityType;
+        this.providerConfig = $.providerConfig;
         this.tagKey = $.tagKey;
     }
 
@@ -125,6 +144,27 @@ public final class GetWorkspaceEntityTagAssignmentArgs extends com.pulumi.resour
          */
         public Builder entityType(String entityType) {
             return entityType(Output.of(entityType));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetWorkspaceEntityTagAssignmentProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetWorkspaceEntityTagAssignmentProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

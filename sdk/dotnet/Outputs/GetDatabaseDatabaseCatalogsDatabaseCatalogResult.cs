@@ -30,6 +30,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetDatabaseDatabaseCatalogsDatabaseCatalogProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (string)
         /// </summary>
         public readonly string Uid;
@@ -44,12 +48,15 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            Outputs.GetDatabaseDatabaseCatalogsDatabaseCatalogProviderConfigResult? providerConfig,
+
             string uid)
         {
             CreateDatabaseIfNotExists = createDatabaseIfNotExists;
             DatabaseInstanceName = databaseInstanceName;
             DatabaseName = databaseName;
             Name = name;
+            ProviderConfig = providerConfig;
             Uid = uid;
         }
     }

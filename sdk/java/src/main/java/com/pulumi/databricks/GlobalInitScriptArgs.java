@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GlobalInitScriptProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -85,6 +86,21 @@ public final class GlobalInitScriptArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GlobalInitScriptProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GlobalInitScriptProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Path to script&#39;s source code on local filesystem. Conflicts with `contentBase64`
      * 
      */
@@ -107,6 +123,7 @@ public final class GlobalInitScriptArgs extends com.pulumi.resources.ResourceArg
         this.md5 = $.md5;
         this.name = $.name;
         this.position = $.position;
+        this.providerConfig = $.providerConfig;
         this.source = $.source;
     }
 
@@ -219,6 +236,27 @@ public final class GlobalInitScriptArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder position(Integer position) {
             return position(Output.of(position));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GlobalInitScriptProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GlobalInitScriptProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

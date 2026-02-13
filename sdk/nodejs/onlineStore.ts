@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -52,6 +54,10 @@ export class OnlineStore extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.OnlineStoreProviderConfig | undefined>;
+    /**
      * The number of read replicas for the online store. Defaults to 0
      */
     declare public readonly readReplicaCount: pulumi.Output<number | undefined>;
@@ -81,6 +87,7 @@ export class OnlineStore extends pulumi.CustomResource {
             resourceInputs["creationTime"] = state?.creationTime;
             resourceInputs["creator"] = state?.creator;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["readReplicaCount"] = state?.readReplicaCount;
             resourceInputs["state"] = state?.state;
             resourceInputs["usagePolicyId"] = state?.usagePolicyId;
@@ -91,6 +98,7 @@ export class OnlineStore extends pulumi.CustomResource {
             }
             resourceInputs["capacity"] = args?.capacity;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["readReplicaCount"] = args?.readReplicaCount;
             resourceInputs["usagePolicyId"] = args?.usagePolicyId;
             resourceInputs["creationTime"] = undefined /*out*/;
@@ -123,6 +131,10 @@ export interface OnlineStoreState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.OnlineStoreProviderConfig>;
+    /**
      * The number of read replicas for the online store. Defaults to 0
      */
     readReplicaCount?: pulumi.Input<number>;
@@ -148,6 +160,10 @@ export interface OnlineStoreArgs {
      * The name of the online store. This is the unique identifier for the online store
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.OnlineStoreProviderConfig>;
     /**
      * The number of read replicas for the online store. Defaults to 0
      */

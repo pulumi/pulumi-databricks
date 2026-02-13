@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringKafkaConfigsProviderConfigArgs;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,10 +31,26 @@ public final class GetFeatureEngineeringKafkaConfigsArgs extends com.pulumi.reso
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetFeatureEngineeringKafkaConfigsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetFeatureEngineeringKafkaConfigsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetFeatureEngineeringKafkaConfigsArgs() {}
 
     private GetFeatureEngineeringKafkaConfigsArgs(GetFeatureEngineeringKafkaConfigsArgs $) {
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class GetFeatureEngineeringKafkaConfigsArgs extends com.pulumi.reso
          */
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetFeatureEngineeringKafkaConfigsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetFeatureEngineeringKafkaConfigsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetFeatureEngineeringKafkaConfigsArgs build() {

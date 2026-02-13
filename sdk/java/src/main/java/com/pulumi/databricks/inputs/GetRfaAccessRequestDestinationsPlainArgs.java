@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetRfaAccessRequestDestinationsPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,6 +32,21 @@ public final class GetRfaAccessRequestDestinationsPlainArgs extends com.pulumi.r
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetRfaAccessRequestDestinationsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetRfaAccessRequestDestinationsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
      * 
      */
@@ -47,6 +65,7 @@ public final class GetRfaAccessRequestDestinationsPlainArgs extends com.pulumi.r
 
     private GetRfaAccessRequestDestinationsPlainArgs(GetRfaAccessRequestDestinationsPlainArgs $) {
         this.fullName = $.fullName;
+        this.providerConfig = $.providerConfig;
         this.securableType = $.securableType;
     }
 
@@ -76,6 +95,17 @@ public final class GetRfaAccessRequestDestinationsPlainArgs extends com.pulumi.r
          */
         public Builder fullName(String fullName) {
             $.fullName = fullName;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetRfaAccessRequestDestinationsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

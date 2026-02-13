@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -120,6 +122,10 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public readonly owner: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.VolumeProviderConfig | undefined>;
+    /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
     declare public readonly schemaName: pulumi.Output<string>;
@@ -153,6 +159,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["comment"] = state?.comment;
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schemaName"] = state?.schemaName;
             resourceInputs["storageLocation"] = state?.storageLocation;
             resourceInputs["volumePath"] = state?.volumePath;
@@ -172,6 +179,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["comment"] = args?.comment;
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schemaName"] = args?.schemaName;
             resourceInputs["storageLocation"] = args?.storageLocation;
             resourceInputs["volumeType"] = args?.volumeType;
@@ -202,6 +210,10 @@ export interface VolumeState {
      * Name of the volume owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.VolumeProviderConfig>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
@@ -240,6 +252,10 @@ export interface VolumeArgs {
      * Name of the volume owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.VolumeProviderConfig>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */

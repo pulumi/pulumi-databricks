@@ -35,6 +35,7 @@ export function getAlertV2(args: GetAlertV2Args, opts?: pulumi.InvokeOptions): P
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAlertV2:getAlertV2", {
         "id": args.id,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -46,6 +47,10 @@ export interface GetAlertV2Args {
      * UUID identifying the alert
      */
     id: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetAlertV2ProviderConfig;
 }
 
 /**
@@ -94,6 +99,7 @@ export interface GetAlertV2Result {
      * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
     readonly parentPath: string;
+    readonly providerConfig?: outputs.GetAlertV2ProviderConfig;
     /**
      * (string) - Text of the query to be run
      */
@@ -154,6 +160,7 @@ export function getAlertV2Output(args: GetAlertV2OutputArgs, opts?: pulumi.Invok
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAlertV2:getAlertV2", {
         "id": args.id,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -165,4 +172,8 @@ export interface GetAlertV2OutputArgs {
      * UUID identifying the alert
      */
     id: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetAlertV2ProviderConfigArgs>;
 }

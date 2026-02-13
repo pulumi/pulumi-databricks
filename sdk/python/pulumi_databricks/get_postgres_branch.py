@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetPostgresBranchResult',
@@ -27,7 +28,7 @@ class GetPostgresBranchResult:
     """
     A collection of values returned by getPostgresBranch.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, parent=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, id=None, name=None, parent=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -40,6 +41,9 @@ class GetPostgresBranchResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if spec and not isinstance(spec, dict):
             raise TypeError("Expected argument 'spec' to be a dict")
         pulumi.set(__self__, "spec", spec)
@@ -88,6 +92,11 @@ class GetPostgresBranchResult:
         return pulumi.get(self, "parent")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetPostgresBranchProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresBranchSpecResult':
         """
@@ -130,6 +139,7 @@ class AwaitableGetPostgresBranchResult(GetPostgresBranchResult):
             id=self.id,
             name=self.name,
             parent=self.parent,
+            provider_config=self.provider_config,
             spec=self.spec,
             status=self.status,
             uid=self.uid,
@@ -137,6 +147,7 @@ class AwaitableGetPostgresBranchResult(GetPostgresBranchResult):
 
 
 def get_postgres_branch(name: Optional[_builtins.str] = None,
+                        provider_config: Optional[Union['GetPostgresBranchProviderConfigArgs', 'GetPostgresBranchProviderConfigArgsDict']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresBranchResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -158,9 +169,11 @@ def get_postgres_branch(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: Output only. The full resource path of the branch.
            Format: projects/{project_id}/branches/{branch_id}
+    :param Union['GetPostgresBranchProviderConfigArgs', 'GetPostgresBranchProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresBranch:getPostgresBranch', __args__, opts=opts, typ=GetPostgresBranchResult).value
 
@@ -169,11 +182,13 @@ def get_postgres_branch(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         spec=pulumi.get(__ret__, 'spec'),
         status=pulumi.get(__ret__, 'status'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_postgres_branch_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                               provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresBranchProviderConfigArgs', 'GetPostgresBranchProviderConfigArgsDict']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresBranchResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -195,9 +210,11 @@ def get_postgres_branch_output(name: Optional[pulumi.Input[_builtins.str]] = Non
 
     :param _builtins.str name: Output only. The full resource path of the branch.
            Format: projects/{project_id}/branches/{branch_id}
+    :param Union['GetPostgresBranchProviderConfigArgs', 'GetPostgresBranchProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresBranch:getPostgresBranch', __args__, opts=opts, typ=GetPostgresBranchResult)
     return __ret__.apply(lambda __response__: GetPostgresBranchResult(
@@ -205,6 +222,7 @@ def get_postgres_branch_output(name: Optional[pulumi.Input[_builtins.str]] = Non
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         parent=pulumi.get(__response__, 'parent'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         spec=pulumi.get(__response__, 'spec'),
         status=pulumi.get(__response__, 'status'),
         uid=pulumi.get(__response__, 'uid'),

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MaterializedFeaturesFeatureTagArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MaterializedFeaturesFeatureTagState;
+import com.pulumi.databricks.outputs.MaterializedFeaturesFeatureTagProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,6 +26,20 @@ public class MaterializedFeaturesFeatureTag extends com.pulumi.resources.CustomR
 
     public Output<String> key() {
         return this.key;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={MaterializedFeaturesFeatureTagProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ MaterializedFeaturesFeatureTagProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<MaterializedFeaturesFeatureTagProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> value;

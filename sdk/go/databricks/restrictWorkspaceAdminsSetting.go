@@ -61,6 +61,8 @@ type RestrictWorkspaceAdminsSetting struct {
 	pulumi.CustomResourceState
 
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig RestrictWorkspaceAdminsSettingProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The configuration details.
 	RestrictWorkspaceAdmins RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsOutput `pulumi:"restrictWorkspaceAdmins"`
 	SettingName             pulumi.StringOutput                                         `pulumi:"settingName"`
@@ -100,6 +102,8 @@ func GetRestrictWorkspaceAdminsSetting(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RestrictWorkspaceAdminsSetting resources.
 type restrictWorkspaceAdminsSettingState struct {
 	Etag *string `pulumi:"etag"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *RestrictWorkspaceAdminsSettingProviderConfig `pulumi:"providerConfig"`
 	// The configuration details.
 	RestrictWorkspaceAdmins *RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	SettingName             *string                                                `pulumi:"settingName"`
@@ -107,6 +111,8 @@ type restrictWorkspaceAdminsSettingState struct {
 
 type RestrictWorkspaceAdminsSettingState struct {
 	Etag pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig RestrictWorkspaceAdminsSettingProviderConfigPtrInput
 	// The configuration details.
 	RestrictWorkspaceAdmins RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsPtrInput
 	SettingName             pulumi.StringPtrInput
@@ -118,6 +124,8 @@ func (RestrictWorkspaceAdminsSettingState) ElementType() reflect.Type {
 
 type restrictWorkspaceAdminsSettingArgs struct {
 	Etag *string `pulumi:"etag"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *RestrictWorkspaceAdminsSettingProviderConfig `pulumi:"providerConfig"`
 	// The configuration details.
 	RestrictWorkspaceAdmins RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	SettingName             *string                                               `pulumi:"settingName"`
@@ -126,6 +134,8 @@ type restrictWorkspaceAdminsSettingArgs struct {
 // The set of arguments for constructing a RestrictWorkspaceAdminsSetting resource.
 type RestrictWorkspaceAdminsSettingArgs struct {
 	Etag pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig RestrictWorkspaceAdminsSettingProviderConfigPtrInput
 	// The configuration details.
 	RestrictWorkspaceAdmins RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsInput
 	SettingName             pulumi.StringPtrInput
@@ -220,6 +230,13 @@ func (o RestrictWorkspaceAdminsSettingOutput) ToRestrictWorkspaceAdminsSettingOu
 
 func (o RestrictWorkspaceAdminsSettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestrictWorkspaceAdminsSetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o RestrictWorkspaceAdminsSettingOutput) ProviderConfig() RestrictWorkspaceAdminsSettingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *RestrictWorkspaceAdminsSetting) RestrictWorkspaceAdminsSettingProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(RestrictWorkspaceAdminsSettingProviderConfigPtrOutput)
 }
 
 // The configuration details.

@@ -127,6 +127,12 @@ namespace Pulumi.Databricks
         public Output<string> ObjectType { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.DataQualityRefreshProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// (integer) - Unique id of the refresh operation
         /// </summary>
         [Output("refreshId")]
@@ -216,6 +222,12 @@ namespace Pulumi.Databricks
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DataQualityRefreshProviderConfigArgs>? ProviderConfig { get; set; }
+
         public DataQualityRefreshArgs()
         {
         }
@@ -255,6 +267,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DataQualityRefreshProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// (integer) - Unique id of the refresh operation

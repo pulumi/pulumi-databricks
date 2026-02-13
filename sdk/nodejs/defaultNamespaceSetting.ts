@@ -61,6 +61,10 @@ export class DefaultNamespaceSetting extends pulumi.CustomResource {
      * The configuration details.
      */
     declare public readonly namespace: pulumi.Output<outputs.DefaultNamespaceSettingNamespace>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DefaultNamespaceSettingProviderConfig | undefined>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -78,6 +82,7 @@ export class DefaultNamespaceSetting extends pulumi.CustomResource {
             const state = argsOrState as DefaultNamespaceSettingState | undefined;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as DefaultNamespaceSettingArgs | undefined;
@@ -86,6 +91,7 @@ export class DefaultNamespaceSetting extends pulumi.CustomResource {
             }
             resourceInputs["etag"] = args?.etag;
             resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -102,6 +108,10 @@ export interface DefaultNamespaceSettingState {
      * The configuration details.
      */
     namespace?: pulumi.Input<inputs.DefaultNamespaceSettingNamespace>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DefaultNamespaceSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }
 
@@ -114,5 +124,9 @@ export interface DefaultNamespaceSettingArgs {
      * The configuration details.
      */
     namespace: pulumi.Input<inputs.DefaultNamespaceSettingNamespace>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DefaultNamespaceSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }

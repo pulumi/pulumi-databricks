@@ -119,6 +119,8 @@ type Volume struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the volume owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig VolumeProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
@@ -176,6 +178,8 @@ type volumeState struct {
 	Name *string `pulumi:"name"`
 	// Name of the volume owner.
 	Owner *string `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *VolumeProviderConfig `pulumi:"providerConfig"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName *string `pulumi:"schemaName"`
 	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
@@ -195,6 +199,8 @@ type VolumeState struct {
 	Name pulumi.StringPtrInput
 	// Name of the volume owner.
 	Owner pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig VolumeProviderConfigPtrInput
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringPtrInput
 	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
@@ -218,6 +224,8 @@ type volumeArgs struct {
 	Name *string `pulumi:"name"`
 	// Name of the volume owner.
 	Owner *string `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *VolumeProviderConfig `pulumi:"providerConfig"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName string `pulumi:"schemaName"`
 	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
@@ -236,6 +244,8 @@ type VolumeArgs struct {
 	Name pulumi.StringPtrInput
 	// Name of the volume owner.
 	Owner pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig VolumeProviderConfigPtrInput
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringInput
 	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
@@ -349,6 +359,11 @@ func (o VolumeOutput) Name() pulumi.StringOutput {
 // Name of the volume owner.
 func (o VolumeOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o VolumeOutput) ProviderConfig() VolumeProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Volume) VolumeProviderConfigPtrOutput { return v.ProviderConfig }).(VolumeProviderConfigPtrOutput)
 }
 
 // Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.

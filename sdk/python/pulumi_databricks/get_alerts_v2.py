@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAlertsV2Result',
@@ -27,7 +28,7 @@ class GetAlertsV2Result:
     """
     A collection of values returned by getAlertsV2.
     """
-    def __init__(__self__, alerts=None, id=None, page_size=None):
+    def __init__(__self__, alerts=None, id=None, page_size=None, provider_config=None):
         if alerts and not isinstance(alerts, list):
             raise TypeError("Expected argument 'alerts' to be a list")
         pulumi.set(__self__, "alerts", alerts)
@@ -37,6 +38,9 @@ class GetAlertsV2Result:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -56,6 +60,11 @@ class GetAlertsV2Result:
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetAlertsV2ProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetAlertsV2Result(GetAlertsV2Result):
     # pylint: disable=using-constant-test
@@ -65,10 +74,12 @@ class AwaitableGetAlertsV2Result(GetAlertsV2Result):
         return GetAlertsV2Result(
             alerts=self.alerts,
             id=self.id,
-            page_size=self.page_size)
+            page_size=self.page_size,
+            provider_config=self.provider_config)
 
 
 def get_alerts_v2(page_size: Optional[_builtins.int] = None,
+                  provider_config: Optional[Union['GetAlertsV2ProviderConfigArgs', 'GetAlertsV2ProviderConfigArgsDict']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertsV2Result:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -90,17 +101,23 @@ def get_alerts_v2(page_size: Optional[_builtins.int] = None,
 
     all = databricks.get_alert_v2()
     ```
+
+
+    :param Union['GetAlertsV2ProviderConfigArgs', 'GetAlertsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAlertsV2:getAlertsV2', __args__, opts=opts, typ=GetAlertsV2Result).value
 
     return AwaitableGetAlertsV2Result(
         alerts=pulumi.get(__ret__, 'alerts'),
         id=pulumi.get(__ret__, 'id'),
-        page_size=pulumi.get(__ret__, 'page_size'))
+        page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_alerts_v2_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                         provider_config: Optional[pulumi.Input[Optional[Union['GetAlertsV2ProviderConfigArgs', 'GetAlertsV2ProviderConfigArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertsV2Result]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -122,12 +139,17 @@ def get_alerts_v2_output(page_size: Optional[pulumi.Input[Optional[_builtins.int
 
     all = databricks.get_alert_v2()
     ```
+
+
+    :param Union['GetAlertsV2ProviderConfigArgs', 'GetAlertsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAlertsV2:getAlertsV2', __args__, opts=opts, typ=GetAlertsV2Result)
     return __ret__.apply(lambda __response__: GetAlertsV2Result(
         alerts=pulumi.get(__response__, 'alerts'),
         id=pulumi.get(__response__, 'id'),
-        page_size=pulumi.get(__response__, 'page_size')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

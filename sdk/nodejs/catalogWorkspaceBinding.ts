@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -67,6 +69,7 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     declare public readonly catalogName: pulumi.Output<string | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.CatalogWorkspaceBindingProviderConfig | undefined>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */
@@ -95,6 +98,7 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
             const state = argsOrState as CatalogWorkspaceBindingState | undefined;
             resourceInputs["bindingType"] = state?.bindingType;
             resourceInputs["catalogName"] = state?.catalogName;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["securableName"] = state?.securableName;
             resourceInputs["securableType"] = state?.securableType;
             resourceInputs["workspaceId"] = state?.workspaceId;
@@ -105,6 +109,7 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
             }
             resourceInputs["bindingType"] = args?.bindingType;
             resourceInputs["catalogName"] = args?.catalogName;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["securableName"] = args?.securableName;
             resourceInputs["securableType"] = args?.securableType;
             resourceInputs["workspaceId"] = args?.workspaceId;
@@ -126,6 +131,7 @@ export interface CatalogWorkspaceBindingState {
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     catalogName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.CatalogWorkspaceBindingProviderConfig>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */
@@ -152,6 +158,7 @@ export interface CatalogWorkspaceBindingArgs {
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     catalogName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.CatalogWorkspaceBindingProviderConfig>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */

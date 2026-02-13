@@ -14,6 +14,7 @@ export function getFeatureEngineeringFeatures(args?: GetFeatureEngineeringFeatur
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -25,6 +26,10 @@ export interface GetFeatureEngineeringFeaturesArgs {
      * The maximum number of results to return
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetFeatureEngineeringFeaturesProviderConfig;
 }
 
 /**
@@ -37,6 +42,7 @@ export interface GetFeatureEngineeringFeaturesResult {
      */
     readonly id: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetFeatureEngineeringFeaturesProviderConfig;
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -46,6 +52,7 @@ export function getFeatureEngineeringFeaturesOutput(args?: GetFeatureEngineering
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -57,4 +64,8 @@ export interface GetFeatureEngineeringFeaturesOutputArgs {
      * The maximum number of results to return
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringFeaturesProviderConfigArgs>;
 }

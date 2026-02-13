@@ -67,6 +67,12 @@ namespace Pulumi.Databricks
         public Output<string> EntityType { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.WorkspaceEntityTagAssignmentProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         /// </summary>
         [Output("tagKey")]
@@ -137,6 +143,12 @@ namespace Pulumi.Databricks
         public Input<string> EntityType { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WorkspaceEntityTagAssignmentProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         /// </summary>
         [Input("tagKey", required: true)]
@@ -167,6 +179,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WorkspaceEntityTagAssignmentProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed

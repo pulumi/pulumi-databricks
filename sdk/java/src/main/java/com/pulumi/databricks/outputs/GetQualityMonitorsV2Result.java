@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetQualityMonitorsV2ProviderConfig;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2QualityMonitor;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -21,6 +22,7 @@ public final class GetQualityMonitorsV2Result {
      */
     private String id;
     private @Nullable Integer pageSize;
+    private @Nullable GetQualityMonitorsV2ProviderConfig providerConfig;
     private List<GetQualityMonitorsV2QualityMonitor> qualityMonitors;
 
     private GetQualityMonitorsV2Result() {}
@@ -33,6 +35,9 @@ public final class GetQualityMonitorsV2Result {
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    public Optional<GetQualityMonitorsV2ProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public List<GetQualityMonitorsV2QualityMonitor> qualityMonitors() {
         return this.qualityMonitors;
@@ -49,12 +54,14 @@ public final class GetQualityMonitorsV2Result {
     public static final class Builder {
         private String id;
         private @Nullable Integer pageSize;
+        private @Nullable GetQualityMonitorsV2ProviderConfig providerConfig;
         private List<GetQualityMonitorsV2QualityMonitor> qualityMonitors;
         public Builder() {}
         public Builder(GetQualityMonitorsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.qualityMonitors = defaults.qualityMonitors;
         }
 
@@ -73,6 +80,12 @@ public final class GetQualityMonitorsV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetQualityMonitorsV2ProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder qualityMonitors(List<GetQualityMonitorsV2QualityMonitor> qualityMonitors) {
             if (qualityMonitors == null) {
               throw new MissingRequiredPropertyException("GetQualityMonitorsV2Result", "qualityMonitors");
@@ -87,6 +100,7 @@ public final class GetQualityMonitorsV2Result {
             final var _resultValue = new GetQualityMonitorsV2Result();
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.qualityMonitors = qualityMonitors;
             return _resultValue;
         }

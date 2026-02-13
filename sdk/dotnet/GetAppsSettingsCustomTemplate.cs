@@ -109,6 +109,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetAppsSettingsCustomTemplateProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetAppsSettingsCustomTemplateArgs()
         {
         }
@@ -123,6 +129,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetAppsSettingsCustomTemplateProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetAppsSettingsCustomTemplateInvokeArgs()
         {
@@ -166,6 +178,7 @@ namespace Pulumi.Databricks
         /// (string) - The path to the template within the Git repository
         /// </summary>
         public readonly string Path;
+        public readonly Outputs.GetAppsSettingsCustomTemplateProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetAppsSettingsCustomTemplateResult(
@@ -183,7 +196,9 @@ namespace Pulumi.Databricks
 
             string name,
 
-            string path)
+            string path,
+
+            Outputs.GetAppsSettingsCustomTemplateProviderConfigResult? providerConfig)
         {
             Creator = creator;
             Description = description;
@@ -193,6 +208,7 @@ namespace Pulumi.Databricks
             Manifest = manifest;
             Name = name;
             Path = path;
+            ProviderConfig = providerConfig;
         }
     }
 }

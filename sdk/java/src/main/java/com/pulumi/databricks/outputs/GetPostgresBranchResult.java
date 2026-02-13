@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresBranchProviderConfig;
 import com.pulumi.databricks.outputs.GetPostgresBranchSpec;
 import com.pulumi.databricks.outputs.GetPostgresBranchStatus;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPostgresBranchResult {
@@ -34,6 +37,7 @@ public final class GetPostgresBranchResult {
      * 
      */
     private String parent;
+    private @Nullable GetPostgresBranchProviderConfig providerConfig;
     /**
      * @return (BranchSpec) - The spec contains the branch configuration
      * 
@@ -86,6 +90,9 @@ public final class GetPostgresBranchResult {
     public String parent() {
         return this.parent;
     }
+    public Optional<GetPostgresBranchProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (BranchSpec) - The spec contains the branch configuration
      * 
@@ -128,6 +135,7 @@ public final class GetPostgresBranchResult {
         private String id;
         private String name;
         private String parent;
+        private @Nullable GetPostgresBranchProviderConfig providerConfig;
         private GetPostgresBranchSpec spec;
         private GetPostgresBranchStatus status;
         private String uid;
@@ -139,6 +147,7 @@ public final class GetPostgresBranchResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
     	      this.status = defaults.status;
     	      this.uid = defaults.uid;
@@ -175,6 +184,12 @@ public final class GetPostgresBranchResult {
               throw new MissingRequiredPropertyException("GetPostgresBranchResult", "parent");
             }
             this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPostgresBranchProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -215,6 +230,7 @@ public final class GetPostgresBranchResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.parent = parent;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;
             _resultValue.status = status;
             _resultValue.uid = uid;

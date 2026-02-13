@@ -28,15 +28,18 @@ type GetDatabaseSyncedDatabaseTablesArgs struct {
 	InstanceName string `pulumi:"instanceName"`
 	// Upper bound for items returned
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDatabaseSyncedDatabaseTablesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDatabaseSyncedDatabaseTables.
 type GetDatabaseSyncedDatabaseTablesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                                       `pulumi:"id"`
-	InstanceName string                                       `pulumi:"instanceName"`
-	PageSize     *int                                         `pulumi:"pageSize"`
-	SyncedTables []GetDatabaseSyncedDatabaseTablesSyncedTable `pulumi:"syncedTables"`
+	Id             string                                         `pulumi:"id"`
+	InstanceName   string                                         `pulumi:"instanceName"`
+	PageSize       *int                                           `pulumi:"pageSize"`
+	ProviderConfig *GetDatabaseSyncedDatabaseTablesProviderConfig `pulumi:"providerConfig"`
+	SyncedTables   []GetDatabaseSyncedDatabaseTablesSyncedTable   `pulumi:"syncedTables"`
 }
 
 func GetDatabaseSyncedDatabaseTablesOutput(ctx *pulumi.Context, args GetDatabaseSyncedDatabaseTablesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseSyncedDatabaseTablesResultOutput {
@@ -54,6 +57,8 @@ type GetDatabaseSyncedDatabaseTablesOutputArgs struct {
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// Upper bound for items returned
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDatabaseSyncedDatabaseTablesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetDatabaseSyncedDatabaseTablesOutputArgs) ElementType() reflect.Type {
@@ -86,6 +91,12 @@ func (o GetDatabaseSyncedDatabaseTablesResultOutput) InstanceName() pulumi.Strin
 
 func (o GetDatabaseSyncedDatabaseTablesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetDatabaseSyncedDatabaseTablesResultOutput) ProviderConfig() GetDatabaseSyncedDatabaseTablesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) *GetDatabaseSyncedDatabaseTablesProviderConfig {
+		return v.ProviderConfig
+	}).(GetDatabaseSyncedDatabaseTablesProviderConfigPtrOutput)
 }
 
 func (o GetDatabaseSyncedDatabaseTablesResultOutput) SyncedTables() GetDatabaseSyncedDatabaseTablesSyncedTableArrayOutput {

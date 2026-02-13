@@ -73,6 +73,8 @@ type GetWorkspaceEntityTagAssignmentsArgs struct {
 	EntityType string `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetWorkspaceEntityTagAssignmentsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getWorkspaceEntityTagAssignments.
@@ -84,6 +86,7 @@ type GetWorkspaceEntityTagAssignmentsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                                          `pulumi:"id"`
 	PageSize       *int                                            `pulumi:"pageSize"`
+	ProviderConfig *GetWorkspaceEntityTagAssignmentsProviderConfig `pulumi:"providerConfig"`
 	TagAssignments []GetWorkspaceEntityTagAssignmentsTagAssignment `pulumi:"tagAssignments"`
 }
 
@@ -104,6 +107,8 @@ type GetWorkspaceEntityTagAssignmentsOutputArgs struct {
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetWorkspaceEntityTagAssignmentsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetWorkspaceEntityTagAssignmentsOutputArgs) ElementType() reflect.Type {
@@ -142,6 +147,12 @@ func (o GetWorkspaceEntityTagAssignmentsResultOutput) Id() pulumi.StringOutput {
 
 func (o GetWorkspaceEntityTagAssignmentsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetWorkspaceEntityTagAssignmentsResultOutput) ProviderConfig() GetWorkspaceEntityTagAssignmentsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsResult) *GetWorkspaceEntityTagAssignmentsProviderConfig {
+		return v.ProviderConfig
+	}).(GetWorkspaceEntityTagAssignmentsProviderConfigPtrOutput)
 }
 
 func (o GetWorkspaceEntityTagAssignmentsResultOutput) TagAssignments() GetWorkspaceEntityTagAssignmentsTagAssignmentArrayOutput {

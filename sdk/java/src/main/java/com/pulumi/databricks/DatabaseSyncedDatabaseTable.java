@@ -11,6 +11,7 @@ import com.pulumi.databricks.DatabaseSyncedDatabaseTableArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableState;
 import com.pulumi.databricks.outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus;
+import com.pulumi.databricks.outputs.DatabaseSyncedDatabaseTableProviderConfig;
 import com.pulumi.databricks.outputs.DatabaseSyncedDatabaseTableSpec;
 import java.lang.String;
 import java.util.Optional;
@@ -388,6 +389,20 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={DatabaseSyncedDatabaseTableProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseSyncedDatabaseTableProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<DatabaseSyncedDatabaseTableProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="spec", refs={DatabaseSyncedDatabaseTableSpec.class}, tree="[0]")
     private Output</* @Nullable */ DatabaseSyncedDatabaseTableSpec> spec;

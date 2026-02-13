@@ -58,14 +58,17 @@ func GetAlertsV2(ctx *pulumi.Context, args *GetAlertsV2Args, opts ...pulumi.Invo
 // A collection of arguments for invoking getAlertsV2.
 type GetAlertsV2Args struct {
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetAlertsV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getAlertsV2.
 type GetAlertsV2Result struct {
 	Alerts []GetAlertsV2Alert `pulumi:"alerts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	PageSize *int   `pulumi:"pageSize"`
+	Id             string                     `pulumi:"id"`
+	PageSize       *int                       `pulumi:"pageSize"`
+	ProviderConfig *GetAlertsV2ProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetAlertsV2Output(ctx *pulumi.Context, args GetAlertsV2OutputArgs, opts ...pulumi.InvokeOption) GetAlertsV2ResultOutput {
@@ -80,6 +83,8 @@ func GetAlertsV2Output(ctx *pulumi.Context, args GetAlertsV2OutputArgs, opts ...
 // A collection of arguments for invoking getAlertsV2.
 type GetAlertsV2OutputArgs struct {
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetAlertsV2ProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetAlertsV2OutputArgs) ElementType() reflect.Type {
@@ -112,6 +117,10 @@ func (o GetAlertsV2ResultOutput) Id() pulumi.StringOutput {
 
 func (o GetAlertsV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAlertsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetAlertsV2ResultOutput) ProviderConfig() GetAlertsV2ProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetAlertsV2Result) *GetAlertsV2ProviderConfig { return v.ProviderConfig }).(GetAlertsV2ProviderConfigPtrOutput)
 }
 
 func init() {

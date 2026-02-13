@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetEntityTagAssignmentsProviderConfig;
 import com.pulumi.databricks.outputs.GetEntityTagAssignmentsTagAssignment;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -31,6 +32,7 @@ public final class GetEntityTagAssignmentsResult {
      */
     private String id;
     private @Nullable Integer maxResults;
+    private @Nullable GetEntityTagAssignmentsProviderConfig providerConfig;
     private List<GetEntityTagAssignmentsTagAssignment> tagAssignments;
 
     private GetEntityTagAssignmentsResult() {}
@@ -58,6 +60,9 @@ public final class GetEntityTagAssignmentsResult {
     public Optional<Integer> maxResults() {
         return Optional.ofNullable(this.maxResults);
     }
+    public Optional<GetEntityTagAssignmentsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public List<GetEntityTagAssignmentsTagAssignment> tagAssignments() {
         return this.tagAssignments;
     }
@@ -75,6 +80,7 @@ public final class GetEntityTagAssignmentsResult {
         private String entityType;
         private String id;
         private @Nullable Integer maxResults;
+        private @Nullable GetEntityTagAssignmentsProviderConfig providerConfig;
         private List<GetEntityTagAssignmentsTagAssignment> tagAssignments;
         public Builder() {}
         public Builder(GetEntityTagAssignmentsResult defaults) {
@@ -83,6 +89,7 @@ public final class GetEntityTagAssignmentsResult {
     	      this.entityType = defaults.entityType;
     	      this.id = defaults.id;
     	      this.maxResults = defaults.maxResults;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tagAssignments = defaults.tagAssignments;
         }
 
@@ -117,6 +124,12 @@ public final class GetEntityTagAssignmentsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetEntityTagAssignmentsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagAssignments(List<GetEntityTagAssignmentsTagAssignment> tagAssignments) {
             if (tagAssignments == null) {
               throw new MissingRequiredPropertyException("GetEntityTagAssignmentsResult", "tagAssignments");
@@ -133,6 +146,7 @@ public final class GetEntityTagAssignmentsResult {
             _resultValue.entityType = entityType;
             _resultValue.id = id;
             _resultValue.maxResults = maxResults;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tagAssignments = tagAssignments;
             return _resultValue;
         }

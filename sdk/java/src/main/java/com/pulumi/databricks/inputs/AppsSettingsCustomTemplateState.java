@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestArgs;
+import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -123,6 +124,21 @@ public final class AppsSettingsCustomTemplateState extends com.pulumi.resources.
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<AppsSettingsCustomTemplateProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<AppsSettingsCustomTemplateProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private AppsSettingsCustomTemplateState() {}
 
     private AppsSettingsCustomTemplateState(AppsSettingsCustomTemplateState $) {
@@ -133,6 +149,7 @@ public final class AppsSettingsCustomTemplateState extends com.pulumi.resources.
         this.manifest = $.manifest;
         this.name = $.name;
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -300,6 +317,27 @@ public final class AppsSettingsCustomTemplateState extends com.pulumi.resources.
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<AppsSettingsCustomTemplateProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(AppsSettingsCustomTemplateProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public AppsSettingsCustomTemplateState build() {

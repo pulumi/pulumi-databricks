@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -19,6 +21,8 @@ import * as utilities from "./utilities";
  *
  * - `principal` - User name, group name or service principal application ID.
  * - `privileges` - One or more privileges that are specific to a securable type.
+ * - `providerConfig` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+ *   - `workspaceId` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
  *
  * For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
  *
@@ -463,6 +467,7 @@ export class Grant extends pulumi.CustomResource {
     declare public readonly pipeline: pulumi.Output<string | undefined>;
     declare public readonly principal: pulumi.Output<string>;
     declare public readonly privileges: pulumi.Output<string[]>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GrantProviderConfig | undefined>;
     declare public readonly recipient: pulumi.Output<string | undefined>;
     declare public readonly schema: pulumi.Output<string | undefined>;
     declare public readonly share: pulumi.Output<string | undefined>;
@@ -493,6 +498,7 @@ export class Grant extends pulumi.CustomResource {
             resourceInputs["pipeline"] = state?.pipeline;
             resourceInputs["principal"] = state?.principal;
             resourceInputs["privileges"] = state?.privileges;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["recipient"] = state?.recipient;
             resourceInputs["schema"] = state?.schema;
             resourceInputs["share"] = state?.share;
@@ -517,6 +523,7 @@ export class Grant extends pulumi.CustomResource {
             resourceInputs["pipeline"] = args?.pipeline;
             resourceInputs["principal"] = args?.principal;
             resourceInputs["privileges"] = args?.privileges;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["recipient"] = args?.recipient;
             resourceInputs["schema"] = args?.schema;
             resourceInputs["share"] = args?.share;
@@ -543,6 +550,7 @@ export interface GrantState {
     pipeline?: pulumi.Input<string>;
     principal?: pulumi.Input<string>;
     privileges?: pulumi.Input<pulumi.Input<string>[]>;
+    providerConfig?: pulumi.Input<inputs.GrantProviderConfig>;
     recipient?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
     share?: pulumi.Input<string>;
@@ -565,6 +573,7 @@ export interface GrantArgs {
     pipeline?: pulumi.Input<string>;
     principal: pulumi.Input<string>;
     privileges: pulumi.Input<pulumi.Input<string>[]>;
+    providerConfig?: pulumi.Input<inputs.GrantProviderConfig>;
     recipient?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
     share?: pulumi.Input<string>;

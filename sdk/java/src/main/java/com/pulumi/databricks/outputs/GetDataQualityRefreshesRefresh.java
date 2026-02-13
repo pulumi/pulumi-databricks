@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetDataQualityRefreshesRefreshProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDataQualityRefreshesRefresh {
@@ -39,6 +42,11 @@ public final class GetDataQualityRefreshesRefresh {
      * 
      */
     private String objectType;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetDataQualityRefreshesRefreshProviderConfig providerConfig;
     /**
      * @return (integer) - Unique id of the refresh operation
      * 
@@ -98,6 +106,13 @@ public final class GetDataQualityRefreshesRefresh {
         return this.objectType;
     }
     /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetDataQualityRefreshesRefreshProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    /**
      * @return (integer) - Unique id of the refresh operation
      * 
      */
@@ -139,6 +154,7 @@ public final class GetDataQualityRefreshesRefresh {
         private String message;
         private String objectId;
         private String objectType;
+        private @Nullable GetDataQualityRefreshesRefreshProviderConfig providerConfig;
         private Integer refreshId;
         private Integer startTimeMs;
         private String state;
@@ -150,6 +166,7 @@ public final class GetDataQualityRefreshesRefresh {
     	      this.message = defaults.message;
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.refreshId = defaults.refreshId;
     	      this.startTimeMs = defaults.startTimeMs;
     	      this.state = defaults.state;
@@ -186,6 +203,12 @@ public final class GetDataQualityRefreshesRefresh {
               throw new MissingRequiredPropertyException("GetDataQualityRefreshesRefresh", "objectType");
             }
             this.objectType = objectType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDataQualityRefreshesRefreshProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -226,6 +249,7 @@ public final class GetDataQualityRefreshesRefresh {
             _resultValue.message = message;
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.refreshId = refreshId;
             _resultValue.startTimeMs = startTimeMs;
             _resultValue.state = state;

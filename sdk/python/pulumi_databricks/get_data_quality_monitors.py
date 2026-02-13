@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDataQualityMonitorsResult',
@@ -27,7 +28,7 @@ class GetDataQualityMonitorsResult:
     """
     A collection of values returned by getDataQualityMonitors.
     """
-    def __init__(__self__, id=None, monitors=None, page_size=None):
+    def __init__(__self__, id=None, monitors=None, page_size=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -37,6 +38,9 @@ class GetDataQualityMonitorsResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -56,6 +60,11 @@ class GetDataQualityMonitorsResult:
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDataQualityMonitorsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetDataQualityMonitorsResult(GetDataQualityMonitorsResult):
     # pylint: disable=using-constant-test
@@ -65,10 +74,12 @@ class AwaitableGetDataQualityMonitorsResult(GetDataQualityMonitorsResult):
         return GetDataQualityMonitorsResult(
             id=self.id,
             monitors=self.monitors,
-            page_size=self.page_size)
+            page_size=self.page_size,
+            provider_config=self.provider_config)
 
 
 def get_data_quality_monitors(page_size: Optional[_builtins.int] = None,
+                              provider_config: Optional[Union['GetDataQualityMonitorsProviderConfigArgs', 'GetDataQualityMonitorsProviderConfigArgsDict']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataQualityMonitorsResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -95,17 +106,23 @@ def get_data_quality_monitors(page_size: Optional[_builtins.int] = None,
 
     all = databricks.get_data_quality_monitors()
     ```
+
+
+    :param Union['GetDataQualityMonitorsProviderConfigArgs', 'GetDataQualityMonitorsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDataQualityMonitors:getDataQualityMonitors', __args__, opts=opts, typ=GetDataQualityMonitorsResult).value
 
     return AwaitableGetDataQualityMonitorsResult(
         id=pulumi.get(__ret__, 'id'),
         monitors=pulumi.get(__ret__, 'monitors'),
-        page_size=pulumi.get(__ret__, 'page_size'))
+        page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_data_quality_monitors_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                     provider_config: Optional[pulumi.Input[Optional[Union['GetDataQualityMonitorsProviderConfigArgs', 'GetDataQualityMonitorsProviderConfigArgsDict']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityMonitorsResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -132,12 +149,17 @@ def get_data_quality_monitors_output(page_size: Optional[pulumi.Input[Optional[_
 
     all = databricks.get_data_quality_monitors()
     ```
+
+
+    :param Union['GetDataQualityMonitorsProviderConfigArgs', 'GetDataQualityMonitorsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDataQualityMonitors:getDataQualityMonitors', __args__, opts=opts, typ=GetDataQualityMonitorsResult)
     return __ret__.apply(lambda __response__: GetDataQualityMonitorsResult(
         id=pulumi.get(__response__, 'id'),
         monitors=pulumi.get(__response__, 'monitors'),
-        page_size=pulumi.get(__response__, 'page_size')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

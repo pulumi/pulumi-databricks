@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// The Default Warehouse Override resource allows you to configure a user's default warehouse selection behavior in Databricks SQL. This resource enables customization of how a user's default warehouse is selected for SQL operations.
     /// 
@@ -81,6 +81,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.WarehousesDefaultWarehouseOverrideProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         /// </summary>
         [Output("type")]
@@ -146,6 +152,12 @@ namespace Pulumi.Databricks
         public Input<string> DefaultWarehouseOverrideId { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WarehousesDefaultWarehouseOverrideProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         /// </summary>
         [Input("type", required: true)]
@@ -178,6 +190,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WarehousesDefaultWarehouseOverrideProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`

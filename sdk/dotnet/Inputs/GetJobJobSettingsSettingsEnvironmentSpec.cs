@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsEnvironmentSpecArgs : global::Pulumi.InvokeArgs
     {
+        [Input("baseEnvironment")]
+        public string? BaseEnvironment { get; set; }
+
         [Input("client")]
         public string? Client { get; set; }
 

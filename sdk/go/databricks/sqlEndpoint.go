@@ -108,6 +108,8 @@ type SqlEndpoint struct {
 	NumClusters pulumi.IntOutput `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams SqlEndpointOdbcParamsOutput `pulumi:"odbcParams"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlEndpointProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrOutput `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
@@ -186,6 +188,8 @@ type sqlEndpointState struct {
 	NumClusters *int `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams *SqlEndpointOdbcParams `pulumi:"odbcParams"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SqlEndpointProviderConfig `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
@@ -232,6 +236,8 @@ type SqlEndpointState struct {
 	NumClusters pulumi.IntPtrInput
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams SqlEndpointOdbcParamsPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlEndpointProviderConfigPtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
 	// The current state of the endpoint.
@@ -270,6 +276,8 @@ type sqlEndpointArgs struct {
 	Name *string `pulumi:"name"`
 	// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
 	NoWait *bool `pulumi:"noWait"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SqlEndpointProviderConfig `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	// Databricks tags all endpoint resources with these tags.
@@ -303,6 +311,8 @@ type SqlEndpointArgs struct {
 	Name pulumi.StringPtrInput
 	// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
 	NoWait pulumi.BoolPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlEndpointProviderConfigPtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
 	// Databricks tags all endpoint resources with these tags.
@@ -482,6 +492,11 @@ func (o SqlEndpointOutput) NumClusters() pulumi.IntOutput {
 // ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 func (o SqlEndpointOutput) OdbcParams() SqlEndpointOdbcParamsOutput {
 	return o.ApplyT(func(v *SqlEndpoint) SqlEndpointOdbcParamsOutput { return v.OdbcParams }).(SqlEndpointOdbcParamsOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o SqlEndpointOutput) ProviderConfig() SqlEndpointProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SqlEndpoint) SqlEndpointProviderConfigPtrOutput { return v.ProviderConfig }).(SqlEndpointProviderConfigPtrOutput)
 }
 
 // The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.

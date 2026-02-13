@@ -11,7 +11,9 @@ import com.pulumi.databricks.DisableLegacyFeaturesSettingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DisableLegacyFeaturesSettingState;
 import com.pulumi.databricks.outputs.DisableLegacyFeaturesSettingDisableLegacyFeatures;
+import com.pulumi.databricks.outputs.DisableLegacyFeaturesSettingProviderConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -104,6 +106,12 @@ public class DisableLegacyFeaturesSetting extends com.pulumi.resources.CustomRes
 
     public Output<String> etag() {
         return this.etag;
+    }
+    @Export(name="providerConfig", refs={DisableLegacyFeaturesSettingProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DisableLegacyFeaturesSettingProviderConfig> providerConfig;
+
+    public Output<Optional<DisableLegacyFeaturesSettingProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="settingName", refs={String.class}, tree="[0]")
     private Output<String> settingName;

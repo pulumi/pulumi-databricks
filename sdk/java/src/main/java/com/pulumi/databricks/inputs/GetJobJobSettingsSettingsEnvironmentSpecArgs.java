@@ -16,6 +16,13 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
 
     public static final GetJobJobSettingsSettingsEnvironmentSpecArgs Empty = new GetJobJobSettingsSettingsEnvironmentSpecArgs();
 
+    @Import(name="baseEnvironment")
+    private @Nullable Output<String> baseEnvironment;
+
+    public Optional<Output<String>> baseEnvironment() {
+        return Optional.ofNullable(this.baseEnvironment);
+    }
+
     @Import(name="client")
     private @Nullable Output<String> client;
 
@@ -47,6 +54,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
     private GetJobJobSettingsSettingsEnvironmentSpecArgs() {}
 
     private GetJobJobSettingsSettingsEnvironmentSpecArgs(GetJobJobSettingsSettingsEnvironmentSpecArgs $) {
+        this.baseEnvironment = $.baseEnvironment;
         this.client = $.client;
         this.dependencies = $.dependencies;
         this.environmentVersion = $.environmentVersion;
@@ -69,6 +77,15 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
 
         public Builder(GetJobJobSettingsSettingsEnvironmentSpecArgs defaults) {
             $ = new GetJobJobSettingsSettingsEnvironmentSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder baseEnvironment(@Nullable Output<String> baseEnvironment) {
+            $.baseEnvironment = baseEnvironment;
+            return this;
+        }
+
+        public Builder baseEnvironment(String baseEnvironment) {
+            return baseEnvironment(Output.of(baseEnvironment));
         }
 
         public Builder client(@Nullable Output<String> client) {

@@ -26,6 +26,8 @@ import (
 //
 // - `principal` - User name, group name or service principal application ID.
 // - `privileges` - One or more privileges that are specific to a securable type.
+// - `providerConfig` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+//   - `workspaceId` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
 //
 // For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
 //
@@ -767,21 +769,22 @@ import (
 type Grants struct {
 	pulumi.CustomResourceState
 
-	Catalog           pulumi.StringPtrOutput `pulumi:"catalog"`
-	Credential        pulumi.StringPtrOutput `pulumi:"credential"`
-	ExternalLocation  pulumi.StringPtrOutput `pulumi:"externalLocation"`
-	ForeignConnection pulumi.StringPtrOutput `pulumi:"foreignConnection"`
-	Function          pulumi.StringPtrOutput `pulumi:"function"`
-	Grants            GrantsGrantArrayOutput `pulumi:"grants"`
-	Metastore         pulumi.StringPtrOutput `pulumi:"metastore"`
-	Model             pulumi.StringPtrOutput `pulumi:"model"`
-	Pipeline          pulumi.StringPtrOutput `pulumi:"pipeline"`
-	Recipient         pulumi.StringPtrOutput `pulumi:"recipient"`
-	Schema            pulumi.StringPtrOutput `pulumi:"schema"`
-	Share             pulumi.StringPtrOutput `pulumi:"share"`
-	StorageCredential pulumi.StringPtrOutput `pulumi:"storageCredential"`
-	Table             pulumi.StringPtrOutput `pulumi:"table"`
-	Volume            pulumi.StringPtrOutput `pulumi:"volume"`
+	Catalog           pulumi.StringPtrOutput        `pulumi:"catalog"`
+	Credential        pulumi.StringPtrOutput        `pulumi:"credential"`
+	ExternalLocation  pulumi.StringPtrOutput        `pulumi:"externalLocation"`
+	ForeignConnection pulumi.StringPtrOutput        `pulumi:"foreignConnection"`
+	Function          pulumi.StringPtrOutput        `pulumi:"function"`
+	Grants            GrantsGrantArrayOutput        `pulumi:"grants"`
+	Metastore         pulumi.StringPtrOutput        `pulumi:"metastore"`
+	Model             pulumi.StringPtrOutput        `pulumi:"model"`
+	Pipeline          pulumi.StringPtrOutput        `pulumi:"pipeline"`
+	ProviderConfig    GrantsProviderConfigPtrOutput `pulumi:"providerConfig"`
+	Recipient         pulumi.StringPtrOutput        `pulumi:"recipient"`
+	Schema            pulumi.StringPtrOutput        `pulumi:"schema"`
+	Share             pulumi.StringPtrOutput        `pulumi:"share"`
+	StorageCredential pulumi.StringPtrOutput        `pulumi:"storageCredential"`
+	Table             pulumi.StringPtrOutput        `pulumi:"table"`
+	Volume            pulumi.StringPtrOutput        `pulumi:"volume"`
 }
 
 // NewGrants registers a new resource with the given unique name, arguments, and options.
@@ -817,21 +820,22 @@ func GetGrants(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Grants resources.
 type grantsState struct {
-	Catalog           *string       `pulumi:"catalog"`
-	Credential        *string       `pulumi:"credential"`
-	ExternalLocation  *string       `pulumi:"externalLocation"`
-	ForeignConnection *string       `pulumi:"foreignConnection"`
-	Function          *string       `pulumi:"function"`
-	Grants            []GrantsGrant `pulumi:"grants"`
-	Metastore         *string       `pulumi:"metastore"`
-	Model             *string       `pulumi:"model"`
-	Pipeline          *string       `pulumi:"pipeline"`
-	Recipient         *string       `pulumi:"recipient"`
-	Schema            *string       `pulumi:"schema"`
-	Share             *string       `pulumi:"share"`
-	StorageCredential *string       `pulumi:"storageCredential"`
-	Table             *string       `pulumi:"table"`
-	Volume            *string       `pulumi:"volume"`
+	Catalog           *string               `pulumi:"catalog"`
+	Credential        *string               `pulumi:"credential"`
+	ExternalLocation  *string               `pulumi:"externalLocation"`
+	ForeignConnection *string               `pulumi:"foreignConnection"`
+	Function          *string               `pulumi:"function"`
+	Grants            []GrantsGrant         `pulumi:"grants"`
+	Metastore         *string               `pulumi:"metastore"`
+	Model             *string               `pulumi:"model"`
+	Pipeline          *string               `pulumi:"pipeline"`
+	ProviderConfig    *GrantsProviderConfig `pulumi:"providerConfig"`
+	Recipient         *string               `pulumi:"recipient"`
+	Schema            *string               `pulumi:"schema"`
+	Share             *string               `pulumi:"share"`
+	StorageCredential *string               `pulumi:"storageCredential"`
+	Table             *string               `pulumi:"table"`
+	Volume            *string               `pulumi:"volume"`
 }
 
 type GrantsState struct {
@@ -844,6 +848,7 @@ type GrantsState struct {
 	Metastore         pulumi.StringPtrInput
 	Model             pulumi.StringPtrInput
 	Pipeline          pulumi.StringPtrInput
+	ProviderConfig    GrantsProviderConfigPtrInput
 	Recipient         pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	Share             pulumi.StringPtrInput
@@ -857,21 +862,22 @@ func (GrantsState) ElementType() reflect.Type {
 }
 
 type grantsArgs struct {
-	Catalog           *string       `pulumi:"catalog"`
-	Credential        *string       `pulumi:"credential"`
-	ExternalLocation  *string       `pulumi:"externalLocation"`
-	ForeignConnection *string       `pulumi:"foreignConnection"`
-	Function          *string       `pulumi:"function"`
-	Grants            []GrantsGrant `pulumi:"grants"`
-	Metastore         *string       `pulumi:"metastore"`
-	Model             *string       `pulumi:"model"`
-	Pipeline          *string       `pulumi:"pipeline"`
-	Recipient         *string       `pulumi:"recipient"`
-	Schema            *string       `pulumi:"schema"`
-	Share             *string       `pulumi:"share"`
-	StorageCredential *string       `pulumi:"storageCredential"`
-	Table             *string       `pulumi:"table"`
-	Volume            *string       `pulumi:"volume"`
+	Catalog           *string               `pulumi:"catalog"`
+	Credential        *string               `pulumi:"credential"`
+	ExternalLocation  *string               `pulumi:"externalLocation"`
+	ForeignConnection *string               `pulumi:"foreignConnection"`
+	Function          *string               `pulumi:"function"`
+	Grants            []GrantsGrant         `pulumi:"grants"`
+	Metastore         *string               `pulumi:"metastore"`
+	Model             *string               `pulumi:"model"`
+	Pipeline          *string               `pulumi:"pipeline"`
+	ProviderConfig    *GrantsProviderConfig `pulumi:"providerConfig"`
+	Recipient         *string               `pulumi:"recipient"`
+	Schema            *string               `pulumi:"schema"`
+	Share             *string               `pulumi:"share"`
+	StorageCredential *string               `pulumi:"storageCredential"`
+	Table             *string               `pulumi:"table"`
+	Volume            *string               `pulumi:"volume"`
 }
 
 // The set of arguments for constructing a Grants resource.
@@ -885,6 +891,7 @@ type GrantsArgs struct {
 	Metastore         pulumi.StringPtrInput
 	Model             pulumi.StringPtrInput
 	Pipeline          pulumi.StringPtrInput
+	ProviderConfig    GrantsProviderConfigPtrInput
 	Recipient         pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	Share             pulumi.StringPtrInput
@@ -1014,6 +1021,10 @@ func (o GrantsOutput) Model() pulumi.StringPtrOutput {
 
 func (o GrantsOutput) Pipeline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Pipeline }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantsOutput) ProviderConfig() GrantsProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Grants) GrantsProviderConfigPtrOutput { return v.ProviderConfig }).(GrantsProviderConfigPtrOutput)
 }
 
 func (o GrantsOutput) Recipient() pulumi.StringPtrOutput {

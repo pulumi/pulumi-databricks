@@ -35,11 +35,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewPolicyInfo(ctx, "pii_row_filter", &databricks.PolicyInfoArgs{
-//				OnSecurableType:     pulumi.String("catalog"),
+//				OnSecurableType:     pulumi.String("CATALOG"),
 //				OnSecurableFullname: pulumi.String("main"),
 //				Name:                pulumi.String("pii_data_policy"),
 //				PolicyType:          pulumi.String("POLICY_TYPE_ROW_FILTER"),
-//				ForSecurableType:    pulumi.String("table"),
+//				ForSecurableType:    pulumi.String("TABLE"),
 //				ToPrincipals: pulumi.StringArray{
 //					pulumi.String("account users"),
 //				},
@@ -83,11 +83,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewPolicyInfo(ctx, "sensitive_column_mask", &databricks.PolicyInfoArgs{
-//				OnSecurableType:     pulumi.String("schema"),
+//				OnSecurableType:     pulumi.String("SCHEMA"),
 //				OnSecurableFullname: pulumi.String("main.finance"),
 //				Name:                pulumi.String("sensitive_data_mask"),
 //				PolicyType:          pulumi.String("POLICY_TYPE_COLUMN_MASK"),
-//				ForSecurableType:    pulumi.String("table"),
+//				ForSecurableType:    pulumi.String("TABLE"),
 //				ToPrincipals: pulumi.StringArray{
 //					pulumi.String("account users"),
 //				},
@@ -146,14 +146,16 @@ type PolicyInfo struct {
 	// To rename the policy, set `name` to a different value on update
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Full name of the securable on which the policy is defined.
-	// Required on create and ignored on update
+	// Required on create
 	OnSecurableFullname pulumi.StringPtrOutput `pulumi:"onSecurableFullname"`
 	// Type of the securable on which the policy is defined.
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType pulumi.StringPtrOutput `pulumi:"onSecurableType"`
-	// Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig PolicyInfoProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
 	// Required on create and optional on update. When specified on update,
 	// the new options will replace the existing options as a whole
@@ -232,14 +234,16 @@ type policyInfoState struct {
 	// To rename the policy, set `name` to a different value on update
 	Name *string `pulumi:"name"`
 	// Full name of the securable on which the policy is defined.
-	// Required on create and ignored on update
+	// Required on create
 	OnSecurableFullname *string `pulumi:"onSecurableFullname"`
 	// Type of the securable on which the policy is defined.
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType *string `pulumi:"onSecurableType"`
-	// Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType *string `pulumi:"policyType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *PolicyInfoProviderConfig `pulumi:"providerConfig"`
 	// Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
 	// Required on create and optional on update. When specified on update,
 	// the new options will replace the existing options as a whole
@@ -280,14 +284,16 @@ type PolicyInfoState struct {
 	// To rename the policy, set `name` to a different value on update
 	Name pulumi.StringPtrInput
 	// Full name of the securable on which the policy is defined.
-	// Required on create and ignored on update
+	// Required on create
 	OnSecurableFullname pulumi.StringPtrInput
 	// Type of the securable on which the policy is defined.
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType pulumi.StringPtrInput
-	// Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig PolicyInfoProviderConfigPtrInput
 	// Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
 	// Required on create and optional on update. When specified on update,
 	// the new options will replace the existing options as a whole
@@ -328,14 +334,16 @@ type policyInfoArgs struct {
 	// To rename the policy, set `name` to a different value on update
 	Name *string `pulumi:"name"`
 	// Full name of the securable on which the policy is defined.
-	// Required on create and ignored on update
+	// Required on create
 	OnSecurableFullname *string `pulumi:"onSecurableFullname"`
 	// Type of the securable on which the policy is defined.
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType *string `pulumi:"onSecurableType"`
-	// Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType string `pulumi:"policyType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *PolicyInfoProviderConfig `pulumi:"providerConfig"`
 	// Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
 	// Required on create and optional on update. When specified on update,
 	// the new options will replace the existing options as a whole
@@ -369,14 +377,16 @@ type PolicyInfoArgs struct {
 	// To rename the policy, set `name` to a different value on update
 	Name pulumi.StringPtrInput
 	// Full name of the securable on which the policy is defined.
-	// Required on create and ignored on update
+	// Required on create
 	OnSecurableFullname pulumi.StringPtrInput
 	// Type of the securable on which the policy is defined.
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType pulumi.StringPtrInput
-	// Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringInput
+	// Configure the provider for management through account provider.
+	ProviderConfig PolicyInfoProviderConfigPtrInput
 	// Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
 	// Required on create and optional on update. When specified on update,
 	// the new options will replace the existing options as a whole
@@ -523,21 +533,26 @@ func (o PolicyInfoOutput) Name() pulumi.StringOutput {
 }
 
 // Full name of the securable on which the policy is defined.
-// Required on create and ignored on update
+// Required on create
 func (o PolicyInfoOutput) OnSecurableFullname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringPtrOutput { return v.OnSecurableFullname }).(pulumi.StringPtrOutput)
 }
 
 // Type of the securable on which the policy is defined.
 // Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+// Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 func (o PolicyInfoOutput) OnSecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringPtrOutput { return v.OnSecurableType }).(pulumi.StringPtrOutput)
 }
 
-// Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
 func (o PolicyInfoOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o PolicyInfoOutput) ProviderConfig() PolicyInfoProviderConfigPtrOutput {
+	return o.ApplyT(func(v *PolicyInfo) PolicyInfoProviderConfigPtrOutput { return v.ProviderConfig }).(PolicyInfoProviderConfigPtrOutput)
 }
 
 // Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.

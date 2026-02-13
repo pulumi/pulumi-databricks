@@ -27,6 +27,8 @@ type LookupFeatureEngineeringKafkaConfigArgs struct {
 	// Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
 	// Can be distinct from topic name
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetFeatureEngineeringKafkaConfigProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getFeatureEngineeringKafkaConfig.
@@ -47,7 +49,8 @@ type LookupFeatureEngineeringKafkaConfigResult struct {
 	KeySchema GetFeatureEngineeringKafkaConfigKeySchema `pulumi:"keySchema"`
 	// (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
 	// Can be distinct from topic name
-	Name string `pulumi:"name"`
+	Name           string                                          `pulumi:"name"`
+	ProviderConfig *GetFeatureEngineeringKafkaConfigProviderConfig `pulumi:"providerConfig"`
 	// (SubscriptionMode) - Options to configure which Kafka topics to pull data from
 	SubscriptionMode GetFeatureEngineeringKafkaConfigSubscriptionMode `pulumi:"subscriptionMode"`
 	// (SchemaConfig) - Schema configuration for extracting message values from topics. At least one of keySchema and valueSchema must be provided
@@ -68,6 +71,8 @@ type LookupFeatureEngineeringKafkaConfigOutputArgs struct {
 	// Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
 	// Can be distinct from topic name
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetFeatureEngineeringKafkaConfigProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupFeatureEngineeringKafkaConfigOutputArgs) ElementType() reflect.Type {
@@ -131,6 +136,12 @@ func (o LookupFeatureEngineeringKafkaConfigResultOutput) KeySchema() GetFeatureE
 // Can be distinct from topic name
 func (o LookupFeatureEngineeringKafkaConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupFeatureEngineeringKafkaConfigResultOutput) ProviderConfig() GetFeatureEngineeringKafkaConfigProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) *GetFeatureEngineeringKafkaConfigProviderConfig {
+		return v.ProviderConfig
+	}).(GetFeatureEngineeringKafkaConfigProviderConfigPtrOutput)
 }
 
 // (SubscriptionMode) - Options to configure which Kafka topics to pull data from

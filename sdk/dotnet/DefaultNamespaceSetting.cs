@@ -53,6 +53,12 @@ namespace Pulumi.Databricks
         [Output("namespace")]
         public Output<Outputs.DefaultNamespaceSettingNamespace> Namespace { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.DefaultNamespaceSettingProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("settingName")]
         public Output<string> SettingName { get; private set; } = null!;
 
@@ -111,6 +117,12 @@ namespace Pulumi.Databricks
         [Input("namespace", required: true)]
         public Input<Inputs.DefaultNamespaceSettingNamespaceArgs> Namespace { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DefaultNamespaceSettingProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("settingName")]
         public Input<string>? SettingName { get; set; }
 
@@ -130,6 +142,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("namespace")]
         public Input<Inputs.DefaultNamespaceSettingNamespaceGetArgs>? Namespace { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DefaultNamespaceSettingProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("settingName")]
         public Input<string>? SettingName { get; set; }

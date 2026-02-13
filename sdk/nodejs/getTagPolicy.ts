@@ -36,6 +36,7 @@ import * as utilities from "./utilities";
 export function getTagPolicy(args: GetTagPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getTagPolicy:getTagPolicy", {
+        "providerConfig": args.providerConfig,
         "tagKey": args.tagKey,
     }, opts);
 }
@@ -44,6 +45,10 @@ export function getTagPolicy(args: GetTagPolicyArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getTagPolicy.
  */
 export interface GetTagPolicyArgs {
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetTagPolicyProviderConfig;
     tagKey: string;
 }
 
@@ -63,6 +68,7 @@ export interface GetTagPolicyResult {
      * (string)
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetTagPolicyProviderConfig;
     /**
      * (string)
      */
@@ -106,6 +112,7 @@ export interface GetTagPolicyResult {
 export function getTagPolicyOutput(args: GetTagPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getTagPolicy:getTagPolicy", {
+        "providerConfig": args.providerConfig,
         "tagKey": args.tagKey,
     }, opts);
 }
@@ -114,5 +121,9 @@ export function getTagPolicyOutput(args: GetTagPolicyOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getTagPolicy.
  */
 export interface GetTagPolicyOutputArgs {
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetTagPolicyProviderConfigArgs>;
     tagKey: pulumi.Input<string>;
 }

@@ -168,6 +168,12 @@ namespace Pulumi.Databricks
         public string ObjectType { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetDataQualityRefreshProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Unique id of the refresh operation
         /// </summary>
         [Input("refreshId", required: true)]
@@ -200,6 +206,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetDataQualityRefreshProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Unique id of the refresh operation
@@ -237,6 +249,7 @@ namespace Pulumi.Databricks
         /// (string) - The type of the monitored object. Can be one of the following: `Schema`or `Table`
         /// </summary>
         public readonly string ObjectType;
+        public readonly Outputs.GetDataQualityRefreshProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (integer) - Unique id of the refresh operation
         /// </summary>
@@ -266,6 +279,8 @@ namespace Pulumi.Databricks
 
             string objectType,
 
+            Outputs.GetDataQualityRefreshProviderConfigResult? providerConfig,
+
             int refreshId,
 
             int startTimeMs,
@@ -279,6 +294,7 @@ namespace Pulumi.Databricks
             Message = message;
             ObjectId = objectId;
             ObjectType = objectType;
+            ProviderConfig = providerConfig;
             RefreshId = refreshId;
             StartTimeMs = startTimeMs;
             State = state;

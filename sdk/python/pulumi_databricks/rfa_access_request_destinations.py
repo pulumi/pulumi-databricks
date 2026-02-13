@@ -22,15 +22,19 @@ __all__ = ['RfaAccessRequestDestinationsArgs', 'RfaAccessRequestDestinations']
 class RfaAccessRequestDestinationsArgs:
     def __init__(__self__, *,
                  securable: pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'],
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]] = None):
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]] = None,
+                 provider_config: Optional[pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a RfaAccessRequestDestinations resource.
         :param pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'] securable: The securable for which the access request destinations are being modified or read
         :param pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]] destinations: The access request destinations for the securable
+        :param pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "securable", securable)
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -56,6 +60,18 @@ class RfaAccessRequestDestinationsArgs:
     def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]]):
         pulumi.set(self, "destinations", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _RfaAccessRequestDestinationsState:
@@ -64,6 +80,7 @@ class _RfaAccessRequestDestinationsState:
                  destination_source_securable: Optional[pulumi.Input['RfaAccessRequestDestinationsDestinationSourceSecurableArgs']] = None,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]] = None,
                  full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs']] = None,
                  securable: Optional[pulumi.Input['RfaAccessRequestDestinationsSecurableArgs']] = None,
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -74,6 +91,7 @@ class _RfaAccessRequestDestinationsState:
                is set directly on the securable) or the nearest parent securable with destinations set
         :param pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]] destinations: The access request destinations for the securable
         :param pulumi.Input[_builtins.str] full_name: (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        :param pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'] securable: The securable for which the access request destinations are being modified or read
         :param pulumi.Input[_builtins.str] securable_type: (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
         """
@@ -85,6 +103,8 @@ class _RfaAccessRequestDestinationsState:
             pulumi.set(__self__, "destinations", destinations)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if securable is not None:
             pulumi.set(__self__, "securable", securable)
         if securable_type is not None:
@@ -141,6 +161,18 @@ class _RfaAccessRequestDestinationsState:
         pulumi.set(self, "full_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def securable(self) -> Optional[pulumi.Input['RfaAccessRequestDestinationsSecurableArgs']]:
         """
@@ -172,6 +204,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']]] = None,
                  securable: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']]] = None,
                  __props__=None):
         """
@@ -220,6 +253,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]] destinations: The access request destinations for the securable
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']] securable: The securable for which the access request destinations are being modified or read
         """
         ...
@@ -287,6 +321,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']]] = None,
                  securable: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -298,6 +333,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
             __props__ = RfaAccessRequestDestinationsArgs.__new__(RfaAccessRequestDestinationsArgs)
 
             __props__.__dict__["destinations"] = destinations
+            __props__.__dict__["provider_config"] = provider_config
             if securable is None and not opts.urn:
                 raise TypeError("Missing required property 'securable'")
             __props__.__dict__["securable"] = securable
@@ -319,6 +355,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
             destination_source_securable: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationSourceSecurableArgs', 'RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict']]] = None,
             destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]]] = None,
             full_name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']]] = None,
             securable: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']]] = None,
             securable_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'RfaAccessRequestDestinations':
         """
@@ -334,6 +371,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
                is set directly on the securable) or the nearest parent securable with destinations set
         :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]] destinations: The access request destinations for the securable
         :param pulumi.Input[_builtins.str] full_name: (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']] securable: The securable for which the access request destinations are being modified or read
         :param pulumi.Input[_builtins.str] securable_type: (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
         """
@@ -345,6 +383,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         __props__.__dict__["destination_source_securable"] = destination_source_securable
         __props__.__dict__["destinations"] = destinations
         __props__.__dict__["full_name"] = full_name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["securable"] = securable
         __props__.__dict__["securable_type"] = securable_type
         return RfaAccessRequestDestinations(resource_name, opts=opts, __props__=__props__)
@@ -382,6 +421,14 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
         """
         return pulumi.get(self, "full_name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.RfaAccessRequestDestinationsProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

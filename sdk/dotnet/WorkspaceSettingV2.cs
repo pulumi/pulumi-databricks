@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
     /// 
@@ -133,6 +133,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("personalCompute")]
         public Output<Outputs.WorkspaceSettingV2PersonalCompute?> PersonalCompute { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.WorkspaceSettingV2ProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Setting value for RestrictWorkspaceAdmins setting. This is the setting value set by consumers, check EffectiveRestrictWorkspaceAdmins for final setting value
@@ -265,6 +271,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2PersonalComputeArgs>? PersonalCompute { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WorkspaceSettingV2ProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Setting value for RestrictWorkspaceAdmins setting. This is the setting value set by consumers, check EffectiveRestrictWorkspaceAdmins for final setting value
         /// </summary>
         [Input("restrictWorkspaceAdmins")]
@@ -373,6 +385,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("personalCompute")]
         public Input<Inputs.WorkspaceSettingV2PersonalComputeGetArgs>? PersonalCompute { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WorkspaceSettingV2ProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Setting value for RestrictWorkspaceAdmins setting. This is the setting value set by consumers, check EffectiveRestrictWorkspaceAdmins for final setting value

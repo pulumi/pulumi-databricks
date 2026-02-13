@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetPolicyInfoResult',
@@ -27,7 +28,7 @@ class GetPolicyInfoResult:
     """
     A collection of values returned by getPolicyInfo.
     """
-    def __init__(__self__, column_mask=None, comment=None, created_at=None, created_by=None, except_principals=None, for_securable_type=None, id=None, match_columns=None, name=None, on_securable_fullname=None, on_securable_type=None, policy_type=None, row_filter=None, to_principals=None, updated_at=None, updated_by=None, when_condition=None):
+    def __init__(__self__, column_mask=None, comment=None, created_at=None, created_by=None, except_principals=None, for_securable_type=None, id=None, match_columns=None, name=None, on_securable_fullname=None, on_securable_type=None, policy_type=None, provider_config=None, row_filter=None, to_principals=None, updated_at=None, updated_by=None, when_condition=None):
         if column_mask and not isinstance(column_mask, dict):
             raise TypeError("Expected argument 'column_mask' to be a dict")
         pulumi.set(__self__, "column_mask", column_mask)
@@ -64,6 +65,9 @@ class GetPolicyInfoResult:
         if policy_type and not isinstance(policy_type, str):
             raise TypeError("Expected argument 'policy_type' to be a str")
         pulumi.set(__self__, "policy_type", policy_type)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if row_filter and not isinstance(row_filter, dict):
             raise TypeError("Expected argument 'row_filter' to be a dict")
         pulumi.set(__self__, "row_filter", row_filter)
@@ -164,7 +168,7 @@ class GetPolicyInfoResult:
     def on_securable_fullname(self) -> _builtins.str:
         """
         (string) - Full name of the securable on which the policy is defined.
-        Required on create and ignored on update
+        Required on create
         """
         return pulumi.get(self, "on_securable_fullname")
 
@@ -174,7 +178,7 @@ class GetPolicyInfoResult:
         """
         (string) - Type of the securable on which the policy is defined.
         Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-        Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "on_securable_type")
 
@@ -182,9 +186,14 @@ class GetPolicyInfoResult:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> _builtins.str:
         """
-        (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetPolicyInfoProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="rowFilter")
@@ -248,6 +257,7 @@ class AwaitableGetPolicyInfoResult(GetPolicyInfoResult):
             on_securable_fullname=self.on_securable_fullname,
             on_securable_type=self.on_securable_type,
             policy_type=self.policy_type,
+            provider_config=self.provider_config,
             row_filter=self.row_filter,
             to_principals=self.to_principals,
             updated_at=self.updated_at,
@@ -258,6 +268,7 @@ class AwaitableGetPolicyInfoResult(GetPolicyInfoResult):
 def get_policy_info(name: Optional[_builtins.str] = None,
                     on_securable_fullname: Optional[_builtins.str] = None,
                     on_securable_type: Optional[_builtins.str] = None,
+                    provider_config: Optional[Union['GetPolicyInfoProviderConfigArgs', 'GetPolicyInfoProviderConfigArgsDict']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyInfoResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -274,7 +285,7 @@ def get_policy_info(name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    pii_policy = databricks.get_policy_info(on_securable_type="catalog",
+    pii_policy = databricks.get_policy_info(on_securable_type="CATALOG",
         on_securable_fullname="main",
         name="pii_data_policy")
     ```
@@ -283,15 +294,17 @@ def get_policy_info(name: Optional[_builtins.str] = None,
     :param _builtins.str name: Name of the policy. Required on create and optional on update.
            To rename the policy, set `name` to a different value on update
     :param _builtins.str on_securable_fullname: Full name of the securable on which the policy is defined.
-           Required on create and ignored on update
+           Required on create
     :param _builtins.str on_securable_type: Type of the securable on which the policy is defined.
            Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-           Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+           Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+    :param Union['GetPolicyInfoProviderConfigArgs', 'GetPolicyInfoProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['onSecurableFullname'] = on_securable_fullname
     __args__['onSecurableType'] = on_securable_type
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPolicyInfo:getPolicyInfo', __args__, opts=opts, typ=GetPolicyInfoResult).value
 
@@ -308,6 +321,7 @@ def get_policy_info(name: Optional[_builtins.str] = None,
         on_securable_fullname=pulumi.get(__ret__, 'on_securable_fullname'),
         on_securable_type=pulumi.get(__ret__, 'on_securable_type'),
         policy_type=pulumi.get(__ret__, 'policy_type'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         row_filter=pulumi.get(__ret__, 'row_filter'),
         to_principals=pulumi.get(__ret__, 'to_principals'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
@@ -316,6 +330,7 @@ def get_policy_info(name: Optional[_builtins.str] = None,
 def get_policy_info_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                            on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
                            on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
+                           provider_config: Optional[pulumi.Input[Optional[Union['GetPolicyInfoProviderConfigArgs', 'GetPolicyInfoProviderConfigArgsDict']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyInfoResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -332,7 +347,7 @@ def get_policy_info_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    pii_policy = databricks.get_policy_info(on_securable_type="catalog",
+    pii_policy = databricks.get_policy_info(on_securable_type="CATALOG",
         on_securable_fullname="main",
         name="pii_data_policy")
     ```
@@ -341,15 +356,17 @@ def get_policy_info_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     :param _builtins.str name: Name of the policy. Required on create and optional on update.
            To rename the policy, set `name` to a different value on update
     :param _builtins.str on_securable_fullname: Full name of the securable on which the policy is defined.
-           Required on create and ignored on update
+           Required on create
     :param _builtins.str on_securable_type: Type of the securable on which the policy is defined.
            Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-           Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+           Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+    :param Union['GetPolicyInfoProviderConfigArgs', 'GetPolicyInfoProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['onSecurableFullname'] = on_securable_fullname
     __args__['onSecurableType'] = on_securable_type
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPolicyInfo:getPolicyInfo', __args__, opts=opts, typ=GetPolicyInfoResult)
     return __ret__.apply(lambda __response__: GetPolicyInfoResult(
@@ -365,6 +382,7 @@ def get_policy_info_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         on_securable_fullname=pulumi.get(__response__, 'on_securable_fullname'),
         on_securable_type=pulumi.get(__response__, 'on_securable_type'),
         policy_type=pulumi.get(__response__, 'policy_type'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         row_filter=pulumi.get(__response__, 'row_filter'),
         to_principals=pulumi.get(__response__, 'to_principals'),
         updated_at=pulumi.get(__response__, 'updated_at'),

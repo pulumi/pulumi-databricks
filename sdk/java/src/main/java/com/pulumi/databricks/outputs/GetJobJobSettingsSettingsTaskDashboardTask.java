@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscription;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,12 +14,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetJobJobSettingsSettingsTaskDashboardTask {
     private @Nullable String dashboardId;
+    private @Nullable Map<String,String> filters;
     private @Nullable GetJobJobSettingsSettingsTaskDashboardTaskSubscription subscription;
     private @Nullable String warehouseId;
 
     private GetJobJobSettingsSettingsTaskDashboardTask() {}
     public Optional<String> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
+    }
+    public Map<String,String> filters() {
+        return this.filters == null ? Map.of() : this.filters;
     }
     public Optional<GetJobJobSettingsSettingsTaskDashboardTaskSubscription> subscription() {
         return Optional.ofNullable(this.subscription);
@@ -37,12 +42,14 @@ public final class GetJobJobSettingsSettingsTaskDashboardTask {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dashboardId;
+        private @Nullable Map<String,String> filters;
         private @Nullable GetJobJobSettingsSettingsTaskDashboardTaskSubscription subscription;
         private @Nullable String warehouseId;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskDashboardTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dashboardId = defaults.dashboardId;
+    	      this.filters = defaults.filters;
     	      this.subscription = defaults.subscription;
     	      this.warehouseId = defaults.warehouseId;
         }
@@ -51,6 +58,12 @@ public final class GetJobJobSettingsSettingsTaskDashboardTask {
         public Builder dashboardId(@Nullable String dashboardId) {
 
             this.dashboardId = dashboardId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filters(@Nullable Map<String,String> filters) {
+
+            this.filters = filters;
             return this;
         }
         @CustomType.Setter
@@ -68,6 +81,7 @@ public final class GetJobJobSettingsSettingsTaskDashboardTask {
         public GetJobJobSettingsSettingsTaskDashboardTask build() {
             final var _resultValue = new GetJobJobSettingsSettingsTaskDashboardTask();
             _resultValue.dashboardId = dashboardId;
+            _resultValue.filters = filters;
             _resultValue.subscription = subscription;
             _resultValue.warehouseId = warehouseId;
             return _resultValue;

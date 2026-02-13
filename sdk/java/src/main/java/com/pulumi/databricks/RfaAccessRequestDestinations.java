@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsState;
 import com.pulumi.databricks.outputs.RfaAccessRequestDestinationsDestination;
 import com.pulumi.databricks.outputs.RfaAccessRequestDestinationsDestinationSourceSecurable;
+import com.pulumi.databricks.outputs.RfaAccessRequestDestinationsProviderConfig;
 import com.pulumi.databricks.outputs.RfaAccessRequestDestinationsSecurable;
 import java.lang.Boolean;
 import java.lang.String;
@@ -148,6 +149,20 @@ public class RfaAccessRequestDestinations extends com.pulumi.resources.CustomRes
      */
     public Output<String> fullName() {
         return this.fullName;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={RfaAccessRequestDestinationsProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RfaAccessRequestDestinationsProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<RfaAccessRequestDestinationsProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The securable for which the access request destinations are being modified or read

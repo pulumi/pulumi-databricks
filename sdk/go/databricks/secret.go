@@ -77,6 +77,8 @@ type Secret struct {
 	Key pulumi.StringOutput `pulumi:"key"`
 	// (Integer) time secret was updated
 	LastUpdatedTimestamp pulumi.IntOutput `pulumi:"lastUpdatedTimestamp"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SecretProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// (String) super secret sensitive value.
@@ -135,6 +137,8 @@ type secretState struct {
 	Key *string `pulumi:"key"`
 	// (Integer) time secret was updated
 	LastUpdatedTimestamp *int `pulumi:"lastUpdatedTimestamp"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SecretProviderConfig `pulumi:"providerConfig"`
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope *string `pulumi:"scope"`
 	// (String) super secret sensitive value.
@@ -148,6 +152,8 @@ type SecretState struct {
 	Key pulumi.StringPtrInput
 	// (Integer) time secret was updated
 	LastUpdatedTimestamp pulumi.IntPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SecretProviderConfigPtrInput
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope pulumi.StringPtrInput
 	// (String) super secret sensitive value.
@@ -161,6 +167,8 @@ func (SecretState) ElementType() reflect.Type {
 type secretArgs struct {
 	// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Key string `pulumi:"key"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SecretProviderConfig `pulumi:"providerConfig"`
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope string `pulumi:"scope"`
 	// (String) super secret sensitive value.
@@ -171,6 +179,8 @@ type secretArgs struct {
 type SecretArgs struct {
 	// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Key pulumi.StringInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SecretProviderConfigPtrInput
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope pulumi.StringInput
 	// (String) super secret sensitive value.
@@ -277,6 +287,11 @@ func (o SecretOutput) Key() pulumi.StringOutput {
 // (Integer) time secret was updated
 func (o SecretOutput) LastUpdatedTimestamp() pulumi.IntOutput {
 	return o.ApplyT(func(v *Secret) pulumi.IntOutput { return v.LastUpdatedTimestamp }).(pulumi.IntOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o SecretOutput) ProviderConfig() SecretProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Secret) SecretProviderConfigPtrOutput { return v.ProviderConfig }).(SecretProviderConfigPtrOutput)
 }
 
 // (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.

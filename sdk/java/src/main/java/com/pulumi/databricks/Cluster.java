@@ -350,9 +350,17 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> driverInstancePoolId() {
         return this.driverInstancePoolId;
     }
+    /**
+     * a block describing the alternative driver node types if `driverNodeTypeId` isn&#39;t available.
+     * 
+     */
     @Export(name="driverNodeTypeFlexibility", refs={ClusterDriverNodeTypeFlexibility.class}, tree="[0]")
     private Output</* @Nullable */ ClusterDriverNodeTypeFlexibility> driverNodeTypeFlexibility;
 
+    /**
+     * @return a block describing the alternative driver node types if `driverNodeTypeId` isn&#39;t available.
+     * 
+     */
     public Output<Optional<ClusterDriverNodeTypeFlexibility>> driverNodeTypeFlexibility() {
         return Codegen.optional(this.driverNodeTypeFlexibility);
     }
@@ -690,9 +698,17 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> useMlRuntime() {
         return Codegen.optional(this.useMlRuntime);
     }
+    /**
+     * a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+     * 
+     */
     @Export(name="workerNodeTypeFlexibility", refs={ClusterWorkerNodeTypeFlexibility.class}, tree="[0]")
     private Output</* @Nullable */ ClusterWorkerNodeTypeFlexibility> workerNodeTypeFlexibility;
 
+    /**
+     * @return a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+     * 
+     */
     public Output<Optional<ClusterWorkerNodeTypeFlexibility>> workerNodeTypeFlexibility() {
         return Codegen.optional(this.workerNodeTypeFlexibility);
     }

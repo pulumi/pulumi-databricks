@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AlertConditionArgs;
+import com.pulumi.databricks.inputs.AlertProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -154,6 +155,21 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<AlertProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<AlertProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * ID of the query evaluated by the alert.
      * 
      */
@@ -240,6 +256,7 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
         this.notifyOnOk = $.notifyOnOk;
         this.ownerUserName = $.ownerUserName;
         this.parentPath = $.parentPath;
+        this.providerConfig = $.providerConfig;
         this.queryId = $.queryId;
         this.secondsToRetrigger = $.secondsToRetrigger;
         this.state = $.state;
@@ -452,6 +469,27 @@ public final class AlertState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parentPath(String parentPath) {
             return parentPath(Output.of(parentPath));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<AlertProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(AlertProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

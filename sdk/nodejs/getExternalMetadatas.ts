@@ -29,6 +29,7 @@ export function getExternalMetadatas(args?: GetExternalMetadatasArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -41,6 +42,10 @@ export interface GetExternalMetadatasArgs {
      * The value must be less than or equal to 1000
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetExternalMetadatasProviderConfig;
 }
 
 /**
@@ -53,6 +58,7 @@ export interface GetExternalMetadatasResult {
      */
     readonly id: string;
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetExternalMetadatasProviderConfig;
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -77,6 +83,7 @@ export function getExternalMetadatasOutput(args?: GetExternalMetadatasOutputArgs
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getExternalMetadatas:getExternalMetadatas", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -89,4 +96,8 @@ export interface GetExternalMetadatasOutputArgs {
      * The value must be less than or equal to 1000
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetExternalMetadatasProviderConfigArgs>;
 }

@@ -66,6 +66,10 @@ export class AibiDashboardEmbeddingApprovedDomainsSetting extends pulumi.CustomR
      */
     declare public readonly aibiDashboardEmbeddingApprovedDomains: pulumi.Output<outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains>;
     declare public readonly etag: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig | undefined>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -83,6 +87,7 @@ export class AibiDashboardEmbeddingApprovedDomainsSetting extends pulumi.CustomR
             const state = argsOrState as AibiDashboardEmbeddingApprovedDomainsSettingState | undefined;
             resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = state?.aibiDashboardEmbeddingApprovedDomains;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as AibiDashboardEmbeddingApprovedDomainsSettingArgs | undefined;
@@ -91,6 +96,7 @@ export class AibiDashboardEmbeddingApprovedDomainsSetting extends pulumi.CustomR
             }
             resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = args?.aibiDashboardEmbeddingApprovedDomains;
             resourceInputs["etag"] = args?.etag;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -107,6 +113,10 @@ export interface AibiDashboardEmbeddingApprovedDomainsSettingState {
      */
     aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains>;
     etag?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }
 
@@ -119,5 +129,9 @@ export interface AibiDashboardEmbeddingApprovedDomainsSettingArgs {
      */
     aibiDashboardEmbeddingApprovedDomains: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains>;
     etag?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }

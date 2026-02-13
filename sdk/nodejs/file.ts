@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -120,6 +122,10 @@ export class File extends pulumi.CustomResource {
      * The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
      */
     declare public readonly path: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.FileProviderConfig | undefined>;
     declare public readonly remoteFileModified: pulumi.Output<boolean | undefined>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
@@ -144,6 +150,7 @@ export class File extends pulumi.CustomResource {
             resourceInputs["md5"] = state?.md5;
             resourceInputs["modificationTime"] = state?.modificationTime;
             resourceInputs["path"] = state?.path;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["remoteFileModified"] = state?.remoteFileModified;
             resourceInputs["source"] = state?.source;
         } else {
@@ -154,6 +161,7 @@ export class File extends pulumi.CustomResource {
             resourceInputs["contentBase64"] = args?.contentBase64;
             resourceInputs["md5"] = args?.md5;
             resourceInputs["path"] = args?.path;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["remoteFileModified"] = args?.remoteFileModified;
             resourceInputs["source"] = args?.source;
             resourceInputs["fileSize"] = undefined /*out*/;
@@ -185,6 +193,10 @@ export interface FileState {
      * The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
      */
     path?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.FileProviderConfig>;
     remoteFileModified?: pulumi.Input<boolean>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
@@ -205,6 +217,10 @@ export interface FileArgs {
      * The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.FileProviderConfig>;
     remoteFileModified?: pulumi.Input<boolean>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.

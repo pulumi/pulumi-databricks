@@ -442,9 +442,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> rootPath() {
         return Codegen.optional(this.rootPath);
     }
+    /**
+     * The user or the service principal the pipeline runs as. See runAs Configuration Block below.
+     * 
+     */
     @Export(name="runAs", refs={PipelineRunAs.class}, tree="[0]")
     private Output</* @Nullable */ PipelineRunAs> runAs;
 
+    /**
+     * @return The user or the service principal the pipeline runs as. See runAs Configuration Block below.
+     * 
+     */
     public Output<Optional<PipelineRunAs>> runAs() {
         return Codegen.optional(this.runAs);
     }

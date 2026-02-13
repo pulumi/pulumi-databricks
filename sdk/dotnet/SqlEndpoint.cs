@@ -167,6 +167,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.SqlEndpointOdbcParams> OdbcParams { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SqlEndpointProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         /// </summary>
         [Output("spotInstancePolicy")]
@@ -302,6 +308,12 @@ namespace Pulumi.Databricks
         public Input<bool>? NoWait { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlEndpointProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         /// </summary>
         [Input("spotInstancePolicy")]
@@ -433,6 +445,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("odbcParams")]
         public Input<Inputs.SqlEndpointOdbcParamsGetArgs>? OdbcParams { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlEndpointProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.

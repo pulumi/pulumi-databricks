@@ -26,6 +26,8 @@ type GlobalInitScript struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position pulumi.IntOutput `pulumi:"position"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GlobalInitScriptProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 }
@@ -69,6 +71,8 @@ type globalInitScriptState struct {
 	Name *string `pulumi:"name"`
 	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position *int `pulumi:"position"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GlobalInitScriptProviderConfig `pulumi:"providerConfig"`
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source *string `pulumi:"source"`
 }
@@ -83,6 +87,8 @@ type GlobalInitScriptState struct {
 	Name pulumi.StringPtrInput
 	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position pulumi.IntPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GlobalInitScriptProviderConfigPtrInput
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source pulumi.StringPtrInput
 }
@@ -101,6 +107,8 @@ type globalInitScriptArgs struct {
 	Name *string `pulumi:"name"`
 	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position *int `pulumi:"position"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GlobalInitScriptProviderConfig `pulumi:"providerConfig"`
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source *string `pulumi:"source"`
 }
@@ -116,6 +124,8 @@ type GlobalInitScriptArgs struct {
 	Name pulumi.StringPtrInput
 	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position pulumi.IntPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GlobalInitScriptProviderConfigPtrInput
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source pulumi.StringPtrInput
 }
@@ -229,6 +239,11 @@ func (o GlobalInitScriptOutput) Name() pulumi.StringOutput {
 // the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 func (o GlobalInitScriptOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *GlobalInitScript) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o GlobalInitScriptOutput) ProviderConfig() GlobalInitScriptProviderConfigPtrOutput {
+	return o.ApplyT(func(v *GlobalInitScript) GlobalInitScriptProviderConfigPtrOutput { return v.ProviderConfig }).(GlobalInitScriptProviderConfigPtrOutput)
 }
 
 // Path to script's source code on local filesystem. Conflicts with `contentBase64`

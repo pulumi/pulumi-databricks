@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MlflowWebhookState;
 import com.pulumi.databricks.outputs.MlflowWebhookHttpUrlSpec;
 import com.pulumi.databricks.outputs.MlflowWebhookJobSpec;
+import com.pulumi.databricks.outputs.MlflowWebhookProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -242,6 +243,12 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> modelName() {
         return Codegen.optional(this.modelName);
+    }
+    @Export(name="providerConfig", refs={MlflowWebhookProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ MlflowWebhookProviderConfig> providerConfig;
+
+    public Output<Optional<MlflowWebhookProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.

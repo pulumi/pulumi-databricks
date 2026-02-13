@@ -25,7 +25,8 @@ class ArtifactAllowlistArgs:
                  artifact_type: pulumi.Input[_builtins.str],
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ArtifactAllowlistProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a ArtifactAllowlist resource.
         :param pulumi.Input[_builtins.str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
@@ -41,6 +42,8 @@ class ArtifactAllowlistArgs:
             pulumi.set(__self__, "created_by", created_by)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="artifactMatchers")
@@ -99,6 +102,15 @@ class ArtifactAllowlistArgs:
     def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ArtifactAllowlistProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ArtifactAllowlistProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _ArtifactAllowlistState:
@@ -107,7 +119,8 @@ class _ArtifactAllowlistState:
                  artifact_type: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ArtifactAllowlistProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ArtifactAllowlist resources.
         :param pulumi.Input[_builtins.str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
@@ -125,6 +138,8 @@ class _ArtifactAllowlistState:
             pulumi.set(__self__, "created_by", created_by)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="artifactMatchers")
@@ -183,6 +198,15 @@ class _ArtifactAllowlistState:
     def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ArtifactAllowlistProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ArtifactAllowlistProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.type_token("databricks:index/artifactAllowlist:ArtifactAllowlist")
 class ArtifactAllowlist(pulumi.CustomResource):
@@ -195,6 +219,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ArtifactAllowlistProviderConfigArgs', 'ArtifactAllowlistProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
@@ -285,6 +310,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ArtifactAllowlistProviderConfigArgs', 'ArtifactAllowlistProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -303,6 +329,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["created_by"] = created_by
             __props__.__dict__["metastore_id"] = metastore_id
+            __props__.__dict__["provider_config"] = provider_config
         super(ArtifactAllowlist, __self__).__init__(
             'databricks:index/artifactAllowlist:ArtifactAllowlist',
             resource_name,
@@ -317,7 +344,8 @@ class ArtifactAllowlist(pulumi.CustomResource):
             artifact_type: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.int]] = None,
             created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            metastore_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ArtifactAllowlist':
+            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['ArtifactAllowlistProviderConfigArgs', 'ArtifactAllowlistProviderConfigArgsDict']]] = None) -> 'ArtifactAllowlist':
         """
         Get an existing ArtifactAllowlist resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -339,6 +367,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["metastore_id"] = metastore_id
+        __props__.__dict__["provider_config"] = provider_config
         return ArtifactAllowlist(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -377,4 +406,9 @@ class ArtifactAllowlist(pulumi.CustomResource):
         ID of the parent metastore.
         """
         return pulumi.get(self, "metastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ArtifactAllowlistProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 

@@ -63,14 +63,17 @@ func GetDataQualityMonitors(ctx *pulumi.Context, args *GetDataQualityMonitorsArg
 // A collection of arguments for invoking getDataQualityMonitors.
 type GetDataQualityMonitorsArgs struct {
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDataQualityMonitorsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDataQualityMonitors.
 type GetDataQualityMonitorsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id       string                          `pulumi:"id"`
-	Monitors []GetDataQualityMonitorsMonitor `pulumi:"monitors"`
-	PageSize *int                            `pulumi:"pageSize"`
+	Id             string                                `pulumi:"id"`
+	Monitors       []GetDataQualityMonitorsMonitor       `pulumi:"monitors"`
+	PageSize       *int                                  `pulumi:"pageSize"`
+	ProviderConfig *GetDataQualityMonitorsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetDataQualityMonitorsOutput(ctx *pulumi.Context, args GetDataQualityMonitorsOutputArgs, opts ...pulumi.InvokeOption) GetDataQualityMonitorsResultOutput {
@@ -85,6 +88,8 @@ func GetDataQualityMonitorsOutput(ctx *pulumi.Context, args GetDataQualityMonito
 // A collection of arguments for invoking getDataQualityMonitors.
 type GetDataQualityMonitorsOutputArgs struct {
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDataQualityMonitorsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetDataQualityMonitorsOutputArgs) ElementType() reflect.Type {
@@ -117,6 +122,10 @@ func (o GetDataQualityMonitorsResultOutput) Monitors() GetDataQualityMonitorsMon
 
 func (o GetDataQualityMonitorsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDataQualityMonitorsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetDataQualityMonitorsResultOutput) ProviderConfig() GetDataQualityMonitorsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetDataQualityMonitorsResult) *GetDataQualityMonitorsProviderConfig { return v.ProviderConfig }).(GetDataQualityMonitorsProviderConfigPtrOutput)
 }
 
 func init() {

@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.TagPolicyProviderConfigArgs;
 import com.pulumi.databricks.inputs.TagPolicyValueArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -25,6 +26,21 @@ public final class TagPolicyArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<TagPolicyProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<TagPolicyProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="tagKey", required=true)
     private Output<String> tagKey;
 
@@ -43,6 +59,7 @@ public final class TagPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     private TagPolicyArgs(TagPolicyArgs $) {
         this.description = $.description;
+        this.providerConfig = $.providerConfig;
         this.tagKey = $.tagKey;
         this.values = $.values;
     }
@@ -72,6 +89,27 @@ public final class TagPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<TagPolicyProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(TagPolicyProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder tagKey(Output<String> tagKey) {

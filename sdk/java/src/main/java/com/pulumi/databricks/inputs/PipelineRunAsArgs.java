@@ -15,16 +15,104 @@ public final class PipelineRunAsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineRunAsArgs Empty = new PipelineRunAsArgs();
 
+    /**
+     * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+     * 
+     * Example:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Pipeline;
+     * import com.pulumi.databricks.PipelineArgs;
+     * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var this_ = new Pipeline("this", PipelineArgs.builder()
+     *             .runAs(PipelineRunAsArgs.builder()
+     *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     @Import(name="servicePrincipalName")
     private @Nullable Output<String> servicePrincipalName;
 
+    /**
+     * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+     * 
+     * Example:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Pipeline;
+     * import com.pulumi.databricks.PipelineArgs;
+     * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var this_ = new Pipeline("this", PipelineArgs.builder()
+     *             .runAs(PipelineRunAsArgs.builder()
+     *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public Optional<Output<String>> servicePrincipalName() {
         return Optional.ofNullable(this.servicePrincipalName);
     }
 
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * 
+     */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
+    /**
+     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * 
+     */
     public Optional<Output<String>> userName() {
         return Optional.ofNullable(this.userName);
     }
@@ -54,20 +142,116 @@ public final class PipelineRunAsArgs extends com.pulumi.resources.ResourceArgs {
             $ = new PipelineRunAsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param servicePrincipalName The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+         * 
+         * Example:
+         * 
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Pipeline;
+         * import com.pulumi.databricks.PipelineArgs;
+         * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var this_ = new Pipeline("this", PipelineArgs.builder()
+         *             .runAs(PipelineRunAsArgs.builder()
+         *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
+         *                 .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipalName(@Nullable Output<String> servicePrincipalName) {
             $.servicePrincipalName = servicePrincipalName;
             return this;
         }
 
+        /**
+         * @param servicePrincipalName The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+         * 
+         * Example:
+         * 
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Pipeline;
+         * import com.pulumi.databricks.PipelineArgs;
+         * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var this_ = new Pipeline("this", PipelineArgs.builder()
+         *             .runAs(PipelineRunAsArgs.builder()
+         *                 .servicePrincipalName("8d23ae77-912e-4a19-81e4-b9c3f5cc9349")
+         *                 .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipalName(String servicePrincipalName) {
             return servicePrincipalName(Output.of(servicePrincipalName));
         }
 
+        /**
+         * @param userName The email of an active workspace user. Non-admin users can only set this field to their own email.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(@Nullable Output<String> userName) {
             $.userName = userName;
             return this;
         }
 
+        /**
+         * @param userName The email of an active workspace user. Non-admin users can only set this field to their own email.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(String userName) {
             return userName(Output.of(userName));
         }

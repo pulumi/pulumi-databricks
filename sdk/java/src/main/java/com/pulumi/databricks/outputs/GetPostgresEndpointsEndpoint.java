@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresEndpointsEndpointProviderConfig;
 import com.pulumi.databricks.outputs.GetPostgresEndpointsEndpointSpec;
 import com.pulumi.databricks.outputs.GetPostgresEndpointsEndpointStatus;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPostgresEndpointsEndpoint {
@@ -29,6 +32,11 @@ public final class GetPostgresEndpointsEndpoint {
      * 
      */
     private String parent;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetPostgresEndpointsEndpointProviderConfig providerConfig;
     /**
      * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
@@ -75,6 +83,13 @@ public final class GetPostgresEndpointsEndpoint {
         return this.parent;
     }
     /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetPostgresEndpointsEndpointProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    /**
      * @return (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      * 
      */
@@ -115,6 +130,7 @@ public final class GetPostgresEndpointsEndpoint {
         private String createTime;
         private String name;
         private String parent;
+        private @Nullable GetPostgresEndpointsEndpointProviderConfig providerConfig;
         private GetPostgresEndpointsEndpointSpec spec;
         private GetPostgresEndpointsEndpointStatus status;
         private String uid;
@@ -125,6 +141,7 @@ public final class GetPostgresEndpointsEndpoint {
     	      this.createTime = defaults.createTime;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
     	      this.status = defaults.status;
     	      this.uid = defaults.uid;
@@ -153,6 +170,12 @@ public final class GetPostgresEndpointsEndpoint {
               throw new MissingRequiredPropertyException("GetPostgresEndpointsEndpoint", "parent");
             }
             this.parent = parent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPostgresEndpointsEndpointProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -192,6 +215,7 @@ public final class GetPostgresEndpointsEndpoint {
             _resultValue.createTime = createTime;
             _resultValue.name = name;
             _resultValue.parent = parent;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;
             _resultValue.status = status;
             _resultValue.uid = uid;

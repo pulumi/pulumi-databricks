@@ -23,6 +23,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (string) - The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         /// </summary>
         public readonly string Type;
@@ -38,12 +42,15 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            Outputs.GetWarehousesDefaultWarehouseOverridesDefaultWarehouseOverrideProviderConfigResult? providerConfig,
+
             string type,
 
             string warehouseId)
         {
             DefaultWarehouseOverrideId = defaultWarehouseOverrideId;
             Name = name;
+            ProviderConfig = providerConfig;
             Type = type;
             WarehouseId = warehouseId;
         }

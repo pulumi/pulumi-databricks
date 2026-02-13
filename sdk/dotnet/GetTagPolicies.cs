@@ -140,6 +140,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetTagPoliciesProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetTagPoliciesArgs()
         {
         }
@@ -156,6 +162,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetTagPoliciesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetTagPoliciesInvokeArgs()
         {
         }
@@ -171,6 +183,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly int? PageSize;
+        public readonly Outputs.GetTagPoliciesProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetTagPoliciesTagPolicyResult> TagPolicies;
 
         [OutputConstructor]
@@ -179,10 +192,13 @@ namespace Pulumi.Databricks
 
             int? pageSize,
 
+            Outputs.GetTagPoliciesProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetTagPoliciesTagPolicyResult> tagPolicies)
         {
             Id = id;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
             TagPolicies = tagPolicies;
         }
     }

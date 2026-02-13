@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.TagPolicyProviderConfigArgs;
 import com.pulumi.databricks.inputs.TagPolicyValueArgs;
 import java.lang.String;
 import java.util.List;
@@ -37,6 +38,21 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<TagPolicyProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<TagPolicyProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     @Import(name="tagKey")
@@ -73,6 +89,7 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
     private TagPolicyState(TagPolicyState $) {
         this.createTime = $.createTime;
         this.description = $.description;
+        this.providerConfig = $.providerConfig;
         this.tagKey = $.tagKey;
         this.updateTime = $.updateTime;
         this.values = $.values;
@@ -124,6 +141,27 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
 
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<TagPolicyProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(TagPolicyProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder tagKey(@Nullable Output<String> tagKey) {

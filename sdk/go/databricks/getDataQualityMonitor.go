@@ -83,6 +83,8 @@ type LookupDataQualityMonitorArgs struct {
 	ObjectId string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType string `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDataQualityMonitorProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDataQualityMonitor.
@@ -97,7 +99,8 @@ type LookupDataQualityMonitorResult struct {
 	// (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	ObjectId string `pulumi:"objectId"`
 	// (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
-	ObjectType string `pulumi:"objectType"`
+	ObjectType     string                               `pulumi:"objectType"`
+	ProviderConfig *GetDataQualityMonitorProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupDataQualityMonitorOutput(ctx *pulumi.Context, args LookupDataQualityMonitorOutputArgs, opts ...pulumi.InvokeOption) LookupDataQualityMonitorResultOutput {
@@ -123,6 +126,8 @@ type LookupDataQualityMonitorOutputArgs struct {
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDataQualityMonitorProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupDataQualityMonitorOutputArgs) ElementType() reflect.Type {
@@ -172,6 +177,10 @@ func (o LookupDataQualityMonitorResultOutput) ObjectId() pulumi.StringOutput {
 // (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
 func (o LookupDataQualityMonitorResultOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataQualityMonitorResult) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+func (o LookupDataQualityMonitorResultOutput) ProviderConfig() GetDataQualityMonitorProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupDataQualityMonitorResult) *GetDataQualityMonitorProviderConfig { return v.ProviderConfig }).(GetDataQualityMonitorProviderConfigPtrOutput)
 }
 
 func init() {

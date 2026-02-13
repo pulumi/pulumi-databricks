@@ -224,6 +224,8 @@ type ModelServing struct {
 	EndpointUrl pulumi.StringOutput `pulumi:"endpointUrl"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ModelServingProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	//
 	// Deprecated: Please use AI Gateway to manage rate limits.
@@ -280,6 +282,8 @@ type modelServingState struct {
 	EndpointUrl *string `pulumi:"endpointUrl"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *ModelServingProviderConfig `pulumi:"providerConfig"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	//
 	// Deprecated: Please use AI Gateway to manage rate limits.
@@ -307,6 +311,8 @@ type ModelServingState struct {
 	EndpointUrl pulumi.StringPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ModelServingProviderConfigPtrInput
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	//
 	// Deprecated: Please use AI Gateway to manage rate limits.
@@ -336,6 +342,8 @@ type modelServingArgs struct {
 	EmailNotifications *ModelServingEmailNotifications `pulumi:"emailNotifications"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *ModelServingProviderConfig `pulumi:"providerConfig"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	//
 	// Deprecated: Please use AI Gateway to manage rate limits.
@@ -360,6 +368,8 @@ type ModelServingArgs struct {
 	EmailNotifications ModelServingEmailNotificationsPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ModelServingProviderConfigPtrInput
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	//
 	// Deprecated: Please use AI Gateway to manage rate limits.
@@ -490,6 +500,11 @@ func (o ModelServingOutput) EndpointUrl() pulumi.StringOutput {
 // The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 func (o ModelServingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelServing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o ModelServingOutput) ProviderConfig() ModelServingProviderConfigPtrOutput {
+	return o.ApplyT(func(v *ModelServing) ModelServingProviderConfigPtrOutput { return v.ProviderConfig }).(ModelServingProviderConfigPtrOutput)
 }
 
 // A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*

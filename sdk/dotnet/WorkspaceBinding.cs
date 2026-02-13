@@ -62,6 +62,12 @@ namespace Pulumi.Databricks
         public Output<string?> CatalogName { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.WorkspaceBindingProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Name of securable. Change forces creation of a new resource.
         /// </summary>
         [Output("securableName")]
@@ -135,6 +141,12 @@ namespace Pulumi.Databricks
         public Input<string>? CatalogName { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WorkspaceBindingProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Name of securable. Change forces creation of a new resource.
         /// </summary>
         [Input("securableName")]
@@ -168,6 +180,12 @@ namespace Pulumi.Databricks
 
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WorkspaceBindingProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Name of securable. Change forces creation of a new resource.

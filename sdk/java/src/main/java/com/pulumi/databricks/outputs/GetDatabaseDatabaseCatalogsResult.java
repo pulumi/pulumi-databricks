@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDatabaseDatabaseCatalogsDatabaseCatalog;
+import com.pulumi.databricks.outputs.GetDatabaseDatabaseCatalogsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -23,6 +24,7 @@ public final class GetDatabaseDatabaseCatalogsResult {
     private String id;
     private String instanceName;
     private @Nullable Integer pageSize;
+    private @Nullable GetDatabaseDatabaseCatalogsProviderConfig providerConfig;
 
     private GetDatabaseDatabaseCatalogsResult() {}
     public List<GetDatabaseDatabaseCatalogsDatabaseCatalog> databaseCatalogs() {
@@ -41,6 +43,9 @@ public final class GetDatabaseDatabaseCatalogsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    public Optional<GetDatabaseDatabaseCatalogsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -55,6 +60,7 @@ public final class GetDatabaseDatabaseCatalogsResult {
         private String id;
         private String instanceName;
         private @Nullable Integer pageSize;
+        private @Nullable GetDatabaseDatabaseCatalogsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDatabaseDatabaseCatalogsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -62,6 +68,7 @@ public final class GetDatabaseDatabaseCatalogsResult {
     	      this.id = defaults.id;
     	      this.instanceName = defaults.instanceName;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -97,12 +104,19 @@ public final class GetDatabaseDatabaseCatalogsResult {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDatabaseDatabaseCatalogsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetDatabaseDatabaseCatalogsResult build() {
             final var _resultValue = new GetDatabaseDatabaseCatalogsResult();
             _resultValue.databaseCatalogs = databaseCatalogs;
             _resultValue.id = id;
             _resultValue.instanceName = instanceName;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

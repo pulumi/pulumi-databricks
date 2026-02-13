@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetWarehousesDefaultWarehouseOverrideResult',
@@ -26,7 +28,7 @@ class GetWarehousesDefaultWarehouseOverrideResult:
     """
     A collection of values returned by getWarehousesDefaultWarehouseOverride.
     """
-    def __init__(__self__, default_warehouse_override_id=None, id=None, name=None, type=None, warehouse_id=None):
+    def __init__(__self__, default_warehouse_override_id=None, id=None, name=None, provider_config=None, type=None, warehouse_id=None):
         if default_warehouse_override_id and not isinstance(default_warehouse_override_id, str):
             raise TypeError("Expected argument 'default_warehouse_override_id' to be a str")
         pulumi.set(__self__, "default_warehouse_override_id", default_warehouse_override_id)
@@ -36,6 +38,9 @@ class GetWarehousesDefaultWarehouseOverrideResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -69,6 +74,11 @@ class GetWarehousesDefaultWarehouseOverrideResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetWarehousesDefaultWarehouseOverrideProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
@@ -95,14 +105,16 @@ class AwaitableGetWarehousesDefaultWarehouseOverrideResult(GetWarehousesDefaultW
             default_warehouse_override_id=self.default_warehouse_override_id,
             id=self.id,
             name=self.name,
+            provider_config=self.provider_config,
             type=self.type,
             warehouse_id=self.warehouse_id)
 
 
 def get_warehouses_default_warehouse_override(name: Optional[_builtins.str] = None,
+                                              provider_config: Optional[Union['GetWarehousesDefaultWarehouseOverrideProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverrideProviderConfigArgsDict']] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWarehousesDefaultWarehouseOverrideResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     The Default Warehouse Override data source allows you to retrieve information about a user's default warehouse selection configuration in Databricks SQL.
 
@@ -118,9 +130,11 @@ def get_warehouses_default_warehouse_override(name: Optional[_builtins.str] = No
 
     :param _builtins.str name: The resource name of the default warehouse override.
            Format: default-warehouse-overrides/{default_warehouse_override_id}
+    :param Union['GetWarehousesDefaultWarehouseOverrideProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverrideProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride', __args__, opts=opts, typ=GetWarehousesDefaultWarehouseOverrideResult).value
 
@@ -128,12 +142,14 @@ def get_warehouses_default_warehouse_override(name: Optional[_builtins.str] = No
         default_warehouse_override_id=pulumi.get(__ret__, 'default_warehouse_override_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         type=pulumi.get(__ret__, 'type'),
         warehouse_id=pulumi.get(__ret__, 'warehouse_id'))
 def get_warehouses_default_warehouse_override_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                                                     provider_config: Optional[pulumi.Input[Optional[Union['GetWarehousesDefaultWarehouseOverrideProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWarehousesDefaultWarehouseOverrideResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     The Default Warehouse Override data source allows you to retrieve information about a user's default warehouse selection configuration in Databricks SQL.
 
@@ -149,14 +165,17 @@ def get_warehouses_default_warehouse_override_output(name: Optional[pulumi.Input
 
     :param _builtins.str name: The resource name of the default warehouse override.
            Format: default-warehouse-overrides/{default_warehouse_override_id}
+    :param Union['GetWarehousesDefaultWarehouseOverrideProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverrideProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride', __args__, opts=opts, typ=GetWarehousesDefaultWarehouseOverrideResult)
     return __ret__.apply(lambda __response__: GetWarehousesDefaultWarehouseOverrideResult(
         default_warehouse_override_id=pulumi.get(__response__, 'default_warehouse_override_id'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         type=pulumi.get(__response__, 'type'),
         warehouse_id=pulumi.get(__response__, 'warehouse_id')))

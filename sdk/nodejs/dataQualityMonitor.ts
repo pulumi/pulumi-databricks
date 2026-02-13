@@ -91,6 +91,10 @@ export class DataQualityMonitor extends pulumi.CustomResource {
      * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     declare public readonly objectType: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DataQualityMonitorProviderConfig | undefined>;
 
     /**
      * Create a DataQualityMonitor resource with the given unique name, arguments, and options.
@@ -109,6 +113,7 @@ export class DataQualityMonitor extends pulumi.CustomResource {
             resourceInputs["dataProfilingConfig"] = state?.dataProfilingConfig;
             resourceInputs["objectId"] = state?.objectId;
             resourceInputs["objectType"] = state?.objectType;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as DataQualityMonitorArgs | undefined;
             if (args?.objectId === undefined && !opts.urn) {
@@ -121,6 +126,7 @@ export class DataQualityMonitor extends pulumi.CustomResource {
             resourceInputs["dataProfilingConfig"] = args?.dataProfilingConfig;
             resourceInputs["objectId"] = args?.objectId;
             resourceInputs["objectType"] = args?.objectType;
+            resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DataQualityMonitor.__pulumiType, name, resourceInputs, opts);
@@ -156,6 +162,10 @@ export interface DataQualityMonitorState {
      * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DataQualityMonitorProviderConfig>;
 }
 
 /**
@@ -187,4 +197,8 @@ export interface DataQualityMonitorArgs {
      * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DataQualityMonitorProviderConfig>;
 }

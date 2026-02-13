@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.EntityTagAssignmentArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.EntityTagAssignmentState;
+import com.pulumi.databricks.outputs.EntityTagAssignmentProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -115,6 +116,20 @@ public class EntityTagAssignment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> entityType() {
         return this.entityType;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={EntityTagAssignmentProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ EntityTagAssignmentProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<EntityTagAssignmentProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The key of the tag

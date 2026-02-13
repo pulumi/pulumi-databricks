@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.TagPolicyArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.TagPolicyState;
+import com.pulumi.databricks.outputs.TagPolicyProviderConfig;
 import com.pulumi.databricks.outputs.TagPolicyValue;
 import java.lang.String;
 import java.util.List;
@@ -97,6 +98,20 @@ public class TagPolicy extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={TagPolicyProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ TagPolicyProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<TagPolicyProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="tagKey", refs={String.class}, tree="[0]")
     private Output<String> tagKey;

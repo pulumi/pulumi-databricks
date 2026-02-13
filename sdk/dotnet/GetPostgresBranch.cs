@@ -121,6 +121,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetPostgresBranchProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetPostgresBranchArgs()
         {
         }
@@ -135,6 +141,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetPostgresBranchProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetPostgresBranchInvokeArgs()
         {
@@ -164,6 +176,7 @@ namespace Pulumi.Databricks
         /// Format: projects/{project_id}
         /// </summary>
         public readonly string Parent;
+        public readonly Outputs.GetPostgresBranchProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (BranchSpec) - The spec contains the branch configuration
         /// </summary>
@@ -191,6 +204,8 @@ namespace Pulumi.Databricks
 
             string parent,
 
+            Outputs.GetPostgresBranchProviderConfigResult? providerConfig,
+
             Outputs.GetPostgresBranchSpecResult spec,
 
             Outputs.GetPostgresBranchStatusResult status,
@@ -203,6 +218,7 @@ namespace Pulumi.Databricks
             Id = id;
             Name = name;
             Parent = parent;
+            ProviderConfig = providerConfig;
             Spec = spec;
             Status = status;
             Uid = uid;

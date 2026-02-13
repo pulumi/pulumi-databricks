@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetJobJobSettingsSettingsTaskDashboardTaskResult
     {
         public readonly string? DashboardId;
+        public readonly ImmutableDictionary<string, string>? Filters;
         public readonly Outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionResult? Subscription;
         public readonly string? WarehouseId;
 
@@ -21,11 +22,14 @@ namespace Pulumi.Databricks.Outputs
         private GetJobJobSettingsSettingsTaskDashboardTaskResult(
             string? dashboardId,
 
+            ImmutableDictionary<string, string>? filters,
+
             Outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionResult? subscription,
 
             string? warehouseId)
         {
             DashboardId = dashboardId;
+            Filters = filters;
             Subscription = subscription;
             WarehouseId = warehouseId;
         }

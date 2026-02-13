@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.GitCredentialArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.GitCredentialState;
+import com.pulumi.databricks.outputs.GitCredentialProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -206,6 +207,20 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> principalId() {
         return Codegen.optional(this.principalId);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={GitCredentialProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ GitCredentialProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<GitCredentialProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

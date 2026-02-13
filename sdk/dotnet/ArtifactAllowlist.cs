@@ -79,6 +79,9 @@ namespace Pulumi.Databricks
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.ArtifactAllowlistProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ArtifactAllowlist resource with the given unique name, arguments, and options.
@@ -157,6 +160,9 @@ namespace Pulumi.Databricks
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.ArtifactAllowlistProviderConfigArgs>? ProviderConfig { get; set; }
+
         public ArtifactAllowlistArgs()
         {
         }
@@ -196,6 +202,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.ArtifactAllowlistProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public ArtifactAllowlistState()
         {

@@ -95,6 +95,9 @@ namespace Pulumi.Databricks
         [Output("primaryKey")]
         public Output<string> PrimaryKey { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.VectorSearchIndexProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         /// <summary>
         /// Object describing the current status of the index consisting of the following fields:
         /// </summary>
@@ -185,6 +188,9 @@ namespace Pulumi.Databricks
         [Input("primaryKey", required: true)]
         public Input<string> PrimaryKey { get; set; } = null!;
 
+        [Input("providerConfig")]
+        public Input<Inputs.VectorSearchIndexProviderConfigArgs>? ProviderConfig { get; set; }
+
         public VectorSearchIndexArgs()
         {
         }
@@ -236,6 +242,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("primaryKey")]
         public Input<string>? PrimaryKey { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.VectorSearchIndexProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("statuses")]
         private InputList<Inputs.VectorSearchIndexStatusGetArgs>? _statuses;

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesProviderConfig;
 import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesSyncedTable;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -22,6 +23,7 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
     private String id;
     private String instanceName;
     private @Nullable Integer pageSize;
+    private @Nullable GetDatabaseSyncedDatabaseTablesProviderConfig providerConfig;
     private List<GetDatabaseSyncedDatabaseTablesSyncedTable> syncedTables;
 
     private GetDatabaseSyncedDatabaseTablesResult() {}
@@ -37,6 +39,9 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
     }
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
+    }
+    public Optional<GetDatabaseSyncedDatabaseTablesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public List<GetDatabaseSyncedDatabaseTablesSyncedTable> syncedTables() {
         return this.syncedTables;
@@ -54,6 +59,7 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
         private String id;
         private String instanceName;
         private @Nullable Integer pageSize;
+        private @Nullable GetDatabaseSyncedDatabaseTablesProviderConfig providerConfig;
         private List<GetDatabaseSyncedDatabaseTablesSyncedTable> syncedTables;
         public Builder() {}
         public Builder(GetDatabaseSyncedDatabaseTablesResult defaults) {
@@ -61,6 +67,7 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
     	      this.id = defaults.id;
     	      this.instanceName = defaults.instanceName;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.syncedTables = defaults.syncedTables;
         }
 
@@ -87,6 +94,12 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDatabaseSyncedDatabaseTablesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder syncedTables(List<GetDatabaseSyncedDatabaseTablesSyncedTable> syncedTables) {
             if (syncedTables == null) {
               throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTablesResult", "syncedTables");
@@ -102,6 +115,7 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
             _resultValue.id = id;
             _resultValue.instanceName = instanceName;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.syncedTables = syncedTables;
             return _resultValue;
         }

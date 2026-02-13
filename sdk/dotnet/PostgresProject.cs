@@ -125,6 +125,12 @@ namespace Pulumi.Databricks
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.PostgresProjectProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
         [Output("spec")]
@@ -203,6 +209,12 @@ namespace Pulumi.Databricks
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.PostgresProjectProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
         [Input("spec")]
@@ -236,6 +248,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.PostgresProjectProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings

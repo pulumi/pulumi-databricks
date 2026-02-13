@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagsFeatureTag;
+import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -23,6 +24,7 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
      */
     private String id;
     private @Nullable Integer pageSize;
+    private @Nullable GetMaterializedFeaturesFeatureTagsProviderConfig providerConfig;
     private String tableName;
 
     private GetMaterializedFeaturesFeatureTagsResult() {}
@@ -42,6 +44,9 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    public Optional<GetMaterializedFeaturesFeatureTagsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public String tableName() {
         return this.tableName;
     }
@@ -59,6 +64,7 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
         private List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags;
         private String id;
         private @Nullable Integer pageSize;
+        private @Nullable GetMaterializedFeaturesFeatureTagsProviderConfig providerConfig;
         private String tableName;
         public Builder() {}
         public Builder(GetMaterializedFeaturesFeatureTagsResult defaults) {
@@ -67,6 +73,7 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
     	      this.featureTags = defaults.featureTags;
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tableName = defaults.tableName;
         }
 
@@ -104,6 +111,12 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetMaterializedFeaturesFeatureTagsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableName(String tableName) {
             if (tableName == null) {
               throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagsResult", "tableName");
@@ -117,6 +130,7 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
             _resultValue.featureTags = featureTags;
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tableName = tableName;
             return _resultValue;
         }

@@ -201,6 +201,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      * Username/groupname/sp applicationId of the external location owner.
      */
     declare public readonly owner: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ExternalLocationProviderConfig | undefined>;
     /**
      * Indicates whether the external location is read-only.
      */
@@ -251,6 +252,7 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["readOnly"] = state?.readOnly;
             resourceInputs["skipValidation"] = state?.skipValidation;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -276,6 +278,7 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = args?.metastoreId;
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["readOnly"] = args?.readOnly;
             resourceInputs["skipValidation"] = args?.skipValidation;
             resourceInputs["url"] = args?.url;
@@ -347,6 +350,7 @@ export interface ExternalLocationState {
      * Username/groupname/sp applicationId of the external location owner.
      */
     owner?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ExternalLocationProviderConfig>;
     /**
      * Indicates whether the external location is read-only.
      */
@@ -412,6 +416,7 @@ export interface ExternalLocationArgs {
      * Username/groupname/sp applicationId of the external location owner.
      */
     owner?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ExternalLocationProviderConfig>;
     /**
      * Indicates whether the external location is read-only.
      */

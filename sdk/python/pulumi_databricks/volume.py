@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['VolumeArgs', 'Volume']
 
@@ -25,6 +27,7 @@ class VolumeArgs:
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['VolumeProviderConfigArgs']] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Volume resource.
@@ -34,6 +37,7 @@ class VolumeArgs:
         :param pulumi.Input[_builtins.str] comment: Free-form text.
         :param pulumi.Input[_builtins.str] name: Name of the Volume
         :param pulumi.Input[_builtins.str] owner: Name of the volume owner.
+        :param pulumi.Input['VolumeProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] storage_location: URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -45,6 +49,8 @@ class VolumeArgs:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if storage_location is not None:
             pulumi.set(__self__, "storage_location", storage_location)
 
@@ -121,6 +127,18 @@ class VolumeArgs:
         pulumi.set(self, "owner", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['VolumeProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['VolumeProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -140,6 +158,7 @@ class _VolumeState:
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['VolumeProviderConfigArgs']] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -150,6 +169,7 @@ class _VolumeState:
         :param pulumi.Input[_builtins.str] comment: Free-form text.
         :param pulumi.Input[_builtins.str] name: Name of the Volume
         :param pulumi.Input[_builtins.str] owner: Name of the volume owner.
+        :param pulumi.Input['VolumeProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] volume_path: base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
@@ -163,6 +183,8 @@ class _VolumeState:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if schema_name is not None:
             pulumi.set(__self__, "schema_name", schema_name)
         if storage_location is not None:
@@ -219,6 +241,18 @@ class _VolumeState:
     @owner.setter
     def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "owner", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['VolumeProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['VolumeProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaName")
@@ -279,6 +313,7 @@ class Volume(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']]] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -355,6 +390,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: Free-form text.
         :param pulumi.Input[_builtins.str] name: Name of the Volume
         :param pulumi.Input[_builtins.str] owner: Name of the volume owner.
+        :param pulumi.Input[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
@@ -450,6 +486,7 @@ class Volume(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']]] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -468,6 +505,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["comment"] = comment
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["provider_config"] = provider_config
             if schema_name is None and not opts.urn:
                 raise TypeError("Missing required property 'schema_name'")
             __props__.__dict__["schema_name"] = schema_name
@@ -490,6 +528,7 @@ class Volume(pulumi.CustomResource):
             comment: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']]] = None,
             schema_name: Optional[pulumi.Input[_builtins.str]] = None,
             storage_location: Optional[pulumi.Input[_builtins.str]] = None,
             volume_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -505,6 +544,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: Free-form text.
         :param pulumi.Input[_builtins.str] name: Name of the Volume
         :param pulumi.Input[_builtins.str] owner: Name of the volume owner.
+        :param pulumi.Input[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] volume_path: base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
@@ -518,6 +558,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["comment"] = comment
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["schema_name"] = schema_name
         __props__.__dict__["storage_location"] = storage_location
         __props__.__dict__["volume_path"] = volume_path
@@ -555,6 +596,14 @@ class Volume(pulumi.CustomResource):
         Name of the volume owner.
         """
         return pulumi.get(self, "owner")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.VolumeProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="schemaName")

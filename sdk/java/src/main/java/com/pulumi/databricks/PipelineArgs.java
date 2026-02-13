@@ -364,9 +364,17 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rootPath);
     }
 
+    /**
+     * The user or the service principal the pipeline runs as. See runAs Configuration Block below.
+     * 
+     */
     @Import(name="runAs")
     private @Nullable Output<PipelineRunAsArgs> runAs;
 
+    /**
+     * @return The user or the service principal the pipeline runs as. See runAs Configuration Block below.
+     * 
+     */
     public Optional<Output<PipelineRunAsArgs>> runAs() {
         return Optional.ofNullable(this.runAs);
     }
@@ -1035,11 +1043,23 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
             return rootPath(Output.of(rootPath));
         }
 
+        /**
+         * @param runAs The user or the service principal the pipeline runs as. See runAs Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAs(@Nullable Output<PipelineRunAsArgs> runAs) {
             $.runAs = runAs;
             return this;
         }
 
+        /**
+         * @param runAs The user or the service principal the pipeline runs as. See runAs Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAs(PipelineRunAsArgs runAs) {
             return runAs(Output.of(runAs));
         }

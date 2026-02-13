@@ -5,9 +5,12 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetMaterializedFeaturesFeatureTagArgs extends com.pulumi.resources.InvokeArgs {
@@ -21,10 +24,26 @@ public final class GetMaterializedFeaturesFeatureTagArgs extends com.pulumi.reso
         return this.key;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetMaterializedFeaturesFeatureTagProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetMaterializedFeaturesFeatureTagProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetMaterializedFeaturesFeatureTagArgs() {}
 
     private GetMaterializedFeaturesFeatureTagArgs(GetMaterializedFeaturesFeatureTagArgs $) {
         this.key = $.key;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -52,6 +71,27 @@ public final class GetMaterializedFeaturesFeatureTagArgs extends com.pulumi.reso
 
         public Builder key(String key) {
             return key(Output.of(key));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetMaterializedFeaturesFeatureTagProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetMaterializedFeaturesFeatureTagProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetMaterializedFeaturesFeatureTagArgs build() {

@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DataQualityMonitorState;
 import com.pulumi.databricks.outputs.DataQualityMonitorAnomalyDetectionConfig;
 import com.pulumi.databricks.outputs.DataQualityMonitorDataProfilingConfig;
+import com.pulumi.databricks.outputs.DataQualityMonitorProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -151,6 +152,20 @@ public class DataQualityMonitor extends com.pulumi.resources.CustomResource {
      */
     public Output<String> objectType() {
         return this.objectType;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={DataQualityMonitorProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DataQualityMonitorProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<DataQualityMonitorProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

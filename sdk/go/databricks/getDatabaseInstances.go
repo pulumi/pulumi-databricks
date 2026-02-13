@@ -56,14 +56,17 @@ func GetDatabaseInstances(ctx *pulumi.Context, args *GetDatabaseInstancesArgs, o
 type GetDatabaseInstancesArgs struct {
 	// Upper bound for items returned
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetDatabaseInstancesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDatabaseInstances.
 type GetDatabaseInstancesResult struct {
 	DatabaseInstances []GetDatabaseInstancesDatabaseInstance `pulumi:"databaseInstances"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	PageSize *int   `pulumi:"pageSize"`
+	Id             string                              `pulumi:"id"`
+	PageSize       *int                                `pulumi:"pageSize"`
+	ProviderConfig *GetDatabaseInstancesProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstancesResultOutput {
@@ -79,6 +82,8 @@ func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOu
 type GetDatabaseInstancesOutputArgs struct {
 	// Upper bound for items returned
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetDatabaseInstancesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetDatabaseInstancesOutputArgs) ElementType() reflect.Type {
@@ -111,6 +116,10 @@ func (o GetDatabaseInstancesResultOutput) Id() pulumi.StringOutput {
 
 func (o GetDatabaseInstancesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetDatabaseInstancesResultOutput) ProviderConfig() GetDatabaseInstancesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesResult) *GetDatabaseInstancesProviderConfig { return v.ProviderConfig }).(GetDatabaseInstancesProviderConfigPtrOutput)
 }
 
 func init() {

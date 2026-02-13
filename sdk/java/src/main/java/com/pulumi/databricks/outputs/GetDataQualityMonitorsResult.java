@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDataQualityMonitorsMonitor;
+import com.pulumi.databricks.outputs.GetDataQualityMonitorsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,6 +23,7 @@ public final class GetDataQualityMonitorsResult {
     private String id;
     private List<GetDataQualityMonitorsMonitor> monitors;
     private @Nullable Integer pageSize;
+    private @Nullable GetDataQualityMonitorsProviderConfig providerConfig;
 
     private GetDataQualityMonitorsResult() {}
     /**
@@ -37,6 +39,9 @@ public final class GetDataQualityMonitorsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    public Optional<GetDataQualityMonitorsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,12 +55,14 @@ public final class GetDataQualityMonitorsResult {
         private String id;
         private List<GetDataQualityMonitorsMonitor> monitors;
         private @Nullable Integer pageSize;
+        private @Nullable GetDataQualityMonitorsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDataQualityMonitorsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.monitors = defaults.monitors;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -83,11 +90,18 @@ public final class GetDataQualityMonitorsResult {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDataQualityMonitorsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetDataQualityMonitorsResult build() {
             final var _resultValue = new GetDataQualityMonitorsResult();
             _resultValue.id = id;
             _resultValue.monitors = monitors;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

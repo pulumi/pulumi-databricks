@@ -14,6 +14,7 @@ export function getOnlineStores(args?: GetOnlineStoresArgs, opts?: pulumi.Invoke
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getOnlineStores:getOnlineStores", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -25,6 +26,10 @@ export interface GetOnlineStoresArgs {
      * The maximum number of results to return. Defaults to 100 if not specified
      */
     pageSize?: number;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetOnlineStoresProviderConfig;
 }
 
 /**
@@ -37,6 +42,7 @@ export interface GetOnlineStoresResult {
     readonly id: string;
     readonly onlineStores: outputs.GetOnlineStoresOnlineStore[];
     readonly pageSize?: number;
+    readonly providerConfig?: outputs.GetOnlineStoresProviderConfig;
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -46,6 +52,7 @@ export function getOnlineStoresOutput(args?: GetOnlineStoresOutputArgs, opts?: p
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getOnlineStores:getOnlineStores", {
         "pageSize": args.pageSize,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -57,4 +64,8 @@ export interface GetOnlineStoresOutputArgs {
      * The maximum number of results to return. Defaults to 100 if not specified
      */
     pageSize?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetOnlineStoresProviderConfigArgs>;
 }

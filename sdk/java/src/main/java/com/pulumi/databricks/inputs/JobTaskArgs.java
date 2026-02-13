@@ -51,9 +51,21 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cleanRoomsNotebookTask);
     }
 
+    /**
+     * Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     @Import(name="compute")
     private @Nullable Output<JobTaskComputeArgs> compute;
 
+    /**
+     * @return Task level compute configuration. This block is documented below.
+     * 
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     * 
+     */
     public Optional<Output<JobTaskComputeArgs>> compute() {
         return Optional.ofNullable(this.compute);
     }
@@ -437,16 +449,12 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
-     * 
      */
     @Import(name="webhookNotifications")
     private @Nullable Output<JobTaskWebhookNotificationsArgs> webhookNotifications;
 
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     * 
-     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<Output<JobTaskWebhookNotificationsArgs>> webhookNotifications() {
@@ -522,11 +530,27 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
             return cleanRoomsNotebookTask(Output.of(cleanRoomsNotebookTask));
         }
 
+        /**
+         * @param compute Task level compute configuration. This block is documented below.
+         * 
+         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder compute(@Nullable Output<JobTaskComputeArgs> compute) {
             $.compute = compute;
             return this;
         }
 
+        /**
+         * @param compute Task level compute configuration. This block is documented below.
+         * 
+         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder compute(JobTaskComputeArgs compute) {
             return compute(Output.of(compute));
         }
@@ -1066,8 +1090,6 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
          * 
-         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
-         * 
          * @return builder
          * 
          */
@@ -1078,8 +1100,6 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-         * 
-         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
          * 
          * @return builder
          * 

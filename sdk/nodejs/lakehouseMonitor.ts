@@ -170,6 +170,7 @@ export class LakehouseMonitor extends pulumi.CustomResource {
      * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
      */
     declare public /*out*/ readonly profileMetricsTableName: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.LakehouseMonitorProviderConfig | undefined>;
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
@@ -228,6 +229,7 @@ export class LakehouseMonitor extends pulumi.CustomResource {
             resourceInputs["notifications"] = state?.notifications;
             resourceInputs["outputSchemaName"] = state?.outputSchemaName;
             resourceInputs["profileMetricsTableName"] = state?.profileMetricsTableName;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schedule"] = state?.schedule;
             resourceInputs["skipBuiltinDashboard"] = state?.skipBuiltinDashboard;
             resourceInputs["slicingExprs"] = state?.slicingExprs;
@@ -255,6 +257,7 @@ export class LakehouseMonitor extends pulumi.CustomResource {
             resourceInputs["latestMonitorFailureMsg"] = args?.latestMonitorFailureMsg;
             resourceInputs["notifications"] = args?.notifications;
             resourceInputs["outputSchemaName"] = args?.outputSchemaName;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schedule"] = args?.schedule;
             resourceInputs["skipBuiltinDashboard"] = args?.skipBuiltinDashboard;
             resourceInputs["slicingExprs"] = args?.slicingExprs;
@@ -323,6 +326,7 @@ export interface LakehouseMonitorState {
      * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
      */
     profileMetricsTableName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.LakehouseMonitorProviderConfig>;
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
@@ -391,6 +395,7 @@ export interface LakehouseMonitorArgs {
      * Schema where output metric tables are created
      */
     outputSchemaName: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.LakehouseMonitorProviderConfig>;
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */

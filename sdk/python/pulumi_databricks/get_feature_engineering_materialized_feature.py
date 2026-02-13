@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetFeatureEngineeringMaterializedFeatureResult',
@@ -27,7 +28,7 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringMaterializedFeature.
     """
-    def __init__(__self__, cron_schedule=None, feature_name=None, id=None, last_materialization_time=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, table_name=None):
+    def __init__(__self__, cron_schedule=None, feature_name=None, id=None, last_materialization_time=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, provider_config=None, table_name=None):
         if cron_schedule and not isinstance(cron_schedule, str):
             raise TypeError("Expected argument 'cron_schedule' to be a str")
         pulumi.set(__self__, "cron_schedule", cron_schedule)
@@ -52,6 +53,9 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         if pipeline_schedule_state and not isinstance(pipeline_schedule_state, str):
             raise TypeError("Expected argument 'pipeline_schedule_state' to be a str")
         pulumi.set(__self__, "pipeline_schedule_state", pipeline_schedule_state)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if table_name and not isinstance(table_name, str):
             raise TypeError("Expected argument 'table_name' to be a str")
         pulumi.set(__self__, "table_name", table_name)
@@ -122,6 +126,11 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         return pulumi.get(self, "pipeline_schedule_state")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetFeatureEngineeringMaterializedFeatureProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="tableName")
     def table_name(self) -> _builtins.str:
         """
@@ -144,19 +153,23 @@ class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineer
             offline_store_config=self.offline_store_config,
             online_store_config=self.online_store_config,
             pipeline_schedule_state=self.pipeline_schedule_state,
+            provider_config=self.provider_config,
             table_name=self.table_name)
 
 
 def get_feature_engineering_materialized_feature(materialized_feature_id: Optional[_builtins.str] = None,
+                                                 provider_config: Optional[Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict']] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureEngineeringMaterializedFeatureResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.str materialized_feature_id: Unique identifier for the materialized feature
+    :param Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['materializedFeatureId'] = materialized_feature_id
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature', __args__, opts=opts, typ=GetFeatureEngineeringMaterializedFeatureResult).value
 
@@ -169,17 +182,21 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
         offline_store_config=pulumi.get(__ret__, 'offline_store_config'),
         online_store_config=pulumi.get(__ret__, 'online_store_config'),
         pipeline_schedule_state=pulumi.get(__ret__, 'pipeline_schedule_state'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         table_name=pulumi.get(__ret__, 'table_name'))
 def get_feature_engineering_materialized_feature_output(materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                                        provider_config: Optional[pulumi.Input[Optional[Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringMaterializedFeatureResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
     :param _builtins.str materialized_feature_id: Unique identifier for the materialized feature
+    :param Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['materializedFeatureId'] = materialized_feature_id
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature', __args__, opts=opts, typ=GetFeatureEngineeringMaterializedFeatureResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringMaterializedFeatureResult(
@@ -191,4 +208,5 @@ def get_feature_engineering_materialized_feature_output(materialized_feature_id:
         offline_store_config=pulumi.get(__response__, 'offline_store_config'),
         online_store_config=pulumi.get(__response__, 'online_store_config'),
         pipeline_schedule_state=pulumi.get(__response__, 'pipeline_schedule_state'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         table_name=pulumi.get(__response__, 'table_name')))

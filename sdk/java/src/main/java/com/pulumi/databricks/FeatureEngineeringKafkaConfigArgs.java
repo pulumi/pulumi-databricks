@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigAuthConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigBackfillSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigKeySchemaArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigProviderConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigSubscriptionModeArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigValueSchemaArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -102,6 +103,21 @@ public final class FeatureEngineeringKafkaConfigArgs extends com.pulumi.resource
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<FeatureEngineeringKafkaConfigProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<FeatureEngineeringKafkaConfigProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Options to configure which Kafka topics to pull data from
      * 
      */
@@ -139,6 +155,7 @@ public final class FeatureEngineeringKafkaConfigArgs extends com.pulumi.resource
         this.bootstrapServers = $.bootstrapServers;
         this.extraOptions = $.extraOptions;
         this.keySchema = $.keySchema;
+        this.providerConfig = $.providerConfig;
         this.subscriptionMode = $.subscriptionMode;
         this.valueSchema = $.valueSchema;
     }
@@ -268,6 +285,27 @@ public final class FeatureEngineeringKafkaConfigArgs extends com.pulumi.resource
          */
         public Builder keySchema(FeatureEngineeringKafkaConfigKeySchemaArgs keySchema) {
             return keySchema(Output.of(keySchema));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<FeatureEngineeringKafkaConfigProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(FeatureEngineeringKafkaConfigProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

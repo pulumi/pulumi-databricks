@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresProjectProviderConfig;
 import com.pulumi.databricks.outputs.GetPostgresProjectSpec;
 import com.pulumi.databricks.outputs.GetPostgresProjectStatus;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPostgresProjectResult {
@@ -28,6 +31,7 @@ public final class GetPostgresProjectResult {
      * 
      */
     private String name;
+    private @Nullable GetPostgresProjectProviderConfig providerConfig;
     /**
      * @return (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      * 
@@ -72,6 +76,9 @@ public final class GetPostgresProjectResult {
     public String name() {
         return this.name;
     }
+    public Optional<GetPostgresProjectProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      * 
@@ -113,6 +120,7 @@ public final class GetPostgresProjectResult {
         private String createTime;
         private String id;
         private String name;
+        private @Nullable GetPostgresProjectProviderConfig providerConfig;
         private GetPostgresProjectSpec spec;
         private GetPostgresProjectStatus status;
         private String uid;
@@ -123,6 +131,7 @@ public final class GetPostgresProjectResult {
     	      this.createTime = defaults.createTime;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
     	      this.status = defaults.status;
     	      this.uid = defaults.uid;
@@ -151,6 +160,12 @@ public final class GetPostgresProjectResult {
               throw new MissingRequiredPropertyException("GetPostgresProjectResult", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPostgresProjectProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -190,6 +205,7 @@ public final class GetPostgresProjectResult {
             _resultValue.createTime = createTime;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;
             _resultValue.status = status;
             _resultValue.uid = uid;

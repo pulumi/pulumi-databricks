@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDataQualityRefreshesResult',
@@ -27,7 +28,7 @@ class GetDataQualityRefreshesResult:
     """
     A collection of values returned by getDataQualityRefreshes.
     """
-    def __init__(__self__, id=None, object_id=None, object_type=None, page_size=None, refreshes=None):
+    def __init__(__self__, id=None, object_id=None, object_type=None, page_size=None, provider_config=None, refreshes=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -40,6 +41,9 @@ class GetDataQualityRefreshesResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if refreshes and not isinstance(refreshes, list):
             raise TypeError("Expected argument 'refreshes' to be a list")
         pulumi.set(__self__, "refreshes", refreshes)
@@ -74,6 +78,11 @@ class GetDataQualityRefreshesResult:
         return pulumi.get(self, "page_size")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDataQualityRefreshesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def refreshes(self) -> Sequence['outputs.GetDataQualityRefreshesRefreshResult']:
         return pulumi.get(self, "refreshes")
@@ -89,12 +98,14 @@ class AwaitableGetDataQualityRefreshesResult(GetDataQualityRefreshesResult):
             object_id=self.object_id,
             object_type=self.object_type,
             page_size=self.page_size,
+            provider_config=self.provider_config,
             refreshes=self.refreshes)
 
 
 def get_data_quality_refreshes(object_id: Optional[_builtins.str] = None,
                                object_type: Optional[_builtins.str] = None,
                                page_size: Optional[_builtins.int] = None,
+                               provider_config: Optional[Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataQualityRefreshesResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -135,11 +146,13 @@ def get_data_quality_refreshes(object_id: Optional[_builtins.str] = None,
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
+    :param Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id
     __args__['objectType'] = object_type
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDataQualityRefreshes:getDataQualityRefreshes', __args__, opts=opts, typ=GetDataQualityRefreshesResult).value
 
@@ -148,10 +161,12 @@ def get_data_quality_refreshes(object_id: Optional[_builtins.str] = None,
         object_id=pulumi.get(__ret__, 'object_id'),
         object_type=pulumi.get(__ret__, 'object_type'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         refreshes=pulumi.get(__ret__, 'refreshes'))
 def get_data_quality_refreshes_output(object_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       object_type: Optional[pulumi.Input[_builtins.str]] = None,
                                       page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                      provider_config: Optional[pulumi.Input[Optional[Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityRefreshesResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -192,11 +207,13 @@ def get_data_quality_refreshes_output(object_id: Optional[pulumi.Input[_builtins
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
     :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
+    :param Union['GetDataQualityRefreshesProviderConfigArgs', 'GetDataQualityRefreshesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['objectId'] = object_id
     __args__['objectType'] = object_type
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDataQualityRefreshes:getDataQualityRefreshes', __args__, opts=opts, typ=GetDataQualityRefreshesResult)
     return __ret__.apply(lambda __response__: GetDataQualityRefreshesResult(
@@ -204,4 +221,5 @@ def get_data_quality_refreshes_output(object_id: Optional[pulumi.Input[_builtins
         object_id=pulumi.get(__response__, 'object_id'),
         object_type=pulumi.get(__response__, 'object_type'),
         page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         refreshes=pulumi.get(__response__, 'refreshes')))

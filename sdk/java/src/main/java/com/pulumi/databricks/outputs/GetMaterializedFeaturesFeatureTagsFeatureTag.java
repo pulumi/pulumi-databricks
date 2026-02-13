@@ -4,9 +4,12 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMaterializedFeaturesFeatureTagsFeatureTag {
@@ -15,6 +18,11 @@ public final class GetMaterializedFeaturesFeatureTagsFeatureTag {
      * 
      */
     private String key;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfig providerConfig;
     /**
      * @return (string)
      * 
@@ -28,6 +36,13 @@ public final class GetMaterializedFeaturesFeatureTagsFeatureTag {
      */
     public String key() {
         return this.key;
+    }
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     /**
      * @return (string)
@@ -47,11 +62,13 @@ public final class GetMaterializedFeaturesFeatureTagsFeatureTag {
     @CustomType.Builder
     public static final class Builder {
         private String key;
+        private @Nullable GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfig providerConfig;
         private String value;
         public Builder() {}
         public Builder(GetMaterializedFeaturesFeatureTagsFeatureTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.value = defaults.value;
         }
 
@@ -61,6 +78,12 @@ public final class GetMaterializedFeaturesFeatureTagsFeatureTag {
               throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagsFeatureTag", "key");
             }
             this.key = key;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetMaterializedFeaturesFeatureTagsFeatureTagProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +97,7 @@ public final class GetMaterializedFeaturesFeatureTagsFeatureTag {
         public GetMaterializedFeaturesFeatureTagsFeatureTag build() {
             final var _resultValue = new GetMaterializedFeaturesFeatureTagsFeatureTag();
             _resultValue.key = key;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.value = value;
             return _resultValue;
         }

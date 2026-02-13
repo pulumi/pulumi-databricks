@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.DashboardArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DashboardState;
+import com.pulumi.databricks.outputs.DashboardProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -195,6 +196,20 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
 
     public Output<String> path() {
         return this.path;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={DashboardProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DashboardProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<DashboardProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.

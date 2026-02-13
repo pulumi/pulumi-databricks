@@ -11,7 +11,9 @@ import com.pulumi.databricks.EnhancedSecurityMonitoringWorkspaceSettingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.EnhancedSecurityMonitoringWorkspaceSettingState;
 import com.pulumi.databricks.outputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace;
+import com.pulumi.databricks.outputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @ResourceType(type="databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting")
@@ -27,6 +29,12 @@ public class EnhancedSecurityMonitoringWorkspaceSetting extends com.pulumi.resou
 
     public Output<String> etag() {
         return this.etag;
+    }
+    @Export(name="providerConfig", refs={EnhancedSecurityMonitoringWorkspaceSettingProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ EnhancedSecurityMonitoringWorkspaceSettingProviderConfig> providerConfig;
+
+    public Output<Optional<EnhancedSecurityMonitoringWorkspaceSettingProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="settingName", refs={String.class}, tree="[0]")
     private Output<String> settingName;

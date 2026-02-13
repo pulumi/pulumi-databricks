@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputAiGatewayArgs;
 import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputEmailNotificationsArgs;
+import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputProviderConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputTagArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -97,6 +98,21 @@ public final class ModelServingProvisionedThroughputArgs extends com.pulumi.reso
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<ModelServingProvisionedThroughputProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<ModelServingProvisionedThroughputProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      * 
      */
@@ -119,6 +135,7 @@ public final class ModelServingProvisionedThroughputArgs extends com.pulumi.reso
         this.config = $.config;
         this.emailNotifications = $.emailNotifications;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.tags = $.tags;
     }
 
@@ -243,6 +260,27 @@ public final class ModelServingProvisionedThroughputArgs extends com.pulumi.reso
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<ModelServingProvisionedThroughputProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(ModelServingProvisionedThroughputProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

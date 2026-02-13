@@ -33,6 +33,7 @@ class CatalogArgs:
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['CatalogProviderConfigArgs']] = None,
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioning_info: Optional[pulumi.Input['CatalogProvisioningInfoArgs']] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -49,6 +50,7 @@ class CatalogArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
+        :param pulumi.Input['CatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
@@ -77,6 +79,8 @@ class CatalogArgs:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if provider_name is not None:
             pulumi.set(__self__, "provider_name", provider_name)
         if provisioning_info is not None:
@@ -225,6 +229,18 @@ class CatalogArgs:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['CatalogProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['CatalogProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="providerName")
     def provider_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -289,6 +305,7 @@ class _CatalogState:
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['CatalogProviderConfigArgs']] = None,
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioning_info: Optional[pulumi.Input['CatalogProvisioningInfoArgs']] = None,
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -312,6 +329,7 @@ class _CatalogState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
+        :param pulumi.Input['CatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] securable_type: the type of Unity Catalog securable.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
@@ -352,6 +370,8 @@ class _CatalogState:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if provider_name is not None:
             pulumi.set(__self__, "provider_name", provider_name)
         if provisioning_info is not None:
@@ -553,6 +573,18 @@ class _CatalogState:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['CatalogProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['CatalogProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="providerName")
     def provider_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -664,6 +696,7 @@ class Catalog(pulumi.CustomResource):
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -710,6 +743,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
+        :param pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
@@ -776,6 +810,7 @@ class Catalog(pulumi.CustomResource):
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -801,6 +836,7 @@ class Catalog(pulumi.CustomResource):
             __props__.__dict__["options"] = options
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["provider_name"] = provider_name
             __props__.__dict__["provisioning_info"] = provisioning_info
             __props__.__dict__["share_name"] = share_name
@@ -839,6 +875,7 @@ class Catalog(pulumi.CustomResource):
             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: Optional[pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
             provider_name: Optional[pulumi.Input[_builtins.str]] = None,
             provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
             securable_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -867,6 +904,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
+        :param pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] securable_type: the type of Unity Catalog securable.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
@@ -895,6 +933,7 @@ class Catalog(pulumi.CustomResource):
         __props__.__dict__["options"] = options
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties"] = properties
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["provider_name"] = provider_name
         __props__.__dict__["provisioning_info"] = provisioning_info
         __props__.__dict__["securable_type"] = securable_type
@@ -1023,6 +1062,14 @@ class Catalog(pulumi.CustomResource):
         Extensible Catalog properties.
         """
         return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.CatalogProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="providerName")

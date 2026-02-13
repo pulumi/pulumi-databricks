@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OnlineStoreArgs', 'OnlineStore']
 
@@ -21,18 +23,22 @@ class OnlineStoreArgs:
     def __init__(__self__, *,
                  capacity: pulumi.Input[_builtins.str],
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['OnlineStoreProviderConfigArgs']] = None,
                  read_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OnlineStore resource.
         :param pulumi.Input[_builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param pulumi.Input[_builtins.str] name: The name of the online store. This is the unique identifier for the online store
+        :param pulumi.Input['OnlineStoreProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy applied to the online store to track billing
         """
         pulumi.set(__self__, "capacity", capacity)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_replica_count is not None:
             pulumi.set(__self__, "read_replica_count", read_replica_count)
         if usage_policy_id is not None:
@@ -61,6 +67,18 @@ class OnlineStoreArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['OnlineStoreProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['OnlineStoreProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="readReplicaCount")
@@ -94,6 +112,7 @@ class _OnlineStoreState:
                  creation_time: Optional[pulumi.Input[_builtins.str]] = None,
                  creator: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['OnlineStoreProviderConfigArgs']] = None,
                  read_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -103,6 +122,7 @@ class _OnlineStoreState:
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the online store was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the online store
         :param pulumi.Input[_builtins.str] name: The name of the online store. This is the unique identifier for the online store
+        :param pulumi.Input['OnlineStoreProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy applied to the online store to track billing
@@ -115,6 +135,8 @@ class _OnlineStoreState:
             pulumi.set(__self__, "creator", creator)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_replica_count is not None:
             pulumi.set(__self__, "read_replica_count", read_replica_count)
         if state is not None:
@@ -171,6 +193,18 @@ class _OnlineStoreState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['OnlineStoreProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['OnlineStoreProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="readReplicaCount")
     def read_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -215,6 +249,7 @@ class OnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']]] = None,
                  read_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -225,6 +260,7 @@ class OnlineStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param pulumi.Input[_builtins.str] name: The name of the online store. This is the unique identifier for the online store
+        :param pulumi.Input[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy applied to the online store to track billing
         """
@@ -254,6 +290,7 @@ class OnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']]] = None,
                  read_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -269,6 +306,7 @@ class OnlineStore(pulumi.CustomResource):
                 raise TypeError("Missing required property 'capacity'")
             __props__.__dict__["capacity"] = capacity
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["read_replica_count"] = read_replica_count
             __props__.__dict__["usage_policy_id"] = usage_policy_id
             __props__.__dict__["creation_time"] = None
@@ -288,6 +326,7 @@ class OnlineStore(pulumi.CustomResource):
             creation_time: Optional[pulumi.Input[_builtins.str]] = None,
             creator: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']]] = None,
             read_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OnlineStore':
@@ -302,6 +341,7 @@ class OnlineStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the online store was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the online store
         :param pulumi.Input[_builtins.str] name: The name of the online store. This is the unique identifier for the online store
+        :param pulumi.Input[Union['OnlineStoreProviderConfigArgs', 'OnlineStoreProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         :param pulumi.Input[_builtins.str] usage_policy_id: The usage policy applied to the online store to track billing
@@ -314,6 +354,7 @@ class OnlineStore(pulumi.CustomResource):
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["creator"] = creator
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["read_replica_count"] = read_replica_count
         __props__.__dict__["state"] = state
         __props__.__dict__["usage_policy_id"] = usage_policy_id
@@ -350,6 +391,14 @@ class OnlineStore(pulumi.CustomResource):
         The name of the online store. This is the unique identifier for the online store
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.OnlineStoreProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="readReplicaCount")

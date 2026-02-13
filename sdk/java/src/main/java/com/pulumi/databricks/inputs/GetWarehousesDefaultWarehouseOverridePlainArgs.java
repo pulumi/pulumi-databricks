@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetWarehousesDefaultWarehouseOverridePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -30,10 +33,26 @@ public final class GetWarehousesDefaultWarehouseOverridePlainArgs extends com.pu
         return this.name;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetWarehousesDefaultWarehouseOverrideProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetWarehousesDefaultWarehouseOverrideProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetWarehousesDefaultWarehouseOverridePlainArgs() {}
 
     private GetWarehousesDefaultWarehouseOverridePlainArgs(GetWarehousesDefaultWarehouseOverridePlainArgs $) {
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -63,6 +82,17 @@ public final class GetWarehousesDefaultWarehouseOverridePlainArgs extends com.pu
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetWarehousesDefaultWarehouseOverrideProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

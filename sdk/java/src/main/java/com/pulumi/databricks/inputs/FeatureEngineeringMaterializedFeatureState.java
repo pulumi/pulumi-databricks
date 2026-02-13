@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -109,6 +110,21 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<FeatureEngineeringMaterializedFeatureProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<FeatureEngineeringMaterializedFeatureProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      * 
      */
@@ -133,6 +149,7 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         this.offlineStoreConfig = $.offlineStoreConfig;
         this.onlineStoreConfig = $.onlineStoreConfig;
         this.pipelineScheduleState = $.pipelineScheduleState;
+        this.providerConfig = $.providerConfig;
         this.tableName = $.tableName;
     }
 
@@ -277,6 +294,27 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
          */
         public Builder pipelineScheduleState(String pipelineScheduleState) {
             return pipelineScheduleState(Output.of(pipelineScheduleState));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<FeatureEngineeringMaterializedFeatureProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(FeatureEngineeringMaterializedFeatureProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

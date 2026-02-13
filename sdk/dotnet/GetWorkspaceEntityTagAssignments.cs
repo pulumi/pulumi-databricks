@@ -150,6 +150,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetWorkspaceEntityTagAssignmentsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetWorkspaceEntityTagAssignmentsArgs()
         {
         }
@@ -176,6 +182,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetWorkspaceEntityTagAssignmentsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetWorkspaceEntityTagAssignmentsInvokeArgs()
         {
         }
@@ -199,6 +211,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly int? PageSize;
+        public readonly Outputs.GetWorkspaceEntityTagAssignmentsProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetWorkspaceEntityTagAssignmentsTagAssignmentResult> TagAssignments;
 
         [OutputConstructor]
@@ -211,12 +224,15 @@ namespace Pulumi.Databricks
 
             int? pageSize,
 
+            Outputs.GetWorkspaceEntityTagAssignmentsProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetWorkspaceEntityTagAssignmentsTagAssignmentResult> tagAssignments)
         {
             EntityId = entityId;
             EntityType = entityType;
             Id = id;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
             TagAssignments = tagAssignments;
         }
     }

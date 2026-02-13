@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -28,6 +30,7 @@ export function getExternalMetadata(args: GetExternalMetadataArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getExternalMetadata:getExternalMetadata", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -39,6 +42,10 @@ export interface GetExternalMetadataArgs {
      * Name of the external metadata object
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetExternalMetadataProviderConfig;
 }
 
 /**
@@ -85,6 +92,7 @@ export interface GetExternalMetadataResult {
      * (object) - A map of key-value properties attached to the external metadata object
      */
     readonly properties: {[key: string]: string};
+    readonly providerConfig?: outputs.GetExternalMetadataProviderConfig;
     /**
      * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
@@ -126,6 +134,7 @@ export function getExternalMetadataOutput(args: GetExternalMetadataOutputArgs, o
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getExternalMetadata:getExternalMetadata", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -137,4 +146,8 @@ export interface GetExternalMetadataOutputArgs {
      * Name of the external metadata object
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetExternalMetadataProviderConfigArgs>;
 }

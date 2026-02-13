@@ -192,6 +192,12 @@ namespace Pulumi.Databricks
         [Input("maxResults")]
         public int? MaxResults { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetEntityTagAssignmentsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetEntityTagAssignmentsArgs()
         {
         }
@@ -218,6 +224,12 @@ namespace Pulumi.Databricks
         [Input("maxResults")]
         public Input<int>? MaxResults { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetEntityTagAssignmentsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetEntityTagAssignmentsInvokeArgs()
         {
         }
@@ -241,6 +253,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly int? MaxResults;
+        public readonly Outputs.GetEntityTagAssignmentsProviderConfigResult? ProviderConfig;
         public readonly ImmutableArray<Outputs.GetEntityTagAssignmentsTagAssignmentResult> TagAssignments;
 
         [OutputConstructor]
@@ -253,12 +266,15 @@ namespace Pulumi.Databricks
 
             int? maxResults,
 
+            Outputs.GetEntityTagAssignmentsProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetEntityTagAssignmentsTagAssignmentResult> tagAssignments)
         {
             EntityName = entityName;
             EntityType = entityType;
             Id = id;
             MaxResults = maxResults;
+            ProviderConfig = providerConfig;
             TagAssignments = tagAssignments;
         }
     }

@@ -74,6 +74,10 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
      */
     declare public readonly objectType: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.QualityMonitorV2ProviderConfig | undefined>;
+    /**
      * Validity check configurations for anomaly detection
      */
     declare public readonly validityCheckConfigurations: pulumi.Output<outputs.QualityMonitorV2ValidityCheckConfiguration[]>;
@@ -94,6 +98,7 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
             resourceInputs["anomalyDetectionConfig"] = state?.anomalyDetectionConfig;
             resourceInputs["objectId"] = state?.objectId;
             resourceInputs["objectType"] = state?.objectType;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["validityCheckConfigurations"] = state?.validityCheckConfigurations;
         } else {
             const args = argsOrState as QualityMonitorV2Args | undefined;
@@ -105,6 +110,7 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
             }
             resourceInputs["objectId"] = args?.objectId;
             resourceInputs["objectType"] = args?.objectType;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["validityCheckConfigurations"] = args?.validityCheckConfigurations;
             resourceInputs["anomalyDetectionConfig"] = undefined /*out*/;
         }
@@ -130,6 +136,10 @@ export interface QualityMonitorV2State {
      */
     objectType?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.QualityMonitorV2ProviderConfig>;
+    /**
      * Validity check configurations for anomaly detection
      */
     validityCheckConfigurations?: pulumi.Input<pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfiguration>[]>;
@@ -147,6 +157,10 @@ export interface QualityMonitorV2Args {
      * The type of the monitored object. Can be one of the following: schema
      */
     objectType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.QualityMonitorV2ProviderConfig>;
     /**
      * Validity check configurations for anomaly detection
      */

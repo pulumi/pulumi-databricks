@@ -217,6 +217,12 @@ namespace Pulumi.Databricks
         public Output<string?> ParentPath { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.QueryProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Text of SQL query.
         /// </summary>
         [Output("queryText")]
@@ -347,6 +353,12 @@ namespace Pulumi.Databricks
         public Input<string>? ParentPath { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.QueryProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Text of SQL query.
         /// </summary>
         [Input("queryText", required: true)]
@@ -455,6 +467,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.QueryProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Text of SQL query.

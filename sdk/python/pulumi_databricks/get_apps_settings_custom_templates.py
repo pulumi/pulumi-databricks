@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAppsSettingsCustomTemplatesResult',
@@ -27,13 +28,16 @@ class GetAppsSettingsCustomTemplatesResult:
     """
     A collection of values returned by getAppsSettingsCustomTemplates.
     """
-    def __init__(__self__, id=None, page_size=None, templates=None):
+    def __init__(__self__, id=None, page_size=None, provider_config=None, templates=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if templates and not isinstance(templates, list):
             raise TypeError("Expected argument 'templates' to be a list")
         pulumi.set(__self__, "templates", templates)
@@ -52,6 +56,11 @@ class GetAppsSettingsCustomTemplatesResult:
         return pulumi.get(self, "page_size")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetAppsSettingsCustomTemplatesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetAppsSettingsCustomTemplatesTemplateResult']:
         return pulumi.get(self, "templates")
@@ -65,10 +74,12 @@ class AwaitableGetAppsSettingsCustomTemplatesResult(GetAppsSettingsCustomTemplat
         return GetAppsSettingsCustomTemplatesResult(
             id=self.id,
             page_size=self.page_size,
+            provider_config=self.provider_config,
             templates=self.templates)
 
 
 def get_apps_settings_custom_templates(page_size: Optional[_builtins.int] = None,
+                                       provider_config: Optional[Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict']] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsSettingsCustomTemplatesResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -90,17 +101,21 @@ def get_apps_settings_custom_templates(page_size: Optional[_builtins.int] = None
 
 
     :param _builtins.int page_size: Upper bound for items returned
+    :param Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates', __args__, opts=opts, typ=GetAppsSettingsCustomTemplatesResult).value
 
     return AwaitableGetAppsSettingsCustomTemplatesResult(
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         templates=pulumi.get(__ret__, 'templates'))
 def get_apps_settings_custom_templates_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                              provider_config: Optional[pulumi.Input[Optional[Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsSettingsCustomTemplatesResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -122,12 +137,15 @@ def get_apps_settings_custom_templates_output(page_size: Optional[pulumi.Input[O
 
 
     :param _builtins.int page_size: Upper bound for items returned
+    :param Union['GetAppsSettingsCustomTemplatesProviderConfigArgs', 'GetAppsSettingsCustomTemplatesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates', __args__, opts=opts, typ=GetAppsSettingsCustomTemplatesResult)
     return __ret__.apply(lambda __response__: GetAppsSettingsCustomTemplatesResult(
         id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         templates=pulumi.get(__response__, 'templates')))

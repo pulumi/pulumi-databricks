@@ -26,14 +26,17 @@ func GetFeatureEngineeringFeatures(ctx *pulumi.Context, args *GetFeatureEngineer
 type GetFeatureEngineeringFeaturesArgs struct {
 	// The maximum number of results to return
 	PageSize *int `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetFeatureEngineeringFeaturesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getFeatureEngineeringFeatures.
 type GetFeatureEngineeringFeaturesResult struct {
 	Features []GetFeatureEngineeringFeaturesFeature `pulumi:"features"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	PageSize *int   `pulumi:"pageSize"`
+	Id             string                                       `pulumi:"id"`
+	PageSize       *int                                         `pulumi:"pageSize"`
+	ProviderConfig *GetFeatureEngineeringFeaturesProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetFeatureEngineeringFeaturesOutput(ctx *pulumi.Context, args GetFeatureEngineeringFeaturesOutputArgs, opts ...pulumi.InvokeOption) GetFeatureEngineeringFeaturesResultOutput {
@@ -49,6 +52,8 @@ func GetFeatureEngineeringFeaturesOutput(ctx *pulumi.Context, args GetFeatureEng
 type GetFeatureEngineeringFeaturesOutputArgs struct {
 	// The maximum number of results to return
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetFeatureEngineeringFeaturesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetFeatureEngineeringFeaturesOutputArgs) ElementType() reflect.Type {
@@ -81,6 +86,12 @@ func (o GetFeatureEngineeringFeaturesResultOutput) Id() pulumi.StringOutput {
 
 func (o GetFeatureEngineeringFeaturesResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFeatureEngineeringFeaturesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetFeatureEngineeringFeaturesResultOutput) ProviderConfig() GetFeatureEngineeringFeaturesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringFeaturesResult) *GetFeatureEngineeringFeaturesProviderConfig {
+		return v.ProviderConfig
+	}).(GetFeatureEngineeringFeaturesProviderConfigPtrOutput)
 }
 
 func init() {

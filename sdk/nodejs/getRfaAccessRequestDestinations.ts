@@ -29,6 +29,7 @@ export function getRfaAccessRequestDestinations(args: GetRfaAccessRequestDestina
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", {
         "fullName": args.fullName,
+        "providerConfig": args.providerConfig,
         "securableType": args.securableType,
     }, opts);
 }
@@ -41,6 +42,10 @@ export interface GetRfaAccessRequestDestinationsArgs {
      * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
      */
     fullName: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetRfaAccessRequestDestinationsProviderConfig;
     /**
      * The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
      */
@@ -74,6 +79,7 @@ export interface GetRfaAccessRequestDestinationsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetRfaAccessRequestDestinationsProviderConfig;
     /**
      * (Securable) - The securable for which the access request destinations are being modified or read
      */
@@ -106,6 +112,7 @@ export function getRfaAccessRequestDestinationsOutput(args: GetRfaAccessRequestD
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", {
         "fullName": args.fullName,
+        "providerConfig": args.providerConfig,
         "securableType": args.securableType,
     }, opts);
 }
@@ -118,6 +125,10 @@ export interface GetRfaAccessRequestDestinationsOutputArgs {
      * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
      */
     fullName: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetRfaAccessRequestDestinationsProviderConfigArgs>;
     /**
      * The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
      */

@@ -18,11 +18,14 @@ import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveRestrictWorks
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveStringVal;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2IntegerVal;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2PersonalCompute;
+import com.pulumi.databricks.outputs.GetWorkspaceSettingV2ProviderConfig;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2RestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2StringVal;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkspaceSettingV2Result {
@@ -106,6 +109,7 @@ public final class GetWorkspaceSettingV2Result {
      * 
      */
     private GetWorkspaceSettingV2PersonalCompute personalCompute;
+    private @Nullable GetWorkspaceSettingV2ProviderConfig providerConfig;
     /**
      * @return (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      * 
@@ -230,6 +234,9 @@ public final class GetWorkspaceSettingV2Result {
     public GetWorkspaceSettingV2PersonalCompute personalCompute() {
         return this.personalCompute;
     }
+    public Optional<GetWorkspaceSettingV2ProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      * 
@@ -270,6 +277,7 @@ public final class GetWorkspaceSettingV2Result {
         private GetWorkspaceSettingV2IntegerVal integerVal;
         private String name;
         private GetWorkspaceSettingV2PersonalCompute personalCompute;
+        private @Nullable GetWorkspaceSettingV2ProviderConfig providerConfig;
         private GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins;
         private GetWorkspaceSettingV2StringVal stringVal;
         public Builder() {}
@@ -291,6 +299,7 @@ public final class GetWorkspaceSettingV2Result {
     	      this.integerVal = defaults.integerVal;
     	      this.name = defaults.name;
     	      this.personalCompute = defaults.personalCompute;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.restrictWorkspaceAdmins = defaults.restrictWorkspaceAdmins;
     	      this.stringVal = defaults.stringVal;
         }
@@ -424,6 +433,12 @@ public final class GetWorkspaceSettingV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetWorkspaceSettingV2ProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder restrictWorkspaceAdmins(GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins) {
             if (restrictWorkspaceAdmins == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "restrictWorkspaceAdmins");
@@ -457,6 +472,7 @@ public final class GetWorkspaceSettingV2Result {
             _resultValue.integerVal = integerVal;
             _resultValue.name = name;
             _resultValue.personalCompute = personalCompute;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.restrictWorkspaceAdmins = restrictWorkspaceAdmins;
             _resultValue.stringVal = stringVal;
             return _resultValue;

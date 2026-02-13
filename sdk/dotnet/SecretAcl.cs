@@ -80,6 +80,12 @@ namespace Pulumi.Databricks
         public Output<string> Principal { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SecretAclProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// name of the scope
         /// </summary>
         [Output("scope")]
@@ -144,6 +150,12 @@ namespace Pulumi.Databricks
         public Input<string> Principal { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SecretAclProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// name of the scope
         /// </summary>
         [Input("scope", required: true)]
@@ -168,6 +180,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SecretAclProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// name of the scope

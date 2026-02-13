@@ -221,6 +221,10 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
      * Full three-part (catalog, schema, table) name of the table
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DatabaseSyncedDatabaseTableProviderConfig | undefined>;
     declare public readonly spec: pulumi.Output<outputs.DatabaseSyncedDatabaseTableSpec | undefined>;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
@@ -248,6 +252,7 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
             resourceInputs["effectiveLogicalDatabaseName"] = state?.effectiveLogicalDatabaseName;
             resourceInputs["logicalDatabaseName"] = state?.logicalDatabaseName;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["unityCatalogProvisioningState"] = state?.unityCatalogProvisioningState;
         } else {
@@ -255,6 +260,7 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
             resourceInputs["databaseInstanceName"] = args?.databaseInstanceName;
             resourceInputs["logicalDatabaseName"] = args?.logicalDatabaseName;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["dataSynchronizationStatus"] = undefined /*out*/;
             resourceInputs["effectiveDatabaseInstanceName"] = undefined /*out*/;
@@ -311,6 +317,10 @@ export interface DatabaseSyncedDatabaseTableState {
      * Full three-part (catalog, schema, table) name of the table
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableProviderConfig>;
     spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec>;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
@@ -348,5 +358,9 @@ export interface DatabaseSyncedDatabaseTableArgs {
      * Full three-part (catalog, schema, table) name of the table
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableProviderConfig>;
     spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec>;
 }

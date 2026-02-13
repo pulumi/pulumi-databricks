@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -100,6 +102,10 @@ export class GitCredential extends pulumi.CustomResource {
      */
     declare public readonly personalAccessToken: pulumi.Output<string | undefined>;
     declare public readonly principalId: pulumi.Output<string | undefined>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.GitCredentialProviderConfig | undefined>;
 
     /**
      * Create a GitCredential resource with the given unique name, arguments, and options.
@@ -122,6 +128,7 @@ export class GitCredential extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["personalAccessToken"] = state?.personalAccessToken;
             resourceInputs["principalId"] = state?.principalId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as GitCredentialArgs | undefined;
             if (args?.gitProvider === undefined && !opts.urn) {
@@ -135,6 +142,7 @@ export class GitCredential extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["personalAccessToken"] = args?.personalAccessToken;
             resourceInputs["principalId"] = args?.principalId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitCredential.__pulumiType, name, resourceInputs, opts);
@@ -174,6 +182,10 @@ export interface GitCredentialState {
      */
     personalAccessToken?: pulumi.Input<string>;
     principalId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GitCredentialProviderConfig>;
 }
 
 /**
@@ -209,4 +221,8 @@ export interface GitCredentialArgs {
      */
     personalAccessToken?: pulumi.Input<string>;
     principalId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GitCredentialProviderConfig>;
 }

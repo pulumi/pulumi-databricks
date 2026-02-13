@@ -86,6 +86,12 @@ namespace Pulumi.Databricks
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.DataQualityMonitorProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DataQualityMonitor resource with the given unique name, arguments, and options.
@@ -165,6 +171,12 @@ namespace Pulumi.Databricks
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DataQualityMonitorProviderConfigArgs>? ProviderConfig { get; set; }
+
         public DataQualityMonitorArgs()
         {
         }
@@ -205,6 +217,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DataQualityMonitorProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public DataQualityMonitorState()
         {

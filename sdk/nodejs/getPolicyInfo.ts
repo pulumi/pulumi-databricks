@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const piiPolicy = databricks.getPolicyInfo({
- *     onSecurableType: "catalog",
+ *     onSecurableType: "CATALOG",
  *     onSecurableFullname: "main",
  *     name: "pii_data_policy",
  * });
@@ -34,6 +34,7 @@ export function getPolicyInfo(args: GetPolicyInfoArgs, opts?: pulumi.InvokeOptio
         "name": args.name,
         "onSecurableFullname": args.onSecurableFullname,
         "onSecurableType": args.onSecurableType,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -48,15 +49,19 @@ export interface GetPolicyInfoArgs {
     name: string;
     /**
      * Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      */
     onSecurableFullname: string;
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     onSecurableType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetPolicyInfoProviderConfig;
 }
 
 /**
@@ -108,19 +113,20 @@ export interface GetPolicyInfoResult {
     readonly name: string;
     /**
      * (string) - Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      */
     readonly onSecurableFullname: string;
     /**
      * (string) - Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     readonly onSecurableType: string;
     /**
-     * (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      */
     readonly policyType: string;
+    readonly providerConfig?: outputs.GetPolicyInfoProviderConfig;
     /**
      * (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
@@ -161,7 +167,7 @@ export interface GetPolicyInfoResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const piiPolicy = databricks.getPolicyInfo({
- *     onSecurableType: "catalog",
+ *     onSecurableType: "CATALOG",
  *     onSecurableFullname: "main",
  *     name: "pii_data_policy",
  * });
@@ -173,6 +179,7 @@ export function getPolicyInfoOutput(args: GetPolicyInfoOutputArgs, opts?: pulumi
         "name": args.name,
         "onSecurableFullname": args.onSecurableFullname,
         "onSecurableType": args.onSecurableType,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -187,13 +194,17 @@ export interface GetPolicyInfoOutputArgs {
     name: pulumi.Input<string>;
     /**
      * Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      */
     onSecurableFullname: pulumi.Input<string>;
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     onSecurableType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetPolicyInfoProviderConfigArgs>;
 }

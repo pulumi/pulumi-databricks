@@ -14,6 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTask
     {
         public readonly Outputs.JobTaskCleanRoomsNotebookTask? CleanRoomsNotebookTask;
+        /// <summary>
+        /// Task level compute configuration. This block is documented below.
+        /// 
+        /// &gt; If no `JobClusterKey`, `ExistingClusterId`, or `NewCluster` were specified in task definition, then task will executed using serverless compute.
+        /// </summary>
         public readonly Outputs.JobTaskCompute? Compute;
         public readonly Outputs.JobTaskConditionTask? ConditionTask;
         public readonly Outputs.JobTaskDashboardTask? DashboardTask;
@@ -103,8 +108,6 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? TimeoutSeconds;
         /// <summary>
         /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-        /// 
-        /// &gt; If no `JobClusterKey`, `ExistingClusterId`, or `NewCluster` were specified in task definition, then task will executed using serverless compute.
         /// </summary>
         public readonly Outputs.JobTaskWebhookNotifications? WebhookNotifications;
 

@@ -43,6 +43,7 @@ export function getDataQualityMonitor(args: GetDataQualityMonitorArgs, opts?: pu
     return pulumi.runtime.invoke("databricks:index/getDataQualityMonitor:getDataQualityMonitor", {
         "objectId": args.objectId,
         "objectType": args.objectType,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -66,6 +67,10 @@ export interface GetDataQualityMonitorArgs {
      * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetDataQualityMonitorProviderConfig;
 }
 
 /**
@@ -93,6 +98,7 @@ export interface GetDataQualityMonitorResult {
      * (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     readonly objectType: string;
+    readonly providerConfig?: outputs.GetDataQualityMonitorProviderConfig;
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -131,6 +137,7 @@ export function getDataQualityMonitorOutput(args: GetDataQualityMonitorOutputArg
     return pulumi.runtime.invokeOutput("databricks:index/getDataQualityMonitor:getDataQualityMonitor", {
         "objectId": args.objectId,
         "objectType": args.objectType,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -154,4 +161,8 @@ export interface GetDataQualityMonitorOutputArgs {
      * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetDataQualityMonitorProviderConfigArgs>;
 }

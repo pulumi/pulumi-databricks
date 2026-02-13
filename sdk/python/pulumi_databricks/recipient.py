@@ -29,6 +29,7 @@ class RecipientArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties_kvpairs: Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']] = None,
+                 provider_config: Optional[pulumi.Input['RecipientProviderConfigArgs']] = None,
                  sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None):
         """
@@ -41,6 +42,7 @@ class RecipientArgs:
         :param pulumi.Input[_builtins.str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input['RecipientPropertiesKvpairsArgs'] properties_kvpairs: Recipient properties - object consisting of following fields:
+        :param pulumi.Input['RecipientProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
@@ -59,6 +61,8 @@ class RecipientArgs:
             pulumi.set(__self__, "owner", owner)
         if properties_kvpairs is not None:
             pulumi.set(__self__, "properties_kvpairs", properties_kvpairs)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if sharing_code is not None:
             pulumi.set(__self__, "sharing_code", sharing_code)
         if tokens is not None:
@@ -161,6 +165,18 @@ class RecipientArgs:
         pulumi.set(self, "properties_kvpairs", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['RecipientProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['RecipientProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="sharingCode")
     def sharing_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -202,6 +218,7 @@ class _RecipientState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties_kvpairs: Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']] = None,
+                 provider_config: Optional[pulumi.Input['RecipientProviderConfigArgs']] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
@@ -222,6 +239,7 @@ class _RecipientState:
         :param pulumi.Input[_builtins.str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input['RecipientPropertiesKvpairsArgs'] properties_kvpairs: Recipient properties - object consisting of following fields:
+        :param pulumi.Input['RecipientProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] region: Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
         :param pulumi.Input[_builtins.str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
@@ -256,6 +274,8 @@ class _RecipientState:
             pulumi.set(__self__, "owner", owner)
         if properties_kvpairs is not None:
             pulumi.set(__self__, "properties_kvpairs", properties_kvpairs)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if sharing_code is not None:
@@ -433,6 +453,18 @@ class _RecipientState:
         pulumi.set(self, "properties_kvpairs", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['RecipientProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['RecipientProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -507,6 +539,7 @@ class Recipient(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
                  sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
@@ -592,6 +625,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']] properties_kvpairs: Recipient properties - object consisting of following fields:
+        :param pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
@@ -696,6 +730,7 @@ class Recipient(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
                  sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
@@ -717,6 +752,7 @@ class Recipient(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties_kvpairs"] = properties_kvpairs
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["sharing_code"] = None if sharing_code is None else pulumi.Output.secret(sharing_code)
             __props__.__dict__["tokens"] = tokens
             __props__.__dict__["activated"] = None
@@ -754,6 +790,7 @@ class Recipient(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
+            provider_config: Optional[pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
             tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
@@ -779,6 +816,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']] properties_kvpairs: Recipient properties - object consisting of following fields:
+        :param pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] region: Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
         :param pulumi.Input[_builtins.str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
@@ -803,6 +841,7 @@ class Recipient(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties_kvpairs"] = properties_kvpairs
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["region"] = region
         __props__.__dict__["sharing_code"] = sharing_code
         __props__.__dict__["tokens"] = tokens
@@ -918,6 +957,14 @@ class Recipient(pulumi.CustomResource):
         Recipient properties - object consisting of following fields:
         """
         return pulumi.get(self, "properties_kvpairs")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.RecipientProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

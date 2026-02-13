@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.PostgresBranchArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PostgresBranchState;
+import com.pulumi.databricks.outputs.PostgresBranchProviderConfig;
 import com.pulumi.databricks.outputs.PostgresBranchSpec;
 import com.pulumi.databricks.outputs.PostgresBranchStatus;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -218,6 +220,20 @@ public class PostgresBranch extends com.pulumi.resources.CustomResource {
      */
     public Output<String> parent() {
         return this.parent;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={PostgresBranchProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ PostgresBranchProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<PostgresBranchProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The spec contains the branch configuration

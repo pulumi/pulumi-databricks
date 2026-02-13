@@ -55,6 +55,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.FeatureEngineeringFeatureLineageContext?> LineageContext { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.FeatureEngineeringFeatureProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The data source of the feature
         /// </summary>
         [Output("source")]
@@ -158,6 +164,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.FeatureEngineeringFeatureLineageContextArgs>? LineageContext { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.FeatureEngineeringFeatureProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The data source of the feature
         /// </summary>
         [Input("source", required: true)]
@@ -221,6 +233,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("lineageContext")]
         public Input<Inputs.FeatureEngineeringFeatureLineageContextGetArgs>? LineageContext { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.FeatureEngineeringFeatureProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The data source of the feature

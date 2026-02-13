@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAlertsV2Alert;
+import com.pulumi.databricks.outputs.GetAlertsV2ProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,6 +23,7 @@ public final class GetAlertsV2Result {
      */
     private String id;
     private @Nullable Integer pageSize;
+    private @Nullable GetAlertsV2ProviderConfig providerConfig;
 
     private GetAlertsV2Result() {}
     public List<GetAlertsV2Alert> alerts() {
@@ -37,6 +39,9 @@ public final class GetAlertsV2Result {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    public Optional<GetAlertsV2ProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,12 +55,14 @@ public final class GetAlertsV2Result {
         private List<GetAlertsV2Alert> alerts;
         private String id;
         private @Nullable Integer pageSize;
+        private @Nullable GetAlertsV2ProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetAlertsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -83,11 +90,18 @@ public final class GetAlertsV2Result {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetAlertsV2ProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetAlertsV2Result build() {
             final var _resultValue = new GetAlertsV2Result();
             _resultValue.alerts = alerts;
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

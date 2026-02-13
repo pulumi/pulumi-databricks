@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.RegisteredModelAliasArgs;
+import com.pulumi.databricks.inputs.RegisteredModelProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -122,6 +123,21 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<RegisteredModelProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<RegisteredModelProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      * 
      */
@@ -178,6 +194,7 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
+        this.providerConfig = $.providerConfig;
         this.schemaName = $.schemaName;
         this.storageLocation = $.storageLocation;
         this.updatedAt = $.updatedAt;
@@ -342,6 +359,27 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<RegisteredModelProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(RegisteredModelProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

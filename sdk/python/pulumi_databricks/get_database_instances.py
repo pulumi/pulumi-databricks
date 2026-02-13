@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDatabaseInstancesResult',
@@ -27,7 +28,7 @@ class GetDatabaseInstancesResult:
     """
     A collection of values returned by getDatabaseInstances.
     """
-    def __init__(__self__, database_instances=None, id=None, page_size=None):
+    def __init__(__self__, database_instances=None, id=None, page_size=None, provider_config=None):
         if database_instances and not isinstance(database_instances, list):
             raise TypeError("Expected argument 'database_instances' to be a list")
         pulumi.set(__self__, "database_instances", database_instances)
@@ -37,6 +38,9 @@ class GetDatabaseInstancesResult:
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="databaseInstances")
@@ -56,6 +60,11 @@ class GetDatabaseInstancesResult:
     def page_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "page_size")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDatabaseInstancesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetDatabaseInstancesResult(GetDatabaseInstancesResult):
     # pylint: disable=using-constant-test
@@ -65,10 +74,12 @@ class AwaitableGetDatabaseInstancesResult(GetDatabaseInstancesResult):
         return GetDatabaseInstancesResult(
             database_instances=self.database_instances,
             id=self.id,
-            page_size=self.page_size)
+            page_size=self.page_size,
+            provider_config=self.provider_config)
 
 
 def get_database_instances(page_size: Optional[_builtins.int] = None,
+                           provider_config: Optional[Union['GetDatabaseInstancesProviderConfigArgs', 'GetDatabaseInstancesProviderConfigArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstancesResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -90,17 +101,21 @@ def get_database_instances(page_size: Optional[_builtins.int] = None,
 
 
     :param _builtins.int page_size: Upper bound for items returned
+    :param Union['GetDatabaseInstancesProviderConfigArgs', 'GetDatabaseInstancesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult).value
 
     return AwaitableGetDatabaseInstancesResult(
         database_instances=pulumi.get(__ret__, 'database_instances'),
         id=pulumi.get(__ret__, 'id'),
-        page_size=pulumi.get(__ret__, 'page_size'))
+        page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_database_instances_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                  provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseInstancesProviderConfigArgs', 'GetDatabaseInstancesProviderConfigArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -122,12 +137,15 @@ def get_database_instances_output(page_size: Optional[pulumi.Input[Optional[_bui
 
 
     :param _builtins.int page_size: Upper bound for items returned
+    :param Union['GetDatabaseInstancesProviderConfigArgs', 'GetDatabaseInstancesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstancesResult(
         database_instances=pulumi.get(__response__, 'database_instances'),
         id=pulumi.get(__response__, 'id'),
-        page_size=pulumi.get(__response__, 'page_size')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

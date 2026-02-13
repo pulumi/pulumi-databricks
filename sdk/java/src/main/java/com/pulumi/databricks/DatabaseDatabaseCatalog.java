@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.DatabaseDatabaseCatalogArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DatabaseDatabaseCatalogState;
+import com.pulumi.databricks.outputs.DatabaseDatabaseCatalogProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -184,6 +186,20 @@ public class DatabaseDatabaseCatalog extends com.pulumi.resources.CustomResource
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={DatabaseDatabaseCatalogProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseDatabaseCatalogProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<DatabaseDatabaseCatalogProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * (string)

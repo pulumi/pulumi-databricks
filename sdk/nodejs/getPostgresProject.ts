@@ -31,6 +31,7 @@ export function getPostgresProject(args: GetPostgresProjectArgs, opts?: pulumi.I
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getPostgresProject:getPostgresProject", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -43,6 +44,10 @@ export interface GetPostgresProjectArgs {
      * Format: projects/{project_id}
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetPostgresProjectProviderConfig;
 }
 
 /**
@@ -62,6 +67,7 @@ export interface GetPostgresProjectResult {
      * Format: projects/{project_id}
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetPostgresProjectProviderConfig;
     /**
      * (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
@@ -104,6 +110,7 @@ export function getPostgresProjectOutput(args: GetPostgresProjectOutputArgs, opt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getPostgresProject:getPostgresProject", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -116,4 +123,8 @@ export interface GetPostgresProjectOutputArgs {
      * Format: projects/{project_id}
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetPostgresProjectProviderConfigArgs>;
 }

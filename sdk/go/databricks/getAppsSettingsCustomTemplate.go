@@ -57,6 +57,8 @@ type LookupAppsSettingsCustomTemplateArgs struct {
 	// The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
 	// It must be unique within the workspace
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetAppsSettingsCustomTemplateProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getAppsSettingsCustomTemplate.
@@ -76,7 +78,8 @@ type LookupAppsSettingsCustomTemplateResult struct {
 	// (string) - Name of the App Resource
 	Name string `pulumi:"name"`
 	// (string) - The path to the template within the Git repository
-	Path string `pulumi:"path"`
+	Path           string                                       `pulumi:"path"`
+	ProviderConfig *GetAppsSettingsCustomTemplateProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupAppsSettingsCustomTemplateOutput(ctx *pulumi.Context, args LookupAppsSettingsCustomTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupAppsSettingsCustomTemplateResultOutput {
@@ -93,6 +96,8 @@ type LookupAppsSettingsCustomTemplateOutputArgs struct {
 	// The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
 	// It must be unique within the workspace
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetAppsSettingsCustomTemplateProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupAppsSettingsCustomTemplateOutputArgs) ElementType() reflect.Type {
@@ -154,6 +159,12 @@ func (o LookupAppsSettingsCustomTemplateResultOutput) Name() pulumi.StringOutput
 // (string) - The path to the template within the Git repository
 func (o LookupAppsSettingsCustomTemplateResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppsSettingsCustomTemplateResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o LookupAppsSettingsCustomTemplateResultOutput) ProviderConfig() GetAppsSettingsCustomTemplateProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupAppsSettingsCustomTemplateResult) *GetAppsSettingsCustomTemplateProviderConfig {
+		return v.ProviderConfig
+	}).(GetAppsSettingsCustomTemplateProviderConfigPtrOutput)
 }
 
 func init() {

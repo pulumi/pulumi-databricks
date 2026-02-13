@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs;
+import com.pulumi.databricks.inputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,13 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingState extends com.p
         return Optional.ofNullable(this.etag);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs> providerConfig;
+
+    public Optional<Output<EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="settingName")
     private @Nullable Output<String> settingName;
 
@@ -42,6 +50,7 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingState extends com.p
     private EnhancedSecurityMonitoringWorkspaceSettingState(EnhancedSecurityMonitoringWorkspaceSettingState $) {
         this.enhancedSecurityMonitoringWorkspace = $.enhancedSecurityMonitoringWorkspace;
         this.etag = $.etag;
+        this.providerConfig = $.providerConfig;
         this.settingName = $.settingName;
     }
 
@@ -79,6 +88,15 @@ public final class EnhancedSecurityMonitoringWorkspaceSettingState extends com.p
 
         public Builder etag(String etag) {
             return etag(Output.of(etag));
+        }
+
+        public Builder providerConfig(@Nullable Output<EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder settingName(@Nullable Output<String> settingName) {

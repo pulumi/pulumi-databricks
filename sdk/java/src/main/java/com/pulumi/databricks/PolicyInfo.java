@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PolicyInfoState;
 import com.pulumi.databricks.outputs.PolicyInfoColumnMask;
 import com.pulumi.databricks.outputs.PolicyInfoMatchColumn;
+import com.pulumi.databricks.outputs.PolicyInfoProviderConfig;
 import com.pulumi.databricks.outputs.PolicyInfoRowFilter;
 import java.lang.Integer;
 import java.lang.String;
@@ -55,11 +56,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var piiRowFilter = new PolicyInfo("piiRowFilter", PolicyInfoArgs.builder()
- *             .onSecurableType("catalog")
+ *             .onSecurableType("CATALOG")
  *             .onSecurableFullname("main")
  *             .name("pii_data_policy")
  *             .policyType("POLICY_TYPE_ROW_FILTER")
- *             .forSecurableType("table")
+ *             .forSecurableType("TABLE")
  *             .toPrincipals("account users")
  *             .whenCondition("hasTag('pii')")
  *             .matchColumns(PolicyInfoMatchColumnArgs.builder()
@@ -106,11 +107,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sensitiveColumnMask = new PolicyInfo("sensitiveColumnMask", PolicyInfoArgs.builder()
- *             .onSecurableType("schema")
+ *             .onSecurableType("SCHEMA")
  *             .onSecurableFullname("main.finance")
  *             .name("sensitive_data_mask")
  *             .policyType("POLICY_TYPE_COLUMN_MASK")
- *             .forSecurableType("table")
+ *             .forSecurableType("TABLE")
  *             .toPrincipals("account users")
  *             .exceptPrincipals("finance_admins")
  *             .whenCondition("hasTag('pii')")
@@ -263,7 +264,7 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
     }
     /**
      * Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     @Export(name="onSecurableFullname", refs={String.class}, tree="[0]")
@@ -271,7 +272,7 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     public Output<Optional<String>> onSecurableFullname() {
@@ -280,7 +281,7 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     @Export(name="onSecurableType", refs={String.class}, tree="[0]")
@@ -289,25 +290,39 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
     /**
      * @return Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     public Output<Optional<String>> onSecurableType() {
         return Codegen.optional(this.onSecurableType);
     }
     /**
-     * Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
-     * @return Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * @return Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     public Output<String> policyType() {
         return this.policyType;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={PolicyInfoProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ PolicyInfoProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<PolicyInfoProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.

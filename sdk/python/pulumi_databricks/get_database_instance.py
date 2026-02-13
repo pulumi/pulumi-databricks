@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDatabaseInstanceResult',
@@ -27,7 +28,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, capacity=None, child_instance_refs=None, creation_time=None, creator=None, custom_tags=None, effective_capacity=None, effective_custom_tags=None, effective_enable_pg_native_login=None, effective_enable_readable_secondaries=None, effective_node_count=None, effective_retention_window_in_days=None, effective_stopped=None, effective_usage_policy_id=None, enable_pg_native_login=None, enable_readable_secondaries=None, id=None, name=None, node_count=None, parent_instance_ref=None, pg_version=None, read_only_dns=None, read_write_dns=None, retention_window_in_days=None, state=None, stopped=None, uid=None, usage_policy_id=None):
+    def __init__(__self__, capacity=None, child_instance_refs=None, creation_time=None, creator=None, custom_tags=None, effective_capacity=None, effective_custom_tags=None, effective_enable_pg_native_login=None, effective_enable_readable_secondaries=None, effective_node_count=None, effective_retention_window_in_days=None, effective_stopped=None, effective_usage_policy_id=None, enable_pg_native_login=None, enable_readable_secondaries=None, id=None, name=None, node_count=None, parent_instance_ref=None, pg_version=None, provider_config=None, read_only_dns=None, read_write_dns=None, retention_window_in_days=None, state=None, stopped=None, uid=None, usage_policy_id=None):
         if capacity and not isinstance(capacity, str):
             raise TypeError("Expected argument 'capacity' to be a str")
         pulumi.set(__self__, "capacity", capacity)
@@ -88,6 +89,9 @@ class GetDatabaseInstanceResult:
         if pg_version and not isinstance(pg_version, str):
             raise TypeError("Expected argument 'pg_version' to be a str")
         pulumi.set(__self__, "pg_version", pg_version)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if read_only_dns and not isinstance(read_only_dns, str):
             raise TypeError("Expected argument 'read_only_dns' to be a str")
         pulumi.set(__self__, "read_only_dns", read_only_dns)
@@ -294,6 +298,11 @@ class GetDatabaseInstanceResult:
         return pulumi.get(self, "pg_version")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDatabaseInstanceProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="readOnlyDns")
     def read_only_dns(self) -> _builtins.str:
         """
@@ -379,6 +388,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             node_count=self.node_count,
             parent_instance_ref=self.parent_instance_ref,
             pg_version=self.pg_version,
+            provider_config=self.provider_config,
             read_only_dns=self.read_only_dns,
             read_write_dns=self.read_write_dns,
             retention_window_in_days=self.retention_window_in_days,
@@ -389,6 +399,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
 
 
 def get_database_instance(name: Optional[_builtins.str] = None,
+                          provider_config: Optional[Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstanceResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -408,9 +419,11 @@ def get_database_instance(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
+    :param Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult).value
 
@@ -435,6 +448,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         node_count=pulumi.get(__ret__, 'node_count'),
         parent_instance_ref=pulumi.get(__ret__, 'parent_instance_ref'),
         pg_version=pulumi.get(__ret__, 'pg_version'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         read_only_dns=pulumi.get(__ret__, 'read_only_dns'),
         read_write_dns=pulumi.get(__ret__, 'read_write_dns'),
         retention_window_in_days=pulumi.get(__ret__, 'retention_window_in_days'),
@@ -443,6 +457,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'))
 def get_database_instance_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                                 provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -462,9 +477,11 @@ def get_database_instance_output(name: Optional[pulumi.Input[_builtins.str]] = N
 
 
     :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
+    :param Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstanceResult(
@@ -488,6 +505,7 @@ def get_database_instance_output(name: Optional[pulumi.Input[_builtins.str]] = N
         node_count=pulumi.get(__response__, 'node_count'),
         parent_instance_ref=pulumi.get(__response__, 'parent_instance_ref'),
         pg_version=pulumi.get(__response__, 'pg_version'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         read_only_dns=pulumi.get(__response__, 'read_only_dns'),
         read_write_dns=pulumi.get(__response__, 'read_write_dns'),
         retention_window_in_days=pulumi.get(__response__, 'retention_window_in_days'),

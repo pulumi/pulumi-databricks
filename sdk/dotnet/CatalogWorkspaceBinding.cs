@@ -57,6 +57,9 @@ namespace Pulumi.Databricks
         [Output("catalogName")]
         public Output<string?> CatalogName { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.CatalogWorkspaceBindingProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         /// <summary>
         /// Name of securable. Change forces creation of a new resource.
         /// </summary>
@@ -130,6 +133,9 @@ namespace Pulumi.Databricks
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.CatalogWorkspaceBindingProviderConfigArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// Name of securable. Change forces creation of a new resource.
         /// </summary>
@@ -164,6 +170,9 @@ namespace Pulumi.Databricks
 
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.CatalogWorkspaceBindingProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Name of securable. Change forces creation of a new resource.

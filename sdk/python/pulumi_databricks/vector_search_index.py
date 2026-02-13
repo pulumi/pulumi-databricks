@@ -26,7 +26,8 @@ class VectorSearchIndexArgs:
                  primary_key: pulumi.Input[_builtins.str],
                  delta_sync_index_spec: Optional[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecArgs']] = None,
                  direct_access_index_spec: Optional[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['VectorSearchIndexProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a VectorSearchIndex resource.
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
@@ -47,6 +48,8 @@ class VectorSearchIndexArgs:
             pulumi.set(__self__, "direct_access_index_spec", direct_access_index_spec)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="endpointName")
@@ -122,6 +125,15 @@ class VectorSearchIndexArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['VectorSearchIndexProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['VectorSearchIndexProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _VectorSearchIndexState:
@@ -133,6 +145,7 @@ class _VectorSearchIndexState:
                  index_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['VectorSearchIndexProviderConfigArgs']] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexStatusArgs']]]] = None):
         """
         Input properties used for looking up and filtering VectorSearchIndex resources.
@@ -161,6 +174,8 @@ class _VectorSearchIndexState:
             pulumi.set(__self__, "name", name)
         if primary_key is not None:
             pulumi.set(__self__, "primary_key", primary_key)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
 
@@ -251,6 +266,15 @@ class _VectorSearchIndexState:
         pulumi.set(self, "primary_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['VectorSearchIndexProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['VectorSearchIndexProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexStatusArgs']]]]:
         """
@@ -275,6 +299,7 @@ class VectorSearchIndex(pulumi.CustomResource):
                  index_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['VectorSearchIndexProviderConfigArgs', 'VectorSearchIndexProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
@@ -366,6 +391,7 @@ class VectorSearchIndex(pulumi.CustomResource):
                  index_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['VectorSearchIndexProviderConfigArgs', 'VectorSearchIndexProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -387,6 +413,7 @@ class VectorSearchIndex(pulumi.CustomResource):
             if primary_key is None and not opts.urn:
                 raise TypeError("Missing required property 'primary_key'")
             __props__.__dict__["primary_key"] = primary_key
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["creator"] = None
             __props__.__dict__["statuses"] = None
         super(VectorSearchIndex, __self__).__init__(
@@ -406,6 +433,7 @@ class VectorSearchIndex(pulumi.CustomResource):
             index_type: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             primary_key: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['VectorSearchIndexProviderConfigArgs', 'VectorSearchIndexProviderConfigArgsDict']]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchIndexStatusArgs', 'VectorSearchIndexStatusArgsDict']]]]] = None) -> 'VectorSearchIndex':
         """
         Get an existing VectorSearchIndex resource's state with the given name, id, and optional extra
@@ -436,6 +464,7 @@ class VectorSearchIndex(pulumi.CustomResource):
         __props__.__dict__["index_type"] = index_type
         __props__.__dict__["name"] = name
         __props__.__dict__["primary_key"] = primary_key
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["statuses"] = statuses
         return VectorSearchIndex(resource_name, opts=opts, __props__=__props__)
 
@@ -496,6 +525,11 @@ class VectorSearchIndex(pulumi.CustomResource):
         The column name that will be used as a primary key.
         """
         return pulumi.get(self, "primary_key")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.VectorSearchIndexProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

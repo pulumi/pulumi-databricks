@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetTagPoliciesTagPolicyProviderConfig;
 import com.pulumi.databricks.outputs.GetTagPoliciesTagPolicyValue;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTagPoliciesTagPolicy {
@@ -27,6 +30,11 @@ public final class GetTagPoliciesTagPolicy {
      * 
      */
     private String id;
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    private @Nullable GetTagPoliciesTagPolicyProviderConfig providerConfig;
     /**
      * @return (string)
      * 
@@ -66,6 +74,13 @@ public final class GetTagPoliciesTagPolicy {
         return this.id;
     }
     /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetTagPoliciesTagPolicyProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    /**
      * @return (string)
      * 
      */
@@ -99,6 +114,7 @@ public final class GetTagPoliciesTagPolicy {
         private String createTime;
         private String description;
         private String id;
+        private @Nullable GetTagPoliciesTagPolicyProviderConfig providerConfig;
         private String tagKey;
         private String updateTime;
         private List<GetTagPoliciesTagPolicyValue> values;
@@ -108,6 +124,7 @@ public final class GetTagPoliciesTagPolicy {
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tagKey = defaults.tagKey;
     	      this.updateTime = defaults.updateTime;
     	      this.values = defaults.values;
@@ -135,6 +152,12 @@ public final class GetTagPoliciesTagPolicy {
               throw new MissingRequiredPropertyException("GetTagPoliciesTagPolicy", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetTagPoliciesTagPolicyProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -169,6 +192,7 @@ public final class GetTagPoliciesTagPolicy {
             _resultValue.createTime = createTime;
             _resultValue.description = description;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tagKey = tagKey;
             _resultValue.updateTime = updateTime;
             _resultValue.values = values;

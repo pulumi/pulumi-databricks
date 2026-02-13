@@ -92,6 +92,8 @@ type LookupEntityTagAssignmentArgs struct {
 	EntityName string `pulumi:"entityName"`
 	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType string `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// The key of the tag
 	TagKey string `pulumi:"tagKey"`
 }
@@ -103,7 +105,8 @@ type LookupEntityTagAssignmentResult struct {
 	// (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType string `pulumi:"entityType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                                `pulumi:"id"`
+	ProviderConfig *GetEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// (string) - The key of the tag
 	TagKey string `pulumi:"tagKey"`
 	// (string) - The value of the tag
@@ -125,6 +128,8 @@ type LookupEntityTagAssignmentOutputArgs struct {
 	EntityName pulumi.StringInput `pulumi:"entityName"`
 	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetEntityTagAssignmentProviderConfigPtrInput `pulumi:"providerConfig"`
 	// The key of the tag
 	TagKey pulumi.StringInput `pulumi:"tagKey"`
 }
@@ -161,6 +166,10 @@ func (o LookupEntityTagAssignmentResultOutput) EntityType() pulumi.StringOutput 
 // The provider-assigned unique ID for this managed resource.
 func (o LookupEntityTagAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupEntityTagAssignmentResultOutput) ProviderConfig() GetEntityTagAssignmentProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupEntityTagAssignmentResult) *GetEntityTagAssignmentProviderConfig { return v.ProviderConfig }).(GetEntityTagAssignmentProviderConfigPtrOutput)
 }
 
 // (string) - The key of the tag

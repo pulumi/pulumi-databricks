@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -105,6 +107,10 @@ export class ExternalMetadata extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.ExternalMetadataProviderConfig | undefined>;
+    /**
      * Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
     declare public readonly systemType: pulumi.Output<string>;
@@ -143,6 +149,7 @@ export class ExternalMetadata extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["systemType"] = state?.systemType;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["updatedBy"] = state?.updatedBy;
@@ -161,6 +168,7 @@ export class ExternalMetadata extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["systemType"] = args?.systemType;
             resourceInputs["url"] = args?.url;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -215,6 +223,10 @@ export interface ExternalMetadataState {
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.ExternalMetadataProviderConfig>;
+    /**
      * Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
     systemType?: pulumi.Input<string>;
@@ -260,6 +272,10 @@ export interface ExternalMetadataArgs {
      * A map of key-value properties attached to the external metadata object
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.ExternalMetadataProviderConfig>;
     /**
      * Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */

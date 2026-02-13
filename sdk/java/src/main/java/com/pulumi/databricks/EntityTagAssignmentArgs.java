@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.EntityTagAssignmentProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -47,6 +48,21 @@ public final class EntityTagAssignmentArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<EntityTagAssignmentProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<EntityTagAssignmentProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The key of the tag
      * 
      */
@@ -81,6 +97,7 @@ public final class EntityTagAssignmentArgs extends com.pulumi.resources.Resource
     private EntityTagAssignmentArgs(EntityTagAssignmentArgs $) {
         this.entityName = $.entityName;
         this.entityType = $.entityType;
+        this.providerConfig = $.providerConfig;
         this.tagKey = $.tagKey;
         this.tagValue = $.tagValue;
     }
@@ -143,6 +160,27 @@ public final class EntityTagAssignmentArgs extends com.pulumi.resources.Resource
          */
         public Builder entityType(String entityType) {
             return entityType(Output.of(entityType));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<EntityTagAssignmentProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(EntityTagAssignmentProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

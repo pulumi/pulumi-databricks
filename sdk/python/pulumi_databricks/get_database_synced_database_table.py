@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDatabaseSyncedDatabaseTableResult',
@@ -27,7 +28,7 @@ class GetDatabaseSyncedDatabaseTableResult:
     """
     A collection of values returned by getDatabaseSyncedDatabaseTable.
     """
-    def __init__(__self__, data_synchronization_status=None, database_instance_name=None, effective_database_instance_name=None, effective_logical_database_name=None, id=None, logical_database_name=None, name=None, spec=None, unity_catalog_provisioning_state=None):
+    def __init__(__self__, data_synchronization_status=None, database_instance_name=None, effective_database_instance_name=None, effective_logical_database_name=None, id=None, logical_database_name=None, name=None, provider_config=None, spec=None, unity_catalog_provisioning_state=None):
         if data_synchronization_status and not isinstance(data_synchronization_status, dict):
             raise TypeError("Expected argument 'data_synchronization_status' to be a dict")
         pulumi.set(__self__, "data_synchronization_status", data_synchronization_status)
@@ -49,6 +50,9 @@ class GetDatabaseSyncedDatabaseTableResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if spec and not isinstance(spec, dict):
             raise TypeError("Expected argument 'spec' to be a dict")
         pulumi.set(__self__, "spec", spec)
@@ -121,6 +125,11 @@ class GetDatabaseSyncedDatabaseTableResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTableProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> 'outputs.GetDatabaseSyncedDatabaseTableSpecResult':
         """
@@ -152,11 +161,13 @@ class AwaitableGetDatabaseSyncedDatabaseTableResult(GetDatabaseSyncedDatabaseTab
             id=self.id,
             logical_database_name=self.logical_database_name,
             name=self.name,
+            provider_config=self.provider_config,
             spec=self.spec,
             unity_catalog_provisioning_state=self.unity_catalog_provisioning_state)
 
 
 def get_database_synced_database_table(name: Optional[_builtins.str] = None,
+                                       provider_config: Optional[Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict']] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseSyncedDatabaseTableResult:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -176,9 +187,11 @@ def get_database_synced_database_table(name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Full three-part (catalog, schema, table) name of the table
+    :param Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTableResult).value
 
@@ -190,9 +203,11 @@ def get_database_synced_database_table(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         logical_database_name=pulumi.get(__ret__, 'logical_database_name'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         spec=pulumi.get(__ret__, 'spec'),
         unity_catalog_provisioning_state=pulumi.get(__ret__, 'unity_catalog_provisioning_state'))
 def get_database_synced_database_table_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                                              provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseSyncedDatabaseTableResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -212,9 +227,11 @@ def get_database_synced_database_table_output(name: Optional[pulumi.Input[_built
 
 
     :param _builtins.str name: Full three-part (catalog, schema, table) name of the table
+    :param Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTableResult)
     return __ret__.apply(lambda __response__: GetDatabaseSyncedDatabaseTableResult(
@@ -225,5 +242,6 @@ def get_database_synced_database_table_output(name: Optional[pulumi.Input[_built
         id=pulumi.get(__response__, 'id'),
         logical_database_name=pulumi.get(__response__, 'logical_database_name'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         spec=pulumi.get(__response__, 'spec'),
         unity_catalog_provisioning_state=pulumi.get(__response__, 'unity_catalog_provisioning_state')))

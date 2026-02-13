@@ -6,9 +6,12 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeatureResult {
@@ -53,6 +56,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      * 
      */
     private String pipelineScheduleState;
+    private @Nullable GetFeatureEngineeringMaterializedFeatureProviderConfig providerConfig;
     /**
      * @return (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      * 
@@ -117,6 +121,9 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     public String pipelineScheduleState() {
         return this.pipelineScheduleState;
     }
+    public Optional<GetFeatureEngineeringMaterializedFeatureProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      * 
@@ -142,6 +149,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         private GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig offlineStoreConfig;
         private GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig;
         private String pipelineScheduleState;
+        private @Nullable GetFeatureEngineeringMaterializedFeatureProviderConfig providerConfig;
         private String tableName;
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeatureResult defaults) {
@@ -154,6 +162,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     	      this.offlineStoreConfig = defaults.offlineStoreConfig;
     	      this.onlineStoreConfig = defaults.onlineStoreConfig;
     	      this.pipelineScheduleState = defaults.pipelineScheduleState;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tableName = defaults.tableName;
         }
 
@@ -222,6 +231,12 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetFeatureEngineeringMaterializedFeatureProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableName(String tableName) {
             if (tableName == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "tableName");
@@ -239,6 +254,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             _resultValue.offlineStoreConfig = offlineStoreConfig;
             _resultValue.onlineStoreConfig = onlineStoreConfig;
             _resultValue.pipelineScheduleState = pipelineScheduleState;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tableName = tableName;
             return _resultValue;
         }

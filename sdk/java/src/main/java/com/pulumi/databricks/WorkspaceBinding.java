@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.WorkspaceBindingArgs;
 import com.pulumi.databricks.inputs.WorkspaceBindingState;
+import com.pulumi.databricks.outputs.WorkspaceBindingProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -98,6 +99,20 @@ public class WorkspaceBinding extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> catalogName() {
         return Codegen.optional(this.catalogName);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={WorkspaceBindingProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WorkspaceBindingProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<WorkspaceBindingProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Name of securable. Change forces creation of a new resource.

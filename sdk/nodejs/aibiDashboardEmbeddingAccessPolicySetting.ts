@@ -61,6 +61,10 @@ export class AibiDashboardEmbeddingAccessPolicySetting extends pulumi.CustomReso
      */
     declare public readonly aibiDashboardEmbeddingAccessPolicy: pulumi.Output<outputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy>;
     declare public readonly etag: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig | undefined>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -78,6 +82,7 @@ export class AibiDashboardEmbeddingAccessPolicySetting extends pulumi.CustomReso
             const state = argsOrState as AibiDashboardEmbeddingAccessPolicySettingState | undefined;
             resourceInputs["aibiDashboardEmbeddingAccessPolicy"] = state?.aibiDashboardEmbeddingAccessPolicy;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as AibiDashboardEmbeddingAccessPolicySettingArgs | undefined;
@@ -86,6 +91,7 @@ export class AibiDashboardEmbeddingAccessPolicySetting extends pulumi.CustomReso
             }
             resourceInputs["aibiDashboardEmbeddingAccessPolicy"] = args?.aibiDashboardEmbeddingAccessPolicy;
             resourceInputs["etag"] = args?.etag;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -102,6 +108,10 @@ export interface AibiDashboardEmbeddingAccessPolicySettingState {
      */
     aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy>;
     etag?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }
 
@@ -114,5 +124,9 @@ export interface AibiDashboardEmbeddingAccessPolicySettingArgs {
      */
     aibiDashboardEmbeddingAccessPolicy: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy>;
     etag?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig>;
     settingName?: pulumi.Input<string>;
 }

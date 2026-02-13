@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetPostgresProjectResult',
@@ -27,7 +28,7 @@ class GetPostgresProjectResult:
     """
     A collection of values returned by getPostgresProject.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, id=None, name=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,6 +38,9 @@ class GetPostgresProjectResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if spec and not isinstance(spec, dict):
             raise TypeError("Expected argument 'spec' to be a dict")
         pulumi.set(__self__, "spec", spec)
@@ -74,6 +78,11 @@ class GetPostgresProjectResult:
         Format: projects/{project_id}
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetPostgresProjectProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter
@@ -117,6 +126,7 @@ class AwaitableGetPostgresProjectResult(GetPostgresProjectResult):
             create_time=self.create_time,
             id=self.id,
             name=self.name,
+            provider_config=self.provider_config,
             spec=self.spec,
             status=self.status,
             uid=self.uid,
@@ -124,6 +134,7 @@ class AwaitableGetPostgresProjectResult(GetPostgresProjectResult):
 
 
 def get_postgres_project(name: Optional[_builtins.str] = None,
+                         provider_config: Optional[Union['GetPostgresProjectProviderConfigArgs', 'GetPostgresProjectProviderConfigArgsDict']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresProjectResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -147,9 +158,11 @@ def get_postgres_project(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: Output only. The full resource path of the project.
            Format: projects/{project_id}
+    :param Union['GetPostgresProjectProviderConfigArgs', 'GetPostgresProjectProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresProject:getPostgresProject', __args__, opts=opts, typ=GetPostgresProjectResult).value
 
@@ -157,11 +170,13 @@ def get_postgres_project(name: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         spec=pulumi.get(__ret__, 'spec'),
         status=pulumi.get(__ret__, 'status'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_postgres_project_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                                provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresProjectProviderConfigArgs', 'GetPostgresProjectProviderConfigArgsDict']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresProjectResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -185,15 +200,18 @@ def get_postgres_project_output(name: Optional[pulumi.Input[_builtins.str]] = No
 
     :param _builtins.str name: Output only. The full resource path of the project.
            Format: projects/{project_id}
+    :param Union['GetPostgresProjectProviderConfigArgs', 'GetPostgresProjectProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresProject:getPostgresProject', __args__, opts=opts, typ=GetPostgresProjectResult)
     return __ret__.apply(lambda __response__: GetPostgresProjectResult(
         create_time=pulumi.get(__response__, 'create_time'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         spec=pulumi.get(__response__, 'spec'),
         status=pulumi.get(__response__, 'status'),
         uid=pulumi.get(__response__, 'uid'),

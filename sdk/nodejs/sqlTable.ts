@@ -286,6 +286,10 @@ export class SqlTable extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlTableProviderConfig | undefined>;
+    /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      */
     declare public readonly schemaName: pulumi.Output<string>;
@@ -339,6 +343,7 @@ export class SqlTable extends pulumi.CustomResource {
             resourceInputs["owner"] = state?.owner;
             resourceInputs["partitions"] = state?.partitions;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schemaName"] = state?.schemaName;
             resourceInputs["storageCredentialName"] = state?.storageCredentialName;
             resourceInputs["storageLocation"] = state?.storageLocation;
@@ -368,6 +373,7 @@ export class SqlTable extends pulumi.CustomResource {
             resourceInputs["owner"] = args?.owner;
             resourceInputs["partitions"] = args?.partitions;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schemaName"] = args?.schemaName;
             resourceInputs["storageCredentialName"] = args?.storageCredentialName;
             resourceInputs["storageLocation"] = args?.storageLocation;
@@ -428,6 +434,10 @@ export interface SqlTableState {
      * A map of table properties.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlTableProviderConfig>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      */
@@ -503,6 +513,10 @@ export interface SqlTableArgs {
      * A map of table properties.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlTableProviderConfig>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      */

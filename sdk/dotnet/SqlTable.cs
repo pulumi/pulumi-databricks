@@ -370,6 +370,12 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SqlTableProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         /// </summary>
         [Output("schemaName")]
@@ -550,6 +556,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlTableProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         /// </summary>
         [Input("schemaName", required: true)]
@@ -692,6 +704,12 @@ namespace Pulumi.Databricks
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlTableProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -78,6 +80,10 @@ export class Secret extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastUpdatedTimestamp: pulumi.Output<number>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SecretProviderConfig | undefined>;
+    /**
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
     declare public readonly scope: pulumi.Output<string>;
@@ -102,6 +108,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["configReference"] = state?.configReference;
             resourceInputs["key"] = state?.key;
             resourceInputs["lastUpdatedTimestamp"] = state?.lastUpdatedTimestamp;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["scope"] = state?.scope;
             resourceInputs["stringValue"] = state?.stringValue;
         } else {
@@ -116,6 +123,7 @@ export class Secret extends pulumi.CustomResource {
                 throw new Error("Missing required property 'stringValue'");
             }
             resourceInputs["key"] = args?.key;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["scope"] = args?.scope;
             resourceInputs["stringValue"] = args?.stringValue ? pulumi.secret(args.stringValue) : undefined;
             resourceInputs["configReference"] = undefined /*out*/;
@@ -145,6 +153,10 @@ export interface SecretState {
      */
     lastUpdatedTimestamp?: pulumi.Input<number>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SecretProviderConfig>;
+    /**
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
     scope?: pulumi.Input<string>;
@@ -162,6 +174,10 @@ export interface SecretArgs {
      * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
     key: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SecretProviderConfig>;
     /**
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */

@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AlertV2EvaluationArgs;
+import com.pulumi.databricks.inputs.AlertV2ProviderConfigArgs;
 import com.pulumi.databricks.inputs.AlertV2RunAsArgs;
 import com.pulumi.databricks.inputs.AlertV2ScheduleArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -85,6 +86,21 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> parentPath() {
         return Optional.ofNullable(this.parentPath);
+    }
+
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<AlertV2ProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<AlertV2ProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -189,6 +205,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.evaluation = $.evaluation;
         this.parentPath = $.parentPath;
+        this.providerConfig = $.providerConfig;
         this.purgeOnDelete = $.purgeOnDelete;
         this.queryText = $.queryText;
         this.runAs = $.runAs;
@@ -306,6 +323,27 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parentPath(String parentPath) {
             return parentPath(Output.of(parentPath));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<AlertV2ProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(AlertV2ProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

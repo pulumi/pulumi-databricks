@@ -11,6 +11,7 @@ import com.pulumi.databricks.SqlAlertArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlAlertState;
 import com.pulumi.databricks.outputs.SqlAlertOptions;
+import com.pulumi.databricks.outputs.SqlAlertProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -144,6 +145,12 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> parent() {
         return Codegen.optional(this.parent);
+    }
+    @Export(name="providerConfig", refs={SqlAlertProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SqlAlertProviderConfig> providerConfig;
+
+    public Output<Optional<SqlAlertProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * ID of the query evaluated by the alert.

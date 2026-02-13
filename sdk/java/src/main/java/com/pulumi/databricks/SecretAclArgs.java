@@ -5,9 +5,12 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.SecretAclProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SecretAclArgs extends com.pulumi.resources.ResourceArgs {
@@ -45,6 +48,21 @@ public final class SecretAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SecretAclProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SecretAclProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * name of the scope
      * 
      */
@@ -64,6 +82,7 @@ public final class SecretAclArgs extends com.pulumi.resources.ResourceArgs {
     private SecretAclArgs(SecretAclArgs $) {
         this.permission = $.permission;
         this.principal = $.principal;
+        this.providerConfig = $.providerConfig;
         this.scope = $.scope;
     }
 
@@ -125,6 +144,27 @@ public final class SecretAclArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder principal(String principal) {
             return principal(Output.of(principal));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SecretAclProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SecretAclProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

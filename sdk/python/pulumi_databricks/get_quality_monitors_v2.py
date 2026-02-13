@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetQualityMonitorsV2Result',
@@ -27,13 +28,16 @@ class GetQualityMonitorsV2Result:
     """
     A collection of values returned by getQualityMonitorsV2.
     """
-    def __init__(__self__, id=None, page_size=None, quality_monitors=None):
+    def __init__(__self__, id=None, page_size=None, provider_config=None, quality_monitors=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if page_size and not isinstance(page_size, int):
             raise TypeError("Expected argument 'page_size' to be a int")
         pulumi.set(__self__, "page_size", page_size)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if quality_monitors and not isinstance(quality_monitors, list):
             raise TypeError("Expected argument 'quality_monitors' to be a list")
         pulumi.set(__self__, "quality_monitors", quality_monitors)
@@ -52,6 +56,11 @@ class GetQualityMonitorsV2Result:
         return pulumi.get(self, "page_size")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetQualityMonitorsV2ProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="qualityMonitors")
     def quality_monitors(self) -> Sequence['outputs.GetQualityMonitorsV2QualityMonitorResult']:
         return pulumi.get(self, "quality_monitors")
@@ -65,10 +74,12 @@ class AwaitableGetQualityMonitorsV2Result(GetQualityMonitorsV2Result):
         return GetQualityMonitorsV2Result(
             id=self.id,
             page_size=self.page_size,
+            provider_config=self.provider_config,
             quality_monitors=self.quality_monitors)
 
 
 def get_quality_monitors_v2(page_size: Optional[_builtins.int] = None,
+                            provider_config: Optional[Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQualityMonitorsV2Result:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -91,17 +102,23 @@ def get_quality_monitors_v2(page_size: Optional[_builtins.int] = None,
 
     all = databricks.get_quality_monitors_v2()
     ```
+
+
+    :param Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getQualityMonitorsV2:getQualityMonitorsV2', __args__, opts=opts, typ=GetQualityMonitorsV2Result).value
 
     return AwaitableGetQualityMonitorsV2Result(
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         quality_monitors=pulumi.get(__ret__, 'quality_monitors'))
 def get_quality_monitors_v2_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                   provider_config: Optional[pulumi.Input[Optional[Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQualityMonitorsV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -124,12 +141,17 @@ def get_quality_monitors_v2_output(page_size: Optional[pulumi.Input[Optional[_bu
 
     all = databricks.get_quality_monitors_v2()
     ```
+
+
+    :param Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getQualityMonitorsV2:getQualityMonitorsV2', __args__, opts=opts, typ=GetQualityMonitorsV2Result)
     return __ret__.apply(lambda __response__: GetQualityMonitorsV2Result(
         id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         quality_monitors=pulumi.get(__response__, 'quality_monitors')))

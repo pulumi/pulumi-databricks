@@ -98,6 +98,8 @@ type AlertV2 struct {
 	OwnerUserName pulumi.StringOutput `pulumi:"ownerUserName"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
+	// Configure the provider for management through account provider.
+	ProviderConfig AlertV2ProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Purge the resource on delete
 	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
 	// Text of the query to be run
@@ -183,6 +185,8 @@ type alertV2State struct {
 	OwnerUserName *string `pulumi:"ownerUserName"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath *string `pulumi:"parentPath"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *AlertV2ProviderConfig `pulumi:"providerConfig"`
 	// Purge the resource on delete
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// Text of the query to be run
@@ -224,6 +228,8 @@ type AlertV2State struct {
 	OwnerUserName pulumi.StringPtrInput
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig AlertV2ProviderConfigPtrInput
 	// Purge the resource on delete
 	PurgeOnDelete pulumi.BoolPtrInput
 	// Text of the query to be run
@@ -259,6 +265,8 @@ type alertV2Args struct {
 	Evaluation  AlertV2Evaluation `pulumi:"evaluation"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath *string `pulumi:"parentPath"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *AlertV2ProviderConfig `pulumi:"providerConfig"`
 	// Purge the resource on delete
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// Text of the query to be run
@@ -289,6 +297,8 @@ type AlertV2Args struct {
 	Evaluation  AlertV2EvaluationInput
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrInput
+	// Configure the provider for management through account provider.
+	ProviderConfig AlertV2ProviderConfigPtrInput
 	// Purge the resource on delete
 	PurgeOnDelete pulumi.BoolPtrInput
 	// Text of the query to be run
@@ -439,6 +449,11 @@ func (o AlertV2Output) OwnerUserName() pulumi.StringOutput {
 // The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 func (o AlertV2Output) ParentPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.ParentPath }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o AlertV2Output) ProviderConfig() AlertV2ProviderConfigPtrOutput {
+	return o.ApplyT(func(v *AlertV2) AlertV2ProviderConfigPtrOutput { return v.ProviderConfig }).(AlertV2ProviderConfigPtrOutput)
 }
 
 // Purge the resource on delete

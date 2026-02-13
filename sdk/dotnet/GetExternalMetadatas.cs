@@ -103,6 +103,12 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetExternalMetadatasProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetExternalMetadatasArgs()
         {
         }
@@ -117,6 +123,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetExternalMetadatasProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetExternalMetadatasInvokeArgs()
         {
@@ -134,6 +146,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly int? PageSize;
+        public readonly Outputs.GetExternalMetadatasProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetExternalMetadatasResult(
@@ -141,11 +154,14 @@ namespace Pulumi.Databricks
 
             string id,
 
-            int? pageSize)
+            int? pageSize,
+
+            Outputs.GetExternalMetadatasProviderConfigResult? providerConfig)
         {
             ExternalMetadatas = externalMetadatas;
             Id = id;
             PageSize = pageSize;
+            ProviderConfig = providerConfig;
         }
     }
 }

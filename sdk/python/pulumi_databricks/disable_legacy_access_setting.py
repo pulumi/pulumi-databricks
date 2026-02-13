@@ -23,14 +23,18 @@ class DisableLegacyAccessSettingArgs:
     def __init__(__self__, *,
                  disable_legacy_access: pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs'],
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DisableLegacyAccessSetting resource.
         :param pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs'] disable_legacy_access: The configuration details.
+        :param pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "disable_legacy_access", disable_legacy_access)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
 
@@ -56,6 +60,18 @@ class DisableLegacyAccessSettingArgs:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="settingName")
     def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "setting_name")
@@ -70,15 +86,19 @@ class _DisableLegacyAccessSettingState:
     def __init__(__self__, *,
                  disable_legacy_access: Optional[pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DisableLegacyAccessSetting resources.
         :param pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs'] disable_legacy_access: The configuration details.
+        :param pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if disable_legacy_access is not None:
             pulumi.set(__self__, "disable_legacy_access", disable_legacy_access)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
 
@@ -104,6 +124,18 @@ class _DisableLegacyAccessSettingState:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="settingName")
     def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "setting_name")
@@ -121,6 +153,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_legacy_access: Optional[pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -154,6 +187,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']] disable_legacy_access: The configuration details.
+        :param pulumi.Input[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -206,6 +240,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_legacy_access: Optional[pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -220,6 +255,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
                 raise TypeError("Missing required property 'disable_legacy_access'")
             __props__.__dict__["disable_legacy_access"] = disable_legacy_access
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["setting_name"] = setting_name
         super(DisableLegacyAccessSetting, __self__).__init__(
             'databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting',
@@ -233,6 +269,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             disable_legacy_access: Optional[pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']]] = None,
             setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'DisableLegacyAccessSetting':
         """
         Get an existing DisableLegacyAccessSetting resource's state with the given name, id, and optional extra
@@ -242,6 +279,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']] disable_legacy_access: The configuration details.
+        :param pulumi.Input[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -249,6 +287,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
 
         __props__.__dict__["disable_legacy_access"] = disable_legacy_access
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["setting_name"] = setting_name
         return DisableLegacyAccessSetting(resource_name, opts=opts, __props__=__props__)
 
@@ -264,6 +303,14 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.DisableLegacyAccessSettingProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="settingName")

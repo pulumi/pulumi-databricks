@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesProviderConfigArgs;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,10 +31,26 @@ public final class GetAppsSettingsCustomTemplatesArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetAppsSettingsCustomTemplatesProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<Output<GetAppsSettingsCustomTemplatesProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetAppsSettingsCustomTemplatesArgs() {}
 
     private GetAppsSettingsCustomTemplatesArgs(GetAppsSettingsCustomTemplatesArgs $) {
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class GetAppsSettingsCustomTemplatesArgs extends com.pulumi.resourc
          */
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetAppsSettingsCustomTemplatesProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetAppsSettingsCustomTemplatesProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetAppsSettingsCustomTemplatesArgs build() {

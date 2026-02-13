@@ -240,14 +240,14 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deltaSharingOrganizationName);
     }
     /**
-     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
      * 
      */
     @Export(name="deltaSharingRecipientTokenLifetimeInSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> deltaSharingRecipientTokenLifetimeInSeconds;
 
     /**
-     * @return Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * @return Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
      * 
      */
     public Output<Optional<Integer>> deltaSharingRecipientTokenLifetimeInSeconds() {

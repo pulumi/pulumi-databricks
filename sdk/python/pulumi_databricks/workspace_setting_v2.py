@@ -33,6 +33,7 @@ class WorkspaceSettingV2Args:
                  integer_val: Optional[pulumi.Input['WorkspaceSettingV2IntegerValArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_compute: Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']] = None,
+                 provider_config: Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']] = None,
                  restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
                  string_val: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']] = None):
         """
@@ -49,6 +50,7 @@ class WorkspaceSettingV2Args:
         :param pulumi.Input['WorkspaceSettingV2IntegerValArgs'] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         :param pulumi.Input[_builtins.str] name: Name of the setting
         :param pulumi.Input['WorkspaceSettingV2PersonalComputeArgs'] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
+        :param pulumi.Input['WorkspaceSettingV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs'] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input['WorkspaceSettingV2StringValArgs'] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
         """
@@ -76,6 +78,8 @@ class WorkspaceSettingV2Args:
             pulumi.set(__self__, "name", name)
         if personal_compute is not None:
             pulumi.set(__self__, "personal_compute", personal_compute)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if restrict_workspace_admins is not None:
             pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
         if string_val is not None:
@@ -226,6 +230,18 @@ class WorkspaceSettingV2Args:
         pulumi.set(self, "personal_compute", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="restrictWorkspaceAdmins")
     def restrict_workspace_admins(self) -> Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]:
         """
@@ -268,6 +284,7 @@ class _WorkspaceSettingV2State:
                  integer_val: Optional[pulumi.Input['WorkspaceSettingV2IntegerValArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_compute: Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']] = None,
+                 provider_config: Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']] = None,
                  restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
                  string_val: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']] = None):
         """
@@ -287,6 +304,7 @@ class _WorkspaceSettingV2State:
         :param pulumi.Input['WorkspaceSettingV2IntegerValArgs'] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         :param pulumi.Input[_builtins.str] name: Name of the setting
         :param pulumi.Input['WorkspaceSettingV2PersonalComputeArgs'] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
+        :param pulumi.Input['WorkspaceSettingV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs'] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input['WorkspaceSettingV2StringValArgs'] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
         """
@@ -320,6 +338,8 @@ class _WorkspaceSettingV2State:
             pulumi.set(__self__, "name", name)
         if personal_compute is not None:
             pulumi.set(__self__, "personal_compute", personal_compute)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if restrict_workspace_admins is not None:
             pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
         if string_val is not None:
@@ -506,6 +526,18 @@ class _WorkspaceSettingV2State:
         pulumi.set(self, "personal_compute", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="restrictWorkspaceAdmins")
     def restrict_workspace_admins(self) -> Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]:
         """
@@ -548,11 +580,12 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']]] = None,
                  restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
                  string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
 
@@ -588,6 +621,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         :param pulumi.Input[_builtins.str] name: Name of the setting
         :param pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
+        :param pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
         """
@@ -598,7 +632,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  args: Optional[WorkspaceSettingV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
 
@@ -647,6 +681,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']]] = None,
                  restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
                  string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
                  __props__=None):
@@ -670,6 +705,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             __props__.__dict__["integer_val"] = integer_val
             __props__.__dict__["name"] = name
             __props__.__dict__["personal_compute"] = personal_compute
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
             __props__.__dict__["string_val"] = string_val
             __props__.__dict__["effective_boolean_val"] = None
@@ -700,6 +736,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
+            provider_config: Optional[pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']]] = None,
             restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
             string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None) -> 'WorkspaceSettingV2':
         """
@@ -724,6 +761,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         :param pulumi.Input[_builtins.str] name: Name of the setting
         :param pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
+        :param pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
         """
@@ -746,6 +784,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         __props__.__dict__["integer_val"] = integer_val
         __props__.__dict__["name"] = name
         __props__.__dict__["personal_compute"] = personal_compute
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
         __props__.__dict__["string_val"] = string_val
         return WorkspaceSettingV2(resource_name, opts=opts, __props__=__props__)
@@ -869,6 +908,14 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         """
         return pulumi.get(self, "personal_compute")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.WorkspaceSettingV2ProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="restrictWorkspaceAdmins")

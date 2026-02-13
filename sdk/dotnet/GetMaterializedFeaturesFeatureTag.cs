@@ -36,6 +36,12 @@ namespace Pulumi.Databricks
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetMaterializedFeaturesFeatureTagProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetMaterializedFeaturesFeatureTagArgs()
         {
         }
@@ -46,6 +52,12 @@ namespace Pulumi.Databricks
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetMaterializedFeaturesFeatureTagProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetMaterializedFeaturesFeatureTagInvokeArgs()
         {
@@ -65,6 +77,7 @@ namespace Pulumi.Databricks
         /// (string)
         /// </summary>
         public readonly string Key;
+        public readonly Outputs.GetMaterializedFeaturesFeatureTagProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string)
         /// </summary>
@@ -76,10 +89,13 @@ namespace Pulumi.Databricks
 
             string key,
 
+            Outputs.GetMaterializedFeaturesFeatureTagProviderConfigResult? providerConfig,
+
             string value)
         {
             Id = id;
             Key = key;
+            ProviderConfig = providerConfig;
             Value = value;
         }
     }

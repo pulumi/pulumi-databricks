@@ -195,6 +195,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.RecipientPropertiesKvpairs?> PropertiesKvpairs { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.RecipientProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the AuthenticationType is `DATABRICKS`.
         /// </summary>
         [Output("region")]
@@ -322,6 +328,12 @@ namespace Pulumi.Databricks
         [Input("propertiesKvpairs")]
         public Input<Inputs.RecipientPropertiesKvpairsArgs>? PropertiesKvpairs { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.RecipientProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("sharingCode")]
         private Input<string>? _sharingCode;
 
@@ -438,6 +450,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("propertiesKvpairs")]
         public Input<Inputs.RecipientPropertiesKvpairsGetArgs>? PropertiesKvpairs { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.RecipientProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the AuthenticationType is `DATABRICKS`.

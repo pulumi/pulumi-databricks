@@ -41,6 +41,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (SubscriptionMode) - Options to configure which Kafka topics to pull data from
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionModeResult SubscriptionMode;
@@ -63,6 +67,8 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigProviderConfigResult? providerConfig,
+
             Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionModeResult subscriptionMode,
 
             Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaResult valueSchema)
@@ -73,6 +79,7 @@ namespace Pulumi.Databricks.Outputs
             ExtraOptions = extraOptions;
             KeySchema = keySchema;
             Name = name;
+            ProviderConfig = providerConfig;
             SubscriptionMode = subscriptionMode;
             ValueSchema = valueSchema;
         }

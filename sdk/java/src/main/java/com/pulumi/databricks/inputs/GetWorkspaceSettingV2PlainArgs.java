@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetWorkspaceSettingV2ProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetWorkspaceSettingV2PlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +31,26 @@ public final class GetWorkspaceSettingV2PlainArgs extends com.pulumi.resources.I
         return this.name;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetWorkspaceSettingV2ProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetWorkspaceSettingV2ProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetWorkspaceSettingV2PlainArgs() {}
 
     private GetWorkspaceSettingV2PlainArgs(GetWorkspaceSettingV2PlainArgs $) {
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -60,6 +79,17 @@ public final class GetWorkspaceSettingV2PlainArgs extends com.pulumi.resources.I
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetWorkspaceSettingV2ProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

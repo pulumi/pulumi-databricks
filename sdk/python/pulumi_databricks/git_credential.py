@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GitCredentialArgs', 'GitCredential']
 
@@ -26,7 +28,8 @@ class GitCredentialArgs:
                  is_default_for_provider: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GitCredentialProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a GitCredential resource.
         :param pulumi.Input[_builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
@@ -36,6 +39,7 @@ class GitCredentialArgs:
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input['GitCredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "git_provider", git_provider)
         if force is not None:
@@ -52,6 +56,8 @@ class GitCredentialArgs:
             pulumi.set(__self__, "personal_access_token", personal_access_token)
         if principal_id is not None:
             pulumi.set(__self__, "principal_id", principal_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="gitProvider")
@@ -146,6 +152,18 @@ class GitCredentialArgs:
     def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "principal_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GitCredentialProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GitCredentialProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _GitCredentialState:
@@ -157,7 +175,8 @@ class _GitCredentialState:
                  is_default_for_provider: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GitCredentialProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering GitCredential resources.
         :param pulumi.Input[_builtins.bool] force: specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
@@ -167,6 +186,7 @@ class _GitCredentialState:
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input['GitCredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if force is not None:
             pulumi.set(__self__, "force", force)
@@ -184,6 +204,8 @@ class _GitCredentialState:
             pulumi.set(__self__, "personal_access_token", personal_access_token)
         if principal_id is not None:
             pulumi.set(__self__, "principal_id", principal_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -278,6 +300,18 @@ class _GitCredentialState:
     def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "principal_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GitCredentialProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GitCredentialProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.type_token("databricks:index/gitCredential:GitCredential")
 class GitCredential(pulumi.CustomResource):
@@ -293,6 +327,7 @@ class GitCredential(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
                  principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
@@ -341,6 +376,7 @@ class GitCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -409,6 +445,7 @@ class GitCredential(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
                  principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,6 +465,7 @@ class GitCredential(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["personal_access_token"] = personal_access_token
             __props__.__dict__["principal_id"] = principal_id
+            __props__.__dict__["provider_config"] = provider_config
         super(GitCredential, __self__).__init__(
             'databricks:index/gitCredential:GitCredential',
             resource_name,
@@ -445,7 +483,8 @@ class GitCredential(pulumi.CustomResource):
             is_default_for_provider: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             personal_access_token: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GitCredential':
+            principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict']]] = None) -> 'GitCredential':
         """
         Get an existing GitCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -460,6 +499,7 @@ class GitCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -473,6 +513,7 @@ class GitCredential(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["personal_access_token"] = personal_access_token
         __props__.__dict__["principal_id"] = principal_id
+        __props__.__dict__["provider_config"] = provider_config
         return GitCredential(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -535,4 +576,12 @@ class GitCredential(pulumi.CustomResource):
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "principal_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.GitCredentialProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 

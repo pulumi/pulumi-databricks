@@ -11,6 +11,7 @@ import com.pulumi.databricks.AlertArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AlertState;
 import com.pulumi.databricks.outputs.AlertCondition;
+import com.pulumi.databricks.outputs.AlertProviderConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -420,6 +421,20 @@ public class Alert extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> parentPath() {
         return Codegen.optional(this.parentPath);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={AlertProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AlertProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<AlertProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * ID of the query evaluated by the alert.

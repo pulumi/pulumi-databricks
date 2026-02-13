@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -91,6 +93,10 @@ export class Dashboard extends pulumi.CustomResource {
     declare public readonly parentPath: pulumi.Output<string>;
     declare public readonly path: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DashboardProviderConfig | undefined>;
+    /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      */
     declare public readonly serializedDashboard: pulumi.Output<string | undefined>;
@@ -126,6 +132,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["md5"] = state?.md5;
             resourceInputs["parentPath"] = state?.parentPath;
             resourceInputs["path"] = state?.path;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["serializedDashboard"] = state?.serializedDashboard;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["warehouseId"] = state?.warehouseId;
@@ -153,6 +160,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["md5"] = args?.md5;
             resourceInputs["parentPath"] = args?.parentPath;
             resourceInputs["path"] = args?.path;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["serializedDashboard"] = args?.serializedDashboard;
             resourceInputs["updateTime"] = args?.updateTime;
             resourceInputs["warehouseId"] = args?.warehouseId;
@@ -197,6 +205,10 @@ export interface DashboardState {
      */
     parentPath?: pulumi.Input<string>;
     path?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DashboardProviderConfig>;
     /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      */
@@ -243,6 +255,10 @@ export interface DashboardArgs {
      */
     parentPath: pulumi.Input<string>;
     path?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DashboardProviderConfig>;
     /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      */

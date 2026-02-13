@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringKafkaConfigsProviderConfig;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,10 +30,26 @@ public final class GetFeatureEngineeringKafkaConfigsPlainArgs extends com.pulumi
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetFeatureEngineeringKafkaConfigsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetFeatureEngineeringKafkaConfigsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetFeatureEngineeringKafkaConfigsPlainArgs() {}
 
     private GetFeatureEngineeringKafkaConfigsPlainArgs(GetFeatureEngineeringKafkaConfigsPlainArgs $) {
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -61,6 +78,17 @@ public final class GetFeatureEngineeringKafkaConfigsPlainArgs extends com.pulumi
          */
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetFeatureEngineeringKafkaConfigsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

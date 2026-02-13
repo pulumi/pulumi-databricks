@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -88,6 +90,10 @@ export class IpAccessList extends pulumi.CustomResource {
      * Can only be "ALLOW" or "BLOCK".
      */
     declare public readonly listType: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.IpAccessListProviderConfig | undefined>;
 
     /**
      * Create a IpAccessList resource with the given unique name, arguments, and options.
@@ -106,6 +112,7 @@ export class IpAccessList extends pulumi.CustomResource {
             resourceInputs["ipAddresses"] = state?.ipAddresses;
             resourceInputs["label"] = state?.label;
             resourceInputs["listType"] = state?.listType;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as IpAccessListArgs | undefined;
             if (args?.ipAddresses === undefined && !opts.urn) {
@@ -121,6 +128,7 @@ export class IpAccessList extends pulumi.CustomResource {
             resourceInputs["ipAddresses"] = args?.ipAddresses;
             resourceInputs["label"] = args?.label;
             resourceInputs["listType"] = args?.listType;
+            resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IpAccessList.__pulumiType, name, resourceInputs, opts);
@@ -147,6 +155,10 @@ export interface IpAccessListState {
      * Can only be "ALLOW" or "BLOCK".
      */
     listType?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.IpAccessListProviderConfig>;
 }
 
 /**
@@ -169,4 +181,8 @@ export interface IpAccessListArgs {
      * Can only be "ALLOW" or "BLOCK".
      */
     listType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.IpAccessListProviderConfig>;
 }

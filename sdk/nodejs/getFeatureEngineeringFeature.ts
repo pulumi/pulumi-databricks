@@ -13,6 +13,7 @@ export function getFeatureEngineeringFeature(args: GetFeatureEngineeringFeatureA
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", {
         "fullName": args.fullName,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -24,6 +25,10 @@ export interface GetFeatureEngineeringFeatureArgs {
      * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetFeatureEngineeringFeatureProviderConfig;
 }
 
 /**
@@ -61,6 +66,7 @@ export interface GetFeatureEngineeringFeatureResult {
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
      */
     readonly lineageContext: outputs.GetFeatureEngineeringFeatureLineageContext;
+    readonly providerConfig?: outputs.GetFeatureEngineeringFeatureProviderConfig;
     /**
      * (DataSource) - The data source of the feature
      */
@@ -77,6 +83,7 @@ export function getFeatureEngineeringFeatureOutput(args: GetFeatureEngineeringFe
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", {
         "fullName": args.fullName,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -88,4 +95,8 @@ export interface GetFeatureEngineeringFeatureOutputArgs {
      * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringFeatureProviderConfigArgs>;
 }

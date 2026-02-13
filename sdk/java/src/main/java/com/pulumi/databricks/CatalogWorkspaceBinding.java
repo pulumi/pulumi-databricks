@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.CatalogWorkspaceBindingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.CatalogWorkspaceBindingState;
+import com.pulumi.databricks.outputs.CatalogWorkspaceBindingProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -94,6 +95,12 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
 
     public Output<Optional<String>> catalogName() {
         return Codegen.optional(this.catalogName);
+    }
+    @Export(name="providerConfig", refs={CatalogWorkspaceBindingProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ CatalogWorkspaceBindingProviderConfig> providerConfig;
+
+    public Output<Optional<CatalogWorkspaceBindingProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Name of securable. Change forces creation of a new resource.

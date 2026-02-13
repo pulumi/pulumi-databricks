@@ -22,15 +22,19 @@ __all__ = ['PostgresProjectArgs', 'PostgresProject']
 class PostgresProjectArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
+                 provider_config: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['PostgresProjectSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresProject resource.
         :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
+        :param pulumi.Input['PostgresProjectProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         pulumi.set(__self__, "project_id", project_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -47,6 +51,18 @@ class PostgresProjectArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PostgresProjectProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -67,6 +83,7 @@ class _PostgresProjectState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['PostgresProjectSpecArgs']] = None,
                  status: Optional[pulumi.Input['PostgresProjectStatusArgs']] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -79,6 +96,7 @@ class _PostgresProjectState:
         :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
+        :param pulumi.Input['PostgresProjectProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         :param pulumi.Input['PostgresProjectStatusArgs'] status: (ProjectStatus) - The current status of a Project
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the project
@@ -90,6 +108,8 @@ class _PostgresProjectState:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
@@ -137,6 +157,18 @@ class _PostgresProjectState:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PostgresProjectProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -194,6 +226,7 @@ class PostgresProject(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
                  __props__=None):
         """
@@ -260,6 +293,7 @@ class PostgresProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
+        :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         ...
@@ -343,6 +377,7 @@ class PostgresProject(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -356,6 +391,7 @@ class PostgresProject(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -375,6 +411,7 @@ class PostgresProject(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
             spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
             status: Optional[pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict']]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -392,6 +429,7 @@ class PostgresProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
+        :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         :param pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict']] status: (ProjectStatus) - The current status of a Project
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the project
@@ -404,6 +442,7 @@ class PostgresProject(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["uid"] = uid
@@ -436,6 +475,14 @@ class PostgresProject(pulumi.CustomResource):
         For example, `my-app` becomes `projects/my-app`
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.PostgresProjectProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

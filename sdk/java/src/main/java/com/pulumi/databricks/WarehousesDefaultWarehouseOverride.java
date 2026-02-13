@@ -10,12 +10,13 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.WarehousesDefaultWarehouseOverrideArgs;
 import com.pulumi.databricks.inputs.WarehousesDefaultWarehouseOverrideState;
+import com.pulumi.databricks.outputs.WarehousesDefaultWarehouseOverrideProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * The Default Warehouse Override resource allows you to configure a user&#39;s default warehouse selection behavior in Databricks SQL. This resource enables customization of how a user&#39;s default warehouse is selected for SQL operations.
  * 
@@ -131,6 +132,20 @@ public class WarehousesDefaultWarehouseOverride extends com.pulumi.resources.Cus
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Export(name="providerConfig", refs={WarehousesDefaultWarehouseOverrideProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WarehousesDefaultWarehouseOverrideProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Output<Optional<WarehousesDefaultWarehouseOverrideProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`

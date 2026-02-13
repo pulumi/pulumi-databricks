@@ -23,6 +23,7 @@ class ComplianceSecurityProfileWorkspaceSettingArgs:
     def __init__(__self__, *,
                  compliance_security_profile_workspace: pulumi.Input['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs'],
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComplianceSecurityProfileWorkspaceSetting resource.
@@ -30,6 +31,8 @@ class ComplianceSecurityProfileWorkspaceSettingArgs:
         pulumi.set(__self__, "compliance_security_profile_workspace", compliance_security_profile_workspace)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
 
@@ -52,6 +55,15 @@ class ComplianceSecurityProfileWorkspaceSettingArgs:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="settingName")
     def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "setting_name")
@@ -66,6 +78,7 @@ class _ComplianceSecurityProfileWorkspaceSettingState:
     def __init__(__self__, *,
                  compliance_security_profile_workspace: Optional[pulumi.Input['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs']] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ComplianceSecurityProfileWorkspaceSetting resources.
@@ -74,6 +87,8 @@ class _ComplianceSecurityProfileWorkspaceSettingState:
             pulumi.set(__self__, "compliance_security_profile_workspace", compliance_security_profile_workspace)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
 
@@ -96,6 +111,15 @@ class _ComplianceSecurityProfileWorkspaceSettingState:
         pulumi.set(self, "etag", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="settingName")
     def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "setting_name")
@@ -113,6 +137,7 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compliance_security_profile_workspace: Optional[pulumi.Input[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -145,6 +170,7 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compliance_security_profile_workspace: Optional[pulumi.Input[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict']]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict']]] = None,
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -159,6 +185,7 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
                 raise TypeError("Missing required property 'compliance_security_profile_workspace'")
             __props__.__dict__["compliance_security_profile_workspace"] = compliance_security_profile_workspace
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["setting_name"] = setting_name
         super(ComplianceSecurityProfileWorkspaceSetting, __self__).__init__(
             'databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting',
@@ -172,6 +199,7 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             compliance_security_profile_workspace: Optional[pulumi.Input[Union['ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs', 'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict']]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['ComplianceSecurityProfileWorkspaceSettingProviderConfigArgs', 'ComplianceSecurityProfileWorkspaceSettingProviderConfigArgsDict']]] = None,
             setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ComplianceSecurityProfileWorkspaceSetting':
         """
         Get an existing ComplianceSecurityProfileWorkspaceSetting resource's state with the given name, id, and optional extra
@@ -187,6 +215,7 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
 
         __props__.__dict__["compliance_security_profile_workspace"] = compliance_security_profile_workspace
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["setting_name"] = setting_name
         return ComplianceSecurityProfileWorkspaceSetting(resource_name, opts=opts, __props__=__props__)
 
@@ -199,6 +228,11 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="settingName")

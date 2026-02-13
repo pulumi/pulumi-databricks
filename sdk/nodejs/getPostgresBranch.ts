@@ -29,6 +29,7 @@ export function getPostgresBranch(args: GetPostgresBranchArgs, opts?: pulumi.Inv
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getPostgresBranch:getPostgresBranch", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -41,6 +42,10 @@ export interface GetPostgresBranchArgs {
      * Format: projects/{project_id}/branches/{branch_id}
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetPostgresBranchProviderConfig;
 }
 
 /**
@@ -65,6 +70,7 @@ export interface GetPostgresBranchResult {
      * Format: projects/{project_id}
      */
     readonly parent: string;
+    readonly providerConfig?: outputs.GetPostgresBranchProviderConfig;
     /**
      * (BranchSpec) - The spec contains the branch configuration
      */
@@ -105,6 +111,7 @@ export function getPostgresBranchOutput(args: GetPostgresBranchOutputArgs, opts?
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getPostgresBranch:getPostgresBranch", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -117,4 +124,8 @@ export interface GetPostgresBranchOutputArgs {
      * Format: projects/{project_id}/branches/{branch_id}
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetPostgresBranchProviderConfigArgs>;
 }

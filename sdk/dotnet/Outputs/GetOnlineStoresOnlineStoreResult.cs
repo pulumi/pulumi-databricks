@@ -30,6 +30,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        public readonly Outputs.GetOnlineStoresOnlineStoreProviderConfigResult? ProviderConfig;
+        /// <summary>
         /// (integer) - The number of read replicas for the online store. Defaults to 0
         /// </summary>
         public readonly int ReadReplicaCount;
@@ -52,6 +56,8 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            Outputs.GetOnlineStoresOnlineStoreProviderConfigResult? providerConfig,
+
             int readReplicaCount,
 
             string state,
@@ -62,6 +68,7 @@ namespace Pulumi.Databricks.Outputs
             CreationTime = creationTime;
             Creator = creator;
             Name = name;
+            ProviderConfig = providerConfig;
             ReadReplicaCount = readReplicaCount;
             State = state;
             UsagePolicyId = usagePolicyId;

@@ -31,6 +31,7 @@ class PolicyInfoArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
                  on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['PolicyInfoProviderConfigArgs']] = None,
                  row_filter: Optional[pulumi.Input['PolicyInfoRowFilterArgs']] = None,
                  when_condition: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -38,7 +39,7 @@ class PolicyInfoArgs:
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] to_principals: List of user or group names that the policy applies to.
                Required on create and optional on update
         :param pulumi.Input['PolicyInfoColumnMaskArgs'] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
@@ -52,10 +53,11 @@ class PolicyInfoArgs:
         :param pulumi.Input[_builtins.str] name: Name of the policy. Required on create and optional on update.
                To rename the policy, set `name` to a different value on update
         :param pulumi.Input[_builtins.str] on_securable_fullname: Full name of the securable on which the policy is defined.
-               Required on create and ignored on update
+               Required on create
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-               Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+               Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param pulumi.Input['PolicyInfoProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PolicyInfoRowFilterArgs'] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
@@ -78,6 +80,8 @@ class PolicyInfoArgs:
             pulumi.set(__self__, "on_securable_fullname", on_securable_fullname)
         if on_securable_type is not None:
             pulumi.set(__self__, "on_securable_type", on_securable_type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if row_filter is not None:
             pulumi.set(__self__, "row_filter", row_filter)
         if when_condition is not None:
@@ -101,7 +105,7 @@ class PolicyInfoArgs:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 
@@ -192,7 +196,7 @@ class PolicyInfoArgs:
     def on_securable_fullname(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Full name of the securable on which the policy is defined.
-        Required on create and ignored on update
+        Required on create
         """
         return pulumi.get(self, "on_securable_fullname")
 
@@ -206,13 +210,25 @@ class PolicyInfoArgs:
         """
         Type of the securable on which the policy is defined.
         Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-        Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "on_securable_type")
 
     @on_securable_type.setter
     def on_securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "on_securable_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PolicyInfoProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PolicyInfoProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rowFilter")
@@ -255,6 +271,7 @@ class _PolicyInfoState:
                  on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
                  on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['PolicyInfoProviderConfigArgs']] = None,
                  row_filter: Optional[pulumi.Input['PolicyInfoRowFilterArgs']] = None,
                  to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.int]] = None,
@@ -278,11 +295,12 @@ class _PolicyInfoState:
         :param pulumi.Input[_builtins.str] name: Name of the policy. Required on create and optional on update.
                To rename the policy, set `name` to a different value on update
         :param pulumi.Input[_builtins.str] on_securable_fullname: Full name of the securable on which the policy is defined.
-               Required on create and ignored on update
+               Required on create
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-               Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+               Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input['PolicyInfoProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PolicyInfoRowFilterArgs'] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
@@ -314,6 +332,8 @@ class _PolicyInfoState:
             pulumi.set(__self__, "on_securable_type", on_securable_type)
         if policy_type is not None:
             pulumi.set(__self__, "policy_type", policy_type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if row_filter is not None:
             pulumi.set(__self__, "row_filter", row_filter)
         if to_principals is not None:
@@ -433,7 +453,7 @@ class _PolicyInfoState:
     def on_securable_fullname(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Full name of the securable on which the policy is defined.
-        Required on create and ignored on update
+        Required on create
         """
         return pulumi.get(self, "on_securable_fullname")
 
@@ -447,7 +467,7 @@ class _PolicyInfoState:
         """
         Type of the securable on which the policy is defined.
         Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-        Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "on_securable_type")
 
@@ -459,13 +479,25 @@ class _PolicyInfoState:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
     def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PolicyInfoProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PolicyInfoProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rowFilter")
@@ -546,6 +578,7 @@ class PolicyInfo(pulumi.CustomResource):
                  on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
                  on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
                  row_filter: Optional[pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
                  to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  when_condition: Optional[pulumi.Input[_builtins.str]] = None,
@@ -566,11 +599,11 @@ class PolicyInfo(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         pii_row_filter = databricks.PolicyInfo("pii_row_filter",
-            on_securable_type="catalog",
+            on_securable_type="CATALOG",
             on_securable_fullname="main",
             name="pii_data_policy",
             policy_type="POLICY_TYPE_ROW_FILTER",
-            for_securable_type="table",
+            for_securable_type="TABLE",
             to_principals=["account users"],
             when_condition="hasTag('pii')",
             match_columns=[{
@@ -592,11 +625,11 @@ class PolicyInfo(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sensitive_column_mask = databricks.PolicyInfo("sensitive_column_mask",
-            on_securable_type="schema",
+            on_securable_type="SCHEMA",
             on_securable_fullname="main.finance",
             name="sensitive_data_mask",
             policy_type="POLICY_TYPE_COLUMN_MASK",
-            for_securable_type="table",
+            for_securable_type="TABLE",
             to_principals=["account users"],
             except_principals=["finance_admins"],
             when_condition="hasTag('pii')",
@@ -629,11 +662,12 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the policy. Required on create and optional on update.
                To rename the policy, set `name` to a different value on update
         :param pulumi.Input[_builtins.str] on_securable_fullname: Full name of the securable on which the policy is defined.
-               Required on create and ignored on update
+               Required on create
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-               Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+               Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
@@ -663,11 +697,11 @@ class PolicyInfo(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         pii_row_filter = databricks.PolicyInfo("pii_row_filter",
-            on_securable_type="catalog",
+            on_securable_type="CATALOG",
             on_securable_fullname="main",
             name="pii_data_policy",
             policy_type="POLICY_TYPE_ROW_FILTER",
-            for_securable_type="table",
+            for_securable_type="TABLE",
             to_principals=["account users"],
             when_condition="hasTag('pii')",
             match_columns=[{
@@ -689,11 +723,11 @@ class PolicyInfo(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sensitive_column_mask = databricks.PolicyInfo("sensitive_column_mask",
-            on_securable_type="schema",
+            on_securable_type="SCHEMA",
             on_securable_fullname="main.finance",
             name="sensitive_data_mask",
             policy_type="POLICY_TYPE_COLUMN_MASK",
-            for_securable_type="table",
+            for_securable_type="TABLE",
             to_principals=["account users"],
             except_principals=["finance_admins"],
             when_condition="hasTag('pii')",
@@ -734,6 +768,7 @@ class PolicyInfo(pulumi.CustomResource):
                  on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
                  on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
                  row_filter: Optional[pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
                  to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  when_condition: Optional[pulumi.Input[_builtins.str]] = None,
@@ -759,6 +794,7 @@ class PolicyInfo(pulumi.CustomResource):
             if policy_type is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_type'")
             __props__.__dict__["policy_type"] = policy_type
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["row_filter"] = row_filter
             if to_principals is None and not opts.urn:
                 raise TypeError("Missing required property 'to_principals'")
@@ -789,6 +825,7 @@ class PolicyInfo(pulumi.CustomResource):
             on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
             on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
             policy_type: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
             row_filter: Optional[pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
             to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             updated_at: Optional[pulumi.Input[_builtins.int]] = None,
@@ -817,11 +854,12 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the policy. Required on create and optional on update.
                To rename the policy, set `name` to a different value on update
         :param pulumi.Input[_builtins.str] on_securable_fullname: Full name of the securable on which the policy is defined.
-               Required on create and ignored on update
+               Required on create
         :param pulumi.Input[_builtins.str] on_securable_type: Type of the securable on which the policy is defined.
                Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-               Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+               Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param pulumi.Input[_builtins.str] policy_type: Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        :param pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']] row_filter: Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
@@ -846,6 +884,7 @@ class PolicyInfo(pulumi.CustomResource):
         __props__.__dict__["on_securable_fullname"] = on_securable_fullname
         __props__.__dict__["on_securable_type"] = on_securable_type
         __props__.__dict__["policy_type"] = policy_type
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["row_filter"] = row_filter
         __props__.__dict__["to_principals"] = to_principals
         __props__.__dict__["updated_at"] = updated_at
@@ -929,7 +968,7 @@ class PolicyInfo(pulumi.CustomResource):
     def on_securable_fullname(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Full name of the securable on which the policy is defined.
-        Required on create and ignored on update
+        Required on create
         """
         return pulumi.get(self, "on_securable_fullname")
 
@@ -939,7 +978,7 @@ class PolicyInfo(pulumi.CustomResource):
         """
         Type of the securable on which the policy is defined.
         Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-        Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "on_securable_type")
 
@@ -947,9 +986,17 @@ class PolicyInfo(pulumi.CustomResource):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.PolicyInfoProviderConfig']]:
+        """
+        Configure the provider for management through account provider.
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="rowFilter")

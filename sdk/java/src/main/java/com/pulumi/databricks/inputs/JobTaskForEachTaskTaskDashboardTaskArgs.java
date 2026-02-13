@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +30,13 @@ public final class JobTaskForEachTaskTaskDashboardTaskArgs extends com.pulumi.re
      */
     public Optional<Output<String>> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
+    }
+
+    @Import(name="filters")
+    private @Nullable Output<Map<String,String>> filters;
+
+    public Optional<Output<Map<String,String>>> filters() {
+        return Optional.ofNullable(this.filters);
     }
 
     /**
@@ -65,6 +73,7 @@ public final class JobTaskForEachTaskTaskDashboardTaskArgs extends com.pulumi.re
 
     private JobTaskForEachTaskTaskDashboardTaskArgs(JobTaskForEachTaskTaskDashboardTaskArgs $) {
         this.dashboardId = $.dashboardId;
+        this.filters = $.filters;
         this.subscription = $.subscription;
         this.warehouseId = $.warehouseId;
     }
@@ -106,6 +115,15 @@ public final class JobTaskForEachTaskTaskDashboardTaskArgs extends com.pulumi.re
          */
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
+        }
+
+        public Builder filters(@Nullable Output<Map<String,String>> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        public Builder filters(Map<String,String> filters) {
+            return filters(Output.of(filters));
         }
 
         /**

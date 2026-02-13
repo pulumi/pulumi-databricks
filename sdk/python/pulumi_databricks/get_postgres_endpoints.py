@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetPostgresEndpointsResult',
@@ -27,7 +28,7 @@ class GetPostgresEndpointsResult:
     """
     A collection of values returned by getPostgresEndpoints.
     """
-    def __init__(__self__, endpoints=None, id=None, page_size=None, parent=None):
+    def __init__(__self__, endpoints=None, id=None, page_size=None, parent=None, provider_config=None):
         if endpoints and not isinstance(endpoints, list):
             raise TypeError("Expected argument 'endpoints' to be a list")
         pulumi.set(__self__, "endpoints", endpoints)
@@ -40,6 +41,9 @@ class GetPostgresEndpointsResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -68,6 +72,11 @@ class GetPostgresEndpointsResult:
         """
         return pulumi.get(self, "parent")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetPostgresEndpointsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetPostgresEndpointsResult(GetPostgresEndpointsResult):
     # pylint: disable=using-constant-test
@@ -78,11 +87,13 @@ class AwaitableGetPostgresEndpointsResult(GetPostgresEndpointsResult):
             endpoints=self.endpoints,
             id=self.id,
             page_size=self.page_size,
-            parent=self.parent)
+            parent=self.parent,
+            provider_config=self.provider_config)
 
 
 def get_postgres_endpoints(page_size: Optional[_builtins.int] = None,
                            parent: Optional[_builtins.str] = None,
+                           provider_config: Optional[Union['GetPostgresEndpointsProviderConfigArgs', 'GetPostgresEndpointsProviderConfigArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresEndpointsResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -106,10 +117,12 @@ def get_postgres_endpoints(page_size: Optional[_builtins.int] = None,
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     :param _builtins.str parent: The Branch that owns this collection of endpoints.
            Format: projects/{project_id}/branches/{branch_id}
+    :param Union['GetPostgresEndpointsProviderConfigArgs', 'GetPostgresEndpointsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
     __args__['parent'] = parent
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresEndpoints:getPostgresEndpoints', __args__, opts=opts, typ=GetPostgresEndpointsResult).value
 
@@ -117,9 +130,11 @@ def get_postgres_endpoints(page_size: Optional[_builtins.int] = None,
         endpoints=pulumi.get(__ret__, 'endpoints'),
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
-        parent=pulumi.get(__ret__, 'parent'))
+        parent=pulumi.get(__ret__, 'parent'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_postgres_endpoints_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                   parent: Optional[pulumi.Input[_builtins.str]] = None,
+                                  provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresEndpointsProviderConfigArgs', 'GetPostgresEndpointsProviderConfigArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresEndpointsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -143,14 +158,17 @@ def get_postgres_endpoints_output(page_size: Optional[pulumi.Input[Optional[_bui
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     :param _builtins.str parent: The Branch that owns this collection of endpoints.
            Format: projects/{project_id}/branches/{branch_id}
+    :param Union['GetPostgresEndpointsProviderConfigArgs', 'GetPostgresEndpointsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
     __args__['parent'] = parent
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresEndpoints:getPostgresEndpoints', __args__, opts=opts, typ=GetPostgresEndpointsResult)
     return __ret__.apply(lambda __response__: GetPostgresEndpointsResult(
         endpoints=pulumi.get(__response__, 'endpoints'),
         id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
-        parent=pulumi.get(__response__, 'parent')))
+        parent=pulumi.get(__response__, 'parent'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

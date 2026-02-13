@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.DirectoryArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DirectoryState;
+import com.pulumi.databricks.outputs.DirectoryProviderConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -116,6 +117,20 @@ public class Directory extends com.pulumi.resources.CustomResource {
      */
     public Output<String> path() {
         return this.path;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={DirectoryProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DirectoryProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<DirectoryProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`

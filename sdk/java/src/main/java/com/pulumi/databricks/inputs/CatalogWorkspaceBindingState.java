@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.CatalogWorkspaceBindingProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,6 +48,13 @@ public final class CatalogWorkspaceBindingState extends com.pulumi.resources.Res
     @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
     public Optional<Output<String>> catalogName() {
         return Optional.ofNullable(this.catalogName);
+    }
+
+    @Import(name="providerConfig")
+    private @Nullable Output<CatalogWorkspaceBindingProviderConfigArgs> providerConfig;
+
+    public Optional<Output<CatalogWorkspaceBindingProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -99,6 +107,7 @@ public final class CatalogWorkspaceBindingState extends com.pulumi.resources.Res
     private CatalogWorkspaceBindingState(CatalogWorkspaceBindingState $) {
         this.bindingType = $.bindingType;
         this.catalogName = $.catalogName;
+        this.providerConfig = $.providerConfig;
         this.securableName = $.securableName;
         this.securableType = $.securableType;
         this.workspaceId = $.workspaceId;
@@ -166,6 +175,15 @@ public final class CatalogWorkspaceBindingState extends com.pulumi.resources.Res
         @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
+        }
+
+        public Builder providerConfig(@Nullable Output<CatalogWorkspaceBindingProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(CatalogWorkspaceBindingProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

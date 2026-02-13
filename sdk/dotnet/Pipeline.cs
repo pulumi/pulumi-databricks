@@ -255,6 +255,9 @@ namespace Pulumi.Databricks
         [Output("rootPath")]
         public Output<string?> RootPath { get; private set; } = null!;
 
+        /// <summary>
+        /// The user or the service principal the pipeline runs as. See RunAs Configuration Block below.
+        /// </summary>
         [Output("runAs")]
         public Output<Outputs.PipelineRunAs?> RunAs { get; private set; } = null!;
 
@@ -515,6 +518,9 @@ namespace Pulumi.Databricks
         [Input("rootPath")]
         public Input<string>? RootPath { get; set; }
 
+        /// <summary>
+        /// The user or the service principal the pipeline runs as. See RunAs Configuration Block below.
+        /// </summary>
         [Input("runAs")]
         public Input<Inputs.PipelineRunAsArgs>? RunAs { get; set; }
 
@@ -743,6 +749,9 @@ namespace Pulumi.Databricks
         [Input("rootPath")]
         public Input<string>? RootPath { get; set; }
 
+        /// <summary>
+        /// The user or the service principal the pipeline runs as. See RunAs Configuration Block below.
+        /// </summary>
         [Input("runAs")]
         public Input<Inputs.PipelineRunAsGetArgs>? RunAs { get; set; }
 

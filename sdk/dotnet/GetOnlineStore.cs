@@ -39,6 +39,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetOnlineStoreProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetOnlineStoreArgs()
         {
         }
@@ -52,6 +58,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetOnlineStoreProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetOnlineStoreInvokeArgs()
         {
@@ -83,6 +95,7 @@ namespace Pulumi.Databricks
         /// (string) - The name of the online store. This is the unique identifier for the online store
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetOnlineStoreProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (integer) - The number of read replicas for the online store. Defaults to 0
         /// </summary>
@@ -108,6 +121,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetOnlineStoreProviderConfigResult? providerConfig,
+
             int readReplicaCount,
 
             string state,
@@ -119,6 +134,7 @@ namespace Pulumi.Databricks
             Creator = creator;
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
             ReadReplicaCount = readReplicaCount;
             State = state;
             UsagePolicyId = usagePolicyId;

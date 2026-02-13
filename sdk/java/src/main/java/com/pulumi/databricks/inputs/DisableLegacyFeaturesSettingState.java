@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs;
+import com.pulumi.databricks.inputs.DisableLegacyFeaturesSettingProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,6 +39,13 @@ public final class DisableLegacyFeaturesSettingState extends com.pulumi.resource
         return Optional.ofNullable(this.etag);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<DisableLegacyFeaturesSettingProviderConfigArgs> providerConfig;
+
+    public Optional<Output<DisableLegacyFeaturesSettingProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="settingName")
     private @Nullable Output<String> settingName;
 
@@ -50,6 +58,7 @@ public final class DisableLegacyFeaturesSettingState extends com.pulumi.resource
     private DisableLegacyFeaturesSettingState(DisableLegacyFeaturesSettingState $) {
         this.disableLegacyFeatures = $.disableLegacyFeatures;
         this.etag = $.etag;
+        this.providerConfig = $.providerConfig;
         this.settingName = $.settingName;
     }
 
@@ -99,6 +108,15 @@ public final class DisableLegacyFeaturesSettingState extends com.pulumi.resource
 
         public Builder etag(String etag) {
             return etag(Output.of(etag));
+        }
+
+        public Builder providerConfig(@Nullable Output<DisableLegacyFeaturesSettingProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(DisableLegacyFeaturesSettingProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder settingName(@Nullable Output<String> settingName) {

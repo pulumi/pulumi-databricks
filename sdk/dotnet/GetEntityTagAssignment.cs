@@ -202,6 +202,12 @@ namespace Pulumi.Databricks
         public string EntityType { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetEntityTagAssignmentProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The key of the tag
         /// </summary>
         [Input("tagKey", required: true)]
@@ -226,6 +232,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetEntityTagAssignmentProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The key of the tag
@@ -255,6 +267,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetEntityTagAssignmentProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - The key of the tag
         /// </summary>
@@ -272,6 +285,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetEntityTagAssignmentProviderConfigResult? providerConfig,
+
             string tagKey,
 
             string tagValue)
@@ -279,6 +294,7 @@ namespace Pulumi.Databricks
             EntityName = entityName;
             EntityType = entityType;
             Id = id;
+            ProviderConfig = providerConfig;
             TagKey = tagKey;
             TagValue = tagValue;
         }

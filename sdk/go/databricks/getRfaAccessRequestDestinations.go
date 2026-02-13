@@ -57,6 +57,8 @@ func LookupRfaAccessRequestDestinations(ctx *pulumi.Context, args *LookupRfaAcce
 type LookupRfaAccessRequestDestinationsArgs struct {
 	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
 	FullName string `pulumi:"fullName"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetRfaAccessRequestDestinationsProviderConfig `pulumi:"providerConfig"`
 	// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
 	SecurableType string `pulumi:"securableType"`
 }
@@ -75,7 +77,8 @@ type LookupRfaAccessRequestDestinationsResult struct {
 	// Optional if resourceName is present
 	FullName string `pulumi:"fullName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                                         `pulumi:"id"`
+	ProviderConfig *GetRfaAccessRequestDestinationsProviderConfig `pulumi:"providerConfig"`
 	// (Securable) - The securable for which the access request destinations are being modified or read
 	Securable GetRfaAccessRequestDestinationsSecurable `pulumi:"securable"`
 	// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
@@ -95,6 +98,8 @@ func LookupRfaAccessRequestDestinationsOutput(ctx *pulumi.Context, args LookupRf
 type LookupRfaAccessRequestDestinationsOutputArgs struct {
 	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
 	FullName pulumi.StringInput `pulumi:"fullName"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetRfaAccessRequestDestinationsProviderConfigPtrInput `pulumi:"providerConfig"`
 	// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
 	SecurableType pulumi.StringInput `pulumi:"securableType"`
 }
@@ -148,6 +153,12 @@ func (o LookupRfaAccessRequestDestinationsResultOutput) FullName() pulumi.String
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRfaAccessRequestDestinationsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRfaAccessRequestDestinationsResultOutput) ProviderConfig() GetRfaAccessRequestDestinationsProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) *GetRfaAccessRequestDestinationsProviderConfig {
+		return v.ProviderConfig
+	}).(GetRfaAccessRequestDestinationsProviderConfigPtrOutput)
 }
 
 // (Securable) - The securable for which the access request destinations are being modified or read

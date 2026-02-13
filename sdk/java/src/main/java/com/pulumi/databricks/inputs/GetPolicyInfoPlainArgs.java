@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetPolicyInfoProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetPolicyInfoPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -32,7 +35,7 @@ public final class GetPolicyInfoPlainArgs extends com.pulumi.resources.InvokeArg
 
     /**
      * Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     @Import(name="onSecurableFullname", required=true)
@@ -40,7 +43,7 @@ public final class GetPolicyInfoPlainArgs extends com.pulumi.resources.InvokeArg
 
     /**
      * @return Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     public String onSecurableFullname() {
@@ -50,7 +53,7 @@ public final class GetPolicyInfoPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     @Import(name="onSecurableType", required=true)
@@ -59,11 +62,26 @@ public final class GetPolicyInfoPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * @return Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     public String onSecurableType() {
         return this.onSecurableType;
+    }
+
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetPolicyInfoProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetPolicyInfoProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     private GetPolicyInfoPlainArgs() {}
@@ -72,6 +90,7 @@ public final class GetPolicyInfoPlainArgs extends com.pulumi.resources.InvokeArg
         this.name = $.name;
         this.onSecurableFullname = $.onSecurableFullname;
         this.onSecurableType = $.onSecurableType;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -106,7 +125,7 @@ public final class GetPolicyInfoPlainArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param onSecurableFullname Full name of the securable on which the policy is defined.
-         * Required on create and ignored on update
+         * Required on create
          * 
          * @return builder
          * 
@@ -119,13 +138,24 @@ public final class GetPolicyInfoPlainArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param onSecurableType Type of the securable on which the policy is defined.
          * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-         * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+         * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
          * 
          * @return builder
          * 
          */
         public Builder onSecurableType(String onSecurableType) {
             $.onSecurableType = onSecurableType;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetPolicyInfoProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

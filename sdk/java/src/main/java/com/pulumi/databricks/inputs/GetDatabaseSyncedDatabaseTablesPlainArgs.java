@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTablesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -46,11 +47,27 @@ public final class GetDatabaseSyncedDatabaseTablesPlainArgs extends com.pulumi.r
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetDatabaseSyncedDatabaseTablesProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetDatabaseSyncedDatabaseTablesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetDatabaseSyncedDatabaseTablesPlainArgs() {}
 
     private GetDatabaseSyncedDatabaseTablesPlainArgs(GetDatabaseSyncedDatabaseTablesPlainArgs $) {
         this.instanceName = $.instanceName;
         this.pageSize = $.pageSize;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -90,6 +107,17 @@ public final class GetDatabaseSyncedDatabaseTablesPlainArgs extends com.pulumi.r
          */
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetDatabaseSyncedDatabaseTablesProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

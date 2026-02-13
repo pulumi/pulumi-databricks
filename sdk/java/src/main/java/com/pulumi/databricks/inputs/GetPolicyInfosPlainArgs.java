@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetPolicyInfosProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -83,6 +84,21 @@ public final class GetPolicyInfosPlainArgs extends com.pulumi.resources.InvokeAr
         return this.onSecurableType;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetPolicyInfosProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetPolicyInfosProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetPolicyInfosPlainArgs() {}
 
     private GetPolicyInfosPlainArgs(GetPolicyInfosPlainArgs $) {
@@ -90,6 +106,7 @@ public final class GetPolicyInfosPlainArgs extends com.pulumi.resources.InvokeAr
         this.maxResults = $.maxResults;
         this.onSecurableFullname = $.onSecurableFullname;
         this.onSecurableType = $.onSecurableType;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -154,6 +171,17 @@ public final class GetPolicyInfosPlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder onSecurableType(String onSecurableType) {
             $.onSecurableType = onSecurableType;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetPolicyInfosProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

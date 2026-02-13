@@ -103,6 +103,10 @@ export class ModelServingProvisionedThroughput extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.ModelServingProvisionedThroughputProviderConfig | undefined>;
+    /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
     declare public /*out*/ readonly servingEndpointId: pulumi.Output<string>;
@@ -129,6 +133,7 @@ export class ModelServingProvisionedThroughput extends pulumi.CustomResource {
             resourceInputs["config"] = state?.config;
             resourceInputs["emailNotifications"] = state?.emailNotifications;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["servingEndpointId"] = state?.servingEndpointId;
             resourceInputs["tags"] = state?.tags;
         } else {
@@ -141,6 +146,7 @@ export class ModelServingProvisionedThroughput extends pulumi.CustomResource {
             resourceInputs["config"] = args?.config;
             resourceInputs["emailNotifications"] = args?.emailNotifications;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["servingEndpointId"] = undefined /*out*/;
         }
@@ -173,6 +179,10 @@ export interface ModelServingProvisionedThroughputState {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputProviderConfig>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
@@ -207,6 +217,10 @@ export interface ModelServingProvisionedThroughputArgs {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputProviderConfig>;
     /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -26,6 +28,7 @@ export function getDatabaseDatabaseCatalog(args: GetDatabaseDatabaseCatalogArgs,
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -37,6 +40,10 @@ export interface GetDatabaseDatabaseCatalogArgs {
      * The name of the catalog in UC
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetDatabaseDatabaseCatalogProviderConfig;
 }
 
 /**
@@ -63,6 +70,7 @@ export interface GetDatabaseDatabaseCatalogResult {
      * (string) - The name of the catalog in UC
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetDatabaseDatabaseCatalogProviderConfig;
     /**
      * (string)
      */
@@ -90,6 +98,7 @@ export function getDatabaseDatabaseCatalogOutput(args: GetDatabaseDatabaseCatalo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -101,4 +110,8 @@ export interface GetDatabaseDatabaseCatalogOutputArgs {
      * The name of the catalog in UC
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetDatabaseDatabaseCatalogProviderConfigArgs>;
 }

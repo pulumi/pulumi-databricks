@@ -11,9 +11,11 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.VectorSearchEndpointArgs;
 import com.pulumi.databricks.inputs.VectorSearchEndpointState;
 import com.pulumi.databricks.outputs.VectorSearchEndpointEndpointStatus;
+import com.pulumi.databricks.outputs.VectorSearchEndpointProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -211,6 +213,20 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> numIndexes() {
         return this.numIndexes;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={VectorSearchEndpointProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ VectorSearchEndpointProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<VectorSearchEndpointProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

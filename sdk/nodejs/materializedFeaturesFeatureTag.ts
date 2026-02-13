@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -36,6 +38,10 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
     }
 
     declare public readonly key: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.MaterializedFeaturesFeatureTagProviderConfig | undefined>;
     declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
@@ -52,6 +58,7 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MaterializedFeaturesFeatureTagState | undefined;
             resourceInputs["key"] = state?.key;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as MaterializedFeaturesFeatureTagArgs | undefined;
@@ -59,6 +66,7 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
                 throw new Error("Missing required property 'key'");
             }
             resourceInputs["key"] = args?.key;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -71,6 +79,10 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
  */
 export interface MaterializedFeaturesFeatureTagState {
     key?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.MaterializedFeaturesFeatureTagProviderConfig>;
     value?: pulumi.Input<string>;
 }
 
@@ -79,5 +91,9 @@ export interface MaterializedFeaturesFeatureTagState {
  */
 export interface MaterializedFeaturesFeatureTagArgs {
     key: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.MaterializedFeaturesFeatureTagProviderConfig>;
     value?: pulumi.Input<string>;
 }

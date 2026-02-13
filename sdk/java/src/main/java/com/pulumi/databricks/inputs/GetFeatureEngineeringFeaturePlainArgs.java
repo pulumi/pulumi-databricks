@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringFeatureProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetFeatureEngineeringFeaturePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +31,26 @@ public final class GetFeatureEngineeringFeaturePlainArgs extends com.pulumi.reso
         return this.fullName;
     }
 
+    /**
+     * Configure the provider for management through account provider.
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetFeatureEngineeringFeatureProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider.
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeatureProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetFeatureEngineeringFeaturePlainArgs() {}
 
     private GetFeatureEngineeringFeaturePlainArgs(GetFeatureEngineeringFeaturePlainArgs $) {
         this.fullName = $.fullName;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -60,6 +79,17 @@ public final class GetFeatureEngineeringFeaturePlainArgs extends com.pulumi.reso
          */
         public Builder fullName(String fullName) {
             $.fullName = fullName;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetFeatureEngineeringFeatureProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

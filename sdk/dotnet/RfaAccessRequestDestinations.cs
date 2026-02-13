@@ -97,6 +97,12 @@ namespace Pulumi.Databricks
         public Output<string> FullName { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.RfaAccessRequestDestinationsProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The securable for which the access request destinations are being modified or read
         /// </summary>
         [Output("securable")]
@@ -167,6 +173,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.RfaAccessRequestDestinationsProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The securable for which the access request destinations are being modified or read
         /// </summary>
         [Input("securable", required: true)]
@@ -211,6 +223,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("fullName")]
         public Input<string>? FullName { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider.
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.RfaAccessRequestDestinationsProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The securable for which the access request destinations are being modified or read

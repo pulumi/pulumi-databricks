@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.IpAccessListArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.IpAccessListState;
+import com.pulumi.databricks.outputs.IpAccessListProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -139,6 +140,20 @@ public class IpAccessList extends com.pulumi.resources.CustomResource {
      */
     public Output<String> listType() {
         return this.listType;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={IpAccessListProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ IpAccessListProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<IpAccessListProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

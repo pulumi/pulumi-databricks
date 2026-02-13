@@ -107,6 +107,12 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SchemaProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier of the schema.
         /// </summary>
         [Output("schemaId")]
@@ -216,6 +222,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SchemaProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         /// </summary>
         [Input("storageRoot")]
@@ -279,6 +291,12 @@ namespace Pulumi.Databricks
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SchemaProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The unique identifier of the schema.

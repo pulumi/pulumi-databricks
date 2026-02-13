@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const catalogPolicies = databricks.getPolicyInfos({
- *     onSecurableType: "catalog",
+ *     onSecurableType: "CATALOG",
  *     onSecurableFullname: "main",
  * });
  * ```
@@ -34,6 +34,7 @@ export function getPolicyInfos(args: GetPolicyInfosArgs, opts?: pulumi.InvokeOpt
         "maxResults": args.maxResults,
         "onSecurableFullname": args.onSecurableFullname,
         "onSecurableType": args.onSecurableType,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -60,6 +61,10 @@ export interface GetPolicyInfosArgs {
      * Required. The type of the securable to list policies for
      */
     onSecurableType: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: inputs.GetPolicyInfosProviderConfig;
 }
 
 /**
@@ -74,16 +79,17 @@ export interface GetPolicyInfosResult {
     readonly maxResults?: number;
     /**
      * (string) - Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      */
     readonly onSecurableFullname: string;
     /**
      * (string) - Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     readonly onSecurableType: string;
     readonly policies: outputs.GetPolicyInfosPolicy[];
+    readonly providerConfig?: outputs.GetPolicyInfosProviderConfig;
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -101,7 +107,7 @@ export interface GetPolicyInfosResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const catalogPolicies = databricks.getPolicyInfos({
- *     onSecurableType: "catalog",
+ *     onSecurableType: "CATALOG",
  *     onSecurableFullname: "main",
  * });
  * ```
@@ -113,6 +119,7 @@ export function getPolicyInfosOutput(args: GetPolicyInfosOutputArgs, opts?: pulu
         "maxResults": args.maxResults,
         "onSecurableFullname": args.onSecurableFullname,
         "onSecurableType": args.onSecurableType,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -139,4 +146,8 @@ export interface GetPolicyInfosOutputArgs {
      * Required. The type of the securable to list policies for
      */
     onSecurableType: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: pulumi.Input<inputs.GetPolicyInfosProviderConfigArgs>;
 }

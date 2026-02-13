@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetDatabaseDatabaseCatalogProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseDatabaseCatalogResult {
@@ -36,6 +39,7 @@ public final class GetDatabaseDatabaseCatalogResult {
      * 
      */
     private String name;
+    private @Nullable GetDatabaseDatabaseCatalogProviderConfig providerConfig;
     /**
      * @return (string)
      * 
@@ -78,6 +82,9 @@ public final class GetDatabaseDatabaseCatalogResult {
     public String name() {
         return this.name;
     }
+    public Optional<GetDatabaseDatabaseCatalogProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return (string)
      * 
@@ -100,6 +107,7 @@ public final class GetDatabaseDatabaseCatalogResult {
         private String databaseName;
         private String id;
         private String name;
+        private @Nullable GetDatabaseDatabaseCatalogProviderConfig providerConfig;
         private String uid;
         public Builder() {}
         public Builder(GetDatabaseDatabaseCatalogResult defaults) {
@@ -109,6 +117,7 @@ public final class GetDatabaseDatabaseCatalogResult {
     	      this.databaseName = defaults.databaseName;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.uid = defaults.uid;
         }
 
@@ -153,6 +162,12 @@ public final class GetDatabaseDatabaseCatalogResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDatabaseDatabaseCatalogProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder uid(String uid) {
             if (uid == null) {
               throw new MissingRequiredPropertyException("GetDatabaseDatabaseCatalogResult", "uid");
@@ -167,6 +182,7 @@ public final class GetDatabaseDatabaseCatalogResult {
             _resultValue.databaseName = databaseName;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.uid = uid;
             return _resultValue;
         }

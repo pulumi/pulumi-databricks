@@ -6,12 +6,15 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPolicyInfoColumnMask;
 import com.pulumi.databricks.outputs.GetPolicyInfoMatchColumn;
+import com.pulumi.databricks.outputs.GetPolicyInfoProviderConfig;
 import com.pulumi.databricks.outputs.GetPolicyInfoRowFilter;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPolicyInfoResult {
@@ -69,22 +72,23 @@ public final class GetPolicyInfoResult {
     private String name;
     /**
      * @return (string) - Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     private String onSecurableFullname;
     /**
      * @return (string) - Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     private String onSecurableType;
     /**
-     * @return (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * @return (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     private String policyType;
+    private @Nullable GetPolicyInfoProviderConfig providerConfig;
     /**
      * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
@@ -187,7 +191,7 @@ public final class GetPolicyInfoResult {
     }
     /**
      * @return (string) - Full name of the securable on which the policy is defined.
-     * Required on create and ignored on update
+     * Required on create
      * 
      */
     public String onSecurableFullname() {
@@ -196,18 +200,21 @@ public final class GetPolicyInfoResult {
     /**
      * @return (string) - Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
-     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
     public String onSecurableType() {
         return this.onSecurableType;
     }
     /**
-     * @return (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+     * @return (string) - Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      * 
      */
     public String policyType() {
         return this.policyType;
+    }
+    public Optional<GetPolicyInfoProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     /**
      * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
@@ -269,6 +276,7 @@ public final class GetPolicyInfoResult {
         private String onSecurableFullname;
         private String onSecurableType;
         private String policyType;
+        private @Nullable GetPolicyInfoProviderConfig providerConfig;
         private GetPolicyInfoRowFilter rowFilter;
         private List<String> toPrincipals;
         private Integer updatedAt;
@@ -289,6 +297,7 @@ public final class GetPolicyInfoResult {
     	      this.onSecurableFullname = defaults.onSecurableFullname;
     	      this.onSecurableType = defaults.onSecurableType;
     	      this.policyType = defaults.policyType;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.rowFilter = defaults.rowFilter;
     	      this.toPrincipals = defaults.toPrincipals;
     	      this.updatedAt = defaults.updatedAt;
@@ -399,6 +408,12 @@ public final class GetPolicyInfoResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPolicyInfoProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rowFilter(GetPolicyInfoRowFilter rowFilter) {
             if (rowFilter == null) {
               throw new MissingRequiredPropertyException("GetPolicyInfoResult", "rowFilter");
@@ -455,6 +470,7 @@ public final class GetPolicyInfoResult {
             _resultValue.onSecurableFullname = onSecurableFullname;
             _resultValue.onSecurableType = onSecurableType;
             _resultValue.policyType = policyType;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.rowFilter = rowFilter;
             _resultValue.toPrincipals = toPrincipals;
             _resultValue.updatedAt = updatedAt;

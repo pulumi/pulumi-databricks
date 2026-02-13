@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetWorkspaceEntityTagAssignmentsProviderConfig;
 import com.pulumi.databricks.outputs.GetWorkspaceEntityTagAssignmentsTagAssignment;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -31,6 +32,7 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
      */
     private String id;
     private @Nullable Integer pageSize;
+    private @Nullable GetWorkspaceEntityTagAssignmentsProviderConfig providerConfig;
     private List<GetWorkspaceEntityTagAssignmentsTagAssignment> tagAssignments;
 
     private GetWorkspaceEntityTagAssignmentsResult() {}
@@ -58,6 +60,9 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    public Optional<GetWorkspaceEntityTagAssignmentsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public List<GetWorkspaceEntityTagAssignmentsTagAssignment> tagAssignments() {
         return this.tagAssignments;
     }
@@ -75,6 +80,7 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
         private String entityType;
         private String id;
         private @Nullable Integer pageSize;
+        private @Nullable GetWorkspaceEntityTagAssignmentsProviderConfig providerConfig;
         private List<GetWorkspaceEntityTagAssignmentsTagAssignment> tagAssignments;
         public Builder() {}
         public Builder(GetWorkspaceEntityTagAssignmentsResult defaults) {
@@ -83,6 +89,7 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
     	      this.entityType = defaults.entityType;
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tagAssignments = defaults.tagAssignments;
         }
 
@@ -117,6 +124,12 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetWorkspaceEntityTagAssignmentsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagAssignments(List<GetWorkspaceEntityTagAssignmentsTagAssignment> tagAssignments) {
             if (tagAssignments == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceEntityTagAssignmentsResult", "tagAssignments");
@@ -133,6 +146,7 @@ public final class GetWorkspaceEntityTagAssignmentsResult {
             _resultValue.entityType = entityType;
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tagAssignments = tagAssignments;
             return _resultValue;
         }
