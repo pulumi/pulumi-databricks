@@ -87,6 +87,9 @@
                 "fields": {
                     "aibi_dashboard_embedding_access_policy": {
                         "maxItemsOne": true
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -103,6 +106,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -136,6 +142,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -210,6 +219,9 @@
                 "fields": {
                     "artifact_matcher": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -243,6 +255,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -315,6 +330,9 @@
                     "effective_predictive_optimization_flag": {
                         "maxItemsOne": true
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "provisioning_info": {
                         "maxItemsOne": true
                     }
@@ -322,7 +340,12 @@
             },
             "databricks_catalog_workspace_binding": {
                 "current": "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_cluster": {
                 "current": "databricks:index/cluster:Cluster",
@@ -517,6 +540,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -524,6 +550,9 @@
                 "current": "databricks:index/connection:Connection",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "provisioning_info": {
                         "maxItemsOne": false
                     }
@@ -567,7 +596,12 @@
             },
             "databricks_dashboard": {
                 "current": "databricks:index/dashboard:Dashboard",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_data_quality_monitor": {
                 "current": "databricks:index/dataQualityMonitor:DataQualityMonitor",
@@ -670,18 +704,29 @@
                 "fields": {
                     "namespace": {
                         "maxItemsOne": true
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
             "databricks_directory": {
                 "current": "databricks:index/directory:Directory",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_disable_legacy_access_setting": {
                 "current": "databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting",
                 "majorVersion": 1,
                 "fields": {
                     "disable_legacy_access": {
+                        "maxItemsOne": true
+                    },
+                    "provider_config": {
                         "maxItemsOne": true
                     }
                 }
@@ -692,6 +737,9 @@
                 "fields": {
                     "disable_legacy_dbfs": {
                         "maxItemsOne": true
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -701,6 +749,9 @@
                 "fields": {
                     "disable_legacy_features": {
                         "maxItemsOne": true
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -709,6 +760,9 @@
                 "majorVersion": 1,
                 "fields": {
                     "enhanced_security_monitoring_workspace": {
+                        "maxItemsOne": true
+                    },
+                    "provider_config": {
                         "maxItemsOne": true
                     }
                 }
@@ -759,6 +813,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -828,15 +885,30 @@
             },
             "databricks_file": {
                 "current": "databricks:index/file:File",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_git_credential": {
                 "current": "databricks:index/gitCredential:GitCredential",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_global_init_script": {
                 "current": "databricks:index/globalInitScript:GlobalInitScript",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_grant": {
                 "current": "databricks:index/grant:Grant",
@@ -844,6 +916,9 @@
                 "fields": {
                     "privileges": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -860,6 +935,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -943,6 +1021,9 @@
                 "fields": {
                     "ip_addresses": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -2381,6 +2462,9 @@
                             }
                         }
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "schedule": {
                         "maxItemsOne": true
                     },
@@ -2467,6 +2551,9 @@
                 "current": "databricks:index/mlflowExperiment:MlflowExperiment",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -2476,6 +2563,9 @@
                 "current": "databricks:index/mlflowModel:MlflowModel",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -2492,6 +2582,9 @@
                         "maxItemsOne": true
                     },
                     "job_spec": {
+                        "maxItemsOne": true
+                    },
+                    "provider_config": {
                         "maxItemsOne": true
                     }
                 }
@@ -2645,6 +2738,9 @@
                             }
                         }
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "rate_limits": {
                         "maxItemsOne": false
                     },
@@ -2747,6 +2843,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     },
                     "tags": {
                         "maxItemsOne": false
@@ -3037,6 +3136,9 @@
                 "current": "databricks:index/onlineTable:OnlineTable",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "spec": {
                         "maxItemsOne": true,
                         "elem": {
@@ -3759,6 +3861,9 @@
                             }
                         }
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -3781,6 +3886,9 @@
                     "properties_kvpairs": {
                         "maxItemsOne": true
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "tokens": {
                         "maxItemsOne": false
                     }
@@ -3792,6 +3900,9 @@
                 "fields": {
                     "aliases": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -3815,6 +3926,9 @@
                 "current": "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "restrict_workspace_admins": {
                         "maxItemsOne": true
                     }
@@ -3831,15 +3945,30 @@
             },
             "databricks_schema": {
                 "current": "databricks:index/schema:Schema",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_secret": {
                 "current": "databricks:index/secret:Secret",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_secret_acl": {
                 "current": "databricks:index/secretAcl:SecretAcl",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_secret_scope": {
                 "current": "databricks:index/secretScope:SecretScope",
@@ -3907,6 +4036,9 @@
                 "fields": {
                     "options": {
                         "maxItemsOne": true
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -3937,6 +4069,9 @@
                         }
                     },
                     "odbc_params": {
+                        "maxItemsOne": true
+                    },
+                    "provider_config": {
                         "maxItemsOne": true
                     },
                     "tags": {
@@ -4089,6 +4224,9 @@
                     },
                     "partitions": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -4141,7 +4279,12 @@
             },
             "databricks_system_schema": {
                 "current": "databricks:index/systemSchema:SystemSchema",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_table": {
                 "current": "databricks:index/table:Table",
@@ -4183,6 +4326,9 @@
                 "fields": {
                     "endpoint_status": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -4216,6 +4362,9 @@
                             }
                         }
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "status": {
                         "maxItemsOne": false
                     }
@@ -4223,7 +4372,12 @@
             },
             "databricks_volume": {
                 "current": "databricks:index/volume:Volume",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_warehouses_default_warehouse_override": {
                 "current": "databricks:index/warehousesDefaultWarehouseOverride:WarehousesDefaultWarehouseOverride",
@@ -4231,7 +4385,12 @@
             },
             "databricks_workspace_binding": {
                 "current": "databricks:index/workspaceBinding:WorkspaceBinding",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_workspace_conf": {
                 "current": "databricks:index/workspaceConf:WorkspaceConf",
@@ -4243,7 +4402,12 @@
             },
             "databricks_workspace_file": {
                 "current": "databricks:index/workspaceFile:WorkspaceFile",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_workspace_network_option": {
                 "current": "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption",
@@ -11085,13 +11249,38 @@
     },
     "workspace-id": {
         "resources": {
+            "databricks_aibi_dashboard_embedding_access_policy_setting": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_aibi_dashboard_embedding_approved_domains_setting": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_alert": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_alert_v2": [
+                "provider_config.workspace_id"
+            ],
             "databricks_app": [
                 "provider_config.workspace_id"
+            ],
+            "databricks_apps_settings_custom_template": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_artifact_allowlist": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_automatic_cluster_update_workspace_setting": [
+                "provider_config.$.workspace_id"
             ],
             "databricks_budget": [
                 "filter.$.workspace_id"
             ],
+            "databricks_catalog": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_catalog_workspace_binding": [
+                "provider_config.$.workspace_id",
                 "workspace_id"
             ],
             "databricks_cluster": [
@@ -11099,6 +11288,84 @@
             ],
             "databricks_cluster_policy": [
                 "libraries.$.provider_config.$.workspace_id"
+            ],
+            "databricks_compliance_security_profile_workspace_setting": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_connection": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_dashboard": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_data_quality_monitor": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_data_quality_refresh": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_database_database_catalog": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_database_instance": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_database_synced_database_table": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_default_namespace_setting": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_directory": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_disable_legacy_access_setting": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_disable_legacy_dbfs_setting": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_disable_legacy_features_setting": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_enhanced_security_monitoring_workspace_setting": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_entity_tag_assignment": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_external_location": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_external_metadata": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_feature_engineering_feature": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_feature_engineering_kafka_config": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_feature_engineering_materialized_feature": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_file": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_git_credential": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_global_init_script": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_grant": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_grants": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_ip_access_list": [
+                "provider_config.$.workspace_id"
             ],
             "databricks_job": [
                 "job_cluster.$.new_cluster.$.library.$.provider_config.$.workspace_id",
@@ -11114,11 +11381,32 @@
                 "task.$.new_cluster.$.library.$.provider_config.$.workspace_id",
                 "task.$.new_cluster.$.provider_config.$.workspace_id"
             ],
+            "databricks_lakehouse_monitor": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_library": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_materialized_features_feature_tag": [
+                "provider_config.workspace_id"
+            ],
             "databricks_metastore_assignment": [
                 "workspace_id"
+            ],
+            "databricks_mlflow_experiment": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_mlflow_model": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_mlflow_webhook": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_model_serving": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_model_serving_provisioned_throughput": [
+                "provider_config.$.workspace_id"
             ],
             "databricks_mws_ncc_binding": [
                 "workspace_id"
@@ -11135,28 +11423,124 @@
             "databricks_notebook": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_online_store": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_online_table": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_permission_assignment": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_policy_info": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_branch": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_endpoint": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_project": [
+                "provider_config.workspace_id"
+            ],
             "databricks_quality_monitor": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_quality_monitor_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_query": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_recipient": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_registered_model": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_restrict_workspace_admins_setting": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_rfa_access_request_destinations": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_schema": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_secret": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_secret_acl": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_share": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_sql_alert": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_sql_endpoint": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_sql_table": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_system_schema": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_tag_policy": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_vector_search_endpoint": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_vector_search_index": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_volume": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_warehouses_default_warehouse_override": [
+                "provider_config.workspace_id"
+            ],
             "databricks_workspace_binding": [
+                "provider_config.$.workspace_id",
                 "workspace_id"
+            ],
+            "databricks_workspace_entity_tag_assignment": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_file": [
+                "provider_config.$.workspace_id"
             ],
             "databricks_workspace_network_option": [
                 "workspace_id"
+            ],
+            "databricks_workspace_setting_v2": [
+                "provider_config.workspace_id"
             ]
         },
         "dataSources": {
+            "databricks_alert_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_alerts_v2": [
+                "alerts.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
             "databricks_app": [
                 "provider_config.workspace_id"
             ],
             "databricks_apps": [
                 "provider_config.workspace_id"
+            ],
+            "databricks_apps_settings_custom_template": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_apps_settings_custom_templates": [
+                "provider_config.workspace_id",
+                "templates.$.provider_config.workspace_id"
             ],
             "databricks_catalog": [
                 "provider_config.$.workspace_id"
@@ -11187,6 +11571,41 @@
             "databricks_dashboards": [
                 "provider_config.workspace_id"
             ],
+            "databricks_data_quality_monitor": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_data_quality_monitors": [
+                "monitors.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_data_quality_refresh": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_data_quality_refreshes": [
+                "provider_config.workspace_id",
+                "refreshes.$.provider_config.workspace_id"
+            ],
+            "databricks_database_database_catalog": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_database_database_catalogs": [
+                "database_catalogs.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_database_instance": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_database_instances": [
+                "database_instances.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_database_synced_database_table": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_database_synced_database_tables": [
+                "provider_config.workspace_id",
+                "synced_tables.$.provider_config.workspace_id"
+            ],
             "databricks_dbfs_file": [
                 "provider_config.$.workspace_id"
             ],
@@ -11196,11 +11615,46 @@
             "databricks_directory": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_entity_tag_assignment": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_entity_tag_assignments": [
+                "provider_config.workspace_id",
+                "tag_assignments.$.provider_config.workspace_id"
+            ],
             "databricks_external_location": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_external_locations": [
                 "provider_config.$.workspace_id"
+            ],
+            "databricks_external_metadata": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_external_metadatas": [
+                "external_metadata.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_feature_engineering_feature": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_feature_engineering_features": [
+                "features.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_feature_engineering_kafka_config": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_feature_engineering_kafka_configs": [
+                "kafka_configs.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_feature_engineering_materialized_feature": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_feature_engineering_materialized_features": [
+                "materialized_features.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
             ],
             "databricks_functions": [
                 "provider_config.workspace_id"
@@ -11222,6 +11676,13 @@
             ],
             "databricks_jobs": [
                 "provider_config.$.workspace_id"
+            ],
+            "databricks_materialized_features_feature_tag": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_materialized_features_feature_tags": [
+                "feature_tags.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
             ],
             "databricks_mlflow_experiment": [
                 "provider_config.$.workspace_id"
@@ -11250,13 +11711,58 @@
             "databricks_notification_destinations": [
                 "provider_config.workspace_id"
             ],
+            "databricks_online_store": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_online_stores": [
+                "online_stores.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
             "databricks_pipelines": [
                 "provider_config.$.workspace_id"
+            ],
+            "databricks_policy_info": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_policy_infos": [
+                "policies.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_branch": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_branches": [
+                "branches.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_endpoint": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_endpoints": [
+                "endpoints.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_project": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_projects": [
+                "projects.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_quality_monitor_v2": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_quality_monitors_v2": [
+                "provider_config.workspace_id",
+                "quality_monitors.$.provider_config.workspace_id"
             ],
             "databricks_registered_model": [
                 "provider_config.workspace_id"
             ],
             "databricks_registered_model_versions": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_rfa_access_request_destinations": [
                 "provider_config.workspace_id"
             ],
             "databricks_schema": [
@@ -11301,6 +11807,13 @@
             "databricks_tables": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_tag_policies": [
+                "provider_config.workspace_id",
+                "tag_policies.$.provider_config.workspace_id"
+            ],
+            "databricks_tag_policy": [
+                "provider_config.workspace_id"
+            ],
             "databricks_user": [
                 "provider_config.$.workspace_id"
             ],
@@ -11313,8 +11826,25 @@
             "databricks_volumes": [
                 "provider_config.workspace_id"
             ],
+            "databricks_warehouses_default_warehouse_override": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_warehouses_default_warehouse_overrides": [
+                "default_warehouse_overrides.$.provider_config.workspace_id",
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_entity_tag_assignment": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_workspace_entity_tag_assignments": [
+                "provider_config.workspace_id",
+                "tag_assignments.$.provider_config.workspace_id"
+            ],
             "databricks_workspace_network_option": [
                 "workspace_id"
+            ],
+            "databricks_workspace_setting_v2": [
+                "provider_config.workspace_id"
             ],
             "databricks_zones": [
                 "provider_config.$.workspace_id"
