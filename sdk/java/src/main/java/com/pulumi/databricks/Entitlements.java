@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.EntitlementsArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.EntitlementsState;
+import com.pulumi.databricks.outputs.EntitlementsProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -217,6 +218,20 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> groupId() {
         return Codegen.optional(this.groupId);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={EntitlementsProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ EntitlementsProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<EntitlementsProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Canonical unique identifier for the service principal.

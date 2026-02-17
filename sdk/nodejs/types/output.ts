@@ -907,6 +907,111 @@ export interface AppsSettingsCustomTemplateProviderConfig {
     workspaceId: string;
 }
 
+export interface AppsSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface AppsSpaceResource {
+    database?: outputs.AppsSpaceResourceDatabase;
+    /**
+     * The description of the app space
+     */
+    description?: string;
+    experiment?: outputs.AppsSpaceResourceExperiment;
+    genieSpace?: outputs.AppsSpaceResourceGenieSpace;
+    job?: outputs.AppsSpaceResourceJob;
+    /**
+     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    secret?: outputs.AppsSpaceResourceSecret;
+    servingEndpoint?: outputs.AppsSpaceResourceServingEndpoint;
+    sqlWarehouse?: outputs.AppsSpaceResourceSqlWarehouse;
+    ucSecurable?: outputs.AppsSpaceResourceUcSecurable;
+}
+
+export interface AppsSpaceResourceDatabase {
+    databaseName: string;
+    instanceName: string;
+    permission: string;
+}
+
+export interface AppsSpaceResourceExperiment {
+    experimentId: string;
+    permission: string;
+}
+
+export interface AppsSpaceResourceGenieSpace {
+    /**
+     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    permission: string;
+    spaceId: string;
+}
+
+export interface AppsSpaceResourceJob {
+    /**
+     * (string) - The unique identifier of the app space
+     */
+    id: string;
+    permission: string;
+}
+
+export interface AppsSpaceResourceSecret {
+    /**
+     * Key of the secret to grant permission on
+     */
+    key: string;
+    permission: string;
+    /**
+     * Scope of the secret to grant permission on
+     */
+    scope: string;
+}
+
+export interface AppsSpaceResourceServingEndpoint {
+    /**
+     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    permission: string;
+}
+
+export interface AppsSpaceResourceSqlWarehouse {
+    /**
+     * (string) - The unique identifier of the app space
+     */
+    id: string;
+    permission: string;
+}
+
+export interface AppsSpaceResourceUcSecurable {
+    permission: string;
+    securableFullName: string;
+    /**
+     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     */
+    securableType: string;
+}
+
+export interface AppsSpaceStatus {
+    /**
+     * (string) - Message providing context about the current state
+     */
+    message: string;
+    /**
+     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+     */
+    state: string;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
     /**
      * The artifact path or maven coordinate.
@@ -1468,6 +1573,9 @@ export interface ClusterPolicyLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.ClusterPolicyLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: outputs.ClusterPolicyLibraryProviderConfig;
     pypi?: outputs.ClusterPolicyLibraryPypi;
     requirements?: string;
@@ -1486,12 +1594,22 @@ export interface ClusterPolicyLibraryMaven {
 }
 
 export interface ClusterPolicyLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
 export interface ClusterPolicyLibraryPypi {
     package: string;
     repo?: string;
+}
+
+export interface ClusterPolicyProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface ClusterProviderConfig {
@@ -2202,6 +2320,13 @@ export interface DatabaseSyncedDatabaseTableSpecNewPipelineSpec {
     storageSchema?: string;
 }
 
+export interface DbfsFileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface DefaultNamespaceSettingNamespace {
     /**
      * The value for the setting.
@@ -2262,11 +2387,38 @@ export interface DisableLegacyFeaturesSettingProviderConfig {
     workspaceId: string;
 }
 
+export interface EndpointAzurePrivateEndpointInfo {
+    /**
+     * The name of the Private Endpoint in the Azure subscription
+     */
+    privateEndpointName: string;
+    /**
+     * The GUID of the Private Endpoint resource in the Azure subscription.
+     * This is assigned by Azure when the user sets up the Private Endpoint
+     */
+    privateEndpointResourceGuid: string;
+    /**
+     * (string) - The full resource ID of the Private Endpoint
+     */
+    privateEndpointResourceId: string;
+    /**
+     * (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+     */
+    privateLinkServiceId: string;
+}
+
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
     isEnabled: boolean;
 }
 
 export interface EnhancedSecurityMonitoringWorkspaceSettingProviderConfig {
+    workspaceId: string;
+}
+
+export interface EntitlementsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
@@ -3670,6 +3822,7 @@ export interface GetAppApp {
      * name of the app service principal
      */
     servicePrincipalName: string;
+    space?: string;
     /**
      * The update time of the app.
      */
@@ -4061,6 +4214,7 @@ export interface GetAppsApp {
      * name of the app service principal
      */
     servicePrincipalName: string;
+    space?: string;
     /**
      * The update time of the app.
      */
@@ -4637,6 +4791,425 @@ export interface GetAppsSettingsCustomTemplatesTemplateProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface GetAppsSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppsSpaceResource {
+    /**
+     * (AppResourceDatabase)
+     */
+    database?: outputs.GetAppsSpaceResourceDatabase;
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * (AppResourceExperiment)
+     */
+    experiment?: outputs.GetAppsSpaceResourceExperiment;
+    /**
+     * (AppResourceGenieSpace)
+     */
+    genieSpace?: outputs.GetAppsSpaceResourceGenieSpace;
+    /**
+     * (AppResourceJob)
+     */
+    job?: outputs.GetAppsSpaceResourceJob;
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (AppResourceSecret)
+     */
+    secret?: outputs.GetAppsSpaceResourceSecret;
+    /**
+     * (AppResourceServingEndpoint)
+     */
+    servingEndpoint?: outputs.GetAppsSpaceResourceServingEndpoint;
+    /**
+     * (AppResourceSqlWarehouse)
+     */
+    sqlWarehouse?: outputs.GetAppsSpaceResourceSqlWarehouse;
+    /**
+     * (AppResourceUcSecurable)
+     */
+    ucSecurable?: outputs.GetAppsSpaceResourceUcSecurable;
+}
+
+export interface GetAppsSpaceResourceDatabase {
+    /**
+     * (string)
+     */
+    databaseName: string;
+    /**
+     * (string)
+     */
+    instanceName: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpaceResourceExperiment {
+    /**
+     * (string)
+     */
+    experimentId: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpaceResourceGenieSpace {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string)
+     */
+    spaceId: string;
+}
+
+export interface GetAppsSpaceResourceJob {
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpaceResourceSecret {
+    /**
+     * (string) - Key of the secret to grant permission on
+     */
+    key: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string) - Scope of the secret to grant permission on
+     */
+    scope: string;
+}
+
+export interface GetAppsSpaceResourceServingEndpoint {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpaceResourceSqlWarehouse {
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpaceResourceUcSecurable {
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string)
+     */
+    securableFullName: string;
+    /**
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     */
+    securableType: string;
+}
+
+export interface GetAppsSpaceStatus {
+    /**
+     * (string) - Message providing context about the current state
+     */
+    message: string;
+    /**
+     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+     */
+    state: string;
+}
+
+export interface GetAppsSpacesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppsSpacesSpace {
+    /**
+     * (string) - The creation time of the app space. Formatted timestamp in ISO 6801
+     */
+    createTime: string;
+    /**
+     * (string) - The email of the user that created the app space
+     */
+    creator: string;
+    /**
+     * (string) - Description of the App Resource
+     */
+    description: string;
+    /**
+     * (string) - The effective usage policy ID used by apps in the space
+     */
+    effectiveUsagePolicyId: string;
+    /**
+     * (list of string) - The effective api scopes granted to the user access token
+     */
+    effectiveUserApiScopes: string[];
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Name of the serving endpoint to grant permission on
+     */
+    name: string;
+    /**
+     * (string) - The OAuth2 app client ID for the app space
+     */
+    oauth2AppClientId: string;
+    /**
+     * (string) - The OAuth2 app integration ID for the app space
+     */
+    oauth2AppIntegrationId: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAppsSpacesSpaceProviderConfig;
+    /**
+     * (list of AppResource) - Resources for the app space. Resources configured at the space level are available to all apps in the space
+     */
+    resources: outputs.GetAppsSpacesSpaceResource[];
+    /**
+     * (string) - The service principal client ID for the app space
+     */
+    servicePrincipalClientId: string;
+    /**
+     * (integer) - The service principal ID for the app space
+     */
+    servicePrincipalId: number;
+    /**
+     * (string) - The service principal name for the app space
+     */
+    servicePrincipalName: string;
+    /**
+     * (SpaceStatus) - The status of the app space
+     */
+    status: outputs.GetAppsSpacesSpaceStatus;
+    /**
+     * (string) - The update time of the app space. Formatted timestamp in ISO 6801
+     */
+    updateTime: string;
+    /**
+     * (string) - The email of the user that last updated the app space
+     */
+    updater: string;
+    /**
+     * (string) - The usage policy ID for managing cost at the space level
+     */
+    usagePolicyId: string;
+    /**
+     * (list of string) - OAuth scopes for apps in the space
+     */
+    userApiScopes: string[];
+}
+
+export interface GetAppsSpacesSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppsSpacesSpaceResource {
+    /**
+     * (AppResourceDatabase)
+     */
+    database?: outputs.GetAppsSpacesSpaceResourceDatabase;
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * (AppResourceExperiment)
+     */
+    experiment?: outputs.GetAppsSpacesSpaceResourceExperiment;
+    /**
+     * (AppResourceGenieSpace)
+     */
+    genieSpace?: outputs.GetAppsSpacesSpaceResourceGenieSpace;
+    /**
+     * (AppResourceJob)
+     */
+    job?: outputs.GetAppsSpacesSpaceResourceJob;
+    /**
+     * (string) - Name of the serving endpoint to grant permission on
+     */
+    name: string;
+    /**
+     * (AppResourceSecret)
+     */
+    secret?: outputs.GetAppsSpacesSpaceResourceSecret;
+    /**
+     * (AppResourceServingEndpoint)
+     */
+    servingEndpoint?: outputs.GetAppsSpacesSpaceResourceServingEndpoint;
+    /**
+     * (AppResourceSqlWarehouse)
+     */
+    sqlWarehouse?: outputs.GetAppsSpacesSpaceResourceSqlWarehouse;
+    /**
+     * (AppResourceUcSecurable)
+     */
+    ucSecurable?: outputs.GetAppsSpacesSpaceResourceUcSecurable;
+}
+
+export interface GetAppsSpacesSpaceResourceDatabase {
+    /**
+     * (string)
+     */
+    databaseName: string;
+    /**
+     * (string)
+     */
+    instanceName: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpacesSpaceResourceExperiment {
+    /**
+     * (string)
+     */
+    experimentId: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpacesSpaceResourceGenieSpace {
+    /**
+     * (string) - Name of the serving endpoint to grant permission on
+     */
+    name: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string)
+     */
+    spaceId: string;
+}
+
+export interface GetAppsSpacesSpaceResourceJob {
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpacesSpaceResourceSecret {
+    /**
+     * (string) - Key of the secret to grant permission on
+     */
+    key: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string) - Scope of the secret to grant permission on
+     */
+    scope: string;
+}
+
+export interface GetAppsSpacesSpaceResourceServingEndpoint {
+    /**
+     * (string) - Name of the serving endpoint to grant permission on
+     */
+    name: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpacesSpaceResourceSqlWarehouse {
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSpacesSpaceResourceUcSecurable {
+    /**
+     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string)
+     */
+    securableFullName: string;
+    /**
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     */
+    securableType: string;
+}
+
+export interface GetAppsSpacesSpaceStatus {
+    /**
+     * (string) - Message providing context about the current state
+     */
+    message: string;
+    /**
+     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+     */
+    state: string;
 }
 
 export interface GetBudgetPoliciesFilterBy {
@@ -7067,6 +7640,88 @@ export interface GetDirectoryProviderConfig {
     workspaceId: string;
 }
 
+export interface GetEndpointAzurePrivateEndpointInfo {
+    /**
+     * (string) - The name of the Private Endpoint in the Azure subscription
+     */
+    privateEndpointName: string;
+    /**
+     * (string) - The GUID of the Private Endpoint resource in the Azure subscription.
+     * This is assigned by Azure when the user sets up the Private Endpoint
+     */
+    privateEndpointResourceGuid: string;
+    /**
+     * (string) - The full resource ID of the Private Endpoint
+     */
+    privateEndpointResourceId: string;
+    /**
+     * (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+     */
+    privateLinkServiceId: string;
+}
+
+export interface GetEndpointsItem {
+    /**
+     * (string) - The Databricks Account in which the endpoint object exists
+     */
+    accountId: string;
+    /**
+     * (AzurePrivateEndpointInfo) - Info for an Azure private endpoint
+     */
+    azurePrivateEndpointInfo: outputs.GetEndpointsItemAzurePrivateEndpointInfo;
+    /**
+     * (string) - The timestamp when the endpoint was created. The timestamp is in RFC 3339 format in UTC timezone
+     */
+    createTime: string;
+    /**
+     * (string) - The human-readable display name of this endpoint.
+     * The input should conform to RFC-1034, which restricts to letters, numbers, and hyphens,
+     * with the first character a letter, the last a letter or a number, and a 63 character maximum
+     */
+    displayName: string;
+    /**
+     * (string) - The unique identifier for this endpoint under the account. This field is a UUID generated by Databricks
+     */
+    endpointId: string;
+    /**
+     * (string) - The resource name of the endpoint, which uniquely identifies the endpoint
+     */
+    name: string;
+    /**
+     * (string) - The cloud provider region where this endpoint is located
+     */
+    region: string;
+    /**
+     * (string) - The state of the endpoint. The endpoint can only be used if the state is `APPROVED`. Possible values are: `APPROVED`, `DISCONNECTED`, `FAILED`, `PENDING`
+     */
+    state: string;
+    /**
+     * (string) - The use case that determines the type of network connectivity this endpoint provides.
+     * This field is automatically determined based on the endpoint configuration and cloud-specific settings. Possible values are: `SERVICE_DIRECT`
+     */
+    useCase: string;
+}
+
+export interface GetEndpointsItemAzurePrivateEndpointInfo {
+    /**
+     * (string) - The name of the Private Endpoint in the Azure subscription
+     */
+    privateEndpointName: string;
+    /**
+     * (string) - The GUID of the Private Endpoint resource in the Azure subscription.
+     * This is assigned by Azure when the user sets up the Private Endpoint
+     */
+    privateEndpointResourceGuid: string;
+    /**
+     * (string) - The full resource ID of the Private Endpoint
+     */
+    privateEndpointResourceId: string;
+    /**
+     * (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+     */
+    privateLinkServiceId: string;
+}
+
 export interface GetEntityTagAssignmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -7095,6 +7750,10 @@ export interface GetEntityTagAssignmentsTagAssignment {
      */
     providerConfig?: outputs.GetEntityTagAssignmentsTagAssignmentProviderConfig;
     /**
+     * (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     */
+    sourceType: string;
+    /**
      * (string) - The key of the tag
      */
     tagKey: string;
@@ -7102,6 +7761,14 @@ export interface GetEntityTagAssignmentsTagAssignment {
      * (string) - The value of the tag
      */
     tagValue: string;
+    /**
+     * (string) - The timestamp when the tag assignment was last updated
+     */
+    updateTime: string;
+    /**
+     * (string) - The user or principal who updated the tag assignment
+     */
+    updatedBy: string;
 }
 
 export interface GetEntityTagAssignmentsTagAssignmentProviderConfig {
@@ -11078,6 +11745,14 @@ export interface GetPostgresProjectProviderConfig {
 
 export interface GetPostgresProjectSpec {
     /**
+     * (string) - The budget policy that is applied to the project
+     */
+    budgetPolicyId?: string;
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     */
+    customTags?: outputs.GetPostgresProjectSpecCustomTag[];
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings?: outputs.GetPostgresProjectSpecDefaultEndpointSettings;
@@ -11093,6 +11768,17 @@ export interface GetPostgresProjectSpec {
      * (integer) - The effective major Postgres version number
      */
     pgVersion?: number;
+}
+
+export interface GetPostgresProjectSpecCustomTag {
+    /**
+     * (string) - The key of the custom tag
+     */
+    key?: string;
+    /**
+     * (string) - The value of the custom tag
+     */
+    value?: string;
 }
 
 export interface GetPostgresProjectSpecDefaultEndpointSettings {
@@ -11126,6 +11812,14 @@ export interface GetPostgresProjectStatus {
      */
     branchLogicalSizeLimitBytes: number;
     /**
+     * (string) - The budget policy that is applied to the project
+     */
+    budgetPolicyId: string;
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     */
+    customTags: outputs.GetPostgresProjectStatusCustomTag[];
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings: outputs.GetPostgresProjectStatusDefaultEndpointSettings;
@@ -11149,6 +11843,17 @@ export interface GetPostgresProjectStatus {
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes: number;
+}
+
+export interface GetPostgresProjectStatusCustomTag {
+    /**
+     * (string) - The key of the custom tag
+     */
+    key?: string;
+    /**
+     * (string) - The value of the custom tag
+     */
+    value?: string;
 }
 
 export interface GetPostgresProjectStatusDefaultEndpointSettings {
@@ -11217,6 +11922,14 @@ export interface GetPostgresProjectsProjectProviderConfig {
 
 export interface GetPostgresProjectsProjectSpec {
     /**
+     * (string) - The budget policy that is applied to the project
+     */
+    budgetPolicyId?: string;
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     */
+    customTags?: outputs.GetPostgresProjectsProjectSpecCustomTag[];
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings?: outputs.GetPostgresProjectsProjectSpecDefaultEndpointSettings;
@@ -11232,6 +11945,17 @@ export interface GetPostgresProjectsProjectSpec {
      * (integer) - The effective major Postgres version number
      */
     pgVersion?: number;
+}
+
+export interface GetPostgresProjectsProjectSpecCustomTag {
+    /**
+     * (string) - The key of the custom tag
+     */
+    key?: string;
+    /**
+     * (string) - The value of the custom tag
+     */
+    value?: string;
 }
 
 export interface GetPostgresProjectsProjectSpecDefaultEndpointSettings {
@@ -11265,6 +11989,14 @@ export interface GetPostgresProjectsProjectStatus {
      */
     branchLogicalSizeLimitBytes: number;
     /**
+     * (string) - The budget policy that is applied to the project
+     */
+    budgetPolicyId: string;
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     */
+    customTags: outputs.GetPostgresProjectsProjectStatusCustomTag[];
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings: outputs.GetPostgresProjectsProjectStatusDefaultEndpointSettings;
@@ -11288,6 +12020,17 @@ export interface GetPostgresProjectsProjectStatus {
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes: number;
+}
+
+export interface GetPostgresProjectsProjectStatusCustomTag {
+    /**
+     * (string) - The key of the custom tag
+     */
+    key?: string;
+    /**
+     * (string) - The value of the custom tag
+     */
+    value?: string;
 }
 
 export interface GetPostgresProjectsProjectStatusDefaultEndpointSettings {
@@ -13495,6 +14238,20 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
     username: string;
 }
 
+export interface InstancePoolProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface InstanceProfileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface IpAccessListProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -13624,6 +14381,7 @@ export interface JobGitSource {
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
      */
     provider?: string;
+    sparseCheckout?: outputs.JobGitSourceSparseCheckout;
     /**
      * name of the Git branch to use. Conflicts with `branch` and `commit`.
      */
@@ -13642,6 +14400,10 @@ export interface JobGitSourceJobSource {
     dirtyState?: string;
     importFromGitBranch: string;
     jobConfigPath: string;
+}
+
+export interface JobGitSourceSparseCheckout {
+    patterns?: string[];
 }
 
 export interface JobHealth {
@@ -16775,6 +17537,13 @@ export interface MetastoreDataAccessGcpServiceAccountKey {
     privateKeyId: string;
 }
 
+export interface MetastoreProviderProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface MlflowExperimentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -17663,6 +18432,10 @@ export interface MountGs {
     serviceAccount?: string;
 }
 
+export interface MountProviderConfig {
+    workspaceId: string;
+}
+
 export interface MountS3 {
     bucketName: string;
     instanceProfile?: string;
@@ -17815,11 +18588,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -17886,11 +18659,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -17954,8 +18727,6 @@ export interface NotificationDestinationConfigEmail {
 export interface NotificationDestinationConfigGenericWebhook {
     /**
      * The password for basic authentication.
-     *
-     * > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
      */
     password?: string;
     passwordSet: boolean;
@@ -18023,6 +18794,22 @@ export interface NotificationDestinationConfigSlack {
      */
     url?: string;
     urlSet: boolean;
+}
+
+export interface NotificationDestinationProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     *
+     * > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+     */
+    workspaceId: string;
+}
+
+export interface OboTokenProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface OnlineStoreProviderConfig {
@@ -18162,6 +18949,13 @@ export interface PermissionsAccessControl {
      * name of the user.
      */
     userName?: string;
+}
+
+export interface PermissionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface PipelineCluster {
@@ -18669,6 +19463,10 @@ export interface PipelineNotification {
     emailRecipients?: string[];
 }
 
+export interface PipelineProviderConfig {
+    workspaceId: string;
+}
+
 export interface PipelineRestartWindow {
     daysOfWeeks?: string[];
     startHour: number;
@@ -18956,6 +19754,14 @@ export interface PostgresProjectProviderConfig {
 
 export interface PostgresProjectSpec {
     /**
+     * (string) - The budget policy that is applied to the project
+     */
+    budgetPolicyId?: string;
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     */
+    customTags?: outputs.PostgresProjectSpecCustomTag[];
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings?: outputs.PostgresProjectSpecDefaultEndpointSettings;
@@ -18971,6 +19777,17 @@ export interface PostgresProjectSpec {
      * (integer) - The effective major Postgres version number
      */
     pgVersion?: number;
+}
+
+export interface PostgresProjectSpecCustomTag {
+    /**
+     * The key of the custom tag
+     */
+    key?: string;
+    /**
+     * The value of the custom tag
+     */
+    value?: string;
 }
 
 export interface PostgresProjectSpecDefaultEndpointSettings {
@@ -19004,6 +19821,14 @@ export interface PostgresProjectStatus {
      */
     branchLogicalSizeLimitBytes: number;
     /**
+     * (string) - The budget policy that is applied to the project
+     */
+    budgetPolicyId: string;
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     */
+    customTags: outputs.PostgresProjectStatusCustomTag[];
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings: outputs.PostgresProjectStatusDefaultEndpointSettings;
@@ -19027,6 +19852,17 @@ export interface PostgresProjectStatus {
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes: number;
+}
+
+export interface PostgresProjectStatusCustomTag {
+    /**
+     * The key of the custom tag
+     */
+    key?: string;
+    /**
+     * The value of the custom tag
+     */
+    value?: string;
 }
 
 export interface PostgresProjectStatusDefaultEndpointSettings {
@@ -19455,6 +20291,13 @@ export interface RegisteredModelProviderConfig {
     workspaceId: string;
 }
 
+export interface RepoProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface RepoSparseCheckout {
     /**
      * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
@@ -19565,6 +20408,13 @@ export interface SecretScopeKeyvaultMetadata {
     resourceId: string;
 }
 
+export interface SecretScopeProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface ServicePrincipalFederationPolicyOidcPolicy {
     /**
      * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
@@ -19606,6 +20456,13 @@ export interface ServicePrincipalFederationPolicyOidcPolicy {
      * is 'sub'
      */
     subjectClaim?: string;
+}
+
+export interface ServicePrincipalSecretProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface ShareObject {
@@ -19732,6 +20589,13 @@ export interface SqlAlertProviderConfig {
     workspaceId: string;
 }
 
+export interface SqlDashboardProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface SqlEndpointChannel {
     dbsqlVersion?: string;
     /**
@@ -19775,6 +20639,13 @@ export interface SqlEndpointTags {
 export interface SqlEndpointTagsCustomTag {
     key: string;
     value: string;
+}
+
+export interface SqlGlobalConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface SqlPermissionsPrivilegeAssignment {
@@ -19945,6 +20816,13 @@ export interface SqlQueryParameterText {
     value: string;
 }
 
+export interface SqlQueryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface SqlQuerySchedule {
     continuous?: outputs.SqlQueryScheduleContinuous;
     daily?: outputs.SqlQueryScheduleDaily;
@@ -20000,6 +20878,13 @@ export interface SqlTableProviderConfig {
     workspaceId: string;
 }
 
+export interface SqlVisualizationProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface SqlWidgetParameter {
     mapTo?: string;
     name: string;
@@ -20015,6 +20900,13 @@ export interface SqlWidgetPosition {
     posY?: number;
     sizeX: number;
     sizeY: number;
+}
+
+export interface SqlWidgetProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface StorageCredentialAwsIamRole {
@@ -20122,6 +21014,10 @@ export interface TableColumn {
     typeText: string;
 }
 
+export interface TableProviderConfig {
+    workspaceId: string;
+}
+
 export interface TagPolicyProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -20131,6 +21027,13 @@ export interface TagPolicyProviderConfig {
 
 export interface TagPolicyValue {
     name: string;
+}
+
+export interface TokenProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface VectorSearchEndpointEndpointStatus {
@@ -20288,6 +21191,13 @@ export interface WarehousesDefaultWarehouseOverrideProviderConfig {
 }
 
 export interface WorkspaceBindingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface WorkspaceConfProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */

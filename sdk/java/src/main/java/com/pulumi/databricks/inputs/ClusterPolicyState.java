@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ClusterPolicyLibraryArgs;
+import com.pulumi.databricks.inputs.ClusterPolicyProviderConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -130,6 +131,13 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.policyId);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<ClusterPolicyProviderConfigArgs> providerConfig;
+
+    public Optional<Output<ClusterPolicyProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private ClusterPolicyState() {}
 
     private ClusterPolicyState(ClusterPolicyState $) {
@@ -141,6 +149,7 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
         this.policyFamilyDefinitionOverrides = $.policyFamilyDefinitionOverrides;
         this.policyFamilyId = $.policyFamilyId;
         this.policyId = $.policyId;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -319,6 +328,15 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
+        }
+
+        public Builder providerConfig(@Nullable Output<ClusterPolicyProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(ClusterPolicyProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public ClusterPolicyState build() {

@@ -195,6 +195,28 @@ __all__ = [
     'AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgsDict',
     'AppsSettingsCustomTemplateProviderConfigArgs',
     'AppsSettingsCustomTemplateProviderConfigArgsDict',
+    'AppsSpaceProviderConfigArgs',
+    'AppsSpaceProviderConfigArgsDict',
+    'AppsSpaceResourceArgs',
+    'AppsSpaceResourceArgsDict',
+    'AppsSpaceResourceDatabaseArgs',
+    'AppsSpaceResourceDatabaseArgsDict',
+    'AppsSpaceResourceExperimentArgs',
+    'AppsSpaceResourceExperimentArgsDict',
+    'AppsSpaceResourceGenieSpaceArgs',
+    'AppsSpaceResourceGenieSpaceArgsDict',
+    'AppsSpaceResourceJobArgs',
+    'AppsSpaceResourceJobArgsDict',
+    'AppsSpaceResourceSecretArgs',
+    'AppsSpaceResourceSecretArgsDict',
+    'AppsSpaceResourceServingEndpointArgs',
+    'AppsSpaceResourceServingEndpointArgsDict',
+    'AppsSpaceResourceSqlWarehouseArgs',
+    'AppsSpaceResourceSqlWarehouseArgsDict',
+    'AppsSpaceResourceUcSecurableArgs',
+    'AppsSpaceResourceUcSecurableArgsDict',
+    'AppsSpaceStatusArgs',
+    'AppsSpaceStatusArgsDict',
     'ArtifactAllowlistArtifactMatcherArgs',
     'ArtifactAllowlistArtifactMatcherArgsDict',
     'ArtifactAllowlistProviderConfigArgs',
@@ -295,6 +317,8 @@ __all__ = [
     'ClusterPolicyLibraryProviderConfigArgsDict',
     'ClusterPolicyLibraryPypiArgs',
     'ClusterPolicyLibraryPypiArgsDict',
+    'ClusterPolicyProviderConfigArgs',
+    'ClusterPolicyProviderConfigArgsDict',
     'ClusterProviderConfigArgs',
     'ClusterProviderConfigArgsDict',
     'ClusterWorkerNodeTypeFlexibilityArgs',
@@ -383,6 +407,8 @@ __all__ = [
     'DatabaseSyncedDatabaseTableSpecArgsDict',
     'DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs',
     'DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgsDict',
+    'DbfsFileProviderConfigArgs',
+    'DbfsFileProviderConfigArgsDict',
     'DefaultNamespaceSettingNamespaceArgs',
     'DefaultNamespaceSettingNamespaceArgsDict',
     'DefaultNamespaceSettingProviderConfigArgs',
@@ -401,10 +427,14 @@ __all__ = [
     'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict',
     'DisableLegacyFeaturesSettingProviderConfigArgs',
     'DisableLegacyFeaturesSettingProviderConfigArgsDict',
+    'EndpointAzurePrivateEndpointInfoArgs',
+    'EndpointAzurePrivateEndpointInfoArgsDict',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict',
     'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs',
     'EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgsDict',
+    'EntitlementsProviderConfigArgs',
+    'EntitlementsProviderConfigArgsDict',
     'EntityTagAssignmentProviderConfigArgs',
     'EntityTagAssignmentProviderConfigArgsDict',
     'ExternalLocationEncryptionDetailsArgs',
@@ -511,6 +541,10 @@ __all__ = [
     'InstancePoolPreloadedDockerImageArgsDict',
     'InstancePoolPreloadedDockerImageBasicAuthArgs',
     'InstancePoolPreloadedDockerImageBasicAuthArgsDict',
+    'InstancePoolProviderConfigArgs',
+    'InstancePoolProviderConfigArgsDict',
+    'InstanceProfileProviderConfigArgs',
+    'InstanceProfileProviderConfigArgsDict',
     'IpAccessListProviderConfigArgs',
     'IpAccessListProviderConfigArgsDict',
     'JobContinuousArgs',
@@ -531,6 +565,8 @@ __all__ = [
     'JobGitSourceGitSnapshotArgsDict',
     'JobGitSourceJobSourceArgs',
     'JobGitSourceJobSourceArgsDict',
+    'JobGitSourceSparseCheckoutArgs',
+    'JobGitSourceSparseCheckoutArgsDict',
     'JobHealthArgs',
     'JobHealthArgsDict',
     'JobHealthRuleArgs',
@@ -1079,6 +1115,8 @@ __all__ = [
     'MetastoreDataAccessDatabricksGcpServiceAccountArgsDict',
     'MetastoreDataAccessGcpServiceAccountKeyArgs',
     'MetastoreDataAccessGcpServiceAccountKeyArgsDict',
+    'MetastoreProviderProviderConfigArgs',
+    'MetastoreProviderProviderConfigArgsDict',
     'MlflowExperimentProviderConfigArgs',
     'MlflowExperimentProviderConfigArgsDict',
     'MlflowExperimentTagArgs',
@@ -1197,6 +1235,8 @@ __all__ = [
     'MountAdlArgsDict',
     'MountGsArgs',
     'MountGsArgsDict',
+    'MountProviderConfigArgs',
+    'MountProviderConfigArgsDict',
     'MountS3Args',
     'MountS3ArgsDict',
     'MountWasbArgs',
@@ -1253,6 +1293,10 @@ __all__ = [
     'NotificationDestinationConfigPagerdutyArgsDict',
     'NotificationDestinationConfigSlackArgs',
     'NotificationDestinationConfigSlackArgsDict',
+    'NotificationDestinationProviderConfigArgs',
+    'NotificationDestinationProviderConfigArgsDict',
+    'OboTokenProviderConfigArgs',
+    'OboTokenProviderConfigArgsDict',
     'OnlineStoreProviderConfigArgs',
     'OnlineStoreProviderConfigArgsDict',
     'OnlineTableProviderConfigArgs',
@@ -1283,6 +1327,8 @@ __all__ = [
     'PermissionAssignmentProviderConfigArgsDict',
     'PermissionsAccessControlArgs',
     'PermissionsAccessControlArgsDict',
+    'PermissionsProviderConfigArgs',
+    'PermissionsProviderConfigArgsDict',
     'PipelineClusterArgs',
     'PipelineClusterArgsDict',
     'PipelineClusterAutoscaleArgs',
@@ -1405,6 +1451,8 @@ __all__ = [
     'PipelineLibraryNotebookArgsDict',
     'PipelineNotificationArgs',
     'PipelineNotificationArgsDict',
+    'PipelineProviderConfigArgs',
+    'PipelineProviderConfigArgsDict',
     'PipelineRestartWindowArgs',
     'PipelineRestartWindowArgsDict',
     'PipelineRunAsArgs',
@@ -1449,10 +1497,14 @@ __all__ = [
     'PostgresProjectProviderConfigArgsDict',
     'PostgresProjectSpecArgs',
     'PostgresProjectSpecArgsDict',
+    'PostgresProjectSpecCustomTagArgs',
+    'PostgresProjectSpecCustomTagArgsDict',
     'PostgresProjectSpecDefaultEndpointSettingsArgs',
     'PostgresProjectSpecDefaultEndpointSettingsArgsDict',
     'PostgresProjectStatusArgs',
     'PostgresProjectStatusArgsDict',
+    'PostgresProjectStatusCustomTagArgs',
+    'PostgresProjectStatusCustomTagArgsDict',
     'PostgresProjectStatusDefaultEndpointSettingsArgs',
     'PostgresProjectStatusDefaultEndpointSettingsArgsDict',
     'QualityMonitorCustomMetricArgs',
@@ -1521,6 +1573,8 @@ __all__ = [
     'RegisteredModelAliasArgsDict',
     'RegisteredModelProviderConfigArgs',
     'RegisteredModelProviderConfigArgsDict',
+    'RepoProviderConfigArgs',
+    'RepoProviderConfigArgsDict',
     'RepoSparseCheckoutArgs',
     'RepoSparseCheckoutArgsDict',
     'RestrictWorkspaceAdminsSettingProviderConfigArgs',
@@ -1543,8 +1597,12 @@ __all__ = [
     'SecretProviderConfigArgsDict',
     'SecretScopeKeyvaultMetadataArgs',
     'SecretScopeKeyvaultMetadataArgsDict',
+    'SecretScopeProviderConfigArgs',
+    'SecretScopeProviderConfigArgsDict',
     'ServicePrincipalFederationPolicyOidcPolicyArgs',
     'ServicePrincipalFederationPolicyOidcPolicyArgsDict',
+    'ServicePrincipalSecretProviderConfigArgs',
+    'ServicePrincipalSecretProviderConfigArgsDict',
     'ShareObjectArgs',
     'ShareObjectArgsDict',
     'ShareObjectPartitionArgs',
@@ -1557,6 +1615,8 @@ __all__ = [
     'SqlAlertOptionsArgsDict',
     'SqlAlertProviderConfigArgs',
     'SqlAlertProviderConfigArgsDict',
+    'SqlDashboardProviderConfigArgs',
+    'SqlDashboardProviderConfigArgsDict',
     'SqlEndpointChannelArgs',
     'SqlEndpointChannelArgsDict',
     'SqlEndpointHealthArgs',
@@ -1571,6 +1631,8 @@ __all__ = [
     'SqlEndpointTagsArgsDict',
     'SqlEndpointTagsCustomTagArgs',
     'SqlEndpointTagsCustomTagArgsDict',
+    'SqlGlobalConfigProviderConfigArgs',
+    'SqlGlobalConfigProviderConfigArgsDict',
     'SqlPermissionsPrivilegeAssignmentArgs',
     'SqlPermissionsPrivilegeAssignmentArgsDict',
     'SqlQueryParameterArgs',
@@ -1605,6 +1667,8 @@ __all__ = [
     'SqlQueryParameterQueryMultipleArgsDict',
     'SqlQueryParameterTextArgs',
     'SqlQueryParameterTextArgsDict',
+    'SqlQueryProviderConfigArgs',
+    'SqlQueryProviderConfigArgsDict',
     'SqlQueryScheduleArgs',
     'SqlQueryScheduleArgsDict',
     'SqlQueryScheduleContinuousArgs',
@@ -1617,10 +1681,14 @@ __all__ = [
     'SqlTableColumnArgsDict',
     'SqlTableProviderConfigArgs',
     'SqlTableProviderConfigArgsDict',
+    'SqlVisualizationProviderConfigArgs',
+    'SqlVisualizationProviderConfigArgsDict',
     'SqlWidgetParameterArgs',
     'SqlWidgetParameterArgsDict',
     'SqlWidgetPositionArgs',
     'SqlWidgetPositionArgsDict',
+    'SqlWidgetProviderConfigArgs',
+    'SqlWidgetProviderConfigArgsDict',
     'StorageCredentialAwsIamRoleArgs',
     'StorageCredentialAwsIamRoleArgsDict',
     'StorageCredentialAzureManagedIdentityArgs',
@@ -1637,10 +1705,14 @@ __all__ = [
     'SystemSchemaProviderConfigArgsDict',
     'TableColumnArgs',
     'TableColumnArgsDict',
+    'TableProviderConfigArgs',
+    'TableProviderConfigArgsDict',
     'TagPolicyProviderConfigArgs',
     'TagPolicyProviderConfigArgsDict',
     'TagPolicyValueArgs',
     'TagPolicyValueArgsDict',
+    'TokenProviderConfigArgs',
+    'TokenProviderConfigArgsDict',
     'VectorSearchEndpointEndpointStatusArgs',
     'VectorSearchEndpointEndpointStatusArgsDict',
     'VectorSearchEndpointProviderConfigArgs',
@@ -1667,6 +1739,8 @@ __all__ = [
     'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict',
     'WorkspaceBindingProviderConfigArgs',
     'WorkspaceBindingProviderConfigArgsDict',
+    'WorkspaceConfProviderConfigArgs',
+    'WorkspaceConfProviderConfigArgsDict',
     'WorkspaceEntityTagAssignmentProviderConfigArgs',
     'WorkspaceEntityTagAssignmentProviderConfigArgsDict',
     'WorkspaceFileProviderConfigArgs',
@@ -1733,6 +1807,10 @@ __all__ = [
     'GetAppsSettingsCustomTemplateProviderConfigArgsDict',
     'GetAppsSettingsCustomTemplatesProviderConfigArgs',
     'GetAppsSettingsCustomTemplatesProviderConfigArgsDict',
+    'GetAppsSpaceProviderConfigArgs',
+    'GetAppsSpaceProviderConfigArgsDict',
+    'GetAppsSpacesProviderConfigArgs',
+    'GetAppsSpacesProviderConfigArgsDict',
     'GetBudgetPoliciesFilterByArgs',
     'GetBudgetPoliciesFilterByArgsDict',
     'GetBudgetPoliciesSortSpecArgs',
@@ -7315,6 +7393,601 @@ class AppsSettingsCustomTemplateProviderConfigArgs:
         pulumi.set(self, "workspace_id", value)
 
 
+class AppsSpaceProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class AppsSpaceProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class AppsSpaceResourceArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+    It must be unique within the workspace
+    """
+    database: NotRequired[pulumi.Input['AppsSpaceResourceDatabaseArgsDict']]
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the app space
+    """
+    experiment: NotRequired[pulumi.Input['AppsSpaceResourceExperimentArgsDict']]
+    genie_space: NotRequired[pulumi.Input['AppsSpaceResourceGenieSpaceArgsDict']]
+    job: NotRequired[pulumi.Input['AppsSpaceResourceJobArgsDict']]
+    secret: NotRequired[pulumi.Input['AppsSpaceResourceSecretArgsDict']]
+    serving_endpoint: NotRequired[pulumi.Input['AppsSpaceResourceServingEndpointArgsDict']]
+    sql_warehouse: NotRequired[pulumi.Input['AppsSpaceResourceSqlWarehouseArgsDict']]
+    uc_securable: NotRequired[pulumi.Input['AppsSpaceResourceUcSecurableArgsDict']]
+
+@pulumi.input_type
+class AppsSpaceResourceArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 database: Optional[pulumi.Input['AppsSpaceResourceDatabaseArgs']] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 experiment: Optional[pulumi.Input['AppsSpaceResourceExperimentArgs']] = None,
+                 genie_space: Optional[pulumi.Input['AppsSpaceResourceGenieSpaceArgs']] = None,
+                 job: Optional[pulumi.Input['AppsSpaceResourceJobArgs']] = None,
+                 secret: Optional[pulumi.Input['AppsSpaceResourceSecretArgs']] = None,
+                 serving_endpoint: Optional[pulumi.Input['AppsSpaceResourceServingEndpointArgs']] = None,
+                 sql_warehouse: Optional[pulumi.Input['AppsSpaceResourceSqlWarehouseArgs']] = None,
+                 uc_securable: Optional[pulumi.Input['AppsSpaceResourceUcSecurableArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+               It must be unique within the workspace
+        :param pulumi.Input[_builtins.str] description: The description of the app space
+        """
+        pulumi.set(__self__, "name", name)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if experiment is not None:
+            pulumi.set(__self__, "experiment", experiment)
+        if genie_space is not None:
+            pulumi.set(__self__, "genie_space", genie_space)
+        if job is not None:
+            pulumi.set(__self__, "job", job)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if serving_endpoint is not None:
+            pulumi.set(__self__, "serving_endpoint", serving_endpoint)
+        if sql_warehouse is not None:
+            pulumi.set(__self__, "sql_warehouse", sql_warehouse)
+        if uc_securable is not None:
+            pulumi.set(__self__, "uc_securable", uc_securable)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+        It must be unique within the workspace
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input['AppsSpaceResourceDatabaseArgs']]:
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input['AppsSpaceResourceDatabaseArgs']]):
+        pulumi.set(self, "database", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The description of the app space
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def experiment(self) -> Optional[pulumi.Input['AppsSpaceResourceExperimentArgs']]:
+        return pulumi.get(self, "experiment")
+
+    @experiment.setter
+    def experiment(self, value: Optional[pulumi.Input['AppsSpaceResourceExperimentArgs']]):
+        pulumi.set(self, "experiment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="genieSpace")
+    def genie_space(self) -> Optional[pulumi.Input['AppsSpaceResourceGenieSpaceArgs']]:
+        return pulumi.get(self, "genie_space")
+
+    @genie_space.setter
+    def genie_space(self, value: Optional[pulumi.Input['AppsSpaceResourceGenieSpaceArgs']]):
+        pulumi.set(self, "genie_space", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def job(self) -> Optional[pulumi.Input['AppsSpaceResourceJobArgs']]:
+        return pulumi.get(self, "job")
+
+    @job.setter
+    def job(self, value: Optional[pulumi.Input['AppsSpaceResourceJobArgs']]):
+        pulumi.set(self, "job", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input['AppsSpaceResourceSecretArgs']]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input['AppsSpaceResourceSecretArgs']]):
+        pulumi.set(self, "secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="servingEndpoint")
+    def serving_endpoint(self) -> Optional[pulumi.Input['AppsSpaceResourceServingEndpointArgs']]:
+        return pulumi.get(self, "serving_endpoint")
+
+    @serving_endpoint.setter
+    def serving_endpoint(self, value: Optional[pulumi.Input['AppsSpaceResourceServingEndpointArgs']]):
+        pulumi.set(self, "serving_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlWarehouse")
+    def sql_warehouse(self) -> Optional[pulumi.Input['AppsSpaceResourceSqlWarehouseArgs']]:
+        return pulumi.get(self, "sql_warehouse")
+
+    @sql_warehouse.setter
+    def sql_warehouse(self, value: Optional[pulumi.Input['AppsSpaceResourceSqlWarehouseArgs']]):
+        pulumi.set(self, "sql_warehouse", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ucSecurable")
+    def uc_securable(self) -> Optional[pulumi.Input['AppsSpaceResourceUcSecurableArgs']]:
+        return pulumi.get(self, "uc_securable")
+
+    @uc_securable.setter
+    def uc_securable(self, value: Optional[pulumi.Input['AppsSpaceResourceUcSecurableArgs']]):
+        pulumi.set(self, "uc_securable", value)
+
+
+class AppsSpaceResourceDatabaseArgsDict(TypedDict):
+    database_name: pulumi.Input[_builtins.str]
+    instance_name: pulumi.Input[_builtins.str]
+    permission: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class AppsSpaceResourceDatabaseArgs:
+    def __init__(__self__, *,
+                 database_name: pulumi.Input[_builtins.str],
+                 instance_name: pulumi.Input[_builtins.str],
+                 permission: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "database_name")
+
+    @database_name.setter
+    def database_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "database_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "instance_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "permission", value)
+
+
+class AppsSpaceResourceExperimentArgsDict(TypedDict):
+    experiment_id: pulumi.Input[_builtins.str]
+    permission: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class AppsSpaceResourceExperimentArgs:
+    def __init__(__self__, *,
+                 experiment_id: pulumi.Input[_builtins.str],
+                 permission: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "experiment_id", experiment_id)
+        pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter(name="experimentId")
+    def experiment_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "experiment_id")
+
+    @experiment_id.setter
+    def experiment_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "experiment_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "permission", value)
+
+
+class AppsSpaceResourceGenieSpaceArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+    It must be unique within the workspace
+    """
+    permission: pulumi.Input[_builtins.str]
+    space_id: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class AppsSpaceResourceGenieSpaceArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 permission: pulumi.Input[_builtins.str],
+                 space_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+               It must be unique within the workspace
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "space_id", space_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+        It must be unique within the workspace
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "permission", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spaceId")
+    def space_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "space_id")
+
+    @space_id.setter
+    def space_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "space_id", value)
+
+
+class AppsSpaceResourceJobArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    (string) - The unique identifier of the app space
+    """
+    permission: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class AppsSpaceResourceJobArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 permission: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] id: (string) - The unique identifier of the app space
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        (string) - The unique identifier of the app space
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "permission", value)
+
+
+class AppsSpaceResourceSecretArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Key of the secret to grant permission on
+    """
+    permission: pulumi.Input[_builtins.str]
+    scope: pulumi.Input[_builtins.str]
+    """
+    Scope of the secret to grant permission on
+    """
+
+@pulumi.input_type
+class AppsSpaceResourceSecretArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 permission: pulumi.Input[_builtins.str],
+                 scope: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: Key of the secret to grant permission on
+        :param pulumi.Input[_builtins.str] scope: Scope of the secret to grant permission on
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        Key of the secret to grant permission on
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "permission", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[_builtins.str]:
+        """
+        Scope of the secret to grant permission on
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "scope", value)
+
+
+class AppsSpaceResourceServingEndpointArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+    It must be unique within the workspace
+    """
+    permission: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class AppsSpaceResourceServingEndpointArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 permission: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+               It must be unique within the workspace
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+        It must be unique within the workspace
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "permission", value)
+
+
+class AppsSpaceResourceSqlWarehouseArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    (string) - The unique identifier of the app space
+    """
+    permission: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class AppsSpaceResourceSqlWarehouseArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 permission: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] id: (string) - The unique identifier of the app space
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        (string) - The unique identifier of the app space
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "permission", value)
+
+
+class AppsSpaceResourceUcSecurableArgsDict(TypedDict):
+    permission: pulumi.Input[_builtins.str]
+    securable_full_name: pulumi.Input[_builtins.str]
+    securable_type: pulumi.Input[_builtins.str]
+    """
+    Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+    """
+
+@pulumi.input_type
+class AppsSpaceResourceUcSecurableArgs:
+    def __init__(__self__, *,
+                 permission: pulumi.Input[_builtins.str],
+                 securable_full_name: pulumi.Input[_builtins.str],
+                 securable_type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] securable_type: Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+        """
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "securable_full_name", securable_full_name)
+        pulumi.set(__self__, "securable_type", securable_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "permission", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securableFullName")
+    def securable_full_name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "securable_full_name")
+
+    @securable_full_name.setter
+    def securable_full_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "securable_full_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+        """
+        return pulumi.get(self, "securable_type")
+
+    @securable_type.setter
+    def securable_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "securable_type", value)
+
+
+class AppsSpaceStatusArgsDict(TypedDict):
+    message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (string) - Message providing context about the current state
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+    """
+
+@pulumi.input_type
+class AppsSpaceStatusArgs:
+    def __init__(__self__, *,
+                 message: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] message: (string) - Message providing context about the current state
+        :param pulumi.Input[_builtins.str] state: (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - Message providing context about the current state
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
 class ArtifactAllowlistArtifactMatcherArgsDict(TypedDict):
     artifact: pulumi.Input[_builtins.str]
     """
@@ -9980,6 +10653,9 @@ class ClusterPolicyLibraryArgsDict(TypedDict):
     jar: NotRequired[pulumi.Input[_builtins.str]]
     maven: NotRequired[pulumi.Input['ClusterPolicyLibraryMavenArgsDict']]
     provider_config: NotRequired[pulumi.Input['ClusterPolicyLibraryProviderConfigArgsDict']]
+    """
+    Configure the provider for management through account provider. This block consists of the following fields:
+    """
     pypi: NotRequired[pulumi.Input['ClusterPolicyLibraryPypiArgsDict']]
     requirements: NotRequired[pulumi.Input[_builtins.str]]
     whl: NotRequired[pulumi.Input[_builtins.str]]
@@ -9995,6 +10671,9 @@ class ClusterPolicyLibraryArgs:
                  pypi: Optional[pulumi.Input['ClusterPolicyLibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['ClusterPolicyLibraryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -10055,6 +10734,9 @@ class ClusterPolicyLibraryArgs:
     @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional[pulumi.Input['ClusterPolicyLibraryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
@@ -10168,16 +10850,25 @@ class ClusterPolicyLibraryMavenArgs:
 
 class ClusterPolicyLibraryProviderConfigArgsDict(TypedDict):
     workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
 
 @pulumi.input_type
 class ClusterPolicyLibraryProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -10215,6 +10906,34 @@ class ClusterPolicyLibraryPypiArgs:
     @repo.setter
     def repo(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "repo", value)
+
+
+class ClusterPolicyProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class ClusterPolicyProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 class ClusterProviderConfigArgsDict(TypedDict):
@@ -13419,6 +14138,34 @@ class DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs:
         pulumi.set(self, "storage_schema", value)
 
 
+class DbfsFileProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class DbfsFileProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class DefaultNamespaceSettingNamespaceArgsDict(TypedDict):
     value: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -13663,6 +14410,96 @@ class DisableLegacyFeaturesSettingProviderConfigArgs:
         pulumi.set(self, "workspace_id", value)
 
 
+class EndpointAzurePrivateEndpointInfoArgsDict(TypedDict):
+    private_endpoint_name: pulumi.Input[_builtins.str]
+    """
+    The name of the Private Endpoint in the Azure subscription
+    """
+    private_endpoint_resource_guid: pulumi.Input[_builtins.str]
+    """
+    The GUID of the Private Endpoint resource in the Azure subscription.
+    This is assigned by Azure when the user sets up the Private Endpoint
+    """
+    private_endpoint_resource_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (string) - The full resource ID of the Private Endpoint
+    """
+    private_link_service_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+    """
+
+@pulumi.input_type
+class EndpointAzurePrivateEndpointInfoArgs:
+    def __init__(__self__, *,
+                 private_endpoint_name: pulumi.Input[_builtins.str],
+                 private_endpoint_resource_guid: pulumi.Input[_builtins.str],
+                 private_endpoint_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_link_service_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] private_endpoint_name: The name of the Private Endpoint in the Azure subscription
+        :param pulumi.Input[_builtins.str] private_endpoint_resource_guid: The GUID of the Private Endpoint resource in the Azure subscription.
+               This is assigned by Azure when the user sets up the Private Endpoint
+        :param pulumi.Input[_builtins.str] private_endpoint_resource_id: (string) - The full resource ID of the Private Endpoint
+        :param pulumi.Input[_builtins.str] private_link_service_id: (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+        """
+        pulumi.set(__self__, "private_endpoint_name", private_endpoint_name)
+        pulumi.set(__self__, "private_endpoint_resource_guid", private_endpoint_resource_guid)
+        if private_endpoint_resource_id is not None:
+            pulumi.set(__self__, "private_endpoint_resource_id", private_endpoint_resource_id)
+        if private_link_service_id is not None:
+            pulumi.set(__self__, "private_link_service_id", private_link_service_id)
+
+    @_builtins.property
+    @pulumi.getter(name="privateEndpointName")
+    def private_endpoint_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the Private Endpoint in the Azure subscription
+        """
+        return pulumi.get(self, "private_endpoint_name")
+
+    @private_endpoint_name.setter
+    def private_endpoint_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "private_endpoint_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateEndpointResourceGuid")
+    def private_endpoint_resource_guid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The GUID of the Private Endpoint resource in the Azure subscription.
+        This is assigned by Azure when the user sets up the Private Endpoint
+        """
+        return pulumi.get(self, "private_endpoint_resource_guid")
+
+    @private_endpoint_resource_guid.setter
+    def private_endpoint_resource_guid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "private_endpoint_resource_guid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateEndpointResourceId")
+    def private_endpoint_resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The full resource ID of the Private Endpoint
+        """
+        return pulumi.get(self, "private_endpoint_resource_id")
+
+    @private_endpoint_resource_id.setter
+    def private_endpoint_resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_endpoint_resource_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateLinkServiceId")
+    def private_link_service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+        """
+        return pulumi.get(self, "private_link_service_id")
+
+    @private_link_service_id.setter
+    def private_link_service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_link_service_id", value)
+
+
 class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict(TypedDict):
     is_enabled: pulumi.Input[_builtins.bool]
 
@@ -13694,6 +14531,34 @@ class EnhancedSecurityMonitoringWorkspaceSettingProviderConfigArgs:
     @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class EntitlementsProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class EntitlementsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -16071,6 +16936,62 @@ class InstancePoolPreloadedDockerImageBasicAuthArgs:
         pulumi.set(self, "username", value)
 
 
+class InstancePoolProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class InstancePoolProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class InstanceProfileProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class InstanceProfileProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class IpAccessListProviderConfigArgsDict(TypedDict):
     workspace_id: pulumi.Input[_builtins.str]
     """
@@ -16636,6 +17557,7 @@ class JobGitSourceArgsDict(TypedDict):
     """
     case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
     """
+    sparse_checkout: NotRequired[pulumi.Input['JobGitSourceSparseCheckoutArgsDict']]
     tag: NotRequired[pulumi.Input[_builtins.str]]
     """
     name of the Git branch to use. Conflicts with `branch` and `commit`.
@@ -16650,6 +17572,7 @@ class JobGitSourceArgs:
                  git_snapshot: Optional[pulumi.Input['JobGitSourceGitSnapshotArgs']] = None,
                  job_source: Optional[pulumi.Input['JobGitSourceJobSourceArgs']] = None,
                  provider: Optional[pulumi.Input[_builtins.str]] = None,
+                 sparse_checkout: Optional[pulumi.Input['JobGitSourceSparseCheckoutArgs']] = None,
                  tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] url: URL of the Git repository to use.
@@ -16669,6 +17592,8 @@ class JobGitSourceArgs:
             pulumi.set(__self__, "job_source", job_source)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if sparse_checkout is not None:
+            pulumi.set(__self__, "sparse_checkout", sparse_checkout)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
 
@@ -16737,6 +17662,15 @@ class JobGitSourceArgs:
     @provider.setter
     def provider(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sparseCheckout")
+    def sparse_checkout(self) -> Optional[pulumi.Input['JobGitSourceSparseCheckoutArgs']]:
+        return pulumi.get(self, "sparse_checkout")
+
+    @sparse_checkout.setter
+    def sparse_checkout(self, value: Optional[pulumi.Input['JobGitSourceSparseCheckoutArgs']]):
+        pulumi.set(self, "sparse_checkout", value)
 
     @_builtins.property
     @pulumi.getter
@@ -16813,6 +17747,26 @@ class JobGitSourceJobSourceArgs:
     @dirty_state.setter
     def dirty_state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "dirty_state", value)
+
+
+class JobGitSourceSparseCheckoutArgsDict(TypedDict):
+    patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+
+@pulumi.input_type
+class JobGitSourceSparseCheckoutArgs:
+    def __init__(__self__, *,
+                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        if patterns is not None:
+            pulumi.set(__self__, "patterns", patterns)
+
+    @_builtins.property
+    @pulumi.getter
+    def patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "patterns")
+
+    @patterns.setter
+    def patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "patterns", value)
 
 
 class JobHealthArgsDict(TypedDict):
@@ -34932,6 +35886,34 @@ class MetastoreDataAccessGcpServiceAccountKeyArgs:
         pulumi.set(self, "private_key_id", value)
 
 
+class MetastoreProviderProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class MetastoreProviderProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class MlflowExperimentProviderConfigArgsDict(TypedDict):
     workspace_id: pulumi.Input[_builtins.str]
     """
@@ -39263,6 +40245,25 @@ class MountGsArgs:
         pulumi.set(self, "service_account", value)
 
 
+class MountProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class MountProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class MountS3ArgsDict(TypedDict):
     bucket_name: pulumi.Input[_builtins.str]
     instance_profile: NotRequired[pulumi.Input[_builtins.str]]
@@ -40189,13 +41190,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -40249,7 +41250,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -40259,7 +41260,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -40517,13 +41518,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -40538,7 +41539,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -40548,7 +41549,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -40835,8 +41836,6 @@ class NotificationDestinationConfigGenericWebhookArgsDict(TypedDict):
     password: NotRequired[pulumi.Input[_builtins.str]]
     """
     The password for basic authentication.
-
-    > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
     """
     password_set: NotRequired[pulumi.Input[_builtins.bool]]
     url: NotRequired[pulumi.Input[_builtins.str]]
@@ -40861,8 +41860,6 @@ class NotificationDestinationConfigGenericWebhookArgs:
                  username_set: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] password: The password for basic authentication.
-               
-               > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
         :param pulumi.Input[_builtins.str] url: The Generic Webhook URL.
         :param pulumi.Input[_builtins.str] username: The username for basic authentication.
         """
@@ -40884,8 +41881,6 @@ class NotificationDestinationConfigGenericWebhookArgs:
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The password for basic authentication.
-
-        > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
         """
         return pulumi.get(self, "password")
 
@@ -41267,6 +42262,68 @@ class NotificationDestinationConfigSlackArgs:
     @url_set.setter
     def url_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "url_set", value)
+
+
+class NotificationDestinationProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+
+    > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+    """
+
+@pulumi.input_type
+class NotificationDestinationProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+               
+               > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+
+        > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class OboTokenProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class OboTokenProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 class OnlineStoreProviderConfigArgsDict(TypedDict):
@@ -42075,6 +43132,34 @@ class PermissionsAccessControlArgs:
     @user_name.setter
     def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "user_name", value)
+
+
+class PermissionsProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class PermissionsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 class PipelineClusterArgsDict(TypedDict):
@@ -45650,6 +46735,25 @@ class PipelineNotificationArgs:
         pulumi.set(self, "email_recipients", value)
 
 
+class PipelineProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class PipelineProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class PipelineRestartWindowArgsDict(TypedDict):
     start_hour: pulumi.Input[_builtins.int]
     days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -46997,6 +48101,14 @@ class PostgresProjectProviderConfigArgs:
 
 
 class PostgresProjectSpecArgsDict(TypedDict):
+    budget_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (string) - The budget policy that is applied to the project
+    """
+    custom_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['PostgresProjectSpecCustomTagArgsDict']]]]
+    """
+    (list of ProjectCustomTag) - The effective custom tags associated with the project
+    """
     default_endpoint_settings: NotRequired[pulumi.Input['PostgresProjectSpecDefaultEndpointSettingsArgsDict']]
     """
     (ProjectDefaultEndpointSettings) - The effective default endpoint settings
@@ -47017,16 +48129,24 @@ class PostgresProjectSpecArgsDict(TypedDict):
 @pulumi.input_type
 class PostgresProjectSpecArgs:
     def __init__(__self__, *,
+                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresProjectSpecCustomTagArgs']]]] = None,
                  default_endpoint_settings: Optional[pulumi.Input['PostgresProjectSpecDefaultEndpointSettingsArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  history_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  pg_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
+        :param pulumi.Input[_builtins.str] budget_policy_id: (string) - The budget policy that is applied to the project
+        :param pulumi.Input[Sequence[pulumi.Input['PostgresProjectSpecCustomTagArgs']]] custom_tags: (list of ProjectCustomTag) - The effective custom tags associated with the project
         :param pulumi.Input['PostgresProjectSpecDefaultEndpointSettingsArgs'] default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param pulumi.Input[_builtins.str] display_name: (string) - The effective human-readable project name
         :param pulumi.Input[_builtins.str] history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
         :param pulumi.Input[_builtins.int] pg_version: (integer) - The effective major Postgres version number
         """
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
         if default_endpoint_settings is not None:
             pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
         if display_name is not None:
@@ -47035,6 +48155,30 @@ class PostgresProjectSpecArgs:
             pulumi.set(__self__, "history_retention_duration", history_retention_duration)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The budget policy that is applied to the project
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "budget_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PostgresProjectSpecCustomTagArgs']]]]:
+        """
+        (list of ProjectCustomTag) - The effective custom tags associated with the project
+        """
+        return pulumi.get(self, "custom_tags")
+
+    @custom_tags.setter
+    def custom_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresProjectSpecCustomTagArgs']]]]):
+        pulumi.set(self, "custom_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -47083,6 +48227,55 @@ class PostgresProjectSpecArgs:
     @pg_version.setter
     def pg_version(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "pg_version", value)
+
+
+class PostgresProjectSpecCustomTagArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the custom tag
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the custom tag
+    """
+
+@pulumi.input_type
+class PostgresProjectSpecCustomTagArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the custom tag
+        :param pulumi.Input[_builtins.str] value: The value of the custom tag
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key of the custom tag
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the custom tag
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 class PostgresProjectSpecDefaultEndpointSettingsArgsDict(TypedDict):
@@ -47205,6 +48398,14 @@ class PostgresProjectStatusArgsDict(TypedDict):
     """
     (integer) - The logical size limit for a branch
     """
+    budget_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (string) - The budget policy that is applied to the project
+    """
+    custom_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['PostgresProjectStatusCustomTagArgsDict']]]]
+    """
+    (list of ProjectCustomTag) - The effective custom tags associated with the project
+    """
     default_endpoint_settings: NotRequired[pulumi.Input['PostgresProjectStatusDefaultEndpointSettingsArgsDict']]
     """
     (ProjectDefaultEndpointSettings) - The effective default endpoint settings
@@ -47234,6 +48435,8 @@ class PostgresProjectStatusArgsDict(TypedDict):
 class PostgresProjectStatusArgs:
     def __init__(__self__, *,
                  branch_logical_size_limit_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresProjectStatusCustomTagArgs']]]] = None,
                  default_endpoint_settings: Optional[pulumi.Input['PostgresProjectStatusDefaultEndpointSettingsArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  history_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
@@ -47242,6 +48445,8 @@ class PostgresProjectStatusArgs:
                  synthetic_storage_size_bytes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] branch_logical_size_limit_bytes: (integer) - The logical size limit for a branch
+        :param pulumi.Input[_builtins.str] budget_policy_id: (string) - The budget policy that is applied to the project
+        :param pulumi.Input[Sequence[pulumi.Input['PostgresProjectStatusCustomTagArgs']]] custom_tags: (list of ProjectCustomTag) - The effective custom tags associated with the project
         :param pulumi.Input['PostgresProjectStatusDefaultEndpointSettingsArgs'] default_endpoint_settings: (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         :param pulumi.Input[_builtins.str] display_name: (string) - The effective human-readable project name
         :param pulumi.Input[_builtins.str] history_retention_duration: (string) - The effective number of seconds to retain the shared history for point in time recovery
@@ -47251,6 +48456,10 @@ class PostgresProjectStatusArgs:
         """
         if branch_logical_size_limit_bytes is not None:
             pulumi.set(__self__, "branch_logical_size_limit_bytes", branch_logical_size_limit_bytes)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
         if default_endpoint_settings is not None:
             pulumi.set(__self__, "default_endpoint_settings", default_endpoint_settings)
         if display_name is not None:
@@ -47275,6 +48484,30 @@ class PostgresProjectStatusArgs:
     @branch_logical_size_limit_bytes.setter
     def branch_logical_size_limit_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "branch_logical_size_limit_bytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The budget policy that is applied to the project
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "budget_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PostgresProjectStatusCustomTagArgs']]]]:
+        """
+        (list of ProjectCustomTag) - The effective custom tags associated with the project
+        """
+        return pulumi.get(self, "custom_tags")
+
+    @custom_tags.setter
+    def custom_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresProjectStatusCustomTagArgs']]]]):
+        pulumi.set(self, "custom_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultEndpointSettings")
@@ -47347,6 +48580,55 @@ class PostgresProjectStatusArgs:
     @synthetic_storage_size_bytes.setter
     def synthetic_storage_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "synthetic_storage_size_bytes", value)
+
+
+class PostgresProjectStatusCustomTagArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The key of the custom tag
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the custom tag
+    """
+
+@pulumi.input_type
+class PostgresProjectStatusCustomTagArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the custom tag
+        :param pulumi.Input[_builtins.str] value: The value of the custom tag
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key of the custom tag
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the custom tag
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 class PostgresProjectStatusDefaultEndpointSettingsArgsDict(TypedDict):
@@ -49349,6 +50631,34 @@ class RegisteredModelProviderConfigArgs:
         pulumi.set(self, "workspace_id", value)
 
 
+class RepoProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class RepoProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class RepoSparseCheckoutArgsDict(TypedDict):
     patterns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
@@ -49816,6 +51126,34 @@ class SecretScopeKeyvaultMetadataArgs:
         pulumi.set(self, "resource_id", value)
 
 
+class SecretScopeProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class SecretScopeProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class ServicePrincipalFederationPolicyOidcPolicyArgsDict(TypedDict):
     audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
     """
@@ -49991,6 +51329,34 @@ class ServicePrincipalFederationPolicyOidcPolicyArgs:
     @subject_claim.setter
     def subject_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "subject_claim", value)
+
+
+class ServicePrincipalSecretProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class ServicePrincipalSecretProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 class ShareObjectArgsDict(TypedDict):
@@ -50626,6 +51992,34 @@ class SqlAlertProviderConfigArgs:
         pulumi.set(self, "workspace_id", value)
 
 
+class SqlDashboardProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class SqlDashboardProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class SqlEndpointChannelArgsDict(TypedDict):
     dbsql_version: NotRequired[pulumi.Input[_builtins.str]]
     name: NotRequired[pulumi.Input[_builtins.str]]
@@ -50922,6 +52316,34 @@ class SqlEndpointTagsCustomTagArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+class SqlGlobalConfigProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class SqlGlobalConfigProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 class SqlPermissionsPrivilegeAssignmentArgsDict(TypedDict):
@@ -51820,6 +53242,34 @@ class SqlQueryParameterTextArgs:
         pulumi.set(self, "value", value)
 
 
+class SqlQueryProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class SqlQueryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class SqlQueryScheduleArgsDict(TypedDict):
     continuous: NotRequired[pulumi.Input['SqlQueryScheduleContinuousArgsDict']]
     daily: NotRequired[pulumi.Input['SqlQueryScheduleDailyArgsDict']]
@@ -52147,6 +53597,34 @@ class SqlTableProviderConfigArgs:
         pulumi.set(self, "workspace_id", value)
 
 
+class SqlVisualizationProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class SqlVisualizationProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class SqlWidgetParameterArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     type: pulumi.Input[_builtins.str]
@@ -52298,6 +53776,34 @@ class SqlWidgetPositionArgs:
     @pos_y.setter
     def pos_y(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "pos_y", value)
+
+
+class SqlWidgetProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class SqlWidgetProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 class StorageCredentialAwsIamRoleArgsDict(TypedDict):
@@ -52859,6 +54365,25 @@ class TableColumnArgs:
         pulumi.set(self, "type_scale", value)
 
 
+class TableProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class TableProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
 class TagPolicyProviderConfigArgsDict(TypedDict):
     workspace_id: pulumi.Input[_builtins.str]
     """
@@ -52904,6 +54429,34 @@ class TagPolicyValueArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+
+class TokenProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class TokenProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 class VectorSearchEndpointEndpointStatusArgsDict(TypedDict):
@@ -53604,6 +55157,34 @@ class WorkspaceBindingProviderConfigArgsDict(TypedDict):
 
 @pulumi.input_type
 class WorkspaceBindingProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+class WorkspaceConfProviderConfigArgsDict(TypedDict):
+    workspace_id: pulumi.Input[_builtins.str]
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class WorkspaceConfProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: pulumi.Input[_builtins.str]):
         """
@@ -54662,6 +56243,62 @@ class GetAppsSettingsCustomTemplatesProviderConfigArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetAppsSettingsCustomTemplatesProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetAppsSpaceProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetAppsSpaceProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+class GetAppsSpacesProviderConfigArgsDict(TypedDict):
+    workspace_id: _builtins.str
+    """
+    Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    """
+
+@pulumi.input_type
+class GetAppsSpacesProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """

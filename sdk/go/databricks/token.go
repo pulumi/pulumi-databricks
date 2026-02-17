@@ -88,13 +88,15 @@ import (
 type Token struct {
 	pulumi.CustomResourceState
 
-	// (String) Comment that will appear on the user’s settings page for this token.
+	// (String) Comment that will appear on the user's settings page for this token.
 	Comment      pulumi.StringPtrOutput `pulumi:"comment"`
 	CreationTime pulumi.IntOutput       `pulumi:"creationTime"`
 	ExpiryTime   pulumi.IntOutput       `pulumi:"expiryTime"`
 	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 	LifetimeSeconds pulumi.IntPtrOutput `pulumi:"lifetimeSeconds"`
-	TokenId         pulumi.StringOutput `pulumi:"tokenId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig TokenProviderConfigPtrOutput `pulumi:"providerConfig"`
+	TokenId        pulumi.StringOutput          `pulumi:"tokenId"`
 	// **Sensitive** value of the newly-created token.
 	TokenValue pulumi.StringOutput `pulumi:"tokenValue"`
 }
@@ -133,25 +135,29 @@ func GetToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Token resources.
 type tokenState struct {
-	// (String) Comment that will appear on the user’s settings page for this token.
+	// (String) Comment that will appear on the user's settings page for this token.
 	Comment      *string `pulumi:"comment"`
 	CreationTime *int    `pulumi:"creationTime"`
 	ExpiryTime   *int    `pulumi:"expiryTime"`
 	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
-	LifetimeSeconds *int    `pulumi:"lifetimeSeconds"`
-	TokenId         *string `pulumi:"tokenId"`
+	LifetimeSeconds *int `pulumi:"lifetimeSeconds"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *TokenProviderConfig `pulumi:"providerConfig"`
+	TokenId        *string              `pulumi:"tokenId"`
 	// **Sensitive** value of the newly-created token.
 	TokenValue *string `pulumi:"tokenValue"`
 }
 
 type TokenState struct {
-	// (String) Comment that will appear on the user’s settings page for this token.
+	// (String) Comment that will appear on the user's settings page for this token.
 	Comment      pulumi.StringPtrInput
 	CreationTime pulumi.IntPtrInput
 	ExpiryTime   pulumi.IntPtrInput
 	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 	LifetimeSeconds pulumi.IntPtrInput
-	TokenId         pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig TokenProviderConfigPtrInput
+	TokenId        pulumi.StringPtrInput
 	// **Sensitive** value of the newly-created token.
 	TokenValue pulumi.StringPtrInput
 }
@@ -161,24 +167,28 @@ func (TokenState) ElementType() reflect.Type {
 }
 
 type tokenArgs struct {
-	// (String) Comment that will appear on the user’s settings page for this token.
+	// (String) Comment that will appear on the user's settings page for this token.
 	Comment      *string `pulumi:"comment"`
 	CreationTime *int    `pulumi:"creationTime"`
 	ExpiryTime   *int    `pulumi:"expiryTime"`
 	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
-	LifetimeSeconds *int    `pulumi:"lifetimeSeconds"`
-	TokenId         *string `pulumi:"tokenId"`
+	LifetimeSeconds *int `pulumi:"lifetimeSeconds"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *TokenProviderConfig `pulumi:"providerConfig"`
+	TokenId        *string              `pulumi:"tokenId"`
 }
 
 // The set of arguments for constructing a Token resource.
 type TokenArgs struct {
-	// (String) Comment that will appear on the user’s settings page for this token.
+	// (String) Comment that will appear on the user's settings page for this token.
 	Comment      pulumi.StringPtrInput
 	CreationTime pulumi.IntPtrInput
 	ExpiryTime   pulumi.IntPtrInput
 	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 	LifetimeSeconds pulumi.IntPtrInput
-	TokenId         pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig TokenProviderConfigPtrInput
+	TokenId        pulumi.StringPtrInput
 }
 
 func (TokenArgs) ElementType() reflect.Type {
@@ -268,7 +278,7 @@ func (o TokenOutput) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return o
 }
 
-// (String) Comment that will appear on the user’s settings page for this token.
+// (String) Comment that will appear on the user's settings page for this token.
 func (o TokenOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
@@ -284,6 +294,11 @@ func (o TokenOutput) ExpiryTime() pulumi.IntOutput {
 // (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 func (o TokenOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.IntPtrOutput { return v.LifetimeSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o TokenOutput) ProviderConfig() TokenProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Token) TokenProviderConfigPtrOutput { return v.ProviderConfig }).(TokenProviderConfigPtrOutput)
 }
 
 func (o TokenOutput) TokenId() pulumi.StringOutput {

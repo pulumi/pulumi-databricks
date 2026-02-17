@@ -15,6 +15,7 @@ import com.pulumi.databricks.inputs.PipelineIngestionDefinitionArgs;
 import com.pulumi.databricks.inputs.PipelineLatestUpdateArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryArgs;
 import com.pulumi.databricks.inputs.PipelineNotificationArgs;
+import com.pulumi.databricks.inputs.PipelineProviderConfigArgs;
 import com.pulumi.databricks.inputs.PipelineRestartWindowArgs;
 import com.pulumi.databricks.inputs.PipelineRunAsArgs;
 import com.pulumi.databricks.inputs.PipelineTriggerArgs;
@@ -342,6 +343,13 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.photon);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<PipelineProviderConfigArgs> providerConfig;
+
+    public Optional<Output<PipelineProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="restartWindow")
     private @Nullable Output<PipelineRestartWindowArgs> restartWindow;
 
@@ -526,6 +534,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.notifications = $.notifications;
         this.photon = $.photon;
+        this.providerConfig = $.providerConfig;
         this.restartWindow = $.restartWindow;
         this.rootPath = $.rootPath;
         this.runAs = $.runAs;
@@ -1011,6 +1020,15 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder photon(Boolean photon) {
             return photon(Output.of(photon));
+        }
+
+        public Builder providerConfig(@Nullable Output<PipelineProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(PipelineProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder restartWindow(@Nullable Output<PipelineRestartWindowArgs> restartWindow) {

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.TokenArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.TokenState;
+import com.pulumi.databricks.outputs.TokenProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -105,14 +106,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/token:Token")
 public class Token extends com.pulumi.resources.CustomResource {
     /**
-     * (String) Comment that will appear on the user’s settings page for this token.
+     * (String) Comment that will appear on the user&#39;s settings page for this token.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return (String) Comment that will appear on the user’s settings page for this token.
+     * @return (String) Comment that will appear on the user&#39;s settings page for this token.
      * 
      */
     public Output<Optional<String>> comment() {
@@ -143,6 +144,20 @@ public class Token extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> lifetimeSeconds() {
         return Codegen.optional(this.lifetimeSeconds);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={TokenProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ TokenProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<TokenProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="tokenId", refs={String.class}, tree="[0]")
     private Output<String> tokenId;

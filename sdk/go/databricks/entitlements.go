@@ -143,6 +143,8 @@ type Entitlements struct {
 	DatabricksSqlAccess pulumi.BoolPtrOutput `pulumi:"databricksSqlAccess"`
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig EntitlementsProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Canonical unique identifier for the service principal.
 	//
 	// The following entitlements are available.
@@ -193,6 +195,8 @@ type entitlementsState struct {
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// Canonical unique identifier for the group.
 	GroupId *string `pulumi:"groupId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *EntitlementsProviderConfig `pulumi:"providerConfig"`
 	// Canonical unique identifier for the service principal.
 	//
 	// The following entitlements are available.
@@ -214,6 +218,8 @@ type EntitlementsState struct {
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig EntitlementsProviderConfigPtrInput
 	// Canonical unique identifier for the service principal.
 	//
 	// The following entitlements are available.
@@ -239,6 +245,8 @@ type entitlementsArgs struct {
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// Canonical unique identifier for the group.
 	GroupId *string `pulumi:"groupId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *EntitlementsProviderConfig `pulumi:"providerConfig"`
 	// Canonical unique identifier for the service principal.
 	//
 	// The following entitlements are available.
@@ -261,6 +269,8 @@ type EntitlementsArgs struct {
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig EntitlementsProviderConfigPtrInput
 	// Canonical unique identifier for the service principal.
 	//
 	// The following entitlements are available.
@@ -378,6 +388,11 @@ func (o EntitlementsOutput) DatabricksSqlAccess() pulumi.BoolPtrOutput {
 // Canonical unique identifier for the group.
 func (o EntitlementsOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.StringPtrOutput { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o EntitlementsOutput) ProviderConfig() EntitlementsProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Entitlements) EntitlementsProviderConfigPtrOutput { return v.ProviderConfig }).(EntitlementsProviderConfigPtrOutput)
 }
 
 // Canonical unique identifier for the service principal.

@@ -106,6 +106,7 @@ public final class GetAppApp {
      * 
      */
     private String servicePrincipalName;
+    private @Nullable String space;
     /**
      * @return The update time of the app.
      * 
@@ -255,6 +256,9 @@ public final class GetAppApp {
     public String servicePrincipalName() {
         return this.servicePrincipalName;
     }
+    public Optional<String> space() {
+        return Optional.ofNullable(this.space);
+    }
     /**
      * @return The update time of the app.
      * 
@@ -314,6 +318,7 @@ public final class GetAppApp {
         private String servicePrincipalClientId;
         private Integer servicePrincipalId;
         private String servicePrincipalName;
+        private @Nullable String space;
         private String updateTime;
         private String updater;
         private String url;
@@ -344,6 +349,7 @@ public final class GetAppApp {
     	      this.servicePrincipalClientId = defaults.servicePrincipalClientId;
     	      this.servicePrincipalId = defaults.servicePrincipalId;
     	      this.servicePrincipalName = defaults.servicePrincipalName;
+    	      this.space = defaults.space;
     	      this.updateTime = defaults.updateTime;
     	      this.updater = defaults.updater;
     	      this.url = defaults.url;
@@ -524,6 +530,12 @@ public final class GetAppApp {
             return this;
         }
         @CustomType.Setter
+        public Builder space(@Nullable String space) {
+
+            this.space = space;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetAppApp", "updateTime");
@@ -586,6 +598,7 @@ public final class GetAppApp {
             _resultValue.servicePrincipalClientId = servicePrincipalClientId;
             _resultValue.servicePrincipalId = servicePrincipalId;
             _resultValue.servicePrincipalName = servicePrincipalName;
+            _resultValue.space = space;
             _resultValue.updateTime = updateTime;
             _resultValue.updater = updater;
             _resultValue.url = url;

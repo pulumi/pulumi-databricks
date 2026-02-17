@@ -107,10 +107,16 @@ type LookupEntityTagAssignmentResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                                `pulumi:"id"`
 	ProviderConfig *GetEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
+	// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+	SourceType string `pulumi:"sourceType"`
 	// (string) - The key of the tag
 	TagKey string `pulumi:"tagKey"`
 	// (string) - The value of the tag
 	TagValue string `pulumi:"tagValue"`
+	// (string) - The timestamp when the tag assignment was last updated
+	UpdateTime string `pulumi:"updateTime"`
+	// (string) - The user or principal who updated the tag assignment
+	UpdatedBy string `pulumi:"updatedBy"`
 }
 
 func LookupEntityTagAssignmentOutput(ctx *pulumi.Context, args LookupEntityTagAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupEntityTagAssignmentResultOutput {
@@ -172,6 +178,11 @@ func (o LookupEntityTagAssignmentResultOutput) ProviderConfig() GetEntityTagAssi
 	return o.ApplyT(func(v LookupEntityTagAssignmentResult) *GetEntityTagAssignmentProviderConfig { return v.ProviderConfig }).(GetEntityTagAssignmentProviderConfigPtrOutput)
 }
 
+// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+func (o LookupEntityTagAssignmentResultOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
 // (string) - The key of the tag
 func (o LookupEntityTagAssignmentResultOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.TagKey }).(pulumi.StringOutput)
@@ -180,6 +191,16 @@ func (o LookupEntityTagAssignmentResultOutput) TagKey() pulumi.StringOutput {
 // (string) - The value of the tag
 func (o LookupEntityTagAssignmentResultOutput) TagValue() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.TagValue }).(pulumi.StringOutput)
+}
+
+// (string) - The timestamp when the tag assignment was last updated
+func (o LookupEntityTagAssignmentResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// (string) - The user or principal who updated the tag assignment
+func (o LookupEntityTagAssignmentResultOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
 func init() {

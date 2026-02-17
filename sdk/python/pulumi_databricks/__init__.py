@@ -17,6 +17,7 @@ from .alert import *
 from .alert_v2 import *
 from .app import *
 from .apps_settings_custom_template import *
+from .apps_space import *
 from .artifact_allowlist import *
 from .automatic_cluster_update_workspace_setting import *
 from .budget import *
@@ -41,6 +42,7 @@ from .directory import *
 from .disable_legacy_access_setting import *
 from .disable_legacy_dbfs_setting import *
 from .disable_legacy_features_setting import *
+from .endpoint import *
 from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
 from .entity_tag_assignment import *
@@ -62,6 +64,8 @@ from .get_app import *
 from .get_apps import *
 from .get_apps_settings_custom_template import *
 from .get_apps_settings_custom_templates import *
+from .get_apps_space import *
+from .get_apps_spaces import *
 from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
@@ -91,6 +95,8 @@ from .get_database_synced_database_tables import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_directory import *
+from .get_endpoint import *
+from .get_endpoints import *
 from .get_entity_tag_assignment import *
 from .get_entity_tag_assignments import *
 from .get_external_location import *
@@ -367,6 +373,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/appsSpace",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/appsSpace:AppsSpace": "AppsSpace"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/artifactAllowlist",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -555,6 +569,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting": "DisableLegacyFeaturesSetting"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/endpoint",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/endpoint:Endpoint": "Endpoint"
   }
  },
  {

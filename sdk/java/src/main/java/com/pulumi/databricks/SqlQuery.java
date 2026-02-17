@@ -11,6 +11,7 @@ import com.pulumi.databricks.SqlQueryArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlQueryState;
 import com.pulumi.databricks.outputs.SqlQueryParameter;
+import com.pulumi.databricks.outputs.SqlQueryProviderConfig;
 import com.pulumi.databricks.outputs.SqlQuerySchedule;
 import java.lang.String;
 import java.util.List;
@@ -243,6 +244,12 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> parent() {
         return Codegen.optional(this.parent);
+    }
+    @Export(name="providerConfig", refs={SqlQueryProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SqlQueryProviderConfig> providerConfig;
+
+    public Output<Optional<SqlQueryProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The text of the query to be run.

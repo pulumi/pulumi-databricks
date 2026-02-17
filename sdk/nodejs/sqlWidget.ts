@@ -87,6 +87,10 @@ export class SqlWidget extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly parameters: pulumi.Output<outputs.SqlWidgetParameter[] | undefined>;
     declare public readonly position: pulumi.Output<outputs.SqlWidgetPosition | undefined>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlWidgetProviderConfig | undefined>;
     declare public readonly text: pulumi.Output<string | undefined>;
     declare public readonly title: pulumi.Output<string | undefined>;
     declare public readonly visualizationId: pulumi.Output<string | undefined>;
@@ -109,6 +113,7 @@ export class SqlWidget extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["parameters"] = state?.parameters;
             resourceInputs["position"] = state?.position;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["text"] = state?.text;
             resourceInputs["title"] = state?.title;
             resourceInputs["visualizationId"] = state?.visualizationId;
@@ -122,6 +127,7 @@ export class SqlWidget extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["parameters"] = args?.parameters;
             resourceInputs["position"] = args?.position;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["text"] = args?.text;
             resourceInputs["title"] = args?.title;
             resourceInputs["visualizationId"] = args?.visualizationId;
@@ -140,6 +146,10 @@ export interface SqlWidgetState {
     description?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<inputs.SqlWidgetParameter>[]>;
     position?: pulumi.Input<inputs.SqlWidgetPosition>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlWidgetProviderConfig>;
     text?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
     visualizationId?: pulumi.Input<string>;
@@ -154,6 +164,10 @@ export interface SqlWidgetArgs {
     description?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<inputs.SqlWidgetParameter>[]>;
     position?: pulumi.Input<inputs.SqlWidgetPosition>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlWidgetProviderConfig>;
     text?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
     visualizationId?: pulumi.Input<string>;

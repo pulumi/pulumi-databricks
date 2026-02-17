@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlWidgetParameterArgs;
 import com.pulumi.databricks.inputs.SqlWidgetPositionArgs;
+import com.pulumi.databricks.inputs.SqlWidgetProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -47,6 +48,21 @@ public final class SqlWidgetArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.position);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SqlWidgetProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SqlWidgetProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="text")
     private @Nullable Output<String> text;
 
@@ -82,6 +98,7 @@ public final class SqlWidgetArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.parameters = $.parameters;
         this.position = $.position;
+        this.providerConfig = $.providerConfig;
         this.text = $.text;
         this.title = $.title;
         this.visualizationId = $.visualizationId;
@@ -144,6 +161,27 @@ public final class SqlWidgetArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder position(SqlWidgetPositionArgs position) {
             return position(Output.of(position));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SqlWidgetProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SqlWidgetProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder text(@Nullable Output<String> text) {

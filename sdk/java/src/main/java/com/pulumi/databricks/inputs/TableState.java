@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.TableColumnArgs;
+import com.pulumi.databricks.inputs.TableProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +68,13 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.properties);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<TableProviderConfigArgs> providerConfig;
+
+    public Optional<Output<TableProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="schemaName")
     private @Nullable Output<String> schemaName;
 
@@ -112,6 +120,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.owner = $.owner;
         this.properties = $.properties;
+        this.providerConfig = $.providerConfig;
         this.schemaName = $.schemaName;
         this.storageCredentialName = $.storageCredentialName;
         this.storageLocation = $.storageLocation;
@@ -202,6 +211,15 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
+        }
+
+        public Builder providerConfig(@Nullable Output<TableProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(TableProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder schemaName(@Nullable Output<String> schemaName) {

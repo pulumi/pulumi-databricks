@@ -108,6 +108,8 @@ type InstanceProfile struct {
 	InstanceProfileArn pulumi.StringOutput `pulumi:"instanceProfileArn"`
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
 	IsMetaInstanceProfile pulumi.BoolPtrOutput `pulumi:"isMetaInstanceProfile"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig InstanceProfileProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
 	SkipValidation pulumi.BoolOutput `pulumi:"skipValidation"`
 }
@@ -151,6 +153,8 @@ type instanceProfileState struct {
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
 	IsMetaInstanceProfile *bool `pulumi:"isMetaInstanceProfile"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *InstanceProfileProviderConfig `pulumi:"providerConfig"`
 	// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
 	SkipValidation *bool `pulumi:"skipValidation"`
 }
@@ -162,6 +166,8 @@ type InstanceProfileState struct {
 	InstanceProfileArn pulumi.StringPtrInput
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
 	IsMetaInstanceProfile pulumi.BoolPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig InstanceProfileProviderConfigPtrInput
 	// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
 	SkipValidation pulumi.BoolPtrInput
 }
@@ -177,6 +183,8 @@ type instanceProfileArgs struct {
 	InstanceProfileArn string `pulumi:"instanceProfileArn"`
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
 	IsMetaInstanceProfile *bool `pulumi:"isMetaInstanceProfile"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *InstanceProfileProviderConfig `pulumi:"providerConfig"`
 	// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
 	SkipValidation *bool `pulumi:"skipValidation"`
 }
@@ -189,6 +197,8 @@ type InstanceProfileArgs struct {
 	InstanceProfileArn pulumi.StringInput
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
 	IsMetaInstanceProfile pulumi.BoolPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig InstanceProfileProviderConfigPtrInput
 	// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
 	SkipValidation pulumi.BoolPtrInput
 }
@@ -293,6 +303,11 @@ func (o InstanceProfileOutput) InstanceProfileArn() pulumi.StringOutput {
 // Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
 func (o InstanceProfileOutput) IsMetaInstanceProfile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceProfile) pulumi.BoolPtrOutput { return v.IsMetaInstanceProfile }).(pulumi.BoolPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o InstanceProfileOutput) ProviderConfig() InstanceProfileProviderConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceProfile) InstanceProfileProviderConfigPtrOutput { return v.ProviderConfig }).(InstanceProfileProviderConfigPtrOutput)
 }
 
 // **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.

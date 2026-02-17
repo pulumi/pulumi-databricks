@@ -4,10 +4,12 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresProjectsProjectStatusCustomTag;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectStatusDefaultEndpointSettings;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -17,6 +19,16 @@ public final class GetPostgresProjectsProjectStatus {
      * 
      */
     private Integer branchLogicalSizeLimitBytes;
+    /**
+     * @return (string) - The budget policy that is applied to the project
+     * 
+     */
+    private String budgetPolicyId;
+    /**
+     * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    private List<GetPostgresProjectsProjectStatusCustomTag> customTags;
     /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      * 
@@ -55,6 +67,20 @@ public final class GetPostgresProjectsProjectStatus {
      */
     public Integer branchLogicalSizeLimitBytes() {
         return this.branchLogicalSizeLimitBytes;
+    }
+    /**
+     * @return (string) - The budget policy that is applied to the project
+     * 
+     */
+    public String budgetPolicyId() {
+        return this.budgetPolicyId;
+    }
+    /**
+     * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    public List<GetPostgresProjectsProjectStatusCustomTag> customTags() {
+        return this.customTags;
     }
     /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
@@ -109,6 +135,8 @@ public final class GetPostgresProjectsProjectStatus {
     @CustomType.Builder
     public static final class Builder {
         private Integer branchLogicalSizeLimitBytes;
+        private String budgetPolicyId;
+        private List<GetPostgresProjectsProjectStatusCustomTag> customTags;
         private GetPostgresProjectsProjectStatusDefaultEndpointSettings defaultEndpointSettings;
         private String displayName;
         private String historyRetentionDuration;
@@ -119,6 +147,8 @@ public final class GetPostgresProjectsProjectStatus {
         public Builder(GetPostgresProjectsProjectStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branchLogicalSizeLimitBytes = defaults.branchLogicalSizeLimitBytes;
+    	      this.budgetPolicyId = defaults.budgetPolicyId;
+    	      this.customTags = defaults.customTags;
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
     	      this.displayName = defaults.displayName;
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
@@ -134,6 +164,25 @@ public final class GetPostgresProjectsProjectStatus {
             }
             this.branchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
             return this;
+        }
+        @CustomType.Setter
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            if (budgetPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectsProjectStatus", "budgetPolicyId");
+            }
+            this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customTags(List<GetPostgresProjectsProjectStatusCustomTag> customTags) {
+            if (customTags == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectsProjectStatus", "customTags");
+            }
+            this.customTags = customTags;
+            return this;
+        }
+        public Builder customTags(GetPostgresProjectsProjectStatusCustomTag... customTags) {
+            return customTags(List.of(customTags));
         }
         @CustomType.Setter
         public Builder defaultEndpointSettings(GetPostgresProjectsProjectStatusDefaultEndpointSettings defaultEndpointSettings) {
@@ -186,6 +235,8 @@ public final class GetPostgresProjectsProjectStatus {
         public GetPostgresProjectsProjectStatus build() {
             final var _resultValue = new GetPostgresProjectsProjectStatus();
             _resultValue.branchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
+            _resultValue.budgetPolicyId = budgetPolicyId;
+            _resultValue.customTags = customTags;
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;
             _resultValue.displayName = displayName;
             _resultValue.historyRetentionDuration = historyRetentionDuration;

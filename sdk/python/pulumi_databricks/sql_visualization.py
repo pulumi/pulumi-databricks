@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SqlVisualizationArgs', 'SqlVisualization']
 
@@ -24,10 +26,12 @@ class SqlVisualizationArgs:
                  type: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['SqlVisualizationProviderConfigArgs']] = None,
                  query_plan: Optional[pulumi.Input[_builtins.str]] = None,
                  visualization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlVisualization resource.
+        :param pulumi.Input['SqlVisualizationProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "query_id", query_id)
@@ -36,6 +40,8 @@ class SqlVisualizationArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if query_plan is not None:
             pulumi.set(__self__, "query_plan", query_plan)
         if visualization_id is not None:
@@ -87,6 +93,18 @@ class SqlVisualizationArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlVisualizationProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlVisualizationProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="queryPlan")
     def query_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "query_plan")
@@ -111,12 +129,14 @@ class _SqlVisualizationState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  options: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['SqlVisualizationProviderConfigArgs']] = None,
                  query_id: Optional[pulumi.Input[_builtins.str]] = None,
                  query_plan: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  visualization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlVisualization resources.
+        :param pulumi.Input['SqlVisualizationProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -124,6 +144,8 @@ class _SqlVisualizationState:
             pulumi.set(__self__, "name", name)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if query_id is not None:
             pulumi.set(__self__, "query_id", query_id)
         if query_plan is not None:
@@ -159,6 +181,18 @@ class _SqlVisualizationState:
     @options.setter
     def options(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlVisualizationProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlVisualizationProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="queryId")
@@ -206,6 +240,7 @@ class SqlVisualization(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  options: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlVisualizationProviderConfigArgs', 'SqlVisualizationProviderConfigArgsDict']]] = None,
                  query_id: Optional[pulumi.Input[_builtins.str]] = None,
                  query_plan: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -266,6 +301,7 @@ class SqlVisualization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['SqlVisualizationProviderConfigArgs', 'SqlVisualizationProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -344,6 +380,7 @@ class SqlVisualization(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  options: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlVisualizationProviderConfigArgs', 'SqlVisualizationProviderConfigArgsDict']]] = None,
                  query_id: Optional[pulumi.Input[_builtins.str]] = None,
                  query_plan: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -362,6 +399,7 @@ class SqlVisualization(pulumi.CustomResource):
             if options is None and not opts.urn:
                 raise TypeError("Missing required property 'options'")
             __props__.__dict__["options"] = options
+            __props__.__dict__["provider_config"] = provider_config
             if query_id is None and not opts.urn:
                 raise TypeError("Missing required property 'query_id'")
             __props__.__dict__["query_id"] = query_id
@@ -383,6 +421,7 @@ class SqlVisualization(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             options: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['SqlVisualizationProviderConfigArgs', 'SqlVisualizationProviderConfigArgsDict']]] = None,
             query_id: Optional[pulumi.Input[_builtins.str]] = None,
             query_plan: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -394,6 +433,7 @@ class SqlVisualization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['SqlVisualizationProviderConfigArgs', 'SqlVisualizationProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -402,6 +442,7 @@ class SqlVisualization(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["query_id"] = query_id
         __props__.__dict__["query_plan"] = query_plan
         __props__.__dict__["type"] = type
@@ -422,6 +463,14 @@ class SqlVisualization(pulumi.CustomResource):
     @pulumi.getter
     def options(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "options")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlVisualizationProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="queryId")

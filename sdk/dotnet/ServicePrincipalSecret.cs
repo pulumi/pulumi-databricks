@@ -91,6 +91,12 @@ namespace Pulumi.Databricks
         public Output<string> Lifetime { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.ServicePrincipalSecretProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// **Sensitive** Generated secret for the service principal.
         /// </summary>
         [Output("secret")]
@@ -194,6 +200,12 @@ namespace Pulumi.Databricks
         [Input("lifetime")]
         public Input<string>? Lifetime { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ServicePrincipalSecretProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("secret")]
         private Input<string>? _secret;
 
@@ -265,6 +277,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("lifetime")]
         public Input<string>? Lifetime { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ServicePrincipalSecretProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("secret")]
         private Input<string>? _secret;

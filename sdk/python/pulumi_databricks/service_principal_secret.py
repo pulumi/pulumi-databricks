@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ServicePrincipalSecretArgs', 'ServicePrincipalSecret']
 
@@ -23,6 +25,7 @@ class ServicePrincipalSecretArgs:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  expire_time: Optional[pulumi.Input[_builtins.str]] = None,
                  lifetime: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ServicePrincipalSecretProviderConfigArgs']] = None,
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -34,6 +37,7 @@ class ServicePrincipalSecretArgs:
         :param pulumi.Input[_builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[_builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
         :param pulumi.Input[_builtins.str] lifetime: The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+        :param pulumi.Input['ServicePrincipalSecretProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[_builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[_builtins.str] status: Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
@@ -47,6 +51,8 @@ class ServicePrincipalSecretArgs:
             pulumi.set(__self__, "expire_time", expire_time)
         if lifetime is not None:
             pulumi.set(__self__, "lifetime", lifetime)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if secret_hash is not None:
@@ -105,6 +111,18 @@ class ServicePrincipalSecretArgs:
     @lifetime.setter
     def lifetime(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "lifetime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ServicePrincipalSecretProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ServicePrincipalSecretProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -173,6 +191,7 @@ class _ServicePrincipalSecretState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  expire_time: Optional[pulumi.Input[_builtins.str]] = None,
                  lifetime: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ServicePrincipalSecretProviderConfigArgs']] = None,
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -184,6 +203,7 @@ class _ServicePrincipalSecretState:
         :param pulumi.Input[_builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[_builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
         :param pulumi.Input[_builtins.str] lifetime: The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+        :param pulumi.Input['ServicePrincipalSecretProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[_builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[_builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
@@ -197,6 +217,8 @@ class _ServicePrincipalSecretState:
             pulumi.set(__self__, "expire_time", expire_time)
         if lifetime is not None:
             pulumi.set(__self__, "lifetime", lifetime)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if secret_hash is not None:
@@ -245,6 +267,18 @@ class _ServicePrincipalSecretState:
     @lifetime.setter
     def lifetime(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "lifetime", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ServicePrincipalSecretProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ServicePrincipalSecretProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -328,6 +362,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  expire_time: Optional[pulumi.Input[_builtins.str]] = None,
                  lifetime: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ServicePrincipalSecretProviderConfigArgs', 'ServicePrincipalSecretProviderConfigArgsDict']]] = None,
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -379,6 +414,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[_builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
         :param pulumi.Input[_builtins.str] lifetime: The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+        :param pulumi.Input[Union['ServicePrincipalSecretProviderConfigArgs', 'ServicePrincipalSecretProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[_builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[_builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
@@ -449,6 +485,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  expire_time: Optional[pulumi.Input[_builtins.str]] = None,
                  lifetime: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ServicePrincipalSecretProviderConfigArgs', 'ServicePrincipalSecretProviderConfigArgsDict']]] = None,
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -467,6 +504,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["lifetime"] = lifetime
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["secret_hash"] = secret_hash
             if service_principal_id is None and not opts.urn:
@@ -490,6 +528,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             expire_time: Optional[pulumi.Input[_builtins.str]] = None,
             lifetime: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['ServicePrincipalSecretProviderConfigArgs', 'ServicePrincipalSecretProviderConfigArgsDict']]] = None,
             secret: Optional[pulumi.Input[_builtins.str]] = None,
             secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
             service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -506,6 +545,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[_builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
         :param pulumi.Input[_builtins.str] lifetime: The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+        :param pulumi.Input[Union['ServicePrincipalSecretProviderConfigArgs', 'ServicePrincipalSecretProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[_builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[_builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
@@ -520,6 +560,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["lifetime"] = lifetime
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["secret"] = secret
         __props__.__dict__["secret_hash"] = secret_hash
         __props__.__dict__["service_principal_id"] = service_principal_id
@@ -551,6 +592,14 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
         """
         return pulumi.get(self, "lifetime")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ServicePrincipalSecretProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

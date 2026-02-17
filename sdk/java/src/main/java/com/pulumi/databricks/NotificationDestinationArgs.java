@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.NotificationDestinationConfigArgs;
+import com.pulumi.databricks.inputs.NotificationDestinationProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -62,12 +63,28 @@ public final class NotificationDestinationArgs extends com.pulumi.resources.Reso
         return this.displayName;
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<NotificationDestinationProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<NotificationDestinationProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private NotificationDestinationArgs() {}
 
     private NotificationDestinationArgs(NotificationDestinationArgs $) {
         this.config = $.config;
         this.destinationType = $.destinationType;
         this.displayName = $.displayName;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -149,6 +166,27 @@ public final class NotificationDestinationArgs extends com.pulumi.resources.Reso
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<NotificationDestinationProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(NotificationDestinationProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public NotificationDestinationArgs build() {

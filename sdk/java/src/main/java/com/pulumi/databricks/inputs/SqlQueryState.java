@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlQueryParameterArgs;
+import com.pulumi.databricks.inputs.SqlQueryProviderConfigArgs;
 import com.pulumi.databricks.inputs.SqlQueryScheduleArgs;
 import java.lang.String;
 import java.util.List;
@@ -92,6 +93,13 @@ public final class SqlQueryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parent);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<SqlQueryProviderConfigArgs> providerConfig;
+
+    public Optional<Output<SqlQueryProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * The text of the query to be run.
      * 
@@ -164,6 +172,7 @@ public final class SqlQueryState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.parameters = $.parameters;
         this.parent = $.parent;
+        this.providerConfig = $.providerConfig;
         this.query = $.query;
         this.runAsRole = $.runAsRole;
         this.schedule = $.schedule;
@@ -293,6 +302,15 @@ public final class SqlQueryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        public Builder providerConfig(@Nullable Output<SqlQueryProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(SqlQueryProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

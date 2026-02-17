@@ -196,6 +196,7 @@ export class ClusterPolicy extends pulumi.CustomResource {
      * Canonical unique identifier for the cluster policy.
      */
     declare public /*out*/ readonly policyId: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ClusterPolicyProviderConfig | undefined>;
 
     /**
      * Create a ClusterPolicy resource with the given unique name, arguments, and options.
@@ -218,6 +219,7 @@ export class ClusterPolicy extends pulumi.CustomResource {
             resourceInputs["policyFamilyDefinitionOverrides"] = state?.policyFamilyDefinitionOverrides;
             resourceInputs["policyFamilyId"] = state?.policyFamilyId;
             resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as ClusterPolicyArgs | undefined;
             resourceInputs["definition"] = args?.definition;
@@ -227,6 +229,7 @@ export class ClusterPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["policyFamilyDefinitionOverrides"] = args?.policyFamilyDefinitionOverrides;
             resourceInputs["policyFamilyId"] = args?.policyFamilyId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["policyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -267,6 +270,7 @@ export interface ClusterPolicyState {
      * Canonical unique identifier for the cluster policy.
      */
     policyId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ClusterPolicyProviderConfig>;
 }
 
 /**
@@ -298,4 +302,5 @@ export interface ClusterPolicyArgs {
      * ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
      */
     policyFamilyId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ClusterPolicyProviderConfig>;
 }

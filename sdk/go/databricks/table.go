@@ -15,18 +15,19 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
-	CatalogName           pulumi.StringOutput    `pulumi:"catalogName"`
-	Columns               TableColumnArrayOutput `pulumi:"columns"`
-	Comment               pulumi.StringPtrOutput `pulumi:"comment"`
-	DataSourceFormat      pulumi.StringOutput    `pulumi:"dataSourceFormat"`
-	Name                  pulumi.StringOutput    `pulumi:"name"`
-	Owner                 pulumi.StringOutput    `pulumi:"owner"`
-	Properties            pulumi.StringMapOutput `pulumi:"properties"`
-	SchemaName            pulumi.StringOutput    `pulumi:"schemaName"`
-	StorageCredentialName pulumi.StringPtrOutput `pulumi:"storageCredentialName"`
-	StorageLocation       pulumi.StringPtrOutput `pulumi:"storageLocation"`
-	TableType             pulumi.StringOutput    `pulumi:"tableType"`
-	ViewDefinition        pulumi.StringPtrOutput `pulumi:"viewDefinition"`
+	CatalogName           pulumi.StringOutput          `pulumi:"catalogName"`
+	Columns               TableColumnArrayOutput       `pulumi:"columns"`
+	Comment               pulumi.StringPtrOutput       `pulumi:"comment"`
+	DataSourceFormat      pulumi.StringOutput          `pulumi:"dataSourceFormat"`
+	Name                  pulumi.StringOutput          `pulumi:"name"`
+	Owner                 pulumi.StringOutput          `pulumi:"owner"`
+	Properties            pulumi.StringMapOutput       `pulumi:"properties"`
+	ProviderConfig        TableProviderConfigPtrOutput `pulumi:"providerConfig"`
+	SchemaName            pulumi.StringOutput          `pulumi:"schemaName"`
+	StorageCredentialName pulumi.StringPtrOutput       `pulumi:"storageCredentialName"`
+	StorageLocation       pulumi.StringPtrOutput       `pulumi:"storageLocation"`
+	TableType             pulumi.StringOutput          `pulumi:"tableType"`
+	ViewDefinition        pulumi.StringPtrOutput       `pulumi:"viewDefinition"`
 }
 
 // NewTable registers a new resource with the given unique name, arguments, and options.
@@ -74,18 +75,19 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	CatalogName           *string           `pulumi:"catalogName"`
-	Columns               []TableColumn     `pulumi:"columns"`
-	Comment               *string           `pulumi:"comment"`
-	DataSourceFormat      *string           `pulumi:"dataSourceFormat"`
-	Name                  *string           `pulumi:"name"`
-	Owner                 *string           `pulumi:"owner"`
-	Properties            map[string]string `pulumi:"properties"`
-	SchemaName            *string           `pulumi:"schemaName"`
-	StorageCredentialName *string           `pulumi:"storageCredentialName"`
-	StorageLocation       *string           `pulumi:"storageLocation"`
-	TableType             *string           `pulumi:"tableType"`
-	ViewDefinition        *string           `pulumi:"viewDefinition"`
+	CatalogName           *string              `pulumi:"catalogName"`
+	Columns               []TableColumn        `pulumi:"columns"`
+	Comment               *string              `pulumi:"comment"`
+	DataSourceFormat      *string              `pulumi:"dataSourceFormat"`
+	Name                  *string              `pulumi:"name"`
+	Owner                 *string              `pulumi:"owner"`
+	Properties            map[string]string    `pulumi:"properties"`
+	ProviderConfig        *TableProviderConfig `pulumi:"providerConfig"`
+	SchemaName            *string              `pulumi:"schemaName"`
+	StorageCredentialName *string              `pulumi:"storageCredentialName"`
+	StorageLocation       *string              `pulumi:"storageLocation"`
+	TableType             *string              `pulumi:"tableType"`
+	ViewDefinition        *string              `pulumi:"viewDefinition"`
 }
 
 type TableState struct {
@@ -96,6 +98,7 @@ type TableState struct {
 	Name                  pulumi.StringPtrInput
 	Owner                 pulumi.StringPtrInput
 	Properties            pulumi.StringMapInput
+	ProviderConfig        TableProviderConfigPtrInput
 	SchemaName            pulumi.StringPtrInput
 	StorageCredentialName pulumi.StringPtrInput
 	StorageLocation       pulumi.StringPtrInput
@@ -108,18 +111,19 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	CatalogName           string            `pulumi:"catalogName"`
-	Columns               []TableColumn     `pulumi:"columns"`
-	Comment               *string           `pulumi:"comment"`
-	DataSourceFormat      string            `pulumi:"dataSourceFormat"`
-	Name                  *string           `pulumi:"name"`
-	Owner                 *string           `pulumi:"owner"`
-	Properties            map[string]string `pulumi:"properties"`
-	SchemaName            string            `pulumi:"schemaName"`
-	StorageCredentialName *string           `pulumi:"storageCredentialName"`
-	StorageLocation       *string           `pulumi:"storageLocation"`
-	TableType             string            `pulumi:"tableType"`
-	ViewDefinition        *string           `pulumi:"viewDefinition"`
+	CatalogName           string               `pulumi:"catalogName"`
+	Columns               []TableColumn        `pulumi:"columns"`
+	Comment               *string              `pulumi:"comment"`
+	DataSourceFormat      string               `pulumi:"dataSourceFormat"`
+	Name                  *string              `pulumi:"name"`
+	Owner                 *string              `pulumi:"owner"`
+	Properties            map[string]string    `pulumi:"properties"`
+	ProviderConfig        *TableProviderConfig `pulumi:"providerConfig"`
+	SchemaName            string               `pulumi:"schemaName"`
+	StorageCredentialName *string              `pulumi:"storageCredentialName"`
+	StorageLocation       *string              `pulumi:"storageLocation"`
+	TableType             string               `pulumi:"tableType"`
+	ViewDefinition        *string              `pulumi:"viewDefinition"`
 }
 
 // The set of arguments for constructing a Table resource.
@@ -131,6 +135,7 @@ type TableArgs struct {
 	Name                  pulumi.StringPtrInput
 	Owner                 pulumi.StringPtrInput
 	Properties            pulumi.StringMapInput
+	ProviderConfig        TableProviderConfigPtrInput
 	SchemaName            pulumi.StringInput
 	StorageCredentialName pulumi.StringPtrInput
 	StorageLocation       pulumi.StringPtrInput
@@ -251,6 +256,10 @@ func (o TableOutput) Owner() pulumi.StringOutput {
 
 func (o TableOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o TableOutput) ProviderConfig() TableProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Table) TableProviderConfigPtrOutput { return v.ProviderConfig }).(TableProviderConfigPtrOutput)
 }
 
 func (o TableOutput) SchemaName() pulumi.StringOutput {

@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.SqlDashboardProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -45,6 +46,21 @@ public final class SqlDashboardArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parent);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SqlDashboardProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SqlDashboardProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="runAsRole")
     private @Nullable Output<String> runAsRole;
 
@@ -73,6 +89,7 @@ public final class SqlDashboardArgs extends com.pulumi.resources.ResourceArgs {
         this.dashboardFiltersEnabled = $.dashboardFiltersEnabled;
         this.name = $.name;
         this.parent = $.parent;
+        this.providerConfig = $.providerConfig;
         this.runAsRole = $.runAsRole;
         this.tags = $.tags;
         this.updatedAt = $.updatedAt;
@@ -130,6 +147,27 @@ public final class SqlDashboardArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SqlDashboardProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SqlDashboardProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder runAsRole(@Nullable Output<String> runAsRole) {

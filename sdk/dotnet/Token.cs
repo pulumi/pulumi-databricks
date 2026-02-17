@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
     public partial class Token : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (String) Comment that will appear on the user’s settings page for this token.
+        /// (String) Comment that will appear on the user's settings page for this token.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
@@ -87,6 +87,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("lifetimeSeconds")]
         public Output<int?> LifetimeSeconds { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.TokenProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         [Output("tokenId")]
         public Output<string> TokenId { get; private set; } = null!;
@@ -148,7 +154,7 @@ namespace Pulumi.Databricks
     public sealed class TokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (String) Comment that will appear on the user’s settings page for this token.
+        /// (String) Comment that will appear on the user's settings page for this token.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -164,6 +170,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.TokenProviderConfigArgs>? ProviderConfig { get; set; }
 
         [Input("tokenId")]
         public Input<string>? TokenId { get; set; }
@@ -177,7 +189,7 @@ namespace Pulumi.Databricks
     public sealed class TokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (String) Comment that will appear on the user’s settings page for this token.
+        /// (String) Comment that will appear on the user's settings page for this token.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -193,6 +205,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.TokenProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("tokenId")]
         public Input<string>? TokenId { get; set; }

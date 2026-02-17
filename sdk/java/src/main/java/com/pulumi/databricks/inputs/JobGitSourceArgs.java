@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobGitSourceGitSnapshotArgs;
 import com.pulumi.databricks.inputs.JobGitSourceJobSourceArgs;
+import com.pulumi.databricks.inputs.JobGitSourceSparseCheckoutArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -77,6 +78,13 @@ public final class JobGitSourceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.provider);
     }
 
+    @Import(name="sparseCheckout")
+    private @Nullable Output<JobGitSourceSparseCheckoutArgs> sparseCheckout;
+
+    public Optional<Output<JobGitSourceSparseCheckoutArgs>> sparseCheckout() {
+        return Optional.ofNullable(this.sparseCheckout);
+    }
+
     /**
      * name of the Git branch to use. Conflicts with `branch` and `commit`.
      * 
@@ -115,6 +123,7 @@ public final class JobGitSourceArgs extends com.pulumi.resources.ResourceArgs {
         this.gitSnapshot = $.gitSnapshot;
         this.jobSource = $.jobSource;
         this.provider = $.provider;
+        this.sparseCheckout = $.sparseCheckout;
         this.tag = $.tag;
         this.url = $.url;
     }
@@ -216,6 +225,15 @@ public final class JobGitSourceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
+        }
+
+        public Builder sparseCheckout(@Nullable Output<JobGitSourceSparseCheckoutArgs> sparseCheckout) {
+            $.sparseCheckout = sparseCheckout;
+            return this;
+        }
+
+        public Builder sparseCheckout(JobGitSourceSparseCheckoutArgs sparseCheckout) {
+            return sparseCheckout(Output.of(sparseCheckout));
         }
 
         /**

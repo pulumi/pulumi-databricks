@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OboTokenArgs', 'OboToken']
 
@@ -21,18 +23,22 @@ class OboTokenArgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[_builtins.str],
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input['OboTokenProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a OboToken resource.
         :param pulumi.Input[_builtins.str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[_builtins.str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+        :param pulumi.Input['OboTokenProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "application_id", application_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if lifetime_seconds is not None:
             pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
@@ -70,6 +76,18 @@ class OboTokenArgs:
     def lifetime_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "lifetime_seconds", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['OboTokenProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['OboTokenProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _OboTokenState:
@@ -77,12 +95,14 @@ class _OboTokenState:
                  application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input['OboTokenProviderConfigArgs']] = None,
                  token_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OboToken resources.
         :param pulumi.Input[_builtins.str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[_builtins.str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+        :param pulumi.Input['OboTokenProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] token_value: **Sensitive** value of the newly-created token.
         """
         if application_id is not None:
@@ -91,6 +111,8 @@ class _OboTokenState:
             pulumi.set(__self__, "comment", comment)
         if lifetime_seconds is not None:
             pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if token_value is not None:
             pulumi.set(__self__, "token_value", token_value)
 
@@ -131,6 +153,18 @@ class _OboTokenState:
         pulumi.set(self, "lifetime_seconds", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['OboTokenProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['OboTokenProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="tokenValue")
     def token_value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -152,6 +186,7 @@ class OboToken(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input[Union['OboTokenProviderConfigArgs', 'OboTokenProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS and GCP.  In general it's best to use OAuth authentication using client ID and secret, and use this resource mostly for integrations that doesn't support OAuth.
@@ -223,6 +258,7 @@ class OboToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[_builtins.str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+        :param pulumi.Input[Union['OboTokenProviderConfigArgs', 'OboTokenProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -313,6 +349,7 @@ class OboToken(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input[Union['OboTokenProviderConfigArgs', 'OboTokenProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -327,6 +364,7 @@ class OboToken(pulumi.CustomResource):
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["comment"] = comment
             __props__.__dict__["lifetime_seconds"] = lifetime_seconds
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["token_value"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["tokenValue"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -343,6 +381,7 @@ class OboToken(pulumi.CustomResource):
             application_id: Optional[pulumi.Input[_builtins.str]] = None,
             comment: Optional[pulumi.Input[_builtins.str]] = None,
             lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+            provider_config: Optional[pulumi.Input[Union['OboTokenProviderConfigArgs', 'OboTokenProviderConfigArgsDict']]] = None,
             token_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'OboToken':
         """
         Get an existing OboToken resource's state with the given name, id, and optional extra
@@ -354,6 +393,7 @@ class OboToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[_builtins.str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+        :param pulumi.Input[Union['OboTokenProviderConfigArgs', 'OboTokenProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] token_value: **Sensitive** value of the newly-created token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -363,6 +403,7 @@ class OboToken(pulumi.CustomResource):
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["comment"] = comment
         __props__.__dict__["lifetime_seconds"] = lifetime_seconds
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["token_value"] = token_value
         return OboToken(resource_name, opts=opts, __props__=__props__)
 
@@ -389,6 +430,14 @@ class OboToken(pulumi.CustomResource):
         The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         """
         return pulumi.get(self, "lifetime_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.OboTokenProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="tokenValue")

@@ -30,6 +30,11 @@ public final class GetEntityTagAssignmentResult {
     private String id;
     private @Nullable GetEntityTagAssignmentProviderConfig providerConfig;
     /**
+     * @return (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     * 
+     */
+    private String sourceType;
+    /**
      * @return (string) - The key of the tag
      * 
      */
@@ -39,6 +44,16 @@ public final class GetEntityTagAssignmentResult {
      * 
      */
     private String tagValue;
+    /**
+     * @return (string) - The timestamp when the tag assignment was last updated
+     * 
+     */
+    private String updateTime;
+    /**
+     * @return (string) - The user or principal who updated the tag assignment
+     * 
+     */
+    private String updatedBy;
 
     private GetEntityTagAssignmentResult() {}
     /**
@@ -66,6 +81,13 @@ public final class GetEntityTagAssignmentResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
+     * @return (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     * 
+     */
+    public String sourceType() {
+        return this.sourceType;
+    }
+    /**
      * @return (string) - The key of the tag
      * 
      */
@@ -78,6 +100,20 @@ public final class GetEntityTagAssignmentResult {
      */
     public String tagValue() {
         return this.tagValue;
+    }
+    /**
+     * @return (string) - The timestamp when the tag assignment was last updated
+     * 
+     */
+    public String updateTime() {
+        return this.updateTime;
+    }
+    /**
+     * @return (string) - The user or principal who updated the tag assignment
+     * 
+     */
+    public String updatedBy() {
+        return this.updatedBy;
     }
 
     public static Builder builder() {
@@ -93,8 +129,11 @@ public final class GetEntityTagAssignmentResult {
         private String entityType;
         private String id;
         private @Nullable GetEntityTagAssignmentProviderConfig providerConfig;
+        private String sourceType;
         private String tagKey;
         private String tagValue;
+        private String updateTime;
+        private String updatedBy;
         public Builder() {}
         public Builder(GetEntityTagAssignmentResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -102,8 +141,11 @@ public final class GetEntityTagAssignmentResult {
     	      this.entityType = defaults.entityType;
     	      this.id = defaults.id;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.sourceType = defaults.sourceType;
     	      this.tagKey = defaults.tagKey;
     	      this.tagValue = defaults.tagValue;
+    	      this.updateTime = defaults.updateTime;
+    	      this.updatedBy = defaults.updatedBy;
         }
 
         @CustomType.Setter
@@ -137,6 +179,14 @@ public final class GetEntityTagAssignmentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceType(String sourceType) {
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("GetEntityTagAssignmentResult", "sourceType");
+            }
+            this.sourceType = sourceType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagKey(String tagKey) {
             if (tagKey == null) {
               throw new MissingRequiredPropertyException("GetEntityTagAssignmentResult", "tagKey");
@@ -152,14 +202,33 @@ public final class GetEntityTagAssignmentResult {
             this.tagValue = tagValue;
             return this;
         }
+        @CustomType.Setter
+        public Builder updateTime(String updateTime) {
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetEntityTagAssignmentResult", "updateTime");
+            }
+            this.updateTime = updateTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder updatedBy(String updatedBy) {
+            if (updatedBy == null) {
+              throw new MissingRequiredPropertyException("GetEntityTagAssignmentResult", "updatedBy");
+            }
+            this.updatedBy = updatedBy;
+            return this;
+        }
         public GetEntityTagAssignmentResult build() {
             final var _resultValue = new GetEntityTagAssignmentResult();
             _resultValue.entityName = entityName;
             _resultValue.entityType = entityType;
             _resultValue.id = id;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.sourceType = sourceType;
             _resultValue.tagKey = tagKey;
             _resultValue.tagValue = tagValue;
+            _resultValue.updateTime = updateTime;
+            _resultValue.updatedBy = updatedBy;
             return _resultValue;
         }
     }

@@ -189,6 +189,9 @@ namespace Pulumi.Databricks
         [Output("servicePrincipalName")]
         public Output<string> ServicePrincipalName { get; private set; } = null!;
 
+        [Output("space")]
+        public Output<string?> Space { get; private set; } = null!;
+
         /// <summary>
         /// The update time of the app.
         /// </summary>
@@ -306,6 +309,9 @@ namespace Pulumi.Databricks
             get => _resources ?? (_resources = new InputList<Inputs.AppResourceArgs>());
             set => _resources = value;
         }
+
+        [Input("space")]
+        public Input<string>? Space { get; set; }
 
         [Input("usagePolicyId")]
         public Input<string>? UsagePolicyId { get; set; }
@@ -455,6 +461,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("servicePrincipalName")]
         public Input<string>? ServicePrincipalName { get; set; }
+
+        [Input("space")]
+        public Input<string>? Space { get; set; }
 
         /// <summary>
         /// The update time of the app.

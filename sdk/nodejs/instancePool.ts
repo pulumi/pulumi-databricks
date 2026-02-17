@@ -115,6 +115,7 @@ export class InstancePool extends pulumi.CustomResource {
      * (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
      */
     declare public readonly preloadedSparkVersions: pulumi.Output<string[] | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.InstancePoolProviderConfig | undefined>;
 
     /**
      * Create a InstancePool resource with the given unique name, arguments, and options.
@@ -144,6 +145,7 @@ export class InstancePool extends pulumi.CustomResource {
             resourceInputs["nodeTypeId"] = state?.nodeTypeId;
             resourceInputs["preloadedDockerImages"] = state?.preloadedDockerImages;
             resourceInputs["preloadedSparkVersions"] = state?.preloadedSparkVersions;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as InstancePoolArgs | undefined;
             if (args?.idleInstanceAutoterminationMinutes === undefined && !opts.urn) {
@@ -167,6 +169,7 @@ export class InstancePool extends pulumi.CustomResource {
             resourceInputs["nodeTypeId"] = args?.nodeTypeId;
             resourceInputs["preloadedDockerImages"] = args?.preloadedDockerImages;
             resourceInputs["preloadedSparkVersions"] = args?.preloadedSparkVersions;
+            resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstancePool.__pulumiType, name, resourceInputs, opts);
@@ -216,6 +219,7 @@ export interface InstancePoolState {
      * (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
      */
     preloadedSparkVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    providerConfig?: pulumi.Input<inputs.InstancePoolProviderConfig>;
 }
 
 /**
@@ -261,4 +265,5 @@ export interface InstancePoolArgs {
      * (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
      */
     preloadedSparkVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    providerConfig?: pulumi.Input<inputs.InstancePoolProviderConfig>;
 }

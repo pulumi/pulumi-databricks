@@ -11,6 +11,7 @@ import com.pulumi.databricks.inputs.InstancePoolDiskSpecArgs;
 import com.pulumi.databricks.inputs.InstancePoolGcpAttributesArgs;
 import com.pulumi.databricks.inputs.InstancePoolInstancePoolFleetAttributesArgs;
 import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
+import com.pulumi.databricks.inputs.InstancePoolProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -195,6 +196,13 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.preloadedSparkVersions);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<InstancePoolProviderConfigArgs> providerConfig;
+
+    public Optional<Output<InstancePoolProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private InstancePoolArgs() {}
 
     private InstancePoolArgs(InstancePoolArgs $) {
@@ -213,6 +221,7 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.nodeTypeId = $.nodeTypeId;
         this.preloadedDockerImages = $.preloadedDockerImages;
         this.preloadedSparkVersions = $.preloadedSparkVersions;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -476,6 +485,15 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder preloadedSparkVersions(String... preloadedSparkVersions) {
             return preloadedSparkVersions(List.of(preloadedSparkVersions));
+        }
+
+        public Builder providerConfig(@Nullable Output<InstancePoolProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(InstancePoolProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public InstancePoolArgs build() {

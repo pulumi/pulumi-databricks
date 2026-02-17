@@ -5,9 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresProjectStatusCustomTagArgs;
 import com.pulumi.databricks.inputs.PostgresProjectStatusDefaultEndpointSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +32,36 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Integer>> branchLogicalSizeLimitBytes() {
         return Optional.ofNullable(this.branchLogicalSizeLimitBytes);
+    }
+
+    /**
+     * (string) - The budget policy that is applied to the project
+     * 
+     */
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    /**
+     * @return (string) - The budget policy that is applied to the project
+     * 
+     */
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    @Import(name="customTags")
+    private @Nullable Output<List<PostgresProjectStatusCustomTagArgs>> customTags;
+
+    /**
+     * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    public Optional<Output<List<PostgresProjectStatusCustomTagArgs>>> customTags() {
+        return Optional.ofNullable(this.customTags);
     }
 
     /**
@@ -126,6 +158,8 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
 
     private PostgresProjectStatusArgs(PostgresProjectStatusArgs $) {
         this.branchLogicalSizeLimitBytes = $.branchLogicalSizeLimitBytes;
+        this.budgetPolicyId = $.budgetPolicyId;
+        this.customTags = $.customTags;
         this.defaultEndpointSettings = $.defaultEndpointSettings;
         this.displayName = $.displayName;
         this.historyRetentionDuration = $.historyRetentionDuration;
@@ -171,6 +205,58 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
          */
         public Builder branchLogicalSizeLimitBytes(Integer branchLogicalSizeLimitBytes) {
             return branchLogicalSizeLimitBytes(Output.of(branchLogicalSizeLimitBytes));
+        }
+
+        /**
+         * @param budgetPolicyId (string) - The budget policy that is applied to the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        /**
+         * @param budgetPolicyId (string) - The budget policy that is applied to the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
+        }
+
+        /**
+         * @param customTags (list of ProjectCustomTag) - The effective custom tags associated with the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(@Nullable Output<List<PostgresProjectStatusCustomTagArgs>> customTags) {
+            $.customTags = customTags;
+            return this;
+        }
+
+        /**
+         * @param customTags (list of ProjectCustomTag) - The effective custom tags associated with the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(List<PostgresProjectStatusCustomTagArgs> customTags) {
+            return customTags(Output.of(customTags));
+        }
+
+        /**
+         * @param customTags (list of ProjectCustomTag) - The effective custom tags associated with the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(PostgresProjectStatusCustomTagArgs... customTags) {
+            return customTags(List.of(customTags));
         }
 
         /**

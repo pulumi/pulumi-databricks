@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -118,6 +120,10 @@ export class Entitlements extends pulumi.CustomResource {
      */
     declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.EntitlementsProviderConfig | undefined>;
+    /**
      * Canonical unique identifier for the service principal.
      *
      * The following entitlements are available.
@@ -153,6 +159,7 @@ export class Entitlements extends pulumi.CustomResource {
             resourceInputs["allowInstancePoolCreate"] = state?.allowInstancePoolCreate;
             resourceInputs["databricksSqlAccess"] = state?.databricksSqlAccess;
             resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
             resourceInputs["userId"] = state?.userId;
             resourceInputs["workspaceAccess"] = state?.workspaceAccess;
@@ -163,6 +170,7 @@ export class Entitlements extends pulumi.CustomResource {
             resourceInputs["allowInstancePoolCreate"] = args?.allowInstancePoolCreate;
             resourceInputs["databricksSqlAccess"] = args?.databricksSqlAccess;
             resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
             resourceInputs["userId"] = args?.userId;
             resourceInputs["workspaceAccess"] = args?.workspaceAccess;
@@ -193,6 +201,10 @@ export interface EntitlementsState {
      * Canonical unique identifier for the group.
      */
     groupId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.EntitlementsProviderConfig>;
     /**
      * Canonical unique identifier for the service principal.
      *
@@ -233,6 +245,10 @@ export interface EntitlementsArgs {
      * Canonical unique identifier for the group.
      */
     groupId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.EntitlementsProviderConfig>;
     /**
      * Canonical unique identifier for the service principal.
      *

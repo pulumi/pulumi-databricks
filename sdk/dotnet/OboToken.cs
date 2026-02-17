@@ -147,6 +147,12 @@ namespace Pulumi.Databricks
         public Output<int?> LifetimeSeconds { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.OboTokenProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// **Sensitive** value of the newly-created token.
         /// </summary>
         [Output("tokenValue")]
@@ -220,6 +226,12 @@ namespace Pulumi.Databricks
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.OboTokenProviderConfigArgs>? ProviderConfig { get; set; }
+
         public OboTokenArgs()
         {
         }
@@ -245,6 +257,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.OboTokenProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("tokenValue")]
         private Input<string>? _tokenValue;

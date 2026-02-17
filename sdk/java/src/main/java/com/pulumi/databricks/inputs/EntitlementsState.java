@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.EntitlementsProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -74,6 +75,21 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> groupId() {
         return Optional.ofNullable(this.groupId);
+    }
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<EntitlementsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<EntitlementsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -147,6 +163,7 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         this.allowInstancePoolCreate = $.allowInstancePoolCreate;
         this.databricksSqlAccess = $.databricksSqlAccess;
         this.groupId = $.groupId;
+        this.providerConfig = $.providerConfig;
         this.servicePrincipalId = $.servicePrincipalId;
         this.userId = $.userId;
         this.workspaceAccess = $.workspaceAccess;
@@ -253,6 +270,27 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<EntitlementsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(EntitlementsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -47,6 +47,12 @@ namespace Pulumi.Databricks
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.DbfsFileProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The full absolute path to the file. Conflicts with `ContentBase64`.
         /// </summary>
         [Output("source")]
@@ -114,6 +120,12 @@ namespace Pulumi.Databricks
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DbfsFileProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The full absolute path to the file. Conflicts with `ContentBase64`.
         /// </summary>
         [Input("source")]
@@ -153,6 +165,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.DbfsFileProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The full absolute path to the file. Conflicts with `ContentBase64`.

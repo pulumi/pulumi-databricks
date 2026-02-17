@@ -80,14 +80,16 @@ import (
 type SqlWidget struct {
 	pulumi.CustomResourceState
 
-	DashboardId     pulumi.StringOutput           `pulumi:"dashboardId"`
-	Description     pulumi.StringPtrOutput        `pulumi:"description"`
-	Parameters      SqlWidgetParameterArrayOutput `pulumi:"parameters"`
-	Position        SqlWidgetPositionPtrOutput    `pulumi:"position"`
-	Text            pulumi.StringPtrOutput        `pulumi:"text"`
-	Title           pulumi.StringPtrOutput        `pulumi:"title"`
-	VisualizationId pulumi.StringPtrOutput        `pulumi:"visualizationId"`
-	WidgetId        pulumi.StringOutput           `pulumi:"widgetId"`
+	DashboardId pulumi.StringOutput           `pulumi:"dashboardId"`
+	Description pulumi.StringPtrOutput        `pulumi:"description"`
+	Parameters  SqlWidgetParameterArrayOutput `pulumi:"parameters"`
+	Position    SqlWidgetPositionPtrOutput    `pulumi:"position"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  SqlWidgetProviderConfigPtrOutput `pulumi:"providerConfig"`
+	Text            pulumi.StringPtrOutput           `pulumi:"text"`
+	Title           pulumi.StringPtrOutput           `pulumi:"title"`
+	VisualizationId pulumi.StringPtrOutput           `pulumi:"visualizationId"`
+	WidgetId        pulumi.StringOutput              `pulumi:"widgetId"`
 }
 
 // NewSqlWidget registers a new resource with the given unique name, arguments, and options.
@@ -123,21 +125,25 @@ func GetSqlWidget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlWidget resources.
 type sqlWidgetState struct {
-	DashboardId     *string              `pulumi:"dashboardId"`
-	Description     *string              `pulumi:"description"`
-	Parameters      []SqlWidgetParameter `pulumi:"parameters"`
-	Position        *SqlWidgetPosition   `pulumi:"position"`
-	Text            *string              `pulumi:"text"`
-	Title           *string              `pulumi:"title"`
-	VisualizationId *string              `pulumi:"visualizationId"`
-	WidgetId        *string              `pulumi:"widgetId"`
+	DashboardId *string              `pulumi:"dashboardId"`
+	Description *string              `pulumi:"description"`
+	Parameters  []SqlWidgetParameter `pulumi:"parameters"`
+	Position    *SqlWidgetPosition   `pulumi:"position"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  *SqlWidgetProviderConfig `pulumi:"providerConfig"`
+	Text            *string                  `pulumi:"text"`
+	Title           *string                  `pulumi:"title"`
+	VisualizationId *string                  `pulumi:"visualizationId"`
+	WidgetId        *string                  `pulumi:"widgetId"`
 }
 
 type SqlWidgetState struct {
-	DashboardId     pulumi.StringPtrInput
-	Description     pulumi.StringPtrInput
-	Parameters      SqlWidgetParameterArrayInput
-	Position        SqlWidgetPositionPtrInput
+	DashboardId pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	Parameters  SqlWidgetParameterArrayInput
+	Position    SqlWidgetPositionPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  SqlWidgetProviderConfigPtrInput
 	Text            pulumi.StringPtrInput
 	Title           pulumi.StringPtrInput
 	VisualizationId pulumi.StringPtrInput
@@ -149,22 +155,26 @@ func (SqlWidgetState) ElementType() reflect.Type {
 }
 
 type sqlWidgetArgs struct {
-	DashboardId     string               `pulumi:"dashboardId"`
-	Description     *string              `pulumi:"description"`
-	Parameters      []SqlWidgetParameter `pulumi:"parameters"`
-	Position        *SqlWidgetPosition   `pulumi:"position"`
-	Text            *string              `pulumi:"text"`
-	Title           *string              `pulumi:"title"`
-	VisualizationId *string              `pulumi:"visualizationId"`
-	WidgetId        *string              `pulumi:"widgetId"`
+	DashboardId string               `pulumi:"dashboardId"`
+	Description *string              `pulumi:"description"`
+	Parameters  []SqlWidgetParameter `pulumi:"parameters"`
+	Position    *SqlWidgetPosition   `pulumi:"position"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  *SqlWidgetProviderConfig `pulumi:"providerConfig"`
+	Text            *string                  `pulumi:"text"`
+	Title           *string                  `pulumi:"title"`
+	VisualizationId *string                  `pulumi:"visualizationId"`
+	WidgetId        *string                  `pulumi:"widgetId"`
 }
 
 // The set of arguments for constructing a SqlWidget resource.
 type SqlWidgetArgs struct {
-	DashboardId     pulumi.StringInput
-	Description     pulumi.StringPtrInput
-	Parameters      SqlWidgetParameterArrayInput
-	Position        SqlWidgetPositionPtrInput
+	DashboardId pulumi.StringInput
+	Description pulumi.StringPtrInput
+	Parameters  SqlWidgetParameterArrayInput
+	Position    SqlWidgetPositionPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  SqlWidgetProviderConfigPtrInput
 	Text            pulumi.StringPtrInput
 	Title           pulumi.StringPtrInput
 	VisualizationId pulumi.StringPtrInput
@@ -272,6 +282,11 @@ func (o SqlWidgetOutput) Parameters() SqlWidgetParameterArrayOutput {
 
 func (o SqlWidgetOutput) Position() SqlWidgetPositionPtrOutput {
 	return o.ApplyT(func(v *SqlWidget) SqlWidgetPositionPtrOutput { return v.Position }).(SqlWidgetPositionPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o SqlWidgetOutput) ProviderConfig() SqlWidgetProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SqlWidget) SqlWidgetProviderConfigPtrOutput { return v.ProviderConfig }).(SqlWidgetProviderConfigPtrOutput)
 }
 
 func (o SqlWidgetOutput) Text() pulumi.StringPtrOutput {

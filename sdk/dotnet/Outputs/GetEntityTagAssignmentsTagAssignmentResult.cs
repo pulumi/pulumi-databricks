@@ -26,6 +26,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetEntityTagAssignmentsTagAssignmentProviderConfigResult? ProviderConfig;
         /// <summary>
+        /// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+        /// </summary>
+        public readonly string SourceType;
+        /// <summary>
         /// (string) - The key of the tag
         /// </summary>
         public readonly string TagKey;
@@ -33,6 +37,14 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - The value of the tag
         /// </summary>
         public readonly string TagValue;
+        /// <summary>
+        /// (string) - The timestamp when the tag assignment was last updated
+        /// </summary>
+        public readonly string UpdateTime;
+        /// <summary>
+        /// (string) - The user or principal who updated the tag assignment
+        /// </summary>
+        public readonly string UpdatedBy;
 
         [OutputConstructor]
         private GetEntityTagAssignmentsTagAssignmentResult(
@@ -42,15 +54,24 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetEntityTagAssignmentsTagAssignmentProviderConfigResult? providerConfig,
 
+            string sourceType,
+
             string tagKey,
 
-            string tagValue)
+            string tagValue,
+
+            string updateTime,
+
+            string updatedBy)
         {
             EntityName = entityName;
             EntityType = entityType;
             ProviderConfig = providerConfig;
+            SourceType = sourceType;
             TagKey = tagKey;
             TagValue = tagValue;
+            UpdateTime = updateTime;
+            UpdatedBy = updatedBy;
         }
     }
 }

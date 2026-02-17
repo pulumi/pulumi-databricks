@@ -91,10 +91,16 @@ type EntityTagAssignment struct {
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig EntityTagAssignmentProviderConfigPtrOutput `pulumi:"providerConfig"`
+	// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+	SourceType pulumi.StringOutput `pulumi:"sourceType"`
 	// The key of the tag
 	TagKey pulumi.StringOutput `pulumi:"tagKey"`
 	// The value of the tag
 	TagValue pulumi.StringPtrOutput `pulumi:"tagValue"`
+	// (string) - The timestamp when the tag assignment was last updated
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// (string) - The user or principal who updated the tag assignment
+	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 }
 
 // NewEntityTagAssignment registers a new resource with the given unique name, arguments, and options.
@@ -142,10 +148,16 @@ type entityTagAssignmentState struct {
 	EntityType *string `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *EntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
+	// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+	SourceType *string `pulumi:"sourceType"`
 	// The key of the tag
 	TagKey *string `pulumi:"tagKey"`
 	// The value of the tag
 	TagValue *string `pulumi:"tagValue"`
+	// (string) - The timestamp when the tag assignment was last updated
+	UpdateTime *string `pulumi:"updateTime"`
+	// (string) - The user or principal who updated the tag assignment
+	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 type EntityTagAssignmentState struct {
@@ -155,10 +167,16 @@ type EntityTagAssignmentState struct {
 	EntityType pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig EntityTagAssignmentProviderConfigPtrInput
+	// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+	SourceType pulumi.StringPtrInput
 	// The key of the tag
 	TagKey pulumi.StringPtrInput
 	// The value of the tag
 	TagValue pulumi.StringPtrInput
+	// (string) - The timestamp when the tag assignment was last updated
+	UpdateTime pulumi.StringPtrInput
+	// (string) - The user or principal who updated the tag assignment
+	UpdatedBy pulumi.StringPtrInput
 }
 
 func (EntityTagAssignmentState) ElementType() reflect.Type {
@@ -294,6 +312,11 @@ func (o EntityTagAssignmentOutput) ProviderConfig() EntityTagAssignmentProviderC
 	return o.ApplyT(func(v *EntityTagAssignment) EntityTagAssignmentProviderConfigPtrOutput { return v.ProviderConfig }).(EntityTagAssignmentProviderConfigPtrOutput)
 }
 
+// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+func (o EntityTagAssignmentOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
+}
+
 // The key of the tag
 func (o EntityTagAssignmentOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringOutput { return v.TagKey }).(pulumi.StringOutput)
@@ -302,6 +325,16 @@ func (o EntityTagAssignmentOutput) TagKey() pulumi.StringOutput {
 // The value of the tag
 func (o EntityTagAssignmentOutput) TagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringPtrOutput { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The timestamp when the tag assignment was last updated
+func (o EntityTagAssignmentOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// (string) - The user or principal who updated the tag assignment
+func (o EntityTagAssignmentOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
 type EntityTagAssignmentArrayOutput struct{ *pulumi.OutputState }

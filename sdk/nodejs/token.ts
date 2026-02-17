@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -70,7 +72,7 @@ export class Token extends pulumi.CustomResource {
     }
 
     /**
-     * (String) Comment that will appear on the user’s settings page for this token.
+     * (String) Comment that will appear on the user's settings page for this token.
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
     declare public readonly creationTime: pulumi.Output<number>;
@@ -79,6 +81,10 @@ export class Token extends pulumi.CustomResource {
      * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      */
     declare public readonly lifetimeSeconds: pulumi.Output<number | undefined>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.TokenProviderConfig | undefined>;
     declare public readonly tokenId: pulumi.Output<string>;
     /**
      * **Sensitive** value of the newly-created token.
@@ -102,6 +108,7 @@ export class Token extends pulumi.CustomResource {
             resourceInputs["creationTime"] = state?.creationTime;
             resourceInputs["expiryTime"] = state?.expiryTime;
             resourceInputs["lifetimeSeconds"] = state?.lifetimeSeconds;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["tokenId"] = state?.tokenId;
             resourceInputs["tokenValue"] = state?.tokenValue;
         } else {
@@ -110,6 +117,7 @@ export class Token extends pulumi.CustomResource {
             resourceInputs["creationTime"] = args?.creationTime;
             resourceInputs["expiryTime"] = args?.expiryTime;
             resourceInputs["lifetimeSeconds"] = args?.lifetimeSeconds;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tokenId"] = args?.tokenId;
             resourceInputs["tokenValue"] = undefined /*out*/;
         }
@@ -125,7 +133,7 @@ export class Token extends pulumi.CustomResource {
  */
 export interface TokenState {
     /**
-     * (String) Comment that will appear on the user’s settings page for this token.
+     * (String) Comment that will appear on the user's settings page for this token.
      */
     comment?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
@@ -134,6 +142,10 @@ export interface TokenState {
      * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      */
     lifetimeSeconds?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.TokenProviderConfig>;
     tokenId?: pulumi.Input<string>;
     /**
      * **Sensitive** value of the newly-created token.
@@ -146,7 +158,7 @@ export interface TokenState {
  */
 export interface TokenArgs {
     /**
-     * (String) Comment that will appear on the user’s settings page for this token.
+     * (String) Comment that will appear on the user's settings page for this token.
      */
     comment?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
@@ -155,5 +167,9 @@ export interface TokenArgs {
      * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      */
     lifetimeSeconds?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.TokenProviderConfig>;
     tokenId?: pulumi.Input<string>;
 }

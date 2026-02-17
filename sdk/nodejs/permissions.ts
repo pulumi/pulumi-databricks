@@ -930,6 +930,7 @@ export class Permissions extends pulumi.CustomResource {
      */
     declare public readonly objectType: pulumi.Output<string>;
     declare public readonly pipelineId: pulumi.Output<string | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PermissionsProviderConfig | undefined>;
     declare public readonly registeredModelId: pulumi.Output<string | undefined>;
     declare public readonly repoId: pulumi.Output<string | undefined>;
     declare public readonly repoPath: pulumi.Output<string | undefined>;
@@ -972,6 +973,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["notebookPath"] = state?.notebookPath;
             resourceInputs["objectType"] = state?.objectType;
             resourceInputs["pipelineId"] = state?.pipelineId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["registeredModelId"] = state?.registeredModelId;
             resourceInputs["repoId"] = state?.repoId;
             resourceInputs["repoPath"] = state?.repoPath;
@@ -1005,6 +1007,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["notebookPath"] = args?.notebookPath;
             resourceInputs["objectType"] = args?.objectType;
             resourceInputs["pipelineId"] = args?.pipelineId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["registeredModelId"] = args?.registeredModelId;
             resourceInputs["repoId"] = args?.repoId;
             resourceInputs["repoPath"] = args?.repoPath;
@@ -1046,6 +1049,7 @@ export interface PermissionsState {
      */
     objectType?: pulumi.Input<string>;
     pipelineId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.PermissionsProviderConfig>;
     registeredModelId?: pulumi.Input<string>;
     repoId?: pulumi.Input<string>;
     repoPath?: pulumi.Input<string>;
@@ -1083,6 +1087,7 @@ export interface PermissionsArgs {
      */
     objectType?: pulumi.Input<string>;
     pipelineId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.PermissionsProviderConfig>;
     registeredModelId?: pulumi.Input<string>;
     repoId?: pulumi.Input<string>;
     repoPath?: pulumi.Input<string>;

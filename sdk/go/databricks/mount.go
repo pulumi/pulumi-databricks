@@ -469,6 +469,9 @@ import (
 //
 // ```
 //
+// * `providerConfig` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+//   - `workspaceId` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+//
 // ## Migration from other mount resources
 //
 // Migration from the specific mount resource is straightforward:
@@ -496,15 +499,16 @@ import (
 type Mount struct {
 	pulumi.CustomResourceState
 
-	Abfs           MountAbfsPtrOutput     `pulumi:"abfs"`
-	Adl            MountAdlPtrOutput      `pulumi:"adl"`
-	ClusterId      pulumi.StringOutput    `pulumi:"clusterId"`
-	EncryptionType pulumi.StringPtrOutput `pulumi:"encryptionType"`
-	ExtraConfigs   pulumi.StringMapOutput `pulumi:"extraConfigs"`
-	Gs             MountGsPtrOutput       `pulumi:"gs"`
-	Name           pulumi.StringOutput    `pulumi:"name"`
-	ResourceId     pulumi.StringPtrOutput `pulumi:"resourceId"`
-	S3             MountS3PtrOutput       `pulumi:"s3"`
+	Abfs           MountAbfsPtrOutput           `pulumi:"abfs"`
+	Adl            MountAdlPtrOutput            `pulumi:"adl"`
+	ClusterId      pulumi.StringOutput          `pulumi:"clusterId"`
+	EncryptionType pulumi.StringPtrOutput       `pulumi:"encryptionType"`
+	ExtraConfigs   pulumi.StringMapOutput       `pulumi:"extraConfigs"`
+	Gs             MountGsPtrOutput             `pulumi:"gs"`
+	Name           pulumi.StringOutput          `pulumi:"name"`
+	ProviderConfig MountProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ResourceId     pulumi.StringPtrOutput       `pulumi:"resourceId"`
+	S3             MountS3PtrOutput             `pulumi:"s3"`
 	// (String) HDFS-compatible url
 	Source pulumi.StringOutput    `pulumi:"source"`
 	Uri    pulumi.StringPtrOutput `pulumi:"uri"`
@@ -541,15 +545,16 @@ func GetMount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Mount resources.
 type mountState struct {
-	Abfs           *MountAbfs        `pulumi:"abfs"`
-	Adl            *MountAdl         `pulumi:"adl"`
-	ClusterId      *string           `pulumi:"clusterId"`
-	EncryptionType *string           `pulumi:"encryptionType"`
-	ExtraConfigs   map[string]string `pulumi:"extraConfigs"`
-	Gs             *MountGs          `pulumi:"gs"`
-	Name           *string           `pulumi:"name"`
-	ResourceId     *string           `pulumi:"resourceId"`
-	S3             *MountS3          `pulumi:"s3"`
+	Abfs           *MountAbfs           `pulumi:"abfs"`
+	Adl            *MountAdl            `pulumi:"adl"`
+	ClusterId      *string              `pulumi:"clusterId"`
+	EncryptionType *string              `pulumi:"encryptionType"`
+	ExtraConfigs   map[string]string    `pulumi:"extraConfigs"`
+	Gs             *MountGs             `pulumi:"gs"`
+	Name           *string              `pulumi:"name"`
+	ProviderConfig *MountProviderConfig `pulumi:"providerConfig"`
+	ResourceId     *string              `pulumi:"resourceId"`
+	S3             *MountS3             `pulumi:"s3"`
 	// (String) HDFS-compatible url
 	Source *string    `pulumi:"source"`
 	Uri    *string    `pulumi:"uri"`
@@ -564,6 +569,7 @@ type MountState struct {
 	ExtraConfigs   pulumi.StringMapInput
 	Gs             MountGsPtrInput
 	Name           pulumi.StringPtrInput
+	ProviderConfig MountProviderConfigPtrInput
 	ResourceId     pulumi.StringPtrInput
 	S3             MountS3PtrInput
 	// (String) HDFS-compatible url
@@ -577,17 +583,18 @@ func (MountState) ElementType() reflect.Type {
 }
 
 type mountArgs struct {
-	Abfs           *MountAbfs        `pulumi:"abfs"`
-	Adl            *MountAdl         `pulumi:"adl"`
-	ClusterId      *string           `pulumi:"clusterId"`
-	EncryptionType *string           `pulumi:"encryptionType"`
-	ExtraConfigs   map[string]string `pulumi:"extraConfigs"`
-	Gs             *MountGs          `pulumi:"gs"`
-	Name           *string           `pulumi:"name"`
-	ResourceId     *string           `pulumi:"resourceId"`
-	S3             *MountS3          `pulumi:"s3"`
-	Uri            *string           `pulumi:"uri"`
-	Wasb           *MountWasb        `pulumi:"wasb"`
+	Abfs           *MountAbfs           `pulumi:"abfs"`
+	Adl            *MountAdl            `pulumi:"adl"`
+	ClusterId      *string              `pulumi:"clusterId"`
+	EncryptionType *string              `pulumi:"encryptionType"`
+	ExtraConfigs   map[string]string    `pulumi:"extraConfigs"`
+	Gs             *MountGs             `pulumi:"gs"`
+	Name           *string              `pulumi:"name"`
+	ProviderConfig *MountProviderConfig `pulumi:"providerConfig"`
+	ResourceId     *string              `pulumi:"resourceId"`
+	S3             *MountS3             `pulumi:"s3"`
+	Uri            *string              `pulumi:"uri"`
+	Wasb           *MountWasb           `pulumi:"wasb"`
 }
 
 // The set of arguments for constructing a Mount resource.
@@ -599,6 +606,7 @@ type MountArgs struct {
 	ExtraConfigs   pulumi.StringMapInput
 	Gs             MountGsPtrInput
 	Name           pulumi.StringPtrInput
+	ProviderConfig MountProviderConfigPtrInput
 	ResourceId     pulumi.StringPtrInput
 	S3             MountS3PtrInput
 	Uri            pulumi.StringPtrInput
@@ -718,6 +726,10 @@ func (o MountOutput) Gs() MountGsPtrOutput {
 
 func (o MountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o MountOutput) ProviderConfig() MountProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Mount) MountProviderConfigPtrOutput { return v.ProviderConfig }).(MountProviderConfigPtrOutput)
 }
 
 func (o MountOutput) ResourceId() pulumi.StringPtrOutput {

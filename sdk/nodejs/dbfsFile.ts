@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -57,6 +59,10 @@ export class DbfsFile extends pulumi.CustomResource {
      */
     declare public readonly path: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DbfsFileProviderConfig | undefined>;
+    /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */
     declare public readonly source: pulumi.Output<string | undefined>;
@@ -79,6 +85,7 @@ export class DbfsFile extends pulumi.CustomResource {
             resourceInputs["fileSize"] = state?.fileSize;
             resourceInputs["md5"] = state?.md5;
             resourceInputs["path"] = state?.path;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as DbfsFileArgs | undefined;
@@ -88,6 +95,7 @@ export class DbfsFile extends pulumi.CustomResource {
             resourceInputs["contentBase64"] = args?.contentBase64;
             resourceInputs["md5"] = args?.md5;
             resourceInputs["path"] = args?.path;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["source"] = args?.source;
             resourceInputs["dbfsPath"] = undefined /*out*/;
             resourceInputs["fileSize"] = undefined /*out*/;
@@ -119,6 +127,10 @@ export interface DbfsFileState {
      */
     path?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DbfsFileProviderConfig>;
+    /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */
     source?: pulumi.Input<string>;
@@ -137,6 +149,10 @@ export interface DbfsFileArgs {
      * The path of the file in which you wish to save.
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.DbfsFileProviderConfig>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */

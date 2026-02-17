@@ -177,6 +177,9 @@ namespace Pulumi.Databricks
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.SqlQueryProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         /// <summary>
         /// The text of the query to be run.
         /// </summary>
@@ -279,6 +282,9 @@ namespace Pulumi.Databricks
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.SqlQueryProviderConfigArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// The text of the query to be run.
         /// </summary>
@@ -347,6 +353,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.SqlQueryProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The text of the query to be run.

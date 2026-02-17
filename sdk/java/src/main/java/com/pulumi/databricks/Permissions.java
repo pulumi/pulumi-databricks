@@ -11,6 +11,7 @@ import com.pulumi.databricks.PermissionsArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PermissionsState;
 import com.pulumi.databricks.outputs.PermissionsAccessControl;
+import com.pulumi.databricks.outputs.PermissionsProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -1786,6 +1787,12 @@ public class Permissions extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> pipelineId() {
         return Codegen.optional(this.pipelineId);
+    }
+    @Export(name="providerConfig", refs={PermissionsProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ PermissionsProviderConfig> providerConfig;
+
+    public Output<Optional<PermissionsProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="registeredModelId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> registeredModelId;

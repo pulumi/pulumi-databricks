@@ -106,6 +106,12 @@ namespace Pulumi.Databricks
         public Output<string?> InstanceProfileArn { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SqlGlobalConfigProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         /// </summary>
         [Output("securityPolicy")]
@@ -191,6 +197,12 @@ namespace Pulumi.Databricks
         public Input<string>? InstanceProfileArn { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlGlobalConfigProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         /// </summary>
         [Input("securityPolicy")]
@@ -242,6 +254,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlGlobalConfigProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values

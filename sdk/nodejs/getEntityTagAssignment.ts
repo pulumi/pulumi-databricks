@@ -96,6 +96,10 @@ export interface GetEntityTagAssignmentResult {
     readonly id: string;
     readonly providerConfig?: outputs.GetEntityTagAssignmentProviderConfig;
     /**
+     * (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     */
+    readonly sourceType: string;
+    /**
      * (string) - The key of the tag
      */
     readonly tagKey: string;
@@ -103,6 +107,14 @@ export interface GetEntityTagAssignmentResult {
      * (string) - The value of the tag
      */
     readonly tagValue: string;
+    /**
+     * (string) - The timestamp when the tag assignment was last updated
+     */
+    readonly updateTime: string;
+    /**
+     * (string) - The user or principal who updated the tag assignment
+     */
+    readonly updatedBy: string;
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

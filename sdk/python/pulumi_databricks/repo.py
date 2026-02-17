@@ -26,6 +26,7 @@ class RepoArgs:
                  commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  git_provider: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['RepoProviderConfigArgs']] = None,
                  sparse_checkout: Optional[pulumi.Input['RepoSparseCheckoutArgs']] = None,
                  tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -46,6 +47,8 @@ class RepoArgs:
             pulumi.set(__self__, "git_provider", git_provider)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if sparse_checkout is not None:
             pulumi.set(__self__, "sparse_checkout", sparse_checkout)
         if tag is not None:
@@ -112,6 +115,15 @@ class RepoArgs:
         pulumi.set(self, "path", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['RepoProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['RepoProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="sparseCheckout")
     def sparse_checkout(self) -> Optional[pulumi.Input['RepoSparseCheckoutArgs']]:
         return pulumi.get(self, "sparse_checkout")
@@ -140,6 +152,7 @@ class _RepoState:
                  commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  git_provider: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['RepoProviderConfigArgs']] = None,
                  sparse_checkout: Optional[pulumi.Input['RepoSparseCheckoutArgs']] = None,
                  tag: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -162,6 +175,8 @@ class _RepoState:
             pulumi.set(__self__, "git_provider", git_provider)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if sparse_checkout is not None:
             pulumi.set(__self__, "sparse_checkout", sparse_checkout)
         if tag is not None:
@@ -220,6 +235,15 @@ class _RepoState:
         pulumi.set(self, "path", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['RepoProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['RepoProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="sparseCheckout")
     def sparse_checkout(self) -> Optional[pulumi.Input['RepoSparseCheckoutArgs']]:
         return pulumi.get(self, "sparse_checkout")
@@ -275,6 +299,7 @@ class Repo(pulumi.CustomResource):
                  commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  git_provider: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
                  sparse_checkout: Optional[pulumi.Input[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
                  tag: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -383,6 +408,7 @@ class Repo(pulumi.CustomResource):
                  commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  git_provider: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
                  sparse_checkout: Optional[pulumi.Input[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
                  tag: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -399,6 +425,7 @@ class Repo(pulumi.CustomResource):
             __props__.__dict__["commit_hash"] = commit_hash
             __props__.__dict__["git_provider"] = git_provider
             __props__.__dict__["path"] = path
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["sparse_checkout"] = sparse_checkout
             __props__.__dict__["tag"] = tag
             if url is None and not opts.urn:
@@ -419,6 +446,7 @@ class Repo(pulumi.CustomResource):
             commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
             git_provider: Optional[pulumi.Input[_builtins.str]] = None,
             path: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
             sparse_checkout: Optional[pulumi.Input[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
             tag: Optional[pulumi.Input[_builtins.str]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -446,6 +474,7 @@ class Repo(pulumi.CustomResource):
         __props__.__dict__["commit_hash"] = commit_hash
         __props__.__dict__["git_provider"] = git_provider
         __props__.__dict__["path"] = path
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["sparse_checkout"] = sparse_checkout
         __props__.__dict__["tag"] = tag
         __props__.__dict__["url"] = url
@@ -483,6 +512,11 @@ class Repo(pulumi.CustomResource):
         path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         """
         return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.RepoProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="sparseCheckout")

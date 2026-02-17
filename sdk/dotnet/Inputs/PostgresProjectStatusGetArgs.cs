@@ -19,6 +19,24 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? BranchLogicalSizeLimitBytes { get; set; }
 
         /// <summary>
+        /// (string) - The budget policy that is applied to the project
+        /// </summary>
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
+        [Input("customTags")]
+        private InputList<Inputs.PostgresProjectStatusCustomTagGetArgs>? _customTags;
+
+        /// <summary>
+        /// (list of ProjectCustomTag) - The effective custom tags associated with the project
+        /// </summary>
+        public InputList<Inputs.PostgresProjectStatusCustomTagGetArgs> CustomTags
+        {
+            get => _customTags ?? (_customTags = new InputList<Inputs.PostgresProjectStatusCustomTagGetArgs>());
+            set => _customTags = value;
+        }
+
+        /// <summary>
         /// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         /// </summary>
         [Input("defaultEndpointSettings")]

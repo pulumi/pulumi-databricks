@@ -37,7 +37,7 @@ export function getPostgresProjects(args?: GetPostgresProjectsArgs, opts?: pulum
  */
 export interface GetPostgresProjectsArgs {
     /**
-     * Upper bound for items returned. Cannot be negative
+     * Upper bound for items returned. Cannot be negative. The maximum value is 100
      */
     pageSize?: number;
     /**
@@ -89,7 +89,7 @@ export function getPostgresProjectsOutput(args?: GetPostgresProjectsOutputArgs, 
  */
 export interface GetPostgresProjectsOutputArgs {
     /**
-     * Upper bound for items returned. Cannot be negative
+     * Upper bound for items returned. Cannot be negative. The maximum value is 100
      */
     pageSize?: pulumi.Input<number>;
     /**

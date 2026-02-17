@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.OboTokenProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -62,12 +63,28 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.lifetimeSeconds);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<OboTokenProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<OboTokenProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private OboTokenArgs() {}
 
     private OboTokenArgs(OboTokenArgs $) {
         this.applicationId = $.applicationId;
         this.comment = $.comment;
         this.lifetimeSeconds = $.lifetimeSeconds;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -149,6 +166,27 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lifetimeSeconds(Integer lifetimeSeconds) {
             return lifetimeSeconds(Output.of(lifetimeSeconds));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<OboTokenProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(OboTokenProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public OboTokenArgs build() {

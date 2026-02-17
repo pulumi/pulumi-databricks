@@ -134,6 +134,9 @@ namespace Pulumi.Databricks
         [Output("preloadedSparkVersions")]
         public Output<ImmutableArray<string>> PreloadedSparkVersions { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.InstancePoolProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a InstancePool resource with the given unique name, arguments, and options.
@@ -266,6 +269,9 @@ namespace Pulumi.Databricks
             set => _preloadedSparkVersions = value;
         }
 
+        [Input("providerConfig")]
+        public Input<Inputs.InstancePoolProviderConfigArgs>? ProviderConfig { get; set; }
+
         public InstancePoolArgs()
         {
         }
@@ -359,6 +365,9 @@ namespace Pulumi.Databricks
             get => _preloadedSparkVersions ?? (_preloadedSparkVersions = new InputList<string>());
             set => _preloadedSparkVersions = value;
         }
+
+        [Input("providerConfig")]
+        public Input<Inputs.InstancePoolProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public InstancePoolState()
         {

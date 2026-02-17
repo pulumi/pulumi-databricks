@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlWidgetState;
 import com.pulumi.databricks.outputs.SqlWidgetParameter;
 import com.pulumi.databricks.outputs.SqlWidgetPosition;
+import com.pulumi.databricks.outputs.SqlWidgetProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -116,6 +117,20 @@ public class SqlWidget extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<SqlWidgetPosition>> position() {
         return Codegen.optional(this.position);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={SqlWidgetProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SqlWidgetProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<SqlWidgetProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="text", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> text;

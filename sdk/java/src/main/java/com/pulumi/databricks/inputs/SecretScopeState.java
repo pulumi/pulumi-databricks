@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SecretScopeKeyvaultMetadataArgs;
+import com.pulumi.databricks.inputs.SecretScopeProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -68,6 +69,21 @@ public final class SecretScopeState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SecretScopeProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SecretScopeProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private SecretScopeState() {}
 
     private SecretScopeState(SecretScopeState $) {
@@ -75,6 +91,7 @@ public final class SecretScopeState extends com.pulumi.resources.ResourceArgs {
         this.initialManagePrincipal = $.initialManagePrincipal;
         this.keyvaultMetadata = $.keyvaultMetadata;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -165,6 +182,27 @@ public final class SecretScopeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SecretScopeProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SecretScopeProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public SecretScopeState build() {

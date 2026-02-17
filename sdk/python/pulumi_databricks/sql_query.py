@@ -28,6 +28,7 @@ class SqlQueryArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['SqlQueryProviderConfigArgs']] = None,
                  run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
                  schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -53,6 +54,8 @@ class SqlQueryArgs:
             pulumi.set(__self__, "parameters", parameters)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if run_as_role is not None:
             pulumi.set(__self__, "run_as_role", run_as_role)
         if schedule is not None:
@@ -144,6 +147,15 @@ class SqlQueryArgs:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlQueryProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlQueryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="runAsRole")
     def run_as_role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -193,6 +205,7 @@ class _SqlQueryState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['SqlQueryProviderConfigArgs']] = None,
                  query: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
                  schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
@@ -219,6 +232,8 @@ class _SqlQueryState:
             pulumi.set(__self__, "parameters", parameters)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if query is not None:
             pulumi.set(__self__, "query", query)
         if run_as_role is not None:
@@ -300,6 +315,15 @@ class _SqlQueryState:
         pulumi.set(self, "parent", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlQueryProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlQueryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -364,6 +388,7 @@ class SqlQuery(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict']]] = None,
                  query: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
                  schedule: Optional[pulumi.Input[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
@@ -610,6 +635,7 @@ class SqlQuery(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict']]] = None,
                  query: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
                  schedule: Optional[pulumi.Input[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
@@ -632,6 +658,7 @@ class SqlQuery(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["provider_config"] = provider_config
             if query is None and not opts.urn:
                 raise TypeError("Missing required property 'query'")
             __props__.__dict__["query"] = query
@@ -655,6 +682,7 @@ class SqlQuery(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
             parent: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict']]] = None,
             query: Optional[pulumi.Input[_builtins.str]] = None,
             run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
             schedule: Optional[pulumi.Input[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
@@ -684,6 +712,7 @@ class SqlQuery(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["query"] = query
         __props__.__dict__["run_as_role"] = run_as_role
         __props__.__dict__["schedule"] = schedule
@@ -732,6 +761,11 @@ class SqlQuery(pulumi.CustomResource):
         The identifier of the workspace folder containing the object.
         """
         return pulumi.get(self, "parent")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlQueryProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

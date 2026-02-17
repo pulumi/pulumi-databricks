@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceProfileArgs', 'InstanceProfile']
 
@@ -22,12 +24,14 @@ class InstanceProfileArgs:
                  instance_profile_arn: pulumi.Input[_builtins.str],
                  iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  is_meta_instance_profile: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input['InstanceProfileProviderConfigArgs']] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a InstanceProfile resource.
         :param pulumi.Input[_builtins.str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[_builtins.str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[_builtins.bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
+        :param pulumi.Input['InstanceProfileProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
@@ -35,6 +39,8 @@ class InstanceProfileArgs:
             pulumi.set(__self__, "iam_role_arn", iam_role_arn)
         if is_meta_instance_profile is not None:
             pulumi.set(__self__, "is_meta_instance_profile", is_meta_instance_profile)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
 
@@ -75,6 +81,18 @@ class InstanceProfileArgs:
         pulumi.set(self, "is_meta_instance_profile", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['InstanceProfileProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['InstanceProfileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -93,12 +111,14 @@ class _InstanceProfileState:
                  iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  is_meta_instance_profile: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input['InstanceProfileProviderConfigArgs']] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering InstanceProfile resources.
         :param pulumi.Input[_builtins.str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[_builtins.str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[_builtins.bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
+        :param pulumi.Input['InstanceProfileProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         if iam_role_arn is not None:
@@ -107,6 +127,8 @@ class _InstanceProfileState:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if is_meta_instance_profile is not None:
             pulumi.set(__self__, "is_meta_instance_profile", is_meta_instance_profile)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
 
@@ -147,6 +169,18 @@ class _InstanceProfileState:
         pulumi.set(self, "is_meta_instance_profile", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['InstanceProfileProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['InstanceProfileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -168,6 +202,7 @@ class InstanceProfile(pulumi.CustomResource):
                  iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  is_meta_instance_profile: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -216,6 +251,7 @@ class InstanceProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[_builtins.str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[_builtins.bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
+        :param pulumi.Input[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         ...
@@ -283,6 +319,7 @@ class InstanceProfile(pulumi.CustomResource):
                  iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  is_meta_instance_profile: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -298,6 +335,7 @@ class InstanceProfile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_profile_arn'")
             __props__.__dict__["instance_profile_arn"] = instance_profile_arn
             __props__.__dict__["is_meta_instance_profile"] = is_meta_instance_profile
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["skip_validation"] = skip_validation
         super(InstanceProfile, __self__).__init__(
             'databricks:index/instanceProfile:InstanceProfile',
@@ -312,6 +350,7 @@ class InstanceProfile(pulumi.CustomResource):
             iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
             instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
             is_meta_instance_profile: Optional[pulumi.Input[_builtins.bool]] = None,
+            provider_config: Optional[pulumi.Input[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']]] = None,
             skip_validation: Optional[pulumi.Input[_builtins.bool]] = None) -> 'InstanceProfile':
         """
         Get an existing InstanceProfile resource's state with the given name, id, and optional extra
@@ -323,6 +362,7 @@ class InstanceProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[_builtins.str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[_builtins.bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
+        :param pulumi.Input[Union['InstanceProfileProviderConfigArgs', 'InstanceProfileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -332,6 +372,7 @@ class InstanceProfile(pulumi.CustomResource):
         __props__.__dict__["iam_role_arn"] = iam_role_arn
         __props__.__dict__["instance_profile_arn"] = instance_profile_arn
         __props__.__dict__["is_meta_instance_profile"] = is_meta_instance_profile
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["skip_validation"] = skip_validation
         return InstanceProfile(resource_name, opts=opts, __props__=__props__)
 
@@ -358,6 +399,14 @@ class InstanceProfile(pulumi.CustomResource):
         Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
         """
         return pulumi.get(self, "is_meta_instance_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.InstanceProfileProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="skipValidation")

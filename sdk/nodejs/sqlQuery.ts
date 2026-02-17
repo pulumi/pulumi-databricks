@@ -156,6 +156,7 @@ export class SqlQuery extends pulumi.CustomResource {
      * The identifier of the workspace folder containing the object.
      */
     declare public readonly parent: pulumi.Output<string | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlQueryProviderConfig | undefined>;
     /**
      * The text of the query to be run.
      */
@@ -190,6 +191,7 @@ export class SqlQuery extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["parameters"] = state?.parameters;
             resourceInputs["parent"] = state?.parent;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["query"] = state?.query;
             resourceInputs["runAsRole"] = state?.runAsRole;
             resourceInputs["schedule"] = state?.schedule;
@@ -209,6 +211,7 @@ export class SqlQuery extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["parameters"] = args?.parameters;
             resourceInputs["parent"] = args?.parent;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["query"] = args?.query;
             resourceInputs["runAsRole"] = args?.runAsRole;
             resourceInputs["schedule"] = args?.schedule;
@@ -242,6 +245,7 @@ export interface SqlQueryState {
      * The identifier of the workspace folder containing the object.
      */
     parent?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.SqlQueryProviderConfig>;
     /**
      * The text of the query to be run.
      */
@@ -280,6 +284,7 @@ export interface SqlQueryArgs {
      * The identifier of the workspace folder containing the object.
      */
     parent?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.SqlQueryProviderConfig>;
     /**
      * The text of the query to be run.
      */

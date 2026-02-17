@@ -132,6 +132,20 @@ public class EntityTagAssignment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.providerConfig);
     }
     /**
+     * (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     * 
+     */
+    @Export(name="sourceType", refs={String.class}, tree="[0]")
+    private Output<String> sourceType;
+
+    /**
+     * @return (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     * 
+     */
+    public Output<String> sourceType() {
+        return this.sourceType;
+    }
+    /**
      * The key of the tag
      * 
      */
@@ -158,6 +172,34 @@ public class EntityTagAssignment extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> tagValue() {
         return Codegen.optional(this.tagValue);
+    }
+    /**
+     * (string) - The timestamp when the tag assignment was last updated
+     * 
+     */
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    private Output<String> updateTime;
+
+    /**
+     * @return (string) - The timestamp when the tag assignment was last updated
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
+    }
+    /**
+     * (string) - The user or principal who updated the tag assignment
+     * 
+     */
+    @Export(name="updatedBy", refs={String.class}, tree="[0]")
+    private Output<String> updatedBy;
+
+    /**
+     * @return (string) - The user or principal who updated the tag assignment
+     * 
+     */
+    public Output<String> updatedBy() {
+        return this.updatedBy;
     }
 
     /**

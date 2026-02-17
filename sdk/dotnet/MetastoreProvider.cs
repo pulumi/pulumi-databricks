@@ -76,6 +76,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.MetastoreProviderProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// This is the json file that is created from a recipient url.
         /// </summary>
         [Output("recipientProfileStr")]
@@ -149,6 +155,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MetastoreProviderProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("recipientProfileStr", required: true)]
         private Input<string>? _recipientProfileStr;
 
@@ -190,6 +202,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MetastoreProviderProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("recipientProfileStr")]
         private Input<string>? _recipientProfileStr;

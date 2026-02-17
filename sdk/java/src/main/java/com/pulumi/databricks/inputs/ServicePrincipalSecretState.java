@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ServicePrincipalSecretProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,6 +59,21 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> lifetime() {
         return Optional.ofNullable(this.lifetime);
+    }
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<ServicePrincipalSecretProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<ServicePrincipalSecretProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -156,6 +172,7 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
         this.createTime = $.createTime;
         this.expireTime = $.expireTime;
         this.lifetime = $.lifetime;
+        this.providerConfig = $.providerConfig;
         this.secret = $.secret;
         this.secretHash = $.secretHash;
         this.servicePrincipalId = $.servicePrincipalId;
@@ -243,6 +260,27 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
          */
         public Builder lifetime(String lifetime) {
             return lifetime(Output.of(lifetime));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<ServicePrincipalSecretProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(ServicePrincipalSecretProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

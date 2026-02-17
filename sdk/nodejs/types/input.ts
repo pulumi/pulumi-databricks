@@ -907,6 +907,111 @@ export interface AppsSettingsCustomTemplateProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface AppsSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface AppsSpaceResource {
+    database?: pulumi.Input<inputs.AppsSpaceResourceDatabase>;
+    /**
+     * The description of the app space
+     */
+    description?: pulumi.Input<string>;
+    experiment?: pulumi.Input<inputs.AppsSpaceResourceExperiment>;
+    genieSpace?: pulumi.Input<inputs.AppsSpaceResourceGenieSpace>;
+    job?: pulumi.Input<inputs.AppsSpaceResourceJob>;
+    /**
+     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    secret?: pulumi.Input<inputs.AppsSpaceResourceSecret>;
+    servingEndpoint?: pulumi.Input<inputs.AppsSpaceResourceServingEndpoint>;
+    sqlWarehouse?: pulumi.Input<inputs.AppsSpaceResourceSqlWarehouse>;
+    ucSecurable?: pulumi.Input<inputs.AppsSpaceResourceUcSecurable>;
+}
+
+export interface AppsSpaceResourceDatabase {
+    databaseName: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppsSpaceResourceExperiment {
+    experimentId: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppsSpaceResourceGenieSpace {
+    /**
+     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    spaceId: pulumi.Input<string>;
+}
+
+export interface AppsSpaceResourceJob {
+    /**
+     * (string) - The unique identifier of the app space
+     */
+    id: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppsSpaceResourceSecret {
+    /**
+     * Key of the secret to grant permission on
+     */
+    key: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    /**
+     * Scope of the secret to grant permission on
+     */
+    scope: pulumi.Input<string>;
+}
+
+export interface AppsSpaceResourceServingEndpoint {
+    /**
+     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppsSpaceResourceSqlWarehouse {
+    /**
+     * (string) - The unique identifier of the app space
+     */
+    id: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppsSpaceResourceUcSecurable {
+    permission: pulumi.Input<string>;
+    securableFullName: pulumi.Input<string>;
+    /**
+     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     */
+    securableType: pulumi.Input<string>;
+}
+
+export interface AppsSpaceStatus {
+    /**
+     * (string) - Message providing context about the current state
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+     */
+    state?: pulumi.Input<string>;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
     /**
      * The artifact path or maven coordinate.
@@ -1468,6 +1573,9 @@ export interface ClusterPolicyLibrary {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.ClusterPolicyLibraryMaven>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
     providerConfig?: pulumi.Input<inputs.ClusterPolicyLibraryProviderConfig>;
     pypi?: pulumi.Input<inputs.ClusterPolicyLibraryPypi>;
     requirements?: pulumi.Input<string>;
@@ -1486,12 +1594,22 @@ export interface ClusterPolicyLibraryMaven {
 }
 
 export interface ClusterPolicyLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: pulumi.Input<string>;
 }
 
 export interface ClusterPolicyLibraryPypi {
     package: pulumi.Input<string>;
     repo?: pulumi.Input<string>;
+}
+
+export interface ClusterPolicyProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface ClusterProviderConfig {
@@ -2202,6 +2320,13 @@ export interface DatabaseSyncedDatabaseTableSpecNewPipelineSpec {
     storageSchema?: pulumi.Input<string>;
 }
 
+export interface DbfsFileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface DefaultNamespaceSettingNamespace {
     /**
      * The value for the setting.
@@ -2262,11 +2387,38 @@ export interface DisableLegacyFeaturesSettingProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface EndpointAzurePrivateEndpointInfo {
+    /**
+     * The name of the Private Endpoint in the Azure subscription
+     */
+    privateEndpointName: pulumi.Input<string>;
+    /**
+     * The GUID of the Private Endpoint resource in the Azure subscription.
+     * This is assigned by Azure when the user sets up the Private Endpoint
+     */
+    privateEndpointResourceGuid: pulumi.Input<string>;
+    /**
+     * (string) - The full resource ID of the Private Endpoint
+     */
+    privateEndpointResourceId?: pulumi.Input<string>;
+    /**
+     * (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
+     */
+    privateLinkServiceId?: pulumi.Input<string>;
+}
+
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
     isEnabled: pulumi.Input<boolean>;
 }
 
 export interface EnhancedSecurityMonitoringWorkspaceSettingProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface EntitlementsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: pulumi.Input<string>;
 }
 
@@ -2694,6 +2846,34 @@ export interface GetAppsSettingsCustomTemplatesProviderConfig {
 }
 
 export interface GetAppsSettingsCustomTemplatesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetAppsSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppsSpaceProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetAppsSpacesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppsSpacesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -12470,6 +12650,20 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
     username: pulumi.Input<string>;
 }
 
+export interface InstancePoolProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface InstanceProfileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface IpAccessListProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -12599,6 +12793,7 @@ export interface JobGitSource {
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
      */
     provider?: pulumi.Input<string>;
+    sparseCheckout?: pulumi.Input<inputs.JobGitSourceSparseCheckout>;
     /**
      * name of the Git branch to use. Conflicts with `branch` and `commit`.
      */
@@ -12617,6 +12812,10 @@ export interface JobGitSourceJobSource {
     dirtyState?: pulumi.Input<string>;
     importFromGitBranch: pulumi.Input<string>;
     jobConfigPath: pulumi.Input<string>;
+}
+
+export interface JobGitSourceSparseCheckout {
+    patterns?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobHealth {
@@ -15750,6 +15949,13 @@ export interface MetastoreDataAccessGcpServiceAccountKey {
     privateKeyId: pulumi.Input<string>;
 }
 
+export interface MetastoreProviderProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface MlflowExperimentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -16638,6 +16844,10 @@ export interface MountGs {
     serviceAccount?: pulumi.Input<string>;
 }
 
+export interface MountProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface MountS3 {
     bucketName: pulumi.Input<string>;
     instanceProfile?: pulumi.Input<string>;
@@ -16790,11 +17000,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -16861,11 +17071,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.106.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -16929,8 +17139,6 @@ export interface NotificationDestinationConfigEmail {
 export interface NotificationDestinationConfigGenericWebhook {
     /**
      * The password for basic authentication.
-     *
-     * > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
      */
     password?: pulumi.Input<string>;
     passwordSet?: pulumi.Input<boolean>;
@@ -16998,6 +17206,22 @@ export interface NotificationDestinationConfigSlack {
      */
     url?: pulumi.Input<string>;
     urlSet?: pulumi.Input<boolean>;
+}
+
+export interface NotificationDestinationProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     *
+     * > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface OboTokenProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface OnlineStoreProviderConfig {
@@ -17137,6 +17361,13 @@ export interface PermissionsAccessControl {
      * name of the user.
      */
     userName?: pulumi.Input<string>;
+}
+
+export interface PermissionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface PipelineCluster {
@@ -17644,6 +17875,10 @@ export interface PipelineNotification {
     emailRecipients?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface PipelineProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface PipelineRestartWindow {
     daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
     startHour: pulumi.Input<number>;
@@ -17931,6 +18166,14 @@ export interface PostgresProjectProviderConfig {
 
 export interface PostgresProjectSpec {
     /**
+     * (string) - The budget policy that is applied to the project
+     */
+    budgetPolicyId?: pulumi.Input<string>;
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     */
+    customTags?: pulumi.Input<pulumi.Input<inputs.PostgresProjectSpecCustomTag>[]>;
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings?: pulumi.Input<inputs.PostgresProjectSpecDefaultEndpointSettings>;
@@ -17946,6 +18189,17 @@ export interface PostgresProjectSpec {
      * (integer) - The effective major Postgres version number
      */
     pgVersion?: pulumi.Input<number>;
+}
+
+export interface PostgresProjectSpecCustomTag {
+    /**
+     * The key of the custom tag
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * The value of the custom tag
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface PostgresProjectSpecDefaultEndpointSettings {
@@ -17979,6 +18233,14 @@ export interface PostgresProjectStatus {
      */
     branchLogicalSizeLimitBytes?: pulumi.Input<number>;
     /**
+     * (string) - The budget policy that is applied to the project
+     */
+    budgetPolicyId?: pulumi.Input<string>;
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     */
+    customTags?: pulumi.Input<pulumi.Input<inputs.PostgresProjectStatusCustomTag>[]>;
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings?: pulumi.Input<inputs.PostgresProjectStatusDefaultEndpointSettings>;
@@ -18002,6 +18264,17 @@ export interface PostgresProjectStatus {
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes?: pulumi.Input<number>;
+}
+
+export interface PostgresProjectStatusCustomTag {
+    /**
+     * The key of the custom tag
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * The value of the custom tag
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface PostgresProjectStatusDefaultEndpointSettings {
@@ -18430,6 +18703,13 @@ export interface RegisteredModelProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface RepoProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface RepoSparseCheckout {
     /**
      * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
@@ -18540,6 +18820,13 @@ export interface SecretScopeKeyvaultMetadata {
     resourceId: pulumi.Input<string>;
 }
 
+export interface SecretScopeProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface ServicePrincipalFederationPolicyOidcPolicy {
     /**
      * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
@@ -18581,6 +18868,13 @@ export interface ServicePrincipalFederationPolicyOidcPolicy {
      * is 'sub'
      */
     subjectClaim?: pulumi.Input<string>;
+}
+
+export interface ServicePrincipalSecretProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface ShareObject {
@@ -18707,6 +19001,13 @@ export interface SqlAlertProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface SqlDashboardProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface SqlEndpointChannel {
     dbsqlVersion?: pulumi.Input<string>;
     /**
@@ -18750,6 +19051,13 @@ export interface SqlEndpointTags {
 export interface SqlEndpointTagsCustomTag {
     key: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface SqlGlobalConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface SqlPermissionsPrivilegeAssignment {
@@ -18920,6 +19228,13 @@ export interface SqlQueryParameterText {
     value: pulumi.Input<string>;
 }
 
+export interface SqlQueryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface SqlQuerySchedule {
     continuous?: pulumi.Input<inputs.SqlQueryScheduleContinuous>;
     daily?: pulumi.Input<inputs.SqlQueryScheduleDaily>;
@@ -18975,6 +19290,13 @@ export interface SqlTableProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface SqlVisualizationProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface SqlWidgetParameter {
     mapTo?: pulumi.Input<string>;
     name: pulumi.Input<string>;
@@ -18990,6 +19312,13 @@ export interface SqlWidgetPosition {
     posY?: pulumi.Input<number>;
     sizeX: pulumi.Input<number>;
     sizeY: pulumi.Input<number>;
+}
+
+export interface SqlWidgetProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface StorageCredentialAwsIamRole {
@@ -19097,6 +19426,10 @@ export interface TableColumn {
     typeText: pulumi.Input<string>;
 }
 
+export interface TableProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface TagPolicyProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -19106,6 +19439,13 @@ export interface TagPolicyProviderConfig {
 
 export interface TagPolicyValue {
     name: pulumi.Input<string>;
+}
+
+export interface TokenProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface VectorSearchEndpointEndpointStatus {
@@ -19263,6 +19603,13 @@ export interface WarehousesDefaultWarehouseOverrideProviderConfig {
 }
 
 export interface WorkspaceBindingProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface WorkspaceConfProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */

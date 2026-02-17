@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ServicePrincipalSecretArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ServicePrincipalSecretState;
+import com.pulumi.databricks.outputs.ServicePrincipalSecretProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -149,6 +150,20 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
      */
     public Output<String> lifetime() {
         return this.lifetime;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={ServicePrincipalSecretProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServicePrincipalSecretProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<ServicePrincipalSecretProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * **Sensitive** Generated secret for the service principal.

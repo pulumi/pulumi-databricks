@@ -16,14 +16,14 @@ public final class GetDatabaseInstancesPlainArgs extends com.pulumi.resources.In
     public static final GetDatabaseInstancesPlainArgs Empty = new GetDatabaseInstancesPlainArgs();
 
     /**
-     * Upper bound for items returned
+     * Upper bound for items returned. The maximum value is 100
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return Upper bound for items returned
+     * @return Upper bound for items returned. The maximum value is 100
      * 
      */
     public Optional<Integer> pageSize() {
@@ -71,7 +71,7 @@ public final class GetDatabaseInstancesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param pageSize Upper bound for items returned
+         * @param pageSize Upper bound for items returned. The maximum value is 100
          * 
          * @return builder
          * 

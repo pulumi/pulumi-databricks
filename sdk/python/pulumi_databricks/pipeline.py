@@ -47,6 +47,7 @@ class PipelineArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input['PipelineProviderConfigArgs']] = None,
                  restart_window: Optional[pulumi.Input['PipelineRestartWindowArgs']] = None,
                  root_path: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as: Optional[pulumi.Input['PipelineRunAsArgs']] = None,
@@ -139,6 +140,8 @@ class PipelineArgs:
             pulumi.set(__self__, "notifications", notifications)
         if photon is not None:
             pulumi.set(__self__, "photon", photon)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if restart_window is not None:
             pulumi.set(__self__, "restart_window", restart_window)
         if root_path is not None:
@@ -447,6 +450,15 @@ class PipelineArgs:
     @photon.setter
     def photon(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "photon", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PipelineProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PipelineProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="restartWindow")
@@ -619,6 +631,7 @@ class _PipelineState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input['PipelineProviderConfigArgs']] = None,
                  restart_window: Optional[pulumi.Input['PipelineRestartWindowArgs']] = None,
                  root_path: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as: Optional[pulumi.Input['PipelineRunAsArgs']] = None,
@@ -711,6 +724,8 @@ class _PipelineState:
             pulumi.set(__self__, "notifications", notifications)
         if photon is not None:
             pulumi.set(__self__, "photon", photon)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if restart_window is not None:
             pulumi.set(__self__, "restart_window", restart_window)
         if root_path is not None:
@@ -1019,6 +1034,15 @@ class _PipelineState:
     @photon.setter
     def photon(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "photon", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['PipelineProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['PipelineProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="restartWindow")
@@ -1194,6 +1218,7 @@ class Pipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict']]] = None,
                  restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
                  root_path: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as: Optional[pulumi.Input[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
@@ -1440,6 +1465,7 @@ class Pipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict']]] = None,
                  restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
                  root_path: Optional[pulumi.Input[_builtins.str]] = None,
                  run_as: Optional[pulumi.Input[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
@@ -1488,6 +1514,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notifications"] = notifications
             __props__.__dict__["photon"] = photon
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["restart_window"] = restart_window
             __props__.__dict__["root_path"] = root_path
             __props__.__dict__["run_as"] = run_as
@@ -1537,6 +1564,7 @@ class Pipeline(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
             photon: Optional[pulumi.Input[_builtins.bool]] = None,
+            provider_config: Optional[pulumi.Input[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict']]] = None,
             restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
             root_path: Optional[pulumi.Input[_builtins.str]] = None,
             run_as: Optional[pulumi.Input[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
@@ -1612,6 +1640,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["photon"] = photon
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["restart_window"] = restart_window
         __props__.__dict__["root_path"] = root_path
         __props__.__dict__["run_as"] = run_as
@@ -1804,6 +1833,11 @@ class Pipeline(pulumi.CustomResource):
         A flag indicating whether to use Photon engine. The default value is `false`.
         """
         return pulumi.get(self, "photon")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.PipelineProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="restartWindow")

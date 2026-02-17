@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.SqlVisualizationArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlVisualizationState;
+import com.pulumi.databricks.outputs.SqlVisualizationProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -111,6 +112,20 @@ public class SqlVisualization extends com.pulumi.resources.CustomResource {
 
     public Output<String> options() {
         return this.options;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={SqlVisualizationProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SqlVisualizationProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<SqlVisualizationProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="queryId", refs={String.class}, tree="[0]")
     private Output<String> queryId;

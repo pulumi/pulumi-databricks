@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -85,6 +87,10 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
      */
     declare public readonly lifetime: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalSecretProviderConfig | undefined>;
+    /**
      * **Sensitive** Generated secret for the service principal.
      */
     declare public readonly secret: pulumi.Output<string>;
@@ -125,6 +131,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["lifetime"] = state?.lifetime;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["secretHash"] = state?.secretHash;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
@@ -139,6 +146,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
             resourceInputs["createTime"] = args?.createTime;
             resourceInputs["expireTime"] = args?.expireTime;
             resourceInputs["lifetime"] = args?.lifetime;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["secretHash"] = args?.secretHash;
             resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
@@ -169,6 +177,10 @@ export interface ServicePrincipalSecretState {
      * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
      */
     lifetime?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalSecretProviderConfig>;
     /**
      * **Sensitive** Generated secret for the service principal.
      */
@@ -211,6 +223,10 @@ export interface ServicePrincipalSecretArgs {
      * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
      */
     lifetime?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalSecretProviderConfig>;
     /**
      * **Sensitive** Generated secret for the service principal.
      */

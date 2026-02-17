@@ -14,9 +14,17 @@ public final class ClusterPolicyLibraryProviderConfigArgs extends com.pulumi.res
 
     public static final ClusterPolicyLibraryProviderConfigArgs Empty = new ClusterPolicyLibraryProviderConfigArgs();
 
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * 
+     */
     @Import(name="workspaceId", required=true)
     private Output<String> workspaceId;
 
+    /**
+     * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * 
+     */
     public Output<String> workspaceId() {
         return this.workspaceId;
     }
@@ -45,11 +53,23 @@ public final class ClusterPolicyLibraryProviderConfigArgs extends com.pulumi.res
             $ = new ClusterPolicyLibraryProviderConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param workspaceId Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
+        /**
+         * @param workspaceId Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

@@ -5,9 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresProjectSpecCustomTagArgs;
 import com.pulumi.databricks.inputs.PostgresProjectSpecDefaultEndpointSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +18,36 @@ import javax.annotation.Nullable;
 public final class PostgresProjectSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PostgresProjectSpecArgs Empty = new PostgresProjectSpecArgs();
+
+    /**
+     * (string) - The budget policy that is applied to the project
+     * 
+     */
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    /**
+     * @return (string) - The budget policy that is applied to the project
+     * 
+     */
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
+    /**
+     * (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    @Import(name="customTags")
+    private @Nullable Output<List<PostgresProjectSpecCustomTagArgs>> customTags;
+
+    /**
+     * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    public Optional<Output<List<PostgresProjectSpecCustomTagArgs>>> customTags() {
+        return Optional.ofNullable(this.customTags);
+    }
 
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
@@ -80,6 +112,8 @@ public final class PostgresProjectSpecArgs extends com.pulumi.resources.Resource
     private PostgresProjectSpecArgs() {}
 
     private PostgresProjectSpecArgs(PostgresProjectSpecArgs $) {
+        this.budgetPolicyId = $.budgetPolicyId;
+        this.customTags = $.customTags;
         this.defaultEndpointSettings = $.defaultEndpointSettings;
         this.displayName = $.displayName;
         this.historyRetentionDuration = $.historyRetentionDuration;
@@ -102,6 +136,58 @@ public final class PostgresProjectSpecArgs extends com.pulumi.resources.Resource
 
         public Builder(PostgresProjectSpecArgs defaults) {
             $ = new PostgresProjectSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param budgetPolicyId (string) - The budget policy that is applied to the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        /**
+         * @param budgetPolicyId (string) - The budget policy that is applied to the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
+        }
+
+        /**
+         * @param customTags (list of ProjectCustomTag) - The effective custom tags associated with the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(@Nullable Output<List<PostgresProjectSpecCustomTagArgs>> customTags) {
+            $.customTags = customTags;
+            return this;
+        }
+
+        /**
+         * @param customTags (list of ProjectCustomTag) - The effective custom tags associated with the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(List<PostgresProjectSpecCustomTagArgs> customTags) {
+            return customTags(Output.of(customTags));
+        }
+
+        /**
+         * @param customTags (list of ProjectCustomTag) - The effective custom tags associated with the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(PostgresProjectSpecCustomTagArgs... customTags) {
+            return customTags(List.of(customTags));
         }
 
         /**

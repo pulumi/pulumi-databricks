@@ -84,6 +84,12 @@ namespace Pulumi.Databricks
         [Output("position")]
         public Output<Outputs.SqlWidgetPosition?> Position { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SqlWidgetProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("text")]
         public Output<string?> Text { get; private set; } = null!;
 
@@ -159,6 +165,12 @@ namespace Pulumi.Databricks
         [Input("position")]
         public Input<Inputs.SqlWidgetPositionArgs>? Position { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlWidgetProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("text")]
         public Input<string>? Text { get; set; }
 
@@ -195,6 +207,12 @@ namespace Pulumi.Databricks
 
         [Input("position")]
         public Input<Inputs.SqlWidgetPositionGetArgs>? Position { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlWidgetProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("text")]
         public Input<string>? Text { get; set; }

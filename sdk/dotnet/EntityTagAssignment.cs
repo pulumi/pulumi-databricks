@@ -91,6 +91,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.EntityTagAssignmentProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+        /// </summary>
+        [Output("sourceType")]
+        public Output<string> SourceType { get; private set; } = null!;
+
+        /// <summary>
         /// The key of the tag
         /// </summary>
         [Output("tagKey")]
@@ -101,6 +107,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("tagValue")]
         public Output<string?> TagValue { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - The timestamp when the tag assignment was last updated
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - The user or principal who updated the tag assignment
+        /// </summary>
+        [Output("updatedBy")]
+        public Output<string> UpdatedBy { get; private set; } = null!;
 
 
         /// <summary>
@@ -205,6 +223,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.EntityTagAssignmentProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
+        /// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+        /// </summary>
+        [Input("sourceType")]
+        public Input<string>? SourceType { get; set; }
+
+        /// <summary>
         /// The key of the tag
         /// </summary>
         [Input("tagKey")]
@@ -215,6 +239,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }
+
+        /// <summary>
+        /// (string) - The timestamp when the tag assignment was last updated
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// (string) - The user or principal who updated the tag assignment
+        /// </summary>
+        [Input("updatedBy")]
+        public Input<string>? UpdatedBy { get; set; }
 
         public EntityTagAssignmentState()
         {

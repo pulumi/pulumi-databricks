@@ -15,8 +15,6 @@ public final class NotificationDestinationConfigGenericWebhook {
     /**
      * @return The password for basic authentication.
      * 
-     * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-     * 
      */
     private @Nullable String password;
     private @Nullable Boolean passwordSet;
@@ -36,8 +34,6 @@ public final class NotificationDestinationConfigGenericWebhook {
     private NotificationDestinationConfigGenericWebhook() {}
     /**
      * @return The password for basic authentication.
-     * 
-     * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
      * 
      */
     public Optional<String> password() {

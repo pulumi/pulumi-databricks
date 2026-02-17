@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -86,6 +88,10 @@ export class SqlDashboard extends pulumi.CustomResource {
     declare public readonly dashboardFiltersEnabled: pulumi.Output<boolean | undefined>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly parent: pulumi.Output<string | undefined>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlDashboardProviderConfig | undefined>;
     declare public readonly runAsRole: pulumi.Output<string | undefined>;
     declare public readonly tags: pulumi.Output<string[] | undefined>;
     declare public readonly updatedAt: pulumi.Output<string>;
@@ -107,6 +113,7 @@ export class SqlDashboard extends pulumi.CustomResource {
             resourceInputs["dashboardFiltersEnabled"] = state?.dashboardFiltersEnabled;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["runAsRole"] = state?.runAsRole;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -116,6 +123,7 @@ export class SqlDashboard extends pulumi.CustomResource {
             resourceInputs["dashboardFiltersEnabled"] = args?.dashboardFiltersEnabled;
             resourceInputs["name"] = args?.name;
             resourceInputs["parent"] = args?.parent;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["runAsRole"] = args?.runAsRole;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["updatedAt"] = args?.updatedAt;
@@ -133,6 +141,10 @@ export interface SqlDashboardState {
     dashboardFiltersEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     parent?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlDashboardProviderConfig>;
     runAsRole?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     updatedAt?: pulumi.Input<string>;
@@ -146,6 +158,10 @@ export interface SqlDashboardArgs {
     dashboardFiltersEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     parent?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlDashboardProviderConfig>;
     runAsRole?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     updatedAt?: pulumi.Input<string>;

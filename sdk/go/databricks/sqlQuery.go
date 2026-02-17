@@ -161,7 +161,8 @@ type SqlQuery struct {
 	Name       pulumi.StringOutput          `pulumi:"name"`
 	Parameters SqlQueryParameterArrayOutput `pulumi:"parameters"`
 	// The identifier of the workspace folder containing the object.
-	Parent pulumi.StringPtrOutput `pulumi:"parent"`
+	Parent         pulumi.StringPtrOutput          `pulumi:"parent"`
+	ProviderConfig SqlQueryProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The text of the query to be run.
 	Query pulumi.StringOutput `pulumi:"query"`
 	// Run as role. Possible values are `viewer`, `owner`.
@@ -217,7 +218,8 @@ type sqlQueryState struct {
 	Name       *string             `pulumi:"name"`
 	Parameters []SqlQueryParameter `pulumi:"parameters"`
 	// The identifier of the workspace folder containing the object.
-	Parent *string `pulumi:"parent"`
+	Parent         *string                 `pulumi:"parent"`
+	ProviderConfig *SqlQueryProviderConfig `pulumi:"providerConfig"`
 	// The text of the query to be run.
 	Query *string `pulumi:"query"`
 	// Run as role. Possible values are `viewer`, `owner`.
@@ -238,7 +240,8 @@ type SqlQueryState struct {
 	Name       pulumi.StringPtrInput
 	Parameters SqlQueryParameterArrayInput
 	// The identifier of the workspace folder containing the object.
-	Parent pulumi.StringPtrInput
+	Parent         pulumi.StringPtrInput
+	ProviderConfig SqlQueryProviderConfigPtrInput
 	// The text of the query to be run.
 	Query pulumi.StringPtrInput
 	// Run as role. Possible values are `viewer`, `owner`.
@@ -263,7 +266,8 @@ type sqlQueryArgs struct {
 	Name       *string             `pulumi:"name"`
 	Parameters []SqlQueryParameter `pulumi:"parameters"`
 	// The identifier of the workspace folder containing the object.
-	Parent *string `pulumi:"parent"`
+	Parent         *string                 `pulumi:"parent"`
+	ProviderConfig *SqlQueryProviderConfig `pulumi:"providerConfig"`
 	// The text of the query to be run.
 	Query string `pulumi:"query"`
 	// Run as role. Possible values are `viewer`, `owner`.
@@ -285,7 +289,8 @@ type SqlQueryArgs struct {
 	Name       pulumi.StringPtrInput
 	Parameters SqlQueryParameterArrayInput
 	// The identifier of the workspace folder containing the object.
-	Parent pulumi.StringPtrInput
+	Parent         pulumi.StringPtrInput
+	ProviderConfig SqlQueryProviderConfigPtrInput
 	// The text of the query to be run.
 	Query pulumi.StringInput
 	// Run as role. Possible values are `viewer`, `owner`.
@@ -409,6 +414,10 @@ func (o SqlQueryOutput) Parameters() SqlQueryParameterArrayOutput {
 // The identifier of the workspace folder containing the object.
 func (o SqlQueryOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
+}
+
+func (o SqlQueryOutput) ProviderConfig() SqlQueryProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SqlQuery) SqlQueryProviderConfigPtrOutput { return v.ProviderConfig }).(SqlQueryProviderConfigPtrOutput)
 }
 
 // The text of the query to be run.

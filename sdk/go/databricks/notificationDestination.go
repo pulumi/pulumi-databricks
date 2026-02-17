@@ -181,6 +181,8 @@ type NotificationDestination struct {
 	DestinationType pulumi.StringOutput `pulumi:"destinationType"`
 	// The display name of the Notification Destination.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig NotificationDestinationProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewNotificationDestination registers a new resource with the given unique name, arguments, and options.
@@ -222,6 +224,8 @@ type notificationDestinationState struct {
 	DestinationType *string `pulumi:"destinationType"`
 	// The display name of the Notification Destination.
 	DisplayName *string `pulumi:"displayName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *NotificationDestinationProviderConfig `pulumi:"providerConfig"`
 }
 
 type NotificationDestinationState struct {
@@ -231,6 +235,8 @@ type NotificationDestinationState struct {
 	DestinationType pulumi.StringPtrInput
 	// The display name of the Notification Destination.
 	DisplayName pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig NotificationDestinationProviderConfigPtrInput
 }
 
 func (NotificationDestinationState) ElementType() reflect.Type {
@@ -244,6 +250,8 @@ type notificationDestinationArgs struct {
 	DestinationType *string `pulumi:"destinationType"`
 	// The display name of the Notification Destination.
 	DisplayName string `pulumi:"displayName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *NotificationDestinationProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a NotificationDestination resource.
@@ -254,6 +262,8 @@ type NotificationDestinationArgs struct {
 	DestinationType pulumi.StringPtrInput
 	// The display name of the Notification Destination.
 	DisplayName pulumi.StringInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig NotificationDestinationProviderConfigPtrInput
 }
 
 func (NotificationDestinationArgs) ElementType() reflect.Type {
@@ -356,6 +366,13 @@ func (o NotificationDestinationOutput) DestinationType() pulumi.StringOutput {
 // The display name of the Notification Destination.
 func (o NotificationDestinationOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationDestination) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o NotificationDestinationOutput) ProviderConfig() NotificationDestinationProviderConfigPtrOutput {
+	return o.ApplyT(func(v *NotificationDestination) NotificationDestinationProviderConfigPtrOutput {
+		return v.ProviderConfig
+	}).(NotificationDestinationProviderConfigPtrOutput)
 }
 
 type NotificationDestinationArrayOutput struct{ *pulumi.OutputState }

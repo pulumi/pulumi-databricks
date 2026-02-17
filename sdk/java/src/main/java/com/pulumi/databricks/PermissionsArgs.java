@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+import com.pulumi.databricks.inputs.PermissionsProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -145,6 +146,13 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pipelineId);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<PermissionsProviderConfigArgs> providerConfig;
+
+    public Optional<Output<PermissionsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="registeredModelId")
     private @Nullable Output<String> registeredModelId;
 
@@ -242,6 +250,7 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
         this.notebookPath = $.notebookPath;
         this.objectType = $.objectType;
         this.pipelineId = $.pipelineId;
+        this.providerConfig = $.providerConfig;
         this.registeredModelId = $.registeredModelId;
         this.repoId = $.repoId;
         this.repoPath = $.repoPath;
@@ -440,6 +449,15 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder pipelineId(String pipelineId) {
             return pipelineId(Output.of(pipelineId));
+        }
+
+        public Builder providerConfig(@Nullable Output<PermissionsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(PermissionsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder registeredModelId(@Nullable Output<String> registeredModelId) {

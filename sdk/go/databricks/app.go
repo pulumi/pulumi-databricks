@@ -113,7 +113,8 @@ type App struct {
 	// id of the app service principal
 	ServicePrincipalId pulumi.IntOutput `pulumi:"servicePrincipalId"`
 	// name of the app service principal
-	ServicePrincipalName pulumi.StringOutput `pulumi:"servicePrincipalName"`
+	ServicePrincipalName pulumi.StringOutput    `pulumi:"servicePrincipalName"`
+	Space                pulumi.StringPtrOutput `pulumi:"space"`
 	// The update time of the app.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The email of the user that last updated the app.
@@ -193,6 +194,7 @@ type appState struct {
 	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
 	// name of the app service principal
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
+	Space                *string `pulumi:"space"`
 	// The update time of the app.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The email of the user that last updated the app.
@@ -243,6 +245,7 @@ type AppState struct {
 	ServicePrincipalId pulumi.IntPtrInput
 	// name of the app service principal
 	ServicePrincipalName pulumi.StringPtrInput
+	Space                pulumi.StringPtrInput
 	// The update time of the app.
 	UpdateTime pulumi.StringPtrInput
 	// The email of the user that last updated the app.
@@ -272,6 +275,7 @@ type appArgs struct {
 	ProviderConfig *AppProviderConfig `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
 	Resources     []AppResource `pulumi:"resources"`
+	Space         *string       `pulumi:"space"`
 	UsagePolicyId *string       `pulumi:"usagePolicyId"`
 	// A list of api scopes granted to the user access token.
 	UserApiScopes []string `pulumi:"userApiScopes"`
@@ -292,6 +296,7 @@ type AppArgs struct {
 	ProviderConfig AppProviderConfigPtrInput
 	// A list of resources that the app have access to.
 	Resources     AppResourceArrayInput
+	Space         pulumi.StringPtrInput
 	UsagePolicyId pulumi.StringPtrInput
 	// A list of api scopes granted to the user access token.
 	UserApiScopes pulumi.StringArrayInput
@@ -489,6 +494,10 @@ func (o AppOutput) ServicePrincipalId() pulumi.IntOutput {
 // name of the app service principal
 func (o AppOutput) ServicePrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ServicePrincipalName }).(pulumi.StringOutput)
+}
+
+func (o AppOutput) Space() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Space }).(pulumi.StringPtrOutput)
 }
 
 // The update time of the app.

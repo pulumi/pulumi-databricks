@@ -30,6 +30,7 @@ class TableArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['TableProviderConfigArgs']] = None,
                  storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  view_definition: Optional[pulumi.Input[_builtins.str]] = None):
@@ -49,6 +50,8 @@ class TableArgs:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if storage_credential_name is not None:
             pulumi.set(__self__, "storage_credential_name", storage_credential_name)
         if storage_location is not None:
@@ -138,6 +141,15 @@ class TableArgs:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['TableProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['TableProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "storage_credential_name")
@@ -175,6 +187,7 @@ class _TableState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['TableProviderConfigArgs']] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -197,6 +210,8 @@ class _TableState:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if schema_name is not None:
             pulumi.set(__self__, "schema_name", schema_name)
         if storage_credential_name is not None:
@@ -272,6 +287,15 @@ class _TableState:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['TableProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['TableProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "schema_name")
@@ -330,6 +354,7 @@ class Table(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict']]] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -371,6 +396,7 @@ class Table(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict']]] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -398,6 +424,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["provider_config"] = provider_config
             if schema_name is None and not opts.urn:
                 raise TypeError("Missing required property 'schema_name'")
             __props__.__dict__["schema_name"] = schema_name
@@ -424,6 +451,7 @@ class Table(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: Optional[pulumi.Input[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict']]] = None,
             schema_name: Optional[pulumi.Input[_builtins.str]] = None,
             storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
             storage_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -448,6 +476,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties"] = properties
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["schema_name"] = schema_name
         __props__.__dict__["storage_credential_name"] = storage_credential_name
         __props__.__dict__["storage_location"] = storage_location
@@ -489,6 +518,11 @@ class Table(pulumi.CustomResource):
     @pulumi.getter
     def properties(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.TableProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="schemaName")

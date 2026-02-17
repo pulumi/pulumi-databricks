@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.TokenProviderConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -17,14 +18,14 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
     public static final TokenArgs Empty = new TokenArgs();
 
     /**
-     * (String) Comment that will appear on the user’s settings page for this token.
+     * (String) Comment that will appear on the user&#39;s settings page for this token.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return (String) Comment that will appear on the user’s settings page for this token.
+     * @return (String) Comment that will appear on the user&#39;s settings page for this token.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -60,6 +61,21 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.lifetimeSeconds);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<TokenProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<TokenProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="tokenId")
     private @Nullable Output<String> tokenId;
 
@@ -74,6 +90,7 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
         this.creationTime = $.creationTime;
         this.expiryTime = $.expiryTime;
         this.lifetimeSeconds = $.lifetimeSeconds;
+        this.providerConfig = $.providerConfig;
         this.tokenId = $.tokenId;
     }
 
@@ -96,7 +113,7 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment (String) Comment that will appear on the user’s settings page for this token.
+         * @param comment (String) Comment that will appear on the user&#39;s settings page for this token.
          * 
          * @return builder
          * 
@@ -107,7 +124,7 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment (String) Comment that will appear on the user’s settings page for this token.
+         * @param comment (String) Comment that will appear on the user&#39;s settings page for this token.
          * 
          * @return builder
          * 
@@ -153,6 +170,27 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lifetimeSeconds(Integer lifetimeSeconds) {
             return lifetimeSeconds(Output.of(lifetimeSeconds));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<TokenProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(TokenProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder tokenId(@Nullable Output<String> tokenId) {
