@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &App{}
 	case "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate":
 		r = &AppsSettingsCustomTemplate{}
+	case "databricks:index/appsSpace:AppsSpace":
+		r = &AppsSpace{}
 	case "databricks:index/artifactAllowlist:ArtifactAllowlist":
 		r = &ArtifactAllowlist{}
 	case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -91,6 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DisableLegacyDbfsSetting{}
 	case "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting":
 		r = &DisableLegacyFeaturesSetting{}
+	case "databricks:index/endpoint:Endpoint":
+		r = &Endpoint{}
 	case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
 		r = &EnhancedSecurityMonitoringWorkspaceSetting{}
 	case "databricks:index/entitlements:Entitlements":
@@ -383,6 +387,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/appsSpace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/artifactAllowlist",
 		&module{version},
 	)
@@ -499,6 +508,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/disableLegacyFeaturesSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/endpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.WorkspaceConfArgs;
 import com.pulumi.databricks.inputs.WorkspaceConfState;
+import com.pulumi.databricks.outputs.WorkspaceConfProviderConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -85,6 +86,20 @@ public class WorkspaceConf extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> customConfig() {
         return Codegen.optional(this.customConfig);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={WorkspaceConfProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WorkspaceConfProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<WorkspaceConfProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

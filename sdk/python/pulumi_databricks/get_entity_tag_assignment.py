@@ -28,7 +28,7 @@ class GetEntityTagAssignmentResult:
     """
     A collection of values returned by getEntityTagAssignment.
     """
-    def __init__(__self__, entity_name=None, entity_type=None, id=None, provider_config=None, tag_key=None, tag_value=None):
+    def __init__(__self__, entity_name=None, entity_type=None, id=None, provider_config=None, source_type=None, tag_key=None, tag_value=None, update_time=None, updated_by=None):
         if entity_name and not isinstance(entity_name, str):
             raise TypeError("Expected argument 'entity_name' to be a str")
         pulumi.set(__self__, "entity_name", entity_name)
@@ -41,12 +41,21 @@ class GetEntityTagAssignmentResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
+        if source_type and not isinstance(source_type, str):
+            raise TypeError("Expected argument 'source_type' to be a str")
+        pulumi.set(__self__, "source_type", source_type)
         if tag_key and not isinstance(tag_key, str):
             raise TypeError("Expected argument 'tag_key' to be a str")
         pulumi.set(__self__, "tag_key", tag_key)
         if tag_value and not isinstance(tag_value, str):
             raise TypeError("Expected argument 'tag_value' to be a str")
         pulumi.set(__self__, "tag_value", tag_value)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
+        if updated_by and not isinstance(updated_by, str):
+            raise TypeError("Expected argument 'updated_by' to be a str")
+        pulumi.set(__self__, "updated_by", updated_by)
 
     @_builtins.property
     @pulumi.getter(name="entityName")
@@ -78,6 +87,14 @@ class GetEntityTagAssignmentResult:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> _builtins.str:
+        """
+        (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+        """
+        return pulumi.get(self, "source_type")
+
+    @_builtins.property
     @pulumi.getter(name="tagKey")
     def tag_key(self) -> _builtins.str:
         """
@@ -93,6 +110,22 @@ class GetEntityTagAssignmentResult:
         """
         return pulumi.get(self, "tag_value")
 
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        (string) - The timestamp when the tag assignment was last updated
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> _builtins.str:
+        """
+        (string) - The user or principal who updated the tag assignment
+        """
+        return pulumi.get(self, "updated_by")
+
 
 class AwaitableGetEntityTagAssignmentResult(GetEntityTagAssignmentResult):
     # pylint: disable=using-constant-test
@@ -104,8 +137,11 @@ class AwaitableGetEntityTagAssignmentResult(GetEntityTagAssignmentResult):
             entity_type=self.entity_type,
             id=self.id,
             provider_config=self.provider_config,
+            source_type=self.source_type,
             tag_key=self.tag_key,
-            tag_value=self.tag_value)
+            tag_value=self.tag_value,
+            update_time=self.update_time,
+            updated_by=self.updated_by)
 
 
 def get_entity_tag_assignment(entity_name: Optional[_builtins.str] = None,
@@ -162,8 +198,11 @@ def get_entity_tag_assignment(entity_name: Optional[_builtins.str] = None,
         entity_type=pulumi.get(__ret__, 'entity_type'),
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
+        source_type=pulumi.get(__ret__, 'source_type'),
         tag_key=pulumi.get(__ret__, 'tag_key'),
-        tag_value=pulumi.get(__ret__, 'tag_value'))
+        tag_value=pulumi.get(__ret__, 'tag_value'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        updated_by=pulumi.get(__ret__, 'updated_by'))
 def get_entity_tag_assignment_output(entity_name: Optional[pulumi.Input[_builtins.str]] = None,
                                      entity_type: Optional[pulumi.Input[_builtins.str]] = None,
                                      provider_config: Optional[pulumi.Input[Optional[Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict']]]] = None,
@@ -217,5 +256,8 @@ def get_entity_tag_assignment_output(entity_name: Optional[pulumi.Input[_builtin
         entity_type=pulumi.get(__response__, 'entity_type'),
         id=pulumi.get(__response__, 'id'),
         provider_config=pulumi.get(__response__, 'provider_config'),
+        source_type=pulumi.get(__response__, 'source_type'),
         tag_key=pulumi.get(__response__, 'tag_key'),
-        tag_value=pulumi.get(__response__, 'tag_value')))
+        tag_value=pulumi.get(__response__, 'tag_value'),
+        update_time=pulumi.get(__response__, 'update_time'),
+        updated_by=pulumi.get(__response__, 'updated_by')))

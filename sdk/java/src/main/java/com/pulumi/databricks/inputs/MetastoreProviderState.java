@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.MetastoreProviderProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -61,6 +62,21 @@ public final class MetastoreProviderState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<MetastoreProviderProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<MetastoreProviderProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * This is the json file that is created from a recipient url.
      * 
      */
@@ -81,6 +97,7 @@ public final class MetastoreProviderState extends com.pulumi.resources.ResourceA
         this.authenticationType = $.authenticationType;
         this.comment = $.comment;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.recipientProfileStr = $.recipientProfileStr;
     }
 
@@ -163,6 +180,27 @@ public final class MetastoreProviderState extends com.pulumi.resources.ResourceA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<MetastoreProviderProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(MetastoreProviderProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

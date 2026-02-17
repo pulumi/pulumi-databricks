@@ -16,6 +16,7 @@ import com.pulumi.databricks.outputs.InstancePoolDiskSpec;
 import com.pulumi.databricks.outputs.InstancePoolGcpAttributes;
 import com.pulumi.databricks.outputs.InstancePoolInstancePoolFleetAttributes;
 import com.pulumi.databricks.outputs.InstancePoolPreloadedDockerImage;
+import com.pulumi.databricks.outputs.InstancePoolProviderConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -251,6 +252,12 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> preloadedSparkVersions() {
         return Codegen.optional(this.preloadedSparkVersions);
+    }
+    @Export(name="providerConfig", refs={InstancePoolProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstancePoolProviderConfig> providerConfig;
+
+    public Output<Optional<InstancePoolProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

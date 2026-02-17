@@ -18,6 +18,14 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? BranchLogicalSizeLimitBytes;
         /// <summary>
+        /// (string) - The budget policy that is applied to the project
+        /// </summary>
+        public readonly string? BudgetPolicyId;
+        /// <summary>
+        /// (list of ProjectCustomTag) - The effective custom tags associated with the project
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PostgresProjectStatusCustomTag> CustomTags;
+        /// <summary>
         /// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         /// </summary>
         public readonly Outputs.PostgresProjectStatusDefaultEndpointSettings? DefaultEndpointSettings;
@@ -46,6 +54,10 @@ namespace Pulumi.Databricks.Outputs
         private PostgresProjectStatus(
             int? branchLogicalSizeLimitBytes,
 
+            string? budgetPolicyId,
+
+            ImmutableArray<Outputs.PostgresProjectStatusCustomTag> customTags,
+
             Outputs.PostgresProjectStatusDefaultEndpointSettings? defaultEndpointSettings,
 
             string? displayName,
@@ -59,6 +71,8 @@ namespace Pulumi.Databricks.Outputs
             int? syntheticStorageSizeBytes)
         {
             BranchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
+            BudgetPolicyId = budgetPolicyId;
+            CustomTags = customTags;
             DefaultEndpointSettings = defaultEndpointSettings;
             DisplayName = displayName;
             HistoryRetentionDuration = historyRetentionDuration;

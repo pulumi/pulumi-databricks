@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.RepoArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RepoState;
+import com.pulumi.databricks.outputs.RepoProviderConfig;
 import com.pulumi.databricks.outputs.RepoSparseCheckout;
 import java.lang.String;
 import java.util.Optional;
@@ -132,6 +133,12 @@ public class Repo extends com.pulumi.resources.CustomResource {
      */
     public Output<String> path() {
         return this.path;
+    }
+    @Export(name="providerConfig", refs={RepoProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RepoProviderConfig> providerConfig;
+
+    public Output<Optional<RepoProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="sparseCheckout", refs={RepoSparseCheckout.class}, tree="[0]")
     private Output</* @Nullable */ RepoSparseCheckout> sparseCheckout;

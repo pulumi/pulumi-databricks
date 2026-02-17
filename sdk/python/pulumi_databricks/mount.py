@@ -28,6 +28,7 @@ class MountArgs:
                  extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  gs: Optional[pulumi.Input['MountGsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MountProviderConfigArgs']] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  s3: Optional[pulumi.Input['MountS3Args']] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -49,6 +50,8 @@ class MountArgs:
             pulumi.set(__self__, "gs", gs)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
         if s3 is not None:
@@ -122,6 +125,15 @@ class MountArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MountProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MountProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "resource_id")
@@ -168,6 +180,7 @@ class _MountState:
                  extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  gs: Optional[pulumi.Input['MountGsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MountProviderConfigArgs']] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  s3: Optional[pulumi.Input['MountS3Args']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
@@ -191,6 +204,8 @@ class _MountState:
             pulumi.set(__self__, "gs", gs)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
         if s3 is not None:
@@ -266,6 +281,15 @@ class _MountState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MountProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MountProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "resource_id")
@@ -327,6 +351,7 @@ class Mount(pulumi.CustomResource):
                  extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict']]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  s3: Optional[pulumi.Input[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -619,6 +644,9 @@ class Mount(pulumi.CustomResource):
                 "token_secret_key": storage_key.key,
             })
         ```
+
+        * `provider_config` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+          * `workspace_id` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
 
         ## Migration from other mount resources
 
@@ -942,6 +970,9 @@ class Mount(pulumi.CustomResource):
             })
         ```
 
+        * `provider_config` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+          * `workspace_id` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+
         ## Migration from other mount resources
 
         Migration from the specific mount resource is straightforward:
@@ -989,6 +1020,7 @@ class Mount(pulumi.CustomResource):
                  extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict']]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  s3: Optional[pulumi.Input[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1009,6 +1041,7 @@ class Mount(pulumi.CustomResource):
             __props__.__dict__["extra_configs"] = extra_configs
             __props__.__dict__["gs"] = gs
             __props__.__dict__["name"] = name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["resource_id"] = resource_id
             __props__.__dict__["s3"] = s3
             __props__.__dict__["uri"] = uri
@@ -1031,6 +1064,7 @@ class Mount(pulumi.CustomResource):
             extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict']]] = None,
             resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             s3: Optional[pulumi.Input[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1056,6 +1090,7 @@ class Mount(pulumi.CustomResource):
         __props__.__dict__["extra_configs"] = extra_configs
         __props__.__dict__["gs"] = gs
         __props__.__dict__["name"] = name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["s3"] = s3
         __props__.__dict__["source"] = source
@@ -1097,6 +1132,11 @@ class Mount(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.MountProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="resourceId")

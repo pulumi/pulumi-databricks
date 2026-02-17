@@ -25,6 +25,10 @@ public final class ClusterPolicyLibrary {
     private @Nullable String egg;
     private @Nullable String jar;
     private @Nullable ClusterPolicyLibraryMaven maven;
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     private @Nullable ClusterPolicyLibraryProviderConfig providerConfig;
     private @Nullable ClusterPolicyLibraryPypi pypi;
     private @Nullable String requirements;
@@ -49,6 +53,10 @@ public final class ClusterPolicyLibrary {
     public Optional<ClusterPolicyLibraryMaven> maven() {
         return Optional.ofNullable(this.maven);
     }
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     public Optional<ClusterPolicyLibraryProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }

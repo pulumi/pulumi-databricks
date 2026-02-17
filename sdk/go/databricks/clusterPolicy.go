@@ -209,7 +209,8 @@ type ClusterPolicy struct {
 	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
 	PolicyFamilyId pulumi.StringPtrOutput `pulumi:"policyFamilyId"`
 	// Canonical unique identifier for the cluster policy.
-	PolicyId pulumi.StringOutput `pulumi:"policyId"`
+	PolicyId       pulumi.StringOutput                  `pulumi:"policyId"`
+	ProviderConfig ClusterPolicyProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewClusterPolicy registers a new resource with the given unique name, arguments, and options.
@@ -256,7 +257,8 @@ type clusterPolicyState struct {
 	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
 	PolicyFamilyId *string `pulumi:"policyFamilyId"`
 	// Canonical unique identifier for the cluster policy.
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId       *string                      `pulumi:"policyId"`
+	ProviderConfig *ClusterPolicyProviderConfig `pulumi:"providerConfig"`
 }
 
 type ClusterPolicyState struct {
@@ -274,7 +276,8 @@ type ClusterPolicyState struct {
 	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
 	PolicyFamilyId pulumi.StringPtrInput
 	// Canonical unique identifier for the cluster policy.
-	PolicyId pulumi.StringPtrInput
+	PolicyId       pulumi.StringPtrInput
+	ProviderConfig ClusterPolicyProviderConfigPtrInput
 }
 
 func (ClusterPolicyState) ElementType() reflect.Type {
@@ -294,7 +297,8 @@ type clusterPolicyArgs struct {
 	// Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
 	PolicyFamilyDefinitionOverrides *string `pulumi:"policyFamilyDefinitionOverrides"`
 	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
-	PolicyFamilyId *string `pulumi:"policyFamilyId"`
+	PolicyFamilyId *string                      `pulumi:"policyFamilyId"`
+	ProviderConfig *ClusterPolicyProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a ClusterPolicy resource.
@@ -312,6 +316,7 @@ type ClusterPolicyArgs struct {
 	PolicyFamilyDefinitionOverrides pulumi.StringPtrInput
 	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
 	PolicyFamilyId pulumi.StringPtrInput
+	ProviderConfig ClusterPolicyProviderConfigPtrInput
 }
 
 func (ClusterPolicyArgs) ElementType() reflect.Type {
@@ -438,6 +443,10 @@ func (o ClusterPolicyOutput) PolicyFamilyId() pulumi.StringPtrOutput {
 // Canonical unique identifier for the cluster policy.
 func (o ClusterPolicyOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+func (o ClusterPolicyOutput) ProviderConfig() ClusterPolicyProviderConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicy) ClusterPolicyProviderConfigPtrOutput { return v.ProviderConfig }).(ClusterPolicyProviderConfigPtrOutput)
 }
 
 type ClusterPolicyArrayOutput struct{ *pulumi.OutputState }

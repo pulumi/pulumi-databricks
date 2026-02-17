@@ -103,13 +103,15 @@ import (
 type SqlDashboard struct {
 	pulumi.CustomResourceState
 
-	CreatedAt               pulumi.StringOutput      `pulumi:"createdAt"`
-	DashboardFiltersEnabled pulumi.BoolPtrOutput     `pulumi:"dashboardFiltersEnabled"`
-	Name                    pulumi.StringOutput      `pulumi:"name"`
-	Parent                  pulumi.StringPtrOutput   `pulumi:"parent"`
-	RunAsRole               pulumi.StringPtrOutput   `pulumi:"runAsRole"`
-	Tags                    pulumi.StringArrayOutput `pulumi:"tags"`
-	UpdatedAt               pulumi.StringOutput      `pulumi:"updatedAt"`
+	CreatedAt               pulumi.StringOutput    `pulumi:"createdAt"`
+	DashboardFiltersEnabled pulumi.BoolPtrOutput   `pulumi:"dashboardFiltersEnabled"`
+	Name                    pulumi.StringOutput    `pulumi:"name"`
+	Parent                  pulumi.StringPtrOutput `pulumi:"parent"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlDashboardProviderConfigPtrOutput `pulumi:"providerConfig"`
+	RunAsRole      pulumi.StringPtrOutput              `pulumi:"runAsRole"`
+	Tags           pulumi.StringArrayOutput            `pulumi:"tags"`
+	UpdatedAt      pulumi.StringOutput                 `pulumi:"updatedAt"`
 }
 
 // NewSqlDashboard registers a new resource with the given unique name, arguments, and options.
@@ -142,13 +144,15 @@ func GetSqlDashboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlDashboard resources.
 type sqlDashboardState struct {
-	CreatedAt               *string  `pulumi:"createdAt"`
-	DashboardFiltersEnabled *bool    `pulumi:"dashboardFiltersEnabled"`
-	Name                    *string  `pulumi:"name"`
-	Parent                  *string  `pulumi:"parent"`
-	RunAsRole               *string  `pulumi:"runAsRole"`
-	Tags                    []string `pulumi:"tags"`
-	UpdatedAt               *string  `pulumi:"updatedAt"`
+	CreatedAt               *string `pulumi:"createdAt"`
+	DashboardFiltersEnabled *bool   `pulumi:"dashboardFiltersEnabled"`
+	Name                    *string `pulumi:"name"`
+	Parent                  *string `pulumi:"parent"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SqlDashboardProviderConfig `pulumi:"providerConfig"`
+	RunAsRole      *string                     `pulumi:"runAsRole"`
+	Tags           []string                    `pulumi:"tags"`
+	UpdatedAt      *string                     `pulumi:"updatedAt"`
 }
 
 type SqlDashboardState struct {
@@ -156,9 +160,11 @@ type SqlDashboardState struct {
 	DashboardFiltersEnabled pulumi.BoolPtrInput
 	Name                    pulumi.StringPtrInput
 	Parent                  pulumi.StringPtrInput
-	RunAsRole               pulumi.StringPtrInput
-	Tags                    pulumi.StringArrayInput
-	UpdatedAt               pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlDashboardProviderConfigPtrInput
+	RunAsRole      pulumi.StringPtrInput
+	Tags           pulumi.StringArrayInput
+	UpdatedAt      pulumi.StringPtrInput
 }
 
 func (SqlDashboardState) ElementType() reflect.Type {
@@ -166,13 +172,15 @@ func (SqlDashboardState) ElementType() reflect.Type {
 }
 
 type sqlDashboardArgs struct {
-	CreatedAt               *string  `pulumi:"createdAt"`
-	DashboardFiltersEnabled *bool    `pulumi:"dashboardFiltersEnabled"`
-	Name                    *string  `pulumi:"name"`
-	Parent                  *string  `pulumi:"parent"`
-	RunAsRole               *string  `pulumi:"runAsRole"`
-	Tags                    []string `pulumi:"tags"`
-	UpdatedAt               *string  `pulumi:"updatedAt"`
+	CreatedAt               *string `pulumi:"createdAt"`
+	DashboardFiltersEnabled *bool   `pulumi:"dashboardFiltersEnabled"`
+	Name                    *string `pulumi:"name"`
+	Parent                  *string `pulumi:"parent"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SqlDashboardProviderConfig `pulumi:"providerConfig"`
+	RunAsRole      *string                     `pulumi:"runAsRole"`
+	Tags           []string                    `pulumi:"tags"`
+	UpdatedAt      *string                     `pulumi:"updatedAt"`
 }
 
 // The set of arguments for constructing a SqlDashboard resource.
@@ -181,9 +189,11 @@ type SqlDashboardArgs struct {
 	DashboardFiltersEnabled pulumi.BoolPtrInput
 	Name                    pulumi.StringPtrInput
 	Parent                  pulumi.StringPtrInput
-	RunAsRole               pulumi.StringPtrInput
-	Tags                    pulumi.StringArrayInput
-	UpdatedAt               pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlDashboardProviderConfigPtrInput
+	RunAsRole      pulumi.StringPtrInput
+	Tags           pulumi.StringArrayInput
+	UpdatedAt      pulumi.StringPtrInput
 }
 
 func (SqlDashboardArgs) ElementType() reflect.Type {
@@ -287,6 +297,11 @@ func (o SqlDashboardOutput) Name() pulumi.StringOutput {
 
 func (o SqlDashboardOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlDashboard) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o SqlDashboardOutput) ProviderConfig() SqlDashboardProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SqlDashboard) SqlDashboardProviderConfigPtrOutput { return v.ProviderConfig }).(SqlDashboardProviderConfigPtrOutput)
 }
 
 func (o SqlDashboardOutput) RunAsRole() pulumi.StringPtrOutput {

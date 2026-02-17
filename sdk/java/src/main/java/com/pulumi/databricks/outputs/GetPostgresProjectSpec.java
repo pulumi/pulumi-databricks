@@ -4,15 +4,27 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresProjectSpecCustomTag;
 import com.pulumi.databricks.outputs.GetPostgresProjectSpecDefaultEndpointSettings;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPostgresProjectSpec {
+    /**
+     * @return (string) - The budget policy that is applied to the project
+     * 
+     */
+    private @Nullable String budgetPolicyId;
+    /**
+     * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    private @Nullable List<GetPostgresProjectSpecCustomTag> customTags;
     /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      * 
@@ -35,6 +47,20 @@ public final class GetPostgresProjectSpec {
     private @Nullable Integer pgVersion;
 
     private GetPostgresProjectSpec() {}
+    /**
+     * @return (string) - The budget policy that is applied to the project
+     * 
+     */
+    public Optional<String> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+    /**
+     * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    public List<GetPostgresProjectSpecCustomTag> customTags() {
+        return this.customTags == null ? List.of() : this.customTags;
+    }
     /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      * 
@@ -73,6 +99,8 @@ public final class GetPostgresProjectSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String budgetPolicyId;
+        private @Nullable List<GetPostgresProjectSpecCustomTag> customTags;
         private @Nullable GetPostgresProjectSpecDefaultEndpointSettings defaultEndpointSettings;
         private @Nullable String displayName;
         private @Nullable String historyRetentionDuration;
@@ -80,12 +108,29 @@ public final class GetPostgresProjectSpec {
         public Builder() {}
         public Builder(GetPostgresProjectSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.budgetPolicyId = defaults.budgetPolicyId;
+    	      this.customTags = defaults.customTags;
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
     	      this.displayName = defaults.displayName;
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
     	      this.pgVersion = defaults.pgVersion;
         }
 
+        @CustomType.Setter
+        public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
+
+            this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customTags(@Nullable List<GetPostgresProjectSpecCustomTag> customTags) {
+
+            this.customTags = customTags;
+            return this;
+        }
+        public Builder customTags(GetPostgresProjectSpecCustomTag... customTags) {
+            return customTags(List.of(customTags));
+        }
         @CustomType.Setter
         public Builder defaultEndpointSettings(@Nullable GetPostgresProjectSpecDefaultEndpointSettings defaultEndpointSettings) {
 
@@ -112,6 +157,8 @@ public final class GetPostgresProjectSpec {
         }
         public GetPostgresProjectSpec build() {
             final var _resultValue = new GetPostgresProjectSpec();
+            _resultValue.budgetPolicyId = budgetPolicyId;
+            _resultValue.customTags = customTags;
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;
             _resultValue.displayName = displayName;
             _resultValue.historyRetentionDuration = historyRetentionDuration;

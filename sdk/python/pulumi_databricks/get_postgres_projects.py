@@ -99,7 +99,7 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
     ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
+    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative. The maximum value is 100
     :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -134,7 +134,7 @@ def get_postgres_projects_output(page_size: Optional[pulumi.Input[Optional[_buil
     ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
+    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative. The maximum value is 100
     :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

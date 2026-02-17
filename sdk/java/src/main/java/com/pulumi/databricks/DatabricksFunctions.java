@@ -28,6 +28,10 @@ import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatePlainArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesPlainArgs;
+import com.pulumi.databricks.inputs.GetAppsSpaceArgs;
+import com.pulumi.databricks.inputs.GetAppsSpacePlainArgs;
+import com.pulumi.databricks.inputs.GetAppsSpacesArgs;
+import com.pulumi.databricks.inputs.GetAppsSpacesPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
@@ -86,6 +90,10 @@ import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePlainArgs;
 import com.pulumi.databricks.inputs.GetDirectoryArgs;
 import com.pulumi.databricks.inputs.GetDirectoryPlainArgs;
+import com.pulumi.databricks.inputs.GetEndpointArgs;
+import com.pulumi.databricks.inputs.GetEndpointPlainArgs;
+import com.pulumi.databricks.inputs.GetEndpointsArgs;
+import com.pulumi.databricks.inputs.GetEndpointsPlainArgs;
 import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
 import com.pulumi.databricks.inputs.GetEntityTagAssignmentPlainArgs;
 import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
@@ -256,6 +264,8 @@ import com.pulumi.databricks.outputs.GetAppResult;
 import com.pulumi.databricks.outputs.GetAppsResult;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplateResult;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesResult;
+import com.pulumi.databricks.outputs.GetAppsSpaceResult;
+import com.pulumi.databricks.outputs.GetAppsSpacesResult;
 import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
@@ -285,6 +295,8 @@ import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetDirectoryResult;
+import com.pulumi.databricks.outputs.GetEndpointResult;
+import com.pulumi.databricks.outputs.GetEndpointsResult;
 import com.pulumi.databricks.outputs.GetEntityTagAssignmentResult;
 import com.pulumi.databricks.outputs.GetEntityTagAssignmentsResult;
 import com.pulumi.databricks.outputs.GetExternalLocationResult;
@@ -3013,6 +3025,90 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplatesPlain(GetAppsSettingsCustomTemplatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", TypeShape.of(GetAppsSettingsCustomTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppsSpaceResult> getAppsSpace(GetAppsSpaceArgs args) {
+        return getAppsSpace(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppsSpaceResult> getAppsSpacePlain(GetAppsSpacePlainArgs args) {
+        return getAppsSpacePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppsSpaceResult> getAppsSpace(GetAppsSpaceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppsSpace:getAppsSpace", TypeShape.of(GetAppsSpaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppsSpaceResult> getAppsSpace(GetAppsSpaceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppsSpace:getAppsSpace", TypeShape.of(GetAppsSpaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppsSpaceResult> getAppsSpacePlain(GetAppsSpacePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAppsSpace:getAppsSpace", TypeShape.of(GetAppsSpaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppsSpacesResult> getAppsSpaces() {
+        return getAppsSpaces(GetAppsSpacesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppsSpacesResult> getAppsSpacesPlain() {
+        return getAppsSpacesPlain(GetAppsSpacesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppsSpacesResult> getAppsSpaces(GetAppsSpacesArgs args) {
+        return getAppsSpaces(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppsSpacesResult> getAppsSpacesPlain(GetAppsSpacesPlainArgs args) {
+        return getAppsSpacesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppsSpacesResult> getAppsSpaces(GetAppsSpacesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppsSpaces:getAppsSpaces", TypeShape.of(GetAppsSpacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppsSpacesResult> getAppsSpaces(GetAppsSpacesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppsSpaces:getAppsSpaces", TypeShape.of(GetAppsSpacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppsSpacesResult> getAppsSpacesPlain(GetAppsSpacesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAppsSpaces:getAppsSpaces", TypeShape.of(GetAppsSpacesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source constructs necessary AWS STS assume role policy for you.
@@ -12021,6 +12117,166 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetDirectoryResult> getDirectoryPlain(GetDirectoryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for getting an endpoint in Azure cloud:
+     * 
+     */
+    public static Output<GetEndpointResult> getEndpoint(GetEndpointArgs args) {
+        return getEndpoint(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for getting an endpoint in Azure cloud:
+     * 
+     */
+    public static CompletableFuture<GetEndpointResult> getEndpointPlain(GetEndpointPlainArgs args) {
+        return getEndpointPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for getting an endpoint in Azure cloud:
+     * 
+     */
+    public static Output<GetEndpointResult> getEndpoint(GetEndpointArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for getting an endpoint in Azure cloud:
+     * 
+     */
+    public static Output<GetEndpointResult> getEndpoint(GetEndpointArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for getting an endpoint in Azure cloud:
+     * 
+     */
+    public static CompletableFuture<GetEndpointResult> getEndpointPlain(GetEndpointPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for listing endpoints in Azure cloud:
+     * 
+     */
+    public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args) {
+        return getEndpoints(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for listing endpoints in Azure cloud:
+     * 
+     */
+    public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args) {
+        return getEndpointsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for listing endpoints in Azure cloud:
+     * 
+     */
+    public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for listing endpoints in Azure cloud:
+     * 
+     */
+    public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * ### Example for Azure cloud
+     * This is an example for listing endpoints in Azure cloud:
+     * 
+     */
+    public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DbfsFileArgs', 'DbfsFile']
 
@@ -22,11 +24,13 @@ class DbfsFileArgs:
                  path: pulumi.Input[_builtins.str],
                  content_base64: Optional[pulumi.Input[_builtins.str]] = None,
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DbfsFileProviderConfigArgs']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbfsFile resource.
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save.
         :param pulumi.Input[_builtins.str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        :param pulumi.Input['DbfsFileProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         pulumi.set(__self__, "path", path)
@@ -34,6 +38,8 @@ class DbfsFileArgs:
             pulumi.set(__self__, "content_base64", content_base64)
         if md5 is not None:
             pulumi.set(__self__, "md5", md5)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -71,6 +77,18 @@ class DbfsFileArgs:
         pulumi.set(self, "md5", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DbfsFileProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DbfsFileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -91,6 +109,7 @@ class _DbfsFileState:
                  file_size: Optional[pulumi.Input[_builtins.int]] = None,
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['DbfsFileProviderConfigArgs']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbfsFile resources.
@@ -98,6 +117,7 @@ class _DbfsFileState:
         :param pulumi.Input[_builtins.str] dbfs_path: Path, but with `dbfs:` prefix.
         :param pulumi.Input[_builtins.int] file_size: The file size of the file that is being tracked by this resource in bytes.
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save.
+        :param pulumi.Input['DbfsFileProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         if content_base64 is not None:
@@ -110,6 +130,8 @@ class _DbfsFileState:
             pulumi.set(__self__, "md5", md5)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -171,6 +193,18 @@ class _DbfsFileState:
         pulumi.set(self, "path", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['DbfsFileProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['DbfsFileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -192,6 +226,7 @@ class DbfsFile(pulumi.CustomResource):
                  content_base64: Optional[pulumi.Input[_builtins.str]] = None,
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -205,6 +240,7 @@ class DbfsFile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save.
+        :param pulumi.Input[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         ...
@@ -238,6 +274,7 @@ class DbfsFile(pulumi.CustomResource):
                  content_base64: Optional[pulumi.Input[_builtins.str]] = None,
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -253,6 +290,7 @@ class DbfsFile(pulumi.CustomResource):
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["source"] = source
             __props__.__dict__["dbfs_path"] = None
             __props__.__dict__["file_size"] = None
@@ -271,6 +309,7 @@ class DbfsFile(pulumi.CustomResource):
             file_size: Optional[pulumi.Input[_builtins.int]] = None,
             md5: Optional[pulumi.Input[_builtins.str]] = None,
             path: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None) -> 'DbfsFile':
         """
         Get an existing DbfsFile resource's state with the given name, id, and optional extra
@@ -283,6 +322,7 @@ class DbfsFile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dbfs_path: Path, but with `dbfs:` prefix.
         :param pulumi.Input[_builtins.int] file_size: The file size of the file that is being tracked by this resource in bytes.
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save.
+        :param pulumi.Input[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -294,6 +334,7 @@ class DbfsFile(pulumi.CustomResource):
         __props__.__dict__["file_size"] = file_size
         __props__.__dict__["md5"] = md5
         __props__.__dict__["path"] = path
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["source"] = source
         return DbfsFile(resource_name, opts=opts, __props__=__props__)
 
@@ -333,6 +374,14 @@ class DbfsFile(pulumi.CustomResource):
         The path of the file in which you wish to save.
         """
         return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.DbfsFileProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

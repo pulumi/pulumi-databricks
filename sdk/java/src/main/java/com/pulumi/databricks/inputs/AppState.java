@@ -306,6 +306,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.servicePrincipalName);
     }
 
+    @Import(name="space")
+    private @Nullable Output<String> space;
+
+    public Optional<Output<String>> space() {
+        return Optional.ofNullable(this.space);
+    }
+
     /**
      * The update time of the app.
      * 
@@ -399,6 +406,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.servicePrincipalClientId = $.servicePrincipalClientId;
         this.servicePrincipalId = $.servicePrincipalId;
         this.servicePrincipalName = $.servicePrincipalName;
+        this.space = $.space;
         this.updateTime = $.updateTime;
         this.updater = $.updater;
         this.url = $.url;
@@ -829,6 +837,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder servicePrincipalName(String servicePrincipalName) {
             return servicePrincipalName(Output.of(servicePrincipalName));
+        }
+
+        public Builder space(@Nullable Output<String> space) {
+            $.space = space;
+            return this;
+        }
+
+        public Builder space(String space) {
+            return space(Output.of(space));
         }
 
         /**

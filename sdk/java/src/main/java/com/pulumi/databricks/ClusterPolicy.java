@@ -11,6 +11,7 @@ import com.pulumi.databricks.ClusterPolicyArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ClusterPolicyState;
 import com.pulumi.databricks.outputs.ClusterPolicyLibrary;
+import com.pulumi.databricks.outputs.ClusterPolicyProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -310,6 +311,12 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> policyId() {
         return this.policyId;
+    }
+    @Export(name="providerConfig", refs={ClusterPolicyProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterPolicyProviderConfig> providerConfig;
+
+    public Output<Optional<ClusterPolicyProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

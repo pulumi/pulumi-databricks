@@ -60,6 +60,8 @@ type SecretScope struct {
 	KeyvaultMetadata       SecretScopeKeyvaultMetadataPtrOutput `pulumi:"keyvaultMetadata"`
 	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SecretScopeProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewSecretScope registers a new resource with the given unique name, arguments, and options.
@@ -99,6 +101,8 @@ type secretScopeState struct {
 	KeyvaultMetadata       *SecretScopeKeyvaultMetadata `pulumi:"keyvaultMetadata"`
 	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SecretScopeProviderConfig `pulumi:"providerConfig"`
 }
 
 type SecretScopeState struct {
@@ -109,6 +113,8 @@ type SecretScopeState struct {
 	KeyvaultMetadata       SecretScopeKeyvaultMetadataPtrInput
 	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SecretScopeProviderConfigPtrInput
 }
 
 func (SecretScopeState) ElementType() reflect.Type {
@@ -123,6 +129,8 @@ type secretScopeArgs struct {
 	KeyvaultMetadata       *SecretScopeKeyvaultMetadata `pulumi:"keyvaultMetadata"`
 	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SecretScopeProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a SecretScope resource.
@@ -134,6 +142,8 @@ type SecretScopeArgs struct {
 	KeyvaultMetadata       SecretScopeKeyvaultMetadataPtrInput
 	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Name pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SecretScopeProviderConfigPtrInput
 }
 
 func (SecretScopeArgs) ElementType() reflect.Type {
@@ -240,6 +250,11 @@ func (o SecretScopeOutput) KeyvaultMetadata() SecretScopeKeyvaultMetadataPtrOutp
 // Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 func (o SecretScopeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretScope) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o SecretScopeOutput) ProviderConfig() SecretScopeProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SecretScope) SecretScopeProviderConfigPtrOutput { return v.ProviderConfig }).(SecretScopeProviderConfigPtrOutput)
 }
 
 type SecretScopeArrayOutput struct{ *pulumi.OutputState }

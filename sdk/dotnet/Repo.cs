@@ -80,6 +80,9 @@ namespace Pulumi.Databricks
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.RepoProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("sparseCheckout")]
         public Output<Outputs.RepoSparseCheckout?> SparseCheckout { get; private set; } = null!;
 
@@ -171,6 +174,9 @@ namespace Pulumi.Databricks
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.RepoProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("sparseCheckout")]
         public Input<Inputs.RepoSparseCheckoutArgs>? SparseCheckout { get; set; }
 
@@ -217,6 +223,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.RepoProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("sparseCheckout")]
         public Input<Inputs.RepoSparseCheckoutGetArgs>? SparseCheckout { get; set; }

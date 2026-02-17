@@ -1461,6 +1461,9 @@ namespace Pulumi.Databricks
         [Output("pipelineId")]
         public Output<string?> PipelineId { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.PermissionsProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("registeredModelId")]
         public Output<string?> RegisteredModelId { get; private set; } = null!;
 
@@ -1599,6 +1602,9 @@ namespace Pulumi.Databricks
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.PermissionsProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("registeredModelId")]
         public Input<string>? RegisteredModelId { get; set; }
 
@@ -1698,6 +1704,9 @@ namespace Pulumi.Databricks
 
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.PermissionsProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("registeredModelId")]
         public Input<string>? RegisteredModelId { get; set; }

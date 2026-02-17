@@ -41,6 +41,7 @@ export class Table extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly owner: pulumi.Output<string>;
     declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.TableProviderConfig | undefined>;
     declare public readonly schemaName: pulumi.Output<string>;
     declare public readonly storageCredentialName: pulumi.Output<string | undefined>;
     declare public readonly storageLocation: pulumi.Output<string | undefined>;
@@ -67,6 +68,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schemaName"] = state?.schemaName;
             resourceInputs["storageCredentialName"] = state?.storageCredentialName;
             resourceInputs["storageLocation"] = state?.storageLocation;
@@ -96,6 +98,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schemaName"] = args?.schemaName;
             resourceInputs["storageCredentialName"] = args?.storageCredentialName;
             resourceInputs["storageLocation"] = args?.storageLocation;
@@ -118,6 +121,7 @@ export interface TableState {
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    providerConfig?: pulumi.Input<inputs.TableProviderConfig>;
     schemaName?: pulumi.Input<string>;
     storageCredentialName?: pulumi.Input<string>;
     storageLocation?: pulumi.Input<string>;
@@ -136,6 +140,7 @@ export interface TableArgs {
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    providerConfig?: pulumi.Input<inputs.TableProviderConfig>;
     schemaName: pulumi.Input<string>;
     storageCredentialName?: pulumi.Input<string>;
     storageLocation?: pulumi.Input<string>;

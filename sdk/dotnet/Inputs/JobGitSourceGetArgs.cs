@@ -36,6 +36,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
+        [Input("sparseCheckout")]
+        public Input<Inputs.JobGitSourceSparseCheckoutGetArgs>? SparseCheckout { get; set; }
+
         /// <summary>
         /// name of the Git branch to use. Conflicts with `Branch` and `Commit`.
         /// </summary>

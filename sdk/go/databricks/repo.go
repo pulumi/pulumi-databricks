@@ -73,6 +73,7 @@ type Repo struct {
 	GitProvider pulumi.StringOutput `pulumi:"gitProvider"`
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
 	Path           pulumi.StringOutput         `pulumi:"path"`
+	ProviderConfig RepoProviderConfigPtrOutput `pulumi:"providerConfig"`
 	SparseCheckout RepoSparseCheckoutPtrOutput `pulumi:"sparseCheckout"`
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag pulumi.StringPtrOutput `pulumi:"tag"`
@@ -123,6 +124,7 @@ type repoState struct {
 	GitProvider *string `pulumi:"gitProvider"`
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
 	Path           *string             `pulumi:"path"`
+	ProviderConfig *RepoProviderConfig `pulumi:"providerConfig"`
 	SparseCheckout *RepoSparseCheckout `pulumi:"sparseCheckout"`
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag *string `pulumi:"tag"`
@@ -141,6 +143,7 @@ type RepoState struct {
 	GitProvider pulumi.StringPtrInput
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
 	Path           pulumi.StringPtrInput
+	ProviderConfig RepoProviderConfigPtrInput
 	SparseCheckout RepoSparseCheckoutPtrInput
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag pulumi.StringPtrInput
@@ -163,6 +166,7 @@ type repoArgs struct {
 	GitProvider *string `pulumi:"gitProvider"`
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
 	Path           *string             `pulumi:"path"`
+	ProviderConfig *RepoProviderConfig `pulumi:"providerConfig"`
 	SparseCheckout *RepoSparseCheckout `pulumi:"sparseCheckout"`
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag *string `pulumi:"tag"`
@@ -180,6 +184,7 @@ type RepoArgs struct {
 	GitProvider pulumi.StringPtrInput
 	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
 	Path           pulumi.StringPtrInput
+	ProviderConfig RepoProviderConfigPtrInput
 	SparseCheckout RepoSparseCheckoutPtrInput
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag pulumi.StringPtrInput
@@ -292,6 +297,10 @@ func (o RepoOutput) GitProvider() pulumi.StringOutput {
 // path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
 func (o RepoOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o RepoOutput) ProviderConfig() RepoProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Repo) RepoProviderConfigPtrOutput { return v.ProviderConfig }).(RepoProviderConfigPtrOutput)
 }
 
 func (o RepoOutput) SparseCheckout() RepoSparseCheckoutPtrOutput {

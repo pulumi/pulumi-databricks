@@ -359,6 +359,12 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<String> servicePrincipalName() {
         return this.servicePrincipalName;
     }
+    @Export(name="space", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> space;
+
+    public Output<Optional<String>> space() {
+        return Codegen.optional(this.space);
+    }
     /**
      * The update time of the app.
      * 

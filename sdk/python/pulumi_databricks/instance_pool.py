@@ -35,7 +35,8 @@ class InstancePoolArgs:
                  min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
-                 preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['InstancePoolProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a InstancePool resource.
         :param pulumi.Input[_builtins.int] idle_instance_autotermination_minutes: (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
@@ -75,6 +76,8 @@ class InstancePoolArgs:
             pulumi.set(__self__, "preloaded_docker_images", preloaded_docker_images)
         if preloaded_spark_versions is not None:
             pulumi.set(__self__, "preloaded_spark_versions", preloaded_spark_versions)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="idleInstanceAutoterminationMinutes")
@@ -235,6 +238,15 @@ class InstancePoolArgs:
     def preloaded_spark_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preloaded_spark_versions", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['InstancePoolProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['InstancePoolProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _InstancePoolState:
@@ -253,7 +265,8 @@ class _InstancePoolState:
                  min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
-                 preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input['InstancePoolProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering InstancePool resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
@@ -295,6 +308,8 @@ class _InstancePoolState:
             pulumi.set(__self__, "preloaded_docker_images", preloaded_docker_images)
         if preloaded_spark_versions is not None:
             pulumi.set(__self__, "preloaded_spark_versions", preloaded_spark_versions)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="awsAttributes")
@@ -455,6 +470,15 @@ class _InstancePoolState:
     def preloaded_spark_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preloaded_spark_versions", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['InstancePoolProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['InstancePoolProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.type_token("databricks:index/instancePool:InstancePool")
 class InstancePool(pulumi.CustomResource):
@@ -477,6 +501,7 @@ class InstancePool(pulumi.CustomResource):
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
                  preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances. An instance pool reduces cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances. When a cluster attached to a pool needs an instance, it first attempts to allocate one of the pool's idle instances. If the pool has no idle instances, it expands by allocating a new instance from the instance provider in order to accommodate the cluster's request. When a cluster releases an instance, it returns to the pool and is free for another cluster to use. Only clusters attached to a pool can use that pool's idle instances.
@@ -607,6 +632,7 @@ class InstancePool(pulumi.CustomResource):
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
                  preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -635,6 +661,7 @@ class InstancePool(pulumi.CustomResource):
             __props__.__dict__["node_type_id"] = node_type_id
             __props__.__dict__["preloaded_docker_images"] = preloaded_docker_images
             __props__.__dict__["preloaded_spark_versions"] = preloaded_spark_versions
+            __props__.__dict__["provider_config"] = provider_config
         super(InstancePool, __self__).__init__(
             'databricks:index/instancePool:InstancePool',
             resource_name,
@@ -659,7 +686,8 @@ class InstancePool(pulumi.CustomResource):
             min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
             node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
             preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
-            preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'InstancePool':
+            preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            provider_config: Optional[pulumi.Input[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']]] = None) -> 'InstancePool':
         """
         Get an existing InstancePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -695,6 +723,7 @@ class InstancePool(pulumi.CustomResource):
         __props__.__dict__["node_type_id"] = node_type_id
         __props__.__dict__["preloaded_docker_images"] = preloaded_docker_images
         __props__.__dict__["preloaded_spark_versions"] = preloaded_spark_versions
+        __props__.__dict__["provider_config"] = provider_config
         return InstancePool(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -795,4 +824,9 @@ class InstancePool(pulumi.CustomResource):
         (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
         return pulumi.get(self, "preloaded_spark_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.InstancePoolProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 

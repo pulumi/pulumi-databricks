@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SqlDashboardArgs', 'SqlDashboard']
 
@@ -23,11 +25,13 @@ class SqlDashboardArgs:
                  dashboard_filters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['SqlDashboardProviderConfigArgs']] = None,
                  run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlDashboard resource.
+        :param pulumi.Input['SqlDashboardProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -37,6 +41,8 @@ class SqlDashboardArgs:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if run_as_role is not None:
             pulumi.set(__self__, "run_as_role", run_as_role)
         if tags is not None:
@@ -79,6 +85,18 @@ class SqlDashboardArgs:
     @parent.setter
     def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlDashboardProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlDashboardProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsRole")
@@ -115,11 +133,13 @@ class _SqlDashboardState:
                  dashboard_filters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['SqlDashboardProviderConfigArgs']] = None,
                  run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlDashboard resources.
+        :param pulumi.Input['SqlDashboardProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -129,6 +149,8 @@ class _SqlDashboardState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if run_as_role is not None:
             pulumi.set(__self__, "run_as_role", run_as_role)
         if tags is not None:
@@ -171,6 +193,18 @@ class _SqlDashboardState:
     @parent.setter
     def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlDashboardProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlDashboardProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsRole")
@@ -210,6 +244,7 @@ class SqlDashboard(pulumi.CustomResource):
                  dashboard_filters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']]] = None,
                  run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -264,6 +299,7 @@ class SqlDashboard(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -338,6 +374,7 @@ class SqlDashboard(pulumi.CustomResource):
                  dashboard_filters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']]] = None,
                  run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -354,6 +391,7 @@ class SqlDashboard(pulumi.CustomResource):
             __props__.__dict__["dashboard_filters_enabled"] = dashboard_filters_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["run_as_role"] = run_as_role
             __props__.__dict__["tags"] = tags
             __props__.__dict__["updated_at"] = updated_at
@@ -371,6 +409,7 @@ class SqlDashboard(pulumi.CustomResource):
             dashboard_filters_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             parent: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']]] = None,
             run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'SqlDashboard':
@@ -381,6 +420,7 @@ class SqlDashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['SqlDashboardProviderConfigArgs', 'SqlDashboardProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -390,6 +430,7 @@ class SqlDashboard(pulumi.CustomResource):
         __props__.__dict__["dashboard_filters_enabled"] = dashboard_filters_enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["run_as_role"] = run_as_role
         __props__.__dict__["tags"] = tags
         __props__.__dict__["updated_at"] = updated_at
@@ -414,6 +455,14 @@ class SqlDashboard(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "parent")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlDashboardProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="runAsRole")

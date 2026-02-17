@@ -62,6 +62,21 @@ public final class EntityTagAssignmentState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     * 
+     */
+    @Import(name="sourceType")
+    private @Nullable Output<String> sourceType;
+
+    /**
+     * @return (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     * 
+     */
+    public Optional<Output<String>> sourceType() {
+        return Optional.ofNullable(this.sourceType);
+    }
+
+    /**
      * The key of the tag
      * 
      */
@@ -91,14 +106,47 @@ public final class EntityTagAssignmentState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.tagValue);
     }
 
+    /**
+     * (string) - The timestamp when the tag assignment was last updated
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return (string) - The timestamp when the tag assignment was last updated
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
+    /**
+     * (string) - The user or principal who updated the tag assignment
+     * 
+     */
+    @Import(name="updatedBy")
+    private @Nullable Output<String> updatedBy;
+
+    /**
+     * @return (string) - The user or principal who updated the tag assignment
+     * 
+     */
+    public Optional<Output<String>> updatedBy() {
+        return Optional.ofNullable(this.updatedBy);
+    }
+
     private EntityTagAssignmentState() {}
 
     private EntityTagAssignmentState(EntityTagAssignmentState $) {
         this.entityName = $.entityName;
         this.entityType = $.entityType;
         this.providerConfig = $.providerConfig;
+        this.sourceType = $.sourceType;
         this.tagKey = $.tagKey;
         this.tagValue = $.tagValue;
+        this.updateTime = $.updateTime;
+        this.updatedBy = $.updatedBy;
     }
 
     public static Builder builder() {
@@ -183,6 +231,27 @@ public final class EntityTagAssignmentState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param sourceType (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceType(@Nullable Output<String> sourceType) {
+            $.sourceType = sourceType;
+            return this;
+        }
+
+        /**
+         * @param sourceType (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceType(String sourceType) {
+            return sourceType(Output.of(sourceType));
+        }
+
+        /**
          * @param tagKey The key of the tag
          * 
          * @return builder
@@ -222,6 +291,48 @@ public final class EntityTagAssignmentState extends com.pulumi.resources.Resourc
          */
         public Builder tagValue(String tagValue) {
             return tagValue(Output.of(tagValue));
+        }
+
+        /**
+         * @param updateTime (string) - The timestamp when the tag assignment was last updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime (string) - The timestamp when the tag assignment was last updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param updatedBy (string) - The user or principal who updated the tag assignment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedBy(@Nullable Output<String> updatedBy) {
+            $.updatedBy = updatedBy;
+            return this;
+        }
+
+        /**
+         * @param updatedBy (string) - The user or principal who updated the tag assignment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedBy(String updatedBy) {
+            return updatedBy(Output.of(updatedBy));
         }
 
         public EntityTagAssignmentState build() {

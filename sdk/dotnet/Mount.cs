@@ -407,6 +407,9 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// * `ProviderConfig` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+    ///   * `WorkspaceId` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+    /// 
     /// ## Migration from other mount resources
     /// 
     /// Migration from the specific mount resource is straightforward:
@@ -455,6 +458,9 @@ namespace Pulumi.Databricks
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.MountProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         [Output("resourceId")]
         public Output<string?> ResourceId { get; private set; } = null!;
@@ -546,6 +552,9 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.MountProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
@@ -591,6 +600,9 @@ namespace Pulumi.Databricks
 
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.MountProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }

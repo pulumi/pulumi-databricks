@@ -246,6 +246,9 @@ namespace Pulumi.Databricks
         [Output("photon")]
         public Output<bool?> Photon { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.PipelineProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("restartWindow")]
         public Output<Outputs.PipelineRestartWindow?> RestartWindow { get; private set; } = null!;
 
@@ -509,6 +512,9 @@ namespace Pulumi.Databricks
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.PipelineProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("restartWindow")]
         public Input<Inputs.PipelineRestartWindowArgs>? RestartWindow { get; set; }
 
@@ -739,6 +745,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.PipelineProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("restartWindow")]
         public Input<Inputs.PipelineRestartWindowGetArgs>? RestartWindow { get; set; }

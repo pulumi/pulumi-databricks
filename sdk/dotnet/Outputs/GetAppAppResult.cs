@@ -83,6 +83,7 @@ namespace Pulumi.Databricks.Outputs
         /// name of the app service principal
         /// </summary>
         public readonly string ServicePrincipalName;
+        public readonly string? Space;
         /// <summary>
         /// The update time of the app.
         /// </summary>
@@ -144,6 +145,8 @@ namespace Pulumi.Databricks.Outputs
 
             string servicePrincipalName,
 
+            string? space,
+
             string updateTime,
 
             string updater,
@@ -176,6 +179,7 @@ namespace Pulumi.Databricks.Outputs
             ServicePrincipalClientId = servicePrincipalClientId;
             ServicePrincipalId = servicePrincipalId;
             ServicePrincipalName = servicePrincipalName;
+            Space = space;
             UpdateTime = updateTime;
             Updater = updater;
             Url = url;

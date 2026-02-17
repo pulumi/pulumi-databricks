@@ -4,9 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PostgresProjectStatusCustomTag;
 import com.pulumi.databricks.outputs.PostgresProjectStatusDefaultEndpointSettings;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +20,16 @@ public final class PostgresProjectStatus {
      * 
      */
     private @Nullable Integer branchLogicalSizeLimitBytes;
+    /**
+     * @return (string) - The budget policy that is applied to the project
+     * 
+     */
+    private @Nullable String budgetPolicyId;
+    /**
+     * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    private @Nullable List<PostgresProjectStatusCustomTag> customTags;
     /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      * 
@@ -56,6 +68,20 @@ public final class PostgresProjectStatus {
      */
     public Optional<Integer> branchLogicalSizeLimitBytes() {
         return Optional.ofNullable(this.branchLogicalSizeLimitBytes);
+    }
+    /**
+     * @return (string) - The budget policy that is applied to the project
+     * 
+     */
+    public Optional<String> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+    /**
+     * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
+     * 
+     */
+    public List<PostgresProjectStatusCustomTag> customTags() {
+        return this.customTags == null ? List.of() : this.customTags;
     }
     /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
@@ -110,6 +136,8 @@ public final class PostgresProjectStatus {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer branchLogicalSizeLimitBytes;
+        private @Nullable String budgetPolicyId;
+        private @Nullable List<PostgresProjectStatusCustomTag> customTags;
         private @Nullable PostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings;
         private @Nullable String displayName;
         private @Nullable String historyRetentionDuration;
@@ -120,6 +148,8 @@ public final class PostgresProjectStatus {
         public Builder(PostgresProjectStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branchLogicalSizeLimitBytes = defaults.branchLogicalSizeLimitBytes;
+    	      this.budgetPolicyId = defaults.budgetPolicyId;
+    	      this.customTags = defaults.customTags;
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
     	      this.displayName = defaults.displayName;
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
@@ -133,6 +163,21 @@ public final class PostgresProjectStatus {
 
             this.branchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
             return this;
+        }
+        @CustomType.Setter
+        public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
+
+            this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customTags(@Nullable List<PostgresProjectStatusCustomTag> customTags) {
+
+            this.customTags = customTags;
+            return this;
+        }
+        public Builder customTags(PostgresProjectStatusCustomTag... customTags) {
+            return customTags(List.of(customTags));
         }
         @CustomType.Setter
         public Builder defaultEndpointSettings(@Nullable PostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings) {
@@ -173,6 +218,8 @@ public final class PostgresProjectStatus {
         public PostgresProjectStatus build() {
             final var _resultValue = new PostgresProjectStatus();
             _resultValue.branchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
+            _resultValue.budgetPolicyId = budgetPolicyId;
+            _resultValue.customTags = customTags;
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;
             _resultValue.displayName = displayName;
             _resultValue.historyRetentionDuration = historyRetentionDuration;

@@ -54,7 +54,7 @@ func GetDatabaseInstances(ctx *pulumi.Context, args *GetDatabaseInstancesArgs, o
 
 // A collection of arguments for invoking getDatabaseInstances.
 type GetDatabaseInstancesArgs struct {
-	// Upper bound for items returned
+	// Upper bound for items returned. The maximum value is 100
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetDatabaseInstancesProviderConfig `pulumi:"providerConfig"`
@@ -80,7 +80,7 @@ func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOu
 
 // A collection of arguments for invoking getDatabaseInstances.
 type GetDatabaseInstancesOutputArgs struct {
-	// Upper bound for items returned
+	// Upper bound for items returned. The maximum value is 100
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetDatabaseInstancesProviderConfigPtrInput `pulumi:"providerConfig"`

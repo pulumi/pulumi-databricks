@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.RepoProviderConfigArgs;
 import com.pulumi.databricks.inputs.RepoSparseCheckoutArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -76,6 +77,13 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.path);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<RepoProviderConfigArgs> providerConfig;
+
+    public Optional<Output<RepoProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="sparseCheckout")
     private @Nullable Output<RepoSparseCheckoutArgs> sparseCheckout;
 
@@ -135,6 +143,7 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
         this.commitHash = $.commitHash;
         this.gitProvider = $.gitProvider;
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
         this.sparseCheckout = $.sparseCheckout;
         this.tag = $.tag;
         this.url = $.url;
@@ -241,6 +250,15 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        public Builder providerConfig(@Nullable Output<RepoProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(RepoProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder sparseCheckout(@Nullable Output<RepoSparseCheckoutArgs> sparseCheckout) {

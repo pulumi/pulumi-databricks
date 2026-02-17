@@ -188,6 +188,7 @@ export class Pipeline extends pulumi.CustomResource {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     declare public readonly photon: pulumi.Output<boolean | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PipelineProviderConfig | undefined>;
     declare public readonly restartWindow: pulumi.Output<outputs.PipelineRestartWindow | undefined>;
     /**
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
@@ -265,6 +266,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["notifications"] = state?.notifications;
             resourceInputs["photon"] = state?.photon;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["restartWindow"] = state?.restartWindow;
             resourceInputs["rootPath"] = state?.rootPath;
             resourceInputs["runAs"] = state?.runAs;
@@ -306,6 +308,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["notifications"] = args?.notifications;
             resourceInputs["photon"] = args?.photon;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["restartWindow"] = args?.restartWindow;
             resourceInputs["rootPath"] = args?.rootPath;
             resourceInputs["runAs"] = args?.runAs;
@@ -403,6 +406,7 @@ export interface PipelineState {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.PipelineProviderConfig>;
     restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
     /**
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
@@ -520,6 +524,7 @@ export interface PipelineArgs {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.PipelineProviderConfig>;
     restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
     /**
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.SqlVisualizationProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,6 +35,21 @@ public final class SqlVisualizationState extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<String>> options() {
         return Optional.ofNullable(this.options);
+    }
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SqlVisualizationProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SqlVisualizationProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     @Import(name="queryId")
@@ -70,6 +86,7 @@ public final class SqlVisualizationState extends com.pulumi.resources.ResourceAr
         this.description = $.description;
         this.name = $.name;
         this.options = $.options;
+        this.providerConfig = $.providerConfig;
         this.queryId = $.queryId;
         this.queryPlan = $.queryPlan;
         this.type = $.type;
@@ -119,6 +136,27 @@ public final class SqlVisualizationState extends com.pulumi.resources.ResourceAr
 
         public Builder options(String options) {
             return options(Output.of(options));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SqlVisualizationProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SqlVisualizationProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder queryId(@Nullable Output<String> queryId) {

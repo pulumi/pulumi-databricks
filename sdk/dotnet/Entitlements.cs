@@ -133,6 +133,12 @@ namespace Pulumi.Databricks
         public Output<string?> GroupId { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.EntitlementsProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Canonical unique identifier for the service principal.
         /// 
         /// The following entitlements are available.
@@ -229,6 +235,12 @@ namespace Pulumi.Databricks
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.EntitlementsProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Canonical unique identifier for the service principal.
         /// 
         /// The following entitlements are available.
@@ -285,6 +297,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.EntitlementsProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Canonical unique identifier for the service principal.

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.InstanceProfileArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.InstanceProfileState;
+import com.pulumi.databricks.outputs.InstanceProfileProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -157,6 +158,20 @@ public class InstanceProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> isMetaInstanceProfile() {
         return Codegen.optional(this.isMetaInstanceProfile);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={InstanceProfileProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceProfileProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<InstanceProfileProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. &#34;Your requested instance type is not supported in your requested availability zone&#34;), you can pass this flag to skip the validation and forcibly add the instance profile.

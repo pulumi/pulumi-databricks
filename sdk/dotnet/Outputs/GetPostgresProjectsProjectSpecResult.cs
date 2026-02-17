@@ -14,6 +14,14 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresProjectsProjectSpecResult
     {
         /// <summary>
+        /// (string) - The budget policy that is applied to the project
+        /// </summary>
+        public readonly string? BudgetPolicyId;
+        /// <summary>
+        /// (list of ProjectCustomTag) - The effective custom tags associated with the project
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetPostgresProjectsProjectSpecCustomTagResult> CustomTags;
+        /// <summary>
         /// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         /// </summary>
         public readonly Outputs.GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult? DefaultEndpointSettings;
@@ -32,6 +40,10 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetPostgresProjectsProjectSpecResult(
+            string? budgetPolicyId,
+
+            ImmutableArray<Outputs.GetPostgresProjectsProjectSpecCustomTagResult> customTags,
+
             Outputs.GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult? defaultEndpointSettings,
 
             string? displayName,
@@ -40,6 +52,8 @@ namespace Pulumi.Databricks.Outputs
 
             int? pgVersion)
         {
+            BudgetPolicyId = budgetPolicyId;
+            CustomTags = customTags;
             DefaultEndpointSettings = defaultEndpointSettings;
             DisplayName = displayName;
             HistoryRetentionDuration = historyRetentionDuration;

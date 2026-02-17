@@ -66,6 +66,12 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SecretScopeProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SecretScope resource with the given unique name, arguments, and options.
@@ -133,6 +139,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SecretScopeProviderConfigArgs>? ProviderConfig { get; set; }
+
         public SecretScopeArgs()
         {
         }
@@ -161,6 +173,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SecretScopeProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public SecretScopeState()
         {

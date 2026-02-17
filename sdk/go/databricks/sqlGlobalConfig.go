@@ -105,6 +105,8 @@ type SqlGlobalConfig struct {
 	GoogleServiceAccount pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrOutput `pulumi:"instanceProfileArn"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlGlobalConfigProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -149,6 +151,8 @@ type sqlGlobalConfigState struct {
 	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SqlGlobalConfigProviderConfig `pulumi:"providerConfig"`
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -164,6 +168,8 @@ type SqlGlobalConfigState struct {
 	GoogleServiceAccount pulumi.StringPtrInput
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlGlobalConfigProviderConfigPtrInput
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
 	SecurityPolicy pulumi.StringPtrInput
 	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -183,6 +189,8 @@ type sqlGlobalConfigArgs struct {
 	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *SqlGlobalConfigProviderConfig `pulumi:"providerConfig"`
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -199,6 +207,8 @@ type SqlGlobalConfigArgs struct {
 	GoogleServiceAccount pulumi.StringPtrInput
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig SqlGlobalConfigProviderConfigPtrInput
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
 	SecurityPolicy pulumi.StringPtrInput
 	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -310,6 +320,11 @@ func (o SqlGlobalConfigOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
 // databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 func (o SqlGlobalConfigOutput) InstanceProfileArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.StringPtrOutput { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o SqlGlobalConfigOutput) ProviderConfig() SqlGlobalConfigProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SqlGlobalConfig) SqlGlobalConfigProviderConfigPtrOutput { return v.ProviderConfig }).(SqlGlobalConfigProviderConfigPtrOutput)
 }
 
 // The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values

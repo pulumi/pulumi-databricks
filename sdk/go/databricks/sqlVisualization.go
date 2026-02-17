@@ -88,13 +88,15 @@ import (
 type SqlVisualization struct {
 	pulumi.CustomResourceState
 
-	Description     pulumi.StringPtrOutput `pulumi:"description"`
-	Name            pulumi.StringOutput    `pulumi:"name"`
-	Options         pulumi.StringOutput    `pulumi:"options"`
-	QueryId         pulumi.StringOutput    `pulumi:"queryId"`
-	QueryPlan       pulumi.StringPtrOutput `pulumi:"queryPlan"`
-	Type            pulumi.StringOutput    `pulumi:"type"`
-	VisualizationId pulumi.StringOutput    `pulumi:"visualizationId"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Name        pulumi.StringOutput    `pulumi:"name"`
+	Options     pulumi.StringOutput    `pulumi:"options"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  SqlVisualizationProviderConfigPtrOutput `pulumi:"providerConfig"`
+	QueryId         pulumi.StringOutput                     `pulumi:"queryId"`
+	QueryPlan       pulumi.StringPtrOutput                  `pulumi:"queryPlan"`
+	Type            pulumi.StringOutput                     `pulumi:"type"`
+	VisualizationId pulumi.StringOutput                     `pulumi:"visualizationId"`
 }
 
 // NewSqlVisualization registers a new resource with the given unique name, arguments, and options.
@@ -136,19 +138,23 @@ func GetSqlVisualization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlVisualization resources.
 type sqlVisualizationState struct {
-	Description     *string `pulumi:"description"`
-	Name            *string `pulumi:"name"`
-	Options         *string `pulumi:"options"`
-	QueryId         *string `pulumi:"queryId"`
-	QueryPlan       *string `pulumi:"queryPlan"`
-	Type            *string `pulumi:"type"`
-	VisualizationId *string `pulumi:"visualizationId"`
+	Description *string `pulumi:"description"`
+	Name        *string `pulumi:"name"`
+	Options     *string `pulumi:"options"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  *SqlVisualizationProviderConfig `pulumi:"providerConfig"`
+	QueryId         *string                         `pulumi:"queryId"`
+	QueryPlan       *string                         `pulumi:"queryPlan"`
+	Type            *string                         `pulumi:"type"`
+	VisualizationId *string                         `pulumi:"visualizationId"`
 }
 
 type SqlVisualizationState struct {
-	Description     pulumi.StringPtrInput
-	Name            pulumi.StringPtrInput
-	Options         pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Options     pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  SqlVisualizationProviderConfigPtrInput
 	QueryId         pulumi.StringPtrInput
 	QueryPlan       pulumi.StringPtrInput
 	Type            pulumi.StringPtrInput
@@ -160,20 +166,24 @@ func (SqlVisualizationState) ElementType() reflect.Type {
 }
 
 type sqlVisualizationArgs struct {
-	Description     *string `pulumi:"description"`
-	Name            *string `pulumi:"name"`
-	Options         string  `pulumi:"options"`
-	QueryId         string  `pulumi:"queryId"`
-	QueryPlan       *string `pulumi:"queryPlan"`
-	Type            string  `pulumi:"type"`
-	VisualizationId *string `pulumi:"visualizationId"`
+	Description *string `pulumi:"description"`
+	Name        *string `pulumi:"name"`
+	Options     string  `pulumi:"options"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  *SqlVisualizationProviderConfig `pulumi:"providerConfig"`
+	QueryId         string                          `pulumi:"queryId"`
+	QueryPlan       *string                         `pulumi:"queryPlan"`
+	Type            string                          `pulumi:"type"`
+	VisualizationId *string                         `pulumi:"visualizationId"`
 }
 
 // The set of arguments for constructing a SqlVisualization resource.
 type SqlVisualizationArgs struct {
-	Description     pulumi.StringPtrInput
-	Name            pulumi.StringPtrInput
-	Options         pulumi.StringInput
+	Description pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Options     pulumi.StringInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  SqlVisualizationProviderConfigPtrInput
 	QueryId         pulumi.StringInput
 	QueryPlan       pulumi.StringPtrInput
 	Type            pulumi.StringInput
@@ -277,6 +287,11 @@ func (o SqlVisualizationOutput) Name() pulumi.StringOutput {
 
 func (o SqlVisualizationOutput) Options() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVisualization) pulumi.StringOutput { return v.Options }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o SqlVisualizationOutput) ProviderConfig() SqlVisualizationProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SqlVisualization) SqlVisualizationProviderConfigPtrOutput { return v.ProviderConfig }).(SqlVisualizationProviderConfigPtrOutput)
 }
 
 func (o SqlVisualizationOutput) QueryId() pulumi.StringOutput {

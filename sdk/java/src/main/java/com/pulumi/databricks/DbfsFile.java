@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.DbfsFileArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DbfsFileState;
+import com.pulumi.databricks.outputs.DbfsFileProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -86,6 +87,20 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> path() {
         return this.path;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={DbfsFileProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DbfsFileProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<DbfsFileProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.

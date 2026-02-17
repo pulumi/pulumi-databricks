@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -89,6 +91,10 @@ export class InstanceProfile extends pulumi.CustomResource {
      */
     declare public readonly isMetaInstanceProfile: pulumi.Output<boolean | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.InstanceProfileProviderConfig | undefined>;
+    /**
      * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
      */
     declare public readonly skipValidation: pulumi.Output<boolean>;
@@ -109,6 +115,7 @@ export class InstanceProfile extends pulumi.CustomResource {
             resourceInputs["iamRoleArn"] = state?.iamRoleArn;
             resourceInputs["instanceProfileArn"] = state?.instanceProfileArn;
             resourceInputs["isMetaInstanceProfile"] = state?.isMetaInstanceProfile;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["skipValidation"] = state?.skipValidation;
         } else {
             const args = argsOrState as InstanceProfileArgs | undefined;
@@ -118,6 +125,7 @@ export class InstanceProfile extends pulumi.CustomResource {
             resourceInputs["iamRoleArn"] = args?.iamRoleArn;
             resourceInputs["instanceProfileArn"] = args?.instanceProfileArn;
             resourceInputs["isMetaInstanceProfile"] = args?.isMetaInstanceProfile;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["skipValidation"] = args?.skipValidation;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -142,6 +150,10 @@ export interface InstanceProfileState {
      */
     isMetaInstanceProfile?: pulumi.Input<boolean>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.InstanceProfileProviderConfig>;
+    /**
      * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
      */
     skipValidation?: pulumi.Input<boolean>;
@@ -163,6 +175,10 @@ export interface InstanceProfileArgs {
      * Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
      */
     isMetaInstanceProfile?: pulumi.Input<boolean>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.InstanceProfileProviderConfig>;
     /**
      * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
      */

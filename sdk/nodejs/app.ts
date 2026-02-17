@@ -151,6 +151,7 @@ export class App extends pulumi.CustomResource {
      * name of the app service principal
      */
     declare public /*out*/ readonly servicePrincipalName: pulumi.Output<string>;
+    declare public readonly space: pulumi.Output<string | undefined>;
     /**
      * The update time of the app.
      */
@@ -205,6 +206,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["servicePrincipalClientId"] = state?.servicePrincipalClientId;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
             resourceInputs["servicePrincipalName"] = state?.servicePrincipalName;
+            resourceInputs["space"] = state?.space;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["updater"] = state?.updater;
             resourceInputs["url"] = state?.url;
@@ -220,6 +222,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["noCompute"] = args?.noCompute;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["resources"] = args?.resources;
+            resourceInputs["space"] = args?.space;
             resourceInputs["usagePolicyId"] = args?.usagePolicyId;
             resourceInputs["userApiScopes"] = args?.userApiScopes;
             resourceInputs["activeDeployment"] = undefined /*out*/;
@@ -318,6 +321,7 @@ export interface AppState {
      * name of the app service principal
      */
     servicePrincipalName?: pulumi.Input<string>;
+    space?: pulumi.Input<string>;
     /**
      * The update time of the app.
      */
@@ -364,6 +368,7 @@ export interface AppArgs {
      * A list of resources that the app have access to.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
+    space?: pulumi.Input<string>;
     usagePolicyId?: pulumi.Input<string>;
     /**
      * A list of api scopes granted to the user access token.

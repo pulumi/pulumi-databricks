@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -68,6 +70,10 @@ export class WorkspaceConf extends pulumi.CustomResource {
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      */
     declare public readonly customConfig: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceConfProviderConfig | undefined>;
 
     /**
      * Create a WorkspaceConf resource with the given unique name, arguments, and options.
@@ -83,9 +89,11 @@ export class WorkspaceConf extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkspaceConfState | undefined;
             resourceInputs["customConfig"] = state?.customConfig;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as WorkspaceConfArgs | undefined;
             resourceInputs["customConfig"] = args?.customConfig;
+            resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkspaceConf.__pulumiType, name, resourceInputs, opts);
@@ -100,6 +108,10 @@ export interface WorkspaceConfState {
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      */
     customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceConfProviderConfig>;
 }
 
 /**
@@ -110,4 +122,8 @@ export interface WorkspaceConfArgs {
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      */
     customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.WorkspaceConfProviderConfig>;
 }

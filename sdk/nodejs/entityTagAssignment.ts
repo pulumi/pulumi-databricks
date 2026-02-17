@@ -92,6 +92,10 @@ export class EntityTagAssignment extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.EntityTagAssignmentProviderConfig | undefined>;
     /**
+     * (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     */
+    declare public /*out*/ readonly sourceType: pulumi.Output<string>;
+    /**
      * The key of the tag
      */
     declare public readonly tagKey: pulumi.Output<string>;
@@ -99,6 +103,14 @@ export class EntityTagAssignment extends pulumi.CustomResource {
      * The value of the tag
      */
     declare public readonly tagValue: pulumi.Output<string | undefined>;
+    /**
+     * (string) - The timestamp when the tag assignment was last updated
+     */
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * (string) - The user or principal who updated the tag assignment
+     */
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
     /**
      * Create a EntityTagAssignment resource with the given unique name, arguments, and options.
@@ -116,8 +128,11 @@ export class EntityTagAssignment extends pulumi.CustomResource {
             resourceInputs["entityName"] = state?.entityName;
             resourceInputs["entityType"] = state?.entityType;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["sourceType"] = state?.sourceType;
             resourceInputs["tagKey"] = state?.tagKey;
             resourceInputs["tagValue"] = state?.tagValue;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
             const args = argsOrState as EntityTagAssignmentArgs | undefined;
             if (args?.entityName === undefined && !opts.urn) {
@@ -134,6 +149,9 @@ export class EntityTagAssignment extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tagKey"] = args?.tagKey;
             resourceInputs["tagValue"] = args?.tagValue;
+            resourceInputs["sourceType"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["updatedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EntityTagAssignment.__pulumiType, name, resourceInputs, opts);
@@ -157,6 +175,10 @@ export interface EntityTagAssignmentState {
      */
     providerConfig?: pulumi.Input<inputs.EntityTagAssignmentProviderConfig>;
     /**
+     * (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
+     */
+    sourceType?: pulumi.Input<string>;
+    /**
      * The key of the tag
      */
     tagKey?: pulumi.Input<string>;
@@ -164,6 +186,14 @@ export interface EntityTagAssignmentState {
      * The value of the tag
      */
     tagValue?: pulumi.Input<string>;
+    /**
+     * (string) - The timestamp when the tag assignment was last updated
+     */
+    updateTime?: pulumi.Input<string>;
+    /**
+     * (string) - The user or principal who updated the tag assignment
+     */
+    updatedBy?: pulumi.Input<string>;
 }
 
 /**

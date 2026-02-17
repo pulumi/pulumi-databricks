@@ -33,6 +33,9 @@ namespace Pulumi.Databricks
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.TableProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("schemaName")]
         public Output<string> SchemaName { get; private set; } = null!;
 
@@ -125,6 +128,9 @@ namespace Pulumi.Databricks
             set => _properties = value;
         }
 
+        [Input("providerConfig")]
+        public Input<Inputs.TableProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("schemaName", required: true)]
         public Input<string> SchemaName { get; set; } = null!;
 
@@ -178,6 +184,9 @@ namespace Pulumi.Databricks
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
+
+        [Input("providerConfig")]
+        public Input<Inputs.TableProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("schemaName")]
         public Input<string>? SchemaName { get; set; }

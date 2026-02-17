@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['TokenArgs', 'Token']
 
@@ -23,11 +25,13 @@ class TokenArgs:
                  creation_time: Optional[pulumi.Input[_builtins.int]] = None,
                  expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input['TokenProviderConfigArgs']] = None,
                  token_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Token resource.
-        :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user’s settings page for this token.
+        :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user's settings page for this token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
+        :param pulumi.Input['TokenProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -37,6 +41,8 @@ class TokenArgs:
             pulumi.set(__self__, "expiry_time", expiry_time)
         if lifetime_seconds is not None:
             pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if token_id is not None:
             pulumi.set(__self__, "token_id", token_id)
 
@@ -44,7 +50,7 @@ class TokenArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (String) Comment that will appear on the user’s settings page for this token.
+        (String) Comment that will appear on the user's settings page for this token.
         """
         return pulumi.get(self, "comment")
 
@@ -81,6 +87,18 @@ class TokenArgs:
     @lifetime_seconds.setter
     def lifetime_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "lifetime_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['TokenProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['TokenProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenId")
@@ -99,12 +117,14 @@ class _TokenState:
                  creation_time: Optional[pulumi.Input[_builtins.int]] = None,
                  expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input['TokenProviderConfigArgs']] = None,
                  token_id: Optional[pulumi.Input[_builtins.str]] = None,
                  token_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Token resources.
-        :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user’s settings page for this token.
+        :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user's settings page for this token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
+        :param pulumi.Input['TokenProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] token_value: **Sensitive** value of the newly-created token.
         """
         if comment is not None:
@@ -115,6 +135,8 @@ class _TokenState:
             pulumi.set(__self__, "expiry_time", expiry_time)
         if lifetime_seconds is not None:
             pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if token_id is not None:
             pulumi.set(__self__, "token_id", token_id)
         if token_value is not None:
@@ -124,7 +146,7 @@ class _TokenState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (String) Comment that will appear on the user’s settings page for this token.
+        (String) Comment that will appear on the user's settings page for this token.
         """
         return pulumi.get(self, "comment")
 
@@ -161,6 +183,18 @@ class _TokenState:
     @lifetime_seconds.setter
     def lifetime_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "lifetime_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['TokenProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['TokenProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenId")
@@ -194,6 +228,7 @@ class Token(pulumi.CustomResource):
                  creation_time: Optional[pulumi.Input[_builtins.int]] = None,
                  expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
                  token_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -233,8 +268,9 @@ class Token(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user’s settings page for this token.
+        :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user's settings page for this token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
+        :param pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -296,6 +332,7 @@ class Token(pulumi.CustomResource):
                  creation_time: Optional[pulumi.Input[_builtins.int]] = None,
                  expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 provider_config: Optional[pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
                  token_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -310,6 +347,7 @@ class Token(pulumi.CustomResource):
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["expiry_time"] = expiry_time
             __props__.__dict__["lifetime_seconds"] = lifetime_seconds
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["token_id"] = token_id
             __props__.__dict__["token_value"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["tokenValue"])
@@ -328,6 +366,7 @@ class Token(pulumi.CustomResource):
             creation_time: Optional[pulumi.Input[_builtins.int]] = None,
             expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
             lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+            provider_config: Optional[pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
             token_id: Optional[pulumi.Input[_builtins.str]] = None,
             token_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'Token':
         """
@@ -337,8 +376,9 @@ class Token(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user’s settings page for this token.
+        :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user's settings page for this token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
+        :param pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] token_value: **Sensitive** value of the newly-created token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -349,6 +389,7 @@ class Token(pulumi.CustomResource):
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["expiry_time"] = expiry_time
         __props__.__dict__["lifetime_seconds"] = lifetime_seconds
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["token_id"] = token_id
         __props__.__dict__["token_value"] = token_value
         return Token(resource_name, opts=opts, __props__=__props__)
@@ -357,7 +398,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (String) Comment that will appear on the user’s settings page for this token.
+        (String) Comment that will appear on the user's settings page for this token.
         """
         return pulumi.get(self, "comment")
 
@@ -378,6 +419,14 @@ class Token(pulumi.CustomResource):
         (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         """
         return pulumi.get(self, "lifetime_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.TokenProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="tokenId")

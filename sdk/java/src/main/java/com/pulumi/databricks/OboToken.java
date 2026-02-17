@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.OboTokenArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.OboTokenState;
+import com.pulumi.databricks.outputs.OboTokenProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -199,6 +200,20 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> lifetimeSeconds() {
         return Codegen.optional(this.lifetimeSeconds);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={OboTokenProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ OboTokenProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<OboTokenProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * **Sensitive** value of the newly-created token.

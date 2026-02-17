@@ -60,6 +60,11 @@ export type AppsSettingsCustomTemplate = import("./appsSettingsCustomTemplate").
 export const AppsSettingsCustomTemplate: typeof import("./appsSettingsCustomTemplate").AppsSettingsCustomTemplate = null as any;
 utilities.lazyLoad(exports, ["AppsSettingsCustomTemplate"], () => require("./appsSettingsCustomTemplate"));
 
+export { AppsSpaceArgs, AppsSpaceState } from "./appsSpace";
+export type AppsSpace = import("./appsSpace").AppsSpace;
+export const AppsSpace: typeof import("./appsSpace").AppsSpace = null as any;
+utilities.lazyLoad(exports, ["AppsSpace"], () => require("./appsSpace"));
+
 export { ArtifactAllowlistArgs, ArtifactAllowlistState } from "./artifactAllowlist";
 export type ArtifactAllowlist = import("./artifactAllowlist").ArtifactAllowlist;
 export const ArtifactAllowlist: typeof import("./artifactAllowlist").ArtifactAllowlist = null as any;
@@ -180,6 +185,11 @@ export type DisableLegacyFeaturesSetting = import("./disableLegacyFeaturesSettin
 export const DisableLegacyFeaturesSetting: typeof import("./disableLegacyFeaturesSetting").DisableLegacyFeaturesSetting = null as any;
 utilities.lazyLoad(exports, ["DisableLegacyFeaturesSetting"], () => require("./disableLegacyFeaturesSetting"));
 
+export { EndpointArgs, EndpointState } from "./endpoint";
+export type Endpoint = import("./endpoint").Endpoint;
+export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
+utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
+
 export { EnhancedSecurityMonitoringWorkspaceSettingArgs, EnhancedSecurityMonitoringWorkspaceSettingState } from "./enhancedSecurityMonitoringWorkspaceSetting";
 export type EnhancedSecurityMonitoringWorkspaceSetting = import("./enhancedSecurityMonitoringWorkspaceSetting").EnhancedSecurityMonitoringWorkspaceSetting;
 export const EnhancedSecurityMonitoringWorkspaceSetting: typeof import("./enhancedSecurityMonitoringWorkspaceSetting").EnhancedSecurityMonitoringWorkspaceSetting = null as any;
@@ -284,6 +294,16 @@ export { GetAppsSettingsCustomTemplatesArgs, GetAppsSettingsCustomTemplatesResul
 export const getAppsSettingsCustomTemplates: typeof import("./getAppsSettingsCustomTemplates").getAppsSettingsCustomTemplates = null as any;
 export const getAppsSettingsCustomTemplatesOutput: typeof import("./getAppsSettingsCustomTemplates").getAppsSettingsCustomTemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getAppsSettingsCustomTemplates","getAppsSettingsCustomTemplatesOutput"], () => require("./getAppsSettingsCustomTemplates"));
+
+export { GetAppsSpaceArgs, GetAppsSpaceResult, GetAppsSpaceOutputArgs } from "./getAppsSpace";
+export const getAppsSpace: typeof import("./getAppsSpace").getAppsSpace = null as any;
+export const getAppsSpaceOutput: typeof import("./getAppsSpace").getAppsSpaceOutput = null as any;
+utilities.lazyLoad(exports, ["getAppsSpace","getAppsSpaceOutput"], () => require("./getAppsSpace"));
+
+export { GetAppsSpacesArgs, GetAppsSpacesResult, GetAppsSpacesOutputArgs } from "./getAppsSpaces";
+export const getAppsSpaces: typeof import("./getAppsSpaces").getAppsSpaces = null as any;
+export const getAppsSpacesOutput: typeof import("./getAppsSpaces").getAppsSpacesOutput = null as any;
+utilities.lazyLoad(exports, ["getAppsSpaces","getAppsSpacesOutput"], () => require("./getAppsSpaces"));
 
 export { GetAwsAssumeRolePolicyArgs, GetAwsAssumeRolePolicyResult, GetAwsAssumeRolePolicyOutputArgs } from "./getAwsAssumeRolePolicy";
 export const getAwsAssumeRolePolicy: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicy = null as any;
@@ -429,6 +449,16 @@ export { GetDirectoryArgs, GetDirectoryResult, GetDirectoryOutputArgs } from "./
 export const getDirectory: typeof import("./getDirectory").getDirectory = null as any;
 export const getDirectoryOutput: typeof import("./getDirectory").getDirectoryOutput = null as any;
 utilities.lazyLoad(exports, ["getDirectory","getDirectoryOutput"], () => require("./getDirectory"));
+
+export { GetEndpointArgs, GetEndpointResult, GetEndpointOutputArgs } from "./getEndpoint";
+export const getEndpoint: typeof import("./getEndpoint").getEndpoint = null as any;
+export const getEndpointOutput: typeof import("./getEndpoint").getEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
+
+export { GetEndpointsArgs, GetEndpointsResult, GetEndpointsOutputArgs } from "./getEndpoints";
+export const getEndpoints: typeof import("./getEndpoints").getEndpoints = null as any;
+export const getEndpointsOutput: typeof import("./getEndpoints").getEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpoints","getEndpointsOutput"], () => require("./getEndpoints"));
 
 export { GetEntityTagAssignmentArgs, GetEntityTagAssignmentResult, GetEntityTagAssignmentOutputArgs } from "./getEntityTagAssignment";
 export const getEntityTagAssignment: typeof import("./getEntityTagAssignment").getEntityTagAssignment = null as any;
@@ -1329,6 +1359,8 @@ const _module = {
                 return new App(name, <any>undefined, { urn })
             case "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate":
                 return new AppsSettingsCustomTemplate(name, <any>undefined, { urn })
+            case "databricks:index/appsSpace:AppsSpace":
+                return new AppsSpace(name, <any>undefined, { urn })
             case "databricks:index/artifactAllowlist:ArtifactAllowlist":
                 return new ArtifactAllowlist(name, <any>undefined, { urn })
             case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -1377,6 +1409,8 @@ const _module = {
                 return new DisableLegacyDbfsSetting(name, <any>undefined, { urn })
             case "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting":
                 return new DisableLegacyFeaturesSetting(name, <any>undefined, { urn })
+            case "databricks:index/endpoint:Endpoint":
+                return new Endpoint(name, <any>undefined, { urn })
             case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
                 return new EnhancedSecurityMonitoringWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/entitlements:Entitlements":
@@ -1597,6 +1631,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/alert", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/alertV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/app", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/appsSettingsCustomTemplate", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/appsSpace", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/budget", _module)
@@ -1621,6 +1656,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyAccessSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyDbfsSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyFeaturesSetting", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/endpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/enhancedSecurityMonitoringWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entityTagAssignment", _module)

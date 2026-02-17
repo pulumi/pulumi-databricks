@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.SqlGlobalConfigProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -82,6 +83,21 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<SqlGlobalConfigProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<SqlGlobalConfigProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      * 
      */
@@ -118,6 +134,7 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
         this.enableServerlessCompute = $.enableServerlessCompute;
         this.googleServiceAccount = $.googleServiceAccount;
         this.instanceProfileArn = $.instanceProfileArn;
+        this.providerConfig = $.providerConfig;
         this.securityPolicy = $.securityPolicy;
         this.sqlConfigParams = $.sqlConfigParams;
     }
@@ -226,6 +243,27 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder instanceProfileArn(String instanceProfileArn) {
             return instanceProfileArn(Output.of(instanceProfileArn));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<SqlGlobalConfigProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(SqlGlobalConfigProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

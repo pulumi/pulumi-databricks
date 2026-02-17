@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.MountState;
 import com.pulumi.databricks.outputs.MountAbfs;
 import com.pulumi.databricks.outputs.MountAdl;
 import com.pulumi.databricks.outputs.MountGs;
+import com.pulumi.databricks.outputs.MountProviderConfig;
 import com.pulumi.databricks.outputs.MountS3;
 import com.pulumi.databricks.outputs.MountWasb;
 import java.lang.String;
@@ -523,6 +524,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * * `providerConfig` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+ *   * `workspaceId` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+ * 
  * ## Migration from other mount resources
  * 
  * Migration from the specific mount resource is straightforward:
@@ -592,6 +596,12 @@ public class Mount extends com.pulumi.resources.CustomResource {
 
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="providerConfig", refs={MountProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ MountProviderConfig> providerConfig;
+
+    public Output<Optional<MountProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceId;

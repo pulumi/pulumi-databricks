@@ -86,6 +86,12 @@ namespace Pulumi.Databricks
         [Output("options")]
         public Output<string> Options { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SqlVisualizationProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("queryId")]
         public Output<string> QueryId { get; private set; } = null!;
 
@@ -153,6 +159,12 @@ namespace Pulumi.Databricks
         [Input("options", required: true)]
         public Input<string> Options { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlVisualizationProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("queryId", required: true)]
         public Input<string> QueryId { get; set; } = null!;
 
@@ -181,6 +193,12 @@ namespace Pulumi.Databricks
 
         [Input("options")]
         public Input<string>? Options { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlVisualizationProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("queryId")]
         public Input<string>? QueryId { get; set; }

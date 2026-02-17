@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.SqlGlobalConfigArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlGlobalConfigState;
+import com.pulumi.databricks.outputs.SqlGlobalConfigProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -167,6 +168,20 @@ public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> instanceProfileArn() {
         return Codegen.optional(this.instanceProfileArn);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={SqlGlobalConfigProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SqlGlobalConfigProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<SqlGlobalConfigProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values

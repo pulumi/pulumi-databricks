@@ -11,6 +11,7 @@ import com.pulumi.databricks.NotificationDestinationArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.NotificationDestinationState;
 import com.pulumi.databricks.outputs.NotificationDestinationConfig;
+import com.pulumi.databricks.outputs.NotificationDestinationProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -264,6 +265,20 @@ public class NotificationDestination extends com.pulumi.resources.CustomResource
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={NotificationDestinationProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ NotificationDestinationProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<NotificationDestinationProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

@@ -162,8 +162,9 @@ type Pipeline struct {
 	Name          pulumi.StringOutput             `pulumi:"name"`
 	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        pulumi.BoolPtrOutput           `pulumi:"photon"`
-	RestartWindow PipelineRestartWindowPtrOutput `pulumi:"restartWindow"`
+	Photon         pulumi.BoolPtrOutput            `pulumi:"photon"`
+	ProviderConfig PipelineProviderConfigPtrOutput `pulumi:"providerConfig"`
+	RestartWindow  PipelineRestartWindowPtrOutput  `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
 	RootPath pulumi.StringPtrOutput `pulumi:"rootPath"`
 	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
@@ -257,8 +258,9 @@ type pipelineState struct {
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        *bool                  `pulumi:"photon"`
-	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
+	Photon         *bool                   `pulumi:"photon"`
+	ProviderConfig *PipelineProviderConfig `pulumi:"providerConfig"`
+	RestartWindow  *PipelineRestartWindow  `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
 	RootPath *string `pulumi:"rootPath"`
 	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
@@ -323,8 +325,9 @@ type PipelineState struct {
 	Name          pulumi.StringPtrInput
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        pulumi.BoolPtrInput
-	RestartWindow PipelineRestartWindowPtrInput
+	Photon         pulumi.BoolPtrInput
+	ProviderConfig PipelineProviderConfigPtrInput
+	RestartWindow  PipelineRestartWindowPtrInput
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
 	RootPath pulumi.StringPtrInput
 	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
@@ -393,8 +396,9 @@ type pipelineArgs struct {
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        *bool                  `pulumi:"photon"`
-	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
+	Photon         *bool                   `pulumi:"photon"`
+	ProviderConfig *PipelineProviderConfig `pulumi:"providerConfig"`
+	RestartWindow  *PipelineRestartWindow  `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
 	RootPath *string `pulumi:"rootPath"`
 	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
@@ -460,8 +464,9 @@ type PipelineArgs struct {
 	Name          pulumi.StringPtrInput
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        pulumi.BoolPtrInput
-	RestartWindow PipelineRestartWindowPtrInput
+	Photon         pulumi.BoolPtrInput
+	ProviderConfig PipelineProviderConfigPtrInput
+	RestartWindow  PipelineRestartWindowPtrInput
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
 	RootPath pulumi.StringPtrInput
 	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
@@ -689,6 +694,10 @@ func (o PipelineOutput) Notifications() PipelineNotificationArrayOutput {
 // A flag indicating whether to use Photon engine. The default value is `false`.
 func (o PipelineOutput) Photon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Photon }).(pulumi.BoolPtrOutput)
+}
+
+func (o PipelineOutput) ProviderConfig() PipelineProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineProviderConfigPtrOutput { return v.ProviderConfig }).(PipelineProviderConfigPtrOutput)
 }
 
 func (o PipelineOutput) RestartWindow() PipelineRestartWindowPtrOutput {

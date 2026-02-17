@@ -13,6 +13,24 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PostgresProjectSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (string) - The budget policy that is applied to the project
+        /// </summary>
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
+        [Input("customTags")]
+        private InputList<Inputs.PostgresProjectSpecCustomTagArgs>? _customTags;
+
+        /// <summary>
+        /// (list of ProjectCustomTag) - The effective custom tags associated with the project
+        /// </summary>
+        public InputList<Inputs.PostgresProjectSpecCustomTagArgs> CustomTags
+        {
+            get => _customTags ?? (_customTags = new InputList<Inputs.PostgresProjectSpecCustomTagArgs>());
+            set => _customTags = value;
+        }
+
+        /// <summary>
         /// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         /// </summary>
         [Input("defaultEndpointSettings")]

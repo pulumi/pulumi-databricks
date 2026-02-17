@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobGitSourceGitSnapshot;
 import com.pulumi.databricks.outputs.JobGitSourceJobSource;
+import com.pulumi.databricks.outputs.JobGitSourceSparseCheckout;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -31,6 +32,7 @@ public final class JobGitSource {
      * 
      */
     private @Nullable String provider;
+    private @Nullable JobGitSourceSparseCheckout sparseCheckout;
     /**
      * @return name of the Git branch to use. Conflicts with `branch` and `commit`.
      * 
@@ -70,6 +72,9 @@ public final class JobGitSource {
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
+    public Optional<JobGitSourceSparseCheckout> sparseCheckout() {
+        return Optional.ofNullable(this.sparseCheckout);
+    }
     /**
      * @return name of the Git branch to use. Conflicts with `branch` and `commit`.
      * 
@@ -99,6 +104,7 @@ public final class JobGitSource {
         private @Nullable JobGitSourceGitSnapshot gitSnapshot;
         private @Nullable JobGitSourceJobSource jobSource;
         private @Nullable String provider;
+        private @Nullable JobGitSourceSparseCheckout sparseCheckout;
         private @Nullable String tag;
         private String url;
         public Builder() {}
@@ -109,6 +115,7 @@ public final class JobGitSource {
     	      this.gitSnapshot = defaults.gitSnapshot;
     	      this.jobSource = defaults.jobSource;
     	      this.provider = defaults.provider;
+    	      this.sparseCheckout = defaults.sparseCheckout;
     	      this.tag = defaults.tag;
     	      this.url = defaults.url;
         }
@@ -144,6 +151,12 @@ public final class JobGitSource {
             return this;
         }
         @CustomType.Setter
+        public Builder sparseCheckout(@Nullable JobGitSourceSparseCheckout sparseCheckout) {
+
+            this.sparseCheckout = sparseCheckout;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
 
             this.tag = tag;
@@ -164,6 +177,7 @@ public final class JobGitSource {
             _resultValue.gitSnapshot = gitSnapshot;
             _resultValue.jobSource = jobSource;
             _resultValue.provider = provider;
+            _resultValue.sparseCheckout = sparseCheckout;
             _resultValue.tag = tag;
             _resultValue.url = url;
             return _resultValue;

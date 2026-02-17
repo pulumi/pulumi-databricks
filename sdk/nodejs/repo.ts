@@ -85,6 +85,7 @@ export class Repo extends pulumi.CustomResource {
      * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
     declare public readonly path: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.RepoProviderConfig | undefined>;
     declare public readonly sparseCheckout: pulumi.Output<outputs.RepoSparseCheckout | undefined>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.
@@ -116,6 +117,7 @@ export class Repo extends pulumi.CustomResource {
             resourceInputs["commitHash"] = state?.commitHash;
             resourceInputs["gitProvider"] = state?.gitProvider;
             resourceInputs["path"] = state?.path;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["sparseCheckout"] = state?.sparseCheckout;
             resourceInputs["tag"] = state?.tag;
             resourceInputs["url"] = state?.url;
@@ -129,6 +131,7 @@ export class Repo extends pulumi.CustomResource {
             resourceInputs["commitHash"] = args?.commitHash;
             resourceInputs["gitProvider"] = args?.gitProvider;
             resourceInputs["path"] = args?.path;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["sparseCheckout"] = args?.sparseCheckout;
             resourceInputs["tag"] = args?.tag;
             resourceInputs["url"] = args?.url;
@@ -159,6 +162,7 @@ export interface RepoState {
      * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
     path?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.RepoProviderConfig>;
     sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.
@@ -194,6 +198,7 @@ export interface RepoArgs {
      * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
     path?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.RepoProviderConfig>;
     sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.

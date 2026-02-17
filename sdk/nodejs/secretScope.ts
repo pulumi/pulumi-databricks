@@ -71,6 +71,10 @@ export class SecretScope extends pulumi.CustomResource {
      * Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SecretScopeProviderConfig | undefined>;
 
     /**
      * Create a SecretScope resource with the given unique name, arguments, and options.
@@ -89,12 +93,14 @@ export class SecretScope extends pulumi.CustomResource {
             resourceInputs["initialManagePrincipal"] = state?.initialManagePrincipal;
             resourceInputs["keyvaultMetadata"] = state?.keyvaultMetadata;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as SecretScopeArgs | undefined;
             resourceInputs["backendType"] = args?.backendType;
             resourceInputs["initialManagePrincipal"] = args?.initialManagePrincipal;
             resourceInputs["keyvaultMetadata"] = args?.keyvaultMetadata;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretScope.__pulumiType, name, resourceInputs, opts);
@@ -118,6 +124,10 @@ export interface SecretScopeState {
      * Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SecretScopeProviderConfig>;
 }
 
 /**
@@ -137,4 +147,8 @@ export interface SecretScopeArgs {
      * Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SecretScopeProviderConfig>;
 }

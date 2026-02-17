@@ -20,6 +20,7 @@ import com.pulumi.databricks.outputs.PipelineIngestionDefinition;
 import com.pulumi.databricks.outputs.PipelineLatestUpdate;
 import com.pulumi.databricks.outputs.PipelineLibrary;
 import com.pulumi.databricks.outputs.PipelineNotification;
+import com.pulumi.databricks.outputs.PipelineProviderConfig;
 import com.pulumi.databricks.outputs.PipelineRestartWindow;
 import com.pulumi.databricks.outputs.PipelineRunAs;
 import com.pulumi.databricks.outputs.PipelineTrigger;
@@ -421,6 +422,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> photon() {
         return Codegen.optional(this.photon);
+    }
+    @Export(name="providerConfig", refs={PipelineProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineProviderConfig> providerConfig;
+
+    public Output<Optional<PipelineProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="restartWindow", refs={PipelineRestartWindow.class}, tree="[0]")
     private Output</* @Nullable */ PipelineRestartWindow> restartWindow;

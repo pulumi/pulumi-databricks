@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -88,6 +90,10 @@ export class SqlVisualization extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly options: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlVisualizationProviderConfig | undefined>;
     declare public readonly queryId: pulumi.Output<string>;
     declare public readonly queryPlan: pulumi.Output<string | undefined>;
     declare public readonly type: pulumi.Output<string>;
@@ -109,6 +115,7 @@ export class SqlVisualization extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["options"] = state?.options;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["queryId"] = state?.queryId;
             resourceInputs["queryPlan"] = state?.queryPlan;
             resourceInputs["type"] = state?.type;
@@ -127,6 +134,7 @@ export class SqlVisualization extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["options"] = args?.options;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["queryId"] = args?.queryId;
             resourceInputs["queryPlan"] = args?.queryPlan;
             resourceInputs["type"] = args?.type;
@@ -144,6 +152,10 @@ export interface SqlVisualizationState {
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     options?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlVisualizationProviderConfig>;
     queryId?: pulumi.Input<string>;
     queryPlan?: pulumi.Input<string>;
     type?: pulumi.Input<string>;
@@ -157,6 +169,10 @@ export interface SqlVisualizationArgs {
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     options: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlVisualizationProviderConfig>;
     queryId: pulumi.Input<string>;
     queryPlan?: pulumi.Input<string>;
     type: pulumi.Input<string>;

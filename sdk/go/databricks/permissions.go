@@ -1593,19 +1593,20 @@ type Permissions struct {
 	NotebookId           pulumi.StringPtrOutput              `pulumi:"notebookId"`
 	NotebookPath         pulumi.StringPtrOutput              `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType             pulumi.StringOutput    `pulumi:"objectType"`
-	PipelineId             pulumi.StringPtrOutput `pulumi:"pipelineId"`
-	RegisteredModelId      pulumi.StringPtrOutput `pulumi:"registeredModelId"`
-	RepoId                 pulumi.StringPtrOutput `pulumi:"repoId"`
-	RepoPath               pulumi.StringPtrOutput `pulumi:"repoPath"`
-	ServingEndpointId      pulumi.StringPtrOutput `pulumi:"servingEndpointId"`
-	SqlAlertId             pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
-	SqlDashboardId         pulumi.StringPtrOutput `pulumi:"sqlDashboardId"`
-	SqlEndpointId          pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
-	SqlQueryId             pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
-	VectorSearchEndpointId pulumi.StringPtrOutput `pulumi:"vectorSearchEndpointId"`
-	WorkspaceFileId        pulumi.StringPtrOutput `pulumi:"workspaceFileId"`
-	WorkspaceFilePath      pulumi.StringPtrOutput `pulumi:"workspaceFilePath"`
+	ObjectType             pulumi.StringOutput                `pulumi:"objectType"`
+	PipelineId             pulumi.StringPtrOutput             `pulumi:"pipelineId"`
+	ProviderConfig         PermissionsProviderConfigPtrOutput `pulumi:"providerConfig"`
+	RegisteredModelId      pulumi.StringPtrOutput             `pulumi:"registeredModelId"`
+	RepoId                 pulumi.StringPtrOutput             `pulumi:"repoId"`
+	RepoPath               pulumi.StringPtrOutput             `pulumi:"repoPath"`
+	ServingEndpointId      pulumi.StringPtrOutput             `pulumi:"servingEndpointId"`
+	SqlAlertId             pulumi.StringPtrOutput             `pulumi:"sqlAlertId"`
+	SqlDashboardId         pulumi.StringPtrOutput             `pulumi:"sqlDashboardId"`
+	SqlEndpointId          pulumi.StringPtrOutput             `pulumi:"sqlEndpointId"`
+	SqlQueryId             pulumi.StringPtrOutput             `pulumi:"sqlQueryId"`
+	VectorSearchEndpointId pulumi.StringPtrOutput             `pulumi:"vectorSearchEndpointId"`
+	WorkspaceFileId        pulumi.StringPtrOutput             `pulumi:"workspaceFileId"`
+	WorkspaceFilePath      pulumi.StringPtrOutput             `pulumi:"workspaceFilePath"`
 }
 
 // NewPermissions registers a new resource with the given unique name, arguments, and options.
@@ -1657,19 +1658,20 @@ type permissionsState struct {
 	NotebookId           *string                    `pulumi:"notebookId"`
 	NotebookPath         *string                    `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType             *string `pulumi:"objectType"`
-	PipelineId             *string `pulumi:"pipelineId"`
-	RegisteredModelId      *string `pulumi:"registeredModelId"`
-	RepoId                 *string `pulumi:"repoId"`
-	RepoPath               *string `pulumi:"repoPath"`
-	ServingEndpointId      *string `pulumi:"servingEndpointId"`
-	SqlAlertId             *string `pulumi:"sqlAlertId"`
-	SqlDashboardId         *string `pulumi:"sqlDashboardId"`
-	SqlEndpointId          *string `pulumi:"sqlEndpointId"`
-	SqlQueryId             *string `pulumi:"sqlQueryId"`
-	VectorSearchEndpointId *string `pulumi:"vectorSearchEndpointId"`
-	WorkspaceFileId        *string `pulumi:"workspaceFileId"`
-	WorkspaceFilePath      *string `pulumi:"workspaceFilePath"`
+	ObjectType             *string                    `pulumi:"objectType"`
+	PipelineId             *string                    `pulumi:"pipelineId"`
+	ProviderConfig         *PermissionsProviderConfig `pulumi:"providerConfig"`
+	RegisteredModelId      *string                    `pulumi:"registeredModelId"`
+	RepoId                 *string                    `pulumi:"repoId"`
+	RepoPath               *string                    `pulumi:"repoPath"`
+	ServingEndpointId      *string                    `pulumi:"servingEndpointId"`
+	SqlAlertId             *string                    `pulumi:"sqlAlertId"`
+	SqlDashboardId         *string                    `pulumi:"sqlDashboardId"`
+	SqlEndpointId          *string                    `pulumi:"sqlEndpointId"`
+	SqlQueryId             *string                    `pulumi:"sqlQueryId"`
+	VectorSearchEndpointId *string                    `pulumi:"vectorSearchEndpointId"`
+	WorkspaceFileId        *string                    `pulumi:"workspaceFileId"`
+	WorkspaceFilePath      *string                    `pulumi:"workspaceFilePath"`
 }
 
 type PermissionsState struct {
@@ -1691,6 +1693,7 @@ type PermissionsState struct {
 	// type of permissions.
 	ObjectType             pulumi.StringPtrInput
 	PipelineId             pulumi.StringPtrInput
+	ProviderConfig         PermissionsProviderConfigPtrInput
 	RegisteredModelId      pulumi.StringPtrInput
 	RepoId                 pulumi.StringPtrInput
 	RepoPath               pulumi.StringPtrInput
@@ -1725,19 +1728,20 @@ type permissionsArgs struct {
 	NotebookId           *string                    `pulumi:"notebookId"`
 	NotebookPath         *string                    `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType             *string `pulumi:"objectType"`
-	PipelineId             *string `pulumi:"pipelineId"`
-	RegisteredModelId      *string `pulumi:"registeredModelId"`
-	RepoId                 *string `pulumi:"repoId"`
-	RepoPath               *string `pulumi:"repoPath"`
-	ServingEndpointId      *string `pulumi:"servingEndpointId"`
-	SqlAlertId             *string `pulumi:"sqlAlertId"`
-	SqlDashboardId         *string `pulumi:"sqlDashboardId"`
-	SqlEndpointId          *string `pulumi:"sqlEndpointId"`
-	SqlQueryId             *string `pulumi:"sqlQueryId"`
-	VectorSearchEndpointId *string `pulumi:"vectorSearchEndpointId"`
-	WorkspaceFileId        *string `pulumi:"workspaceFileId"`
-	WorkspaceFilePath      *string `pulumi:"workspaceFilePath"`
+	ObjectType             *string                    `pulumi:"objectType"`
+	PipelineId             *string                    `pulumi:"pipelineId"`
+	ProviderConfig         *PermissionsProviderConfig `pulumi:"providerConfig"`
+	RegisteredModelId      *string                    `pulumi:"registeredModelId"`
+	RepoId                 *string                    `pulumi:"repoId"`
+	RepoPath               *string                    `pulumi:"repoPath"`
+	ServingEndpointId      *string                    `pulumi:"servingEndpointId"`
+	SqlAlertId             *string                    `pulumi:"sqlAlertId"`
+	SqlDashboardId         *string                    `pulumi:"sqlDashboardId"`
+	SqlEndpointId          *string                    `pulumi:"sqlEndpointId"`
+	SqlQueryId             *string                    `pulumi:"sqlQueryId"`
+	VectorSearchEndpointId *string                    `pulumi:"vectorSearchEndpointId"`
+	WorkspaceFileId        *string                    `pulumi:"workspaceFileId"`
+	WorkspaceFilePath      *string                    `pulumi:"workspaceFilePath"`
 }
 
 // The set of arguments for constructing a Permissions resource.
@@ -1760,6 +1764,7 @@ type PermissionsArgs struct {
 	// type of permissions.
 	ObjectType             pulumi.StringPtrInput
 	PipelineId             pulumi.StringPtrInput
+	ProviderConfig         PermissionsProviderConfigPtrInput
 	RegisteredModelId      pulumi.StringPtrInput
 	RepoId                 pulumi.StringPtrInput
 	RepoPath               pulumi.StringPtrInput
@@ -1927,6 +1932,10 @@ func (o PermissionsOutput) ObjectType() pulumi.StringOutput {
 
 func (o PermissionsOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.PipelineId }).(pulumi.StringPtrOutput)
+}
+
+func (o PermissionsOutput) ProviderConfig() PermissionsProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Permissions) PermissionsProviderConfigPtrOutput { return v.ProviderConfig }).(PermissionsProviderConfigPtrOutput)
 }
 
 func (o PermissionsOutput) RegisteredModelId() pulumi.StringPtrOutput {

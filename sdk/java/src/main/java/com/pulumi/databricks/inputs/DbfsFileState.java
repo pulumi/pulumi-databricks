@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DbfsFileProviderConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -84,6 +85,21 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<DbfsFileProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<DbfsFileProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      * 
      */
@@ -106,6 +122,7 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
         this.fileSize = $.fileSize;
         this.md5 = $.md5;
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
         this.source = $.source;
     }
 
@@ -218,6 +235,27 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<DbfsFileProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(DbfsFileProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

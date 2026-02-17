@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -118,6 +120,10 @@ export class OboToken extends pulumi.CustomResource {
      */
     declare public readonly lifetimeSeconds: pulumi.Output<number | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.OboTokenProviderConfig | undefined>;
+    /**
      * **Sensitive** value of the newly-created token.
      */
     declare public /*out*/ readonly tokenValue: pulumi.Output<string>;
@@ -138,6 +144,7 @@ export class OboToken extends pulumi.CustomResource {
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["comment"] = state?.comment;
             resourceInputs["lifetimeSeconds"] = state?.lifetimeSeconds;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["tokenValue"] = state?.tokenValue;
         } else {
             const args = argsOrState as OboTokenArgs | undefined;
@@ -147,6 +154,7 @@ export class OboToken extends pulumi.CustomResource {
             resourceInputs["applicationId"] = args?.applicationId;
             resourceInputs["comment"] = args?.comment;
             resourceInputs["lifetimeSeconds"] = args?.lifetimeSeconds;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["tokenValue"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -173,6 +181,10 @@ export interface OboTokenState {
      */
     lifetimeSeconds?: pulumi.Input<number>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.OboTokenProviderConfig>;
+    /**
      * **Sensitive** value of the newly-created token.
      */
     tokenValue?: pulumi.Input<string>;
@@ -194,4 +206,8 @@ export interface OboTokenArgs {
      * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
     lifetimeSeconds?: pulumi.Input<number>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.OboTokenProviderConfig>;
 }

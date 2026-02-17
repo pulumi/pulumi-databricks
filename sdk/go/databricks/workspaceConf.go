@@ -63,6 +63,8 @@ type WorkspaceConf struct {
 
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
 	CustomConfig pulumi.StringMapOutput `pulumi:"customConfig"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig WorkspaceConfProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewWorkspaceConf registers a new resource with the given unique name, arguments, and options.
@@ -97,11 +99,15 @@ func GetWorkspaceConf(ctx *pulumi.Context,
 type workspaceConfState struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
 	CustomConfig map[string]string `pulumi:"customConfig"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *WorkspaceConfProviderConfig `pulumi:"providerConfig"`
 }
 
 type WorkspaceConfState struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
 	CustomConfig pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig WorkspaceConfProviderConfigPtrInput
 }
 
 func (WorkspaceConfState) ElementType() reflect.Type {
@@ -111,12 +117,16 @@ func (WorkspaceConfState) ElementType() reflect.Type {
 type workspaceConfArgs struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
 	CustomConfig map[string]string `pulumi:"customConfig"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *WorkspaceConfProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a WorkspaceConf resource.
 type WorkspaceConfArgs struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
 	CustomConfig pulumi.StringMapInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig WorkspaceConfProviderConfigPtrInput
 }
 
 func (WorkspaceConfArgs) ElementType() reflect.Type {
@@ -209,6 +219,11 @@ func (o WorkspaceConfOutput) ToWorkspaceConfOutputWithContext(ctx context.Contex
 // Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
 func (o WorkspaceConfOutput) CustomConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkspaceConf) pulumi.StringMapOutput { return v.CustomConfig }).(pulumi.StringMapOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o WorkspaceConfOutput) ProviderConfig() WorkspaceConfProviderConfigPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConf) WorkspaceConfProviderConfigPtrOutput { return v.ProviderConfig }).(WorkspaceConfProviderConfigPtrOutput)
 }
 
 type WorkspaceConfArrayOutput struct{ *pulumi.OutputState }

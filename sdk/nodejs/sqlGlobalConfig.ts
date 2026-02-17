@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -104,6 +106,10 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
      */
     declare public readonly instanceProfileArn: pulumi.Output<string | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlGlobalConfigProviderConfig | undefined>;
+    /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      */
     declare public readonly securityPolicy: pulumi.Output<string | undefined>;
@@ -129,6 +135,7 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
             resourceInputs["enableServerlessCompute"] = state?.enableServerlessCompute;
             resourceInputs["googleServiceAccount"] = state?.googleServiceAccount;
             resourceInputs["instanceProfileArn"] = state?.instanceProfileArn;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["securityPolicy"] = state?.securityPolicy;
             resourceInputs["sqlConfigParams"] = state?.sqlConfigParams;
         } else {
@@ -137,6 +144,7 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
             resourceInputs["enableServerlessCompute"] = args?.enableServerlessCompute;
             resourceInputs["googleServiceAccount"] = args?.googleServiceAccount;
             resourceInputs["instanceProfileArn"] = args?.instanceProfileArn;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["securityPolicy"] = args?.securityPolicy;
             resourceInputs["sqlConfigParams"] = args?.sqlConfigParams;
         }
@@ -165,6 +173,10 @@ export interface SqlGlobalConfigState {
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      */
     instanceProfileArn?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlGlobalConfigProviderConfig>;
     /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      */
@@ -195,6 +207,10 @@ export interface SqlGlobalConfigArgs {
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      */
     instanceProfileArn?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.SqlGlobalConfigProviderConfig>;
     /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      */

@@ -19,16 +19,12 @@ public final class NotificationDestinationConfigGenericWebhookArgs extends com.p
     /**
      * The password for basic authentication.
      * 
-     * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-     * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
      * @return The password for basic authentication.
-     * 
-     * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
      * 
      */
     public Optional<Output<String>> password() {
@@ -118,8 +114,6 @@ public final class NotificationDestinationConfigGenericWebhookArgs extends com.p
         /**
          * @param password The password for basic authentication.
          * 
-         * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-         * 
          * @return builder
          * 
          */
@@ -130,8 +124,6 @@ public final class NotificationDestinationConfigGenericWebhookArgs extends com.p
 
         /**
          * @param password The password for basic authentication.
-         * 
-         * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
          * 
          * @return builder
          * 

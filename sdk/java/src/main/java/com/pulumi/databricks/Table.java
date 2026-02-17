@@ -11,6 +11,7 @@ import com.pulumi.databricks.TableArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.TableState;
 import com.pulumi.databricks.outputs.TableColumn;
+import com.pulumi.databricks.outputs.TableProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +61,12 @@ public class Table extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
+    }
+    @Export(name="providerConfig", refs={TableProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ TableProviderConfig> providerConfig;
+
+    public Output<Optional<TableProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;

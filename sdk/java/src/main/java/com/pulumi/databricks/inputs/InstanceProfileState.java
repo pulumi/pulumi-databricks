@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.InstanceProfileProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -62,6 +63,21 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<InstanceProfileProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<InstanceProfileProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. &#34;Your requested instance type is not supported in your requested availability zone&#34;), you can pass this flag to skip the validation and forcibly add the instance profile.
      * 
      */
@@ -82,6 +98,7 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
         this.iamRoleArn = $.iamRoleArn;
         this.instanceProfileArn = $.instanceProfileArn;
         this.isMetaInstanceProfile = $.isMetaInstanceProfile;
+        this.providerConfig = $.providerConfig;
         this.skipValidation = $.skipValidation;
     }
 
@@ -164,6 +181,27 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
          */
         public Builder isMetaInstanceProfile(Boolean isMetaInstanceProfile) {
             return isMetaInstanceProfile(Output.of(isMetaInstanceProfile));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<InstanceProfileProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(InstanceProfileProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

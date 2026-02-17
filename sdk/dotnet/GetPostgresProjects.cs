@@ -115,7 +115,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresProjectsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned. Cannot be negative
+        /// Upper bound for items returned. Cannot be negative. The maximum value is 100
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresProjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned. Cannot be negative
+        /// Upper bound for items returned. Cannot be negative. The maximum value is 100
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

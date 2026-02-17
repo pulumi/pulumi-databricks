@@ -11,6 +11,7 @@ import com.pulumi.databricks.SecretScopeArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SecretScopeState;
 import com.pulumi.databricks.outputs.SecretScopeKeyvaultMetadata;
+import com.pulumi.databricks.outputs.SecretScopeProviderConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -113,6 +114,20 @@ public class SecretScope extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={SecretScopeProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ SecretScopeProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<SecretScopeProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

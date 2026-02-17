@@ -116,6 +116,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resources);
     }
 
+    @Import(name="space")
+    private @Nullable Output<String> space;
+
+    public Optional<Output<String>> space() {
+        return Optional.ofNullable(this.space);
+    }
+
     @Import(name="usagePolicyId")
     private @Nullable Output<String> usagePolicyId;
 
@@ -149,6 +156,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         this.noCompute = $.noCompute;
         this.providerConfig = $.providerConfig;
         this.resources = $.resources;
+        this.space = $.space;
         this.usagePolicyId = $.usagePolicyId;
         this.userApiScopes = $.userApiScopes;
     }
@@ -311,6 +319,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resources(AppResourceArgs... resources) {
             return resources(List.of(resources));
+        }
+
+        public Builder space(@Nullable Output<String> space) {
+            $.space = space;
+            return this;
+        }
+
+        public Builder space(String space) {
+            return space(Output.of(space));
         }
 
         public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {

@@ -27,6 +27,7 @@ namespace Pulumi.Databricks.Outputs
         /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
         /// </summary>
         public readonly string? Provider;
+        public readonly Outputs.JobGitSourceSparseCheckout? SparseCheckout;
         /// <summary>
         /// name of the Git branch to use. Conflicts with `Branch` and `Commit`.
         /// </summary>
@@ -48,6 +49,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? provider,
 
+            Outputs.JobGitSourceSparseCheckout? sparseCheckout,
+
             string? tag,
 
             string url)
@@ -57,6 +60,7 @@ namespace Pulumi.Databricks.Outputs
             GitSnapshot = gitSnapshot;
             JobSource = jobSource;
             Provider = provider;
+            SparseCheckout = sparseCheckout;
             Tag = tag;
             Url = url;
         }

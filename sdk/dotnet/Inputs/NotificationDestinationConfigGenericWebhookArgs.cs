@@ -17,8 +17,6 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// The password for basic authentication.
-        /// 
-        /// &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
         /// </summary>
         public Input<string>? Password
         {

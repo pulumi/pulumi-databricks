@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterPolicyLibraryProviderConfig {
+    /**
+     * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * 
+     */
     private String workspaceId;
 
     private ClusterPolicyLibraryProviderConfig() {}
+    /**
+     * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * 
+     */
     public String workspaceId() {
         return this.workspaceId;
     }

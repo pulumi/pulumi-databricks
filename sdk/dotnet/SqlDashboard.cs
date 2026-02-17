@@ -97,6 +97,12 @@ namespace Pulumi.Databricks
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.SqlDashboardProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("runAsRole")]
         public Output<string?> RunAsRole { get; private set; } = null!;
 
@@ -164,6 +170,12 @@ namespace Pulumi.Databricks
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlDashboardProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("runAsRole")]
         public Input<string>? RunAsRole { get; set; }
 
@@ -197,6 +209,12 @@ namespace Pulumi.Databricks
 
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.SqlDashboardProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("runAsRole")]
         public Input<string>? RunAsRole { get; set; }

@@ -228,6 +228,9 @@ namespace Pulumi.Databricks
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.ClusterPolicyProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ClusterPolicy resource with the given unique name, arguments, and options.
@@ -318,6 +321,9 @@ namespace Pulumi.Databricks
         [Input("policyFamilyId")]
         public Input<string>? PolicyFamilyId { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.ClusterPolicyProviderConfigArgs>? ProviderConfig { get; set; }
+
         public ClusterPolicyArgs()
         {
         }
@@ -375,6 +381,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.ClusterPolicyProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public ClusterPolicyState()
         {

@@ -100,6 +100,8 @@ type ServicePrincipalSecret struct {
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
 	Lifetime pulumi.StringOutput `pulumi:"lifetime"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ServicePrincipalSecretProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// **Sensitive** Generated secret for the service principal.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// Secret Hash.
@@ -160,6 +162,8 @@ type servicePrincipalSecretState struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
 	Lifetime *string `pulumi:"lifetime"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *ServicePrincipalSecretProviderConfig `pulumi:"providerConfig"`
 	// **Sensitive** Generated secret for the service principal.
 	Secret *string `pulumi:"secret"`
 	// Secret Hash.
@@ -181,6 +185,8 @@ type ServicePrincipalSecretState struct {
 	ExpireTime pulumi.StringPtrInput
 	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
 	Lifetime pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ServicePrincipalSecretProviderConfigPtrInput
 	// **Sensitive** Generated secret for the service principal.
 	Secret pulumi.StringPtrInput
 	// Secret Hash.
@@ -206,6 +212,8 @@ type servicePrincipalSecretArgs struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
 	Lifetime *string `pulumi:"lifetime"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *ServicePrincipalSecretProviderConfig `pulumi:"providerConfig"`
 	// **Sensitive** Generated secret for the service principal.
 	Secret *string `pulumi:"secret"`
 	// Secret Hash.
@@ -228,6 +236,8 @@ type ServicePrincipalSecretArgs struct {
 	ExpireTime pulumi.StringPtrInput
 	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
 	Lifetime pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ServicePrincipalSecretProviderConfigPtrInput
 	// **Sensitive** Generated secret for the service principal.
 	Secret pulumi.StringPtrInput
 	// Secret Hash.
@@ -342,6 +352,11 @@ func (o ServicePrincipalSecretOutput) ExpireTime() pulumi.StringOutput {
 // The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
 func (o ServicePrincipalSecretOutput) Lifetime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.Lifetime }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o ServicePrincipalSecretOutput) ProviderConfig() ServicePrincipalSecretProviderConfigPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) ServicePrincipalSecretProviderConfigPtrOutput { return v.ProviderConfig }).(ServicePrincipalSecretProviderConfigPtrOutput)
 }
 
 // **Sensitive** Generated secret for the service principal.

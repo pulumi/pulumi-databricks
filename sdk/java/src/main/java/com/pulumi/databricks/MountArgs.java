@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MountAbfsArgs;
 import com.pulumi.databricks.inputs.MountAdlArgs;
 import com.pulumi.databricks.inputs.MountGsArgs;
+import com.pulumi.databricks.inputs.MountProviderConfigArgs;
 import com.pulumi.databricks.inputs.MountS3Args;
 import com.pulumi.databricks.inputs.MountWasbArgs;
 import java.lang.String;
@@ -70,6 +71,13 @@ public final class MountArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<MountProviderConfigArgs> providerConfig;
+
+    public Optional<Output<MountProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
@@ -108,6 +116,7 @@ public final class MountArgs extends com.pulumi.resources.ResourceArgs {
         this.extraConfigs = $.extraConfigs;
         this.gs = $.gs;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.resourceId = $.resourceId;
         this.s3 = $.s3;
         this.uri = $.uri;
@@ -193,6 +202,15 @@ public final class MountArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder providerConfig(@Nullable Output<MountProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(MountProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder resourceId(@Nullable Output<String> resourceId) {

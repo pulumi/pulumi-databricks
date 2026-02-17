@@ -163,6 +163,12 @@ namespace Pulumi.Databricks
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.NotificationDestinationProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a NotificationDestination resource with the given unique name, arguments, and options.
@@ -227,6 +233,12 @@ namespace Pulumi.Databricks
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.NotificationDestinationProviderConfigArgs>? ProviderConfig { get; set; }
+
         public NotificationDestinationArgs()
         {
         }
@@ -252,6 +264,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.NotificationDestinationProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public NotificationDestinationState()
         {

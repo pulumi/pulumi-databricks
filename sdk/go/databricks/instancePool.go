@@ -95,7 +95,8 @@ type InstancePool struct {
 	NodeTypeId            pulumi.StringPtrOutput                      `pulumi:"nodeTypeId"`
 	PreloadedDockerImages InstancePoolPreloadedDockerImageArrayOutput `pulumi:"preloadedDockerImages"`
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-	PreloadedSparkVersions pulumi.StringArrayOutput `pulumi:"preloadedSparkVersions"`
+	PreloadedSparkVersions pulumi.StringArrayOutput            `pulumi:"preloadedSparkVersions"`
+	ProviderConfig         InstancePoolProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewInstancePool registers a new resource with the given unique name, arguments, and options.
@@ -156,7 +157,8 @@ type instancePoolState struct {
 	NodeTypeId            *string                            `pulumi:"nodeTypeId"`
 	PreloadedDockerImages []InstancePoolPreloadedDockerImage `pulumi:"preloadedDockerImages"`
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-	PreloadedSparkVersions []string `pulumi:"preloadedSparkVersions"`
+	PreloadedSparkVersions []string                    `pulumi:"preloadedSparkVersions"`
+	ProviderConfig         *InstancePoolProviderConfig `pulumi:"providerConfig"`
 }
 
 type InstancePoolState struct {
@@ -183,6 +185,7 @@ type InstancePoolState struct {
 	PreloadedDockerImages InstancePoolPreloadedDockerImageArrayInput
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
 	PreloadedSparkVersions pulumi.StringArrayInput
+	ProviderConfig         InstancePoolProviderConfigPtrInput
 }
 
 func (InstancePoolState) ElementType() reflect.Type {
@@ -212,7 +215,8 @@ type instancePoolArgs struct {
 	NodeTypeId            *string                            `pulumi:"nodeTypeId"`
 	PreloadedDockerImages []InstancePoolPreloadedDockerImage `pulumi:"preloadedDockerImages"`
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-	PreloadedSparkVersions []string `pulumi:"preloadedSparkVersions"`
+	PreloadedSparkVersions []string                    `pulumi:"preloadedSparkVersions"`
+	ProviderConfig         *InstancePoolProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a InstancePool resource.
@@ -240,6 +244,7 @@ type InstancePoolArgs struct {
 	PreloadedDockerImages InstancePoolPreloadedDockerImageArrayInput
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
 	PreloadedSparkVersions pulumi.StringArrayInput
+	ProviderConfig         InstancePoolProviderConfigPtrInput
 }
 
 func (InstancePoolArgs) ElementType() reflect.Type {
@@ -397,6 +402,10 @@ func (o InstancePoolOutput) PreloadedDockerImages() InstancePoolPreloadedDockerI
 // (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
 func (o InstancePoolOutput) PreloadedSparkVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringArrayOutput { return v.PreloadedSparkVersions }).(pulumi.StringArrayOutput)
+}
+
+func (o InstancePoolOutput) ProviderConfig() InstancePoolProviderConfigPtrOutput {
+	return o.ApplyT(func(v *InstancePool) InstancePoolProviderConfigPtrOutput { return v.ProviderConfig }).(InstancePoolProviderConfigPtrOutput)
 }
 
 type InstancePoolArrayOutput struct{ *pulumi.OutputState }

@@ -60,6 +60,12 @@ namespace Pulumi.Databricks
         [Output("customConfig")]
         public Output<ImmutableDictionary<string, string>?> CustomConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.WorkspaceConfProviderConfig?> ProviderConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a WorkspaceConf resource with the given unique name, arguments, and options.
@@ -118,6 +124,12 @@ namespace Pulumi.Databricks
             set => _customConfig = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WorkspaceConfProviderConfigArgs>? ProviderConfig { get; set; }
+
         public WorkspaceConfArgs()
         {
         }
@@ -137,6 +149,12 @@ namespace Pulumi.Databricks
             get => _customConfig ?? (_customConfig = new InputMap<string>());
             set => _customConfig = value;
         }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.WorkspaceConfProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public WorkspaceConfState()
         {

@@ -315,6 +315,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * * `providerConfig` - (Optional) Configure the provider for management through account provider. This block consists of the following fields:
+ *   * `workspaceId` - (Required) Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+ *
  * ## Migration from other mount resources
  *
  * Migration from the specific mount resource is straightforward:
@@ -375,6 +378,7 @@ export class Mount extends pulumi.CustomResource {
     declare public readonly extraConfigs: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly gs: pulumi.Output<outputs.MountGs | undefined>;
     declare public readonly name: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MountProviderConfig | undefined>;
     declare public readonly resourceId: pulumi.Output<string | undefined>;
     declare public readonly s3: pulumi.Output<outputs.MountS3 | undefined>;
     /**
@@ -404,6 +408,7 @@ export class Mount extends pulumi.CustomResource {
             resourceInputs["extraConfigs"] = state?.extraConfigs;
             resourceInputs["gs"] = state?.gs;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["s3"] = state?.s3;
             resourceInputs["source"] = state?.source;
@@ -418,6 +423,7 @@ export class Mount extends pulumi.CustomResource {
             resourceInputs["extraConfigs"] = args?.extraConfigs;
             resourceInputs["gs"] = args?.gs;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["s3"] = args?.s3;
             resourceInputs["uri"] = args?.uri;
@@ -440,6 +446,7 @@ export interface MountState {
     extraConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     gs?: pulumi.Input<inputs.MountGs>;
     name?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.MountProviderConfig>;
     resourceId?: pulumi.Input<string>;
     s3?: pulumi.Input<inputs.MountS3>;
     /**
@@ -461,6 +468,7 @@ export interface MountArgs {
     extraConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     gs?: pulumi.Input<inputs.MountGs>;
     name?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.MountProviderConfig>;
     resourceId?: pulumi.Input<string>;
     s3?: pulumi.Input<inputs.MountS3>;
     uri?: pulumi.Input<string>;

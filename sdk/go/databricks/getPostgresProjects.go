@@ -30,7 +30,7 @@ func GetPostgresProjects(ctx *pulumi.Context, args *GetPostgresProjectsArgs, opt
 
 // A collection of arguments for invoking getPostgresProjects.
 type GetPostgresProjectsArgs struct {
-	// Upper bound for items returned. Cannot be negative
+	// Upper bound for items returned. Cannot be negative. The maximum value is 100
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetPostgresProjectsProviderConfig `pulumi:"providerConfig"`
@@ -56,7 +56,7 @@ func GetPostgresProjectsOutput(ctx *pulumi.Context, args GetPostgresProjectsOutp
 
 // A collection of arguments for invoking getPostgresProjects.
 type GetPostgresProjectsOutputArgs struct {
-	// Upper bound for items returned. Cannot be negative
+	// Upper bound for items returned. Cannot be negative. The maximum value is 100
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetPostgresProjectsProviderConfigPtrInput `pulumi:"providerConfig"`
