@@ -1028,6 +1028,16 @@
                             }
                         }
                     },
+                    "node_type_flexibility": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "alternate_node_type_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "preloaded_docker_image": {
                         "maxItemsOne": false,
                         "elem": {
@@ -5929,6 +5939,16 @@
                                         }
                                     }
                                 },
+                                "node_type_flexibility": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "alternate_node_type_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "preloaded_docker_image": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -7941,6 +7961,9 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "using_arguments": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "using_column_names": {
                                                             "maxItemsOne": false
                                                         }
@@ -7970,6 +7993,9 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "input_arguments": {
+                                                "maxItemsOne": false
+                                            },
                                             "input_column_names": {
                                                 "maxItemsOne": false
                                             }
