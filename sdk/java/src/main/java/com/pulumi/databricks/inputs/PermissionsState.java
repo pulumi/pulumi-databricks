@@ -74,6 +74,13 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.databaseInstanceName);
     }
 
+    @Import(name="databaseProjectName")
+    private @Nullable Output<String> databaseProjectName;
+
+    public Optional<Output<String>> databaseProjectName() {
+        return Optional.ofNullable(this.databaseProjectName);
+    }
+
     @Import(name="directoryId")
     private @Nullable Output<String> directoryId;
 
@@ -240,6 +247,7 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         this.clusterPolicyId = $.clusterPolicyId;
         this.dashboardId = $.dashboardId;
         this.databaseInstanceName = $.databaseInstanceName;
+        this.databaseProjectName = $.databaseProjectName;
         this.directoryId = $.directoryId;
         this.directoryPath = $.directoryPath;
         this.experimentId = $.experimentId;
@@ -355,6 +363,15 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder databaseInstanceName(String databaseInstanceName) {
             return databaseInstanceName(Output.of(databaseInstanceName));
+        }
+
+        public Builder databaseProjectName(@Nullable Output<String> databaseProjectName) {
+            $.databaseProjectName = databaseProjectName;
+            return this;
+        }
+
+        public Builder databaseProjectName(String databaseProjectName) {
+            return databaseProjectName(Output.of(databaseProjectName));
         }
 
         public Builder directoryId(@Nullable Output<String> directoryId) {

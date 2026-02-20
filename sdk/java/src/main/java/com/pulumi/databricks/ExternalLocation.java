@@ -302,6 +302,12 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
     public Output<String> credentialName() {
         return this.credentialName;
     }
+    @Export(name="effectiveEnableFileEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> effectiveEnableFileEvents;
+
+    public Output<Boolean> effectiveEnableFileEvents() {
+        return this.effectiveEnableFileEvents;
+    }
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      * 

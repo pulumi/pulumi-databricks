@@ -45,6 +45,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("credentialName")]
         public Input<string>? CredentialName { get; set; }
 
+        [Input("effectiveEnableFileEvents")]
+        public Input<bool>? EffectiveEnableFileEvents { get; set; }
+
         [Input("enableFileEvents")]
         public Input<bool>? EnableFileEvents { get; set; }
 

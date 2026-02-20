@@ -1651,6 +1651,57 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Lakebase Database Projects usage
+ * 
+ * [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) database projects have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var eng = new Group("eng", GroupArgs.builder()
+ *             .displayName("Engineering")
+ *             .build());
+ * 
+ *         var dbProjectUsage = new Permissions("dbProjectUsage", PermissionsArgs.builder()
+ *             .databaseProjectName("my_project")
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName("users")
+ *                     .permissionLevel("CAN_USE")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(eng.displayName())
+ *                     .permissionLevel("CAN_MANAGE")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Instance Profiles
  * 
  * Instance Profiles are not managed by General Permissions API and therefore databricks.GroupInstanceProfile and databricks.UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -1725,6 +1776,12 @@ public class Permissions extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> databaseInstanceName() {
         return Codegen.optional(this.databaseInstanceName);
+    }
+    @Export(name="databaseProjectName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> databaseProjectName;
+
+    public Output<Optional<String>> databaseProjectName() {
+        return Codegen.optional(this.databaseProjectName);
     }
     @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> directoryId;

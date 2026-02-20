@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetTableTableInfoColumnMaskUsingArgument;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +23,13 @@ public final class GetTableTableInfoColumnMask extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.functionName);
     }
 
+    @Import(name="usingArguments")
+    private @Nullable List<GetTableTableInfoColumnMaskUsingArgument> usingArguments;
+
+    public Optional<List<GetTableTableInfoColumnMaskUsingArgument>> usingArguments() {
+        return Optional.ofNullable(this.usingArguments);
+    }
+
     @Import(name="usingColumnNames")
     private @Nullable List<String> usingColumnNames;
 
@@ -33,6 +41,7 @@ public final class GetTableTableInfoColumnMask extends com.pulumi.resources.Invo
 
     private GetTableTableInfoColumnMask(GetTableTableInfoColumnMask $) {
         this.functionName = $.functionName;
+        this.usingArguments = $.usingArguments;
         this.usingColumnNames = $.usingColumnNames;
     }
 
@@ -57,6 +66,15 @@ public final class GetTableTableInfoColumnMask extends com.pulumi.resources.Invo
         public Builder functionName(@Nullable String functionName) {
             $.functionName = functionName;
             return this;
+        }
+
+        public Builder usingArguments(@Nullable List<GetTableTableInfoColumnMaskUsingArgument> usingArguments) {
+            $.usingArguments = usingArguments;
+            return this;
+        }
+
+        public Builder usingArguments(GetTableTableInfoColumnMaskUsingArgument... usingArguments) {
+            return usingArguments(List.of(usingArguments));
         }
 
         public Builder usingColumnNames(@Nullable List<String> usingColumnNames) {

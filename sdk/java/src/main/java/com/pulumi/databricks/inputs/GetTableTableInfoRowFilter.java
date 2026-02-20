@@ -4,10 +4,13 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetTableTableInfoRowFilterInputArgument;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTableTableInfoRowFilter extends com.pulumi.resources.InvokeArgs {
@@ -21,6 +24,13 @@ public final class GetTableTableInfoRowFilter extends com.pulumi.resources.Invok
         return this.functionName;
     }
 
+    @Import(name="inputArguments")
+    private @Nullable List<GetTableTableInfoRowFilterInputArgument> inputArguments;
+
+    public Optional<List<GetTableTableInfoRowFilterInputArgument>> inputArguments() {
+        return Optional.ofNullable(this.inputArguments);
+    }
+
     @Import(name="inputColumnNames", required=true)
     private List<String> inputColumnNames;
 
@@ -32,6 +42,7 @@ public final class GetTableTableInfoRowFilter extends com.pulumi.resources.Invok
 
     private GetTableTableInfoRowFilter(GetTableTableInfoRowFilter $) {
         this.functionName = $.functionName;
+        this.inputArguments = $.inputArguments;
         this.inputColumnNames = $.inputColumnNames;
     }
 
@@ -56,6 +67,15 @@ public final class GetTableTableInfoRowFilter extends com.pulumi.resources.Invok
         public Builder functionName(String functionName) {
             $.functionName = functionName;
             return this;
+        }
+
+        public Builder inputArguments(@Nullable List<GetTableTableInfoRowFilterInputArgument> inputArguments) {
+            $.inputArguments = inputArguments;
+            return this;
+        }
+
+        public Builder inputArguments(GetTableTableInfoRowFilterInputArgument... inputArguments) {
+            return inputArguments(List.of(inputArguments));
         }
 
         public Builder inputColumnNames(List<String> inputColumnNames) {

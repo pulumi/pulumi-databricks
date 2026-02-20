@@ -26,6 +26,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string InstancePoolName;
         public readonly int? MaxCapacity;
         public readonly int? MinIdleInstances;
+        public readonly Outputs.GetInstancePoolPoolInfoNodeTypeFlexibilityResult? NodeTypeFlexibility;
         public readonly string? NodeTypeId;
         public readonly ImmutableArray<Outputs.GetInstancePoolPoolInfoPreloadedDockerImageResult> PreloadedDockerImages;
         public readonly ImmutableArray<string> PreloadedSparkVersions;
@@ -60,6 +61,8 @@ namespace Pulumi.Databricks.Outputs
 
             int? minIdleInstances,
 
+            Outputs.GetInstancePoolPoolInfoNodeTypeFlexibilityResult? nodeTypeFlexibility,
+
             string? nodeTypeId,
 
             ImmutableArray<Outputs.GetInstancePoolPoolInfoPreloadedDockerImageResult> preloadedDockerImages,
@@ -83,6 +86,7 @@ namespace Pulumi.Databricks.Outputs
             InstancePoolName = instancePoolName;
             MaxCapacity = maxCapacity;
             MinIdleInstances = minIdleInstances;
+            NodeTypeFlexibility = nodeTypeFlexibility;
             NodeTypeId = nodeTypeId;
             PreloadedDockerImages = preloadedDockerImages;
             PreloadedSparkVersions = preloadedSparkVersions;

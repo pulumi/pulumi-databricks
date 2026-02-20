@@ -537,6 +537,8 @@ __all__ = [
     'InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgsDict',
     'InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs',
     'InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgsDict',
+    'InstancePoolNodeTypeFlexibilityArgs',
+    'InstancePoolNodeTypeFlexibilityArgsDict',
     'InstancePoolPreloadedDockerImageArgs',
     'InstancePoolPreloadedDockerImageArgsDict',
     'InstancePoolPreloadedDockerImageBasicAuthArgs',
@@ -2083,6 +2085,8 @@ __all__ = [
     'GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgsDict',
     'GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs',
     'GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgsDict',
+    'GetInstancePoolPoolInfoNodeTypeFlexibilityArgs',
+    'GetInstancePoolPoolInfoNodeTypeFlexibilityArgsDict',
     'GetInstancePoolPoolInfoPreloadedDockerImageArgs',
     'GetInstancePoolPoolInfoPreloadedDockerImageArgsDict',
     'GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs',
@@ -2737,6 +2741,8 @@ __all__ = [
     'GetTableTableInfoColumnArgsDict',
     'GetTableTableInfoColumnMaskArgs',
     'GetTableTableInfoColumnMaskArgsDict',
+    'GetTableTableInfoColumnMaskUsingArgumentArgs',
+    'GetTableTableInfoColumnMaskUsingArgumentArgsDict',
     'GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs',
     'GetTableTableInfoDeltaRuntimePropertiesKvpairsArgsDict',
     'GetTableTableInfoEffectivePredictiveOptimizationFlagArgs',
@@ -2747,6 +2753,8 @@ __all__ = [
     'GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgsDict',
     'GetTableTableInfoRowFilterArgs',
     'GetTableTableInfoRowFilterArgsDict',
+    'GetTableTableInfoRowFilterInputArgumentArgs',
+    'GetTableTableInfoRowFilterInputArgumentArgsDict',
     'GetTableTableInfoSecurableKindManifestArgs',
     'GetTableTableInfoSecurableKindManifestArgsDict',
     'GetTableTableInfoSecurableKindManifestOptionArgs',
@@ -16798,6 +16806,34 @@ class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs:
     @instance_type.setter
     def instance_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "instance_type", value)
+
+
+class InstancePoolNodeTypeFlexibilityArgsDict(TypedDict):
+    alternate_node_type_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+    """
+
+@pulumi.input_type
+class InstancePoolNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_node_type_ids: list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+        """
+        pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+        """
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 class InstancePoolPreloadedDockerImageArgsDict(TypedDict):
@@ -41190,13 +41226,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -41250,7 +41286,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -41260,7 +41296,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -41518,13 +41554,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -41539,7 +41575,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -41549,7 +41585,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -62259,6 +62295,7 @@ class GetExternalLocationExternalLocationInfoArgsDict(TypedDict):
     """
     Name of the StorageCredential to use with this external location.
     """
+    effective_enable_file_events: NotRequired[_builtins.bool]
     enable_file_events: NotRequired[_builtins.bool]
     encryption_details: NotRequired['GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict']
     """
@@ -62305,6 +62342,7 @@ class GetExternalLocationExternalLocationInfoArgs:
                  created_by: Optional[_builtins.str] = None,
                  credential_id: Optional[_builtins.str] = None,
                  credential_name: Optional[_builtins.str] = None,
+                 effective_enable_file_events: Optional[_builtins.bool] = None,
                  enable_file_events: Optional[_builtins.bool] = None,
                  encryption_details: Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsArgs'] = None,
                  fallback: Optional[_builtins.bool] = None,
@@ -62344,6 +62382,8 @@ class GetExternalLocationExternalLocationInfoArgs:
             pulumi.set(__self__, "credential_id", credential_id)
         if credential_name is not None:
             pulumi.set(__self__, "credential_name", credential_name)
+        if effective_enable_file_events is not None:
+            pulumi.set(__self__, "effective_enable_file_events", effective_enable_file_events)
         if enable_file_events is not None:
             pulumi.set(__self__, "enable_file_events", enable_file_events)
         if encryption_details is not None:
@@ -62437,6 +62477,15 @@ class GetExternalLocationExternalLocationInfoArgs:
     @credential_name.setter
     def credential_name(self, value: Optional[_builtins.str]):
         pulumi.set(self, "credential_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveEnableFileEvents")
+    def effective_enable_file_events(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "effective_enable_file_events")
+
+    @effective_enable_file_events.setter
+    def effective_enable_file_events(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "effective_enable_file_events", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFileEvents")
@@ -64639,6 +64688,7 @@ class GetInstancePoolPoolInfoArgsDict(TypedDict):
     instance_pool_fleet_attributes: NotRequired[Sequence['GetInstancePoolPoolInfoInstancePoolFleetAttributeArgsDict']]
     max_capacity: NotRequired[_builtins.int]
     min_idle_instances: NotRequired[_builtins.int]
+    node_type_flexibility: NotRequired['GetInstancePoolPoolInfoNodeTypeFlexibilityArgsDict']
     node_type_id: NotRequired[_builtins.str]
     preloaded_docker_images: NotRequired[Sequence['GetInstancePoolPoolInfoPreloadedDockerImageArgsDict']]
     preloaded_spark_versions: NotRequired[Sequence[_builtins.str]]
@@ -64661,6 +64711,7 @@ class GetInstancePoolPoolInfoArgs:
                  instance_pool_fleet_attributes: Optional[Sequence['GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs']] = None,
                  max_capacity: Optional[_builtins.int] = None,
                  min_idle_instances: Optional[_builtins.int] = None,
+                 node_type_flexibility: Optional['GetInstancePoolPoolInfoNodeTypeFlexibilityArgs'] = None,
                  node_type_id: Optional[_builtins.str] = None,
                  preloaded_docker_images: Optional[Sequence['GetInstancePoolPoolInfoPreloadedDockerImageArgs']] = None,
                  preloaded_spark_versions: Optional[Sequence[_builtins.str]] = None,
@@ -64688,6 +64739,8 @@ class GetInstancePoolPoolInfoArgs:
             pulumi.set(__self__, "max_capacity", max_capacity)
         if min_idle_instances is not None:
             pulumi.set(__self__, "min_idle_instances", min_idle_instances)
+        if node_type_flexibility is not None:
+            pulumi.set(__self__, "node_type_flexibility", node_type_flexibility)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if preloaded_docker_images is not None:
@@ -64815,6 +64868,15 @@ class GetInstancePoolPoolInfoArgs:
     @min_idle_instances.setter
     def min_idle_instances(self, value: Optional[_builtins.int]):
         pulumi.set(self, "min_idle_instances", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeTypeFlexibility")
+    def node_type_flexibility(self) -> Optional['GetInstancePoolPoolInfoNodeTypeFlexibilityArgs']:
+        return pulumi.get(self, "node_type_flexibility")
+
+    @node_type_flexibility.setter
+    def node_type_flexibility(self, value: Optional['GetInstancePoolPoolInfoNodeTypeFlexibilityArgs']):
+        pulumi.set(self, "node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeTypeId")
@@ -65214,6 +65276,25 @@ class GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArg
     @instance_type.setter
     def instance_type(self, value: _builtins.str):
         pulumi.set(self, "instance_type", value)
+
+
+class GetInstancePoolPoolInfoNodeTypeFlexibilityArgsDict(TypedDict):
+    alternate_node_type_ids: Sequence[_builtins.str]
+
+@pulumi.input_type
+class GetInstancePoolPoolInfoNodeTypeFlexibilityArgs:
+    def __init__(__self__, *,
+                 alternate_node_type_ids: Sequence[_builtins.str]):
+        pulumi.set(__self__, "alternate_node_type_ids", alternate_node_type_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="alternateNodeTypeIds")
+    def alternate_node_type_ids(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "alternate_node_type_ids")
+
+    @alternate_node_type_ids.setter
+    def alternate_node_type_ids(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "alternate_node_type_ids", value)
 
 
 class GetInstancePoolPoolInfoPreloadedDockerImageArgsDict(TypedDict):
@@ -85251,15 +85332,19 @@ class GetTableTableInfoColumnArgs:
 
 class GetTableTableInfoColumnMaskArgsDict(TypedDict):
     function_name: NotRequired[_builtins.str]
+    using_arguments: NotRequired[Sequence['GetTableTableInfoColumnMaskUsingArgumentArgsDict']]
     using_column_names: NotRequired[Sequence[_builtins.str]]
 
 @pulumi.input_type
 class GetTableTableInfoColumnMaskArgs:
     def __init__(__self__, *,
                  function_name: Optional[_builtins.str] = None,
+                 using_arguments: Optional[Sequence['GetTableTableInfoColumnMaskUsingArgumentArgs']] = None,
                  using_column_names: Optional[Sequence[_builtins.str]] = None):
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
+        if using_arguments is not None:
+            pulumi.set(__self__, "using_arguments", using_arguments)
         if using_column_names is not None:
             pulumi.set(__self__, "using_column_names", using_column_names)
 
@@ -85273,6 +85358,15 @@ class GetTableTableInfoColumnMaskArgs:
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="usingArguments")
+    def using_arguments(self) -> Optional[Sequence['GetTableTableInfoColumnMaskUsingArgumentArgs']]:
+        return pulumi.get(self, "using_arguments")
+
+    @using_arguments.setter
+    def using_arguments(self, value: Optional[Sequence['GetTableTableInfoColumnMaskUsingArgumentArgs']]):
+        pulumi.set(self, "using_arguments", value)
+
+    @_builtins.property
     @pulumi.getter(name="usingColumnNames")
     def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "using_column_names")
@@ -85280,6 +85374,39 @@ class GetTableTableInfoColumnMaskArgs:
     @using_column_names.setter
     def using_column_names(self, value: Optional[Sequence[_builtins.str]]):
         pulumi.set(self, "using_column_names", value)
+
+
+class GetTableTableInfoColumnMaskUsingArgumentArgsDict(TypedDict):
+    column: NotRequired[_builtins.str]
+    constant: NotRequired[_builtins.str]
+
+@pulumi.input_type
+class GetTableTableInfoColumnMaskUsingArgumentArgs:
+    def __init__(__self__, *,
+                 column: Optional[_builtins.str] = None,
+                 constant: Optional[_builtins.str] = None):
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if constant is not None:
+            pulumi.set(__self__, "constant", constant)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "column", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def constant(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "constant")
+
+    @constant.setter
+    def constant(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "constant", value)
 
 
 class GetTableTableInfoDeltaRuntimePropertiesKvpairsArgsDict(TypedDict):
@@ -85402,14 +85529,18 @@ class GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs:
 class GetTableTableInfoRowFilterArgsDict(TypedDict):
     function_name: _builtins.str
     input_column_names: Sequence[_builtins.str]
+    input_arguments: NotRequired[Sequence['GetTableTableInfoRowFilterInputArgumentArgsDict']]
 
 @pulumi.input_type
 class GetTableTableInfoRowFilterArgs:
     def __init__(__self__, *,
                  function_name: _builtins.str,
-                 input_column_names: Sequence[_builtins.str]):
+                 input_column_names: Sequence[_builtins.str],
+                 input_arguments: Optional[Sequence['GetTableTableInfoRowFilterInputArgumentArgs']] = None):
         pulumi.set(__self__, "function_name", function_name)
         pulumi.set(__self__, "input_column_names", input_column_names)
+        if input_arguments is not None:
+            pulumi.set(__self__, "input_arguments", input_arguments)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
@@ -85428,6 +85559,48 @@ class GetTableTableInfoRowFilterArgs:
     @input_column_names.setter
     def input_column_names(self, value: Sequence[_builtins.str]):
         pulumi.set(self, "input_column_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputArguments")
+    def input_arguments(self) -> Optional[Sequence['GetTableTableInfoRowFilterInputArgumentArgs']]:
+        return pulumi.get(self, "input_arguments")
+
+    @input_arguments.setter
+    def input_arguments(self, value: Optional[Sequence['GetTableTableInfoRowFilterInputArgumentArgs']]):
+        pulumi.set(self, "input_arguments", value)
+
+
+class GetTableTableInfoRowFilterInputArgumentArgsDict(TypedDict):
+    column: NotRequired[_builtins.str]
+    constant: NotRequired[_builtins.str]
+
+@pulumi.input_type
+class GetTableTableInfoRowFilterInputArgumentArgs:
+    def __init__(__self__, *,
+                 column: Optional[_builtins.str] = None,
+                 constant: Optional[_builtins.str] = None):
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if constant is not None:
+            pulumi.set(__self__, "constant", constant)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "column", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def constant(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "constant")
+
+    @constant.setter
+    def constant(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "constant", value)
 
 
 class GetTableTableInfoSecurableKindManifestArgsDict(TypedDict):

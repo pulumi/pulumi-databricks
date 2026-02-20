@@ -15,6 +15,7 @@ import com.pulumi.databricks.outputs.InstancePoolAzureAttributes;
 import com.pulumi.databricks.outputs.InstancePoolDiskSpec;
 import com.pulumi.databricks.outputs.InstancePoolGcpAttributes;
 import com.pulumi.databricks.outputs.InstancePoolInstancePoolFleetAttributes;
+import com.pulumi.databricks.outputs.InstancePoolNodeTypeFlexibility;
 import com.pulumi.databricks.outputs.InstancePoolPreloadedDockerImage;
 import com.pulumi.databricks.outputs.InstancePoolProviderConfig;
 import java.lang.Boolean;
@@ -220,6 +221,20 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.minIdleInstances);
     }
     /**
+     * a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+     * 
+     */
+    @Export(name="nodeTypeFlexibility", refs={InstancePoolNodeTypeFlexibility.class}, tree="[0]")
+    private Output</* @Nullable */ InstancePoolNodeTypeFlexibility> nodeTypeFlexibility;
+
+    /**
+     * @return a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+     * 
+     */
+    public Output<Optional<InstancePoolNodeTypeFlexibility>> nodeTypeFlexibility() {
+        return Codegen.optional(this.nodeTypeFlexibility);
+    }
+    /**
      * (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool&#39;s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
      * 
      */
@@ -253,9 +268,17 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> preloadedSparkVersions() {
         return Codegen.optional(this.preloadedSparkVersions);
     }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     @Export(name="providerConfig", refs={InstancePoolProviderConfig.class}, tree="[0]")
     private Output</* @Nullable */ InstancePoolProviderConfig> providerConfig;
 
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     public Output<Optional<InstancePoolProviderConfig>> providerConfig() {
         return Codegen.optional(this.providerConfig);
     }

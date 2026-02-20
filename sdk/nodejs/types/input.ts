@@ -4830,6 +4830,7 @@ export interface GetExternalLocationExternalLocationInfo {
      * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName?: string;
+    effectiveEnableFileEvents?: boolean;
     enableFileEvents?: boolean;
     /**
      * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -4890,6 +4891,7 @@ export interface GetExternalLocationExternalLocationInfoArgs {
      * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName?: pulumi.Input<string>;
+    effectiveEnableFileEvents?: pulumi.Input<boolean>;
     enableFileEvents?: pulumi.Input<boolean>;
     /**
      * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -5758,6 +5760,7 @@ export interface GetInstancePoolPoolInfo {
     instancePoolName: string;
     maxCapacity?: number;
     minIdleInstances?: number;
+    nodeTypeFlexibility?: inputs.GetInstancePoolPoolInfoNodeTypeFlexibility;
     nodeTypeId?: string;
     preloadedDockerImages?: inputs.GetInstancePoolPoolInfoPreloadedDockerImage[];
     preloadedSparkVersions?: string[];
@@ -5779,6 +5782,7 @@ export interface GetInstancePoolPoolInfoArgs {
     instancePoolName: pulumi.Input<string>;
     maxCapacity?: pulumi.Input<number>;
     minIdleInstances?: pulumi.Input<number>;
+    nodeTypeFlexibility?: pulumi.Input<inputs.GetInstancePoolPoolInfoNodeTypeFlexibilityArgs>;
     nodeTypeId?: pulumi.Input<string>;
     preloadedDockerImages?: pulumi.Input<pulumi.Input<inputs.GetInstancePoolPoolInfoPreloadedDockerImageArgs>[]>;
     preloadedSparkVersions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -5884,6 +5888,14 @@ export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplate
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs {
     availabilityZone: pulumi.Input<string>;
     instanceType: pulumi.Input<string>;
+}
+
+export interface GetInstancePoolPoolInfoNodeTypeFlexibility {
+    alternateNodeTypeIds: string[];
+}
+
+export interface GetInstancePoolPoolInfoNodeTypeFlexibilityArgs {
+    alternateNodeTypeIds: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetInstancePoolPoolInfoPreloadedDockerImage {
@@ -11770,12 +11782,24 @@ export interface GetTableTableInfoColumnArgs {
 
 export interface GetTableTableInfoColumnMask {
     functionName?: string;
+    usingArguments?: inputs.GetTableTableInfoColumnMaskUsingArgument[];
     usingColumnNames?: string[];
 }
 
 export interface GetTableTableInfoColumnMaskArgs {
     functionName?: pulumi.Input<string>;
+    usingArguments?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoColumnMaskUsingArgumentArgs>[]>;
     usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetTableTableInfoColumnMaskUsingArgument {
+    column?: string;
+    constant?: string;
+}
+
+export interface GetTableTableInfoColumnMaskUsingArgumentArgs {
+    column?: pulumi.Input<string>;
+    constant?: pulumi.Input<string>;
 }
 
 export interface GetTableTableInfoDeltaRuntimePropertiesKvpairs {
@@ -11818,12 +11842,24 @@ export interface GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs {
 
 export interface GetTableTableInfoRowFilter {
     functionName: string;
+    inputArguments?: inputs.GetTableTableInfoRowFilterInputArgument[];
     inputColumnNames: string[];
 }
 
 export interface GetTableTableInfoRowFilterArgs {
     functionName: pulumi.Input<string>;
+    inputArguments?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoRowFilterInputArgumentArgs>[]>;
     inputColumnNames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetTableTableInfoRowFilterInputArgument {
+    column?: string;
+    constant?: string;
+}
+
+export interface GetTableTableInfoRowFilterInputArgumentArgs {
+    column?: pulumi.Input<string>;
+    constant?: pulumi.Input<string>;
 }
 
 export interface GetTableTableInfoSecurableKindManifest {
@@ -12612,6 +12648,13 @@ export interface InstancePoolInstancePoolFleetAttributesFleetSpotOption {
 export interface InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride {
     availabilityZone: pulumi.Input<string>;
     instanceType: pulumi.Input<string>;
+}
+
+export interface InstancePoolNodeTypeFlexibility {
+    /**
+     * list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+     */
+    alternateNodeTypeIds: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface InstancePoolPreloadedDockerImage {
@@ -17000,11 +17043,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -17071,11 +17114,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;

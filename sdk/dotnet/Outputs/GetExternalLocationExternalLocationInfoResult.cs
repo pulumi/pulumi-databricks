@@ -34,6 +34,7 @@ namespace Pulumi.Databricks.Outputs
         /// Name of the databricks.StorageCredential to use with this external location.
         /// </summary>
         public readonly string? CredentialName;
+        public readonly bool? EffectiveEnableFileEvents;
         public readonly bool? EnableFileEvents;
         /// <summary>
         /// A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -85,6 +86,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? credentialName,
 
+            bool? effectiveEnableFileEvents,
+
             bool? enableFileEvents,
 
             Outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult? encryptionDetails,
@@ -115,6 +118,7 @@ namespace Pulumi.Databricks.Outputs
             CreatedBy = createdBy;
             CredentialId = credentialId;
             CredentialName = credentialName;
+            EffectiveEnableFileEvents = effectiveEnableFileEvents;
             EnableFileEvents = enableFileEvents;
             EncryptionDetails = encryptionDetails;
             Fallback = fallback;

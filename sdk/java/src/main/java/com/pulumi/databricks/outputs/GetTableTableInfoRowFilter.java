@@ -4,19 +4,25 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetTableTableInfoRowFilterInputArgument;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTableTableInfoRowFilter {
     private String functionName;
+    private @Nullable List<GetTableTableInfoRowFilterInputArgument> inputArguments;
     private List<String> inputColumnNames;
 
     private GetTableTableInfoRowFilter() {}
     public String functionName() {
         return this.functionName;
+    }
+    public List<GetTableTableInfoRowFilterInputArgument> inputArguments() {
+        return this.inputArguments == null ? List.of() : this.inputArguments;
     }
     public List<String> inputColumnNames() {
         return this.inputColumnNames;
@@ -32,11 +38,13 @@ public final class GetTableTableInfoRowFilter {
     @CustomType.Builder
     public static final class Builder {
         private String functionName;
+        private @Nullable List<GetTableTableInfoRowFilterInputArgument> inputArguments;
         private List<String> inputColumnNames;
         public Builder() {}
         public Builder(GetTableTableInfoRowFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.functionName = defaults.functionName;
+    	      this.inputArguments = defaults.inputArguments;
     	      this.inputColumnNames = defaults.inputColumnNames;
         }
 
@@ -47,6 +55,15 @@ public final class GetTableTableInfoRowFilter {
             }
             this.functionName = functionName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder inputArguments(@Nullable List<GetTableTableInfoRowFilterInputArgument> inputArguments) {
+
+            this.inputArguments = inputArguments;
+            return this;
+        }
+        public Builder inputArguments(GetTableTableInfoRowFilterInputArgument... inputArguments) {
+            return inputArguments(List.of(inputArguments));
         }
         @CustomType.Setter
         public Builder inputColumnNames(List<String> inputColumnNames) {
@@ -62,6 +79,7 @@ public final class GetTableTableInfoRowFilter {
         public GetTableTableInfoRowFilter build() {
             final var _resultValue = new GetTableTableInfoRowFilter();
             _resultValue.functionName = functionName;
+            _resultValue.inputArguments = inputArguments;
             _resultValue.inputColumnNames = inputColumnNames;
             return _resultValue;
         }

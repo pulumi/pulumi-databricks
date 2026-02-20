@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoAzureAttributes;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoDiskSpec;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoGcpAttributes;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoInstancePoolFleetAttribute;
+import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoNodeTypeFlexibility;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoPreloadedDockerImage;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoStats;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -117,6 +118,13 @@ public final class GetInstancePoolPoolInfo extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.minIdleInstances);
     }
 
+    @Import(name="nodeTypeFlexibility")
+    private @Nullable GetInstancePoolPoolInfoNodeTypeFlexibility nodeTypeFlexibility;
+
+    public Optional<GetInstancePoolPoolInfoNodeTypeFlexibility> nodeTypeFlexibility() {
+        return Optional.ofNullable(this.nodeTypeFlexibility);
+    }
+
     @Import(name="nodeTypeId")
     private @Nullable String nodeTypeId;
 
@@ -168,6 +176,7 @@ public final class GetInstancePoolPoolInfo extends com.pulumi.resources.InvokeAr
         this.instancePoolName = $.instancePoolName;
         this.maxCapacity = $.maxCapacity;
         this.minIdleInstances = $.minIdleInstances;
+        this.nodeTypeFlexibility = $.nodeTypeFlexibility;
         this.nodeTypeId = $.nodeTypeId;
         this.preloadedDockerImages = $.preloadedDockerImages;
         this.preloadedSparkVersions = $.preloadedSparkVersions;
@@ -259,6 +268,11 @@ public final class GetInstancePoolPoolInfo extends com.pulumi.resources.InvokeAr
 
         public Builder minIdleInstances(@Nullable Integer minIdleInstances) {
             $.minIdleInstances = minIdleInstances;
+            return this;
+        }
+
+        public Builder nodeTypeFlexibility(@Nullable GetInstancePoolPoolInfoNodeTypeFlexibility nodeTypeFlexibility) {
+            $.nodeTypeFlexibility = nodeTypeFlexibility;
             return this;
         }
 

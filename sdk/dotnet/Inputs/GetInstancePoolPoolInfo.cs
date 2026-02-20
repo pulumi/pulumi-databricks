@@ -66,6 +66,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("minIdleInstances")]
         public int? MinIdleInstances { get; set; }
 
+        [Input("nodeTypeFlexibility")]
+        public Inputs.GetInstancePoolPoolInfoNodeTypeFlexibilityArgs? NodeTypeFlexibility { get; set; }
+
         [Input("nodeTypeId")]
         public string? NodeTypeId { get; set; }
 

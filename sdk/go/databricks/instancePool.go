@@ -91,12 +91,15 @@ type InstancePool struct {
 	MaxCapacity pulumi.IntPtrOutput `pulumi:"maxCapacity"`
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances pulumi.IntPtrOutput `pulumi:"minIdleInstances"`
+	// a block describing the alternative driver node types if `nodeTypeId` isn't available.
+	NodeTypeFlexibility InstancePoolNodeTypeFlexibilityPtrOutput `pulumi:"nodeTypeFlexibility"`
 	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            pulumi.StringPtrOutput                      `pulumi:"nodeTypeId"`
 	PreloadedDockerImages InstancePoolPreloadedDockerImageArrayOutput `pulumi:"preloadedDockerImages"`
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-	PreloadedSparkVersions pulumi.StringArrayOutput            `pulumi:"preloadedSparkVersions"`
-	ProviderConfig         InstancePoolProviderConfigPtrOutput `pulumi:"providerConfig"`
+	PreloadedSparkVersions pulumi.StringArrayOutput `pulumi:"preloadedSparkVersions"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig InstancePoolProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewInstancePool registers a new resource with the given unique name, arguments, and options.
@@ -153,12 +156,15 @@ type instancePoolState struct {
 	MaxCapacity *int `pulumi:"maxCapacity"`
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances *int `pulumi:"minIdleInstances"`
+	// a block describing the alternative driver node types if `nodeTypeId` isn't available.
+	NodeTypeFlexibility *InstancePoolNodeTypeFlexibility `pulumi:"nodeTypeFlexibility"`
 	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            *string                            `pulumi:"nodeTypeId"`
 	PreloadedDockerImages []InstancePoolPreloadedDockerImage `pulumi:"preloadedDockerImages"`
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-	PreloadedSparkVersions []string                    `pulumi:"preloadedSparkVersions"`
-	ProviderConfig         *InstancePoolProviderConfig `pulumi:"providerConfig"`
+	PreloadedSparkVersions []string `pulumi:"preloadedSparkVersions"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *InstancePoolProviderConfig `pulumi:"providerConfig"`
 }
 
 type InstancePoolState struct {
@@ -180,12 +186,15 @@ type InstancePoolState struct {
 	MaxCapacity pulumi.IntPtrInput
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances pulumi.IntPtrInput
+	// a block describing the alternative driver node types if `nodeTypeId` isn't available.
+	NodeTypeFlexibility InstancePoolNodeTypeFlexibilityPtrInput
 	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            pulumi.StringPtrInput
 	PreloadedDockerImages InstancePoolPreloadedDockerImageArrayInput
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
 	PreloadedSparkVersions pulumi.StringArrayInput
-	ProviderConfig         InstancePoolProviderConfigPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig InstancePoolProviderConfigPtrInput
 }
 
 func (InstancePoolState) ElementType() reflect.Type {
@@ -211,12 +220,15 @@ type instancePoolArgs struct {
 	MaxCapacity *int `pulumi:"maxCapacity"`
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances *int `pulumi:"minIdleInstances"`
+	// a block describing the alternative driver node types if `nodeTypeId` isn't available.
+	NodeTypeFlexibility *InstancePoolNodeTypeFlexibility `pulumi:"nodeTypeFlexibility"`
 	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            *string                            `pulumi:"nodeTypeId"`
 	PreloadedDockerImages []InstancePoolPreloadedDockerImage `pulumi:"preloadedDockerImages"`
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-	PreloadedSparkVersions []string                    `pulumi:"preloadedSparkVersions"`
-	ProviderConfig         *InstancePoolProviderConfig `pulumi:"providerConfig"`
+	PreloadedSparkVersions []string `pulumi:"preloadedSparkVersions"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *InstancePoolProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a InstancePool resource.
@@ -239,12 +251,15 @@ type InstancePoolArgs struct {
 	MaxCapacity pulumi.IntPtrInput
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances pulumi.IntPtrInput
+	// a block describing the alternative driver node types if `nodeTypeId` isn't available.
+	NodeTypeFlexibility InstancePoolNodeTypeFlexibilityPtrInput
 	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            pulumi.StringPtrInput
 	PreloadedDockerImages InstancePoolPreloadedDockerImageArrayInput
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
 	PreloadedSparkVersions pulumi.StringArrayInput
-	ProviderConfig         InstancePoolProviderConfigPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig InstancePoolProviderConfigPtrInput
 }
 
 func (InstancePoolArgs) ElementType() reflect.Type {
@@ -390,6 +405,11 @@ func (o InstancePoolOutput) MinIdleInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.IntPtrOutput { return v.MinIdleInstances }).(pulumi.IntPtrOutput)
 }
 
+// a block describing the alternative driver node types if `nodeTypeId` isn't available.
+func (o InstancePoolOutput) NodeTypeFlexibility() InstancePoolNodeTypeFlexibilityPtrOutput {
+	return o.ApplyT(func(v *InstancePool) InstancePoolNodeTypeFlexibilityPtrOutput { return v.NodeTypeFlexibility }).(InstancePoolNodeTypeFlexibilityPtrOutput)
+}
+
 // (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 func (o InstancePoolOutput) NodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringPtrOutput { return v.NodeTypeId }).(pulumi.StringPtrOutput)
@@ -404,6 +424,7 @@ func (o InstancePoolOutput) PreloadedSparkVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringArrayOutput { return v.PreloadedSparkVersions }).(pulumi.StringArrayOutput)
 }
 
+// Configure the provider for management through account provider. This block consists of the following fields:
 func (o InstancePoolOutput) ProviderConfig() InstancePoolProviderConfigPtrOutput {
 	return o.ApplyT(func(v *InstancePool) InstancePoolProviderConfigPtrOutput { return v.ProviderConfig }).(InstancePoolProviderConfigPtrOutput)
 }
