@@ -1551,6 +1551,50 @@ import (
 //
 // ```
 //
+// ## Lakebase Database Projects usage
+//
+// [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) database projects have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Engineering"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "db_project_usage", &databricks.PermissionsArgs{
+//				DatabaseProjectName: pulumi.String("my_project"),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_USE"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_MANAGE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Instance Profiles
 //
 // Instance Profiles are not managed by General Permissions API and therefore GroupInstanceProfile and UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -1585,6 +1629,7 @@ type Permissions struct {
 	ClusterPolicyId      pulumi.StringPtrOutput              `pulumi:"clusterPolicyId"`
 	DashboardId          pulumi.StringPtrOutput              `pulumi:"dashboardId"`
 	DatabaseInstanceName pulumi.StringPtrOutput              `pulumi:"databaseInstanceName"`
+	DatabaseProjectName  pulumi.StringPtrOutput              `pulumi:"databaseProjectName"`
 	DirectoryId          pulumi.StringPtrOutput              `pulumi:"directoryId"`
 	DirectoryPath        pulumi.StringPtrOutput              `pulumi:"directoryPath"`
 	ExperimentId         pulumi.StringPtrOutput              `pulumi:"experimentId"`
@@ -1650,6 +1695,7 @@ type permissionsState struct {
 	ClusterPolicyId      *string                    `pulumi:"clusterPolicyId"`
 	DashboardId          *string                    `pulumi:"dashboardId"`
 	DatabaseInstanceName *string                    `pulumi:"databaseInstanceName"`
+	DatabaseProjectName  *string                    `pulumi:"databaseProjectName"`
 	DirectoryId          *string                    `pulumi:"directoryId"`
 	DirectoryPath        *string                    `pulumi:"directoryPath"`
 	ExperimentId         *string                    `pulumi:"experimentId"`
@@ -1683,6 +1729,7 @@ type PermissionsState struct {
 	ClusterPolicyId      pulumi.StringPtrInput
 	DashboardId          pulumi.StringPtrInput
 	DatabaseInstanceName pulumi.StringPtrInput
+	DatabaseProjectName  pulumi.StringPtrInput
 	DirectoryId          pulumi.StringPtrInput
 	DirectoryPath        pulumi.StringPtrInput
 	ExperimentId         pulumi.StringPtrInput
@@ -1720,6 +1767,7 @@ type permissionsArgs struct {
 	ClusterPolicyId      *string                    `pulumi:"clusterPolicyId"`
 	DashboardId          *string                    `pulumi:"dashboardId"`
 	DatabaseInstanceName *string                    `pulumi:"databaseInstanceName"`
+	DatabaseProjectName  *string                    `pulumi:"databaseProjectName"`
 	DirectoryId          *string                    `pulumi:"directoryId"`
 	DirectoryPath        *string                    `pulumi:"directoryPath"`
 	ExperimentId         *string                    `pulumi:"experimentId"`
@@ -1754,6 +1802,7 @@ type PermissionsArgs struct {
 	ClusterPolicyId      pulumi.StringPtrInput
 	DashboardId          pulumi.StringPtrInput
 	DatabaseInstanceName pulumi.StringPtrInput
+	DatabaseProjectName  pulumi.StringPtrInput
 	DirectoryId          pulumi.StringPtrInput
 	DirectoryPath        pulumi.StringPtrInput
 	ExperimentId         pulumi.StringPtrInput
@@ -1895,6 +1944,10 @@ func (o PermissionsOutput) DashboardId() pulumi.StringPtrOutput {
 
 func (o PermissionsOutput) DatabaseInstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.DatabaseInstanceName }).(pulumi.StringPtrOutput)
+}
+
+func (o PermissionsOutput) DatabaseProjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.DatabaseProjectName }).(pulumi.StringPtrOutput)
 }
 
 func (o PermissionsOutput) DirectoryId() pulumi.StringPtrOutput {

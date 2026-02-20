@@ -858,6 +858,30 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Lakebase Database Projects usage
+ *
+ * [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) database projects have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const dbProjectUsage = new databricks.Permissions("db_project_usage", {
+ *     databaseProjectName: "my_project",
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_USE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Instance Profiles
  *
  * Instance Profiles are not managed by General Permissions API and therefore databricks.GroupInstanceProfile and databricks.UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -918,6 +942,7 @@ export class Permissions extends pulumi.CustomResource {
     declare public readonly clusterPolicyId: pulumi.Output<string | undefined>;
     declare public readonly dashboardId: pulumi.Output<string | undefined>;
     declare public readonly databaseInstanceName: pulumi.Output<string | undefined>;
+    declare public readonly databaseProjectName: pulumi.Output<string | undefined>;
     declare public readonly directoryId: pulumi.Output<string | undefined>;
     declare public readonly directoryPath: pulumi.Output<string | undefined>;
     declare public readonly experimentId: pulumi.Output<string | undefined>;
@@ -964,6 +989,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["clusterPolicyId"] = state?.clusterPolicyId;
             resourceInputs["dashboardId"] = state?.dashboardId;
             resourceInputs["databaseInstanceName"] = state?.databaseInstanceName;
+            resourceInputs["databaseProjectName"] = state?.databaseProjectName;
             resourceInputs["directoryId"] = state?.directoryId;
             resourceInputs["directoryPath"] = state?.directoryPath;
             resourceInputs["experimentId"] = state?.experimentId;
@@ -998,6 +1024,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["clusterPolicyId"] = args?.clusterPolicyId;
             resourceInputs["dashboardId"] = args?.dashboardId;
             resourceInputs["databaseInstanceName"] = args?.databaseInstanceName;
+            resourceInputs["databaseProjectName"] = args?.databaseProjectName;
             resourceInputs["directoryId"] = args?.directoryId;
             resourceInputs["directoryPath"] = args?.directoryPath;
             resourceInputs["experimentId"] = args?.experimentId;
@@ -1037,6 +1064,7 @@ export interface PermissionsState {
     clusterPolicyId?: pulumi.Input<string>;
     dashboardId?: pulumi.Input<string>;
     databaseInstanceName?: pulumi.Input<string>;
+    databaseProjectName?: pulumi.Input<string>;
     directoryId?: pulumi.Input<string>;
     directoryPath?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;
@@ -1075,6 +1103,7 @@ export interface PermissionsArgs {
     clusterPolicyId?: pulumi.Input<string>;
     dashboardId?: pulumi.Input<string>;
     databaseInstanceName?: pulumi.Input<string>;
+    databaseProjectName?: pulumi.Input<string>;
     directoryId?: pulumi.Input<string>;
     directoryPath?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;

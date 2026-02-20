@@ -101,6 +101,13 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         return Optional.ofNullable(this.credentialName);
     }
 
+    @Import(name="effectiveEnableFileEvents")
+    private @Nullable Output<Boolean> effectiveEnableFileEvents;
+
+    public Optional<Output<Boolean>> effectiveEnableFileEvents() {
+        return Optional.ofNullable(this.effectiveEnableFileEvents);
+    }
+
     @Import(name="enableFileEvents")
     private @Nullable Output<Boolean> enableFileEvents;
 
@@ -258,6 +265,7 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         this.createdBy = $.createdBy;
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
+        this.effectiveEnableFileEvents = $.effectiveEnableFileEvents;
         this.enableFileEvents = $.enableFileEvents;
         this.encryptionDetails = $.encryptionDetails;
         this.fallback = $.fallback;
@@ -402,6 +410,15 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
          */
         public Builder credentialName(String credentialName) {
             return credentialName(Output.of(credentialName));
+        }
+
+        public Builder effectiveEnableFileEvents(@Nullable Output<Boolean> effectiveEnableFileEvents) {
+            $.effectiveEnableFileEvents = effectiveEnableFileEvents;
+            return this;
+        }
+
+        public Builder effectiveEnableFileEvents(Boolean effectiveEnableFileEvents) {
+            return effectiveEnableFileEvents(Output.of(effectiveEnableFileEvents));
         }
 
         public Builder enableFileEvents(@Nullable Output<Boolean> enableFileEvents) {

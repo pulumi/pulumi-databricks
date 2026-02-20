@@ -7800,6 +7800,7 @@ export interface GetExternalLocationExternalLocationInfo {
      * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName?: string;
+    effectiveEnableFileEvents?: boolean;
     enableFileEvents?: boolean;
     /**
      * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -8957,6 +8958,7 @@ export interface GetInstancePoolPoolInfo {
     instancePoolName: string;
     maxCapacity?: number;
     minIdleInstances?: number;
+    nodeTypeFlexibility?: outputs.GetInstancePoolPoolInfoNodeTypeFlexibility;
     nodeTypeId?: string;
     preloadedDockerImages?: outputs.GetInstancePoolPoolInfoPreloadedDockerImage[];
     preloadedSparkVersions?: string[];
@@ -9012,6 +9014,10 @@ export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptio
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride {
     availabilityZone: string;
     instanceType: string;
+}
+
+export interface GetInstancePoolPoolInfoNodeTypeFlexibility {
+    alternateNodeTypeIds: string[];
 }
 
 export interface GetInstancePoolPoolInfoPreloadedDockerImage {
@@ -13372,7 +13378,13 @@ export interface GetTableTableInfoColumn {
 
 export interface GetTableTableInfoColumnMask {
     functionName?: string;
+    usingArguments?: outputs.GetTableTableInfoColumnMaskUsingArgument[];
     usingColumnNames?: string[];
+}
+
+export interface GetTableTableInfoColumnMaskUsingArgument {
+    column?: string;
+    constant?: string;
 }
 
 export interface GetTableTableInfoDeltaRuntimePropertiesKvpairs {
@@ -13396,7 +13408,13 @@ export interface GetTableTableInfoEncryptionDetailsSseEncryptionDetails {
 
 export interface GetTableTableInfoRowFilter {
     functionName: string;
+    inputArguments?: outputs.GetTableTableInfoRowFilterInputArgument[];
     inputColumnNames: string[];
+}
+
+export interface GetTableTableInfoRowFilterInputArgument {
+    column?: string;
+    constant?: string;
 }
 
 export interface GetTableTableInfoSecurableKindManifest {
@@ -14200,6 +14218,13 @@ export interface InstancePoolInstancePoolFleetAttributesFleetSpotOption {
 export interface InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride {
     availabilityZone: string;
     instanceType: string;
+}
+
+export interface InstancePoolNodeTypeFlexibility {
+    /**
+     * list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
+     */
+    alternateNodeTypeIds: string[];
 }
 
 export interface InstancePoolPreloadedDockerImage {
@@ -18588,11 +18613,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -18659,11 +18684,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;

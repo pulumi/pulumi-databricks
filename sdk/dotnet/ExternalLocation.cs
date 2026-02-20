@@ -220,6 +220,9 @@ namespace Pulumi.Databricks
         [Output("credentialName")]
         public Output<string> CredentialName { get; private set; } = null!;
 
+        [Output("effectiveEnableFileEvents")]
+        public Output<bool> EffectiveEnableFileEvents { get; private set; } = null!;
+
         /// <summary>
         /// indicates if managed file events are enabled for this external location.  Requires `FileEventQueue` block.
         /// </summary>
@@ -474,6 +477,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("credentialName")]
         public Input<string>? CredentialName { get; set; }
+
+        [Input("effectiveEnableFileEvents")]
+        public Input<bool>? EffectiveEnableFileEvents { get; set; }
 
         /// <summary>
         /// indicates if managed file events are enabled for this external location.  Requires `FileEventQueue` block.

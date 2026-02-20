@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetTableTableInfoColumnMaskUsingArgument;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,11 +14,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetTableTableInfoColumnMask {
     private @Nullable String functionName;
+    private @Nullable List<GetTableTableInfoColumnMaskUsingArgument> usingArguments;
     private @Nullable List<String> usingColumnNames;
 
     private GetTableTableInfoColumnMask() {}
     public Optional<String> functionName() {
         return Optional.ofNullable(this.functionName);
+    }
+    public List<GetTableTableInfoColumnMaskUsingArgument> usingArguments() {
+        return this.usingArguments == null ? List.of() : this.usingArguments;
     }
     public List<String> usingColumnNames() {
         return this.usingColumnNames == null ? List.of() : this.usingColumnNames;
@@ -33,11 +38,13 @@ public final class GetTableTableInfoColumnMask {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String functionName;
+        private @Nullable List<GetTableTableInfoColumnMaskUsingArgument> usingArguments;
         private @Nullable List<String> usingColumnNames;
         public Builder() {}
         public Builder(GetTableTableInfoColumnMask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.functionName = defaults.functionName;
+    	      this.usingArguments = defaults.usingArguments;
     	      this.usingColumnNames = defaults.usingColumnNames;
         }
 
@@ -46,6 +53,15 @@ public final class GetTableTableInfoColumnMask {
 
             this.functionName = functionName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder usingArguments(@Nullable List<GetTableTableInfoColumnMaskUsingArgument> usingArguments) {
+
+            this.usingArguments = usingArguments;
+            return this;
+        }
+        public Builder usingArguments(GetTableTableInfoColumnMaskUsingArgument... usingArguments) {
+            return usingArguments(List.of(usingArguments));
         }
         @CustomType.Setter
         public Builder usingColumnNames(@Nullable List<String> usingColumnNames) {
@@ -59,6 +75,7 @@ public final class GetTableTableInfoColumnMask {
         public GetTableTableInfoColumnMask build() {
             final var _resultValue = new GetTableTableInfoColumnMask();
             _resultValue.functionName = functionName;
+            _resultValue.usingArguments = usingArguments;
             _resultValue.usingColumnNames = usingColumnNames;
             return _resultValue;
         }

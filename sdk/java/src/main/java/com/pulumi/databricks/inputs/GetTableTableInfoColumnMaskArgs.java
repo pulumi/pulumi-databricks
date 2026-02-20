@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetTableTableInfoColumnMaskUsingArgumentArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +24,13 @@ public final class GetTableTableInfoColumnMaskArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.functionName);
     }
 
+    @Import(name="usingArguments")
+    private @Nullable Output<List<GetTableTableInfoColumnMaskUsingArgumentArgs>> usingArguments;
+
+    public Optional<Output<List<GetTableTableInfoColumnMaskUsingArgumentArgs>>> usingArguments() {
+        return Optional.ofNullable(this.usingArguments);
+    }
+
     @Import(name="usingColumnNames")
     private @Nullable Output<List<String>> usingColumnNames;
 
@@ -34,6 +42,7 @@ public final class GetTableTableInfoColumnMaskArgs extends com.pulumi.resources.
 
     private GetTableTableInfoColumnMaskArgs(GetTableTableInfoColumnMaskArgs $) {
         this.functionName = $.functionName;
+        this.usingArguments = $.usingArguments;
         this.usingColumnNames = $.usingColumnNames;
     }
 
@@ -62,6 +71,19 @@ public final class GetTableTableInfoColumnMaskArgs extends com.pulumi.resources.
 
         public Builder functionName(String functionName) {
             return functionName(Output.of(functionName));
+        }
+
+        public Builder usingArguments(@Nullable Output<List<GetTableTableInfoColumnMaskUsingArgumentArgs>> usingArguments) {
+            $.usingArguments = usingArguments;
+            return this;
+        }
+
+        public Builder usingArguments(List<GetTableTableInfoColumnMaskUsingArgumentArgs> usingArguments) {
+            return usingArguments(Output.of(usingArguments));
+        }
+
+        public Builder usingArguments(GetTableTableInfoColumnMaskUsingArgumentArgs... usingArguments) {
+            return usingArguments(List.of(usingArguments));
         }
 
         public Builder usingColumnNames(@Nullable Output<List<String>> usingColumnNames) {

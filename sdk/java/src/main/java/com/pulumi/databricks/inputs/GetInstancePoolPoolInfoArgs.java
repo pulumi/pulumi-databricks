@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoAzureAttributesArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoDiskSpecArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoGcpAttributesArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs;
+import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoNodeTypeFlexibilityArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoPreloadedDockerImageArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoStatsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -118,6 +119,13 @@ public final class GetInstancePoolPoolInfoArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.minIdleInstances);
     }
 
+    @Import(name="nodeTypeFlexibility")
+    private @Nullable Output<GetInstancePoolPoolInfoNodeTypeFlexibilityArgs> nodeTypeFlexibility;
+
+    public Optional<Output<GetInstancePoolPoolInfoNodeTypeFlexibilityArgs>> nodeTypeFlexibility() {
+        return Optional.ofNullable(this.nodeTypeFlexibility);
+    }
+
     @Import(name="nodeTypeId")
     private @Nullable Output<String> nodeTypeId;
 
@@ -169,6 +177,7 @@ public final class GetInstancePoolPoolInfoArgs extends com.pulumi.resources.Reso
         this.instancePoolName = $.instancePoolName;
         this.maxCapacity = $.maxCapacity;
         this.minIdleInstances = $.minIdleInstances;
+        this.nodeTypeFlexibility = $.nodeTypeFlexibility;
         this.nodeTypeId = $.nodeTypeId;
         this.preloadedDockerImages = $.preloadedDockerImages;
         this.preloadedSparkVersions = $.preloadedSparkVersions;
@@ -313,6 +322,15 @@ public final class GetInstancePoolPoolInfoArgs extends com.pulumi.resources.Reso
 
         public Builder minIdleInstances(Integer minIdleInstances) {
             return minIdleInstances(Output.of(minIdleInstances));
+        }
+
+        public Builder nodeTypeFlexibility(@Nullable Output<GetInstancePoolPoolInfoNodeTypeFlexibilityArgs> nodeTypeFlexibility) {
+            $.nodeTypeFlexibility = nodeTypeFlexibility;
+            return this;
+        }
+
+        public Builder nodeTypeFlexibility(GetInstancePoolPoolInfoNodeTypeFlexibilityArgs nodeTypeFlexibility) {
+            return nodeTypeFlexibility(Output.of(nodeTypeFlexibility));
         }
 
         public Builder nodeTypeId(@Nullable Output<String> nodeTypeId) {

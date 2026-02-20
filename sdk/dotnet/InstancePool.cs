@@ -120,6 +120,12 @@ namespace Pulumi.Databricks
         public Output<int?> MinIdleInstances { get; private set; } = null!;
 
         /// <summary>
+        /// a block describing the alternative driver node types if `NodeTypeId` isn't available.
+        /// </summary>
+        [Output("nodeTypeFlexibility")]
+        public Output<Outputs.InstancePoolNodeTypeFlexibility?> NodeTypeFlexibility { get; private set; } = null!;
+
+        /// <summary>
         /// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         /// </summary>
         [Output("nodeTypeId")]
@@ -134,6 +140,9 @@ namespace Pulumi.Databricks
         [Output("preloadedSparkVersions")]
         public Output<ImmutableArray<string>> PreloadedSparkVersions { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
         [Output("providerConfig")]
         public Output<Outputs.InstancePoolProviderConfig?> ProviderConfig { get; private set; } = null!;
 
@@ -244,6 +253,12 @@ namespace Pulumi.Databricks
         public Input<int>? MinIdleInstances { get; set; }
 
         /// <summary>
+        /// a block describing the alternative driver node types if `NodeTypeId` isn't available.
+        /// </summary>
+        [Input("nodeTypeFlexibility")]
+        public Input<Inputs.InstancePoolNodeTypeFlexibilityArgs>? NodeTypeFlexibility { get; set; }
+
+        /// <summary>
         /// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         /// </summary>
         [Input("nodeTypeId")]
@@ -269,6 +284,9 @@ namespace Pulumi.Databricks
             set => _preloadedSparkVersions = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.InstancePoolProviderConfigArgs>? ProviderConfig { get; set; }
 
@@ -341,6 +359,12 @@ namespace Pulumi.Databricks
         public Input<int>? MinIdleInstances { get; set; }
 
         /// <summary>
+        /// a block describing the alternative driver node types if `NodeTypeId` isn't available.
+        /// </summary>
+        [Input("nodeTypeFlexibility")]
+        public Input<Inputs.InstancePoolNodeTypeFlexibilityGetArgs>? NodeTypeFlexibility { get; set; }
+
+        /// <summary>
         /// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         /// </summary>
         [Input("nodeTypeId")]
@@ -366,6 +390,9 @@ namespace Pulumi.Databricks
             set => _preloadedSparkVersions = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.InstancePoolProviderConfigGetArgs>? ProviderConfig { get; set; }
 

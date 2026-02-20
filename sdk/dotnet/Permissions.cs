@@ -1380,6 +1380,44 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Lakebase Database Projects usage
+    /// 
+    /// [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) database projects have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var eng = new Databricks.Group("eng", new()
+    ///     {
+    ///         DisplayName = "Engineering",
+    ///     });
+    /// 
+    ///     var dbProjectUsage = new Databricks.Permissions("db_project_usage", new()
+    ///     {
+    ///         DatabaseProjectName = "my_project",
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = "users",
+    ///                 PermissionLevel = "CAN_USE",
+    ///             },
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = eng.DisplayName,
+    ///                 PermissionLevel = "CAN_MANAGE",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Instance Profiles
     /// 
     /// Instance Profiles are not managed by General Permissions API and therefore databricks.GroupInstanceProfile and databricks.UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -1430,6 +1468,9 @@ namespace Pulumi.Databricks
 
         [Output("databaseInstanceName")]
         public Output<string?> DatabaseInstanceName { get; private set; } = null!;
+
+        [Output("databaseProjectName")]
+        public Output<string?> DatabaseProjectName { get; private set; } = null!;
 
         [Output("directoryId")]
         public Output<string?> DirectoryId { get; private set; } = null!;
@@ -1572,6 +1613,9 @@ namespace Pulumi.Databricks
         [Input("databaseInstanceName")]
         public Input<string>? DatabaseInstanceName { get; set; }
 
+        [Input("databaseProjectName")]
+        public Input<string>? DatabaseProjectName { get; set; }
+
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
@@ -1674,6 +1718,9 @@ namespace Pulumi.Databricks
 
         [Input("databaseInstanceName")]
         public Input<string>? DatabaseInstanceName { get; set; }
+
+        [Input("databaseProjectName")]
+        public Input<string>? DatabaseProjectName { get; set; }
 
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }

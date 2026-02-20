@@ -15,6 +15,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("functionName", required: true)]
         public string FunctionName { get; set; } = null!;
 
+        [Input("inputArguments")]
+        private List<Inputs.GetTableTableInfoRowFilterInputArgumentArgs>? _inputArguments;
+        public List<Inputs.GetTableTableInfoRowFilterInputArgumentArgs> InputArguments
+        {
+            get => _inputArguments ?? (_inputArguments = new List<Inputs.GetTableTableInfoRowFilterInputArgumentArgs>());
+            set => _inputArguments = value;
+        }
+
         [Input("inputColumnNames", required: true)]
         private List<string>? _inputColumnNames;
         public List<string> InputColumnNames

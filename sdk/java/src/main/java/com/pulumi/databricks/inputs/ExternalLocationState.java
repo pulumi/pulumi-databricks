@@ -102,6 +102,13 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.credentialName);
     }
 
+    @Import(name="effectiveEnableFileEvents")
+    private @Nullable Output<Boolean> effectiveEnableFileEvents;
+
+    public Optional<Output<Boolean>> effectiveEnableFileEvents() {
+        return Optional.ofNullable(this.effectiveEnableFileEvents);
+    }
+
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      * 
@@ -319,6 +326,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         this.createdBy = $.createdBy;
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
+        this.effectiveEnableFileEvents = $.effectiveEnableFileEvents;
         this.enableFileEvents = $.enableFileEvents;
         this.encryptionDetails = $.encryptionDetails;
         this.fallback = $.fallback;
@@ -467,6 +475,15 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
          */
         public Builder credentialName(String credentialName) {
             return credentialName(Output.of(credentialName));
+        }
+
+        public Builder effectiveEnableFileEvents(@Nullable Output<Boolean> effectiveEnableFileEvents) {
+            $.effectiveEnableFileEvents = effectiveEnableFileEvents;
+            return this;
+        }
+
+        public Builder effectiveEnableFileEvents(Boolean effectiveEnableFileEvents) {
+            return effectiveEnableFileEvents(Output.of(effectiveEnableFileEvents));
         }
 
         /**

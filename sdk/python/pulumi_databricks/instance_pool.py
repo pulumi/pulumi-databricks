@@ -33,6 +33,7 @@ class InstancePoolArgs:
                  instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                  max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_type_flexibility: Optional[pulumi.Input['InstancePoolNodeTypeFlexibilityArgs']] = None,
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
                  preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -45,8 +46,10 @@ class InstancePoolArgs:
         :param pulumi.Input[_builtins.bool] enable_elastic_disk: (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
         :param pulumi.Input[_builtins.int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[_builtins.int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
+        :param pulumi.Input['InstancePoolNodeTypeFlexibilityArgs'] node_type_flexibility: a block describing the alternative driver node types if `node_type_id` isn't available.
         :param pulumi.Input[_builtins.str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        :param pulumi.Input['InstancePoolProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
         pulumi.set(__self__, "instance_pool_name", instance_pool_name)
@@ -70,6 +73,8 @@ class InstancePoolArgs:
             pulumi.set(__self__, "max_capacity", max_capacity)
         if min_idle_instances is not None:
             pulumi.set(__self__, "min_idle_instances", min_idle_instances)
+        if node_type_flexibility is not None:
+            pulumi.set(__self__, "node_type_flexibility", node_type_flexibility)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if preloaded_docker_images is not None:
@@ -206,6 +211,18 @@ class InstancePoolArgs:
         pulumi.set(self, "min_idle_instances", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeTypeFlexibility")
+    def node_type_flexibility(self) -> Optional[pulumi.Input['InstancePoolNodeTypeFlexibilityArgs']]:
+        """
+        a block describing the alternative driver node types if `node_type_id` isn't available.
+        """
+        return pulumi.get(self, "node_type_flexibility")
+
+    @node_type_flexibility.setter
+    def node_type_flexibility(self, value: Optional[pulumi.Input['InstancePoolNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "node_type_flexibility", value)
+
+    @_builtins.property
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -241,6 +258,9 @@ class InstancePoolArgs:
     @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional[pulumi.Input['InstancePoolProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
@@ -263,6 +283,7 @@ class _InstancePoolState:
                  instance_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
                  max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_type_flexibility: Optional[pulumi.Input['InstancePoolNodeTypeFlexibilityArgs']] = None,
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
                  preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -275,8 +296,10 @@ class _InstancePoolState:
         :param pulumi.Input[_builtins.str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
         :param pulumi.Input[_builtins.int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[_builtins.int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
+        :param pulumi.Input['InstancePoolNodeTypeFlexibilityArgs'] node_type_flexibility: a block describing the alternative driver node types if `node_type_id` isn't available.
         :param pulumi.Input[_builtins.str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        :param pulumi.Input['InstancePoolProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if aws_attributes is not None:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
@@ -302,6 +325,8 @@ class _InstancePoolState:
             pulumi.set(__self__, "max_capacity", max_capacity)
         if min_idle_instances is not None:
             pulumi.set(__self__, "min_idle_instances", min_idle_instances)
+        if node_type_flexibility is not None:
+            pulumi.set(__self__, "node_type_flexibility", node_type_flexibility)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if preloaded_docker_images is not None:
@@ -438,6 +463,18 @@ class _InstancePoolState:
         pulumi.set(self, "min_idle_instances", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeTypeFlexibility")
+    def node_type_flexibility(self) -> Optional[pulumi.Input['InstancePoolNodeTypeFlexibilityArgs']]:
+        """
+        a block describing the alternative driver node types if `node_type_id` isn't available.
+        """
+        return pulumi.get(self, "node_type_flexibility")
+
+    @node_type_flexibility.setter
+    def node_type_flexibility(self, value: Optional[pulumi.Input['InstancePoolNodeTypeFlexibilityArgs']]):
+        pulumi.set(self, "node_type_flexibility", value)
+
+    @_builtins.property
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -473,6 +510,9 @@ class _InstancePoolState:
     @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional[pulumi.Input['InstancePoolProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
@@ -498,6 +538,7 @@ class InstancePool(pulumi.CustomResource):
                  instance_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
                  max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_type_flexibility: Optional[pulumi.Input[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']]] = None,
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
                  preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -552,8 +593,10 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
         :param pulumi.Input[_builtins.int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[_builtins.int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
+        :param pulumi.Input[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']] node_type_flexibility: a block describing the alternative driver node types if `node_type_id` isn't available.
         :param pulumi.Input[_builtins.str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        :param pulumi.Input[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -629,6 +672,7 @@ class InstancePool(pulumi.CustomResource):
                  instance_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
                  max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_type_flexibility: Optional[pulumi.Input[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']]] = None,
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
                  preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -658,6 +702,7 @@ class InstancePool(pulumi.CustomResource):
             __props__.__dict__["instance_pool_name"] = instance_pool_name
             __props__.__dict__["max_capacity"] = max_capacity
             __props__.__dict__["min_idle_instances"] = min_idle_instances
+            __props__.__dict__["node_type_flexibility"] = node_type_flexibility
             __props__.__dict__["node_type_id"] = node_type_id
             __props__.__dict__["preloaded_docker_images"] = preloaded_docker_images
             __props__.__dict__["preloaded_spark_versions"] = preloaded_spark_versions
@@ -684,6 +729,7 @@ class InstancePool(pulumi.CustomResource):
             instance_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
             max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
             min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
+            node_type_flexibility: Optional[pulumi.Input[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']]] = None,
             node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
             preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePoolPreloadedDockerImageArgs', 'InstancePoolPreloadedDockerImageArgsDict']]]]] = None,
             preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -701,8 +747,10 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
         :param pulumi.Input[_builtins.int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[_builtins.int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
+        :param pulumi.Input[Union['InstancePoolNodeTypeFlexibilityArgs', 'InstancePoolNodeTypeFlexibilityArgsDict']] node_type_flexibility: a block describing the alternative driver node types if `node_type_id` isn't available.
         :param pulumi.Input[_builtins.str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        :param pulumi.Input[Union['InstancePoolProviderConfigArgs', 'InstancePoolProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -720,6 +768,7 @@ class InstancePool(pulumi.CustomResource):
         __props__.__dict__["instance_pool_name"] = instance_pool_name
         __props__.__dict__["max_capacity"] = max_capacity
         __props__.__dict__["min_idle_instances"] = min_idle_instances
+        __props__.__dict__["node_type_flexibility"] = node_type_flexibility
         __props__.__dict__["node_type_id"] = node_type_id
         __props__.__dict__["preloaded_docker_images"] = preloaded_docker_images
         __props__.__dict__["preloaded_spark_versions"] = preloaded_spark_versions
@@ -805,6 +854,14 @@ class InstancePool(pulumi.CustomResource):
         return pulumi.get(self, "min_idle_instances")
 
     @_builtins.property
+    @pulumi.getter(name="nodeTypeFlexibility")
+    def node_type_flexibility(self) -> pulumi.Output[Optional['outputs.InstancePoolNodeTypeFlexibility']]:
+        """
+        a block describing the alternative driver node types if `node_type_id` isn't available.
+        """
+        return pulumi.get(self, "node_type_flexibility")
+
+    @_builtins.property
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -828,5 +885,8 @@ class InstancePool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> pulumi.Output[Optional['outputs.InstancePoolProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         return pulumi.get(self, "provider_config")
 

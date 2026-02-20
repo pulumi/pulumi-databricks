@@ -14,15 +14,19 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetTableTableInfoRowFilterResult
     {
         public readonly string FunctionName;
+        public readonly ImmutableArray<Outputs.GetTableTableInfoRowFilterInputArgumentResult> InputArguments;
         public readonly ImmutableArray<string> InputColumnNames;
 
         [OutputConstructor]
         private GetTableTableInfoRowFilterResult(
             string functionName,
 
+            ImmutableArray<Outputs.GetTableTableInfoRowFilterInputArgumentResult> inputArguments,
+
             ImmutableArray<string> inputColumnNames)
         {
             FunctionName = functionName;
+            InputArguments = inputArguments;
             InputColumnNames = inputColumnNames;
         }
     }

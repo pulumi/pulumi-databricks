@@ -15,6 +15,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("functionName")]
         public string? FunctionName { get; set; }
 
+        [Input("usingArguments")]
+        private List<Inputs.GetTableTableInfoColumnMaskUsingArgumentArgs>? _usingArguments;
+        public List<Inputs.GetTableTableInfoColumnMaskUsingArgumentArgs> UsingArguments
+        {
+            get => _usingArguments ?? (_usingArguments = new List<Inputs.GetTableTableInfoColumnMaskUsingArgumentArgs>());
+            set => _usingArguments = value;
+        }
+
         [Input("usingColumnNames")]
         private List<string>? _usingColumnNames;
         public List<string> UsingColumnNames

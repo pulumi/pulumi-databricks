@@ -13,6 +13,385 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetJobJobSettingsSettingsTaskSqlTask struct {
+	Alert       *GetJobJobSettingsSettingsTaskSqlTaskAlert     `pulumi:"alert"`
+	Dashboard   *GetJobJobSettingsSettingsTaskSqlTaskDashboard `pulumi:"dashboard"`
+	File        *GetJobJobSettingsSettingsTaskSqlTaskFile      `pulumi:"file"`
+	Parameters  map[string]string                              `pulumi:"parameters"`
+	Query       *GetJobJobSettingsSettingsTaskSqlTaskQuery     `pulumi:"query"`
+	WarehouseId string                                         `pulumi:"warehouseId"`
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskArgs and GetJobJobSettingsSettingsTaskSqlTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSqlTaskArgs{...}
+type GetJobJobSettingsSettingsTaskSqlTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskOutput() GetJobJobSettingsSettingsTaskSqlTaskOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskArgs struct {
+	Alert       GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput     `pulumi:"alert"`
+	Dashboard   GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrInput `pulumi:"dashboard"`
+	File        GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput      `pulumi:"file"`
+	Parameters  pulumi.StringMapInput                                 `pulumi:"parameters"`
+	Query       GetJobJobSettingsSettingsTaskSqlTaskQueryPtrInput     `pulumi:"query"`
+	WarehouseId pulumi.StringInput                                    `pulumi:"warehouseId"`
+}
+
+func (GetJobJobSettingsSettingsTaskSqlTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskArgs) ToGetJobJobSettingsSettingsTaskSqlTaskOutput() GetJobJobSettingsSettingsTaskSqlTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskArgs) ToGetJobJobSettingsSettingsTaskSqlTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskArgs) ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskArgs) ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskOutput).ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskArgs, GetJobJobSettingsSettingsTaskSqlTaskPtr and GetJobJobSettingsSettingsTaskSqlTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskSqlTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskSqlTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskSqlTaskPtrType GetJobJobSettingsSettingsTaskSqlTaskArgs
+
+func GetJobJobSettingsSettingsTaskSqlTaskPtr(v *GetJobJobSettingsSettingsTaskSqlTaskArgs) GetJobJobSettingsSettingsTaskSqlTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskSqlTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskSqlTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSqlTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskSqlTaskPtrType) ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskSqlTaskPtrType) ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) ToGetJobJobSettingsSettingsTaskSqlTaskOutput() GetJobJobSettingsSettingsTaskSqlTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) ToGetJobJobSettingsSettingsTaskSqlTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskSqlTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Alert() GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskAlert {
+		return v.Alert
+	}).(GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Dashboard() GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskDashboard {
+		return v.Dashboard
+	}).(GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) File() GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskFile { return v.File }).(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Query() GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskQuery {
+		return v.Query
+	}).(GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) WarehouseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) string { return v.WarehouseId }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSqlTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) ToGetJobJobSettingsSettingsTaskSqlTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskSqlTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) GetJobJobSettingsSettingsTaskSqlTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskSqlTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskSqlTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Alert() GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskAlert {
+		if v == nil {
+			return nil
+		}
+		return v.Alert
+	}).(GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Dashboard() GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskDashboard {
+		if v == nil {
+			return nil
+		}
+		return v.Dashboard
+	}).(GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) File() GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskFile {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Query() GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskQuery {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskAlert struct {
+	AlertId            string                                                  `pulumi:"alertId"`
+	PauseSubscriptions *bool                                                   `pulumi:"pauseSubscriptions"`
+	Subscriptions      []GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription `pulumi:"subscriptions"`
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskAlertInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskAlertArgs and GetJobJobSettingsSettingsTaskSqlTaskAlertOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskAlertInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSqlTaskAlertArgs{...}
+type GetJobJobSettingsSettingsTaskSqlTaskAlertInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskAlertOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskAlertOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertOutput
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskAlertArgs struct {
+	AlertId            pulumi.StringInput                                              `pulumi:"alertId"`
+	PauseSubscriptions pulumi.BoolPtrInput                                             `pulumi:"pauseSubscriptions"`
+	Subscriptions      GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayInput `pulumi:"subscriptions"`
+}
+
+func (GetJobJobSettingsSettingsTaskSqlTaskAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlert)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskAlertArgs) ToGetJobJobSettingsSettingsTaskSqlTaskAlertOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskAlertOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskAlertArgs) ToGetJobJobSettingsSettingsTaskSqlTaskAlertOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskAlertOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskAlertArgs) ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskAlertArgs) ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskAlertOutput).ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskAlertArgs, GetJobJobSettingsSettingsTaskSqlTaskAlertPtr and GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskSqlTaskAlertArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskSqlTaskAlertPtrType GetJobJobSettingsSettingsTaskSqlTaskAlertArgs
+
+func GetJobJobSettingsSettingsTaskSqlTaskAlertPtr(v *GetJobJobSettingsSettingsTaskSqlTaskAlertArgs) GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput {
+	return (*getJobJobSettingsSettingsTaskSqlTaskAlertPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskSqlTaskAlertPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSqlTaskAlert)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskSqlTaskAlertPtrType) ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskSqlTaskAlertPtrType) ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskAlertOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlert)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskSqlTaskAlert) *GetJobJobSettingsSettingsTaskSqlTaskAlert {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) AlertId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskAlert) string { return v.AlertId }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskAlert) *bool { return v.PauseSubscriptions }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) Subscriptions() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskAlert) []GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
+		return v.Subscriptions
+	}).(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSqlTaskAlert)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) Elem() GetJobJobSettingsSettingsTaskSqlTaskAlertOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskAlert) GetJobJobSettingsSettingsTaskSqlTaskAlert {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskSqlTaskAlert
+		return ret
+	}).(GetJobJobSettingsSettingsTaskSqlTaskAlertOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) AlertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskAlert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AlertId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskAlert) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PauseSubscriptions
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) Subscriptions() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskAlert) []GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
+		if v == nil {
+			return nil
+		}
+		return v.Subscriptions
+	}).(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput)
+}
+
 type GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription struct {
 	DestinationId *string `pulumi:"destinationId"`
 	UserName      *string `pulumi:"userName"`
@@ -28059,8 +28438,9 @@ func (o GetTableTableInfoColumnArrayOutput) Index(i pulumi.IntInput) GetTableTab
 }
 
 type GetTableTableInfoColumnMask struct {
-	FunctionName     *string  `pulumi:"functionName"`
-	UsingColumnNames []string `pulumi:"usingColumnNames"`
+	FunctionName     *string                                    `pulumi:"functionName"`
+	UsingArguments   []GetTableTableInfoColumnMaskUsingArgument `pulumi:"usingArguments"`
+	UsingColumnNames []string                                   `pulumi:"usingColumnNames"`
 }
 
 // GetTableTableInfoColumnMaskInput is an input type that accepts GetTableTableInfoColumnMaskArgs and GetTableTableInfoColumnMaskOutput values.
@@ -28075,8 +28455,9 @@ type GetTableTableInfoColumnMaskInput interface {
 }
 
 type GetTableTableInfoColumnMaskArgs struct {
-	FunctionName     pulumi.StringPtrInput   `pulumi:"functionName"`
-	UsingColumnNames pulumi.StringArrayInput `pulumi:"usingColumnNames"`
+	FunctionName     pulumi.StringPtrInput                              `pulumi:"functionName"`
+	UsingArguments   GetTableTableInfoColumnMaskUsingArgumentArrayInput `pulumi:"usingArguments"`
+	UsingColumnNames pulumi.StringArrayInput                            `pulumi:"usingColumnNames"`
 }
 
 func (GetTableTableInfoColumnMaskArgs) ElementType() reflect.Type {
@@ -28160,6 +28541,12 @@ func (o GetTableTableInfoColumnMaskOutput) FunctionName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetTableTableInfoColumnMask) *string { return v.FunctionName }).(pulumi.StringPtrOutput)
 }
 
+func (o GetTableTableInfoColumnMaskOutput) UsingArguments() GetTableTableInfoColumnMaskUsingArgumentArrayOutput {
+	return o.ApplyT(func(v GetTableTableInfoColumnMask) []GetTableTableInfoColumnMaskUsingArgument {
+		return v.UsingArguments
+	}).(GetTableTableInfoColumnMaskUsingArgumentArrayOutput)
+}
+
 func (o GetTableTableInfoColumnMaskOutput) UsingColumnNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTableTableInfoColumnMask) []string { return v.UsingColumnNames }).(pulumi.StringArrayOutput)
 }
@@ -28197,6 +28584,15 @@ func (o GetTableTableInfoColumnMaskPtrOutput) FunctionName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetTableTableInfoColumnMaskPtrOutput) UsingArguments() GetTableTableInfoColumnMaskUsingArgumentArrayOutput {
+	return o.ApplyT(func(v *GetTableTableInfoColumnMask) []GetTableTableInfoColumnMaskUsingArgument {
+		if v == nil {
+			return nil
+		}
+		return v.UsingArguments
+	}).(GetTableTableInfoColumnMaskUsingArgumentArrayOutput)
+}
+
 func (o GetTableTableInfoColumnMaskPtrOutput) UsingColumnNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetTableTableInfoColumnMask) []string {
 		if v == nil {
@@ -28204,6 +28600,106 @@ func (o GetTableTableInfoColumnMaskPtrOutput) UsingColumnNames() pulumi.StringAr
 		}
 		return v.UsingColumnNames
 	}).(pulumi.StringArrayOutput)
+}
+
+type GetTableTableInfoColumnMaskUsingArgument struct {
+	Column   *string `pulumi:"column"`
+	Constant *string `pulumi:"constant"`
+}
+
+// GetTableTableInfoColumnMaskUsingArgumentInput is an input type that accepts GetTableTableInfoColumnMaskUsingArgumentArgs and GetTableTableInfoColumnMaskUsingArgumentOutput values.
+// You can construct a concrete instance of `GetTableTableInfoColumnMaskUsingArgumentInput` via:
+//
+//	GetTableTableInfoColumnMaskUsingArgumentArgs{...}
+type GetTableTableInfoColumnMaskUsingArgumentInput interface {
+	pulumi.Input
+
+	ToGetTableTableInfoColumnMaskUsingArgumentOutput() GetTableTableInfoColumnMaskUsingArgumentOutput
+	ToGetTableTableInfoColumnMaskUsingArgumentOutputWithContext(context.Context) GetTableTableInfoColumnMaskUsingArgumentOutput
+}
+
+type GetTableTableInfoColumnMaskUsingArgumentArgs struct {
+	Column   pulumi.StringPtrInput `pulumi:"column"`
+	Constant pulumi.StringPtrInput `pulumi:"constant"`
+}
+
+func (GetTableTableInfoColumnMaskUsingArgumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTableTableInfoColumnMaskUsingArgument)(nil)).Elem()
+}
+
+func (i GetTableTableInfoColumnMaskUsingArgumentArgs) ToGetTableTableInfoColumnMaskUsingArgumentOutput() GetTableTableInfoColumnMaskUsingArgumentOutput {
+	return i.ToGetTableTableInfoColumnMaskUsingArgumentOutputWithContext(context.Background())
+}
+
+func (i GetTableTableInfoColumnMaskUsingArgumentArgs) ToGetTableTableInfoColumnMaskUsingArgumentOutputWithContext(ctx context.Context) GetTableTableInfoColumnMaskUsingArgumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTableTableInfoColumnMaskUsingArgumentOutput)
+}
+
+// GetTableTableInfoColumnMaskUsingArgumentArrayInput is an input type that accepts GetTableTableInfoColumnMaskUsingArgumentArray and GetTableTableInfoColumnMaskUsingArgumentArrayOutput values.
+// You can construct a concrete instance of `GetTableTableInfoColumnMaskUsingArgumentArrayInput` via:
+//
+//	GetTableTableInfoColumnMaskUsingArgumentArray{ GetTableTableInfoColumnMaskUsingArgumentArgs{...} }
+type GetTableTableInfoColumnMaskUsingArgumentArrayInput interface {
+	pulumi.Input
+
+	ToGetTableTableInfoColumnMaskUsingArgumentArrayOutput() GetTableTableInfoColumnMaskUsingArgumentArrayOutput
+	ToGetTableTableInfoColumnMaskUsingArgumentArrayOutputWithContext(context.Context) GetTableTableInfoColumnMaskUsingArgumentArrayOutput
+}
+
+type GetTableTableInfoColumnMaskUsingArgumentArray []GetTableTableInfoColumnMaskUsingArgumentInput
+
+func (GetTableTableInfoColumnMaskUsingArgumentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTableTableInfoColumnMaskUsingArgument)(nil)).Elem()
+}
+
+func (i GetTableTableInfoColumnMaskUsingArgumentArray) ToGetTableTableInfoColumnMaskUsingArgumentArrayOutput() GetTableTableInfoColumnMaskUsingArgumentArrayOutput {
+	return i.ToGetTableTableInfoColumnMaskUsingArgumentArrayOutputWithContext(context.Background())
+}
+
+func (i GetTableTableInfoColumnMaskUsingArgumentArray) ToGetTableTableInfoColumnMaskUsingArgumentArrayOutputWithContext(ctx context.Context) GetTableTableInfoColumnMaskUsingArgumentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTableTableInfoColumnMaskUsingArgumentArrayOutput)
+}
+
+type GetTableTableInfoColumnMaskUsingArgumentOutput struct{ *pulumi.OutputState }
+
+func (GetTableTableInfoColumnMaskUsingArgumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTableTableInfoColumnMaskUsingArgument)(nil)).Elem()
+}
+
+func (o GetTableTableInfoColumnMaskUsingArgumentOutput) ToGetTableTableInfoColumnMaskUsingArgumentOutput() GetTableTableInfoColumnMaskUsingArgumentOutput {
+	return o
+}
+
+func (o GetTableTableInfoColumnMaskUsingArgumentOutput) ToGetTableTableInfoColumnMaskUsingArgumentOutputWithContext(ctx context.Context) GetTableTableInfoColumnMaskUsingArgumentOutput {
+	return o
+}
+
+func (o GetTableTableInfoColumnMaskUsingArgumentOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTableTableInfoColumnMaskUsingArgument) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTableTableInfoColumnMaskUsingArgumentOutput) Constant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTableTableInfoColumnMaskUsingArgument) *string { return v.Constant }).(pulumi.StringPtrOutput)
+}
+
+type GetTableTableInfoColumnMaskUsingArgumentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTableTableInfoColumnMaskUsingArgumentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTableTableInfoColumnMaskUsingArgument)(nil)).Elem()
+}
+
+func (o GetTableTableInfoColumnMaskUsingArgumentArrayOutput) ToGetTableTableInfoColumnMaskUsingArgumentArrayOutput() GetTableTableInfoColumnMaskUsingArgumentArrayOutput {
+	return o
+}
+
+func (o GetTableTableInfoColumnMaskUsingArgumentArrayOutput) ToGetTableTableInfoColumnMaskUsingArgumentArrayOutputWithContext(ctx context.Context) GetTableTableInfoColumnMaskUsingArgumentArrayOutput {
+	return o
+}
+
+func (o GetTableTableInfoColumnMaskUsingArgumentArrayOutput) Index(i pulumi.IntInput) GetTableTableInfoColumnMaskUsingArgumentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTableTableInfoColumnMaskUsingArgument {
+		return vs[0].([]GetTableTableInfoColumnMaskUsingArgument)[vs[1].(int)]
+	}).(GetTableTableInfoColumnMaskUsingArgumentOutput)
 }
 
 type GetTableTableInfoDeltaRuntimePropertiesKvpairs struct {
@@ -28788,8 +29284,9 @@ func (o GetTableTableInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKmsK
 }
 
 type GetTableTableInfoRowFilter struct {
-	FunctionName     string   `pulumi:"functionName"`
-	InputColumnNames []string `pulumi:"inputColumnNames"`
+	FunctionName     string                                    `pulumi:"functionName"`
+	InputArguments   []GetTableTableInfoRowFilterInputArgument `pulumi:"inputArguments"`
+	InputColumnNames []string                                  `pulumi:"inputColumnNames"`
 }
 
 // GetTableTableInfoRowFilterInput is an input type that accepts GetTableTableInfoRowFilterArgs and GetTableTableInfoRowFilterOutput values.
@@ -28804,8 +29301,9 @@ type GetTableTableInfoRowFilterInput interface {
 }
 
 type GetTableTableInfoRowFilterArgs struct {
-	FunctionName     pulumi.StringInput      `pulumi:"functionName"`
-	InputColumnNames pulumi.StringArrayInput `pulumi:"inputColumnNames"`
+	FunctionName     pulumi.StringInput                                `pulumi:"functionName"`
+	InputArguments   GetTableTableInfoRowFilterInputArgumentArrayInput `pulumi:"inputArguments"`
+	InputColumnNames pulumi.StringArrayInput                           `pulumi:"inputColumnNames"`
 }
 
 func (GetTableTableInfoRowFilterArgs) ElementType() reflect.Type {
@@ -28889,6 +29387,10 @@ func (o GetTableTableInfoRowFilterOutput) FunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableTableInfoRowFilter) string { return v.FunctionName }).(pulumi.StringOutput)
 }
 
+func (o GetTableTableInfoRowFilterOutput) InputArguments() GetTableTableInfoRowFilterInputArgumentArrayOutput {
+	return o.ApplyT(func(v GetTableTableInfoRowFilter) []GetTableTableInfoRowFilterInputArgument { return v.InputArguments }).(GetTableTableInfoRowFilterInputArgumentArrayOutput)
+}
+
 func (o GetTableTableInfoRowFilterOutput) InputColumnNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTableTableInfoRowFilter) []string { return v.InputColumnNames }).(pulumi.StringArrayOutput)
 }
@@ -28926,6 +29428,15 @@ func (o GetTableTableInfoRowFilterPtrOutput) FunctionName() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetTableTableInfoRowFilterPtrOutput) InputArguments() GetTableTableInfoRowFilterInputArgumentArrayOutput {
+	return o.ApplyT(func(v *GetTableTableInfoRowFilter) []GetTableTableInfoRowFilterInputArgument {
+		if v == nil {
+			return nil
+		}
+		return v.InputArguments
+	}).(GetTableTableInfoRowFilterInputArgumentArrayOutput)
+}
+
 func (o GetTableTableInfoRowFilterPtrOutput) InputColumnNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetTableTableInfoRowFilter) []string {
 		if v == nil {
@@ -28933,6 +29444,106 @@ func (o GetTableTableInfoRowFilterPtrOutput) InputColumnNames() pulumi.StringArr
 		}
 		return v.InputColumnNames
 	}).(pulumi.StringArrayOutput)
+}
+
+type GetTableTableInfoRowFilterInputArgument struct {
+	Column   *string `pulumi:"column"`
+	Constant *string `pulumi:"constant"`
+}
+
+// GetTableTableInfoRowFilterInputArgumentInput is an input type that accepts GetTableTableInfoRowFilterInputArgumentArgs and GetTableTableInfoRowFilterInputArgumentOutput values.
+// You can construct a concrete instance of `GetTableTableInfoRowFilterInputArgumentInput` via:
+//
+//	GetTableTableInfoRowFilterInputArgumentArgs{...}
+type GetTableTableInfoRowFilterInputArgumentInput interface {
+	pulumi.Input
+
+	ToGetTableTableInfoRowFilterInputArgumentOutput() GetTableTableInfoRowFilterInputArgumentOutput
+	ToGetTableTableInfoRowFilterInputArgumentOutputWithContext(context.Context) GetTableTableInfoRowFilterInputArgumentOutput
+}
+
+type GetTableTableInfoRowFilterInputArgumentArgs struct {
+	Column   pulumi.StringPtrInput `pulumi:"column"`
+	Constant pulumi.StringPtrInput `pulumi:"constant"`
+}
+
+func (GetTableTableInfoRowFilterInputArgumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTableTableInfoRowFilterInputArgument)(nil)).Elem()
+}
+
+func (i GetTableTableInfoRowFilterInputArgumentArgs) ToGetTableTableInfoRowFilterInputArgumentOutput() GetTableTableInfoRowFilterInputArgumentOutput {
+	return i.ToGetTableTableInfoRowFilterInputArgumentOutputWithContext(context.Background())
+}
+
+func (i GetTableTableInfoRowFilterInputArgumentArgs) ToGetTableTableInfoRowFilterInputArgumentOutputWithContext(ctx context.Context) GetTableTableInfoRowFilterInputArgumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTableTableInfoRowFilterInputArgumentOutput)
+}
+
+// GetTableTableInfoRowFilterInputArgumentArrayInput is an input type that accepts GetTableTableInfoRowFilterInputArgumentArray and GetTableTableInfoRowFilterInputArgumentArrayOutput values.
+// You can construct a concrete instance of `GetTableTableInfoRowFilterInputArgumentArrayInput` via:
+//
+//	GetTableTableInfoRowFilterInputArgumentArray{ GetTableTableInfoRowFilterInputArgumentArgs{...} }
+type GetTableTableInfoRowFilterInputArgumentArrayInput interface {
+	pulumi.Input
+
+	ToGetTableTableInfoRowFilterInputArgumentArrayOutput() GetTableTableInfoRowFilterInputArgumentArrayOutput
+	ToGetTableTableInfoRowFilterInputArgumentArrayOutputWithContext(context.Context) GetTableTableInfoRowFilterInputArgumentArrayOutput
+}
+
+type GetTableTableInfoRowFilterInputArgumentArray []GetTableTableInfoRowFilterInputArgumentInput
+
+func (GetTableTableInfoRowFilterInputArgumentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTableTableInfoRowFilterInputArgument)(nil)).Elem()
+}
+
+func (i GetTableTableInfoRowFilterInputArgumentArray) ToGetTableTableInfoRowFilterInputArgumentArrayOutput() GetTableTableInfoRowFilterInputArgumentArrayOutput {
+	return i.ToGetTableTableInfoRowFilterInputArgumentArrayOutputWithContext(context.Background())
+}
+
+func (i GetTableTableInfoRowFilterInputArgumentArray) ToGetTableTableInfoRowFilterInputArgumentArrayOutputWithContext(ctx context.Context) GetTableTableInfoRowFilterInputArgumentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTableTableInfoRowFilterInputArgumentArrayOutput)
+}
+
+type GetTableTableInfoRowFilterInputArgumentOutput struct{ *pulumi.OutputState }
+
+func (GetTableTableInfoRowFilterInputArgumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTableTableInfoRowFilterInputArgument)(nil)).Elem()
+}
+
+func (o GetTableTableInfoRowFilterInputArgumentOutput) ToGetTableTableInfoRowFilterInputArgumentOutput() GetTableTableInfoRowFilterInputArgumentOutput {
+	return o
+}
+
+func (o GetTableTableInfoRowFilterInputArgumentOutput) ToGetTableTableInfoRowFilterInputArgumentOutputWithContext(ctx context.Context) GetTableTableInfoRowFilterInputArgumentOutput {
+	return o
+}
+
+func (o GetTableTableInfoRowFilterInputArgumentOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTableTableInfoRowFilterInputArgument) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTableTableInfoRowFilterInputArgumentOutput) Constant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTableTableInfoRowFilterInputArgument) *string { return v.Constant }).(pulumi.StringPtrOutput)
+}
+
+type GetTableTableInfoRowFilterInputArgumentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTableTableInfoRowFilterInputArgumentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTableTableInfoRowFilterInputArgument)(nil)).Elem()
+}
+
+func (o GetTableTableInfoRowFilterInputArgumentArrayOutput) ToGetTableTableInfoRowFilterInputArgumentArrayOutput() GetTableTableInfoRowFilterInputArgumentArrayOutput {
+	return o
+}
+
+func (o GetTableTableInfoRowFilterInputArgumentArrayOutput) ToGetTableTableInfoRowFilterInputArgumentArrayOutputWithContext(ctx context.Context) GetTableTableInfoRowFilterInputArgumentArrayOutput {
+	return o
+}
+
+func (o GetTableTableInfoRowFilterInputArgumentArrayOutput) Index(i pulumi.IntInput) GetTableTableInfoRowFilterInputArgumentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTableTableInfoRowFilterInputArgument {
+		return vs[0].([]GetTableTableInfoRowFilterInputArgument)[vs[1].(int)]
+	}).(GetTableTableInfoRowFilterInputArgumentOutput)
 }
 
 type GetTableTableInfoSecurableKindManifest struct {
@@ -37314,6 +37925,10 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs{})
@@ -37692,6 +38307,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoColumnArrayInput)(nil)).Elem(), GetTableTableInfoColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoColumnMaskInput)(nil)).Elem(), GetTableTableInfoColumnMaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoColumnMaskPtrInput)(nil)).Elem(), GetTableTableInfoColumnMaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoColumnMaskUsingArgumentInput)(nil)).Elem(), GetTableTableInfoColumnMaskUsingArgumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoColumnMaskUsingArgumentArrayInput)(nil)).Elem(), GetTableTableInfoColumnMaskUsingArgumentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoDeltaRuntimePropertiesKvpairsInput)(nil)).Elem(), GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoDeltaRuntimePropertiesKvpairsPtrInput)(nil)).Elem(), GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoEffectivePredictiveOptimizationFlagInput)(nil)).Elem(), GetTableTableInfoEffectivePredictiveOptimizationFlagArgs{})
@@ -37702,6 +38319,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoRowFilterInput)(nil)).Elem(), GetTableTableInfoRowFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoRowFilterPtrInput)(nil)).Elem(), GetTableTableInfoRowFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoRowFilterInputArgumentInput)(nil)).Elem(), GetTableTableInfoRowFilterInputArgumentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoRowFilterInputArgumentArrayInput)(nil)).Elem(), GetTableTableInfoRowFilterInputArgumentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoSecurableKindManifestInput)(nil)).Elem(), GetTableTableInfoSecurableKindManifestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoSecurableKindManifestPtrInput)(nil)).Elem(), GetTableTableInfoSecurableKindManifestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTableTableInfoSecurableKindManifestOptionInput)(nil)).Elem(), GetTableTableInfoSecurableKindManifestOptionArgs{})
@@ -37818,6 +38437,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput{})
@@ -38196,6 +38819,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTableTableInfoColumnArrayOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoColumnMaskOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoColumnMaskPtrOutput{})
+	pulumi.RegisterOutputType(GetTableTableInfoColumnMaskUsingArgumentOutput{})
+	pulumi.RegisterOutputType(GetTableTableInfoColumnMaskUsingArgumentArrayOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoDeltaRuntimePropertiesKvpairsOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoDeltaRuntimePropertiesKvpairsPtrOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoEffectivePredictiveOptimizationFlagOutput{})
@@ -38206,6 +38831,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTableTableInfoEncryptionDetailsSseEncryptionDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoRowFilterOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoRowFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetTableTableInfoRowFilterInputArgumentOutput{})
+	pulumi.RegisterOutputType(GetTableTableInfoRowFilterInputArgumentArrayOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoSecurableKindManifestOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoSecurableKindManifestPtrOutput{})
 	pulumi.RegisterOutputType(GetTableTableInfoSecurableKindManifestOptionOutput{})

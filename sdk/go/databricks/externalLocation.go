@@ -211,7 +211,8 @@ type ExternalLocation struct {
 	// Unique ID of the location's storage credential.
 	CredentialId pulumi.StringOutput `pulumi:"credentialId"`
 	// Name of the StorageCredential to use with this external location.
-	CredentialName pulumi.StringOutput `pulumi:"credentialName"`
+	CredentialName            pulumi.StringOutput `pulumi:"credentialName"`
+	EffectiveEnableFileEvents pulumi.BoolOutput   `pulumi:"effectiveEnableFileEvents"`
 	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
 	EnableFileEvents  pulumi.BoolPtrOutput                       `pulumi:"enableFileEvents"`
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrOutput `pulumi:"encryptionDetails"`
@@ -288,7 +289,8 @@ type externalLocationState struct {
 	// Unique ID of the location's storage credential.
 	CredentialId *string `pulumi:"credentialId"`
 	// Name of the StorageCredential to use with this external location.
-	CredentialName *string `pulumi:"credentialName"`
+	CredentialName            *string `pulumi:"credentialName"`
+	EffectiveEnableFileEvents *bool   `pulumi:"effectiveEnableFileEvents"`
 	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
 	EnableFileEvents  *bool                              `pulumi:"enableFileEvents"`
 	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
@@ -330,7 +332,8 @@ type ExternalLocationState struct {
 	// Unique ID of the location's storage credential.
 	CredentialId pulumi.StringPtrInput
 	// Name of the StorageCredential to use with this external location.
-	CredentialName pulumi.StringPtrInput
+	CredentialName            pulumi.StringPtrInput
+	EffectiveEnableFileEvents pulumi.BoolPtrInput
 	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
 	EnableFileEvents  pulumi.BoolPtrInput
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
@@ -542,6 +545,10 @@ func (o ExternalLocationOutput) CredentialId() pulumi.StringOutput {
 // Name of the StorageCredential to use with this external location.
 func (o ExternalLocationOutput) CredentialName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.CredentialName }).(pulumi.StringOutput)
+}
+
+func (o ExternalLocationOutput) EffectiveEnableFileEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolOutput { return v.EffectiveEnableFileEvents }).(pulumi.BoolOutput)
 }
 
 // indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.

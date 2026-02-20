@@ -29,6 +29,7 @@ class PermissionsArgs:
                  cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_path: Optional[pulumi.Input[_builtins.str]] = None,
                  experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -69,6 +70,8 @@ class PermissionsArgs:
             pulumi.set(__self__, "dashboard_id", dashboard_id)
         if database_instance_name is not None:
             pulumi.set(__self__, "database_instance_name", database_instance_name)
+        if database_project_name is not None:
+            pulumi.set(__self__, "database_project_name", database_project_name)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
         if directory_path is not None:
@@ -183,6 +186,15 @@ class PermissionsArgs:
     @database_instance_name.setter
     def database_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "database_instance_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseProjectName")
+    def database_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "database_project_name")
+
+    @database_project_name.setter
+    def database_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "database_project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
@@ -388,6 +400,7 @@ class _PermissionsState:
                  cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_path: Optional[pulumi.Input[_builtins.str]] = None,
                  experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -429,6 +442,8 @@ class _PermissionsState:
             pulumi.set(__self__, "dashboard_id", dashboard_id)
         if database_instance_name is not None:
             pulumi.set(__self__, "database_instance_name", database_instance_name)
+        if database_project_name is not None:
+            pulumi.set(__self__, "database_project_name", database_project_name)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
         if directory_path is not None:
@@ -543,6 +558,15 @@ class _PermissionsState:
     @database_instance_name.setter
     def database_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "database_instance_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseProjectName")
+    def database_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "database_project_name")
+
+    @database_project_name.setter
+    def database_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "database_project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
@@ -751,6 +775,7 @@ class Permissions(pulumi.CustomResource):
                  cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_path: Optional[pulumi.Input[_builtins.str]] = None,
                  experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1564,6 +1589,29 @@ class Permissions(pulumi.CustomResource):
         eng = databricks.Group("eng", display_name="Engineering")
         app_usage = databricks.Permissions("app_usage",
             database_instance_name="my_database",
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
+        ## Lakebase Database Projects usage
+
+        [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) database projects have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        db_project_usage = databricks.Permissions("db_project_usage",
+            database_project_name="my_project",
             access_controls=[
                 {
                     "group_name": "users",
@@ -2413,6 +2461,29 @@ class Permissions(pulumi.CustomResource):
             ])
         ```
 
+        ## Lakebase Database Projects usage
+
+        [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) database projects have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        db_project_usage = databricks.Permissions("db_project_usage",
+            database_project_name="my_project",
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
         ## Instance Profiles
 
         Instance Profiles are not managed by General Permissions API and therefore GroupInstanceProfile and UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -2460,6 +2531,7 @@ class Permissions(pulumi.CustomResource):
                  cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_path: Optional[pulumi.Input[_builtins.str]] = None,
                  experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2500,6 +2572,7 @@ class Permissions(pulumi.CustomResource):
             __props__.__dict__["cluster_policy_id"] = cluster_policy_id
             __props__.__dict__["dashboard_id"] = dashboard_id
             __props__.__dict__["database_instance_name"] = database_instance_name
+            __props__.__dict__["database_project_name"] = database_project_name
             __props__.__dict__["directory_id"] = directory_id
             __props__.__dict__["directory_path"] = directory_path
             __props__.__dict__["experiment_id"] = experiment_id
@@ -2539,6 +2612,7 @@ class Permissions(pulumi.CustomResource):
             cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
             dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
             database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
+            database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
             directory_id: Optional[pulumi.Input[_builtins.str]] = None,
             directory_path: Optional[pulumi.Input[_builtins.str]] = None,
             experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2581,6 +2655,7 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["cluster_policy_id"] = cluster_policy_id
         __props__.__dict__["dashboard_id"] = dashboard_id
         __props__.__dict__["database_instance_name"] = database_instance_name
+        __props__.__dict__["database_project_name"] = database_project_name
         __props__.__dict__["directory_id"] = directory_id
         __props__.__dict__["directory_path"] = directory_path
         __props__.__dict__["experiment_id"] = experiment_id
@@ -2643,6 +2718,11 @@ class Permissions(pulumi.CustomResource):
     @pulumi.getter(name="databaseInstanceName")
     def database_instance_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "database_instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseProjectName")
+    def database_project_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "database_project_name")
 
     @_builtins.property
     @pulumi.getter(name="directoryId")

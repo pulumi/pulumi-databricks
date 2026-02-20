@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoAzureAttributes;
 import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoDiskSpec;
 import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoGcpAttributes;
 import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoInstancePoolFleetAttribute;
+import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoNodeTypeFlexibility;
 import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoPreloadedDockerImage;
 import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoStats;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -36,6 +37,7 @@ public final class GetInstancePoolPoolInfo {
     private String instancePoolName;
     private @Nullable Integer maxCapacity;
     private @Nullable Integer minIdleInstances;
+    private @Nullable GetInstancePoolPoolInfoNodeTypeFlexibility nodeTypeFlexibility;
     private @Nullable String nodeTypeId;
     private @Nullable List<GetInstancePoolPoolInfoPreloadedDockerImage> preloadedDockerImages;
     private @Nullable List<String> preloadedSparkVersions;
@@ -82,6 +84,9 @@ public final class GetInstancePoolPoolInfo {
     public Optional<Integer> minIdleInstances() {
         return Optional.ofNullable(this.minIdleInstances);
     }
+    public Optional<GetInstancePoolPoolInfoNodeTypeFlexibility> nodeTypeFlexibility() {
+        return Optional.ofNullable(this.nodeTypeFlexibility);
+    }
     public Optional<String> nodeTypeId() {
         return Optional.ofNullable(this.nodeTypeId);
     }
@@ -120,6 +125,7 @@ public final class GetInstancePoolPoolInfo {
         private String instancePoolName;
         private @Nullable Integer maxCapacity;
         private @Nullable Integer minIdleInstances;
+        private @Nullable GetInstancePoolPoolInfoNodeTypeFlexibility nodeTypeFlexibility;
         private @Nullable String nodeTypeId;
         private @Nullable List<GetInstancePoolPoolInfoPreloadedDockerImage> preloadedDockerImages;
         private @Nullable List<String> preloadedSparkVersions;
@@ -141,6 +147,7 @@ public final class GetInstancePoolPoolInfo {
     	      this.instancePoolName = defaults.instancePoolName;
     	      this.maxCapacity = defaults.maxCapacity;
     	      this.minIdleInstances = defaults.minIdleInstances;
+    	      this.nodeTypeFlexibility = defaults.nodeTypeFlexibility;
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.preloadedDockerImages = defaults.preloadedDockerImages;
     	      this.preloadedSparkVersions = defaults.preloadedSparkVersions;
@@ -238,6 +245,12 @@ public final class GetInstancePoolPoolInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeTypeFlexibility(@Nullable GetInstancePoolPoolInfoNodeTypeFlexibility nodeTypeFlexibility) {
+
+            this.nodeTypeFlexibility = nodeTypeFlexibility;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
 
             this.nodeTypeId = nodeTypeId;
@@ -288,6 +301,7 @@ public final class GetInstancePoolPoolInfo {
             _resultValue.instancePoolName = instancePoolName;
             _resultValue.maxCapacity = maxCapacity;
             _resultValue.minIdleInstances = minIdleInstances;
+            _resultValue.nodeTypeFlexibility = nodeTypeFlexibility;
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.preloadedDockerImages = preloadedDockerImages;
             _resultValue.preloadedSparkVersions = preloadedSparkVersions;

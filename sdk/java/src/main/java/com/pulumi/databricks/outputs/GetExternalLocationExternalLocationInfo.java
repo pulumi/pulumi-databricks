@@ -41,6 +41,7 @@ public final class GetExternalLocationExternalLocationInfo {
      * 
      */
     private @Nullable String credentialName;
+    private @Nullable Boolean effectiveEnableFileEvents;
     private @Nullable Boolean enableFileEvents;
     /**
      * @return A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -124,6 +125,9 @@ public final class GetExternalLocationExternalLocationInfo {
      */
     public Optional<String> credentialName() {
         return Optional.ofNullable(this.credentialName);
+    }
+    public Optional<Boolean> effectiveEnableFileEvents() {
+        return Optional.ofNullable(this.effectiveEnableFileEvents);
     }
     public Optional<Boolean> enableFileEvents() {
         return Optional.ofNullable(this.enableFileEvents);
@@ -209,6 +213,7 @@ public final class GetExternalLocationExternalLocationInfo {
         private @Nullable String createdBy;
         private @Nullable String credentialId;
         private @Nullable String credentialName;
+        private @Nullable Boolean effectiveEnableFileEvents;
         private @Nullable Boolean enableFileEvents;
         private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
         private @Nullable Boolean fallback;
@@ -230,6 +235,7 @@ public final class GetExternalLocationExternalLocationInfo {
     	      this.createdBy = defaults.createdBy;
     	      this.credentialId = defaults.credentialId;
     	      this.credentialName = defaults.credentialName;
+    	      this.effectiveEnableFileEvents = defaults.effectiveEnableFileEvents;
     	      this.enableFileEvents = defaults.enableFileEvents;
     	      this.encryptionDetails = defaults.encryptionDetails;
     	      this.fallback = defaults.fallback;
@@ -278,6 +284,12 @@ public final class GetExternalLocationExternalLocationInfo {
         public Builder credentialName(@Nullable String credentialName) {
 
             this.credentialName = credentialName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveEnableFileEvents(@Nullable Boolean effectiveEnableFileEvents) {
+
+            this.effectiveEnableFileEvents = effectiveEnableFileEvents;
             return this;
         }
         @CustomType.Setter
@@ -360,6 +372,7 @@ public final class GetExternalLocationExternalLocationInfo {
             _resultValue.createdBy = createdBy;
             _resultValue.credentialId = credentialId;
             _resultValue.credentialName = credentialName;
+            _resultValue.effectiveEnableFileEvents = effectiveEnableFileEvents;
             _resultValue.enableFileEvents = enableFileEvents;
             _resultValue.encryptionDetails = encryptionDetails;
             _resultValue.fallback = fallback;

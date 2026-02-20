@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.InstancePoolAzureAttributesArgs;
 import com.pulumi.databricks.inputs.InstancePoolDiskSpecArgs;
 import com.pulumi.databricks.inputs.InstancePoolGcpAttributesArgs;
 import com.pulumi.databricks.inputs.InstancePoolInstancePoolFleetAttributesArgs;
+import com.pulumi.databricks.inputs.InstancePoolNodeTypeFlexibilityArgs;
 import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
 import com.pulumi.databricks.inputs.InstancePoolProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -160,6 +161,21 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+     * 
+     */
+    @Import(name="nodeTypeFlexibility")
+    private @Nullable Output<InstancePoolNodeTypeFlexibilityArgs> nodeTypeFlexibility;
+
+    /**
+     * @return a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+     * 
+     */
+    public Optional<Output<InstancePoolNodeTypeFlexibilityArgs>> nodeTypeFlexibility() {
+        return Optional.ofNullable(this.nodeTypeFlexibility);
+    }
+
+    /**
      * (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool&#39;s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
      * 
      */
@@ -196,9 +212,17 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.preloadedSparkVersions);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     @Import(name="providerConfig")
     private @Nullable Output<InstancePoolProviderConfigArgs> providerConfig;
 
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
     public Optional<Output<InstancePoolProviderConfigArgs>> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -218,6 +242,7 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.instancePoolName = $.instancePoolName;
         this.maxCapacity = $.maxCapacity;
         this.minIdleInstances = $.minIdleInstances;
+        this.nodeTypeFlexibility = $.nodeTypeFlexibility;
         this.nodeTypeId = $.nodeTypeId;
         this.preloadedDockerImages = $.preloadedDockerImages;
         this.preloadedSparkVersions = $.preloadedSparkVersions;
@@ -423,6 +448,27 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param nodeTypeFlexibility a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeTypeFlexibility(@Nullable Output<InstancePoolNodeTypeFlexibilityArgs> nodeTypeFlexibility) {
+            $.nodeTypeFlexibility = nodeTypeFlexibility;
+            return this;
+        }
+
+        /**
+         * @param nodeTypeFlexibility a block describing the alternative driver node types if `nodeTypeId` isn&#39;t available.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeTypeFlexibility(InstancePoolNodeTypeFlexibilityArgs nodeTypeFlexibility) {
+            return nodeTypeFlexibility(Output.of(nodeTypeFlexibility));
+        }
+
+        /**
          * @param nodeTypeId (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool&#39;s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
          * 
          * @return builder
@@ -487,11 +533,23 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
             return preloadedSparkVersions(List.of(preloadedSparkVersions));
         }
 
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerConfig(@Nullable Output<InstancePoolProviderConfigArgs> providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
 
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerConfig(InstancePoolProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
         }

@@ -5,10 +5,13 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetTableTableInfoRowFilterInputArgumentArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTableTableInfoRowFilterArgs extends com.pulumi.resources.ResourceArgs {
@@ -22,6 +25,13 @@ public final class GetTableTableInfoRowFilterArgs extends com.pulumi.resources.R
         return this.functionName;
     }
 
+    @Import(name="inputArguments")
+    private @Nullable Output<List<GetTableTableInfoRowFilterInputArgumentArgs>> inputArguments;
+
+    public Optional<Output<List<GetTableTableInfoRowFilterInputArgumentArgs>>> inputArguments() {
+        return Optional.ofNullable(this.inputArguments);
+    }
+
     @Import(name="inputColumnNames", required=true)
     private Output<List<String>> inputColumnNames;
 
@@ -33,6 +43,7 @@ public final class GetTableTableInfoRowFilterArgs extends com.pulumi.resources.R
 
     private GetTableTableInfoRowFilterArgs(GetTableTableInfoRowFilterArgs $) {
         this.functionName = $.functionName;
+        this.inputArguments = $.inputArguments;
         this.inputColumnNames = $.inputColumnNames;
     }
 
@@ -61,6 +72,19 @@ public final class GetTableTableInfoRowFilterArgs extends com.pulumi.resources.R
 
         public Builder functionName(String functionName) {
             return functionName(Output.of(functionName));
+        }
+
+        public Builder inputArguments(@Nullable Output<List<GetTableTableInfoRowFilterInputArgumentArgs>> inputArguments) {
+            $.inputArguments = inputArguments;
+            return this;
+        }
+
+        public Builder inputArguments(List<GetTableTableInfoRowFilterInputArgumentArgs> inputArguments) {
+            return inputArguments(Output.of(inputArguments));
+        }
+
+        public Builder inputArguments(GetTableTableInfoRowFilterInputArgumentArgs... inputArguments) {
+            return inputArguments(List.of(inputArguments));
         }
 
         public Builder inputColumnNames(Output<List<String>> inputColumnNames) {

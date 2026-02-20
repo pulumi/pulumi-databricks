@@ -273,6 +273,7 @@ class _ExternalLocationState:
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
                  credential_id: Optional[pulumi.Input[_builtins.str]] = None,
                  credential_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_enable_file_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_file_events: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_details: Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']] = None,
                  fallback: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -321,6 +322,8 @@ class _ExternalLocationState:
             pulumi.set(__self__, "credential_id", credential_id)
         if credential_name is not None:
             pulumi.set(__self__, "credential_name", credential_name)
+        if effective_enable_file_events is not None:
+            pulumi.set(__self__, "effective_enable_file_events", effective_enable_file_events)
         if enable_file_events is not None:
             pulumi.set(__self__, "enable_file_events", enable_file_events)
         if encryption_details is not None:
@@ -422,6 +425,15 @@ class _ExternalLocationState:
     @credential_name.setter
     def credential_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "credential_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveEnableFileEvents")
+    def effective_enable_file_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "effective_enable_file_events")
+
+    @effective_enable_file_events.setter
+    def effective_enable_file_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "effective_enable_file_events", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFileEvents")
@@ -916,6 +928,7 @@ class ExternalLocation(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["credential_id"] = None
+            __props__.__dict__["effective_enable_file_events"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["updated_by"] = None
         super(ExternalLocation, __self__).__init__(
@@ -934,6 +947,7 @@ class ExternalLocation(pulumi.CustomResource):
             created_by: Optional[pulumi.Input[_builtins.str]] = None,
             credential_id: Optional[pulumi.Input[_builtins.str]] = None,
             credential_name: Optional[pulumi.Input[_builtins.str]] = None,
+            effective_enable_file_events: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_file_events: Optional[pulumi.Input[_builtins.bool]] = None,
             encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
             fallback: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -985,6 +999,7 @@ class ExternalLocation(pulumi.CustomResource):
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["credential_id"] = credential_id
         __props__.__dict__["credential_name"] = credential_name
+        __props__.__dict__["effective_enable_file_events"] = effective_enable_file_events
         __props__.__dict__["enable_file_events"] = enable_file_events
         __props__.__dict__["encryption_details"] = encryption_details
         __props__.__dict__["fallback"] = fallback
@@ -1047,6 +1062,11 @@ class ExternalLocation(pulumi.CustomResource):
         Name of the StorageCredential to use with this external location.
         """
         return pulumi.get(self, "credential_name")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveEnableFileEvents")
+    def effective_enable_file_events(self) -> pulumi.Output[_builtins.bool]:
+        return pulumi.get(self, "effective_enable_file_events")
 
     @_builtins.property
     @pulumi.getter(name="enableFileEvents")

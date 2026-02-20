@@ -14,15 +14,19 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetTableTableInfoColumnMaskResult
     {
         public readonly string? FunctionName;
+        public readonly ImmutableArray<Outputs.GetTableTableInfoColumnMaskUsingArgumentResult> UsingArguments;
         public readonly ImmutableArray<string> UsingColumnNames;
 
         [OutputConstructor]
         private GetTableTableInfoColumnMaskResult(
             string? functionName,
 
+            ImmutableArray<Outputs.GetTableTableInfoColumnMaskUsingArgumentResult> usingArguments,
+
             ImmutableArray<string> usingColumnNames)
         {
             FunctionName = functionName;
+            UsingArguments = usingArguments;
             UsingColumnNames = usingColumnNames;
         }
     }

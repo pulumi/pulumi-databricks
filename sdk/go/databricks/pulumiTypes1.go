@@ -13,6 +13,200 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type JobTaskPythonWheelTask struct {
+	// Python function as entry point for the task
+	EntryPoint *string `pulumi:"entryPoint"`
+	// Named parameters for the task
+	NamedParameters map[string]string `pulumi:"namedParameters"`
+	// Name of Python package
+	PackageName *string `pulumi:"packageName"`
+	// Parameters for the task
+	Parameters []string `pulumi:"parameters"`
+}
+
+// JobTaskPythonWheelTaskInput is an input type that accepts JobTaskPythonWheelTaskArgs and JobTaskPythonWheelTaskOutput values.
+// You can construct a concrete instance of `JobTaskPythonWheelTaskInput` via:
+//
+//	JobTaskPythonWheelTaskArgs{...}
+type JobTaskPythonWheelTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskPythonWheelTaskOutput() JobTaskPythonWheelTaskOutput
+	ToJobTaskPythonWheelTaskOutputWithContext(context.Context) JobTaskPythonWheelTaskOutput
+}
+
+type JobTaskPythonWheelTaskArgs struct {
+	// Python function as entry point for the task
+	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
+	// Named parameters for the task
+	NamedParameters pulumi.StringMapInput `pulumi:"namedParameters"`
+	// Name of Python package
+	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
+	// Parameters for the task
+	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
+}
+
+func (JobTaskPythonWheelTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPythonWheelTask)(nil)).Elem()
+}
+
+func (i JobTaskPythonWheelTaskArgs) ToJobTaskPythonWheelTaskOutput() JobTaskPythonWheelTaskOutput {
+	return i.ToJobTaskPythonWheelTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskPythonWheelTaskArgs) ToJobTaskPythonWheelTaskOutputWithContext(ctx context.Context) JobTaskPythonWheelTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPythonWheelTaskOutput)
+}
+
+func (i JobTaskPythonWheelTaskArgs) ToJobTaskPythonWheelTaskPtrOutput() JobTaskPythonWheelTaskPtrOutput {
+	return i.ToJobTaskPythonWheelTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskPythonWheelTaskArgs) ToJobTaskPythonWheelTaskPtrOutputWithContext(ctx context.Context) JobTaskPythonWheelTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPythonWheelTaskOutput).ToJobTaskPythonWheelTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskPythonWheelTaskPtrInput is an input type that accepts JobTaskPythonWheelTaskArgs, JobTaskPythonWheelTaskPtr and JobTaskPythonWheelTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskPythonWheelTaskPtrInput` via:
+//
+//	        JobTaskPythonWheelTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskPythonWheelTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskPythonWheelTaskPtrOutput() JobTaskPythonWheelTaskPtrOutput
+	ToJobTaskPythonWheelTaskPtrOutputWithContext(context.Context) JobTaskPythonWheelTaskPtrOutput
+}
+
+type jobTaskPythonWheelTaskPtrType JobTaskPythonWheelTaskArgs
+
+func JobTaskPythonWheelTaskPtr(v *JobTaskPythonWheelTaskArgs) JobTaskPythonWheelTaskPtrInput {
+	return (*jobTaskPythonWheelTaskPtrType)(v)
+}
+
+func (*jobTaskPythonWheelTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskPythonWheelTask)(nil)).Elem()
+}
+
+func (i *jobTaskPythonWheelTaskPtrType) ToJobTaskPythonWheelTaskPtrOutput() JobTaskPythonWheelTaskPtrOutput {
+	return i.ToJobTaskPythonWheelTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskPythonWheelTaskPtrType) ToJobTaskPythonWheelTaskPtrOutputWithContext(ctx context.Context) JobTaskPythonWheelTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPythonWheelTaskPtrOutput)
+}
+
+type JobTaskPythonWheelTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPythonWheelTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPythonWheelTask)(nil)).Elem()
+}
+
+func (o JobTaskPythonWheelTaskOutput) ToJobTaskPythonWheelTaskOutput() JobTaskPythonWheelTaskOutput {
+	return o
+}
+
+func (o JobTaskPythonWheelTaskOutput) ToJobTaskPythonWheelTaskOutputWithContext(ctx context.Context) JobTaskPythonWheelTaskOutput {
+	return o
+}
+
+func (o JobTaskPythonWheelTaskOutput) ToJobTaskPythonWheelTaskPtrOutput() JobTaskPythonWheelTaskPtrOutput {
+	return o.ToJobTaskPythonWheelTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskPythonWheelTaskOutput) ToJobTaskPythonWheelTaskPtrOutputWithContext(ctx context.Context) JobTaskPythonWheelTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskPythonWheelTask) *JobTaskPythonWheelTask {
+		return &v
+	}).(JobTaskPythonWheelTaskPtrOutput)
+}
+
+// Python function as entry point for the task
+func (o JobTaskPythonWheelTaskOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPythonWheelTask) *string { return v.EntryPoint }).(pulumi.StringPtrOutput)
+}
+
+// Named parameters for the task
+func (o JobTaskPythonWheelTaskOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTaskPythonWheelTask) map[string]string { return v.NamedParameters }).(pulumi.StringMapOutput)
+}
+
+// Name of Python package
+func (o JobTaskPythonWheelTaskOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPythonWheelTask) *string { return v.PackageName }).(pulumi.StringPtrOutput)
+}
+
+// Parameters for the task
+func (o JobTaskPythonWheelTaskOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskPythonWheelTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
+}
+
+type JobTaskPythonWheelTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPythonWheelTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskPythonWheelTask)(nil)).Elem()
+}
+
+func (o JobTaskPythonWheelTaskPtrOutput) ToJobTaskPythonWheelTaskPtrOutput() JobTaskPythonWheelTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskPythonWheelTaskPtrOutput) ToJobTaskPythonWheelTaskPtrOutputWithContext(ctx context.Context) JobTaskPythonWheelTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskPythonWheelTaskPtrOutput) Elem() JobTaskPythonWheelTaskOutput {
+	return o.ApplyT(func(v *JobTaskPythonWheelTask) JobTaskPythonWheelTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskPythonWheelTask
+		return ret
+	}).(JobTaskPythonWheelTaskOutput)
+}
+
+// Python function as entry point for the task
+func (o JobTaskPythonWheelTaskPtrOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPythonWheelTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntryPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Named parameters for the task
+func (o JobTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTaskPythonWheelTask) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.NamedParameters
+	}).(pulumi.StringMapOutput)
+}
+
+// Name of Python package
+func (o JobTaskPythonWheelTaskPtrOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPythonWheelTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters for the task
+func (o JobTaskPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskPythonWheelTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringArrayOutput)
+}
+
 type JobTaskRunJobTask struct {
 	DbtCommands []string `pulumi:"dbtCommands"`
 	JarParams   []string `pulumi:"jarParams"`
@@ -20054,9 +20248,9 @@ func (o MwsNetworksErrorMessageArrayOutput) Index(i pulumi.IntInput) MwsNetworks
 type MwsNetworksGcpNetworkInfo struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId string `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -20080,9 +20274,9 @@ type MwsNetworksGcpNetworkInfoInput interface {
 type MwsNetworksGcpNetworkInfoArgs struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -20174,12 +20368,12 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.NetworkProjectId }).(pulumi.StringOutput)
 }
 
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -20233,7 +20427,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -20243,7 +20437,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -21082,9 +21276,9 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
@@ -21101,9 +21295,9 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
@@ -21185,12 +21379,12 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
@@ -21223,7 +21417,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -21233,7 +21427,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.107.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -75655,182 +75849,9 @@ func (o GetAppsAppResourceArrayOutput) Index(i pulumi.IntInput) GetAppsAppResour
 	}).(GetAppsAppResourceOutput)
 }
 
-type GetAppsAppResourceDatabase struct {
-	// The name of database.
-	DatabaseName string `pulumi:"databaseName"`
-	// The name of database instance.
-	InstanceName string `pulumi:"instanceName"`
-	// Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
-	Permission string `pulumi:"permission"`
-}
-
-// GetAppsAppResourceDatabaseInput is an input type that accepts GetAppsAppResourceDatabaseArgs and GetAppsAppResourceDatabaseOutput values.
-// You can construct a concrete instance of `GetAppsAppResourceDatabaseInput` via:
-//
-//	GetAppsAppResourceDatabaseArgs{...}
-type GetAppsAppResourceDatabaseInput interface {
-	pulumi.Input
-
-	ToGetAppsAppResourceDatabaseOutput() GetAppsAppResourceDatabaseOutput
-	ToGetAppsAppResourceDatabaseOutputWithContext(context.Context) GetAppsAppResourceDatabaseOutput
-}
-
-type GetAppsAppResourceDatabaseArgs struct {
-	// The name of database.
-	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of database instance.
-	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	// Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
-	Permission pulumi.StringInput `pulumi:"permission"`
-}
-
-func (GetAppsAppResourceDatabaseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppResourceDatabase)(nil)).Elem()
-}
-
-func (i GetAppsAppResourceDatabaseArgs) ToGetAppsAppResourceDatabaseOutput() GetAppsAppResourceDatabaseOutput {
-	return i.ToGetAppsAppResourceDatabaseOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppResourceDatabaseArgs) ToGetAppsAppResourceDatabaseOutputWithContext(ctx context.Context) GetAppsAppResourceDatabaseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppResourceDatabaseOutput)
-}
-
-func (i GetAppsAppResourceDatabaseArgs) ToGetAppsAppResourceDatabasePtrOutput() GetAppsAppResourceDatabasePtrOutput {
-	return i.ToGetAppsAppResourceDatabasePtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppResourceDatabaseArgs) ToGetAppsAppResourceDatabasePtrOutputWithContext(ctx context.Context) GetAppsAppResourceDatabasePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppResourceDatabaseOutput).ToGetAppsAppResourceDatabasePtrOutputWithContext(ctx)
-}
-
-// GetAppsAppResourceDatabasePtrInput is an input type that accepts GetAppsAppResourceDatabaseArgs, GetAppsAppResourceDatabasePtr and GetAppsAppResourceDatabasePtrOutput values.
-// You can construct a concrete instance of `GetAppsAppResourceDatabasePtrInput` via:
-//
-//	        GetAppsAppResourceDatabaseArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsAppResourceDatabasePtrInput interface {
-	pulumi.Input
-
-	ToGetAppsAppResourceDatabasePtrOutput() GetAppsAppResourceDatabasePtrOutput
-	ToGetAppsAppResourceDatabasePtrOutputWithContext(context.Context) GetAppsAppResourceDatabasePtrOutput
-}
-
-type getAppsAppResourceDatabasePtrType GetAppsAppResourceDatabaseArgs
-
-func GetAppsAppResourceDatabasePtr(v *GetAppsAppResourceDatabaseArgs) GetAppsAppResourceDatabasePtrInput {
-	return (*getAppsAppResourceDatabasePtrType)(v)
-}
-
-func (*getAppsAppResourceDatabasePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsAppResourceDatabase)(nil)).Elem()
-}
-
-func (i *getAppsAppResourceDatabasePtrType) ToGetAppsAppResourceDatabasePtrOutput() GetAppsAppResourceDatabasePtrOutput {
-	return i.ToGetAppsAppResourceDatabasePtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsAppResourceDatabasePtrType) ToGetAppsAppResourceDatabasePtrOutputWithContext(ctx context.Context) GetAppsAppResourceDatabasePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppResourceDatabasePtrOutput)
-}
-
-type GetAppsAppResourceDatabaseOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppResourceDatabaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppResourceDatabase)(nil)).Elem()
-}
-
-func (o GetAppsAppResourceDatabaseOutput) ToGetAppsAppResourceDatabaseOutput() GetAppsAppResourceDatabaseOutput {
-	return o
-}
-
-func (o GetAppsAppResourceDatabaseOutput) ToGetAppsAppResourceDatabaseOutputWithContext(ctx context.Context) GetAppsAppResourceDatabaseOutput {
-	return o
-}
-
-func (o GetAppsAppResourceDatabaseOutput) ToGetAppsAppResourceDatabasePtrOutput() GetAppsAppResourceDatabasePtrOutput {
-	return o.ToGetAppsAppResourceDatabasePtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsAppResourceDatabaseOutput) ToGetAppsAppResourceDatabasePtrOutputWithContext(ctx context.Context) GetAppsAppResourceDatabasePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsAppResourceDatabase) *GetAppsAppResourceDatabase {
-		return &v
-	}).(GetAppsAppResourceDatabasePtrOutput)
-}
-
-// The name of database.
-func (o GetAppsAppResourceDatabaseOutput) DatabaseName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppResourceDatabase) string { return v.DatabaseName }).(pulumi.StringOutput)
-}
-
-// The name of database instance.
-func (o GetAppsAppResourceDatabaseOutput) InstanceName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppResourceDatabase) string { return v.InstanceName }).(pulumi.StringOutput)
-}
-
-// Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
-func (o GetAppsAppResourceDatabaseOutput) Permission() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppResourceDatabase) string { return v.Permission }).(pulumi.StringOutput)
-}
-
-type GetAppsAppResourceDatabasePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppResourceDatabasePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsAppResourceDatabase)(nil)).Elem()
-}
-
-func (o GetAppsAppResourceDatabasePtrOutput) ToGetAppsAppResourceDatabasePtrOutput() GetAppsAppResourceDatabasePtrOutput {
-	return o
-}
-
-func (o GetAppsAppResourceDatabasePtrOutput) ToGetAppsAppResourceDatabasePtrOutputWithContext(ctx context.Context) GetAppsAppResourceDatabasePtrOutput {
-	return o
-}
-
-func (o GetAppsAppResourceDatabasePtrOutput) Elem() GetAppsAppResourceDatabaseOutput {
-	return o.ApplyT(func(v *GetAppsAppResourceDatabase) GetAppsAppResourceDatabase {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsAppResourceDatabase
-		return ret
-	}).(GetAppsAppResourceDatabaseOutput)
-}
-
-// The name of database.
-func (o GetAppsAppResourceDatabasePtrOutput) DatabaseName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppResourceDatabase) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DatabaseName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of database instance.
-func (o GetAppsAppResourceDatabasePtrOutput) InstanceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppResourceDatabase) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InstanceName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
-func (o GetAppsAppResourceDatabasePtrOutput) Permission() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppResourceDatabase) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Permission
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskPtrInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskInput)(nil)).Elem(), JobTaskRunJobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskPtrInput)(nil)).Elem(), JobTaskRunJobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskPipelineParamsInput)(nil)).Elem(), JobTaskRunJobTaskPipelineParamsArgs{})
@@ -76778,8 +76799,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentStatusInput)(nil)).Elem(), GetAppsAppPendingDeploymentStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppResourceInput)(nil)).Elem(), GetAppsAppResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppResourceArrayInput)(nil)).Elem(), GetAppsAppResourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppResourceDatabaseInput)(nil)).Elem(), GetAppsAppResourceDatabaseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppResourceDatabasePtrInput)(nil)).Elem(), GetAppsAppResourceDatabaseArgs{})
+	pulumi.RegisterOutputType(JobTaskPythonWheelTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskPythonWheelTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskRunJobTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskRunJobTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskRunJobTaskPipelineParamsOutput{})
@@ -77727,6 +77748,4 @@ func init() {
 	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentStatusOutput{})
 	pulumi.RegisterOutputType(GetAppsAppResourceOutput{})
 	pulumi.RegisterOutputType(GetAppsAppResourceArrayOutput{})
-	pulumi.RegisterOutputType(GetAppsAppResourceDatabaseOutput{})
-	pulumi.RegisterOutputType(GetAppsAppResourceDatabasePtrOutput{})
 }
