@@ -446,7 +446,7 @@ var rewritePermissions = tfbridge.DocsEdit{
 	Path: "permissions.md",
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		// Find and split off the import section
-		importSectionSplit := bytes.SplitAfterN(content, []byte("## Import"), -1)
+		importSectionSplit := bytes.SplitAfter(content, []byte("## Import"))
 		returnContent := importSectionSplit[0]
 		// Rewrite and append the import section
 		importContent := []byte("\n\n## Import\n\nThe resource permissions can be imported using the object id\n\n" +
@@ -498,7 +498,7 @@ var cleanUpDocument = tfbridge.DocsEdit{
 			} else {
 				// Hard error to ensure we keep this content up to date
 				return nil, fmt.Errorf("could not find text in upstream index.md, "+
-					"please verify file content at %s\n*****\n%s\n*****\n", replacesDir+file+"-input.md", string(input))
+					"please verify file content at %s\n*****\n%s\n*****", replacesDir+file+"-input.md", string(input))
 			}
 		}
 
