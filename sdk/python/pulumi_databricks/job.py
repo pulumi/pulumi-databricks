@@ -65,6 +65,7 @@ class JobArgs:
                  webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
+
         :param pulumi.Input[_builtins.bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
         :param pulumi.Input['JobContinuousArgs'] continuous: Configuration block to configure pause status. See continuous Configuration Block.
@@ -738,6 +739,7 @@ class _JobState:
                  webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
         Input properties used for looking up and filtering Job resources.
+
         :param pulumi.Input[_builtins.bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         :param pulumi.Input[_builtins.str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
         :param pulumi.Input['JobContinuousArgs'] continuous: Configuration block to configure pause status. See continuous Configuration Block.
@@ -1498,6 +1500,7 @@ class Job(pulumi.CustomResource):
         * Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
         * ClusterPolicy can control which kinds of clusters users can create for jobs.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
@@ -1607,6 +1610,7 @@ class Job(pulumi.CustomResource):
 
         * Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
         * ClusterPolicy can control which kinds of clusters users can create for jobs.
+
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

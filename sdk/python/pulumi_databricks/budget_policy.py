@@ -27,6 +27,7 @@ class BudgetPolicyArgs:
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BudgetPolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] binding_workspace_ids: List of workspaces that this budget policy will be exclusively bound to.
                An empty binding implies that this budget policy is open to any workspace in the account
         :param pulumi.Input[Sequence[pulumi.Input['BudgetPolicyCustomTagArgs']]] custom_tags: A list of tags defined by the customer. At most 20 entries are allowed per policy
@@ -107,6 +108,7 @@ class _BudgetPolicyState:
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BudgetPolicy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] binding_workspace_ids: List of workspaces that this budget policy will be exclusively bound to.
                An empty binding implies that this budget policy is open to any workspace in the account
         :param pulumi.Input[Sequence[pulumi.Input['BudgetPolicyCustomTagArgs']]] custom_tags: A list of tags defined by the customer. At most 20 entries are allowed per policy
@@ -214,6 +216,7 @@ class BudgetPolicy(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] binding_workspace_ids: List of workspaces that this budget policy will be exclusively bound to.
@@ -255,6 +258,7 @@ class BudgetPolicy(pulumi.CustomResource):
                 "value": "myvalue",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BudgetPolicyArgs args: The arguments to use to populate this resource's properties.

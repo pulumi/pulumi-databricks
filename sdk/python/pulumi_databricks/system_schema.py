@@ -25,6 +25,7 @@ class SystemSchemaArgs:
                  provider_config: Optional[pulumi.Input['SystemSchemaProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a SystemSchema resource.
+
         :param pulumi.Input[_builtins.str] schema: name of the system schema.
         :param pulumi.Input['SystemSchemaProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -68,6 +69,7 @@ class _SystemSchemaState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SystemSchema resources.
+
         :param pulumi.Input[_builtins.str] full_name: the full name of the system schema, in form of `system.<schema>`.
         :param pulumi.Input['SystemSchemaProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] schema: name of the system schema.
@@ -180,6 +182,7 @@ class SystemSchema(pulumi.CustomResource):
         this = databricks.SystemSchema("this", schema="access")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -208,6 +211,7 @@ class SystemSchema(pulumi.CustomResource):
 
         this = databricks.SystemSchema("this", schema="access")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SystemSchemaArgs args: The arguments to use to populate this resource's properties.

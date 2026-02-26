@@ -27,6 +27,7 @@ class NotificationDestinationArgs:
                  provider_config: Optional[pulumi.Input['NotificationDestinationProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a NotificationDestination resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the Notification Destination.
         :param pulumi.Input['NotificationDestinationConfigArgs'] config: The configuration of the Notification Destination. It must contain exactly one of the following blocks:
         :param pulumi.Input[_builtins.str] destination_type: the type of Notification Destination.
@@ -98,6 +99,7 @@ class _NotificationDestinationState:
                  provider_config: Optional[pulumi.Input['NotificationDestinationProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering NotificationDestination resources.
+
         :param pulumi.Input['NotificationDestinationConfigArgs'] config: The configuration of the Notification Destination. It must contain exactly one of the following blocks:
         :param pulumi.Input[_builtins.str] destination_type: the type of Notification Destination.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Notification Destination.
@@ -252,6 +254,7 @@ class NotificationDestination(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NotificationDestinationConfigArgs', 'NotificationDestinationConfigArgsDict']] config: The configuration of the Notification Destination. It must contain exactly one of the following blocks:
@@ -344,6 +347,7 @@ class NotificationDestination(pulumi.CustomResource):
                 },
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NotificationDestinationArgs args: The arguments to use to populate this resource's properties.

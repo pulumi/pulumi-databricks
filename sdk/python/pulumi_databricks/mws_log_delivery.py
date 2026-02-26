@@ -32,6 +32,7 @@ class MwsLogDeliveryArgs:
                  workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a MwsLogDelivery resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[_builtins.str] credentials_id: The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
         :param pulumi.Input[_builtins.str] log_type: The type of log delivery. `BILLABLE_USAGE` and `AUDIT_LOGS` are supported.
@@ -211,6 +212,7 @@ class _MwsLogDeliveryState:
                  workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering MwsLogDelivery resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[_builtins.str] config_id: Databricks log delivery configuration ID.
         :param pulumi.Input[_builtins.str] config_name: The optional human-readable name of the log delivery configuration. Defaults to empty.
@@ -530,6 +532,7 @@ class MwsLogDelivery(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -682,6 +685,7 @@ class MwsLogDelivery(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param MwsLogDeliveryArgs args: The arguments to use to populate this resource's properties.

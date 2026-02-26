@@ -32,6 +32,7 @@ class FeatureEngineeringFeatureArgs:
                  time_window: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']] = None):
         """
         The set of arguments for constructing a FeatureEngineeringFeature resource.
+
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: The input columns from which the feature is computed
@@ -186,6 +187,7 @@ class _FeatureEngineeringFeatureState:
                  time_window: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']] = None):
         """
         Input properties used for looking up and filtering FeatureEngineeringFeature resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the feature
         :param pulumi.Input[_builtins.str] filter_condition: The filter condition applied to the source data before aggregation
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
@@ -349,6 +351,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the feature
@@ -372,6 +375,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param FeatureEngineeringFeatureArgs args: The arguments to use to populate this resource's properties.

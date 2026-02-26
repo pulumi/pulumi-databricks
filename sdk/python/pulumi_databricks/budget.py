@@ -30,6 +30,7 @@ class BudgetArgs:
                  update_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Budget resource.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of the Databricks Account.
         :param pulumi.Input[_builtins.str] budget_configuration_id: The ID of the budget configuration.
         :param pulumi.Input[_builtins.str] display_name: Name of the budget in Databricks Account.
@@ -134,6 +135,7 @@ class _BudgetState:
                  update_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Budget resources.
+
         :param pulumi.Input[_builtins.str] account_id: The ID of the Databricks Account.
         :param pulumi.Input[_builtins.str] budget_configuration_id: The ID of the budget configuration.
         :param pulumi.Input[_builtins.str] display_name: Name of the budget in Databricks Account.
@@ -295,6 +297,7 @@ class Budget(pulumi.CustomResource):
 
         * MwsWorkspaces to set up Databricks workspaces.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The ID of the Databricks Account.
@@ -361,6 +364,7 @@ class Budget(pulumi.CustomResource):
         The following resources are used in the context:
 
         * MwsWorkspaces to set up Databricks workspaces.
+
 
         :param str resource_name: The name of the resource.
         :param BudgetArgs args: The arguments to use to populate this resource's properties.

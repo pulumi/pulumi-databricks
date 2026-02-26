@@ -28,6 +28,7 @@ class OnlineStoreArgs:
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OnlineStore resource.
+
         :param pulumi.Input[_builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param pulumi.Input[_builtins.str] name: The name of the online store. This is the unique identifier for the online store
         :param pulumi.Input['OnlineStoreProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -118,6 +119,7 @@ class _OnlineStoreState:
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OnlineStore resources.
+
         :param pulumi.Input[_builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the online store was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the online store
@@ -256,6 +258,7 @@ class OnlineStore(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
@@ -272,6 +275,7 @@ class OnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param OnlineStoreArgs args: The arguments to use to populate this resource's properties.

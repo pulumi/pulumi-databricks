@@ -32,6 +32,7 @@ class SqlWidgetArgs:
                  widget_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlWidget resource.
+
         :param pulumi.Input['SqlWidgetProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "dashboard_id", dashboard_id)
@@ -151,6 +152,7 @@ class _SqlWidgetState:
                  widget_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlWidget resources.
+
         :param pulumi.Input['SqlWidgetProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if dashboard_id is not None:
@@ -320,6 +322,7 @@ class SqlWidget(pulumi.CustomResource):
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
         * Grants to manage data access in Unity Catalog.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -376,6 +379,7 @@ class SqlWidget(pulumi.CustomResource):
         * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
         * Grants to manage data access in Unity Catalog.
+
 
         :param str resource_name: The name of the resource.
         :param SqlWidgetArgs args: The arguments to use to populate this resource's properties.

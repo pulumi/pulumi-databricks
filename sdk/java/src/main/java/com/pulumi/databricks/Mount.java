@@ -147,8 +147,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
- *         final var resourceGroup = config.get("resourceGroup");
- *         final var workspaceName = config.get("workspaceName");
+ *         final var resourceGroup = config.require("resourceGroup");
+ *         final var workspaceName = config.require("workspaceName");
  *         final var this = AzurermFunctions.DatabricksWorkspace(Map.ofEntries(
  *             Map.entry("name", workspaceName),
  *             Map.entry("resourceGroupName", resourceGroup)
@@ -176,8 +176,8 @@ import javax.annotation.Nullable;
  *             .customTags(Map.of("ResourceClass", "Serverless"))
  *             .build());
  * 
- *         final var storageAcc = config.get("storageAcc");
- *         final var container = config.get("container");
+ *         final var storageAcc = config.require("storageAcc");
+ *         final var container = config.require("container");
  *         var passthrough = new Mount("passthrough", MountArgs.builder()
  *             .name("passthrough-test")
  *             .clusterId(sharedPassthrough.id())

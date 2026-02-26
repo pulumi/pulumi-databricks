@@ -26,6 +26,7 @@ class DataQualityRefreshArgs:
                  provider_config: Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DataQualityRefresh resource.
+
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
                
                Find the `schema_id` from either:
@@ -102,6 +103,7 @@ class _DataQualityRefreshState:
                  trigger: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataQualityRefresh resources.
+
         :param pulumi.Input[_builtins.int] end_time_ms: (integer) - Time when the refresh ended (milliseconds since 1/1/1970 UTC)
         :param pulumi.Input[_builtins.str] message: (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
@@ -321,6 +323,7 @@ class DataQualityRefresh(pulumi.CustomResource):
             object_id=my_test_table.id)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
@@ -395,6 +398,7 @@ class DataQualityRefresh(pulumi.CustomResource):
             object_type="table",
             object_id=my_test_table.id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataQualityRefreshArgs args: The arguments to use to populate this resource's properties.

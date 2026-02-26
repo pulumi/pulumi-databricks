@@ -27,6 +27,7 @@ class AccountSettingUserPreferenceV2Args:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountSettingUserPreferenceV2 resource.
+
         :param pulumi.Input[_builtins.str] name: Name of the setting
         :param pulumi.Input[_builtins.str] user_id: User ID of the user
         """
@@ -93,6 +94,7 @@ class _AccountSettingUserPreferenceV2State:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountSettingUserPreferenceV2 resources.
+
         :param pulumi.Input['AccountSettingUserPreferenceV2EffectiveBooleanValArgs'] effective_boolean_val: (BooleanMessage)
         :param pulumi.Input['AccountSettingUserPreferenceV2EffectiveStringValArgs'] effective_string_val: (StringMessage)
         :param pulumi.Input[_builtins.str] name: Name of the setting
@@ -226,6 +228,7 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the setting
@@ -273,6 +276,7 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
                 value: True,
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountSettingUserPreferenceV2Args args: The arguments to use to populate this resource's properties.

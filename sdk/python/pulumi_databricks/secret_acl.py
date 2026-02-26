@@ -27,6 +27,7 @@ class SecretAclArgs:
                  provider_config: Optional[pulumi.Input['SecretAclProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a SecretAcl resource.
+
         :param pulumi.Input[_builtins.str] permission: `READ`, `WRITE` or `MANAGE`.
         :param pulumi.Input[_builtins.str] principal: principal's identifier. It can be:
         :param pulumi.Input[_builtins.str] scope: name of the scope
@@ -96,6 +97,7 @@ class _SecretAclState:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretAcl resources.
+
         :param pulumi.Input[_builtins.str] permission: `READ`, `WRITE` or `MANAGE`.
         :param pulumi.Input[_builtins.str] principal: principal's identifier. It can be:
         :param pulumi.Input['SecretAclProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -206,6 +208,7 @@ class SecretAcl(pulumi.CustomResource):
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] permission: `READ`, `WRITE` or `MANAGE`.
@@ -254,6 +257,7 @@ class SecretAcl(pulumi.CustomResource):
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+
 
         :param str resource_name: The name of the resource.
         :param SecretAclArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class MwsVpcEndpointArgs:
                  vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsVpcEndpoint resource.
+
         :param pulumi.Input[_builtins.str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[_builtins.str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
@@ -192,6 +193,7 @@ class _MwsVpcEndpointState:
                  vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsVpcEndpoint resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[_builtins.str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         :param pulumi.Input[_builtins.str] aws_vpc_endpoint_id: ID of configured aws_vpc_endpoint
@@ -531,6 +533,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
 
         > Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
@@ -724,6 +727,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         ## Import
 
         > Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param MwsVpcEndpointArgs args: The arguments to use to populate this resource's properties.

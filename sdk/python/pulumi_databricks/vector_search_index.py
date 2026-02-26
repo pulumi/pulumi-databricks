@@ -30,6 +30,7 @@ class VectorSearchIndexArgs:
                  provider_config: Optional[pulumi.Input['VectorSearchIndexProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a VectorSearchIndex resource.
+
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
         :param pulumi.Input[_builtins.str] index_type: Mosaic AI Vector Search index type. Currently supported values are:
                * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
@@ -149,6 +150,7 @@ class _VectorSearchIndexState:
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexStatusArgs']]]] = None):
         """
         Input properties used for looking up and filtering VectorSearchIndex resources.
+
         :param pulumi.Input[_builtins.str] creator: Creator of the endpoint.
         :param pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecArgs'] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
         :param pulumi.Input['VectorSearchIndexDirectAccessIndexSpecArgs'] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
@@ -327,6 +329,7 @@ class VectorSearchIndex(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
@@ -369,6 +372,7 @@ class VectorSearchIndex(pulumi.CustomResource):
                 }],
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VectorSearchIndexArgs args: The arguments to use to populate this resource's properties.

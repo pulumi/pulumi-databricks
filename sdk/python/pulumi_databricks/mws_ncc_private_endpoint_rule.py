@@ -38,6 +38,7 @@ class MwsNccPrivateEndpointRuleArgs:
                  vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsNccPrivateEndpointRule resource.
+
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
@@ -323,6 +324,7 @@ class _MwsNccPrivateEndpointRuleState:
                  vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsNccPrivateEndpointRule resources.
+
         :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
                * `PENDING`: The endpoint has been created and pending approval.
@@ -671,6 +673,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         * MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
         * MwsNccBinding to attach an NCC to a workspace.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
@@ -761,6 +764,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
 
         * MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
         * MwsNccBinding to attach an NCC to a workspace.
+
 
         :param str resource_name: The name of the resource.
         :param MwsNccPrivateEndpointRuleArgs args: The arguments to use to populate this resource's properties.

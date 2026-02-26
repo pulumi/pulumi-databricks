@@ -35,6 +35,7 @@ class SqlQueryArgs:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlQuery resource.
+
         :param pulumi.Input[_builtins.str] data_source_id: Data source ID of a SQL warehouse
         :param pulumi.Input[_builtins.str] query: The text of the query to be run.
         :param pulumi.Input[_builtins.str] description: General description that conveys additional information about this query such as usage notes.
@@ -213,6 +214,7 @@ class _SqlQueryState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlQuery resources.
+
         :param pulumi.Input[_builtins.str] data_source_id: Data source ID of a SQL warehouse
         :param pulumi.Input[_builtins.str] description: General description that conveys additional information about this query such as usage notes.
         :param pulumi.Input[_builtins.str] name: The title of this query that appears in list views, widget headings, and on the query page.
@@ -497,6 +499,7 @@ class SqlQuery(pulumi.CustomResource):
         * Grants to manage data access in Unity Catalog.
         * Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_source_id: Data source ID of a SQL warehouse
@@ -613,6 +616,7 @@ class SqlQuery(pulumi.CustomResource):
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
         * Grants to manage data access in Unity Catalog.
         * Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
+
 
         :param str resource_name: The name of the resource.
         :param SqlQueryArgs args: The arguments to use to populate this resource's properties.

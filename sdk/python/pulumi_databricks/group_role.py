@@ -23,6 +23,7 @@ class GroupRoleArgs:
                  role: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GroupRole resource.
+
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
@@ -61,6 +62,7 @@ class _GroupRoleState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupRole resources.
+
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
@@ -153,6 +155,7 @@ class GroupRole(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
@@ -213,6 +216,7 @@ class GroupRole(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param GroupRoleArgs args: The arguments to use to populate this resource's properties.

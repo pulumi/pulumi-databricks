@@ -31,6 +31,7 @@ class SqlVisualizationArgs:
                  visualization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlVisualization resource.
+
         :param pulumi.Input['SqlVisualizationProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "options", options)
@@ -136,6 +137,7 @@ class _SqlVisualizationState:
                  visualization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlVisualization resources.
+
         :param pulumi.Input['SqlVisualizationProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if description is not None:
@@ -299,6 +301,7 @@ class SqlVisualization(pulumi.CustomResource):
 
         - directory tree
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SqlVisualizationProviderConfigArgs', 'SqlVisualizationProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -361,6 +364,7 @@ class SqlVisualization(pulumi.CustomResource):
         ### Example
 
         - directory tree
+
 
         :param str resource_name: The name of the resource.
         :param SqlVisualizationArgs args: The arguments to use to populate this resource's properties.

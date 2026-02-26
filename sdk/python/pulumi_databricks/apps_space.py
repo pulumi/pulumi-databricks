@@ -28,6 +28,7 @@ class AppsSpaceArgs:
                  user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AppsSpace resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the app space
         :param pulumi.Input['AppsSpaceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Sequence[pulumi.Input['AppsSpaceResourceArgs']]] resources: Resources for the app space. Resources configured at the space level are available to all apps in the space
@@ -129,6 +130,7 @@ class _AppsSpaceState:
                  user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AppsSpace resources.
+
         :param pulumi.Input[_builtins.str] create_time: (string) - The creation time of the app space. Formatted timestamp in ISO 6801
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the user that created the app space
         :param pulumi.Input[_builtins.str] description: The description of the app space
@@ -419,6 +421,7 @@ class AppsSpace(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the app space
@@ -435,6 +438,7 @@ class AppsSpace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param AppsSpaceArgs args: The arguments to use to populate this resource's properties.

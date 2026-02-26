@@ -80,6 +80,10 @@ namespace Pulumi.Databricks
     /// ## Import
     /// 
     /// The resource cluster can be imported using cluster id.
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/cluster:Cluster this &lt;cluster-id&gt;
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/cluster:Cluster")]
     public partial class Cluster : global::Pulumi.CustomResource

@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var databricksAccountId = config.require("databricksAccountId");
  *         // register cross-account ARN
  *         var this_ = new MwsCredentials("this", MwsCredentialsArgs.builder()
  *             .accountId(databricksAccountId)
@@ -243,7 +243,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var databricksAccountId = config.require("databricksAccountId");
  *         var naming = new String("naming", StringArgs.builder()
  *             .special(false)
  *             .upper(false)
@@ -371,9 +371,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
- *         final var databricksGoogleServiceAccount = config.get("databricksGoogleServiceAccount");
- *         final var googleProject = config.get("googleProject");
+ *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var databricksGoogleServiceAccount = config.require("databricksGoogleServiceAccount");
+ *         final var googleProject = config.require("googleProject");
  *         // register VPC
  *         var this_ = new MwsNetworks("this", MwsNetworksArgs.builder()
  *             .accountId(databricksAccountId)
@@ -440,7 +440,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var databricksAccountId = config.require("databricksAccountId");
  *         final var me = GoogleFunctions.ClientOpenidUserinfo(Map.ofEntries(
  *         ));
  * 

@@ -25,6 +25,7 @@ class AccessControlRuleSetArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessControlRuleSet resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
                
                !> Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
@@ -80,6 +81,7 @@ class _AccessControlRuleSetState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessControlRuleSet resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
                
                !> Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
@@ -363,6 +365,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
         * User
         * ServicePrincipal
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
@@ -596,6 +599,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
         * Group
         * User
         * ServicePrincipal
+
 
         :param str resource_name: The name of the resource.
         :param AccessControlRuleSetArgs args: The arguments to use to populate this resource's properties.

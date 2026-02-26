@@ -38,6 +38,7 @@ class RegisteredModelArgs:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegisteredModel resource.
+
         :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] comment: The comment attached to the registered model.
         :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
@@ -254,6 +255,7 @@ class _RegisteredModelState:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegisteredModel resources.
+
         :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] comment: The comment attached to the registered model.
         :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
@@ -502,6 +504,7 @@ class RegisteredModel(pulumi.CustomResource):
         * Schema to manage schemas within Unity Catalog.
         * Catalog to manage catalogs within Unity Catalog.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
@@ -547,6 +550,7 @@ class RegisteredModel(pulumi.CustomResource):
         * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
         * Schema to manage schemas within Unity Catalog.
         * Catalog to manage catalogs within Unity Catalog.
+
 
         :param str resource_name: The name of the resource.
         :param RegisteredModelArgs args: The arguments to use to populate this resource's properties.

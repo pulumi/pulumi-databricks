@@ -28,6 +28,7 @@ class IpAccessListArgs:
                  provider_config: Optional[pulumi.Input['IpAccessListProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a IpAccessList resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
         :param pulumi.Input[_builtins.str] label: This is the display name for the given IP ACL List.
         :param pulumi.Input[_builtins.str] list_type: Can only be "ALLOW" or "BLOCK".
@@ -113,6 +114,7 @@ class _IpAccessListState:
                  provider_config: Optional[pulumi.Input['IpAccessListProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering IpAccessList resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
         :param pulumi.Input[_builtins.str] label: This is the display name for the given IP ACL List.
@@ -241,6 +243,7 @@ class IpAccessList(pulumi.CustomResource):
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * Grants to manage data access in Unity Catalog.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
@@ -292,6 +295,7 @@ class IpAccessList(pulumi.CustomResource):
         * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * Grants to manage data access in Unity Catalog.
+
 
         :param str resource_name: The name of the resource.
         :param IpAccessListArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class RestrictWorkspaceAdminsSettingArgs:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RestrictWorkspaceAdminsSetting resource.
+
         :param pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs'] restrict_workspace_admins: The configuration details.
         :param pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -90,6 +91,7 @@ class _RestrictWorkspaceAdminsSettingState:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RestrictWorkspaceAdminsSetting resources.
+
         :param pulumi.Input['RestrictWorkspaceAdminsSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs'] restrict_workspace_admins: The configuration details.
         """
@@ -186,6 +188,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingProviderConfigArgs', 'RestrictWorkspaceAdminsSettingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -226,6 +229,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
             "status": "RESTRICT_TOKENS_AND_JOB_RUN_AS",
         })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RestrictWorkspaceAdminsSettingArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class FeatureEngineeringMaterializedFeatureArgs:
                  provider_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
+
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
         :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
@@ -127,6 +128,7 @@ class _FeatureEngineeringMaterializedFeatureState:
                  table_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
+
         :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
@@ -275,6 +277,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
@@ -290,6 +293,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param FeatureEngineeringMaterializedFeatureArgs args: The arguments to use to populate this resource's properties.

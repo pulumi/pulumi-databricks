@@ -29,6 +29,7 @@ class FileArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a File resource.
+
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
         :param pulumi.Input[_builtins.str] content_base64: Contents in base 64 format. Conflicts with `source`.
         :param pulumi.Input['FileProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -126,6 +127,7 @@ class _FileState:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering File resources.
+
         :param pulumi.Input[_builtins.str] content_base64: Contents in base 64 format. Conflicts with `source`.
         :param pulumi.Input[_builtins.int] file_size: The file size of the file that is being tracked by this resource in bytes.
         :param pulumi.Input[_builtins.str] modification_time: The last time stamp when the file was modified
@@ -318,6 +320,7 @@ class File(pulumi.CustomResource):
         * End to end workspace management guide.
         * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: Contents in base 64 format. Conflicts with `source`.
@@ -394,6 +397,7 @@ class File(pulumi.CustomResource):
         * WorkspaceFile
         * End to end workspace management guide.
         * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+
 
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.

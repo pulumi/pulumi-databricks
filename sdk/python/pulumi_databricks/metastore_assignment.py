@@ -24,6 +24,7 @@ class MetastoreAssignmentArgs:
                  default_catalog_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MetastoreAssignment resource.
+
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[_builtins.str] workspace_id: id of the workspace for the assignment
         :param pulumi.Input[_builtins.str] default_catalog_name: Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
@@ -82,6 +83,7 @@ class _MetastoreAssignmentState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetastoreAssignment resources.
+
         :param pulumi.Input[_builtins.str] default_catalog_name: Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[_builtins.str] workspace_id: id of the workspace for the assignment
@@ -166,6 +168,7 @@ class MetastoreAssignment(pulumi.CustomResource):
             workspace_id=workspace_id)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_catalog_name: Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
@@ -199,6 +202,7 @@ class MetastoreAssignment(pulumi.CustomResource):
             metastore_id=this.id,
             workspace_id=workspace_id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetastoreAssignmentArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class DisableLegacyDbfsSettingArgs:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DisableLegacyDbfsSetting resource.
+
         :param pulumi.Input['DisableLegacyDbfsSettingDisableLegacyDbfsArgs'] disable_legacy_dbfs: block with following attributes:
         :param pulumi.Input['DisableLegacyDbfsSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -90,6 +91,7 @@ class _DisableLegacyDbfsSettingState:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DisableLegacyDbfsSetting resources.
+
         :param pulumi.Input['DisableLegacyDbfsSettingDisableLegacyDbfsArgs'] disable_legacy_dbfs: block with following attributes:
         :param pulumi.Input['DisableLegacyDbfsSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -185,6 +187,7 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
         })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']] disable_legacy_dbfs: block with following attributes:
@@ -224,6 +227,7 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
             "value": True,
         })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DisableLegacyDbfsSettingArgs args: The arguments to use to populate this resource's properties.

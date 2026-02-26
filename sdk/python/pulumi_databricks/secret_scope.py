@@ -28,6 +28,7 @@ class SecretScopeArgs:
                  provider_config: Optional[pulumi.Input['SecretScopeProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a SecretScope resource.
+
         :param pulumi.Input[_builtins.str] backend_type: Either `DATABRICKS` or `AZURE_KEYVAULT`
         :param pulumi.Input[_builtins.str] initial_manage_principal: The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
         :param pulumi.Input[_builtins.str] name: Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
@@ -112,6 +113,7 @@ class _SecretScopeState:
                  provider_config: Optional[pulumi.Input['SecretScopeProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering SecretScope resources.
+
         :param pulumi.Input[_builtins.str] backend_type: Either `DATABRICKS` or `AZURE_KEYVAULT`
         :param pulumi.Input[_builtins.str] initial_manage_principal: The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
         :param pulumi.Input[_builtins.str] name: Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
@@ -222,6 +224,7 @@ class SecretScope(pulumi.CustomResource):
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_type: Either `DATABRICKS` or `AZURE_KEYVAULT`
@@ -258,6 +261,7 @@ class SecretScope(pulumi.CustomResource):
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+
 
         :param str resource_name: The name of the resource.
         :param SecretScopeArgs args: The arguments to use to populate this resource's properties.

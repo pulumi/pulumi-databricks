@@ -28,6 +28,7 @@ class DataQualityMonitorArgs:
                  provider_config: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DataQualityMonitor resource.
+
         :param pulumi.Input[_builtins.str] object_id: The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
                
                Find the `schema_id` from either:
@@ -132,6 +133,7 @@ class _DataQualityMonitorState:
                  provider_config: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DataQualityMonitor resources.
+
         :param pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs'] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
         :param pulumi.Input['DataQualityMonitorDataProfilingConfigArgs'] data_profiling_config: Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
                must be present
@@ -270,6 +272,7 @@ class DataQualityMonitor(pulumi.CustomResource):
             anomaly_detection_config={})
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']] anomaly_detection_config: Anomaly Detection Configuration, applicable to `schema` object types
@@ -322,6 +325,7 @@ class DataQualityMonitor(pulumi.CustomResource):
             object_id=this.schema_id,
             anomaly_detection_config={})
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataQualityMonitorArgs args: The arguments to use to populate this resource's properties.

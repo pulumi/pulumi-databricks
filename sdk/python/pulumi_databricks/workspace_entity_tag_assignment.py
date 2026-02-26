@@ -28,6 +28,7 @@ class WorkspaceEntityTagAssignmentArgs:
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceEntityTagAssignment resource.
+
         :param pulumi.Input[_builtins.str] entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
         :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
@@ -113,6 +114,7 @@ class _WorkspaceEntityTagAssignmentState:
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceEntityTagAssignment resources.
+
         :param pulumi.Input[_builtins.str] entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
         :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
         :param pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -231,6 +233,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
             tag_value="high")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
@@ -272,6 +275,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
             tag_key="sensitivity_level",
             tag_value="high")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceEntityTagAssignmentArgs args: The arguments to use to populate this resource's properties.

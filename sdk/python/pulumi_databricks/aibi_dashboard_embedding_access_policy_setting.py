@@ -27,6 +27,7 @@ class AibiDashboardEmbeddingAccessPolicySettingArgs:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AibiDashboardEmbeddingAccessPolicySetting resource.
+
         :param pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs'] aibi_dashboard_embedding_access_policy: block with following attributes:
         :param pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -90,6 +91,7 @@ class _AibiDashboardEmbeddingAccessPolicySettingState:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AibiDashboardEmbeddingAccessPolicySetting resources.
+
         :param pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs'] aibi_dashboard_embedding_access_policy: block with following attributes:
         :param pulumi.Input['AibiDashboardEmbeddingAccessPolicySettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -178,6 +180,7 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
 
         - AibiDashboardEmbeddingApprovedDomainsSetting is used to control approved domains.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs', 'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict']] aibi_dashboard_embedding_access_policy: block with following attributes:
@@ -210,6 +213,7 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         - AibiDashboardEmbeddingApprovedDomainsSetting is used to control approved domains.
+
 
         :param str resource_name: The name of the resource.
         :param AibiDashboardEmbeddingAccessPolicySettingArgs args: The arguments to use to populate this resource's properties.

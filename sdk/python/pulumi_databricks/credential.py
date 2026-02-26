@@ -43,6 +43,7 @@ class CredentialArgs:
                  used_for_managed_storage: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Credential resource.
+
         :param pulumi.Input[_builtins.str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         :param pulumi.Input[_builtins.bool] force_destroy: Delete credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update credential regardless of its dependents.
@@ -327,6 +328,7 @@ class _CredentialState:
                  used_for_managed_storage: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Credential resources.
+
         :param pulumi.Input[_builtins.str] credential_id: Unique ID of the credential.
         :param pulumi.Input[_builtins.bool] force_destroy: Delete credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update credential regardless of its dependents.
@@ -701,6 +703,7 @@ class Credential(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force_destroy: Delete credential regardless of its dependencies.
@@ -792,6 +795,7 @@ class Credential(pulumi.CustomResource):
                 "privileges": ["ACCESS"],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CredentialArgs args: The arguments to use to populate this resource's properties.
