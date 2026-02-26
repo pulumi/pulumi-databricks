@@ -27,6 +27,7 @@ class QualityMonitorV2Args:
                  validity_check_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationArgs']]]] = None):
         """
         The set of arguments for constructing a QualityMonitorV2 resource.
+
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
         :param pulumi.Input['QualityMonitorV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -98,6 +99,7 @@ class _QualityMonitorV2State:
                  validity_check_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorV2ValidityCheckConfigurationArgs']]]] = None):
         """
         Input properties used for looking up and filtering QualityMonitorV2 resources.
+
         :param pulumi.Input['QualityMonitorV2AnomalyDetectionConfigArgs'] anomaly_detection_config: (AnomalyDetectionConfig)
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
@@ -212,6 +214,7 @@ class QualityMonitorV2(pulumi.CustomResource):
             object_id=this.schema_id)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
@@ -249,6 +252,7 @@ class QualityMonitorV2(pulumi.CustomResource):
             object_type="schema",
             object_id=this.schema_id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QualityMonitorV2Args args: The arguments to use to populate this resource's properties.

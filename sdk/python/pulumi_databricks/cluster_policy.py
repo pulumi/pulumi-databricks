@@ -31,6 +31,7 @@ class ClusterPolicyArgs:
                  provider_config: Optional[pulumi.Input['ClusterPolicyProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a ClusterPolicy resource.
+
         :param pulumi.Input[_builtins.str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         :param pulumi.Input[_builtins.str] description: Additional human-readable description of the cluster policy.
         :param pulumi.Input[_builtins.int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
@@ -160,6 +161,7 @@ class _ClusterPolicyState:
                  provider_config: Optional[pulumi.Input['ClusterPolicyProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ClusterPolicy resources.
+
         :param pulumi.Input[_builtins.str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         :param pulumi.Input[_builtins.str] description: Additional human-readable description of the cluster policy.
         :param pulumi.Input[_builtins.int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
@@ -435,6 +437,7 @@ class ClusterPolicy(pulumi.CustomResource):
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
         * WorkspaceConf to manage workspace configuration for expert usage.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
@@ -579,6 +582,7 @@ class ClusterPolicy(pulumi.CustomResource):
         * get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
         * WorkspaceConf to manage workspace configuration for expert usage.
+
 
         :param str resource_name: The name of the resource.
         :param ClusterPolicyArgs args: The arguments to use to populate this resource's properties.

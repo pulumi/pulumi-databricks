@@ -31,6 +31,7 @@ class FeatureEngineeringKafkaConfigArgs:
                  value_schema: Optional[pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs']] = None):
         """
         The set of arguments for constructing a FeatureEngineeringKafkaConfig resource.
+
         :param pulumi.Input['FeatureEngineeringKafkaConfigAuthConfigArgs'] auth_config: Authentication configuration for connection to topics
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input['FeatureEngineeringKafkaConfigSubscriptionModeArgs'] subscription_mode: Options to configure which Kafka topics to pull data from
@@ -169,6 +170,7 @@ class _FeatureEngineeringKafkaConfigState:
                  value_schema: Optional[pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs']] = None):
         """
         Input properties used for looking up and filtering FeatureEngineeringKafkaConfig resources.
+
         :param pulumi.Input['FeatureEngineeringKafkaConfigAuthConfigArgs'] auth_config: Authentication configuration for connection to topics
         :param pulumi.Input['FeatureEngineeringKafkaConfigBackfillSourceArgs'] backfill_source: A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
                In the future, a separate table will be maintained by Databricks for forward filling data.
@@ -331,6 +333,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigAuthConfigArgs', 'FeatureEngineeringKafkaConfigAuthConfigArgsDict']] auth_config: Authentication configuration for connection to topics
@@ -352,6 +355,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param FeatureEngineeringKafkaConfigArgs args: The arguments to use to populate this resource's properties.

@@ -34,6 +34,7 @@ class AppArgs:
                  user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a App resource.
+
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
@@ -216,6 +217,7 @@ class _AppState:
                  user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering App resources.
+
         :param pulumi.Input['AppAppStatusArgs'] app_status: attribute
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
@@ -680,6 +682,7 @@ class App(pulumi.CustomResource):
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
@@ -742,6 +745,7 @@ class App(pulumi.CustomResource):
         * ModelServing to serve this model on a Databricks serving endpoint.
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+
 
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.

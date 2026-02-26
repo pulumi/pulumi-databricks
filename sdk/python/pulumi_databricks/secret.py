@@ -27,6 +27,7 @@ class SecretArgs:
                  provider_config: Optional[pulumi.Input['SecretProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a Secret resource.
+
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.str] string_value: (String) super secret sensitive value.
@@ -98,6 +99,7 @@ class _SecretState:
                  string_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
+
         :param pulumi.Input[_builtins.str] config_reference: (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[_builtins.int] last_updated_timestamp: (Integer) time secret was updated
@@ -234,6 +236,7 @@ class Secret(pulumi.CustomResource):
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
@@ -278,6 +281,7 @@ class Secret(pulumi.CustomResource):
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+
 
         :param str resource_name: The name of the resource.
         :param SecretArgs args: The arguments to use to populate this resource's properties.

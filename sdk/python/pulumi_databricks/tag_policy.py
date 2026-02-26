@@ -27,6 +27,7 @@ class TagPolicyArgs:
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]] = None):
         """
         The set of arguments for constructing a TagPolicy resource.
+
         :param pulumi.Input['TagPolicyProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "tag_key", tag_key)
@@ -88,6 +89,7 @@ class _TagPolicyState:
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]] = None):
         """
         Input properties used for looking up and filtering TagPolicy resources.
+
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the tag policy was created
         :param pulumi.Input['TagPolicyProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the tag policy was last updated
@@ -216,6 +218,7 @@ class TagPolicy(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
@@ -261,6 +264,7 @@ class TagPolicy(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TagPolicyArgs args: The arguments to use to populate this resource's properties.

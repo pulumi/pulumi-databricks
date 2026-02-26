@@ -29,6 +29,7 @@ class CatalogWorkspaceBindingArgs:
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CatalogWorkspaceBinding resource.
+
         :param pulumi.Input[_builtins.str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
         :param pulumi.Input[_builtins.str] securable_name: Name of securable. Change forces creation of a new resource.
@@ -128,6 +129,7 @@ class _CatalogWorkspaceBindingState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CatalogWorkspaceBinding resources.
+
         :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
         :param pulumi.Input[_builtins.str] securable_name: Name of securable. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] securable_type: Type of securable. Default to `catalog`. Change forces creation of a new resource.
@@ -255,6 +257,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
             workspace_id=other["workspaceId"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
@@ -292,6 +295,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
             securable_name=sandbox.name,
             workspace_id=other["workspaceId"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CatalogWorkspaceBindingArgs args: The arguments to use to populate this resource's properties.

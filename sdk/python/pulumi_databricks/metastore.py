@@ -34,6 +34,7 @@ class MetastoreArgs:
                  storage_root_credential_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Metastore resource.
+
         :param pulumi.Input[_builtins.str] default_data_access_config_id: (Optional) Unique identifier of the metastore's default data access configuration.
         :param pulumi.Input[_builtins.str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
         :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
@@ -257,6 +258,7 @@ class _MetastoreState:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Metastore resources.
+
         :param pulumi.Input[_builtins.str] cloud: Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
         :param pulumi.Input[_builtins.int] created_at: Time at which the metastore was created, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] created_by: Username of metastore creator.
@@ -647,6 +649,7 @@ class Metastore(pulumi.CustomResource):
             workspace_id=workspace_id)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_data_access_config_id: (Optional) Unique identifier of the metastore's default data access configuration.
@@ -735,6 +738,7 @@ class Metastore(pulumi.CustomResource):
             metastore_id=this.id,
             workspace_id=workspace_id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetastoreArgs args: The arguments to use to populate this resource's properties.

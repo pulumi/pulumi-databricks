@@ -39,6 +39,7 @@ class ExternalLocationArgs:
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ExternalLocation resource.
+
         :param pulumi.Input[_builtins.str] credential_name: Name of the StorageCredential to use with this external location.
         :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
@@ -292,6 +293,7 @@ class _ExternalLocationState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalLocation resources.
+
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.int] created_at: Time at which this external location was created, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] created_by: Username of external location creator.
@@ -741,6 +743,7 @@ class ExternalLocation(pulumi.CustomResource):
 
         Example `encryption_details` specifying SSE_S3 encryption:
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
@@ -863,6 +866,7 @@ class ExternalLocation(pulumi.CustomResource):
         ```
 
         Example `encryption_details` specifying SSE_S3 encryption:
+
 
         :param str resource_name: The name of the resource.
         :param ExternalLocationArgs args: The arguments to use to populate this resource's properties.

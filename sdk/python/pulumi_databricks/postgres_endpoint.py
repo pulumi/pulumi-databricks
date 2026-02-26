@@ -27,6 +27,7 @@ class PostgresEndpointArgs:
                  spec: Optional[pulumi.Input['PostgresEndpointSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresEndpoint resource.
+
         :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
@@ -108,6 +109,7 @@ class _PostgresEndpointState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresEndpoint resources.
+
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the compute endpoint was created
         :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
@@ -403,6 +405,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_id: The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
@@ -556,6 +559,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "suspend_timeout_duration": "600s",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PostgresEndpointArgs args: The arguments to use to populate this resource's properties.

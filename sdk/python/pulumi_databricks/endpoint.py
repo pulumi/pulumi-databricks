@@ -27,6 +27,7 @@ class EndpointArgs:
                  azure_private_endpoint_info: Optional[pulumi.Input['EndpointAzurePrivateEndpointInfoArgs']] = None):
         """
         The set of arguments for constructing a Endpoint resource.
+
         :param pulumi.Input[_builtins.str] display_name: The human-readable display name of this endpoint.
                The input should conform to RFC-1034, which restricts to letters, numbers, and hyphens,
                with the first character a letter, the last a letter or a number, and a 63 character maximum
@@ -102,6 +103,7 @@ class _EndpointState:
                  use_case: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
+
         :param pulumi.Input[_builtins.str] account_id: (string) - The Databricks Account in which the endpoint object exists
         :param pulumi.Input['EndpointAzurePrivateEndpointInfoArgs'] azure_private_endpoint_info: Info for an Azure private endpoint
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp when the endpoint was created. The timestamp is in RFC 3339 format in UTC timezone
@@ -293,6 +295,7 @@ class Endpoint(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']] azure_private_endpoint_info: Info for an Azure private endpoint
@@ -331,6 +334,7 @@ class Endpoint(pulumi.CustomResource):
                 "private_endpoint_resource_guid": "12345678-1234-1234-1234-123456789abc",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointArgs args: The arguments to use to populate this resource's properties.

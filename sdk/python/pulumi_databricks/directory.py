@@ -27,6 +27,7 @@ class DirectoryArgs:
                  provider_config: Optional[pulumi.Input['DirectoryProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a Directory resource.
+
         :param pulumi.Input[_builtins.str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
         :param pulumi.Input[_builtins.bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a DIRECTORY
@@ -99,6 +100,7 @@ class _DirectoryState:
                  workspace_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Directory resources.
+
         :param pulumi.Input[_builtins.bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a DIRECTORY
         :param pulumi.Input[_builtins.str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
@@ -220,6 +222,7 @@ class Directory(pulumi.CustomResource):
         - get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         - WorkspaceConf to manage workspace configuration for expert usage.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
@@ -264,6 +267,7 @@ class Directory(pulumi.CustomResource):
         - Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         - get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         - WorkspaceConf to manage workspace configuration for expert usage.
+
 
         :param str resource_name: The name of the resource.
         :param DirectoryArgs args: The arguments to use to populate this resource's properties.

@@ -53,6 +53,7 @@ class PermissionsArgs:
                  workspace_file_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Permissions resource.
+
         :param pulumi.Input[_builtins.str] object_type: type of permissions.
         """
         pulumi.set(__self__, "access_controls", access_controls)
@@ -424,6 +425,7 @@ class _PermissionsState:
                  workspace_file_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Permissions resources.
+
         :param pulumi.Input[_builtins.str] object_type: type of permissions.
         """
         if access_controls is not None:
@@ -1648,6 +1650,7 @@ class Permissions(pulumi.CustomResource):
         terraform import databricks_permissions <object type>/<object id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_type: type of permissions.
@@ -2507,6 +2510,7 @@ class Permissions(pulumi.CustomResource):
         ```sh
         terraform import databricks_permissions <object type>/<object id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PermissionsArgs args: The arguments to use to populate this resource's properties.

@@ -119,6 +119,10 @@ import javax.annotation.Nullable;
  * 
  * The resource cluster can be imported using cluster id.
  * 
+ * ```sh
+ * $ pulumi import databricks:index/cluster:Cluster this &lt;cluster-id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="databricks:index/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {

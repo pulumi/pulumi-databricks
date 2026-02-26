@@ -33,6 +33,7 @@ class AlertArgs:
                  seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Alert resource.
+
         :param pulumi.Input['AlertConditionArgs'] condition: Trigger conditions of the alert. Block consists of the following attributes:
         :param pulumi.Input[_builtins.str] display_name: Name of the alert.
         :param pulumi.Input[_builtins.str] query_id: ID of the query evaluated by the alert.
@@ -203,6 +204,7 @@ class _AlertState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alert resources.
+
         :param pulumi.Input['AlertConditionArgs'] condition: Trigger conditions of the alert. Block consists of the following attributes:
         :param pulumi.Input[_builtins.str] create_time: The timestamp string indicating when the alert was created.
         :param pulumi.Input[_builtins.str] custom_body: Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
@@ -586,6 +588,7 @@ class Alert(pulumi.CustomResource):
         * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict']] condition: Trigger conditions of the alert. Block consists of the following attributes:
@@ -742,6 +745,7 @@ class Alert(pulumi.CustomResource):
         * Query to manage [Databricks SQL Queries](https://docs.databricks.com/sql/user/queries/index.html).
         * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+
 
         :param str resource_name: The name of the resource.
         :param AlertArgs args: The arguments to use to populate this resource's properties.

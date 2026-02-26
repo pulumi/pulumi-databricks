@@ -27,6 +27,7 @@ class OboTokenArgs:
                  provider_config: Optional[pulumi.Input['OboTokenProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a OboToken resource.
+
         :param pulumi.Input[_builtins.str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[_builtins.str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
@@ -99,6 +100,7 @@ class _OboTokenState:
                  token_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OboToken resources.
+
         :param pulumi.Input[_builtins.str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[_builtins.str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
@@ -253,6 +255,7 @@ class OboToken(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Application ID of ServicePrincipal to create a PAT token for.
@@ -330,6 +333,7 @@ class OboToken(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param OboTokenArgs args: The arguments to use to populate this resource's properties.

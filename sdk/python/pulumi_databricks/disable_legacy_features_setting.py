@@ -27,6 +27,7 @@ class DisableLegacyFeaturesSettingArgs:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DisableLegacyFeaturesSetting resource.
+
         :param pulumi.Input['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs'] disable_legacy_features: block with following attributes:
         """
         pulumi.set(__self__, "disable_legacy_features", disable_legacy_features)
@@ -86,6 +87,7 @@ class _DisableLegacyFeaturesSettingState:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DisableLegacyFeaturesSetting resources.
+
         :param pulumi.Input['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs'] disable_legacy_features: block with following attributes:
         """
         if disable_legacy_features is not None:
@@ -185,6 +187,7 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
         * DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
         * DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs', 'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict']] disable_legacy_features: block with following attributes:
@@ -231,6 +234,7 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
 
         * DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
         * DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
+
 
         :param str resource_name: The name of the resource.
         :param DisableLegacyFeaturesSettingArgs args: The arguments to use to populate this resource's properties.

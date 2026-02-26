@@ -3151,7 +3151,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.get("databricksAccountId");
+     *         final var databricksAccountId = config.require("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
@@ -3240,7 +3240,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.get("databricksAccountId");
+     *         final var databricksAccountId = config.require("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
@@ -3329,7 +3329,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.get("databricksAccountId");
+     *         final var databricksAccountId = config.require("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
@@ -3418,7 +3418,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.get("databricksAccountId");
+     *         final var databricksAccountId = config.require("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
@@ -3507,7 +3507,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var databricksAccountId = config.get("databricksAccountId");
+     *         final var databricksAccountId = config.require("databricksAccountId");
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 

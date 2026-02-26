@@ -28,6 +28,7 @@ class DbfsFileArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbfsFile resource.
+
         :param pulumi.Input[_builtins.str] path: The path of the file in which you wish to save.
         :param pulumi.Input[_builtins.str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
         :param pulumi.Input['DbfsFileProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -113,6 +114,7 @@ class _DbfsFileState:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbfsFile resources.
+
         :param pulumi.Input[_builtins.str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
         :param pulumi.Input[_builtins.str] dbfs_path: Path, but with `dbfs:` prefix.
         :param pulumi.Input[_builtins.int] file_size: The file size of the file that is being tracked by this resource in bytes.
@@ -236,6 +238,7 @@ class DbfsFile(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
@@ -255,6 +258,7 @@ class DbfsFile(pulumi.CustomResource):
         This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and get_dbfs_file_paths data sources.
 
         > This resource can only be used with a workspace-level provider!
+
 
         :param str resource_name: The name of the resource.
         :param DbfsFileArgs args: The arguments to use to populate this resource's properties.

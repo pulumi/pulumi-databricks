@@ -27,6 +27,7 @@ class WarehousesDefaultWarehouseOverrideArgs:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WarehousesDefaultWarehouseOverride resource.
+
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
         :param pulumi.Input[_builtins.str] type: The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         :param pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -100,6 +101,7 @@ class _WarehousesDefaultWarehouseOverrideState:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WarehousesDefaultWarehouseOverride resources.
+
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the default warehouse override.
                Format: default-warehouse-overrides/{default_warehouse_override_id}
@@ -232,6 +234,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
             warehouse_id=example_databricks_sql_endpoint.id)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_warehouse_override_id: The ID component of the resource name (user ID)
@@ -284,6 +287,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
             type=CUSTOM,
             warehouse_id=example_databricks_sql_endpoint.id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WarehousesDefaultWarehouseOverrideArgs args: The arguments to use to populate this resource's properties.

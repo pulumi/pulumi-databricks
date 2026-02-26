@@ -63,6 +63,7 @@ class ClusterArgs:
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
         :param pulumi.Input[_builtins.bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[_builtins.int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
@@ -716,6 +717,7 @@ class _ClusterState:
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[_builtins.bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[_builtins.int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
         :param pulumi.Input[_builtins.str] cluster_name: Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
@@ -1475,6 +1477,11 @@ class Cluster(pulumi.CustomResource):
 
         The resource cluster can be imported using cluster id.
 
+        ```sh
+        $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
@@ -1591,6 +1598,11 @@ class Cluster(pulumi.CustomResource):
         ## Import
 
         The resource cluster can be imported using cluster id.
+
+        ```sh
+        $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

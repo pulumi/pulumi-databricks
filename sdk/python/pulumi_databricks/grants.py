@@ -864,6 +864,7 @@ class Grants(pulumi.CustomResource):
 
         You can control Databricks General Permissions through Permissions resource.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -1296,6 +1297,7 @@ class Grants(pulumi.CustomResource):
         ## Other access control
 
         You can control Databricks General Permissions through Permissions resource.
+
 
         :param str resource_name: The name of the resource.
         :param GrantsArgs args: The arguments to use to populate this resource's properties.

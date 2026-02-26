@@ -27,6 +27,7 @@ class ServicePrincipalFederationPolicyArgs:
                  service_principal_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServicePrincipalFederationPolicy resource.
+
         :param pulumi.Input[_builtins.str] description: Description of the federation policy
         :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy. Output only
         :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
@@ -99,6 +100,7 @@ class _ServicePrincipalFederationPolicyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalFederationPolicy resources.
+
         :param pulumi.Input[_builtins.str] create_time: (string) - Creation time of the federation policy
         :param pulumi.Input[_builtins.str] description: Description of the federation policy
         :param pulumi.Input[_builtins.str] name: (string) - Resource name for the federation policy. Example values include
@@ -264,6 +266,7 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the federation policy
@@ -300,6 +303,7 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
                 "subject": "subject-in-token-from-myidp",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalFederationPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class MlflowModelArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None):
         """
         The set of arguments for constructing a MlflowModel resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the MLflow model.
         :param pulumi.Input[_builtins.str] name: Name of MLflow model. Change of name triggers new resource.
         :param pulumi.Input['MlflowModelProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -100,6 +101,7 @@ class _MlflowModelState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering MlflowModel resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the MLflow model.
         :param pulumi.Input[_builtins.str] name: Name of MLflow model. Change of name triggers new resource.
         :param pulumi.Input['MlflowModelProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -230,6 +232,7 @@ class MlflowModel(pulumi.CustomResource):
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the MLflow model.
@@ -287,6 +290,7 @@ class MlflowModel(pulumi.CustomResource):
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+
 
         :param str resource_name: The name of the resource.
         :param MlflowModelArgs args: The arguments to use to populate this resource's properties.

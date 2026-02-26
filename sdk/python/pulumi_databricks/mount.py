@@ -188,6 +188,7 @@ class _MountState:
                  wasb: Optional[pulumi.Input['MountWasbArgs']] = None):
         """
         Input properties used for looking up and filtering Mount resources.
+
         :param pulumi.Input[_builtins.str] source: (String) HDFS-compatible url
         """
         if abfs is not None:
@@ -673,6 +674,7 @@ class Mount(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -997,6 +999,7 @@ class Mount(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param MountArgs args: The arguments to use to populate this resource's properties.

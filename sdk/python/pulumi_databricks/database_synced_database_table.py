@@ -28,6 +28,7 @@ class DatabaseSyncedDatabaseTableArgs:
                  spec: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']] = None):
         """
         The set of arguments for constructing a DatabaseSyncedDatabaseTable resource.
+
         :param pulumi.Input[_builtins.str] database_instance_name: Name of the target database instance. This is required when creating synced database tables in standard catalogs.
                This is optional when creating synced database tables in registered catalogs. If this field is specified
                when creating synced database tables in registered catalogs, the database instance name MUST
@@ -140,6 +141,7 @@ class _DatabaseSyncedDatabaseTableState:
                  unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseSyncedDatabaseTable resources.
+
         :param pulumi.Input['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs'] data_synchronization_status: (SyncedTableStatus) - Synced Table data synchronization status
         :param pulumi.Input[_builtins.str] database_instance_name: Name of the target database instance. This is required when creating synced database tables in standard catalogs.
                This is optional when creating synced database tables in registered catalogs. If this field is specified
@@ -463,6 +465,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_instance_name: Name of the target database instance. This is required when creating synced database tables in standard catalogs.
@@ -626,6 +629,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                 "timezone_id": "Europe/Helsinki",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseSyncedDatabaseTableArgs args: The arguments to use to populate this resource's properties.

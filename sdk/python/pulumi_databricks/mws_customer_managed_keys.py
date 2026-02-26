@@ -29,6 +29,7 @@ class MwsCustomerManagedKeysArgs:
                  gcp_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None):
         """
         The set of arguments for constructing a MwsCustomerManagedKeys resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
                * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
@@ -135,6 +136,7 @@ class _MwsCustomerManagedKeysState:
                  use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MwsCustomerManagedKeys resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs'] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[_builtins.int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
@@ -314,6 +316,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -399,6 +402,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
 
         :param str resource_name: The name of the resource.
         :param MwsCustomerManagedKeysArgs args: The arguments to use to populate this resource's properties.

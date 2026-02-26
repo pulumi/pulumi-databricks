@@ -52,6 +52,7 @@ class MwsWorkspacesArgs:
                  workspace_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsWorkspaces resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[_builtins.str] workspace_name: name of the workspace, will appear on UI.
         :param pulumi.Input[_builtins.str] aws_region: region of VPC.
@@ -504,6 +505,7 @@ class _MwsWorkspacesState:
                  workspace_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsWorkspaces resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[_builtins.str] aws_region: region of VPC.
         :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -1239,6 +1241,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -1521,6 +1524,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+
 
         :param str resource_name: The name of the resource.
         :param MwsWorkspacesArgs args: The arguments to use to populate this resource's properties.

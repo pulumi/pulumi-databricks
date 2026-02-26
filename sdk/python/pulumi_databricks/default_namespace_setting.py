@@ -27,6 +27,7 @@ class DefaultNamespaceSettingArgs:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DefaultNamespaceSetting resource.
+
         :param pulumi.Input['DefaultNamespaceSettingNamespaceArgs'] namespace: The configuration details.
         :param pulumi.Input['DefaultNamespaceSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -90,6 +91,7 @@ class _DefaultNamespaceSettingState:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DefaultNamespaceSetting resources.
+
         :param pulumi.Input['DefaultNamespaceSettingNamespaceArgs'] namespace: The configuration details.
         :param pulumi.Input['DefaultNamespaceSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -178,6 +180,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
         })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']] namespace: The configuration details.
@@ -210,6 +213,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
             "value": "namespace_value",
         })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DefaultNamespaceSettingArgs args: The arguments to use to populate this resource's properties.

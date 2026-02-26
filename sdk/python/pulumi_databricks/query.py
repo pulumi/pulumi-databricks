@@ -36,6 +36,7 @@ class QueryArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Query resource.
+
         :param pulumi.Input[_builtins.str] display_name: Name of the query.
         :param pulumi.Input[_builtins.str] query_text: Text of SQL query.
         :param pulumi.Input[_builtins.str] warehouse_id: ID of a SQL warehouse which will be used to execute this query.
@@ -253,6 +254,7 @@ class _QueryState:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Query resources.
+
         :param pulumi.Input[_builtins.bool] apply_auto_limit: Whether to apply a 1000 row limit to the query result.
         :param pulumi.Input[_builtins.str] catalog: Name of the catalog where this query will be executed.
         :param pulumi.Input[_builtins.str] create_time: The timestamp string indicating when the query was created.
@@ -625,6 +627,7 @@ class Query(pulumi.CustomResource):
         * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] apply_auto_limit: Whether to apply a 1000 row limit to the query result.
@@ -740,6 +743,7 @@ class Query(pulumi.CustomResource):
         * Alert to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).
         * SqlEndpoint to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+
 
         :param str resource_name: The name of the resource.
         :param QueryArgs args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class ConnectionArgs:
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
+
         :param pulumi.Input[_builtins.str] comment: Free-form text. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] connection_type: Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] name: Name of the Connection.
@@ -178,6 +179,7 @@ class _ConnectionState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+
         :param pulumi.Input[_builtins.str] comment: Free-form text. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] connection_id: Unique ID of the connection.
         :param pulumi.Input[_builtins.str] connection_type: Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
@@ -614,6 +616,7 @@ class Connection(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Free-form text. Change forces creation of a new resource.
@@ -767,6 +770,7 @@ class Connection(pulumi.CustomResource):
                 "client_secret": "client_secret",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.
