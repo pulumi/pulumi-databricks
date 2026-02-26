@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppsSpaceResource
     {
+        public readonly Outputs.AppsSpaceResourceApp? App;
         public readonly Outputs.AppsSpaceResourceDatabase? Database;
         /// <summary>
         /// The description of the app space
@@ -33,6 +34,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private AppsSpaceResource(
+            Outputs.AppsSpaceResourceApp? app,
+
             Outputs.AppsSpaceResourceDatabase? database,
 
             string? description,
@@ -53,6 +56,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.AppsSpaceResourceUcSecurable? ucSecurable)
         {
+            App = app;
             Database = database;
             Description = description;
             Experiment = experiment;

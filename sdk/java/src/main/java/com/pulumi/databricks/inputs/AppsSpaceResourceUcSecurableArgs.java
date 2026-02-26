@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AppsSpaceResourceUcSecurableArgs extends com.pulumi.resources.ResourceArgs {
@@ -26,6 +28,23 @@ public final class AppsSpaceResourceUcSecurableArgs extends com.pulumi.resources
 
     public Output<String> securableFullName() {
         return this.securableFullName;
+    }
+
+    /**
+     * (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     * 
+     */
+    @Import(name="securableKind")
+    private @Nullable Output<String> securableKind;
+
+    /**
+     * @return (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     * 
+     */
+    public Optional<Output<String>> securableKind() {
+        return Optional.ofNullable(this.securableKind);
     }
 
     /**
@@ -48,6 +67,7 @@ public final class AppsSpaceResourceUcSecurableArgs extends com.pulumi.resources
     private AppsSpaceResourceUcSecurableArgs(AppsSpaceResourceUcSecurableArgs $) {
         this.permission = $.permission;
         this.securableFullName = $.securableFullName;
+        this.securableKind = $.securableKind;
         this.securableType = $.securableType;
     }
 
@@ -85,6 +105,29 @@ public final class AppsSpaceResourceUcSecurableArgs extends com.pulumi.resources
 
         public Builder securableFullName(String securableFullName) {
             return securableFullName(Output.of(securableFullName));
+        }
+
+        /**
+         * @param securableKind (string) - The securable kind from Unity Catalog.
+         * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securableKind(@Nullable Output<String> securableKind) {
+            $.securableKind = securableKind;
+            return this;
+        }
+
+        /**
+         * @param securableKind (string) - The securable kind from Unity Catalog.
+         * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securableKind(String securableKind) {
+            return securableKind(Output.of(securableKind));
         }
 
         /**

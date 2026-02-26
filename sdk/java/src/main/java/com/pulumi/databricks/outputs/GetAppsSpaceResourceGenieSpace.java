@@ -17,7 +17,7 @@ public final class GetAppsSpaceResourceGenieSpace {
      */
     private String name;
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     private String permission;
@@ -37,7 +37,7 @@ public final class GetAppsSpaceResourceGenieSpace {
         return this.name;
     }
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     public String permission() {

@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         ///     var appTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "apps",
-        ///         EntityId = "2807324866692453",
+        ///         EntityId = "myapp",
         ///     });
         /// 
         ///     var dashboardTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         ///     var appTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "apps",
-        ///         EntityId = "2807324866692453",
+        ///         EntityId = "myapp",
         ///     });
         /// 
         ///     var dashboardTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
@@ -107,7 +107,7 @@ namespace Pulumi.Databricks
         ///     var appTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "apps",
-        ///         EntityId = "2807324866692453",
+        ///         EntityId = "myapp",
         ///     });
         /// 
         ///     var dashboardTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
@@ -133,7 +133,7 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceEntityTagAssignmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The identifier of the entity to which the tag is assigned
+        /// The identifier of the entity to which the tag is assigned. For apps, the EntityId is the app name
         /// </summary>
         [Input("entityId", required: true)]
         public string EntityId { get; set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceEntityTagAssignmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The identifier of the entity to which the tag is assigned
+        /// The identifier of the entity to which the tag is assigned. For apps, the EntityId is the app name
         /// </summary>
         [Input("entityId", required: true)]
         public Input<string> EntityId { get; set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceEntityTagAssignmentsResult
     {
         /// <summary>
-        /// (string) - The identifier of the entity to which the tag is assigned
+        /// (string) - The identifier of the entity to which the tag is assigned. For apps, the EntityId is the app name
         /// </summary>
         public readonly string EntityId;
         /// <summary>

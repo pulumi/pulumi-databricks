@@ -22,6 +22,7 @@ __all__ = ['PostgresProjectArgs', 'PostgresProject']
 class PostgresProjectArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
+                 initial_endpoint_spec: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']] = None,
                  provider_config: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']] = None,
                  spec: Optional[pulumi.Input['PostgresProjectSpecArgs']] = None):
         """
@@ -29,10 +30,16 @@ class PostgresProjectArgs:
         :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
+        :param pulumi.Input['PostgresProjectInitialEndpointSpecArgs'] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+               created project. If omitted, the initial endpoint created will have default settings, without high availability
+               configured. This field does not apply to any endpoints created after project creation. Use
+               spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input['PostgresProjectProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         pulumi.set(__self__, "project_id", project_id)
+        if initial_endpoint_spec is not None:
+            pulumi.set(__self__, "initial_endpoint_spec", initial_endpoint_spec)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
         if spec is not None:
@@ -51,6 +58,21 @@ class PostgresProjectArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialEndpointSpec")
+    def initial_endpoint_spec(self) -> Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]:
+        """
+        Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        created project. If omitted, the initial endpoint created will have default settings, without high availability
+        configured. This field does not apply to any endpoints created after project creation. Use
+        spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+        """
+        return pulumi.get(self, "initial_endpoint_spec")
+
+    @initial_endpoint_spec.setter
+    def initial_endpoint_spec(self, value: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]):
+        pulumi.set(self, "initial_endpoint_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -81,6 +103,7 @@ class PostgresProjectArgs:
 class _PostgresProjectState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 initial_endpoint_spec: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']] = None,
@@ -91,6 +114,10 @@ class _PostgresProjectState:
         """
         Input properties used for looking up and filtering PostgresProject resources.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the project was created
+        :param pulumi.Input['PostgresProjectInitialEndpointSpecArgs'] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+               created project. If omitted, the initial endpoint created will have default settings, without high availability
+               configured. This field does not apply to any endpoints created after project creation. Use
+               spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the project.
                Format: projects/{project_id}
         :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
@@ -104,6 +131,8 @@ class _PostgresProjectState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if initial_endpoint_spec is not None:
+            pulumi.set(__self__, "initial_endpoint_spec", initial_endpoint_spec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
@@ -130,6 +159,21 @@ class _PostgresProjectState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialEndpointSpec")
+    def initial_endpoint_spec(self) -> Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]:
+        """
+        Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        created project. If omitted, the initial endpoint created will have default settings, without high availability
+        configured. This field does not apply to any endpoints created after project creation. Use
+        spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+        """
+        return pulumi.get(self, "initial_endpoint_spec")
+
+    @initial_endpoint_spec.setter
+    def initial_endpoint_spec(self, value: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]):
+        pulumi.set(self, "initial_endpoint_spec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -225,6 +269,7 @@ class PostgresProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 initial_endpoint_spec: Optional[pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
@@ -290,6 +335,10 @@ class PostgresProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+               created project. If omitted, the initial endpoint created will have default settings, without high availability
+               configured. This field does not apply to any endpoints created after project creation. Use
+               spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
@@ -376,6 +425,7 @@ class PostgresProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 initial_endpoint_spec: Optional[pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
@@ -388,6 +438,7 @@ class PostgresProject(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PostgresProjectArgs.__new__(PostgresProjectArgs)
 
+            __props__.__dict__["initial_endpoint_spec"] = initial_endpoint_spec
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
@@ -409,6 +460,7 @@ class PostgresProject(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            initial_endpoint_spec: Optional[pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
             provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
@@ -424,6 +476,10 @@ class PostgresProject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the project was created
+        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+               created project. If omitted, the initial endpoint created will have default settings, without high availability
+               configured. This field does not apply to any endpoints created after project creation. Use
+               spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the project.
                Format: projects/{project_id}
         :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
@@ -440,6 +496,7 @@ class PostgresProject(pulumi.CustomResource):
         __props__ = _PostgresProjectState.__new__(_PostgresProjectState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["initial_endpoint_spec"] = initial_endpoint_spec
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["provider_config"] = provider_config
@@ -456,6 +513,17 @@ class PostgresProject(pulumi.CustomResource):
         (string) - A timestamp indicating when the project was created
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="initialEndpointSpec")
+    def initial_endpoint_spec(self) -> pulumi.Output['outputs.PostgresProjectInitialEndpointSpec']:
+        """
+        Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        created project. If omitted, the initial endpoint created will have default settings, without high availability
+        configured. This field does not apply to any endpoints created after project creation. Use
+        spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+        """
+        return pulumi.get(self, "initial_endpoint_spec")
 
     @_builtins.property
     @pulumi.getter

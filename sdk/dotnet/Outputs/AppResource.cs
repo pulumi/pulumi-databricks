@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppResource
     {
+        public readonly Outputs.AppResourceApp? App;
         /// <summary>
         /// attribute
         /// </summary>
@@ -55,6 +56,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private AppResource(
+            Outputs.AppResourceApp? app,
+
             Outputs.AppResourceDatabase? database,
 
             string? description,
@@ -75,6 +78,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.AppResourceUcSecurable? ucSecurable)
         {
+            App = app;
             Database = database;
             Description = description;
             Experiment = experiment;

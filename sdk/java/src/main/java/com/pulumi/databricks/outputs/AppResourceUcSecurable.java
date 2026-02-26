@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AppResourceUcSecurable {
@@ -20,6 +22,7 @@ public final class AppResourceUcSecurable {
      * 
      */
     private String securableFullName;
+    private @Nullable String securableKind;
     /**
      * @return the type of UC securable, i.e. `VOLUME`.
      * 
@@ -41,6 +44,9 @@ public final class AppResourceUcSecurable {
     public String securableFullName() {
         return this.securableFullName;
     }
+    public Optional<String> securableKind() {
+        return Optional.ofNullable(this.securableKind);
+    }
     /**
      * @return the type of UC securable, i.e. `VOLUME`.
      * 
@@ -60,12 +66,14 @@ public final class AppResourceUcSecurable {
     public static final class Builder {
         private String permission;
         private String securableFullName;
+        private @Nullable String securableKind;
         private String securableType;
         public Builder() {}
         public Builder(AppResourceUcSecurable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.permission = defaults.permission;
     	      this.securableFullName = defaults.securableFullName;
+    	      this.securableKind = defaults.securableKind;
     	      this.securableType = defaults.securableType;
         }
 
@@ -86,6 +94,12 @@ public final class AppResourceUcSecurable {
             return this;
         }
         @CustomType.Setter
+        public Builder securableKind(@Nullable String securableKind) {
+
+            this.securableKind = securableKind;
+            return this;
+        }
+        @CustomType.Setter
         public Builder securableType(String securableType) {
             if (securableType == null) {
               throw new MissingRequiredPropertyException("AppResourceUcSecurable", "securableType");
@@ -97,6 +111,7 @@ public final class AppResourceUcSecurable {
             final var _resultValue = new AppResourceUcSecurable();
             _resultValue.permission = permission;
             _resultValue.securableFullName = securableFullName;
+            _resultValue.securableKind = securableKind;
             _resultValue.securableType = securableType;
             return _resultValue;
         }

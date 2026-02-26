@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresProjectInitialEndpointSpecArgs;
 import com.pulumi.databricks.inputs.PostgresProjectProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -17,6 +18,27 @@ import javax.annotation.Nullable;
 public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PostgresProjectArgs Empty = new PostgresProjectArgs();
+
+    /**
+     * Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * created project. If omitted, the initial endpoint created will have default settings, without high availability
+     * configured. This field does not apply to any endpoints created after project creation. Use
+     * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+     * 
+     */
+    @Import(name="initialEndpointSpec")
+    private @Nullable Output<PostgresProjectInitialEndpointSpecArgs> initialEndpointSpec;
+
+    /**
+     * @return Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * created project. If omitted, the initial endpoint created will have default settings, without high availability
+     * configured. This field does not apply to any endpoints created after project creation. Use
+     * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+     * 
+     */
+    public Optional<Output<PostgresProjectInitialEndpointSpecArgs>> initialEndpointSpec() {
+        return Optional.ofNullable(this.initialEndpointSpec);
+    }
 
     /**
      * The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
@@ -70,6 +92,7 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
     private PostgresProjectArgs() {}
 
     private PostgresProjectArgs(PostgresProjectArgs $) {
+        this.initialEndpointSpec = $.initialEndpointSpec;
         this.projectId = $.projectId;
         this.providerConfig = $.providerConfig;
         this.spec = $.spec;
@@ -91,6 +114,33 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(PostgresProjectArgs defaults) {
             $ = new PostgresProjectArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+         * created project. If omitted, the initial endpoint created will have default settings, without high availability
+         * configured. This field does not apply to any endpoints created after project creation. Use
+         * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialEndpointSpec(@Nullable Output<PostgresProjectInitialEndpointSpecArgs> initialEndpointSpec) {
+            $.initialEndpointSpec = initialEndpointSpec;
+            return this;
+        }
+
+        /**
+         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+         * created project. If omitted, the initial endpoint created will have default settings, without high availability
+         * configured. This field does not apply to any endpoints created after project creation. Use
+         * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialEndpointSpec(PostgresProjectInitialEndpointSpecArgs initialEndpointSpec) {
+            return initialEndpointSpec(Output.of(initialEndpointSpec));
         }
 
         /**

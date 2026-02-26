@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * const appTag = databricks.getWorkspaceEntityTagAssignment({
  *     entityType: "apps",
- *     entityId: "2807324866692453",
+ *     entityId: "myapp",
  *     tagKey: "sensitivity_level",
  * });
  * const dashboardTag = databricks.getWorkspaceEntityTagAssignment({
@@ -49,7 +49,7 @@ export function getWorkspaceEntityTagAssignment(args: GetWorkspaceEntityTagAssig
  */
 export interface GetWorkspaceEntityTagAssignmentArgs {
     /**
-     * The identifier of the entity to which the tag is assigned
+     * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      */
     entityId: string;
     /**
@@ -71,7 +71,7 @@ export interface GetWorkspaceEntityTagAssignmentArgs {
  */
 export interface GetWorkspaceEntityTagAssignmentResult {
     /**
-     * (string) - The identifier of the entity to which the tag is assigned
+     * (string) - The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      */
     readonly entityId: string;
     /**
@@ -105,7 +105,7 @@ export interface GetWorkspaceEntityTagAssignmentResult {
  *
  * const appTag = databricks.getWorkspaceEntityTagAssignment({
  *     entityType: "apps",
- *     entityId: "2807324866692453",
+ *     entityId: "myapp",
  *     tagKey: "sensitivity_level",
  * });
  * const dashboardTag = databricks.getWorkspaceEntityTagAssignment({
@@ -135,7 +135,7 @@ export function getWorkspaceEntityTagAssignmentOutput(args: GetWorkspaceEntityTa
  */
 export interface GetWorkspaceEntityTagAssignmentOutputArgs {
     /**
-     * The identifier of the entity to which the tag is assigned
+     * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      */
     entityId: pulumi.Input<string>;
     /**

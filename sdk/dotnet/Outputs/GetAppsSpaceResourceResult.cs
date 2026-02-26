@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppsSpaceResourceResult
     {
         /// <summary>
+        /// (AppResourceApp)
+        /// </summary>
+        public readonly Outputs.GetAppsSpaceResourceAppResult? App;
+        /// <summary>
         /// (AppResourceDatabase)
         /// </summary>
         public readonly Outputs.GetAppsSpaceResourceDatabaseResult? Database;
@@ -57,6 +61,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetAppsSpaceResourceResult(
+            Outputs.GetAppsSpaceResourceAppResult? app,
+
             Outputs.GetAppsSpaceResourceDatabaseResult? database,
 
             string? description,
@@ -77,6 +83,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetAppsSpaceResourceUcSecurableResult? ucSecurable)
         {
+            App = app;
             Database = database;
             Description = description;
             Experiment = experiment;

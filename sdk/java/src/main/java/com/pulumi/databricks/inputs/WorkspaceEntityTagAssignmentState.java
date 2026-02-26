@@ -17,14 +17,14 @@ public final class WorkspaceEntityTagAssignmentState extends com.pulumi.resource
     public static final WorkspaceEntityTagAssignmentState Empty = new WorkspaceEntityTagAssignmentState();
 
     /**
-     * The identifier of the entity to which the tag is assigned
+     * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      * 
      */
     @Import(name="entityId")
     private @Nullable Output<String> entityId;
 
     /**
-     * @return The identifier of the entity to which the tag is assigned
+     * @return The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      * 
      */
     public Optional<Output<String>> entityId() {
@@ -120,7 +120,7 @@ public final class WorkspaceEntityTagAssignmentState extends com.pulumi.resource
         }
 
         /**
-         * @param entityId The identifier of the entity to which the tag is assigned
+         * @param entityId The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class WorkspaceEntityTagAssignmentState extends com.pulumi.resource
         }
 
         /**
-         * @param entityId The identifier of the entity to which the tag is assigned
+         * @param entityId The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
          * 
          * @return builder
          * 

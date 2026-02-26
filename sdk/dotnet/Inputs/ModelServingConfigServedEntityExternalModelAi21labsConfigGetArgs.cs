@@ -18,11 +18,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("ai21labsApiKey")]
         public Input<string>? Ai21labsApiKey { get; set; }
 
+        [Input("ai21labsApiKeyPlaintext")]
+        private Input<string>? _ai21labsApiKeyPlaintext;
+
         /// <summary>
         /// An AI21 Labs API key provided as a plaintext string.
         /// </summary>
-        [Input("ai21labsApiKeyPlaintext")]
-        public Input<string>? Ai21labsApiKeyPlaintext { get; set; }
+        public Input<string>? Ai21labsApiKeyPlaintext
+        {
+            get => _ai21labsApiKeyPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ai21labsApiKeyPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ModelServingConfigServedEntityExternalModelAi21labsConfigGetArgs()
         {

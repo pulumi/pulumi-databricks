@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppsSpaceResourceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("app")]
+        public Input<Inputs.AppsSpaceResourceAppArgs>? App { get; set; }
+
         [Input("database")]
         public Input<Inputs.AppsSpaceResourceDatabaseArgs>? Database { get; set; }
 

@@ -28,13 +28,16 @@ class GetPostgresProjectResult:
     """
     A collection of values returned by getPostgresProject.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, id=None, initial_endpoint_spec=None, name=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if initial_endpoint_spec and not isinstance(initial_endpoint_spec, dict):
+            raise TypeError("Expected argument 'initial_endpoint_spec' to be a dict")
+        pulumi.set(__self__, "initial_endpoint_spec", initial_endpoint_spec)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -69,6 +72,17 @@ class GetPostgresProjectResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="initialEndpointSpec")
+    def initial_endpoint_spec(self) -> 'outputs.GetPostgresProjectInitialEndpointSpecResult':
+        """
+        (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        created project. If omitted, the initial endpoint created will have default settings, without high availability
+        configured. This field does not apply to any endpoints created after project creation. Use
+        spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+        """
+        return pulumi.get(self, "initial_endpoint_spec")
 
     @_builtins.property
     @pulumi.getter
@@ -125,6 +139,7 @@ class AwaitableGetPostgresProjectResult(GetPostgresProjectResult):
         return GetPostgresProjectResult(
             create_time=self.create_time,
             id=self.id,
+            initial_endpoint_spec=self.initial_endpoint_spec,
             name=self.name,
             provider_config=self.provider_config,
             spec=self.spec,
@@ -169,6 +184,7 @@ def get_postgres_project(name: Optional[_builtins.str] = None,
     return AwaitableGetPostgresProjectResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         id=pulumi.get(__ret__, 'id'),
+        initial_endpoint_spec=pulumi.get(__ret__, 'initial_endpoint_spec'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         spec=pulumi.get(__ret__, 'spec'),
@@ -210,6 +226,7 @@ def get_postgres_project_output(name: Optional[pulumi.Input[_builtins.str]] = No
     return __ret__.apply(lambda __response__: GetPostgresProjectResult(
         create_time=pulumi.get(__response__, 'create_time'),
         id=pulumi.get(__response__, 'id'),
+        initial_endpoint_spec=pulumi.get(__response__, 'initial_endpoint_spec'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         spec=pulumi.get(__response__, 'spec'),

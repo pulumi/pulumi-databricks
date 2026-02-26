@@ -113,6 +113,13 @@ func NewGitCredential(ctx *pulumi.Context,
 	if args.GitProvider == nil {
 		return nil, errors.New("invalid value for required argument 'GitProvider'")
 	}
+	if args.PersonalAccessToken != nil {
+		args.PersonalAccessToken = pulumi.ToSecret(args.PersonalAccessToken).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"personalAccessToken",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitCredential
 	err := ctx.RegisterResource("databricks:index/gitCredential:GitCredential", name, args, &resource, opts...)

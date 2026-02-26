@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetWorkspaceEntityTagAssignmentsTagAssignmentResult
     {
         /// <summary>
-        /// The identifier of the entity to which the tag is assigned
+        /// The identifier of the entity to which the tag is assigned. For apps, the EntityId is the app name
         /// </summary>
         public readonly string EntityId;
         /// <summary>

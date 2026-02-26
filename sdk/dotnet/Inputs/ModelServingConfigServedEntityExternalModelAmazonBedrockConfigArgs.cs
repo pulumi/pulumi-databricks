@@ -18,11 +18,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("awsAccessKeyId")]
         public Input<string>? AwsAccessKeyId { get; set; }
 
+        [Input("awsAccessKeyIdPlaintext")]
+        private Input<string>? _awsAccessKeyIdPlaintext;
+
         /// <summary>
         /// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
         /// </summary>
-        [Input("awsAccessKeyIdPlaintext")]
-        public Input<string>? AwsAccessKeyIdPlaintext { get; set; }
+        public Input<string>? AwsAccessKeyIdPlaintext
+        {
+            get => _awsAccessKeyIdPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _awsAccessKeyIdPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The AWS region to use. Bedrock has to be enabled there.
@@ -36,11 +46,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("awsSecretAccessKey")]
         public Input<string>? AwsSecretAccessKey { get; set; }
 
+        [Input("awsSecretAccessKeyPlaintext")]
+        private Input<string>? _awsSecretAccessKeyPlaintext;
+
         /// <summary>
         /// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
         /// </summary>
-        [Input("awsSecretAccessKeyPlaintext")]
-        public Input<string>? AwsSecretAccessKeyPlaintext { get; set; }
+        public Input<string>? AwsSecretAccessKeyPlaintext
+        {
+            get => _awsSecretAccessKeyPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _awsSecretAccessKeyPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.

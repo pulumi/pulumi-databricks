@@ -12,6 +12,7 @@ import com.pulumi.databricks.VectorSearchEndpointArgs;
 import com.pulumi.databricks.inputs.VectorSearchEndpointState;
 import com.pulumi.databricks.outputs.VectorSearchEndpointEndpointStatus;
 import com.pulumi.databricks.outputs.VectorSearchEndpointProviderConfig;
+import com.pulumi.databricks.outputs.VectorSearchEndpointScalingInfo;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -227,6 +228,12 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<VectorSearchEndpointProviderConfig>> providerConfig() {
         return Codegen.optional(this.providerConfig);
+    }
+    @Export(name="scalingInfo", refs={VectorSearchEndpointScalingInfo.class}, tree="[0]")
+    private Output</* @Nullable */ VectorSearchEndpointScalingInfo> scalingInfo;
+
+    public Output<Optional<VectorSearchEndpointScalingInfo>> scalingInfo() {
+        return Codegen.optional(this.scalingInfo);
     }
 
     /**

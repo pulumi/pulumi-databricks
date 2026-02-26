@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
     ///     var appTag = new Databricks.WorkspaceEntityTagAssignment("app_tag", new()
     ///     {
     ///         EntityType = "apps",
-    ///         EntityId = "2807324866692453",
+    ///         EntityId = "myapp",
     ///         TagKey = "sensitivity_level",
     ///         TagValue = "high",
     ///     });
@@ -55,7 +55,7 @@ namespace Pulumi.Databricks
     public partial class WorkspaceEntityTagAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The identifier of the entity to which the tag is assigned
+        /// The identifier of the entity to which the tag is assigned. For apps, the EntityId is the app name
         /// </summary>
         [Output("entityId")]
         public Output<string> EntityId { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceEntityTagAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The identifier of the entity to which the tag is assigned
+        /// The identifier of the entity to which the tag is assigned. For apps, the EntityId is the app name
         /// </summary>
         [Input("entityId", required: true)]
         public Input<string> EntityId { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceEntityTagAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The identifier of the entity to which the tag is assigned
+        /// The identifier of the entity to which the tag is assigned. For apps, the EntityId is the app name
         /// </summary>
         [Input("entityId")]
         public Input<string>? EntityId { get; set; }

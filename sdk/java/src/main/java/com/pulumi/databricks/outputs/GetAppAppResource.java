@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAppAppResourceApp;
 import com.pulumi.databricks.outputs.GetAppAppResourceDatabase;
 import com.pulumi.databricks.outputs.GetAppAppResourceExperiment;
 import com.pulumi.databricks.outputs.GetAppAppResourceGenieSpace;
@@ -20,6 +21,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppAppResource {
+    /**
+     * @return attribute
+     * 
+     */
+    private @Nullable GetAppAppResourceApp app;
     /**
      * @return attribute
      * 
@@ -68,6 +74,13 @@ public final class GetAppAppResource {
     private @Nullable GetAppAppResourceUcSecurable ucSecurable;
 
     private GetAppAppResource() {}
+    /**
+     * @return attribute
+     * 
+     */
+    public Optional<GetAppAppResourceApp> app() {
+        return Optional.ofNullable(this.app);
+    }
     /**
      * @return attribute
      * 
@@ -144,6 +157,7 @@ public final class GetAppAppResource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAppAppResourceApp app;
         private @Nullable GetAppAppResourceDatabase database;
         private @Nullable String description;
         private @Nullable GetAppAppResourceExperiment experiment;
@@ -157,6 +171,7 @@ public final class GetAppAppResource {
         public Builder() {}
         public Builder(GetAppAppResource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.app = defaults.app;
     	      this.database = defaults.database;
     	      this.description = defaults.description;
     	      this.experiment = defaults.experiment;
@@ -169,6 +184,12 @@ public final class GetAppAppResource {
     	      this.ucSecurable = defaults.ucSecurable;
         }
 
+        @CustomType.Setter
+        public Builder app(@Nullable GetAppAppResourceApp app) {
+
+            this.app = app;
+            return this;
+        }
         @CustomType.Setter
         public Builder database(@Nullable GetAppAppResourceDatabase database) {
 
@@ -233,6 +254,7 @@ public final class GetAppAppResource {
         }
         public GetAppAppResource build() {
             final var _resultValue = new GetAppAppResource();
+            _resultValue.app = app;
             _resultValue.database = database;
             _resultValue.description = description;
             _resultValue.experiment = experiment;

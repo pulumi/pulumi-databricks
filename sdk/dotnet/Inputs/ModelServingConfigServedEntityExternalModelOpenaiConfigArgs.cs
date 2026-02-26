@@ -24,11 +24,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("microsoftEntraClientSecret")]
         public Input<string>? MicrosoftEntraClientSecret { get; set; }
 
+        [Input("microsoftEntraClientSecretPlaintext")]
+        private Input<string>? _microsoftEntraClientSecretPlaintext;
+
         /// <summary>
         /// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
         /// </summary>
-        [Input("microsoftEntraClientSecretPlaintext")]
-        public Input<string>? MicrosoftEntraClientSecretPlaintext { get; set; }
+        public Input<string>? MicrosoftEntraClientSecretPlaintext
+        {
+            get => _microsoftEntraClientSecretPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _microsoftEntraClientSecretPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
@@ -48,11 +58,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("openaiApiKey")]
         public Input<string>? OpenaiApiKey { get; set; }
 
+        [Input("openaiApiKeyPlaintext")]
+        private Input<string>? _openaiApiKeyPlaintext;
+
         /// <summary>
         /// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
         /// </summary>
-        [Input("openaiApiKeyPlaintext")]
-        public Input<string>? OpenaiApiKeyPlaintext { get; set; }
+        public Input<string>? OpenaiApiKeyPlaintext
+        {
+            get => _openaiApiKeyPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _openaiApiKeyPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `Azure`. For authentication using Azure Active Directory (Azure AD) use, `Azuread`.

@@ -7,11 +7,19 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AppsSpaceResourceUcSecurable {
     private String permission;
     private String securableFullName;
+    /**
+     * @return (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     * 
+     */
+    private @Nullable String securableKind;
     /**
      * @return Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      * 
@@ -24,6 +32,14 @@ public final class AppsSpaceResourceUcSecurable {
     }
     public String securableFullName() {
         return this.securableFullName;
+    }
+    /**
+     * @return (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     * 
+     */
+    public Optional<String> securableKind() {
+        return Optional.ofNullable(this.securableKind);
     }
     /**
      * @return Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
@@ -44,12 +60,14 @@ public final class AppsSpaceResourceUcSecurable {
     public static final class Builder {
         private String permission;
         private String securableFullName;
+        private @Nullable String securableKind;
         private String securableType;
         public Builder() {}
         public Builder(AppsSpaceResourceUcSecurable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.permission = defaults.permission;
     	      this.securableFullName = defaults.securableFullName;
+    	      this.securableKind = defaults.securableKind;
     	      this.securableType = defaults.securableType;
         }
 
@@ -70,6 +88,12 @@ public final class AppsSpaceResourceUcSecurable {
             return this;
         }
         @CustomType.Setter
+        public Builder securableKind(@Nullable String securableKind) {
+
+            this.securableKind = securableKind;
+            return this;
+        }
+        @CustomType.Setter
         public Builder securableType(String securableType) {
             if (securableType == null) {
               throw new MissingRequiredPropertyException("AppsSpaceResourceUcSecurable", "securableType");
@@ -81,6 +105,7 @@ public final class AppsSpaceResourceUcSecurable {
             final var _resultValue = new AppsSpaceResourceUcSecurable();
             _resultValue.permission = permission;
             _resultValue.securableFullName = securableFullName;
+            _resultValue.securableKind = securableKind;
             _resultValue.securableType = securableType;
             return _resultValue;
         }

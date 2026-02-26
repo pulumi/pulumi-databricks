@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAppsSpaceResourceApp;
 import com.pulumi.databricks.outputs.GetAppsSpaceResourceDatabase;
 import com.pulumi.databricks.outputs.GetAppsSpaceResourceExperiment;
 import com.pulumi.databricks.outputs.GetAppsSpaceResourceGenieSpace;
@@ -20,6 +21,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsSpaceResource {
+    /**
+     * @return (AppResourceApp)
+     * 
+     */
+    private @Nullable GetAppsSpaceResourceApp app;
     /**
      * @return (AppResourceDatabase)
      * 
@@ -73,6 +79,13 @@ public final class GetAppsSpaceResource {
     private @Nullable GetAppsSpaceResourceUcSecurable ucSecurable;
 
     private GetAppsSpaceResource() {}
+    /**
+     * @return (AppResourceApp)
+     * 
+     */
+    public Optional<GetAppsSpaceResourceApp> app() {
+        return Optional.ofNullable(this.app);
+    }
     /**
      * @return (AppResourceDatabase)
      * 
@@ -154,6 +167,7 @@ public final class GetAppsSpaceResource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAppsSpaceResourceApp app;
         private @Nullable GetAppsSpaceResourceDatabase database;
         private @Nullable String description;
         private @Nullable GetAppsSpaceResourceExperiment experiment;
@@ -167,6 +181,7 @@ public final class GetAppsSpaceResource {
         public Builder() {}
         public Builder(GetAppsSpaceResource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.app = defaults.app;
     	      this.database = defaults.database;
     	      this.description = defaults.description;
     	      this.experiment = defaults.experiment;
@@ -179,6 +194,12 @@ public final class GetAppsSpaceResource {
     	      this.ucSecurable = defaults.ucSecurable;
         }
 
+        @CustomType.Setter
+        public Builder app(@Nullable GetAppsSpaceResourceApp app) {
+
+            this.app = app;
+            return this;
+        }
         @CustomType.Setter
         public Builder database(@Nullable GetAppsSpaceResourceDatabase database) {
 
@@ -243,6 +264,7 @@ public final class GetAppsSpaceResource {
         }
         public GetAppsSpaceResource build() {
             final var _resultValue = new GetAppsSpaceResource();
+            _resultValue.app = app;
             _resultValue.database = database;
             _resultValue.description = description;
             _resultValue.experiment = experiment;

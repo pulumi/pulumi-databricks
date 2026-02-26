@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetEndpoint
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
         /// 
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("databricks:index/getEndpoint:getEndpoint", args ?? new GetEndpointArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointResult>("databricks:index/getEndpoint:getEndpoint", args ?? new GetEndpointInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
         /// 

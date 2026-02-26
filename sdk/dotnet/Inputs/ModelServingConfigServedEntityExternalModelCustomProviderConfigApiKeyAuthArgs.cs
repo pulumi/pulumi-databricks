@@ -18,11 +18,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
+        [Input("valuePlaintext")]
+        private Input<string>? _valuePlaintext;
+
         /// <summary>
         /// The API Key provided as a plaintext string.
         /// </summary>
-        [Input("valuePlaintext")]
-        public Input<string>? ValuePlaintext { get; set; }
+        public Input<string>? ValuePlaintext
+        {
+            get => _valuePlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _valuePlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs()
         {

@@ -20,6 +20,7 @@ public final class GetAppAppResourceUcSecurable {
      * 
      */
     private String securableFullName;
+    private String securableKind;
     /**
      * @return the type of UC securable, i.e. `VOLUME`.
      * 
@@ -41,6 +42,9 @@ public final class GetAppAppResourceUcSecurable {
     public String securableFullName() {
         return this.securableFullName;
     }
+    public String securableKind() {
+        return this.securableKind;
+    }
     /**
      * @return the type of UC securable, i.e. `VOLUME`.
      * 
@@ -60,12 +64,14 @@ public final class GetAppAppResourceUcSecurable {
     public static final class Builder {
         private String permission;
         private String securableFullName;
+        private String securableKind;
         private String securableType;
         public Builder() {}
         public Builder(GetAppAppResourceUcSecurable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.permission = defaults.permission;
     	      this.securableFullName = defaults.securableFullName;
+    	      this.securableKind = defaults.securableKind;
     	      this.securableType = defaults.securableType;
         }
 
@@ -86,6 +92,14 @@ public final class GetAppAppResourceUcSecurable {
             return this;
         }
         @CustomType.Setter
+        public Builder securableKind(String securableKind) {
+            if (securableKind == null) {
+              throw new MissingRequiredPropertyException("GetAppAppResourceUcSecurable", "securableKind");
+            }
+            this.securableKind = securableKind;
+            return this;
+        }
+        @CustomType.Setter
         public Builder securableType(String securableType) {
             if (securableType == null) {
               throw new MissingRequiredPropertyException("GetAppAppResourceUcSecurable", "securableType");
@@ -97,6 +111,7 @@ public final class GetAppAppResourceUcSecurable {
             final var _resultValue = new GetAppAppResourceUcSecurable();
             _resultValue.permission = permission;
             _resultValue.securableFullName = securableFullName;
+            _resultValue.securableKind = securableKind;
             _resultValue.securableType = securableType;
             return _resultValue;
         }

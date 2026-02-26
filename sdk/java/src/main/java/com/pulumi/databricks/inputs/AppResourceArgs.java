@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AppResourceAppArgs;
 import com.pulumi.databricks.inputs.AppResourceDatabaseArgs;
 import com.pulumi.databricks.inputs.AppResourceExperimentArgs;
 import com.pulumi.databricks.inputs.AppResourceGenieSpaceArgs;
@@ -23,6 +24,13 @@ import javax.annotation.Nullable;
 public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppResourceArgs Empty = new AppResourceArgs();
+
+    @Import(name="app")
+    private @Nullable Output<AppResourceAppArgs> app;
+
+    public Optional<Output<AppResourceAppArgs>> app() {
+        return Optional.ofNullable(this.app);
+    }
 
     /**
      * attribute
@@ -173,6 +181,7 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
     private AppResourceArgs() {}
 
     private AppResourceArgs(AppResourceArgs $) {
+        this.app = $.app;
         this.database = $.database;
         this.description = $.description;
         this.experiment = $.experiment;
@@ -201,6 +210,15 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AppResourceArgs defaults) {
             $ = new AppResourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder app(@Nullable Output<AppResourceAppArgs> app) {
+            $.app = app;
+            return this;
+        }
+
+        public Builder app(AppResourceAppArgs app) {
+            return app(Output.of(app));
         }
 
         /**

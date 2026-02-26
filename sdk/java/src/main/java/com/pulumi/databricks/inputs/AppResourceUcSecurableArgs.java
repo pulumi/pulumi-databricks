@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AppResourceUcSecurableArgs extends com.pulumi.resources.ResourceArgs {
@@ -44,6 +46,13 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
         return this.securableFullName;
     }
 
+    @Import(name="securableKind")
+    private @Nullable Output<String> securableKind;
+
+    public Optional<Output<String>> securableKind() {
+        return Optional.ofNullable(this.securableKind);
+    }
+
     /**
      * the type of UC securable, i.e. `VOLUME`.
      * 
@@ -64,6 +73,7 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
     private AppResourceUcSecurableArgs(AppResourceUcSecurableArgs $) {
         this.permission = $.permission;
         this.securableFullName = $.securableFullName;
+        this.securableKind = $.securableKind;
         this.securableType = $.securableType;
     }
 
@@ -125,6 +135,15 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
          */
         public Builder securableFullName(String securableFullName) {
             return securableFullName(Output.of(securableFullName));
+        }
+
+        public Builder securableKind(@Nullable Output<String> securableKind) {
+            $.securableKind = securableKind;
+            return this;
+        }
+
+        public Builder securableKind(String securableKind) {
+            return securableKind(Output.of(securableKind));
         }
 
         /**

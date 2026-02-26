@@ -701,6 +701,7 @@ export interface AppProviderConfig {
 }
 
 export interface AppResource {
+    app?: pulumi.Input<inputs.AppResourceApp>;
     /**
      * attribute
      */
@@ -740,6 +741,9 @@ export interface AppResource {
      * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      */
     ucSecurable?: pulumi.Input<inputs.AppResourceUcSecurable>;
+}
+
+export interface AppResourceApp {
 }
 
 export interface AppResourceDatabase {
@@ -831,6 +835,7 @@ export interface AppResourceUcSecurable {
      * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      */
     securableFullName: pulumi.Input<string>;
+    securableKind?: pulumi.Input<string>;
     /**
      * the type of UC securable, i.e. `VOLUME`.
      */
@@ -915,6 +920,7 @@ export interface AppsSpaceProviderConfig {
 }
 
 export interface AppsSpaceResource {
+    app?: pulumi.Input<inputs.AppsSpaceResourceApp>;
     database?: pulumi.Input<inputs.AppsSpaceResourceDatabase>;
     /**
      * The description of the app space
@@ -932,6 +938,9 @@ export interface AppsSpaceResource {
     servingEndpoint?: pulumi.Input<inputs.AppsSpaceResourceServingEndpoint>;
     sqlWarehouse?: pulumi.Input<inputs.AppsSpaceResourceSqlWarehouse>;
     ucSecurable?: pulumi.Input<inputs.AppsSpaceResourceUcSecurable>;
+}
+
+export interface AppsSpaceResourceApp {
 }
 
 export interface AppsSpaceResourceDatabase {
@@ -995,6 +1004,11 @@ export interface AppsSpaceResourceSqlWarehouse {
 export interface AppsSpaceResourceUcSecurable {
     permission: pulumi.Input<string>;
     securableFullName: pulumi.Input<string>;
+    /**
+     * (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     */
+    securableKind?: pulumi.Input<string>;
     /**
      * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
@@ -17043,11 +17057,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -17114,11 +17128,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -18122,6 +18136,10 @@ export interface PostgresEndpointSpec {
      */
     endpointType: pulumi.Input<string>;
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     */
+    group?: pulumi.Input<inputs.PostgresEndpointSpecGroup>;
+    /**
      * When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided
      */
@@ -18134,6 +18152,16 @@ export interface PostgresEndpointSpec {
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration?: pulumi.Input<string>;
+}
+
+export interface PostgresEndpointSpecGroup {
+    /**
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+     * by specifying size.max > 1
+     */
+    enableReadableSecondaries?: pulumi.Input<boolean>;
+    max: pulumi.Input<number>;
+    min: pulumi.Input<number>;
 }
 
 export interface PostgresEndpointSpecSettings {
@@ -18153,7 +18181,7 @@ export interface PostgresEndpointStatus {
      */
     autoscalingLimitMinCu?: pulumi.Input<number>;
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     currentState?: pulumi.Input<string>;
     /**
@@ -18168,11 +18196,15 @@ export interface PostgresEndpointStatus {
      */
     endpointType?: pulumi.Input<string>;
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     */
+    group?: pulumi.Input<inputs.PostgresEndpointStatusGroup>;
+    /**
      * (EndpointHosts) - Contains host information for connecting to the endpoint
      */
     hosts?: pulumi.Input<inputs.PostgresEndpointStatusHosts>;
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState?: pulumi.Input<string>;
     /**
@@ -18185,12 +18217,28 @@ export interface PostgresEndpointStatus {
     suspendTimeoutDuration?: pulumi.Input<string>;
 }
 
+export interface PostgresEndpointStatusGroup {
+    /**
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+     * by specifying size.max > 1
+     */
+    enableReadableSecondaries?: pulumi.Input<boolean>;
+    max: pulumi.Input<number>;
+    min: pulumi.Input<number>;
+}
+
 export interface PostgresEndpointStatusHosts {
     /**
      * (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
      * to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
      */
     host?: pulumi.Input<string>;
+    /**
+     * (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     */
+    readOnlyHost?: pulumi.Input<string>;
 }
 
 export interface PostgresEndpointStatusSettings {
@@ -18198,6 +18246,32 @@ export interface PostgresEndpointStatusSettings {
      * A raw representation of Postgres settings
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface PostgresProjectInitialEndpointSpec {
+    /**
+     * Settings for HA configuration of the endpoint
+     */
+    group?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpecGroup>;
+}
+
+export interface PostgresProjectInitialEndpointSpecGroup {
+    /**
+     * Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+     * size.max > 1
+     */
+    enableReadableSecondaries?: pulumi.Input<boolean>;
+    /**
+     * The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+     * compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+     * true on the EndpointSpec
+     */
+    max: pulumi.Input<number>;
+    /**
+     * The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+     * than or equal to 1
+     */
+    min: pulumi.Input<number>;
 }
 
 export interface PostgresProjectProviderConfig {
@@ -19507,6 +19581,14 @@ export interface VectorSearchEndpointProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: pulumi.Input<string>;
+}
+
+export interface VectorSearchEndpointScalingInfo {
+    requestedMinQps?: pulumi.Input<number>;
+    /**
+     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+     */
+    state?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpec {

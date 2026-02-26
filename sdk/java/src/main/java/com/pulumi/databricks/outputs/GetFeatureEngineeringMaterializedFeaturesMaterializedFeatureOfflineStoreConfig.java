@@ -11,12 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig {
     /**
-     * @return (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
+     * @return (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      * 
      */
     private String catalogName;
     /**
-     * @return (string) - The Unity Catalog schema name
+     * @return (string) - The Unity Catalog schema name. This name is also used as the Lakebase schema name under the database.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      * 
      */
     private String schemaName;
@@ -29,14 +31,16 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureO
 
     private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig() {}
     /**
-     * @return (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
+     * @return (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      * 
      */
     public String catalogName() {
         return this.catalogName;
     }
     /**
-     * @return (string) - The Unity Catalog schema name
+     * @return (string) - The Unity Catalog schema name. This name is also used as the Lakebase schema name under the database.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      * 
      */
     public String schemaName() {

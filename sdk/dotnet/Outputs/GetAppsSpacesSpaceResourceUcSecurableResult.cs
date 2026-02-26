@@ -14,13 +14,18 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppsSpacesSpaceResourceUcSecurableResult
     {
         /// <summary>
-        /// (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+        /// (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
         /// </summary>
         public readonly string Permission;
         /// <summary>
         /// (string)
         /// </summary>
         public readonly string SecurableFullName;
+        /// <summary>
+        /// (string) - The securable kind from Unity Catalog.
+        /// See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+        /// </summary>
+        public readonly string SecurableKind;
         /// <summary>
         /// (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
         /// </summary>
@@ -32,10 +37,13 @@ namespace Pulumi.Databricks.Outputs
 
             string securableFullName,
 
+            string securableKind,
+
             string securableType)
         {
             Permission = permission;
             SecurableFullName = securableFullName;
+            SecurableKind = securableKind;
             SecurableType = securableType;
         }
     }

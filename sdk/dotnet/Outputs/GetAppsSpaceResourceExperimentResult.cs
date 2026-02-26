@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ExperimentId;
         /// <summary>
-        /// (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+        /// (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
         /// </summary>
         public readonly string Permission;
 

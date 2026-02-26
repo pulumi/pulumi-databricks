@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresProjectInitialEndpointSpec;
 import com.pulumi.databricks.outputs.GetPostgresProjectProviderConfig;
 import com.pulumi.databricks.outputs.GetPostgresProjectSpec;
 import com.pulumi.databricks.outputs.GetPostgresProjectStatus;
@@ -25,6 +26,14 @@ public final class GetPostgresProjectResult {
      * 
      */
     private String id;
+    /**
+     * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * created project. If omitted, the initial endpoint created will have default settings, without high availability
+     * configured. This field does not apply to any endpoints created after project creation. Use
+     * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+     * 
+     */
+    private GetPostgresProjectInitialEndpointSpec initialEndpointSpec;
     /**
      * @return (string) - Output only. The full resource path of the project.
      * Format: projects/{project_id}
@@ -67,6 +76,16 @@ public final class GetPostgresProjectResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * created project. If omitted, the initial endpoint created will have default settings, without high availability
+     * configured. This field does not apply to any endpoints created after project creation. Use
+     * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+     * 
+     */
+    public GetPostgresProjectInitialEndpointSpec initialEndpointSpec() {
+        return this.initialEndpointSpec;
     }
     /**
      * @return (string) - Output only. The full resource path of the project.
@@ -119,6 +138,7 @@ public final class GetPostgresProjectResult {
     public static final class Builder {
         private String createTime;
         private String id;
+        private GetPostgresProjectInitialEndpointSpec initialEndpointSpec;
         private String name;
         private @Nullable GetPostgresProjectProviderConfig providerConfig;
         private GetPostgresProjectSpec spec;
@@ -130,6 +150,7 @@ public final class GetPostgresProjectResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.id = defaults.id;
+    	      this.initialEndpointSpec = defaults.initialEndpointSpec;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
@@ -152,6 +173,14 @@ public final class GetPostgresProjectResult {
               throw new MissingRequiredPropertyException("GetPostgresProjectResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder initialEndpointSpec(GetPostgresProjectInitialEndpointSpec initialEndpointSpec) {
+            if (initialEndpointSpec == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectResult", "initialEndpointSpec");
+            }
+            this.initialEndpointSpec = initialEndpointSpec;
             return this;
         }
         @CustomType.Setter
@@ -204,6 +233,7 @@ public final class GetPostgresProjectResult {
             final var _resultValue = new GetPostgresProjectResult();
             _resultValue.createTime = createTime;
             _resultValue.id = id;
+            _resultValue.initialEndpointSpec = initialEndpointSpec;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;
