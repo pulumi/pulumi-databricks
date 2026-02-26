@@ -16,6 +16,13 @@ public final class GetPostgresEndpointStatusHosts {
      * 
      */
     private String host;
+    /**
+     * @return (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     * 
+     */
+    private String readOnlyHost;
 
     private GetPostgresEndpointStatusHosts() {}
     /**
@@ -25,6 +32,15 @@ public final class GetPostgresEndpointStatusHosts {
      */
     public String host() {
         return this.host;
+    }
+    /**
+     * @return (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     * 
+     */
+    public String readOnlyHost() {
+        return this.readOnlyHost;
     }
 
     public static Builder builder() {
@@ -37,10 +53,12 @@ public final class GetPostgresEndpointStatusHosts {
     @CustomType.Builder
     public static final class Builder {
         private String host;
+        private String readOnlyHost;
         public Builder() {}
         public Builder(GetPostgresEndpointStatusHosts defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
+    	      this.readOnlyHost = defaults.readOnlyHost;
         }
 
         @CustomType.Setter
@@ -51,9 +69,18 @@ public final class GetPostgresEndpointStatusHosts {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
+        public Builder readOnlyHost(String readOnlyHost) {
+            if (readOnlyHost == null) {
+              throw new MissingRequiredPropertyException("GetPostgresEndpointStatusHosts", "readOnlyHost");
+            }
+            this.readOnlyHost = readOnlyHost;
+            return this;
+        }
         public GetPostgresEndpointStatusHosts build() {
             final var _resultValue = new GetPostgresEndpointStatusHosts();
             _resultValue.host = host;
+            _resultValue.readOnlyHost = readOnlyHost;
             return _resultValue;
         }
     }

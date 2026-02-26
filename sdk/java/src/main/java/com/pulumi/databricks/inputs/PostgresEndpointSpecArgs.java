@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresEndpointSpecGroupArgs;
 import com.pulumi.databricks.inputs.PostgresEndpointSpecSettingsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -86,6 +87,21 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    @Import(name="group")
+    private @Nullable Output<PostgresEndpointSpecGroupArgs> group;
+
+    /**
+     * @return (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    public Optional<Output<PostgresEndpointSpecGroupArgs>> group() {
+        return Optional.ofNullable(this.group);
+    }
+
+    /**
      * When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided
      * 
@@ -139,6 +155,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         this.autoscalingLimitMinCu = $.autoscalingLimitMinCu;
         this.disabled = $.disabled;
         this.endpointType = $.endpointType;
+        this.group = $.group;
         this.noSuspension = $.noSuspension;
         this.settings = $.settings;
         this.suspendTimeoutDuration = $.suspendTimeoutDuration;
@@ -250,6 +267,27 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
          */
         public Builder endpointType(String endpointType) {
             return endpointType(Output.of(endpointType));
+        }
+
+        /**
+         * @param group (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(@Nullable Output<PostgresEndpointSpecGroupArgs> group) {
+            $.group = group;
+            return this;
+        }
+
+        /**
+         * @param group (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(PostgresEndpointSpecGroupArgs group) {
+            return group(Output.of(group));
         }
 
         /**

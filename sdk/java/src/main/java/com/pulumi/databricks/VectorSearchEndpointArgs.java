@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.VectorSearchEndpointProviderConfigArgs;
+import com.pulumi.databricks.inputs.VectorSearchEndpointScalingInfoArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -77,6 +78,13 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.providerConfig);
     }
 
+    @Import(name="scalingInfo")
+    private @Nullable Output<VectorSearchEndpointScalingInfoArgs> scalingInfo;
+
+    public Optional<Output<VectorSearchEndpointScalingInfoArgs>> scalingInfo() {
+        return Optional.ofNullable(this.scalingInfo);
+    }
+
     private VectorSearchEndpointArgs() {}
 
     private VectorSearchEndpointArgs(VectorSearchEndpointArgs $) {
@@ -84,6 +92,7 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         this.endpointType = $.endpointType;
         this.name = $.name;
         this.providerConfig = $.providerConfig;
+        this.scalingInfo = $.scalingInfo;
     }
 
     public static Builder builder() {
@@ -186,6 +195,15 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
          */
         public Builder providerConfig(VectorSearchEndpointProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        public Builder scalingInfo(@Nullable Output<VectorSearchEndpointScalingInfoArgs> scalingInfo) {
+            $.scalingInfo = scalingInfo;
+            return this;
+        }
+
+        public Builder scalingInfo(VectorSearchEndpointScalingInfoArgs scalingInfo) {
+            return scalingInfo(Output.of(scalingInfo));
         }
 
         public VectorSearchEndpointArgs build() {

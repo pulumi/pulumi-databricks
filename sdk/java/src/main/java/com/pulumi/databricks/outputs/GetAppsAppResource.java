@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAppsAppResourceApp;
 import com.pulumi.databricks.outputs.GetAppsAppResourceDatabase;
 import com.pulumi.databricks.outputs.GetAppsAppResourceExperiment;
 import com.pulumi.databricks.outputs.GetAppsAppResourceGenieSpace;
@@ -20,6 +21,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppResource {
+    private @Nullable GetAppsAppResourceApp app;
     /**
      * @return attribute
      * 
@@ -68,6 +70,9 @@ public final class GetAppsAppResource {
     private @Nullable GetAppsAppResourceUcSecurable ucSecurable;
 
     private GetAppsAppResource() {}
+    public Optional<GetAppsAppResourceApp> app() {
+        return Optional.ofNullable(this.app);
+    }
     /**
      * @return attribute
      * 
@@ -144,6 +149,7 @@ public final class GetAppsAppResource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAppsAppResourceApp app;
         private @Nullable GetAppsAppResourceDatabase database;
         private @Nullable String description;
         private @Nullable GetAppsAppResourceExperiment experiment;
@@ -157,6 +163,7 @@ public final class GetAppsAppResource {
         public Builder() {}
         public Builder(GetAppsAppResource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.app = defaults.app;
     	      this.database = defaults.database;
     	      this.description = defaults.description;
     	      this.experiment = defaults.experiment;
@@ -169,6 +176,12 @@ public final class GetAppsAppResource {
     	      this.ucSecurable = defaults.ucSecurable;
         }
 
+        @CustomType.Setter
+        public Builder app(@Nullable GetAppsAppResourceApp app) {
+
+            this.app = app;
+            return this;
+        }
         @CustomType.Setter
         public Builder database(@Nullable GetAppsAppResourceDatabase database) {
 
@@ -233,6 +246,7 @@ public final class GetAppsAppResource {
         }
         public GetAppsAppResource build() {
             final var _resultValue = new GetAppsAppResource();
+            _resultValue.app = app;
             _resultValue.database = database;
             _resultValue.description = description;
             _resultValue.experiment = experiment;

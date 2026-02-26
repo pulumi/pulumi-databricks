@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AppsSpaceResourceAppArgs;
 import com.pulumi.databricks.inputs.AppsSpaceResourceDatabaseArgs;
 import com.pulumi.databricks.inputs.AppsSpaceResourceExperimentArgs;
 import com.pulumi.databricks.inputs.AppsSpaceResourceGenieSpaceArgs;
@@ -23,6 +24,13 @@ import javax.annotation.Nullable;
 public final class AppsSpaceResourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppsSpaceResourceArgs Empty = new AppsSpaceResourceArgs();
+
+    @Import(name="app")
+    private @Nullable Output<AppsSpaceResourceAppArgs> app;
+
+    public Optional<Output<AppsSpaceResourceAppArgs>> app() {
+        return Optional.ofNullable(this.app);
+    }
 
     @Import(name="database")
     private @Nullable Output<AppsSpaceResourceDatabaseArgs> database;
@@ -115,6 +123,7 @@ public final class AppsSpaceResourceArgs extends com.pulumi.resources.ResourceAr
     private AppsSpaceResourceArgs() {}
 
     private AppsSpaceResourceArgs(AppsSpaceResourceArgs $) {
+        this.app = $.app;
         this.database = $.database;
         this.description = $.description;
         this.experiment = $.experiment;
@@ -143,6 +152,15 @@ public final class AppsSpaceResourceArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(AppsSpaceResourceArgs defaults) {
             $ = new AppsSpaceResourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder app(@Nullable Output<AppsSpaceResourceAppArgs> app) {
+            $.app = app;
+            return this;
+        }
+
+        public Builder app(AppsSpaceResourceAppArgs app) {
+            return app(Output.of(app));
         }
 
         public Builder database(@Nullable Output<AppsSpaceResourceDatabaseArgs> database) {

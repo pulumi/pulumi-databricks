@@ -18,11 +18,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("token")]
         public Input<string>? Token { get; set; }
 
+        [Input("tokenPlaintext")]
+        private Input<string>? _tokenPlaintext;
+
         /// <summary>
         /// The token provided as a plaintext string.
         /// </summary>
-        [Input("tokenPlaintext")]
-        public Input<string>? TokenPlaintext { get; set; }
+        public Input<string>? TokenPlaintext
+        {
+            get => _tokenPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tokenPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthGetArgs()
         {

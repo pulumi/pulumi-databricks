@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.AppsSpaceResourceApp;
 import com.pulumi.databricks.outputs.AppsSpaceResourceDatabase;
 import com.pulumi.databricks.outputs.AppsSpaceResourceExperiment;
 import com.pulumi.databricks.outputs.AppsSpaceResourceGenieSpace;
@@ -20,6 +21,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppsSpaceResource {
+    private @Nullable AppsSpaceResourceApp app;
     private @Nullable AppsSpaceResourceDatabase database;
     /**
      * @return The description of the app space
@@ -41,6 +43,9 @@ public final class AppsSpaceResource {
     private @Nullable AppsSpaceResourceUcSecurable ucSecurable;
 
     private AppsSpaceResource() {}
+    public Optional<AppsSpaceResourceApp> app() {
+        return Optional.ofNullable(this.app);
+    }
     public Optional<AppsSpaceResourceDatabase> database() {
         return Optional.ofNullable(this.database);
     }
@@ -90,6 +95,7 @@ public final class AppsSpaceResource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AppsSpaceResourceApp app;
         private @Nullable AppsSpaceResourceDatabase database;
         private @Nullable String description;
         private @Nullable AppsSpaceResourceExperiment experiment;
@@ -103,6 +109,7 @@ public final class AppsSpaceResource {
         public Builder() {}
         public Builder(AppsSpaceResource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.app = defaults.app;
     	      this.database = defaults.database;
     	      this.description = defaults.description;
     	      this.experiment = defaults.experiment;
@@ -115,6 +122,12 @@ public final class AppsSpaceResource {
     	      this.ucSecurable = defaults.ucSecurable;
         }
 
+        @CustomType.Setter
+        public Builder app(@Nullable AppsSpaceResourceApp app) {
+
+            this.app = app;
+            return this;
+        }
         @CustomType.Setter
         public Builder database(@Nullable AppsSpaceResourceDatabase database) {
 
@@ -179,6 +192,7 @@ public final class AppsSpaceResource {
         }
         public AppsSpaceResource build() {
             final var _resultValue = new AppsSpaceResource();
+            _resultValue.app = app;
             _resultValue.database = database;
             _resultValue.description = description;
             _resultValue.experiment = experiment;

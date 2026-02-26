@@ -141,6 +141,10 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "personalAccessToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -200,11 +204,21 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("personalAccessToken")]
+        private Input<string>? _personalAccessToken;
+
         /// <summary>
         /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
         /// </summary>
-        [Input("personalAccessToken")]
-        public Input<string>? PersonalAccessToken { get; set; }
+        public Input<string>? PersonalAccessToken
+        {
+            get => _personalAccessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _personalAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
@@ -259,11 +273,21 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("personalAccessToken")]
+        private Input<string>? _personalAccessToken;
+
         /// <summary>
         /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
         /// </summary>
-        [Input("personalAccessToken")]
-        public Input<string>? PersonalAccessToken { get; set; }
+        public Input<string>? PersonalAccessToken
+        {
+            get => _personalAccessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _personalAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }

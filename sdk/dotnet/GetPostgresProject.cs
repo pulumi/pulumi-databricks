@@ -173,6 +173,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        /// created project. If omitted, the initial endpoint created will have default settings, without high availability
+        /// configured. This field does not apply to any endpoints created after project creation. Use
+        /// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+        /// </summary>
+        public readonly Outputs.GetPostgresProjectInitialEndpointSpecResult InitialEndpointSpec;
+        /// <summary>
         /// (string) - Output only. The full resource path of the project.
         /// Format: projects/{project_id}
         /// </summary>
@@ -201,6 +208,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetPostgresProjectInitialEndpointSpecResult initialEndpointSpec,
+
             string name,
 
             Outputs.GetPostgresProjectProviderConfigResult? providerConfig,
@@ -215,6 +224,7 @@ namespace Pulumi.Databricks
         {
             CreateTime = createTime;
             Id = id;
+            InitialEndpointSpec = initialEndpointSpec;
             Name = name;
             ProviderConfig = providerConfig;
             Spec = spec;

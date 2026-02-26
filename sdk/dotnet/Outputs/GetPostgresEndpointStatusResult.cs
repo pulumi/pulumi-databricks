@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly double AutoscalingLimitMinCu;
         /// <summary>
-        /// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+        /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         public readonly string CurrentState;
         /// <summary>
@@ -37,11 +37,15 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
+        /// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+        /// </summary>
+        public readonly Outputs.GetPostgresEndpointStatusGroupResult Group;
+        /// <summary>
         /// (EndpointHosts) - Contains host information for connecting to the endpoint
         /// </summary>
         public readonly Outputs.GetPostgresEndpointStatusHostsResult Hosts;
         /// <summary>
-        /// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+        /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         public readonly string PendingState;
         /// <summary>
@@ -65,6 +69,8 @@ namespace Pulumi.Databricks.Outputs
 
             string endpointType,
 
+            Outputs.GetPostgresEndpointStatusGroupResult group,
+
             Outputs.GetPostgresEndpointStatusHostsResult hosts,
 
             string pendingState,
@@ -78,6 +84,7 @@ namespace Pulumi.Databricks.Outputs
             CurrentState = currentState;
             Disabled = disabled;
             EndpointType = endpointType;
+            Group = group;
             Hosts = hosts;
             PendingState = pendingState;
             Settings = settings;

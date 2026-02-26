@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.AppResourceApp;
 import com.pulumi.databricks.outputs.AppResourceDatabase;
 import com.pulumi.databricks.outputs.AppResourceExperiment;
 import com.pulumi.databricks.outputs.AppResourceGenieSpace;
@@ -20,6 +21,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppResource {
+    private @Nullable AppResourceApp app;
     /**
      * @return attribute
      * 
@@ -70,6 +72,9 @@ public final class AppResource {
     private @Nullable AppResourceUcSecurable ucSecurable;
 
     private AppResource() {}
+    public Optional<AppResourceApp> app() {
+        return Optional.ofNullable(this.app);
+    }
     /**
      * @return attribute
      * 
@@ -148,6 +153,7 @@ public final class AppResource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AppResourceApp app;
         private @Nullable AppResourceDatabase database;
         private @Nullable String description;
         private @Nullable AppResourceExperiment experiment;
@@ -161,6 +167,7 @@ public final class AppResource {
         public Builder() {}
         public Builder(AppResource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.app = defaults.app;
     	      this.database = defaults.database;
     	      this.description = defaults.description;
     	      this.experiment = defaults.experiment;
@@ -173,6 +180,12 @@ public final class AppResource {
     	      this.ucSecurable = defaults.ucSecurable;
         }
 
+        @CustomType.Setter
+        public Builder app(@Nullable AppResourceApp app) {
+
+            this.app = app;
+            return this;
+        }
         @CustomType.Setter
         public Builder database(@Nullable AppResourceDatabase database) {
 
@@ -237,6 +250,7 @@ public final class AppResource {
         }
         public AppResource build() {
             final var _resultValue = new AppResource();
+            _resultValue.app = app;
             _resultValue.database = database;
             _resultValue.description = description;
             _resultValue.experiment = experiment;

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PostgresEndpointSpecGroup;
 import com.pulumi.databricks.outputs.PostgresEndpointSpecSettings;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -38,6 +39,11 @@ public final class PostgresEndpointSpec {
      * 
      */
     private String endpointType;
+    /**
+     * @return (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    private @Nullable PostgresEndpointSpecGroup group;
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided
@@ -88,6 +94,13 @@ public final class PostgresEndpointSpec {
         return this.endpointType;
     }
     /**
+     * @return (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    public Optional<PostgresEndpointSpecGroup> group() {
+        return Optional.ofNullable(this.group);
+    }
+    /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided
      * 
@@ -123,6 +136,7 @@ public final class PostgresEndpointSpec {
         private @Nullable Double autoscalingLimitMinCu;
         private @Nullable Boolean disabled;
         private String endpointType;
+        private @Nullable PostgresEndpointSpecGroup group;
         private @Nullable Boolean noSuspension;
         private @Nullable PostgresEndpointSpecSettings settings;
         private @Nullable String suspendTimeoutDuration;
@@ -133,6 +147,7 @@ public final class PostgresEndpointSpec {
     	      this.autoscalingLimitMinCu = defaults.autoscalingLimitMinCu;
     	      this.disabled = defaults.disabled;
     	      this.endpointType = defaults.endpointType;
+    	      this.group = defaults.group;
     	      this.noSuspension = defaults.noSuspension;
     	      this.settings = defaults.settings;
     	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
@@ -165,6 +180,12 @@ public final class PostgresEndpointSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder group(@Nullable PostgresEndpointSpecGroup group) {
+
+            this.group = group;
+            return this;
+        }
+        @CustomType.Setter
         public Builder noSuspension(@Nullable Boolean noSuspension) {
 
             this.noSuspension = noSuspension;
@@ -188,6 +209,7 @@ public final class PostgresEndpointSpec {
             _resultValue.autoscalingLimitMinCu = autoscalingLimitMinCu;
             _resultValue.disabled = disabled;
             _resultValue.endpointType = endpointType;
+            _resultValue.group = group;
             _resultValue.noSuspension = noSuspension;
             _resultValue.settings = settings;
             _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;

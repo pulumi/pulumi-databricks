@@ -24,7 +24,8 @@ class VectorSearchEndpointArgs:
                  endpoint_type: pulumi.Input[_builtins.str],
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']] = None):
+                 provider_config: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']] = None,
+                 scaling_info: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']] = None):
         """
         The set of arguments for constructing a VectorSearchEndpoint resource.
         :param pulumi.Input[_builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
@@ -39,6 +40,8 @@ class VectorSearchEndpointArgs:
             pulumi.set(__self__, "name", name)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if scaling_info is not None:
+            pulumi.set(__self__, "scaling_info", scaling_info)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
@@ -88,6 +91,15 @@ class VectorSearchEndpointArgs:
     def provider_config(self, value: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="scalingInfo")
+    def scaling_info(self) -> Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']]:
+        return pulumi.get(self, "scaling_info")
+
+    @scaling_info.setter
+    def scaling_info(self, value: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']]):
+        pulumi.set(self, "scaling_info", value)
+
 
 @pulumi.input_type
 class _VectorSearchEndpointState:
@@ -103,7 +115,8 @@ class _VectorSearchEndpointState:
                  last_updated_user: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  num_indexes: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']] = None):
+                 provider_config: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']] = None,
+                 scaling_info: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']] = None):
         """
         Input properties used for looking up and filtering VectorSearchEndpoint resources.
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
@@ -143,6 +156,8 @@ class _VectorSearchEndpointState:
             pulumi.set(__self__, "num_indexes", num_indexes)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if scaling_info is not None:
+            pulumi.set(__self__, "scaling_info", scaling_info)
 
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
@@ -288,6 +303,15 @@ class _VectorSearchEndpointState:
     def provider_config(self, value: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="scalingInfo")
+    def scaling_info(self) -> Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']]:
+        return pulumi.get(self, "scaling_info")
+
+    @scaling_info.setter
+    def scaling_info(self, value: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']]):
+        pulumi.set(self, "scaling_info", value)
+
 
 @pulumi.type_token("databricks:index/vectorSearchEndpoint:VectorSearchEndpoint")
 class VectorSearchEndpoint(pulumi.CustomResource):
@@ -299,6 +323,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
+                 scaling_info: Optional[pulumi.Input[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
@@ -364,6 +389,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
+                 scaling_info: Optional[pulumi.Input[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -379,6 +405,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
             __props__.__dict__["endpoint_type"] = endpoint_type
             __props__.__dict__["name"] = name
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["scaling_info"] = scaling_info
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["creator"] = None
             __props__.__dict__["effective_budget_policy_id"] = None
@@ -408,7 +435,8 @@ class VectorSearchEndpoint(pulumi.CustomResource):
             last_updated_user: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             num_indexes: Optional[pulumi.Input[_builtins.int]] = None,
-            provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None) -> 'VectorSearchEndpoint':
+            provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
+            scaling_info: Optional[pulumi.Input[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None) -> 'VectorSearchEndpoint':
         """
         Get an existing VectorSearchEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -445,6 +473,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["num_indexes"] = num_indexes
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["scaling_info"] = scaling_info
         return VectorSearchEndpoint(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -542,4 +571,9 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="scalingInfo")
+    def scaling_info(self) -> pulumi.Output[Optional['outputs.VectorSearchEndpointScalingInfo']]:
+        return pulumi.get(self, "scaling_info")
 

@@ -19,6 +19,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+        /// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+        /// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+        /// </summary>
+        [Input("readOnlyHost")]
+        public Input<string>? ReadOnlyHost { get; set; }
+
         public PostgresEndpointStatusHostsArgs()
         {
         }

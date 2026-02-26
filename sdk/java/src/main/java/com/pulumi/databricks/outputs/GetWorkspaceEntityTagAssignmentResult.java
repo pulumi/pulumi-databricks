@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceEntityTagAssignmentResult {
     /**
-     * @return (string) - The identifier of the entity to which the tag is assigned
+     * @return (string) - The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      * 
      */
     private String entityId;
@@ -42,7 +42,7 @@ public final class GetWorkspaceEntityTagAssignmentResult {
 
     private GetWorkspaceEntityTagAssignmentResult() {}
     /**
-     * @return (string) - The identifier of the entity to which the tag is assigned
+     * @return (string) - The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      * 
      */
     public String entityId() {

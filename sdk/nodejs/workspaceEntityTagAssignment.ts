@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * const appTag = new databricks.WorkspaceEntityTagAssignment("app_tag", {
  *     entityType: "apps",
- *     entityId: "2807324866692453",
+ *     entityId: "myapp",
  *     tagKey: "sensitivity_level",
  *     tagValue: "high",
  * });
@@ -66,7 +66,7 @@ export class WorkspaceEntityTagAssignment extends pulumi.CustomResource {
     }
 
     /**
-     * The identifier of the entity to which the tag is assigned
+     * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      */
     declare public readonly entityId: pulumi.Output<string>;
     /**
@@ -131,7 +131,7 @@ export class WorkspaceEntityTagAssignment extends pulumi.CustomResource {
  */
 export interface WorkspaceEntityTagAssignmentState {
     /**
-     * The identifier of the entity to which the tag is assigned
+     * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      */
     entityId?: pulumi.Input<string>;
     /**
@@ -157,7 +157,7 @@ export interface WorkspaceEntityTagAssignmentState {
  */
 export interface WorkspaceEntityTagAssignmentArgs {
     /**
-     * The identifier of the entity to which the tag is assigned
+     * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      */
     entityId: pulumi.Input<string>;
     /**

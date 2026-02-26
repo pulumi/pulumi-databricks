@@ -701,6 +701,7 @@ export interface AppProviderConfig {
 }
 
 export interface AppResource {
+    app?: outputs.AppResourceApp;
     /**
      * attribute
      */
@@ -740,6 +741,9 @@ export interface AppResource {
      * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      */
     ucSecurable?: outputs.AppResourceUcSecurable;
+}
+
+export interface AppResourceApp {
 }
 
 export interface AppResourceDatabase {
@@ -831,6 +835,7 @@ export interface AppResourceUcSecurable {
      * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      */
     securableFullName: string;
+    securableKind: string;
     /**
      * the type of UC securable, i.e. `VOLUME`.
      */
@@ -915,6 +920,7 @@ export interface AppsSpaceProviderConfig {
 }
 
 export interface AppsSpaceResource {
+    app?: outputs.AppsSpaceResourceApp;
     database?: outputs.AppsSpaceResourceDatabase;
     /**
      * The description of the app space
@@ -932,6 +938,9 @@ export interface AppsSpaceResource {
     servingEndpoint?: outputs.AppsSpaceResourceServingEndpoint;
     sqlWarehouse?: outputs.AppsSpaceResourceSqlWarehouse;
     ucSecurable?: outputs.AppsSpaceResourceUcSecurable;
+}
+
+export interface AppsSpaceResourceApp {
 }
 
 export interface AppsSpaceResourceDatabase {
@@ -995,6 +1004,11 @@ export interface AppsSpaceResourceSqlWarehouse {
 export interface AppsSpaceResourceUcSecurable {
     permission: string;
     securableFullName: string;
+    /**
+     * (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     */
+    securableKind: string;
     /**
      * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
@@ -4002,6 +4016,10 @@ export interface GetAppAppResource {
     /**
      * attribute
      */
+    app?: outputs.GetAppAppResourceApp;
+    /**
+     * attribute
+     */
     database?: outputs.GetAppAppResourceDatabase;
     /**
      * The description of the resource.
@@ -4036,6 +4054,9 @@ export interface GetAppAppResource {
      * attribute
      */
     ucSecurable?: outputs.GetAppAppResourceUcSecurable;
+}
+
+export interface GetAppAppResourceApp {
 }
 
 export interface GetAppAppResourceDatabase {
@@ -4133,6 +4154,7 @@ export interface GetAppAppResourceUcSecurable {
      * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      */
     securableFullName: string;
+    securableKind: string;
     /**
      * the type of UC securable, i.e. `VOLUME`.
      */
@@ -4391,6 +4413,7 @@ export interface GetAppsAppPendingDeploymentStatus {
 }
 
 export interface GetAppsAppResource {
+    app?: outputs.GetAppsAppResourceApp;
     /**
      * attribute
      */
@@ -4428,6 +4451,9 @@ export interface GetAppsAppResource {
      * attribute
      */
     ucSecurable?: outputs.GetAppsAppResourceUcSecurable;
+}
+
+export interface GetAppsAppResourceApp {
 }
 
 export interface GetAppsAppResourceDatabase {
@@ -4525,6 +4551,7 @@ export interface GetAppsAppResourceUcSecurable {
      * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      */
     securableFullName: string;
+    securableKind: string;
     /**
      * the type of UC securable, i.e. `VOLUME`.
      */
@@ -4802,6 +4829,10 @@ export interface GetAppsSpaceProviderConfig {
 
 export interface GetAppsSpaceResource {
     /**
+     * (AppResourceApp)
+     */
+    app?: outputs.GetAppsSpaceResourceApp;
+    /**
      * (AppResourceDatabase)
      */
     database?: outputs.GetAppsSpaceResourceDatabase;
@@ -4844,6 +4875,9 @@ export interface GetAppsSpaceResource {
     ucSecurable?: outputs.GetAppsSpaceResourceUcSecurable;
 }
 
+export interface GetAppsSpaceResourceApp {
+}
+
 export interface GetAppsSpaceResourceDatabase {
     /**
      * (string)
@@ -4854,7 +4888,7 @@ export interface GetAppsSpaceResourceDatabase {
      */
     instanceName: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -4865,7 +4899,7 @@ export interface GetAppsSpaceResourceExperiment {
      */
     experimentId: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -4877,7 +4911,7 @@ export interface GetAppsSpaceResourceGenieSpace {
      */
     name: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
@@ -4892,7 +4926,7 @@ export interface GetAppsSpaceResourceJob {
      */
     id: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -4903,7 +4937,7 @@ export interface GetAppsSpaceResourceSecret {
      */
     key: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
@@ -4919,7 +4953,7 @@ export interface GetAppsSpaceResourceServingEndpoint {
      */
     name: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -4930,20 +4964,25 @@ export interface GetAppsSpaceResourceSqlWarehouse {
      */
     id: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSpaceResourceUcSecurable {
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
      * (string)
      */
     securableFullName: string;
+    /**
+     * (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     */
+    securableKind: string;
     /**
      * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
@@ -5056,6 +5095,10 @@ export interface GetAppsSpacesSpaceProviderConfig {
 
 export interface GetAppsSpacesSpaceResource {
     /**
+     * (AppResourceApp)
+     */
+    app?: outputs.GetAppsSpacesSpaceResourceApp;
+    /**
      * (AppResourceDatabase)
      */
     database?: outputs.GetAppsSpacesSpaceResourceDatabase;
@@ -5097,6 +5140,9 @@ export interface GetAppsSpacesSpaceResource {
     ucSecurable?: outputs.GetAppsSpacesSpaceResourceUcSecurable;
 }
 
+export interface GetAppsSpacesSpaceResourceApp {
+}
+
 export interface GetAppsSpacesSpaceResourceDatabase {
     /**
      * (string)
@@ -5107,7 +5153,7 @@ export interface GetAppsSpacesSpaceResourceDatabase {
      */
     instanceName: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -5118,7 +5164,7 @@ export interface GetAppsSpacesSpaceResourceExperiment {
      */
     experimentId: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -5129,7 +5175,7 @@ export interface GetAppsSpacesSpaceResourceGenieSpace {
      */
     name: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
@@ -5144,7 +5190,7 @@ export interface GetAppsSpacesSpaceResourceJob {
      */
     id: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -5155,7 +5201,7 @@ export interface GetAppsSpacesSpaceResourceSecret {
      */
     key: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
@@ -5170,7 +5216,7 @@ export interface GetAppsSpacesSpaceResourceServingEndpoint {
      */
     name: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -5181,20 +5227,25 @@ export interface GetAppsSpacesSpaceResourceSqlWarehouse {
      */
     id: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSpacesSpaceResourceUcSecurable {
     /**
-     * (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
      * (string)
      */
     securableFullName: string;
+    /**
+     * (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     */
+    securableKind: string;
     /**
      * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
@@ -8536,11 +8587,13 @@ export interface GetFeatureEngineeringKafkaConfigsProviderConfig {
 
 export interface GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
     /**
-     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
+     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      */
     catalogName: string;
     /**
-     * (string) - The Unity Catalog schema name
+     * (string) - The Unity Catalog schema name. This name is also used as the Lakebase schema name under the database.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      */
     schemaName: string;
     /**
@@ -8552,7 +8605,8 @@ export interface GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
 
 export interface GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig {
     /**
-     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
+     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      */
     catalogName: string;
     /**
@@ -8560,7 +8614,8 @@ export interface GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig {
      */
     onlineStoreName: string;
     /**
-     * (string) - The Unity Catalog schema name
+     * (string) - The Unity Catalog schema name. This name is also used as the Lakebase schema name under the database.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      */
     schemaName: string;
     /**
@@ -8619,11 +8674,13 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig {
     /**
-     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
+     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      */
     catalogName: string;
     /**
-     * (string) - The Unity Catalog schema name
+     * (string) - The Unity Catalog schema name. This name is also used as the Lakebase schema name under the database.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      */
     schemaName: string;
     /**
@@ -8635,7 +8692,8 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOff
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig {
     /**
-     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
+     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      */
     catalogName: string;
     /**
@@ -8643,7 +8701,8 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnl
      */
     onlineStoreName: string;
     /**
-     * (string) - The Unity Catalog schema name
+     * (string) - The Unity Catalog schema name. This name is also used as the Lakebase schema name under the database.
+     * Quoting is handled by the backend where needed, do not pre-quote it
      */
     schemaName: string;
     /**
@@ -11514,6 +11573,10 @@ export interface GetPostgresEndpointSpec {
      */
     endpointType: string;
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     */
+    group?: outputs.GetPostgresEndpointSpecGroup;
+    /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided
      */
@@ -11526,6 +11589,25 @@ export interface GetPostgresEndpointSpec {
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration?: string;
+}
+
+export interface GetPostgresEndpointSpecGroup {
+    /**
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+     * by specifying size.max > 1
+     */
+    enableReadableSecondaries?: boolean;
+    /**
+     * (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+     * compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+     * true on the EndpointSpec
+     */
+    max: number;
+    /**
+     * (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+     * than or equal to 1
+     */
+    min: number;
 }
 
 export interface GetPostgresEndpointSpecSettings {
@@ -11545,7 +11627,7 @@ export interface GetPostgresEndpointStatus {
      */
     autoscalingLimitMinCu: number;
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     currentState: string;
     /**
@@ -11560,11 +11642,15 @@ export interface GetPostgresEndpointStatus {
      */
     endpointType: string;
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     */
+    group: outputs.GetPostgresEndpointStatusGroup;
+    /**
      * (EndpointHosts) - Contains host information for connecting to the endpoint
      */
     hosts: outputs.GetPostgresEndpointStatusHosts;
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState: string;
     /**
@@ -11577,12 +11663,37 @@ export interface GetPostgresEndpointStatus {
     suspendTimeoutDuration: string;
 }
 
+export interface GetPostgresEndpointStatusGroup {
+    /**
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+     * by specifying size.max > 1
+     */
+    enableReadableSecondaries: boolean;
+    /**
+     * (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+     * compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+     * true on the EndpointSpec
+     */
+    max: number;
+    /**
+     * (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+     * than or equal to 1
+     */
+    min: number;
+}
+
 export interface GetPostgresEndpointStatusHosts {
     /**
      * (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
      * to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
      */
     host: string;
+    /**
+     * (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     */
+    readOnlyHost: string;
 }
 
 export interface GetPostgresEndpointStatusSettings {
@@ -11657,6 +11768,10 @@ export interface GetPostgresEndpointsEndpointSpec {
      */
     endpointType: string;
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     */
+    group?: outputs.GetPostgresEndpointsEndpointSpecGroup;
+    /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided
      */
@@ -11669,6 +11784,25 @@ export interface GetPostgresEndpointsEndpointSpec {
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration?: string;
+}
+
+export interface GetPostgresEndpointsEndpointSpecGroup {
+    /**
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+     * by specifying size.max > 1
+     */
+    enableReadableSecondaries?: boolean;
+    /**
+     * (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+     * compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+     * true on the EndpointSpec
+     */
+    max: number;
+    /**
+     * (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+     * than or equal to 1
+     */
+    min: number;
 }
 
 export interface GetPostgresEndpointsEndpointSpecSettings {
@@ -11688,7 +11822,7 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     autoscalingLimitMinCu: number;
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     currentState: string;
     /**
@@ -11703,11 +11837,15 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     endpointType: string;
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     */
+    group: outputs.GetPostgresEndpointsEndpointStatusGroup;
+    /**
      * (EndpointHosts) - Contains host information for connecting to the endpoint
      */
     hosts: outputs.GetPostgresEndpointsEndpointStatusHosts;
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState: string;
     /**
@@ -11720,12 +11858,37 @@ export interface GetPostgresEndpointsEndpointStatus {
     suspendTimeoutDuration: string;
 }
 
+export interface GetPostgresEndpointsEndpointStatusGroup {
+    /**
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+     * by specifying size.max > 1
+     */
+    enableReadableSecondaries: boolean;
+    /**
+     * (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+     * compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+     * true on the EndpointSpec
+     */
+    max: number;
+    /**
+     * (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+     * than or equal to 1
+     */
+    min: number;
+}
+
 export interface GetPostgresEndpointsEndpointStatusHosts {
     /**
      * (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
      * to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
      */
     host: string;
+    /**
+     * (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     */
+    readOnlyHost: string;
 }
 
 export interface GetPostgresEndpointsEndpointStatusSettings {
@@ -11740,6 +11903,32 @@ export interface GetPostgresEndpointsProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface GetPostgresProjectInitialEndpointSpec {
+    /**
+     * (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+     */
+    group?: outputs.GetPostgresProjectInitialEndpointSpecGroup;
+}
+
+export interface GetPostgresProjectInitialEndpointSpecGroup {
+    /**
+     * (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+     * size.max > 1
+     */
+    enableReadableSecondaries?: boolean;
+    /**
+     * (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+     * compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+     * true on the EndpointSpec
+     */
+    max: number;
+    /**
+     * (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+     * than or equal to 1
+     */
+    min: number;
 }
 
 export interface GetPostgresProjectProviderConfig {
@@ -11893,6 +12082,13 @@ export interface GetPostgresProjectsProject {
      */
     createTime: string;
     /**
+     * (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * created project. If omitted, the initial endpoint created will have default settings, without high availability
+     * configured. This field does not apply to any endpoints created after project creation. Use
+     * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+     */
+    initialEndpointSpec: outputs.GetPostgresProjectsProjectInitialEndpointSpec;
+    /**
      * (string) - Output only. The full resource path of the project.
      * Format: projects/{project_id}
      */
@@ -11917,6 +12113,32 @@ export interface GetPostgresProjectsProject {
      * (string) - A timestamp indicating when the project was last updated
      */
     updateTime: string;
+}
+
+export interface GetPostgresProjectsProjectInitialEndpointSpec {
+    /**
+     * (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+     */
+    group?: outputs.GetPostgresProjectsProjectInitialEndpointSpecGroup;
+}
+
+export interface GetPostgresProjectsProjectInitialEndpointSpecGroup {
+    /**
+     * (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+     * size.max > 1
+     */
+    enableReadableSecondaries?: boolean;
+    /**
+     * (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+     * compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+     * true on the EndpointSpec
+     */
+    max: number;
+    /**
+     * (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+     * than or equal to 1
+     */
+    min: number;
 }
 
 export interface GetPostgresProjectsProjectProviderConfig {
@@ -13828,7 +14050,7 @@ export interface GetWorkspaceEntityTagAssignmentsProviderConfig {
 
 export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
     /**
-     * The identifier of the entity to which the tag is assigned
+     * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      */
     entityId: string;
     /**
@@ -18613,11 +18835,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -18684,11 +18906,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -19692,6 +19914,10 @@ export interface PostgresEndpointSpec {
      */
     endpointType: string;
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     */
+    group?: outputs.PostgresEndpointSpecGroup;
+    /**
      * When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided
      */
@@ -19704,6 +19930,16 @@ export interface PostgresEndpointSpec {
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
     suspendTimeoutDuration?: string;
+}
+
+export interface PostgresEndpointSpecGroup {
+    /**
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+     * by specifying size.max > 1
+     */
+    enableReadableSecondaries?: boolean;
+    max: number;
+    min: number;
 }
 
 export interface PostgresEndpointSpecSettings {
@@ -19723,7 +19959,7 @@ export interface PostgresEndpointStatus {
      */
     autoscalingLimitMinCu: number;
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     currentState: string;
     /**
@@ -19738,11 +19974,15 @@ export interface PostgresEndpointStatus {
      */
     endpointType: string;
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     */
+    group: outputs.PostgresEndpointStatusGroup;
+    /**
      * (EndpointHosts) - Contains host information for connecting to the endpoint
      */
     hosts: outputs.PostgresEndpointStatusHosts;
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState: string;
     /**
@@ -19755,12 +19995,28 @@ export interface PostgresEndpointStatus {
     suspendTimeoutDuration: string;
 }
 
+export interface PostgresEndpointStatusGroup {
+    /**
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+     * by specifying size.max > 1
+     */
+    enableReadableSecondaries: boolean;
+    max: number;
+    min: number;
+}
+
 export interface PostgresEndpointStatusHosts {
     /**
      * (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
      * to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
      */
     host: string;
+    /**
+     * (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     */
+    readOnlyHost: string;
 }
 
 export interface PostgresEndpointStatusSettings {
@@ -19768,6 +20024,32 @@ export interface PostgresEndpointStatusSettings {
      * A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
+}
+
+export interface PostgresProjectInitialEndpointSpec {
+    /**
+     * Settings for HA configuration of the endpoint
+     */
+    group?: outputs.PostgresProjectInitialEndpointSpecGroup;
+}
+
+export interface PostgresProjectInitialEndpointSpecGroup {
+    /**
+     * Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+     * size.max > 1
+     */
+    enableReadableSecondaries?: boolean;
+    /**
+     * The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+     * compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+     * true on the EndpointSpec
+     */
+    max: number;
+    /**
+     * The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+     * than or equal to 1
+     */
+    min: number;
 }
 
 export interface PostgresProjectProviderConfig {
@@ -21077,6 +21359,14 @@ export interface VectorSearchEndpointProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface VectorSearchEndpointScalingInfo {
+    requestedMinQps?: number;
+    /**
+     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+     */
+    state?: string;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpec {

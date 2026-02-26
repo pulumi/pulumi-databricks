@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresProjectsProjectInitialEndpointSpec;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectProviderConfig;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectSpec;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectStatus;
@@ -20,6 +21,14 @@ public final class GetPostgresProjectsProject {
      * 
      */
     private String createTime;
+    /**
+     * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * created project. If omitted, the initial endpoint created will have default settings, without high availability
+     * configured. This field does not apply to any endpoints created after project creation. Use
+     * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+     * 
+     */
+    private GetPostgresProjectsProjectInitialEndpointSpec initialEndpointSpec;
     /**
      * @return (string) - Output only. The full resource path of the project.
      * Format: projects/{project_id}
@@ -59,6 +68,16 @@ public final class GetPostgresProjectsProject {
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * created project. If omitted, the initial endpoint created will have default settings, without high availability
+     * configured. This field does not apply to any endpoints created after project creation. Use
+     * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+     * 
+     */
+    public GetPostgresProjectsProjectInitialEndpointSpec initialEndpointSpec() {
+        return this.initialEndpointSpec;
     }
     /**
      * @return (string) - Output only. The full resource path of the project.
@@ -114,6 +133,7 @@ public final class GetPostgresProjectsProject {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private GetPostgresProjectsProjectInitialEndpointSpec initialEndpointSpec;
         private String name;
         private @Nullable GetPostgresProjectsProjectProviderConfig providerConfig;
         private GetPostgresProjectsProjectSpec spec;
@@ -124,6 +144,7 @@ public final class GetPostgresProjectsProject {
         public Builder(GetPostgresProjectsProject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.initialEndpointSpec = defaults.initialEndpointSpec;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
@@ -138,6 +159,14 @@ public final class GetPostgresProjectsProject {
               throw new MissingRequiredPropertyException("GetPostgresProjectsProject", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder initialEndpointSpec(GetPostgresProjectsProjectInitialEndpointSpec initialEndpointSpec) {
+            if (initialEndpointSpec == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectsProject", "initialEndpointSpec");
+            }
+            this.initialEndpointSpec = initialEndpointSpec;
             return this;
         }
         @CustomType.Setter
@@ -189,6 +218,7 @@ public final class GetPostgresProjectsProject {
         public GetPostgresProjectsProject build() {
             final var _resultValue = new GetPostgresProjectsProject();
             _resultValue.createTime = createTime;
+            _resultValue.initialEndpointSpec = initialEndpointSpec;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;

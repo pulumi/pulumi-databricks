@@ -12119,7 +12119,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12135,7 +12135,7 @@ public final class DatabricksFunctions {
         return getEndpoint(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12151,7 +12151,7 @@ public final class DatabricksFunctions {
         return getEndpointPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12167,7 +12167,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12183,7 +12183,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12199,7 +12199,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12215,7 +12215,7 @@ public final class DatabricksFunctions {
         return getEndpoints(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12231,7 +12231,7 @@ public final class DatabricksFunctions {
         return getEndpointsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12247,7 +12247,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12263,7 +12263,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -33583,7 +33583,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .tagKey("sensitivity_level")
      *             .build());
      * 
@@ -33639,7 +33639,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .tagKey("sensitivity_level")
      *             .build());
      * 
@@ -33695,7 +33695,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .tagKey("sensitivity_level")
      *             .build());
      * 
@@ -33751,7 +33751,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .tagKey("sensitivity_level")
      *             .build());
      * 
@@ -33807,7 +33807,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .tagKey("sensitivity_level")
      *             .build());
      * 
@@ -33863,7 +33863,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .build());
      * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
@@ -33916,7 +33916,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .build());
      * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
@@ -33969,7 +33969,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .build());
      * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
@@ -34022,7 +34022,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .build());
      * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
@@ -34075,7 +34075,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
-     *             .entityId("2807324866692453")
+     *             .entityId("myapp")
      *             .build());
      * 
      *         final var dashboardTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()

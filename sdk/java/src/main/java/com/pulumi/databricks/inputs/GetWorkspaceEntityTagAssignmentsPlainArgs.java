@@ -18,14 +18,14 @@ public final class GetWorkspaceEntityTagAssignmentsPlainArgs extends com.pulumi.
     public static final GetWorkspaceEntityTagAssignmentsPlainArgs Empty = new GetWorkspaceEntityTagAssignmentsPlainArgs();
 
     /**
-     * The identifier of the entity to which the tag is assigned
+     * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      * 
      */
     @Import(name="entityId", required=true)
     private String entityId;
 
     /**
-     * @return The identifier of the entity to which the tag is assigned
+     * @return The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      * 
      */
     public String entityId() {
@@ -105,7 +105,7 @@ public final class GetWorkspaceEntityTagAssignmentsPlainArgs extends com.pulumi.
         }
 
         /**
-         * @param entityId The identifier of the entity to which the tag is assigned
+         * @param entityId The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
          * 
          * @return builder
          * 

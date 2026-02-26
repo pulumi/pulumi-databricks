@@ -13,6 +13,343 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type JobTaskPowerBiTaskPowerBiModel struct {
+	// How the published Power BI model authenticates to Databricks
+	AuthenticationMethod *string `pulumi:"authenticationMethod"`
+	// The name of the Power BI model
+	ModelName *string `pulumi:"modelName"`
+	// Whether to overwrite existing Power BI models. Default is false
+	OverwriteExisting *bool `pulumi:"overwriteExisting"`
+	// The default storage mode of the Power BI model
+	StorageMode *string `pulumi:"storageMode"`
+	// The name of the Power BI workspace of the model
+	WorkspaceName *string `pulumi:"workspaceName"`
+}
+
+// JobTaskPowerBiTaskPowerBiModelInput is an input type that accepts JobTaskPowerBiTaskPowerBiModelArgs and JobTaskPowerBiTaskPowerBiModelOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskPowerBiModelInput` via:
+//
+//	JobTaskPowerBiTaskPowerBiModelArgs{...}
+type JobTaskPowerBiTaskPowerBiModelInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskPowerBiModelOutput() JobTaskPowerBiTaskPowerBiModelOutput
+	ToJobTaskPowerBiTaskPowerBiModelOutputWithContext(context.Context) JobTaskPowerBiTaskPowerBiModelOutput
+}
+
+type JobTaskPowerBiTaskPowerBiModelArgs struct {
+	// How the published Power BI model authenticates to Databricks
+	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
+	// The name of the Power BI model
+	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
+	// Whether to overwrite existing Power BI models. Default is false
+	OverwriteExisting pulumi.BoolPtrInput `pulumi:"overwriteExisting"`
+	// The default storage mode of the Power BI model
+	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
+	// The name of the Power BI workspace of the model
+	WorkspaceName pulumi.StringPtrInput `pulumi:"workspaceName"`
+}
+
+func (JobTaskPowerBiTaskPowerBiModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (i JobTaskPowerBiTaskPowerBiModelArgs) ToJobTaskPowerBiTaskPowerBiModelOutput() JobTaskPowerBiTaskPowerBiModelOutput {
+	return i.ToJobTaskPowerBiTaskPowerBiModelOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskPowerBiModelArgs) ToJobTaskPowerBiTaskPowerBiModelOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskPowerBiModelOutput)
+}
+
+func (i JobTaskPowerBiTaskPowerBiModelArgs) ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return i.ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskPowerBiModelArgs) ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskPowerBiModelOutput).ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx)
+}
+
+// JobTaskPowerBiTaskPowerBiModelPtrInput is an input type that accepts JobTaskPowerBiTaskPowerBiModelArgs, JobTaskPowerBiTaskPowerBiModelPtr and JobTaskPowerBiTaskPowerBiModelPtrOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskPowerBiModelPtrInput` via:
+//
+//	        JobTaskPowerBiTaskPowerBiModelArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskPowerBiTaskPowerBiModelPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput
+	ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput
+}
+
+type jobTaskPowerBiTaskPowerBiModelPtrType JobTaskPowerBiTaskPowerBiModelArgs
+
+func JobTaskPowerBiTaskPowerBiModelPtr(v *JobTaskPowerBiTaskPowerBiModelArgs) JobTaskPowerBiTaskPowerBiModelPtrInput {
+	return (*jobTaskPowerBiTaskPowerBiModelPtrType)(v)
+}
+
+func (*jobTaskPowerBiTaskPowerBiModelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (i *jobTaskPowerBiTaskPowerBiModelPtrType) ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return i.ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskPowerBiTaskPowerBiModelPtrType) ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+type JobTaskPowerBiTaskPowerBiModelOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskPowerBiModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ToJobTaskPowerBiTaskPowerBiModelOutput() JobTaskPowerBiTaskPowerBiModelOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ToJobTaskPowerBiTaskPowerBiModelOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskPowerBiTaskPowerBiModel) *JobTaskPowerBiTaskPowerBiModel {
+		return &v
+	}).(JobTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+// How the published Power BI model authenticates to Databricks
+func (o JobTaskPowerBiTaskPowerBiModelOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Power BI model
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+// Whether to overwrite existing Power BI models. Default is false
+func (o JobTaskPowerBiTaskPowerBiModelOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
+}
+
+// The default storage mode of the Power BI model
+func (o JobTaskPowerBiTaskPowerBiModelOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Power BI workspace of the model
+func (o JobTaskPowerBiTaskPowerBiModelOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskPowerBiTaskPowerBiModelPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskPowerBiModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) Elem() JobTaskPowerBiTaskPowerBiModelOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) JobTaskPowerBiTaskPowerBiModel {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskPowerBiTaskPowerBiModel
+		return ret
+	}).(JobTaskPowerBiTaskPowerBiModelOutput)
+}
+
+// How the published Power BI model authenticates to Databricks
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Power BI model
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to overwrite existing Power BI models. Default is false
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteExisting
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The default storage mode of the Power BI model
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Power BI workspace of the model
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskPowerBiTaskTable struct {
+	// The catalog name in Databricks
+	Catalog *string `pulumi:"catalog"`
+	// The table name in Databricks. If empty, all tables under the schema are selected.
+	Name *string `pulumi:"name"`
+	// The schema name in Databricks
+	Schema *string `pulumi:"schema"`
+	// The Power BI storage mode of the table
+	StorageMode *string `pulumi:"storageMode"`
+}
+
+// JobTaskPowerBiTaskTableInput is an input type that accepts JobTaskPowerBiTaskTableArgs and JobTaskPowerBiTaskTableOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskTableInput` via:
+//
+//	JobTaskPowerBiTaskTableArgs{...}
+type JobTaskPowerBiTaskTableInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskTableOutput() JobTaskPowerBiTaskTableOutput
+	ToJobTaskPowerBiTaskTableOutputWithContext(context.Context) JobTaskPowerBiTaskTableOutput
+}
+
+type JobTaskPowerBiTaskTableArgs struct {
+	// The catalog name in Databricks
+	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	// The table name in Databricks. If empty, all tables under the schema are selected.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The schema name in Databricks
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+	// The Power BI storage mode of the table
+	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
+}
+
+func (JobTaskPowerBiTaskTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (i JobTaskPowerBiTaskTableArgs) ToJobTaskPowerBiTaskTableOutput() JobTaskPowerBiTaskTableOutput {
+	return i.ToJobTaskPowerBiTaskTableOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskTableArgs) ToJobTaskPowerBiTaskTableOutputWithContext(ctx context.Context) JobTaskPowerBiTaskTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskTableOutput)
+}
+
+// JobTaskPowerBiTaskTableArrayInput is an input type that accepts JobTaskPowerBiTaskTableArray and JobTaskPowerBiTaskTableArrayOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskTableArrayInput` via:
+//
+//	JobTaskPowerBiTaskTableArray{ JobTaskPowerBiTaskTableArgs{...} }
+type JobTaskPowerBiTaskTableArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskTableArrayOutput() JobTaskPowerBiTaskTableArrayOutput
+	ToJobTaskPowerBiTaskTableArrayOutputWithContext(context.Context) JobTaskPowerBiTaskTableArrayOutput
+}
+
+type JobTaskPowerBiTaskTableArray []JobTaskPowerBiTaskTableInput
+
+func (JobTaskPowerBiTaskTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (i JobTaskPowerBiTaskTableArray) ToJobTaskPowerBiTaskTableArrayOutput() JobTaskPowerBiTaskTableArrayOutput {
+	return i.ToJobTaskPowerBiTaskTableArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskTableArray) ToJobTaskPowerBiTaskTableArrayOutputWithContext(ctx context.Context) JobTaskPowerBiTaskTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskTableArrayOutput)
+}
+
+type JobTaskPowerBiTaskTableOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskTableOutput) ToJobTaskPowerBiTaskTableOutput() JobTaskPowerBiTaskTableOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskTableOutput) ToJobTaskPowerBiTaskTableOutputWithContext(ctx context.Context) JobTaskPowerBiTaskTableOutput {
+	return o
+}
+
+// The catalog name in Databricks
+func (o JobTaskPowerBiTaskTableOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+// The table name in Databricks. If empty, all tables under the schema are selected.
+func (o JobTaskPowerBiTaskTableOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The schema name in Databricks
+func (o JobTaskPowerBiTaskTableOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+// The Power BI storage mode of the table
+func (o JobTaskPowerBiTaskTableOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskPowerBiTaskTableArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskTableArrayOutput) ToJobTaskPowerBiTaskTableArrayOutput() JobTaskPowerBiTaskTableArrayOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskTableArrayOutput) ToJobTaskPowerBiTaskTableArrayOutputWithContext(ctx context.Context) JobTaskPowerBiTaskTableArrayOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskTableArrayOutput) Index(i pulumi.IntInput) JobTaskPowerBiTaskTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskPowerBiTaskTable {
+		return vs[0].([]JobTaskPowerBiTaskTable)[vs[1].(int)]
+	}).(JobTaskPowerBiTaskTableOutput)
+}
+
 type JobTaskPythonWheelTask struct {
 	// Python function as entry point for the task
 	EntryPoint *string `pulumi:"entryPoint"`
@@ -20248,9 +20585,9 @@ func (o MwsNetworksErrorMessageArrayOutput) Index(i pulumi.IntInput) MwsNetworks
 type MwsNetworksGcpNetworkInfo struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId string `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -20274,9 +20611,9 @@ type MwsNetworksGcpNetworkInfoInput interface {
 type MwsNetworksGcpNetworkInfoArgs struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -20368,12 +20705,12 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.NetworkProjectId }).(pulumi.StringOutput)
 }
 
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -20427,7 +20764,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -20437,7 +20774,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -21276,9 +21613,9 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
@@ -21295,9 +21632,9 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
@@ -21379,12 +21716,12 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
@@ -21417,7 +21754,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -21427,7 +21764,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -38712,6 +39049,8 @@ type PostgresEndpointSpec struct {
 	Disabled *bool `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group *PostgresEndpointSpecGroup `pulumi:"group"`
 	// When set to true, explicitly disables automatic suspension (never suspend).
 	// Should be set to true when provided
 	NoSuspension *bool `pulumi:"noSuspension"`
@@ -38744,6 +39083,8 @@ type PostgresEndpointSpecArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group PostgresEndpointSpecGroupPtrInput `pulumi:"group"`
 	// When set to true, explicitly disables automatic suspension (never suspend).
 	// Should be set to true when provided
 	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
@@ -38853,6 +39194,11 @@ func (o PostgresEndpointSpecOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgresEndpointSpec) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o PostgresEndpointSpecOutput) Group() PostgresEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v PostgresEndpointSpec) *PostgresEndpointSpecGroup { return v.Group }).(PostgresEndpointSpecGroupPtrOutput)
+}
+
 // When set to true, explicitly disables automatic suspension (never suspend).
 // Should be set to true when provided
 func (o PostgresEndpointSpecOutput) NoSuspension() pulumi.BoolPtrOutput {
@@ -38936,6 +39282,16 @@ func (o PostgresEndpointSpecPtrOutput) EndpointType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o PostgresEndpointSpecPtrOutput) Group() PostgresEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpointSpec) *PostgresEndpointSpecGroup {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(PostgresEndpointSpecGroupPtrOutput)
+}
+
 // When set to true, explicitly disables automatic suspension (never suspend).
 // Should be set to true when provided
 func (o PostgresEndpointSpecPtrOutput) NoSuspension() pulumi.BoolPtrOutput {
@@ -38965,6 +39321,177 @@ func (o PostgresEndpointSpecPtrOutput) SuspendTimeoutDuration() pulumi.StringPtr
 		}
 		return v.SuspendTimeoutDuration
 	}).(pulumi.StringPtrOutput)
+}
+
+type PostgresEndpointSpecGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	Max                       int   `pulumi:"max"`
+	Min                       int   `pulumi:"min"`
+}
+
+// PostgresEndpointSpecGroupInput is an input type that accepts PostgresEndpointSpecGroupArgs and PostgresEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `PostgresEndpointSpecGroupInput` via:
+//
+//	PostgresEndpointSpecGroupArgs{...}
+type PostgresEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToPostgresEndpointSpecGroupOutput() PostgresEndpointSpecGroupOutput
+	ToPostgresEndpointSpecGroupOutputWithContext(context.Context) PostgresEndpointSpecGroupOutput
+}
+
+type PostgresEndpointSpecGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	Max                       pulumi.IntInput     `pulumi:"max"`
+	Min                       pulumi.IntInput     `pulumi:"min"`
+}
+
+func (PostgresEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i PostgresEndpointSpecGroupArgs) ToPostgresEndpointSpecGroupOutput() PostgresEndpointSpecGroupOutput {
+	return i.ToPostgresEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i PostgresEndpointSpecGroupArgs) ToPostgresEndpointSpecGroupOutputWithContext(ctx context.Context) PostgresEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresEndpointSpecGroupOutput)
+}
+
+func (i PostgresEndpointSpecGroupArgs) ToPostgresEndpointSpecGroupPtrOutput() PostgresEndpointSpecGroupPtrOutput {
+	return i.ToPostgresEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i PostgresEndpointSpecGroupArgs) ToPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) PostgresEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresEndpointSpecGroupOutput).ToPostgresEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// PostgresEndpointSpecGroupPtrInput is an input type that accepts PostgresEndpointSpecGroupArgs, PostgresEndpointSpecGroupPtr and PostgresEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `PostgresEndpointSpecGroupPtrInput` via:
+//
+//	        PostgresEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToPostgresEndpointSpecGroupPtrOutput() PostgresEndpointSpecGroupPtrOutput
+	ToPostgresEndpointSpecGroupPtrOutputWithContext(context.Context) PostgresEndpointSpecGroupPtrOutput
+}
+
+type postgresEndpointSpecGroupPtrType PostgresEndpointSpecGroupArgs
+
+func PostgresEndpointSpecGroupPtr(v *PostgresEndpointSpecGroupArgs) PostgresEndpointSpecGroupPtrInput {
+	return (*postgresEndpointSpecGroupPtrType)(v)
+}
+
+func (*postgresEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *postgresEndpointSpecGroupPtrType) ToPostgresEndpointSpecGroupPtrOutput() PostgresEndpointSpecGroupPtrOutput {
+	return i.ToPostgresEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *postgresEndpointSpecGroupPtrType) ToPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) PostgresEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresEndpointSpecGroupPtrOutput)
+}
+
+type PostgresEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (PostgresEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o PostgresEndpointSpecGroupOutput) ToPostgresEndpointSpecGroupOutput() PostgresEndpointSpecGroupOutput {
+	return o
+}
+
+func (o PostgresEndpointSpecGroupOutput) ToPostgresEndpointSpecGroupOutputWithContext(ctx context.Context) PostgresEndpointSpecGroupOutput {
+	return o
+}
+
+func (o PostgresEndpointSpecGroupOutput) ToPostgresEndpointSpecGroupPtrOutput() PostgresEndpointSpecGroupPtrOutput {
+	return o.ToPostgresEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o PostgresEndpointSpecGroupOutput) ToPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) PostgresEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresEndpointSpecGroup) *PostgresEndpointSpecGroup {
+		return &v
+	}).(PostgresEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o PostgresEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PostgresEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+func (o PostgresEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o PostgresEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type PostgresEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o PostgresEndpointSpecGroupPtrOutput) ToPostgresEndpointSpecGroupPtrOutput() PostgresEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o PostgresEndpointSpecGroupPtrOutput) ToPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) PostgresEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o PostgresEndpointSpecGroupPtrOutput) Elem() PostgresEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *PostgresEndpointSpecGroup) PostgresEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresEndpointSpecGroup
+		return ret
+	}).(PostgresEndpointSpecGroupOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o PostgresEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o PostgresEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o PostgresEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
 }
 
 type PostgresEndpointSpecSettings struct {
@@ -39109,7 +39636,7 @@ type PostgresEndpointStatus struct {
 	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
 	// (number) - The minimum number of Compute Units
 	AutoscalingLimitMinCu *float64 `pulumi:"autoscalingLimitMinCu"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	CurrentState *string `pulumi:"currentState"`
 	// (boolean) - Whether to restrict connections to the compute endpoint.
 	// Enabling this option schedules a suspend compute operation.
@@ -39118,9 +39645,11 @@ type PostgresEndpointStatus struct {
 	Disabled *bool `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType *string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group *PostgresEndpointStatusGroup `pulumi:"group"`
 	// (EndpointHosts) - Contains host information for connecting to the endpoint
 	Hosts *PostgresEndpointStatusHosts `pulumi:"hosts"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	PendingState *string `pulumi:"pendingState"`
 	// (EndpointSettings)
 	Settings *PostgresEndpointStatusSettings `pulumi:"settings"`
@@ -39144,7 +39673,7 @@ type PostgresEndpointStatusArgs struct {
 	AutoscalingLimitMaxCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMaxCu"`
 	// (number) - The minimum number of Compute Units
 	AutoscalingLimitMinCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMinCu"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	CurrentState pulumi.StringPtrInput `pulumi:"currentState"`
 	// (boolean) - Whether to restrict connections to the compute endpoint.
 	// Enabling this option schedules a suspend compute operation.
@@ -39153,9 +39682,11 @@ type PostgresEndpointStatusArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType pulumi.StringPtrInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group PostgresEndpointStatusGroupPtrInput `pulumi:"group"`
 	// (EndpointHosts) - Contains host information for connecting to the endpoint
 	Hosts PostgresEndpointStatusHostsPtrInput `pulumi:"hosts"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	PendingState pulumi.StringPtrInput `pulumi:"pendingState"`
 	// (EndpointSettings)
 	Settings PostgresEndpointStatusSettingsPtrInput `pulumi:"settings"`
@@ -39250,7 +39781,7 @@ func (o PostgresEndpointStatusOutput) AutoscalingLimitMinCu() pulumi.Float64PtrO
 	return o.ApplyT(func(v PostgresEndpointStatus) *float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64PtrOutput)
 }
 
-// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 func (o PostgresEndpointStatusOutput) CurrentState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PostgresEndpointStatus) *string { return v.CurrentState }).(pulumi.StringPtrOutput)
 }
@@ -39268,12 +39799,17 @@ func (o PostgresEndpointStatusOutput) EndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PostgresEndpointStatus) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
 }
 
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o PostgresEndpointStatusOutput) Group() PostgresEndpointStatusGroupPtrOutput {
+	return o.ApplyT(func(v PostgresEndpointStatus) *PostgresEndpointStatusGroup { return v.Group }).(PostgresEndpointStatusGroupPtrOutput)
+}
+
 // (EndpointHosts) - Contains host information for connecting to the endpoint
 func (o PostgresEndpointStatusOutput) Hosts() PostgresEndpointStatusHostsPtrOutput {
 	return o.ApplyT(func(v PostgresEndpointStatus) *PostgresEndpointStatusHosts { return v.Hosts }).(PostgresEndpointStatusHostsPtrOutput)
 }
 
-// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 func (o PostgresEndpointStatusOutput) PendingState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PostgresEndpointStatus) *string { return v.PendingState }).(pulumi.StringPtrOutput)
 }
@@ -39332,7 +39868,7 @@ func (o PostgresEndpointStatusPtrOutput) AutoscalingLimitMinCu() pulumi.Float64P
 	}).(pulumi.Float64PtrOutput)
 }
 
-// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 func (o PostgresEndpointStatusPtrOutput) CurrentState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgresEndpointStatus) *string {
 		if v == nil {
@@ -39365,6 +39901,16 @@ func (o PostgresEndpointStatusPtrOutput) EndpointType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o PostgresEndpointStatusPtrOutput) Group() PostgresEndpointStatusGroupPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpointStatus) *PostgresEndpointStatusGroup {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(PostgresEndpointStatusGroupPtrOutput)
+}
+
 // (EndpointHosts) - Contains host information for connecting to the endpoint
 func (o PostgresEndpointStatusPtrOutput) Hosts() PostgresEndpointStatusHostsPtrOutput {
 	return o.ApplyT(func(v *PostgresEndpointStatus) *PostgresEndpointStatusHosts {
@@ -39375,7 +39921,7 @@ func (o PostgresEndpointStatusPtrOutput) Hosts() PostgresEndpointStatusHostsPtrO
 	}).(PostgresEndpointStatusHostsPtrOutput)
 }
 
-// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 func (o PostgresEndpointStatusPtrOutput) PendingState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgresEndpointStatus) *string {
 		if v == nil {
@@ -39405,10 +39951,185 @@ func (o PostgresEndpointStatusPtrOutput) SuspendTimeoutDuration() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+type PostgresEndpointStatusGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	Max                       int   `pulumi:"max"`
+	Min                       int   `pulumi:"min"`
+}
+
+// PostgresEndpointStatusGroupInput is an input type that accepts PostgresEndpointStatusGroupArgs and PostgresEndpointStatusGroupOutput values.
+// You can construct a concrete instance of `PostgresEndpointStatusGroupInput` via:
+//
+//	PostgresEndpointStatusGroupArgs{...}
+type PostgresEndpointStatusGroupInput interface {
+	pulumi.Input
+
+	ToPostgresEndpointStatusGroupOutput() PostgresEndpointStatusGroupOutput
+	ToPostgresEndpointStatusGroupOutputWithContext(context.Context) PostgresEndpointStatusGroupOutput
+}
+
+type PostgresEndpointStatusGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	Max                       pulumi.IntInput     `pulumi:"max"`
+	Min                       pulumi.IntInput     `pulumi:"min"`
+}
+
+func (PostgresEndpointStatusGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresEndpointStatusGroup)(nil)).Elem()
+}
+
+func (i PostgresEndpointStatusGroupArgs) ToPostgresEndpointStatusGroupOutput() PostgresEndpointStatusGroupOutput {
+	return i.ToPostgresEndpointStatusGroupOutputWithContext(context.Background())
+}
+
+func (i PostgresEndpointStatusGroupArgs) ToPostgresEndpointStatusGroupOutputWithContext(ctx context.Context) PostgresEndpointStatusGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresEndpointStatusGroupOutput)
+}
+
+func (i PostgresEndpointStatusGroupArgs) ToPostgresEndpointStatusGroupPtrOutput() PostgresEndpointStatusGroupPtrOutput {
+	return i.ToPostgresEndpointStatusGroupPtrOutputWithContext(context.Background())
+}
+
+func (i PostgresEndpointStatusGroupArgs) ToPostgresEndpointStatusGroupPtrOutputWithContext(ctx context.Context) PostgresEndpointStatusGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresEndpointStatusGroupOutput).ToPostgresEndpointStatusGroupPtrOutputWithContext(ctx)
+}
+
+// PostgresEndpointStatusGroupPtrInput is an input type that accepts PostgresEndpointStatusGroupArgs, PostgresEndpointStatusGroupPtr and PostgresEndpointStatusGroupPtrOutput values.
+// You can construct a concrete instance of `PostgresEndpointStatusGroupPtrInput` via:
+//
+//	        PostgresEndpointStatusGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresEndpointStatusGroupPtrInput interface {
+	pulumi.Input
+
+	ToPostgresEndpointStatusGroupPtrOutput() PostgresEndpointStatusGroupPtrOutput
+	ToPostgresEndpointStatusGroupPtrOutputWithContext(context.Context) PostgresEndpointStatusGroupPtrOutput
+}
+
+type postgresEndpointStatusGroupPtrType PostgresEndpointStatusGroupArgs
+
+func PostgresEndpointStatusGroupPtr(v *PostgresEndpointStatusGroupArgs) PostgresEndpointStatusGroupPtrInput {
+	return (*postgresEndpointStatusGroupPtrType)(v)
+}
+
+func (*postgresEndpointStatusGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresEndpointStatusGroup)(nil)).Elem()
+}
+
+func (i *postgresEndpointStatusGroupPtrType) ToPostgresEndpointStatusGroupPtrOutput() PostgresEndpointStatusGroupPtrOutput {
+	return i.ToPostgresEndpointStatusGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *postgresEndpointStatusGroupPtrType) ToPostgresEndpointStatusGroupPtrOutputWithContext(ctx context.Context) PostgresEndpointStatusGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresEndpointStatusGroupPtrOutput)
+}
+
+type PostgresEndpointStatusGroupOutput struct{ *pulumi.OutputState }
+
+func (PostgresEndpointStatusGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresEndpointStatusGroup)(nil)).Elem()
+}
+
+func (o PostgresEndpointStatusGroupOutput) ToPostgresEndpointStatusGroupOutput() PostgresEndpointStatusGroupOutput {
+	return o
+}
+
+func (o PostgresEndpointStatusGroupOutput) ToPostgresEndpointStatusGroupOutputWithContext(ctx context.Context) PostgresEndpointStatusGroupOutput {
+	return o
+}
+
+func (o PostgresEndpointStatusGroupOutput) ToPostgresEndpointStatusGroupPtrOutput() PostgresEndpointStatusGroupPtrOutput {
+	return o.ToPostgresEndpointStatusGroupPtrOutputWithContext(context.Background())
+}
+
+func (o PostgresEndpointStatusGroupOutput) ToPostgresEndpointStatusGroupPtrOutputWithContext(ctx context.Context) PostgresEndpointStatusGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresEndpointStatusGroup) *PostgresEndpointStatusGroup {
+		return &v
+	}).(PostgresEndpointStatusGroupPtrOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o PostgresEndpointStatusGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PostgresEndpointStatusGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+func (o PostgresEndpointStatusGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresEndpointStatusGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o PostgresEndpointStatusGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresEndpointStatusGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type PostgresEndpointStatusGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresEndpointStatusGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresEndpointStatusGroup)(nil)).Elem()
+}
+
+func (o PostgresEndpointStatusGroupPtrOutput) ToPostgresEndpointStatusGroupPtrOutput() PostgresEndpointStatusGroupPtrOutput {
+	return o
+}
+
+func (o PostgresEndpointStatusGroupPtrOutput) ToPostgresEndpointStatusGroupPtrOutputWithContext(ctx context.Context) PostgresEndpointStatusGroupPtrOutput {
+	return o
+}
+
+func (o PostgresEndpointStatusGroupPtrOutput) Elem() PostgresEndpointStatusGroupOutput {
+	return o.ApplyT(func(v *PostgresEndpointStatusGroup) PostgresEndpointStatusGroup {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresEndpointStatusGroup
+		return ret
+	}).(PostgresEndpointStatusGroupOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o PostgresEndpointStatusGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpointStatusGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o PostgresEndpointStatusGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpointStatusGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o PostgresEndpointStatusGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpointStatusGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
 type PostgresEndpointStatusHosts struct {
 	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
 	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
 	Host *string `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost *string `pulumi:"readOnlyHost"`
 }
 
 // PostgresEndpointStatusHostsInput is an input type that accepts PostgresEndpointStatusHostsArgs and PostgresEndpointStatusHostsOutput values.
@@ -39426,6 +40147,10 @@ type PostgresEndpointStatusHostsArgs struct {
 	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
 	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
 	Host pulumi.StringPtrInput `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost pulumi.StringPtrInput `pulumi:"readOnlyHost"`
 }
 
 func (PostgresEndpointStatusHostsArgs) ElementType() reflect.Type {
@@ -39511,6 +40236,13 @@ func (o PostgresEndpointStatusHostsOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PostgresEndpointStatusHosts) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+func (o PostgresEndpointStatusHostsOutput) ReadOnlyHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresEndpointStatusHosts) *string { return v.ReadOnlyHost }).(pulumi.StringPtrOutput)
+}
+
 type PostgresEndpointStatusHostsPtrOutput struct{ *pulumi.OutputState }
 
 func (PostgresEndpointStatusHostsPtrOutput) ElementType() reflect.Type {
@@ -39543,6 +40275,18 @@ func (o PostgresEndpointStatusHostsPtrOutput) Host() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+func (o PostgresEndpointStatusHostsPtrOutput) ReadOnlyHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpointStatusHosts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnlyHost
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -39681,6 +40425,334 @@ func (o PostgresEndpointStatusSettingsPtrOutput) PgSettings() pulumi.StringMapOu
 		}
 		return v.PgSettings
 	}).(pulumi.StringMapOutput)
+}
+
+type PostgresProjectInitialEndpointSpec struct {
+	// Settings for HA configuration of the endpoint
+	Group *PostgresProjectInitialEndpointSpecGroup `pulumi:"group"`
+}
+
+// PostgresProjectInitialEndpointSpecInput is an input type that accepts PostgresProjectInitialEndpointSpecArgs and PostgresProjectInitialEndpointSpecOutput values.
+// You can construct a concrete instance of `PostgresProjectInitialEndpointSpecInput` via:
+//
+//	PostgresProjectInitialEndpointSpecArgs{...}
+type PostgresProjectInitialEndpointSpecInput interface {
+	pulumi.Input
+
+	ToPostgresProjectInitialEndpointSpecOutput() PostgresProjectInitialEndpointSpecOutput
+	ToPostgresProjectInitialEndpointSpecOutputWithContext(context.Context) PostgresProjectInitialEndpointSpecOutput
+}
+
+type PostgresProjectInitialEndpointSpecArgs struct {
+	// Settings for HA configuration of the endpoint
+	Group PostgresProjectInitialEndpointSpecGroupPtrInput `pulumi:"group"`
+}
+
+func (PostgresProjectInitialEndpointSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (i PostgresProjectInitialEndpointSpecArgs) ToPostgresProjectInitialEndpointSpecOutput() PostgresProjectInitialEndpointSpecOutput {
+	return i.ToPostgresProjectInitialEndpointSpecOutputWithContext(context.Background())
+}
+
+func (i PostgresProjectInitialEndpointSpecArgs) ToPostgresProjectInitialEndpointSpecOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresProjectInitialEndpointSpecOutput)
+}
+
+func (i PostgresProjectInitialEndpointSpecArgs) ToPostgresProjectInitialEndpointSpecPtrOutput() PostgresProjectInitialEndpointSpecPtrOutput {
+	return i.ToPostgresProjectInitialEndpointSpecPtrOutputWithContext(context.Background())
+}
+
+func (i PostgresProjectInitialEndpointSpecArgs) ToPostgresProjectInitialEndpointSpecPtrOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresProjectInitialEndpointSpecOutput).ToPostgresProjectInitialEndpointSpecPtrOutputWithContext(ctx)
+}
+
+// PostgresProjectInitialEndpointSpecPtrInput is an input type that accepts PostgresProjectInitialEndpointSpecArgs, PostgresProjectInitialEndpointSpecPtr and PostgresProjectInitialEndpointSpecPtrOutput values.
+// You can construct a concrete instance of `PostgresProjectInitialEndpointSpecPtrInput` via:
+//
+//	        PostgresProjectInitialEndpointSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresProjectInitialEndpointSpecPtrInput interface {
+	pulumi.Input
+
+	ToPostgresProjectInitialEndpointSpecPtrOutput() PostgresProjectInitialEndpointSpecPtrOutput
+	ToPostgresProjectInitialEndpointSpecPtrOutputWithContext(context.Context) PostgresProjectInitialEndpointSpecPtrOutput
+}
+
+type postgresProjectInitialEndpointSpecPtrType PostgresProjectInitialEndpointSpecArgs
+
+func PostgresProjectInitialEndpointSpecPtr(v *PostgresProjectInitialEndpointSpecArgs) PostgresProjectInitialEndpointSpecPtrInput {
+	return (*postgresProjectInitialEndpointSpecPtrType)(v)
+}
+
+func (*postgresProjectInitialEndpointSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (i *postgresProjectInitialEndpointSpecPtrType) ToPostgresProjectInitialEndpointSpecPtrOutput() PostgresProjectInitialEndpointSpecPtrOutput {
+	return i.ToPostgresProjectInitialEndpointSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *postgresProjectInitialEndpointSpecPtrType) ToPostgresProjectInitialEndpointSpecPtrOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresProjectInitialEndpointSpecPtrOutput)
+}
+
+type PostgresProjectInitialEndpointSpecOutput struct{ *pulumi.OutputState }
+
+func (PostgresProjectInitialEndpointSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (o PostgresProjectInitialEndpointSpecOutput) ToPostgresProjectInitialEndpointSpecOutput() PostgresProjectInitialEndpointSpecOutput {
+	return o
+}
+
+func (o PostgresProjectInitialEndpointSpecOutput) ToPostgresProjectInitialEndpointSpecOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecOutput {
+	return o
+}
+
+func (o PostgresProjectInitialEndpointSpecOutput) ToPostgresProjectInitialEndpointSpecPtrOutput() PostgresProjectInitialEndpointSpecPtrOutput {
+	return o.ToPostgresProjectInitialEndpointSpecPtrOutputWithContext(context.Background())
+}
+
+func (o PostgresProjectInitialEndpointSpecOutput) ToPostgresProjectInitialEndpointSpecPtrOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresProjectInitialEndpointSpec) *PostgresProjectInitialEndpointSpec {
+		return &v
+	}).(PostgresProjectInitialEndpointSpecPtrOutput)
+}
+
+// Settings for HA configuration of the endpoint
+func (o PostgresProjectInitialEndpointSpecOutput) Group() PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v PostgresProjectInitialEndpointSpec) *PostgresProjectInitialEndpointSpecGroup { return v.Group }).(PostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+type PostgresProjectInitialEndpointSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresProjectInitialEndpointSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (o PostgresProjectInitialEndpointSpecPtrOutput) ToPostgresProjectInitialEndpointSpecPtrOutput() PostgresProjectInitialEndpointSpecPtrOutput {
+	return o
+}
+
+func (o PostgresProjectInitialEndpointSpecPtrOutput) ToPostgresProjectInitialEndpointSpecPtrOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecPtrOutput {
+	return o
+}
+
+func (o PostgresProjectInitialEndpointSpecPtrOutput) Elem() PostgresProjectInitialEndpointSpecOutput {
+	return o.ApplyT(func(v *PostgresProjectInitialEndpointSpec) PostgresProjectInitialEndpointSpec {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresProjectInitialEndpointSpec
+		return ret
+	}).(PostgresProjectInitialEndpointSpecOutput)
+}
+
+// Settings for HA configuration of the endpoint
+func (o PostgresProjectInitialEndpointSpecPtrOutput) Group() PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v *PostgresProjectInitialEndpointSpec) *PostgresProjectInitialEndpointSpecGroup {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(PostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+type PostgresProjectInitialEndpointSpecGroup struct {
+	// Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	// The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// PostgresProjectInitialEndpointSpecGroupInput is an input type that accepts PostgresProjectInitialEndpointSpecGroupArgs and PostgresProjectInitialEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `PostgresProjectInitialEndpointSpecGroupInput` via:
+//
+//	PostgresProjectInitialEndpointSpecGroupArgs{...}
+type PostgresProjectInitialEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToPostgresProjectInitialEndpointSpecGroupOutput() PostgresProjectInitialEndpointSpecGroupOutput
+	ToPostgresProjectInitialEndpointSpecGroupOutputWithContext(context.Context) PostgresProjectInitialEndpointSpecGroupOutput
+}
+
+type PostgresProjectInitialEndpointSpecGroupArgs struct {
+	// Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	// The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (PostgresProjectInitialEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i PostgresProjectInitialEndpointSpecGroupArgs) ToPostgresProjectInitialEndpointSpecGroupOutput() PostgresProjectInitialEndpointSpecGroupOutput {
+	return i.ToPostgresProjectInitialEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i PostgresProjectInitialEndpointSpecGroupArgs) ToPostgresProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresProjectInitialEndpointSpecGroupOutput)
+}
+
+func (i PostgresProjectInitialEndpointSpecGroupArgs) ToPostgresProjectInitialEndpointSpecGroupPtrOutput() PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i PostgresProjectInitialEndpointSpecGroupArgs) ToPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresProjectInitialEndpointSpecGroupOutput).ToPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// PostgresProjectInitialEndpointSpecGroupPtrInput is an input type that accepts PostgresProjectInitialEndpointSpecGroupArgs, PostgresProjectInitialEndpointSpecGroupPtr and PostgresProjectInitialEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `PostgresProjectInitialEndpointSpecGroupPtrInput` via:
+//
+//	        PostgresProjectInitialEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresProjectInitialEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToPostgresProjectInitialEndpointSpecGroupPtrOutput() PostgresProjectInitialEndpointSpecGroupPtrOutput
+	ToPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Context) PostgresProjectInitialEndpointSpecGroupPtrOutput
+}
+
+type postgresProjectInitialEndpointSpecGroupPtrType PostgresProjectInitialEndpointSpecGroupArgs
+
+func PostgresProjectInitialEndpointSpecGroupPtr(v *PostgresProjectInitialEndpointSpecGroupArgs) PostgresProjectInitialEndpointSpecGroupPtrInput {
+	return (*postgresProjectInitialEndpointSpecGroupPtrType)(v)
+}
+
+func (*postgresProjectInitialEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *postgresProjectInitialEndpointSpecGroupPtrType) ToPostgresProjectInitialEndpointSpecGroupPtrOutput() PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *postgresProjectInitialEndpointSpecGroupPtrType) ToPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+type PostgresProjectInitialEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (PostgresProjectInitialEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o PostgresProjectInitialEndpointSpecGroupOutput) ToPostgresProjectInitialEndpointSpecGroupOutput() PostgresProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o PostgresProjectInitialEndpointSpecGroupOutput) ToPostgresProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o PostgresProjectInitialEndpointSpecGroupOutput) ToPostgresProjectInitialEndpointSpecGroupPtrOutput() PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ToPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o PostgresProjectInitialEndpointSpecGroupOutput) ToPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresProjectInitialEndpointSpecGroup) *PostgresProjectInitialEndpointSpecGroup {
+		return &v
+	}).(PostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+// Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o PostgresProjectInitialEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PostgresProjectInitialEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o PostgresProjectInitialEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresProjectInitialEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o PostgresProjectInitialEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresProjectInitialEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type PostgresProjectInitialEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresProjectInitialEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o PostgresProjectInitialEndpointSpecGroupPtrOutput) ToPostgresProjectInitialEndpointSpecGroupPtrOutput() PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o PostgresProjectInitialEndpointSpecGroupPtrOutput) ToPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) PostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o PostgresProjectInitialEndpointSpecGroupPtrOutput) Elem() PostgresProjectInitialEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *PostgresProjectInitialEndpointSpecGroup) PostgresProjectInitialEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresProjectInitialEndpointSpecGroup
+		return ret
+	}).(PostgresProjectInitialEndpointSpecGroupOutput)
+}
+
+// Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o PostgresProjectInitialEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PostgresProjectInitialEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o PostgresProjectInitialEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostgresProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o PostgresProjectInitialEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostgresProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
 }
 
 type PostgresProjectProviderConfig struct {
@@ -56966,6 +58038,158 @@ func (o VectorSearchEndpointProviderConfigPtrOutput) WorkspaceId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type VectorSearchEndpointScalingInfo struct {
+	RequestedMinQps *int `pulumi:"requestedMinQps"`
+	// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+	State *string `pulumi:"state"`
+}
+
+// VectorSearchEndpointScalingInfoInput is an input type that accepts VectorSearchEndpointScalingInfoArgs and VectorSearchEndpointScalingInfoOutput values.
+// You can construct a concrete instance of `VectorSearchEndpointScalingInfoInput` via:
+//
+//	VectorSearchEndpointScalingInfoArgs{...}
+type VectorSearchEndpointScalingInfoInput interface {
+	pulumi.Input
+
+	ToVectorSearchEndpointScalingInfoOutput() VectorSearchEndpointScalingInfoOutput
+	ToVectorSearchEndpointScalingInfoOutputWithContext(context.Context) VectorSearchEndpointScalingInfoOutput
+}
+
+type VectorSearchEndpointScalingInfoArgs struct {
+	RequestedMinQps pulumi.IntPtrInput `pulumi:"requestedMinQps"`
+	// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (VectorSearchEndpointScalingInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchEndpointScalingInfo)(nil)).Elem()
+}
+
+func (i VectorSearchEndpointScalingInfoArgs) ToVectorSearchEndpointScalingInfoOutput() VectorSearchEndpointScalingInfoOutput {
+	return i.ToVectorSearchEndpointScalingInfoOutputWithContext(context.Background())
+}
+
+func (i VectorSearchEndpointScalingInfoArgs) ToVectorSearchEndpointScalingInfoOutputWithContext(ctx context.Context) VectorSearchEndpointScalingInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchEndpointScalingInfoOutput)
+}
+
+func (i VectorSearchEndpointScalingInfoArgs) ToVectorSearchEndpointScalingInfoPtrOutput() VectorSearchEndpointScalingInfoPtrOutput {
+	return i.ToVectorSearchEndpointScalingInfoPtrOutputWithContext(context.Background())
+}
+
+func (i VectorSearchEndpointScalingInfoArgs) ToVectorSearchEndpointScalingInfoPtrOutputWithContext(ctx context.Context) VectorSearchEndpointScalingInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchEndpointScalingInfoOutput).ToVectorSearchEndpointScalingInfoPtrOutputWithContext(ctx)
+}
+
+// VectorSearchEndpointScalingInfoPtrInput is an input type that accepts VectorSearchEndpointScalingInfoArgs, VectorSearchEndpointScalingInfoPtr and VectorSearchEndpointScalingInfoPtrOutput values.
+// You can construct a concrete instance of `VectorSearchEndpointScalingInfoPtrInput` via:
+//
+//	        VectorSearchEndpointScalingInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type VectorSearchEndpointScalingInfoPtrInput interface {
+	pulumi.Input
+
+	ToVectorSearchEndpointScalingInfoPtrOutput() VectorSearchEndpointScalingInfoPtrOutput
+	ToVectorSearchEndpointScalingInfoPtrOutputWithContext(context.Context) VectorSearchEndpointScalingInfoPtrOutput
+}
+
+type vectorSearchEndpointScalingInfoPtrType VectorSearchEndpointScalingInfoArgs
+
+func VectorSearchEndpointScalingInfoPtr(v *VectorSearchEndpointScalingInfoArgs) VectorSearchEndpointScalingInfoPtrInput {
+	return (*vectorSearchEndpointScalingInfoPtrType)(v)
+}
+
+func (*vectorSearchEndpointScalingInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VectorSearchEndpointScalingInfo)(nil)).Elem()
+}
+
+func (i *vectorSearchEndpointScalingInfoPtrType) ToVectorSearchEndpointScalingInfoPtrOutput() VectorSearchEndpointScalingInfoPtrOutput {
+	return i.ToVectorSearchEndpointScalingInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *vectorSearchEndpointScalingInfoPtrType) ToVectorSearchEndpointScalingInfoPtrOutputWithContext(ctx context.Context) VectorSearchEndpointScalingInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchEndpointScalingInfoPtrOutput)
+}
+
+type VectorSearchEndpointScalingInfoOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchEndpointScalingInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchEndpointScalingInfo)(nil)).Elem()
+}
+
+func (o VectorSearchEndpointScalingInfoOutput) ToVectorSearchEndpointScalingInfoOutput() VectorSearchEndpointScalingInfoOutput {
+	return o
+}
+
+func (o VectorSearchEndpointScalingInfoOutput) ToVectorSearchEndpointScalingInfoOutputWithContext(ctx context.Context) VectorSearchEndpointScalingInfoOutput {
+	return o
+}
+
+func (o VectorSearchEndpointScalingInfoOutput) ToVectorSearchEndpointScalingInfoPtrOutput() VectorSearchEndpointScalingInfoPtrOutput {
+	return o.ToVectorSearchEndpointScalingInfoPtrOutputWithContext(context.Background())
+}
+
+func (o VectorSearchEndpointScalingInfoOutput) ToVectorSearchEndpointScalingInfoPtrOutputWithContext(ctx context.Context) VectorSearchEndpointScalingInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VectorSearchEndpointScalingInfo) *VectorSearchEndpointScalingInfo {
+		return &v
+	}).(VectorSearchEndpointScalingInfoPtrOutput)
+}
+
+func (o VectorSearchEndpointScalingInfoOutput) RequestedMinQps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VectorSearchEndpointScalingInfo) *int { return v.RequestedMinQps }).(pulumi.IntPtrOutput)
+}
+
+// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+func (o VectorSearchEndpointScalingInfoOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchEndpointScalingInfo) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type VectorSearchEndpointScalingInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchEndpointScalingInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VectorSearchEndpointScalingInfo)(nil)).Elem()
+}
+
+func (o VectorSearchEndpointScalingInfoPtrOutput) ToVectorSearchEndpointScalingInfoPtrOutput() VectorSearchEndpointScalingInfoPtrOutput {
+	return o
+}
+
+func (o VectorSearchEndpointScalingInfoPtrOutput) ToVectorSearchEndpointScalingInfoPtrOutputWithContext(ctx context.Context) VectorSearchEndpointScalingInfoPtrOutput {
+	return o
+}
+
+func (o VectorSearchEndpointScalingInfoPtrOutput) Elem() VectorSearchEndpointScalingInfoOutput {
+	return o.ApplyT(func(v *VectorSearchEndpointScalingInfo) VectorSearchEndpointScalingInfo {
+		if v != nil {
+			return *v
+		}
+		var ret VectorSearchEndpointScalingInfo
+		return ret
+	}).(VectorSearchEndpointScalingInfoOutput)
+}
+
+func (o VectorSearchEndpointScalingInfoPtrOutput) RequestedMinQps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VectorSearchEndpointScalingInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RequestedMinQps
+	}).(pulumi.IntPtrOutput)
+}
+
+// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+func (o VectorSearchEndpointScalingInfoPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VectorSearchEndpointScalingInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 type VectorSearchIndexDeltaSyncIndexSpec struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
 	EmbeddingSourceColumns []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
@@ -72053,6 +73277,8 @@ func (o GetAppAppPendingDeploymentStatusOutput) State() pulumi.StringOutput {
 
 type GetAppAppResource struct {
 	// attribute
+	App *GetAppAppResourceApp `pulumi:"app"`
+	// attribute
 	Database *GetAppAppResourceDatabase `pulumi:"database"`
 	// The description of the resource.
 	Description *string                      `pulumi:"description"`
@@ -72085,6 +73311,8 @@ type GetAppAppResourceInput interface {
 }
 
 type GetAppAppResourceArgs struct {
+	// attribute
+	App GetAppAppResourceAppPtrInput `pulumi:"app"`
 	// attribute
 	Database GetAppAppResourceDatabasePtrInput `pulumi:"database"`
 	// The description of the resource.
@@ -72158,6 +73386,11 @@ func (o GetAppAppResourceOutput) ToGetAppAppResourceOutputWithContext(ctx contex
 }
 
 // attribute
+func (o GetAppAppResourceOutput) App() GetAppAppResourceAppPtrOutput {
+	return o.ApplyT(func(v GetAppAppResource) *GetAppAppResourceApp { return v.App }).(GetAppAppResourceAppPtrOutput)
+}
+
+// attribute
 func (o GetAppAppResourceOutput) Database() GetAppAppResourceDatabasePtrOutput {
 	return o.ApplyT(func(v GetAppAppResource) *GetAppAppResourceDatabase { return v.Database }).(GetAppAppResourceDatabasePtrOutput)
 }
@@ -72224,6 +73457,124 @@ func (o GetAppAppResourceArrayOutput) Index(i pulumi.IntInput) GetAppAppResource
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppAppResource {
 		return vs[0].([]GetAppAppResource)[vs[1].(int)]
 	}).(GetAppAppResourceOutput)
+}
+
+type GetAppAppResourceApp struct {
+}
+
+// GetAppAppResourceAppInput is an input type that accepts GetAppAppResourceAppArgs and GetAppAppResourceAppOutput values.
+// You can construct a concrete instance of `GetAppAppResourceAppInput` via:
+//
+//	GetAppAppResourceAppArgs{...}
+type GetAppAppResourceAppInput interface {
+	pulumi.Input
+
+	ToGetAppAppResourceAppOutput() GetAppAppResourceAppOutput
+	ToGetAppAppResourceAppOutputWithContext(context.Context) GetAppAppResourceAppOutput
+}
+
+type GetAppAppResourceAppArgs struct {
+}
+
+func (GetAppAppResourceAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppAppResourceApp)(nil)).Elem()
+}
+
+func (i GetAppAppResourceAppArgs) ToGetAppAppResourceAppOutput() GetAppAppResourceAppOutput {
+	return i.ToGetAppAppResourceAppOutputWithContext(context.Background())
+}
+
+func (i GetAppAppResourceAppArgs) ToGetAppAppResourceAppOutputWithContext(ctx context.Context) GetAppAppResourceAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppAppResourceAppOutput)
+}
+
+func (i GetAppAppResourceAppArgs) ToGetAppAppResourceAppPtrOutput() GetAppAppResourceAppPtrOutput {
+	return i.ToGetAppAppResourceAppPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppAppResourceAppArgs) ToGetAppAppResourceAppPtrOutputWithContext(ctx context.Context) GetAppAppResourceAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppAppResourceAppOutput).ToGetAppAppResourceAppPtrOutputWithContext(ctx)
+}
+
+// GetAppAppResourceAppPtrInput is an input type that accepts GetAppAppResourceAppArgs, GetAppAppResourceAppPtr and GetAppAppResourceAppPtrOutput values.
+// You can construct a concrete instance of `GetAppAppResourceAppPtrInput` via:
+//
+//	        GetAppAppResourceAppArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppAppResourceAppPtrInput interface {
+	pulumi.Input
+
+	ToGetAppAppResourceAppPtrOutput() GetAppAppResourceAppPtrOutput
+	ToGetAppAppResourceAppPtrOutputWithContext(context.Context) GetAppAppResourceAppPtrOutput
+}
+
+type getAppAppResourceAppPtrType GetAppAppResourceAppArgs
+
+func GetAppAppResourceAppPtr(v *GetAppAppResourceAppArgs) GetAppAppResourceAppPtrInput {
+	return (*getAppAppResourceAppPtrType)(v)
+}
+
+func (*getAppAppResourceAppPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppAppResourceApp)(nil)).Elem()
+}
+
+func (i *getAppAppResourceAppPtrType) ToGetAppAppResourceAppPtrOutput() GetAppAppResourceAppPtrOutput {
+	return i.ToGetAppAppResourceAppPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppAppResourceAppPtrType) ToGetAppAppResourceAppPtrOutputWithContext(ctx context.Context) GetAppAppResourceAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppAppResourceAppPtrOutput)
+}
+
+type GetAppAppResourceAppOutput struct{ *pulumi.OutputState }
+
+func (GetAppAppResourceAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppAppResourceApp)(nil)).Elem()
+}
+
+func (o GetAppAppResourceAppOutput) ToGetAppAppResourceAppOutput() GetAppAppResourceAppOutput {
+	return o
+}
+
+func (o GetAppAppResourceAppOutput) ToGetAppAppResourceAppOutputWithContext(ctx context.Context) GetAppAppResourceAppOutput {
+	return o
+}
+
+func (o GetAppAppResourceAppOutput) ToGetAppAppResourceAppPtrOutput() GetAppAppResourceAppPtrOutput {
+	return o.ToGetAppAppResourceAppPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppAppResourceAppOutput) ToGetAppAppResourceAppPtrOutputWithContext(ctx context.Context) GetAppAppResourceAppPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppAppResourceApp) *GetAppAppResourceApp {
+		return &v
+	}).(GetAppAppResourceAppPtrOutput)
+}
+
+type GetAppAppResourceAppPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppAppResourceAppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppAppResourceApp)(nil)).Elem()
+}
+
+func (o GetAppAppResourceAppPtrOutput) ToGetAppAppResourceAppPtrOutput() GetAppAppResourceAppPtrOutput {
+	return o
+}
+
+func (o GetAppAppResourceAppPtrOutput) ToGetAppAppResourceAppPtrOutputWithContext(ctx context.Context) GetAppAppResourceAppPtrOutput {
+	return o
+}
+
+func (o GetAppAppResourceAppPtrOutput) Elem() GetAppAppResourceAppOutput {
+	return o.ApplyT(func(v *GetAppAppResourceApp) GetAppAppResourceApp {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppAppResourceApp
+		return ret
+	}).(GetAppAppResourceAppOutput)
 }
 
 type GetAppAppResourceDatabase struct {
@@ -73376,6 +74727,7 @@ type GetAppAppResourceUcSecurable struct {
 	Permission string `pulumi:"permission"`
 	// the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
 	SecurableFullName string `pulumi:"securableFullName"`
+	SecurableKind     string `pulumi:"securableKind"`
 	// the type of UC securable, i.e. `VOLUME`.
 	SecurableType string `pulumi:"securableType"`
 }
@@ -73396,6 +74748,7 @@ type GetAppAppResourceUcSecurableArgs struct {
 	Permission pulumi.StringInput `pulumi:"permission"`
 	// the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
 	SecurableFullName pulumi.StringInput `pulumi:"securableFullName"`
+	SecurableKind     pulumi.StringInput `pulumi:"securableKind"`
 	// the type of UC securable, i.e. `VOLUME`.
 	SecurableType pulumi.StringInput `pulumi:"securableType"`
 }
@@ -73487,6 +74840,10 @@ func (o GetAppAppResourceUcSecurableOutput) SecurableFullName() pulumi.StringOut
 	return o.ApplyT(func(v GetAppAppResourceUcSecurable) string { return v.SecurableFullName }).(pulumi.StringOutput)
 }
 
+func (o GetAppAppResourceUcSecurableOutput) SecurableKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppAppResourceUcSecurable) string { return v.SecurableKind }).(pulumi.StringOutput)
+}
+
 // the type of UC securable, i.e. `VOLUME`.
 func (o GetAppAppResourceUcSecurableOutput) SecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceUcSecurable) string { return v.SecurableType }).(pulumi.StringOutput)
@@ -73533,6 +74890,15 @@ func (o GetAppAppResourceUcSecurablePtrOutput) SecurableFullName() pulumi.String
 			return nil
 		}
 		return &v.SecurableFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppAppResourceUcSecurablePtrOutput) SecurableKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppAppResourceUcSecurable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecurableKind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -74821,1035 +76187,11 @@ func (o GetAppsAppComputeStatusOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppComputeStatus) string { return v.State }).(pulumi.StringOutput)
 }
 
-type GetAppsAppGitRepository struct {
-	Provider string `pulumi:"provider"`
-	// The URL of the app once it is deployed.
-	Url string `pulumi:"url"`
-}
-
-// GetAppsAppGitRepositoryInput is an input type that accepts GetAppsAppGitRepositoryArgs and GetAppsAppGitRepositoryOutput values.
-// You can construct a concrete instance of `GetAppsAppGitRepositoryInput` via:
-//
-//	GetAppsAppGitRepositoryArgs{...}
-type GetAppsAppGitRepositoryInput interface {
-	pulumi.Input
-
-	ToGetAppsAppGitRepositoryOutput() GetAppsAppGitRepositoryOutput
-	ToGetAppsAppGitRepositoryOutputWithContext(context.Context) GetAppsAppGitRepositoryOutput
-}
-
-type GetAppsAppGitRepositoryArgs struct {
-	Provider pulumi.StringInput `pulumi:"provider"`
-	// The URL of the app once it is deployed.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (GetAppsAppGitRepositoryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppGitRepository)(nil)).Elem()
-}
-
-func (i GetAppsAppGitRepositoryArgs) ToGetAppsAppGitRepositoryOutput() GetAppsAppGitRepositoryOutput {
-	return i.ToGetAppsAppGitRepositoryOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppGitRepositoryArgs) ToGetAppsAppGitRepositoryOutputWithContext(ctx context.Context) GetAppsAppGitRepositoryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppGitRepositoryOutput)
-}
-
-func (i GetAppsAppGitRepositoryArgs) ToGetAppsAppGitRepositoryPtrOutput() GetAppsAppGitRepositoryPtrOutput {
-	return i.ToGetAppsAppGitRepositoryPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppGitRepositoryArgs) ToGetAppsAppGitRepositoryPtrOutputWithContext(ctx context.Context) GetAppsAppGitRepositoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppGitRepositoryOutput).ToGetAppsAppGitRepositoryPtrOutputWithContext(ctx)
-}
-
-// GetAppsAppGitRepositoryPtrInput is an input type that accepts GetAppsAppGitRepositoryArgs, GetAppsAppGitRepositoryPtr and GetAppsAppGitRepositoryPtrOutput values.
-// You can construct a concrete instance of `GetAppsAppGitRepositoryPtrInput` via:
-//
-//	        GetAppsAppGitRepositoryArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsAppGitRepositoryPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsAppGitRepositoryPtrOutput() GetAppsAppGitRepositoryPtrOutput
-	ToGetAppsAppGitRepositoryPtrOutputWithContext(context.Context) GetAppsAppGitRepositoryPtrOutput
-}
-
-type getAppsAppGitRepositoryPtrType GetAppsAppGitRepositoryArgs
-
-func GetAppsAppGitRepositoryPtr(v *GetAppsAppGitRepositoryArgs) GetAppsAppGitRepositoryPtrInput {
-	return (*getAppsAppGitRepositoryPtrType)(v)
-}
-
-func (*getAppsAppGitRepositoryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsAppGitRepository)(nil)).Elem()
-}
-
-func (i *getAppsAppGitRepositoryPtrType) ToGetAppsAppGitRepositoryPtrOutput() GetAppsAppGitRepositoryPtrOutput {
-	return i.ToGetAppsAppGitRepositoryPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsAppGitRepositoryPtrType) ToGetAppsAppGitRepositoryPtrOutputWithContext(ctx context.Context) GetAppsAppGitRepositoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppGitRepositoryPtrOutput)
-}
-
-type GetAppsAppGitRepositoryOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppGitRepositoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppGitRepository)(nil)).Elem()
-}
-
-func (o GetAppsAppGitRepositoryOutput) ToGetAppsAppGitRepositoryOutput() GetAppsAppGitRepositoryOutput {
-	return o
-}
-
-func (o GetAppsAppGitRepositoryOutput) ToGetAppsAppGitRepositoryOutputWithContext(ctx context.Context) GetAppsAppGitRepositoryOutput {
-	return o
-}
-
-func (o GetAppsAppGitRepositoryOutput) ToGetAppsAppGitRepositoryPtrOutput() GetAppsAppGitRepositoryPtrOutput {
-	return o.ToGetAppsAppGitRepositoryPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsAppGitRepositoryOutput) ToGetAppsAppGitRepositoryPtrOutputWithContext(ctx context.Context) GetAppsAppGitRepositoryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsAppGitRepository) *GetAppsAppGitRepository {
-		return &v
-	}).(GetAppsAppGitRepositoryPtrOutput)
-}
-
-func (o GetAppsAppGitRepositoryOutput) Provider() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppGitRepository) string { return v.Provider }).(pulumi.StringOutput)
-}
-
-// The URL of the app once it is deployed.
-func (o GetAppsAppGitRepositoryOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppGitRepository) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetAppsAppGitRepositoryPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppGitRepositoryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsAppGitRepository)(nil)).Elem()
-}
-
-func (o GetAppsAppGitRepositoryPtrOutput) ToGetAppsAppGitRepositoryPtrOutput() GetAppsAppGitRepositoryPtrOutput {
-	return o
-}
-
-func (o GetAppsAppGitRepositoryPtrOutput) ToGetAppsAppGitRepositoryPtrOutputWithContext(ctx context.Context) GetAppsAppGitRepositoryPtrOutput {
-	return o
-}
-
-func (o GetAppsAppGitRepositoryPtrOutput) Elem() GetAppsAppGitRepositoryOutput {
-	return o.ApplyT(func(v *GetAppsAppGitRepository) GetAppsAppGitRepository {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsAppGitRepository
-		return ret
-	}).(GetAppsAppGitRepositoryOutput)
-}
-
-func (o GetAppsAppGitRepositoryPtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppGitRepository) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Provider
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URL of the app once it is deployed.
-func (o GetAppsAppGitRepositoryPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppGitRepository) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppsAppPendingDeployment struct {
-	Commands []string `pulumi:"commands"`
-	// The creation time of the app.
-	CreateTime string `pulumi:"createTime"`
-	// The email of the user that created the app.
-	Creator             string                                         `pulumi:"creator"`
-	DeploymentArtifacts GetAppsAppPendingDeploymentDeploymentArtifacts `pulumi:"deploymentArtifacts"`
-	DeploymentId        *string                                        `pulumi:"deploymentId"`
-	EnvVars             []GetAppsAppPendingDeploymentEnvVar            `pulumi:"envVars"`
-	GitSource           *GetAppsAppPendingDeploymentGitSource          `pulumi:"gitSource"`
-	Mode                *string                                        `pulumi:"mode"`
-	SourceCodePath      *string                                        `pulumi:"sourceCodePath"`
-	Status              GetAppsAppPendingDeploymentStatus              `pulumi:"status"`
-	// The update time of the app.
-	UpdateTime string `pulumi:"updateTime"`
-}
-
-// GetAppsAppPendingDeploymentInput is an input type that accepts GetAppsAppPendingDeploymentArgs and GetAppsAppPendingDeploymentOutput values.
-// You can construct a concrete instance of `GetAppsAppPendingDeploymentInput` via:
-//
-//	GetAppsAppPendingDeploymentArgs{...}
-type GetAppsAppPendingDeploymentInput interface {
-	pulumi.Input
-
-	ToGetAppsAppPendingDeploymentOutput() GetAppsAppPendingDeploymentOutput
-	ToGetAppsAppPendingDeploymentOutputWithContext(context.Context) GetAppsAppPendingDeploymentOutput
-}
-
-type GetAppsAppPendingDeploymentArgs struct {
-	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// The creation time of the app.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The email of the user that created the app.
-	Creator             pulumi.StringInput                                  `pulumi:"creator"`
-	DeploymentArtifacts GetAppsAppPendingDeploymentDeploymentArtifactsInput `pulumi:"deploymentArtifacts"`
-	DeploymentId        pulumi.StringPtrInput                               `pulumi:"deploymentId"`
-	EnvVars             GetAppsAppPendingDeploymentEnvVarArrayInput         `pulumi:"envVars"`
-	GitSource           GetAppsAppPendingDeploymentGitSourcePtrInput        `pulumi:"gitSource"`
-	Mode                pulumi.StringPtrInput                               `pulumi:"mode"`
-	SourceCodePath      pulumi.StringPtrInput                               `pulumi:"sourceCodePath"`
-	Status              GetAppsAppPendingDeploymentStatusInput              `pulumi:"status"`
-	// The update time of the app.
-	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
-}
-
-func (GetAppsAppPendingDeploymentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeployment)(nil)).Elem()
-}
-
-func (i GetAppsAppPendingDeploymentArgs) ToGetAppsAppPendingDeploymentOutput() GetAppsAppPendingDeploymentOutput {
-	return i.ToGetAppsAppPendingDeploymentOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppPendingDeploymentArgs) ToGetAppsAppPendingDeploymentOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentOutput)
-}
-
-type GetAppsAppPendingDeploymentOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppPendingDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeployment)(nil)).Elem()
-}
-
-func (o GetAppsAppPendingDeploymentOutput) ToGetAppsAppPendingDeploymentOutput() GetAppsAppPendingDeploymentOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentOutput) ToGetAppsAppPendingDeploymentOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) []string { return v.Commands }).(pulumi.StringArrayOutput)
-}
-
-// The creation time of the app.
-func (o GetAppsAppPendingDeploymentOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) string { return v.CreateTime }).(pulumi.StringOutput)
-}
-
-// The email of the user that created the app.
-func (o GetAppsAppPendingDeploymentOutput) Creator() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) string { return v.Creator }).(pulumi.StringOutput)
-}
-
-func (o GetAppsAppPendingDeploymentOutput) DeploymentArtifacts() GetAppsAppPendingDeploymentDeploymentArtifactsOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) GetAppsAppPendingDeploymentDeploymentArtifacts {
-		return v.DeploymentArtifacts
-	}).(GetAppsAppPendingDeploymentDeploymentArtifactsOutput)
-}
-
-func (o GetAppsAppPendingDeploymentOutput) DeploymentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentOutput) EnvVars() GetAppsAppPendingDeploymentEnvVarArrayOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) []GetAppsAppPendingDeploymentEnvVar { return v.EnvVars }).(GetAppsAppPendingDeploymentEnvVarArrayOutput)
-}
-
-func (o GetAppsAppPendingDeploymentOutput) GitSource() GetAppsAppPendingDeploymentGitSourcePtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) *GetAppsAppPendingDeploymentGitSource { return v.GitSource }).(GetAppsAppPendingDeploymentGitSourcePtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentOutput) SourceCodePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentOutput) Status() GetAppsAppPendingDeploymentStatusOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) GetAppsAppPendingDeploymentStatus { return v.Status }).(GetAppsAppPendingDeploymentStatusOutput)
-}
-
-// The update time of the app.
-func (o GetAppsAppPendingDeploymentOutput) UpdateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeployment) string { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-type GetAppsAppPendingDeploymentDeploymentArtifacts struct {
-	SourceCodePath *string `pulumi:"sourceCodePath"`
-}
-
-// GetAppsAppPendingDeploymentDeploymentArtifactsInput is an input type that accepts GetAppsAppPendingDeploymentDeploymentArtifactsArgs and GetAppsAppPendingDeploymentDeploymentArtifactsOutput values.
-// You can construct a concrete instance of `GetAppsAppPendingDeploymentDeploymentArtifactsInput` via:
-//
-//	GetAppsAppPendingDeploymentDeploymentArtifactsArgs{...}
-type GetAppsAppPendingDeploymentDeploymentArtifactsInput interface {
-	pulumi.Input
-
-	ToGetAppsAppPendingDeploymentDeploymentArtifactsOutput() GetAppsAppPendingDeploymentDeploymentArtifactsOutput
-	ToGetAppsAppPendingDeploymentDeploymentArtifactsOutputWithContext(context.Context) GetAppsAppPendingDeploymentDeploymentArtifactsOutput
-}
-
-type GetAppsAppPendingDeploymentDeploymentArtifactsArgs struct {
-	SourceCodePath pulumi.StringPtrInput `pulumi:"sourceCodePath"`
-}
-
-func (GetAppsAppPendingDeploymentDeploymentArtifactsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentDeploymentArtifacts)(nil)).Elem()
-}
-
-func (i GetAppsAppPendingDeploymentDeploymentArtifactsArgs) ToGetAppsAppPendingDeploymentDeploymentArtifactsOutput() GetAppsAppPendingDeploymentDeploymentArtifactsOutput {
-	return i.ToGetAppsAppPendingDeploymentDeploymentArtifactsOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppPendingDeploymentDeploymentArtifactsArgs) ToGetAppsAppPendingDeploymentDeploymentArtifactsOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentDeploymentArtifactsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentDeploymentArtifactsOutput)
-}
-
-type GetAppsAppPendingDeploymentDeploymentArtifactsOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppPendingDeploymentDeploymentArtifactsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentDeploymentArtifacts)(nil)).Elem()
-}
-
-func (o GetAppsAppPendingDeploymentDeploymentArtifactsOutput) ToGetAppsAppPendingDeploymentDeploymentArtifactsOutput() GetAppsAppPendingDeploymentDeploymentArtifactsOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentDeploymentArtifactsOutput) ToGetAppsAppPendingDeploymentDeploymentArtifactsOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentDeploymentArtifactsOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentDeploymentArtifactsOutput) SourceCodePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentDeploymentArtifacts) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
-}
-
-type GetAppsAppPendingDeploymentEnvVar struct {
-	// The name of Genie Space.
-	Name      *string `pulumi:"name"`
-	Value     *string `pulumi:"value"`
-	ValueFrom *string `pulumi:"valueFrom"`
-}
-
-// GetAppsAppPendingDeploymentEnvVarInput is an input type that accepts GetAppsAppPendingDeploymentEnvVarArgs and GetAppsAppPendingDeploymentEnvVarOutput values.
-// You can construct a concrete instance of `GetAppsAppPendingDeploymentEnvVarInput` via:
-//
-//	GetAppsAppPendingDeploymentEnvVarArgs{...}
-type GetAppsAppPendingDeploymentEnvVarInput interface {
-	pulumi.Input
-
-	ToGetAppsAppPendingDeploymentEnvVarOutput() GetAppsAppPendingDeploymentEnvVarOutput
-	ToGetAppsAppPendingDeploymentEnvVarOutputWithContext(context.Context) GetAppsAppPendingDeploymentEnvVarOutput
-}
-
-type GetAppsAppPendingDeploymentEnvVarArgs struct {
-	// The name of Genie Space.
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	Value     pulumi.StringPtrInput `pulumi:"value"`
-	ValueFrom pulumi.StringPtrInput `pulumi:"valueFrom"`
-}
-
-func (GetAppsAppPendingDeploymentEnvVarArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentEnvVar)(nil)).Elem()
-}
-
-func (i GetAppsAppPendingDeploymentEnvVarArgs) ToGetAppsAppPendingDeploymentEnvVarOutput() GetAppsAppPendingDeploymentEnvVarOutput {
-	return i.ToGetAppsAppPendingDeploymentEnvVarOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppPendingDeploymentEnvVarArgs) ToGetAppsAppPendingDeploymentEnvVarOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentEnvVarOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentEnvVarOutput)
-}
-
-// GetAppsAppPendingDeploymentEnvVarArrayInput is an input type that accepts GetAppsAppPendingDeploymentEnvVarArray and GetAppsAppPendingDeploymentEnvVarArrayOutput values.
-// You can construct a concrete instance of `GetAppsAppPendingDeploymentEnvVarArrayInput` via:
-//
-//	GetAppsAppPendingDeploymentEnvVarArray{ GetAppsAppPendingDeploymentEnvVarArgs{...} }
-type GetAppsAppPendingDeploymentEnvVarArrayInput interface {
-	pulumi.Input
-
-	ToGetAppsAppPendingDeploymentEnvVarArrayOutput() GetAppsAppPendingDeploymentEnvVarArrayOutput
-	ToGetAppsAppPendingDeploymentEnvVarArrayOutputWithContext(context.Context) GetAppsAppPendingDeploymentEnvVarArrayOutput
-}
-
-type GetAppsAppPendingDeploymentEnvVarArray []GetAppsAppPendingDeploymentEnvVarInput
-
-func (GetAppsAppPendingDeploymentEnvVarArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsAppPendingDeploymentEnvVar)(nil)).Elem()
-}
-
-func (i GetAppsAppPendingDeploymentEnvVarArray) ToGetAppsAppPendingDeploymentEnvVarArrayOutput() GetAppsAppPendingDeploymentEnvVarArrayOutput {
-	return i.ToGetAppsAppPendingDeploymentEnvVarArrayOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppPendingDeploymentEnvVarArray) ToGetAppsAppPendingDeploymentEnvVarArrayOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentEnvVarArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentEnvVarArrayOutput)
-}
-
-type GetAppsAppPendingDeploymentEnvVarOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppPendingDeploymentEnvVarOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentEnvVar)(nil)).Elem()
-}
-
-func (o GetAppsAppPendingDeploymentEnvVarOutput) ToGetAppsAppPendingDeploymentEnvVarOutput() GetAppsAppPendingDeploymentEnvVarOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentEnvVarOutput) ToGetAppsAppPendingDeploymentEnvVarOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentEnvVarOutput {
-	return o
-}
-
-// The name of Genie Space.
-func (o GetAppsAppPendingDeploymentEnvVarOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentEnvVar) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentEnvVarOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentEnvVar) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentEnvVarOutput) ValueFrom() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentEnvVar) *string { return v.ValueFrom }).(pulumi.StringPtrOutput)
-}
-
-type GetAppsAppPendingDeploymentEnvVarArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppPendingDeploymentEnvVarArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsAppPendingDeploymentEnvVar)(nil)).Elem()
-}
-
-func (o GetAppsAppPendingDeploymentEnvVarArrayOutput) ToGetAppsAppPendingDeploymentEnvVarArrayOutput() GetAppsAppPendingDeploymentEnvVarArrayOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentEnvVarArrayOutput) ToGetAppsAppPendingDeploymentEnvVarArrayOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentEnvVarArrayOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentEnvVarArrayOutput) Index(i pulumi.IntInput) GetAppsAppPendingDeploymentEnvVarOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppsAppPendingDeploymentEnvVar {
-		return vs[0].([]GetAppsAppPendingDeploymentEnvVar)[vs[1].(int)]
-	}).(GetAppsAppPendingDeploymentEnvVarOutput)
-}
-
-type GetAppsAppPendingDeploymentGitSource struct {
-	Branch         *string                                           `pulumi:"branch"`
-	Commit         *string                                           `pulumi:"commit"`
-	GitRepository  GetAppsAppPendingDeploymentGitSourceGitRepository `pulumi:"gitRepository"`
-	ResolvedCommit string                                            `pulumi:"resolvedCommit"`
-	SourceCodePath *string                                           `pulumi:"sourceCodePath"`
-	Tag            *string                                           `pulumi:"tag"`
-}
-
-// GetAppsAppPendingDeploymentGitSourceInput is an input type that accepts GetAppsAppPendingDeploymentGitSourceArgs and GetAppsAppPendingDeploymentGitSourceOutput values.
-// You can construct a concrete instance of `GetAppsAppPendingDeploymentGitSourceInput` via:
-//
-//	GetAppsAppPendingDeploymentGitSourceArgs{...}
-type GetAppsAppPendingDeploymentGitSourceInput interface {
-	pulumi.Input
-
-	ToGetAppsAppPendingDeploymentGitSourceOutput() GetAppsAppPendingDeploymentGitSourceOutput
-	ToGetAppsAppPendingDeploymentGitSourceOutputWithContext(context.Context) GetAppsAppPendingDeploymentGitSourceOutput
-}
-
-type GetAppsAppPendingDeploymentGitSourceArgs struct {
-	Branch         pulumi.StringPtrInput                                  `pulumi:"branch"`
-	Commit         pulumi.StringPtrInput                                  `pulumi:"commit"`
-	GitRepository  GetAppsAppPendingDeploymentGitSourceGitRepositoryInput `pulumi:"gitRepository"`
-	ResolvedCommit pulumi.StringInput                                     `pulumi:"resolvedCommit"`
-	SourceCodePath pulumi.StringPtrInput                                  `pulumi:"sourceCodePath"`
-	Tag            pulumi.StringPtrInput                                  `pulumi:"tag"`
-}
-
-func (GetAppsAppPendingDeploymentGitSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentGitSource)(nil)).Elem()
-}
-
-func (i GetAppsAppPendingDeploymentGitSourceArgs) ToGetAppsAppPendingDeploymentGitSourceOutput() GetAppsAppPendingDeploymentGitSourceOutput {
-	return i.ToGetAppsAppPendingDeploymentGitSourceOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppPendingDeploymentGitSourceArgs) ToGetAppsAppPendingDeploymentGitSourceOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentGitSourceOutput)
-}
-
-func (i GetAppsAppPendingDeploymentGitSourceArgs) ToGetAppsAppPendingDeploymentGitSourcePtrOutput() GetAppsAppPendingDeploymentGitSourcePtrOutput {
-	return i.ToGetAppsAppPendingDeploymentGitSourcePtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppPendingDeploymentGitSourceArgs) ToGetAppsAppPendingDeploymentGitSourcePtrOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentGitSourceOutput).ToGetAppsAppPendingDeploymentGitSourcePtrOutputWithContext(ctx)
-}
-
-// GetAppsAppPendingDeploymentGitSourcePtrInput is an input type that accepts GetAppsAppPendingDeploymentGitSourceArgs, GetAppsAppPendingDeploymentGitSourcePtr and GetAppsAppPendingDeploymentGitSourcePtrOutput values.
-// You can construct a concrete instance of `GetAppsAppPendingDeploymentGitSourcePtrInput` via:
-//
-//	        GetAppsAppPendingDeploymentGitSourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsAppPendingDeploymentGitSourcePtrInput interface {
-	pulumi.Input
-
-	ToGetAppsAppPendingDeploymentGitSourcePtrOutput() GetAppsAppPendingDeploymentGitSourcePtrOutput
-	ToGetAppsAppPendingDeploymentGitSourcePtrOutputWithContext(context.Context) GetAppsAppPendingDeploymentGitSourcePtrOutput
-}
-
-type getAppsAppPendingDeploymentGitSourcePtrType GetAppsAppPendingDeploymentGitSourceArgs
-
-func GetAppsAppPendingDeploymentGitSourcePtr(v *GetAppsAppPendingDeploymentGitSourceArgs) GetAppsAppPendingDeploymentGitSourcePtrInput {
-	return (*getAppsAppPendingDeploymentGitSourcePtrType)(v)
-}
-
-func (*getAppsAppPendingDeploymentGitSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsAppPendingDeploymentGitSource)(nil)).Elem()
-}
-
-func (i *getAppsAppPendingDeploymentGitSourcePtrType) ToGetAppsAppPendingDeploymentGitSourcePtrOutput() GetAppsAppPendingDeploymentGitSourcePtrOutput {
-	return i.ToGetAppsAppPendingDeploymentGitSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsAppPendingDeploymentGitSourcePtrType) ToGetAppsAppPendingDeploymentGitSourcePtrOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentGitSourcePtrOutput)
-}
-
-type GetAppsAppPendingDeploymentGitSourceOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppPendingDeploymentGitSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentGitSource)(nil)).Elem()
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) ToGetAppsAppPendingDeploymentGitSourceOutput() GetAppsAppPendingDeploymentGitSourceOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) ToGetAppsAppPendingDeploymentGitSourceOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourceOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) ToGetAppsAppPendingDeploymentGitSourcePtrOutput() GetAppsAppPendingDeploymentGitSourcePtrOutput {
-	return o.ToGetAppsAppPendingDeploymentGitSourcePtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) ToGetAppsAppPendingDeploymentGitSourcePtrOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsAppPendingDeploymentGitSource) *GetAppsAppPendingDeploymentGitSource {
-		return &v
-	}).(GetAppsAppPendingDeploymentGitSourcePtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentGitSource) *string { return v.Branch }).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) Commit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentGitSource) *string { return v.Commit }).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) GitRepository() GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentGitSource) GetAppsAppPendingDeploymentGitSourceGitRepository {
-		return v.GitRepository
-	}).(GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) ResolvedCommit() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentGitSource) string { return v.ResolvedCommit }).(pulumi.StringOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) SourceCodePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentGitSource) *string { return v.SourceCodePath }).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentGitSource) *string { return v.Tag }).(pulumi.StringPtrOutput)
-}
-
-type GetAppsAppPendingDeploymentGitSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppPendingDeploymentGitSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsAppPendingDeploymentGitSource)(nil)).Elem()
-}
-
-func (o GetAppsAppPendingDeploymentGitSourcePtrOutput) ToGetAppsAppPendingDeploymentGitSourcePtrOutput() GetAppsAppPendingDeploymentGitSourcePtrOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentGitSourcePtrOutput) ToGetAppsAppPendingDeploymentGitSourcePtrOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourcePtrOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentGitSourcePtrOutput) Elem() GetAppsAppPendingDeploymentGitSourceOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSource) GetAppsAppPendingDeploymentGitSource {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsAppPendingDeploymentGitSource
-		return ret
-	}).(GetAppsAppPendingDeploymentGitSourceOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourcePtrOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Branch
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourcePtrOutput) Commit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Commit
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourcePtrOutput) GitRepository() GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSource) *GetAppsAppPendingDeploymentGitSourceGitRepository {
-		if v == nil {
-			return nil
-		}
-		return &v.GitRepository
-	}).(GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourcePtrOutput) ResolvedCommit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSource) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ResolvedCommit
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourcePtrOutput) SourceCodePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SourceCodePath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourcePtrOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Tag
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppsAppPendingDeploymentGitSourceGitRepository struct {
-	Provider string `pulumi:"provider"`
-	// The URL of the app once it is deployed.
-	Url string `pulumi:"url"`
-}
-
-// GetAppsAppPendingDeploymentGitSourceGitRepositoryInput is an input type that accepts GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs and GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput values.
-// You can construct a concrete instance of `GetAppsAppPendingDeploymentGitSourceGitRepositoryInput` via:
-//
-//	GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs{...}
-type GetAppsAppPendingDeploymentGitSourceGitRepositoryInput interface {
-	pulumi.Input
-
-	ToGetAppsAppPendingDeploymentGitSourceGitRepositoryOutput() GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput
-	ToGetAppsAppPendingDeploymentGitSourceGitRepositoryOutputWithContext(context.Context) GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput
-}
-
-type GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs struct {
-	Provider pulumi.StringInput `pulumi:"provider"`
-	// The URL of the app once it is deployed.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentGitSourceGitRepository)(nil)).Elem()
-}
-
-func (i GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryOutput() GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput {
-	return i.ToGetAppsAppPendingDeploymentGitSourceGitRepositoryOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput)
-}
-
-func (i GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput() GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput {
-	return i.ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput).ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutputWithContext(ctx)
-}
-
-// GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrInput is an input type that accepts GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs, GetAppsAppPendingDeploymentGitSourceGitRepositoryPtr and GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput values.
-// You can construct a concrete instance of `GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrInput` via:
-//
-//	        GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrInput interface {
-	pulumi.Input
-
-	ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput() GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput
-	ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutputWithContext(context.Context) GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput
-}
-
-type getAppsAppPendingDeploymentGitSourceGitRepositoryPtrType GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs
-
-func GetAppsAppPendingDeploymentGitSourceGitRepositoryPtr(v *GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs) GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrInput {
-	return (*getAppsAppPendingDeploymentGitSourceGitRepositoryPtrType)(v)
-}
-
-func (*getAppsAppPendingDeploymentGitSourceGitRepositoryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsAppPendingDeploymentGitSourceGitRepository)(nil)).Elem()
-}
-
-func (i *getAppsAppPendingDeploymentGitSourceGitRepositoryPtrType) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput() GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput {
-	return i.ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppsAppPendingDeploymentGitSourceGitRepositoryPtrType) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput)
-}
-
-type GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentGitSourceGitRepository)(nil)).Elem()
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryOutput() GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput() GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput {
-	return o.ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsAppPendingDeploymentGitSourceGitRepository) *GetAppsAppPendingDeploymentGitSourceGitRepository {
-		return &v
-	}).(GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput) Provider() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentGitSourceGitRepository) string { return v.Provider }).(pulumi.StringOutput)
-}
-
-// The URL of the app once it is deployed.
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentGitSourceGitRepository) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppsAppPendingDeploymentGitSourceGitRepository)(nil)).Elem()
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput() GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput) ToGetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput) Elem() GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSourceGitRepository) GetAppsAppPendingDeploymentGitSourceGitRepository {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppsAppPendingDeploymentGitSourceGitRepository
-		return ret
-	}).(GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput)
-}
-
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSourceGitRepository) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Provider
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URL of the app once it is deployed.
-func (o GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppsAppPendingDeploymentGitSourceGitRepository) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppsAppPendingDeploymentStatus struct {
-	// Application status message
-	Message string `pulumi:"message"`
-	// State of the application.
-	State string `pulumi:"state"`
-}
-
-// GetAppsAppPendingDeploymentStatusInput is an input type that accepts GetAppsAppPendingDeploymentStatusArgs and GetAppsAppPendingDeploymentStatusOutput values.
-// You can construct a concrete instance of `GetAppsAppPendingDeploymentStatusInput` via:
-//
-//	GetAppsAppPendingDeploymentStatusArgs{...}
-type GetAppsAppPendingDeploymentStatusInput interface {
-	pulumi.Input
-
-	ToGetAppsAppPendingDeploymentStatusOutput() GetAppsAppPendingDeploymentStatusOutput
-	ToGetAppsAppPendingDeploymentStatusOutputWithContext(context.Context) GetAppsAppPendingDeploymentStatusOutput
-}
-
-type GetAppsAppPendingDeploymentStatusArgs struct {
-	// Application status message
-	Message pulumi.StringInput `pulumi:"message"`
-	// State of the application.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (GetAppsAppPendingDeploymentStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentStatus)(nil)).Elem()
-}
-
-func (i GetAppsAppPendingDeploymentStatusArgs) ToGetAppsAppPendingDeploymentStatusOutput() GetAppsAppPendingDeploymentStatusOutput {
-	return i.ToGetAppsAppPendingDeploymentStatusOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppPendingDeploymentStatusArgs) ToGetAppsAppPendingDeploymentStatusOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppPendingDeploymentStatusOutput)
-}
-
-type GetAppsAppPendingDeploymentStatusOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppPendingDeploymentStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppPendingDeploymentStatus)(nil)).Elem()
-}
-
-func (o GetAppsAppPendingDeploymentStatusOutput) ToGetAppsAppPendingDeploymentStatusOutput() GetAppsAppPendingDeploymentStatusOutput {
-	return o
-}
-
-func (o GetAppsAppPendingDeploymentStatusOutput) ToGetAppsAppPendingDeploymentStatusOutputWithContext(ctx context.Context) GetAppsAppPendingDeploymentStatusOutput {
-	return o
-}
-
-// Application status message
-func (o GetAppsAppPendingDeploymentStatusOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentStatus) string { return v.Message }).(pulumi.StringOutput)
-}
-
-// State of the application.
-func (o GetAppsAppPendingDeploymentStatusOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppPendingDeploymentStatus) string { return v.State }).(pulumi.StringOutput)
-}
-
-type GetAppsAppResource struct {
-	// attribute
-	Database *GetAppsAppResourceDatabase `pulumi:"database"`
-	// The description of the resource.
-	Description *string                       `pulumi:"description"`
-	Experiment  *GetAppsAppResourceExperiment `pulumi:"experiment"`
-	// attribute
-	GenieSpace *GetAppsAppResourceGenieSpace `pulumi:"genieSpace"`
-	// attribute
-	Job *GetAppsAppResourceJob `pulumi:"job"`
-	// The name of Genie Space.
-	Name string `pulumi:"name"`
-	// attribute
-	Secret *GetAppsAppResourceSecret `pulumi:"secret"`
-	// attribute
-	ServingEndpoint *GetAppsAppResourceServingEndpoint `pulumi:"servingEndpoint"`
-	// attribute
-	SqlWarehouse *GetAppsAppResourceSqlWarehouse `pulumi:"sqlWarehouse"`
-	// attribute
-	UcSecurable *GetAppsAppResourceUcSecurable `pulumi:"ucSecurable"`
-}
-
-// GetAppsAppResourceInput is an input type that accepts GetAppsAppResourceArgs and GetAppsAppResourceOutput values.
-// You can construct a concrete instance of `GetAppsAppResourceInput` via:
-//
-//	GetAppsAppResourceArgs{...}
-type GetAppsAppResourceInput interface {
-	pulumi.Input
-
-	ToGetAppsAppResourceOutput() GetAppsAppResourceOutput
-	ToGetAppsAppResourceOutputWithContext(context.Context) GetAppsAppResourceOutput
-}
-
-type GetAppsAppResourceArgs struct {
-	// attribute
-	Database GetAppsAppResourceDatabasePtrInput `pulumi:"database"`
-	// The description of the resource.
-	Description pulumi.StringPtrInput                `pulumi:"description"`
-	Experiment  GetAppsAppResourceExperimentPtrInput `pulumi:"experiment"`
-	// attribute
-	GenieSpace GetAppsAppResourceGenieSpacePtrInput `pulumi:"genieSpace"`
-	// attribute
-	Job GetAppsAppResourceJobPtrInput `pulumi:"job"`
-	// The name of Genie Space.
-	Name pulumi.StringInput `pulumi:"name"`
-	// attribute
-	Secret GetAppsAppResourceSecretPtrInput `pulumi:"secret"`
-	// attribute
-	ServingEndpoint GetAppsAppResourceServingEndpointPtrInput `pulumi:"servingEndpoint"`
-	// attribute
-	SqlWarehouse GetAppsAppResourceSqlWarehousePtrInput `pulumi:"sqlWarehouse"`
-	// attribute
-	UcSecurable GetAppsAppResourceUcSecurablePtrInput `pulumi:"ucSecurable"`
-}
-
-func (GetAppsAppResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppResource)(nil)).Elem()
-}
-
-func (i GetAppsAppResourceArgs) ToGetAppsAppResourceOutput() GetAppsAppResourceOutput {
-	return i.ToGetAppsAppResourceOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppResourceArgs) ToGetAppsAppResourceOutputWithContext(ctx context.Context) GetAppsAppResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppResourceOutput)
-}
-
-// GetAppsAppResourceArrayInput is an input type that accepts GetAppsAppResourceArray and GetAppsAppResourceArrayOutput values.
-// You can construct a concrete instance of `GetAppsAppResourceArrayInput` via:
-//
-//	GetAppsAppResourceArray{ GetAppsAppResourceArgs{...} }
-type GetAppsAppResourceArrayInput interface {
-	pulumi.Input
-
-	ToGetAppsAppResourceArrayOutput() GetAppsAppResourceArrayOutput
-	ToGetAppsAppResourceArrayOutputWithContext(context.Context) GetAppsAppResourceArrayOutput
-}
-
-type GetAppsAppResourceArray []GetAppsAppResourceInput
-
-func (GetAppsAppResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsAppResource)(nil)).Elem()
-}
-
-func (i GetAppsAppResourceArray) ToGetAppsAppResourceArrayOutput() GetAppsAppResourceArrayOutput {
-	return i.ToGetAppsAppResourceArrayOutputWithContext(context.Background())
-}
-
-func (i GetAppsAppResourceArray) ToGetAppsAppResourceArrayOutputWithContext(ctx context.Context) GetAppsAppResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppResourceArrayOutput)
-}
-
-type GetAppsAppResourceOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppsAppResource)(nil)).Elem()
-}
-
-func (o GetAppsAppResourceOutput) ToGetAppsAppResourceOutput() GetAppsAppResourceOutput {
-	return o
-}
-
-func (o GetAppsAppResourceOutput) ToGetAppsAppResourceOutputWithContext(ctx context.Context) GetAppsAppResourceOutput {
-	return o
-}
-
-// attribute
-func (o GetAppsAppResourceOutput) Database() GetAppsAppResourceDatabasePtrOutput {
-	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceDatabase { return v.Database }).(GetAppsAppResourceDatabasePtrOutput)
-}
-
-// The description of the resource.
-func (o GetAppsAppResourceOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsAppResource) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o GetAppsAppResourceOutput) Experiment() GetAppsAppResourceExperimentPtrOutput {
-	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceExperiment { return v.Experiment }).(GetAppsAppResourceExperimentPtrOutput)
-}
-
-// attribute
-func (o GetAppsAppResourceOutput) GenieSpace() GetAppsAppResourceGenieSpacePtrOutput {
-	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceGenieSpace { return v.GenieSpace }).(GetAppsAppResourceGenieSpacePtrOutput)
-}
-
-// attribute
-func (o GetAppsAppResourceOutput) Job() GetAppsAppResourceJobPtrOutput {
-	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceJob { return v.Job }).(GetAppsAppResourceJobPtrOutput)
-}
-
-// The name of Genie Space.
-func (o GetAppsAppResourceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppsAppResource) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// attribute
-func (o GetAppsAppResourceOutput) Secret() GetAppsAppResourceSecretPtrOutput {
-	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceSecret { return v.Secret }).(GetAppsAppResourceSecretPtrOutput)
-}
-
-// attribute
-func (o GetAppsAppResourceOutput) ServingEndpoint() GetAppsAppResourceServingEndpointPtrOutput {
-	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceServingEndpoint { return v.ServingEndpoint }).(GetAppsAppResourceServingEndpointPtrOutput)
-}
-
-// attribute
-func (o GetAppsAppResourceOutput) SqlWarehouse() GetAppsAppResourceSqlWarehousePtrOutput {
-	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceSqlWarehouse { return v.SqlWarehouse }).(GetAppsAppResourceSqlWarehousePtrOutput)
-}
-
-// attribute
-func (o GetAppsAppResourceOutput) UcSecurable() GetAppsAppResourceUcSecurablePtrOutput {
-	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceUcSecurable { return v.UcSecurable }).(GetAppsAppResourceUcSecurablePtrOutput)
-}
-
-type GetAppsAppResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppsAppResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppsAppResource)(nil)).Elem()
-}
-
-func (o GetAppsAppResourceArrayOutput) ToGetAppsAppResourceArrayOutput() GetAppsAppResourceArrayOutput {
-	return o
-}
-
-func (o GetAppsAppResourceArrayOutput) ToGetAppsAppResourceArrayOutputWithContext(ctx context.Context) GetAppsAppResourceArrayOutput {
-	return o
-}
-
-func (o GetAppsAppResourceArrayOutput) Index(i pulumi.IntInput) GetAppsAppResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppsAppResource {
-		return vs[0].([]GetAppsAppResource)[vs[1].(int)]
-	}).(GetAppsAppResourceOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskPowerBiModelInput)(nil)).Elem(), JobTaskPowerBiTaskPowerBiModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskPowerBiModelPtrInput)(nil)).Elem(), JobTaskPowerBiTaskPowerBiModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskTableInput)(nil)).Elem(), JobTaskPowerBiTaskTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskTableArrayInput)(nil)).Elem(), JobTaskPowerBiTaskTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskPtrInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskInput)(nil)).Elem(), JobTaskRunJobTaskArgs{})
@@ -76322,14 +76664,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointProviderConfigPtrInput)(nil)).Elem(), PostgresEndpointProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointSpecInput)(nil)).Elem(), PostgresEndpointSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointSpecPtrInput)(nil)).Elem(), PostgresEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointSpecGroupInput)(nil)).Elem(), PostgresEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointSpecGroupPtrInput)(nil)).Elem(), PostgresEndpointSpecGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointSpecSettingsInput)(nil)).Elem(), PostgresEndpointSpecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointSpecSettingsPtrInput)(nil)).Elem(), PostgresEndpointSpecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointStatusInput)(nil)).Elem(), PostgresEndpointStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointStatusPtrInput)(nil)).Elem(), PostgresEndpointStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointStatusGroupInput)(nil)).Elem(), PostgresEndpointStatusGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointStatusGroupPtrInput)(nil)).Elem(), PostgresEndpointStatusGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointStatusHostsInput)(nil)).Elem(), PostgresEndpointStatusHostsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointStatusHostsPtrInput)(nil)).Elem(), PostgresEndpointStatusHostsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointStatusSettingsInput)(nil)).Elem(), PostgresEndpointStatusSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresEndpointStatusSettingsPtrInput)(nil)).Elem(), PostgresEndpointStatusSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresProjectInitialEndpointSpecInput)(nil)).Elem(), PostgresProjectInitialEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresProjectInitialEndpointSpecPtrInput)(nil)).Elem(), PostgresProjectInitialEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresProjectInitialEndpointSpecGroupInput)(nil)).Elem(), PostgresProjectInitialEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresProjectInitialEndpointSpecGroupPtrInput)(nil)).Elem(), PostgresProjectInitialEndpointSpecGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresProjectProviderConfigInput)(nil)).Elem(), PostgresProjectProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresProjectProviderConfigPtrInput)(nil)).Elem(), PostgresProjectProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresProjectSpecInput)(nil)).Elem(), PostgresProjectSpecArgs{})
@@ -76554,6 +76904,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchEndpointEndpointStatusArrayInput)(nil)).Elem(), VectorSearchEndpointEndpointStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchEndpointProviderConfigInput)(nil)).Elem(), VectorSearchEndpointProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchEndpointProviderConfigPtrInput)(nil)).Elem(), VectorSearchEndpointProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchEndpointScalingInfoInput)(nil)).Elem(), VectorSearchEndpointScalingInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchEndpointScalingInfoPtrInput)(nil)).Elem(), VectorSearchEndpointScalingInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecPtrInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs{})
@@ -76755,6 +77107,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppPendingDeploymentStatusInput)(nil)).Elem(), GetAppAppPendingDeploymentStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppResourceInput)(nil)).Elem(), GetAppAppResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppResourceArrayInput)(nil)).Elem(), GetAppAppResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppResourceAppInput)(nil)).Elem(), GetAppAppResourceAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppResourceAppPtrInput)(nil)).Elem(), GetAppAppResourceAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppResourceDatabaseInput)(nil)).Elem(), GetAppAppResourceDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppResourceDatabasePtrInput)(nil)).Elem(), GetAppAppResourceDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppResourceExperimentInput)(nil)).Elem(), GetAppAppResourceExperimentArgs{})
@@ -76786,19 +77140,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppActiveDeploymentStatusInput)(nil)).Elem(), GetAppsAppActiveDeploymentStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppAppStatusInput)(nil)).Elem(), GetAppsAppAppStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppComputeStatusInput)(nil)).Elem(), GetAppsAppComputeStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppGitRepositoryInput)(nil)).Elem(), GetAppsAppGitRepositoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppGitRepositoryPtrInput)(nil)).Elem(), GetAppsAppGitRepositoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentInput)(nil)).Elem(), GetAppsAppPendingDeploymentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentDeploymentArtifactsInput)(nil)).Elem(), GetAppsAppPendingDeploymentDeploymentArtifactsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentEnvVarInput)(nil)).Elem(), GetAppsAppPendingDeploymentEnvVarArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentEnvVarArrayInput)(nil)).Elem(), GetAppsAppPendingDeploymentEnvVarArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentGitSourceInput)(nil)).Elem(), GetAppsAppPendingDeploymentGitSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentGitSourcePtrInput)(nil)).Elem(), GetAppsAppPendingDeploymentGitSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentGitSourceGitRepositoryInput)(nil)).Elem(), GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrInput)(nil)).Elem(), GetAppsAppPendingDeploymentGitSourceGitRepositoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppPendingDeploymentStatusInput)(nil)).Elem(), GetAppsAppPendingDeploymentStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppResourceInput)(nil)).Elem(), GetAppsAppResourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppResourceArrayInput)(nil)).Elem(), GetAppsAppResourceArray{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskPowerBiModelOutput{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskPowerBiModelPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskTableOutput{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskTableArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskPythonWheelTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskPythonWheelTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskRunJobTaskOutput{})
@@ -77271,14 +77616,22 @@ func init() {
 	pulumi.RegisterOutputType(PostgresEndpointProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointSpecOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointSpecPtrOutput{})
+	pulumi.RegisterOutputType(PostgresEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(PostgresEndpointSpecGroupPtrOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointSpecSettingsOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointSpecSettingsPtrOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointStatusOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointStatusPtrOutput{})
+	pulumi.RegisterOutputType(PostgresEndpointStatusGroupOutput{})
+	pulumi.RegisterOutputType(PostgresEndpointStatusGroupPtrOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointStatusHostsOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointStatusHostsPtrOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointStatusSettingsOutput{})
 	pulumi.RegisterOutputType(PostgresEndpointStatusSettingsPtrOutput{})
+	pulumi.RegisterOutputType(PostgresProjectInitialEndpointSpecOutput{})
+	pulumi.RegisterOutputType(PostgresProjectInitialEndpointSpecPtrOutput{})
+	pulumi.RegisterOutputType(PostgresProjectInitialEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(PostgresProjectInitialEndpointSpecGroupPtrOutput{})
 	pulumi.RegisterOutputType(PostgresProjectProviderConfigOutput{})
 	pulumi.RegisterOutputType(PostgresProjectProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(PostgresProjectSpecOutput{})
@@ -77503,6 +77856,8 @@ func init() {
 	pulumi.RegisterOutputType(VectorSearchEndpointEndpointStatusArrayOutput{})
 	pulumi.RegisterOutputType(VectorSearchEndpointProviderConfigOutput{})
 	pulumi.RegisterOutputType(VectorSearchEndpointProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(VectorSearchEndpointScalingInfoOutput{})
+	pulumi.RegisterOutputType(VectorSearchEndpointScalingInfoPtrOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecPtrOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput{})
@@ -77704,6 +78059,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppAppPendingDeploymentStatusOutput{})
 	pulumi.RegisterOutputType(GetAppAppResourceOutput{})
 	pulumi.RegisterOutputType(GetAppAppResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetAppAppResourceAppOutput{})
+	pulumi.RegisterOutputType(GetAppAppResourceAppPtrOutput{})
 	pulumi.RegisterOutputType(GetAppAppResourceDatabaseOutput{})
 	pulumi.RegisterOutputType(GetAppAppResourceDatabasePtrOutput{})
 	pulumi.RegisterOutputType(GetAppAppResourceExperimentOutput{})
@@ -77735,17 +78092,4 @@ func init() {
 	pulumi.RegisterOutputType(GetAppsAppActiveDeploymentStatusOutput{})
 	pulumi.RegisterOutputType(GetAppsAppAppStatusOutput{})
 	pulumi.RegisterOutputType(GetAppsAppComputeStatusOutput{})
-	pulumi.RegisterOutputType(GetAppsAppGitRepositoryOutput{})
-	pulumi.RegisterOutputType(GetAppsAppGitRepositoryPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentOutput{})
-	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentDeploymentArtifactsOutput{})
-	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentEnvVarOutput{})
-	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentEnvVarArrayOutput{})
-	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentGitSourceOutput{})
-	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentGitSourcePtrOutput{})
-	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentGitSourceGitRepositoryOutput{})
-	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentGitSourceGitRepositoryPtrOutput{})
-	pulumi.RegisterOutputType(GetAppsAppPendingDeploymentStatusOutput{})
-	pulumi.RegisterOutputType(GetAppsAppResourceOutput{})
-	pulumi.RegisterOutputType(GetAppsAppResourceArrayOutput{})
 }

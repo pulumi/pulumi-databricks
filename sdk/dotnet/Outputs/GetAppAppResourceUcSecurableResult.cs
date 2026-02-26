@@ -21,6 +21,7 @@ namespace Pulumi.Databricks.Outputs
         /// the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
         /// </summary>
         public readonly string SecurableFullName;
+        public readonly string SecurableKind;
         /// <summary>
         /// the type of UC securable, i.e. `VOLUME`.
         /// </summary>
@@ -32,10 +33,13 @@ namespace Pulumi.Databricks.Outputs
 
             string securableFullName,
 
+            string securableKind,
+
             string securableType)
         {
             Permission = permission;
             SecurableFullName = securableFullName;
+            SecurableKind = securableKind;
             SecurableType = securableType;
         }
     }

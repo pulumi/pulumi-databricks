@@ -161,6 +161,8 @@ __all__ = [
     'AppProviderConfigArgsDict',
     'AppResourceArgs',
     'AppResourceArgsDict',
+    'AppResourceAppArgs',
+    'AppResourceAppArgsDict',
     'AppResourceDatabaseArgs',
     'AppResourceDatabaseArgsDict',
     'AppResourceExperimentArgs',
@@ -199,6 +201,8 @@ __all__ = [
     'AppsSpaceProviderConfigArgsDict',
     'AppsSpaceResourceArgs',
     'AppsSpaceResourceArgsDict',
+    'AppsSpaceResourceAppArgs',
+    'AppsSpaceResourceAppArgsDict',
     'AppsSpaceResourceDatabaseArgs',
     'AppsSpaceResourceDatabaseArgsDict',
     'AppsSpaceResourceExperimentArgs',
@@ -1487,14 +1491,22 @@ __all__ = [
     'PostgresEndpointProviderConfigArgsDict',
     'PostgresEndpointSpecArgs',
     'PostgresEndpointSpecArgsDict',
+    'PostgresEndpointSpecGroupArgs',
+    'PostgresEndpointSpecGroupArgsDict',
     'PostgresEndpointSpecSettingsArgs',
     'PostgresEndpointSpecSettingsArgsDict',
     'PostgresEndpointStatusArgs',
     'PostgresEndpointStatusArgsDict',
+    'PostgresEndpointStatusGroupArgs',
+    'PostgresEndpointStatusGroupArgsDict',
     'PostgresEndpointStatusHostsArgs',
     'PostgresEndpointStatusHostsArgsDict',
     'PostgresEndpointStatusSettingsArgs',
     'PostgresEndpointStatusSettingsArgsDict',
+    'PostgresProjectInitialEndpointSpecArgs',
+    'PostgresProjectInitialEndpointSpecArgsDict',
+    'PostgresProjectInitialEndpointSpecGroupArgs',
+    'PostgresProjectInitialEndpointSpecGroupArgsDict',
     'PostgresProjectProviderConfigArgs',
     'PostgresProjectProviderConfigArgsDict',
     'PostgresProjectSpecArgs',
@@ -1719,6 +1731,8 @@ __all__ = [
     'VectorSearchEndpointEndpointStatusArgsDict',
     'VectorSearchEndpointProviderConfigArgs',
     'VectorSearchEndpointProviderConfigArgsDict',
+    'VectorSearchEndpointScalingInfoArgs',
+    'VectorSearchEndpointScalingInfoArgsDict',
     'VectorSearchIndexDeltaSyncIndexSpecArgs',
     'VectorSearchIndexDeltaSyncIndexSpecArgsDict',
     'VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs',
@@ -6395,6 +6409,7 @@ class AppResourceArgsDict(TypedDict):
     """
     The name of the resource.
     """
+    app: NotRequired[pulumi.Input['AppResourceAppArgsDict']]
     database: NotRequired[pulumi.Input['AppResourceDatabaseArgsDict']]
     """
     attribute
@@ -6435,6 +6450,7 @@ class AppResourceArgsDict(TypedDict):
 class AppResourceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
+                 app: Optional[pulumi.Input['AppResourceAppArgs']] = None,
                  database: Optional[pulumi.Input['AppResourceDatabaseArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  experiment: Optional[pulumi.Input['AppResourceExperimentArgs']] = None,
@@ -6458,6 +6474,8 @@ class AppResourceArgs:
         :param pulumi.Input['AppResourceUcSecurableArgs'] uc_securable: attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
         """
         pulumi.set(__self__, "name", name)
+        if app is not None:
+            pulumi.set(__self__, "app", app)
         if database is not None:
             pulumi.set(__self__, "database", database)
         if description is not None:
@@ -6488,6 +6506,15 @@ class AppResourceArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def app(self) -> Optional[pulumi.Input['AppResourceAppArgs']]:
+        return pulumi.get(self, "app")
+
+    @app.setter
+    def app(self, value: Optional[pulumi.Input['AppResourceAppArgs']]):
+        pulumi.set(self, "app", value)
 
     @_builtins.property
     @pulumi.getter
@@ -6595,6 +6622,15 @@ class AppResourceArgs:
     @uc_securable.setter
     def uc_securable(self, value: Optional[pulumi.Input['AppResourceUcSecurableArgs']]):
         pulumi.set(self, "uc_securable", value)
+
+
+class AppResourceAppArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class AppResourceAppArgs:
+    def __init__(__self__):
+        pass
 
 
 class AppResourceDatabaseArgsDict(TypedDict):
@@ -6973,13 +7009,15 @@ class AppResourceUcSecurableArgsDict(TypedDict):
     """
     the type of UC securable, i.e. `VOLUME`.
     """
+    securable_kind: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class AppResourceUcSecurableArgs:
     def __init__(__self__, *,
                  permission: pulumi.Input[_builtins.str],
                  securable_full_name: pulumi.Input[_builtins.str],
-                 securable_type: pulumi.Input[_builtins.str]):
+                 securable_type: pulumi.Input[_builtins.str],
+                 securable_kind: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         :param pulumi.Input[_builtins.str] securable_full_name: the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
@@ -6988,6 +7026,8 @@ class AppResourceUcSecurableArgs:
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "securable_full_name", securable_full_name)
         pulumi.set(__self__, "securable_type", securable_type)
+        if securable_kind is not None:
+            pulumi.set(__self__, "securable_kind", securable_kind)
 
     @_builtins.property
     @pulumi.getter
@@ -7024,6 +7064,15 @@ class AppResourceUcSecurableArgs:
     @securable_type.setter
     def securable_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "securable_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securableKind")
+    def securable_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "securable_kind")
+
+    @securable_kind.setter
+    def securable_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "securable_kind", value)
 
 
 class AppsSettingsCustomTemplateManifestArgsDict(TypedDict):
@@ -7435,6 +7484,7 @@ class AppsSpaceResourceArgsDict(TypedDict):
     (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
     It must be unique within the workspace
     """
+    app: NotRequired[pulumi.Input['AppsSpaceResourceAppArgsDict']]
     database: NotRequired[pulumi.Input['AppsSpaceResourceDatabaseArgsDict']]
     description: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -7452,6 +7502,7 @@ class AppsSpaceResourceArgsDict(TypedDict):
 class AppsSpaceResourceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
+                 app: Optional[pulumi.Input['AppsSpaceResourceAppArgs']] = None,
                  database: Optional[pulumi.Input['AppsSpaceResourceDatabaseArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  experiment: Optional[pulumi.Input['AppsSpaceResourceExperimentArgs']] = None,
@@ -7467,6 +7518,8 @@ class AppsSpaceResourceArgs:
         :param pulumi.Input[_builtins.str] description: The description of the app space
         """
         pulumi.set(__self__, "name", name)
+        if app is not None:
+            pulumi.set(__self__, "app", app)
         if database is not None:
             pulumi.set(__self__, "database", database)
         if description is not None:
@@ -7498,6 +7551,15 @@ class AppsSpaceResourceArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def app(self) -> Optional[pulumi.Input['AppsSpaceResourceAppArgs']]:
+        return pulumi.get(self, "app")
+
+    @app.setter
+    def app(self, value: Optional[pulumi.Input['AppsSpaceResourceAppArgs']]):
+        pulumi.set(self, "app", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7582,6 +7644,15 @@ class AppsSpaceResourceArgs:
     @uc_securable.setter
     def uc_securable(self, value: Optional[pulumi.Input['AppsSpaceResourceUcSecurableArgs']]):
         pulumi.set(self, "uc_securable", value)
+
+
+class AppsSpaceResourceAppArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class AppsSpaceResourceAppArgs:
+    def __init__(__self__):
+        pass
 
 
 class AppsSpaceResourceDatabaseArgsDict(TypedDict):
@@ -7902,19 +7973,29 @@ class AppsSpaceResourceUcSecurableArgsDict(TypedDict):
     """
     Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
     """
+    securable_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (string) - The securable kind from Unity Catalog.
+    See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+    """
 
 @pulumi.input_type
 class AppsSpaceResourceUcSecurableArgs:
     def __init__(__self__, *,
                  permission: pulumi.Input[_builtins.str],
                  securable_full_name: pulumi.Input[_builtins.str],
-                 securable_type: pulumi.Input[_builtins.str]):
+                 securable_type: pulumi.Input[_builtins.str],
+                 securable_kind: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] securable_type: Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+        :param pulumi.Input[_builtins.str] securable_kind: (string) - The securable kind from Unity Catalog.
+               See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "securable_full_name", securable_full_name)
         pulumi.set(__self__, "securable_type", securable_type)
+        if securable_kind is not None:
+            pulumi.set(__self__, "securable_kind", securable_kind)
 
     @_builtins.property
     @pulumi.getter
@@ -7945,6 +8026,19 @@ class AppsSpaceResourceUcSecurableArgs:
     @securable_type.setter
     def securable_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "securable_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securableKind")
+    def securable_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The securable kind from Unity Catalog.
+        See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+        """
+        return pulumi.get(self, "securable_kind")
+
+    @securable_kind.setter
+    def securable_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "securable_kind", value)
 
 
 class AppsSpaceStatusArgsDict(TypedDict):
@@ -41226,13 +41320,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -41286,7 +41380,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -41296,7 +41390,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -41554,13 +41648,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -41575,7 +41669,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -41585,7 +41679,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.109.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -47680,6 +47774,10 @@ class PostgresEndpointSpecArgsDict(TypedDict):
     A disabled compute endpoint cannot be enabled by a connection or
     console action
     """
+    group: NotRequired[pulumi.Input['PostgresEndpointSpecGroupArgsDict']]
+    """
+    (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+    """
     no_suspension: NotRequired[pulumi.Input[_builtins.bool]]
     """
     When set to true, explicitly disables automatic suspension (never suspend).
@@ -47701,6 +47799,7 @@ class PostgresEndpointSpecArgs:
                  autoscaling_limit_max_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  autoscaling_limit_min_cu: Optional[pulumi.Input[_builtins.float]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 group: Optional[pulumi.Input['PostgresEndpointSpecGroupArgs']] = None,
                  no_suspension: Optional[pulumi.Input[_builtins.bool]] = None,
                  settings: Optional[pulumi.Input['PostgresEndpointSpecSettingsArgs']] = None,
                  suspend_timeout_duration: Optional[pulumi.Input[_builtins.str]] = None):
@@ -47712,6 +47811,7 @@ class PostgresEndpointSpecArgs:
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
+        :param pulumi.Input['PostgresEndpointSpecGroupArgs'] group: (EndpointGroupStatus) - Details on the HA configuration of the endpoint
         :param pulumi.Input[_builtins.bool] no_suspension: When set to true, explicitly disables automatic suspension (never suspend).
                Should be set to true when provided
         :param pulumi.Input['PostgresEndpointSpecSettingsArgs'] settings: (EndpointSettings)
@@ -47724,6 +47824,8 @@ class PostgresEndpointSpecArgs:
             pulumi.set(__self__, "autoscaling_limit_min_cu", autoscaling_limit_min_cu)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
         if no_suspension is not None:
             pulumi.set(__self__, "no_suspension", no_suspension)
         if settings is not None:
@@ -47783,6 +47885,18 @@ class PostgresEndpointSpecArgs:
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['PostgresEndpointSpecGroupArgs']]:
+        """
+        (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['PostgresEndpointSpecGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @_builtins.property
     @pulumi.getter(name="noSuspension")
     def no_suspension(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -47818,6 +47932,62 @@ class PostgresEndpointSpecArgs:
     @suspend_timeout_duration.setter
     def suspend_timeout_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "suspend_timeout_duration", value)
+
+
+class PostgresEndpointSpecGroupArgsDict(TypedDict):
+    max: pulumi.Input[_builtins.int]
+    min: pulumi.Input[_builtins.int]
+    enable_readable_secondaries: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+    by specifying size.max > 1
+    """
+
+@pulumi.input_type
+class PostgresEndpointSpecGroupArgs:
+    def __init__(__self__, *,
+                 max: pulumi.Input[_builtins.int],
+                 min: pulumi.Input[_builtins.int],
+                 enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+               by specifying size.max > 1
+        """
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+        if enable_readable_secondaries is not None:
+            pulumi.set(__self__, "enable_readable_secondaries", enable_readable_secondaries)
+
+    @_builtins.property
+    @pulumi.getter
+    def max(self) -> pulumi.Input[_builtins.int]:
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "max", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[_builtins.int]:
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "min", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableReadableSecondaries")
+    def enable_readable_secondaries(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+        by specifying size.max > 1
+        """
+        return pulumi.get(self, "enable_readable_secondaries")
+
+    @enable_readable_secondaries.setter
+    def enable_readable_secondaries(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_readable_secondaries", value)
 
 
 class PostgresEndpointSpecSettingsArgsDict(TypedDict):
@@ -47860,7 +48030,7 @@ class PostgresEndpointStatusArgsDict(TypedDict):
     """
     current_state: NotRequired[pulumi.Input[_builtins.str]]
     """
-    (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+    (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
     """
     disabled: NotRequired[pulumi.Input[_builtins.bool]]
     """
@@ -47873,13 +48043,17 @@ class PostgresEndpointStatusArgsDict(TypedDict):
     """
     (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
     """
+    group: NotRequired[pulumi.Input['PostgresEndpointStatusGroupArgsDict']]
+    """
+    (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+    """
     hosts: NotRequired[pulumi.Input['PostgresEndpointStatusHostsArgsDict']]
     """
     (EndpointHosts) - Contains host information for connecting to the endpoint
     """
     pending_state: NotRequired[pulumi.Input[_builtins.str]]
     """
-    (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+    (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
     """
     settings: NotRequired[pulumi.Input['PostgresEndpointStatusSettingsArgsDict']]
     """
@@ -47898,6 +48072,7 @@ class PostgresEndpointStatusArgs:
                  current_state: Optional[pulumi.Input[_builtins.str]] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 group: Optional[pulumi.Input['PostgresEndpointStatusGroupArgs']] = None,
                  hosts: Optional[pulumi.Input['PostgresEndpointStatusHostsArgs']] = None,
                  pending_state: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input['PostgresEndpointStatusSettingsArgs']] = None,
@@ -47905,14 +48080,15 @@ class PostgresEndpointStatusArgs:
         """
         :param pulumi.Input[_builtins.float] autoscaling_limit_max_cu: (number) - The maximum number of Compute Units
         :param pulumi.Input[_builtins.float] autoscaling_limit_min_cu: (number) - The minimum number of Compute Units
-        :param pulumi.Input[_builtins.str] current_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+        :param pulumi.Input[_builtins.str] current_state: (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         :param pulumi.Input[_builtins.bool] disabled: (boolean) - Whether to restrict connections to the compute endpoint.
                Enabling this option schedules a suspend compute operation.
                A disabled compute endpoint cannot be enabled by a connection or
                console action
         :param pulumi.Input[_builtins.str] endpoint_type: (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
+        :param pulumi.Input['PostgresEndpointStatusGroupArgs'] group: (EndpointGroupStatus) - Details on the HA configuration of the endpoint
         :param pulumi.Input['PostgresEndpointStatusHostsArgs'] hosts: (EndpointHosts) - Contains host information for connecting to the endpoint
-        :param pulumi.Input[_builtins.str] pending_state: (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+        :param pulumi.Input[_builtins.str] pending_state: (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         :param pulumi.Input['PostgresEndpointStatusSettingsArgs'] settings: (EndpointSettings)
         :param pulumi.Input[_builtins.str] suspend_timeout_duration: (string) - Duration of inactivity after which the compute endpoint is automatically suspended
         """
@@ -47926,6 +48102,8 @@ class PostgresEndpointStatusArgs:
             pulumi.set(__self__, "disabled", disabled)
         if endpoint_type is not None:
             pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
         if pending_state is not None:
@@ -47963,7 +48141,7 @@ class PostgresEndpointStatusArgs:
     @pulumi.getter(name="currentState")
     def current_state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+        (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         """
         return pulumi.get(self, "current_state")
 
@@ -48000,6 +48178,18 @@ class PostgresEndpointStatusArgs:
 
     @_builtins.property
     @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['PostgresEndpointStatusGroupArgs']]:
+        """
+        (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['PostgresEndpointStatusGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @_builtins.property
+    @pulumi.getter
     def hosts(self) -> Optional[pulumi.Input['PostgresEndpointStatusHostsArgs']]:
         """
         (EndpointHosts) - Contains host information for connecting to the endpoint
@@ -48014,7 +48204,7 @@ class PostgresEndpointStatusArgs:
     @pulumi.getter(name="pendingState")
     def pending_state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+        (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         """
         return pulumi.get(self, "pending_state")
 
@@ -48047,23 +48237,91 @@ class PostgresEndpointStatusArgs:
         pulumi.set(self, "suspend_timeout_duration", value)
 
 
+class PostgresEndpointStatusGroupArgsDict(TypedDict):
+    max: pulumi.Input[_builtins.int]
+    min: pulumi.Input[_builtins.int]
+    enable_readable_secondaries: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+    by specifying size.max > 1
+    """
+
+@pulumi.input_type
+class PostgresEndpointStatusGroupArgs:
+    def __init__(__self__, *,
+                 max: pulumi.Input[_builtins.int],
+                 min: pulumi.Input[_builtins.int],
+                 enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+               by specifying size.max > 1
+        """
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+        if enable_readable_secondaries is not None:
+            pulumi.set(__self__, "enable_readable_secondaries", enable_readable_secondaries)
+
+    @_builtins.property
+    @pulumi.getter
+    def max(self) -> pulumi.Input[_builtins.int]:
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "max", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[_builtins.int]:
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "min", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableReadableSecondaries")
+    def enable_readable_secondaries(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+        by specifying size.max > 1
+        """
+        return pulumi.get(self, "enable_readable_secondaries")
+
+    @enable_readable_secondaries.setter
+    def enable_readable_secondaries(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_readable_secondaries", value)
+
+
 class PostgresEndpointStatusHostsArgsDict(TypedDict):
     host: NotRequired[pulumi.Input[_builtins.str]]
     """
     (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
     to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
     """
+    read_only_host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+    this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+    if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+    """
 
 @pulumi.input_type
 class PostgresEndpointStatusHostsArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 read_only_host: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host: (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
                to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
+        :param pulumi.Input[_builtins.str] read_only_host: (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+               this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+               if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if read_only_host is not None:
+            pulumi.set(__self__, "read_only_host", read_only_host)
 
     @_builtins.property
     @pulumi.getter
@@ -48077,6 +48335,20 @@ class PostgresEndpointStatusHostsArgs:
     @host.setter
     def host(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter(name="readOnlyHost")
+    def read_only_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+        this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+        if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+        """
+        return pulumi.get(self, "read_only_host")
+
+    @read_only_host.setter
+    def read_only_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read_only_host", value)
 
 
 class PostgresEndpointStatusSettingsArgsDict(TypedDict):
@@ -48106,6 +48378,114 @@ class PostgresEndpointStatusSettingsArgs:
     @pg_settings.setter
     def pg_settings(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pg_settings", value)
+
+
+class PostgresProjectInitialEndpointSpecArgsDict(TypedDict):
+    group: NotRequired[pulumi.Input['PostgresProjectInitialEndpointSpecGroupArgsDict']]
+    """
+    Settings for HA configuration of the endpoint
+    """
+
+@pulumi.input_type
+class PostgresProjectInitialEndpointSpecArgs:
+    def __init__(__self__, *,
+                 group: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecGroupArgs']] = None):
+        """
+        :param pulumi.Input['PostgresProjectInitialEndpointSpecGroupArgs'] group: Settings for HA configuration of the endpoint
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['PostgresProjectInitialEndpointSpecGroupArgs']]:
+        """
+        Settings for HA configuration of the endpoint
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+
+class PostgresProjectInitialEndpointSpecGroupArgsDict(TypedDict):
+    max: pulumi.Input[_builtins.int]
+    """
+    The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+    compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+    true on the EndpointSpec
+    """
+    min: pulumi.Input[_builtins.int]
+    """
+    The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+    than or equal to 1
+    """
+    enable_readable_secondaries: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+    size.max > 1
+    """
+
+@pulumi.input_type
+class PostgresProjectInitialEndpointSpecGroupArgs:
+    def __init__(__self__, *,
+                 max: pulumi.Input[_builtins.int],
+                 min: pulumi.Input[_builtins.int],
+                 enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max: The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+               compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+               true on the EndpointSpec
+        :param pulumi.Input[_builtins.int] min: The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+               than or equal to 1
+        :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+               size.max > 1
+        """
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+        if enable_readable_secondaries is not None:
+            pulumi.set(__self__, "enable_readable_secondaries", enable_readable_secondaries)
+
+    @_builtins.property
+    @pulumi.getter
+    def max(self) -> pulumi.Input[_builtins.int]:
+        """
+        The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+        compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+        true on the EndpointSpec
+        """
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "max", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[_builtins.int]:
+        """
+        The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+        than or equal to 1
+        """
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "min", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableReadableSecondaries")
+    def enable_readable_secondaries(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+        size.max > 1
+        """
+        return pulumi.get(self, "enable_readable_secondaries")
+
+    @enable_readable_secondaries.setter
+    def enable_readable_secondaries(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_readable_secondaries", value)
 
 
 class PostgresProjectProviderConfigArgsDict(TypedDict):
@@ -54570,6 +54950,48 @@ class VectorSearchEndpointProviderConfigArgs:
     @workspace_id.setter
     def workspace_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workspace_id", value)
+
+
+class VectorSearchEndpointScalingInfoArgsDict(TypedDict):
+    requested_min_qps: NotRequired[pulumi.Input[_builtins.int]]
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+    """
+
+@pulumi.input_type
+class VectorSearchEndpointScalingInfoArgs:
+    def __init__(__self__, *,
+                 requested_min_qps: Optional[pulumi.Input[_builtins.int]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+        """
+        if requested_min_qps is not None:
+            pulumi.set(__self__, "requested_min_qps", requested_min_qps)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="requestedMinQps")
+    def requested_min_qps(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "requested_min_qps")
+
+    @requested_min_qps.setter
+    def requested_min_qps(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "requested_min_qps", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 class VectorSearchIndexDeltaSyncIndexSpecArgsDict(TypedDict):

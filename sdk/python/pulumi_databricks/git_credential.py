@@ -463,9 +463,11 @@ class GitCredential(pulumi.CustomResource):
             __props__.__dict__["git_username"] = git_username
             __props__.__dict__["is_default_for_provider"] = is_default_for_provider
             __props__.__dict__["name"] = name
-            __props__.__dict__["personal_access_token"] = personal_access_token
+            __props__.__dict__["personal_access_token"] = None if personal_access_token is None else pulumi.Output.secret(personal_access_token)
             __props__.__dict__["principal_id"] = principal_id
             __props__.__dict__["provider_config"] = provider_config
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["personalAccessToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GitCredential, __self__).__init__(
             'databricks:index/gitCredential:GitCredential',
             resource_name,

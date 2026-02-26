@@ -18,11 +18,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("databricksApiToken")]
         public Input<string>? DatabricksApiToken { get; set; }
 
+        [Input("databricksApiTokenPlaintext")]
+        private Input<string>? _databricksApiTokenPlaintext;
+
         /// <summary>
         /// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
         /// </summary>
-        [Input("databricksApiTokenPlaintext")]
-        public Input<string>? DatabricksApiTokenPlaintext { get; set; }
+        public Input<string>? DatabricksApiTokenPlaintext
+        {
+            get => _databricksApiTokenPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _databricksApiTokenPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.

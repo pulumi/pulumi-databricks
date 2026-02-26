@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.PostgresProjectArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PostgresProjectState;
+import com.pulumi.databricks.outputs.PostgresProjectInitialEndpointSpec;
 import com.pulumi.databricks.outputs.PostgresProjectProviderConfig;
 import com.pulumi.databricks.outputs.PostgresProjectSpec;
 import com.pulumi.databricks.outputs.PostgresProjectStatus;
@@ -170,6 +171,26 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * created project. If omitted, the initial endpoint created will have default settings, without high availability
+     * configured. This field does not apply to any endpoints created after project creation. Use
+     * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+     * 
+     */
+    @Export(name="initialEndpointSpec", refs={PostgresProjectInitialEndpointSpec.class}, tree="[0]")
+    private Output<PostgresProjectInitialEndpointSpec> initialEndpointSpec;
+
+    /**
+     * @return Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * created project. If omitted, the initial endpoint created will have default settings, without high availability
+     * configured. This field does not apply to any endpoints created after project creation. Use
+     * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+     * 
+     */
+    public Output<PostgresProjectInitialEndpointSpec> initialEndpointSpec() {
+        return this.initialEndpointSpec;
     }
     /**
      * (string) - Output only. The full resource path of the project.

@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var appTag = new WorkspaceEntityTagAssignment("appTag", WorkspaceEntityTagAssignmentArgs.builder()
  *             .entityType("apps")
- *             .entityId("2807324866692453")
+ *             .entityId("myapp")
  *             .tagKey("sensitivity_level")
  *             .tagValue("high")
  *             .build());
@@ -74,14 +74,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment")
 public class WorkspaceEntityTagAssignment extends com.pulumi.resources.CustomResource {
     /**
-     * The identifier of the entity to which the tag is assigned
+     * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      * 
      */
     @Export(name="entityId", refs={String.class}, tree="[0]")
     private Output<String> entityId;
 
     /**
-     * @return The identifier of the entity to which the tag is assigned
+     * @return The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      * 
      */
     public Output<String> entityId() {

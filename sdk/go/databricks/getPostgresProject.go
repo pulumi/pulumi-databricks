@@ -70,6 +70,11 @@ type LookupPostgresProjectResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec GetPostgresProjectInitialEndpointSpec `pulumi:"initialEndpointSpec"`
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name           string                            `pulumi:"name"`
@@ -129,6 +134,16 @@ func (o LookupPostgresProjectResultOutput) CreateTime() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupPostgresProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+// created project. If omitted, the initial endpoint created will have default settings, without high availability
+// configured. This field does not apply to any endpoints created after project creation. Use
+// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+func (o LookupPostgresProjectResultOutput) InitialEndpointSpec() GetPostgresProjectInitialEndpointSpecOutput {
+	return o.ApplyT(func(v LookupPostgresProjectResult) GetPostgresProjectInitialEndpointSpec {
+		return v.InitialEndpointSpec
+	}).(GetPostgresProjectInitialEndpointSpecOutput)
 }
 
 // (string) - Output only. The full resource path of the project.

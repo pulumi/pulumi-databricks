@@ -18,11 +18,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("anthropicApiKey")]
         public Input<string>? AnthropicApiKey { get; set; }
 
+        [Input("anthropicApiKeyPlaintext")]
+        private Input<string>? _anthropicApiKeyPlaintext;
+
         /// <summary>
         /// The Anthropic API key provided as a plaintext string.
         /// </summary>
-        [Input("anthropicApiKeyPlaintext")]
-        public Input<string>? AnthropicApiKeyPlaintext { get; set; }
+        public Input<string>? AnthropicApiKeyPlaintext
+        {
+            get => _anthropicApiKeyPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _anthropicApiKeyPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ModelServingConfigServedEntityExternalModelAnthropicConfigGetArgs()
         {

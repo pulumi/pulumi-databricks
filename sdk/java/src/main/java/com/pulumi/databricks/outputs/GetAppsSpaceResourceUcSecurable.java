@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAppsSpaceResourceUcSecurable {
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     private String permission;
@@ -21,6 +21,12 @@ public final class GetAppsSpaceResourceUcSecurable {
      */
     private String securableFullName;
     /**
+     * @return (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     * 
+     */
+    private String securableKind;
+    /**
      * @return (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      * 
      */
@@ -28,7 +34,7 @@ public final class GetAppsSpaceResourceUcSecurable {
 
     private GetAppsSpaceResourceUcSecurable() {}
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     public String permission() {
@@ -40,6 +46,14 @@ public final class GetAppsSpaceResourceUcSecurable {
      */
     public String securableFullName() {
         return this.securableFullName;
+    }
+    /**
+     * @return (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     * 
+     */
+    public String securableKind() {
+        return this.securableKind;
     }
     /**
      * @return (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
@@ -60,12 +74,14 @@ public final class GetAppsSpaceResourceUcSecurable {
     public static final class Builder {
         private String permission;
         private String securableFullName;
+        private String securableKind;
         private String securableType;
         public Builder() {}
         public Builder(GetAppsSpaceResourceUcSecurable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.permission = defaults.permission;
     	      this.securableFullName = defaults.securableFullName;
+    	      this.securableKind = defaults.securableKind;
     	      this.securableType = defaults.securableType;
         }
 
@@ -86,6 +102,14 @@ public final class GetAppsSpaceResourceUcSecurable {
             return this;
         }
         @CustomType.Setter
+        public Builder securableKind(String securableKind) {
+            if (securableKind == null) {
+              throw new MissingRequiredPropertyException("GetAppsSpaceResourceUcSecurable", "securableKind");
+            }
+            this.securableKind = securableKind;
+            return this;
+        }
+        @CustomType.Setter
         public Builder securableType(String securableType) {
             if (securableType == null) {
               throw new MissingRequiredPropertyException("GetAppsSpaceResourceUcSecurable", "securableType");
@@ -97,6 +121,7 @@ public final class GetAppsSpaceResourceUcSecurable {
             final var _resultValue = new GetAppsSpaceResourceUcSecurable();
             _resultValue.permission = permission;
             _resultValue.securableFullName = securableFullName;
+            _resultValue.securableKind = securableKind;
             _resultValue.securableType = securableType;
             return _resultValue;
         }

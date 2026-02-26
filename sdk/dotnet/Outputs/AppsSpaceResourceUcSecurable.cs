@@ -16,6 +16,11 @@ namespace Pulumi.Databricks.Outputs
         public readonly string Permission;
         public readonly string SecurableFullName;
         /// <summary>
+        /// (string) - The securable kind from Unity Catalog.
+        /// See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+        /// </summary>
+        public readonly string? SecurableKind;
+        /// <summary>
         /// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
         /// </summary>
         public readonly string SecurableType;
@@ -26,10 +31,13 @@ namespace Pulumi.Databricks.Outputs
 
             string securableFullName,
 
+            string? securableKind,
+
             string securableType)
         {
             Permission = permission;
             SecurableFullName = securableFullName;
+            SecurableKind = securableKind;
             SecurableType = securableType;
         }
     }

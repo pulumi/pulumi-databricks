@@ -33,6 +33,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
+        /// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+        /// </summary>
+        public readonly Outputs.PostgresEndpointSpecGroup? Group;
+        /// <summary>
         /// When set to true, explicitly disables automatic suspension (never suspend).
         /// Should be set to true when provided
         /// </summary>
@@ -56,6 +60,8 @@ namespace Pulumi.Databricks.Outputs
 
             string endpointType,
 
+            Outputs.PostgresEndpointSpecGroup? group,
+
             bool? noSuspension,
 
             Outputs.PostgresEndpointSpecSettings? settings,
@@ -66,6 +72,7 @@ namespace Pulumi.Databricks.Outputs
             AutoscalingLimitMinCu = autoscalingLimitMinCu;
             Disabled = disabled;
             EndpointType = endpointType;
+            Group = group;
             NoSuspension = noSuspension;
             Settings = settings;
             SuspendTimeoutDuration = suspendTimeoutDuration;

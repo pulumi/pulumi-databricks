@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresEndpointStatusGroupArgs;
 import com.pulumi.databricks.inputs.PostgresEndpointStatusHostsArgs;
 import com.pulumi.databricks.inputs.PostgresEndpointStatusSettingsArgs;
 import java.lang.Boolean;
@@ -50,14 +51,14 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     @Import(name="currentState")
     private @Nullable Output<String> currentState;
 
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public Optional<Output<String>> currentState() {
@@ -101,6 +102,21 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    @Import(name="group")
+    private @Nullable Output<PostgresEndpointStatusGroupArgs> group;
+
+    /**
+     * @return (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    public Optional<Output<PostgresEndpointStatusGroupArgs>> group() {
+        return Optional.ofNullable(this.group);
+    }
+
+    /**
      * (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
@@ -116,14 +132,14 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     @Import(name="pendingState")
     private @Nullable Output<String> pendingState;
 
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public Optional<Output<String>> pendingState() {
@@ -168,6 +184,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         this.currentState = $.currentState;
         this.disabled = $.disabled;
         this.endpointType = $.endpointType;
+        this.group = $.group;
         this.hosts = $.hosts;
         this.pendingState = $.pendingState;
         this.settings = $.settings;
@@ -235,7 +252,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param currentState (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+         * @param currentState (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
          * 
          * @return builder
          * 
@@ -246,7 +263,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param currentState (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+         * @param currentState (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
          * 
          * @return builder
          * 
@@ -304,6 +321,27 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param group (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(@Nullable Output<PostgresEndpointStatusGroupArgs> group) {
+            $.group = group;
+            return this;
+        }
+
+        /**
+         * @param group (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(PostgresEndpointStatusGroupArgs group) {
+            return group(Output.of(group));
+        }
+
+        /**
          * @param hosts (EndpointHosts) - Contains host information for connecting to the endpoint
          * 
          * @return builder
@@ -325,7 +363,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param pendingState (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+         * @param pendingState (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
          * 
          * @return builder
          * 
@@ -336,7 +374,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param pendingState (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+         * @param pendingState (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
          * 
          * @return builder
          * 

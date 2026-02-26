@@ -40,6 +40,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> EndpointType { get; set; } = null!;
 
         /// <summary>
+        /// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+        /// </summary>
+        [Input("group")]
+        public Input<Inputs.PostgresEndpointSpecGroupArgs>? Group { get; set; }
+
+        /// <summary>
         /// When set to true, explicitly disables automatic suspension (never suspend).
         /// Should be set to true when provided
         /// </summary>

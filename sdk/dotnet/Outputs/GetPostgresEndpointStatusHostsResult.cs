@@ -18,11 +18,21 @@ namespace Pulumi.Databricks.Outputs
         /// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
         /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+        /// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+        /// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+        /// </summary>
+        public readonly string ReadOnlyHost;
 
         [OutputConstructor]
-        private GetPostgresEndpointStatusHostsResult(string host)
+        private GetPostgresEndpointStatusHostsResult(
+            string host,
+
+            string readOnlyHost)
         {
             Host = host;
+            ReadOnlyHost = readOnlyHost;
         }
     }
 }

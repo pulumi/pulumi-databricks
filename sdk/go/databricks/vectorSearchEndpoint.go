@@ -69,6 +69,7 @@ type VectorSearchEndpoint struct {
 	NumIndexes pulumi.IntOutput `pulumi:"numIndexes"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig VectorSearchEndpointProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ScalingInfo    VectorSearchEndpointScalingInfoPtrOutput    `pulumi:"scalingInfo"`
 }
 
 // NewVectorSearchEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -128,6 +129,7 @@ type vectorSearchEndpointState struct {
 	NumIndexes *int `pulumi:"numIndexes"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *VectorSearchEndpointProviderConfig `pulumi:"providerConfig"`
+	ScalingInfo    *VectorSearchEndpointScalingInfo    `pulumi:"scalingInfo"`
 }
 
 type VectorSearchEndpointState struct {
@@ -155,6 +157,7 @@ type VectorSearchEndpointState struct {
 	NumIndexes pulumi.IntPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig VectorSearchEndpointProviderConfigPtrInput
+	ScalingInfo    VectorSearchEndpointScalingInfoPtrInput
 }
 
 func (VectorSearchEndpointState) ElementType() reflect.Type {
@@ -170,6 +173,7 @@ type vectorSearchEndpointArgs struct {
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *VectorSearchEndpointProviderConfig `pulumi:"providerConfig"`
+	ScalingInfo    *VectorSearchEndpointScalingInfo    `pulumi:"scalingInfo"`
 }
 
 // The set of arguments for constructing a VectorSearchEndpoint resource.
@@ -182,6 +186,7 @@ type VectorSearchEndpointArgs struct {
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig VectorSearchEndpointProviderConfigPtrInput
+	ScalingInfo    VectorSearchEndpointScalingInfoPtrInput
 }
 
 func (VectorSearchEndpointArgs) ElementType() reflect.Type {
@@ -329,6 +334,10 @@ func (o VectorSearchEndpointOutput) NumIndexes() pulumi.IntOutput {
 // Configure the provider for management through account provider. This block consists of the following fields:
 func (o VectorSearchEndpointOutput) ProviderConfig() VectorSearchEndpointProviderConfigPtrOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) VectorSearchEndpointProviderConfigPtrOutput { return v.ProviderConfig }).(VectorSearchEndpointProviderConfigPtrOutput)
+}
+
+func (o VectorSearchEndpointOutput) ScalingInfo() VectorSearchEndpointScalingInfoPtrOutput {
+	return o.ApplyT(func(v *VectorSearchEndpoint) VectorSearchEndpointScalingInfoPtrOutput { return v.ScalingInfo }).(VectorSearchEndpointScalingInfoPtrOutput)
 }
 
 type VectorSearchEndpointArrayOutput struct{ *pulumi.OutputState }

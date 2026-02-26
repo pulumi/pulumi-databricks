@@ -110,6 +110,15 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        /// created project. If omitted, the initial endpoint created will have default settings, without high availability
+        /// configured. This field does not apply to any endpoints created after project creation. Use
+        /// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+        /// </summary>
+        [Output("initialEndpointSpec")]
+        public Output<Outputs.PostgresProjectInitialEndpointSpec> InitialEndpointSpec { get; private set; } = null!;
+
+        /// <summary>
         /// (string) - Output only. The full resource path of the project.
         /// Format: projects/{project_id}
         /// </summary>
@@ -201,6 +210,15 @@ namespace Pulumi.Databricks
     public sealed class PostgresProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        /// created project. If omitted, the initial endpoint created will have default settings, without high availability
+        /// configured. This field does not apply to any endpoints created after project creation. Use
+        /// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+        /// </summary>
+        [Input("initialEndpointSpec")]
+        public Input<Inputs.PostgresProjectInitialEndpointSpecArgs>? InitialEndpointSpec { get; set; }
+
+        /// <summary>
         /// The ID to use for the Project. This becomes the final component of the project's resource name.
         /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
         /// For example, `my-app` becomes `projects/my-app`
@@ -233,6 +251,15 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        /// created project. If omitted, the initial endpoint created will have default settings, without high availability
+        /// configured. This field does not apply to any endpoints created after project creation. Use
+        /// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+        /// </summary>
+        [Input("initialEndpointSpec")]
+        public Input<Inputs.PostgresProjectInitialEndpointSpecGetArgs>? InitialEndpointSpec { get; set; }
 
         /// <summary>
         /// (string) - Output only. The full resource path of the project.

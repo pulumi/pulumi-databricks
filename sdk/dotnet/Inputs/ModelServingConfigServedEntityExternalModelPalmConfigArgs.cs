@@ -18,11 +18,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("palmApiKey")]
         public Input<string>? PalmApiKey { get; set; }
 
+        [Input("palmApiKeyPlaintext")]
+        private Input<string>? _palmApiKeyPlaintext;
+
         /// <summary>
         /// The PaLM API key provided as a plaintext string.
         /// </summary>
-        [Input("palmApiKeyPlaintext")]
-        public Input<string>? PalmApiKeyPlaintext { get; set; }
+        public Input<string>? PalmApiKeyPlaintext
+        {
+            get => _palmApiKeyPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _palmApiKeyPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ModelServingConfigServedEntityExternalModelPalmConfigArgs()
         {

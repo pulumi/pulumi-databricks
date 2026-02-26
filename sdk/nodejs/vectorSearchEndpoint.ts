@@ -99,6 +99,7 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     declare public readonly providerConfig: pulumi.Output<outputs.VectorSearchEndpointProviderConfig | undefined>;
+    declare public readonly scalingInfo: pulumi.Output<outputs.VectorSearchEndpointScalingInfo | undefined>;
 
     /**
      * Create a VectorSearchEndpoint resource with the given unique name, arguments, and options.
@@ -125,6 +126,7 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["numIndexes"] = state?.numIndexes;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["scalingInfo"] = state?.scalingInfo;
         } else {
             const args = argsOrState as VectorSearchEndpointArgs | undefined;
             if (args?.endpointType === undefined && !opts.urn) {
@@ -134,6 +136,7 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
             resourceInputs["endpointType"] = args?.endpointType;
             resourceInputs["name"] = args?.name;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["scalingInfo"] = args?.scalingInfo;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["effectiveBudgetPolicyId"] = undefined /*out*/;
@@ -200,6 +203,7 @@ export interface VectorSearchEndpointState {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     providerConfig?: pulumi.Input<inputs.VectorSearchEndpointProviderConfig>;
+    scalingInfo?: pulumi.Input<inputs.VectorSearchEndpointScalingInfo>;
 }
 
 /**
@@ -222,4 +226,5 @@ export interface VectorSearchEndpointArgs {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     providerConfig?: pulumi.Input<inputs.VectorSearchEndpointProviderConfig>;
+    scalingInfo?: pulumi.Input<inputs.VectorSearchEndpointScalingInfo>;
 }

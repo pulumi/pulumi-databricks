@@ -19,6 +19,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> SecurableFullName { get; set; } = null!;
 
         /// <summary>
+        /// (string) - The securable kind from Unity Catalog.
+        /// See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+        /// </summary>
+        [Input("securableKind")]
+        public Input<string>? SecurableKind { get; set; }
+
+        /// <summary>
         /// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
         /// </summary>
         [Input("securableType", required: true)]

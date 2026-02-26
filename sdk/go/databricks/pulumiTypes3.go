@@ -13,6 +13,1785 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetJobJobSettingsSettingsTaskNotebookTask struct {
+	BaseParameters map[string]string `pulumi:"baseParameters"`
+	NotebookPath   string            `pulumi:"notebookPath"`
+	Source         *string           `pulumi:"source"`
+	WarehouseId    *string           `pulumi:"warehouseId"`
+}
+
+// GetJobJobSettingsSettingsTaskNotebookTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskNotebookTaskArgs and GetJobJobSettingsSettingsTaskNotebookTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskNotebookTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskNotebookTaskArgs{...}
+type GetJobJobSettingsSettingsTaskNotebookTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskNotebookTaskOutput() GetJobJobSettingsSettingsTaskNotebookTaskOutput
+	ToGetJobJobSettingsSettingsTaskNotebookTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskNotebookTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskNotebookTaskArgs struct {
+	BaseParameters pulumi.StringMapInput `pulumi:"baseParameters"`
+	NotebookPath   pulumi.StringInput    `pulumi:"notebookPath"`
+	Source         pulumi.StringPtrInput `pulumi:"source"`
+	WarehouseId    pulumi.StringPtrInput `pulumi:"warehouseId"`
+}
+
+func (GetJobJobSettingsSettingsTaskNotebookTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotebookTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskNotebookTaskArgs) ToGetJobJobSettingsSettingsTaskNotebookTaskOutput() GetJobJobSettingsSettingsTaskNotebookTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNotebookTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskNotebookTaskArgs) ToGetJobJobSettingsSettingsTaskNotebookTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotebookTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNotebookTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskNotebookTaskArgs) ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutput() GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskNotebookTaskArgs) ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNotebookTaskOutput).ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskNotebookTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskNotebookTaskArgs, GetJobJobSettingsSettingsTaskNotebookTaskPtr and GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskNotebookTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskNotebookTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskNotebookTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutput() GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskNotebookTaskPtrType GetJobJobSettingsSettingsTaskNotebookTaskArgs
+
+func GetJobJobSettingsSettingsTaskNotebookTaskPtr(v *GetJobJobSettingsSettingsTaskNotebookTaskArgs) GetJobJobSettingsSettingsTaskNotebookTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskNotebookTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskNotebookTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskNotebookTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskNotebookTaskPtrType) ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutput() GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskNotebookTaskPtrType) ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNotebookTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskNotebookTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotebookTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) ToGetJobJobSettingsSettingsTaskNotebookTaskOutput() GetJobJobSettingsSettingsTaskNotebookTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) ToGetJobJobSettingsSettingsTaskNotebookTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotebookTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutput() GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskNotebookTask) *GetJobJobSettingsSettingsTaskNotebookTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotebookTask) map[string]string { return v.BaseParameters }).(pulumi.StringMapOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) NotebookPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotebookTask) string { return v.NotebookPath }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotebookTask) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotebookTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskNotebookTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutput() GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) ToGetJobJobSettingsSettingsTaskNotebookTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskNotebookTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotebookTask) GetJobJobSettingsSettingsTaskNotebookTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskNotebookTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskNotebookTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) BaseParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotebookTask) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.BaseParameters
+	}).(pulumi.StringMapOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) NotebookPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotebookTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NotebookPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotebookTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotebookTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNotificationSettings struct {
+	AlertOnLastAttempt     *bool `pulumi:"alertOnLastAttempt"`
+	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
+	NoAlertForSkippedRuns  *bool `pulumi:"noAlertForSkippedRuns"`
+}
+
+// GetJobJobSettingsSettingsTaskNotificationSettingsInput is an input type that accepts GetJobJobSettingsSettingsTaskNotificationSettingsArgs and GetJobJobSettingsSettingsTaskNotificationSettingsOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskNotificationSettingsInput` via:
+//
+//	GetJobJobSettingsSettingsTaskNotificationSettingsArgs{...}
+type GetJobJobSettingsSettingsTaskNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskNotificationSettingsOutput() GetJobJobSettingsSettingsTaskNotificationSettingsOutput
+	ToGetJobJobSettingsSettingsTaskNotificationSettingsOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsOutput
+}
+
+type GetJobJobSettingsSettingsTaskNotificationSettingsArgs struct {
+	AlertOnLastAttempt     pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
+	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
+	NoAlertForSkippedRuns  pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+}
+
+func (GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotificationSettings)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ToGetJobJobSettingsSettingsTaskNotificationSettingsOutput() GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ToGetJobJobSettingsSettingsTaskNotificationSettingsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNotificationSettingsOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNotificationSettingsOutput).ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskNotificationSettingsArgs, GetJobJobSettingsSettingsTaskNotificationSettingsPtr and GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput
+	ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskNotificationSettingsPtrType GetJobJobSettingsSettingsTaskNotificationSettingsArgs
+
+func GetJobJobSettingsSettingsTaskNotificationSettingsPtr(v *GetJobJobSettingsSettingsTaskNotificationSettingsArgs) GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput {
+	return (*getJobJobSettingsSettingsTaskNotificationSettingsPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskNotificationSettings)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskNotificationSettingsPtrType) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskNotificationSettingsPtrType) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotificationSettings)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsOutput() GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskNotificationSettings) *GetJobJobSettingsSettingsTaskNotificationSettings {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotificationSettings) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotificationSettings) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskNotificationSettings)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) Elem() GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotificationSettings) GetJobJobSettingsSettingsTaskNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskNotificationSettings
+		return ret
+	}).(GetJobJobSettingsSettingsTaskNotificationSettingsOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AlertOnLastAttempt
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForCanceledRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForSkippedRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPipelineTask struct {
+	FullRefresh *bool  `pulumi:"fullRefresh"`
+	PipelineId  string `pulumi:"pipelineId"`
+}
+
+// GetJobJobSettingsSettingsTaskPipelineTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskPipelineTaskArgs and GetJobJobSettingsSettingsTaskPipelineTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPipelineTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskPipelineTaskArgs{...}
+type GetJobJobSettingsSettingsTaskPipelineTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPipelineTaskOutput() GetJobJobSettingsSettingsTaskPipelineTaskOutput
+	ToGetJobJobSettingsSettingsTaskPipelineTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPipelineTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskPipelineTaskArgs struct {
+	FullRefresh pulumi.BoolPtrInput `pulumi:"fullRefresh"`
+	PipelineId  pulumi.StringInput  `pulumi:"pipelineId"`
+}
+
+func (GetJobJobSettingsSettingsTaskPipelineTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPipelineTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskPipelineTaskArgs) ToGetJobJobSettingsSettingsTaskPipelineTaskOutput() GetJobJobSettingsSettingsTaskPipelineTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPipelineTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPipelineTaskArgs) ToGetJobJobSettingsSettingsTaskPipelineTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPipelineTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPipelineTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskPipelineTaskArgs) ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutput() GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPipelineTaskArgs) ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPipelineTaskOutput).ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskPipelineTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskPipelineTaskArgs, GetJobJobSettingsSettingsTaskPipelineTaskPtr and GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPipelineTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskPipelineTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskPipelineTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutput() GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskPipelineTaskPtrType GetJobJobSettingsSettingsTaskPipelineTaskArgs
+
+func GetJobJobSettingsSettingsTaskPipelineTaskPtr(v *GetJobJobSettingsSettingsTaskPipelineTaskArgs) GetJobJobSettingsSettingsTaskPipelineTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskPipelineTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskPipelineTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskPipelineTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskPipelineTaskPtrType) ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutput() GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskPipelineTaskPtrType) ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPipelineTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPipelineTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPipelineTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskOutput) ToGetJobJobSettingsSettingsTaskPipelineTaskOutput() GetJobJobSettingsSettingsTaskPipelineTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskOutput) ToGetJobJobSettingsSettingsTaskPipelineTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPipelineTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskOutput) ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutput() GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskOutput) ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskPipelineTask) *GetJobJobSettingsSettingsTaskPipelineTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPipelineTask) *bool { return v.FullRefresh }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskOutput) PipelineId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPipelineTask) string { return v.PipelineId }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskPipelineTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutput() GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) ToGetJobJobSettingsSettingsTaskPipelineTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskPipelineTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPipelineTask) GetJobJobSettingsSettingsTaskPipelineTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskPipelineTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskPipelineTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPipelineTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullRefresh
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPipelineTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PipelineId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTask struct {
+	ConnectionResourceName *string                                               `pulumi:"connectionResourceName"`
+	PowerBiModel           *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel `pulumi:"powerBiModel"`
+	RefreshAfterUpdate     *bool                                                 `pulumi:"refreshAfterUpdate"`
+	Tables                 []GetJobJobSettingsSettingsTaskPowerBiTaskTable       `pulumi:"tables"`
+	WarehouseId            *string                                               `pulumi:"warehouseId"`
+}
+
+// GetJobJobSettingsSettingsTaskPowerBiTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskPowerBiTaskArgs and GetJobJobSettingsSettingsTaskPowerBiTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPowerBiTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskPowerBiTaskArgs{...}
+type GetJobJobSettingsSettingsTaskPowerBiTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskOutput() GetJobJobSettingsSettingsTaskPowerBiTaskOutput
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskArgs struct {
+	ConnectionResourceName pulumi.StringPtrInput                                        `pulumi:"connectionResourceName"`
+	PowerBiModel           GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrInput `pulumi:"powerBiModel"`
+	RefreshAfterUpdate     pulumi.BoolPtrInput                                          `pulumi:"refreshAfterUpdate"`
+	Tables                 GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayInput      `pulumi:"tables"`
+	WarehouseId            pulumi.StringPtrInput                                        `pulumi:"warehouseId"`
+}
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskOutput() GetJobJobSettingsSettingsTaskPowerBiTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPowerBiTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPowerBiTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPowerBiTaskOutput).ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskPowerBiTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskPowerBiTaskArgs, GetJobJobSettingsSettingsTaskPowerBiTaskPtr and GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPowerBiTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskPowerBiTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskPowerBiTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskPowerBiTaskPtrType GetJobJobSettingsSettingsTaskPowerBiTaskArgs
+
+func GetJobJobSettingsSettingsTaskPowerBiTaskPtr(v *GetJobJobSettingsSettingsTaskPowerBiTaskArgs) GetJobJobSettingsSettingsTaskPowerBiTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskPowerBiTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskPowerBiTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskPowerBiTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskPowerBiTaskPtrType) ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskPowerBiTaskPtrType) ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskOutput() GetJobJobSettingsSettingsTaskPowerBiTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskPowerBiTask) *GetJobJobSettingsSettingsTaskPowerBiTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskOutput) ConnectionResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTask) *string { return v.ConnectionResourceName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskOutput) PowerBiModel() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTask) *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel {
+		return v.PowerBiModel
+	}).(GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTask) *bool { return v.RefreshAfterUpdate }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskOutput) Tables() GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTask) []GetJobJobSettingsSettingsTaskPowerBiTaskTable {
+		return v.Tables
+	}).(GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskPowerBiTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskPowerBiTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTask) GetJobJobSettingsSettingsTaskPowerBiTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskPowerBiTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskPowerBiTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput) ConnectionResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput) PowerBiModel() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTask) *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel {
+		if v == nil {
+			return nil
+		}
+		return v.PowerBiModel
+	}).(GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshAfterUpdate
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput) Tables() GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTask) []GetJobJobSettingsSettingsTaskPowerBiTaskTable {
+		if v == nil {
+			return nil
+		}
+		return v.Tables
+	}).(GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel struct {
+	AuthenticationMethod *string `pulumi:"authenticationMethod"`
+	ModelName            *string `pulumi:"modelName"`
+	OverwriteExisting    *bool   `pulumi:"overwriteExisting"`
+	StorageMode          *string `pulumi:"storageMode"`
+	WorkspaceName        *string `pulumi:"workspaceName"`
+}
+
+// GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelInput is an input type that accepts GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs and GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelInput` via:
+//
+//	GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs{...}
+type GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs struct {
+	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
+	ModelName            pulumi.StringPtrInput `pulumi:"modelName"`
+	OverwriteExisting    pulumi.BoolPtrInput   `pulumi:"overwriteExisting"`
+	StorageMode          pulumi.StringPtrInput `pulumi:"storageMode"`
+	WorkspaceName        pulumi.StringPtrInput `pulumi:"workspaceName"`
+}
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput).ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs, GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtr and GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrType GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs
+
+func GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtr(v *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrInput {
+	return (*getJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrType) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrType) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput) Elem() GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel
+		return ret
+	}).(GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteExisting
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskTable struct {
+	Catalog *string `pulumi:"catalog"`
+	// the job name of Job if the resource was matched by id.
+	Name        *string `pulumi:"name"`
+	Schema      *string `pulumi:"schema"`
+	StorageMode *string `pulumi:"storageMode"`
+}
+
+// GetJobJobSettingsSettingsTaskPowerBiTaskTableInput is an input type that accepts GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs and GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPowerBiTaskTableInput` via:
+//
+//	GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs{...}
+type GetJobJobSettingsSettingsTaskPowerBiTaskTableInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskTableOutput() GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskTableOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs struct {
+	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	// the job name of Job if the resource was matched by id.
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+	Schema      pulumi.StringPtrInput `pulumi:"schema"`
+	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
+}
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskTableOutput() GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPowerBiTaskTableOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs) ToGetJobJobSettingsSettingsTaskPowerBiTaskTableOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput)
+}
+
+// GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskPowerBiTaskTableArray and GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskPowerBiTaskTableArray{ GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs{...} }
+type GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput() GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput
+	ToGetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskTableArray []GetJobJobSettingsSettingsTaskPowerBiTaskTableInput
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskTableArray) ToGetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput() GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPowerBiTaskTableArray) ToGetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskTableOutput() GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskTableOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTaskTable) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+// the job name of Job if the resource was matched by id.
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTaskTable) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTaskTable) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPowerBiTaskTable) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput() GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput) ToGetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskPowerBiTaskTable {
+		return vs[0].([]GetJobJobSettingsSettingsTaskPowerBiTaskTable)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPythonWheelTask struct {
+	EntryPoint      *string           `pulumi:"entryPoint"`
+	NamedParameters map[string]string `pulumi:"namedParameters"`
+	PackageName     *string           `pulumi:"packageName"`
+	Parameters      []string          `pulumi:"parameters"`
+}
+
+// GetJobJobSettingsSettingsTaskPythonWheelTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskPythonWheelTaskArgs and GetJobJobSettingsSettingsTaskPythonWheelTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPythonWheelTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskPythonWheelTaskArgs{...}
+type GetJobJobSettingsSettingsTaskPythonWheelTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPythonWheelTaskOutput() GetJobJobSettingsSettingsTaskPythonWheelTaskOutput
+	ToGetJobJobSettingsSettingsTaskPythonWheelTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPythonWheelTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskPythonWheelTaskArgs struct {
+	EntryPoint      pulumi.StringPtrInput   `pulumi:"entryPoint"`
+	NamedParameters pulumi.StringMapInput   `pulumi:"namedParameters"`
+	PackageName     pulumi.StringPtrInput   `pulumi:"packageName"`
+	Parameters      pulumi.StringArrayInput `pulumi:"parameters"`
+}
+
+func (GetJobJobSettingsSettingsTaskPythonWheelTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPythonWheelTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskPythonWheelTaskArgs) ToGetJobJobSettingsSettingsTaskPythonWheelTaskOutput() GetJobJobSettingsSettingsTaskPythonWheelTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPythonWheelTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPythonWheelTaskArgs) ToGetJobJobSettingsSettingsTaskPythonWheelTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPythonWheelTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPythonWheelTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskPythonWheelTaskArgs) ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskPythonWheelTaskArgs) ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPythonWheelTaskOutput).ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskPythonWheelTaskArgs, GetJobJobSettingsSettingsTaskPythonWheelTaskPtr and GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskPythonWheelTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskPythonWheelTaskPtrType GetJobJobSettingsSettingsTaskPythonWheelTaskArgs
+
+func GetJobJobSettingsSettingsTaskPythonWheelTaskPtr(v *GetJobJobSettingsSettingsTaskPythonWheelTaskArgs) GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskPythonWheelTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskPythonWheelTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskPythonWheelTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskPythonWheelTaskPtrType) ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskPythonWheelTaskPtrType) ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPythonWheelTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskPythonWheelTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) ToGetJobJobSettingsSettingsTaskPythonWheelTaskOutput() GetJobJobSettingsSettingsTaskPythonWheelTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) ToGetJobJobSettingsSettingsTaskPythonWheelTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPythonWheelTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskPythonWheelTask) *GetJobJobSettingsSettingsTaskPythonWheelTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPythonWheelTask) *string { return v.EntryPoint }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPythonWheelTask) map[string]string { return v.NamedParameters }).(pulumi.StringMapOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPythonWheelTask) *string { return v.PackageName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPythonWheelTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskPythonWheelTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput() GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) ToGetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskPythonWheelTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPythonWheelTask) GetJobJobSettingsSettingsTaskPythonWheelTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskPythonWheelTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskPythonWheelTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPythonWheelTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntryPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) NamedParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPythonWheelTask) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.NamedParameters
+	}).(pulumi.StringMapOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPythonWheelTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPythonWheelTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskRunJobTask struct {
+	JobId         int               `pulumi:"jobId"`
+	JobParameters map[string]string `pulumi:"jobParameters"`
+}
+
+// GetJobJobSettingsSettingsTaskRunJobTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskRunJobTaskArgs and GetJobJobSettingsSettingsTaskRunJobTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskRunJobTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskRunJobTaskArgs{...}
+type GetJobJobSettingsSettingsTaskRunJobTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskRunJobTaskOutput() GetJobJobSettingsSettingsTaskRunJobTaskOutput
+	ToGetJobJobSettingsSettingsTaskRunJobTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskRunJobTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskRunJobTaskArgs struct {
+	JobId         pulumi.IntInput       `pulumi:"jobId"`
+	JobParameters pulumi.StringMapInput `pulumi:"jobParameters"`
+}
+
+func (GetJobJobSettingsSettingsTaskRunJobTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskRunJobTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskRunJobTaskArgs) ToGetJobJobSettingsSettingsTaskRunJobTaskOutput() GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskRunJobTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskRunJobTaskArgs) ToGetJobJobSettingsSettingsTaskRunJobTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskRunJobTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskRunJobTaskArgs) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskRunJobTaskArgs) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskRunJobTaskOutput).ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskRunJobTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskRunJobTaskArgs, GetJobJobSettingsSettingsTaskRunJobTaskPtr and GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskRunJobTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskRunJobTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskRunJobTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskRunJobTaskPtrType GetJobJobSettingsSettingsTaskRunJobTaskArgs
+
+func GetJobJobSettingsSettingsTaskRunJobTaskPtr(v *GetJobJobSettingsSettingsTaskRunJobTaskArgs) GetJobJobSettingsSettingsTaskRunJobTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskRunJobTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskRunJobTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskRunJobTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskRunJobTaskPtrType) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskRunJobTaskPtrType) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskRunJobTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskRunJobTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskRunJobTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskOutput() GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskRunJobTask) *GetJobJobSettingsSettingsTaskRunJobTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskRunJobTask) map[string]string { return v.JobParameters }).(pulumi.StringMapOutput)
+}
+
+type GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskRunJobTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) GetJobJobSettingsSettingsTaskRunJobTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskRunJobTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskRunJobTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.JobId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.JobParameters
+	}).(pulumi.StringMapOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSparkJarTask struct {
+	JarUri        *string  `pulumi:"jarUri"`
+	MainClassName *string  `pulumi:"mainClassName"`
+	Parameters    []string `pulumi:"parameters"`
+}
+
+// GetJobJobSettingsSettingsTaskSparkJarTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskSparkJarTaskArgs and GetJobJobSettingsSettingsTaskSparkJarTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSparkJarTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSparkJarTaskArgs{...}
+type GetJobJobSettingsSettingsTaskSparkJarTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSparkJarTaskOutput() GetJobJobSettingsSettingsTaskSparkJarTaskOutput
+	ToGetJobJobSettingsSettingsTaskSparkJarTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSparkJarTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskSparkJarTaskArgs struct {
+	JarUri        pulumi.StringPtrInput   `pulumi:"jarUri"`
+	MainClassName pulumi.StringPtrInput   `pulumi:"mainClassName"`
+	Parameters    pulumi.StringArrayInput `pulumi:"parameters"`
+}
+
+func (GetJobJobSettingsSettingsTaskSparkJarTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkJarTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkJarTaskArgs) ToGetJobJobSettingsSettingsTaskSparkJarTaskOutput() GetJobJobSettingsSettingsTaskSparkJarTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSparkJarTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkJarTaskArgs) ToGetJobJobSettingsSettingsTaskSparkJarTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkJarTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSparkJarTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkJarTaskArgs) ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkJarTaskArgs) ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSparkJarTaskOutput).ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskSparkJarTaskArgs, GetJobJobSettingsSettingsTaskSparkJarTaskPtr and GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskSparkJarTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskSparkJarTaskPtrType GetJobJobSettingsSettingsTaskSparkJarTaskArgs
+
+func GetJobJobSettingsSettingsTaskSparkJarTaskPtr(v *GetJobJobSettingsSettingsTaskSparkJarTaskArgs) GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskSparkJarTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskSparkJarTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSparkJarTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskSparkJarTaskPtrType) ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskSparkJarTaskPtrType) ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSparkJarTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSparkJarTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkJarTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskOutput) ToGetJobJobSettingsSettingsTaskSparkJarTaskOutput() GetJobJobSettingsSettingsTaskSparkJarTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskOutput) ToGetJobJobSettingsSettingsTaskSparkJarTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkJarTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskOutput) ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskOutput) ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskSparkJarTask) *GetJobJobSettingsSettingsTaskSparkJarTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskOutput) JarUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSparkJarTask) *string { return v.JarUri }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskOutput) MainClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSparkJarTask) *string { return v.MainClassName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSparkJarTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSparkJarTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput) ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput) ToGetJobJobSettingsSettingsTaskSparkJarTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskSparkJarTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkJarTask) GetJobJobSettingsSettingsTaskSparkJarTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskSparkJarTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskSparkJarTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput) JarUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkJarTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JarUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput) MainClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkJarTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainClassName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkJarTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSparkPythonTask struct {
+	Parameters []string `pulumi:"parameters"`
+	PythonFile string   `pulumi:"pythonFile"`
+	Source     *string  `pulumi:"source"`
+}
+
+// GetJobJobSettingsSettingsTaskSparkPythonTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskSparkPythonTaskArgs and GetJobJobSettingsSettingsTaskSparkPythonTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSparkPythonTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSparkPythonTaskArgs{...}
+type GetJobJobSettingsSettingsTaskSparkPythonTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSparkPythonTaskOutput() GetJobJobSettingsSettingsTaskSparkPythonTaskOutput
+	ToGetJobJobSettingsSettingsTaskSparkPythonTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSparkPythonTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskSparkPythonTaskArgs struct {
+	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
+	PythonFile pulumi.StringInput      `pulumi:"pythonFile"`
+	Source     pulumi.StringPtrInput   `pulumi:"source"`
+}
+
+func (GetJobJobSettingsSettingsTaskSparkPythonTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkPythonTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkPythonTaskArgs) ToGetJobJobSettingsSettingsTaskSparkPythonTaskOutput() GetJobJobSettingsSettingsTaskSparkPythonTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSparkPythonTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkPythonTaskArgs) ToGetJobJobSettingsSettingsTaskSparkPythonTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkPythonTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSparkPythonTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkPythonTaskArgs) ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkPythonTaskArgs) ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSparkPythonTaskOutput).ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskSparkPythonTaskArgs, GetJobJobSettingsSettingsTaskSparkPythonTaskPtr and GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskSparkPythonTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskSparkPythonTaskPtrType GetJobJobSettingsSettingsTaskSparkPythonTaskArgs
+
+func GetJobJobSettingsSettingsTaskSparkPythonTaskPtr(v *GetJobJobSettingsSettingsTaskSparkPythonTaskArgs) GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskSparkPythonTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskSparkPythonTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSparkPythonTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskSparkPythonTaskPtrType) ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskSparkPythonTaskPtrType) ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSparkPythonTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkPythonTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) ToGetJobJobSettingsSettingsTaskSparkPythonTaskOutput() GetJobJobSettingsSettingsTaskSparkPythonTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) ToGetJobJobSettingsSettingsTaskSparkPythonTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkPythonTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskSparkPythonTask) *GetJobJobSettingsSettingsTaskSparkPythonTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSparkPythonTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) PythonFile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSparkPythonTask) string { return v.PythonFile }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSparkPythonTask) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSparkPythonTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) ToGetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskSparkPythonTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkPythonTask) GetJobJobSettingsSettingsTaskSparkPythonTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskSparkPythonTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskSparkPythonTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkPythonTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkPythonTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PythonFile
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkPythonTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSparkSubmitTask struct {
+	Parameters []string `pulumi:"parameters"`
+}
+
+// GetJobJobSettingsSettingsTaskSparkSubmitTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs and GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSparkSubmitTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs{...}
+type GetJobJobSettingsSettingsTaskSparkSubmitTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSparkSubmitTaskOutput() GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput
+	ToGetJobJobSettingsSettingsTaskSparkSubmitTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs struct {
+	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
+}
+
+func (GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkSubmitTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskOutput() GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSparkSubmitTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput).ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs, GetJobJobSettingsSettingsTaskSparkSubmitTaskPtr and GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskSparkSubmitTaskPtrType GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs
+
+func GetJobJobSettingsSettingsTaskSparkSubmitTaskPtr(v *GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs) GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskSparkSubmitTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskSparkSubmitTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSparkSubmitTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskSparkSubmitTaskPtrType) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskSparkSubmitTaskPtrType) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkSubmitTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskOutput() GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskSparkSubmitTask) *GetJobJobSettingsSettingsTaskSparkSubmitTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSparkSubmitTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSparkSubmitTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput() GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput) ToGetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkSubmitTask) GetJobJobSettingsSettingsTaskSparkSubmitTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskSparkSubmitTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkSubmitTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringArrayOutput)
+}
+
 type GetJobJobSettingsSettingsTaskSqlTask struct {
 	Alert       *GetJobJobSettingsSettingsTaskSqlTaskAlert     `pulumi:"alert"`
 	Dashboard   *GetJobJobSettingsSettingsTaskSqlTaskDashboard `pulumi:"dashboard"`
@@ -11125,6 +12904,8 @@ type GetPostgresEndpointSpec struct {
 	Disabled *bool `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group *GetPostgresEndpointSpecGroup `pulumi:"group"`
 	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
 	// Should be set to true when provided
 	NoSuspension *bool `pulumi:"noSuspension"`
@@ -11157,6 +12938,8 @@ type GetPostgresEndpointSpecArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointSpecGroupPtrInput `pulumi:"group"`
 	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
 	// Should be set to true when provided
 	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
@@ -11215,6 +12998,11 @@ func (o GetPostgresEndpointSpecOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointSpec) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o GetPostgresEndpointSpecOutput) Group() GetPostgresEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpec) *GetPostgresEndpointSpecGroup { return v.Group }).(GetPostgresEndpointSpecGroupPtrOutput)
+}
+
 // (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
 // Should be set to true when provided
 func (o GetPostgresEndpointSpecOutput) NoSuspension() pulumi.BoolPtrOutput {
@@ -11229,6 +13017,197 @@ func (o GetPostgresEndpointSpecOutput) Settings() GetPostgresEndpointSpecSetting
 // (string) - Duration of inactivity after which the compute endpoint is automatically suspended
 func (o GetPostgresEndpointSpecOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPostgresEndpointSpec) *string { return v.SuspendTimeoutDuration }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresEndpointSpecGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresEndpointSpecGroupInput is an input type that accepts GetPostgresEndpointSpecGroupArgs and GetPostgresEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointSpecGroupInput` via:
+//
+//	GetPostgresEndpointSpecGroupArgs{...}
+type GetPostgresEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointSpecGroupOutput() GetPostgresEndpointSpecGroupOutput
+	ToGetPostgresEndpointSpecGroupOutputWithContext(context.Context) GetPostgresEndpointSpecGroupOutput
+}
+
+type GetPostgresEndpointSpecGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointSpecGroupArgs) ToGetPostgresEndpointSpecGroupOutput() GetPostgresEndpointSpecGroupOutput {
+	return i.ToGetPostgresEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointSpecGroupArgs) ToGetPostgresEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecGroupOutput)
+}
+
+func (i GetPostgresEndpointSpecGroupArgs) ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointSpecGroupArgs) ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecGroupOutput).ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// GetPostgresEndpointSpecGroupPtrInput is an input type that accepts GetPostgresEndpointSpecGroupArgs, GetPostgresEndpointSpecGroupPtr and GetPostgresEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointSpecGroupPtrInput` via:
+//
+//	        GetPostgresEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput
+	ToGetPostgresEndpointSpecGroupPtrOutputWithContext(context.Context) GetPostgresEndpointSpecGroupPtrOutput
+}
+
+type getPostgresEndpointSpecGroupPtrType GetPostgresEndpointSpecGroupArgs
+
+func GetPostgresEndpointSpecGroupPtr(v *GetPostgresEndpointSpecGroupArgs) GetPostgresEndpointSpecGroupPtrInput {
+	return (*getPostgresEndpointSpecGroupPtrType)(v)
+}
+
+func (*getPostgresEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *getPostgresEndpointSpecGroupPtrType) ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresEndpointSpecGroupPtrType) ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointSpecGroupOutput) ToGetPostgresEndpointSpecGroupOutput() GetPostgresEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecGroupOutput) ToGetPostgresEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecGroupOutput) ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput {
+	return o.ToGetPostgresEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresEndpointSpecGroupOutput) ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresEndpointSpecGroup) *GetPostgresEndpointSpecGroup {
+		return &v
+	}).(GetPostgresEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointSpecGroupPtrOutput) ToGetPostgresEndpointSpecGroupPtrOutput() GetPostgresEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecGroupPtrOutput) ToGetPostgresEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointSpecGroupPtrOutput) Elem() GetPostgresEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecGroup) GetPostgresEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresEndpointSpecGroup
+		return ret
+	}).(GetPostgresEndpointSpecGroupOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetPostgresEndpointSpecSettings struct {
@@ -11373,7 +13352,7 @@ type GetPostgresEndpointStatus struct {
 	AutoscalingLimitMaxCu float64 `pulumi:"autoscalingLimitMaxCu"`
 	// (number) - The minimum number of Compute Units
 	AutoscalingLimitMinCu float64 `pulumi:"autoscalingLimitMinCu"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	CurrentState string `pulumi:"currentState"`
 	// (boolean) - Whether to restrict connections to the compute endpoint.
 	// Enabling this option schedules a suspend compute operation.
@@ -11382,9 +13361,11 @@ type GetPostgresEndpointStatus struct {
 	Disabled bool `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointStatusGroup `pulumi:"group"`
 	// (EndpointHosts) - Contains host information for connecting to the endpoint
 	Hosts GetPostgresEndpointStatusHosts `pulumi:"hosts"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	PendingState string `pulumi:"pendingState"`
 	// (EndpointSettings)
 	Settings GetPostgresEndpointStatusSettings `pulumi:"settings"`
@@ -11408,7 +13389,7 @@ type GetPostgresEndpointStatusArgs struct {
 	AutoscalingLimitMaxCu pulumi.Float64Input `pulumi:"autoscalingLimitMaxCu"`
 	// (number) - The minimum number of Compute Units
 	AutoscalingLimitMinCu pulumi.Float64Input `pulumi:"autoscalingLimitMinCu"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	CurrentState pulumi.StringInput `pulumi:"currentState"`
 	// (boolean) - Whether to restrict connections to the compute endpoint.
 	// Enabling this option schedules a suspend compute operation.
@@ -11417,9 +13398,11 @@ type GetPostgresEndpointStatusArgs struct {
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointStatusGroupInput `pulumi:"group"`
 	// (EndpointHosts) - Contains host information for connecting to the endpoint
 	Hosts GetPostgresEndpointStatusHostsInput `pulumi:"hosts"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	PendingState pulumi.StringInput `pulumi:"pendingState"`
 	// (EndpointSettings)
 	Settings GetPostgresEndpointStatusSettingsInput `pulumi:"settings"`
@@ -11463,7 +13446,7 @@ func (o GetPostgresEndpointStatusOutput) AutoscalingLimitMinCu() pulumi.Float64O
 	return o.ApplyT(func(v GetPostgresEndpointStatus) float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64Output)
 }
 
-// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 func (o GetPostgresEndpointStatusOutput) CurrentState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.CurrentState }).(pulumi.StringOutput)
 }
@@ -11481,12 +13464,17 @@ func (o GetPostgresEndpointStatusOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o GetPostgresEndpointStatusOutput) Group() GetPostgresEndpointStatusGroupOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatus) GetPostgresEndpointStatusGroup { return v.Group }).(GetPostgresEndpointStatusGroupOutput)
+}
+
 // (EndpointHosts) - Contains host information for connecting to the endpoint
 func (o GetPostgresEndpointStatusOutput) Hosts() GetPostgresEndpointStatusHostsOutput {
 	return o.ApplyT(func(v GetPostgresEndpointStatus) GetPostgresEndpointStatusHosts { return v.Hosts }).(GetPostgresEndpointStatusHostsOutput)
 }
 
-// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 func (o GetPostgresEndpointStatusOutput) PendingState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.PendingState }).(pulumi.StringOutput)
 }
@@ -11501,10 +13489,96 @@ func (o GetPostgresEndpointStatusOutput) SuspendTimeoutDuration() pulumi.StringO
 	return o.ApplyT(func(v GetPostgresEndpointStatus) string { return v.SuspendTimeoutDuration }).(pulumi.StringOutput)
 }
 
+type GetPostgresEndpointStatusGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresEndpointStatusGroupInput is an input type that accepts GetPostgresEndpointStatusGroupArgs and GetPostgresEndpointStatusGroupOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointStatusGroupInput` via:
+//
+//	GetPostgresEndpointStatusGroupArgs{...}
+type GetPostgresEndpointStatusGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointStatusGroupOutput() GetPostgresEndpointStatusGroupOutput
+	ToGetPostgresEndpointStatusGroupOutputWithContext(context.Context) GetPostgresEndpointStatusGroupOutput
+}
+
+type GetPostgresEndpointStatusGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresEndpointStatusGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatusGroup)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointStatusGroupArgs) ToGetPostgresEndpointStatusGroupOutput() GetPostgresEndpointStatusGroupOutput {
+	return i.ToGetPostgresEndpointStatusGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointStatusGroupArgs) ToGetPostgresEndpointStatusGroupOutputWithContext(ctx context.Context) GetPostgresEndpointStatusGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointStatusGroupOutput)
+}
+
+type GetPostgresEndpointStatusGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointStatusGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointStatusGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointStatusGroupOutput) ToGetPostgresEndpointStatusGroupOutput() GetPostgresEndpointStatusGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointStatusGroupOutput) ToGetPostgresEndpointStatusGroupOutputWithContext(ctx context.Context) GetPostgresEndpointStatusGroupOutput {
+	return o
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointStatusGroupOutput) EnableReadableSecondaries() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusGroup) bool { return v.EnableReadableSecondaries }).(pulumi.BoolOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointStatusGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointStatusGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
 type GetPostgresEndpointStatusHosts struct {
 	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
 	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
 	Host string `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost string `pulumi:"readOnlyHost"`
 }
 
 // GetPostgresEndpointStatusHostsInput is an input type that accepts GetPostgresEndpointStatusHostsArgs and GetPostgresEndpointStatusHostsOutput values.
@@ -11522,6 +13596,10 @@ type GetPostgresEndpointStatusHostsArgs struct {
 	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
 	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
 	Host pulumi.StringInput `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost pulumi.StringInput `pulumi:"readOnlyHost"`
 }
 
 func (GetPostgresEndpointStatusHostsArgs) ElementType() reflect.Type {
@@ -11554,6 +13632,13 @@ func (o GetPostgresEndpointStatusHostsOutput) ToGetPostgresEndpointStatusHostsOu
 // to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
 func (o GetPostgresEndpointStatusHostsOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointStatusHosts) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+func (o GetPostgresEndpointStatusHostsOutput) ReadOnlyHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointStatusHosts) string { return v.ReadOnlyHost }).(pulumi.StringOutput)
 }
 
 type GetPostgresEndpointStatusSettings struct {
@@ -11925,6 +14010,8 @@ type GetPostgresEndpointsEndpointSpec struct {
 	Disabled *bool `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group *GetPostgresEndpointsEndpointSpecGroup `pulumi:"group"`
 	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
 	// Should be set to true when provided
 	NoSuspension *bool `pulumi:"noSuspension"`
@@ -11957,6 +14044,8 @@ type GetPostgresEndpointsEndpointSpecArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointsEndpointSpecGroupPtrInput `pulumi:"group"`
 	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
 	// Should be set to true when provided
 	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
@@ -12015,6 +14104,11 @@ func (o GetPostgresEndpointsEndpointSpecOutput) EndpointType() pulumi.StringOutp
 	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o GetPostgresEndpointsEndpointSpecOutput) Group() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) *GetPostgresEndpointsEndpointSpecGroup { return v.Group }).(GetPostgresEndpointsEndpointSpecGroupPtrOutput)
+}
+
 // (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
 // Should be set to true when provided
 func (o GetPostgresEndpointsEndpointSpecOutput) NoSuspension() pulumi.BoolPtrOutput {
@@ -12029,6 +14123,197 @@ func (o GetPostgresEndpointsEndpointSpecOutput) Settings() GetPostgresEndpointsE
 // (string) - Duration of inactivity after which the compute endpoint is automatically suspended
 func (o GetPostgresEndpointsEndpointSpecOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpec) *string { return v.SuspendTimeoutDuration }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresEndpointsEndpointSpecGroupInput is an input type that accepts GetPostgresEndpointsEndpointSpecGroupArgs and GetPostgresEndpointsEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointSpecGroupInput` via:
+//
+//	GetPostgresEndpointsEndpointSpecGroupArgs{...}
+type GetPostgresEndpointsEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointSpecGroupOutput() GetPostgresEndpointsEndpointSpecGroupOutput
+	ToGetPostgresEndpointsEndpointSpecGroupOutputWithContext(context.Context) GetPostgresEndpointsEndpointSpecGroupOutput
+}
+
+type GetPostgresEndpointsEndpointSpecGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresEndpointsEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointSpecGroupArgs) ToGetPostgresEndpointsEndpointSpecGroupOutput() GetPostgresEndpointsEndpointSpecGroupOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointSpecGroupArgs) ToGetPostgresEndpointsEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecGroupOutput)
+}
+
+func (i GetPostgresEndpointsEndpointSpecGroupArgs) ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointSpecGroupArgs) ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecGroupOutput).ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// GetPostgresEndpointsEndpointSpecGroupPtrInput is an input type that accepts GetPostgresEndpointsEndpointSpecGroupArgs, GetPostgresEndpointsEndpointSpecGroupPtr and GetPostgresEndpointsEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointSpecGroupPtrInput` via:
+//
+//	        GetPostgresEndpointsEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresEndpointsEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput
+	ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput
+}
+
+type getPostgresEndpointsEndpointSpecGroupPtrType GetPostgresEndpointsEndpointSpecGroupArgs
+
+func GetPostgresEndpointsEndpointSpecGroupPtr(v *GetPostgresEndpointsEndpointSpecGroupArgs) GetPostgresEndpointsEndpointSpecGroupPtrInput {
+	return (*getPostgresEndpointsEndpointSpecGroupPtrType)(v)
+}
+
+func (*getPostgresEndpointsEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *getPostgresEndpointsEndpointSpecGroupPtrType) ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresEndpointsEndpointSpecGroupPtrType) ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) ToGetPostgresEndpointsEndpointSpecGroupOutput() GetPostgresEndpointsEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) ToGetPostgresEndpointsEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o.ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresEndpointsEndpointSpecGroup) *GetPostgresEndpointsEndpointSpecGroup {
+		return &v
+	}).(GetPostgresEndpointsEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointsEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresEndpointsEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresEndpointsEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) ToGetPostgresEndpointsEndpointSpecGroupPtrOutput() GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) ToGetPostgresEndpointsEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) Elem() GetPostgresEndpointsEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecGroup) GetPostgresEndpointsEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresEndpointsEndpointSpecGroup
+		return ret
+	}).(GetPostgresEndpointsEndpointSpecGroupOutput)
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointsEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresEndpointsEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetPostgresEndpointsEndpointSpecSettings struct {
@@ -12173,7 +14458,7 @@ type GetPostgresEndpointsEndpointStatus struct {
 	AutoscalingLimitMaxCu float64 `pulumi:"autoscalingLimitMaxCu"`
 	// (number) - The minimum number of Compute Units
 	AutoscalingLimitMinCu float64 `pulumi:"autoscalingLimitMinCu"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	CurrentState string `pulumi:"currentState"`
 	// (boolean) - Whether to restrict connections to the compute endpoint.
 	// Enabling this option schedules a suspend compute operation.
@@ -12182,9 +14467,11 @@ type GetPostgresEndpointsEndpointStatus struct {
 	Disabled bool `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType string `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointsEndpointStatusGroup `pulumi:"group"`
 	// (EndpointHosts) - Contains host information for connecting to the endpoint
 	Hosts GetPostgresEndpointsEndpointStatusHosts `pulumi:"hosts"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	PendingState string `pulumi:"pendingState"`
 	// (EndpointSettings)
 	Settings GetPostgresEndpointsEndpointStatusSettings `pulumi:"settings"`
@@ -12208,7 +14495,7 @@ type GetPostgresEndpointsEndpointStatusArgs struct {
 	AutoscalingLimitMaxCu pulumi.Float64Input `pulumi:"autoscalingLimitMaxCu"`
 	// (number) - The minimum number of Compute Units
 	AutoscalingLimitMinCu pulumi.Float64Input `pulumi:"autoscalingLimitMinCu"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	CurrentState pulumi.StringInput `pulumi:"currentState"`
 	// (boolean) - Whether to restrict connections to the compute endpoint.
 	// Enabling this option schedules a suspend compute operation.
@@ -12217,9 +14504,11 @@ type GetPostgresEndpointsEndpointStatusArgs struct {
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 	// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+	Group GetPostgresEndpointsEndpointStatusGroupInput `pulumi:"group"`
 	// (EndpointHosts) - Contains host information for connecting to the endpoint
 	Hosts GetPostgresEndpointsEndpointStatusHostsInput `pulumi:"hosts"`
-	// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+	// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 	PendingState pulumi.StringInput `pulumi:"pendingState"`
 	// (EndpointSettings)
 	Settings GetPostgresEndpointsEndpointStatusSettingsInput `pulumi:"settings"`
@@ -12263,7 +14552,7 @@ func (o GetPostgresEndpointsEndpointStatusOutput) AutoscalingLimitMinCu() pulumi
 	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64Output)
 }
 
-// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 func (o GetPostgresEndpointsEndpointStatusOutput) CurrentState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.CurrentState }).(pulumi.StringOutput)
 }
@@ -12281,12 +14570,17 @@ func (o GetPostgresEndpointsEndpointStatusOutput) EndpointType() pulumi.StringOu
 	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
+// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+func (o GetPostgresEndpointsEndpointStatusOutput) Group() GetPostgresEndpointsEndpointStatusGroupOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) GetPostgresEndpointsEndpointStatusGroup { return v.Group }).(GetPostgresEndpointsEndpointStatusGroupOutput)
+}
+
 // (EndpointHosts) - Contains host information for connecting to the endpoint
 func (o GetPostgresEndpointsEndpointStatusOutput) Hosts() GetPostgresEndpointsEndpointStatusHostsOutput {
 	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) GetPostgresEndpointsEndpointStatusHosts { return v.Hosts }).(GetPostgresEndpointsEndpointStatusHostsOutput)
 }
 
-// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
 func (o GetPostgresEndpointsEndpointStatusOutput) PendingState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.PendingState }).(pulumi.StringOutput)
 }
@@ -12303,10 +14597,96 @@ func (o GetPostgresEndpointsEndpointStatusOutput) SuspendTimeoutDuration() pulum
 	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatus) string { return v.SuspendTimeoutDuration }).(pulumi.StringOutput)
 }
 
+type GetPostgresEndpointsEndpointStatusGroup struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresEndpointsEndpointStatusGroupInput is an input type that accepts GetPostgresEndpointsEndpointStatusGroupArgs and GetPostgresEndpointsEndpointStatusGroupOutput values.
+// You can construct a concrete instance of `GetPostgresEndpointsEndpointStatusGroupInput` via:
+//
+//	GetPostgresEndpointsEndpointStatusGroupArgs{...}
+type GetPostgresEndpointsEndpointStatusGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresEndpointsEndpointStatusGroupOutput() GetPostgresEndpointsEndpointStatusGroupOutput
+	ToGetPostgresEndpointsEndpointStatusGroupOutputWithContext(context.Context) GetPostgresEndpointsEndpointStatusGroupOutput
+}
+
+type GetPostgresEndpointsEndpointStatusGroupArgs struct {
+	// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+	// by specifying size.max > 1
+	EnableReadableSecondaries pulumi.BoolInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresEndpointsEndpointStatusGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatusGroup)(nil)).Elem()
+}
+
+func (i GetPostgresEndpointsEndpointStatusGroupArgs) ToGetPostgresEndpointsEndpointStatusGroupOutput() GetPostgresEndpointsEndpointStatusGroupOutput {
+	return i.ToGetPostgresEndpointsEndpointStatusGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresEndpointsEndpointStatusGroupArgs) ToGetPostgresEndpointsEndpointStatusGroupOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresEndpointsEndpointStatusGroupOutput)
+}
+
+type GetPostgresEndpointsEndpointStatusGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresEndpointsEndpointStatusGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresEndpointsEndpointStatusGroup)(nil)).Elem()
+}
+
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) ToGetPostgresEndpointsEndpointStatusGroupOutput() GetPostgresEndpointsEndpointStatusGroupOutput {
+	return o
+}
+
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) ToGetPostgresEndpointsEndpointStatusGroupOutputWithContext(ctx context.Context) GetPostgresEndpointsEndpointStatusGroupOutput {
+	return o
+}
+
+// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
+// by specifying size.max > 1
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) EnableReadableSecondaries() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusGroup) bool { return v.EnableReadableSecondaries }).(pulumi.BoolOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresEndpointsEndpointStatusGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
 type GetPostgresEndpointsEndpointStatusHosts struct {
 	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
 	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
 	Host string `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost string `pulumi:"readOnlyHost"`
 }
 
 // GetPostgresEndpointsEndpointStatusHostsInput is an input type that accepts GetPostgresEndpointsEndpointStatusHostsArgs and GetPostgresEndpointsEndpointStatusHostsOutput values.
@@ -12324,6 +14704,10 @@ type GetPostgresEndpointsEndpointStatusHostsArgs struct {
 	// (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
 	// to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
 	Host pulumi.StringInput `pulumi:"host"`
+	// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+	// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+	// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+	ReadOnlyHost pulumi.StringInput `pulumi:"readOnlyHost"`
 }
 
 func (GetPostgresEndpointsEndpointStatusHostsArgs) ElementType() reflect.Type {
@@ -12356,6 +14740,13 @@ func (o GetPostgresEndpointsEndpointStatusHostsOutput) ToGetPostgresEndpointsEnd
 // to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
 func (o GetPostgresEndpointsEndpointStatusHostsOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusHosts) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+// this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+// if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+func (o GetPostgresEndpointsEndpointStatusHostsOutput) ReadOnlyHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresEndpointsEndpointStatusHosts) string { return v.ReadOnlyHost }).(pulumi.StringOutput)
 }
 
 type GetPostgresEndpointsEndpointStatusSettings struct {
@@ -12545,6 +14936,251 @@ func (o GetPostgresEndpointsProviderConfigPtrOutput) WorkspaceId() pulumi.String
 		}
 		return &v.WorkspaceId
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpec struct {
+	// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+	Group *GetPostgresProjectInitialEndpointSpecGroup `pulumi:"group"`
+}
+
+// GetPostgresProjectInitialEndpointSpecInput is an input type that accepts GetPostgresProjectInitialEndpointSpecArgs and GetPostgresProjectInitialEndpointSpecOutput values.
+// You can construct a concrete instance of `GetPostgresProjectInitialEndpointSpecInput` via:
+//
+//	GetPostgresProjectInitialEndpointSpecArgs{...}
+type GetPostgresProjectInitialEndpointSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectInitialEndpointSpecOutput() GetPostgresProjectInitialEndpointSpecOutput
+	ToGetPostgresProjectInitialEndpointSpecOutputWithContext(context.Context) GetPostgresProjectInitialEndpointSpecOutput
+}
+
+type GetPostgresProjectInitialEndpointSpecArgs struct {
+	// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+	Group GetPostgresProjectInitialEndpointSpecGroupPtrInput `pulumi:"group"`
+}
+
+func (GetPostgresProjectInitialEndpointSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (i GetPostgresProjectInitialEndpointSpecArgs) ToGetPostgresProjectInitialEndpointSpecOutput() GetPostgresProjectInitialEndpointSpecOutput {
+	return i.ToGetPostgresProjectInitialEndpointSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectInitialEndpointSpecArgs) ToGetPostgresProjectInitialEndpointSpecOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectInitialEndpointSpecOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectInitialEndpointSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (o GetPostgresProjectInitialEndpointSpecOutput) ToGetPostgresProjectInitialEndpointSpecOutput() GetPostgresProjectInitialEndpointSpecOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecOutput) ToGetPostgresProjectInitialEndpointSpecOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecOutput {
+	return o
+}
+
+// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+func (o GetPostgresProjectInitialEndpointSpecOutput) Group() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpec) *GetPostgresProjectInitialEndpointSpecGroup {
+		return v.Group
+	}).(GetPostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpecGroup struct {
+	// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresProjectInitialEndpointSpecGroupInput is an input type that accepts GetPostgresProjectInitialEndpointSpecGroupArgs and GetPostgresProjectInitialEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `GetPostgresProjectInitialEndpointSpecGroupInput` via:
+//
+//	GetPostgresProjectInitialEndpointSpecGroupArgs{...}
+type GetPostgresProjectInitialEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectInitialEndpointSpecGroupOutput() GetPostgresProjectInitialEndpointSpecGroupOutput
+	ToGetPostgresProjectInitialEndpointSpecGroupOutputWithContext(context.Context) GetPostgresProjectInitialEndpointSpecGroupOutput
+}
+
+type GetPostgresProjectInitialEndpointSpecGroupArgs struct {
+	// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresProjectInitialEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i GetPostgresProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectInitialEndpointSpecGroupOutput() GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return i.ToGetPostgresProjectInitialEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectInitialEndpointSpecGroupOutput)
+}
+
+func (i GetPostgresProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectInitialEndpointSpecGroupOutput).ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// GetPostgresProjectInitialEndpointSpecGroupPtrInput is an input type that accepts GetPostgresProjectInitialEndpointSpecGroupArgs, GetPostgresProjectInitialEndpointSpecGroupPtr and GetPostgresProjectInitialEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `GetPostgresProjectInitialEndpointSpecGroupPtrInput` via:
+//
+//	        GetPostgresProjectInitialEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresProjectInitialEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput
+	ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput
+}
+
+type getPostgresProjectInitialEndpointSpecGroupPtrType GetPostgresProjectInitialEndpointSpecGroupArgs
+
+func GetPostgresProjectInitialEndpointSpecGroupPtr(v *GetPostgresProjectInitialEndpointSpecGroupArgs) GetPostgresProjectInitialEndpointSpecGroupPtrInput {
+	return (*getPostgresProjectInitialEndpointSpecGroupPtrType)(v)
+}
+
+func (*getPostgresProjectInitialEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *getPostgresProjectInitialEndpointSpecGroupPtrType) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresProjectInitialEndpointSpecGroupPtrType) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectInitialEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectInitialEndpointSpecGroupOutput() GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresProjectInitialEndpointSpecGroup) *GetPostgresProjectInitialEndpointSpecGroup {
+		return &v
+	}).(GetPostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectInitialEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) Elem() GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *GetPostgresProjectInitialEndpointSpecGroup) GetPostgresProjectInitialEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresProjectInitialEndpointSpecGroup
+		return ret
+	}).(GetPostgresProjectInitialEndpointSpecGroupOutput)
+}
+
+// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectInitialEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetPostgresProjectProviderConfig struct {
@@ -13439,6 +16075,11 @@ func (o GetPostgresProjectStatusDefaultEndpointSettingsOutput) SuspendTimeoutDur
 type GetPostgresProjectsProject struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime string `pulumi:"createTime"`
+	// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec GetPostgresProjectsProjectInitialEndpointSpec `pulumi:"initialEndpointSpec"`
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name string `pulumi:"name"`
@@ -13468,6 +16109,11 @@ type GetPostgresProjectsProjectInput interface {
 type GetPostgresProjectsProjectArgs struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec GetPostgresProjectsProjectInitialEndpointSpecInput `pulumi:"initialEndpointSpec"`
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name pulumi.StringInput `pulumi:"name"`
@@ -13539,6 +16185,16 @@ func (o GetPostgresProjectsProjectOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresProjectsProject) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+// created project. If omitted, the initial endpoint created will have default settings, without high availability
+// configured. This field does not apply to any endpoints created after project creation. Use
+// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+func (o GetPostgresProjectsProjectOutput) InitialEndpointSpec() GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) GetPostgresProjectsProjectInitialEndpointSpec {
+		return v.InitialEndpointSpec
+	}).(GetPostgresProjectsProjectInitialEndpointSpecOutput)
+}
+
 // (string) - Output only. The full resource path of the project.
 // Format: projects/{project_id}
 func (o GetPostgresProjectsProjectOutput) Name() pulumi.StringOutput {
@@ -13588,6 +16244,251 @@ func (o GetPostgresProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetPostg
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresProjectsProject {
 		return vs[0].([]GetPostgresProjectsProject)[vs[1].(int)]
 	}).(GetPostgresProjectsProjectOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpec struct {
+	// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+	Group *GetPostgresProjectsProjectInitialEndpointSpecGroup `pulumi:"group"`
+}
+
+// GetPostgresProjectsProjectInitialEndpointSpecInput is an input type that accepts GetPostgresProjectsProjectInitialEndpointSpecArgs and GetPostgresProjectsProjectInitialEndpointSpecOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectInitialEndpointSpecInput` via:
+//
+//	GetPostgresProjectsProjectInitialEndpointSpecArgs{...}
+type GetPostgresProjectsProjectInitialEndpointSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectInitialEndpointSpecOutput() GetPostgresProjectsProjectInitialEndpointSpecOutput
+	ToGetPostgresProjectsProjectInitialEndpointSpecOutputWithContext(context.Context) GetPostgresProjectsProjectInitialEndpointSpecOutput
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecArgs struct {
+	// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+	Group GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput `pulumi:"group"`
+}
+
+func (GetPostgresProjectsProjectInitialEndpointSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecArgs) ToGetPostgresProjectsProjectInitialEndpointSpecOutput() GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return i.ToGetPostgresProjectsProjectInitialEndpointSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecArgs) ToGetPostgresProjectsProjectInitialEndpointSpecOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectInitialEndpointSpecOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectInitialEndpointSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) ToGetPostgresProjectsProjectInitialEndpointSpecOutput() GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) ToGetPostgresProjectsProjectInitialEndpointSpecOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return o
+}
+
+// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) Group() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpec) *GetPostgresProjectsProjectInitialEndpointSpecGroup {
+		return v.Group
+	}).(GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecGroup struct {
+	// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresProjectsProjectInitialEndpointSpecGroupInput is an input type that accepts GetPostgresProjectsProjectInitialEndpointSpecGroupArgs and GetPostgresProjectsProjectInitialEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectInitialEndpointSpecGroupInput` via:
+//
+//	GetPostgresProjectsProjectInitialEndpointSpecGroupArgs{...}
+type GetPostgresProjectsProjectInitialEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupOutput
+	ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutputWithContext(context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupOutput
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecGroupArgs struct {
+	// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return i.ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectInitialEndpointSpecGroupOutput)
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectInitialEndpointSpecGroupOutput).ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput is an input type that accepts GetPostgresProjectsProjectInitialEndpointSpecGroupArgs, GetPostgresProjectsProjectInitialEndpointSpecGroupPtr and GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput` via:
+//
+//	        GetPostgresProjectsProjectInitialEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput
+	ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput
+}
+
+type getPostgresProjectsProjectInitialEndpointSpecGroupPtrType GetPostgresProjectsProjectInitialEndpointSpecGroupArgs
+
+func GetPostgresProjectsProjectInitialEndpointSpecGroupPtr(v *GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput {
+	return (*getPostgresProjectsProjectInitialEndpointSpecGroupPtrType)(v)
+}
+
+func (*getPostgresProjectsProjectInitialEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *getPostgresProjectsProjectInitialEndpointSpecGroupPtrType) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresProjectsProjectInitialEndpointSpecGroupPtrType) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresProjectsProjectInitialEndpointSpecGroup) *GetPostgresProjectsProjectInitialEndpointSpecGroup {
+		return &v
+	}).(GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) Elem() GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectInitialEndpointSpecGroup) GetPostgresProjectsProjectInitialEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresProjectsProjectInitialEndpointSpecGroup
+		return ret
+	}).(GetPostgresProjectsProjectInitialEndpointSpecGroupOutput)
+}
+
+// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectInitialEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetPostgresProjectsProjectProviderConfig struct {
@@ -35137,7 +38038,7 @@ func (o GetWorkspaceEntityTagAssignmentsProviderConfigPtrOutput) WorkspaceId() p
 }
 
 type GetWorkspaceEntityTagAssignmentsTagAssignment struct {
-	// The identifier of the entity to which the tag is assigned
+	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
@@ -35161,7 +38062,7 @@ type GetWorkspaceEntityTagAssignmentsTagAssignmentInput interface {
 }
 
 type GetWorkspaceEntityTagAssignmentsTagAssignmentArgs struct {
-	// The identifier of the entity to which the tag is assigned
+	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId pulumi.StringInput `pulumi:"entityId"`
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringInput `pulumi:"entityType"`
@@ -35224,7 +38125,7 @@ func (o GetWorkspaceEntityTagAssignmentsTagAssignmentOutput) ToGetWorkspaceEntit
 	return o
 }
 
-// The identifier of the entity to which the tag is assigned
+// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 func (o GetWorkspaceEntityTagAssignmentsTagAssignmentOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsTagAssignment) string { return v.EntityId }).(pulumi.StringOutput)
 }
@@ -37925,6 +40826,28 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotebookTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNotebookTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotebookTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNotebookTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotificationSettingsInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPipelineTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPipelineTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPipelineTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPipelineTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPowerBiTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPowerBiTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskTableInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPowerBiTaskTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPythonWheelTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPythonWheelTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPythonWheelTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskRunJobTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskRunJobTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskRunJobTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskRunJobTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkJarTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSparkJarTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSparkJarTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkPythonTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSparkPythonTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSparkPythonTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkSubmitTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertArgs{})
@@ -38078,9 +41001,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointProviderConfigInput)(nil)).Elem(), GetPostgresEndpointProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointProviderConfigPtrInput)(nil)).Elem(), GetPostgresEndpointProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecInput)(nil)).Elem(), GetPostgresEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecGroupInput)(nil)).Elem(), GetPostgresEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecGroupPtrInput)(nil)).Elem(), GetPostgresEndpointSpecGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecSettingsInput)(nil)).Elem(), GetPostgresEndpointSpecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointSpecSettingsPtrInput)(nil)).Elem(), GetPostgresEndpointSpecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointStatusInput)(nil)).Elem(), GetPostgresEndpointStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointStatusGroupInput)(nil)).Elem(), GetPostgresEndpointStatusGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointStatusHostsInput)(nil)).Elem(), GetPostgresEndpointStatusHostsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointStatusSettingsInput)(nil)).Elem(), GetPostgresEndpointStatusSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointInput)(nil)).Elem(), GetPostgresEndpointsEndpointArgs{})
@@ -38088,13 +41014,19 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointProviderConfigInput)(nil)).Elem(), GetPostgresEndpointsEndpointProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointProviderConfigPtrInput)(nil)).Elem(), GetPostgresEndpointsEndpointProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecGroupInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecGroupPtrInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecSettingsInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointSpecSettingsPtrInput)(nil)).Elem(), GetPostgresEndpointsEndpointSpecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointStatusInput)(nil)).Elem(), GetPostgresEndpointsEndpointStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointStatusGroupInput)(nil)).Elem(), GetPostgresEndpointsEndpointStatusGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointStatusHostsInput)(nil)).Elem(), GetPostgresEndpointsEndpointStatusHostsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsEndpointStatusSettingsInput)(nil)).Elem(), GetPostgresEndpointsEndpointStatusSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsProviderConfigInput)(nil)).Elem(), GetPostgresEndpointsProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresEndpointsProviderConfigPtrInput)(nil)).Elem(), GetPostgresEndpointsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecInput)(nil)).Elem(), GetPostgresProjectInitialEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecGroupInput)(nil)).Elem(), GetPostgresProjectInitialEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecGroupPtrInput)(nil)).Elem(), GetPostgresProjectInitialEndpointSpecGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectProviderConfigInput)(nil)).Elem(), GetPostgresProjectProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectProviderConfigPtrInput)(nil)).Elem(), GetPostgresProjectProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectSpecInput)(nil)).Elem(), GetPostgresProjectSpecArgs{})
@@ -38108,6 +41040,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectStatusDefaultEndpointSettingsInput)(nil)).Elem(), GetPostgresProjectStatusDefaultEndpointSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectInput)(nil)).Elem(), GetPostgresProjectsProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectArrayInput)(nil)).Elem(), GetPostgresProjectsProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecInput)(nil)).Elem(), GetPostgresProjectsProjectInitialEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecGroupInput)(nil)).Elem(), GetPostgresProjectsProjectInitialEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput)(nil)).Elem(), GetPostgresProjectsProjectInitialEndpointSpecGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectProviderConfigInput)(nil)).Elem(), GetPostgresProjectsProjectProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectProviderConfigPtrInput)(nil)).Elem(), GetPostgresProjectsProjectProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectSpecInput)(nil)).Elem(), GetPostgresProjectsProjectSpecArgs{})
@@ -38437,6 +41372,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNotebookTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPipelineTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPowerBiTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPowerBiTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPowerBiTaskTableOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPowerBiTaskTableArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPythonWheelTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskRunJobTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSparkJarTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSparkPythonTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSparkSubmitTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertOutput{})
@@ -38590,9 +41547,12 @@ func init() {
 	pulumi.RegisterOutputType(GetPostgresEndpointProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointSpecGroupPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointSpecSettingsOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointSpecSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointStatusGroupOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointStatusHostsOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointStatusSettingsOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointOutput{})
@@ -38600,13 +41560,19 @@ func init() {
 	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecGroupPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecSettingsOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointSpecSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointStatusGroupOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointStatusHostsOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsEndpointStatusSettingsOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetPostgresEndpointsProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectInitialEndpointSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectInitialEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectInitialEndpointSpecGroupPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectSpecOutput{})
@@ -38620,6 +41586,9 @@ func init() {
 	pulumi.RegisterOutputType(GetPostgresProjectStatusDefaultEndpointSettingsOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectsProjectOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectsProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectInitialEndpointSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectInitialEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectsProjectProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectsProjectProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectsProjectSpecOutput{})

@@ -21,11 +21,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("cohereApiKey")]
         public Input<string>? CohereApiKey { get; set; }
 
+        [Input("cohereApiKeyPlaintext")]
+        private Input<string>? _cohereApiKeyPlaintext;
+
         /// <summary>
         /// The Cohere API key provided as a plaintext string.
         /// </summary>
-        [Input("cohereApiKeyPlaintext")]
-        public Input<string>? CohereApiKeyPlaintext { get; set; }
+        public Input<string>? CohereApiKeyPlaintext
+        {
+            get => _cohereApiKeyPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cohereApiKeyPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ModelServingConfigServedEntityExternalModelCohereConfigArgs()
         {

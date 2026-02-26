@@ -18,11 +18,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
+        [Input("privateKeyPlaintext")]
+        private Input<string>? _privateKeyPlaintext;
+
         /// <summary>
         /// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
         /// </summary>
-        [Input("privateKeyPlaintext")]
-        public Input<string>? PrivateKeyPlaintext { get; set; }
+        public Input<string>? PrivateKeyPlaintext
+        {
+            get => _privateKeyPlaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyPlaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This is the Google Cloud project id that the service account is associated with.

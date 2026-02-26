@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PostgresEndpointStatusGroup;
 import com.pulumi.databricks.outputs.PostgresEndpointStatusHosts;
 import com.pulumi.databricks.outputs.PostgresEndpointStatusSettings;
 import java.lang.Boolean;
@@ -26,7 +27,7 @@ public final class PostgresEndpointStatus {
      */
     private @Nullable Double autoscalingLimitMinCu;
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     private @Nullable String currentState;
@@ -44,12 +45,17 @@ public final class PostgresEndpointStatus {
      */
     private @Nullable String endpointType;
     /**
+     * @return (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    private @Nullable PostgresEndpointStatusGroup group;
+    /**
      * @return (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
     private @Nullable PostgresEndpointStatusHosts hosts;
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     private @Nullable String pendingState;
@@ -80,7 +86,7 @@ public final class PostgresEndpointStatus {
         return Optional.ofNullable(this.autoscalingLimitMinCu);
     }
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public Optional<String> currentState() {
@@ -104,6 +110,13 @@ public final class PostgresEndpointStatus {
         return Optional.ofNullable(this.endpointType);
     }
     /**
+     * @return (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    public Optional<PostgresEndpointStatusGroup> group() {
+        return Optional.ofNullable(this.group);
+    }
+    /**
      * @return (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
@@ -111,7 +124,7 @@ public final class PostgresEndpointStatus {
         return Optional.ofNullable(this.hosts);
     }
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public Optional<String> pendingState() {
@@ -146,6 +159,7 @@ public final class PostgresEndpointStatus {
         private @Nullable String currentState;
         private @Nullable Boolean disabled;
         private @Nullable String endpointType;
+        private @Nullable PostgresEndpointStatusGroup group;
         private @Nullable PostgresEndpointStatusHosts hosts;
         private @Nullable String pendingState;
         private @Nullable PostgresEndpointStatusSettings settings;
@@ -158,6 +172,7 @@ public final class PostgresEndpointStatus {
     	      this.currentState = defaults.currentState;
     	      this.disabled = defaults.disabled;
     	      this.endpointType = defaults.endpointType;
+    	      this.group = defaults.group;
     	      this.hosts = defaults.hosts;
     	      this.pendingState = defaults.pendingState;
     	      this.settings = defaults.settings;
@@ -195,6 +210,12 @@ public final class PostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder group(@Nullable PostgresEndpointStatusGroup group) {
+
+            this.group = group;
+            return this;
+        }
+        @CustomType.Setter
         public Builder hosts(@Nullable PostgresEndpointStatusHosts hosts) {
 
             this.hosts = hosts;
@@ -225,6 +246,7 @@ public final class PostgresEndpointStatus {
             _resultValue.currentState = currentState;
             _resultValue.disabled = disabled;
             _resultValue.endpointType = endpointType;
+            _resultValue.group = group;
             _resultValue.hosts = hosts;
             _resultValue.pendingState = pendingState;
             _resultValue.settings = settings;

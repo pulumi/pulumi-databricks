@@ -25,7 +25,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<double>? AutoscalingLimitMinCu { get; set; }
 
         /// <summary>
-        /// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+        /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         [Input("currentState")]
         public Input<string>? CurrentState { get; set; }
@@ -46,13 +46,19 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? EndpointType { get; set; }
 
         /// <summary>
+        /// (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+        /// </summary>
+        [Input("group")]
+        public Input<Inputs.PostgresEndpointStatusGroupGetArgs>? Group { get; set; }
+
+        /// <summary>
         /// (EndpointHosts) - Contains host information for connecting to the endpoint
         /// </summary>
         [Input("hosts")]
         public Input<Inputs.PostgresEndpointStatusHostsGetArgs>? Hosts { get; set; }
 
         /// <summary>
-        /// (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+        /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         [Input("pendingState")]
         public Input<string>? PendingState { get; set; }

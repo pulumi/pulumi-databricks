@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("securableFullName", required: true)]
         public Input<string> SecurableFullName { get; set; } = null!;
 
+        [Input("securableKind")]
+        public Input<string>? SecurableKind { get; set; }
+
         /// <summary>
         /// the type of UC securable, i.e. `VOLUME`.
         /// </summary>

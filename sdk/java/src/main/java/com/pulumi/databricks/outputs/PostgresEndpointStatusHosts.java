@@ -17,6 +17,13 @@ public final class PostgresEndpointStatusHosts {
      * 
      */
     private @Nullable String host;
+    /**
+     * @return (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     * 
+     */
+    private @Nullable String readOnlyHost;
 
     private PostgresEndpointStatusHosts() {}
     /**
@@ -26,6 +33,15 @@ public final class PostgresEndpointStatusHosts {
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
+    }
+    /**
+     * @return (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     * 
+     */
+    public Optional<String> readOnlyHost() {
+        return Optional.ofNullable(this.readOnlyHost);
     }
 
     public static Builder builder() {
@@ -38,10 +54,12 @@ public final class PostgresEndpointStatusHosts {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String host;
+        private @Nullable String readOnlyHost;
         public Builder() {}
         public Builder(PostgresEndpointStatusHosts defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
+    	      this.readOnlyHost = defaults.readOnlyHost;
         }
 
         @CustomType.Setter
@@ -50,9 +68,16 @@ public final class PostgresEndpointStatusHosts {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
+        public Builder readOnlyHost(@Nullable String readOnlyHost) {
+
+            this.readOnlyHost = readOnlyHost;
+            return this;
+        }
         public PostgresEndpointStatusHosts build() {
             final var _resultValue = new PostgresEndpointStatusHosts();
             _resultValue.host = host;
+            _resultValue.readOnlyHost = readOnlyHost;
             return _resultValue;
         }
     }

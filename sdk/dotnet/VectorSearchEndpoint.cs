@@ -108,6 +108,9 @@ namespace Pulumi.Databricks
         [Output("providerConfig")]
         public Output<Outputs.VectorSearchEndpointProviderConfig?> ProviderConfig { get; private set; } = null!;
 
+        [Output("scalingInfo")]
+        public Output<Outputs.VectorSearchEndpointScalingInfo?> ScalingInfo { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a VectorSearchEndpoint resource with the given unique name, arguments, and options.
@@ -177,6 +180,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.VectorSearchEndpointProviderConfigArgs>? ProviderConfig { get; set; }
+
+        [Input("scalingInfo")]
+        public Input<Inputs.VectorSearchEndpointScalingInfoArgs>? ScalingInfo { get; set; }
 
         public VectorSearchEndpointArgs()
         {
@@ -263,6 +269,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.VectorSearchEndpointProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        [Input("scalingInfo")]
+        public Input<Inputs.VectorSearchEndpointScalingInfoGetArgs>? ScalingInfo { get; set; }
 
         public VectorSearchEndpointState()
         {

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresEndpointStatusGroup;
 import com.pulumi.databricks.outputs.GetPostgresEndpointStatusHosts;
 import com.pulumi.databricks.outputs.GetPostgresEndpointStatusSettings;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -25,7 +26,7 @@ public final class GetPostgresEndpointStatus {
      */
     private Double autoscalingLimitMinCu;
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     private String currentState;
@@ -43,12 +44,17 @@ public final class GetPostgresEndpointStatus {
      */
     private String endpointType;
     /**
+     * @return (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    private GetPostgresEndpointStatusGroup group;
+    /**
      * @return (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
     private GetPostgresEndpointStatusHosts hosts;
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     private String pendingState;
@@ -79,7 +85,7 @@ public final class GetPostgresEndpointStatus {
         return this.autoscalingLimitMinCu;
     }
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public String currentState() {
@@ -103,6 +109,13 @@ public final class GetPostgresEndpointStatus {
         return this.endpointType;
     }
     /**
+     * @return (EndpointGroupStatus) - Details on the HA configuration of the endpoint
+     * 
+     */
+    public GetPostgresEndpointStatusGroup group() {
+        return this.group;
+    }
+    /**
      * @return (EndpointHosts) - Contains host information for connecting to the endpoint
      * 
      */
@@ -110,7 +123,7 @@ public final class GetPostgresEndpointStatus {
         return this.hosts;
     }
     /**
-     * @return (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     * @return (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      * 
      */
     public String pendingState() {
@@ -145,6 +158,7 @@ public final class GetPostgresEndpointStatus {
         private String currentState;
         private Boolean disabled;
         private String endpointType;
+        private GetPostgresEndpointStatusGroup group;
         private GetPostgresEndpointStatusHosts hosts;
         private String pendingState;
         private GetPostgresEndpointStatusSettings settings;
@@ -157,6 +171,7 @@ public final class GetPostgresEndpointStatus {
     	      this.currentState = defaults.currentState;
     	      this.disabled = defaults.disabled;
     	      this.endpointType = defaults.endpointType;
+    	      this.group = defaults.group;
     	      this.hosts = defaults.hosts;
     	      this.pendingState = defaults.pendingState;
     	      this.settings = defaults.settings;
@@ -204,6 +219,14 @@ public final class GetPostgresEndpointStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder group(GetPostgresEndpointStatusGroup group) {
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "group");
+            }
+            this.group = group;
+            return this;
+        }
+        @CustomType.Setter
         public Builder hosts(GetPostgresEndpointStatusHosts hosts) {
             if (hosts == null) {
               throw new MissingRequiredPropertyException("GetPostgresEndpointStatus", "hosts");
@@ -242,6 +265,7 @@ public final class GetPostgresEndpointStatus {
             _resultValue.currentState = currentState;
             _resultValue.disabled = disabled;
             _resultValue.endpointType = endpointType;
+            _resultValue.group = group;
             _resultValue.hosts = hosts;
             _resultValue.pendingState = pendingState;
             _resultValue.settings = settings;

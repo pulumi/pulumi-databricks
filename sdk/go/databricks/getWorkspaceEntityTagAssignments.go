@@ -31,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetWorkspaceEntityTagAssignments(ctx, &databricks.GetWorkspaceEntityTagAssignmentsArgs{
 //				EntityType: "apps",
-//				EntityId:   "2807324866692453",
+//				EntityId:   "myapp",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -67,7 +67,7 @@ func GetWorkspaceEntityTagAssignments(ctx *pulumi.Context, args *GetWorkspaceEnt
 
 // A collection of arguments for invoking getWorkspaceEntityTagAssignments.
 type GetWorkspaceEntityTagAssignmentsArgs struct {
-	// The identifier of the entity to which the tag is assigned
+	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
@@ -79,7 +79,7 @@ type GetWorkspaceEntityTagAssignmentsArgs struct {
 
 // A collection of values returned by getWorkspaceEntityTagAssignments.
 type GetWorkspaceEntityTagAssignmentsResult struct {
-	// (string) - The identifier of the entity to which the tag is assigned
+	// (string) - The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
 	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType string `pulumi:"entityType"`
@@ -101,7 +101,7 @@ func GetWorkspaceEntityTagAssignmentsOutput(ctx *pulumi.Context, args GetWorkspa
 
 // A collection of arguments for invoking getWorkspaceEntityTagAssignments.
 type GetWorkspaceEntityTagAssignmentsOutputArgs struct {
-	// The identifier of the entity to which the tag is assigned
+	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId pulumi.StringInput `pulumi:"entityId"`
 	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
 	EntityType pulumi.StringInput `pulumi:"entityType"`
@@ -130,7 +130,7 @@ func (o GetWorkspaceEntityTagAssignmentsResultOutput) ToGetWorkspaceEntityTagAss
 	return o
 }
 
-// (string) - The identifier of the entity to which the tag is assigned
+// (string) - The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 func (o GetWorkspaceEntityTagAssignmentsResultOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceEntityTagAssignmentsResult) string { return v.EntityId }).(pulumi.StringOutput)
 }

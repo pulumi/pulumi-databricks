@@ -126,6 +126,11 @@ type PostgresProject struct {
 
 	// (string) - A timestamp indicating when the project was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec PostgresProjectInitialEndpointSpecOutput `pulumi:"initialEndpointSpec"`
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -180,6 +185,11 @@ func GetPostgresProject(ctx *pulumi.Context,
 type postgresProjectState struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime *string `pulumi:"createTime"`
+	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec *PostgresProjectInitialEndpointSpec `pulumi:"initialEndpointSpec"`
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name *string `pulumi:"name"`
@@ -202,6 +212,11 @@ type postgresProjectState struct {
 type PostgresProjectState struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime pulumi.StringPtrInput
+	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec PostgresProjectInitialEndpointSpecPtrInput
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name pulumi.StringPtrInput
@@ -226,6 +241,11 @@ func (PostgresProjectState) ElementType() reflect.Type {
 }
 
 type postgresProjectArgs struct {
+	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec *PostgresProjectInitialEndpointSpec `pulumi:"initialEndpointSpec"`
 	// The ID to use for the Project. This becomes the final component of the project's resource name.
 	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
 	// For example, `my-app` becomes `projects/my-app`
@@ -238,6 +258,11 @@ type postgresProjectArgs struct {
 
 // The set of arguments for constructing a PostgresProject resource.
 type PostgresProjectArgs struct {
+	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec PostgresProjectInitialEndpointSpecPtrInput
 	// The ID to use for the Project. This becomes the final component of the project's resource name.
 	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
 	// For example, `my-app` becomes `projects/my-app`
@@ -338,6 +363,14 @@ func (o PostgresProjectOutput) ToPostgresProjectOutputWithContext(ctx context.Co
 // (string) - A timestamp indicating when the project was created
 func (o PostgresProjectOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+// created project. If omitted, the initial endpoint created will have default settings, without high availability
+// configured. This field does not apply to any endpoints created after project creation. Use
+// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+func (o PostgresProjectOutput) InitialEndpointSpec() PostgresProjectInitialEndpointSpecOutput {
+	return o.ApplyT(func(v *PostgresProject) PostgresProjectInitialEndpointSpecOutput { return v.InitialEndpointSpec }).(PostgresProjectInitialEndpointSpecOutput)
 }
 
 // (string) - Output only. The full resource path of the project.

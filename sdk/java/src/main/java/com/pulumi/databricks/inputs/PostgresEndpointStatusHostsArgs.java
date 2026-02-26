@@ -32,10 +32,30 @@ public final class PostgresEndpointStatusHostsArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     * 
+     */
+    @Import(name="readOnlyHost")
+    private @Nullable Output<String> readOnlyHost;
+
+    /**
+     * @return (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+     * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+     * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+     * 
+     */
+    public Optional<Output<String>> readOnlyHost() {
+        return Optional.ofNullable(this.readOnlyHost);
+    }
+
     private PostgresEndpointStatusHostsArgs() {}
 
     private PostgresEndpointStatusHostsArgs(PostgresEndpointStatusHostsArgs $) {
         this.host = $.host;
+        this.readOnlyHost = $.readOnlyHost;
     }
 
     public static Builder builder() {
@@ -77,6 +97,31 @@ public final class PostgresEndpointStatusHostsArgs extends com.pulumi.resources.
          */
         public Builder host(String host) {
             return host(Output.of(host));
+        }
+
+        /**
+         * @param readOnlyHost (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+         * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+         * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyHost(@Nullable Output<String> readOnlyHost) {
+            $.readOnlyHost = readOnlyHost;
+            return this;
+        }
+
+        /**
+         * @param readOnlyHost (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
+         * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
+         * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyHost(String readOnlyHost) {
+            return readOnlyHost(Output.of(readOnlyHost));
         }
 
         public PostgresEndpointStatusHostsArgs build() {
