@@ -4465,6 +4465,9 @@
                     },
                     "provider_config": {
                         "maxItemsOne": true
+                    },
+                    "scaling_info": {
+                        "maxItemsOne": true
                     }
                 }
             },
