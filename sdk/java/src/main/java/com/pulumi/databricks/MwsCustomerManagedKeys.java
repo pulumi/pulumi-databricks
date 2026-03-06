@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
- *         final var cmekResourceId = config.get("cmekResourceId");
+ *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var cmekResourceId = config.require("cmekResourceId");
  *         var managedServices = new MwsCustomerManagedKeys("managedServices", MwsCustomerManagedKeysArgs.builder()
  *             .accountId(databricksAccountId)
  *             .gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs.builder()
@@ -105,8 +105,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
- *         final var cmekResourceId = config.get("cmekResourceId");
+ *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var cmekResourceId = config.require("cmekResourceId");
  *         var storage = new MwsCustomerManagedKeys("storage", MwsCustomerManagedKeysArgs.builder()
  *             .accountId(databricksAccountId)
  *             .gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs.builder()
