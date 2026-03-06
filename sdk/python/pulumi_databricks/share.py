@@ -323,7 +323,7 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[{"key": k, "value": v} for k, v in things.ids].apply(lambda entries: [{
+            objects=[{"key": k, "value": v} for k, v in things.ids.items()].apply(lambda entries: [{
                 "name": entry["value"],
                 "dataObjectType": "TABLE",
             } for entry in entries]),
@@ -451,7 +451,7 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[{"key": k, "value": v} for k, v in things.ids].apply(lambda entries: [{
+            objects=[{"key": k, "value": v} for k, v in things.ids.items()].apply(lambda entries: [{
                 "name": entry["value"],
                 "dataObjectType": "TABLE",
             } for entry in entries]),

@@ -259,10 +259,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
- *         final var databricksGoogleServiceAccount = config.get("databricksGoogleServiceAccount");
- *         final var googleProject = config.get("googleProject");
- *         final var subnetRegion = config.get("subnetRegion");
+ *         final var databricksAccountId = config.require("databricksAccountId");
+ *         final var databricksGoogleServiceAccount = config.require("databricksGoogleServiceAccount");
+ *         final var googleProject = config.require("googleProject");
+ *         final var subnetRegion = config.require("subnetRegion");
  *         var workspace = new MwsVpcEndpoint("workspace", MwsVpcEndpointArgs.builder()
  *             .accountId(databricksAccountId)
  *             .vpcEndpointName("PSC Rest API endpoint")

@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var databricksAccountId = config.require("databricksAccountId");
  *         var dbxPrivateVpc = new ComputeNetwork("dbxPrivateVpc", ComputeNetworkArgs.builder()
  *             .project(googleProject)
  *             .name(String.format("tf-network-%s", suffix.result()))

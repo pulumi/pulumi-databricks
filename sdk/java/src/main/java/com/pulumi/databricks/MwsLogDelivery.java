@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var databricksAccountId = config.require("databricksAccountId");
  *         var logdeliveryS3Bucket = new S3Bucket("logdeliveryS3Bucket", S3BucketArgs.builder()
  *             .bucket(String.format("%s-logdelivery", prefix))
  *             .acl("private")

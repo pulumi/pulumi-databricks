@@ -1475,6 +1475,10 @@ class Cluster(pulumi.CustomResource):
 
         The resource cluster can be imported using cluster id.
 
+        ```sh
+        $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
@@ -1591,6 +1595,10 @@ class Cluster(pulumi.CustomResource):
         ## Import
 
         The resource cluster can be imported using cluster id.
+
+        ```sh
+        $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

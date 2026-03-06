@@ -33,6 +33,10 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * This resource can be imported by predefined name `global`:
+ *
+ * ```sh
+ * $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
+ * ```
  */
 export class DisableLegacyAccessSetting extends pulumi.CustomResource {
     /**
