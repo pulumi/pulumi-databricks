@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>? _entityColumnIdentifiers;
 
         /// <summary>
+        /// Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
         /// The entity column identifiers of the Kafka source
         /// </summary>
         public InputList<Inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs> EntityColumnIdentifiers
@@ -31,6 +32,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
         /// The timeseries column identifier of the Kafka source
         /// </summary>
         [Input("timeseriesColumnIdentifier", required: true)]

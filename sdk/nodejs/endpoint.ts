@@ -22,8 +22,8 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.Endpoint("this", {
- *     accountId: "eae3abf6-1496-494e-9983-4660a5ad5aab",
- *     endpointName: "my-private-endpoint",
+ *     parent: "accounts/123e4567-e89b-12d3-a456-426614174000",
+ *     displayName: "my-private-endpoint",
  *     region: "westus",
  *     azurePrivateEndpointInfo: {
  *         privateEndpointName: "my-pe",
@@ -86,6 +86,10 @@ export class Endpoint extends pulumi.CustomResource {
      * (string) - The resource name of the endpoint, which uniquely identifies the endpoint
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The parent resource name of the account under which the endpoint is created.
+     * Format: `accounts/{account_id}`
+     */
     declare public readonly parent: pulumi.Output<string>;
     /**
      * The cloud provider region where this endpoint is located
@@ -181,6 +185,10 @@ export interface EndpointState {
      * (string) - The resource name of the endpoint, which uniquely identifies the endpoint
      */
     name?: pulumi.Input<string>;
+    /**
+     * The parent resource name of the account under which the endpoint is created.
+     * Format: `accounts/{account_id}`
+     */
     parent?: pulumi.Input<string>;
     /**
      * The cloud provider region where this endpoint is located
@@ -211,6 +219,10 @@ export interface EndpointArgs {
      * with the first character a letter, the last a letter or a number, and a 63 character maximum
      */
     displayName: pulumi.Input<string>;
+    /**
+     * The parent resource name of the account under which the endpoint is created.
+     * Format: `accounts/{account_id}`
+     */
     parent: pulumi.Input<string>;
     /**
      * The cloud provider region where this endpoint is located

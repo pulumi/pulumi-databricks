@@ -14,7 +14,8 @@ import java.util.Objects;
 @CustomType
 public final class GetFeatureEngineeringFeatureSourceKafkaSource {
     /**
-     * @return (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+     * @return (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity column identifiers of the Kafka source
      * 
      */
     private List<GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers;
@@ -24,14 +25,16 @@ public final class GetFeatureEngineeringFeatureSourceKafkaSource {
      */
     private String name;
     /**
-     * @return (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+     * @return (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column identifier of the Kafka source
      * 
      */
     private GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier;
 
     private GetFeatureEngineeringFeatureSourceKafkaSource() {}
     /**
-     * @return (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+     * @return (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity column identifiers of the Kafka source
      * 
      */
     public List<GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers() {
@@ -45,7 +48,8 @@ public final class GetFeatureEngineeringFeatureSourceKafkaSource {
         return this.name;
     }
     /**
-     * @return (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+     * @return (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column identifier of the Kafka source
      * 
      */
     public GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier() {

@@ -16,8 +16,8 @@ from .aibi_dashboard_embedding_approved_domains_setting import *
 from .alert import *
 from .alert_v2 import *
 from .app import *
+from .app_space import *
 from .apps_settings_custom_template import *
-from .apps_space import *
 from .artifact_allowlist import *
 from .automatic_cluster_update_workspace_setting import *
 from .budget import *
@@ -31,6 +31,7 @@ from .connection import *
 from .credential import *
 from .custom_app_integration import *
 from .dashboard import *
+from .data_classification_catalog_config import *
 from .data_quality_monitor import *
 from .data_quality_refresh import *
 from .database_database_catalog import *
@@ -61,11 +62,11 @@ from .get_account_setting_v2 import *
 from .get_alert_v2 import *
 from .get_alerts_v2 import *
 from .get_app import *
+from .get_app_space import *
+from .get_app_spaces import *
 from .get_apps import *
 from .get_apps_settings_custom_template import *
 from .get_apps_settings_custom_templates import *
-from .get_apps_space import *
-from .get_apps_spaces import *
 from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
@@ -82,6 +83,7 @@ from .get_current_config import *
 from .get_current_metastore import *
 from .get_current_user import *
 from .get_dashboards import *
+from .get_data_classification_catalog_config import *
 from .get_data_quality_monitor import *
 from .get_data_quality_monitors import *
 from .get_data_quality_refresh import *
@@ -115,6 +117,10 @@ from .get_instance_pool import *
 from .get_instance_profiles import *
 from .get_job import *
 from .get_jobs import *
+from .get_knowledge_assistant import *
+from .get_knowledge_assistant_knowledge_source import *
+from .get_knowledge_assistant_knowledge_sources import *
+from .get_knowledge_assistants import *
 from .get_materialized_features_feature_tag import *
 from .get_materialized_features_feature_tags import *
 from .get_metastore import *
@@ -137,6 +143,8 @@ from .get_policy_info import *
 from .get_policy_infos import *
 from .get_postgres_branch import *
 from .get_postgres_branches import *
+from .get_postgres_database import *
+from .get_postgres_databases import *
 from .get_postgres_endpoint import *
 from .get_postgres_endpoints import *
 from .get_postgres_project import *
@@ -188,6 +196,8 @@ from .instance_pool import *
 from .instance_profile import *
 from .ip_access_list import *
 from .job import *
+from .knowledge_assistant import *
+from .knowledge_assistant_knowledge_source import *
 from .lakehouse_monitor import *
 from .library import *
 from .materialized_features_feature_tag import *
@@ -223,6 +233,7 @@ from .permissions import *
 from .pipeline import *
 from .policy_info import *
 from .postgres_branch import *
+from .postgres_database import *
 from .postgres_endpoint import *
 from .postgres_project import *
 from .provider import *
@@ -365,18 +376,18 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
-  "mod": "index/appsSettingsCustomTemplate",
+  "mod": "index/appSpace",
   "fqn": "pulumi_databricks",
   "classes": {
-   "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate": "AppsSettingsCustomTemplate"
+   "databricks:index/appSpace:AppSpace": "AppSpace"
   }
  },
  {
   "pkg": "databricks",
-  "mod": "index/appsSpace",
+  "mod": "index/appsSettingsCustomTemplate",
   "fqn": "pulumi_databricks",
   "classes": {
-   "databricks:index/appsSpace:AppsSpace": "AppsSpace"
+   "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate": "AppsSettingsCustomTemplate"
   }
  },
  {
@@ -481,6 +492,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/dashboard:Dashboard": "Dashboard"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/dataClassificationCatalogConfig",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/dataClassificationCatalogConfig:DataClassificationCatalogConfig": "DataClassificationCatalogConfig"
   }
  },
  {
@@ -745,6 +764,22 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/job:Job": "Job"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/knowledgeAssistant",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/knowledgeAssistant:KnowledgeAssistant": "KnowledgeAssistant"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/knowledgeAssistantKnowledgeSource",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/knowledgeAssistantKnowledgeSource:KnowledgeAssistantKnowledgeSource": "KnowledgeAssistantKnowledgeSource"
   }
  },
  {
@@ -1025,6 +1060,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/postgresBranch:PostgresBranch": "PostgresBranch"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/postgresDatabase",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/postgresDatabase:PostgresDatabase": "PostgresDatabase"
   }
  },
  {

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -59,6 +60,7 @@ public final class PipelineEnvironment {
      * 
      */
     private @Nullable List<String> dependencies;
+    private @Nullable String environmentVersion;
 
     private PipelineEnvironment() {}
     /**
@@ -111,6 +113,9 @@ public final class PipelineEnvironment {
     public List<String> dependencies() {
         return this.dependencies == null ? List.of() : this.dependencies;
     }
+    public Optional<String> environmentVersion() {
+        return Optional.ofNullable(this.environmentVersion);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -122,10 +127,12 @@ public final class PipelineEnvironment {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> dependencies;
+        private @Nullable String environmentVersion;
         public Builder() {}
         public Builder(PipelineEnvironment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dependencies = defaults.dependencies;
+    	      this.environmentVersion = defaults.environmentVersion;
         }
 
         @CustomType.Setter
@@ -137,9 +144,16 @@ public final class PipelineEnvironment {
         public Builder dependencies(String... dependencies) {
             return dependencies(List.of(dependencies));
         }
+        @CustomType.Setter
+        public Builder environmentVersion(@Nullable String environmentVersion) {
+
+            this.environmentVersion = environmentVersion;
+            return this;
+        }
         public PipelineEnvironment build() {
             final var _resultValue = new PipelineEnvironment();
             _resultValue.dependencies = dependencies;
+            _resultValue.environmentVersion = environmentVersion;
             return _resultValue;
         }
     }

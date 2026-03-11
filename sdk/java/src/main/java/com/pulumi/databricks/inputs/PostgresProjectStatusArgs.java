@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PostgresProjectStatusCustomTagArgs;
 import com.pulumi.databricks.inputs.PostgresProjectStatusDefaultEndpointSettingsArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -95,6 +96,21 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (boolean) - Whether to enable PG native password login on all endpoints in this project
+     * 
+     */
+    @Import(name="enablePgNativeLogin")
+    private @Nullable Output<Boolean> enablePgNativeLogin;
+
+    /**
+     * @return (boolean) - Whether to enable PG native password login on all endpoints in this project
+     * 
+     */
+    public Optional<Output<Boolean>> enablePgNativeLogin() {
+        return Optional.ofNullable(this.enablePgNativeLogin);
+    }
+
+    /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      * 
      */
@@ -162,6 +178,7 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
         this.customTags = $.customTags;
         this.defaultEndpointSettings = $.defaultEndpointSettings;
         this.displayName = $.displayName;
+        this.enablePgNativeLogin = $.enablePgNativeLogin;
         this.historyRetentionDuration = $.historyRetentionDuration;
         this.owner = $.owner;
         this.pgVersion = $.pgVersion;
@@ -299,6 +316,27 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param enablePgNativeLogin (boolean) - Whether to enable PG native password login on all endpoints in this project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePgNativeLogin(@Nullable Output<Boolean> enablePgNativeLogin) {
+            $.enablePgNativeLogin = enablePgNativeLogin;
+            return this;
+        }
+
+        /**
+         * @param enablePgNativeLogin (boolean) - Whether to enable PG native password login on all endpoints in this project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePgNativeLogin(Boolean enablePgNativeLogin) {
+            return enablePgNativeLogin(Output.of(enablePgNativeLogin));
         }
 
         /**

@@ -42,6 +42,8 @@ clientId: Optional[str]
 
 clientSecret: Optional[str]
 
+cloud: Optional[str]
+
 clusterId: Optional[str]
 
 configFile: Optional[str]
@@ -55,6 +57,8 @@ debugHeaders: Optional[bool]
 debugTruncateBytes: Optional[int]
 
 disableOauthRefreshToken: Optional[bool]
+
+discoveryUrl: Optional[str]
 
 experimentalIsUnifiedHost: Optional[bool]
 

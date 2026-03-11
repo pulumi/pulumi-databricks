@@ -14,7 +14,8 @@ import java.util.Objects;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
     /**
-     * @return (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+     * @return (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity column identifiers of the Kafka source
      * 
      */
     private List<GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers;
@@ -24,14 +25,16 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
      */
     private String name;
     /**
-     * @return (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+     * @return (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column identifier of the Kafka source
      * 
      */
     private GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier;
 
     private GetFeatureEngineeringFeaturesFeatureSourceKafkaSource() {}
     /**
-     * @return (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+     * @return (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity column identifiers of the Kafka source
      * 
      */
     public List<GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers() {
@@ -45,7 +48,8 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
         return this.name;
     }
     /**
-     * @return (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+     * @return (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column identifier of the Kafka source
      * 
      */
     public GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier() {

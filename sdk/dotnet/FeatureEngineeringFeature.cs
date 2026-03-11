@@ -22,6 +22,7 @@ namespace Pulumi.Databricks
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         /// The filter condition applied to the source data before aggregation
         /// </summary>
         [Output("filterCondition")]
@@ -40,12 +41,14 @@ namespace Pulumi.Databricks
         public Output<Outputs.FeatureEngineeringFeatureFunction> Function { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
         /// The input columns from which the feature is computed
         /// </summary>
         [Output("inputs")]
         public Output<ImmutableArray<string>> Inputs { get; private set; } = null!;
 
         /// <summary>
+        /// Lineage context information for this feature.
         /// WARNING: This field is primarily intended for internal use by Databricks systems and
         /// is automatically populated when features are created through Databricks notebooks or jobs.
         /// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -67,6 +70,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.FeatureEngineeringFeatureSource> Source { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
         /// The time window in which the feature is computed
         /// </summary>
         [Output("timeWindow")]
@@ -125,6 +129,7 @@ namespace Pulumi.Databricks
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         /// The filter condition applied to the source data before aggregation
         /// </summary>
         [Input("filterCondition")]
@@ -146,6 +151,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _inputs;
 
         /// <summary>
+        /// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
         /// The input columns from which the feature is computed
         /// </summary>
         public InputList<string> Inputs
@@ -155,6 +161,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Lineage context information for this feature.
         /// WARNING: This field is primarily intended for internal use by Databricks systems and
         /// is automatically populated when features are created through Databricks notebooks or jobs.
         /// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -176,6 +183,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.FeatureEngineeringFeatureSourceArgs> Source { get; set; } = null!;
 
         /// <summary>
+        /// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
         /// The time window in which the feature is computed
         /// </summary>
         [Input("timeWindow")]
@@ -196,6 +204,7 @@ namespace Pulumi.Databricks
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         /// The filter condition applied to the source data before aggregation
         /// </summary>
         [Input("filterCondition")]
@@ -217,6 +226,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _inputs;
 
         /// <summary>
+        /// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
         /// The input columns from which the feature is computed
         /// </summary>
         public InputList<string> Inputs
@@ -226,6 +236,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Lineage context information for this feature.
         /// WARNING: This field is primarily intended for internal use by Databricks systems and
         /// is automatically populated when features are created through Databricks notebooks or jobs.
         /// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -247,6 +258,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.FeatureEngineeringFeatureSourceGetArgs>? Source { get; set; }
 
         /// <summary>
+        /// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
         /// The time window in which the feature is computed
         /// </summary>
         [Input("timeWindow")]

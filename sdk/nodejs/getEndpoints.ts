@@ -17,6 +17,14 @@ import * as utilities from "./utilities";
  *
  * ### Example for Azure cloud
  * This is an example for listing endpoints in Azure cloud:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getEndpoints({
+ *     parent: "accounts/123e4567-e89b-12d3-a456-426614174000",
+ * });
+ * ```
  */
 export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,6 +39,10 @@ export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetEndpointsArgs {
     pageSize?: number;
+    /**
+     * The parent resource name of the account to list endpoints for.
+     * Format: `accounts/{account_id}`
+     */
     parent: string;
 }
 
@@ -57,6 +69,14 @@ export interface GetEndpointsResult {
  *
  * ### Example for Azure cloud
  * This is an example for listing endpoints in Azure cloud:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getEndpoints({
+ *     parent: "accounts/123e4567-e89b-12d3-a456-426614174000",
+ * });
+ * ```
  */
 export function getEndpointsOutput(args: GetEndpointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEndpointsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,5 +91,9 @@ export function getEndpointsOutput(args: GetEndpointsOutputArgs, opts?: pulumi.I
  */
 export interface GetEndpointsOutputArgs {
     pageSize?: pulumi.Input<number>;
+    /**
+     * The parent resource name of the account to list endpoints for.
+     * Format: `accounts/{account_id}`
+     */
     parent: pulumi.Input<string>;
 }

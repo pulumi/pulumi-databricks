@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureSourceKafkaSourceResult
     {
         /// <summary>
-        /// (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+        /// (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+        /// The entity column identifiers of the Kafka source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult> EntityColumnIdentifiers;
         /// <summary>
@@ -22,7 +23,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+        /// (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+        /// The timeseries column identifier of the Kafka source
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult TimeseriesColumnIdentifier;
 

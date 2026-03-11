@@ -41,10 +41,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlertV2{}
 	case "databricks:index/app:App":
 		r = &App{}
+	case "databricks:index/appSpace:AppSpace":
+		r = &AppSpace{}
 	case "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate":
 		r = &AppsSettingsCustomTemplate{}
-	case "databricks:index/appsSpace:AppsSpace":
-		r = &AppsSpace{}
 	case "databricks:index/artifactAllowlist:ArtifactAllowlist":
 		r = &ArtifactAllowlist{}
 	case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -71,6 +71,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomAppIntegration{}
 	case "databricks:index/dashboard:Dashboard":
 		r = &Dashboard{}
+	case "databricks:index/dataClassificationCatalogConfig:DataClassificationCatalogConfig":
+		r = &DataClassificationCatalogConfig{}
 	case "databricks:index/dataQualityMonitor:DataQualityMonitor":
 		r = &DataQualityMonitor{}
 	case "databricks:index/dataQualityRefresh:DataQualityRefresh":
@@ -137,6 +139,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpAccessList{}
 	case "databricks:index/job:Job":
 		r = &Job{}
+	case "databricks:index/knowledgeAssistant:KnowledgeAssistant":
+		r = &KnowledgeAssistant{}
+	case "databricks:index/knowledgeAssistantKnowledgeSource:KnowledgeAssistantKnowledgeSource":
+		r = &KnowledgeAssistantKnowledgeSource{}
 	case "databricks:index/lakehouseMonitor:LakehouseMonitor":
 		r = &LakehouseMonitor{}
 	case "databricks:index/library:Library":
@@ -207,6 +213,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PolicyInfo{}
 	case "databricks:index/postgresBranch:PostgresBranch":
 		r = &PostgresBranch{}
+	case "databricks:index/postgresDatabase:PostgresDatabase":
+		r = &PostgresDatabase{}
 	case "databricks:index/postgresEndpoint:PostgresEndpoint":
 		r = &PostgresEndpoint{}
 	case "databricks:index/postgresProject:PostgresProject":
@@ -382,12 +390,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
-		"index/appsSettingsCustomTemplate",
+		"index/appSpace",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
-		"index/appsSpace",
+		"index/appsSettingsCustomTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -453,6 +461,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/dashboard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/dataClassificationCatalogConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -618,6 +631,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/job",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/knowledgeAssistant",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/knowledgeAssistantKnowledgeSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -793,6 +816,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/postgresBranch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/postgresDatabase",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

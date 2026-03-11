@@ -43,6 +43,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// (boolean) - Whether to enable PG native password login on all endpoints in this project
+        /// </summary>
+        [Input("enablePgNativeLogin")]
+        public Input<bool>? EnablePgNativeLogin { get; set; }
+
+        /// <summary>
         /// (string) - The effective number of seconds to retain the shared history for point in time recovery
         /// </summary>
         [Input("historyRetentionDuration")]

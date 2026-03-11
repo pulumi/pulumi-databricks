@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new Endpoint("this", EndpointArgs.builder()
- *             .accountId("eae3abf6-1496-494e-9983-4660a5ad5aab")
- *             .endpointName("my-private-endpoint")
+ *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+ *             .displayName("my-private-endpoint")
  *             .region("westus")
  *             .azurePrivateEndpointInfo(EndpointAzurePrivateEndpointInfoArgs.builder()
  *                 .privateEndpointName("my-pe")
@@ -155,9 +155,19 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The parent resource name of the account under which the endpoint is created.
+     * Format: `accounts/{account_id}`
+     * 
+     */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
+    /**
+     * @return The parent resource name of the account under which the endpoint is created.
+     * Format: `accounts/{account_id}`
+     * 
+     */
     public Output<String> parent() {
         return this.parent;
     }

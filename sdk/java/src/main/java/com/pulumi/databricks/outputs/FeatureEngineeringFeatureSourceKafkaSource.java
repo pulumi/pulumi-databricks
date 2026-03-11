@@ -14,7 +14,8 @@ import java.util.Objects;
 @CustomType
 public final class FeatureEngineeringFeatureSourceKafkaSource {
     /**
-     * @return The entity column identifiers of the Kafka source
+     * @return Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity column identifiers of the Kafka source
      * 
      */
     private List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers;
@@ -24,14 +25,16 @@ public final class FeatureEngineeringFeatureSourceKafkaSource {
      */
     private String name;
     /**
-     * @return The timeseries column identifier of the Kafka source
+     * @return Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column identifier of the Kafka source
      * 
      */
     private FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier;
 
     private FeatureEngineeringFeatureSourceKafkaSource() {}
     /**
-     * @return The entity column identifiers of the Kafka source
+     * @return Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity column identifiers of the Kafka source
      * 
      */
     public List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers() {
@@ -45,7 +48,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSource {
         return this.name;
     }
     /**
-     * @return The timeseries column identifier of the Kafka source
+     * @return Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column identifier of the Kafka source
      * 
      */
     public FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier() {

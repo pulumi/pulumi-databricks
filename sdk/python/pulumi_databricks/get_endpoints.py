@@ -91,6 +91,16 @@ def get_endpoints(page_size: Optional[_builtins.int] = None,
 
     ### Example for Azure cloud
     This is an example for listing endpoints in Azure cloud:
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_endpoints(parent="accounts/123e4567-e89b-12d3-a456-426614174000")
+    ```
+
+
+    :param _builtins.str parent: The parent resource name of the account to list endpoints for.
+           Format: `accounts/{account_id}`
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -117,6 +127,16 @@ def get_endpoints_output(page_size: Optional[pulumi.Input[Optional[_builtins.int
 
     ### Example for Azure cloud
     This is an example for listing endpoints in Azure cloud:
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_endpoints(parent="accounts/123e4567-e89b-12d3-a456-426614174000")
+    ```
+
+
+    :param _builtins.str parent: The parent resource name of the account to list endpoints for.
+           Format: `accounts/{account_id}`
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

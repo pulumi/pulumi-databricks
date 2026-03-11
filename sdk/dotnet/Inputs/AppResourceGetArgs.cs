@@ -50,6 +50,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("postgres")]
+        public Input<Inputs.AppResourcePostgresGetArgs>? Postgres { get; set; }
+
         /// <summary>
         /// attribute
         /// </summary>

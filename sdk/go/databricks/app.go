@@ -113,8 +113,9 @@ type App struct {
 	// id of the app service principal
 	ServicePrincipalId pulumi.IntOutput `pulumi:"servicePrincipalId"`
 	// name of the app service principal
-	ServicePrincipalName pulumi.StringOutput    `pulumi:"servicePrincipalName"`
-	Space                pulumi.StringPtrOutput `pulumi:"space"`
+	ServicePrincipalName        pulumi.StringOutput                      `pulumi:"servicePrincipalName"`
+	Space                       pulumi.StringPtrOutput                   `pulumi:"space"`
+	TelemetryExportDestinations AppTelemetryExportDestinationArrayOutput `pulumi:"telemetryExportDestinations"`
 	// The update time of the app.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The email of the user that last updated the app.
@@ -193,8 +194,9 @@ type appState struct {
 	// id of the app service principal
 	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
 	// name of the app service principal
-	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
-	Space                *string `pulumi:"space"`
+	ServicePrincipalName        *string                         `pulumi:"servicePrincipalName"`
+	Space                       *string                         `pulumi:"space"`
+	TelemetryExportDestinations []AppTelemetryExportDestination `pulumi:"telemetryExportDestinations"`
 	// The update time of the app.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The email of the user that last updated the app.
@@ -244,8 +246,9 @@ type AppState struct {
 	// id of the app service principal
 	ServicePrincipalId pulumi.IntPtrInput
 	// name of the app service principal
-	ServicePrincipalName pulumi.StringPtrInput
-	Space                pulumi.StringPtrInput
+	ServicePrincipalName        pulumi.StringPtrInput
+	Space                       pulumi.StringPtrInput
+	TelemetryExportDestinations AppTelemetryExportDestinationArrayInput
 	// The update time of the app.
 	UpdateTime pulumi.StringPtrInput
 	// The email of the user that last updated the app.
@@ -274,9 +277,10 @@ type appArgs struct {
 	NoCompute      *bool              `pulumi:"noCompute"`
 	ProviderConfig *AppProviderConfig `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
-	Resources     []AppResource `pulumi:"resources"`
-	Space         *string       `pulumi:"space"`
-	UsagePolicyId *string       `pulumi:"usagePolicyId"`
+	Resources                   []AppResource                   `pulumi:"resources"`
+	Space                       *string                         `pulumi:"space"`
+	TelemetryExportDestinations []AppTelemetryExportDestination `pulumi:"telemetryExportDestinations"`
+	UsagePolicyId               *string                         `pulumi:"usagePolicyId"`
 	// A list of api scopes granted to the user access token.
 	UserApiScopes []string `pulumi:"userApiScopes"`
 }
@@ -295,9 +299,10 @@ type AppArgs struct {
 	NoCompute      pulumi.BoolPtrInput
 	ProviderConfig AppProviderConfigPtrInput
 	// A list of resources that the app have access to.
-	Resources     AppResourceArrayInput
-	Space         pulumi.StringPtrInput
-	UsagePolicyId pulumi.StringPtrInput
+	Resources                   AppResourceArrayInput
+	Space                       pulumi.StringPtrInput
+	TelemetryExportDestinations AppTelemetryExportDestinationArrayInput
+	UsagePolicyId               pulumi.StringPtrInput
 	// A list of api scopes granted to the user access token.
 	UserApiScopes pulumi.StringArrayInput
 }
@@ -498,6 +503,10 @@ func (o AppOutput) ServicePrincipalName() pulumi.StringOutput {
 
 func (o AppOutput) Space() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Space }).(pulumi.StringPtrOutput)
+}
+
+func (o AppOutput) TelemetryExportDestinations() AppTelemetryExportDestinationArrayOutput {
+	return o.ApplyT(func(v *App) AppTelemetryExportDestinationArrayOutput { return v.TelemetryExportDestinations }).(AppTelemetryExportDestinationArrayOutput)
 }
 
 // The update time of the app.

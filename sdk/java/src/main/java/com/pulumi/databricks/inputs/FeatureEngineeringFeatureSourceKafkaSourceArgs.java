@@ -18,6 +18,7 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
     public static final FeatureEngineeringFeatureSourceKafkaSourceArgs Empty = new FeatureEngineeringFeatureSourceKafkaSourceArgs();
 
     /**
+     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity column identifiers of the Kafka source
      * 
      */
@@ -25,7 +26,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
     private Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>> entityColumnIdentifiers;
 
     /**
-     * @return The entity column identifiers of the Kafka source
+     * @return Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity column identifiers of the Kafka source
      * 
      */
     public Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>> entityColumnIdentifiers() {
@@ -48,6 +50,7 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
     }
 
     /**
+     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column identifier of the Kafka source
      * 
      */
@@ -55,7 +58,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
     private Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> timeseriesColumnIdentifier;
 
     /**
-     * @return The timeseries column identifier of the Kafka source
+     * @return Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column identifier of the Kafka source
      * 
      */
     public Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> timeseriesColumnIdentifier() {
@@ -89,7 +93,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
         }
 
         /**
-         * @param entityColumnIdentifiers The entity column identifiers of the Kafka source
+         * @param entityColumnIdentifiers Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+         * The entity column identifiers of the Kafka source
          * 
          * @return builder
          * 
@@ -100,7 +105,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
         }
 
         /**
-         * @param entityColumnIdentifiers The entity column identifiers of the Kafka source
+         * @param entityColumnIdentifiers Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+         * The entity column identifiers of the Kafka source
          * 
          * @return builder
          * 
@@ -110,7 +116,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
         }
 
         /**
-         * @param entityColumnIdentifiers The entity column identifiers of the Kafka source
+         * @param entityColumnIdentifiers Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+         * The entity column identifiers of the Kafka source
          * 
          * @return builder
          * 
@@ -141,7 +148,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
         }
 
         /**
-         * @param timeseriesColumnIdentifier The timeseries column identifier of the Kafka source
+         * @param timeseriesColumnIdentifier Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+         * The timeseries column identifier of the Kafka source
          * 
          * @return builder
          * 
@@ -152,7 +160,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
         }
 
         /**
-         * @param timeseriesColumnIdentifier The timeseries column identifier of the Kafka source
+         * @param timeseriesColumnIdentifier Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+         * The timeseries column identifier of the Kafka source
          * 
          * @return builder
          * 

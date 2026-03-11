@@ -21,6 +21,29 @@ import (
 //
 // ### Example for Azure cloud
 // This is an example for listing endpoints in Azure cloud:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetEndpoints(ctx, &databricks.GetEndpointsArgs{
+//				Parent: "accounts/123e4567-e89b-12d3-a456-426614174000",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEndpoints(ctx *pulumi.Context, args *GetEndpointsArgs, opts ...pulumi.InvokeOption) (*GetEndpointsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEndpointsResult
@@ -33,8 +56,10 @@ func GetEndpoints(ctx *pulumi.Context, args *GetEndpointsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getEndpoints.
 type GetEndpointsArgs struct {
-	PageSize *int   `pulumi:"pageSize"`
-	Parent   string `pulumi:"parent"`
+	PageSize *int `pulumi:"pageSize"`
+	// The parent resource name of the account to list endpoints for.
+	// Format: `accounts/{account_id}`
+	Parent string `pulumi:"parent"`
 }
 
 // A collection of values returned by getEndpoints.
@@ -58,7 +83,9 @@ func GetEndpointsOutput(ctx *pulumi.Context, args GetEndpointsOutputArgs, opts .
 // A collection of arguments for invoking getEndpoints.
 type GetEndpointsOutputArgs struct {
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	Parent   pulumi.StringInput `pulumi:"parent"`
+	// The parent resource name of the account to list endpoints for.
+	// Format: `accounts/{account_id}`
+	Parent pulumi.StringInput `pulumi:"parent"`
 }
 
 func (GetEndpointsOutputArgs) ElementType() reflect.Type {

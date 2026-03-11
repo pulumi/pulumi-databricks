@@ -49,6 +49,21 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
         return this.featureName;
     }
 
+    /**
+     * Unique identifier for the materialized feature
+     * 
+     */
+    @Import(name="materializedFeatureId")
+    private @Nullable Output<String> materializedFeatureId;
+
+    /**
+     * @return Unique identifier for the materialized feature
+     * 
+     */
+    public Optional<Output<String>> materializedFeatureId() {
+        return Optional.ofNullable(this.materializedFeatureId);
+    }
+
     @Import(name="offlineStoreConfig")
     private @Nullable Output<FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs> offlineStoreConfig;
 
@@ -98,6 +113,7 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
     private FeatureEngineeringMaterializedFeatureArgs(FeatureEngineeringMaterializedFeatureArgs $) {
         this.cronSchedule = $.cronSchedule;
         this.featureName = $.featureName;
+        this.materializedFeatureId = $.materializedFeatureId;
         this.offlineStoreConfig = $.offlineStoreConfig;
         this.onlineStoreConfig = $.onlineStoreConfig;
         this.pipelineScheduleState = $.pipelineScheduleState;
@@ -162,6 +178,27 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
          */
         public Builder featureName(String featureName) {
             return featureName(Output.of(featureName));
+        }
+
+        /**
+         * @param materializedFeatureId Unique identifier for the materialized feature
+         * 
+         * @return builder
+         * 
+         */
+        public Builder materializedFeatureId(@Nullable Output<String> materializedFeatureId) {
+            $.materializedFeatureId = materializedFeatureId;
+            return this;
+        }
+
+        /**
+         * @param materializedFeatureId Unique identifier for the materialized feature
+         * 
+         * @return builder
+         * 
+         */
+        public Builder materializedFeatureId(String materializedFeatureId) {
+            return materializedFeatureId(Output.of(materializedFeatureId));
         }
 
         public Builder offlineStoreConfig(@Nullable Output<FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs> offlineStoreConfig) {

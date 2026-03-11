@@ -22,16 +22,16 @@ import com.pulumi.databricks.inputs.GetAlertsV2Args;
 import com.pulumi.databricks.inputs.GetAlertsV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAppArgs;
 import com.pulumi.databricks.inputs.GetAppPlainArgs;
+import com.pulumi.databricks.inputs.GetAppSpaceArgs;
+import com.pulumi.databricks.inputs.GetAppSpacePlainArgs;
+import com.pulumi.databricks.inputs.GetAppSpacesArgs;
+import com.pulumi.databricks.inputs.GetAppSpacesPlainArgs;
 import com.pulumi.databricks.inputs.GetAppsArgs;
 import com.pulumi.databricks.inputs.GetAppsPlainArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatePlainArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesPlainArgs;
-import com.pulumi.databricks.inputs.GetAppsSpaceArgs;
-import com.pulumi.databricks.inputs.GetAppsSpacePlainArgs;
-import com.pulumi.databricks.inputs.GetAppsSpacesArgs;
-import com.pulumi.databricks.inputs.GetAppsSpacesPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
@@ -64,6 +64,8 @@ import com.pulumi.databricks.inputs.GetCurrentUserArgs;
 import com.pulumi.databricks.inputs.GetCurrentUserPlainArgs;
 import com.pulumi.databricks.inputs.GetDashboardsArgs;
 import com.pulumi.databricks.inputs.GetDashboardsPlainArgs;
+import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
+import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigPlainArgs;
 import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
 import com.pulumi.databricks.inputs.GetDataQualityMonitorPlainArgs;
 import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
@@ -130,6 +132,14 @@ import com.pulumi.databricks.inputs.GetJobArgs;
 import com.pulumi.databricks.inputs.GetJobPlainArgs;
 import com.pulumi.databricks.inputs.GetJobsArgs;
 import com.pulumi.databricks.inputs.GetJobsPlainArgs;
+import com.pulumi.databricks.inputs.GetKnowledgeAssistantArgs;
+import com.pulumi.databricks.inputs.GetKnowledgeAssistantKnowledgeSourceArgs;
+import com.pulumi.databricks.inputs.GetKnowledgeAssistantKnowledgeSourcePlainArgs;
+import com.pulumi.databricks.inputs.GetKnowledgeAssistantKnowledgeSourcesArgs;
+import com.pulumi.databricks.inputs.GetKnowledgeAssistantKnowledgeSourcesPlainArgs;
+import com.pulumi.databricks.inputs.GetKnowledgeAssistantPlainArgs;
+import com.pulumi.databricks.inputs.GetKnowledgeAssistantsArgs;
+import com.pulumi.databricks.inputs.GetKnowledgeAssistantsPlainArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagPlainArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagsArgs;
@@ -174,6 +184,10 @@ import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
 import com.pulumi.databricks.inputs.GetPostgresBranchPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresBranchesArgs;
 import com.pulumi.databricks.inputs.GetPostgresBranchesPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
+import com.pulumi.databricks.inputs.GetPostgresDatabasePlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresDatabasesArgs;
+import com.pulumi.databricks.inputs.GetPostgresDatabasesPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
 import com.pulumi.databricks.inputs.GetPostgresEndpointPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresEndpointsArgs;
@@ -261,11 +275,11 @@ import com.pulumi.databricks.outputs.GetAccountSettingV2Result;
 import com.pulumi.databricks.outputs.GetAlertV2Result;
 import com.pulumi.databricks.outputs.GetAlertsV2Result;
 import com.pulumi.databricks.outputs.GetAppResult;
+import com.pulumi.databricks.outputs.GetAppSpaceResult;
+import com.pulumi.databricks.outputs.GetAppSpacesResult;
 import com.pulumi.databricks.outputs.GetAppsResult;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplateResult;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesResult;
-import com.pulumi.databricks.outputs.GetAppsSpaceResult;
-import com.pulumi.databricks.outputs.GetAppsSpacesResult;
 import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
@@ -282,6 +296,7 @@ import com.pulumi.databricks.outputs.GetCurrentConfigResult;
 import com.pulumi.databricks.outputs.GetCurrentMetastoreResult;
 import com.pulumi.databricks.outputs.GetCurrentUserResult;
 import com.pulumi.databricks.outputs.GetDashboardsResult;
+import com.pulumi.databricks.outputs.GetDataClassificationCatalogConfigResult;
 import com.pulumi.databricks.outputs.GetDataQualityMonitorResult;
 import com.pulumi.databricks.outputs.GetDataQualityMonitorsResult;
 import com.pulumi.databricks.outputs.GetDataQualityRefreshResult;
@@ -315,6 +330,10 @@ import com.pulumi.databricks.outputs.GetInstancePoolResult;
 import com.pulumi.databricks.outputs.GetInstanceProfilesResult;
 import com.pulumi.databricks.outputs.GetJobResult;
 import com.pulumi.databricks.outputs.GetJobsResult;
+import com.pulumi.databricks.outputs.GetKnowledgeAssistantKnowledgeSourceResult;
+import com.pulumi.databricks.outputs.GetKnowledgeAssistantKnowledgeSourcesResult;
+import com.pulumi.databricks.outputs.GetKnowledgeAssistantResult;
+import com.pulumi.databricks.outputs.GetKnowledgeAssistantsResult;
 import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagResult;
 import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagsResult;
 import com.pulumi.databricks.outputs.GetMetastoreResult;
@@ -337,6 +356,8 @@ import com.pulumi.databricks.outputs.GetPolicyInfoResult;
 import com.pulumi.databricks.outputs.GetPolicyInfosResult;
 import com.pulumi.databricks.outputs.GetPostgresBranchResult;
 import com.pulumi.databricks.outputs.GetPostgresBranchesResult;
+import com.pulumi.databricks.outputs.GetPostgresDatabaseResult;
+import com.pulumi.databricks.outputs.GetPostgresDatabasesResult;
 import com.pulumi.databricks.outputs.GetPostgresEndpointResult;
 import com.pulumi.databricks.outputs.GetPostgresEndpointsResult;
 import com.pulumi.databricks.outputs.GetPostgresProjectResult;
@@ -2121,6 +2142,90 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getApp:getApp", TypeShape.of(GetAppResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppSpaceResult> getAppSpace(GetAppSpaceArgs args) {
+        return getAppSpace(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppSpaceResult> getAppSpacePlain(GetAppSpacePlainArgs args) {
+        return getAppSpacePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppSpaceResult> getAppSpace(GetAppSpaceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppSpace:getAppSpace", TypeShape.of(GetAppSpaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppSpaceResult> getAppSpace(GetAppSpaceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppSpace:getAppSpace", TypeShape.of(GetAppSpaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppSpaceResult> getAppSpacePlain(GetAppSpacePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAppSpace:getAppSpace", TypeShape.of(GetAppSpaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppSpacesResult> getAppSpaces() {
+        return getAppSpaces(GetAppSpacesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppSpacesResult> getAppSpacesPlain() {
+        return getAppSpacesPlain(GetAppSpacesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppSpacesResult> getAppSpaces(GetAppSpacesArgs args) {
+        return getAppSpaces(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppSpacesResult> getAppSpacesPlain(GetAppSpacesPlainArgs args) {
+        return getAppSpacesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppSpacesResult> getAppSpaces(GetAppSpacesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppSpaces:getAppSpaces", TypeShape.of(GetAppSpacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAppSpacesResult> getAppSpaces(GetAppSpacesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppSpaces:getAppSpaces", TypeShape.of(GetAppSpacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAppSpacesResult> getAppSpacesPlain(GetAppSpacesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAppSpaces:getAppSpaces", TypeShape.of(GetAppSpacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
@@ -3025,90 +3130,6 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplatesPlain(GetAppsSettingsCustomTemplatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", TypeShape.of(GetAppsSettingsCustomTemplatesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static Output<GetAppsSpaceResult> getAppsSpace(GetAppsSpaceArgs args) {
-        return getAppsSpace(args, InvokeOptions.Empty);
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static CompletableFuture<GetAppsSpaceResult> getAppsSpacePlain(GetAppsSpacePlainArgs args) {
-        return getAppsSpacePlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static Output<GetAppsSpaceResult> getAppsSpace(GetAppsSpaceArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getAppsSpace:getAppsSpace", TypeShape.of(GetAppsSpaceResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static Output<GetAppsSpaceResult> getAppsSpace(GetAppsSpaceArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getAppsSpace:getAppsSpace", TypeShape.of(GetAppsSpaceResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static CompletableFuture<GetAppsSpaceResult> getAppsSpacePlain(GetAppsSpacePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getAppsSpace:getAppsSpace", TypeShape.of(GetAppsSpaceResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static Output<GetAppsSpacesResult> getAppsSpaces() {
-        return getAppsSpaces(GetAppsSpacesArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static CompletableFuture<GetAppsSpacesResult> getAppsSpacesPlain() {
-        return getAppsSpacesPlain(GetAppsSpacesPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static Output<GetAppsSpacesResult> getAppsSpaces(GetAppsSpacesArgs args) {
-        return getAppsSpaces(args, InvokeOptions.Empty);
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static CompletableFuture<GetAppsSpacesResult> getAppsSpacesPlain(GetAppsSpacesPlainArgs args) {
-        return getAppsSpacesPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static Output<GetAppsSpacesResult> getAppsSpaces(GetAppsSpacesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getAppsSpaces:getAppsSpaces", TypeShape.of(GetAppsSpacesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static Output<GetAppsSpacesResult> getAppsSpaces(GetAppsSpacesArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getAppsSpaces:getAppsSpaces", TypeShape.of(GetAppsSpacesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static CompletableFuture<GetAppsSpacesResult> getAppsSpacesPlain(GetAppsSpacesPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getAppsSpaces:getAppsSpaces", TypeShape.of(GetAppsSpacesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source constructs necessary AWS STS assume role policy for you.
@@ -9063,6 +9084,276 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
+     * 
+     * To read the Data Classification configuration, you must have browse permissions on the catalog.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * To get the Data Classification configuration for a catalog:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCatalogArgs;
+     * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prod = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()
+     *             .name("prod_catalog")
+     *             .build());
+     * 
+     *         final var prodConfig = DatabricksFunctions.getDataClassificationCatalogConfig(GetDataClassificationCatalogConfigArgs.builder()
+     *             .name(String.format("catalogs/%s/config", prod.name()))
+     *             .build());
+     * 
+     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataClassificationCatalogConfigResult> getDataClassificationCatalogConfig(GetDataClassificationCatalogConfigArgs args) {
+        return getDataClassificationCatalogConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
+     * 
+     * To read the Data Classification configuration, you must have browse permissions on the catalog.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * To get the Data Classification configuration for a catalog:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCatalogArgs;
+     * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prod = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()
+     *             .name("prod_catalog")
+     *             .build());
+     * 
+     *         final var prodConfig = DatabricksFunctions.getDataClassificationCatalogConfig(GetDataClassificationCatalogConfigArgs.builder()
+     *             .name(String.format("catalogs/%s/config", prod.name()))
+     *             .build());
+     * 
+     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataClassificationCatalogConfigResult> getDataClassificationCatalogConfigPlain(GetDataClassificationCatalogConfigPlainArgs args) {
+        return getDataClassificationCatalogConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
+     * 
+     * To read the Data Classification configuration, you must have browse permissions on the catalog.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * To get the Data Classification configuration for a catalog:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCatalogArgs;
+     * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prod = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()
+     *             .name("prod_catalog")
+     *             .build());
+     * 
+     *         final var prodConfig = DatabricksFunctions.getDataClassificationCatalogConfig(GetDataClassificationCatalogConfigArgs.builder()
+     *             .name(String.format("catalogs/%s/config", prod.name()))
+     *             .build());
+     * 
+     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataClassificationCatalogConfigResult> getDataClassificationCatalogConfig(GetDataClassificationCatalogConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
+     * 
+     * To read the Data Classification configuration, you must have browse permissions on the catalog.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * To get the Data Classification configuration for a catalog:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCatalogArgs;
+     * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prod = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()
+     *             .name("prod_catalog")
+     *             .build());
+     * 
+     *         final var prodConfig = DatabricksFunctions.getDataClassificationCatalogConfig(GetDataClassificationCatalogConfigArgs.builder()
+     *             .name(String.format("catalogs/%s/config", prod.name()))
+     *             .build());
+     * 
+     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataClassificationCatalogConfigResult> getDataClassificationCatalogConfig(GetDataClassificationCatalogConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
+     * 
+     * To read the Data Classification configuration, you must have browse permissions on the catalog.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * To get the Data Classification configuration for a catalog:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCatalogArgs;
+     * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prod = DatabricksFunctions.getCatalog(GetCatalogArgs.builder()
+     *             .name("prod_catalog")
+     *             .build());
+     * 
+     *         final var prodConfig = DatabricksFunctions.getDataClassificationCatalogConfig(GetDataClassificationCatalogConfigArgs.builder()
+     *             .name(String.format("catalogs/%s/config", prod.name()))
+     *             .build());
+     * 
+     *         ctx.export("autoTagConfigs", prodConfig.autoTagConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataClassificationCatalogConfigResult> getDataClassificationCatalogConfigPlain(GetDataClassificationCatalogConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to fetch a data quality monitor.
@@ -12209,6 +12500,36 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for listing endpoints in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args) {
@@ -12225,6 +12546,36 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for listing endpoints in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args) {
@@ -12241,6 +12592,36 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for listing endpoints in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOptions options) {
@@ -12257,6 +12638,36 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for listing endpoints in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOutputOptions options) {
@@ -12273,6 +12684,36 @@ public final class DatabricksFunctions {
      * 
      * ### Example for Azure cloud
      * This is an example for listing endpoints in Azure cloud:
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *             .parent("accounts/123e4567-e89b-12d3-a456-426614174000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args, InvokeOptions options) {
@@ -17008,6 +17449,160 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetJobsResult> getJobsPlain(GetJobsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantResult> getKnowledgeAssistant(GetKnowledgeAssistantArgs args) {
+        return getKnowledgeAssistant(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetKnowledgeAssistantResult> getKnowledgeAssistantPlain(GetKnowledgeAssistantPlainArgs args) {
+        return getKnowledgeAssistantPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantResult> getKnowledgeAssistant(GetKnowledgeAssistantArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistant:getKnowledgeAssistant", TypeShape.of(GetKnowledgeAssistantResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantResult> getKnowledgeAssistant(GetKnowledgeAssistantArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistant:getKnowledgeAssistant", TypeShape.of(GetKnowledgeAssistantResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetKnowledgeAssistantResult> getKnowledgeAssistantPlain(GetKnowledgeAssistantPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getKnowledgeAssistant:getKnowledgeAssistant", TypeShape.of(GetKnowledgeAssistantResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSource(GetKnowledgeAssistantKnowledgeSourceArgs args) {
+        return getKnowledgeAssistantKnowledgeSource(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSourcePlain(GetKnowledgeAssistantKnowledgeSourcePlainArgs args) {
+        return getKnowledgeAssistantKnowledgeSourcePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSource(GetKnowledgeAssistantKnowledgeSourceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistantKnowledgeSource:getKnowledgeAssistantKnowledgeSource", TypeShape.of(GetKnowledgeAssistantKnowledgeSourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSource(GetKnowledgeAssistantKnowledgeSourceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistantKnowledgeSource:getKnowledgeAssistantKnowledgeSource", TypeShape.of(GetKnowledgeAssistantKnowledgeSourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSourcePlain(GetKnowledgeAssistantKnowledgeSourcePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getKnowledgeAssistantKnowledgeSource:getKnowledgeAssistantKnowledgeSource", TypeShape.of(GetKnowledgeAssistantKnowledgeSourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSources(GetKnowledgeAssistantKnowledgeSourcesArgs args) {
+        return getKnowledgeAssistantKnowledgeSources(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSourcesPlain(GetKnowledgeAssistantKnowledgeSourcesPlainArgs args) {
+        return getKnowledgeAssistantKnowledgeSourcesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSources(GetKnowledgeAssistantKnowledgeSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources", TypeShape.of(GetKnowledgeAssistantKnowledgeSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSources(GetKnowledgeAssistantKnowledgeSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources", TypeShape.of(GetKnowledgeAssistantKnowledgeSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSourcesPlain(GetKnowledgeAssistantKnowledgeSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources", TypeShape.of(GetKnowledgeAssistantKnowledgeSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantsResult> getKnowledgeAssistants() {
+        return getKnowledgeAssistants(GetKnowledgeAssistantsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetKnowledgeAssistantsResult> getKnowledgeAssistantsPlain() {
+        return getKnowledgeAssistantsPlain(GetKnowledgeAssistantsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantsResult> getKnowledgeAssistants(GetKnowledgeAssistantsArgs args) {
+        return getKnowledgeAssistants(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetKnowledgeAssistantsResult> getKnowledgeAssistantsPlain(GetKnowledgeAssistantsPlainArgs args) {
+        return getKnowledgeAssistantsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantsResult> getKnowledgeAssistants(GetKnowledgeAssistantsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", TypeShape.of(GetKnowledgeAssistantsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetKnowledgeAssistantsResult> getKnowledgeAssistants(GetKnowledgeAssistantsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", TypeShape.of(GetKnowledgeAssistantsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetKnowledgeAssistantsResult> getKnowledgeAssistantsPlain(GetKnowledgeAssistantsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", TypeShape.of(GetKnowledgeAssistantsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -23597,6 +24192,76 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetPostgresBranchesResult> getPostgresBranchesPlain(GetPostgresBranchesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresDatabaseResult> getPostgresDatabase(GetPostgresDatabaseArgs args) {
+        return getPostgresDatabase(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresDatabaseResult> getPostgresDatabasePlain(GetPostgresDatabasePlainArgs args) {
+        return getPostgresDatabasePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresDatabaseResult> getPostgresDatabase(GetPostgresDatabaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresDatabaseResult> getPostgresDatabase(GetPostgresDatabaseArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresDatabaseResult> getPostgresDatabasePlain(GetPostgresDatabasePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresDatabasesResult> getPostgresDatabases(GetPostgresDatabasesArgs args) {
+        return getPostgresDatabases(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresDatabasesResult> getPostgresDatabasesPlain(GetPostgresDatabasesPlainArgs args) {
+        return getPostgresDatabasesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresDatabasesResult> getPostgresDatabases(GetPostgresDatabasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresDatabases:getPostgresDatabases", TypeShape.of(GetPostgresDatabasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresDatabasesResult> getPostgresDatabases(GetPostgresDatabasesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresDatabases:getPostgresDatabases", TypeShape.of(GetPostgresDatabasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresDatabasesResult> getPostgresDatabasesPlain(GetPostgresDatabasesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresDatabases:getPostgresDatabases", TypeShape.of(GetPostgresDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -33581,6 +34246,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")
@@ -33637,6 +34308,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")
@@ -33693,6 +34370,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")
@@ -33749,6 +34432,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")
@@ -33805,6 +34494,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .tagKey("sensitivity_level")
+     *             .build());
+     * 
      *         final var appTag = DatabricksFunctions.getWorkspaceEntityTagAssignment(GetWorkspaceEntityTagAssignmentArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")
@@ -33861,6 +34556,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")
@@ -33914,6 +34614,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")
@@ -33967,6 +34672,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")
@@ -34020,6 +34730,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")
@@ -34073,6 +34788,11 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var notebookTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
+     *             .entityType("notebooks")
+     *             .entityId("2807324866692453")
+     *             .build());
+     * 
      *         final var appTags = DatabricksFunctions.getWorkspaceEntityTagAssignments(GetWorkspaceEntityTagAssignmentsArgs.builder()
      *             .entityType("apps")
      *             .entityId("myapp")

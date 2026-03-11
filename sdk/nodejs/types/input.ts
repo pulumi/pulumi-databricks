@@ -725,6 +725,7 @@ export interface AppResource {
      * The name of the resource.
      */
     name: pulumi.Input<string>;
+    postgres?: pulumi.Input<inputs.AppResourcePostgres>;
     /**
      * attribute
      */
@@ -789,6 +790,15 @@ export interface AppResourceJob {
     permission: pulumi.Input<string>;
 }
 
+export interface AppResourcePostgres {
+    branch?: pulumi.Input<string>;
+    /**
+     * attribute
+     */
+    database?: pulumi.Input<string>;
+    permission?: pulumi.Input<string>;
+}
+
 export interface AppResourceSecret {
     /**
      * Key of the secret to grant permission on.
@@ -840,6 +850,137 @@ export interface AppResourceUcSecurable {
      * the type of UC securable, i.e. `VOLUME`.
      */
     securableType: pulumi.Input<string>;
+}
+
+export interface AppSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface AppSpaceResource {
+    app?: pulumi.Input<inputs.AppSpaceResourceApp>;
+    database?: pulumi.Input<inputs.AppSpaceResourceDatabase>;
+    /**
+     * The description of the app space
+     */
+    description?: pulumi.Input<string>;
+    experiment?: pulumi.Input<inputs.AppSpaceResourceExperiment>;
+    genieSpace?: pulumi.Input<inputs.AppSpaceResourceGenieSpace>;
+    job?: pulumi.Input<inputs.AppSpaceResourceJob>;
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    postgres?: pulumi.Input<inputs.AppSpaceResourcePostgres>;
+    secret?: pulumi.Input<inputs.AppSpaceResourceSecret>;
+    servingEndpoint?: pulumi.Input<inputs.AppSpaceResourceServingEndpoint>;
+    sqlWarehouse?: pulumi.Input<inputs.AppSpaceResourceSqlWarehouse>;
+    ucSecurable?: pulumi.Input<inputs.AppSpaceResourceUcSecurable>;
+}
+
+export interface AppSpaceResourceApp {
+}
+
+export interface AppSpaceResourceDatabase {
+    databaseName: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppSpaceResourceExperiment {
+    experimentId: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppSpaceResourceGenieSpace {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    spaceId: pulumi.Input<string>;
+}
+
+export interface AppSpaceResourceJob {
+    /**
+     * (string) - The unique identifier of the app space
+     */
+    id: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppSpaceResourcePostgres {
+    branch?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
+    permission?: pulumi.Input<string>;
+}
+
+export interface AppSpaceResourceSecret {
+    /**
+     * Key of the secret to grant permission on
+     */
+    key: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    /**
+     * Scope of the secret to grant permission on
+     */
+    scope: pulumi.Input<string>;
+}
+
+export interface AppSpaceResourceServingEndpoint {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppSpaceResourceSqlWarehouse {
+    /**
+     * (string) - The unique identifier of the app space
+     */
+    id: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppSpaceResourceUcSecurable {
+    permission: pulumi.Input<string>;
+    securableFullName: pulumi.Input<string>;
+    /**
+     * (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     */
+    securableKind?: pulumi.Input<string>;
+    /**
+     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     */
+    securableType: pulumi.Input<string>;
+}
+
+export interface AppSpaceStatus {
+    /**
+     * (string) - Message providing context about the current state
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+     */
+    state?: pulumi.Input<string>;
+}
+
+export interface AppTelemetryExportDestination {
+    unityCatalog?: pulumi.Input<inputs.AppTelemetryExportDestinationUnityCatalog>;
+}
+
+export interface AppTelemetryExportDestinationUnityCatalog {
+    logsTable: pulumi.Input<string>;
+    metricsTable: pulumi.Input<string>;
+    tracesTable: pulumi.Input<string>;
 }
 
 export interface AppsSettingsCustomTemplateManifest {
@@ -910,120 +1051,6 @@ export interface AppsSettingsCustomTemplateProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: pulumi.Input<string>;
-}
-
-export interface AppsSpaceProviderConfig {
-    /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-     */
-    workspaceId: pulumi.Input<string>;
-}
-
-export interface AppsSpaceResource {
-    app?: pulumi.Input<inputs.AppsSpaceResourceApp>;
-    database?: pulumi.Input<inputs.AppsSpaceResourceDatabase>;
-    /**
-     * The description of the app space
-     */
-    description?: pulumi.Input<string>;
-    experiment?: pulumi.Input<inputs.AppsSpaceResourceExperiment>;
-    genieSpace?: pulumi.Input<inputs.AppsSpaceResourceGenieSpace>;
-    job?: pulumi.Input<inputs.AppsSpaceResourceJob>;
-    /**
-     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
-     * It must be unique within the workspace
-     */
-    name: pulumi.Input<string>;
-    secret?: pulumi.Input<inputs.AppsSpaceResourceSecret>;
-    servingEndpoint?: pulumi.Input<inputs.AppsSpaceResourceServingEndpoint>;
-    sqlWarehouse?: pulumi.Input<inputs.AppsSpaceResourceSqlWarehouse>;
-    ucSecurable?: pulumi.Input<inputs.AppsSpaceResourceUcSecurable>;
-}
-
-export interface AppsSpaceResourceApp {
-}
-
-export interface AppsSpaceResourceDatabase {
-    databaseName: pulumi.Input<string>;
-    instanceName: pulumi.Input<string>;
-    permission: pulumi.Input<string>;
-}
-
-export interface AppsSpaceResourceExperiment {
-    experimentId: pulumi.Input<string>;
-    permission: pulumi.Input<string>;
-}
-
-export interface AppsSpaceResourceGenieSpace {
-    /**
-     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
-     * It must be unique within the workspace
-     */
-    name: pulumi.Input<string>;
-    permission: pulumi.Input<string>;
-    spaceId: pulumi.Input<string>;
-}
-
-export interface AppsSpaceResourceJob {
-    /**
-     * (string) - The unique identifier of the app space
-     */
-    id: pulumi.Input<string>;
-    permission: pulumi.Input<string>;
-}
-
-export interface AppsSpaceResourceSecret {
-    /**
-     * Key of the secret to grant permission on
-     */
-    key: pulumi.Input<string>;
-    permission: pulumi.Input<string>;
-    /**
-     * Scope of the secret to grant permission on
-     */
-    scope: pulumi.Input<string>;
-}
-
-export interface AppsSpaceResourceServingEndpoint {
-    /**
-     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
-     * It must be unique within the workspace
-     */
-    name: pulumi.Input<string>;
-    permission: pulumi.Input<string>;
-}
-
-export interface AppsSpaceResourceSqlWarehouse {
-    /**
-     * (string) - The unique identifier of the app space
-     */
-    id: pulumi.Input<string>;
-    permission: pulumi.Input<string>;
-}
-
-export interface AppsSpaceResourceUcSecurable {
-    permission: pulumi.Input<string>;
-    securableFullName: pulumi.Input<string>;
-    /**
-     * (string) - The securable kind from Unity Catalog.
-     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
-     */
-    securableKind?: pulumi.Input<string>;
-    /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
-     */
-    securableType: pulumi.Input<string>;
-}
-
-export interface AppsSpaceStatus {
-    /**
-     * (string) - Message providing context about the current state
-     */
-    message?: pulumi.Input<string>;
-    /**
-     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
-     */
-    state?: pulumi.Input<string>;
 }
 
 export interface ArtifactAllowlistArtifactMatcher {
@@ -1787,6 +1814,28 @@ export interface CustomAppIntegrationTokenAccessPolicy {
 }
 
 export interface DashboardProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface DataClassificationCatalogConfigAutoTagConfig {
+    /**
+     * Whether auto-tagging is enabled or disabled for this classification tag. Possible values are: `AUTO_TAGGING_DISABLED`, `AUTO_TAGGING_ENABLED`
+     */
+    autoTaggingMode: pulumi.Input<string>;
+    /**
+     * The Classification Tag (e.g., "class.name", "class.location")
+     */
+    classificationTag: pulumi.Input<string>;
+}
+
+export interface DataClassificationCatalogConfigIncludedSchemas {
+    names: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface DataClassificationCatalogConfigProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -2571,10 +2620,12 @@ export interface ExternalMetadataProviderConfig {
 
 export interface FeatureEngineeringFeatureFunction {
     /**
+     * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      */
     extraParameters?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureFunctionExtraParameter>[]>;
     /**
+     * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
     functionType: pulumi.Input<string>;
@@ -2627,21 +2678,41 @@ export interface FeatureEngineeringFeatureSource {
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
     /**
+     * Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: pulumi.Input<string>;
+    /**
+     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
     entityColumns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: pulumi.Input<string>;
     /**
      * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: pulumi.Input<string>;
     /**
+     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
     timeseriesColumn: pulumi.Input<string>;
+    /**
+     * A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSource {
     /**
+     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity column identifiers of the Kafka source
      */
     entityColumnIdentifiers: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier>[]>;
@@ -2650,6 +2721,7 @@ export interface FeatureEngineeringFeatureSourceKafkaSource {
      */
     name: pulumi.Input<string>;
     /**
+     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column identifier of the Kafka source
      */
     timeseriesColumnIdentifier: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier>;
@@ -2714,17 +2786,35 @@ export interface FeatureEngineeringKafkaConfigBackfillSource {
 
 export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
     /**
+     * Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: pulumi.Input<string>;
+    /**
+     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
     entityColumns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: pulumi.Input<string>;
     /**
      * The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: pulumi.Input<string>;
     /**
+     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
     timeseriesColumn: pulumi.Input<string>;
+    /**
+     * A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringKafkaConfigKeySchema {
@@ -2830,6 +2920,34 @@ export interface GetAppProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetAppSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppSpaceProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetAppSpacesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppSpacesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetAppsProviderConfig {
     workspaceId: string;
 }
@@ -2860,34 +2978,6 @@ export interface GetAppsSettingsCustomTemplatesProviderConfig {
 }
 
 export interface GetAppsSettingsCustomTemplatesProviderConfigArgs {
-    /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-     */
-    workspaceId: pulumi.Input<string>;
-}
-
-export interface GetAppsSpaceProviderConfig {
-    /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-     */
-    workspaceId: string;
-}
-
-export interface GetAppsSpaceProviderConfigArgs {
-    /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-     */
-    workspaceId: pulumi.Input<string>;
-}
-
-export interface GetAppsSpacesProviderConfig {
-    /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-     */
-    workspaceId: string;
-}
-
-export interface GetAppsSpacesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -4609,6 +4699,20 @@ export interface GetDashboardsProviderConfig {
 }
 
 export interface GetDashboardsProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetDataClassificationCatalogConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetDataClassificationCatalogConfigProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: pulumi.Input<string>;
 }
 
@@ -9048,6 +9152,62 @@ export interface GetJobsProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetKnowledgeAssistantKnowledgeSourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourceProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourcesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetKnowledgeAssistantProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetKnowledgeAssistantProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetKnowledgeAssistantsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetKnowledgeAssistantsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetMaterializedFeaturesFeatureTagProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -9808,6 +9968,34 @@ export interface GetPostgresBranchesProviderConfig {
 }
 
 export interface GetPostgresBranchesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetPostgresDatabaseProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresDatabaseProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetPostgresDatabasesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresDatabasesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -15810,6 +15998,53 @@ export interface JobWebhookNotificationsOnSuccess {
     id: pulumi.Input<string>;
 }
 
+export interface KnowledgeAssistantKnowledgeSourceFileTable {
+    /**
+     * The name of the column containing BINARY file content to be indexed
+     */
+    fileCol: pulumi.Input<string>;
+    /**
+     * Full UC name of the table, in the format of {CATALOG}.{SCHEMA}.{TABLE_NAME}
+     */
+    tableName: pulumi.Input<string>;
+}
+
+export interface KnowledgeAssistantKnowledgeSourceFiles {
+    /**
+     * A UC volume path that includes a list of files
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface KnowledgeAssistantKnowledgeSourceIndex {
+    /**
+     * The column that specifies a link or reference to where the information came from
+     */
+    docUriCol: pulumi.Input<string>;
+    /**
+     * Full UC name of the vector search index, in the format of {CATALOG}.{SCHEMA}.{INDEX_NAME}
+     */
+    indexName: pulumi.Input<string>;
+    /**
+     * The column that includes the document text for retrieval
+     */
+    textCol: pulumi.Input<string>;
+}
+
+export interface KnowledgeAssistantKnowledgeSourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface KnowledgeAssistantProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface LakehouseMonitorCustomMetric {
     /**
      * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
@@ -17057,11 +17292,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -17128,11 +17363,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -17599,6 +17834,7 @@ export interface PipelineEnvironment {
      * ```
      */
     dependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentVersion?: pulumi.Input<string>;
 }
 
 export interface PipelineEventLog {
@@ -18108,6 +18344,23 @@ export interface PostgresBranchStatus {
     stateChangeTime?: pulumi.Input<string>;
 }
 
+export interface PostgresDatabaseProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface PostgresDatabaseSpec {
+    postgresDatabase?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
+}
+
+export interface PostgresDatabaseStatus {
+    postgresDatabase?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
+}
+
 export interface PostgresEndpointProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -18299,6 +18552,10 @@ export interface PostgresProjectSpec {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * (boolean) - Whether to enable PG native password login on all endpoints in this project
+     */
+    enablePgNativeLogin?: pulumi.Input<boolean>;
+    /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
     historyRetentionDuration?: pulumi.Input<string>;
@@ -18365,6 +18622,10 @@ export interface PostgresProjectStatus {
      * (string) - The effective human-readable project name
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * (boolean) - Whether to enable PG native password login on all endpoints in this project
+     */
+    enablePgNativeLogin?: pulumi.Input<boolean>;
     /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
@@ -19395,6 +19656,8 @@ export interface SqlTableColumn {
     nullable?: pulumi.Input<boolean>;
     /**
      * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+     *
+     * > **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP<STRING,STRING>` instead of `MAP<STRING, STRING>`.
      */
     type?: pulumi.Input<string>;
     typeJson?: pulumi.Input<string>;

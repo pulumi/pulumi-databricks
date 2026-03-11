@@ -55,15 +55,15 @@ export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
 
+export { AppSpaceArgs, AppSpaceState } from "./appSpace";
+export type AppSpace = import("./appSpace").AppSpace;
+export const AppSpace: typeof import("./appSpace").AppSpace = null as any;
+utilities.lazyLoad(exports, ["AppSpace"], () => require("./appSpace"));
+
 export { AppsSettingsCustomTemplateArgs, AppsSettingsCustomTemplateState } from "./appsSettingsCustomTemplate";
 export type AppsSettingsCustomTemplate = import("./appsSettingsCustomTemplate").AppsSettingsCustomTemplate;
 export const AppsSettingsCustomTemplate: typeof import("./appsSettingsCustomTemplate").AppsSettingsCustomTemplate = null as any;
 utilities.lazyLoad(exports, ["AppsSettingsCustomTemplate"], () => require("./appsSettingsCustomTemplate"));
-
-export { AppsSpaceArgs, AppsSpaceState } from "./appsSpace";
-export type AppsSpace = import("./appsSpace").AppsSpace;
-export const AppsSpace: typeof import("./appsSpace").AppsSpace = null as any;
-utilities.lazyLoad(exports, ["AppsSpace"], () => require("./appsSpace"));
 
 export { ArtifactAllowlistArgs, ArtifactAllowlistState } from "./artifactAllowlist";
 export type ArtifactAllowlist = import("./artifactAllowlist").ArtifactAllowlist;
@@ -129,6 +129,11 @@ export { DashboardArgs, DashboardState } from "./dashboard";
 export type Dashboard = import("./dashboard").Dashboard;
 export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
 utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
+
+export { DataClassificationCatalogConfigArgs, DataClassificationCatalogConfigState } from "./dataClassificationCatalogConfig";
+export type DataClassificationCatalogConfig = import("./dataClassificationCatalogConfig").DataClassificationCatalogConfig;
+export const DataClassificationCatalogConfig: typeof import("./dataClassificationCatalogConfig").DataClassificationCatalogConfig = null as any;
+utilities.lazyLoad(exports, ["DataClassificationCatalogConfig"], () => require("./dataClassificationCatalogConfig"));
 
 export { DataQualityMonitorArgs, DataQualityMonitorState } from "./dataQualityMonitor";
 export type DataQualityMonitor = import("./dataQualityMonitor").DataQualityMonitor;
@@ -280,6 +285,16 @@ export const getApp: typeof import("./getApp").getApp = null as any;
 export const getAppOutput: typeof import("./getApp").getAppOutput = null as any;
 utilities.lazyLoad(exports, ["getApp","getAppOutput"], () => require("./getApp"));
 
+export { GetAppSpaceArgs, GetAppSpaceResult, GetAppSpaceOutputArgs } from "./getAppSpace";
+export const getAppSpace: typeof import("./getAppSpace").getAppSpace = null as any;
+export const getAppSpaceOutput: typeof import("./getAppSpace").getAppSpaceOutput = null as any;
+utilities.lazyLoad(exports, ["getAppSpace","getAppSpaceOutput"], () => require("./getAppSpace"));
+
+export { GetAppSpacesArgs, GetAppSpacesResult, GetAppSpacesOutputArgs } from "./getAppSpaces";
+export const getAppSpaces: typeof import("./getAppSpaces").getAppSpaces = null as any;
+export const getAppSpacesOutput: typeof import("./getAppSpaces").getAppSpacesOutput = null as any;
+utilities.lazyLoad(exports, ["getAppSpaces","getAppSpacesOutput"], () => require("./getAppSpaces"));
+
 export { GetAppsArgs, GetAppsResult, GetAppsOutputArgs } from "./getApps";
 export const getApps: typeof import("./getApps").getApps = null as any;
 export const getAppsOutput: typeof import("./getApps").getAppsOutput = null as any;
@@ -294,16 +309,6 @@ export { GetAppsSettingsCustomTemplatesArgs, GetAppsSettingsCustomTemplatesResul
 export const getAppsSettingsCustomTemplates: typeof import("./getAppsSettingsCustomTemplates").getAppsSettingsCustomTemplates = null as any;
 export const getAppsSettingsCustomTemplatesOutput: typeof import("./getAppsSettingsCustomTemplates").getAppsSettingsCustomTemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getAppsSettingsCustomTemplates","getAppsSettingsCustomTemplatesOutput"], () => require("./getAppsSettingsCustomTemplates"));
-
-export { GetAppsSpaceArgs, GetAppsSpaceResult, GetAppsSpaceOutputArgs } from "./getAppsSpace";
-export const getAppsSpace: typeof import("./getAppsSpace").getAppsSpace = null as any;
-export const getAppsSpaceOutput: typeof import("./getAppsSpace").getAppsSpaceOutput = null as any;
-utilities.lazyLoad(exports, ["getAppsSpace","getAppsSpaceOutput"], () => require("./getAppsSpace"));
-
-export { GetAppsSpacesArgs, GetAppsSpacesResult, GetAppsSpacesOutputArgs } from "./getAppsSpaces";
-export const getAppsSpaces: typeof import("./getAppsSpaces").getAppsSpaces = null as any;
-export const getAppsSpacesOutput: typeof import("./getAppsSpaces").getAppsSpacesOutput = null as any;
-utilities.lazyLoad(exports, ["getAppsSpaces","getAppsSpacesOutput"], () => require("./getAppsSpaces"));
 
 export { GetAwsAssumeRolePolicyArgs, GetAwsAssumeRolePolicyResult, GetAwsAssumeRolePolicyOutputArgs } from "./getAwsAssumeRolePolicy";
 export const getAwsAssumeRolePolicy: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicy = null as any;
@@ -384,6 +389,11 @@ export { GetDashboardsArgs, GetDashboardsResult, GetDashboardsOutputArgs } from 
 export const getDashboards: typeof import("./getDashboards").getDashboards = null as any;
 export const getDashboardsOutput: typeof import("./getDashboards").getDashboardsOutput = null as any;
 utilities.lazyLoad(exports, ["getDashboards","getDashboardsOutput"], () => require("./getDashboards"));
+
+export { GetDataClassificationCatalogConfigArgs, GetDataClassificationCatalogConfigResult, GetDataClassificationCatalogConfigOutputArgs } from "./getDataClassificationCatalogConfig";
+export const getDataClassificationCatalogConfig: typeof import("./getDataClassificationCatalogConfig").getDataClassificationCatalogConfig = null as any;
+export const getDataClassificationCatalogConfigOutput: typeof import("./getDataClassificationCatalogConfig").getDataClassificationCatalogConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getDataClassificationCatalogConfig","getDataClassificationCatalogConfigOutput"], () => require("./getDataClassificationCatalogConfig"));
 
 export { GetDataQualityMonitorArgs, GetDataQualityMonitorResult, GetDataQualityMonitorOutputArgs } from "./getDataQualityMonitor";
 export const getDataQualityMonitor: typeof import("./getDataQualityMonitor").getDataQualityMonitor = null as any;
@@ -550,6 +560,26 @@ export const getJobs: typeof import("./getJobs").getJobs = null as any;
 export const getJobsOutput: typeof import("./getJobs").getJobsOutput = null as any;
 utilities.lazyLoad(exports, ["getJobs","getJobsOutput"], () => require("./getJobs"));
 
+export { GetKnowledgeAssistantArgs, GetKnowledgeAssistantResult, GetKnowledgeAssistantOutputArgs } from "./getKnowledgeAssistant";
+export const getKnowledgeAssistant: typeof import("./getKnowledgeAssistant").getKnowledgeAssistant = null as any;
+export const getKnowledgeAssistantOutput: typeof import("./getKnowledgeAssistant").getKnowledgeAssistantOutput = null as any;
+utilities.lazyLoad(exports, ["getKnowledgeAssistant","getKnowledgeAssistantOutput"], () => require("./getKnowledgeAssistant"));
+
+export { GetKnowledgeAssistantKnowledgeSourceArgs, GetKnowledgeAssistantKnowledgeSourceResult, GetKnowledgeAssistantKnowledgeSourceOutputArgs } from "./getKnowledgeAssistantKnowledgeSource";
+export const getKnowledgeAssistantKnowledgeSource: typeof import("./getKnowledgeAssistantKnowledgeSource").getKnowledgeAssistantKnowledgeSource = null as any;
+export const getKnowledgeAssistantKnowledgeSourceOutput: typeof import("./getKnowledgeAssistantKnowledgeSource").getKnowledgeAssistantKnowledgeSourceOutput = null as any;
+utilities.lazyLoad(exports, ["getKnowledgeAssistantKnowledgeSource","getKnowledgeAssistantKnowledgeSourceOutput"], () => require("./getKnowledgeAssistantKnowledgeSource"));
+
+export { GetKnowledgeAssistantKnowledgeSourcesArgs, GetKnowledgeAssistantKnowledgeSourcesResult, GetKnowledgeAssistantKnowledgeSourcesOutputArgs } from "./getKnowledgeAssistantKnowledgeSources";
+export const getKnowledgeAssistantKnowledgeSources: typeof import("./getKnowledgeAssistantKnowledgeSources").getKnowledgeAssistantKnowledgeSources = null as any;
+export const getKnowledgeAssistantKnowledgeSourcesOutput: typeof import("./getKnowledgeAssistantKnowledgeSources").getKnowledgeAssistantKnowledgeSourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getKnowledgeAssistantKnowledgeSources","getKnowledgeAssistantKnowledgeSourcesOutput"], () => require("./getKnowledgeAssistantKnowledgeSources"));
+
+export { GetKnowledgeAssistantsArgs, GetKnowledgeAssistantsResult, GetKnowledgeAssistantsOutputArgs } from "./getKnowledgeAssistants";
+export const getKnowledgeAssistants: typeof import("./getKnowledgeAssistants").getKnowledgeAssistants = null as any;
+export const getKnowledgeAssistantsOutput: typeof import("./getKnowledgeAssistants").getKnowledgeAssistantsOutput = null as any;
+utilities.lazyLoad(exports, ["getKnowledgeAssistants","getKnowledgeAssistantsOutput"], () => require("./getKnowledgeAssistants"));
+
 export { GetMaterializedFeaturesFeatureTagArgs, GetMaterializedFeaturesFeatureTagResult, GetMaterializedFeaturesFeatureTagOutputArgs } from "./getMaterializedFeaturesFeatureTag";
 export const getMaterializedFeaturesFeatureTag: typeof import("./getMaterializedFeaturesFeatureTag").getMaterializedFeaturesFeatureTag = null as any;
 export const getMaterializedFeaturesFeatureTagOutput: typeof import("./getMaterializedFeaturesFeatureTag").getMaterializedFeaturesFeatureTagOutput = null as any;
@@ -659,6 +689,16 @@ export { GetPostgresBranchesArgs, GetPostgresBranchesResult, GetPostgresBranches
 export const getPostgresBranches: typeof import("./getPostgresBranches").getPostgresBranches = null as any;
 export const getPostgresBranchesOutput: typeof import("./getPostgresBranches").getPostgresBranchesOutput = null as any;
 utilities.lazyLoad(exports, ["getPostgresBranches","getPostgresBranchesOutput"], () => require("./getPostgresBranches"));
+
+export { GetPostgresDatabaseArgs, GetPostgresDatabaseResult, GetPostgresDatabaseOutputArgs } from "./getPostgresDatabase";
+export const getPostgresDatabase: typeof import("./getPostgresDatabase").getPostgresDatabase = null as any;
+export const getPostgresDatabaseOutput: typeof import("./getPostgresDatabase").getPostgresDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresDatabase","getPostgresDatabaseOutput"], () => require("./getPostgresDatabase"));
+
+export { GetPostgresDatabasesArgs, GetPostgresDatabasesResult, GetPostgresDatabasesOutputArgs } from "./getPostgresDatabases";
+export const getPostgresDatabases: typeof import("./getPostgresDatabases").getPostgresDatabases = null as any;
+export const getPostgresDatabasesOutput: typeof import("./getPostgresDatabases").getPostgresDatabasesOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresDatabases","getPostgresDatabasesOutput"], () => require("./getPostgresDatabases"));
 
 export { GetPostgresEndpointArgs, GetPostgresEndpointResult, GetPostgresEndpointOutputArgs } from "./getPostgresEndpoint";
 export const getPostgresEndpoint: typeof import("./getPostgresEndpoint").getPostgresEndpoint = null as any;
@@ -915,6 +955,16 @@ export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
+export { KnowledgeAssistantArgs, KnowledgeAssistantState } from "./knowledgeAssistant";
+export type KnowledgeAssistant = import("./knowledgeAssistant").KnowledgeAssistant;
+export const KnowledgeAssistant: typeof import("./knowledgeAssistant").KnowledgeAssistant = null as any;
+utilities.lazyLoad(exports, ["KnowledgeAssistant"], () => require("./knowledgeAssistant"));
+
+export { KnowledgeAssistantKnowledgeSourceArgs, KnowledgeAssistantKnowledgeSourceState } from "./knowledgeAssistantKnowledgeSource";
+export type KnowledgeAssistantKnowledgeSource = import("./knowledgeAssistantKnowledgeSource").KnowledgeAssistantKnowledgeSource;
+export const KnowledgeAssistantKnowledgeSource: typeof import("./knowledgeAssistantKnowledgeSource").KnowledgeAssistantKnowledgeSource = null as any;
+utilities.lazyLoad(exports, ["KnowledgeAssistantKnowledgeSource"], () => require("./knowledgeAssistantKnowledgeSource"));
+
 export { LakehouseMonitorArgs, LakehouseMonitorState } from "./lakehouseMonitor";
 export type LakehouseMonitor = import("./lakehouseMonitor").LakehouseMonitor;
 export const LakehouseMonitor: typeof import("./lakehouseMonitor").LakehouseMonitor = null as any;
@@ -1089,6 +1139,11 @@ export { PostgresBranchArgs, PostgresBranchState } from "./postgresBranch";
 export type PostgresBranch = import("./postgresBranch").PostgresBranch;
 export const PostgresBranch: typeof import("./postgresBranch").PostgresBranch = null as any;
 utilities.lazyLoad(exports, ["PostgresBranch"], () => require("./postgresBranch"));
+
+export { PostgresDatabaseArgs, PostgresDatabaseState } from "./postgresDatabase";
+export type PostgresDatabase = import("./postgresDatabase").PostgresDatabase;
+export const PostgresDatabase: typeof import("./postgresDatabase").PostgresDatabase = null as any;
+utilities.lazyLoad(exports, ["PostgresDatabase"], () => require("./postgresDatabase"));
 
 export { PostgresEndpointArgs, PostgresEndpointState } from "./postgresEndpoint";
 export type PostgresEndpoint = import("./postgresEndpoint").PostgresEndpoint;
@@ -1357,10 +1412,10 @@ const _module = {
                 return new AlertV2(name, <any>undefined, { urn })
             case "databricks:index/app:App":
                 return new App(name, <any>undefined, { urn })
+            case "databricks:index/appSpace:AppSpace":
+                return new AppSpace(name, <any>undefined, { urn })
             case "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate":
                 return new AppsSettingsCustomTemplate(name, <any>undefined, { urn })
-            case "databricks:index/appsSpace:AppsSpace":
-                return new AppsSpace(name, <any>undefined, { urn })
             case "databricks:index/artifactAllowlist:ArtifactAllowlist":
                 return new ArtifactAllowlist(name, <any>undefined, { urn })
             case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -1387,6 +1442,8 @@ const _module = {
                 return new CustomAppIntegration(name, <any>undefined, { urn })
             case "databricks:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
+            case "databricks:index/dataClassificationCatalogConfig:DataClassificationCatalogConfig":
+                return new DataClassificationCatalogConfig(name, <any>undefined, { urn })
             case "databricks:index/dataQualityMonitor:DataQualityMonitor":
                 return new DataQualityMonitor(name, <any>undefined, { urn })
             case "databricks:index/dataQualityRefresh:DataQualityRefresh":
@@ -1453,6 +1510,10 @@ const _module = {
                 return new IpAccessList(name, <any>undefined, { urn })
             case "databricks:index/job:Job":
                 return new Job(name, <any>undefined, { urn })
+            case "databricks:index/knowledgeAssistant:KnowledgeAssistant":
+                return new KnowledgeAssistant(name, <any>undefined, { urn })
+            case "databricks:index/knowledgeAssistantKnowledgeSource:KnowledgeAssistantKnowledgeSource":
+                return new KnowledgeAssistantKnowledgeSource(name, <any>undefined, { urn })
             case "databricks:index/lakehouseMonitor:LakehouseMonitor":
                 return new LakehouseMonitor(name, <any>undefined, { urn })
             case "databricks:index/library:Library":
@@ -1523,6 +1584,8 @@ const _module = {
                 return new PolicyInfo(name, <any>undefined, { urn })
             case "databricks:index/postgresBranch:PostgresBranch":
                 return new PostgresBranch(name, <any>undefined, { urn })
+            case "databricks:index/postgresDatabase:PostgresDatabase":
+                return new PostgresDatabase(name, <any>undefined, { urn })
             case "databricks:index/postgresEndpoint:PostgresEndpoint":
                 return new PostgresEndpoint(name, <any>undefined, { urn })
             case "databricks:index/postgresProject:PostgresProject":
@@ -1630,8 +1693,8 @@ pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddin
 pulumi.runtime.registerResourceModule("databricks", "index/alert", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/alertV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/app", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/appSpace", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/appsSettingsCustomTemplate", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/appsSpace", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/budget", _module)
@@ -1645,6 +1708,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/connection", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/credential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/customAppIntegration", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dashboard", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/dataClassificationCatalogConfig", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dataQualityMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dataQualityRefresh", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/databaseDatabaseCatalog", _module)
@@ -1678,6 +1742,8 @@ pulumi.runtime.registerResourceModule("databricks", "index/instancePool", _modul
 pulumi.runtime.registerResourceModule("databricks", "index/instanceProfile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/ipAccessList", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/job", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/knowledgeAssistant", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/knowledgeAssistantKnowledgeSource", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/lakehouseMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/library", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/materializedFeaturesFeatureTag", _module)
@@ -1713,6 +1779,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/policyInfo", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresBranch", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresDatabase", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresProject", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)

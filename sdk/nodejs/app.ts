@@ -152,6 +152,7 @@ export class App extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly servicePrincipalName: pulumi.Output<string>;
     declare public readonly space: pulumi.Output<string | undefined>;
+    declare public readonly telemetryExportDestinations: pulumi.Output<outputs.AppTelemetryExportDestination[] | undefined>;
     /**
      * The update time of the app.
      */
@@ -207,6 +208,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
             resourceInputs["servicePrincipalName"] = state?.servicePrincipalName;
             resourceInputs["space"] = state?.space;
+            resourceInputs["telemetryExportDestinations"] = state?.telemetryExportDestinations;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["updater"] = state?.updater;
             resourceInputs["url"] = state?.url;
@@ -223,6 +225,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["resources"] = args?.resources;
             resourceInputs["space"] = args?.space;
+            resourceInputs["telemetryExportDestinations"] = args?.telemetryExportDestinations;
             resourceInputs["usagePolicyId"] = args?.usagePolicyId;
             resourceInputs["userApiScopes"] = args?.userApiScopes;
             resourceInputs["activeDeployment"] = undefined /*out*/;
@@ -322,6 +325,7 @@ export interface AppState {
      */
     servicePrincipalName?: pulumi.Input<string>;
     space?: pulumi.Input<string>;
+    telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[]>;
     /**
      * The update time of the app.
      */
@@ -369,6 +373,7 @@ export interface AppArgs {
      */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
     space?: pulumi.Input<string>;
+    telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[]>;
     usagePolicyId?: pulumi.Input<string>;
     /**
      * A list of api scopes granted to the user access token.

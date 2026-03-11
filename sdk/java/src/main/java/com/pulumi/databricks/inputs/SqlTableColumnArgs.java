@@ -80,12 +80,16 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      * 
+     * &gt; **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP&lt;STRING,STRING&gt;` instead of `MAP&lt;STRING, STRING&gt;`.
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+     * 
+     * &gt; **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP&lt;STRING,STRING&gt;` instead of `MAP&lt;STRING, STRING&gt;`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -215,6 +219,8 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param type Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
          * 
+         * &gt; **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP&lt;STRING,STRING&gt;` instead of `MAP&lt;STRING, STRING&gt;`.
+         * 
          * @return builder
          * 
          */
@@ -225,6 +231,8 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param type Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+         * 
+         * &gt; **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP&lt;STRING,STRING&gt;` instead of `MAP&lt;STRING, STRING&gt;`.
          * 
          * @return builder
          * 

@@ -14,26 +14,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringFeatureFunction {
     /**
-     * @return Extra parameters for parameterized functions
+     * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * Extra parameters for parameterized functions
      * 
      */
     private @Nullable List<FeatureEngineeringFeatureFunctionExtraParameter> extraParameters;
     /**
-     * @return The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      * 
      */
     private String functionType;
 
     private FeatureEngineeringFeatureFunction() {}
     /**
-     * @return Extra parameters for parameterized functions
+     * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * Extra parameters for parameterized functions
      * 
      */
     public List<FeatureEngineeringFeatureFunctionExtraParameter> extraParameters() {
         return this.extraParameters == null ? List.of() : this.extraParameters;
     }
     /**
-     * @return The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      * 
      */
     public String functionType() {

@@ -60,7 +60,7 @@ class GetWorkspaceEntityTagAssignmentsResult:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> _builtins.str:
         """
-        (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+        (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         """
         return pulumi.get(self, "entity_type")
 
@@ -118,6 +118,8 @@ def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = No
     import pulumi
     import pulumi_databricks as databricks
 
+    notebook_tags = databricks.get_workspace_entity_tag_assignments(entity_type="notebooks",
+        entity_id="2807324866692453")
     app_tags = databricks.get_workspace_entity_tag_assignments(entity_type="apps",
         entity_id="myapp")
     dashboard_tags = databricks.get_workspace_entity_tag_assignments(entity_type="dashboards",
@@ -128,7 +130,7 @@ def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = No
 
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
     :param _builtins.int page_size: Optional. Maximum number of tag assignments to return in a single page
     :param Union['GetWorkspaceEntityTagAssignmentsProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
@@ -163,6 +165,8 @@ def get_workspace_entity_tag_assignments_output(entity_id: Optional[pulumi.Input
     import pulumi
     import pulumi_databricks as databricks
 
+    notebook_tags = databricks.get_workspace_entity_tag_assignments(entity_type="notebooks",
+        entity_id="2807324866692453")
     app_tags = databricks.get_workspace_entity_tag_assignments(entity_type="apps",
         entity_id="myapp")
     dashboard_tags = databricks.get_workspace_entity_tag_assignments(entity_type="dashboards",
@@ -173,7 +177,7 @@ def get_workspace_entity_tag_assignments_output(entity_id: Optional[pulumi.Input
 
 
     :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
-    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+    :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
     :param _builtins.int page_size: Optional. Maximum number of tag assignments to return in a single page
     :param Union['GetWorkspaceEntityTagAssignmentsProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """

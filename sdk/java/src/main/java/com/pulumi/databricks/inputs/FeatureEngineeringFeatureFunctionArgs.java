@@ -19,6 +19,7 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
     public static final FeatureEngineeringFeatureFunctionArgs Empty = new FeatureEngineeringFeatureFunctionArgs();
 
     /**
+     * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      * 
      */
@@ -26,7 +27,8 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
     private @Nullable Output<List<FeatureEngineeringFeatureFunctionExtraParameterArgs>> extraParameters;
 
     /**
-     * @return Extra parameters for parameterized functions
+     * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * Extra parameters for parameterized functions
      * 
      */
     public Optional<Output<List<FeatureEngineeringFeatureFunctionExtraParameterArgs>>> extraParameters() {
@@ -34,6 +36,7 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
     }
 
     /**
+     * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      * 
      */
@@ -41,7 +44,8 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
     private Output<String> functionType;
 
     /**
-     * @return The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      * 
      */
     public Output<String> functionType() {
@@ -74,7 +78,8 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param extraParameters Extra parameters for parameterized functions
+         * @param extraParameters Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+         * Extra parameters for parameterized functions
          * 
          * @return builder
          * 
@@ -85,7 +90,8 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param extraParameters Extra parameters for parameterized functions
+         * @param extraParameters Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+         * Extra parameters for parameterized functions
          * 
          * @return builder
          * 
@@ -95,7 +101,8 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param extraParameters Extra parameters for parameterized functions
+         * @param extraParameters Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+         * Extra parameters for parameterized functions
          * 
          * @return builder
          * 
@@ -105,7 +112,8 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param functionType The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+         * @param functionType Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+         * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
          * 
          * @return builder
          * 
@@ -116,7 +124,8 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param functionType The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+         * @param functionType Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+         * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
          * 
          * @return builder
          * 

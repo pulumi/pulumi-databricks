@@ -31,6 +31,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly bool? Nullable;
         /// <summary>
         /// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+        /// 
+        /// &gt; **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP&lt;STRING,STRING&gt;` instead of `MAP&lt;STRING, STRING&gt;`.
         /// </summary>
         public readonly string? Type;
         public readonly string? TypeJson;

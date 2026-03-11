@@ -12,10 +12,19 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureSourceDeltaTableSourceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+        /// Required if TransformationSql is specified.
+        /// Example: {"type":"struct","fields":[{"name":"ColA","type":"integer","nullable":true,"metadata":{}},{"name":"ColC","type":"integer","nullable":true,"metadata":{}}]}
+        /// </summary>
+        [Input("dataframeSchema")]
+        public Input<string>? DataframeSchema { get; set; }
+
         [Input("entityColumns", required: true)]
         private InputList<string>? _entityColumns;
 
         /// <summary>
+        /// Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
         /// The entity columns of the Delta table
         /// </summary>
         public InputList<string> EntityColumns
@@ -25,16 +34,32 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
+        /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+        /// The filter condition applied to the source data before aggregation
+        /// </summary>
+        [Input("filterCondition")]
+        public Input<string>? FilterCondition { get; set; }
+
+        /// <summary>
         /// The full three-part name (catalog, schema, name) of the feature
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
 
         /// <summary>
+        /// Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
         /// The timeseries column of the Delta table
         /// </summary>
         [Input("timeseriesColumn", required: true)]
         public Input<string> TimeseriesColumn { get; set; } = null!;
+
+        /// <summary>
+        /// A single SQL SELECT expression applied after filter_condition.
+        /// Should contains all the columns needed (eg. "SELECT *, ColA + ColB AS ColC FROM x.y.z WHERE ColA &gt; 0" would have `TransformationSql` "*, ColA + ColB AS ColC")
+        /// If TransformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+        /// </summary>
+        [Input("transformationSql")]
+        public Input<string>? TransformationSql { get; set; }
 
         public FeatureEngineeringFeatureSourceDeltaTableSourceGetArgs()
         {

@@ -44,6 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var notebookTag = new WorkspaceEntityTagAssignment("notebookTag", WorkspaceEntityTagAssignmentArgs.builder()
+ *             .entityType("notebooks")
+ *             .entityId("2807324866692453")
+ *             .tagKey("sensitivity_level")
+ *             .tagValue("high")
+ *             .build());
+ * 
  *         var appTag = new WorkspaceEntityTagAssignment("appTag", WorkspaceEntityTagAssignmentArgs.builder()
  *             .entityType("apps")
  *             .entityId("myapp")
@@ -88,14 +95,14 @@ public class WorkspaceEntityTagAssignment extends com.pulumi.resources.CustomRes
         return this.entityId;
     }
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      * 
      */
     @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output<String> entityType;
 
     /**
-     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+     * @return The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      * 
      */
     public Output<String> entityType() {

@@ -30,8 +30,8 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.Endpoint("this", new()
     ///     {
-    ///         AccountId = "eae3abf6-1496-494e-9983-4660a5ad5aab",
-    ///         EndpointName = "my-private-endpoint",
+    ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
+    ///         DisplayName = "my-private-endpoint",
     ///         Region = "westus",
     ///         AzurePrivateEndpointInfo = new Databricks.Inputs.EndpointAzurePrivateEndpointInfoArgs
     ///         {
@@ -84,6 +84,10 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The parent resource name of the account under which the endpoint is created.
+        /// Format: `accounts/{account_id}`
+        /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
@@ -166,6 +170,10 @@ namespace Pulumi.Databricks
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// The parent resource name of the account under which the endpoint is created.
+        /// Format: `accounts/{account_id}`
+        /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
@@ -221,6 +229,10 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The parent resource name of the account under which the endpoint is created.
+        /// Format: `accounts/{account_id}`
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 

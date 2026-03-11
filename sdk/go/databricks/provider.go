@@ -31,10 +31,12 @@ type Provider struct {
 	AzureWorkspaceResourceId   pulumi.StringPtrOutput `pulumi:"azureWorkspaceResourceId"`
 	ClientId                   pulumi.StringPtrOutput `pulumi:"clientId"`
 	ClientSecret               pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	Cloud                      pulumi.StringPtrOutput `pulumi:"cloud"`
 	ClusterId                  pulumi.StringPtrOutput `pulumi:"clusterId"`
 	ConfigFile                 pulumi.StringPtrOutput `pulumi:"configFile"`
 	DatabricksCliPath          pulumi.StringPtrOutput `pulumi:"databricksCliPath"`
 	DatabricksIdTokenFilepath  pulumi.StringPtrOutput `pulumi:"databricksIdTokenFilepath"`
+	DiscoveryUrl               pulumi.StringPtrOutput `pulumi:"discoveryUrl"`
 	GoogleCredentials          pulumi.StringPtrOutput `pulumi:"googleCredentials"`
 	GoogleServiceAccount       pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
 	Host                       pulumi.StringPtrOutput `pulumi:"host"`
@@ -107,6 +109,7 @@ type providerArgs struct {
 	AzureWorkspaceResourceId   *string  `pulumi:"azureWorkspaceResourceId"`
 	ClientId                   *string  `pulumi:"clientId"`
 	ClientSecret               *string  `pulumi:"clientSecret"`
+	Cloud                      *string  `pulumi:"cloud"`
 	ClusterId                  *string  `pulumi:"clusterId"`
 	ConfigFile                 *string  `pulumi:"configFile"`
 	DatabricksCliPath          *string  `pulumi:"databricksCliPath"`
@@ -114,6 +117,7 @@ type providerArgs struct {
 	DebugHeaders               *bool    `pulumi:"debugHeaders"`
 	DebugTruncateBytes         *int     `pulumi:"debugTruncateBytes"`
 	DisableOauthRefreshToken   *bool    `pulumi:"disableOauthRefreshToken"`
+	DiscoveryUrl               *string  `pulumi:"discoveryUrl"`
 	ExperimentalIsUnifiedHost  *bool    `pulumi:"experimentalIsUnifiedHost"`
 	GoogleCredentials          *string  `pulumi:"googleCredentials"`
 	GoogleServiceAccount       *string  `pulumi:"googleServiceAccount"`
@@ -151,6 +155,7 @@ type ProviderArgs struct {
 	AzureWorkspaceResourceId   pulumi.StringPtrInput
 	ClientId                   pulumi.StringPtrInput
 	ClientSecret               pulumi.StringPtrInput
+	Cloud                      pulumi.StringPtrInput
 	ClusterId                  pulumi.StringPtrInput
 	ConfigFile                 pulumi.StringPtrInput
 	DatabricksCliPath          pulumi.StringPtrInput
@@ -158,6 +163,7 @@ type ProviderArgs struct {
 	DebugHeaders               pulumi.BoolPtrInput
 	DebugTruncateBytes         pulumi.IntPtrInput
 	DisableOauthRefreshToken   pulumi.BoolPtrInput
+	DiscoveryUrl               pulumi.StringPtrInput
 	ExperimentalIsUnifiedHost  pulumi.BoolPtrInput
 	GoogleCredentials          pulumi.StringPtrInput
 	GoogleServiceAccount       pulumi.StringPtrInput
@@ -291,6 +297,10 @@ func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Cloud }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
@@ -305,6 +315,10 @@ func (o ProviderOutput) DatabricksCliPath() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) DatabricksIdTokenFilepath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DatabricksIdTokenFilepath }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) DiscoveryUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) GoogleCredentials() pulumi.StringPtrOutput {

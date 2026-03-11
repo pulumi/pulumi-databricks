@@ -10,6 +10,7 @@ import com.pulumi.databricks.outputs.GetAppsAppComputeStatus;
 import com.pulumi.databricks.outputs.GetAppsAppGitRepository;
 import com.pulumi.databricks.outputs.GetAppsAppPendingDeployment;
 import com.pulumi.databricks.outputs.GetAppsAppResource;
+import com.pulumi.databricks.outputs.GetAppsAppTelemetryExportDestination;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -107,6 +108,7 @@ public final class GetAppsApp {
      */
     private String servicePrincipalName;
     private @Nullable String space;
+    private @Nullable List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations;
     /**
      * @return The update time of the app.
      * 
@@ -259,6 +261,9 @@ public final class GetAppsApp {
     public Optional<String> space() {
         return Optional.ofNullable(this.space);
     }
+    public List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations() {
+        return this.telemetryExportDestinations == null ? List.of() : this.telemetryExportDestinations;
+    }
     /**
      * @return The update time of the app.
      * 
@@ -319,6 +324,7 @@ public final class GetAppsApp {
         private Integer servicePrincipalId;
         private String servicePrincipalName;
         private @Nullable String space;
+        private @Nullable List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations;
         private String updateTime;
         private String updater;
         private String url;
@@ -350,6 +356,7 @@ public final class GetAppsApp {
     	      this.servicePrincipalId = defaults.servicePrincipalId;
     	      this.servicePrincipalName = defaults.servicePrincipalName;
     	      this.space = defaults.space;
+    	      this.telemetryExportDestinations = defaults.telemetryExportDestinations;
     	      this.updateTime = defaults.updateTime;
     	      this.updater = defaults.updater;
     	      this.url = defaults.url;
@@ -536,6 +543,15 @@ public final class GetAppsApp {
             return this;
         }
         @CustomType.Setter
+        public Builder telemetryExportDestinations(@Nullable List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations) {
+
+            this.telemetryExportDestinations = telemetryExportDestinations;
+            return this;
+        }
+        public Builder telemetryExportDestinations(GetAppsAppTelemetryExportDestination... telemetryExportDestinations) {
+            return telemetryExportDestinations(List.of(telemetryExportDestinations));
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetAppsApp", "updateTime");
@@ -599,6 +615,7 @@ public final class GetAppsApp {
             _resultValue.servicePrincipalId = servicePrincipalId;
             _resultValue.servicePrincipalName = servicePrincipalName;
             _resultValue.space = space;
+            _resultValue.telemetryExportDestinations = telemetryExportDestinations;
             _resultValue.updateTime = updateTime;
             _resultValue.updater = updater;
             _resultValue.url = url;

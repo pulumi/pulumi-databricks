@@ -18,14 +18,17 @@ type FeatureEngineeringFeature struct {
 
 	// The description of the feature
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition pulumi.StringPtrOutput `pulumi:"filterCondition"`
 	// The full three-part name (catalog, schema, name) of the feature
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionOutput `pulumi:"function"`
+	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
 	// The input columns from which the feature is computed
 	Inputs pulumi.StringArrayOutput `pulumi:"inputs"`
+	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -35,6 +38,7 @@ type FeatureEngineeringFeature struct {
 	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceOutput `pulumi:"source"`
+	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow FeatureEngineeringFeatureTimeWindowPtrOutput `pulumi:"timeWindow"`
 }
@@ -83,14 +87,17 @@ func GetFeatureEngineeringFeature(ctx *pulumi.Context,
 type featureEngineeringFeatureState struct {
 	// The description of the feature
 	Description *string `pulumi:"description"`
+	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition *string `pulumi:"filterCondition"`
 	// The full three-part name (catalog, schema, name) of the feature
 	FullName *string `pulumi:"fullName"`
 	// The function by which the feature is computed
 	Function *FeatureEngineeringFeatureFunction `pulumi:"function"`
+	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
 	// The input columns from which the feature is computed
 	Inputs []string `pulumi:"inputs"`
+	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -100,6 +107,7 @@ type featureEngineeringFeatureState struct {
 	ProviderConfig *FeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// The data source of the feature
 	Source *FeatureEngineeringFeatureSource `pulumi:"source"`
+	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow *FeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
 }
@@ -107,14 +115,17 @@ type featureEngineeringFeatureState struct {
 type FeatureEngineeringFeatureState struct {
 	// The description of the feature
 	Description pulumi.StringPtrInput
+	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition pulumi.StringPtrInput
 	// The full three-part name (catalog, schema, name) of the feature
 	FullName pulumi.StringPtrInput
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionPtrInput
+	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
 	// The input columns from which the feature is computed
 	Inputs pulumi.StringArrayInput
+	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -124,6 +135,7 @@ type FeatureEngineeringFeatureState struct {
 	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourcePtrInput
+	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow FeatureEngineeringFeatureTimeWindowPtrInput
 }
@@ -135,14 +147,17 @@ func (FeatureEngineeringFeatureState) ElementType() reflect.Type {
 type featureEngineeringFeatureArgs struct {
 	// The description of the feature
 	Description *string `pulumi:"description"`
+	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition *string `pulumi:"filterCondition"`
 	// The full three-part name (catalog, schema, name) of the feature
 	FullName string `pulumi:"fullName"`
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunction `pulumi:"function"`
+	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
 	// The input columns from which the feature is computed
 	Inputs []string `pulumi:"inputs"`
+	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -152,6 +167,7 @@ type featureEngineeringFeatureArgs struct {
 	ProviderConfig *FeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSource `pulumi:"source"`
+	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow *FeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
 }
@@ -160,14 +176,17 @@ type featureEngineeringFeatureArgs struct {
 type FeatureEngineeringFeatureArgs struct {
 	// The description of the feature
 	Description pulumi.StringPtrInput
+	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition pulumi.StringPtrInput
 	// The full three-part name (catalog, schema, name) of the feature
 	FullName pulumi.StringInput
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionInput
+	// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
 	// The input columns from which the feature is computed
 	Inputs pulumi.StringArrayInput
+	// Lineage context information for this feature.
 	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -177,6 +196,7 @@ type FeatureEngineeringFeatureArgs struct {
 	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceInput
+	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow FeatureEngineeringFeatureTimeWindowPtrInput
 }
@@ -273,6 +293,7 @@ func (o FeatureEngineeringFeatureOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 // The filter condition applied to the source data before aggregation
 func (o FeatureEngineeringFeatureOutput) FilterCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringPtrOutput { return v.FilterCondition }).(pulumi.StringPtrOutput)
@@ -288,11 +309,13 @@ func (o FeatureEngineeringFeatureOutput) Function() FeatureEngineeringFeatureFun
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureFunctionOutput { return v.Function }).(FeatureEngineeringFeatureFunctionOutput)
 }
 
+// Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
 // The input columns from which the feature is computed
 func (o FeatureEngineeringFeatureOutput) Inputs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringArrayOutput { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
+// Lineage context information for this feature.
 // WARNING: This field is primarily intended for internal use by Databricks systems and
 // is automatically populated when features are created through Databricks notebooks or jobs.
 // Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -315,6 +338,7 @@ func (o FeatureEngineeringFeatureOutput) Source() FeatureEngineeringFeatureSourc
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureSourceOutput { return v.Source }).(FeatureEngineeringFeatureSourceOutput)
 }
 
+// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 // The time window in which the feature is computed
 func (o FeatureEngineeringFeatureOutput) TimeWindow() FeatureEngineeringFeatureTimeWindowPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureTimeWindowPtrOutput { return v.TimeWindow }).(FeatureEngineeringFeatureTimeWindowPtrOutput)

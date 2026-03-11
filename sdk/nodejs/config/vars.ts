@@ -119,6 +119,14 @@ Object.defineProperty(exports, "clientSecret", {
     enumerable: true,
 });
 
+export declare const cloud: string | undefined;
+Object.defineProperty(exports, "cloud", {
+    get() {
+        return __config.get("cloud");
+    },
+    enumerable: true,
+});
+
 export declare const clusterId: string | undefined;
 Object.defineProperty(exports, "clusterId", {
     get() {
@@ -171,6 +179,14 @@ export declare const disableOauthRefreshToken: boolean | undefined;
 Object.defineProperty(exports, "disableOauthRefreshToken", {
     get() {
         return __config.getObject<boolean>("disableOauthRefreshToken");
+    },
+    enumerable: true,
+});
+
+export declare const discoveryUrl: string | undefined;
+Object.defineProperty(exports, "discoveryUrl", {
+    get() {
+        return __config.get("discoveryUrl");
     },
     enumerable: true,
 });

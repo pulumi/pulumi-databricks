@@ -72,7 +72,7 @@ class GetFeatureEngineeringFeatureResult:
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> _builtins.str:
         """
-        (string) - The filter condition applied to the source data before aggregation
+        (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         """
         return pulumi.get(self, "filter_condition")
 
@@ -104,7 +104,8 @@ class GetFeatureEngineeringFeatureResult:
     @pulumi.getter
     def inputs(self) -> Sequence[_builtins.str]:
         """
-        (list of string) - The input columns from which the feature is computed
+        (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+        The input columns from which the feature is computed
         """
         return pulumi.get(self, "inputs")
 
@@ -112,7 +113,8 @@ class GetFeatureEngineeringFeatureResult:
     @pulumi.getter(name="lineageContext")
     def lineage_context(self) -> 'outputs.GetFeatureEngineeringFeatureLineageContextResult':
         """
-        (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+        (LineageContext) - Lineage context information for this feature.
+        WARNING: This field is primarily intended for internal use by Databricks systems and
         is automatically populated when features are created through Databricks notebooks or jobs.
         Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
         This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -136,7 +138,8 @@ class GetFeatureEngineeringFeatureResult:
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> 'outputs.GetFeatureEngineeringFeatureTimeWindowResult':
         """
-        (TimeWindow) - The time window in which the feature is computed
+        (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+        The time window in which the feature is computed
         """
         return pulumi.get(self, "time_window")
 

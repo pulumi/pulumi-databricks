@@ -17,6 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const notebookTags = databricks.getWorkspaceEntityTagAssignments({
+ *     entityType: "notebooks",
+ *     entityId: "2807324866692453",
+ * });
  * const appTags = databricks.getWorkspaceEntityTagAssignments({
  *     entityType: "apps",
  *     entityId: "myapp",
@@ -50,7 +54,7 @@ export interface GetWorkspaceEntityTagAssignmentsArgs {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     entityType: string;
     /**
@@ -72,7 +76,7 @@ export interface GetWorkspaceEntityTagAssignmentsResult {
      */
     readonly entityId: string;
     /**
-     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     readonly entityType: string;
     /**
@@ -94,6 +98,10 @@ export interface GetWorkspaceEntityTagAssignmentsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const notebookTags = databricks.getWorkspaceEntityTagAssignments({
+ *     entityType: "notebooks",
+ *     entityId: "2807324866692453",
+ * });
  * const appTags = databricks.getWorkspaceEntityTagAssignments({
  *     entityType: "apps",
  *     entityId: "myapp",
@@ -127,7 +135,7 @@ export interface GetWorkspaceEntityTagAssignmentsOutputArgs {
      */
     entityId: pulumi.Input<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     entityType: pulumi.Input<string>;
     /**

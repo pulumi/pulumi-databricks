@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs>? _extraParameters;
 
         /// <summary>
+        /// Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
         /// Extra parameters for parameterized functions
         /// </summary>
         public InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs> ExtraParameters
@@ -25,6 +26,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
+        /// Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
         /// The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
         /// </summary>
         [Input("functionType", required: true)]

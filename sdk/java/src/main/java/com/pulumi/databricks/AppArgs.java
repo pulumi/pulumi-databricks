@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppGitRepositoryArgs;
 import com.pulumi.databricks.inputs.AppProviderConfigArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
+import com.pulumi.databricks.inputs.AppTelemetryExportDestinationArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -123,6 +124,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.space);
     }
 
+    @Import(name="telemetryExportDestinations")
+    private @Nullable Output<List<AppTelemetryExportDestinationArgs>> telemetryExportDestinations;
+
+    public Optional<Output<List<AppTelemetryExportDestinationArgs>>> telemetryExportDestinations() {
+        return Optional.ofNullable(this.telemetryExportDestinations);
+    }
+
     @Import(name="usagePolicyId")
     private @Nullable Output<String> usagePolicyId;
 
@@ -157,6 +165,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         this.providerConfig = $.providerConfig;
         this.resources = $.resources;
         this.space = $.space;
+        this.telemetryExportDestinations = $.telemetryExportDestinations;
         this.usagePolicyId = $.usagePolicyId;
         this.userApiScopes = $.userApiScopes;
     }
@@ -328,6 +337,19 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder space(String space) {
             return space(Output.of(space));
+        }
+
+        public Builder telemetryExportDestinations(@Nullable Output<List<AppTelemetryExportDestinationArgs>> telemetryExportDestinations) {
+            $.telemetryExportDestinations = telemetryExportDestinations;
+            return this;
+        }
+
+        public Builder telemetryExportDestinations(List<AppTelemetryExportDestinationArgs> telemetryExportDestinations) {
+            return telemetryExportDestinations(Output.of(telemetryExportDestinations));
+        }
+
+        public Builder telemetryExportDestinations(AppTelemetryExportDestinationArgs... telemetryExportDestinations) {
+            return telemetryExportDestinations(List.of(telemetryExportDestinations));
         }
 
         public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {

@@ -34,16 +34,20 @@ class FeatureEngineeringFeatureArgs:
         The set of arguments for constructing a FeatureEngineeringFeature resource.
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: The input columns from which the feature is computed
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+               The input columns from which the feature is computed
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[_builtins.str] filter_condition: The filter condition applied to the source data before aggregation
-        :param pulumi.Input['FeatureEngineeringFeatureLineageContextArgs'] lineage_context: WARNING: This field is primarily intended for internal use by Databricks systems and
+        :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+               The filter condition applied to the source data before aggregation
+        :param pulumi.Input['FeatureEngineeringFeatureLineageContextArgs'] lineage_context: Lineage context information for this feature.
+               WARNING: This field is primarily intended for internal use by Databricks systems and
                is automatically populated when features are created through Databricks notebooks or jobs.
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'] time_window: The time window in which the feature is computed
+        :param pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'] time_window: Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+               The time window in which the feature is computed
         """
         pulumi.set(__self__, "full_name", full_name)
         pulumi.set(__self__, "function", function)
@@ -88,6 +92,7 @@ class FeatureEngineeringFeatureArgs:
     @pulumi.getter
     def inputs(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
+        Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
         The input columns from which the feature is computed
         """
         return pulumi.get(self, "inputs")
@@ -124,6 +129,7 @@ class FeatureEngineeringFeatureArgs:
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         The filter condition applied to the source data before aggregation
         """
         return pulumi.get(self, "filter_condition")
@@ -136,6 +142,7 @@ class FeatureEngineeringFeatureArgs:
     @pulumi.getter(name="lineageContext")
     def lineage_context(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]:
         """
+        Lineage context information for this feature.
         WARNING: This field is primarily intended for internal use by Databricks systems and
         is automatically populated when features are created through Databricks notebooks or jobs.
         Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -163,6 +170,7 @@ class FeatureEngineeringFeatureArgs:
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']]:
         """
+        Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
         The time window in which the feature is computed
         """
         return pulumi.get(self, "time_window")
@@ -187,17 +195,21 @@ class _FeatureEngineeringFeatureState:
         """
         Input properties used for looking up and filtering FeatureEngineeringFeature resources.
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[_builtins.str] filter_condition: The filter condition applied to the source data before aggregation
+        :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+               The filter condition applied to the source data before aggregation
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: The input columns from which the feature is computed
-        :param pulumi.Input['FeatureEngineeringFeatureLineageContextArgs'] lineage_context: WARNING: This field is primarily intended for internal use by Databricks systems and
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+               The input columns from which the feature is computed
+        :param pulumi.Input['FeatureEngineeringFeatureLineageContextArgs'] lineage_context: Lineage context information for this feature.
+               WARNING: This field is primarily intended for internal use by Databricks systems and
                is automatically populated when features are created through Databricks notebooks or jobs.
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
-        :param pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'] time_window: The time window in which the feature is computed
+        :param pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'] time_window: Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+               The time window in which the feature is computed
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -234,6 +246,7 @@ class _FeatureEngineeringFeatureState:
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         The filter condition applied to the source data before aggregation
         """
         return pulumi.get(self, "filter_condition")
@@ -270,6 +283,7 @@ class _FeatureEngineeringFeatureState:
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
         The input columns from which the feature is computed
         """
         return pulumi.get(self, "inputs")
@@ -282,6 +296,7 @@ class _FeatureEngineeringFeatureState:
     @pulumi.getter(name="lineageContext")
     def lineage_context(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]:
         """
+        Lineage context information for this feature.
         WARNING: This field is primarily intended for internal use by Databricks systems and
         is automatically populated when features are created through Databricks notebooks or jobs.
         Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -321,6 +336,7 @@ class _FeatureEngineeringFeatureState:
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']]:
         """
+        Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
         The time window in which the feature is computed
         """
         return pulumi.get(self, "time_window")
@@ -352,17 +368,21 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[_builtins.str] filter_condition: The filter condition applied to the source data before aggregation
+        :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+               The filter condition applied to the source data before aggregation
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']] function: The function by which the feature is computed
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: The input columns from which the feature is computed
-        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']] lineage_context: WARNING: This field is primarily intended for internal use by Databricks systems and
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+               The input columns from which the feature is computed
+        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']] lineage_context: Lineage context information for this feature.
+               WARNING: This field is primarily intended for internal use by Databricks systems and
                is automatically populated when features are created through Databricks notebooks or jobs.
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']] source: The data source of the feature
-        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']] time_window: The time window in which the feature is computed
+        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']] time_window: Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+               The time window in which the feature is computed
         """
         ...
     @overload
@@ -450,17 +470,21 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the feature
-        :param pulumi.Input[_builtins.str] filter_condition: The filter condition applied to the source data before aggregation
+        :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+               The filter condition applied to the source data before aggregation
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']] function: The function by which the feature is computed
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: The input columns from which the feature is computed
-        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']] lineage_context: WARNING: This field is primarily intended for internal use by Databricks systems and
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+               The input columns from which the feature is computed
+        :param pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']] lineage_context: Lineage context information for this feature.
+               WARNING: This field is primarily intended for internal use by Databricks systems and
                is automatically populated when features are created through Databricks notebooks or jobs.
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']] source: The data source of the feature
-        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']] time_window: The time window in which the feature is computed
+        :param pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']] time_window: Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+               The time window in which the feature is computed
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -489,6 +513,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     @pulumi.getter(name="filterCondition")
     def filter_condition(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         The filter condition applied to the source data before aggregation
         """
         return pulumi.get(self, "filter_condition")
@@ -513,6 +538,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     @pulumi.getter
     def inputs(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
+        Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
         The input columns from which the feature is computed
         """
         return pulumi.get(self, "inputs")
@@ -521,6 +547,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     @pulumi.getter(name="lineageContext")
     def lineage_context(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringFeatureLineageContext']]:
         """
+        Lineage context information for this feature.
         WARNING: This field is primarily intended for internal use by Databricks systems and
         is automatically populated when features are created through Databricks notebooks or jobs.
         Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -548,6 +575,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringFeatureTimeWindow']]:
         """
+        Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
         The time window in which the feature is computed
         """
         return pulumi.get(self, "time_window")

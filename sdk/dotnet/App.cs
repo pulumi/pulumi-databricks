@@ -192,6 +192,9 @@ namespace Pulumi.Databricks
         [Output("space")]
         public Output<string?> Space { get; private set; } = null!;
 
+        [Output("telemetryExportDestinations")]
+        public Output<ImmutableArray<Outputs.AppTelemetryExportDestination>> TelemetryExportDestinations { get; private set; } = null!;
+
         /// <summary>
         /// The update time of the app.
         /// </summary>
@@ -312,6 +315,14 @@ namespace Pulumi.Databricks
 
         [Input("space")]
         public Input<string>? Space { get; set; }
+
+        [Input("telemetryExportDestinations")]
+        private InputList<Inputs.AppTelemetryExportDestinationArgs>? _telemetryExportDestinations;
+        public InputList<Inputs.AppTelemetryExportDestinationArgs> TelemetryExportDestinations
+        {
+            get => _telemetryExportDestinations ?? (_telemetryExportDestinations = new InputList<Inputs.AppTelemetryExportDestinationArgs>());
+            set => _telemetryExportDestinations = value;
+        }
 
         [Input("usagePolicyId")]
         public Input<string>? UsagePolicyId { get; set; }
@@ -464,6 +475,14 @@ namespace Pulumi.Databricks
 
         [Input("space")]
         public Input<string>? Space { get; set; }
+
+        [Input("telemetryExportDestinations")]
+        private InputList<Inputs.AppTelemetryExportDestinationGetArgs>? _telemetryExportDestinations;
+        public InputList<Inputs.AppTelemetryExportDestinationGetArgs> TelemetryExportDestinations
+        {
+            get => _telemetryExportDestinations ?? (_telemetryExportDestinations = new InputList<Inputs.AppTelemetryExportDestinationGetArgs>());
+            set => _telemetryExportDestinations = value;
+        }
 
         /// <summary>
         /// The update time of the app.

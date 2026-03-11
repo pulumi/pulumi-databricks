@@ -17,6 +17,7 @@ import com.pulumi.databricks.outputs.AppGitRepository;
 import com.pulumi.databricks.outputs.AppPendingDeployment;
 import com.pulumi.databricks.outputs.AppProviderConfig;
 import com.pulumi.databricks.outputs.AppResource;
+import com.pulumi.databricks.outputs.AppTelemetryExportDestination;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -364,6 +365,12 @@ public class App extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> space() {
         return Codegen.optional(this.space);
+    }
+    @Export(name="telemetryExportDestinations", refs={List.class,AppTelemetryExportDestination.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AppTelemetryExportDestination>> telemetryExportDestinations;
+
+    public Output<Optional<List<AppTelemetryExportDestination>>> telemetryExportDestinations() {
+        return Codegen.optional(this.telemetryExportDestinations);
     }
     /**
      * The update time of the app.

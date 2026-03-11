@@ -51,9 +51,19 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         return this.displayName;
     }
 
+    /**
+     * The parent resource name of the account under which the endpoint is created.
+     * Format: `accounts/{account_id}`
+     * 
+     */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
+    /**
+     * @return The parent resource name of the account under which the endpoint is created.
+     * Format: `accounts/{account_id}`
+     * 
+     */
     public Output<String> parent() {
         return this.parent;
     }
@@ -146,11 +156,25 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
             return displayName(Output.of(displayName));
         }
 
+        /**
+         * @param parent The parent resource name of the account under which the endpoint is created.
+         * Format: `accounts/{account_id}`
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(Output<String> parent) {
             $.parent = parent;
             return this;
         }
 
+        /**
+         * @param parent The parent resource name of the account under which the endpoint is created.
+         * Format: `accounts/{account_id}`
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
         }

@@ -51,9 +51,9 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
      */
     declare public /*out*/ readonly lastMaterializationTime: pulumi.Output<string>;
     /**
-     * (string) - Unique identifier for the materialized feature
+     * Unique identifier for the materialized feature
      */
-    declare public /*out*/ readonly materializedFeatureId: pulumi.Output<string>;
+    declare public readonly materializedFeatureId: pulumi.Output<string | undefined>;
     declare public readonly offlineStoreConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig | undefined>;
     declare public readonly onlineStoreConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig | undefined>;
     /**
@@ -98,12 +98,12 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
             }
             resourceInputs["cronSchedule"] = args?.cronSchedule;
             resourceInputs["featureName"] = args?.featureName;
+            resourceInputs["materializedFeatureId"] = args?.materializedFeatureId;
             resourceInputs["offlineStoreConfig"] = args?.offlineStoreConfig;
             resourceInputs["onlineStoreConfig"] = args?.onlineStoreConfig;
             resourceInputs["pipelineScheduleState"] = args?.pipelineScheduleState;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["lastMaterializationTime"] = undefined /*out*/;
-            resourceInputs["materializedFeatureId"] = undefined /*out*/;
             resourceInputs["tableName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -129,7 +129,7 @@ export interface FeatureEngineeringMaterializedFeatureState {
      */
     lastMaterializationTime?: pulumi.Input<string>;
     /**
-     * (string) - Unique identifier for the materialized feature
+     * Unique identifier for the materialized feature
      */
     materializedFeatureId?: pulumi.Input<string>;
     offlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig>;
@@ -160,6 +160,10 @@ export interface FeatureEngineeringMaterializedFeatureArgs {
      * The full name of the feature in Unity Catalog
      */
     featureName: pulumi.Input<string>;
+    /**
+     * Unique identifier for the materialized feature
+     */
+    materializedFeatureId?: pulumi.Input<string>;
     offlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig>;
     onlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig>;
     /**

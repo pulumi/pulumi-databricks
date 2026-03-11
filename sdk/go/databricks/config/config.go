@@ -53,6 +53,9 @@ func GetClientId(ctx *pulumi.Context) string {
 func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:clientSecret")
 }
+func GetCloud(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:cloud")
+}
 func GetClusterId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:clusterId")
 }
@@ -73,6 +76,9 @@ func GetDebugTruncateBytes(ctx *pulumi.Context) int {
 }
 func GetDisableOauthRefreshToken(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "databricks:disableOauthRefreshToken")
+}
+func GetDiscoveryUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:discoveryUrl")
 }
 func GetExperimentalIsUnifiedHost(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "databricks:experimentalIsUnifiedHost")
