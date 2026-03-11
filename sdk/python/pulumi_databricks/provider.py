@@ -33,6 +33,7 @@ class ProviderArgs:
                  azure_workspace_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config_file: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_cli_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,6 +41,7 @@ class ProviderArgs:
                  debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_oauth_refresh_token: Optional[pulumi.Input[_builtins.bool]] = None,
+                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
                  experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
                  google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -90,6 +92,8 @@ class ProviderArgs:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if cloud is not None:
+            pulumi.set(__self__, "cloud", cloud)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if config_file is not None:
@@ -104,6 +108,8 @@ class ProviderArgs:
             pulumi.set(__self__, "debug_truncate_bytes", debug_truncate_bytes)
         if disable_oauth_refresh_token is not None:
             pulumi.set(__self__, "disable_oauth_refresh_token", disable_oauth_refresh_token)
+        if discovery_url is not None:
+            pulumi.set(__self__, "discovery_url", discovery_url)
         if experimental_is_unified_host is not None:
             pulumi.set(__self__, "experimental_is_unified_host", experimental_is_unified_host)
         if google_credentials is not None:
@@ -270,6 +276,15 @@ class ProviderArgs:
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
+    @pulumi.getter
+    def cloud(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "cloud")
+
+    @cloud.setter
+    def cloud(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cloud", value)
+
+    @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
@@ -331,6 +346,15 @@ class ProviderArgs:
     @disable_oauth_refresh_token.setter
     def disable_oauth_refresh_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disable_oauth_refresh_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryUrl")
+    def discovery_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "discovery_url")
+
+    @discovery_url.setter
+    def discovery_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "discovery_url", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentalIsUnifiedHost")
@@ -524,6 +548,7 @@ class Provider(pulumi.ProviderResource):
                  azure_workspace_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config_file: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_cli_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -531,6 +556,7 @@ class Provider(pulumi.ProviderResource):
                  debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_oauth_refresh_token: Optional[pulumi.Input[_builtins.bool]] = None,
+                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
                  experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
                  google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -601,6 +627,7 @@ class Provider(pulumi.ProviderResource):
                  azure_workspace_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config_file: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_cli_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -608,6 +635,7 @@ class Provider(pulumi.ProviderResource):
                  debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_oauth_refresh_token: Optional[pulumi.Input[_builtins.bool]] = None,
+                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
                  experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
                  google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -650,6 +678,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["azure_workspace_resource_id"] = azure_workspace_resource_id
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
+            __props__.__dict__["cloud"] = cloud
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["config_file"] = config_file
             __props__.__dict__["databricks_cli_path"] = databricks_cli_path
@@ -657,6 +686,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["debug_headers"] = pulumi.Output.from_input(debug_headers).apply(pulumi.runtime.to_json) if debug_headers is not None else None
             __props__.__dict__["debug_truncate_bytes"] = pulumi.Output.from_input(debug_truncate_bytes).apply(pulumi.runtime.to_json) if debug_truncate_bytes is not None else None
             __props__.__dict__["disable_oauth_refresh_token"] = pulumi.Output.from_input(disable_oauth_refresh_token).apply(pulumi.runtime.to_json) if disable_oauth_refresh_token is not None else None
+            __props__.__dict__["discovery_url"] = discovery_url
             __props__.__dict__["experimental_is_unified_host"] = pulumi.Output.from_input(experimental_is_unified_host).apply(pulumi.runtime.to_json) if experimental_is_unified_host is not None else None
             __props__.__dict__["google_credentials"] = None if google_credentials is None else pulumi.Output.secret(google_credentials)
             __props__.__dict__["google_service_account"] = google_service_account
@@ -750,6 +780,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "client_secret")
 
     @_builtins.property
+    @pulumi.getter
+    def cloud(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "cloud")
+
+    @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
@@ -768,6 +803,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="databricksIdTokenFilepath")
     def databricks_id_token_filepath(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "databricks_id_token_filepath")
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryUrl")
+    def discovery_url(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "discovery_url")
 
     @_builtins.property
     @pulumi.getter(name="googleCredentials")

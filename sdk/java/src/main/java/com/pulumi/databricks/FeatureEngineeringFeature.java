@@ -41,6 +41,7 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.description);
     }
     /**
+     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
      * 
      */
@@ -48,7 +49,8 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
     private Output</* @Nullable */ String> filterCondition;
 
     /**
-     * @return The filter condition applied to the source data before aggregation
+     * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
      * 
      */
     public Output<Optional<String>> filterCondition() {
@@ -83,6 +85,7 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
         return this.function;
     }
     /**
+     * Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      * 
      */
@@ -90,13 +93,15 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
     private Output<List<String>> inputs;
 
     /**
-     * @return The input columns from which the feature is computed
+     * @return Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+     * The input columns from which the feature is computed
      * 
      */
     public Output<List<String>> inputs() {
         return this.inputs;
     }
     /**
+     * Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
      * is automatically populated when features are created through Databricks notebooks or jobs.
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -107,7 +112,8 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
     private Output</* @Nullable */ FeatureEngineeringFeatureLineageContext> lineageContext;
 
     /**
-     * @return WARNING: This field is primarily intended for internal use by Databricks systems and
+     * @return Lineage context information for this feature.
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
      * is automatically populated when features are created through Databricks notebooks or jobs.
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -145,6 +151,7 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
         return this.source;
     }
     /**
+     * Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
      * The time window in which the feature is computed
      * 
      */
@@ -152,7 +159,8 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
     private Output</* @Nullable */ FeatureEngineeringFeatureTimeWindow> timeWindow;
 
     /**
-     * @return The time window in which the feature is computed
+     * @return Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+     * The time window in which the feature is computed
      * 
      */
     public Output<Optional<FeatureEngineeringFeatureTimeWindow>> timeWindow() {

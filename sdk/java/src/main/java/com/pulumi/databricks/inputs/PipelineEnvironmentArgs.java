@@ -117,10 +117,18 @@ public final class PipelineEnvironmentArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.dependencies);
     }
 
+    @Import(name="environmentVersion")
+    private @Nullable Output<String> environmentVersion;
+
+    public Optional<Output<String>> environmentVersion() {
+        return Optional.ofNullable(this.environmentVersion);
+    }
+
     private PipelineEnvironmentArgs() {}
 
     private PipelineEnvironmentArgs(PipelineEnvironmentArgs $) {
         this.dependencies = $.dependencies;
+        this.environmentVersion = $.environmentVersion;
     }
 
     public static Builder builder() {
@@ -299,6 +307,15 @@ public final class PipelineEnvironmentArgs extends com.pulumi.resources.Resource
          */
         public Builder dependencies(String... dependencies) {
             return dependencies(List.of(dependencies));
+        }
+
+        public Builder environmentVersion(@Nullable Output<String> environmentVersion) {
+            $.environmentVersion = environmentVersion;
+            return this;
+        }
+
+        public Builder environmentVersion(String environmentVersion) {
+            return environmentVersion(Output.of(environmentVersion));
         }
 
         public PipelineEnvironmentArgs build() {

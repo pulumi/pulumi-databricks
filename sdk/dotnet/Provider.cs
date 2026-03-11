@@ -57,6 +57,9 @@ namespace Pulumi.Databricks
         [Output("clientSecret")]
         public Output<string?> ClientSecret { get; private set; } = null!;
 
+        [Output("cloud")]
+        public Output<string?> Cloud { get; private set; } = null!;
+
         [Output("clusterId")]
         public Output<string?> ClusterId { get; private set; } = null!;
 
@@ -68,6 +71,9 @@ namespace Pulumi.Databricks
 
         [Output("databricksIdTokenFilepath")]
         public Output<string?> DatabricksIdTokenFilepath { get; private set; } = null!;
+
+        [Output("discoveryUrl")]
+        public Output<string?> DiscoveryUrl { get; private set; } = null!;
 
         [Output("googleCredentials")]
         public Output<string?> GoogleCredentials { get; private set; } = null!;
@@ -208,6 +214,9 @@ namespace Pulumi.Databricks
             }
         }
 
+        [Input("cloud")]
+        public Input<string>? Cloud { get; set; }
+
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
@@ -228,6 +237,9 @@ namespace Pulumi.Databricks
 
         [Input("disableOauthRefreshToken", json: true)]
         public Input<bool>? DisableOauthRefreshToken { get; set; }
+
+        [Input("discoveryUrl")]
+        public Input<string>? DiscoveryUrl { get; set; }
 
         [Input("experimentalIsUnifiedHost", json: true)]
         public Input<bool>? ExperimentalIsUnifiedHost { get; set; }

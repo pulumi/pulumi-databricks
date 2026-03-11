@@ -8,32 +8,72 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource {
     /**
-     * @return (list of string) - The entity columns of the Delta table
+     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {&#34;type&#34;:&#34;struct&#34;,&#34;fields&#34;:[{&#34;name&#34;:&#34;colA&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}},{&#34;name&#34;:&#34;colC&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}}]}
+     * 
+     */
+    private @Nullable String dataframeSchema;
+    /**
+     * @return (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
      * 
      */
     private List<String> entityColumns;
+    /**
+     * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     * 
+     */
+    private @Nullable String filterCondition;
     /**
      * @return (string) - The full three-part (catalog, schema, table) name of the Delta table
      * 
      */
     private String fullName;
     /**
-     * @return (string) - The timeseries column of the Delta table
+     * @return (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
      * 
      */
     private String timeseriesColumn;
+    /**
+     * @return (string) - A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     * 
+     */
+    private @Nullable String transformationSql;
 
     private GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource() {}
     /**
-     * @return (list of string) - The entity columns of the Delta table
+     * @return (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {&#34;type&#34;:&#34;struct&#34;,&#34;fields&#34;:[{&#34;name&#34;:&#34;colA&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}},{&#34;name&#34;:&#34;colC&#34;,&#34;type&#34;:&#34;integer&#34;,&#34;nullable&#34;:true,&#34;metadata&#34;:{}}]}
+     * 
+     */
+    public Optional<String> dataframeSchema() {
+        return Optional.ofNullable(this.dataframeSchema);
+    }
+    /**
+     * @return (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
      * 
      */
     public List<String> entityColumns() {
         return this.entityColumns;
+    }
+    /**
+     * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     * 
+     */
+    public Optional<String> filterCondition() {
+        return Optional.ofNullable(this.filterCondition);
     }
     /**
      * @return (string) - The full three-part (catalog, schema, table) name of the Delta table
@@ -43,11 +83,21 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
         return this.fullName;
     }
     /**
-     * @return (string) - The timeseries column of the Delta table
+     * @return (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
      * 
      */
     public String timeseriesColumn() {
         return this.timeseriesColumn;
+    }
+    /**
+     * @return (string) - A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     * 
+     */
+    public Optional<String> transformationSql() {
+        return Optional.ofNullable(this.transformationSql);
     }
 
     public static Builder builder() {
@@ -59,17 +109,29 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String dataframeSchema;
         private List<String> entityColumns;
+        private @Nullable String filterCondition;
         private String fullName;
         private String timeseriesColumn;
+        private @Nullable String transformationSql;
         public Builder() {}
         public Builder(GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dataframeSchema = defaults.dataframeSchema;
     	      this.entityColumns = defaults.entityColumns;
+    	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
     	      this.timeseriesColumn = defaults.timeseriesColumn;
+    	      this.transformationSql = defaults.transformationSql;
         }
 
+        @CustomType.Setter
+        public Builder dataframeSchema(@Nullable String dataframeSchema) {
+
+            this.dataframeSchema = dataframeSchema;
+            return this;
+        }
         @CustomType.Setter
         public Builder entityColumns(List<String> entityColumns) {
             if (entityColumns == null) {
@@ -80,6 +142,12 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
         }
         public Builder entityColumns(String... entityColumns) {
             return entityColumns(List.of(entityColumns));
+        }
+        @CustomType.Setter
+        public Builder filterCondition(@Nullable String filterCondition) {
+
+            this.filterCondition = filterCondition;
+            return this;
         }
         @CustomType.Setter
         public Builder fullName(String fullName) {
@@ -97,11 +165,20 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDel
             this.timeseriesColumn = timeseriesColumn;
             return this;
         }
+        @CustomType.Setter
+        public Builder transformationSql(@Nullable String transformationSql) {
+
+            this.transformationSql = transformationSql;
+            return this;
+        }
         public GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource build() {
             final var _resultValue = new GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource();
+            _resultValue.dataframeSchema = dataframeSchema;
             _resultValue.entityColumns = entityColumns;
+            _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
             _resultValue.timeseriesColumn = timeseriesColumn;
+            _resultValue.transformationSql = transformationSql;
             return _resultValue;
         }
     }

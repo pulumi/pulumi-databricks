@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (string) - The filter condition applied to the source data before aggregation
+        /// (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
         /// </summary>
         public readonly string FilterCondition;
         /// <summary>
@@ -96,11 +96,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (list of string) - The input columns from which the feature is computed
+        /// (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+        /// The input columns from which the feature is computed
         /// </summary>
         public readonly ImmutableArray<string> Inputs;
         /// <summary>
-        /// (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+        /// (LineageContext) - Lineage context information for this feature.
+        /// WARNING: This field is primarily intended for internal use by Databricks systems and
         /// is automatically populated when features are created through Databricks notebooks or jobs.
         /// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
         /// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -112,7 +114,8 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceResult Source;
         /// <summary>
-        /// (TimeWindow) - The time window in which the feature is computed
+        /// (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+        /// The time window in which the feature is computed
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowResult TimeWindow;
 

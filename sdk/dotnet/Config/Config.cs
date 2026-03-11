@@ -130,6 +130,13 @@ namespace Pulumi.Databricks
             set => _clientSecret.Set(value);
         }
 
+        private static readonly __Value<string?> _cloud = new __Value<string?>(() => __config.Get("cloud"));
+        public static string? Cloud
+        {
+            get => _cloud.Get();
+            set => _cloud.Set(value);
+        }
+
         private static readonly __Value<string?> _clusterId = new __Value<string?>(() => __config.Get("clusterId"));
         public static string? ClusterId
         {
@@ -177,6 +184,13 @@ namespace Pulumi.Databricks
         {
             get => _disableOauthRefreshToken.Get();
             set => _disableOauthRefreshToken.Set(value);
+        }
+
+        private static readonly __Value<string?> _discoveryUrl = new __Value<string?>(() => __config.Get("discoveryUrl"));
+        public static string? DiscoveryUrl
+        {
+            get => _discoveryUrl.Get();
+            set => _discoveryUrl.Set(value);
         }
 
         private static readonly __Value<bool?> _experimentalIsUnifiedHost = new __Value<bool?>(() => __config.GetBoolean("experimentalIsUnifiedHost"));

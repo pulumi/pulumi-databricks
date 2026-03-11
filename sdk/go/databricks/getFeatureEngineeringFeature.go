@@ -34,7 +34,7 @@ type LookupFeatureEngineeringFeatureArgs struct {
 type LookupFeatureEngineeringFeatureResult struct {
 	// (string) - The description of the feature
 	Description string `pulumi:"description"`
-	// (string) - The filter condition applied to the source data before aggregation
+	// (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 	FilterCondition string `pulumi:"filterCondition"`
 	// (string) - The full three-part (catalog, schema, table) name of the Delta table
 	FullName string `pulumi:"fullName"`
@@ -42,9 +42,11 @@ type LookupFeatureEngineeringFeatureResult struct {
 	Function GetFeatureEngineeringFeatureFunction `pulumi:"function"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (list of string) - The input columns from which the feature is computed
+	// (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+	// The input columns from which the feature is computed
 	Inputs []string `pulumi:"inputs"`
-	// (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+	// (LineageContext) - Lineage context information for this feature.
+	// WARNING: This field is primarily intended for internal use by Databricks systems and
 	// is automatically populated when features are created through Databricks notebooks or jobs.
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -52,7 +54,8 @@ type LookupFeatureEngineeringFeatureResult struct {
 	ProviderConfig *GetFeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// (DataSource) - The data source of the feature
 	Source GetFeatureEngineeringFeatureSource `pulumi:"source"`
-	// (TimeWindow) - The time window in which the feature is computed
+	// (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+	// The time window in which the feature is computed
 	TimeWindow GetFeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
 }
 
@@ -97,7 +100,7 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Description() pulumi.String
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string) - The filter condition applied to the source data before aggregation
+// (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
 func (o LookupFeatureEngineeringFeatureResultOutput) FilterCondition() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.FilterCondition }).(pulumi.StringOutput)
 }
@@ -117,12 +120,14 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (list of string) - The input columns from which the feature is computed
+// (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+// The input columns from which the feature is computed
 func (o LookupFeatureEngineeringFeatureResultOutput) Inputs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
-// (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+// (LineageContext) - Lineage context information for this feature.
+// WARNING: This field is primarily intended for internal use by Databricks systems and
 // is automatically populated when features are created through Databricks notebooks or jobs.
 // Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 // This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -143,7 +148,8 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Source() GetFeatureEngineer
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureSource { return v.Source }).(GetFeatureEngineeringFeatureSourceOutput)
 }
 
-// (TimeWindow) - The time window in which the feature is computed
+// (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+// The time window in which the feature is computed
 func (o LookupFeatureEngineeringFeatureResultOutput) TimeWindow() GetFeatureEngineeringFeatureTimeWindowOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureTimeWindow {
 		return v.TimeWindow

@@ -30,6 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.LookupWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
+//				EntityType: "notebooks",
+//				EntityId:   "2807324866692453",
+//				TagKey:     "sensitivity_level",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.LookupWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
 //				EntityType: "apps",
 //				EntityId:   "myapp",
 //				TagKey:     "sensitivity_level",
@@ -72,7 +80,7 @@ func LookupWorkspaceEntityTagAssignment(ctx *pulumi.Context, args *LookupWorkspa
 type LookupWorkspaceEntityTagAssignmentArgs struct {
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 	EntityType string `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
@@ -84,7 +92,7 @@ type LookupWorkspaceEntityTagAssignmentArgs struct {
 type LookupWorkspaceEntityTagAssignmentResult struct {
 	// (string) - The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId string `pulumi:"entityId"`
-	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+	// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 	EntityType string `pulumi:"entityType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                                         `pulumi:"id"`
@@ -108,7 +116,7 @@ func LookupWorkspaceEntityTagAssignmentOutput(ctx *pulumi.Context, args LookupWo
 type LookupWorkspaceEntityTagAssignmentOutputArgs struct {
 	// The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
 	EntityId pulumi.StringInput `pulumi:"entityId"`
-	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+	// The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceEntityTagAssignmentProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -140,7 +148,7 @@ func (o LookupWorkspaceEntityTagAssignmentResultOutput) EntityId() pulumi.String
 	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) string { return v.EntityId }).(pulumi.StringOutput)
 }
 
-// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+// (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
 func (o LookupWorkspaceEntityTagAssignmentResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) string { return v.EntityType }).(pulumi.StringOutput)
 }

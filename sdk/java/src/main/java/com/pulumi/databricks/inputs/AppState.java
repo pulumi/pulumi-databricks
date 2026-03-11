@@ -12,6 +12,7 @@ import com.pulumi.databricks.inputs.AppGitRepositoryArgs;
 import com.pulumi.databricks.inputs.AppPendingDeploymentArgs;
 import com.pulumi.databricks.inputs.AppProviderConfigArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
+import com.pulumi.databricks.inputs.AppTelemetryExportDestinationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -313,6 +314,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.space);
     }
 
+    @Import(name="telemetryExportDestinations")
+    private @Nullable Output<List<AppTelemetryExportDestinationArgs>> telemetryExportDestinations;
+
+    public Optional<Output<List<AppTelemetryExportDestinationArgs>>> telemetryExportDestinations() {
+        return Optional.ofNullable(this.telemetryExportDestinations);
+    }
+
     /**
      * The update time of the app.
      * 
@@ -407,6 +415,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.servicePrincipalId = $.servicePrincipalId;
         this.servicePrincipalName = $.servicePrincipalName;
         this.space = $.space;
+        this.telemetryExportDestinations = $.telemetryExportDestinations;
         this.updateTime = $.updateTime;
         this.updater = $.updater;
         this.url = $.url;
@@ -846,6 +855,19 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
 
         public Builder space(String space) {
             return space(Output.of(space));
+        }
+
+        public Builder telemetryExportDestinations(@Nullable Output<List<AppTelemetryExportDestinationArgs>> telemetryExportDestinations) {
+            $.telemetryExportDestinations = telemetryExportDestinations;
+            return this;
+        }
+
+        public Builder telemetryExportDestinations(List<AppTelemetryExportDestinationArgs> telemetryExportDestinations) {
+            return telemetryExportDestinations(Output.of(telemetryExportDestinations));
+        }
+
+        public Builder telemetryExportDestinations(AppTelemetryExportDestinationArgs... telemetryExportDestinations) {
+            return telemetryExportDestinations(List.of(telemetryExportDestinations));
         }
 
         /**

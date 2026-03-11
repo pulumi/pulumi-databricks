@@ -35,10 +35,10 @@ namespace Pulumi.Databricks
         public Output<string> LastMaterializationTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Unique identifier for the materialized feature
+        /// Unique identifier for the materialized feature
         /// </summary>
         [Output("materializedFeatureId")]
-        public Output<string> MaterializedFeatureId { get; private set; } = null!;
+        public Output<string?> MaterializedFeatureId { get; private set; } = null!;
 
         [Output("offlineStoreConfig")]
         public Output<Outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig?> OfflineStoreConfig { get; private set; } = null!;
@@ -122,6 +122,12 @@ namespace Pulumi.Databricks
         [Input("featureName", required: true)]
         public Input<string> FeatureName { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier for the materialized feature
+        /// </summary>
+        [Input("materializedFeatureId")]
+        public Input<string>? MaterializedFeatureId { get; set; }
+
         [Input("offlineStoreConfig")]
         public Input<Inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs>? OfflineStoreConfig { get; set; }
 
@@ -168,7 +174,7 @@ namespace Pulumi.Databricks
         public Input<string>? LastMaterializationTime { get; set; }
 
         /// <summary>
-        /// (string) - Unique identifier for the materialized feature
+        /// Unique identifier for the materialized feature
         /// </summary>
         [Input("materializedFeatureId")]
         public Input<string>? MaterializedFeatureId { get; set; }

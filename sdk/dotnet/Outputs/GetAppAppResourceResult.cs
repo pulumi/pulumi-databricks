@@ -38,6 +38,7 @@ namespace Pulumi.Databricks.Outputs
         /// The name of the app.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetAppAppResourcePostgresResult? Postgres;
         /// <summary>
         /// attribute
         /// </summary>
@@ -71,6 +72,8 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            Outputs.GetAppAppResourcePostgresResult? postgres,
+
             Outputs.GetAppAppResourceSecretResult? secret,
 
             Outputs.GetAppAppResourceServingEndpointResult? servingEndpoint,
@@ -86,6 +89,7 @@ namespace Pulumi.Databricks.Outputs
             GenieSpace = genieSpace;
             Job = job;
             Name = name;
+            Postgres = postgres;
             Secret = secret;
             ServingEndpoint = servingEndpoint;
             SqlWarehouse = sqlWarehouse;

@@ -14,29 +14,56 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureSourceDeltaTableSourceResult
     {
         /// <summary>
-        /// (list of string) - The entity columns of the Delta table
+        /// (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+        /// Required if TransformationSql is specified.
+        /// Example: {"type":"struct","fields":[{"name":"ColA","type":"integer","nullable":true,"metadata":{}},{"name":"ColC","type":"integer","nullable":true,"metadata":{}}]}
+        /// </summary>
+        public readonly string? DataframeSchema;
+        /// <summary>
+        /// (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+        /// The entity columns of the Delta table
         /// </summary>
         public readonly ImmutableArray<string> EntityColumns;
+        /// <summary>
+        /// (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+        /// </summary>
+        public readonly string? FilterCondition;
         /// <summary>
         /// The full three-part name (catalog, schema, name) of the feature
         /// </summary>
         public readonly string FullName;
         /// <summary>
-        /// (string) - The timeseries column of the Delta table
+        /// (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+        /// The timeseries column of the Delta table
         /// </summary>
         public readonly string TimeseriesColumn;
+        /// <summary>
+        /// (string) - A single SQL SELECT expression applied after filter_condition.
+        /// Should contains all the columns needed (eg. "SELECT *, ColA + ColB AS ColC FROM x.y.z WHERE ColA &gt; 0" would have `TransformationSql` "*, ColA + ColB AS ColC")
+        /// If TransformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+        /// </summary>
+        public readonly string? TransformationSql;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeatureSourceDeltaTableSourceResult(
+            string? dataframeSchema,
+
             ImmutableArray<string> entityColumns,
+
+            string? filterCondition,
 
             string fullName,
 
-            string timeseriesColumn)
+            string timeseriesColumn,
+
+            string? transformationSql)
         {
+            DataframeSchema = dataframeSchema;
             EntityColumns = entityColumns;
+            FilterCondition = filterCondition;
             FullName = fullName;
             TimeseriesColumn = timeseriesColumn;
+            TransformationSql = transformationSql;
         }
     }
 }

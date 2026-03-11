@@ -47,11 +47,16 @@ namespace Pulumi.Databricks.Outputs
         /// ```
         /// </summary>
         public readonly ImmutableArray<string> Dependencies;
+        public readonly string? EnvironmentVersion;
 
         [OutputConstructor]
-        private PipelineEnvironment(ImmutableArray<string> dependencies)
+        private PipelineEnvironment(
+            ImmutableArray<string> dependencies,
+
+            string? environmentVersion)
         {
             Dependencies = dependencies;
+            EnvironmentVersion = environmentVersion;
         }
     }
 }

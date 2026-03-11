@@ -30,6 +30,7 @@ class AppArgs:
                  provider_config: Optional[pulumi.Input['AppProviderConfigArgs']] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None,
                  space: Optional[pulumi.Input[_builtins.str]] = None,
+                 telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
@@ -59,6 +60,8 @@ class AppArgs:
             pulumi.set(__self__, "resources", resources)
         if space is not None:
             pulumi.set(__self__, "space", space)
+        if telemetry_export_destinations is not None:
+            pulumi.set(__self__, "telemetry_export_destinations", telemetry_export_destinations)
         if usage_policy_id is not None:
             pulumi.set(__self__, "usage_policy_id", usage_policy_id)
         if user_api_scopes is not None:
@@ -161,6 +164,15 @@ class AppArgs:
         pulumi.set(self, "space", value)
 
     @_builtins.property
+    @pulumi.getter(name="telemetryExportDestinations")
+    def telemetry_export_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]:
+        return pulumi.get(self, "telemetry_export_destinations")
+
+    @telemetry_export_destinations.setter
+    def telemetry_export_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]):
+        pulumi.set(self, "telemetry_export_destinations", value)
+
+    @_builtins.property
     @pulumi.getter(name="usagePolicyId")
     def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "usage_policy_id")
@@ -209,6 +221,7 @@ class _AppState:
                  service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
                  service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
                  space: Optional[pulumi.Input[_builtins.str]] = None,
+                 telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
                  updater: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -284,6 +297,8 @@ class _AppState:
             pulumi.set(__self__, "service_principal_name", service_principal_name)
         if space is not None:
             pulumi.set(__self__, "space", space)
+        if telemetry_export_destinations is not None:
+            pulumi.set(__self__, "telemetry_export_destinations", telemetry_export_destinations)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
         if updater is not None:
@@ -557,6 +572,15 @@ class _AppState:
         pulumi.set(self, "space", value)
 
     @_builtins.property
+    @pulumi.getter(name="telemetryExportDestinations")
+    def telemetry_export_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]:
+        return pulumi.get(self, "telemetry_export_destinations")
+
+    @telemetry_export_destinations.setter
+    def telemetry_export_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]):
+        pulumi.set(self, "telemetry_export_destinations", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -629,6 +653,7 @@ class App(pulumi.CustomResource):
                  provider_config: Optional[pulumi.Input[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
                  space: Optional[pulumi.Input[_builtins.str]] = None,
+                 telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -767,6 +792,7 @@ class App(pulumi.CustomResource):
                  provider_config: Optional[pulumi.Input[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
                  space: Optional[pulumi.Input[_builtins.str]] = None,
+                 telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -787,6 +813,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["resources"] = resources
             __props__.__dict__["space"] = space
+            __props__.__dict__["telemetry_export_destinations"] = telemetry_export_destinations
             __props__.__dict__["usage_policy_id"] = usage_policy_id
             __props__.__dict__["user_api_scopes"] = user_api_scopes
             __props__.__dict__["active_deployment"] = None
@@ -841,6 +868,7 @@ class App(pulumi.CustomResource):
             service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
             service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
             space: Optional[pulumi.Input[_builtins.str]] = None,
+            telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None,
             updater: Optional[pulumi.Input[_builtins.str]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -901,6 +929,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["service_principal_id"] = service_principal_id
         __props__.__dict__["service_principal_name"] = service_principal_name
         __props__.__dict__["space"] = space
+        __props__.__dict__["telemetry_export_destinations"] = telemetry_export_destinations
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["updater"] = updater
         __props__.__dict__["url"] = url
@@ -1072,6 +1101,11 @@ class App(pulumi.CustomResource):
     @pulumi.getter
     def space(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "space")
+
+    @_builtins.property
+    @pulumi.getter(name="telemetryExportDestinations")
+    def telemetry_export_destinations(self) -> pulumi.Output[Optional[Sequence['outputs.AppTelemetryExportDestination']]]:
+        return pulumi.get(self, "telemetry_export_destinations")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

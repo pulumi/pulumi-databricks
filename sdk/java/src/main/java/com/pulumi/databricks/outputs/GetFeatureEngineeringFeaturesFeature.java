@@ -24,7 +24,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private String description;
     /**
-     * @return (string) - The filter condition applied to the source data before aggregation
+     * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      * 
      */
     private String filterCondition;
@@ -39,12 +39,14 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private GetFeatureEngineeringFeaturesFeatureFunction function;
     /**
-     * @return (list of string) - The input columns from which the feature is computed
+     * @return (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+     * The input columns from which the feature is computed
      * 
      */
     private List<String> inputs;
     /**
-     * @return (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+     * @return (LineageContext) - Lineage context information for this feature.
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
      * is automatically populated when features are created through Databricks notebooks or jobs.
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -62,7 +64,8 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private GetFeatureEngineeringFeaturesFeatureSource source;
     /**
-     * @return (TimeWindow) - The time window in which the feature is computed
+     * @return (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+     * The time window in which the feature is computed
      * 
      */
     private GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow;
@@ -76,7 +79,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.description;
     }
     /**
-     * @return (string) - The filter condition applied to the source data before aggregation
+     * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      * 
      */
     public String filterCondition() {
@@ -97,14 +100,16 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.function;
     }
     /**
-     * @return (list of string) - The input columns from which the feature is computed
+     * @return (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+     * The input columns from which the feature is computed
      * 
      */
     public List<String> inputs() {
         return this.inputs;
     }
     /**
-     * @return (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+     * @return (LineageContext) - Lineage context information for this feature.
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
      * is automatically populated when features are created through Databricks notebooks or jobs.
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -128,7 +133,8 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.source;
     }
     /**
-     * @return (TimeWindow) - The time window in which the feature is computed
+     * @return (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+     * The time window in which the feature is computed
      * 
      */
     public GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow() {

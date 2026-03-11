@@ -38,6 +38,7 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
      * 
      */
@@ -45,7 +46,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> filterCondition;
 
     /**
-     * @return The filter condition applied to the source data before aggregation
+     * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
      * 
      */
     public Optional<Output<String>> filterCondition() {
@@ -83,6 +85,7 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      * 
      */
@@ -90,7 +93,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
     private Output<List<String>> inputs;
 
     /**
-     * @return The input columns from which the feature is computed
+     * @return Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+     * The input columns from which the feature is computed
      * 
      */
     public Output<List<String>> inputs() {
@@ -98,6 +102,7 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
      * is automatically populated when features are created through Databricks notebooks or jobs.
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
@@ -108,7 +113,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
     private @Nullable Output<FeatureEngineeringFeatureLineageContextArgs> lineageContext;
 
     /**
-     * @return WARNING: This field is primarily intended for internal use by Databricks systems and
+     * @return Lineage context information for this feature.
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
      * is automatically populated when features are created through Databricks notebooks or jobs.
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -149,6 +155,7 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
      * The time window in which the feature is computed
      * 
      */
@@ -156,7 +163,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
     private @Nullable Output<FeatureEngineeringFeatureTimeWindowArgs> timeWindow;
 
     /**
-     * @return The time window in which the feature is computed
+     * @return Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+     * The time window in which the feature is computed
      * 
      */
     public Optional<Output<FeatureEngineeringFeatureTimeWindowArgs>> timeWindow() {
@@ -217,7 +225,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param filterCondition The filter condition applied to the source data before aggregation
+         * @param filterCondition Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+         * The filter condition applied to the source data before aggregation
          * 
          * @return builder
          * 
@@ -228,7 +237,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param filterCondition The filter condition applied to the source data before aggregation
+         * @param filterCondition Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+         * The filter condition applied to the source data before aggregation
          * 
          * @return builder
          * 
@@ -280,7 +290,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param inputs The input columns from which the feature is computed
+         * @param inputs Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+         * The input columns from which the feature is computed
          * 
          * @return builder
          * 
@@ -291,7 +302,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param inputs The input columns from which the feature is computed
+         * @param inputs Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+         * The input columns from which the feature is computed
          * 
          * @return builder
          * 
@@ -301,7 +313,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param inputs The input columns from which the feature is computed
+         * @param inputs Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+         * The input columns from which the feature is computed
          * 
          * @return builder
          * 
@@ -311,7 +324,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param lineageContext WARNING: This field is primarily intended for internal use by Databricks systems and
+         * @param lineageContext Lineage context information for this feature.
+         * WARNING: This field is primarily intended for internal use by Databricks systems and
          * is automatically populated when features are created through Databricks notebooks or jobs.
          * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
          * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -325,7 +339,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param lineageContext WARNING: This field is primarily intended for internal use by Databricks systems and
+         * @param lineageContext Lineage context information for this feature.
+         * WARNING: This field is primarily intended for internal use by Databricks systems and
          * is automatically populated when features are created through Databricks notebooks or jobs.
          * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
          * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -380,7 +395,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeWindow The time window in which the feature is computed
+         * @param timeWindow Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+         * The time window in which the feature is computed
          * 
          * @return builder
          * 
@@ -391,7 +407,8 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeWindow The time window in which the feature is computed
+         * @param timeWindow Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+         * The time window in which the feature is computed
          * 
          * @return builder
          * 

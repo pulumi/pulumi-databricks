@@ -725,6 +725,7 @@ export interface AppResource {
      * The name of the resource.
      */
     name: string;
+    postgres?: outputs.AppResourcePostgres;
     /**
      * attribute
      */
@@ -789,6 +790,15 @@ export interface AppResourceJob {
     permission: string;
 }
 
+export interface AppResourcePostgres {
+    branch?: string;
+    /**
+     * attribute
+     */
+    database?: string;
+    permission?: string;
+}
+
 export interface AppResourceSecret {
     /**
      * Key of the secret to grant permission on.
@@ -840,6 +850,137 @@ export interface AppResourceUcSecurable {
      * the type of UC securable, i.e. `VOLUME`.
      */
     securableType: string;
+}
+
+export interface AppSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface AppSpaceResource {
+    app?: outputs.AppSpaceResourceApp;
+    database?: outputs.AppSpaceResourceDatabase;
+    /**
+     * The description of the app space
+     */
+    description?: string;
+    experiment?: outputs.AppSpaceResourceExperiment;
+    genieSpace?: outputs.AppSpaceResourceGenieSpace;
+    job?: outputs.AppSpaceResourceJob;
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    postgres?: outputs.AppSpaceResourcePostgres;
+    secret?: outputs.AppSpaceResourceSecret;
+    servingEndpoint?: outputs.AppSpaceResourceServingEndpoint;
+    sqlWarehouse?: outputs.AppSpaceResourceSqlWarehouse;
+    ucSecurable?: outputs.AppSpaceResourceUcSecurable;
+}
+
+export interface AppSpaceResourceApp {
+}
+
+export interface AppSpaceResourceDatabase {
+    databaseName: string;
+    instanceName: string;
+    permission: string;
+}
+
+export interface AppSpaceResourceExperiment {
+    experimentId: string;
+    permission: string;
+}
+
+export interface AppSpaceResourceGenieSpace {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    permission: string;
+    spaceId: string;
+}
+
+export interface AppSpaceResourceJob {
+    /**
+     * (string) - The unique identifier of the app space
+     */
+    id: string;
+    permission: string;
+}
+
+export interface AppSpaceResourcePostgres {
+    branch?: string;
+    database?: string;
+    permission?: string;
+}
+
+export interface AppSpaceResourceSecret {
+    /**
+     * Key of the secret to grant permission on
+     */
+    key: string;
+    permission: string;
+    /**
+     * Scope of the secret to grant permission on
+     */
+    scope: string;
+}
+
+export interface AppSpaceResourceServingEndpoint {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    permission: string;
+}
+
+export interface AppSpaceResourceSqlWarehouse {
+    /**
+     * (string) - The unique identifier of the app space
+     */
+    id: string;
+    permission: string;
+}
+
+export interface AppSpaceResourceUcSecurable {
+    permission: string;
+    securableFullName: string;
+    /**
+     * (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     */
+    securableKind: string;
+    /**
+     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     */
+    securableType: string;
+}
+
+export interface AppSpaceStatus {
+    /**
+     * (string) - Message providing context about the current state
+     */
+    message: string;
+    /**
+     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+     */
+    state: string;
+}
+
+export interface AppTelemetryExportDestination {
+    unityCatalog?: outputs.AppTelemetryExportDestinationUnityCatalog;
+}
+
+export interface AppTelemetryExportDestinationUnityCatalog {
+    logsTable: string;
+    metricsTable: string;
+    tracesTable: string;
 }
 
 export interface AppsSettingsCustomTemplateManifest {
@@ -910,120 +1051,6 @@ export interface AppsSettingsCustomTemplateProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
-}
-
-export interface AppsSpaceProviderConfig {
-    /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-     */
-    workspaceId: string;
-}
-
-export interface AppsSpaceResource {
-    app?: outputs.AppsSpaceResourceApp;
-    database?: outputs.AppsSpaceResourceDatabase;
-    /**
-     * The description of the app space
-     */
-    description?: string;
-    experiment?: outputs.AppsSpaceResourceExperiment;
-    genieSpace?: outputs.AppsSpaceResourceGenieSpace;
-    job?: outputs.AppsSpaceResourceJob;
-    /**
-     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
-     * It must be unique within the workspace
-     */
-    name: string;
-    secret?: outputs.AppsSpaceResourceSecret;
-    servingEndpoint?: outputs.AppsSpaceResourceServingEndpoint;
-    sqlWarehouse?: outputs.AppsSpaceResourceSqlWarehouse;
-    ucSecurable?: outputs.AppsSpaceResourceUcSecurable;
-}
-
-export interface AppsSpaceResourceApp {
-}
-
-export interface AppsSpaceResourceDatabase {
-    databaseName: string;
-    instanceName: string;
-    permission: string;
-}
-
-export interface AppsSpaceResourceExperiment {
-    experimentId: string;
-    permission: string;
-}
-
-export interface AppsSpaceResourceGenieSpace {
-    /**
-     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
-     * It must be unique within the workspace
-     */
-    name: string;
-    permission: string;
-    spaceId: string;
-}
-
-export interface AppsSpaceResourceJob {
-    /**
-     * (string) - The unique identifier of the app space
-     */
-    id: string;
-    permission: string;
-}
-
-export interface AppsSpaceResourceSecret {
-    /**
-     * Key of the secret to grant permission on
-     */
-    key: string;
-    permission: string;
-    /**
-     * Scope of the secret to grant permission on
-     */
-    scope: string;
-}
-
-export interface AppsSpaceResourceServingEndpoint {
-    /**
-     * (string) - The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
-     * It must be unique within the workspace
-     */
-    name: string;
-    permission: string;
-}
-
-export interface AppsSpaceResourceSqlWarehouse {
-    /**
-     * (string) - The unique identifier of the app space
-     */
-    id: string;
-    permission: string;
-}
-
-export interface AppsSpaceResourceUcSecurable {
-    permission: string;
-    securableFullName: string;
-    /**
-     * (string) - The securable kind from Unity Catalog.
-     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
-     */
-    securableKind: string;
-    /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
-     */
-    securableType: string;
-}
-
-export interface AppsSpaceStatus {
-    /**
-     * (string) - Message providing context about the current state
-     */
-    message: string;
-    /**
-     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
-     */
-    state: string;
 }
 
 export interface ArtifactAllowlistArtifactMatcher {
@@ -1787,6 +1814,28 @@ export interface CustomAppIntegrationTokenAccessPolicy {
 }
 
 export interface DashboardProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface DataClassificationCatalogConfigAutoTagConfig {
+    /**
+     * Whether auto-tagging is enabled or disabled for this classification tag. Possible values are: `AUTO_TAGGING_DISABLED`, `AUTO_TAGGING_ENABLED`
+     */
+    autoTaggingMode: string;
+    /**
+     * The Classification Tag (e.g., "class.name", "class.location")
+     */
+    classificationTag: string;
+}
+
+export interface DataClassificationCatalogConfigIncludedSchemas {
+    names: string[];
+}
+
+export interface DataClassificationCatalogConfigProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -2571,10 +2620,12 @@ export interface ExternalMetadataProviderConfig {
 
 export interface FeatureEngineeringFeatureFunction {
     /**
+     * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      */
     extraParameters?: outputs.FeatureEngineeringFeatureFunctionExtraParameter[];
     /**
+     * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
     functionType: string;
@@ -2627,21 +2678,41 @@ export interface FeatureEngineeringFeatureSource {
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
     /**
+     * Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: string;
+    /**
+     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
     entityColumns: string[];
+    /**
+     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
     /**
      * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: string;
     /**
+     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
     timeseriesColumn: string;
+    /**
+     * A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: string;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSource {
     /**
+     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity column identifiers of the Kafka source
      */
     entityColumnIdentifiers: outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
@@ -2650,6 +2721,7 @@ export interface FeatureEngineeringFeatureSourceKafkaSource {
      */
     name: string;
     /**
+     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column identifier of the Kafka source
      */
     timeseriesColumnIdentifier: outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
@@ -2714,17 +2786,35 @@ export interface FeatureEngineeringKafkaConfigBackfillSource {
 
 export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
     /**
+     * Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: string;
+    /**
+     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
     entityColumns: string[];
+    /**
+     * Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: string;
     /**
      * The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
     /**
+     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
     timeseriesColumn: string;
+    /**
+     * A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: string;
 }
 
 export interface FeatureEngineeringKafkaConfigKeySchema {
@@ -3837,6 +3927,7 @@ export interface GetAppApp {
      */
     servicePrincipalName: string;
     space?: string;
+    telemetryExportDestinations?: outputs.GetAppAppTelemetryExportDestination[];
     /**
      * The update time of the app.
      */
@@ -4038,6 +4129,7 @@ export interface GetAppAppResource {
      * The name of the app.
      */
     name: string;
+    postgres?: outputs.GetAppAppResourcePostgres;
     /**
      * attribute
      */
@@ -4108,6 +4200,18 @@ export interface GetAppAppResourceJob {
     permission: string;
 }
 
+export interface GetAppAppResourcePostgres {
+    branch?: string;
+    /**
+     * attribute
+     */
+    database?: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission?: string;
+}
+
 export interface GetAppAppResourceSecret {
     /**
      * Key of the secret to grant permission on.
@@ -4161,8 +4265,491 @@ export interface GetAppAppResourceUcSecurable {
     securableType: string;
 }
 
+export interface GetAppAppTelemetryExportDestination {
+    unityCatalog?: outputs.GetAppAppTelemetryExportDestinationUnityCatalog;
+}
+
+export interface GetAppAppTelemetryExportDestinationUnityCatalog {
+    logsTable: string;
+    metricsTable: string;
+    tracesTable: string;
+}
+
 export interface GetAppProviderConfig {
     workspaceId: string;
+}
+
+export interface GetAppSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppSpaceResource {
+    /**
+     * (AppResourceApp)
+     */
+    app?: outputs.GetAppSpaceResourceApp;
+    /**
+     * (string)
+     */
+    database?: outputs.GetAppSpaceResourceDatabase;
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * (AppResourceExperiment)
+     */
+    experiment?: outputs.GetAppSpaceResourceExperiment;
+    /**
+     * (AppResourceGenieSpace)
+     */
+    genieSpace?: outputs.GetAppSpaceResourceGenieSpace;
+    /**
+     * (AppResourceJob)
+     */
+    job?: outputs.GetAppSpaceResourceJob;
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (AppResourcePostgres)
+     */
+    postgres?: outputs.GetAppSpaceResourcePostgres;
+    /**
+     * (AppResourceSecret)
+     */
+    secret?: outputs.GetAppSpaceResourceSecret;
+    /**
+     * (AppResourceServingEndpoint)
+     */
+    servingEndpoint?: outputs.GetAppSpaceResourceServingEndpoint;
+    /**
+     * (AppResourceSqlWarehouse)
+     */
+    sqlWarehouse?: outputs.GetAppSpaceResourceSqlWarehouse;
+    /**
+     * (AppResourceUcSecurable)
+     */
+    ucSecurable?: outputs.GetAppSpaceResourceUcSecurable;
+}
+
+export interface GetAppSpaceResourceApp {
+}
+
+export interface GetAppSpaceResourceDatabase {
+    /**
+     * (string)
+     */
+    databaseName: string;
+    /**
+     * (string)
+     */
+    instanceName: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpaceResourceExperiment {
+    /**
+     * (string)
+     */
+    experimentId: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpaceResourceGenieSpace {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string)
+     */
+    spaceId: string;
+}
+
+export interface GetAppSpaceResourceJob {
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpaceResourcePostgres {
+    /**
+     * (string)
+     */
+    branch?: string;
+    /**
+     * (string)
+     */
+    database?: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission?: string;
+}
+
+export interface GetAppSpaceResourceSecret {
+    /**
+     * (string) - Key of the secret to grant permission on
+     */
+    key: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string) - Scope of the secret to grant permission on
+     */
+    scope: string;
+}
+
+export interface GetAppSpaceResourceServingEndpoint {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpaceResourceSqlWarehouse {
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpaceResourceUcSecurable {
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string)
+     */
+    securableFullName: string;
+    /**
+     * (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     */
+    securableKind: string;
+    /**
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     */
+    securableType: string;
+}
+
+export interface GetAppSpaceStatus {
+    /**
+     * (string) - Message providing context about the current state
+     */
+    message: string;
+    /**
+     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+     */
+    state: string;
+}
+
+export interface GetAppSpacesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppSpacesSpace {
+    /**
+     * (string) - The creation time of the app space. Formatted timestamp in ISO 6801
+     */
+    createTime: string;
+    /**
+     * (string) - The email of the user that created the app space
+     */
+    creator: string;
+    /**
+     * (string) - Description of the App Resource
+     */
+    description: string;
+    /**
+     * (string) - The effective usage policy ID used by apps in the space
+     */
+    effectiveUsagePolicyId: string;
+    /**
+     * (list of string) - The effective api scopes granted to the user access token
+     */
+    effectiveUserApiScopes: string[];
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Name of the serving endpoint to grant permission on
+     */
+    name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAppSpacesSpaceProviderConfig;
+    /**
+     * (list of AppResource) - Resources for the app space. Resources configured at the space level are available to all apps in the space
+     */
+    resources: outputs.GetAppSpacesSpaceResource[];
+    /**
+     * (string) - The service principal client ID for the app space
+     */
+    servicePrincipalClientId: string;
+    /**
+     * (integer) - The service principal ID for the app space
+     */
+    servicePrincipalId: number;
+    /**
+     * (string) - The service principal name for the app space
+     */
+    servicePrincipalName: string;
+    /**
+     * (SpaceStatus) - The status of the app space
+     */
+    status: outputs.GetAppSpacesSpaceStatus;
+    /**
+     * (string) - The update time of the app space. Formatted timestamp in ISO 6801
+     */
+    updateTime: string;
+    /**
+     * (string) - The email of the user that last updated the app space
+     */
+    updater: string;
+    /**
+     * (string) - The usage policy ID for managing cost at the space level
+     */
+    usagePolicyId: string;
+    /**
+     * (list of string) - OAuth scopes for apps in the space
+     */
+    userApiScopes: string[];
+}
+
+export interface GetAppSpacesSpaceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAppSpacesSpaceResource {
+    /**
+     * (AppResourceApp)
+     */
+    app?: outputs.GetAppSpacesSpaceResourceApp;
+    /**
+     * (string)
+     */
+    database?: outputs.GetAppSpacesSpaceResourceDatabase;
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * (AppResourceExperiment)
+     */
+    experiment?: outputs.GetAppSpacesSpaceResourceExperiment;
+    /**
+     * (AppResourceGenieSpace)
+     */
+    genieSpace?: outputs.GetAppSpacesSpaceResourceGenieSpace;
+    /**
+     * (AppResourceJob)
+     */
+    job?: outputs.GetAppSpacesSpaceResourceJob;
+    /**
+     * (string) - Name of the serving endpoint to grant permission on
+     */
+    name: string;
+    /**
+     * (AppResourcePostgres)
+     */
+    postgres?: outputs.GetAppSpacesSpaceResourcePostgres;
+    /**
+     * (AppResourceSecret)
+     */
+    secret?: outputs.GetAppSpacesSpaceResourceSecret;
+    /**
+     * (AppResourceServingEndpoint)
+     */
+    servingEndpoint?: outputs.GetAppSpacesSpaceResourceServingEndpoint;
+    /**
+     * (AppResourceSqlWarehouse)
+     */
+    sqlWarehouse?: outputs.GetAppSpacesSpaceResourceSqlWarehouse;
+    /**
+     * (AppResourceUcSecurable)
+     */
+    ucSecurable?: outputs.GetAppSpacesSpaceResourceUcSecurable;
+}
+
+export interface GetAppSpacesSpaceResourceApp {
+}
+
+export interface GetAppSpacesSpaceResourceDatabase {
+    /**
+     * (string)
+     */
+    databaseName: string;
+    /**
+     * (string)
+     */
+    instanceName: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpacesSpaceResourceExperiment {
+    /**
+     * (string)
+     */
+    experimentId: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpacesSpaceResourceGenieSpace {
+    /**
+     * (string) - Name of the serving endpoint to grant permission on
+     */
+    name: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string)
+     */
+    spaceId: string;
+}
+
+export interface GetAppSpacesSpaceResourceJob {
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpacesSpaceResourcePostgres {
+    /**
+     * (string)
+     */
+    branch?: string;
+    /**
+     * (string)
+     */
+    database?: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission?: string;
+}
+
+export interface GetAppSpacesSpaceResourceSecret {
+    /**
+     * (string) - Key of the secret to grant permission on
+     */
+    key: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string) - Scope of the secret to grant permission on
+     */
+    scope: string;
+}
+
+export interface GetAppSpacesSpaceResourceServingEndpoint {
+    /**
+     * (string) - Name of the serving endpoint to grant permission on
+     */
+    name: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpacesSpaceResourceSqlWarehouse {
+    /**
+     * (string) - Id of the SQL warehouse to grant permission on
+     */
+    id: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppSpacesSpaceResourceUcSecurable {
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string)
+     */
+    securableFullName: string;
+    /**
+     * (string) - The securable kind from Unity Catalog.
+     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
+     */
+    securableKind: string;
+    /**
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
+     */
+    securableType: string;
+}
+
+export interface GetAppSpacesSpaceStatus {
+    /**
+     * (string) - Message providing context about the current state
+     */
+    message: string;
+    /**
+     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
+     */
+    state: string;
 }
 
 export interface GetAppsApp {
@@ -4237,6 +4824,7 @@ export interface GetAppsApp {
      */
     servicePrincipalName: string;
     space?: string;
+    telemetryExportDestinations?: outputs.GetAppsAppTelemetryExportDestination[];
     /**
      * The update time of the app.
      */
@@ -4435,6 +5023,7 @@ export interface GetAppsAppResource {
      * The name of Genie Space.
      */
     name: string;
+    postgres?: outputs.GetAppsAppResourcePostgres;
     /**
      * attribute
      */
@@ -4505,6 +5094,18 @@ export interface GetAppsAppResourceJob {
     permission: string;
 }
 
+export interface GetAppsAppResourcePostgres {
+    branch?: string;
+    /**
+     * attribute
+     */
+    database?: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission?: string;
+}
+
 export interface GetAppsAppResourceSecret {
     /**
      * Key of the secret to grant permission on.
@@ -4556,6 +5157,16 @@ export interface GetAppsAppResourceUcSecurable {
      * the type of UC securable, i.e. `VOLUME`.
      */
     securableType: string;
+}
+
+export interface GetAppsAppTelemetryExportDestination {
+    unityCatalog?: outputs.GetAppsAppTelemetryExportDestinationUnityCatalog;
+}
+
+export interface GetAppsAppTelemetryExportDestinationUnityCatalog {
+    logsTable: string;
+    metricsTable: string;
+    tracesTable: string;
 }
 
 export interface GetAppsProviderConfig {
@@ -4818,449 +5429,6 @@ export interface GetAppsSettingsCustomTemplatesTemplateProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
-}
-
-export interface GetAppsSpaceProviderConfig {
-    /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-     */
-    workspaceId: string;
-}
-
-export interface GetAppsSpaceResource {
-    /**
-     * (AppResourceApp)
-     */
-    app?: outputs.GetAppsSpaceResourceApp;
-    /**
-     * (AppResourceDatabase)
-     */
-    database?: outputs.GetAppsSpaceResourceDatabase;
-    /**
-     * (string) - Description of the App Resource
-     */
-    description?: string;
-    /**
-     * (AppResourceExperiment)
-     */
-    experiment?: outputs.GetAppsSpaceResourceExperiment;
-    /**
-     * (AppResourceGenieSpace)
-     */
-    genieSpace?: outputs.GetAppsSpaceResourceGenieSpace;
-    /**
-     * (AppResourceJob)
-     */
-    job?: outputs.GetAppsSpaceResourceJob;
-    /**
-     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
-     * It must be unique within the workspace
-     */
-    name: string;
-    /**
-     * (AppResourceSecret)
-     */
-    secret?: outputs.GetAppsSpaceResourceSecret;
-    /**
-     * (AppResourceServingEndpoint)
-     */
-    servingEndpoint?: outputs.GetAppsSpaceResourceServingEndpoint;
-    /**
-     * (AppResourceSqlWarehouse)
-     */
-    sqlWarehouse?: outputs.GetAppsSpaceResourceSqlWarehouse;
-    /**
-     * (AppResourceUcSecurable)
-     */
-    ucSecurable?: outputs.GetAppsSpaceResourceUcSecurable;
-}
-
-export interface GetAppsSpaceResourceApp {
-}
-
-export interface GetAppsSpaceResourceDatabase {
-    /**
-     * (string)
-     */
-    databaseName: string;
-    /**
-     * (string)
-     */
-    instanceName: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpaceResourceExperiment {
-    /**
-     * (string)
-     */
-    experimentId: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpaceResourceGenieSpace {
-    /**
-     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
-     * It must be unique within the workspace
-     */
-    name: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-    /**
-     * (string)
-     */
-    spaceId: string;
-}
-
-export interface GetAppsSpaceResourceJob {
-    /**
-     * (string) - Id of the SQL warehouse to grant permission on
-     */
-    id: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpaceResourceSecret {
-    /**
-     * (string) - Key of the secret to grant permission on
-     */
-    key: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-    /**
-     * (string) - Scope of the secret to grant permission on
-     */
-    scope: string;
-}
-
-export interface GetAppsSpaceResourceServingEndpoint {
-    /**
-     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
-     * It must be unique within the workspace
-     */
-    name: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpaceResourceSqlWarehouse {
-    /**
-     * (string) - Id of the SQL warehouse to grant permission on
-     */
-    id: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpaceResourceUcSecurable {
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-    /**
-     * (string)
-     */
-    securableFullName: string;
-    /**
-     * (string) - The securable kind from Unity Catalog.
-     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
-     */
-    securableKind: string;
-    /**
-     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
-     */
-    securableType: string;
-}
-
-export interface GetAppsSpaceStatus {
-    /**
-     * (string) - Message providing context about the current state
-     */
-    message: string;
-    /**
-     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
-     */
-    state: string;
-}
-
-export interface GetAppsSpacesProviderConfig {
-    /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-     */
-    workspaceId: string;
-}
-
-export interface GetAppsSpacesSpace {
-    /**
-     * (string) - The creation time of the app space. Formatted timestamp in ISO 6801
-     */
-    createTime: string;
-    /**
-     * (string) - The email of the user that created the app space
-     */
-    creator: string;
-    /**
-     * (string) - Description of the App Resource
-     */
-    description: string;
-    /**
-     * (string) - The effective usage policy ID used by apps in the space
-     */
-    effectiveUsagePolicyId: string;
-    /**
-     * (list of string) - The effective api scopes granted to the user access token
-     */
-    effectiveUserApiScopes: string[];
-    /**
-     * (string) - Id of the SQL warehouse to grant permission on
-     */
-    id: string;
-    /**
-     * (string) - Name of the serving endpoint to grant permission on
-     */
-    name: string;
-    /**
-     * (string) - The OAuth2 app client ID for the app space
-     */
-    oauth2AppClientId: string;
-    /**
-     * (string) - The OAuth2 app integration ID for the app space
-     */
-    oauth2AppIntegrationId: string;
-    /**
-     * Configure the provider for management through account provider.
-     */
-    providerConfig?: outputs.GetAppsSpacesSpaceProviderConfig;
-    /**
-     * (list of AppResource) - Resources for the app space. Resources configured at the space level are available to all apps in the space
-     */
-    resources: outputs.GetAppsSpacesSpaceResource[];
-    /**
-     * (string) - The service principal client ID for the app space
-     */
-    servicePrincipalClientId: string;
-    /**
-     * (integer) - The service principal ID for the app space
-     */
-    servicePrincipalId: number;
-    /**
-     * (string) - The service principal name for the app space
-     */
-    servicePrincipalName: string;
-    /**
-     * (SpaceStatus) - The status of the app space
-     */
-    status: outputs.GetAppsSpacesSpaceStatus;
-    /**
-     * (string) - The update time of the app space. Formatted timestamp in ISO 6801
-     */
-    updateTime: string;
-    /**
-     * (string) - The email of the user that last updated the app space
-     */
-    updater: string;
-    /**
-     * (string) - The usage policy ID for managing cost at the space level
-     */
-    usagePolicyId: string;
-    /**
-     * (list of string) - OAuth scopes for apps in the space
-     */
-    userApiScopes: string[];
-}
-
-export interface GetAppsSpacesSpaceProviderConfig {
-    /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
-     */
-    workspaceId: string;
-}
-
-export interface GetAppsSpacesSpaceResource {
-    /**
-     * (AppResourceApp)
-     */
-    app?: outputs.GetAppsSpacesSpaceResourceApp;
-    /**
-     * (AppResourceDatabase)
-     */
-    database?: outputs.GetAppsSpacesSpaceResourceDatabase;
-    /**
-     * (string) - Description of the App Resource
-     */
-    description?: string;
-    /**
-     * (AppResourceExperiment)
-     */
-    experiment?: outputs.GetAppsSpacesSpaceResourceExperiment;
-    /**
-     * (AppResourceGenieSpace)
-     */
-    genieSpace?: outputs.GetAppsSpacesSpaceResourceGenieSpace;
-    /**
-     * (AppResourceJob)
-     */
-    job?: outputs.GetAppsSpacesSpaceResourceJob;
-    /**
-     * (string) - Name of the serving endpoint to grant permission on
-     */
-    name: string;
-    /**
-     * (AppResourceSecret)
-     */
-    secret?: outputs.GetAppsSpacesSpaceResourceSecret;
-    /**
-     * (AppResourceServingEndpoint)
-     */
-    servingEndpoint?: outputs.GetAppsSpacesSpaceResourceServingEndpoint;
-    /**
-     * (AppResourceSqlWarehouse)
-     */
-    sqlWarehouse?: outputs.GetAppsSpacesSpaceResourceSqlWarehouse;
-    /**
-     * (AppResourceUcSecurable)
-     */
-    ucSecurable?: outputs.GetAppsSpacesSpaceResourceUcSecurable;
-}
-
-export interface GetAppsSpacesSpaceResourceApp {
-}
-
-export interface GetAppsSpacesSpaceResourceDatabase {
-    /**
-     * (string)
-     */
-    databaseName: string;
-    /**
-     * (string)
-     */
-    instanceName: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpacesSpaceResourceExperiment {
-    /**
-     * (string)
-     */
-    experimentId: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpacesSpaceResourceGenieSpace {
-    /**
-     * (string) - Name of the serving endpoint to grant permission on
-     */
-    name: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-    /**
-     * (string)
-     */
-    spaceId: string;
-}
-
-export interface GetAppsSpacesSpaceResourceJob {
-    /**
-     * (string) - Id of the SQL warehouse to grant permission on
-     */
-    id: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpacesSpaceResourceSecret {
-    /**
-     * (string) - Key of the secret to grant permission on
-     */
-    key: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-    /**
-     * (string) - Scope of the secret to grant permission on
-     */
-    scope: string;
-}
-
-export interface GetAppsSpacesSpaceResourceServingEndpoint {
-    /**
-     * (string) - Name of the serving endpoint to grant permission on
-     */
-    name: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpacesSpaceResourceSqlWarehouse {
-    /**
-     * (string) - Id of the SQL warehouse to grant permission on
-     */
-    id: string;
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSpacesSpaceResourceUcSecurable {
-    /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
-     */
-    permission: string;
-    /**
-     * (string)
-     */
-    securableFullName: string;
-    /**
-     * (string) - The securable kind from Unity Catalog.
-     * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
-     */
-    securableKind: string;
-    /**
-     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
-     */
-    securableType: string;
-}
-
-export interface GetAppsSpacesSpaceStatus {
-    /**
-     * (string) - Message providing context about the current state
-     */
-    message: string;
-    /**
-     * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
-     */
-    state: string;
 }
 
 export interface GetBudgetPoliciesFilterBy {
@@ -6192,6 +6360,31 @@ export interface GetDashboardsDashboard {
 }
 
 export interface GetDashboardsProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetDataClassificationCatalogConfigAutoTagConfig {
+    /**
+     * (string) - Whether auto-tagging is enabled or disabled for this classification tag. Possible values are: `AUTO_TAGGING_DISABLED`, `AUTO_TAGGING_ENABLED`
+     */
+    autoTaggingMode: string;
+    /**
+     * (string) - The Classification Tag (e.g., "class.name", "class.location")
+     */
+    classificationTag: string;
+}
+
+export interface GetDataClassificationCatalogConfigIncludedSchemas {
+    /**
+     * (list of string)
+     */
+    names: string[];
+}
+
+export interface GetDataClassificationCatalogConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
     workspaceId: string;
 }
 
@@ -8051,11 +8244,13 @@ export interface GetExternalMetadatasProviderConfig {
 
 export interface GetFeatureEngineeringFeatureFunction {
     /**
-     * (list of FunctionExtraParameter) - Extra parameters for parameterized functions
+     * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * Extra parameters for parameterized functions
      */
     extraParameters?: outputs.GetFeatureEngineeringFeatureFunctionExtraParameter[];
     /**
-     * (string) - The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
     functionType: string;
 }
@@ -8113,22 +8308,41 @@ export interface GetFeatureEngineeringFeatureSource {
 
 export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
     /**
-     * (list of string) - The entity columns of the Delta table
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: string;
+    /**
+     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
      */
     entityColumns: string[];
+    /**
+     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: string;
     /**
      * The full three-part name (catalog, schema, name) of the feature
      */
     fullName: string;
     /**
-     * (string) - The timeseries column of the Delta table
+     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
      */
     timeseriesColumn: string;
+    /**
+     * (string) - A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: string;
 }
 
 export interface GetFeatureEngineeringFeatureSourceKafkaSource {
     /**
-     * (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+     * (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity column identifiers of the Kafka source
      */
     entityColumnIdentifiers: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
     /**
@@ -8136,7 +8350,8 @@ export interface GetFeatureEngineeringFeatureSourceKafkaSource {
      */
     name: string;
     /**
-     * (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+     * (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column identifier of the Kafka source
      */
     timeseriesColumnIdentifier: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
 }
@@ -8207,7 +8422,7 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     description: string;
     /**
-     * (string) - The filter condition applied to the source data before aggregation
+     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
     filterCondition: string;
     /**
@@ -8219,11 +8434,13 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     function: outputs.GetFeatureEngineeringFeaturesFeatureFunction;
     /**
-     * (list of string) - The input columns from which the feature is computed
+     * (list of string, deprecated) - Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
+     * The input columns from which the feature is computed
      */
     inputs: string[];
     /**
-     * (LineageContext) - WARNING: This field is primarily intended for internal use by Databricks systems and
+     * (LineageContext) - Lineage context information for this feature.
+     * WARNING: This field is primarily intended for internal use by Databricks systems and
      * is automatically populated when features are created through Databricks notebooks or jobs.
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
@@ -8238,18 +8455,21 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     source: outputs.GetFeatureEngineeringFeaturesFeatureSource;
     /**
-     * (TimeWindow) - The time window in which the feature is computed
+     * (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+     * The time window in which the feature is computed
      */
     timeWindow: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindow;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunction {
     /**
-     * (list of FunctionExtraParameter) - Extra parameters for parameterized functions
+     * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * Extra parameters for parameterized functions
      */
     extraParameters?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter[];
     /**
-     * (string) - The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     * (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
+     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
     functionType: string;
 }
@@ -8307,22 +8527,41 @@ export interface GetFeatureEngineeringFeaturesFeatureSource {
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
     /**
-     * (list of string) - The entity columns of the Delta table
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: string;
+    /**
+     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
      */
     entityColumns: string[];
+    /**
+     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: string;
     /**
      * (string) - The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
     /**
-     * (string) - The timeseries column of the Delta table
+     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
      */
     timeseriesColumn: string;
+    /**
+     * (string) - A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
     /**
-     * (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+     * (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity column identifiers of the Kafka source
      */
     entityColumnIdentifiers: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier[];
     /**
@@ -8330,7 +8569,8 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
      */
     name: string;
     /**
-     * (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+     * (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column identifier of the Kafka source
      */
     timeseriesColumnIdentifier: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
 }
@@ -8419,17 +8659,35 @@ export interface GetFeatureEngineeringKafkaConfigBackfillSource {
 
 export interface GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
     /**
-     * (list of string) - The entity columns of the Delta table
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: string;
+    /**
+     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
      */
     entityColumns: string[];
+    /**
+     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: string;
     /**
      * (string) - The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
     /**
-     * (string) - The timeseries column of the Delta table
+     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
      */
     timeseriesColumn: string;
+    /**
+     * (string) - A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigKeySchema {
@@ -8528,17 +8786,35 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource {
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSource {
     /**
-     * (list of string) - The entity columns of the Delta table
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: string;
+    /**
+     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
      */
     entityColumns: string[];
+    /**
+     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: string;
     /**
      * (string) - The full three-part (catalog, schema, table) name of the Delta table
      */
     fullName: string;
     /**
-     * (string) - The timeseries column of the Delta table
+     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
      */
     timeseriesColumn: string;
+    /**
+     * (string) - A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchema {
@@ -10647,6 +10923,233 @@ export interface GetJobsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetKnowledgeAssistantKnowledgeSourceFileTable {
+    /**
+     * (string) - The name of the column containing BINARY file content to be indexed
+     */
+    fileCol: string;
+    /**
+     * (string) - Full UC name of the table, in the format of {CATALOG}.{SCHEMA}.{TABLE_NAME}
+     */
+    tableName: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourceFiles {
+    /**
+     * (string) - A UC volume path that includes a list of files
+     */
+    path: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourceIndex {
+    /**
+     * (string) - The column that specifies a link or reference to where the information came from
+     */
+    docUriCol: string;
+    /**
+     * (string) - Full UC name of the vector search index, in the format of {CATALOG}.{SCHEMA}.{INDEX_NAME}
+     */
+    indexName: string;
+    /**
+     * (string) - The column that includes the document text for retrieval
+     */
+    textCol: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourcesKnowledgeSource {
+    /**
+     * (string) - Timestamp when this knowledge source was created
+     */
+    createTime: string;
+    /**
+     * (string) - Description of the knowledge source.
+     * Required when creating a Knowledge Source.
+     * When updating a Knowledge Source, optional unless included in update_mask
+     */
+    description: string;
+    /**
+     * (string) - Human-readable display name of the knowledge source.
+     * Required when creating a Knowledge Source.
+     * When updating a Knowledge Source, optional unless included in update_mask
+     */
+    displayName: string;
+    /**
+     * (FileTableSpec)
+     */
+    fileTable: outputs.GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceFileTable;
+    /**
+     * (FilesSpec)
+     */
+    files: outputs.GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceFiles;
+    /**
+     * (string)
+     */
+    id: string;
+    /**
+     * (IndexSpec)
+     */
+    index: outputs.GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceIndex;
+    /**
+     * (string) - Timestamp representing the cutoff before which content in this knowledge source is being ingested
+     */
+    knowledgeCutoffTime: string;
+    /**
+     * (string) - Full resource name:
+     * knowledge-assistants/{knowledge_assistant_id}/knowledge-sources/{knowledge_source_id}
+     */
+    name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceProviderConfig;
+    /**
+     * (string) - The type of the source: "index", "files", or "fileTable".
+     * Required when creating a Knowledge Source.
+     * When updating a Knowledge Source, this field is ignored
+     */
+    sourceType: string;
+    /**
+     * (string) - Possible values are: `FAILED_UPDATE`, `UPDATED`, `UPDATING`
+     */
+    state: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceFileTable {
+    /**
+     * (string) - The name of the column containing BINARY file content to be indexed
+     */
+    fileCol: string;
+    /**
+     * (string) - Full UC name of the table, in the format of {CATALOG}.{SCHEMA}.{TABLE_NAME}
+     */
+    tableName: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceFiles {
+    /**
+     * (string) - A UC volume path that includes a list of files
+     */
+    path: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceIndex {
+    /**
+     * (string) - The column that specifies a link or reference to where the information came from
+     */
+    docUriCol: string;
+    /**
+     * (string) - Full UC name of the vector search index, in the format of {CATALOG}.{SCHEMA}.{INDEX_NAME}
+     */
+    indexName: string;
+    /**
+     * (string) - The column that includes the document text for retrieval
+     */
+    textCol: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourcesKnowledgeSourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetKnowledgeAssistantKnowledgeSourcesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetKnowledgeAssistantProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetKnowledgeAssistantsKnowledgeAssistant {
+    /**
+     * (string) - Creation timestamp
+     */
+    createTime: string;
+    /**
+     * (string) - The creator of the Knowledge Assistant
+     */
+    creator: string;
+    /**
+     * (string) - Description of what this agent can do (user-facing).
+     * Required when creating a Knowledge Assistant.
+     * When updating a Knowledge Assistant, optional unless included in
+     * update_mask
+     */
+    description: string;
+    /**
+     * (string) - The display name of the Knowledge Assistant, unique at workspace level.
+     * Required when creating a Knowledge Assistant.
+     * When updating a Knowledge Assistant, optional unless included in
+     * update_mask
+     */
+    displayName: string;
+    /**
+     * (string) - The name of the knowledge assistant agent endpoint
+     */
+    endpointName: string;
+    /**
+     * (string) - Error details when the Knowledge Assistant is in FAILED state
+     */
+    errorInfo: string;
+    /**
+     * (string) - The MLflow experiment ID
+     */
+    experimentId: string;
+    /**
+     * (string) - The universally unique identifier (UUID) of the Knowledge Assistant
+     */
+    id: string;
+    /**
+     * (string) - Additional global instructions on how the agent should generate answers.
+     * Optional on create and update.
+     * When updating a Knowledge Assistant, include this field in updateMask to
+     * modify it
+     */
+    instructions: string;
+    /**
+     * (string) - The resource name of the Knowledge Assistant.
+     * Format: knowledge-assistants/{knowledge_assistant_id}
+     */
+    name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetKnowledgeAssistantsKnowledgeAssistantProviderConfig;
+    /**
+     * (string) - State of the Knowledge Assistant. Not returned in List responses. Possible values are: `ACTIVE`, `CREATING`, `FAILED`
+     */
+    state: string;
+}
+
+export interface GetKnowledgeAssistantsKnowledgeAssistantProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetKnowledgeAssistantsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetMaterializedFeaturesFeatureTagProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -11545,6 +12048,108 @@ export interface GetPostgresBranchesProviderConfig {
     workspaceId: string;
 }
 
+export interface GetPostgresDatabaseProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresDatabaseSpec {
+    /**
+     * (string) - The name of the Postgres database
+     */
+    postgresDatabase?: string;
+    /**
+     * (string) - The name of the role that owns the database.
+     * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+     */
+    role?: string;
+}
+
+export interface GetPostgresDatabaseStatus {
+    /**
+     * (string) - The name of the Postgres database
+     */
+    postgresDatabase?: string;
+    /**
+     * (string) - The name of the role that owns the database.
+     * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+     */
+    role?: string;
+}
+
+export interface GetPostgresDatabasesDatabase {
+    /**
+     * (string) - A timestamp indicating when the database was created
+     */
+    createTime: string;
+    /**
+     * (string) - The resource name of the database.
+     * Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
+     */
+    name: string;
+    /**
+     * The Branch that owns this collection of databases.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    parent: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetPostgresDatabasesDatabaseProviderConfig;
+    /**
+     * (DatabaseDatabaseSpec) - The desired state of the Database
+     */
+    spec: outputs.GetPostgresDatabasesDatabaseSpec;
+    /**
+     * (DatabaseDatabaseStatus) - The observed state of the Database
+     */
+    status: outputs.GetPostgresDatabasesDatabaseStatus;
+    /**
+     * (string) - A timestamp indicating when the database was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetPostgresDatabasesDatabaseProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresDatabasesDatabaseSpec {
+    /**
+     * (string) - The name of the Postgres database
+     */
+    postgresDatabase?: string;
+    /**
+     * (string) - The name of the role that owns the database.
+     * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+     */
+    role?: string;
+}
+
+export interface GetPostgresDatabasesDatabaseStatus {
+    /**
+     * (string) - The name of the Postgres database
+     */
+    postgresDatabase?: string;
+    /**
+     * (string) - The name of the role that owns the database.
+     * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+     */
+    role?: string;
+}
+
+export interface GetPostgresDatabasesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetPostgresEndpointProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -11956,6 +12561,10 @@ export interface GetPostgresProjectSpec {
      */
     displayName?: string;
     /**
+     * (boolean) - Whether to enable PG native password login on all endpoints in this project
+     */
+    enablePgNativeLogin?: boolean;
+    /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
     historyRetentionDuration?: string;
@@ -12022,6 +12631,10 @@ export interface GetPostgresProjectStatus {
      * (string) - The effective human-readable project name
      */
     displayName: string;
+    /**
+     * (boolean) - Whether to enable PG native password login on all endpoints in this project
+     */
+    enablePgNativeLogin: boolean;
     /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
@@ -12166,6 +12779,10 @@ export interface GetPostgresProjectsProjectSpec {
      */
     displayName?: string;
     /**
+     * (boolean) - Whether to enable PG native password login on all endpoints in this project
+     */
+    enablePgNativeLogin?: boolean;
+    /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
     historyRetentionDuration?: string;
@@ -12232,6 +12849,10 @@ export interface GetPostgresProjectsProjectStatus {
      * (string) - The effective human-readable project name
      */
     displayName: string;
+    /**
+     * (boolean) - Whether to enable PG native password login on all endpoints in this project
+     */
+    enablePgNativeLogin: boolean;
     /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
@@ -14054,7 +14675,7 @@ export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     entityType: string;
     /**
@@ -17588,6 +18209,53 @@ export interface JobWebhookNotificationsOnSuccess {
     id: string;
 }
 
+export interface KnowledgeAssistantKnowledgeSourceFileTable {
+    /**
+     * The name of the column containing BINARY file content to be indexed
+     */
+    fileCol: string;
+    /**
+     * Full UC name of the table, in the format of {CATALOG}.{SCHEMA}.{TABLE_NAME}
+     */
+    tableName: string;
+}
+
+export interface KnowledgeAssistantKnowledgeSourceFiles {
+    /**
+     * A UC volume path that includes a list of files
+     */
+    path: string;
+}
+
+export interface KnowledgeAssistantKnowledgeSourceIndex {
+    /**
+     * The column that specifies a link or reference to where the information came from
+     */
+    docUriCol: string;
+    /**
+     * Full UC name of the vector search index, in the format of {CATALOG}.{SCHEMA}.{INDEX_NAME}
+     */
+    indexName: string;
+    /**
+     * The column that includes the document text for retrieval
+     */
+    textCol: string;
+}
+
+export interface KnowledgeAssistantKnowledgeSourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface KnowledgeAssistantProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface LakehouseMonitorCustomMetric {
     /**
      * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
@@ -18835,11 +19503,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -18906,11 +19574,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.110.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -19377,6 +20045,7 @@ export interface PipelineEnvironment {
      * ```
      */
     dependencies?: string[];
+    environmentVersion?: string;
 }
 
 export interface PipelineEventLog {
@@ -19886,6 +20555,23 @@ export interface PostgresBranchStatus {
     stateChangeTime: string;
 }
 
+export interface PostgresDatabaseProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface PostgresDatabaseSpec {
+    postgresDatabase?: string;
+    role?: string;
+}
+
+export interface PostgresDatabaseStatus {
+    postgresDatabase?: string;
+    role?: string;
+}
+
 export interface PostgresEndpointProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -20077,6 +20763,10 @@ export interface PostgresProjectSpec {
      */
     displayName?: string;
     /**
+     * (boolean) - Whether to enable PG native password login on all endpoints in this project
+     */
+    enablePgNativeLogin?: boolean;
+    /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
     historyRetentionDuration?: string;
@@ -20143,6 +20833,10 @@ export interface PostgresProjectStatus {
      * (string) - The effective human-readable project name
      */
     displayName: string;
+    /**
+     * (boolean) - Whether to enable PG native password login on all endpoints in this project
+     */
+    enablePgNativeLogin: boolean;
     /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
@@ -21173,6 +21867,8 @@ export interface SqlTableColumn {
     nullable?: boolean;
     /**
      * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+     *
+     * > **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP<STRING,STRING>` instead of `MAP<STRING, STRING>`.
      */
     type: string;
     typeJson: string;

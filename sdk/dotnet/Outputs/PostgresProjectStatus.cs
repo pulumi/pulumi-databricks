@@ -34,6 +34,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
+        /// (boolean) - Whether to enable PG native password login on all endpoints in this project
+        /// </summary>
+        public readonly bool? EnablePgNativeLogin;
+        /// <summary>
         /// (string) - The effective number of seconds to retain the shared history for point in time recovery
         /// </summary>
         public readonly string? HistoryRetentionDuration;
@@ -62,6 +66,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? displayName,
 
+            bool? enablePgNativeLogin,
+
             string? historyRetentionDuration,
 
             string? owner,
@@ -75,6 +81,7 @@ namespace Pulumi.Databricks.Outputs
             CustomTags = customTags;
             DefaultEndpointSettings = defaultEndpointSettings;
             DisplayName = displayName;
+            EnablePgNativeLogin = enablePgNativeLogin;
             HistoryRetentionDuration = historyRetentionDuration;
             Owner = owner;
             PgVersion = pgVersion;

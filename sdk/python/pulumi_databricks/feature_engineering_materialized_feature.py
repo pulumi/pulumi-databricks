@@ -23,6 +23,7 @@ class FeatureEngineeringMaterializedFeatureArgs:
     def __init__(__self__, *,
                  feature_name: pulumi.Input[_builtins.str],
                  cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
+                 materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
                  offline_store_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
                  online_store_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']] = None,
                  pipeline_schedule_state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -31,12 +32,15 @@ class FeatureEngineeringMaterializedFeatureArgs:
         The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        :param pulumi.Input[_builtins.str] materialized_feature_id: Unique identifier for the materialized feature
         :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "feature_name", feature_name)
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if materialized_feature_id is not None:
+            pulumi.set(__self__, "materialized_feature_id", materialized_feature_id)
         if offline_store_config is not None:
             pulumi.set(__self__, "offline_store_config", offline_store_config)
         if online_store_config is not None:
@@ -69,6 +73,18 @@ class FeatureEngineeringMaterializedFeatureArgs:
     @cron_schedule.setter
     def cron_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="materializedFeatureId")
+    def materialized_feature_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique identifier for the materialized feature
+        """
+        return pulumi.get(self, "materialized_feature_id")
+
+    @materialized_feature_id.setter
+    def materialized_feature_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "materialized_feature_id", value)
 
     @_builtins.property
     @pulumi.getter(name="offlineStoreConfig")
@@ -131,7 +147,7 @@ class _FeatureEngineeringMaterializedFeatureState:
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
-        :param pulumi.Input[_builtins.str] materialized_feature_id: (string) - Unique identifier for the materialized feature
+        :param pulumi.Input[_builtins.str] materialized_feature_id: Unique identifier for the materialized feature
         :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] table_name: (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
@@ -196,7 +212,7 @@ class _FeatureEngineeringMaterializedFeatureState:
     @pulumi.getter(name="materializedFeatureId")
     def materialized_feature_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - Unique identifier for the materialized feature
+        Unique identifier for the materialized feature
         """
         return pulumi.get(self, "materialized_feature_id")
 
@@ -267,6 +283,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
                  feature_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
                  offline_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
                  online_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
                  pipeline_schedule_state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -279,6 +296,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
+        :param pulumi.Input[_builtins.str] materialized_feature_id: Unique identifier for the materialized feature
         :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
@@ -308,6 +326,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
                  feature_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
                  offline_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
                  online_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
                  pipeline_schedule_state: Optional[pulumi.Input[_builtins.str]] = None,
@@ -325,12 +344,12 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
             if feature_name is None and not opts.urn:
                 raise TypeError("Missing required property 'feature_name'")
             __props__.__dict__["feature_name"] = feature_name
+            __props__.__dict__["materialized_feature_id"] = materialized_feature_id
             __props__.__dict__["offline_store_config"] = offline_store_config
             __props__.__dict__["online_store_config"] = online_store_config
             __props__.__dict__["pipeline_schedule_state"] = pipeline_schedule_state
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["last_materialization_time"] = None
-            __props__.__dict__["materialized_feature_id"] = None
             __props__.__dict__["table_name"] = None
         super(FeatureEngineeringMaterializedFeature, __self__).__init__(
             'databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature',
@@ -362,7 +381,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
-        :param pulumi.Input[_builtins.str] materialized_feature_id: (string) - Unique identifier for the materialized feature
+        :param pulumi.Input[_builtins.str] materialized_feature_id: Unique identifier for the materialized feature
         :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] table_name: (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
@@ -409,9 +428,9 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="materializedFeatureId")
-    def materialized_feature_id(self) -> pulumi.Output[_builtins.str]:
+    def materialized_feature_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (string) - Unique identifier for the materialized feature
+        Unique identifier for the materialized feature
         """
         return pulumi.get(self, "materialized_feature_id")
 

@@ -36,6 +36,8 @@ public final class SqlTableColumn {
     /**
      * @return Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      * 
+     * &gt; **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP&lt;STRING,STRING&gt;` instead of `MAP&lt;STRING, STRING&gt;`.
+     * 
      */
     private @Nullable String type;
     private @Nullable String typeJson;
@@ -71,6 +73,8 @@ public final class SqlTableColumn {
     }
     /**
      * @return Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+     * 
+     * &gt; **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP&lt;STRING,STRING&gt;` instead of `MAP&lt;STRING, STRING&gt;`.
      * 
      */
     public Optional<String> type() {

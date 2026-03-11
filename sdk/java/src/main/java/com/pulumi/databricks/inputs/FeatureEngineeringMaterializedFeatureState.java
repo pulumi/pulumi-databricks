@@ -66,14 +66,14 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
     }
 
     /**
-     * (string) - Unique identifier for the materialized feature
+     * Unique identifier for the materialized feature
      * 
      */
     @Import(name="materializedFeatureId")
     private @Nullable Output<String> materializedFeatureId;
 
     /**
-     * @return (string) - Unique identifier for the materialized feature
+     * @return Unique identifier for the materialized feature
      * 
      */
     public Optional<Output<String>> materializedFeatureId() {
@@ -237,7 +237,7 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         }
 
         /**
-         * @param materializedFeatureId (string) - Unique identifier for the materialized feature
+         * @param materializedFeatureId Unique identifier for the materialized feature
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         }
 
         /**
-         * @param materializedFeatureId (string) - Unique identifier for the materialized feature
+         * @param materializedFeatureId Unique identifier for the materialized feature
          * 
          * @return builder
          * 

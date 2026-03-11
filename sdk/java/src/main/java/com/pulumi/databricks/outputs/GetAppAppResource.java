@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.GetAppAppResourceDatabase;
 import com.pulumi.databricks.outputs.GetAppAppResourceExperiment;
 import com.pulumi.databricks.outputs.GetAppAppResourceGenieSpace;
 import com.pulumi.databricks.outputs.GetAppAppResourceJob;
+import com.pulumi.databricks.outputs.GetAppAppResourcePostgres;
 import com.pulumi.databricks.outputs.GetAppAppResourceSecret;
 import com.pulumi.databricks.outputs.GetAppAppResourceServingEndpoint;
 import com.pulumi.databricks.outputs.GetAppAppResourceSqlWarehouse;
@@ -52,6 +53,7 @@ public final class GetAppAppResource {
      * 
      */
     private String name;
+    private @Nullable GetAppAppResourcePostgres postgres;
     /**
      * @return attribute
      * 
@@ -119,6 +121,9 @@ public final class GetAppAppResource {
     public String name() {
         return this.name;
     }
+    public Optional<GetAppAppResourcePostgres> postgres() {
+        return Optional.ofNullable(this.postgres);
+    }
     /**
      * @return attribute
      * 
@@ -164,6 +169,7 @@ public final class GetAppAppResource {
         private @Nullable GetAppAppResourceGenieSpace genieSpace;
         private @Nullable GetAppAppResourceJob job;
         private String name;
+        private @Nullable GetAppAppResourcePostgres postgres;
         private @Nullable GetAppAppResourceSecret secret;
         private @Nullable GetAppAppResourceServingEndpoint servingEndpoint;
         private @Nullable GetAppAppResourceSqlWarehouse sqlWarehouse;
@@ -178,6 +184,7 @@ public final class GetAppAppResource {
     	      this.genieSpace = defaults.genieSpace;
     	      this.job = defaults.job;
     	      this.name = defaults.name;
+    	      this.postgres = defaults.postgres;
     	      this.secret = defaults.secret;
     	      this.servingEndpoint = defaults.servingEndpoint;
     	      this.sqlWarehouse = defaults.sqlWarehouse;
@@ -229,6 +236,12 @@ public final class GetAppAppResource {
             return this;
         }
         @CustomType.Setter
+        public Builder postgres(@Nullable GetAppAppResourcePostgres postgres) {
+
+            this.postgres = postgres;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secret(@Nullable GetAppAppResourceSecret secret) {
 
             this.secret = secret;
@@ -261,6 +274,7 @@ public final class GetAppAppResource {
             _resultValue.genieSpace = genieSpace;
             _resultValue.job = job;
             _resultValue.name = name;
+            _resultValue.postgres = postgres;
             _resultValue.secret = secret;
             _resultValue.servingEndpoint = servingEndpoint;
             _resultValue.sqlWarehouse = sqlWarehouse;

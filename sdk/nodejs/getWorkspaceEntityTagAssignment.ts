@@ -17,6 +17,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const notebookTag = databricks.getWorkspaceEntityTagAssignment({
+ *     entityType: "notebooks",
+ *     entityId: "2807324866692453",
+ *     tagKey: "sensitivity_level",
+ * });
  * const appTag = databricks.getWorkspaceEntityTagAssignment({
  *     entityType: "apps",
  *     entityId: "myapp",
@@ -53,7 +58,7 @@ export interface GetWorkspaceEntityTagAssignmentArgs {
      */
     entityId: string;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     entityType: string;
     /**
@@ -75,7 +80,7 @@ export interface GetWorkspaceEntityTagAssignmentResult {
      */
     readonly entityId: string;
     /**
-     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+     * (string) - The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     readonly entityType: string;
     /**
@@ -103,6 +108,11 @@ export interface GetWorkspaceEntityTagAssignmentResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const notebookTag = databricks.getWorkspaceEntityTagAssignment({
+ *     entityType: "notebooks",
+ *     entityId: "2807324866692453",
+ *     tagKey: "sensitivity_level",
+ * });
  * const appTag = databricks.getWorkspaceEntityTagAssignment({
  *     entityType: "apps",
  *     entityId: "myapp",
@@ -139,7 +149,7 @@ export interface GetWorkspaceEntityTagAssignmentOutputArgs {
      */
     entityId: pulumi.Input<string>;
     /**
-     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces
+     * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
     entityType: pulumi.Input<string>;
     /**

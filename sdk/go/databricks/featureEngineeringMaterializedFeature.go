@@ -23,8 +23,8 @@ type FeatureEngineeringMaterializedFeature struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringOutput `pulumi:"lastMaterializationTime"`
-	// (string) - Unique identifier for the materialized feature
-	MaterializedFeatureId pulumi.StringOutput                                              `pulumi:"materializedFeatureId"`
+	// Unique identifier for the materialized feature
+	MaterializedFeatureId pulumi.StringPtrOutput                                           `pulumi:"materializedFeatureId"`
 	OfflineStoreConfig    FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput `pulumi:"offlineStoreConfig"`
 	OnlineStoreConfig     FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput  `pulumi:"onlineStoreConfig"`
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
@@ -75,7 +75,7 @@ type featureEngineeringMaterializedFeatureState struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime *string `pulumi:"lastMaterializationTime"`
-	// (string) - Unique identifier for the materialized feature
+	// Unique identifier for the materialized feature
 	MaterializedFeatureId *string                                                  `pulumi:"materializedFeatureId"`
 	OfflineStoreConfig    *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
 	OnlineStoreConfig     *FeatureEngineeringMaterializedFeatureOnlineStoreConfig  `pulumi:"onlineStoreConfig"`
@@ -95,7 +95,7 @@ type FeatureEngineeringMaterializedFeatureState struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringPtrInput
-	// (string) - Unique identifier for the materialized feature
+	// Unique identifier for the materialized feature
 	MaterializedFeatureId pulumi.StringPtrInput
 	OfflineStoreConfig    FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
 	OnlineStoreConfig     FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
@@ -115,9 +115,11 @@ type featureEngineeringMaterializedFeatureArgs struct {
 	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// The full name of the feature in Unity Catalog
-	FeatureName        string                                                   `pulumi:"featureName"`
-	OfflineStoreConfig *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
-	OnlineStoreConfig  *FeatureEngineeringMaterializedFeatureOnlineStoreConfig  `pulumi:"onlineStoreConfig"`
+	FeatureName string `pulumi:"featureName"`
+	// Unique identifier for the materialized feature
+	MaterializedFeatureId *string                                                  `pulumi:"materializedFeatureId"`
+	OfflineStoreConfig    *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
+	OnlineStoreConfig     *FeatureEngineeringMaterializedFeatureOnlineStoreConfig  `pulumi:"onlineStoreConfig"`
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState *string `pulumi:"pipelineScheduleState"`
 	// Configure the provider for management through account provider.
@@ -129,9 +131,11 @@ type FeatureEngineeringMaterializedFeatureArgs struct {
 	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
 	CronSchedule pulumi.StringPtrInput
 	// The full name of the feature in Unity Catalog
-	FeatureName        pulumi.StringInput
-	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
-	OnlineStoreConfig  FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
+	FeatureName pulumi.StringInput
+	// Unique identifier for the materialized feature
+	MaterializedFeatureId pulumi.StringPtrInput
+	OfflineStoreConfig    FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
+	OnlineStoreConfig     FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
@@ -241,9 +245,9 @@ func (o FeatureEngineeringMaterializedFeatureOutput) LastMaterializationTime() p
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.LastMaterializationTime }).(pulumi.StringOutput)
 }
 
-// (string) - Unique identifier for the materialized feature
-func (o FeatureEngineeringMaterializedFeatureOutput) MaterializedFeatureId() pulumi.StringOutput {
-	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.MaterializedFeatureId }).(pulumi.StringOutput)
+// Unique identifier for the materialized feature
+func (o FeatureEngineeringMaterializedFeatureOutput) MaterializedFeatureId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringPtrOutput { return v.MaterializedFeatureId }).(pulumi.StringPtrOutput)
 }
 
 func (o FeatureEngineeringMaterializedFeatureOutput) OfflineStoreConfig() FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput {

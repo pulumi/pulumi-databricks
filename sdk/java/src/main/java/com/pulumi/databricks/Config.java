@@ -56,6 +56,9 @@ public final class Config {
     public Optional<String> clientSecret() {
         return Codegen.stringProp("clientSecret").config(config).get();
     }
+    public Optional<String> cloud() {
+        return Codegen.stringProp("cloud").config(config).get();
+    }
     public Optional<String> clusterId() {
         return Codegen.stringProp("clusterId").config(config).get();
     }
@@ -76,6 +79,9 @@ public final class Config {
     }
     public Optional<Boolean> disableOauthRefreshToken() {
         return Codegen.booleanProp("disableOauthRefreshToken").config(config).get();
+    }
+    public Optional<String> discoveryUrl() {
+        return Codegen.stringProp("discoveryUrl").config(config).get();
     }
     public Optional<Boolean> experimentalIsUnifiedHost() {
         return Codegen.booleanProp("experimentalIsUnifiedHost").config(config).get();

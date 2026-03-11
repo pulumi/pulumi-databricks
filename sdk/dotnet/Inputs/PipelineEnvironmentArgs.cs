@@ -54,6 +54,9 @@ namespace Pulumi.Databricks.Inputs
             set => _dependencies = value;
         }
 
+        [Input("environmentVersion")]
+        public Input<string>? EnvironmentVersion { get; set; }
+
         public PipelineEnvironmentArgs()
         {
         }

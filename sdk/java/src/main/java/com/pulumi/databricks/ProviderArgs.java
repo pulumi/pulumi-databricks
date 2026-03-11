@@ -116,6 +116,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientSecret);
     }
 
+    @Import(name="cloud")
+    private @Nullable Output<String> cloud;
+
+    public Optional<Output<String>> cloud() {
+        return Optional.ofNullable(this.cloud);
+    }
+
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
@@ -163,6 +170,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<Boolean>> disableOauthRefreshToken() {
         return Optional.ofNullable(this.disableOauthRefreshToken);
+    }
+
+    @Import(name="discoveryUrl")
+    private @Nullable Output<String> discoveryUrl;
+
+    public Optional<Output<String>> discoveryUrl() {
+        return Optional.ofNullable(this.discoveryUrl);
     }
 
     @Import(name="experimentalIsUnifiedHost", json=true)
@@ -315,6 +329,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.azureWorkspaceResourceId = $.azureWorkspaceResourceId;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.cloud = $.cloud;
         this.clusterId = $.clusterId;
         this.configFile = $.configFile;
         this.databricksCliPath = $.databricksCliPath;
@@ -322,6 +337,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.debugHeaders = $.debugHeaders;
         this.debugTruncateBytes = $.debugTruncateBytes;
         this.disableOauthRefreshToken = $.disableOauthRefreshToken;
+        this.discoveryUrl = $.discoveryUrl;
         this.experimentalIsUnifiedHost = $.experimentalIsUnifiedHost;
         this.googleCredentials = $.googleCredentials;
         this.googleServiceAccount = $.googleServiceAccount;
@@ -487,6 +503,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return clientSecret(Output.of(clientSecret));
         }
 
+        public Builder cloud(@Nullable Output<String> cloud) {
+            $.cloud = cloud;
+            return this;
+        }
+
+        public Builder cloud(String cloud) {
+            return cloud(Output.of(cloud));
+        }
+
         public Builder clusterId(@Nullable Output<String> clusterId) {
             $.clusterId = clusterId;
             return this;
@@ -548,6 +573,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder disableOauthRefreshToken(Boolean disableOauthRefreshToken) {
             return disableOauthRefreshToken(Output.of(disableOauthRefreshToken));
+        }
+
+        public Builder discoveryUrl(@Nullable Output<String> discoveryUrl) {
+            $.discoveryUrl = discoveryUrl;
+            return this;
+        }
+
+        public Builder discoveryUrl(String discoveryUrl) {
+            return discoveryUrl(Output.of(discoveryUrl));
         }
 
         public Builder experimentalIsUnifiedHost(@Nullable Output<Boolean> experimentalIsUnifiedHost) {

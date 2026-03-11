@@ -68,18 +68,18 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
         return this.lastMaterializationTime;
     }
     /**
-     * (string) - Unique identifier for the materialized feature
+     * Unique identifier for the materialized feature
      * 
      */
     @Export(name="materializedFeatureId", refs={String.class}, tree="[0]")
-    private Output<String> materializedFeatureId;
+    private Output</* @Nullable */ String> materializedFeatureId;
 
     /**
-     * @return (string) - Unique identifier for the materialized feature
+     * @return Unique identifier for the materialized feature
      * 
      */
-    public Output<String> materializedFeatureId() {
-        return this.materializedFeatureId;
+    public Output<Optional<String>> materializedFeatureId() {
+        return Codegen.optional(this.materializedFeatureId);
     }
     @Export(name="offlineStoreConfig", refs={FeatureEngineeringMaterializedFeatureOfflineStoreConfig.class}, tree="[0]")
     private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureOfflineStoreConfig> offlineStoreConfig;

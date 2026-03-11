@@ -38,10 +38,12 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly azureWorkspaceResourceId: pulumi.Output<string | undefined>;
     declare public readonly clientId: pulumi.Output<string | undefined>;
     declare public readonly clientSecret: pulumi.Output<string | undefined>;
+    declare public readonly cloud: pulumi.Output<string | undefined>;
     declare public readonly clusterId: pulumi.Output<string | undefined>;
     declare public readonly configFile: pulumi.Output<string | undefined>;
     declare public readonly databricksCliPath: pulumi.Output<string | undefined>;
     declare public readonly databricksIdTokenFilepath: pulumi.Output<string | undefined>;
+    declare public readonly discoveryUrl: pulumi.Output<string | undefined>;
     declare public readonly googleCredentials: pulumi.Output<string | undefined>;
     declare public readonly googleServiceAccount: pulumi.Output<string | undefined>;
     declare public readonly host: pulumi.Output<string | undefined>;
@@ -80,6 +82,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["azureWorkspaceResourceId"] = args?.azureWorkspaceResourceId;
             resourceInputs["clientId"] = args?.clientId;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
+            resourceInputs["cloud"] = args?.cloud;
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["configFile"] = args?.configFile;
             resourceInputs["databricksCliPath"] = args?.databricksCliPath;
@@ -87,6 +90,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["debugHeaders"] = pulumi.output(args?.debugHeaders).apply(JSON.stringify);
             resourceInputs["debugTruncateBytes"] = pulumi.output(args?.debugTruncateBytes).apply(JSON.stringify);
             resourceInputs["disableOauthRefreshToken"] = pulumi.output(args?.disableOauthRefreshToken).apply(JSON.stringify);
+            resourceInputs["discoveryUrl"] = args?.discoveryUrl;
             resourceInputs["experimentalIsUnifiedHost"] = pulumi.output(args?.experimentalIsUnifiedHost).apply(JSON.stringify);
             resourceInputs["googleCredentials"] = args?.googleCredentials ? pulumi.secret(args.googleCredentials) : undefined;
             resourceInputs["googleServiceAccount"] = args?.googleServiceAccount;
@@ -141,6 +145,7 @@ export interface ProviderArgs {
     azureWorkspaceResourceId?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
+    cloud?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     configFile?: pulumi.Input<string>;
     databricksCliPath?: pulumi.Input<string>;
@@ -148,6 +153,7 @@ export interface ProviderArgs {
     debugHeaders?: pulumi.Input<boolean>;
     debugTruncateBytes?: pulumi.Input<number>;
     disableOauthRefreshToken?: pulumi.Input<boolean>;
+    discoveryUrl?: pulumi.Input<string>;
     experimentalIsUnifiedHost?: pulumi.Input<boolean>;
     googleCredentials?: pulumi.Input<string>;
     googleServiceAccount?: pulumi.Input<string>;

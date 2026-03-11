@@ -110,9 +110,19 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The parent resource name of the account under which the endpoint is created.
+     * Format: `accounts/{account_id}`
+     * 
+     */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
+    /**
+     * @return The parent resource name of the account under which the endpoint is created.
+     * Format: `accounts/{account_id}`
+     * 
+     */
     public Optional<Output<String>> parent() {
         return Optional.ofNullable(this.parent);
     }
@@ -327,11 +337,25 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param parent The parent resource name of the account under which the endpoint is created.
+         * Format: `accounts/{account_id}`
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(@Nullable Output<String> parent) {
             $.parent = parent;
             return this;
         }
 
+        /**
+         * @param parent The parent resource name of the account under which the endpoint is created.
+         * Format: `accounts/{account_id}`
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
         }

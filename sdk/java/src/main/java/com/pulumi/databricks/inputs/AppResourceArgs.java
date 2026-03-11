@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.AppResourceDatabaseArgs;
 import com.pulumi.databricks.inputs.AppResourceExperimentArgs;
 import com.pulumi.databricks.inputs.AppResourceGenieSpaceArgs;
 import com.pulumi.databricks.inputs.AppResourceJobArgs;
+import com.pulumi.databricks.inputs.AppResourcePostgresArgs;
 import com.pulumi.databricks.inputs.AppResourceSecretArgs;
 import com.pulumi.databricks.inputs.AppResourceServingEndpointArgs;
 import com.pulumi.databricks.inputs.AppResourceSqlWarehouseArgs;
@@ -118,6 +119,13 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
         return this.name;
     }
 
+    @Import(name="postgres")
+    private @Nullable Output<AppResourcePostgresArgs> postgres;
+
+    public Optional<Output<AppResourcePostgresArgs>> postgres() {
+        return Optional.ofNullable(this.postgres);
+    }
+
     /**
      * attribute
      * 
@@ -188,6 +196,7 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
         this.genieSpace = $.genieSpace;
         this.job = $.job;
         this.name = $.name;
+        this.postgres = $.postgres;
         this.secret = $.secret;
         this.servingEndpoint = $.servingEndpoint;
         this.sqlWarehouse = $.sqlWarehouse;
@@ -337,6 +346,15 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder postgres(@Nullable Output<AppResourcePostgresArgs> postgres) {
+            $.postgres = postgres;
+            return this;
+        }
+
+        public Builder postgres(AppResourcePostgresArgs postgres) {
+            return postgres(Output.of(postgres));
         }
 
         /**

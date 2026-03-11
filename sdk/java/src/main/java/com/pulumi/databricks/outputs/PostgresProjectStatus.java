@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PostgresProjectStatusCustomTag;
 import com.pulumi.databricks.outputs.PostgresProjectStatusDefaultEndpointSettings;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -40,6 +41,11 @@ public final class PostgresProjectStatus {
      * 
      */
     private @Nullable String displayName;
+    /**
+     * @return (boolean) - Whether to enable PG native password login on all endpoints in this project
+     * 
+     */
+    private @Nullable Boolean enablePgNativeLogin;
     /**
      * @return (string) - The effective number of seconds to retain the shared history for point in time recovery
      * 
@@ -98,6 +104,13 @@ public final class PostgresProjectStatus {
         return Optional.ofNullable(this.displayName);
     }
     /**
+     * @return (boolean) - Whether to enable PG native password login on all endpoints in this project
+     * 
+     */
+    public Optional<Boolean> enablePgNativeLogin() {
+        return Optional.ofNullable(this.enablePgNativeLogin);
+    }
+    /**
      * @return (string) - The effective number of seconds to retain the shared history for point in time recovery
      * 
      */
@@ -140,6 +153,7 @@ public final class PostgresProjectStatus {
         private @Nullable List<PostgresProjectStatusCustomTag> customTags;
         private @Nullable PostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings;
         private @Nullable String displayName;
+        private @Nullable Boolean enablePgNativeLogin;
         private @Nullable String historyRetentionDuration;
         private @Nullable String owner;
         private @Nullable Integer pgVersion;
@@ -152,6 +166,7 @@ public final class PostgresProjectStatus {
     	      this.customTags = defaults.customTags;
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
     	      this.displayName = defaults.displayName;
+    	      this.enablePgNativeLogin = defaults.enablePgNativeLogin;
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
     	      this.owner = defaults.owner;
     	      this.pgVersion = defaults.pgVersion;
@@ -192,6 +207,12 @@ public final class PostgresProjectStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder enablePgNativeLogin(@Nullable Boolean enablePgNativeLogin) {
+
+            this.enablePgNativeLogin = enablePgNativeLogin;
+            return this;
+        }
+        @CustomType.Setter
         public Builder historyRetentionDuration(@Nullable String historyRetentionDuration) {
 
             this.historyRetentionDuration = historyRetentionDuration;
@@ -222,6 +243,7 @@ public final class PostgresProjectStatus {
             _resultValue.customTags = customTags;
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;
             _resultValue.displayName = displayName;
+            _resultValue.enablePgNativeLogin = enablePgNativeLogin;
             _resultValue.historyRetentionDuration = historyRetentionDuration;
             _resultValue.owner = owner;
             _resultValue.pgVersion = pgVersion;

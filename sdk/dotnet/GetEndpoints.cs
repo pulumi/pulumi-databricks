@@ -23,6 +23,21 @@ namespace Pulumi.Databricks
         /// 
         /// ### Example for Azure cloud
         /// This is an example for listing endpoints in Azure cloud:
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetEndpoints.Invoke(new()
+        ///     {
+        ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetEndpointsResult> InvokeAsync(GetEndpointsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("databricks:index/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithDefaults());
@@ -39,6 +54,21 @@ namespace Pulumi.Databricks
         /// 
         /// ### Example for Azure cloud
         /// This is an example for listing endpoints in Azure cloud:
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetEndpoints.Invoke(new()
+        ///     {
+        ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEndpointsResult> Invoke(GetEndpointsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("databricks:index/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithDefaults());
@@ -55,6 +85,21 @@ namespace Pulumi.Databricks
         /// 
         /// ### Example for Azure cloud
         /// This is an example for listing endpoints in Azure cloud:
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetEndpoints.Invoke(new()
+        ///     {
+        ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEndpointsResult> Invoke(GetEndpointsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("databricks:index/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithDefaults());
@@ -66,6 +111,10 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
+        /// <summary>
+        /// The parent resource name of the account to list endpoints for.
+        /// Format: `accounts/{account_id}`
+        /// </summary>
         [Input("parent", required: true)]
         public string Parent { get; set; } = null!;
 
@@ -80,6 +129,10 @@ namespace Pulumi.Databricks
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
+        /// <summary>
+        /// The parent resource name of the account to list endpoints for.
+        /// Format: `accounts/{account_id}`
+        /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 

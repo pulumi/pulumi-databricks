@@ -23,9 +23,19 @@ public final class GetEndpointsPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * The parent resource name of the account to list endpoints for.
+     * Format: `accounts/{account_id}`
+     * 
+     */
     @Import(name="parent", required=true)
     private String parent;
 
+    /**
+     * @return The parent resource name of the account to list endpoints for.
+     * Format: `accounts/{account_id}`
+     * 
+     */
     public String parent() {
         return this.parent;
     }
@@ -60,6 +70,13 @@ public final class GetEndpointsPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param parent The parent resource name of the account to list endpoints for.
+         * Format: `accounts/{account_id}`
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(String parent) {
             $.parent = parent;
             return this;
