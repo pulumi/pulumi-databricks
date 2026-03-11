@@ -1,3 +1,0 @@
-name: databricks
-description: A Pulumi resource provider for databricks.
-language: java
