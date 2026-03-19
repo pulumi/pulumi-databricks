@@ -19,24 +19,29 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> EntityColumnIdentifiers;
         /// <summary>
-        /// Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+        /// The filter condition applied to the source data before aggregation
         /// </summary>
+        public readonly string? FilterCondition;
         public readonly string Name;
         /// <summary>
         /// Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
         /// The timeseries column identifier of the Kafka source
         /// </summary>
-        public readonly Outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier TimeseriesColumnIdentifier;
+        public readonly Outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier? TimeseriesColumnIdentifier;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureSourceKafkaSource(
             ImmutableArray<Outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers,
 
+            string? filterCondition,
+
             string name,
 
-            Outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier)
+            Outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier? timeseriesColumnIdentifier)
         {
             EntityColumnIdentifiers = entityColumnIdentifiers;
+            FilterCondition = filterCondition;
             Name = name;
             TimeseriesColumnIdentifier = timeseriesColumnIdentifier;
         }

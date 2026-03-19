@@ -18,6 +18,8 @@ type FeatureEngineeringFeature struct {
 
 	// The description of the feature
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The entity columns for the feature, used as aggregation keys and for query-time lookup
+	Entities FeatureEngineeringFeatureEntityArrayOutput `pulumi:"entities"`
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition pulumi.StringPtrOutput `pulumi:"filterCondition"`
@@ -41,6 +43,8 @@ type FeatureEngineeringFeature struct {
 	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow FeatureEngineeringFeatureTimeWindowPtrOutput `pulumi:"timeWindow"`
+	// Column recording time, used for point-in-time joins, backfills, and aggregations
+	TimeseriesColumn FeatureEngineeringFeatureTimeseriesColumnPtrOutput `pulumi:"timeseriesColumn"`
 }
 
 // NewFeatureEngineeringFeature registers a new resource with the given unique name, arguments, and options.
@@ -55,9 +59,6 @@ func NewFeatureEngineeringFeature(ctx *pulumi.Context,
 	}
 	if args.Function == nil {
 		return nil, errors.New("invalid value for required argument 'Function'")
-	}
-	if args.Inputs == nil {
-		return nil, errors.New("invalid value for required argument 'Inputs'")
 	}
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
@@ -87,6 +88,8 @@ func GetFeatureEngineeringFeature(ctx *pulumi.Context,
 type featureEngineeringFeatureState struct {
 	// The description of the feature
 	Description *string `pulumi:"description"`
+	// The entity columns for the feature, used as aggregation keys and for query-time lookup
+	Entities []FeatureEngineeringFeatureEntity `pulumi:"entities"`
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition *string `pulumi:"filterCondition"`
@@ -110,11 +113,15 @@ type featureEngineeringFeatureState struct {
 	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow *FeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
+	// Column recording time, used for point-in-time joins, backfills, and aggregations
+	TimeseriesColumn *FeatureEngineeringFeatureTimeseriesColumn `pulumi:"timeseriesColumn"`
 }
 
 type FeatureEngineeringFeatureState struct {
 	// The description of the feature
 	Description pulumi.StringPtrInput
+	// The entity columns for the feature, used as aggregation keys and for query-time lookup
+	Entities FeatureEngineeringFeatureEntityArrayInput
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition pulumi.StringPtrInput
@@ -138,6 +145,8 @@ type FeatureEngineeringFeatureState struct {
 	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow FeatureEngineeringFeatureTimeWindowPtrInput
+	// Column recording time, used for point-in-time joins, backfills, and aggregations
+	TimeseriesColumn FeatureEngineeringFeatureTimeseriesColumnPtrInput
 }
 
 func (FeatureEngineeringFeatureState) ElementType() reflect.Type {
@@ -147,6 +156,8 @@ func (FeatureEngineeringFeatureState) ElementType() reflect.Type {
 type featureEngineeringFeatureArgs struct {
 	// The description of the feature
 	Description *string `pulumi:"description"`
+	// The entity columns for the feature, used as aggregation keys and for query-time lookup
+	Entities []FeatureEngineeringFeatureEntity `pulumi:"entities"`
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition *string `pulumi:"filterCondition"`
@@ -170,12 +181,16 @@ type featureEngineeringFeatureArgs struct {
 	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow *FeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
+	// Column recording time, used for point-in-time joins, backfills, and aggregations
+	TimeseriesColumn *FeatureEngineeringFeatureTimeseriesColumn `pulumi:"timeseriesColumn"`
 }
 
 // The set of arguments for constructing a FeatureEngineeringFeature resource.
 type FeatureEngineeringFeatureArgs struct {
 	// The description of the feature
 	Description pulumi.StringPtrInput
+	// The entity columns for the feature, used as aggregation keys and for query-time lookup
+	Entities FeatureEngineeringFeatureEntityArrayInput
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition pulumi.StringPtrInput
@@ -199,6 +214,8 @@ type FeatureEngineeringFeatureArgs struct {
 	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
 	// The time window in which the feature is computed
 	TimeWindow FeatureEngineeringFeatureTimeWindowPtrInput
+	// Column recording time, used for point-in-time joins, backfills, and aggregations
+	TimeseriesColumn FeatureEngineeringFeatureTimeseriesColumnPtrInput
 }
 
 func (FeatureEngineeringFeatureArgs) ElementType() reflect.Type {
@@ -293,6 +310,11 @@ func (o FeatureEngineeringFeatureOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The entity columns for the feature, used as aggregation keys and for query-time lookup
+func (o FeatureEngineeringFeatureOutput) Entities() FeatureEngineeringFeatureEntityArrayOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureEntityArrayOutput { return v.Entities }).(FeatureEngineeringFeatureEntityArrayOutput)
+}
+
 // Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 // The filter condition applied to the source data before aggregation
 func (o FeatureEngineeringFeatureOutput) FilterCondition() pulumi.StringPtrOutput {
@@ -342,6 +364,13 @@ func (o FeatureEngineeringFeatureOutput) Source() FeatureEngineeringFeatureSourc
 // The time window in which the feature is computed
 func (o FeatureEngineeringFeatureOutput) TimeWindow() FeatureEngineeringFeatureTimeWindowPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureTimeWindowPtrOutput { return v.TimeWindow }).(FeatureEngineeringFeatureTimeWindowPtrOutput)
+}
+
+// Column recording time, used for point-in-time joins, backfills, and aggregations
+func (o FeatureEngineeringFeatureOutput) TimeseriesColumn() FeatureEngineeringFeatureTimeseriesColumnPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureTimeseriesColumnPtrOutput {
+		return v.TimeseriesColumn
+	}).(FeatureEngineeringFeatureTimeseriesColumnPtrOutput)
 }
 
 type FeatureEngineeringFeatureArrayOutput struct{ *pulumi.OutputState }

@@ -18,6 +18,31 @@ import (
 // > **Note** This data source requires workspace admin permissions.
 //
 // ## Example Usage
+//
+// ### List All Overrides
+// Returns a list of all default warehouse overrides in the workspace:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetWarehousesDefaultWarehouseOverrides(ctx, &databricks.GetWarehousesDefaultWarehouseOverridesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetWarehousesDefaultWarehouseOverrides(ctx *pulumi.Context, args *GetWarehousesDefaultWarehouseOverridesArgs, opts ...pulumi.InvokeOption) (*GetWarehousesDefaultWarehouseOverridesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWarehousesDefaultWarehouseOverridesResult

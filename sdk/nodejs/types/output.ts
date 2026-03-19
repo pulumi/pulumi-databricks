@@ -2492,6 +2492,20 @@ export interface EntityTagAssignmentProviderConfig {
     workspaceId: string;
 }
 
+export interface EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface EnvironmentsWorkspaceBaseEnvironmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface ExternalLocationEncryptionDetails {
     /**
      * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
@@ -2618,7 +2632,15 @@ export interface ExternalMetadataProviderConfig {
     workspaceId: string;
 }
 
+export interface FeatureEngineeringFeatureEntity {
+    name: string;
+}
+
 export interface FeatureEngineeringFeatureFunction {
+    /**
+     * An aggregation function applied over a time window
+     */
+    aggregationFunction?: outputs.FeatureEngineeringFeatureFunctionAggregationFunction;
     /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -2628,7 +2650,118 @@ export interface FeatureEngineeringFeatureFunction {
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
-    functionType: string;
+    functionType?: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunction {
+    approxCountDistinct?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct;
+    approxPercentile?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile;
+    avg?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionAvg;
+    countFunction?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunction;
+    first?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirst;
+    last?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionLast;
+    max?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionMax;
+    min?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionMin;
+    stddevPop?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop;
+    stddevSamp?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp;
+    sum?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionSum;
+    /**
+     * Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+     * The time window in which the feature is computed
+     */
+    timeWindow?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow;
+    varPop?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarPop;
+    varSamp?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct {
+    input: string;
+    /**
+     * The maximum relative standard deviation allowed (default defined by Spark)
+     */
+    relativeSd?: number;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile {
+    /**
+     * The accuracy parameter (higher is more accurate but slower)
+     */
+    accuracy?: number;
+    input: string;
+    /**
+     * The percentile value to compute (between 0 and 1)
+     */
+    percentile: number;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionAvg {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionCountFunction {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionFirst {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionLast {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionMax {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionMin {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
+    continuous?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
+    sliding?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
+    tumbling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
+    /**
+     * The offset of the continuous window (must be non-positive)
+     */
+    offset?: string;
+    windowDuration: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
+    /**
+     * The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration: string;
+    windowDuration: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling {
+    windowDuration: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionVarPop {
+    input: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp {
+    input: string;
 }
 
 export interface FeatureEngineeringFeatureFunctionExtraParameter {
@@ -2687,7 +2820,7 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns: string[];
+    entityColumns?: string[];
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -2698,10 +2831,9 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      */
     fullName: string;
     /**
-     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
+     * Column recording time, used for point-in-time joins, backfills, and aggregations
      */
-    timeseriesColumn: string;
+    timeseriesColumn?: string;
     /**
      * A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -2715,16 +2847,18 @@ export interface FeatureEngineeringFeatureSourceKafkaSource {
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity column identifiers of the Kafka source
      */
-    entityColumnIdentifiers: outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
+    entityColumnIdentifiers?: outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
     /**
-     * Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
      */
+    filterCondition?: string;
     name: string;
     /**
      * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column identifier of the Kafka source
      */
-    timeseriesColumnIdentifier: outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
+    timeseriesColumnIdentifier?: outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
@@ -2769,6 +2903,10 @@ export interface FeatureEngineeringFeatureTimeWindowTumbling {
     windowDuration: string;
 }
 
+export interface FeatureEngineeringFeatureTimeseriesColumn {
+    name: string;
+}
+
 export interface FeatureEngineeringKafkaConfigAuthConfig {
     /**
      * Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
@@ -2795,7 +2933,7 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns: string[];
+    entityColumns?: string[];
     /**
      * Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
@@ -2808,7 +2946,7 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
-    timeseriesColumn: string;
+    timeseriesColumn?: string;
     /**
      * A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -8022,6 +8160,87 @@ export interface GetEntityTagAssignmentsTagAssignmentProviderConfig {
     workspaceId: string;
 }
 
+export interface GetEnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment {
+    /**
+     * (string) - The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+     */
+    baseEnvironmentType: string;
+    /**
+     * (string) - Timestamp when the environment was created
+     */
+    createTime: string;
+    /**
+     * (string) - User ID of the creator
+     */
+    creatorUserId: string;
+    /**
+     * (string) - Human-readable display name for the workspace base environment
+     */
+    displayName: string;
+    effectiveBaseEnvironmentType: string;
+    /**
+     * (string) - The WSFS or UC Volumes path to the environment YAML file
+     */
+    filepath: string;
+    /**
+     * (boolean) - Whether this is the default environment for the workspace
+     */
+    isDefault: boolean;
+    /**
+     * (string) - User ID of the last user who updated the environment
+     */
+    lastUpdatedUserId: string;
+    /**
+     * (string) - Status message providing additional details about the environment status
+     */
+    message: string;
+    /**
+     * (string) - The resource name of the workspace base environment.
+     * Format: workspace-base-environments/{workspace-base-environment}
+     */
+    name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentProviderConfig;
+    /**
+     * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+     */
+    status: string;
+    /**
+     * (string) - Timestamp when the environment was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetExternalLocationExternalLocationInfo {
     browseOnly?: boolean;
     /**
@@ -8242,7 +8461,18 @@ export interface GetExternalMetadatasProviderConfig {
     workspaceId: string;
 }
 
+export interface GetFeatureEngineeringFeatureEntity {
+    /**
+     * (string) - The name of the timeseries column
+     */
+    name: string;
+}
+
 export interface GetFeatureEngineeringFeatureFunction {
+    /**
+     * (AggregationFunction) - An aggregation function applied over a time window
+     */
+    aggregationFunction?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunction;
     /**
      * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -8252,7 +8482,213 @@ export interface GetFeatureEngineeringFeatureFunction {
      * (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
-    functionType: string;
+    functionType?: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunction {
+    /**
+     * (ApproxCountDistinctFunction)
+     */
+    approxCountDistinct?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct;
+    /**
+     * (ApproxPercentileFunction)
+     */
+    approxPercentile?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile;
+    /**
+     * (AvgFunction)
+     */
+    avg?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionAvg;
+    /**
+     * (CountFunction)
+     */
+    countFunction?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionCountFunction;
+    /**
+     * (FirstFunction)
+     */
+    first?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionFirst;
+    /**
+     * (LastFunction)
+     */
+    last?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionLast;
+    /**
+     * (MaxFunction)
+     */
+    max?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionMax;
+    /**
+     * (MinFunction)
+     */
+    min?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionMin;
+    /**
+     * (StddevPopFunction)
+     */
+    stddevPop?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionStddevPop;
+    /**
+     * (StddevSampFunction)
+     */
+    stddevSamp?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp;
+    /**
+     * (SumFunction)
+     */
+    sum?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionSum;
+    /**
+     * (TimeWindow) - The time window over which the aggregation is computed
+     */
+    timeWindow?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow;
+    /**
+     * (VarPopFunction)
+     */
+    varPop?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionVarPop;
+    /**
+     * (VarSampFunction)
+     */
+    varSamp?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionVarSamp;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (number) - The maximum relative standard deviation allowed (default defined by Spark)
+     */
+    relativeSd?: number;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile {
+    /**
+     * (integer) - The accuracy parameter (higher is more accurate but slower)
+     */
+    accuracy?: number;
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (number) - The percentile value to compute (between 0 and 1)
+     */
+    percentile: number;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionAvg {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionCountFunction {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionFirst {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionLast {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionMax {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionMin {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionStddevPop {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionSum {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
+    /**
+     * (ContinuousWindow)
+     */
+    continuous?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
+    /**
+     * (SlidingWindow)
+     */
+    sliding?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
+    /**
+     * (TumblingWindow)
+     */
+    tumbling?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
+    /**
+     * (string) - The offset of the continuous window (must be non-positive)
+     */
+    offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
+    /**
+     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling {
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionVarPop {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionVarSamp {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
 }
 
 export interface GetFeatureEngineeringFeatureFunctionExtraParameter {
@@ -8317,9 +8753,9 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
      * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns: string[];
+    entityColumns?: string[];
     /**
-     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     * (string) - The filter condition applied to the source data before aggregation
      */
     filterCondition?: string;
     /**
@@ -8330,7 +8766,7 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
      * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
-    timeseriesColumn: string;
+    timeseriesColumn?: string;
     /**
      * (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -8344,16 +8780,20 @@ export interface GetFeatureEngineeringFeatureSourceKafkaSource {
      * (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity column identifiers of the Kafka source
      */
-    entityColumnIdentifiers: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
+    entityColumnIdentifiers?: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
     /**
-     * (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
+    /**
+     * (string) - The name of the timeseries column
      */
     name: string;
     /**
      * (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column identifier of the Kafka source
      */
-    timeseriesColumnIdentifier: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
+    timeseriesColumnIdentifier?: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
 }
 
 export interface GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
@@ -8416,13 +8856,24 @@ export interface GetFeatureEngineeringFeatureTimeWindowTumbling {
     windowDuration: string;
 }
 
+export interface GetFeatureEngineeringFeatureTimeseriesColumn {
+    /**
+     * (string) - The name of the timeseries column
+     */
+    name: string;
+}
+
 export interface GetFeatureEngineeringFeaturesFeature {
     /**
      * (string) - The description of the feature
      */
     description: string;
     /**
-     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     * (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+     */
+    entities: outputs.GetFeatureEngineeringFeaturesFeatureEntity[];
+    /**
+     * (string) - The filter condition applied to the source data before aggregation
      */
     filterCondition: string;
     /**
@@ -8455,13 +8906,28 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     source: outputs.GetFeatureEngineeringFeaturesFeatureSource;
     /**
-     * (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-     * The time window in which the feature is computed
+     * (TimeWindow) - The time window over which the aggregation is computed
      */
     timeWindow: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindow;
+    /**
+     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
+     */
+    timeseriesColumn: outputs.GetFeatureEngineeringFeaturesFeatureTimeseriesColumn;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureEntity {
+    /**
+     * (string) - The name of the timeseries column
+     */
+    name: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunction {
+    /**
+     * (AggregationFunction) - An aggregation function applied over a time window
+     */
+    aggregationFunction?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction;
     /**
      * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -8471,7 +8937,213 @@ export interface GetFeatureEngineeringFeaturesFeatureFunction {
      * (string, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
-    functionType: string;
+    functionType?: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction {
+    /**
+     * (ApproxCountDistinctFunction)
+     */
+    approxCountDistinct?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxCountDistinct;
+    /**
+     * (ApproxPercentileFunction)
+     */
+    approxPercentile?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPercentile;
+    /**
+     * (AvgFunction)
+     */
+    avg?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionAvg;
+    /**
+     * (CountFunction)
+     */
+    countFunction?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionCountFunction;
+    /**
+     * (FirstFunction)
+     */
+    first?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirst;
+    /**
+     * (LastFunction)
+     */
+    last?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLast;
+    /**
+     * (MaxFunction)
+     */
+    max?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionMax;
+    /**
+     * (MinFunction)
+     */
+    min?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionMin;
+    /**
+     * (StddevPopFunction)
+     */
+    stddevPop?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionStddevPop;
+    /**
+     * (StddevSampFunction)
+     */
+    stddevSamp?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionStddevSamp;
+    /**
+     * (SumFunction)
+     */
+    sum?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionSum;
+    /**
+     * (TimeWindow) - The time window over which the aggregation is computed
+     */
+    timeWindow?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindow;
+    /**
+     * (VarPopFunction)
+     */
+    varPop?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionVarPop;
+    /**
+     * (VarSampFunction)
+     */
+    varSamp?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionVarSamp;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxCountDistinct {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (number) - The maximum relative standard deviation allowed (default defined by Spark)
+     */
+    relativeSd?: number;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionApproxPercentile {
+    /**
+     * (integer) - The accuracy parameter (higher is more accurate but slower)
+     */
+    accuracy?: number;
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+    /**
+     * (number) - The percentile value to compute (between 0 and 1)
+     */
+    percentile: number;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionAvg {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionCountFunction {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionFirst {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionLast {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionMax {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionMin {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionStddevPop {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionStddevSamp {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionSum {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindow {
+    /**
+     * (ContinuousWindow)
+     */
+    continuous?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous;
+    /**
+     * (SlidingWindow)
+     */
+    sliding?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding;
+    /**
+     * (TumblingWindow)
+     */
+    tumbling?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumbling;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous {
+    /**
+     * (string) - The offset of the continuous window (must be non-positive)
+     */
+    offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding {
+    /**
+     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumbling {
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionVarPop {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionVarSamp {
+    /**
+     * (string) - The input column from which the sample variance is computed
+     */
+    input: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter {
@@ -8536,9 +9208,9 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns: string[];
+    entityColumns?: string[];
     /**
-     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     * (string) - The filter condition applied to the source data before aggregation
      */
     filterCondition?: string;
     /**
@@ -8549,7 +9221,7 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
-    timeseriesColumn: string;
+    timeseriesColumn?: string;
     /**
      * (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -8563,16 +9235,20 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
      * (list of ColumnIdentifier, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity column identifiers of the Kafka source
      */
-    entityColumnIdentifiers: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier[];
+    entityColumnIdentifiers?: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier[];
     /**
-     * (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
+    /**
+     * (string) - The name of the timeseries column
      */
     name: string;
     /**
      * (ColumnIdentifier, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column identifier of the Kafka source
      */
-    timeseriesColumnIdentifier: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
+    timeseriesColumnIdentifier?: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier {
@@ -8635,6 +9311,13 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowTumbling {
     windowDuration: string;
 }
 
+export interface GetFeatureEngineeringFeaturesFeatureTimeseriesColumn {
+    /**
+     * (string) - The name of the timeseries column
+     */
+    name: string;
+}
+
 export interface GetFeatureEngineeringFeaturesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -8668,7 +9351,7 @@ export interface GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource 
      * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns: string[];
+    entityColumns?: string[];
     /**
      * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
@@ -8681,7 +9364,7 @@ export interface GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource 
      * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
-    timeseriesColumn: string;
+    timeseriesColumn?: string;
     /**
      * (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -8795,7 +9478,7 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDelta
      * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns: string[];
+    entityColumns?: string[];
     /**
      * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
@@ -8808,7 +9491,7 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDelta
      * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
-    timeseriesColumn: string;
+    timeseriesColumn?: string;
     /**
      * (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -12914,6 +13597,212 @@ export interface GetPostgresProjectsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetPostgresRoleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresRoleSpec {
+    /**
+     * (RoleAttributes) - The PG role attributes associated with the role
+     */
+    attributes?: outputs.GetPostgresRoleSpecAttributes;
+    /**
+     * (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     */
+    authMethod?: string;
+    /**
+     * (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     */
+    identityType?: string;
+    /**
+     * (list of string) - An enum value for a standard role that this role is a member of
+     */
+    membershipRoles?: string[];
+    /**
+     * (string) - The name of the Postgres role
+     */
+    postgresRole?: string;
+}
+
+export interface GetPostgresRoleSpecAttributes {
+    /**
+     * (boolean)
+     */
+    bypassrls?: boolean;
+    /**
+     * (boolean)
+     */
+    createdb?: boolean;
+    /**
+     * (boolean)
+     */
+    createrole?: boolean;
+}
+
+export interface GetPostgresRoleStatus {
+    /**
+     * (RoleAttributes) - The PG role attributes associated with the role
+     */
+    attributes?: outputs.GetPostgresRoleStatusAttributes;
+    /**
+     * (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     */
+    authMethod?: string;
+    /**
+     * (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     */
+    identityType?: string;
+    /**
+     * (list of string) - An enum value for a standard role that this role is a member of
+     */
+    membershipRoles?: string[];
+    /**
+     * (string) - The name of the Postgres role
+     */
+    postgresRole?: string;
+}
+
+export interface GetPostgresRoleStatusAttributes {
+    /**
+     * (boolean)
+     */
+    bypassrls?: boolean;
+    /**
+     * (boolean)
+     */
+    createdb?: boolean;
+    /**
+     * (boolean)
+     */
+    createrole?: boolean;
+}
+
+export interface GetPostgresRolesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresRolesRole {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Output only. The full resource path of the role.
+     * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+     */
+    name: string;
+    /**
+     * The Branch that owns this collection of roles.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    parent: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetPostgresRolesRoleProviderConfig;
+    /**
+     * (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+     */
+    spec: outputs.GetPostgresRolesRoleSpec;
+    /**
+     * (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
+     */
+    status: outputs.GetPostgresRolesRoleStatus;
+    /**
+     * (string)
+     */
+    updateTime: string;
+}
+
+export interface GetPostgresRolesRoleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresRolesRoleSpec {
+    /**
+     * (RoleAttributes) - The PG role attributes associated with the role
+     */
+    attributes?: outputs.GetPostgresRolesRoleSpecAttributes;
+    /**
+     * (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     */
+    authMethod?: string;
+    /**
+     * (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     */
+    identityType?: string;
+    /**
+     * (list of string) - An enum value for a standard role that this role is a member of
+     */
+    membershipRoles?: string[];
+    /**
+     * (string) - The name of the Postgres role
+     */
+    postgresRole?: string;
+}
+
+export interface GetPostgresRolesRoleSpecAttributes {
+    /**
+     * (boolean)
+     */
+    bypassrls?: boolean;
+    /**
+     * (boolean)
+     */
+    createdb?: boolean;
+    /**
+     * (boolean)
+     */
+    createrole?: boolean;
+}
+
+export interface GetPostgresRolesRoleStatus {
+    /**
+     * (RoleAttributes) - The PG role attributes associated with the role
+     */
+    attributes?: outputs.GetPostgresRolesRoleStatusAttributes;
+    /**
+     * (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     */
+    authMethod?: string;
+    /**
+     * (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     */
+    identityType?: string;
+    /**
+     * (list of string) - An enum value for a standard role that this role is a member of
+     */
+    membershipRoles?: string[];
+    /**
+     * (string) - The name of the Postgres role
+     */
+    postgresRole?: string;
+}
+
+export interface GetPostgresRolesRoleStatusAttributes {
+    /**
+     * (boolean)
+     */
+    bypassrls?: boolean;
+    /**
+     * (boolean)
+     */
+    createdb?: boolean;
+    /**
+     * (boolean)
+     */
+    createrole?: boolean;
+}
+
 export interface GetQualityMonitorV2AnomalyDetectionConfig {
     /**
      * (list of string) - List of fully qualified table names to exclude from anomaly detection
@@ -16029,6 +16918,7 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    alertTask?: outputs.JobTaskAlertTask;
     cleanRoomsNotebookTask?: outputs.JobTaskCleanRoomsNotebookTask;
     /**
      * Task level compute configuration. This block is documented below.
@@ -16126,6 +17016,27 @@ export interface JobTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: outputs.JobTaskWebhookNotifications;
+}
+
+export interface JobTaskAlertTask {
+    /**
+     * (String) identifier of the Databricks Alert (databricks_alert).
+     */
+    alertId?: string;
+    /**
+     * The list of subscribers to send the snapshot of the dashboard to.
+     */
+    subscribers?: outputs.JobTaskAlertTaskSubscriber[];
+    warehouseId?: string;
+    workspacePath?: string;
+}
+
+export interface JobTaskAlertTaskSubscriber {
+    /**
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
+     */
+    destinationId?: string;
+    userName?: string;
 }
 
 export interface JobTaskCleanRoomsNotebookTask {
@@ -16324,6 +17235,7 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
+    alertTask?: outputs.JobTaskForEachTaskTaskAlertTask;
     cleanRoomsNotebookTask?: outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
     /**
      * Task level compute configuration. This block is documented below.
@@ -16420,6 +17332,27 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: outputs.JobTaskForEachTaskTaskWebhookNotifications;
+}
+
+export interface JobTaskForEachTaskTaskAlertTask {
+    /**
+     * (String) identifier of the Databricks Alert (databricks_alert).
+     */
+    alertId?: string;
+    /**
+     * The list of subscribers to send the snapshot of the dashboard to.
+     */
+    subscribers?: outputs.JobTaskForEachTaskTaskAlertTaskSubscriber[];
+    warehouseId?: string;
+    workspacePath?: string;
+}
+
+export interface JobTaskForEachTaskTaskAlertTaskSubscriber {
+    /**
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
+     */
+    destinationId?: string;
+    userName?: string;
 }
 
 export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
@@ -19503,11 +20436,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -19574,11 +20507,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -20104,6 +21037,8 @@ export interface PipelineGatewayDefinitionConnectionParameters {
 
 export interface PipelineIngestionDefinition {
     connectionName?: string;
+    connectorType?: string;
+    dataStagingOptions?: outputs.PipelineIngestionDefinitionDataStagingOptions;
     fullRefreshWindow?: outputs.PipelineIngestionDefinitionFullRefreshWindow;
     ingestFromUcForeignCatalog?: boolean;
     ingestionGatewayId?: string;
@@ -20112,6 +21047,12 @@ export interface PipelineIngestionDefinition {
     sourceConfigurations?: outputs.PipelineIngestionDefinitionSourceConfiguration[];
     sourceType?: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionTableConfiguration;
+}
+
+export interface PipelineIngestionDefinitionDataStagingOptions {
+    catalogName: string;
+    schemaName: string;
+    volumeName?: string;
 }
 
 export interface PipelineIngestionDefinitionFullRefreshWindow {
@@ -20889,6 +21830,41 @@ export interface PostgresProjectStatusDefaultEndpointSettings {
      * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: string;
+}
+
+export interface PostgresRoleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface PostgresRoleSpec {
+    attributes?: outputs.PostgresRoleSpecAttributes;
+    authMethod?: string;
+    identityType?: string;
+    membershipRoles?: string[];
+    postgresRole?: string;
+}
+
+export interface PostgresRoleSpecAttributes {
+    bypassrls?: boolean;
+    createdb?: boolean;
+    createrole?: boolean;
+}
+
+export interface PostgresRoleStatus {
+    attributes?: outputs.PostgresRoleStatusAttributes;
+    authMethod?: string;
+    identityType?: string;
+    membershipRoles?: string[];
+    postgresRole?: string;
+}
+
+export interface PostgresRoleStatusAttributes {
+    bypassrls?: boolean;
+    createdb?: boolean;
+    createrole?: boolean;
 }
 
 export interface QualityMonitorCustomMetric {

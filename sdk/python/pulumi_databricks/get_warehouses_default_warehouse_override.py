@@ -127,6 +127,17 @@ def get_warehouses_default_warehouse_override(name: Optional[_builtins.str] = No
 
     ## Example Usage
 
+    ### Get a User's Override
+    This example retrieves the default warehouse override for a specific user.
+    The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    user = databricks.get_warehouses_default_warehouse_override(name=f"default-warehouse-overrides/{example['id']}")
+    ```
+
 
     :param _builtins.str name: The resource name of the default warehouse override.
            Format: default-warehouse-overrides/{default_warehouse_override_id}
@@ -161,6 +172,17 @@ def get_warehouses_default_warehouse_override_output(name: Optional[pulumi.Input
     > **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `default_warehouse_override_id` represents a user ID.
 
     ## Example Usage
+
+    ### Get a User's Override
+    This example retrieves the default warehouse override for a specific user.
+    The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    user = databricks.get_warehouses_default_warehouse_override(name=f"default-warehouse-overrides/{example['id']}")
+    ```
 
 
     :param _builtins.str name: The resource name of the default warehouse override.

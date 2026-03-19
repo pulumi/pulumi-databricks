@@ -40,9 +40,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewDefaultWarehouseOverride(ctx, "last_selected", &databricks.DefaultWarehouseOverrideArgs{
-//				DefaultWarehouseOverrideId: example.Id,
-//				Type:                       "LAST_SELECTED",
+//			_, err := databricks.NewWarehousesDefaultWarehouseOverride(ctx, "last_selected", &databricks.WarehousesDefaultWarehouseOverrideArgs{
+//				DefaultWarehouseOverrideId: pulumi.Any(example.Id),
+//				Type:                       pulumi.String("LAST_SELECTED"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,10 +68,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewDefaultWarehouseOverride(ctx, "custom", &databricks.DefaultWarehouseOverrideArgs{
-//				DefaultWarehouseOverrideId: example.Id,
-//				Type:                       "CUSTOM",
-//				WarehouseId:                exampleDatabricksSqlEndpoint.Id,
+//			_, err := databricks.NewWarehousesDefaultWarehouseOverride(ctx, "custom", &databricks.WarehousesDefaultWarehouseOverrideArgs{
+//				DefaultWarehouseOverrideId: pulumi.Any(example.Id),
+//				Type:                       pulumi.String("CUSTOM"),
+//				WarehouseId:                pulumi.Any(exampleDatabricksSqlEndpoint.Id),
 //			})
 //			if err != nil {
 //				return err

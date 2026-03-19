@@ -210,6 +210,16 @@ export type EntityTagAssignment = import("./entityTagAssignment").EntityTagAssig
 export const EntityTagAssignment: typeof import("./entityTagAssignment").EntityTagAssignment = null as any;
 utilities.lazyLoad(exports, ["EntityTagAssignment"], () => require("./entityTagAssignment"));
 
+export { EnvironmentsDefaultWorkspaceBaseEnvironmentArgs, EnvironmentsDefaultWorkspaceBaseEnvironmentState } from "./environmentsDefaultWorkspaceBaseEnvironment";
+export type EnvironmentsDefaultWorkspaceBaseEnvironment = import("./environmentsDefaultWorkspaceBaseEnvironment").EnvironmentsDefaultWorkspaceBaseEnvironment;
+export const EnvironmentsDefaultWorkspaceBaseEnvironment: typeof import("./environmentsDefaultWorkspaceBaseEnvironment").EnvironmentsDefaultWorkspaceBaseEnvironment = null as any;
+utilities.lazyLoad(exports, ["EnvironmentsDefaultWorkspaceBaseEnvironment"], () => require("./environmentsDefaultWorkspaceBaseEnvironment"));
+
+export { EnvironmentsWorkspaceBaseEnvironmentArgs, EnvironmentsWorkspaceBaseEnvironmentState } from "./environmentsWorkspaceBaseEnvironment";
+export type EnvironmentsWorkspaceBaseEnvironment = import("./environmentsWorkspaceBaseEnvironment").EnvironmentsWorkspaceBaseEnvironment;
+export const EnvironmentsWorkspaceBaseEnvironment: typeof import("./environmentsWorkspaceBaseEnvironment").EnvironmentsWorkspaceBaseEnvironment = null as any;
+utilities.lazyLoad(exports, ["EnvironmentsWorkspaceBaseEnvironment"], () => require("./environmentsWorkspaceBaseEnvironment"));
+
 export { ExternalLocationArgs, ExternalLocationState } from "./externalLocation";
 export type ExternalLocation = import("./externalLocation").ExternalLocation;
 export const ExternalLocation: typeof import("./externalLocation").ExternalLocation = null as any;
@@ -480,6 +490,21 @@ export const getEntityTagAssignments: typeof import("./getEntityTagAssignments")
 export const getEntityTagAssignmentsOutput: typeof import("./getEntityTagAssignments").getEntityTagAssignmentsOutput = null as any;
 utilities.lazyLoad(exports, ["getEntityTagAssignments","getEntityTagAssignmentsOutput"], () => require("./getEntityTagAssignments"));
 
+export { GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs, GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult, GetEnvironmentsDefaultWorkspaceBaseEnvironmentOutputArgs } from "./getEnvironmentsDefaultWorkspaceBaseEnvironment";
+export const getEnvironmentsDefaultWorkspaceBaseEnvironment: typeof import("./getEnvironmentsDefaultWorkspaceBaseEnvironment").getEnvironmentsDefaultWorkspaceBaseEnvironment = null as any;
+export const getEnvironmentsDefaultWorkspaceBaseEnvironmentOutput: typeof import("./getEnvironmentsDefaultWorkspaceBaseEnvironment").getEnvironmentsDefaultWorkspaceBaseEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironmentsDefaultWorkspaceBaseEnvironment","getEnvironmentsDefaultWorkspaceBaseEnvironmentOutput"], () => require("./getEnvironmentsDefaultWorkspaceBaseEnvironment"));
+
+export { GetEnvironmentsWorkspaceBaseEnvironmentArgs, GetEnvironmentsWorkspaceBaseEnvironmentResult, GetEnvironmentsWorkspaceBaseEnvironmentOutputArgs } from "./getEnvironmentsWorkspaceBaseEnvironment";
+export const getEnvironmentsWorkspaceBaseEnvironment: typeof import("./getEnvironmentsWorkspaceBaseEnvironment").getEnvironmentsWorkspaceBaseEnvironment = null as any;
+export const getEnvironmentsWorkspaceBaseEnvironmentOutput: typeof import("./getEnvironmentsWorkspaceBaseEnvironment").getEnvironmentsWorkspaceBaseEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironmentsWorkspaceBaseEnvironment","getEnvironmentsWorkspaceBaseEnvironmentOutput"], () => require("./getEnvironmentsWorkspaceBaseEnvironment"));
+
+export { GetEnvironmentsWorkspaceBaseEnvironmentsArgs, GetEnvironmentsWorkspaceBaseEnvironmentsResult, GetEnvironmentsWorkspaceBaseEnvironmentsOutputArgs } from "./getEnvironmentsWorkspaceBaseEnvironments";
+export const getEnvironmentsWorkspaceBaseEnvironments: typeof import("./getEnvironmentsWorkspaceBaseEnvironments").getEnvironmentsWorkspaceBaseEnvironments = null as any;
+export const getEnvironmentsWorkspaceBaseEnvironmentsOutput: typeof import("./getEnvironmentsWorkspaceBaseEnvironments").getEnvironmentsWorkspaceBaseEnvironmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironmentsWorkspaceBaseEnvironments","getEnvironmentsWorkspaceBaseEnvironmentsOutput"], () => require("./getEnvironmentsWorkspaceBaseEnvironments"));
+
 export { GetExternalLocationArgs, GetExternalLocationResult, GetExternalLocationOutputArgs } from "./getExternalLocation";
 export const getExternalLocation: typeof import("./getExternalLocation").getExternalLocation = null as any;
 export const getExternalLocationOutput: typeof import("./getExternalLocation").getExternalLocationOutput = null as any;
@@ -719,6 +744,16 @@ export { GetPostgresProjectsArgs, GetPostgresProjectsResult, GetPostgresProjects
 export const getPostgresProjects: typeof import("./getPostgresProjects").getPostgresProjects = null as any;
 export const getPostgresProjectsOutput: typeof import("./getPostgresProjects").getPostgresProjectsOutput = null as any;
 utilities.lazyLoad(exports, ["getPostgresProjects","getPostgresProjectsOutput"], () => require("./getPostgresProjects"));
+
+export { GetPostgresRoleArgs, GetPostgresRoleResult, GetPostgresRoleOutputArgs } from "./getPostgresRole";
+export const getPostgresRole: typeof import("./getPostgresRole").getPostgresRole = null as any;
+export const getPostgresRoleOutput: typeof import("./getPostgresRole").getPostgresRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresRole","getPostgresRoleOutput"], () => require("./getPostgresRole"));
+
+export { GetPostgresRolesArgs, GetPostgresRolesResult, GetPostgresRolesOutputArgs } from "./getPostgresRoles";
+export const getPostgresRoles: typeof import("./getPostgresRoles").getPostgresRoles = null as any;
+export const getPostgresRolesOutput: typeof import("./getPostgresRoles").getPostgresRolesOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresRoles","getPostgresRolesOutput"], () => require("./getPostgresRoles"));
 
 export { GetQualityMonitorV2Args, GetQualityMonitorV2Result, GetQualityMonitorV2OutputArgs } from "./getQualityMonitorV2";
 export const getQualityMonitorV2: typeof import("./getQualityMonitorV2").getQualityMonitorV2 = null as any;
@@ -1155,6 +1190,11 @@ export type PostgresProject = import("./postgresProject").PostgresProject;
 export const PostgresProject: typeof import("./postgresProject").PostgresProject = null as any;
 utilities.lazyLoad(exports, ["PostgresProject"], () => require("./postgresProject"));
 
+export { PostgresRoleArgs, PostgresRoleState } from "./postgresRole";
+export type PostgresRole = import("./postgresRole").PostgresRole;
+export const PostgresRole: typeof import("./postgresRole").PostgresRole = null as any;
+utilities.lazyLoad(exports, ["PostgresRole"], () => require("./postgresRole"));
+
 export * from "./provider";
 import { Provider } from "./provider";
 
@@ -1474,6 +1514,10 @@ const _module = {
                 return new Entitlements(name, <any>undefined, { urn })
             case "databricks:index/entityTagAssignment:EntityTagAssignment":
                 return new EntityTagAssignment(name, <any>undefined, { urn })
+            case "databricks:index/environmentsDefaultWorkspaceBaseEnvironment:EnvironmentsDefaultWorkspaceBaseEnvironment":
+                return new EnvironmentsDefaultWorkspaceBaseEnvironment(name, <any>undefined, { urn })
+            case "databricks:index/environmentsWorkspaceBaseEnvironment:EnvironmentsWorkspaceBaseEnvironment":
+                return new EnvironmentsWorkspaceBaseEnvironment(name, <any>undefined, { urn })
             case "databricks:index/externalLocation:ExternalLocation":
                 return new ExternalLocation(name, <any>undefined, { urn })
             case "databricks:index/externalMetadata:ExternalMetadata":
@@ -1590,6 +1634,8 @@ const _module = {
                 return new PostgresEndpoint(name, <any>undefined, { urn })
             case "databricks:index/postgresProject:PostgresProject":
                 return new PostgresProject(name, <any>undefined, { urn })
+            case "databricks:index/postgresRole:PostgresRole":
+                return new PostgresRole(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitor:QualityMonitor":
                 return new QualityMonitor(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitorV2:QualityMonitorV2":
@@ -1724,6 +1770,8 @@ pulumi.runtime.registerResourceModule("databricks", "index/endpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/enhancedSecurityMonitoringWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entityTagAssignment", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/environmentsDefaultWorkspaceBaseEnvironment", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/environmentsWorkspaceBaseEnvironment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalMetadata", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/featureEngineeringFeature", _module)
@@ -1782,6 +1830,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/postgresBranch", _mod
 pulumi.runtime.registerResourceModule("databricks", "index/postgresDatabase", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresProject", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitorV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/query", _module)

@@ -103,6 +103,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Entitlements{}
 	case "databricks:index/entityTagAssignment:EntityTagAssignment":
 		r = &EntityTagAssignment{}
+	case "databricks:index/environmentsDefaultWorkspaceBaseEnvironment:EnvironmentsDefaultWorkspaceBaseEnvironment":
+		r = &EnvironmentsDefaultWorkspaceBaseEnvironment{}
+	case "databricks:index/environmentsWorkspaceBaseEnvironment:EnvironmentsWorkspaceBaseEnvironment":
+		r = &EnvironmentsWorkspaceBaseEnvironment{}
 	case "databricks:index/externalLocation:ExternalLocation":
 		r = &ExternalLocation{}
 	case "databricks:index/externalMetadata:ExternalMetadata":
@@ -219,6 +223,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PostgresEndpoint{}
 	case "databricks:index/postgresProject:PostgresProject":
 		r = &PostgresProject{}
+	case "databricks:index/postgresRole:PostgresRole":
+		r = &PostgresRole{}
 	case "databricks:index/qualityMonitor:QualityMonitor":
 		r = &QualityMonitor{}
 	case "databricks:index/qualityMonitorV2:QualityMonitorV2":
@@ -545,6 +551,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/environmentsDefaultWorkspaceBaseEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/environmentsWorkspaceBaseEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/externalLocation",
 		&module{version},
 	)
@@ -831,6 +847,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/postgresProject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/postgresRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

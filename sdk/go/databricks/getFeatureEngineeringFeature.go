@@ -34,7 +34,9 @@ type LookupFeatureEngineeringFeatureArgs struct {
 type LookupFeatureEngineeringFeatureResult struct {
 	// (string) - The description of the feature
 	Description string `pulumi:"description"`
-	// (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+	// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+	Entities []GetFeatureEngineeringFeatureEntity `pulumi:"entities"`
+	// (string) - The filter condition applied to the source data before aggregation
 	FilterCondition string `pulumi:"filterCondition"`
 	// (string) - The full three-part (catalog, schema, table) name of the Delta table
 	FullName string `pulumi:"fullName"`
@@ -54,9 +56,11 @@ type LookupFeatureEngineeringFeatureResult struct {
 	ProviderConfig *GetFeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// (DataSource) - The data source of the feature
 	Source GetFeatureEngineeringFeatureSource `pulumi:"source"`
-	// (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-	// The time window in which the feature is computed
+	// (TimeWindow) - The time window over which the aggregation is computed
 	TimeWindow GetFeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
+	// (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+	// The timeseries column of the Delta table
+	TimeseriesColumn GetFeatureEngineeringFeatureTimeseriesColumn `pulumi:"timeseriesColumn"`
 }
 
 func LookupFeatureEngineeringFeatureOutput(ctx *pulumi.Context, args LookupFeatureEngineeringFeatureOutputArgs, opts ...pulumi.InvokeOption) LookupFeatureEngineeringFeatureResultOutput {
@@ -100,7 +104,12 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Description() pulumi.String
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+func (o LookupFeatureEngineeringFeatureResultOutput) Entities() GetFeatureEngineeringFeatureEntityArrayOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) []GetFeatureEngineeringFeatureEntity { return v.Entities }).(GetFeatureEngineeringFeatureEntityArrayOutput)
+}
+
+// (string) - The filter condition applied to the source data before aggregation
 func (o LookupFeatureEngineeringFeatureResultOutput) FilterCondition() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.FilterCondition }).(pulumi.StringOutput)
 }
@@ -148,12 +157,19 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Source() GetFeatureEngineer
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureSource { return v.Source }).(GetFeatureEngineeringFeatureSourceOutput)
 }
 
-// (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-// The time window in which the feature is computed
+// (TimeWindow) - The time window over which the aggregation is computed
 func (o LookupFeatureEngineeringFeatureResultOutput) TimeWindow() GetFeatureEngineeringFeatureTimeWindowOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureTimeWindow {
 		return v.TimeWindow
 	}).(GetFeatureEngineeringFeatureTimeWindowOutput)
+}
+
+// (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+// The timeseries column of the Delta table
+func (o LookupFeatureEngineeringFeatureResultOutput) TimeseriesColumn() GetFeatureEngineeringFeatureTimeseriesColumnOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureTimeseriesColumn {
+		return v.TimeseriesColumn
+	}).(GetFeatureEngineeringFeatureTimeseriesColumnOutput)
 }
 
 func init() {

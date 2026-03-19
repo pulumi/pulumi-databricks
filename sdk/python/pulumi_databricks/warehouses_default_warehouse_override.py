@@ -214,9 +214,9 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        last_selected = databricks.index.DefaultWarehouseOverride("last_selected",
-            default_warehouse_override_id=example.id,
-            type=LAST_SELECTED)
+        last_selected = databricks.WarehousesDefaultWarehouseOverride("last_selected",
+            default_warehouse_override_id=example["id"],
+            type="LAST_SELECTED")
         ```
 
         ### Custom Warehouse Example
@@ -226,10 +226,10 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        custom = databricks.index.DefaultWarehouseOverride("custom",
-            default_warehouse_override_id=example.id,
-            type=CUSTOM,
-            warehouse_id=example_databricks_sql_endpoint.id)
+        custom = databricks.WarehousesDefaultWarehouseOverride("custom",
+            default_warehouse_override_id=example["id"],
+            type="CUSTOM",
+            warehouse_id=example_databricks_sql_endpoint["id"])
         ```
 
         :param str resource_name: The name of the resource.
@@ -267,9 +267,9 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        last_selected = databricks.index.DefaultWarehouseOverride("last_selected",
-            default_warehouse_override_id=example.id,
-            type=LAST_SELECTED)
+        last_selected = databricks.WarehousesDefaultWarehouseOverride("last_selected",
+            default_warehouse_override_id=example["id"],
+            type="LAST_SELECTED")
         ```
 
         ### Custom Warehouse Example
@@ -279,10 +279,10 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        custom = databricks.index.DefaultWarehouseOverride("custom",
-            default_warehouse_override_id=example.id,
-            type=CUSTOM,
-            warehouse_id=example_databricks_sql_endpoint.id)
+        custom = databricks.WarehousesDefaultWarehouseOverride("custom",
+            default_warehouse_override_id=example["id"],
+            type="CUSTOM",
+            warehouse_id=example_databricks_sql_endpoint["id"])
         ```
 
         :param str resource_name: The name of the resource.

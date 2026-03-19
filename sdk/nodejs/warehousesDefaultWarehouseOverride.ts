@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const lastSelected = new databricks.index.DefaultWarehouseOverride("last_selected", {
+ * const lastSelected = new databricks.WarehousesDefaultWarehouseOverride("last_selected", {
  *     defaultWarehouseOverrideId: example.id,
  *     type: "LAST_SELECTED",
  * });
@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const custom = new databricks.index.DefaultWarehouseOverride("custom", {
+ * const custom = new databricks.WarehousesDefaultWarehouseOverride("custom", {
  *     defaultWarehouseOverrideId: example.id,
  *     type: "CUSTOM",
  *     warehouseId: exampleDatabricksSqlEndpoint.id,

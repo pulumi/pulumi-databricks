@@ -5,8 +5,8 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +17,21 @@ import javax.annotation.Nullable;
 public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringFeatureFunctionArgs Empty = new FeatureEngineeringFeatureFunctionArgs();
+
+    /**
+     * An aggregation function applied over a time window
+     * 
+     */
+    @Import(name="aggregationFunction")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionArgs> aggregationFunction;
+
+    /**
+     * @return An aggregation function applied over a time window
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionArgs>> aggregationFunction() {
+        return Optional.ofNullable(this.aggregationFunction);
+    }
 
     /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
@@ -40,21 +55,22 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      * 
      */
-    @Import(name="functionType", required=true)
-    private Output<String> functionType;
+    @Import(name="functionType")
+    private @Nullable Output<String> functionType;
 
     /**
      * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      * 
      */
-    public Output<String> functionType() {
-        return this.functionType;
+    public Optional<Output<String>> functionType() {
+        return Optional.ofNullable(this.functionType);
     }
 
     private FeatureEngineeringFeatureFunctionArgs() {}
 
     private FeatureEngineeringFeatureFunctionArgs(FeatureEngineeringFeatureFunctionArgs $) {
+        this.aggregationFunction = $.aggregationFunction;
         this.extraParameters = $.extraParameters;
         this.functionType = $.functionType;
     }
@@ -75,6 +91,27 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
 
         public Builder(FeatureEngineeringFeatureFunctionArgs defaults) {
             $ = new FeatureEngineeringFeatureFunctionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aggregationFunction An aggregation function applied over a time window
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregationFunction(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionArgs> aggregationFunction) {
+            $.aggregationFunction = aggregationFunction;
+            return this;
+        }
+
+        /**
+         * @param aggregationFunction An aggregation function applied over a time window
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregationFunction(FeatureEngineeringFeatureFunctionAggregationFunctionArgs aggregationFunction) {
+            return aggregationFunction(Output.of(aggregationFunction));
         }
 
         /**
@@ -118,7 +155,7 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder functionType(Output<String> functionType) {
+        public Builder functionType(@Nullable Output<String> functionType) {
             $.functionType = functionType;
             return this;
         }
@@ -135,9 +172,6 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
         }
 
         public FeatureEngineeringFeatureFunctionArgs build() {
-            if ($.functionType == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringFeatureFunctionArgs", "functionType");
-            }
             return $;
         }
     }

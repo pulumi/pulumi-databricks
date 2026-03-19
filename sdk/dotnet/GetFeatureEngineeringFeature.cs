@@ -80,7 +80,11 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+        /// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFeatureEngineeringFeatureEntityResult> Entities;
+        /// <summary>
+        /// (string) - The filter condition applied to the source data before aggregation
         /// </summary>
         public readonly string FilterCondition;
         /// <summary>
@@ -114,14 +118,20 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceResult Source;
         /// <summary>
-        /// (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-        /// The time window in which the feature is computed
+        /// (TimeWindow) - The time window over which the aggregation is computed
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowResult TimeWindow;
+        /// <summary>
+        /// (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+        /// The timeseries column of the Delta table
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureTimeseriesColumnResult TimeseriesColumn;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeatureResult(
             string description,
+
+            ImmutableArray<Outputs.GetFeatureEngineeringFeatureEntityResult> entities,
 
             string filterCondition,
 
@@ -139,9 +149,12 @@ namespace Pulumi.Databricks
 
             Outputs.GetFeatureEngineeringFeatureSourceResult source,
 
-            Outputs.GetFeatureEngineeringFeatureTimeWindowResult timeWindow)
+            Outputs.GetFeatureEngineeringFeatureTimeWindowResult timeWindow,
+
+            Outputs.GetFeatureEngineeringFeatureTimeseriesColumnResult timeseriesColumn)
         {
             Description = description;
+            Entities = entities;
             FilterCondition = filterCondition;
             FullName = fullName;
             Function = function;
@@ -151,6 +164,7 @@ namespace Pulumi.Databricks
             ProviderConfig = providerConfig;
             Source = source;
             TimeWindow = timeWindow;
+            TimeseriesColumn = timeseriesColumn;
         }
     }
 }

@@ -5,11 +5,13 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureEntityArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureLineageContextArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureProviderConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeseriesColumnArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +36,21 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * 
+     */
+    @Import(name="entities")
+    private @Nullable Output<List<FeatureEngineeringFeatureEntityArgs>> entities;
+
+    /**
+     * @return The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * 
+     */
+    public Optional<Output<List<FeatureEngineeringFeatureEntityArgs>>> entities() {
+        return Optional.ofNullable(this.entities);
     }
 
     /**
@@ -170,10 +187,26 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         return Optional.ofNullable(this.timeWindow);
     }
 
+    /**
+     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * 
+     */
+    @Import(name="timeseriesColumn")
+    private @Nullable Output<FeatureEngineeringFeatureTimeseriesColumnArgs> timeseriesColumn;
+
+    /**
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureTimeseriesColumnArgs>> timeseriesColumn() {
+        return Optional.ofNullable(this.timeseriesColumn);
+    }
+
     private FeatureEngineeringFeatureState() {}
 
     private FeatureEngineeringFeatureState(FeatureEngineeringFeatureState $) {
         this.description = $.description;
+        this.entities = $.entities;
         this.filterCondition = $.filterCondition;
         this.fullName = $.fullName;
         this.function = $.function;
@@ -182,6 +215,7 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         this.providerConfig = $.providerConfig;
         this.source = $.source;
         this.timeWindow = $.timeWindow;
+        this.timeseriesColumn = $.timeseriesColumn;
     }
 
     public static Builder builder() {
@@ -221,6 +255,37 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param entities The entity columns for the feature, used as aggregation keys and for query-time lookup
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entities(@Nullable Output<List<FeatureEngineeringFeatureEntityArgs>> entities) {
+            $.entities = entities;
+            return this;
+        }
+
+        /**
+         * @param entities The entity columns for the feature, used as aggregation keys and for query-time lookup
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entities(List<FeatureEngineeringFeatureEntityArgs> entities) {
+            return entities(Output.of(entities));
+        }
+
+        /**
+         * @param entities The entity columns for the feature, used as aggregation keys and for query-time lookup
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entities(FeatureEngineeringFeatureEntityArgs... entities) {
+            return entities(List.of(entities));
         }
 
         /**
@@ -414,6 +479,27 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
          */
         public Builder timeWindow(FeatureEngineeringFeatureTimeWindowArgs timeWindow) {
             return timeWindow(Output.of(timeWindow));
+        }
+
+        /**
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeseriesColumn(@Nullable Output<FeatureEngineeringFeatureTimeseriesColumnArgs> timeseriesColumn) {
+            $.timeseriesColumn = timeseriesColumn;
+            return this;
+        }
+
+        /**
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeseriesColumn(FeatureEngineeringFeatureTimeseriesColumnArgs timeseriesColumn) {
+            return timeseriesColumn(Output.of(timeseriesColumn));
         }
 
         public FeatureEngineeringFeatureState build() {

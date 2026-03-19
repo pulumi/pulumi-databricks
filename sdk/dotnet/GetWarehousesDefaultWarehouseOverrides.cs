@@ -26,6 +26,22 @@ namespace Pulumi.Databricks
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// ### List All Overrides
+        /// Returns a list of all default warehouse overrides in the workspace:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetWarehousesDefaultWarehouseOverrides.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetWarehousesDefaultWarehouseOverridesResult> InvokeAsync(GetWarehousesDefaultWarehouseOverridesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWarehousesDefaultWarehouseOverridesResult>("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", args ?? new GetWarehousesDefaultWarehouseOverridesArgs(), options.WithDefaults());
@@ -45,6 +61,22 @@ namespace Pulumi.Databricks
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// ### List All Overrides
+        /// Returns a list of all default warehouse overrides in the workspace:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetWarehousesDefaultWarehouseOverrides.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWarehousesDefaultWarehouseOverridesResult> Invoke(GetWarehousesDefaultWarehouseOverridesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWarehousesDefaultWarehouseOverridesResult>("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", args ?? new GetWarehousesDefaultWarehouseOverridesInvokeArgs(), options.WithDefaults());
@@ -64,6 +96,22 @@ namespace Pulumi.Databricks
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// ### List All Overrides
+        /// Returns a list of all default warehouse overrides in the workspace:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetWarehousesDefaultWarehouseOverrides.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWarehousesDefaultWarehouseOverridesResult> Invoke(GetWarehousesDefaultWarehouseOverridesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetWarehousesDefaultWarehouseOverridesResult>("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", args ?? new GetWarehousesDefaultWarehouseOverridesInvokeArgs(), options.WithDefaults());

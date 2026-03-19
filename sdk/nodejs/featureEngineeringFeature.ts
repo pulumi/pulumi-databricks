@@ -42,6 +42,10 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     */
+    declare public readonly entities: pulumi.Output<outputs.FeatureEngineeringFeatureEntity[] | undefined>;
+    /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
      */
@@ -58,7 +62,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      * Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      */
-    declare public readonly inputs: pulumi.Output<string[]>;
+    declare public readonly inputs: pulumi.Output<string[] | undefined>;
     /**
      * Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -80,6 +84,10 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      * The time window in which the feature is computed
      */
     declare public readonly timeWindow: pulumi.Output<outputs.FeatureEngineeringFeatureTimeWindow | undefined>;
+    /**
+     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     */
+    declare public readonly timeseriesColumn: pulumi.Output<outputs.FeatureEngineeringFeatureTimeseriesColumn | undefined>;
 
     /**
      * Create a FeatureEngineeringFeature resource with the given unique name, arguments, and options.
@@ -95,6 +103,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FeatureEngineeringFeatureState | undefined;
             resourceInputs["description"] = state?.description;
+            resourceInputs["entities"] = state?.entities;
             resourceInputs["filterCondition"] = state?.filterCondition;
             resourceInputs["fullName"] = state?.fullName;
             resourceInputs["function"] = state?.function;
@@ -103,6 +112,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["source"] = state?.source;
             resourceInputs["timeWindow"] = state?.timeWindow;
+            resourceInputs["timeseriesColumn"] = state?.timeseriesColumn;
         } else {
             const args = argsOrState as FeatureEngineeringFeatureArgs | undefined;
             if (args?.fullName === undefined && !opts.urn) {
@@ -111,13 +121,11 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             if (args?.function === undefined && !opts.urn) {
                 throw new Error("Missing required property 'function'");
             }
-            if (args?.inputs === undefined && !opts.urn) {
-                throw new Error("Missing required property 'inputs'");
-            }
             if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
             resourceInputs["description"] = args?.description;
+            resourceInputs["entities"] = args?.entities;
             resourceInputs["filterCondition"] = args?.filterCondition;
             resourceInputs["fullName"] = args?.fullName;
             resourceInputs["function"] = args?.function;
@@ -126,6 +134,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["source"] = args?.source;
             resourceInputs["timeWindow"] = args?.timeWindow;
+            resourceInputs["timeseriesColumn"] = args?.timeseriesColumn;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FeatureEngineeringFeature.__pulumiType, name, resourceInputs, opts);
@@ -140,6 +149,10 @@ export interface FeatureEngineeringFeatureState {
      * The description of the feature
      */
     description?: pulumi.Input<string>;
+    /**
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     */
+    entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[]>;
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -179,6 +192,10 @@ export interface FeatureEngineeringFeatureState {
      * The time window in which the feature is computed
      */
     timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow>;
+    /**
+     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     */
+    timeseriesColumn?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeseriesColumn>;
 }
 
 /**
@@ -189,6 +206,10 @@ export interface FeatureEngineeringFeatureArgs {
      * The description of the feature
      */
     description?: pulumi.Input<string>;
+    /**
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     */
+    entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[]>;
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -206,7 +227,7 @@ export interface FeatureEngineeringFeatureArgs {
      * Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      */
-    inputs: pulumi.Input<pulumi.Input<string>[]>;
+    inputs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -228,4 +249,8 @@ export interface FeatureEngineeringFeatureArgs {
      * The time window in which the feature is computed
      */
     timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow>;
+    /**
+     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     */
+    timeseriesColumn?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeseriesColumn>;
 }

@@ -2492,6 +2492,20 @@ export interface EntityTagAssignmentProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface EnvironmentsWorkspaceBaseEnvironmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface ExternalLocationEncryptionDetails {
     /**
      * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
@@ -2618,7 +2632,15 @@ export interface ExternalMetadataProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringFeatureEntity {
+    name: pulumi.Input<string>;
+}
+
 export interface FeatureEngineeringFeatureFunction {
+    /**
+     * An aggregation function applied over a time window
+     */
+    aggregationFunction?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunction>;
     /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -2628,7 +2650,118 @@ export interface FeatureEngineeringFeatureFunction {
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
-    functionType: pulumi.Input<string>;
+    functionType?: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunction {
+    approxCountDistinct?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct>;
+    approxPercentile?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile>;
+    avg?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionAvg>;
+    countFunction?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunction>;
+    first?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirst>;
+    last?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLast>;
+    max?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMax>;
+    min?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMin>;
+    stddevPop?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop>;
+    stddevSamp?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp>;
+    sum?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionSum>;
+    /**
+     * Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
+     * The time window in which the feature is computed
+     */
+    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow>;
+    varPop?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarPop>;
+    varSamp?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct {
+    input: pulumi.Input<string>;
+    /**
+     * The maximum relative standard deviation allowed (default defined by Spark)
+     */
+    relativeSd?: pulumi.Input<number>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile {
+    /**
+     * The accuracy parameter (higher is more accurate but slower)
+     */
+    accuracy?: pulumi.Input<number>;
+    input: pulumi.Input<string>;
+    /**
+     * The percentile value to compute (between 0 and 1)
+     */
+    percentile: pulumi.Input<number>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionAvg {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionCountFunction {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionFirst {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionLast {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionMax {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionMin {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
+    continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous>;
+    sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding>;
+    tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
+    /**
+     * The offset of the continuous window (must be non-positive)
+     */
+    offset?: pulumi.Input<string>;
+    windowDuration: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding {
+    /**
+     * The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration: pulumi.Input<string>;
+    windowDuration: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling {
+    windowDuration: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionVarPop {
+    input: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp {
+    input: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringFeatureFunctionExtraParameter {
@@ -2687,7 +2820,7 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns: pulumi.Input<pulumi.Input<string>[]>;
+    entityColumns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -2698,10 +2831,9 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      */
     fullName: pulumi.Input<string>;
     /**
-     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
+     * Column recording time, used for point-in-time joins, backfills, and aggregations
      */
-    timeseriesColumn: pulumi.Input<string>;
+    timeseriesColumn?: pulumi.Input<string>;
     /**
      * A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -2715,16 +2847,18 @@ export interface FeatureEngineeringFeatureSourceKafkaSource {
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity column identifiers of the Kafka source
      */
-    entityColumnIdentifiers: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier>[]>;
+    entityColumnIdentifiers?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier>[]>;
     /**
-     * Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
      */
+    filterCondition?: pulumi.Input<string>;
     name: pulumi.Input<string>;
     /**
      * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column identifier of the Kafka source
      */
-    timeseriesColumnIdentifier: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier>;
+    timeseriesColumnIdentifier?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier>;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
@@ -2769,6 +2903,10 @@ export interface FeatureEngineeringFeatureTimeWindowTumbling {
     windowDuration: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringFeatureTimeseriesColumn {
+    name: pulumi.Input<string>;
+}
+
 export interface FeatureEngineeringKafkaConfigAuthConfig {
     /**
      * Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
@@ -2795,7 +2933,7 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns: pulumi.Input<pulumi.Input<string>[]>;
+    entityColumns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
@@ -2808,7 +2946,7 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
-    timeseriesColumn: pulumi.Input<string>;
+    timeseriesColumn?: pulumi.Input<string>;
     /**
      * A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
@@ -4920,6 +5058,48 @@ export interface GetEntityTagAssignmentsProviderConfig {
 }
 
 export interface GetEntityTagAssignmentsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetEnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetEnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -10058,6 +10238,34 @@ export interface GetPostgresProjectsProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetPostgresRoleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresRoleProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetPostgresRolesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresRolesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetQualityMonitorV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -13818,6 +14026,7 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    alertTask?: pulumi.Input<inputs.JobTaskAlertTask>;
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask>;
     /**
      * Task level compute configuration. This block is documented below.
@@ -13915,6 +14124,27 @@ export interface JobTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications>;
+}
+
+export interface JobTaskAlertTask {
+    /**
+     * (String) identifier of the Databricks Alert (databricks_alert).
+     */
+    alertId?: pulumi.Input<string>;
+    /**
+     * The list of subscribers to send the snapshot of the dashboard to.
+     */
+    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskAlertTaskSubscriber>[]>;
+    warehouseId?: pulumi.Input<string>;
+    workspacePath?: pulumi.Input<string>;
+}
+
+export interface JobTaskAlertTaskSubscriber {
+    /**
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
+     */
+    destinationId?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskCleanRoomsNotebookTask {
@@ -14113,6 +14343,7 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
+    alertTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskAlertTask>;
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask>;
     /**
      * Task level compute configuration. This block is documented below.
@@ -14209,6 +14440,27 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications>;
+}
+
+export interface JobTaskForEachTaskTaskAlertTask {
+    /**
+     * (String) identifier of the Databricks Alert (databricks_alert).
+     */
+    alertId?: pulumi.Input<string>;
+    /**
+     * The list of subscribers to send the snapshot of the dashboard to.
+     */
+    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskAlertTaskSubscriber>[]>;
+    warehouseId?: pulumi.Input<string>;
+    workspacePath?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskAlertTaskSubscriber {
+    /**
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
+     */
+    destinationId?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
@@ -17292,11 +17544,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -17363,11 +17615,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.111.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -17893,6 +18145,8 @@ export interface PipelineGatewayDefinitionConnectionParameters {
 
 export interface PipelineIngestionDefinition {
     connectionName?: pulumi.Input<string>;
+    connectorType?: pulumi.Input<string>;
+    dataStagingOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionDataStagingOptions>;
     fullRefreshWindow?: pulumi.Input<inputs.PipelineIngestionDefinitionFullRefreshWindow>;
     ingestFromUcForeignCatalog?: pulumi.Input<boolean>;
     ingestionGatewayId?: pulumi.Input<string>;
@@ -17901,6 +18155,12 @@ export interface PipelineIngestionDefinition {
     sourceConfigurations?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfiguration>[]>;
     sourceType?: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfiguration>;
+}
+
+export interface PipelineIngestionDefinitionDataStagingOptions {
+    catalogName: pulumi.Input<string>;
+    schemaName: pulumi.Input<string>;
+    volumeName?: pulumi.Input<string>;
 }
 
 export interface PipelineIngestionDefinitionFullRefreshWindow {
@@ -18678,6 +18938,41 @@ export interface PostgresProjectStatusDefaultEndpointSettings {
      * If specified should be between 60s and 604800s (1 minute to 1 week)
      */
     suspendTimeoutDuration?: pulumi.Input<string>;
+}
+
+export interface PostgresRoleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface PostgresRoleSpec {
+    attributes?: pulumi.Input<inputs.PostgresRoleSpecAttributes>;
+    authMethod?: pulumi.Input<string>;
+    identityType?: pulumi.Input<string>;
+    membershipRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    postgresRole?: pulumi.Input<string>;
+}
+
+export interface PostgresRoleSpecAttributes {
+    bypassrls?: pulumi.Input<boolean>;
+    createdb?: pulumi.Input<boolean>;
+    createrole?: pulumi.Input<boolean>;
+}
+
+export interface PostgresRoleStatus {
+    attributes?: pulumi.Input<inputs.PostgresRoleStatusAttributes>;
+    authMethod?: pulumi.Input<string>;
+    identityType?: pulumi.Input<string>;
+    membershipRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    postgresRole?: pulumi.Input<string>;
+}
+
+export interface PostgresRoleStatusAttributes {
+    bypassrls?: pulumi.Input<boolean>;
+    createdb?: pulumi.Input<boolean>;
+    createrole?: pulumi.Input<boolean>;
 }
 
 export interface QualityMonitorCustomMetric {

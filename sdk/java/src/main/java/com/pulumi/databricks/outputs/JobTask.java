@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobTaskAlertTask;
 import com.pulumi.databricks.outputs.JobTaskCleanRoomsNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskCompute;
 import com.pulumi.databricks.outputs.JobTaskConditionTask;
@@ -40,6 +41,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTask {
+    private @Nullable JobTaskAlertTask alertTask;
     private @Nullable JobTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
     /**
      * @return Task level compute configuration. This block is documented below.
@@ -158,6 +160,9 @@ public final class JobTask {
     private @Nullable JobTaskWebhookNotifications webhookNotifications;
 
     private JobTask() {}
+    public Optional<JobTaskAlertTask> alertTask() {
+        return Optional.ofNullable(this.alertTask);
+    }
     public Optional<JobTaskCleanRoomsNotebookTask> cleanRoomsNotebookTask() {
         return Optional.ofNullable(this.cleanRoomsNotebookTask);
     }
@@ -358,6 +363,7 @@ public final class JobTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobTaskAlertTask alertTask;
         private @Nullable JobTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
         private @Nullable JobTaskCompute compute;
         private @Nullable JobTaskConditionTask conditionTask;
@@ -398,6 +404,7 @@ public final class JobTask {
         public Builder() {}
         public Builder(JobTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.alertTask = defaults.alertTask;
     	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
     	      this.compute = defaults.compute;
     	      this.conditionTask = defaults.conditionTask;
@@ -437,6 +444,12 @@ public final class JobTask {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
+        @CustomType.Setter
+        public Builder alertTask(@Nullable JobTaskAlertTask alertTask) {
+
+            this.alertTask = alertTask;
+            return this;
+        }
         @CustomType.Setter
         public Builder cleanRoomsNotebookTask(@Nullable JobTaskCleanRoomsNotebookTask cleanRoomsNotebookTask) {
 
@@ -669,6 +682,7 @@ public final class JobTask {
         }
         public JobTask build() {
             final var _resultValue = new JobTask();
+            _resultValue.alertTask = alertTask;
             _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
             _resultValue.compute = compute;
             _resultValue.conditionTask = conditionTask;

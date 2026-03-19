@@ -100,6 +100,12 @@ import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
 import com.pulumi.databricks.inputs.GetEntityTagAssignmentPlainArgs;
 import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
 import com.pulumi.databricks.inputs.GetEntityTagAssignmentsPlainArgs;
+import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
+import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentPlainArgs;
+import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
+import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentPlainArgs;
+import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
+import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsPlainArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationPlainArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
@@ -196,6 +202,10 @@ import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
 import com.pulumi.databricks.inputs.GetPostgresProjectPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresProjectsArgs;
 import com.pulumi.databricks.inputs.GetPostgresProjectsPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
+import com.pulumi.databricks.inputs.GetPostgresRolePlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresRolesArgs;
+import com.pulumi.databricks.inputs.GetPostgresRolesPlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2PlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
@@ -314,6 +324,9 @@ import com.pulumi.databricks.outputs.GetEndpointResult;
 import com.pulumi.databricks.outputs.GetEndpointsResult;
 import com.pulumi.databricks.outputs.GetEntityTagAssignmentResult;
 import com.pulumi.databricks.outputs.GetEntityTagAssignmentsResult;
+import com.pulumi.databricks.outputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult;
+import com.pulumi.databricks.outputs.GetEnvironmentsWorkspaceBaseEnvironmentResult;
+import com.pulumi.databricks.outputs.GetEnvironmentsWorkspaceBaseEnvironmentsResult;
 import com.pulumi.databricks.outputs.GetExternalLocationResult;
 import com.pulumi.databricks.outputs.GetExternalLocationsResult;
 import com.pulumi.databricks.outputs.GetExternalMetadataResult;
@@ -362,6 +375,8 @@ import com.pulumi.databricks.outputs.GetPostgresEndpointResult;
 import com.pulumi.databricks.outputs.GetPostgresEndpointsResult;
 import com.pulumi.databricks.outputs.GetPostgresProjectResult;
 import com.pulumi.databricks.outputs.GetPostgresProjectsResult;
+import com.pulumi.databricks.outputs.GetPostgresRoleResult;
+import com.pulumi.databricks.outputs.GetPostgresRolesResult;
 import com.pulumi.databricks.outputs.GetQualityMonitorV2Result;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2Result;
 import com.pulumi.databricks.outputs.GetRegisteredModelResult;
@@ -9084,7 +9099,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
@@ -9138,7 +9153,7 @@ public final class DatabricksFunctions {
         return getDataClassificationCatalogConfig(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
@@ -9192,7 +9207,7 @@ public final class DatabricksFunctions {
         return getDataClassificationCatalogConfigPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
@@ -9246,7 +9261,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
@@ -9300,7 +9315,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", TypeShape.of(GetDataClassificationCatalogConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
@@ -13393,6 +13408,166 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetEntityTagAssignmentsResult> getEntityTagAssignmentsPlain(GetEntityTagAssignmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+     * 
+     */
+    public static Output<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs args) {
+        return getEnvironmentsDefaultWorkspaceBaseEnvironment(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironmentPlain(GetEnvironmentsDefaultWorkspaceBaseEnvironmentPlainArgs args) {
+        return getEnvironmentsDefaultWorkspaceBaseEnvironmentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+     * 
+     */
+    public static Output<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+     * 
+     */
+    public static Output<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironmentPlain(GetEnvironmentsDefaultWorkspaceBaseEnvironmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Workspace Base Environment by its resource name.
+     * 
+     */
+    public static Output<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs args) {
+        return getEnvironmentsWorkspaceBaseEnvironment(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Workspace Base Environment by its resource name.
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironmentPlain(GetEnvironmentsWorkspaceBaseEnvironmentPlainArgs args) {
+        return getEnvironmentsWorkspaceBaseEnvironmentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Workspace Base Environment by its resource name.
+     * 
+     */
+    public static Output<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Workspace Base Environment by its resource name.
+     * 
+     */
+    public static Output<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Workspace Base Environment by its resource name.
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironmentPlain(GetEnvironmentsWorkspaceBaseEnvironmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the list of all Workspace Base Environments in the workspace.
+     * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     */
+    public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironments() {
+        return getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the list of all Workspace Base Environments in the workspace.
+     * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironmentsPlain() {
+        return getEnvironmentsWorkspaceBaseEnvironmentsPlain(GetEnvironmentsWorkspaceBaseEnvironmentsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the list of all Workspace Base Environments in the workspace.
+     * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     */
+    public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs args) {
+        return getEnvironmentsWorkspaceBaseEnvironments(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the list of all Workspace Base Environments in the workspace.
+     * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironmentsPlain(GetEnvironmentsWorkspaceBaseEnvironmentsPlainArgs args) {
+        return getEnvironmentsWorkspaceBaseEnvironmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the list of all Workspace Base Environments in the workspace.
+     * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     */
+    public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the list of all Workspace Base Environments in the workspace.
+     * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     */
+    public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves the list of all Workspace Base Environments in the workspace.
+     * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironmentsPlain(GetEnvironmentsWorkspaceBaseEnvironmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
@@ -24882,6 +25057,76 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     */
+    public static Output<GetPostgresRoleResult> getPostgresRole(GetPostgresRoleArgs args) {
+        return getPostgresRole(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresRoleResult> getPostgresRolePlain(GetPostgresRolePlainArgs args) {
+        return getPostgresRolePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresRoleResult> getPostgresRole(GetPostgresRoleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresRole:getPostgresRole", TypeShape.of(GetPostgresRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresRoleResult> getPostgresRole(GetPostgresRoleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresRole:getPostgresRole", TypeShape.of(GetPostgresRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresRoleResult> getPostgresRolePlain(GetPostgresRolePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresRole:getPostgresRole", TypeShape.of(GetPostgresRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresRolesResult> getPostgresRoles(GetPostgresRolesArgs args) {
+        return getPostgresRoles(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresRolesResult> getPostgresRolesPlain(GetPostgresRolesPlainArgs args) {
+        return getPostgresRolesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresRolesResult> getPostgresRoles(GetPostgresRolesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresRoles:getPostgresRoles", TypeShape.of(GetPostgresRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresRolesResult> getPostgresRoles(GetPostgresRolesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresRoles:getPostgresRoles", TypeShape.of(GetPostgresRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresRolesResult> getPostgresRolesPlain(GetPostgresRolesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresRoles:getPostgresRoles", TypeShape.of(GetPostgresRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
      * This data source can be used to fetch a quality monitors v2.
@@ -34050,6 +34295,41 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Get a User&#39;s Override
+     * This example retrieves the default warehouse override for a specific user.
+     * The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
+     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs args) {
         return getWarehousesDefaultWarehouseOverride(args, InvokeOptions.Empty);
@@ -34067,6 +34347,41 @@ public final class DatabricksFunctions {
      * &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
      * 
      * ## Example Usage
+     * 
+     * ### Get a User&#39;s Override
+     * This example retrieves the default warehouse override for a specific user.
+     * The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
+     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverridePlain(GetWarehousesDefaultWarehouseOverridePlainArgs args) {
@@ -34086,6 +34401,41 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Get a User&#39;s Override
+     * This example retrieves the default warehouse override for a specific user.
+     * The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
+     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", TypeShape.of(GetWarehousesDefaultWarehouseOverrideResult.class), args, Utilities.withVersion(options));
@@ -34103,6 +34453,41 @@ public final class DatabricksFunctions {
      * &gt; **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
      * 
      * ## Example Usage
+     * 
+     * ### Get a User&#39;s Override
+     * This example retrieves the default warehouse override for a specific user.
+     * The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
+     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs args, InvokeOutputOptions options) {
@@ -34122,6 +34507,41 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Get a User&#39;s Override
+     * This example retrieves the default warehouse override for a specific user.
+     * The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var user = DatabricksFunctions.getWarehousesDefaultWarehouseOverride(GetWarehousesDefaultWarehouseOverrideArgs.builder()
+     *             .name(String.format("default-warehouse-overrides/%s", example.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetWarehousesDefaultWarehouseOverrideResult> getWarehousesDefaultWarehouseOverridePlain(GetWarehousesDefaultWarehouseOverridePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", TypeShape.of(GetWarehousesDefaultWarehouseOverrideResult.class), args, Utilities.withVersion(options));
@@ -34134,6 +34554,39 @@ public final class DatabricksFunctions {
      * &gt; **Note** This data source requires workspace admin permissions.
      * 
      * ## Example Usage
+     * 
+     * ### List All Overrides
+     * Returns a list of all default warehouse overrides in the workspace:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverrides() {
@@ -34148,6 +34601,39 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### List All Overrides
+     * Returns a list of all default warehouse overrides in the workspace:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverridesPlain() {
         return getWarehousesDefaultWarehouseOverridesPlain(GetWarehousesDefaultWarehouseOverridesPlainArgs.Empty, InvokeOptions.Empty);
@@ -34160,6 +34646,39 @@ public final class DatabricksFunctions {
      * &gt; **Note** This data source requires workspace admin permissions.
      * 
      * ## Example Usage
+     * 
+     * ### List All Overrides
+     * Returns a list of all default warehouse overrides in the workspace:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs args) {
@@ -34174,6 +34693,39 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### List All Overrides
+     * Returns a list of all default warehouse overrides in the workspace:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverridesPlain(GetWarehousesDefaultWarehouseOverridesPlainArgs args) {
         return getWarehousesDefaultWarehouseOverridesPlain(args, InvokeOptions.Empty);
@@ -34186,6 +34738,39 @@ public final class DatabricksFunctions {
      * &gt; **Note** This data source requires workspace admin permissions.
      * 
      * ## Example Usage
+     * 
+     * ### List All Overrides
+     * Returns a list of all default warehouse overrides in the workspace:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs args, InvokeOptions options) {
@@ -34200,6 +34785,39 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### List All Overrides
+     * Returns a list of all default warehouse overrides in the workspace:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getWarehousesDefaultWarehouseOverrides:getWarehousesDefaultWarehouseOverrides", TypeShape.of(GetWarehousesDefaultWarehouseOverridesResult.class), args, Utilities.withVersion(options));
@@ -34212,6 +34830,39 @@ public final class DatabricksFunctions {
      * &gt; **Note** This data source requires workspace admin permissions.
      * 
      * ## Example Usage
+     * 
+     * ### List All Overrides
+     * Returns a list of all default warehouse overrides in the workspace:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getWarehousesDefaultWarehouseOverrides(GetWarehousesDefaultWarehouseOverridesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetWarehousesDefaultWarehouseOverridesResult> getWarehousesDefaultWarehouseOverridesPlain(GetWarehousesDefaultWarehouseOverridesPlainArgs args, InvokeOptions options) {

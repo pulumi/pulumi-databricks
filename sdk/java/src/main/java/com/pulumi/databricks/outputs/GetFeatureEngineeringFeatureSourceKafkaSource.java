@@ -10,6 +10,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringFeatureSourceKafkaSource {
@@ -18,9 +20,14 @@ public final class GetFeatureEngineeringFeatureSourceKafkaSource {
      * The entity column identifiers of the Kafka source
      * 
      */
-    private List<GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers;
+    private @Nullable List<GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers;
     /**
-     * @return (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     * @return (string) - The filter condition applied to the source data before aggregation
+     * 
+     */
+    private @Nullable String filterCondition;
+    /**
+     * @return (string) - The name of the timeseries column
      * 
      */
     private String name;
@@ -29,7 +36,7 @@ public final class GetFeatureEngineeringFeatureSourceKafkaSource {
      * The timeseries column identifier of the Kafka source
      * 
      */
-    private GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier;
+    private @Nullable GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier;
 
     private GetFeatureEngineeringFeatureSourceKafkaSource() {}
     /**
@@ -38,10 +45,17 @@ public final class GetFeatureEngineeringFeatureSourceKafkaSource {
      * 
      */
     public List<GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers() {
-        return this.entityColumnIdentifiers;
+        return this.entityColumnIdentifiers == null ? List.of() : this.entityColumnIdentifiers;
     }
     /**
-     * @return (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     * @return (string) - The filter condition applied to the source data before aggregation
+     * 
+     */
+    public Optional<String> filterCondition() {
+        return Optional.ofNullable(this.filterCondition);
+    }
+    /**
+     * @return (string) - The name of the timeseries column
      * 
      */
     public String name() {
@@ -52,8 +66,8 @@ public final class GetFeatureEngineeringFeatureSourceKafkaSource {
      * The timeseries column identifier of the Kafka source
      * 
      */
-    public GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier() {
-        return this.timeseriesColumnIdentifier;
+    public Optional<GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier> timeseriesColumnIdentifier() {
+        return Optional.ofNullable(this.timeseriesColumnIdentifier);
     }
 
     public static Builder builder() {
@@ -65,27 +79,33 @@ public final class GetFeatureEngineeringFeatureSourceKafkaSource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers;
+        private @Nullable List<GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers;
+        private @Nullable String filterCondition;
         private String name;
-        private GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier;
+        private @Nullable GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeatureSourceKafkaSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityColumnIdentifiers = defaults.entityColumnIdentifiers;
+    	      this.filterCondition = defaults.filterCondition;
     	      this.name = defaults.name;
     	      this.timeseriesColumnIdentifier = defaults.timeseriesColumnIdentifier;
         }
 
         @CustomType.Setter
-        public Builder entityColumnIdentifiers(List<GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers) {
-            if (entityColumnIdentifiers == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureSourceKafkaSource", "entityColumnIdentifiers");
-            }
+        public Builder entityColumnIdentifiers(@Nullable List<GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier> entityColumnIdentifiers) {
+
             this.entityColumnIdentifiers = entityColumnIdentifiers;
             return this;
         }
         public Builder entityColumnIdentifiers(GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier... entityColumnIdentifiers) {
             return entityColumnIdentifiers(List.of(entityColumnIdentifiers));
+        }
+        @CustomType.Setter
+        public Builder filterCondition(@Nullable String filterCondition) {
+
+            this.filterCondition = filterCondition;
+            return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
@@ -96,16 +116,15 @@ public final class GetFeatureEngineeringFeatureSourceKafkaSource {
             return this;
         }
         @CustomType.Setter
-        public Builder timeseriesColumnIdentifier(GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier) {
-            if (timeseriesColumnIdentifier == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeatureSourceKafkaSource", "timeseriesColumnIdentifier");
-            }
+        public Builder timeseriesColumnIdentifier(@Nullable GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier timeseriesColumnIdentifier) {
+
             this.timeseriesColumnIdentifier = timeseriesColumnIdentifier;
             return this;
         }
         public GetFeatureEngineeringFeatureSourceKafkaSource build() {
             final var _resultValue = new GetFeatureEngineeringFeatureSourceKafkaSource();
             _resultValue.entityColumnIdentifiers = entityColumnIdentifiers;
+            _resultValue.filterCondition = filterCondition;
             _resultValue.name = name;
             _resultValue.timeseriesColumnIdentifier = timeseriesColumnIdentifier;
             return _resultValue;
