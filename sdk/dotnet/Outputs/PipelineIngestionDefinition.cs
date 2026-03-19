@@ -14,6 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PipelineIngestionDefinition
     {
         public readonly string? ConnectionName;
+        public readonly string? ConnectorType;
+        public readonly Outputs.PipelineIngestionDefinitionDataStagingOptions? DataStagingOptions;
         public readonly Outputs.PipelineIngestionDefinitionFullRefreshWindow? FullRefreshWindow;
         public readonly bool? IngestFromUcForeignCatalog;
         public readonly string? IngestionGatewayId;
@@ -26,6 +28,10 @@ namespace Pulumi.Databricks.Outputs
         [OutputConstructor]
         private PipelineIngestionDefinition(
             string? connectionName,
+
+            string? connectorType,
+
+            Outputs.PipelineIngestionDefinitionDataStagingOptions? dataStagingOptions,
 
             Outputs.PipelineIngestionDefinitionFullRefreshWindow? fullRefreshWindow,
 
@@ -44,6 +50,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.PipelineIngestionDefinitionTableConfiguration? tableConfiguration)
         {
             ConnectionName = connectionName;
+            ConnectorType = connectorType;
+            DataStagingOptions = dataStagingOptions;
             FullRefreshWindow = fullRefreshWindow;
             IngestFromUcForeignCatalog = ingestFromUcForeignCatalog;
             IngestionGatewayId = ingestionGatewayId;

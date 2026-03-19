@@ -4,15 +4,21 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunction;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionExtraParameter;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureEngineeringFeatureFunction {
+    /**
+     * @return An aggregation function applied over a time window
+     * 
+     */
+    private @Nullable FeatureEngineeringFeatureFunctionAggregationFunction aggregationFunction;
     /**
      * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -24,9 +30,16 @@ public final class FeatureEngineeringFeatureFunction {
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      * 
      */
-    private String functionType;
+    private @Nullable String functionType;
 
     private FeatureEngineeringFeatureFunction() {}
+    /**
+     * @return An aggregation function applied over a time window
+     * 
+     */
+    public Optional<FeatureEngineeringFeatureFunctionAggregationFunction> aggregationFunction() {
+        return Optional.ofNullable(this.aggregationFunction);
+    }
     /**
      * @return Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -40,8 +53,8 @@ public final class FeatureEngineeringFeatureFunction {
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      * 
      */
-    public String functionType() {
-        return this.functionType;
+    public Optional<String> functionType() {
+        return Optional.ofNullable(this.functionType);
     }
 
     public static Builder builder() {
@@ -53,15 +66,23 @@ public final class FeatureEngineeringFeatureFunction {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable FeatureEngineeringFeatureFunctionAggregationFunction aggregationFunction;
         private @Nullable List<FeatureEngineeringFeatureFunctionExtraParameter> extraParameters;
-        private String functionType;
+        private @Nullable String functionType;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureFunction defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aggregationFunction = defaults.aggregationFunction;
     	      this.extraParameters = defaults.extraParameters;
     	      this.functionType = defaults.functionType;
         }
 
+        @CustomType.Setter
+        public Builder aggregationFunction(@Nullable FeatureEngineeringFeatureFunctionAggregationFunction aggregationFunction) {
+
+            this.aggregationFunction = aggregationFunction;
+            return this;
+        }
         @CustomType.Setter
         public Builder extraParameters(@Nullable List<FeatureEngineeringFeatureFunctionExtraParameter> extraParameters) {
 
@@ -72,15 +93,14 @@ public final class FeatureEngineeringFeatureFunction {
             return extraParameters(List.of(extraParameters));
         }
         @CustomType.Setter
-        public Builder functionType(String functionType) {
-            if (functionType == null) {
-              throw new MissingRequiredPropertyException("FeatureEngineeringFeatureFunction", "functionType");
-            }
+        public Builder functionType(@Nullable String functionType) {
+
             this.functionType = functionType;
             return this;
         }
         public FeatureEngineeringFeatureFunction build() {
             final var _resultValue = new FeatureEngineeringFeatureFunction();
+            _resultValue.aggregationFunction = aggregationFunction;
             _resultValue.extraParameters = extraParameters;
             _resultValue.functionType = functionType;
             return _resultValue;

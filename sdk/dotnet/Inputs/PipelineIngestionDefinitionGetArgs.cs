@@ -15,6 +15,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
 
+        [Input("connectorType")]
+        public Input<string>? ConnectorType { get; set; }
+
+        [Input("dataStagingOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionDataStagingOptionsGetArgs>? DataStagingOptions { get; set; }
+
         [Input("fullRefreshWindow")]
         public Input<Inputs.PipelineIngestionDefinitionFullRefreshWindowGetArgs>? FullRefreshWindow { get; set; }
 

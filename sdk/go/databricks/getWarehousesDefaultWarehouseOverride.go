@@ -23,6 +23,36 @@ import (
 // > **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
 //
 // ## Example Usage
+//
+// ### Get a User's Override
+// This example retrieves the default warehouse override for a specific user.
+// The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupWarehousesDefaultWarehouseOverride(ctx, &databricks.LookupWarehousesDefaultWarehouseOverrideArgs{
+//				Name: fmt.Sprintf("default-warehouse-overrides/%v", example.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupWarehousesDefaultWarehouseOverride(ctx *pulumi.Context, args *LookupWarehousesDefaultWarehouseOverrideArgs, opts ...pulumi.InvokeOption) (*LookupWarehousesDefaultWarehouseOverrideResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWarehousesDefaultWarehouseOverrideResult

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("alertTask")]
+        public Input<Inputs.JobTaskForEachTaskTaskAlertTaskGetArgs>? AlertTask { get; set; }
+
         [Input("cleanRoomsNotebookTask")]
         public Input<Inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTaskGetArgs>? CleanRoomsNotebookTask { get; set; }
 

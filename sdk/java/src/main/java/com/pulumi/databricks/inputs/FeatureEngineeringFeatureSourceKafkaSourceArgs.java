@@ -11,6 +11,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pulumi.resources.ResourceArgs {
@@ -22,29 +24,38 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
      * The entity column identifiers of the Kafka source
      * 
      */
-    @Import(name="entityColumnIdentifiers", required=true)
-    private Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>> entityColumnIdentifiers;
+    @Import(name="entityColumnIdentifiers")
+    private @Nullable Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>> entityColumnIdentifiers;
 
     /**
      * @return Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity column identifiers of the Kafka source
      * 
      */
-    public Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>> entityColumnIdentifiers() {
-        return this.entityColumnIdentifiers;
+    public Optional<Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>>> entityColumnIdentifiers() {
+        return Optional.ofNullable(this.entityColumnIdentifiers);
     }
 
     /**
-     * Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
      * 
      */
+    @Import(name="filterCondition")
+    private @Nullable Output<String> filterCondition;
+
+    /**
+     * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
+     * 
+     */
+    public Optional<Output<String>> filterCondition() {
+        return Optional.ofNullable(this.filterCondition);
+    }
+
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -54,22 +65,23 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
      * The timeseries column identifier of the Kafka source
      * 
      */
-    @Import(name="timeseriesColumnIdentifier", required=true)
-    private Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> timeseriesColumnIdentifier;
+    @Import(name="timeseriesColumnIdentifier")
+    private @Nullable Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> timeseriesColumnIdentifier;
 
     /**
      * @return Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column identifier of the Kafka source
      * 
      */
-    public Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> timeseriesColumnIdentifier() {
-        return this.timeseriesColumnIdentifier;
+    public Optional<Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs>> timeseriesColumnIdentifier() {
+        return Optional.ofNullable(this.timeseriesColumnIdentifier);
     }
 
     private FeatureEngineeringFeatureSourceKafkaSourceArgs() {}
 
     private FeatureEngineeringFeatureSourceKafkaSourceArgs(FeatureEngineeringFeatureSourceKafkaSourceArgs $) {
         this.entityColumnIdentifiers = $.entityColumnIdentifiers;
+        this.filterCondition = $.filterCondition;
         this.name = $.name;
         this.timeseriesColumnIdentifier = $.timeseriesColumnIdentifier;
     }
@@ -99,7 +111,7 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
          * @return builder
          * 
          */
-        public Builder entityColumnIdentifiers(Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>> entityColumnIdentifiers) {
+        public Builder entityColumnIdentifiers(@Nullable Output<List<FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>> entityColumnIdentifiers) {
             $.entityColumnIdentifiers = entityColumnIdentifiers;
             return this;
         }
@@ -127,22 +139,33 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
         }
 
         /**
-         * @param name Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+         * @param filterCondition Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+         * The filter condition applied to the source data before aggregation
          * 
          * @return builder
          * 
          */
+        public Builder filterCondition(@Nullable Output<String> filterCondition) {
+            $.filterCondition = filterCondition;
+            return this;
+        }
+
+        /**
+         * @param filterCondition Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+         * The filter condition applied to the source data before aggregation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterCondition(String filterCondition) {
+            return filterCondition(Output.of(filterCondition));
+        }
+
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -154,7 +177,7 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
          * @return builder
          * 
          */
-        public Builder timeseriesColumnIdentifier(Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> timeseriesColumnIdentifier) {
+        public Builder timeseriesColumnIdentifier(@Nullable Output<FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> timeseriesColumnIdentifier) {
             $.timeseriesColumnIdentifier = timeseriesColumnIdentifier;
             return this;
         }
@@ -171,14 +194,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceArgs extends com.pu
         }
 
         public FeatureEngineeringFeatureSourceKafkaSourceArgs build() {
-            if ($.entityColumnIdentifiers == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringFeatureSourceKafkaSourceArgs", "entityColumnIdentifiers");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("FeatureEngineeringFeatureSourceKafkaSourceArgs", "name");
-            }
-            if ($.timeseriesColumnIdentifier == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringFeatureSourceKafkaSourceArgs", "timeseriesColumnIdentifier");
             }
             return $;
         }

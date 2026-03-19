@@ -20,7 +20,7 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataframeSchema")]
         public Input<string>? DataframeSchema { get; set; }
 
-        [Input("entityColumns", required: true)]
+        [Input("entityColumns")]
         private InputList<string>? _entityColumns;
 
         /// <summary>
@@ -47,11 +47,10 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> FullName { get; set; } = null!;
 
         /// <summary>
-        /// Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-        /// The timeseries column of the Delta table
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations
         /// </summary>
-        [Input("timeseriesColumn", required: true)]
-        public Input<string> TimeseriesColumn { get; set; } = null!;
+        [Input("timeseriesColumn")]
+        public Input<string>? TimeseriesColumn { get; set; }
 
         /// <summary>
         /// A single SQL SELECT expression applied after filter_condition.

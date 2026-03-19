@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.DefaultWarehouseOverride;
- * import com.pulumi.databricks.DefaultWarehouseOverrideArgs;
+ * import com.pulumi.databricks.WarehousesDefaultWarehouseOverride;
+ * import com.pulumi.databricks.WarehousesDefaultWarehouseOverrideArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var lastSelected = new DefaultWarehouseOverride("lastSelected", DefaultWarehouseOverrideArgs.builder()
+ *         var lastSelected = new WarehousesDefaultWarehouseOverride("lastSelected", WarehousesDefaultWarehouseOverrideArgs.builder()
  *             .defaultWarehouseOverrideId(example.id())
  *             .type("LAST_SELECTED")
  *             .build());
@@ -74,8 +74,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.DefaultWarehouseOverride;
- * import com.pulumi.databricks.DefaultWarehouseOverrideArgs;
+ * import com.pulumi.databricks.WarehousesDefaultWarehouseOverride;
+ * import com.pulumi.databricks.WarehousesDefaultWarehouseOverrideArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var custom = new DefaultWarehouseOverride("custom", DefaultWarehouseOverrideArgs.builder()
+ *         var custom = new WarehousesDefaultWarehouseOverride("custom", WarehousesDefaultWarehouseOverrideArgs.builder()
  *             .defaultWarehouseOverrideId(example.id())
  *             .type("CUSTOM")
  *             .warehouseId(exampleDatabricksSqlEndpoint.id())

@@ -40,7 +40,11 @@ export interface GetFeatureEngineeringFeatureResult {
      */
     readonly description: string;
     /**
-     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     * (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+     */
+    readonly entities: outputs.GetFeatureEngineeringFeatureEntity[];
+    /**
+     * (string) - The filter condition applied to the source data before aggregation
      */
     readonly filterCondition: string;
     /**
@@ -74,10 +78,14 @@ export interface GetFeatureEngineeringFeatureResult {
      */
     readonly source: outputs.GetFeatureEngineeringFeatureSource;
     /**
-     * (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-     * The time window in which the feature is computed
+     * (TimeWindow) - The time window over which the aggregation is computed
      */
     readonly timeWindow: outputs.GetFeatureEngineeringFeatureTimeWindow;
+    /**
+     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
+     */
+    readonly timeseriesColumn: outputs.GetFeatureEngineeringFeatureTimeseriesColumn;
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

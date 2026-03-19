@@ -12,7 +12,7 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureSourceKafkaSourceArgs : global::Pulumi.ResourceArgs
     {
-        [Input("entityColumnIdentifiers", required: true)]
+        [Input("entityColumnIdentifiers")]
         private InputList<Inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs>? _entityColumnIdentifiers;
 
         /// <summary>
@@ -26,8 +26,12 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+        /// The filter condition applied to the source data before aggregation
         /// </summary>
+        [Input("filterCondition")]
+        public Input<string>? FilterCondition { get; set; }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -35,8 +39,8 @@ namespace Pulumi.Databricks.Inputs
         /// Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
         /// The timeseries column identifier of the Kafka source
         /// </summary>
-        [Input("timeseriesColumnIdentifier", required: true)]
-        public Input<Inputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs> TimeseriesColumnIdentifier { get; set; } = null!;
+        [Input("timeseriesColumnIdentifier")]
+        public Input<Inputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs>? TimeseriesColumnIdentifier { get; set; }
 
         public FeatureEngineeringFeatureSourceKafkaSourceArgs()
         {

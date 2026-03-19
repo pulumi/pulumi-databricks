@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTask
     {
+        public readonly Outputs.JobTaskForEachTaskTaskAlertTask? AlertTask;
         public readonly Outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask? CleanRoomsNotebookTask;
         /// <summary>
         /// Task level compute configuration. This block is documented below.
@@ -112,6 +113,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTaskForEachTaskTask(
+            Outputs.JobTaskForEachTaskTaskAlertTask? alertTask,
+
             Outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask? cleanRoomsNotebookTask,
 
             Outputs.JobTaskForEachTaskTaskCompute? compute,
@@ -184,6 +187,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskForEachTaskTaskWebhookNotifications? webhookNotifications)
         {
+            AlertTask = alertTask;
             CleanRoomsNotebookTask = cleanRoomsNotebookTask;
             Compute = compute;
             ConditionTask = conditionTask;

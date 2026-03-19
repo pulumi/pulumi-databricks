@@ -4,11 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureEntity;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunction;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureLineageContext;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureProviderConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureTimeWindow;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureTimeseriesColumn;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -24,7 +26,12 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private String description;
     /**
-     * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     * @return (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * 
+     */
+    private List<GetFeatureEngineeringFeaturesFeatureEntity> entities;
+    /**
+     * @return (string) - The filter condition applied to the source data before aggregation
      * 
      */
     private String filterCondition;
@@ -64,11 +71,16 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private GetFeatureEngineeringFeaturesFeatureSource source;
     /**
-     * @return (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-     * The time window in which the feature is computed
+     * @return (TimeWindow) - The time window over which the aggregation is computed
      * 
      */
     private GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow;
+    /**
+     * @return (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
+     * 
+     */
+    private GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn;
 
     private GetFeatureEngineeringFeaturesFeature() {}
     /**
@@ -79,7 +91,14 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.description;
     }
     /**
-     * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     * @return (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * 
+     */
+    public List<GetFeatureEngineeringFeaturesFeatureEntity> entities() {
+        return this.entities;
+    }
+    /**
+     * @return (string) - The filter condition applied to the source data before aggregation
      * 
      */
     public String filterCondition() {
@@ -133,12 +152,19 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.source;
     }
     /**
-     * @return (TimeWindow, deprecated) - Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
-     * The time window in which the feature is computed
+     * @return (TimeWindow) - The time window over which the aggregation is computed
      * 
      */
     public GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow() {
         return this.timeWindow;
+    }
+    /**
+     * @return (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
+     * 
+     */
+    public GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn() {
+        return this.timeseriesColumn;
     }
 
     public static Builder builder() {
@@ -151,6 +177,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
     @CustomType.Builder
     public static final class Builder {
         private String description;
+        private List<GetFeatureEngineeringFeaturesFeatureEntity> entities;
         private String filterCondition;
         private String fullName;
         private GetFeatureEngineeringFeaturesFeatureFunction function;
@@ -159,10 +186,12 @@ public final class GetFeatureEngineeringFeaturesFeature {
         private @Nullable GetFeatureEngineeringFeaturesFeatureProviderConfig providerConfig;
         private GetFeatureEngineeringFeaturesFeatureSource source;
         private GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow;
+        private GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.entities = defaults.entities;
     	      this.filterCondition = defaults.filterCondition;
     	      this.fullName = defaults.fullName;
     	      this.function = defaults.function;
@@ -171,6 +200,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
     	      this.providerConfig = defaults.providerConfig;
     	      this.source = defaults.source;
     	      this.timeWindow = defaults.timeWindow;
+    	      this.timeseriesColumn = defaults.timeseriesColumn;
         }
 
         @CustomType.Setter
@@ -180,6 +210,17 @@ public final class GetFeatureEngineeringFeaturesFeature {
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder entities(List<GetFeatureEngineeringFeaturesFeatureEntity> entities) {
+            if (entities == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "entities");
+            }
+            this.entities = entities;
+            return this;
+        }
+        public Builder entities(GetFeatureEngineeringFeaturesFeatureEntity... entities) {
+            return entities(List.of(entities));
         }
         @CustomType.Setter
         public Builder filterCondition(String filterCondition) {
@@ -246,9 +287,18 @@ public final class GetFeatureEngineeringFeaturesFeature {
             this.timeWindow = timeWindow;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeseriesColumn(GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn) {
+            if (timeseriesColumn == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "timeseriesColumn");
+            }
+            this.timeseriesColumn = timeseriesColumn;
+            return this;
+        }
         public GetFeatureEngineeringFeaturesFeature build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeature();
             _resultValue.description = description;
+            _resultValue.entities = entities;
             _resultValue.filterCondition = filterCondition;
             _resultValue.fullName = fullName;
             _resultValue.function = function;
@@ -257,6 +307,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
             _resultValue.providerConfig = providerConfig;
             _resultValue.source = source;
             _resultValue.timeWindow = timeWindow;
+            _resultValue.timeseriesColumn = timeseriesColumn;
             return _resultValue;
         }
     }

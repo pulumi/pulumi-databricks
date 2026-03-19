@@ -22,6 +22,12 @@ namespace Pulumi.Databricks
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The entity columns for the feature, used as aggregation keys and for query-time lookup
+        /// </summary>
+        [Output("entities")]
+        public Output<ImmutableArray<Outputs.FeatureEngineeringFeatureEntity>> Entities { get; private set; } = null!;
+
+        /// <summary>
         /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         /// The filter condition applied to the source data before aggregation
         /// </summary>
@@ -76,6 +82,12 @@ namespace Pulumi.Databricks
         [Output("timeWindow")]
         public Output<Outputs.FeatureEngineeringFeatureTimeWindow?> TimeWindow { get; private set; } = null!;
 
+        /// <summary>
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// </summary>
+        [Output("timeseriesColumn")]
+        public Output<Outputs.FeatureEngineeringFeatureTimeseriesColumn?> TimeseriesColumn { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a FeatureEngineeringFeature resource with the given unique name, arguments, and options.
@@ -128,6 +140,18 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("entities")]
+        private InputList<Inputs.FeatureEngineeringFeatureEntityArgs>? _entities;
+
+        /// <summary>
+        /// The entity columns for the feature, used as aggregation keys and for query-time lookup
+        /// </summary>
+        public InputList<Inputs.FeatureEngineeringFeatureEntityArgs> Entities
+        {
+            get => _entities ?? (_entities = new InputList<Inputs.FeatureEngineeringFeatureEntityArgs>());
+            set => _entities = value;
+        }
+
         /// <summary>
         /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         /// The filter condition applied to the source data before aggregation
@@ -147,7 +171,7 @@ namespace Pulumi.Databricks
         [Input("function", required: true)]
         public Input<Inputs.FeatureEngineeringFeatureFunctionArgs> Function { get; set; } = null!;
 
-        [Input("inputs", required: true)]
+        [Input("inputs")]
         private InputList<string>? _inputs;
 
         /// <summary>
@@ -189,6 +213,12 @@ namespace Pulumi.Databricks
         [Input("timeWindow")]
         public Input<Inputs.FeatureEngineeringFeatureTimeWindowArgs>? TimeWindow { get; set; }
 
+        /// <summary>
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// </summary>
+        [Input("timeseriesColumn")]
+        public Input<Inputs.FeatureEngineeringFeatureTimeseriesColumnArgs>? TimeseriesColumn { get; set; }
+
         public FeatureEngineeringFeatureArgs()
         {
         }
@@ -202,6 +232,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("entities")]
+        private InputList<Inputs.FeatureEngineeringFeatureEntityGetArgs>? _entities;
+
+        /// <summary>
+        /// The entity columns for the feature, used as aggregation keys and for query-time lookup
+        /// </summary>
+        public InputList<Inputs.FeatureEngineeringFeatureEntityGetArgs> Entities
+        {
+            get => _entities ?? (_entities = new InputList<Inputs.FeatureEngineeringFeatureEntityGetArgs>());
+            set => _entities = value;
+        }
 
         /// <summary>
         /// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
@@ -263,6 +305,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("timeWindow")]
         public Input<Inputs.FeatureEngineeringFeatureTimeWindowGetArgs>? TimeWindow { get; set; }
+
+        /// <summary>
+        /// Column recording time, used for point-in-time joins, backfills, and aggregations
+        /// </summary>
+        [Input("timeseriesColumn")]
+        public Input<Inputs.FeatureEngineeringFeatureTimeseriesColumnGetArgs>? TimeseriesColumn { get; set; }
 
         public FeatureEngineeringFeatureState()
         {

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionDataStagingOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionFullRefreshWindow;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObject;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionSourceConfiguration;
@@ -18,6 +19,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineIngestionDefinition {
     private @Nullable String connectionName;
+    private @Nullable String connectorType;
+    private @Nullable PipelineIngestionDefinitionDataStagingOptions dataStagingOptions;
     private @Nullable PipelineIngestionDefinitionFullRefreshWindow fullRefreshWindow;
     private @Nullable Boolean ingestFromUcForeignCatalog;
     private @Nullable String ingestionGatewayId;
@@ -30,6 +33,12 @@ public final class PipelineIngestionDefinition {
     private PipelineIngestionDefinition() {}
     public Optional<String> connectionName() {
         return Optional.ofNullable(this.connectionName);
+    }
+    public Optional<String> connectorType() {
+        return Optional.ofNullable(this.connectorType);
+    }
+    public Optional<PipelineIngestionDefinitionDataStagingOptions> dataStagingOptions() {
+        return Optional.ofNullable(this.dataStagingOptions);
     }
     public Optional<PipelineIngestionDefinitionFullRefreshWindow> fullRefreshWindow() {
         return Optional.ofNullable(this.fullRefreshWindow);
@@ -66,6 +75,8 @@ public final class PipelineIngestionDefinition {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionName;
+        private @Nullable String connectorType;
+        private @Nullable PipelineIngestionDefinitionDataStagingOptions dataStagingOptions;
         private @Nullable PipelineIngestionDefinitionFullRefreshWindow fullRefreshWindow;
         private @Nullable Boolean ingestFromUcForeignCatalog;
         private @Nullable String ingestionGatewayId;
@@ -78,6 +89,8 @@ public final class PipelineIngestionDefinition {
         public Builder(PipelineIngestionDefinition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionName = defaults.connectionName;
+    	      this.connectorType = defaults.connectorType;
+    	      this.dataStagingOptions = defaults.dataStagingOptions;
     	      this.fullRefreshWindow = defaults.fullRefreshWindow;
     	      this.ingestFromUcForeignCatalog = defaults.ingestFromUcForeignCatalog;
     	      this.ingestionGatewayId = defaults.ingestionGatewayId;
@@ -92,6 +105,18 @@ public final class PipelineIngestionDefinition {
         public Builder connectionName(@Nullable String connectionName) {
 
             this.connectionName = connectionName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectorType(@Nullable String connectorType) {
+
+            this.connectorType = connectorType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataStagingOptions(@Nullable PipelineIngestionDefinitionDataStagingOptions dataStagingOptions) {
+
+            this.dataStagingOptions = dataStagingOptions;
             return this;
         }
         @CustomType.Setter
@@ -151,6 +176,8 @@ public final class PipelineIngestionDefinition {
         public PipelineIngestionDefinition build() {
             final var _resultValue = new PipelineIngestionDefinition();
             _resultValue.connectionName = connectionName;
+            _resultValue.connectorType = connectorType;
+            _resultValue.dataStagingOptions = dataStagingOptions;
             _resultValue.fullRefreshWindow = fullRefreshWindow;
             _resultValue.ingestFromUcForeignCatalog = ingestFromUcForeignCatalog;
             _resultValue.ingestionGatewayId = ingestionGatewayId;

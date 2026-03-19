@@ -19,6 +19,19 @@ import * as utilities from "./utilities";
  * > **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
  *
  * ## Example Usage
+ *
+ * ### Get a User's Override
+ * This example retrieves the default warehouse override for a specific user.
+ * The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const user = databricks.getWarehousesDefaultWarehouseOverride({
+ *     name: `default-warehouse-overrides/${example.id}`,
+ * });
+ * ```
  */
 export function getWarehousesDefaultWarehouseOverride(args: GetWarehousesDefaultWarehouseOverrideArgs, opts?: pulumi.InvokeOptions): Promise<GetWarehousesDefaultWarehouseOverrideResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -84,6 +97,19 @@ export interface GetWarehousesDefaultWarehouseOverrideResult {
  * > **Note** The resource name format is `default-warehouse-overrides/{default_warehouse_override_id}`, where `defaultWarehouseOverrideId` represents a user ID.
  *
  * ## Example Usage
+ *
+ * ### Get a User's Override
+ * This example retrieves the default warehouse override for a specific user.
+ * The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const user = databricks.getWarehousesDefaultWarehouseOverride({
+ *     name: `default-warehouse-overrides/${example.id}`,
+ * });
+ * ```
  */
 export function getWarehousesDefaultWarehouseOverrideOutput(args: GetWarehousesDefaultWarehouseOverrideOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWarehousesDefaultWarehouseOverrideResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

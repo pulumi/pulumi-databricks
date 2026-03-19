@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetDataClassificationCatalogConfig
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataClassificationCatalogConfigResult>("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", args ?? new GetDataClassificationCatalogConfigArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDataClassificationCatalogConfigResult>("databricks:index/getDataClassificationCatalogConfig:getDataClassificationCatalogConfig", args ?? new GetDataClassificationCatalogConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
         /// 

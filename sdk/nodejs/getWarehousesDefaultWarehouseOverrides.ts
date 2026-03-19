@@ -14,6 +14,16 @@ import * as utilities from "./utilities";
  * > **Note** This data source requires workspace admin permissions.
  *
  * ## Example Usage
+ *
+ * ### List All Overrides
+ * Returns a list of all default warehouse overrides in the workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getWarehousesDefaultWarehouseOverrides({});
+ * ```
  */
 export function getWarehousesDefaultWarehouseOverrides(args?: GetWarehousesDefaultWarehouseOverridesArgs, opts?: pulumi.InvokeOptions): Promise<GetWarehousesDefaultWarehouseOverridesResult> {
     args = args || {};
@@ -61,6 +71,16 @@ export interface GetWarehousesDefaultWarehouseOverridesResult {
  * > **Note** This data source requires workspace admin permissions.
  *
  * ## Example Usage
+ *
+ * ### List All Overrides
+ * Returns a list of all default warehouse overrides in the workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getWarehousesDefaultWarehouseOverrides({});
+ * ```
  */
 export function getWarehousesDefaultWarehouseOverridesOutput(args?: GetWarehousesDefaultWarehouseOverridesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWarehousesDefaultWarehouseOverridesResult> {
     args = args || {};

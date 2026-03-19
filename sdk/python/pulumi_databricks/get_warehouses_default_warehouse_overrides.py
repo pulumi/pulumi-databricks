@@ -90,6 +90,16 @@ def get_warehouses_default_warehouse_overrides(page_size: Optional[_builtins.int
 
     ## Example Usage
 
+    ### List All Overrides
+    Returns a list of all default warehouse overrides in the workspace:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_warehouses_default_warehouse_overrides()
+    ```
+
 
     :param _builtins.int page_size: The maximum number of overrides to return. The service may return fewer than
            this value.
@@ -119,6 +129,16 @@ def get_warehouses_default_warehouse_overrides_output(page_size: Optional[pulumi
     > **Note** This data source requires workspace admin permissions.
 
     ## Example Usage
+
+    ### List All Overrides
+    Returns a list of all default warehouse overrides in the workspace:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_warehouses_default_warehouse_overrides()
+    ```
 
 
     :param _builtins.int page_size: The maximum number of overrides to return. The service may return fewer than

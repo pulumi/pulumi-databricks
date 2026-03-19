@@ -25,6 +25,26 @@ namespace Pulumi.Databricks
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Get a User's Override
+        /// This example retrieves the default warehouse override for a specific user.
+        /// The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Databricks.GetWarehousesDefaultWarehouseOverride.Invoke(new()
+        ///     {
+        ///         Name = $"default-warehouse-overrides/{example.Id}",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetWarehousesDefaultWarehouseOverrideResult> InvokeAsync(GetWarehousesDefaultWarehouseOverrideArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWarehousesDefaultWarehouseOverrideResult>("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", args ?? new GetWarehousesDefaultWarehouseOverrideArgs(), options.WithDefaults());
@@ -43,6 +63,26 @@ namespace Pulumi.Databricks
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Get a User's Override
+        /// This example retrieves the default warehouse override for a specific user.
+        /// The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Databricks.GetWarehousesDefaultWarehouseOverride.Invoke(new()
+        ///     {
+        ///         Name = $"default-warehouse-overrides/{example.Id}",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWarehousesDefaultWarehouseOverrideResult> Invoke(GetWarehousesDefaultWarehouseOverrideInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWarehousesDefaultWarehouseOverrideResult>("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", args ?? new GetWarehousesDefaultWarehouseOverrideInvokeArgs(), options.WithDefaults());
@@ -61,6 +101,26 @@ namespace Pulumi.Databricks
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Get a User's Override
+        /// This example retrieves the default warehouse override for a specific user.
+        /// The name format is `default-warehouse-overrides/{default_warehouse_override_id}`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Databricks.GetWarehousesDefaultWarehouseOverride.Invoke(new()
+        ///     {
+        ///         Name = $"default-warehouse-overrides/{example.Id}",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetWarehousesDefaultWarehouseOverrideResult> Invoke(GetWarehousesDefaultWarehouseOverrideInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetWarehousesDefaultWarehouseOverrideResult>("databricks:index/getWarehousesDefaultWarehouseOverride:getWarehousesDefaultWarehouseOverride", args ?? new GetWarehousesDefaultWarehouseOverrideInvokeArgs(), options.WithDefaults());

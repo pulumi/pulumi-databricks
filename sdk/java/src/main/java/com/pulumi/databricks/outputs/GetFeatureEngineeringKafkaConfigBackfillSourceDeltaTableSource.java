@@ -25,7 +25,7 @@ public final class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourc
      * The entity columns of the Delta table
      * 
      */
-    private List<String> entityColumns;
+    private @Nullable List<String> entityColumns;
     /**
      * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      * 
@@ -41,7 +41,7 @@ public final class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourc
      * The timeseries column of the Delta table
      * 
      */
-    private String timeseriesColumn;
+    private @Nullable String timeseriesColumn;
     /**
      * @return (string) - A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
@@ -66,7 +66,7 @@ public final class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourc
      * 
      */
     public List<String> entityColumns() {
-        return this.entityColumns;
+        return this.entityColumns == null ? List.of() : this.entityColumns;
     }
     /**
      * @return (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
@@ -87,8 +87,8 @@ public final class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourc
      * The timeseries column of the Delta table
      * 
      */
-    public String timeseriesColumn() {
-        return this.timeseriesColumn;
+    public Optional<String> timeseriesColumn() {
+        return Optional.ofNullable(this.timeseriesColumn);
     }
     /**
      * @return (string) - A single SQL SELECT expression applied after filter_condition.
@@ -110,10 +110,10 @@ public final class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourc
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dataframeSchema;
-        private List<String> entityColumns;
+        private @Nullable List<String> entityColumns;
         private @Nullable String filterCondition;
         private String fullName;
-        private String timeseriesColumn;
+        private @Nullable String timeseriesColumn;
         private @Nullable String transformationSql;
         public Builder() {}
         public Builder(GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource defaults) {
@@ -133,10 +133,8 @@ public final class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourc
             return this;
         }
         @CustomType.Setter
-        public Builder entityColumns(List<String> entityColumns) {
-            if (entityColumns == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource", "entityColumns");
-            }
+        public Builder entityColumns(@Nullable List<String> entityColumns) {
+
             this.entityColumns = entityColumns;
             return this;
         }
@@ -158,10 +156,8 @@ public final class GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourc
             return this;
         }
         @CustomType.Setter
-        public Builder timeseriesColumn(String timeseriesColumn) {
-            if (timeseriesColumn == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource", "timeseriesColumn");
-            }
+        public Builder timeseriesColumn(@Nullable String timeseriesColumn) {
+
             this.timeseriesColumn = timeseriesColumn;
             return this;
         }

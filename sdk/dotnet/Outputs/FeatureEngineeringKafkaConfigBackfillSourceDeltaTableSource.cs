@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
         /// Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
         /// The timeseries column of the Delta table
         /// </summary>
-        public readonly string TimeseriesColumn;
+        public readonly string? TimeseriesColumn;
         /// <summary>
         /// A single SQL SELECT expression applied after filter_condition.
         /// Should contains all the columns needed (eg. "SELECT *, ColA + ColB AS ColC FROM x.y.z WHERE ColA &gt; 0" would have `TransformationSql` "*, ColA + ColB AS ColC")
@@ -54,7 +54,7 @@ namespace Pulumi.Databricks.Outputs
 
             string fullName,
 
-            string timeseriesColumn,
+            string? timeseriesColumn,
 
             string? transformationSql)
         {

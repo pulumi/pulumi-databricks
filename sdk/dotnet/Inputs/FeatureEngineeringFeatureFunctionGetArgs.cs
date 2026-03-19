@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureFunctionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An aggregation function applied over a time window
+        /// </summary>
+        [Input("aggregationFunction")]
+        public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionGetArgs>? AggregationFunction { get; set; }
+
         [Input("extraParameters")]
         private InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterGetArgs>? _extraParameters;
 
@@ -29,8 +35,8 @@ namespace Pulumi.Databricks.Inputs
         /// Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
         /// The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
         /// </summary>
-        [Input("functionType", required: true)]
-        public Input<string> FunctionType { get; set; } = null!;
+        [Input("functionType")]
+        public Input<string>? FunctionType { get; set; }
 
         public FeatureEngineeringFeatureFunctionGetArgs()
         {

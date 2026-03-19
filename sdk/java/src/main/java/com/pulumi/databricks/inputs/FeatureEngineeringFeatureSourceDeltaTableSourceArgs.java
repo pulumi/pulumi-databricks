@@ -41,16 +41,16 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
      * The entity columns of the Delta table
      * 
      */
-    @Import(name="entityColumns", required=true)
-    private Output<List<String>> entityColumns;
+    @Import(name="entityColumns")
+    private @Nullable Output<List<String>> entityColumns;
 
     /**
      * @return Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      * 
      */
-    public Output<List<String>> entityColumns() {
-        return this.entityColumns;
+    public Optional<Output<List<String>>> entityColumns() {
+        return Optional.ofNullable(this.entityColumns);
     }
 
     /**
@@ -86,20 +86,18 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
     }
 
     /**
-     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
+     * Column recording time, used for point-in-time joins, backfills, and aggregations
      * 
      */
-    @Import(name="timeseriesColumn", required=true)
-    private Output<String> timeseriesColumn;
+    @Import(name="timeseriesColumn")
+    private @Nullable Output<String> timeseriesColumn;
 
     /**
-     * @return Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
      * 
      */
-    public Output<String> timeseriesColumn() {
-        return this.timeseriesColumn;
+    public Optional<Output<String>> timeseriesColumn() {
+        return Optional.ofNullable(this.timeseriesColumn);
     }
 
     /**
@@ -182,7 +180,7 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
          * @return builder
          * 
          */
-        public Builder entityColumns(Output<List<String>> entityColumns) {
+        public Builder entityColumns(@Nullable Output<List<String>> entityColumns) {
             $.entityColumns = entityColumns;
             return this;
         }
@@ -254,20 +252,18 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
         }
 
         /**
-         * @param timeseriesColumn Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-         * The timeseries column of the Delta table
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
          * 
          * @return builder
          * 
          */
-        public Builder timeseriesColumn(Output<String> timeseriesColumn) {
+        public Builder timeseriesColumn(@Nullable Output<String> timeseriesColumn) {
             $.timeseriesColumn = timeseriesColumn;
             return this;
         }
 
         /**
-         * @param timeseriesColumn Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-         * The timeseries column of the Delta table
+         * @param timeseriesColumn Column recording time, used for point-in-time joins, backfills, and aggregations
          * 
          * @return builder
          * 
@@ -302,14 +298,8 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSourceArgs extends c
         }
 
         public FeatureEngineeringFeatureSourceDeltaTableSourceArgs build() {
-            if ($.entityColumns == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringFeatureSourceDeltaTableSourceArgs", "entityColumns");
-            }
             if ($.fullName == null) {
                 throw new MissingRequiredPropertyException("FeatureEngineeringFeatureSourceDeltaTableSourceArgs", "fullName");
-            }
-            if ($.timeseriesColumn == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringFeatureSourceDeltaTableSourceArgs", "timeseriesColumn");
             }
             return $;
         }

@@ -10,11 +10,13 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.FeatureEngineeringFeatureArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureState;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureEntity;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunction;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureLineageContext;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureProviderConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureTimeWindow;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureTimeseriesColumn;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +41,20 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * 
+     */
+    @Export(name="entities", refs={List.class,FeatureEngineeringFeatureEntity.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<FeatureEngineeringFeatureEntity>> entities;
+
+    /**
+     * @return The entity columns for the feature, used as aggregation keys and for query-time lookup
+     * 
+     */
+    public Output<Optional<List<FeatureEngineeringFeatureEntity>>> entities() {
+        return Codegen.optional(this.entities);
     }
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
@@ -90,15 +106,15 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="inputs", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> inputs;
+    private Output</* @Nullable */ List<String>> inputs;
 
     /**
      * @return Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      * 
      */
-    public Output<List<String>> inputs() {
-        return this.inputs;
+    public Output<Optional<List<String>>> inputs() {
+        return Codegen.optional(this.inputs);
     }
     /**
      * Lineage context information for this feature.
@@ -165,6 +181,20 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
      */
     public Output<Optional<FeatureEngineeringFeatureTimeWindow>> timeWindow() {
         return Codegen.optional(this.timeWindow);
+    }
+    /**
+     * Column recording time, used for point-in-time joins, backfills, and aggregations
+     * 
+     */
+    @Export(name="timeseriesColumn", refs={FeatureEngineeringFeatureTimeseriesColumn.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringFeatureTimeseriesColumn> timeseriesColumn;
+
+    /**
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
+     * 
+     */
+    public Output<Optional<FeatureEngineeringFeatureTimeseriesColumn>> timeseriesColumn() {
+        return Codegen.optional(this.timeseriesColumn);
     }
 
     /**

@@ -47,6 +47,8 @@ from .endpoint import *
 from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
 from .entity_tag_assignment import *
+from .environments_default_workspace_base_environment import *
+from .environments_workspace_base_environment import *
 from .external_location import *
 from .external_metadata import *
 from .feature_engineering_feature import *
@@ -101,6 +103,9 @@ from .get_endpoint import *
 from .get_endpoints import *
 from .get_entity_tag_assignment import *
 from .get_entity_tag_assignments import *
+from .get_environments_default_workspace_base_environment import *
+from .get_environments_workspace_base_environment import *
+from .get_environments_workspace_base_environments import *
 from .get_external_location import *
 from .get_external_locations import *
 from .get_external_metadata import *
@@ -149,6 +154,8 @@ from .get_postgres_endpoint import *
 from .get_postgres_endpoints import *
 from .get_postgres_project import *
 from .get_postgres_projects import *
+from .get_postgres_role import *
+from .get_postgres_roles import *
 from .get_quality_monitor_v2 import *
 from .get_quality_monitors_v2 import *
 from .get_registered_model import *
@@ -236,6 +243,7 @@ from .postgres_branch import *
 from .postgres_database import *
 from .postgres_endpoint import *
 from .postgres_project import *
+from .postgres_role import *
 from .provider import *
 from .quality_monitor import *
 from .quality_monitor_v2 import *
@@ -620,6 +628,22 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/entityTagAssignment:EntityTagAssignment": "EntityTagAssignment"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/environmentsDefaultWorkspaceBaseEnvironment",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/environmentsDefaultWorkspaceBaseEnvironment:EnvironmentsDefaultWorkspaceBaseEnvironment": "EnvironmentsDefaultWorkspaceBaseEnvironment"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/environmentsWorkspaceBaseEnvironment",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/environmentsWorkspaceBaseEnvironment:EnvironmentsWorkspaceBaseEnvironment": "EnvironmentsWorkspaceBaseEnvironment"
   }
  },
  {
@@ -1084,6 +1108,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/postgresProject:PostgresProject": "PostgresProject"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/postgresRole",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/postgresRole:PostgresRole": "PostgresRole"
   }
  },
  {

@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringFeatureFunction
     {
         /// <summary>
+        /// An aggregation function applied over a time window
+        /// </summary>
+        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunction? AggregationFunction;
+        /// <summary>
         /// Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
         /// Extra parameters for parameterized functions
         /// </summary>
@@ -22,14 +26,17 @@ namespace Pulumi.Databricks.Outputs
         /// Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
         /// The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
         /// </summary>
-        public readonly string FunctionType;
+        public readonly string? FunctionType;
 
         [OutputConstructor]
         private FeatureEngineeringFeatureFunction(
+            Outputs.FeatureEngineeringFeatureFunctionAggregationFunction? aggregationFunction,
+
             ImmutableArray<Outputs.FeatureEngineeringFeatureFunctionExtraParameter> extraParameters,
 
-            string functionType)
+            string? functionType)
         {
+            AggregationFunction = aggregationFunction;
             ExtraParameters = extraParameters;
             FunctionType = functionType;
         }

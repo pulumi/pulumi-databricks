@@ -25,7 +25,7 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
      * The entity columns of the Delta table
      * 
      */
-    private List<String> entityColumns;
+    private @Nullable List<String> entityColumns;
     /**
      * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
@@ -38,11 +38,10 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
      */
     private String fullName;
     /**
-     * @return Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
      * 
      */
-    private String timeseriesColumn;
+    private @Nullable String timeseriesColumn;
     /**
      * @return A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. &#34;SELECT *, colA + colB AS colC FROM x.y.z WHERE colA &gt; 0&#34; would have `transformationSql` &#34;*, colA + colB AS colC&#34;)
@@ -67,7 +66,7 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
      * 
      */
     public List<String> entityColumns() {
-        return this.entityColumns;
+        return this.entityColumns == null ? List.of() : this.entityColumns;
     }
     /**
      * @return Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
@@ -85,12 +84,11 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
         return this.fullName;
     }
     /**
-     * @return Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
-     * The timeseries column of the Delta table
+     * @return Column recording time, used for point-in-time joins, backfills, and aggregations
      * 
      */
-    public String timeseriesColumn() {
-        return this.timeseriesColumn;
+    public Optional<String> timeseriesColumn() {
+        return Optional.ofNullable(this.timeseriesColumn);
     }
     /**
      * @return A single SQL SELECT expression applied after filter_condition.
@@ -112,10 +110,10 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dataframeSchema;
-        private List<String> entityColumns;
+        private @Nullable List<String> entityColumns;
         private @Nullable String filterCondition;
         private String fullName;
-        private String timeseriesColumn;
+        private @Nullable String timeseriesColumn;
         private @Nullable String transformationSql;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureSourceDeltaTableSource defaults) {
@@ -135,10 +133,8 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
             return this;
         }
         @CustomType.Setter
-        public Builder entityColumns(List<String> entityColumns) {
-            if (entityColumns == null) {
-              throw new MissingRequiredPropertyException("FeatureEngineeringFeatureSourceDeltaTableSource", "entityColumns");
-            }
+        public Builder entityColumns(@Nullable List<String> entityColumns) {
+
             this.entityColumns = entityColumns;
             return this;
         }
@@ -160,10 +156,8 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
             return this;
         }
         @CustomType.Setter
-        public Builder timeseriesColumn(String timeseriesColumn) {
-            if (timeseriesColumn == null) {
-              throw new MissingRequiredPropertyException("FeatureEngineeringFeatureSourceDeltaTableSource", "timeseriesColumn");
-            }
+        public Builder timeseriesColumn(@Nullable String timeseriesColumn) {
+
             this.timeseriesColumn = timeseriesColumn;
             return this;
         }

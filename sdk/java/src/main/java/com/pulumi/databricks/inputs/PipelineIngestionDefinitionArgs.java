@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionDataStagingOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionFullRefreshWindowArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionSourceConfigurationArgs;
@@ -26,6 +27,20 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
     public Optional<Output<String>> connectionName() {
         return Optional.ofNullable(this.connectionName);
+    }
+
+    @Import(name="connectorType")
+    private @Nullable Output<String> connectorType;
+
+    public Optional<Output<String>> connectorType() {
+        return Optional.ofNullable(this.connectorType);
+    }
+
+    @Import(name="dataStagingOptions")
+    private @Nullable Output<PipelineIngestionDefinitionDataStagingOptionsArgs> dataStagingOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionDataStagingOptionsArgs>> dataStagingOptions() {
+        return Optional.ofNullable(this.dataStagingOptions);
     }
 
     @Import(name="fullRefreshWindow")
@@ -88,6 +103,8 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
     private PipelineIngestionDefinitionArgs(PipelineIngestionDefinitionArgs $) {
         this.connectionName = $.connectionName;
+        this.connectorType = $.connectorType;
+        this.dataStagingOptions = $.dataStagingOptions;
         this.fullRefreshWindow = $.fullRefreshWindow;
         this.ingestFromUcForeignCatalog = $.ingestFromUcForeignCatalog;
         this.ingestionGatewayId = $.ingestionGatewayId;
@@ -123,6 +140,24 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
         public Builder connectionName(String connectionName) {
             return connectionName(Output.of(connectionName));
+        }
+
+        public Builder connectorType(@Nullable Output<String> connectorType) {
+            $.connectorType = connectorType;
+            return this;
+        }
+
+        public Builder connectorType(String connectorType) {
+            return connectorType(Output.of(connectorType));
+        }
+
+        public Builder dataStagingOptions(@Nullable Output<PipelineIngestionDefinitionDataStagingOptionsArgs> dataStagingOptions) {
+            $.dataStagingOptions = dataStagingOptions;
+            return this;
+        }
+
+        public Builder dataStagingOptions(PipelineIngestionDefinitionDataStagingOptionsArgs dataStagingOptions) {
+            return dataStagingOptions(Output.of(dataStagingOptions));
         }
 
         public Builder fullRefreshWindow(@Nullable Output<PipelineIngestionDefinitionFullRefreshWindowArgs> fullRefreshWindow) {
