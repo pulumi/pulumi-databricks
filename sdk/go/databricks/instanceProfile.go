@@ -48,7 +48,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = databricks.NewClusterPolicy(ctx, "this", &databricks.ClusterPolicyArgs{
 //				Name:       pulumi.String("Policy with predefined instance profile"),
-//				Definition: pulumi.String(json0),
+//				Definition: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -88,7 +88,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupInstanceProfile(ctx, "all", &databricks.GroupInstanceProfileArgs{
-//				GroupId:           pulumi.String(users.Id),
+//				GroupId:           pulumi.String(pulumi.String(users.Id)),
 //				InstanceProfileId: this.ID(),
 //			})
 //			if err != nil {

@@ -105,7 +105,7 @@ def get_volume(id: Optional[_builtins.str] = None,
 
     all = databricks.get_volumes(catalog_name="sandbox",
         schema_name="things")
-    this = {__key: databricks.get_volume(name=__value) for __key, __value in all.ids}
+    this = {__key: databricks.get_volume(name=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific volume by its fully qualified name
@@ -165,7 +165,7 @@ def get_volume_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None
 
     all = databricks.get_volumes(catalog_name="sandbox",
         schema_name="things")
-    this = {__key: databricks.get_volume(name=__value) for __key, __value in all.ids}
+    this = {__key: databricks.get_volume(name=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific volume by its fully qualified name

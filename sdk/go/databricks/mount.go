@@ -72,7 +72,7 @@ import (
 //				ExtraConfigs: pulumi.StringMap{
 //					"fs.azure.account.auth.type":                          pulumi.String("OAuth"),
 //					"fs.azure.account.oauth.provider.type":                pulumi.String("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
-//					"fs.azure.account.oauth2.client.id":                   pulumi.String(clientId),
+//					"fs.azure.account.oauth2.client.id":                   pulumi.String(pulumi.String(clientId)),
 //					"fs.azure.account.oauth2.client.secret":               pulumi.Sprintf("{{secrets/%v/%v}}", secretScope, secretKey),
 //					"fs.azure.account.oauth2.client.endpoint":             pulumi.Sprintf("https://login.microsoftonline.com/%v/oauth2/token", tenantId),
 //					"fs.azure.createRemoteFileSystemDuringInitialization": pulumi.String("false"),
@@ -133,8 +133,8 @@ import (
 //			}
 //			sharedPassthrough, err := databricks.NewCluster(ctx, "shared_passthrough", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Passthrough for mount"),
-//				SparkVersion:           pulumi.String(latest.Id),
-//				NodeTypeId:             pulumi.String(smallest.Id),
+//				SparkVersion:           pulumi.String(pulumi.String(latest.Id)),
+//				NodeTypeId:             pulumi.String(pulumi.String(smallest.Id)),
 //				AutoterminationMinutes: pulumi.Int(10),
 //				NumWorkers:             pulumi.Int(1),
 //				SparkConf: pulumi.StringMap{

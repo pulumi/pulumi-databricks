@@ -74,8 +74,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var team = config.get("team");
- *         final var policyOverrides = config.get("policyOverrides");
+ *         final var team = config.require("team");
+ *         final var policyOverrides = config.require("policyOverrides");
  *         final var defaultPolicy = Map.ofEntries(
  *             Map.entry("dbus_per_hour", Map.ofEntries(
  *                 Map.entry("type", "range"),

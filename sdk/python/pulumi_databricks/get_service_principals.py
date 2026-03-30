@@ -114,7 +114,7 @@ def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = 
 
     admins = databricks.get_group(display_name="admins")
     spns = databricks.get_service_principals(display_name_contains="my-spn")
-    spn = {__key: databricks.get_service_principal(application_id=__value) for __key, __value in std.toset(input=spns.application_ids).result}
+    spn = {__key: databricks.get_service_principal(application_id=__value) for __key, __value in enumerate(std.toset(input=spns.application_ids).result)}
     my_member_spn = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
         my_member_spn.append(databricks.GroupMember(f"my_member_spn-{range['key']}",
@@ -176,7 +176,7 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
 
     admins = databricks.get_group(display_name="admins")
     spns = databricks.get_service_principals(display_name_contains="my-spn")
-    spn = {__key: databricks.get_service_principal(application_id=__value) for __key, __value in std.toset(input=spns.application_ids).result}
+    spn = {__key: databricks.get_service_principal(application_id=__value) for __key, __value in enumerate(std.toset(input=spns.application_ids).result)}
     my_member_spn = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
         my_member_spn.append(databricks.GroupMember(f"my_member_spn-{range['key']}",

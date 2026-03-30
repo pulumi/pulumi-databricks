@@ -42,7 +42,7 @@ import (
 //			var everyoneCanViewAllJobs []*databricks.Permissions
 //			for key0, val0 := range this.Ids {
 //				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("everyone_can_view_all_jobs-%v", key0), &databricks.PermissionsArgs{
-//					JobId: pulumi.String(val0),
+//					JobId: pulumi.String(pulumi.String(val0)),
 //					AccessControls: databricks.PermissionsAccessControlArray{
 //						&databricks.PermissionsAccessControlArgs{
 //							GroupName:       pulumi.String("users"),
@@ -113,7 +113,7 @@ import (
 //			var everyoneCanViewAllJobs []*databricks.Permissions
 //			for key0, val0 := range this.Ids {
 //				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("everyone_can_view_all_jobs-%v", key0), &databricks.PermissionsArgs{
-//					JobId: pulumi.String(val0),
+//					JobId: pulumi.String(pulumi.String(val0)),
 //					AccessControls: databricks.PermissionsAccessControlArray{
 //						&databricks.PermissionsAccessControlArgs{
 //							GroupName:       pulumi.String("users"),

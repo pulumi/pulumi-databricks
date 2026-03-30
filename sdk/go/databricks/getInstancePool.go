@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewCluster(ctx, "my_cluster", &databricks.ClusterArgs{
-//				InstancePoolId: pulumi.String(pool.Id),
+//				InstancePoolId: pulumi.String(pulumi.String(pool.Id)),
 //			})
 //			if err != nil {
 //				return err

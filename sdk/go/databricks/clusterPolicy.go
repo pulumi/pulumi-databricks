@@ -161,7 +161,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = databricks.NewClusterPolicy(ctx, "personal_vm", &databricks.ClusterPolicyArgs{
 //				PolicyFamilyId:                  pulumi.String("personal-vm"),
-//				PolicyFamilyDefinitionOverrides: pulumi.String(json0),
+//				PolicyFamilyDefinitionOverrides: pulumi.String(pulumi.String(json0)),
 //				Name:                            pulumi.String("Personal Compute"),
 //			})
 //			if err != nil {

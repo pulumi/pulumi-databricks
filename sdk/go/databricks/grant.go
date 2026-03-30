@@ -263,7 +263,7 @@ import (
 //			var thingsGrant []*databricks.Grant
 //			for key0, val0 := range things.Ids {
 //				__res, err := databricks.NewGrant(ctx, fmt.Sprintf("things-%v", key0), &databricks.GrantArgs{
-//					Table:     pulumi.String(val0),
+//					Table:     pulumi.String(pulumi.String(val0)),
 //					Principal: pulumi.String("sensitive"),
 //					Privileges: pulumi.StringArray{
 //						pulumi.String("SELECT"),
@@ -339,7 +339,7 @@ import (
 //			var customersGrant []*databricks.Grant
 //			for key0, val0 := range customers.Ids {
 //				__res, err := databricks.NewGrant(ctx, fmt.Sprintf("customers-%v", key0), &databricks.GrantArgs{
-//					Table:     pulumi.String(val0),
+//					Table:     pulumi.String(pulumi.String(val0)),
 //					Principal: pulumi.String("sensitive"),
 //					Privileges: pulumi.StringArray{
 //						pulumi.String("SELECT"),

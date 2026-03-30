@@ -70,8 +70,8 @@ import (
 //			}
 //			sharedAutoscaling, err := databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Autoscaling"),
-//				SparkVersion:           pulumi.String(latest.Id),
-//				NodeTypeId:             pulumi.String(smallest.Id),
+//				SparkVersion:           pulumi.String(pulumi.String(latest.Id)),
+//				NodeTypeId:             pulumi.String(pulumi.String(smallest.Id)),
 //				AutoterminationMinutes: pulumi.Int(60),
 //				Autoscale: &databricks.ClusterAutoscaleArgs{
 //					MinWorkers: pulumi.Int(1),
@@ -151,7 +151,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			somethingSimple, err := databricks.NewClusterPolicy(ctx, "something_simple", &databricks.ClusterPolicyArgs{
 //				Name:       pulumi.String("Some simple policy"),
-//				Definition: pulumi.String(json0),
+//				Definition: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -215,7 +215,7 @@ import (
 //			this, err := databricks.NewInstancePool(ctx, "this", &databricks.InstancePoolArgs{
 //				InstancePoolName:                   pulumi.String("Reserved Instances"),
 //				IdleInstanceAutoterminationMinutes: pulumi.Int(60),
-//				NodeTypeId:                         pulumi.String(smallest.Id),
+//				NodeTypeId:                         pulumi.String(pulumi.String(smallest.Id)),
 //				MinIdleInstances:                   pulumi.Int(0),
 //				MaxCapacity:                        pulumi.Int(10),
 //			})

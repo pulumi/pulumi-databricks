@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissionAssignment(ctx, "add_user", &databricks.PermissionAssignmentArgs{
-//				PrincipalId: pulumi.String(me.Id),
+//				PrincipalId: pulumi.String(pulumi.String(me.Id)),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("USER"),
 //				},
@@ -78,7 +78,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissionAssignment(ctx, "add_admin_spn", &databricks.PermissionAssignmentArgs{
-//				PrincipalId: pulumi.String(sp.Id),
+//				PrincipalId: pulumi.String(pulumi.String(sp.Id)),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("ADMIN"),
 //				},
@@ -115,7 +115,7 @@ import (
 //			}
 //			// Use the workspace provider
 //			_, err = databricks.NewPermissionAssignment(ctx, "this", &databricks.PermissionAssignmentArgs{
-//				PrincipalId: pulumi.String(accountLevel.Id),
+//				PrincipalId: pulumi.String(pulumi.String(accountLevel.Id)),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("USER"),
 //				},

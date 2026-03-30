@@ -65,6 +65,10 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * The resource cluster can be imported using cluster id.
+ *
+ * ```sh
+ * $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
+ * ```
  */
 export class Cluster extends pulumi.CustomResource {
     /**

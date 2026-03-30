@@ -97,7 +97,7 @@ import (
 //				ConnectionType: pulumi.String("BIGQUERY"),
 //				Comment:        pulumi.String("this is a connection to BQ"),
 //				Options: pulumi.StringMap{
-//					"GoogleServiceAccountKeyJson": pulumi.String(json0),
+//					"GoogleServiceAccountKeyJson": pulumi.String(pulumi.String(json0)),
 //				},
 //				Properties: pulumi.StringMap{
 //					"purpose": pulumi.String("testing"),

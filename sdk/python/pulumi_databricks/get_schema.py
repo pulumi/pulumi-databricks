@@ -104,7 +104,7 @@ def get_schema(id: Optional[_builtins.str] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_schemas(catalog_name="sandbox")
-    this = {__key: databricks.get_schema(name=__value) for __key, __value in all.ids}
+    this = {__key: databricks.get_schema(name=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific schema by its fully qualified name:
@@ -162,7 +162,7 @@ def get_schema_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None
     import pulumi_databricks as databricks
 
     all = databricks.get_schemas(catalog_name="sandbox")
-    this = {__key: databricks.get_schema(name=__value) for __key, __value in all.ids}
+    this = {__key: databricks.get_schema(name=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific schema by its fully qualified name:

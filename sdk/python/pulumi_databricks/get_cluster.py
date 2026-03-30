@@ -113,7 +113,7 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_clusters()
-    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in all.ids}
+    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     ### Multiple clusters with the same name
@@ -185,7 +185,7 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[_builtins.str]
     import pulumi_databricks as databricks
 
     all = databricks.get_clusters()
-    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in all.ids}
+    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     ### Multiple clusters with the same name
