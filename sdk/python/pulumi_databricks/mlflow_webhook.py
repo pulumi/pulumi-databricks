@@ -30,6 +30,7 @@ class MlflowWebhookArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MlflowWebhook resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
                
                Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
@@ -141,6 +142,7 @@ class _MlflowWebhookState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MlflowWebhook resources.
+
         :param pulumi.Input[_builtins.str] description: Optional description of the MLflow webhook.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
                
@@ -342,6 +344,7 @@ class MlflowWebhook(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Optional description of the MLflow webhook.
@@ -443,6 +446,7 @@ class MlflowWebhook(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param MlflowWebhookArgs args: The arguments to use to populate this resource's properties.

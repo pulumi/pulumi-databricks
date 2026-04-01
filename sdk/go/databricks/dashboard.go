@@ -40,7 +40,7 @@ import (
 //			}
 //			_, err = databricks.NewDashboard(ctx, "dashboard", &databricks.DashboardArgs{
 //				DisplayName:         pulumi.String("New Dashboard"),
-//				WarehouseId:         pulumi.String(starter.Id),
+//				WarehouseId:         pulumi.String(pulumi.String(starter.Id)),
 //				SerializedDashboard: pulumi.String("{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}"),
 //				EmbedCredentials:    pulumi.Bool(false),
 //				ParentPath:          pulumi.String("/Shared/provider-test"),

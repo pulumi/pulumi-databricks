@@ -23,6 +23,7 @@ class UserRoleArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserRole resource.
+
         :param pulumi.Input[_builtins.str] role: Either a role name or the ARN/ID of the instance profile resource.
         :param pulumi.Input[_builtins.str] user_id: This is the id of the user resource.
         """
@@ -61,6 +62,7 @@ class _UserRoleState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserRole resources.
+
         :param pulumi.Input[_builtins.str] role: Either a role name or the ARN/ID of the instance profile resource.
         :param pulumi.Input[_builtins.str] user_id: This is the id of the user resource.
         """
@@ -150,6 +152,7 @@ class UserRole(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] role: Either a role name or the ARN/ID of the instance profile resource.
@@ -207,6 +210,7 @@ class UserRole(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param UserRoleArgs args: The arguments to use to populate this resource's properties.

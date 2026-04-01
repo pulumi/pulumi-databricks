@@ -35,6 +35,7 @@ class DatabaseInstanceArgs:
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
+
         :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
         :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
@@ -263,6 +264,7 @@ class _DatabaseInstanceState:
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
+
         :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceChildInstanceRefArgs']]] child_instance_refs: (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
                parent instance
@@ -832,6 +834,7 @@ class DatabaseInstance(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
@@ -933,6 +936,7 @@ class DatabaseInstance(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseInstanceArgs args: The arguments to use to populate this resource's properties.

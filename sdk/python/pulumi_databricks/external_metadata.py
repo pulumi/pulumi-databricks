@@ -32,6 +32,7 @@ class ExternalMetadataArgs:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalMetadata resource.
+
         :param pulumi.Input[_builtins.str] entity_type: Type of entity within the external system
         :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
@@ -187,6 +188,7 @@ class _ExternalMetadataState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalMetadata resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
         :param pulumi.Input[_builtins.str] create_time: (string) - Time at which this external metadata object was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of external metadata object creator
@@ -451,6 +453,7 @@ class ExternalMetadata(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
@@ -503,6 +506,7 @@ class ExternalMetadata(pulumi.CustomResource):
                 "format": "zstd",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ExternalMetadataArgs args: The arguments to use to populate this resource's properties.

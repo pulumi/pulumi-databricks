@@ -28,6 +28,7 @@ class MwsPrivateAccessSettingsArgs:
                  public_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a MwsPrivateAccessSettings resource.
+
         :param pulumi.Input[_builtins.str] private_access_settings_name: Name of Private Access Settings in Databricks Account
         :param pulumi.Input[_builtins.str] region: Region of AWS VPC or the Google Cloud VPC network
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
@@ -146,6 +147,7 @@ class _MwsPrivateAccessSettingsState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsPrivateAccessSettings resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         :param pulumi.Input[_builtins.str] private_access_level: The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
         :param pulumi.Input[_builtins.str] private_access_settings_id: Canonical unique identifier of Private Access Settings in Databricks Account
@@ -341,6 +343,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
@@ -428,6 +431,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         * MwsVpcEndpoint to register aws_vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
 
         :param str resource_name: The name of the resource.
         :param MwsPrivateAccessSettingsArgs args: The arguments to use to populate this resource's properties.

@@ -16,20 +16,80 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisS3Bucket = new aws.index.S3Bucket("this", {
+ * const thisBucket = new aws.s3.Bucket("this", {
  *     bucket: "<unique_bucket_name>",
  *     forceDestroy: true,
  * });
- * const _this = databricks.getAwsBucketPolicy({
- *     bucket: thisS3Bucket.bucket,
+ * const _this = databricks.getAwsBucketPolicyOutput({
+ *     bucket: thisBucket.bucket,
  * });
- * const thisS3BucketPolicy = new aws.index.S3BucketPolicy("this", {
- *     bucket: thisS3Bucket.id,
- *     policy: _this.json,
+ * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
+ *     bucket: thisBucket.id,
+ *     policy: _this.apply(_this => _this.json),
  * });
  * ```
  *
  * Bucket policy with full access:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const dsBucket = new aws.s3.Bucket("ds", {
+ *     bucket: `${prefix}-ds`,
+ *     forceDestroy: true,
+ *     tags: std.merge({
+ *         input: [
+ *             tags,
+ *             {
+ *                 name: `${prefix}-ds`,
+ *             },
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const dsVersioning = new aws.s3.BucketVersioning("ds_versioning", {
+ *     bucket: dsBucket.id,
+ *     versioningConfiguration: {
+ *         status: "Disabled",
+ *     },
+ * });
+ * const assumeRoleForEc2 = aws.iam.getPolicyDocument({
+ *     statements: [{
+ *         effect: "Allow",
+ *         actions: ["sts:AssumeRole"],
+ *         principals: [{
+ *             identifiers: ["ec2.amazonaws.com"],
+ *             type: "Service",
+ *         }],
+ *     }],
+ * });
+ * const dataRole = new aws.iam.Role("data_role", {
+ *     name: `${prefix}-first-ec2s3`,
+ *     description: `(${prefix}) EC2 Assume Role role for S3 access`,
+ *     assumeRolePolicy: assumeRoleForEc2.then(assumeRoleForEc2 => assumeRoleForEc2.json),
+ *     tags: tags,
+ * });
+ * const ds = databricks.getAwsBucketPolicyOutput({
+ *     fullAccessRole: dataRole.arn,
+ *     bucket: dsBucket.bucket,
+ * });
+ * // allow databricks to access this bucket
+ * const dsBucketPolicy = new aws.s3.BucketPolicy("ds", {
+ *     bucket: dsBucket.id,
+ *     policy: ds.apply(ds => ds.json),
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+ * * End to end workspace management guide
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getAwsBucketPolicy(args: GetAwsBucketPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsBucketPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -101,20 +161,80 @@ export interface GetAwsBucketPolicyResult {
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisS3Bucket = new aws.index.S3Bucket("this", {
+ * const thisBucket = new aws.s3.Bucket("this", {
  *     bucket: "<unique_bucket_name>",
  *     forceDestroy: true,
  * });
- * const _this = databricks.getAwsBucketPolicy({
- *     bucket: thisS3Bucket.bucket,
+ * const _this = databricks.getAwsBucketPolicyOutput({
+ *     bucket: thisBucket.bucket,
  * });
- * const thisS3BucketPolicy = new aws.index.S3BucketPolicy("this", {
- *     bucket: thisS3Bucket.id,
- *     policy: _this.json,
+ * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
+ *     bucket: thisBucket.id,
+ *     policy: _this.apply(_this => _this.json),
  * });
  * ```
  *
  * Bucket policy with full access:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const dsBucket = new aws.s3.Bucket("ds", {
+ *     bucket: `${prefix}-ds`,
+ *     forceDestroy: true,
+ *     tags: std.merge({
+ *         input: [
+ *             tags,
+ *             {
+ *                 name: `${prefix}-ds`,
+ *             },
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const dsVersioning = new aws.s3.BucketVersioning("ds_versioning", {
+ *     bucket: dsBucket.id,
+ *     versioningConfiguration: {
+ *         status: "Disabled",
+ *     },
+ * });
+ * const assumeRoleForEc2 = aws.iam.getPolicyDocument({
+ *     statements: [{
+ *         effect: "Allow",
+ *         actions: ["sts:AssumeRole"],
+ *         principals: [{
+ *             identifiers: ["ec2.amazonaws.com"],
+ *             type: "Service",
+ *         }],
+ *     }],
+ * });
+ * const dataRole = new aws.iam.Role("data_role", {
+ *     name: `${prefix}-first-ec2s3`,
+ *     description: `(${prefix}) EC2 Assume Role role for S3 access`,
+ *     assumeRolePolicy: assumeRoleForEc2.then(assumeRoleForEc2 => assumeRoleForEc2.json),
+ *     tags: tags,
+ * });
+ * const ds = databricks.getAwsBucketPolicyOutput({
+ *     fullAccessRole: dataRole.arn,
+ *     bucket: dsBucket.bucket,
+ * });
+ * // allow databricks to access this bucket
+ * const dsBucketPolicy = new aws.s3.BucketPolicy("ds", {
+ *     bucket: dsBucket.id,
+ *     policy: ds.apply(ds => ds.json),
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+ * * End to end workspace management guide
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getAwsBucketPolicyOutput(args: GetAwsBucketPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsBucketPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

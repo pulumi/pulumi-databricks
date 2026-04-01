@@ -28,6 +28,7 @@ class EnvironmentsWorkspaceBaseEnvironmentArgs:
                  workspace_base_environment_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentsWorkspaceBaseEnvironment resource.
+
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name for the workspace base environment
         :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
         :param pulumi.Input[_builtins.str] filepath: The WSFS or UC Volumes path to the environment YAML file
@@ -128,6 +129,7 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
                  workspace_base_environment_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentsWorkspaceBaseEnvironment resources.
+
         :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the environment was created
         :param pulumi.Input[_builtins.str] creator_user_id: (string) - User ID of the creator
@@ -393,6 +395,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
             base_environment_type=GPU_LARGE)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
@@ -446,6 +449,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
             filepath=/Volumes/catalog/schema/volume/gpu-environment.yaml,
             base_environment_type=GPU_LARGE)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentsWorkspaceBaseEnvironmentArgs args: The arguments to use to populate this resource's properties.

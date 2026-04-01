@@ -30,6 +30,7 @@ class AppsSettingsCustomTemplateArgs:
                  provider_config: Optional[pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a AppsSettingsCustomTemplate resource.
+
         :param pulumi.Input[_builtins.str] git_provider: The Git provider of the template
         :param pulumi.Input[_builtins.str] git_repo: The Git repository URL that the template resides in
         :param pulumi.Input['AppsSettingsCustomTemplateManifestArgs'] manifest: The manifest of the template. It defines fields and default values when installing the template
@@ -149,6 +150,7 @@ class _AppsSettingsCustomTemplateState:
                  provider_config: Optional[pulumi.Input['AppsSettingsCustomTemplateProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AppsSettingsCustomTemplate resources.
+
         :param pulumi.Input[_builtins.str] creator: (string)
         :param pulumi.Input[_builtins.str] description: The description of the template
         :param pulumi.Input[_builtins.str] git_provider: The Git provider of the template
@@ -374,6 +376,7 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the template
@@ -476,6 +479,7 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
                 ],
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppsSettingsCustomTemplateArgs args: The arguments to use to populate this resource's properties.

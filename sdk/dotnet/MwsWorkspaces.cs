@@ -150,30 +150,30 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var naming = new Random.Index.String("naming", new()
+    ///     var naming = new Random.RandomString("naming", new()
     ///     {
     ///         Special = false,
     ///         Upper = false,
     ///         Length = 6,
     ///     });
     /// 
-    ///     var prefix = $"dltp{naming.Result}";
+    ///     var prefix = naming.Result.Apply(result =&gt; $"dltp{result}");
     /// 
     ///     var @this = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
     ///     {
     ///         ExternalId = databricksAccountId,
     ///     });
     /// 
-    ///     var crossAccountRole = new Aws.Index.IamRole("cross_account_role", new()
+    ///     var crossAccountRole = new Aws.Iam.Role("cross_account_role", new()
     ///     {
     ///         Name = $"{prefix}-crossaccount",
-    ///         AssumeRolePolicy = @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
+    ///         AssumeRolePolicy = @this.Apply(@this =&gt; @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json)),
     ///         Tags = tags,
     ///     });
     /// 
     ///     var thisGetAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
     /// 
-    ///     var thisIamRolePolicy = new Aws.Index.IamRolePolicy("this", new()
+    ///     var thisRolePolicy = new Aws.Iam.RolePolicy("this", new()
     ///     {
     ///         Name = $"{prefix}-policy",
     ///         Role = crossAccountRole.Id,
@@ -187,45 +187,39 @@ namespace Pulumi.Databricks
     ///         RoleArn = crossAccountRole.Arn,
     ///     });
     /// 
-    ///     var rootStorageBucket = new Aws.Index.S3Bucket("root_storage_bucket", new()
+    ///     var rootStorageBucket = new Aws.S3.Bucket("root_storage_bucket", new()
     ///     {
-    ///         Bucket = $"{prefix}-rootbucket",
-    ///         Acl = "private",
+    ///         BucketName = $"{prefix}-rootbucket",
+    ///         Acl = Aws.S3.CannedAcl.Private,
     ///         ForceDestroy = true,
     ///         Tags = tags,
     ///     });
     /// 
-    ///     var rootVersioning = new Aws.Index.S3BucketVersioning("root_versioning", new()
+    ///     var rootVersioning = new Aws.S3.BucketVersioning("root_versioning", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
-    ///         VersioningConfiguration = new[]
+    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "status", "Disabled" },
-    ///             },
+    ///             Status = "Disabled",
     ///         },
     ///     });
     /// 
-    ///     var rootStorageBucketS3BucketServerSideEncryptionConfiguration = new Aws.Index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket", new()
+    ///     var rootStorageBucketBucketServerSideEncryptionConfiguration = new Aws.S3.BucketServerSideEncryptionConfiguration("root_storage_bucket", new()
     ///     {
-    ///         Bucket = rootStorageBucket.Bucket,
-    ///         Rule = new[]
+    ///         Bucket = rootStorageBucket.BucketName,
+    ///         Rules = new[]
     ///         {
-    ///             
+    ///             new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleArgs
     ///             {
-    ///                 { "applyServerSideEncryptionByDefault", new[]
+    ///                 ApplyServerSideEncryptionByDefault = new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs
     ///                 {
-    ///                     
-    ///                     {
-    ///                         { "sseAlgorithm", "AES256" },
-    ///                     },
-    ///                 } },
+    ///                     SseAlgorithm = "AES256",
+    ///                 },
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var rootStorageBucketS3BucketPublicAccessBlock = new Aws.Index.S3BucketPublicAccessBlock("root_storage_bucket", new()
+    ///     var rootStorageBucketBucketPublicAccessBlock = new Aws.S3.BucketPublicAccessBlock("root_storage_bucket", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
     ///         BlockPublicAcls = true,
@@ -242,10 +236,10 @@ namespace Pulumi.Databricks
     /// 
     ///     var thisGetAwsBucketPolicy = Databricks.GetAwsBucketPolicy.Invoke(new()
     ///     {
-    ///         Bucket = rootStorageBucket.Bucket,
+    ///         Bucket = rootStorageBucket.BucketName,
     ///     });
     /// 
-    ///     var rootBucketPolicy = new Aws.Index.S3BucketPolicy("root_bucket_policy", new()
+    ///     var rootBucketPolicy = new Aws.S3.BucketPolicy("root_bucket_policy", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
     ///         Policy = thisGetAwsBucketPolicy.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
@@ -253,7 +247,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             rootStorageBucketS3BucketPublicAccessBlock,
+    ///             rootStorageBucketBucketPublicAccessBlock,
     ///         },
     ///     });
     /// 
@@ -261,7 +255,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         AccountId = databricksAccountId,
     ///         StorageConfigurationName = $"{prefix}-storage",
-    ///         BucketName = rootStorageBucket.Bucket,
+    ///         BucketName = rootStorageBucket.BucketName,
     ///     });
     /// 
     ///     var thisMwsWorkspaces = new Databricks.MwsWorkspaces("this", new()

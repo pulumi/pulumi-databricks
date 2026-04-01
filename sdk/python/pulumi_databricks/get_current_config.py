@@ -135,17 +135,17 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
     external = databricks.StorageCredential("external",
         aws_iam_role=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
             "aws": True,
-        }].apply(lambda entries: [{
+        }.items()].apply(lambda entries: [{
             "roleArn": cloud_credential_id,
         } for entry in entries])),
         azure_managed_identity=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
             "azure": True,
-        }].apply(lambda entries: [{
+        }.items()].apply(lambda entries: [{
             "accessConnectorId": cloud_credential_id,
         } for entry2 in entries])),
         databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
             "gcp": True,
-        }].apply(lambda entries: [{} for entry3 in entries])),
+        }.items()].apply(lambda entries: [{} for entry3 in entries])),
         name="storage_cred",
         comment="Managed by TF")
     ```
@@ -220,17 +220,17 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
     external = databricks.StorageCredential("external",
         aws_iam_role=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
             "aws": True,
-        }].apply(lambda entries: [{
+        }.items()].apply(lambda entries: [{
             "roleArn": cloud_credential_id,
         } for entry in entries])),
         azure_managed_identity=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
             "azure": True,
-        }].apply(lambda entries: [{
+        }.items()].apply(lambda entries: [{
             "accessConnectorId": cloud_credential_id,
         } for entry2 in entries])),
         databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
             "gcp": True,
-        }].apply(lambda entries: [{} for entry3 in entries])),
+        }.items()].apply(lambda entries: [{} for entry3 in entries])),
         name="storage_cred",
         comment="Managed by TF")
     ```

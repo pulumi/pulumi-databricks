@@ -31,6 +31,7 @@ class SqlPermissionsArgs:
                  view: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlPermissions resource.
+
         :param pulumi.Input[_builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
@@ -181,6 +182,7 @@ class _SqlPermissionsState:
                  view: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlPermissions resources.
+
         :param pulumi.Input[_builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
@@ -392,6 +394,7 @@ class SqlPermissions(pulumi.CustomResource):
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
@@ -475,6 +478,7 @@ class SqlPermissions(pulumi.CustomResource):
         * Grants to manage data access in Unity Catalog.
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
+
 
         :param str resource_name: The name of the resource.
         :param SqlPermissionsArgs args: The arguments to use to populate this resource's properties.

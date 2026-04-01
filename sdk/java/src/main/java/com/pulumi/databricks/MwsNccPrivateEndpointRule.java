@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get("region");
- *         final var prefix = config.get("prefix");
+ *         final var region = config.require("region");
+ *         final var prefix = config.require("prefix");
  *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
  *             .name(String.format("ncc-for-%s", prefix))
  *             .region(region)
@@ -104,8 +104,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get("region");
- *         final var prefix = config.get("prefix");
+ *         final var region = config.require("region");
+ *         final var prefix = config.require("prefix");
  *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
  *             .name(String.format("ncc-for-%s", prefix))
  *             .region(region)

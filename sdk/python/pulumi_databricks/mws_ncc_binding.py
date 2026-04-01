@@ -23,6 +23,7 @@ class MwsNccBindingArgs:
                  workspace_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a MwsNccBinding resource.
+
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account.
         :param pulumi.Input[_builtins.str] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """
@@ -61,6 +62,7 @@ class _MwsNccBindingState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsNccBinding resources.
+
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account.
         :param pulumi.Input[_builtins.str] workspace_id: Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """
@@ -138,6 +140,7 @@ class MwsNccBinding(pulumi.CustomResource):
         * MwsWorkspaces to set up Databricks workspaces.
         * MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account.
@@ -183,6 +186,7 @@ class MwsNccBinding(pulumi.CustomResource):
 
         * MwsWorkspaces to set up Databricks workspaces.
         * MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
+
 
         :param str resource_name: The name of the resource.
         :param MwsNccBindingArgs args: The arguments to use to populate this resource's properties.

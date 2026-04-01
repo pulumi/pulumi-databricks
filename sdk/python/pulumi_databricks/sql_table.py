@@ -41,6 +41,7 @@ class SqlTableArgs:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlTable resource.
+
         :param pulumi.Input[_builtins.str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
@@ -332,6 +333,7 @@ class _SqlTableState:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlTable resources.
+
         :param pulumi.Input[_builtins.str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] cluster_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a cluster_id is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouse_id`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
@@ -845,6 +847,7 @@ class SqlTable(pulumi.CustomResource):
 
         The migration would look like this:
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
@@ -1063,6 +1066,7 @@ class SqlTable(pulumi.CustomResource):
         ```
 
         The migration would look like this:
+
 
         :param str resource_name: The name of the resource.
         :param SqlTableArgs args: The arguments to use to populate this resource's properties.

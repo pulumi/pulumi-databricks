@@ -29,6 +29,7 @@ class TokenArgs:
                  token_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Token resource.
+
         :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user's settings page for this token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         :param pulumi.Input['TokenProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -122,6 +123,7 @@ class _TokenState:
                  token_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Token resources.
+
         :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user's settings page for this token.
         :param pulumi.Input[_builtins.int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         :param pulumi.Input['TokenProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -266,6 +268,7 @@ class Token(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: (String) Comment that will appear on the user's settings page for this token.
@@ -312,6 +315,7 @@ class Token(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param TokenArgs args: The arguments to use to populate this resource's properties.

@@ -52,6 +52,7 @@ class MwsWorkspacesArgs:
                  workspace_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsWorkspaces resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[_builtins.str] workspace_name: name of the workspace, will appear on UI.
         :param pulumi.Input[_builtins.str] aws_region: region of VPC.
@@ -504,6 +505,7 @@ class _MwsWorkspacesState:
                  workspace_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsWorkspaces resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[_builtins.str] aws_region: region of VPC.
         :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -1089,58 +1091,58 @@ class MwsWorkspaces(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        naming = random.index.String("naming",
+        naming = random.RandomString("naming",
             special=False,
             upper=False,
             length=6)
-        prefix = f"dltp{naming['result']}"
+        prefix = naming.result.apply(lambda result: f"dltp{result}")
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.index.IamRole("cross_account_role",
-            name=f{prefix}-crossaccount,
+        cross_account_role = aws.iam.Role("cross_account_role",
+            name=f"{prefix}-crossaccount",
             assume_role_policy=this.json,
             tags=tags)
         this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_iam_role_policy = aws.index.IamRolePolicy("this",
-            name=f{prefix}-policy,
+        this_role_policy = aws.iam.RolePolicy("this",
+            name=f"{prefix}-policy",
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role["arn"])
-        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
-            bucket=f{prefix}-rootbucket,
-            acl=private,
+            role_arn=cross_account_role.arn)
+        root_storage_bucket = aws.s3.Bucket("root_storage_bucket",
+            bucket=f"{prefix}-rootbucket",
+            acl=aws.s3.CannedAcl.PRIVATE,
             force_destroy=True,
             tags=tags)
-        root_versioning = aws.index.S3BucketVersioning("root_versioning",
+        root_versioning = aws.s3.BucketVersioning("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration=[{
-                status: Disabled,
-            }])
-        root_storage_bucket_s3_bucket_server_side_encryption_configuration = aws.index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket",
+            versioning_configuration={
+                "status": "Disabled",
+            })
+        root_storage_bucket_bucket_server_side_encryption_configuration = aws.s3.BucketServerSideEncryptionConfiguration("root_storage_bucket",
             bucket=root_storage_bucket.bucket,
-            rule=[{
-                applyServerSideEncryptionByDefault: [{
-                    sseAlgorithm: AES256,
-                }],
+            rules=[{
+                "apply_server_side_encryption_by_default": {
+                    "sse_algorithm": "AES256",
+                },
             }])
-        root_storage_bucket_s3_bucket_public_access_block = aws.index.S3BucketPublicAccessBlock("root_storage_bucket",
+        root_storage_bucket_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("root_storage_bucket",
             bucket=root_storage_bucket.id,
             block_public_acls=True,
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
             opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
-        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy(bucket=root_storage_bucket["bucket"])
-        root_bucket_policy = aws.index.S3BucketPolicy("root_bucket_policy",
+        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket.bucket)
+        root_bucket_policy = aws.s3.BucketPolicy("root_bucket_policy",
             bucket=root_storage_bucket.id,
             policy=this_get_aws_bucket_policy.json,
-            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_s3_bucket_public_access_block]))
+            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
         this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket["bucket"])
+            bucket_name=root_storage_bucket.bucket)
         this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,
@@ -1238,6 +1240,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1372,58 +1375,58 @@ class MwsWorkspaces(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        naming = random.index.String("naming",
+        naming = random.RandomString("naming",
             special=False,
             upper=False,
             length=6)
-        prefix = f"dltp{naming['result']}"
+        prefix = naming.result.apply(lambda result: f"dltp{result}")
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.index.IamRole("cross_account_role",
-            name=f{prefix}-crossaccount,
+        cross_account_role = aws.iam.Role("cross_account_role",
+            name=f"{prefix}-crossaccount",
             assume_role_policy=this.json,
             tags=tags)
         this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_iam_role_policy = aws.index.IamRolePolicy("this",
-            name=f{prefix}-policy,
+        this_role_policy = aws.iam.RolePolicy("this",
+            name=f"{prefix}-policy",
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role["arn"])
-        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
-            bucket=f{prefix}-rootbucket,
-            acl=private,
+            role_arn=cross_account_role.arn)
+        root_storage_bucket = aws.s3.Bucket("root_storage_bucket",
+            bucket=f"{prefix}-rootbucket",
+            acl=aws.s3.CannedAcl.PRIVATE,
             force_destroy=True,
             tags=tags)
-        root_versioning = aws.index.S3BucketVersioning("root_versioning",
+        root_versioning = aws.s3.BucketVersioning("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration=[{
-                status: Disabled,
-            }])
-        root_storage_bucket_s3_bucket_server_side_encryption_configuration = aws.index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket",
+            versioning_configuration={
+                "status": "Disabled",
+            })
+        root_storage_bucket_bucket_server_side_encryption_configuration = aws.s3.BucketServerSideEncryptionConfiguration("root_storage_bucket",
             bucket=root_storage_bucket.bucket,
-            rule=[{
-                applyServerSideEncryptionByDefault: [{
-                    sseAlgorithm: AES256,
-                }],
+            rules=[{
+                "apply_server_side_encryption_by_default": {
+                    "sse_algorithm": "AES256",
+                },
             }])
-        root_storage_bucket_s3_bucket_public_access_block = aws.index.S3BucketPublicAccessBlock("root_storage_bucket",
+        root_storage_bucket_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("root_storage_bucket",
             bucket=root_storage_bucket.id,
             block_public_acls=True,
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
             opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
-        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy(bucket=root_storage_bucket["bucket"])
-        root_bucket_policy = aws.index.S3BucketPolicy("root_bucket_policy",
+        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket.bucket)
+        root_bucket_policy = aws.s3.BucketPolicy("root_bucket_policy",
             bucket=root_storage_bucket.id,
             policy=this_get_aws_bucket_policy.json,
-            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_s3_bucket_public_access_block]))
+            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
         this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket["bucket"])
+            bucket_name=root_storage_bucket.bucket)
         this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,
@@ -1521,6 +1524,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+
 
         :param str resource_name: The name of the resource.
         :param MwsWorkspacesArgs args: The arguments to use to populate this resource's properties.

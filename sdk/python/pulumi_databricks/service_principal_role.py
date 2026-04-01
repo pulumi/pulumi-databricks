@@ -23,6 +23,7 @@ class ServicePrincipalRoleArgs:
                  service_principal_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ServicePrincipalRole resource.
+
         :param pulumi.Input[_builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[_builtins.str] service_principal_id: This is the id of the service principal resource.
         """
@@ -61,6 +62,7 @@ class _ServicePrincipalRoleState:
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalRole resources.
+
         :param pulumi.Input[_builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[_builtins.str] service_principal_id: This is the id of the service principal resource.
         """
@@ -152,6 +154,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] role: This is the role name, role id, or instance profile resource.
@@ -211,6 +214,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalRoleArgs args: The arguments to use to populate this resource's properties.

@@ -25,9 +25,9 @@ import * as utilities from "./utilities";
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject<any>("databricksAccountId");
- * const logdeliveryS3Bucket = new aws.index.S3Bucket("logdelivery", {
+ * const logdeliveryBucket = new aws.s3.Bucket("logdelivery", {
  *     bucket: `${prefix}-logdelivery`,
- *     acl: "private",
+ *     acl: aws.s3.CannedAcl.Private,
  *     forceDestroy: true,
  *     tags: std.merge({
  *         input: [
@@ -36,50 +36,50 @@ import * as utilities from "./utilities";
  *                 name: `${prefix}-logdelivery`,
  *             },
  *         ],
- *     }).result,
+ *     }).then(invoke => invoke.result),
  * });
- * const logdeliveryS3BucketPublicAccessBlock = new aws.index.S3BucketPublicAccessBlock("logdelivery", {
- *     bucket: logdeliveryS3Bucket.id,
+ * const logdeliveryBucketPublicAccessBlock = new aws.s3.BucketPublicAccessBlock("logdelivery", {
+ *     bucket: logdeliveryBucket.id,
  *     ignorePublicAcls: true,
  * });
  * const logdelivery = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  *     forLogDelivery: true,
  * });
- * const logdeliveryVersioning = new aws.index.S3BucketVersioning("logdelivery_versioning", {
- *     bucket: logdeliveryS3Bucket.id,
- *     versioningConfiguration: [{
+ * const logdeliveryVersioning = new aws.s3.BucketVersioning("logdelivery_versioning", {
+ *     bucket: logdeliveryBucket.id,
+ *     versioningConfiguration: {
  *         status: "Disabled",
- *     }],
+ *     },
  * });
- * const logdeliveryIamRole = new aws.index.IamRole("logdelivery", {
+ * const logdeliveryRole = new aws.iam.Role("logdelivery", {
  *     name: `${prefix}-logdelivery`,
  *     description: `(${prefix}) UsageDelivery role`,
- *     assumeRolePolicy: logdelivery.json,
+ *     assumeRolePolicy: logdelivery.then(logdelivery => logdelivery.json),
  *     tags: tags,
  * });
- * const logdeliveryGetAwsBucketPolicy = databricks.getAwsBucketPolicy({
- *     fullAccessRole: logdeliveryIamRole.arn,
- *     bucket: logdeliveryS3Bucket.bucket,
+ * const logdeliveryGetAwsBucketPolicy = databricks.getAwsBucketPolicyOutput({
+ *     fullAccessRole: logdeliveryRole.arn,
+ *     bucket: logdeliveryBucket.bucket,
  * });
- * const logdeliveryS3BucketPolicy = new aws.index.S3BucketPolicy("logdelivery", {
- *     bucket: logdeliveryS3Bucket.id,
- *     policy: logdeliveryGetAwsBucketPolicy.json,
+ * const logdeliveryBucketPolicy = new aws.s3.BucketPolicy("logdelivery", {
+ *     bucket: logdeliveryBucket.id,
+ *     policy: logdeliveryGetAwsBucketPolicy.apply(logdeliveryGetAwsBucketPolicy => logdeliveryGetAwsBucketPolicy.json),
  * });
  * const wait = new time.Sleep("wait", {createDuration: "10s"}, {
- *     dependsOn: [logdeliveryIamRole],
+ *     dependsOn: [logdeliveryRole],
  * });
  * const logWriter = new databricks.MwsCredentials("log_writer", {
  *     accountId: databricksAccountId,
  *     credentialsName: "Usage Delivery",
- *     roleArn: logdeliveryIamRole.arn,
+ *     roleArn: logdeliveryRole.arn,
  * }, {
  *     dependsOn: [wait],
  * });
  * const logBucket = new databricks.MwsStorageConfigurations("log_bucket", {
  *     accountId: databricksAccountId,
  *     storageConfigurationName: "Usage Logs",
- *     bucketName: logdeliveryS3Bucket.bucket,
+ *     bucketName: logdeliveryBucket.bucket,
  * });
  * const usageLogs = new databricks.MwsLogDelivery("usage_logs", {
  *     accountId: databricksAccountId,

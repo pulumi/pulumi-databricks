@@ -29,6 +29,7 @@ class AppSpaceArgs:
                  user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AppSpace resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the app space
         :param pulumi.Input[_builtins.str] name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
                It must be unique within the workspace
@@ -145,6 +146,7 @@ class _AppSpaceState:
                  user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AppSpace resources.
+
         :param pulumi.Input[_builtins.str] create_time: (string) - The creation time of the app space. Formatted timestamp in ISO 6801
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the user that created the app space
         :param pulumi.Input[_builtins.str] description: The description of the app space
@@ -406,6 +408,7 @@ class AppSpace(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the app space
@@ -424,6 +427,7 @@ class AppSpace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param AppSpaceArgs args: The arguments to use to populate this resource's properties.

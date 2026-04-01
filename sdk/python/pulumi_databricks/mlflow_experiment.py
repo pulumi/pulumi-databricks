@@ -32,6 +32,7 @@ class MlflowExperimentArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         The set of arguments for constructing a MlflowExperiment resource.
+
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input['MlflowExperimentProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -168,6 +169,7 @@ class _MlflowExperimentState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering MlflowExperiment resources.
+
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input['MlflowExperimentProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -349,6 +351,7 @@ class MlflowExperiment(pulumi.CustomResource):
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
@@ -404,6 +407,7 @@ class MlflowExperiment(pulumi.CustomResource):
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+
 
         :param str resource_name: The name of the resource.
         :param MlflowExperimentArgs args: The arguments to use to populate this resource's properties.

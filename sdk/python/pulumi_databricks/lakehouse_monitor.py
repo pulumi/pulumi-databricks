@@ -39,6 +39,7 @@ class LakehouseMonitorArgs:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LakehouseMonitor resource.
+
         :param pulumi.Input[_builtins.str] assets_dir: The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[_builtins.str] table_name: The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
@@ -299,6 +300,7 @@ class _LakehouseMonitorState:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LakehouseMonitor resources.
+
         :param pulumi.Input[_builtins.str] assets_dir: The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
         :param pulumi.Input[_builtins.str] baseline_table_name: Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
                table.
@@ -727,6 +729,7 @@ class LakehouseMonitor(pulumi.CustomResource):
         * Schema
         * SqlTable
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assets_dir: The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
@@ -843,6 +846,7 @@ class LakehouseMonitor(pulumi.CustomResource):
         * Catalog
         * Schema
         * SqlTable
+
 
         :param str resource_name: The name of the resource.
         :param LakehouseMonitorArgs args: The arguments to use to populate this resource's properties.

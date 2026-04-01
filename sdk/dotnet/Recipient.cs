@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var db2opensharecode = new Random.Index.Password("db2opensharecode", new()
+    ///     var db2opensharecode = new Random.RandomPassword("db2opensharecode", new()
     ///     {
     ///         Length = 16,
     ///         Special = true,

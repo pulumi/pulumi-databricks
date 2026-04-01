@@ -26,16 +26,16 @@ import * as utilities from "./utilities";
  * const _this = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
- * const crossAccountRole = new aws.index.IamRole("cross_account_role", {
+ * const crossAccountRole = new aws.iam.Role("cross_account_role", {
  *     name: `${prefix}-crossaccount`,
- *     assumeRolePolicy: _this.json,
+ *     assumeRolePolicy: _this.then(_this => _this.json),
  *     tags: tags,
  * });
  * const thisGetAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
- * const thisIamRolePolicy = new aws.index.IamRolePolicy("this", {
+ * const thisRolePolicy = new aws.iam.RolePolicy("this", {
  *     name: `${prefix}-policy`,
  *     role: crossAccountRole.id,
- *     policy: thisGetAwsCrossAccountPolicy.json,
+ *     policy: thisGetAwsCrossAccountPolicy.then(thisGetAwsCrossAccountPolicy => thisGetAwsCrossAccountPolicy.json),
  * });
  * const thisMwsCredentials = new databricks.MwsCredentials("this", {
  *     credentialsName: `${prefix}-creds`,

@@ -125,8 +125,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.azurerm.AzurermFunctions;
- * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.azure.databricks.inputs.GetWorkspaceArgs;
  * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
  * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
  * import com.pulumi.databricks.Cluster;
@@ -147,18 +146,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
- *         final var resourceGroup = config.get("resourceGroup");
- *         final var workspaceName = config.get("workspaceName");
- *         final var this = AzurermFunctions.DatabricksWorkspace(Map.ofEntries(
- *             Map.entry("name", workspaceName),
- *             Map.entry("resourceGroupName", resourceGroup)
- *         ));
+ *         final var resourceGroup = config.require("resourceGroup");
+ *         final var workspaceName = config.require("workspaceName");
+ *         final var this = com.pulumi.azure.databricks.DatabricksFunctions(GetWorkspaceArgs.builder()
+ *             .name(workspaceName)
+ *             .resourceGroupName(resourceGroup)
+ *             .build());
  * 
- *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+ *         final var smallest = com.pulumi.databricks.DatabricksFunctions(GetNodeTypeArgs.builder()
  *             .localDisk(true)
  *             .build());
  * 
- *         final var latest = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+ *         final var latest = com.pulumi.databricks.DatabricksFunctions(GetSparkVersionArgs.builder()
  *             .build());
  * 
  *         var sharedPassthrough = new Cluster("sharedPassthrough", ClusterArgs.builder()
@@ -176,8 +175,8 @@ import javax.annotation.Nullable;
  *             .customTags(Map.of("ResourceClass", "Serverless"))
  *             .build());
  * 
- *         final var storageAcc = config.get("storageAcc");
- *         final var container = config.get("container");
+ *         final var storageAcc = config.require("storageAcc");
+ *         final var container = config.require("container");
  *         var passthrough = new Mount("passthrough", MountArgs.builder()
  *             .name("passthrough-test")
  *             .clusterId(sharedPassthrough.id())
@@ -267,12 +266,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.SecretScopeArgs;
  * import com.pulumi.databricks.Secret;
  * import com.pulumi.databricks.SecretArgs;
- * import com.pulumi.azurerm.StorageAccount;
- * import com.pulumi.azurerm.StorageAccountArgs;
- * import com.pulumi.azurerm.RoleAssignment;
- * import com.pulumi.azurerm.RoleAssignmentArgs;
- * import com.pulumi.azurerm.StorageContainer;
- * import com.pulumi.azurerm.StorageContainerArgs;
+ * import com.pulumi.azure.storage.Account;
+ * import com.pulumi.azure.storage.AccountArgs;
+ * import com.pulumi.azure.authorization.Assignment;
+ * import com.pulumi.azure.authorization.AssignmentArgs;
+ * import com.pulumi.azure.storage.Container;
+ * import com.pulumi.azure.storage.ContainerArgs;
  * import com.pulumi.databricks.Mount;
  * import com.pulumi.databricks.MountArgs;
  * import com.pulumi.databricks.inputs.MountAbfsArgs;
@@ -300,7 +299,7 @@ import javax.annotation.Nullable;
  *             .scope(terraform.name())
  *             .build());
  * 
- *         var this_ = new StorageAccount("this", StorageAccountArgs.builder()
+ *         var this_ = new Account("this", AccountArgs.builder()
  *             .name(String.format("%sdatalake", prefix))
  *             .resourceGroupName(resourceGroupName)
  *             .location(resourceGroupLocation)
@@ -310,13 +309,13 @@ import javax.annotation.Nullable;
  *             .isHnsEnabled(true)
  *             .build());
  * 
- *         var thisRoleAssignment = new RoleAssignment("thisRoleAssignment", RoleAssignmentArgs.builder()
+ *         var thisAssignment = new Assignment("thisAssignment", AssignmentArgs.builder()
  *             .scope(this_.id())
  *             .roleDefinitionName("Storage Blob Data Contributor")
  *             .principalId(current.objectId())
  *             .build());
  * 
- *         var thisStorageContainer = new StorageContainer("thisStorageContainer", StorageContainerArgs.builder()
+ *         var thisContainer = new Container("thisContainer", ContainerArgs.builder()
  *             .name("marketing")
  *             .storageAccountName(this_.name())
  *             .containerAccessType("private")
@@ -324,7 +323,7 @@ import javax.annotation.Nullable;
  * 
  *         var marketing = new Mount("marketing", MountArgs.builder()
  *             .name("marketing")
- *             .resourceId(thisStorageContainer.resourceManagerId())
+ *             .resourceId(thisContainer.resourceManagerId())
  *             .abfs(MountAbfsArgs.builder()
  *                 .clientId(current.clientId())
  *                 .clientSecretScope(terraform.name())
@@ -458,10 +457,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.azurerm.StorageAccount;
- * import com.pulumi.azurerm.StorageAccountArgs;
- * import com.pulumi.azurerm.StorageContainer;
- * import com.pulumi.azurerm.StorageContainerArgs;
+ * import com.pulumi.azure.storage.Account;
+ * import com.pulumi.azure.storage.AccountArgs;
+ * import com.pulumi.azure.storage.Container;
+ * import com.pulumi.azure.storage.ContainerArgs;
  * import com.pulumi.databricks.SecretScope;
  * import com.pulumi.databricks.SecretScopeArgs;
  * import com.pulumi.databricks.Secret;
@@ -482,7 +481,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var blobaccount = new StorageAccount("blobaccount", StorageAccountArgs.builder()
+ *         var blobaccount = new Account("blobaccount", AccountArgs.builder()
  *             .name(String.format("%sblob", prefix))
  *             .resourceGroupName(resourceGroupName)
  *             .location(resourceGroupLocation)
@@ -491,7 +490,7 @@ import javax.annotation.Nullable;
  *             .accountKind("StorageV2")
  *             .build());
  * 
- *         var marketing = new StorageContainer("marketing", StorageContainerArgs.builder()
+ *         var marketing = new Container("marketing", ContainerArgs.builder()
  *             .name("marketing")
  *             .storageAccountName(blobaccount.name())
  *             .containerAccessType("private")

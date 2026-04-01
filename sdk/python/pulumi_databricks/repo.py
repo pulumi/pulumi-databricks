@@ -31,6 +31,7 @@ class RepoArgs:
                  tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Repo resource.
+
         :param pulumi.Input[_builtins.str] url: The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
         :param pulumi.Input[_builtins.str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[_builtins.str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
@@ -159,6 +160,7 @@ class _RepoState:
                  workspace_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Repo resources.
+
         :param pulumi.Input[_builtins.str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[_builtins.str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
         :param pulumi.Input[_builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
@@ -339,6 +341,7 @@ class Repo(pulumi.CustomResource):
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * WorkspaceConf to manage workspace configuration for expert usage.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
@@ -388,6 +391,7 @@ class Repo(pulumi.CustomResource):
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * WorkspaceConf to manage workspace configuration for expert usage.
+
 
         :param str resource_name: The name of the resource.
         :param RepoArgs args: The arguments to use to populate this resource's properties.

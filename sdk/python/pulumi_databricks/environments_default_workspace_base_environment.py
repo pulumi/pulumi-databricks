@@ -26,6 +26,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs:
                  provider_config: Optional[pulumi.Input['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a EnvironmentsDefaultWorkspaceBaseEnvironment resource.
+
         :param pulumi.Input[_builtins.str] cpu_workspace_base_environment: The default workspace base environment for CPU compute.
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] gpu_workspace_base_environment: The default workspace base environment for GPU compute.
@@ -87,6 +88,7 @@ class _EnvironmentsDefaultWorkspaceBaseEnvironmentState:
                  provider_config: Optional[pulumi.Input['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering EnvironmentsDefaultWorkspaceBaseEnvironment resources.
+
         :param pulumi.Input[_builtins.str] cpu_workspace_base_environment: The default workspace base environment for CPU compute.
                Format: workspace-base-environments/{workspace_base_environment}
         :param pulumi.Input[_builtins.str] gpu_workspace_base_environment: The default workspace base environment for GPU compute.
@@ -214,6 +216,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         this = databricks.index.DefaultWorkspaceBaseEnvironment("this")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cpu_workspace_base_environment: The default workspace base environment for CPU compute.
@@ -275,6 +278,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
 
         this = databricks.index.DefaultWorkspaceBaseEnvironment("this")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentsDefaultWorkspaceBaseEnvironmentArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class ShareArgs:
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Share resource.
+
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.str] name: Name of share. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: User name/group name/sp application_id of the share owner.
@@ -131,6 +132,7 @@ class _ShareState:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
+
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.int] created_at: Time when the share was created.
         :param pulumi.Input[_builtins.str] created_by: The principal that created the share.
@@ -323,10 +325,10 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[{"key": k, "value": v} for k, v in things.ids].apply(lambda entries: [{
-                "name": entry["value"],
-                "dataObjectType": "TABLE",
-            } for entry in entries]),
+            objects=[{"key": k, "value": v} for k, v in things.ids.items()].apply(lambda entries: [databricks.ShareObjectArgs(
+                name=entry["value"],
+                data_object_type="TABLE",
+            ) for entry in entries]),
             name="my_share")
         ```
 
@@ -417,6 +419,7 @@ class Share(pulumi.CustomResource):
         * Recipient to create Delta Sharing recipients.
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -451,10 +454,10 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[{"key": k, "value": v} for k, v in things.ids].apply(lambda entries: [{
-                "name": entry["value"],
-                "dataObjectType": "TABLE",
-            } for entry in entries]),
+            objects=[{"key": k, "value": v} for k, v in things.ids.items()].apply(lambda entries: [databricks.ShareObjectArgs(
+                name=entry["value"],
+                data_object_type="TABLE",
+            ) for entry in entries]),
             name="my_share")
         ```
 
@@ -545,6 +548,7 @@ class Share(pulumi.CustomResource):
         * Recipient to create Delta Sharing recipients.
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
+
 
         :param str resource_name: The name of the resource.
         :param ShareArgs args: The arguments to use to populate this resource's properties.

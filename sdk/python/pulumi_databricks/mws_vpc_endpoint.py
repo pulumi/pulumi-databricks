@@ -33,6 +33,7 @@ class MwsVpcEndpointArgs:
                  vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsVpcEndpoint resource.
+
         :param pulumi.Input[_builtins.str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[_builtins.str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
@@ -192,6 +193,7 @@ class _MwsVpcEndpointState:
                  vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsVpcEndpoint resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[_builtins.str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         :param pulumi.Input[_builtins.str] aws_vpc_endpoint_id: ID of configured aws_vpc_endpoint
@@ -371,20 +373,20 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        workspace = aws.index.VpcEndpoint("workspace",
-            vpc_id=vpc.vpc_id,
-            service_name=private_link.workspace_service,
-            vpc_endpoint_type=Interface,
-            security_group_ids=[vpc.default_security_group_id],
-            subnet_ids=[pl_subnet.id],
+        workspace = aws.ec2.VpcEndpoint("workspace",
+            vpc_id=vpc["vpcId"],
+            service_name=private_link["workspaceService"],
+            vpc_endpoint_type="Interface",
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            subnet_ids=[pl_subnet["id"]],
             private_dns_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[pl_subnet]))
-        relay = aws.index.VpcEndpoint("relay",
-            vpc_id=vpc.vpc_id,
-            service_name=private_link.relay_service,
-            vpc_endpoint_type=Interface,
-            security_group_ids=[vpc.default_security_group_id],
-            subnet_ids=[pl_subnet.id],
+        relay = aws.ec2.VpcEndpoint("relay",
+            vpc_id=vpc["vpcId"],
+            service_name=private_link["relayService"],
+            vpc_endpoint_type="Interface",
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            subnet_ids=[pl_subnet["id"]],
             private_dns_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[pl_subnet]))
         ```
@@ -396,25 +398,25 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        s3 = aws.index.VpcEndpoint("s3",
-            vpc_id=vpc.vpc_id,
-            route_table_ids=vpc.private_route_table_ids,
-            service_name=fcom.amazonaws.{region}.s3,
+        s3 = aws.ec2.VpcEndpoint("s3",
+            vpc_id=vpc["vpcId"],
+            route_table_ids=vpc["privateRouteTableIds"],
+            service_name=f"com.amazonaws.{region}.s3",
             opts = pulumi.ResourceOptions(depends_on=[vpc]))
-        sts = aws.index.VpcEndpoint("sts",
-            vpc_id=vpc.vpc_id,
-            service_name=fcom.amazonaws.{region}.sts,
-            vpc_endpoint_type=Interface,
-            subnet_ids=vpc.private_subnets,
-            security_group_ids=[vpc.default_security_group_id],
+        sts = aws.ec2.VpcEndpoint("sts",
+            vpc_id=vpc["vpcId"],
+            service_name=f"com.amazonaws.{region}.sts",
+            vpc_endpoint_type="Interface",
+            subnet_ids=vpc["privateSubnets"],
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
             private_dns_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[vpc]))
-        kinesis_streams = aws.index.VpcEndpoint("kinesis-streams",
-            vpc_id=vpc.vpc_id,
-            service_name=fcom.amazonaws.{region}.kinesis-streams,
-            vpc_endpoint_type=Interface,
-            subnet_ids=vpc.private_subnets,
-            security_group_ids=[vpc.default_security_group_id],
+        kinesis_streams = aws.ec2.VpcEndpoint("kinesis-streams",
+            vpc_id=vpc["vpcId"],
+            service_name=f"com.amazonaws.{region}.kinesis-streams",
+            vpc_endpoint_type="Interface",
+            subnet_ids=vpc["privateSubnets"],
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
             opts = pulumi.ResourceOptions(depends_on=[vpc]))
         ```
 
@@ -530,6 +532,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         ## Import
 
         > Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -565,20 +568,20 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        workspace = aws.index.VpcEndpoint("workspace",
-            vpc_id=vpc.vpc_id,
-            service_name=private_link.workspace_service,
-            vpc_endpoint_type=Interface,
-            security_group_ids=[vpc.default_security_group_id],
-            subnet_ids=[pl_subnet.id],
+        workspace = aws.ec2.VpcEndpoint("workspace",
+            vpc_id=vpc["vpcId"],
+            service_name=private_link["workspaceService"],
+            vpc_endpoint_type="Interface",
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            subnet_ids=[pl_subnet["id"]],
             private_dns_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[pl_subnet]))
-        relay = aws.index.VpcEndpoint("relay",
-            vpc_id=vpc.vpc_id,
-            service_name=private_link.relay_service,
-            vpc_endpoint_type=Interface,
-            security_group_ids=[vpc.default_security_group_id],
-            subnet_ids=[pl_subnet.id],
+        relay = aws.ec2.VpcEndpoint("relay",
+            vpc_id=vpc["vpcId"],
+            service_name=private_link["relayService"],
+            vpc_endpoint_type="Interface",
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
+            subnet_ids=[pl_subnet["id"]],
             private_dns_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[pl_subnet]))
         ```
@@ -590,25 +593,25 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        s3 = aws.index.VpcEndpoint("s3",
-            vpc_id=vpc.vpc_id,
-            route_table_ids=vpc.private_route_table_ids,
-            service_name=fcom.amazonaws.{region}.s3,
+        s3 = aws.ec2.VpcEndpoint("s3",
+            vpc_id=vpc["vpcId"],
+            route_table_ids=vpc["privateRouteTableIds"],
+            service_name=f"com.amazonaws.{region}.s3",
             opts = pulumi.ResourceOptions(depends_on=[vpc]))
-        sts = aws.index.VpcEndpoint("sts",
-            vpc_id=vpc.vpc_id,
-            service_name=fcom.amazonaws.{region}.sts,
-            vpc_endpoint_type=Interface,
-            subnet_ids=vpc.private_subnets,
-            security_group_ids=[vpc.default_security_group_id],
+        sts = aws.ec2.VpcEndpoint("sts",
+            vpc_id=vpc["vpcId"],
+            service_name=f"com.amazonaws.{region}.sts",
+            vpc_endpoint_type="Interface",
+            subnet_ids=vpc["privateSubnets"],
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
             private_dns_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[vpc]))
-        kinesis_streams = aws.index.VpcEndpoint("kinesis-streams",
-            vpc_id=vpc.vpc_id,
-            service_name=fcom.amazonaws.{region}.kinesis-streams,
-            vpc_endpoint_type=Interface,
-            subnet_ids=vpc.private_subnets,
-            security_group_ids=[vpc.default_security_group_id],
+        kinesis_streams = aws.ec2.VpcEndpoint("kinesis-streams",
+            vpc_id=vpc["vpcId"],
+            service_name=f"com.amazonaws.{region}.kinesis-streams",
+            vpc_endpoint_type="Interface",
+            subnet_ids=vpc["privateSubnets"],
+            security_group_ids=[vpc["defaultSecurityGroupId"]],
             opts = pulumi.ResourceOptions(depends_on=[vpc]))
         ```
 
@@ -724,6 +727,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         ## Import
 
         > Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param MwsVpcEndpointArgs args: The arguments to use to populate this resource's properties.

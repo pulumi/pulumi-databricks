@@ -72,7 +72,7 @@ import (
 //				ExtraConfigs: pulumi.StringMap{
 //					"fs.azure.account.auth.type":                          pulumi.String("OAuth"),
 //					"fs.azure.account.oauth.provider.type":                pulumi.String("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
-//					"fs.azure.account.oauth2.client.id":                   pulumi.String(clientId),
+//					"fs.azure.account.oauth2.client.id":                   pulumi.String(pulumi.String(clientId)),
 //					"fs.azure.account.oauth2.client.secret":               pulumi.Sprintf("{{secrets/%v/%v}}", secretScope, secretKey),
 //					"fs.azure.account.oauth2.client.endpoint":             pulumi.Sprintf("https://login.microsoftonline.com/%v/oauth2/token", tenantId),
 //					"fs.azure.createRemoteFileSystemDuringInitialization": pulumi.String("false"),
@@ -100,7 +100,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azurerm/sdk/go/azurerm"
+//	azuredatabricks "github.com/pulumi/pulumi-azure/sdk/v6/go/azure/databricks"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -114,9 +114,9 @@ import (
 //			resourceGroup := cfg.Require("resourceGroup")
 //			// Name of the Databricks Workspace
 //			workspaceName := cfg.Require("workspaceName")
-//			_, err := azurerm.DatabricksWorkspace(ctx, map[string]interface{}{
-//				"name":              workspaceName,
-//				"resourceGroupName": resourceGroup,
+//			_, err := azuredatabricks.LookupWorkspace(ctx, &databricks.LookupWorkspaceArgs{
+//				Name:              workspaceName,
+//				ResourceGroupName: resourceGroup,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -133,8 +133,8 @@ import (
 //			}
 //			sharedPassthrough, err := databricks.NewCluster(ctx, "shared_passthrough", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Passthrough for mount"),
-//				SparkVersion:           pulumi.String(latest.Id),
-//				NodeTypeId:             pulumi.String(smallest.Id),
+//				SparkVersion:           pulumi.String(pulumi.String(latest.Id)),
+//				NodeTypeId:             pulumi.String(pulumi.String(smallest.Id)),
 //				AutoterminationMinutes: pulumi.Int(10),
 //				NumWorkers:             pulumi.Int(1),
 //				SparkConf: pulumi.StringMap{
@@ -232,9 +232,8 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-azurerm/sdk/go/azurerm"
+//	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/authorization"
+//	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/storage"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -257,37 +256,37 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			this, err := azurerm.NewStorageAccount(ctx, "this", &azurerm.StorageAccountArgs{
-//				Name:                   fmt.Sprintf("%vdatalake", prefix),
-//				ResourceGroupName:      resourceGroupName,
-//				Location:               resourceGroupLocation,
-//				AccountTier:            "Standard",
-//				AccountReplicationType: "GRS",
-//				AccountKind:            "StorageV2",
-//				IsHnsEnabled:           true,
+//			this, err := storage.NewAccount(ctx, "this", &storage.AccountArgs{
+//				Name:                   pulumi.Sprintf("%vdatalake", prefix),
+//				ResourceGroupName:      pulumi.Any(resourceGroupName),
+//				Location:               pulumi.Any(resourceGroupLocation),
+//				AccountTier:            pulumi.String("Standard"),
+//				AccountReplicationType: pulumi.String("GRS"),
+//				AccountKind:            pulumi.String("StorageV2"),
+//				IsHnsEnabled:           pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azurerm.NewRoleAssignment(ctx, "this", &azurerm.RoleAssignmentArgs{
-//				Scope:              this.Id,
-//				RoleDefinitionName: "Storage Blob Data Contributor",
-//				PrincipalId:        current.ObjectId,
+//			_, err = authorization.NewAssignment(ctx, "this", &authorization.AssignmentArgs{
+//				Scope:              this.ID(),
+//				RoleDefinitionName: pulumi.String("Storage Blob Data Contributor"),
+//				PrincipalId:        pulumi.Any(current.ObjectId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisStorageContainer, err := azurerm.NewStorageContainer(ctx, "this", &azurerm.StorageContainerArgs{
-//				Name:                "marketing",
+//			thisContainer, err := storage.NewContainer(ctx, "this", &storage.ContainerArgs{
+//				Name:                pulumi.String("marketing"),
 //				StorageAccountName:  this.Name,
-//				ContainerAccessType: "private",
+//				ContainerAccessType: pulumi.String("private"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewMount(ctx, "marketing", &databricks.MountArgs{
 //				Name:       pulumi.String("marketing"),
-//				ResourceId: thisStorageContainer.ResourceManagerId,
+//				ResourceId: thisContainer.ResourceManagerId,
 //				Abfs: &databricks.MountAbfsArgs{
 //					ClientId:             pulumi.Any(current.ClientId),
 //					ClientSecretScope:    terraform.Name,
@@ -406,9 +405,7 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-azurerm/sdk/go/azurerm"
+//	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/storage"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -416,21 +413,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			blobaccount, err := azurerm.NewStorageAccount(ctx, "blobaccount", &azurerm.StorageAccountArgs{
-//				Name:                   fmt.Sprintf("%vblob", prefix),
-//				ResourceGroupName:      resourceGroupName,
-//				Location:               resourceGroupLocation,
-//				AccountTier:            "Standard",
-//				AccountReplicationType: "LRS",
-//				AccountKind:            "StorageV2",
+//			blobaccount, err := storage.NewAccount(ctx, "blobaccount", &storage.AccountArgs{
+//				Name:                   pulumi.Sprintf("%vblob", prefix),
+//				ResourceGroupName:      pulumi.Any(resourceGroupName),
+//				Location:               pulumi.Any(resourceGroupLocation),
+//				AccountTier:            pulumi.String("Standard"),
+//				AccountReplicationType: pulumi.String("LRS"),
+//				AccountKind:            pulumi.String("StorageV2"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			marketing, err := azurerm.NewStorageContainer(ctx, "marketing", &azurerm.StorageContainerArgs{
-//				Name:                "marketing",
+//			marketing, err := storage.NewContainer(ctx, "marketing", &storage.ContainerArgs{
+//				Name:                pulumi.String("marketing"),
 //				StorageAccountName:  blobaccount.Name,
-//				ContainerAccessType: "private",
+//				ContainerAccessType: pulumi.String("private"),
 //			})
 //			if err != nil {
 //				return err

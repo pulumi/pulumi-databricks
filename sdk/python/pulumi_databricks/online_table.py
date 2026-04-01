@@ -26,6 +26,7 @@ class OnlineTableArgs:
                  spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None):
         """
         The set of arguments for constructing a OnlineTable resource.
+
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
         :param pulumi.Input['OnlineTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['OnlineTableSpecArgs'] spec: object containing specification of the online table:
@@ -85,6 +86,7 @@ class _OnlineTableState:
                  unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OnlineTable resources.
+
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
         :param pulumi.Input['OnlineTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['OnlineTableSpecArgs'] spec: object containing specification of the online table:
@@ -208,6 +210,7 @@ class OnlineTable(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: 3-level name of the Online Table to create.
@@ -239,6 +242,7 @@ class OnlineTable(pulumi.CustomResource):
                 "run_triggered": {},
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OnlineTableArgs args: The arguments to use to populate this resource's properties.

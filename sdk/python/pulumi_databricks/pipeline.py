@@ -63,6 +63,7 @@ class PipelineArgs:
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Pipeline resource.
+
         :param pulumi.Input[_builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
         :param pulumi.Input[_builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         :param pulumi.Input[_builtins.str] catalog: The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
@@ -647,6 +648,7 @@ class _PipelineState:
                  usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
+
         :param pulumi.Input[_builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
         :param pulumi.Input[_builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         :param pulumi.Input[_builtins.str] catalog: The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
@@ -1312,6 +1314,7 @@ class Pipeline(pulumi.CustomResource):
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
@@ -1423,6 +1426,7 @@ class Pipeline(pulumi.CustomResource):
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+
 
         :param str resource_name: The name of the resource.
         :param PipelineArgs args: The arguments to use to populate this resource's properties.

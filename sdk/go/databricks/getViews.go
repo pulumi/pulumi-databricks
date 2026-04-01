@@ -43,7 +43,7 @@ import (
 //			var thingsGrants []*databricks.Grants
 //			for key0, val0 := range things.Ids {
 //				__res, err := databricks.NewGrants(ctx, fmt.Sprintf("things-%v", key0), &databricks.GrantsArgs{
-//					Table: pulumi.String(val0),
+//					Table: pulumi.String(pulumi.String(val0)),
 //					Grants: databricks.GrantsGrantArray{
 //						&databricks.GrantsGrantArgs{
 //							Principal: pulumi.String("sensitive"),

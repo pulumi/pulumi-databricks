@@ -50,7 +50,7 @@ import (
 //				Name:                pulumi.String("terraform-test-provider"),
 //				Comment:             pulumi.String("made by terraform 2"),
 //				AuthenticationType:  pulumi.String("TOKEN"),
-//				RecipientProfileStr: pulumi.String(json0),
+//				RecipientProfileStr: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

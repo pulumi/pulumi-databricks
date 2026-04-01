@@ -26,6 +26,7 @@ class MaterializedFeaturesFeatureTagArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MaterializedFeaturesFeatureTag resource.
+
         :param pulumi.Input['MaterializedFeaturesFeatureTagProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "key", key)
@@ -73,6 +74,7 @@ class _MaterializedFeaturesFeatureTagState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MaterializedFeaturesFeatureTag resources.
+
         :param pulumi.Input['MaterializedFeaturesFeatureTagProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         if key is not None:
@@ -126,6 +128,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
@@ -138,6 +141,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param MaterializedFeaturesFeatureTagArgs args: The arguments to use to populate this resource's properties.

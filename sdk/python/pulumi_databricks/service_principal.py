@@ -37,6 +37,7 @@ class ServicePrincipalArgs:
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ServicePrincipal resource.
+
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[_builtins.bool] active: Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
@@ -301,6 +302,7 @@ class _ServicePrincipalState:
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipal resources.
+
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[_builtins.bool] active: Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
@@ -649,6 +651,7 @@ class ServicePrincipal(pulumi.CustomResource):
         * Grants to manage data access in Unity Catalog.
         * ServicePrincipalSecret to manage secrets for a service principal.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
@@ -755,6 +758,7 @@ class ServicePrincipal(pulumi.CustomResource):
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * Grants to manage data access in Unity Catalog.
         * ServicePrincipalSecret to manage secrets for a service principal.
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalArgs args: The arguments to use to populate this resource's properties.

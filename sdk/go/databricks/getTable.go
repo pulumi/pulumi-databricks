@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "things", &databricks.GrantsArgs{
-//				Table: pulumi.String(fctTransactions.Name),
+//				Table: pulumi.String(pulumi.String(fctTransactions.Name)),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("sensitive"),

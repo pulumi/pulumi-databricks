@@ -40,6 +40,7 @@ class CatalogArgs:
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Catalog resource.
+
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[_builtins.str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
@@ -316,6 +317,7 @@ class _CatalogState:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Catalog resources.
+
         :param pulumi.Input[_builtins.str] catalog_type: the type of the catalog.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
@@ -731,6 +733,7 @@ class Catalog(pulumi.CustomResource):
         * get_schemas data to list schemas within Unity Catalog.
         * get_catalogs data to list catalogs within Unity Catalog.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
@@ -782,6 +785,7 @@ class Catalog(pulumi.CustomResource):
         * get_tables data to list tables within Unity Catalog.
         * get_schemas data to list schemas within Unity Catalog.
         * get_catalogs data to list catalogs within Unity Catalog.
+
 
         :param str resource_name: The name of the resource.
         :param CatalogArgs args: The arguments to use to populate this resource's properties.

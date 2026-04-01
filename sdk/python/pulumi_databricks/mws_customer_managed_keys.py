@@ -29,6 +29,7 @@ class MwsCustomerManagedKeysArgs:
                  gcp_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None):
         """
         The set of arguments for constructing a MwsCustomerManagedKeys resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
                * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
@@ -135,6 +136,7 @@ class _MwsCustomerManagedKeysState:
                  use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MwsCustomerManagedKeys resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs'] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[_builtins.int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
@@ -263,6 +265,56 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
 
         You must configure this during workspace creation
 
+        ### For AWS
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        current = aws.get_caller_identity()
+        databricks_managed_services_cmk = aws.iam.get_policy_document(version="2012-10-17",
+            statements=[
+                {
+                    "sid": "Enable IAM User Permissions",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": [current.account_id],
+                    }],
+                    "actions": ["kms:*"],
+                    "resources": ["*"],
+                },
+                {
+                    "sid": "Allow Databricks to use KMS key for control plane managed services",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": ["arn:aws:iam::414351767826:root"],
+                    }],
+                    "actions": [
+                        "kms:Encrypt",
+                        "kms:Decrypt",
+                    ],
+                    "resources": ["*"],
+                },
+            ])
+        managed_services_customer_managed_key = aws.kms.Key("managed_services_customer_managed_key", policy=databricks_managed_services_cmk.json)
+        managed_services_customer_managed_key_alias = aws.kms.Alias("managed_services_customer_managed_key_alias",
+            name="alias/managed-services-customer-managed-key-alias",
+            target_key_id=managed_services_customer_managed_key.key_id)
+        managed_services = databricks.MwsCustomerManagedKeys("managed_services",
+            account_id=databricks_account_id,
+            aws_key_info={
+                "key_arn": managed_services_customer_managed_key.arn,
+                "key_alias": managed_services_customer_managed_key_alias.name,
+            },
+            use_cases=["MANAGED_SERVICES"])
+        ```
+
         ### For GCP
 
         ```python
@@ -283,6 +335,100 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         ```
 
         ### Customer-managed key for workspace storage
+
+        ### For AWS
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        # AWS ARN for the Databricks cross account role
+        databricks_cross_account_role = config.require_object("databricksCrossAccountRole")
+        current = aws.get_caller_identity()
+        databricks_storage_cmk = aws.iam.get_policy_document(version="2012-10-17",
+            statements=[
+                {
+                    "sid": "Enable IAM User Permissions",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": [current.account_id],
+                    }],
+                    "actions": ["kms:*"],
+                    "resources": ["*"],
+                },
+                {
+                    "sid": "Allow Databricks to use KMS key for DBFS",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": ["arn:aws:iam::414351767826:root"],
+                    }],
+                    "actions": [
+                        "kms:Encrypt",
+                        "kms:Decrypt",
+                        "kms:ReEncrypt*",
+                        "kms:GenerateDataKey*",
+                        "kms:DescribeKey",
+                    ],
+                    "resources": ["*"],
+                },
+                {
+                    "sid": "Allow Databricks to use KMS key for DBFS (Grants)",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": ["arn:aws:iam::414351767826:root"],
+                    }],
+                    "actions": [
+                        "kms:CreateGrant",
+                        "kms:ListGrants",
+                        "kms:RevokeGrant",
+                    ],
+                    "resources": ["*"],
+                    "conditions": [{
+                        "test": "Bool",
+                        "variable": "kms:GrantIsForAWSResource",
+                        "values": ["true"],
+                    }],
+                },
+                {
+                    "sid": "Allow Databricks to use KMS key for EBS",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": [databricks_cross_account_role],
+                    }],
+                    "actions": [
+                        "kms:Decrypt",
+                        "kms:GenerateDataKey*",
+                        "kms:CreateGrant",
+                        "kms:DescribeKey",
+                    ],
+                    "resources": ["*"],
+                    "conditions": [{
+                        "test": "ForAnyValue:StringLike",
+                        "variable": "kms:ViaService",
+                        "values": ["ec2.*.amazonaws.com"],
+                    }],
+                },
+            ])
+        storage_customer_managed_key = aws.kms.Key("storage_customer_managed_key", policy=databricks_storage_cmk.json)
+        storage_customer_managed_key_alias = aws.kms.Alias("storage_customer_managed_key_alias",
+            name="alias/storage-customer-managed-key-alias",
+            target_key_id=storage_customer_managed_key.key_id)
+        storage = databricks.MwsCustomerManagedKeys("storage",
+            account_id=databricks_account_id,
+            aws_key_info={
+                "key_arn": storage_customer_managed_key.arn,
+                "key_alias": storage_customer_managed_key_alias.name,
+            },
+            use_cases=["STORAGE"])
+        ```
 
         ### For GCP
 
@@ -313,6 +459,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -349,6 +496,56 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
 
         You must configure this during workspace creation
 
+        ### For AWS
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        current = aws.get_caller_identity()
+        databricks_managed_services_cmk = aws.iam.get_policy_document(version="2012-10-17",
+            statements=[
+                {
+                    "sid": "Enable IAM User Permissions",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": [current.account_id],
+                    }],
+                    "actions": ["kms:*"],
+                    "resources": ["*"],
+                },
+                {
+                    "sid": "Allow Databricks to use KMS key for control plane managed services",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": ["arn:aws:iam::414351767826:root"],
+                    }],
+                    "actions": [
+                        "kms:Encrypt",
+                        "kms:Decrypt",
+                    ],
+                    "resources": ["*"],
+                },
+            ])
+        managed_services_customer_managed_key = aws.kms.Key("managed_services_customer_managed_key", policy=databricks_managed_services_cmk.json)
+        managed_services_customer_managed_key_alias = aws.kms.Alias("managed_services_customer_managed_key_alias",
+            name="alias/managed-services-customer-managed-key-alias",
+            target_key_id=managed_services_customer_managed_key.key_id)
+        managed_services = databricks.MwsCustomerManagedKeys("managed_services",
+            account_id=databricks_account_id,
+            aws_key_info={
+                "key_arn": managed_services_customer_managed_key.arn,
+                "key_alias": managed_services_customer_managed_key_alias.name,
+            },
+            use_cases=["MANAGED_SERVICES"])
+        ```
+
         ### For GCP
 
         ```python
@@ -369,6 +566,100 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         ```
 
         ### Customer-managed key for workspace storage
+
+        ### For AWS
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        # AWS ARN for the Databricks cross account role
+        databricks_cross_account_role = config.require_object("databricksCrossAccountRole")
+        current = aws.get_caller_identity()
+        databricks_storage_cmk = aws.iam.get_policy_document(version="2012-10-17",
+            statements=[
+                {
+                    "sid": "Enable IAM User Permissions",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": [current.account_id],
+                    }],
+                    "actions": ["kms:*"],
+                    "resources": ["*"],
+                },
+                {
+                    "sid": "Allow Databricks to use KMS key for DBFS",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": ["arn:aws:iam::414351767826:root"],
+                    }],
+                    "actions": [
+                        "kms:Encrypt",
+                        "kms:Decrypt",
+                        "kms:ReEncrypt*",
+                        "kms:GenerateDataKey*",
+                        "kms:DescribeKey",
+                    ],
+                    "resources": ["*"],
+                },
+                {
+                    "sid": "Allow Databricks to use KMS key for DBFS (Grants)",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": ["arn:aws:iam::414351767826:root"],
+                    }],
+                    "actions": [
+                        "kms:CreateGrant",
+                        "kms:ListGrants",
+                        "kms:RevokeGrant",
+                    ],
+                    "resources": ["*"],
+                    "conditions": [{
+                        "test": "Bool",
+                        "variable": "kms:GrantIsForAWSResource",
+                        "values": ["true"],
+                    }],
+                },
+                {
+                    "sid": "Allow Databricks to use KMS key for EBS",
+                    "effect": "Allow",
+                    "principals": [{
+                        "type": "AWS",
+                        "identifiers": [databricks_cross_account_role],
+                    }],
+                    "actions": [
+                        "kms:Decrypt",
+                        "kms:GenerateDataKey*",
+                        "kms:CreateGrant",
+                        "kms:DescribeKey",
+                    ],
+                    "resources": ["*"],
+                    "conditions": [{
+                        "test": "ForAnyValue:StringLike",
+                        "variable": "kms:ViaService",
+                        "values": ["ec2.*.amazonaws.com"],
+                    }],
+                },
+            ])
+        storage_customer_managed_key = aws.kms.Key("storage_customer_managed_key", policy=databricks_storage_cmk.json)
+        storage_customer_managed_key_alias = aws.kms.Alias("storage_customer_managed_key_alias",
+            name="alias/storage-customer-managed-key-alias",
+            target_key_id=storage_customer_managed_key.key_id)
+        storage = databricks.MwsCustomerManagedKeys("storage",
+            account_id=databricks_account_id,
+            aws_key_info={
+                "key_arn": storage_customer_managed_key.arn,
+                "key_alias": storage_customer_managed_key_alias.name,
+            },
+            use_cases=["STORAGE"])
+        ```
 
         ### For GCP
 
@@ -399,6 +690,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
 
         :param str resource_name: The name of the resource.
         :param MwsCustomerManagedKeysArgs args: The arguments to use to populate this resource's properties.

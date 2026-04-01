@@ -34,6 +34,7 @@ class RecipientArgs:
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None):
         """
         The set of arguments for constructing a Recipient resource.
+
         :param pulumi.Input[_builtins.str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         :param pulumi.Input[_builtins.str] comment: Description about the recipient.
         :param pulumi.Input[_builtins.str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
@@ -226,6 +227,7 @@ class _RecipientState:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Recipient resources.
+
         :param pulumi.Input[_builtins.str] activation_url: Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
         :param pulumi.Input[_builtins.str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         :param pulumi.Input[_builtins.str] cloud: Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
@@ -564,7 +566,7 @@ class Recipient(pulumi.CustomResource):
         import pulumi_databricks as databricks
         import pulumi_random as random
 
-        db2opensharecode = random.index.Password("db2opensharecode",
+        db2opensharecode = random.RandomPassword("db2opensharecode",
             length=16,
             special=True)
         current = databricks.get_current_user()
@@ -572,7 +574,7 @@ class Recipient(pulumi.CustomResource):
             name=f"{current.alphanumeric}-recipient",
             comment="Made by Pulumi",
             authentication_type="TOKEN",
-            sharing_code=db2opensharecode["result"],
+            sharing_code=db2opensharecode.result,
             ip_access_list={
                 "allowed_ip_addresses": [],
             })
@@ -614,6 +616,7 @@ class Recipient(pulumi.CustomResource):
         * Share to create Delta Sharing shares.
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -656,7 +659,7 @@ class Recipient(pulumi.CustomResource):
         import pulumi_databricks as databricks
         import pulumi_random as random
 
-        db2opensharecode = random.index.Password("db2opensharecode",
+        db2opensharecode = random.RandomPassword("db2opensharecode",
             length=16,
             special=True)
         current = databricks.get_current_user()
@@ -664,7 +667,7 @@ class Recipient(pulumi.CustomResource):
             name=f"{current.alphanumeric}-recipient",
             comment="Made by Pulumi",
             authentication_type="TOKEN",
-            sharing_code=db2opensharecode["result"],
+            sharing_code=db2opensharecode.result,
             ip_access_list={
                 "allowed_ip_addresses": [],
             })
@@ -706,6 +709,7 @@ class Recipient(pulumi.CustomResource):
         * Share to create Delta Sharing shares.
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
+
 
         :param str resource_name: The name of the resource.
         :param RecipientArgs args: The arguments to use to populate this resource's properties.

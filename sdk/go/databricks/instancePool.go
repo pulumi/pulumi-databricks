@@ -42,7 +42,7 @@ import (
 //				InstancePoolName: pulumi.String("Smallest Nodes"),
 //				MinIdleInstances: pulumi.Int(0),
 //				MaxCapacity:      pulumi.Int(300),
-//				NodeTypeId:       pulumi.String(smallest.Id),
+//				NodeTypeId:       pulumi.String(pulumi.String(smallest.Id)),
 //				AwsAttributes: &databricks.InstancePoolAwsAttributesArgs{
 //					Availability:        pulumi.String("ON_DEMAND"),
 //					ZoneId:              pulumi.String("us-east-1a"),

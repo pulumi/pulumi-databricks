@@ -40,9 +40,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			db2opensharecode, err := random.NewPassword(ctx, "db2opensharecode", &random.PasswordArgs{
-//				Length:  16,
-//				Special: true,
+//			db2opensharecode, err := random.NewRandomPassword(ctx, "db2opensharecode", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

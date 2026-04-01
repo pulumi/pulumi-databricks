@@ -65,7 +65,7 @@ import (
 //				Type:        pulumi.String("table"),
 //				Name:        pulumi.String("My Table"),
 //				Description: pulumi.String("Some Description"),
-//				Options:     pulumi.String(json0),
+//				Options:     pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

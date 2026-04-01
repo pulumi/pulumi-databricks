@@ -25,6 +25,7 @@ class WorkspaceConfArgs:
                  provider_config: Optional[pulumi.Input['WorkspaceConfProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a WorkspaceConf resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         :param pulumi.Input['WorkspaceConfProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -65,6 +66,7 @@ class _WorkspaceConfState:
                  provider_config: Optional[pulumi.Input['WorkspaceConfProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering WorkspaceConf resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         :param pulumi.Input['WorkspaceConfProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -139,6 +141,7 @@ class WorkspaceConf(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
@@ -181,6 +184,7 @@ class WorkspaceConf(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceConfArgs args: The arguments to use to populate this resource's properties.

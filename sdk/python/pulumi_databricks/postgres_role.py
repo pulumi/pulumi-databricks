@@ -27,6 +27,7 @@ class PostgresRoleArgs:
                  spec: Optional[pulumi.Input['PostgresRoleSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresRole resource.
+
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresRoleProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -118,6 +119,7 @@ class _PostgresRoleState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresRole resources.
+
         :param pulumi.Input[_builtins.str] create_time: (string)
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the role.
                Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
@@ -273,6 +275,7 @@ class PostgresRole(pulumi.CustomResource):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
@@ -296,6 +299,7 @@ class PostgresRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param PostgresRoleArgs args: The arguments to use to populate this resource's properties.
