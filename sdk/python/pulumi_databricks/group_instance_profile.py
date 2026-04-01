@@ -23,6 +23,7 @@ class GroupInstanceProfileArgs:
                  instance_profile_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GroupInstanceProfile resource.
+
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         """
@@ -61,6 +62,7 @@ class _GroupInstanceProfileState:
                  instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupInstanceProfile resources.
+
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         """
@@ -139,6 +141,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
@@ -185,6 +188,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param GroupInstanceProfileArgs args: The arguments to use to populate this resource's properties.

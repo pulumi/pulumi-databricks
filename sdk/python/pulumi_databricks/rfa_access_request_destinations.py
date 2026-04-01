@@ -26,6 +26,7 @@ class RfaAccessRequestDestinationsArgs:
                  provider_config: Optional[pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a RfaAccessRequestDestinations resource.
+
         :param pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'] securable: The securable for which the access request destinations are being modified or read
         :param pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]] destinations: The access request destinations for the securable
         :param pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -85,6 +86,7 @@ class _RfaAccessRequestDestinationsState:
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RfaAccessRequestDestinations resources.
+
         :param pulumi.Input[_builtins.bool] are_any_destinations_hidden: (boolean) - Indicates whether any destinations are hidden from the caller due to a lack of permissions.
                This value is true if the caller does not have permission to see all destinations
         :param pulumi.Input['RfaAccessRequestDestinationsDestinationSourceSecurableArgs'] destination_source_securable: (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
@@ -250,6 +252,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
             are_any_destinations_hidden=False)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]] destinations: The access request destinations for the securable
@@ -304,6 +307,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
             },
             are_any_destinations_hidden=False)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RfaAccessRequestDestinationsArgs args: The arguments to use to populate this resource's properties.

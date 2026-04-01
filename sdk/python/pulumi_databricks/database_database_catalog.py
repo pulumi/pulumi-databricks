@@ -28,6 +28,7 @@ class DatabaseDatabaseCatalogArgs:
                  provider_config: Optional[pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DatabaseDatabaseCatalog resource.
+
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
@@ -111,6 +112,7 @@ class _DatabaseDatabaseCatalogState:
                  uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseDatabaseCatalog resources.
+
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
@@ -259,6 +261,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
             create_database_if_not_exists=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
@@ -318,6 +321,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
             database_name="new_registered_catalog_database",
             create_database_if_not_exists=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseDatabaseCatalogArgs args: The arguments to use to populate this resource's properties.

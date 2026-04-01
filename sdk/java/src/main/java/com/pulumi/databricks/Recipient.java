@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Password;
- * import com.pulumi.random.PasswordArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.inputs.GetCurrentUserArgs;
  * import com.pulumi.databricks.Recipient;
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var db2opensharecode = new Password("db2opensharecode", PasswordArgs.builder()
+ *         var db2opensharecode = new RandomPassword("db2opensharecode", RandomPasswordArgs.builder()
  *             .length(16)
  *             .special(true)
  *             .build());

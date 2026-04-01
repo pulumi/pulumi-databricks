@@ -33,6 +33,7 @@ class ServicePrincipalSecretArgs:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalSecret resource.
+
         :param pulumi.Input[_builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
         :param pulumi.Input[_builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[_builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
@@ -200,6 +201,7 @@ class _ServicePrincipalSecretState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalSecret resources.
+
         :param pulumi.Input[_builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[_builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
         :param pulumi.Input[_builtins.str] lifetime: The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
@@ -409,6 +411,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
 
         * ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) in Databricks
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: UTC time when the secret was created.
@@ -466,6 +469,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) in Databricks
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalSecretArgs args: The arguments to use to populate this resource's properties.

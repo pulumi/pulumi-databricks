@@ -29,6 +29,7 @@ class ArtifactAllowlistArgs:
                  provider_config: Optional[pulumi.Input['ArtifactAllowlistProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a ArtifactAllowlist resource.
+
         :param pulumi.Input[_builtins.str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] created_at: Time at which this artifact allowlist was set.
         :param pulumi.Input[_builtins.str] created_by: Identity that set the artifact allowlist.
@@ -123,6 +124,7 @@ class _ArtifactAllowlistState:
                  provider_config: Optional[pulumi.Input['ArtifactAllowlistProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ArtifactAllowlist resources.
+
         :param pulumi.Input[_builtins.str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] created_at: Time at which this artifact allowlist was set.
         :param pulumi.Input[_builtins.str] created_by: Identity that set the artifact allowlist.
@@ -249,6 +251,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
@@ -289,6 +292,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
 
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+
 
         :param str resource_name: The name of the resource.
         :param ArtifactAllowlistArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class WorkspaceNetworkOptionArgs:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceNetworkOption resource.
+
         :param pulumi.Input[_builtins.str] network_policy_id: The network policy ID to apply to the workspace. This controls the network access rules
                for all serverless compute resources in the workspace. Each workspace can only be
                linked to one policy at a time. If no policy is explicitly assigned,
@@ -69,6 +70,7 @@ class _WorkspaceNetworkOptionState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceNetworkOption resources.
+
         :param pulumi.Input[_builtins.str] network_policy_id: The network policy ID to apply to the workspace. This controls the network access rules
                for all serverless compute resources in the workspace. Each workspace can only be
                linked to one policy at a time. If no policy is explicitly assigned,
@@ -143,6 +145,7 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
             network_policy_id="default-policy")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_policy_id: The network policy ID to apply to the workspace. This controls the network access rules
@@ -182,6 +185,7 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
             workspace_id="9999999999999999",
             network_policy_id="default-policy")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceNetworkOptionArgs args: The arguments to use to populate this resource's properties.

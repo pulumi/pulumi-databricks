@@ -32,6 +32,7 @@ class GitCredentialArgs:
                  provider_config: Optional[pulumi.Input['GitCredentialProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a GitCredential resource.
+
         :param pulumi.Input[_builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
         :param pulumi.Input[_builtins.bool] force: specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
         :param pulumi.Input[_builtins.str] git_email: The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
@@ -179,6 +180,7 @@ class _GitCredentialState:
                  provider_config: Optional[pulumi.Input['GitCredentialProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering GitCredential resources.
+
         :param pulumi.Input[_builtins.bool] force: specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
         :param pulumi.Input[_builtins.str] git_email: The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
         :param pulumi.Input[_builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
@@ -367,6 +369,7 @@ class GitCredential(pulumi.CustomResource):
 
         * Repo to manage Databricks Repos.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force: specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
@@ -421,6 +424,7 @@ class GitCredential(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * Repo to manage Databricks Repos.
+
 
         :param str resource_name: The name of the resource.
         :param GitCredentialArgs args: The arguments to use to populate this resource's properties.

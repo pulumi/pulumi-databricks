@@ -26,6 +26,7 @@ class AccountNetworkPolicyArgs:
                  network_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountNetworkPolicy resource.
+
         :param pulumi.Input[_builtins.str] account_id: The associated account ID for this Network Policy object
         :param pulumi.Input['AccountNetworkPolicyEgressArgs'] egress: The network policies applying for egress traffic
         :param pulumi.Input[_builtins.str] network_policy_id: The unique identifier for the network policy
@@ -82,6 +83,7 @@ class _AccountNetworkPolicyState:
                  network_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountNetworkPolicy resources.
+
         :param pulumi.Input[_builtins.str] account_id: The associated account ID for this Network Policy object
         :param pulumi.Input['AccountNetworkPolicyEgressArgs'] egress: The network policies applying for egress traffic
         :param pulumi.Input[_builtins.str] network_policy_id: The unique identifier for the network policy
@@ -182,6 +184,7 @@ class AccountNetworkPolicy(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The associated account ID for this Network Policy object
@@ -235,6 +238,7 @@ class AccountNetworkPolicy(pulumi.CustomResource):
                 },
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountNetworkPolicyArgs args: The arguments to use to populate this resource's properties.

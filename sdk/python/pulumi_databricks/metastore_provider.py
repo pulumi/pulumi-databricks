@@ -28,6 +28,7 @@ class MetastoreProviderArgs:
                  provider_config: Optional[pulumi.Input['MetastoreProviderProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a MetastoreProvider resource.
+
         :param pulumi.Input[_builtins.str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN`.
         :param pulumi.Input[_builtins.str] recipient_profile_str: This is the json file that is created from a recipient url.
         :param pulumi.Input[_builtins.str] comment: Description about the provider.
@@ -114,6 +115,7 @@ class _MetastoreProviderState:
                  recipient_profile_str: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetastoreProvider resources.
+
         :param pulumi.Input[_builtins.str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN`.
         :param pulumi.Input[_builtins.str] comment: Description about the provider.
         :param pulumi.Input[_builtins.str] name: Name of provider. Change forces creation of a new resource.
@@ -240,6 +242,7 @@ class MetastoreProvider(pulumi.CustomResource):
         * get_schemas data to list schemas within Unity Catalog.
         * get_catalogs data to list catalogs within Unity Catalog.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN`.
@@ -289,6 +292,7 @@ class MetastoreProvider(pulumi.CustomResource):
         * get_tables data to list tables within Unity Catalog.
         * get_schemas data to list schemas within Unity Catalog.
         * get_catalogs data to list catalogs within Unity Catalog.
+
 
         :param str resource_name: The name of the resource.
         :param MetastoreProviderArgs args: The arguments to use to populate this resource's properties.

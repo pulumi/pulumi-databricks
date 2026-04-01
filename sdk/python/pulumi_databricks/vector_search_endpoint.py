@@ -28,6 +28,7 @@ class VectorSearchEndpointArgs:
                  scaling_info: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']] = None):
         """
         The set of arguments for constructing a VectorSearchEndpoint resource.
+
         :param pulumi.Input[_builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
@@ -119,6 +120,7 @@ class _VectorSearchEndpointState:
                  scaling_info: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']] = None):
         """
         Input properties used for looking up and filtering VectorSearchEndpoint resources.
+
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.int] creation_timestamp: Timestamp of endpoint creation (milliseconds).
         :param pulumi.Input[_builtins.str] creator: Creator of the endpoint.
@@ -341,6 +343,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
             endpoint_type="STANDARD")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
@@ -369,6 +372,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
             name="vector-search-test",
             endpoint_type="STANDARD")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VectorSearchEndpointArgs args: The arguments to use to populate this resource's properties.

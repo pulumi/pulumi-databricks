@@ -29,6 +29,7 @@ class WorkspaceBindingArgs:
                  securable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceBinding resource.
+
         :param pulumi.Input[_builtins.str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         :param pulumi.Input['WorkspaceBindingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
@@ -132,6 +133,7 @@ class _WorkspaceBindingState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceBinding resources.
+
         :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         :param pulumi.Input['WorkspaceBindingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] securable_name: Name of securable. Change forces creation of a new resource.
@@ -267,6 +269,7 @@ class WorkspaceBinding(pulumi.CustomResource):
 
         You can migrate from the deprecated `CatalogWorkspaceBinding` to `WorkspaceBinding` without re-binding catalog.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
@@ -309,6 +312,7 @@ class WorkspaceBinding(pulumi.CustomResource):
         ## Migration from CatalogWorkspaceBinding
 
         You can migrate from the deprecated `CatalogWorkspaceBinding` to `WorkspaceBinding` without re-binding catalog.
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceBindingArgs args: The arguments to use to populate this resource's properties.

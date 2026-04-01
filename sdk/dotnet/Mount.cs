@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Azurerm = Pulumi.Azurerm;
+    /// using Azure = Pulumi.Azure;
     /// using Databricks = Pulumi.Databricks;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
     ///     var resourceGroup = config.Require("resourceGroup");
     ///     // Name of the Databricks Workspace
     ///     var workspaceName = config.Require("workspaceName");
-    ///     var @this = Azurerm.Index.DatabricksWorkspace.Invoke(new()
+    ///     var @this = Azure.DataBricks.GetWorkspace.Invoke(new()
     ///     {
     ///         Name = workspaceName,
     ///         ResourceGroupName = resourceGroup,
@@ -210,7 +210,7 @@ namespace Pulumi.Databricks
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Azurerm = Pulumi.Azurerm;
+    /// using Azure = Pulumi.Azure;
     /// using Databricks = Pulumi.Databricks;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -228,7 +228,7 @@ namespace Pulumi.Databricks
     ///         Scope = terraform.Name,
     ///     });
     /// 
-    ///     var @this = new Azurerm.Index.StorageAccount("this", new()
+    ///     var @this = new Azure.Storage.Account("this", new()
     ///     {
     ///         Name = $"{prefix}datalake",
     ///         ResourceGroupName = resourceGroupName,
@@ -239,14 +239,14 @@ namespace Pulumi.Databricks
     ///         IsHnsEnabled = true,
     ///     });
     /// 
-    ///     var thisRoleAssignment = new Azurerm.Index.RoleAssignment("this", new()
+    ///     var thisAssignment = new Azure.Authorization.Assignment("this", new()
     ///     {
     ///         Scope = @this.Id,
     ///         RoleDefinitionName = "Storage Blob Data Contributor",
     ///         PrincipalId = current.ObjectId,
     ///     });
     /// 
-    ///     var thisStorageContainer = new Azurerm.Index.StorageContainer("this", new()
+    ///     var thisContainer = new Azure.Storage.Container("this", new()
     ///     {
     ///         Name = "marketing",
     ///         StorageAccountName = @this.Name,
@@ -256,7 +256,7 @@ namespace Pulumi.Databricks
     ///     var marketing = new Databricks.Mount("marketing", new()
     ///     {
     ///         Name = "marketing",
-    ///         ResourceId = thisStorageContainer.ResourceManagerId,
+    ///         ResourceId = thisContainer.ResourceManagerId,
     ///         Abfs = new Databricks.Inputs.MountAbfsArgs
     ///         {
     ///             ClientId = current.ClientId,
@@ -356,12 +356,12 @@ namespace Pulumi.Databricks
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Azurerm = Pulumi.Azurerm;
+    /// using Azure = Pulumi.Azure;
     /// using Databricks = Pulumi.Databricks;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var blobaccount = new Azurerm.Index.StorageAccount("blobaccount", new()
+    ///     var blobaccount = new Azure.Storage.Account("blobaccount", new()
     ///     {
     ///         Name = $"{prefix}blob",
     ///         ResourceGroupName = resourceGroupName,
@@ -371,7 +371,7 @@ namespace Pulumi.Databricks
     ///         AccountKind = "StorageV2",
     ///     });
     /// 
-    ///     var marketing = new Azurerm.Index.StorageContainer("marketing", new()
+    ///     var marketing = new Azure.Storage.Container("marketing", new()
     ///     {
     ///         Name = "marketing",
     ///         StorageAccountName = blobaccount.Name,

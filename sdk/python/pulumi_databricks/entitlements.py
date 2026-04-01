@@ -32,6 +32,7 @@ class EntitlementsArgs:
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Entitlements resource.
+
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
@@ -188,6 +189,7 @@ class _EntitlementsState:
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Entitlements resources.
+
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
@@ -406,6 +408,7 @@ class Entitlements(pulumi.CustomResource):
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -485,6 +488,7 @@ class Entitlements(pulumi.CustomResource):
         * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
+
 
         :param str resource_name: The name of the resource.
         :param EntitlementsArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class UserInstanceProfileArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserInstanceProfile resource.
+
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         :param pulumi.Input[_builtins.str] user_id: This is the id of the user resource.
         """
@@ -61,6 +62,7 @@ class _UserInstanceProfileState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserInstanceProfile resources.
+
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         :param pulumi.Input[_builtins.str] user_id: This is the id of the user resource.
         """
@@ -136,6 +138,7 @@ class UserInstanceProfile(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
@@ -179,6 +182,7 @@ class UserInstanceProfile(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param UserInstanceProfileArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class PostgresBranchArgs:
                  spec: Optional[pulumi.Input['PostgresBranchSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresBranch resource.
+
         :param pulumi.Input[_builtins.str] branch_id: The ID to use for the Branch. This becomes the final component of the branch's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `development` becomes `projects/my-app/branches/development`
@@ -114,6 +115,7 @@ class _PostgresBranchState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresBranch resources.
+
         :param pulumi.Input[_builtins.str] branch_id: The ID to use for the Branch. This becomes the final component of the branch's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `development` becomes `projects/my-app/branches/development`
@@ -331,6 +333,7 @@ class PostgresBranch(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch_id: The ID to use for the Branch. This becomes the final component of the branch's resource name.
@@ -403,6 +406,7 @@ class PostgresBranch(pulumi.CustomResource):
                 "ttl": "604800s",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PostgresBranchArgs args: The arguments to use to populate this resource's properties.

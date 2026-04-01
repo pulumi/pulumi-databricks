@@ -27,6 +27,7 @@ class DataClassificationCatalogConfigArgs:
                  provider_config: Optional[pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DataClassificationCatalogConfig resource.
+
         :param pulumi.Input[_builtins.str] parent: Parent resource in the format: catalogs/{catalog_name}
         :param pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]] auto_tag_configs: List of auto-tagging configurations for this catalog.
                Empty list means no auto-tagging is enabled
@@ -103,6 +104,7 @@ class _DataClassificationCatalogConfigState:
                  provider_config: Optional[pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DataClassificationCatalogConfig resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]] auto_tag_configs: List of auto-tagging configurations for this catalog.
                Empty list means no auto-tagging is enabled
         :param pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs'] included_schemas: Schemas to include in the scan. Empty list is not supported as it results in a no-op
@@ -239,6 +241,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", name="catalogs/staging_catalog/config")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]] auto_tag_configs: List of auto-tagging configurations for this catalog.
@@ -296,6 +299,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         # Enable Data Classification for the entire catalog (all current and future schemas)
         all_schemas = databricks.DataClassificationCatalogConfig("all_schemas", name="catalogs/staging_catalog/config")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DataClassificationCatalogConfigArgs args: The arguments to use to populate this resource's properties.

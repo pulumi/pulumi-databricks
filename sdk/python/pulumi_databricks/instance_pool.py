@@ -40,6 +40,7 @@ class InstancePoolArgs:
                  provider_config: Optional[pulumi.Input['InstancePoolProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a InstancePool resource.
+
         :param pulumi.Input[_builtins.int] idle_instance_autotermination_minutes: (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
         :param pulumi.Input[_builtins.str] instance_pool_name: (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
@@ -290,6 +291,7 @@ class _InstancePoolState:
                  provider_config: Optional[pulumi.Input['InstancePoolProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering InstancePool resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         :param pulumi.Input[_builtins.bool] enable_elastic_disk: (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
         :param pulumi.Input[_builtins.int] idle_instance_autotermination_minutes: (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
@@ -585,6 +587,7 @@ class InstancePool(pulumi.CustomResource):
         * Group and User can control which groups or individual users can create instance pools.
         * Permissions can control which groups or individual users can *Manage* or *Attach to* individual instance pools.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_tags: (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
@@ -644,6 +647,7 @@ class InstancePool(pulumi.CustomResource):
 
         * Group and User can control which groups or individual users can create instance pools.
         * Permissions can control which groups or individual users can *Manage* or *Attach to* individual instance pools.
+
 
         :param str resource_name: The name of the resource.
         :param InstancePoolArgs args: The arguments to use to populate this resource's properties.

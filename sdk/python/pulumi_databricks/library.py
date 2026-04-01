@@ -33,6 +33,7 @@ class LibraryArgs:
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Library resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: ID of the Cluster to install the library on.
                
                You must specify exactly **one** of the following library types:
@@ -204,6 +205,7 @@ class _LibraryState:
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Library resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: ID of the Cluster to install the library on.
                
                You must specify exactly **one** of the following library types:
@@ -485,6 +487,7 @@ class Library(pulumi.CustomResource):
 
         !> Importing this resource is not currently supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: ID of the Cluster to install the library on.
@@ -611,6 +614,7 @@ class Library(pulumi.CustomResource):
         ## Import
 
         !> Importing this resource is not currently supported.
+
 
         :param str resource_name: The name of the resource.
         :param LibraryArgs args: The arguments to use to populate this resource's properties.

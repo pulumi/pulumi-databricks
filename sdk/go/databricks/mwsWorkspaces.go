@@ -173,7 +173,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -186,25 +187,27 @@ import (
 //			cfg := config.New(ctx, "")
 //			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			naming, err := random.NewString(ctx, "naming", &random.StringArgs{
-//				Special: false,
-//				Upper:   false,
-//				Length:  6,
+//			naming, err := random.NewRandomString(ctx, "naming", &random.RandomStringArgs{
+//				Special: pulumi.Bool(false),
+//				Upper:   pulumi.Bool(false),
+//				Length:  pulumi.Int(6),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			prefix := fmt.Sprintf("dltp%v", naming.Result)
+//			prefix := naming.Result.ApplyT(func(result string) (string, error) {
+//				return fmt.Sprintf("dltp%v", result), nil
+//			}).(pulumi.StringOutput)
 //			this, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
 //				ExternalId: databricksAccountId,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			crossAccountRole, err := aws.NewIamRole(ctx, "cross_account_role", &aws.IamRoleArgs{
-//				Name:             fmt.Sprintf("%v-crossaccount", prefix),
-//				AssumeRolePolicy: this.Json,
-//				Tags:             tags,
+//			crossAccountRole, err := iam.NewRole(ctx, "cross_account_role", &iam.RoleArgs{
+//				Name:             pulumi.Sprintf("%v-crossaccount", prefix),
+//				AssumeRolePolicy: pulumi.String(pulumi.String(this.Json)),
+//				Tags:             pulumi.Any(tags),
 //			})
 //			if err != nil {
 //				return err
@@ -213,10 +216,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aws.NewIamRolePolicy(ctx, "this", &aws.IamRolePolicyArgs{
-//				Name:   fmt.Sprintf("%v-policy", prefix),
-//				Role:   crossAccountRole.Id,
-//				Policy: thisGetAwsCrossAccountPolicy.Json,
+//			_, err = iam.NewRolePolicy(ctx, "this", &iam.RolePolicyArgs{
+//				Name:   pulumi.Sprintf("%v-policy", prefix),
+//				Role:   crossAccountRole.ID(),
+//				Policy: pulumi.String(pulumi.String(thisGetAwsCrossAccountPolicy.Json)),
 //			})
 //			if err != nil {
 //				return err
@@ -229,34 +232,30 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			rootStorageBucket, err := aws.NewS3Bucket(ctx, "root_storage_bucket", &aws.S3BucketArgs{
-//				Bucket:       fmt.Sprintf("%v-rootbucket", prefix),
-//				Acl:          "private",
-//				ForceDestroy: true,
-//				Tags:         tags,
+//			rootStorageBucket, err := s3.NewBucket(ctx, "root_storage_bucket", &s3.BucketArgs{
+//				Bucket:       pulumi.Sprintf("%v-rootbucket", prefix),
+//				Acl:          pulumi.String(s3.CannedAclPrivate),
+//				ForceDestroy: pulumi.Bool(true),
+//				Tags:         pulumi.Any(tags),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aws.NewS3BucketVersioning(ctx, "root_versioning", &aws.S3BucketVersioningArgs{
-//				Bucket: rootStorageBucket.Id,
-//				VersioningConfiguration: []map[string]interface{}{
-//					map[string]interface{}{
-//						"status": "Disabled",
-//					},
+//			_, err = s3.NewBucketVersioning(ctx, "root_versioning", &s3.BucketVersioningArgs{
+//				Bucket: rootStorageBucket.ID(),
+//				VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
+//					Status: pulumi.String("Disabled"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aws.NewS3BucketServerSideEncryptionConfiguration(ctx, "root_storage_bucket", &aws.S3BucketServerSideEncryptionConfigurationArgs{
+//			_, err = s3.NewBucketServerSideEncryptionConfiguration(ctx, "root_storage_bucket", &s3.BucketServerSideEncryptionConfigurationArgs{
 //				Bucket: rootStorageBucket.Bucket,
-//				Rule: []map[string]interface{}{
-//					map[string]interface{}{
-//						"applyServerSideEncryptionByDefault": []map[string]interface{}{
-//							map[string]interface{}{
-//								"sseAlgorithm": "AES256",
-//							},
+//				Rules: s3.BucketServerSideEncryptionConfigurationRuleArray{
+//					&s3.BucketServerSideEncryptionConfigurationRuleArgs{
+//						ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
+//							SseAlgorithm: pulumi.String("AES256"),
 //						},
 //					},
 //				},
@@ -264,29 +263,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			rootStorageBucketS3BucketPublicAccessBlock, err := aws.NewS3BucketPublicAccessBlock(ctx, "root_storage_bucket", &aws.S3BucketPublicAccessBlockArgs{
-//				Bucket:                rootStorageBucket.Id,
-//				BlockPublicAcls:       true,
-//				BlockPublicPolicy:     true,
-//				IgnorePublicAcls:      true,
-//				RestrictPublicBuckets: true,
+//			rootStorageBucketBucketPublicAccessBlock, err := s3.NewBucketPublicAccessBlock(ctx, "root_storage_bucket", &s3.BucketPublicAccessBlockArgs{
+//				Bucket:                rootStorageBucket.ID(),
+//				BlockPublicAcls:       pulumi.Bool(true),
+//				BlockPublicPolicy:     pulumi.Bool(true),
+//				IgnorePublicAcls:      pulumi.Bool(true),
+//				RestrictPublicBuckets: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				rootStorageBucket,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			thisGetAwsBucketPolicy, err := databricks.GetAwsBucketPolicy(ctx, &databricks.GetAwsBucketPolicyArgs{
+//			thisGetAwsBucketPolicy := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
 //				Bucket: rootStorageBucket.Bucket,
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aws.NewS3BucketPolicy(ctx, "root_bucket_policy", &aws.S3BucketPolicyArgs{
-//				Bucket: rootStorageBucket.Id,
-//				Policy: thisGetAwsBucketPolicy.Json,
+//			_, err = s3.NewBucketPolicy(ctx, "root_bucket_policy", &s3.BucketPolicyArgs{
+//				Bucket: rootStorageBucket.ID(),
+//				Policy: pulumi.String(thisGetAwsBucketPolicy.ApplyT(func(thisGetAwsBucketPolicy databricks.GetAwsBucketPolicyResult) (*string, error) {
+//					return &thisGetAwsBucketPolicy.Json, nil
+//				}).(pulumi.StringPtrOutput)),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				rootStorageBucketS3BucketPublicAccessBlock,
+//				rootStorageBucketBucketPublicAccessBlock,
 //			}))
 //			if err != nil {
 //				return err

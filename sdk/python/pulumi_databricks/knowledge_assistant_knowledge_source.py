@@ -31,6 +31,7 @@ class KnowledgeAssistantKnowledgeSourceArgs:
                  provider_config: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a KnowledgeAssistantKnowledgeSource resource.
+
         :param pulumi.Input[_builtins.str] description: Description of the knowledge source.
                Required when creating a Knowledge Source.
                When updating a Knowledge Source, optional unless included in update_mask
@@ -169,6 +170,7 @@ class _KnowledgeAssistantKnowledgeSourceState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KnowledgeAssistantKnowledgeSource resources.
+
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when this knowledge source was created
         :param pulumi.Input[_builtins.str] description: Description of the knowledge source.
                Required when creating a Knowledge Source.
@@ -374,6 +376,7 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the knowledge source.
@@ -397,6 +400,7 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param KnowledgeAssistantKnowledgeSourceArgs args: The arguments to use to populate this resource's properties.

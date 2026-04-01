@@ -31,6 +31,7 @@ class VolumeArgs:
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Volume resource.
+
         :param pulumi.Input[_builtins.str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
@@ -165,6 +166,7 @@ class _VolumeState:
                  volume_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
+
         :param pulumi.Input[_builtins.str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] comment: Free-form text.
         :param pulumi.Input[_builtins.str] name: Name of the Volume
@@ -384,6 +386,7 @@ class Volume(pulumi.CustomResource):
             comment="this volume is managed by terraform")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
@@ -466,6 +469,7 @@ class Volume(pulumi.CustomResource):
             storage_location=some.url,
             comment="this volume is managed by terraform")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.

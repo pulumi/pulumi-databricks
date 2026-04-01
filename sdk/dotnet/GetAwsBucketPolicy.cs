@@ -27,27 +27,122 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisS3Bucket = new Aws.Index.S3Bucket("this", new()
+        ///     var thisBucket = new Aws.S3.Bucket("this", new()
         ///     {
-        ///         Bucket = "&lt;unique_bucket_name&gt;",
+        ///         BucketName = "&lt;unique_bucket_name&gt;",
         ///         ForceDestroy = true,
         ///     });
         /// 
         ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
         ///     {
-        ///         Bucket = thisS3Bucket.Bucket,
+        ///         Bucket = thisBucket.BucketName,
         ///     });
         /// 
-        ///     var thisS3BucketPolicy = new Aws.Index.S3BucketPolicy("this", new()
+        ///     var thisBucketPolicy = new Aws.S3.BucketPolicy("this", new()
         ///     {
-        ///         Bucket = thisS3Bucket.Id,
-        ///         Policy = @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
+        ///         Bucket = thisBucket.Id,
+        ///         Policy = @this.Apply(@this =&gt; @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json)),
         ///     });
         /// 
         /// });
         /// ```
         /// 
         /// Bucket policy with full access:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Databricks = Pulumi.Databricks;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dsBucket = new Aws.S3.Bucket("ds", new()
+        ///     {
+        ///         BucketName = $"{prefix}-ds",
+        ///         ForceDestroy = true,
+        ///         Tags = Std.Merge.Invoke(new()
+        ///         {
+        ///             Input = new[]
+        ///             {
+        ///                 tags,
+        ///                 
+        ///                 {
+        ///                     { "name", $"{prefix}-ds" },
+        ///                 },
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var dsVersioning = new Aws.S3.BucketVersioning("ds_versioning", new()
+        ///     {
+        ///         Bucket = dsBucket.Id,
+        ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
+        ///         {
+        ///             Status = "Disabled",
+        ///         },
+        ///     });
+        /// 
+        ///     var assumeRoleForEc2 = Aws.Iam.GetPolicyDocument.Invoke(new()
+        ///     {
+        ///         Statements = new[]
+        ///         {
+        ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "sts:AssumeRole",
+        ///                 },
+        ///                 Principals = new[]
+        ///                 {
+        ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+        ///                     {
+        ///                         Identifiers = new[]
+        ///                         {
+        ///                             "ec2.amazonaws.com",
+        ///                         },
+        ///                         Type = "Service",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var dataRole = new Aws.Iam.Role("data_role", new()
+        ///     {
+        ///         Name = $"{prefix}-first-ec2s3",
+        ///         Description = $"({prefix}) EC2 Assume Role role for S3 access",
+        ///         AssumeRolePolicy = assumeRoleForEc2.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+        ///         Tags = tags,
+        ///     });
+        /// 
+        ///     var ds = Databricks.GetAwsBucketPolicy.Invoke(new()
+        ///     {
+        ///         FullAccessRole = dataRole.Arn,
+        ///         Bucket = dsBucket.BucketName,
+        ///     });
+        /// 
+        ///     // allow databricks to access this bucket
+        ///     var dsBucketPolicy = new Aws.S3.BucketPolicy("ds", new()
+        ///     {
+        ///         Bucket = dsBucket.Id,
+        ///         Policy = ds.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
+        /// * End to end workspace management guide
+        /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+        /// * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
         /// </summary>
         public static Task<GetAwsBucketPolicyResult> InvokeAsync(GetAwsBucketPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsBucketPolicyResult>("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args ?? new GetAwsBucketPolicyArgs(), options.WithDefaults());
@@ -68,27 +163,122 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisS3Bucket = new Aws.Index.S3Bucket("this", new()
+        ///     var thisBucket = new Aws.S3.Bucket("this", new()
         ///     {
-        ///         Bucket = "&lt;unique_bucket_name&gt;",
+        ///         BucketName = "&lt;unique_bucket_name&gt;",
         ///         ForceDestroy = true,
         ///     });
         /// 
         ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
         ///     {
-        ///         Bucket = thisS3Bucket.Bucket,
+        ///         Bucket = thisBucket.BucketName,
         ///     });
         /// 
-        ///     var thisS3BucketPolicy = new Aws.Index.S3BucketPolicy("this", new()
+        ///     var thisBucketPolicy = new Aws.S3.BucketPolicy("this", new()
         ///     {
-        ///         Bucket = thisS3Bucket.Id,
-        ///         Policy = @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
+        ///         Bucket = thisBucket.Id,
+        ///         Policy = @this.Apply(@this =&gt; @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json)),
         ///     });
         /// 
         /// });
         /// ```
         /// 
         /// Bucket policy with full access:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Databricks = Pulumi.Databricks;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dsBucket = new Aws.S3.Bucket("ds", new()
+        ///     {
+        ///         BucketName = $"{prefix}-ds",
+        ///         ForceDestroy = true,
+        ///         Tags = Std.Merge.Invoke(new()
+        ///         {
+        ///             Input = new[]
+        ///             {
+        ///                 tags,
+        ///                 
+        ///                 {
+        ///                     { "name", $"{prefix}-ds" },
+        ///                 },
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var dsVersioning = new Aws.S3.BucketVersioning("ds_versioning", new()
+        ///     {
+        ///         Bucket = dsBucket.Id,
+        ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
+        ///         {
+        ///             Status = "Disabled",
+        ///         },
+        ///     });
+        /// 
+        ///     var assumeRoleForEc2 = Aws.Iam.GetPolicyDocument.Invoke(new()
+        ///     {
+        ///         Statements = new[]
+        ///         {
+        ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "sts:AssumeRole",
+        ///                 },
+        ///                 Principals = new[]
+        ///                 {
+        ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+        ///                     {
+        ///                         Identifiers = new[]
+        ///                         {
+        ///                             "ec2.amazonaws.com",
+        ///                         },
+        ///                         Type = "Service",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var dataRole = new Aws.Iam.Role("data_role", new()
+        ///     {
+        ///         Name = $"{prefix}-first-ec2s3",
+        ///         Description = $"({prefix}) EC2 Assume Role role for S3 access",
+        ///         AssumeRolePolicy = assumeRoleForEc2.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+        ///         Tags = tags,
+        ///     });
+        /// 
+        ///     var ds = Databricks.GetAwsBucketPolicy.Invoke(new()
+        ///     {
+        ///         FullAccessRole = dataRole.Arn,
+        ///         Bucket = dsBucket.BucketName,
+        ///     });
+        /// 
+        ///     // allow databricks to access this bucket
+        ///     var dsBucketPolicy = new Aws.S3.BucketPolicy("ds", new()
+        ///     {
+        ///         Bucket = dsBucket.Id,
+        ///         Policy = ds.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
+        /// * End to end workspace management guide
+        /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+        /// * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
         /// </summary>
         public static Output<GetAwsBucketPolicyResult> Invoke(GetAwsBucketPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsBucketPolicyResult>("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args ?? new GetAwsBucketPolicyInvokeArgs(), options.WithDefaults());
@@ -109,27 +299,122 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisS3Bucket = new Aws.Index.S3Bucket("this", new()
+        ///     var thisBucket = new Aws.S3.Bucket("this", new()
         ///     {
-        ///         Bucket = "&lt;unique_bucket_name&gt;",
+        ///         BucketName = "&lt;unique_bucket_name&gt;",
         ///         ForceDestroy = true,
         ///     });
         /// 
         ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
         ///     {
-        ///         Bucket = thisS3Bucket.Bucket,
+        ///         Bucket = thisBucket.BucketName,
         ///     });
         /// 
-        ///     var thisS3BucketPolicy = new Aws.Index.S3BucketPolicy("this", new()
+        ///     var thisBucketPolicy = new Aws.S3.BucketPolicy("this", new()
         ///     {
-        ///         Bucket = thisS3Bucket.Id,
-        ///         Policy = @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
+        ///         Bucket = thisBucket.Id,
+        ///         Policy = @this.Apply(@this =&gt; @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json)),
         ///     });
         /// 
         /// });
         /// ```
         /// 
         /// Bucket policy with full access:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Databricks = Pulumi.Databricks;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dsBucket = new Aws.S3.Bucket("ds", new()
+        ///     {
+        ///         BucketName = $"{prefix}-ds",
+        ///         ForceDestroy = true,
+        ///         Tags = Std.Merge.Invoke(new()
+        ///         {
+        ///             Input = new[]
+        ///             {
+        ///                 tags,
+        ///                 
+        ///                 {
+        ///                     { "name", $"{prefix}-ds" },
+        ///                 },
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var dsVersioning = new Aws.S3.BucketVersioning("ds_versioning", new()
+        ///     {
+        ///         Bucket = dsBucket.Id,
+        ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
+        ///         {
+        ///             Status = "Disabled",
+        ///         },
+        ///     });
+        /// 
+        ///     var assumeRoleForEc2 = Aws.Iam.GetPolicyDocument.Invoke(new()
+        ///     {
+        ///         Statements = new[]
+        ///         {
+        ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Effect = "Allow",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "sts:AssumeRole",
+        ///                 },
+        ///                 Principals = new[]
+        ///                 {
+        ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+        ///                     {
+        ///                         Identifiers = new[]
+        ///                         {
+        ///                             "ec2.amazonaws.com",
+        ///                         },
+        ///                         Type = "Service",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var dataRole = new Aws.Iam.Role("data_role", new()
+        ///     {
+        ///         Name = $"{prefix}-first-ec2s3",
+        ///         Description = $"({prefix}) EC2 Assume Role role for S3 access",
+        ///         AssumeRolePolicy = assumeRoleForEc2.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+        ///         Tags = tags,
+        ///     });
+        /// 
+        ///     var ds = Databricks.GetAwsBucketPolicy.Invoke(new()
+        ///     {
+        ///         FullAccessRole = dataRole.Arn,
+        ///         Bucket = dsBucket.BucketName,
+        ///     });
+        /// 
+        ///     // allow databricks to access this bucket
+        ///     var dsBucketPolicy = new Aws.S3.BucketPolicy("ds", new()
+        ///     {
+        ///         Bucket = dsBucket.Id,
+        ///         Policy = ds.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
+        /// * End to end workspace management guide
+        /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+        /// * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
         /// </summary>
         public static Output<GetAwsBucketPolicyResult> Invoke(GetAwsBucketPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsBucketPolicyResult>("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args ?? new GetAwsBucketPolicyInvokeArgs(), options.WithDefaults());

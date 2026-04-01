@@ -40,6 +40,7 @@ class DashboardArgs:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the dashboard.
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         :param pulumi.Input[_builtins.str] warehouse_id: The warehouse ID used to run the dashboard.
@@ -285,6 +286,7 @@ class _DashboardState:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
+
         :param pulumi.Input[_builtins.str] dataset_catalog: Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         :param pulumi.Input[_builtins.str] dataset_schema: Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         :param pulumi.Input[_builtins.str] display_name: The display name of the dashboard.
@@ -559,6 +561,7 @@ class Dashboard(pulumi.CustomResource):
 
         Dashboard using `file_path` attribute:
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataset_catalog: Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
@@ -600,6 +603,7 @@ class Dashboard(pulumi.CustomResource):
         ```
 
         Dashboard using `file_path` attribute:
+
 
         :param str resource_name: The name of the resource.
         :param DashboardArgs args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class GroupArgs:
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -195,6 +196,7 @@ class _GroupState:
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -426,6 +428,7 @@ class Group(pulumi.CustomResource):
         this = databricks.Group("this", display_name="Some Group")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
@@ -508,6 +511,7 @@ class Group(pulumi.CustomResource):
 
         this = databricks.Group("this", display_name="Some Group")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

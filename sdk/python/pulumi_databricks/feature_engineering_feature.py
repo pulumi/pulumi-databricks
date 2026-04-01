@@ -34,6 +34,7 @@ class FeatureEngineeringFeatureArgs:
                  timeseries_column: Optional[pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs']] = None):
         """
         The set of arguments for constructing a FeatureEngineeringFeature resource.
+
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
@@ -229,6 +230,7 @@ class _FeatureEngineeringFeatureState:
                  timeseries_column: Optional[pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs']] = None):
         """
         Input properties used for looking up and filtering FeatureEngineeringFeature resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the feature
         :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
         :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
@@ -432,6 +434,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the feature
@@ -461,6 +464,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param FeatureEngineeringFeatureArgs args: The arguments to use to populate this resource's properties.

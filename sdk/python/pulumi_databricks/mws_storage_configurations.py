@@ -25,6 +25,7 @@ class MwsStorageConfigurationsArgs:
                  role_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsStorageConfigurations resource.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[_builtins.str] bucket_name: name of AWS S3 bucket
         :param pulumi.Input[_builtins.str] storage_configuration_name: name under which this storage configuration is stored
@@ -100,6 +101,7 @@ class _MwsStorageConfigurationsState:
                  storage_configuration_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsStorageConfigurations resources.
+
         :param pulumi.Input[_builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[_builtins.str] bucket_name: name of AWS S3 bucket
         :param pulumi.Input[_builtins.str] role_arn: The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
@@ -223,18 +225,18 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
-            bucket=f{prefix}-rootbucket,
-            acl=private)
-        root_versioning = aws.index.S3BucketVersioning("root_versioning",
+        root_storage_bucket = aws.s3.Bucket("root_storage_bucket",
+            bucket=f"{prefix}-rootbucket",
+            acl=aws.s3.CannedAcl.PRIVATE)
+        root_versioning = aws.s3.BucketVersioning("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration=[{
-                status: Disabled,
-            }])
+            versioning_configuration={
+                "status": "Disabled",
+            })
         this = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket["bucket"])
+            bucket_name=root_storage_bucket.bucket)
         ```
 
         ### Example Usage with Role ARN
@@ -263,6 +265,7 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -298,18 +301,18 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
-            bucket=f{prefix}-rootbucket,
-            acl=private)
-        root_versioning = aws.index.S3BucketVersioning("root_versioning",
+        root_storage_bucket = aws.s3.Bucket("root_storage_bucket",
+            bucket=f"{prefix}-rootbucket",
+            acl=aws.s3.CannedAcl.PRIVATE)
+        root_versioning = aws.s3.BucketVersioning("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration=[{
-                status: Disabled,
-            }])
+            versioning_configuration={
+                "status": "Disabled",
+            })
         this = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket["bucket"])
+            bucket_name=root_storage_bucket.bucket)
         ```
 
         ### Example Usage with Role ARN
@@ -338,6 +341,7 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
         * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
         * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
 
         :param str resource_name: The name of the resource.
         :param MwsStorageConfigurationsArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class ModelServingProvisionedThroughputArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]]] = None):
         """
         The set of arguments for constructing a ModelServingProvisionedThroughput resource.
+
         :param pulumi.Input['ModelServingProvisionedThroughputConfigArgs'] config: The model serving endpoint configuration.
         :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
@@ -150,6 +151,7 @@ class _ModelServingProvisionedThroughputState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering ModelServingProvisionedThroughput resources.
+
         :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
         :param pulumi.Input['ModelServingProvisionedThroughputConfigArgs'] config: The model serving endpoint configuration.
@@ -334,6 +336,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ModelServingProvisionedThroughputAiGatewayArgs', 'ModelServingProvisionedThroughputAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
@@ -396,6 +399,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+
 
         :param str resource_name: The name of the resource.
         :param ModelServingProvisionedThroughputArgs args: The arguments to use to populate this resource's properties.

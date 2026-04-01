@@ -27,6 +27,7 @@ class DisableLegacyAccessSettingArgs:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DisableLegacyAccessSetting resource.
+
         :param pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs'] disable_legacy_access: The configuration details.
         :param pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -90,6 +91,7 @@ class _DisableLegacyAccessSettingState:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DisableLegacyAccessSetting resources.
+
         :param pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs'] disable_legacy_access: The configuration details.
         :param pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
@@ -188,6 +190,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
         $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']] disable_legacy_access: The configuration details.
@@ -230,6 +233,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
         ```sh
         $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DisableLegacyAccessSettingArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class MwsPermissionAssignmentArgs:
                  workspace_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a MwsPermissionAssignment resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
                * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
                * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
@@ -81,6 +82,7 @@ class _MwsPermissionAssignmentState:
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsPermissionAssignment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
                * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
                * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
@@ -198,6 +200,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         * GroupMember to attach users and groups as group members.
         * PermissionAssignment to manage permission assignment from a workspace context
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
@@ -266,6 +269,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupMember to attach users and groups as group members.
         * PermissionAssignment to manage permission assignment from a workspace context
+
 
         :param str resource_name: The name of the resource.
         :param MwsPermissionAssignmentArgs args: The arguments to use to populate this resource's properties.

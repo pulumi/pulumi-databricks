@@ -38,6 +38,7 @@ class SqlEndpointArgs:
                  warehouse_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlEndpoint resource.
+
         :param pulumi.Input[_builtins.str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         :param pulumi.Input[_builtins.int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input['SqlEndpointChannelArgs'] channel: block, consisting of following fields:
@@ -292,6 +293,7 @@ class _SqlEndpointState:
                  warehouse_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlEndpoint resources.
+
         :param pulumi.Input[_builtins.int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input['SqlEndpointChannelArgs'] channel: block, consisting of following fields:
         :param pulumi.Input[_builtins.str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
@@ -686,6 +688,7 @@ class SqlEndpoint(pulumi.CustomResource):
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
         * Grants to manage data access in Unity Catalog.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
@@ -749,6 +752,7 @@ class SqlEndpoint(pulumi.CustomResource):
         * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
         * Grants to manage data access in Unity Catalog.
+
 
         :param str resource_name: The name of the resource.
         :param SqlEndpointArgs args: The arguments to use to populate this resource's properties.

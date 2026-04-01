@@ -38,6 +38,7 @@ class StorageCredentialArgs:
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a StorageCredential resource.
+
         :param pulumi.Input['StorageCredentialAwsIamRoleArgs'] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
@@ -267,6 +268,7 @@ class _StorageCredentialState:
                  storage_credential_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageCredential resources.
+
         :param pulumi.Input['StorageCredentialAwsIamRoleArgs'] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
@@ -581,6 +583,7 @@ class StorageCredential(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']] aws_iam_role: exposes two additional attributes:
@@ -669,6 +672,7 @@ class StorageCredential(pulumi.CustomResource):
                 "privileges": ["CREATE_EXTERNAL_TABLE"],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StorageCredentialArgs args: The arguments to use to populate this resource's properties.

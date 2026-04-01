@@ -37,6 +37,7 @@ class UserArgs:
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
@@ -300,6 +301,7 @@ class _UserState:
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -649,6 +651,7 @@ class User(pulumi.CustomResource):
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
@@ -756,6 +759,7 @@ class User(pulumi.CustomResource):
         * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

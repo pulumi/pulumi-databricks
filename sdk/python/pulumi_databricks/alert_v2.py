@@ -35,6 +35,7 @@ class AlertV2Args:
                  run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlertV2 resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
@@ -239,6 +240,7 @@ class _AlertV2State:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlertV2 resources.
+
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp indicating when the alert was created
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
@@ -572,6 +574,7 @@ class AlertV2(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
@@ -644,6 +647,7 @@ class AlertV2(pulumi.CustomResource):
                 "pause_status": "UNPAUSED",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlertV2Args args: The arguments to use to populate this resource's properties.

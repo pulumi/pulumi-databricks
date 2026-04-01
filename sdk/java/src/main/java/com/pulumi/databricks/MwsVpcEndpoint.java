@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aws.VpcEndpoint;
- * import com.pulumi.aws.VpcEndpointArgs;
+ * import com.pulumi.aws.ec2.VpcEndpoint;
+ * import com.pulumi.aws.ec2.VpcEndpointArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -55,22 +55,22 @@ import javax.annotation.Nullable;
  *             .vpcId(vpc.vpcId())
  *             .serviceName(privateLink.workspaceService())
  *             .vpcEndpointType("Interface")
- *             .securityGroupIds(List.of(vpc.defaultSecurityGroupId()))
- *             .subnetIds(List.of(plSubnet.id()))
+ *             .securityGroupIds(vpc.defaultSecurityGroupId())
+ *             .subnetIds(plSubnet.id())
  *             .privateDnsEnabled(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(plSubnet))
+ *                 .dependsOn(plSubnet)
  *                 .build());
  * 
  *         var relay = new VpcEndpoint("relay", VpcEndpointArgs.builder()
  *             .vpcId(vpc.vpcId())
  *             .serviceName(privateLink.relayService())
  *             .vpcEndpointType("Interface")
- *             .securityGroupIds(List.of(vpc.defaultSecurityGroupId()))
- *             .subnetIds(List.of(plSubnet.id()))
+ *             .securityGroupIds(vpc.defaultSecurityGroupId())
+ *             .subnetIds(plSubnet.id())
  *             .privateDnsEnabled(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(plSubnet))
+ *                 .dependsOn(plSubnet)
  *                 .build());
  * 
  *     }
@@ -88,8 +88,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aws.VpcEndpoint;
- * import com.pulumi.aws.VpcEndpointArgs;
+ * import com.pulumi.aws.ec2.VpcEndpoint;
+ * import com.pulumi.aws.ec2.VpcEndpointArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .routeTableIds(vpc.privateRouteTableIds())
  *             .serviceName(String.format("com.amazonaws.%s.s3", region))
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(vpc))
+ *                 .dependsOn(vpc)
  *                 .build());
  * 
  *         var sts = new VpcEndpoint("sts", VpcEndpointArgs.builder()
@@ -117,10 +117,10 @@ import javax.annotation.Nullable;
  *             .serviceName(String.format("com.amazonaws.%s.sts", region))
  *             .vpcEndpointType("Interface")
  *             .subnetIds(vpc.privateSubnets())
- *             .securityGroupIds(List.of(vpc.defaultSecurityGroupId()))
+ *             .securityGroupIds(vpc.defaultSecurityGroupId())
  *             .privateDnsEnabled(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(vpc))
+ *                 .dependsOn(vpc)
  *                 .build());
  * 
  *         var kinesis_streams = new VpcEndpoint("kinesis-streams", VpcEndpointArgs.builder()
@@ -128,9 +128,9 @@ import javax.annotation.Nullable;
  *             .serviceName(String.format("com.amazonaws.%s.kinesis-streams", region))
  *             .vpcEndpointType("Interface")
  *             .subnetIds(vpc.privateSubnets())
- *             .securityGroupIds(List.of(vpc.defaultSecurityGroupId()))
+ *             .securityGroupIds(vpc.defaultSecurityGroupId())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(vpc))
+ *                 .dependsOn(vpc)
  *                 .build());
  * 
  *     }

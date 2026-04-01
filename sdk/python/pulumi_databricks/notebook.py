@@ -32,6 +32,7 @@ class NotebookArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Notebook resource.
+
         :param pulumi.Input[_builtins.str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
         :param pulumi.Input[_builtins.str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
@@ -177,6 +178,7 @@ class _NotebookState:
                  workspace_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Notebook resources.
+
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
         :param pulumi.Input[_builtins.str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a NOTEBOOK
@@ -358,6 +360,7 @@ class Notebook(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
@@ -377,6 +380,7 @@ class Notebook(pulumi.CustomResource):
         This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and get_notebook_paths data sources.
 
         > This resource can only be used with a workspace-level provider!
+
 
         :param str resource_name: The name of the resource.
         :param NotebookArgs args: The arguments to use to populate this resource's properties.

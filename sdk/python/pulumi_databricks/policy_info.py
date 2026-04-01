@@ -36,6 +36,7 @@ class PolicyInfoArgs:
                  when_condition: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolicyInfo resource.
+
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
                Only `TABLE` is supported at this moment.
                Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
@@ -279,6 +280,7 @@ class _PolicyInfoState:
                  when_condition: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyInfo resources.
+
         :param pulumi.Input['PolicyInfoColumnMaskArgs'] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
@@ -646,6 +648,7 @@ class PolicyInfo(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
@@ -743,6 +746,7 @@ class PolicyInfo(pulumi.CustomResource):
                 }],
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyInfoArgs args: The arguments to use to populate this resource's properties.

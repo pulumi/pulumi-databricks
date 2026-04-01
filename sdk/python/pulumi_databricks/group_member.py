@@ -23,6 +23,7 @@ class GroupMemberArgs:
                  member_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GroupMember resource.
+
         :param pulumi.Input[_builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
         :param pulumi.Input[_builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
@@ -61,6 +62,7 @@ class _GroupMemberState:
                  member_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupMember resources.
+
         :param pulumi.Input[_builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
         :param pulumi.Input[_builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
@@ -143,6 +145,7 @@ class GroupMember(pulumi.CustomResource):
         * User data to retrieve information about databricks_user.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
@@ -193,6 +196,7 @@ class GroupMember(pulumi.CustomResource):
         * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
         * User data to retrieve information about databricks_user.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
+
 
         :param str resource_name: The name of the resource.
         :param GroupMemberArgs args: The arguments to use to populate this resource's properties.

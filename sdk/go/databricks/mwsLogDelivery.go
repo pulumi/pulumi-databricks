@@ -29,7 +29,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -43,25 +44,29 @@ import (
 //			cfg := config.New(ctx, "")
 //			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			logdeliveryS3Bucket, err := aws.NewS3Bucket(ctx, "logdelivery", &aws.S3BucketArgs{
-//				Bucket:       fmt.Sprintf("%v-logdelivery", prefix),
-//				Acl:          "private",
-//				ForceDestroy: true,
-//				Tags: std.Merge(ctx, &std.MergeArgs{
-//					Input: []interface{}{
-//						tags,
-//						map[string]interface{}{
-//							"name": fmt.Sprintf("%v-logdelivery", prefix),
-//						},
+//			invokeMerge, err := std.Merge(ctx, &std.MergeArgs{
+//				Input: []interface{}{
+//					tags,
+//					map[string]interface{}{
+//						"name": fmt.Sprintf("%v-logdelivery", prefix),
 //					},
-//				}, nil).Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			logdeliveryBucket, err := s3.NewBucket(ctx, "logdelivery", &s3.BucketArgs{
+//				Bucket:       pulumi.Sprintf("%v-logdelivery", prefix),
+//				Acl:          pulumi.String(s3.CannedAclPrivate),
+//				ForceDestroy: pulumi.Bool(true),
+//				Tags:         pulumi.StringMap(invokeMerge.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aws.NewS3BucketPublicAccessBlock(ctx, "logdelivery", &aws.S3BucketPublicAccessBlockArgs{
-//				Bucket:           logdeliveryS3Bucket.Id,
-//				IgnorePublicAcls: true,
+//			_, err = s3.NewBucketPublicAccessBlock(ctx, "logdelivery", &s3.BucketPublicAccessBlockArgs{
+//				Bucket:           logdeliveryBucket.ID(),
+//				IgnorePublicAcls: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -73,36 +78,33 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aws.NewS3BucketVersioning(ctx, "logdelivery_versioning", &aws.S3BucketVersioningArgs{
-//				Bucket: logdeliveryS3Bucket.Id,
-//				VersioningConfiguration: []map[string]interface{}{
-//					map[string]interface{}{
-//						"status": "Disabled",
-//					},
+//			_, err = s3.NewBucketVersioning(ctx, "logdelivery_versioning", &s3.BucketVersioningArgs{
+//				Bucket: logdeliveryBucket.ID(),
+//				VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
+//					Status: pulumi.String("Disabled"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			logdeliveryIamRole, err := aws.NewIamRole(ctx, "logdelivery", &aws.IamRoleArgs{
-//				Name:             fmt.Sprintf("%v-logdelivery", prefix),
-//				Description:      fmt.Sprintf("(%v) UsageDelivery role", prefix),
-//				AssumeRolePolicy: logdelivery.Json,
-//				Tags:             tags,
+//			logdeliveryRole, err := iam.NewRole(ctx, "logdelivery", &iam.RoleArgs{
+//				Name:             pulumi.Sprintf("%v-logdelivery", prefix),
+//				Description:      pulumi.Sprintf("(%v) UsageDelivery role", prefix),
+//				AssumeRolePolicy: pulumi.String(pulumi.String(logdelivery.Json)),
+//				Tags:             pulumi.Any(tags),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			logdeliveryGetAwsBucketPolicy, err := databricks.GetAwsBucketPolicy(ctx, &databricks.GetAwsBucketPolicyArgs{
-//				FullAccessRole: pulumi.StringRef(logdeliveryIamRole.Arn),
-//				Bucket:         logdeliveryS3Bucket.Bucket,
+//			logdeliveryGetAwsBucketPolicy := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
+//				FullAccessRole: logdeliveryRole.Arn,
+//				Bucket:         logdeliveryBucket.Bucket,
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aws.NewS3BucketPolicy(ctx, "logdelivery", &aws.S3BucketPolicyArgs{
-//				Bucket: logdeliveryS3Bucket.Id,
-//				Policy: logdeliveryGetAwsBucketPolicy.Json,
+//			_, err = s3.NewBucketPolicy(ctx, "logdelivery", &s3.BucketPolicyArgs{
+//				Bucket: logdeliveryBucket.ID(),
+//				Policy: pulumi.String(logdeliveryGetAwsBucketPolicy.ApplyT(func(logdeliveryGetAwsBucketPolicy databricks.GetAwsBucketPolicyResult) (*string, error) {
+//					return &logdeliveryGetAwsBucketPolicy.Json, nil
+//				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
 //				return err
@@ -110,7 +112,7 @@ import (
 //			wait, err := time.NewSleep(ctx, "wait", &time.SleepArgs{
 //				CreateDuration: pulumi.String("10s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				logdeliveryIamRole,
+//				logdeliveryRole,
 //			}))
 //			if err != nil {
 //				return err
@@ -118,7 +120,7 @@ import (
 //			logWriter, err := databricks.NewMwsCredentials(ctx, "log_writer", &databricks.MwsCredentialsArgs{
 //				AccountId:       pulumi.Any(databricksAccountId),
 //				CredentialsName: pulumi.String("Usage Delivery"),
-//				RoleArn:         logdeliveryIamRole.Arn,
+//				RoleArn:         logdeliveryRole.Arn,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				wait,
 //			}))
@@ -128,7 +130,7 @@ import (
 //			logBucket, err := databricks.NewMwsStorageConfigurations(ctx, "log_bucket", &databricks.MwsStorageConfigurationsArgs{
 //				AccountId:                pulumi.Any(databricksAccountId),
 //				StorageConfigurationName: pulumi.String("Usage Logs"),
-//				BucketName:               logdeliveryS3Bucket.Bucket,
+//				BucketName:               logdeliveryBucket.Bucket,
 //			})
 //			if err != nil {
 //				return err

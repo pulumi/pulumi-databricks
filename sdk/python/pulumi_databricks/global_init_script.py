@@ -30,6 +30,7 @@ class GlobalInitScriptArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalInitScript resource.
+
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
         :param pulumi.Input[_builtins.bool] enabled: specifies if the script is enabled for execution, or not
         :param pulumi.Input[_builtins.str] name: the name of the script.  It should be unique
@@ -146,6 +147,7 @@ class _GlobalInitScriptState:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalInitScript resources.
+
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
         :param pulumi.Input[_builtins.bool] enabled: specifies if the script is enabled for execution, or not
         :param pulumi.Input[_builtins.str] name: the name of the script.  It should be unique
@@ -269,6 +271,7 @@ class GlobalInitScript(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
@@ -288,6 +291,7 @@ class GlobalInitScript(pulumi.CustomResource):
         This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
 
         > This resource can only be used with a workspace-level provider!
+
 
         :param str resource_name: The name of the resource.
         :param GlobalInitScriptArgs args: The arguments to use to populate this resource's properties.

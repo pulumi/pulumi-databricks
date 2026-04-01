@@ -37,6 +37,7 @@ class AccountSettingV2Args:
                  string_val: Optional[pulumi.Input['AccountSettingV2StringValArgs']] = None):
         """
         The set of arguments for constructing a AccountSettingV2 resource.
+
         :param pulumi.Input['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs'] aibi_dashboard_embedding_access_policy: Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
         :param pulumi.Input['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs'] aibi_dashboard_embedding_approved_domains: Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
         :param pulumi.Input['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs'] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
@@ -272,6 +273,7 @@ class _AccountSettingV2State:
                  string_val: Optional[pulumi.Input['AccountSettingV2StringValArgs']] = None):
         """
         Input properties used for looking up and filtering AccountSettingV2 resources.
+
         :param pulumi.Input['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs'] aibi_dashboard_embedding_access_policy: Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
         :param pulumi.Input['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs'] aibi_dashboard_embedding_approved_domains: Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
         :param pulumi.Input['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs'] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
@@ -574,6 +576,7 @@ class AccountSettingV2(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']] aibi_dashboard_embedding_access_policy: Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
@@ -619,6 +622,7 @@ class AccountSettingV2(pulumi.CustomResource):
                 "value": False,
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountSettingV2Args args: The arguments to use to populate this resource's properties.

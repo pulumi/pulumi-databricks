@@ -29,6 +29,7 @@ class WorkspaceFileArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceFile resource.
+
         :param pulumi.Input[_builtins.str] path: The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a workspace file
@@ -130,6 +131,7 @@ class _WorkspaceFileState:
                  workspace_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceFile resources.
+
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a workspace file
         :param pulumi.Input[_builtins.str] path: The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
@@ -267,6 +269,7 @@ class WorkspaceFile(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
@@ -285,6 +288,7 @@ class WorkspaceFile(pulumi.CustomResource):
         This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
 
         > This resource can only be used with a workspace-level provider!
+
 
         :param str resource_name: The name of the resource.
         :param WorkspaceFileArgs args: The arguments to use to populate this resource's properties.

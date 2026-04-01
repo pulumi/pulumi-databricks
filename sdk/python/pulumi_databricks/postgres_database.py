@@ -27,6 +27,7 @@ class PostgresDatabaseArgs:
                  spec: Optional[pulumi.Input['PostgresDatabaseSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresDatabase resource.
+
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[_builtins.str] database_id: The ID to use for the Database, which will become the final component of
@@ -118,6 +119,7 @@ class _PostgresDatabaseState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresDatabase resources.
+
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the database was created
         :param pulumi.Input[_builtins.str] database_id: The ID to use for the Database, which will become the final component of
                the database's resource name.
@@ -273,6 +275,7 @@ class PostgresDatabase(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_id: The ID to use for the Database, which will become the final component of
@@ -296,6 +299,7 @@ class PostgresDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
 
         :param str resource_name: The name of the resource.
         :param PostgresDatabaseArgs args: The arguments to use to populate this resource's properties.

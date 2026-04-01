@@ -34,10 +34,10 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var logdeliveryS3Bucket = new Aws.Index.S3Bucket("logdelivery", new()
+    ///     var logdeliveryBucket = new Aws.S3.Bucket("logdelivery", new()
     ///     {
-    ///         Bucket = $"{prefix}-logdelivery",
-    ///         Acl = "private",
+    ///         BucketName = $"{prefix}-logdelivery",
+    ///         Acl = Aws.S3.CannedAcl.Private,
     ///         ForceDestroy = true,
     ///         Tags = Std.Merge.Invoke(new()
     ///         {
@@ -49,12 +49,12 @@ namespace Pulumi.Databricks
     ///                     { "name", $"{prefix}-logdelivery" },
     ///                 },
     ///             },
-    ///         }).Result,
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
-    ///     var logdeliveryS3BucketPublicAccessBlock = new Aws.Index.S3BucketPublicAccessBlock("logdelivery", new()
+    ///     var logdeliveryBucketPublicAccessBlock = new Aws.S3.BucketPublicAccessBlock("logdelivery", new()
     ///     {
-    ///         Bucket = logdeliveryS3Bucket.Id,
+    ///         Bucket = logdeliveryBucket.Id,
     ///         IgnorePublicAcls = true,
     ///     });
     /// 
@@ -64,19 +64,16 @@ namespace Pulumi.Databricks
     ///         ForLogDelivery = true,
     ///     });
     /// 
-    ///     var logdeliveryVersioning = new Aws.Index.S3BucketVersioning("logdelivery_versioning", new()
+    ///     var logdeliveryVersioning = new Aws.S3.BucketVersioning("logdelivery_versioning", new()
     ///     {
-    ///         Bucket = logdeliveryS3Bucket.Id,
-    ///         VersioningConfiguration = new[]
+    ///         Bucket = logdeliveryBucket.Id,
+    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "status", "Disabled" },
-    ///             },
+    ///             Status = "Disabled",
     ///         },
     ///     });
     /// 
-    ///     var logdeliveryIamRole = new Aws.Index.IamRole("logdelivery", new()
+    ///     var logdeliveryRole = new Aws.Iam.Role("logdelivery", new()
     ///     {
     ///         Name = $"{prefix}-logdelivery",
     ///         Description = $"({prefix}) UsageDelivery role",
@@ -86,13 +83,13 @@ namespace Pulumi.Databricks
     /// 
     ///     var logdeliveryGetAwsBucketPolicy = Databricks.GetAwsBucketPolicy.Invoke(new()
     ///     {
-    ///         FullAccessRole = logdeliveryIamRole.Arn,
-    ///         Bucket = logdeliveryS3Bucket.Bucket,
+    ///         FullAccessRole = logdeliveryRole.Arn,
+    ///         Bucket = logdeliveryBucket.BucketName,
     ///     });
     /// 
-    ///     var logdeliveryS3BucketPolicy = new Aws.Index.S3BucketPolicy("logdelivery", new()
+    ///     var logdeliveryBucketPolicy = new Aws.S3.BucketPolicy("logdelivery", new()
     ///     {
-    ///         Bucket = logdeliveryS3Bucket.Id,
+    ///         Bucket = logdeliveryBucket.Id,
     ///         Policy = logdeliveryGetAwsBucketPolicy.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
     ///     });
     /// 
@@ -103,7 +100,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             logdeliveryIamRole,
+    ///             logdeliveryRole,
     ///         },
     ///     });
     /// 
@@ -111,7 +108,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         AccountId = databricksAccountId,
     ///         CredentialsName = "Usage Delivery",
-    ///         RoleArn = logdeliveryIamRole.Arn,
+    ///         RoleArn = logdeliveryRole.Arn,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -124,7 +121,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         AccountId = databricksAccountId,
     ///         StorageConfigurationName = "Usage Logs",
-    ///         BucketName = logdeliveryS3Bucket.Bucket,
+    ///         BucketName = logdeliveryBucket.BucketName,
     ///     });
     /// 
     ///     var usageLogs = new Databricks.MwsLogDelivery("usage_logs", new()

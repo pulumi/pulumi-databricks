@@ -39,6 +39,7 @@ class MetastoreDataAccessArgs:
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a MetastoreDataAccess resource.
+
         :param pulumi.Input[_builtins.bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
         """
         if aws_iam_role is not None:
@@ -243,6 +244,7 @@ class _MetastoreDataAccessState:
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering MetastoreDataAccess resources.
+
         :param pulumi.Input[_builtins.bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
         """
         if aws_iam_role is not None:
@@ -503,6 +505,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             is_default=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
@@ -566,6 +569,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             },
             is_default=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetastoreDataAccessArgs args: The arguments to use to populate this resource's properties.

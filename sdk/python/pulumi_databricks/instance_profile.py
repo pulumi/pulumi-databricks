@@ -28,6 +28,7 @@ class InstanceProfileArgs:
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a InstanceProfile resource.
+
         :param pulumi.Input[_builtins.str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[_builtins.str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[_builtins.bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
@@ -115,6 +116,7 @@ class _InstanceProfileState:
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering InstanceProfile resources.
+
         :param pulumi.Input[_builtins.str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[_builtins.str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[_builtins.bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
@@ -212,6 +214,62 @@ class InstanceProfile(pulumi.CustomResource):
 
         > Please switch to StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
 
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Role that you've specified on https://accounts.cloud.databricks.com/#aws
+        crossaccount_role_name = config.require("crossaccountRoleName")
+        assume_role_for_ec2 = aws.iam.get_policy_document(statements=[{
+            "effect": "Allow",
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "identifiers": ["ec2.amazonaws.com"],
+                "type": "Service",
+            }],
+        }])
+        role_for_s3_access = aws.iam.Role("role_for_s3_access",
+            name="shared-ec2-role-for-s3",
+            description="Role for shared access",
+            assume_role_policy=assume_role_for_ec2.json)
+        pass_role_for_s3_access = aws.iam.get_policy_document_output(statements=[{
+            "effect": "Allow",
+            "actions": ["iam:PassRole"],
+            "resources": [role_for_s3_access.arn],
+        }])
+        pass_role_for_s3_access_policy = aws.iam.Policy("pass_role_for_s3_access",
+            name="shared-pass-role-for-s3-access",
+            path="/",
+            policy=pass_role_for_s3_access.json)
+        cross_account = aws.iam.RolePolicyAttachment("cross_account",
+            policy_arn=pass_role_for_s3_access_policy.arn,
+            role=crossaccount_role_name)
+        shared = aws.iam.InstanceProfile("shared",
+            name="shared-instance-profile",
+            role=role_for_s3_access.name)
+        shared_instance_profile = databricks.InstanceProfile("shared", instance_profile_arn=shared.arn)
+        latest = databricks.get_spark_version()
+        smallest = databricks.get_node_type(local_disk=True)
+        this = databricks.Cluster("this",
+            cluster_name="Shared Autoscaling",
+            spark_version=latest.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=20,
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            },
+            aws_attributes={
+                "instance_profile_arn": shared_instance_profile.id,
+                "availability": "SPOT",
+                "zone_id": "us-east-1",
+                "first_on_demand": 1,
+                "spot_bid_price_percent": 100,
+            })
+        ```
+
         ## Usage with Cluster Policies
 
         It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `Cluster` above could be replaced with `ClusterPolicy`:
@@ -245,6 +303,42 @@ class InstanceProfile(pulumi.CustomResource):
             group_id=users.id,
             instance_profile_id=this.id)
         ```
+
+        ## Usage with Databricks SQL serverless
+
+        When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        sql_serverless_assume_role = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "AWS",
+                "identifiers": ["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
+            }],
+            "conditions": [{
+                "test": "StringEquals",
+                "variable": "sts:ExternalID",
+                "values": [
+                    "databricks-serverless-<YOUR_WORKSPACE_ID1>",
+                    "databricks-serverless-<YOUR_WORKSPACE_ID2>",
+                ],
+            }],
+        }])
+        this = aws.iam.Role("this",
+            name="my-databricks-sql-serverless-role",
+            assume_role_policy=sql_serverless_assume_role.json)
+        this_instance_profile = aws.iam.InstanceProfile("this",
+            name="my-databricks-sql-serverless-instance-profile",
+            role=this.name)
+        this_instance_profile2 = databricks.InstanceProfile("this",
+            instance_profile_arn=this_instance_profile.arn,
+            iam_role_arn=this.arn)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -267,6 +361,62 @@ class InstanceProfile(pulumi.CustomResource):
 
         > Please switch to StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
 
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Role that you've specified on https://accounts.cloud.databricks.com/#aws
+        crossaccount_role_name = config.require("crossaccountRoleName")
+        assume_role_for_ec2 = aws.iam.get_policy_document(statements=[{
+            "effect": "Allow",
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "identifiers": ["ec2.amazonaws.com"],
+                "type": "Service",
+            }],
+        }])
+        role_for_s3_access = aws.iam.Role("role_for_s3_access",
+            name="shared-ec2-role-for-s3",
+            description="Role for shared access",
+            assume_role_policy=assume_role_for_ec2.json)
+        pass_role_for_s3_access = aws.iam.get_policy_document_output(statements=[{
+            "effect": "Allow",
+            "actions": ["iam:PassRole"],
+            "resources": [role_for_s3_access.arn],
+        }])
+        pass_role_for_s3_access_policy = aws.iam.Policy("pass_role_for_s3_access",
+            name="shared-pass-role-for-s3-access",
+            path="/",
+            policy=pass_role_for_s3_access.json)
+        cross_account = aws.iam.RolePolicyAttachment("cross_account",
+            policy_arn=pass_role_for_s3_access_policy.arn,
+            role=crossaccount_role_name)
+        shared = aws.iam.InstanceProfile("shared",
+            name="shared-instance-profile",
+            role=role_for_s3_access.name)
+        shared_instance_profile = databricks.InstanceProfile("shared", instance_profile_arn=shared.arn)
+        latest = databricks.get_spark_version()
+        smallest = databricks.get_node_type(local_disk=True)
+        this = databricks.Cluster("this",
+            cluster_name="Shared Autoscaling",
+            spark_version=latest.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=20,
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            },
+            aws_attributes={
+                "instance_profile_arn": shared_instance_profile.id,
+                "availability": "SPOT",
+                "zone_id": "us-east-1",
+                "first_on_demand": 1,
+                "spot_bid_price_percent": 100,
+            })
+        ```
+
         ## Usage with Cluster Policies
 
         It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `Cluster` above could be replaced with `ClusterPolicy`:
@@ -300,6 +450,42 @@ class InstanceProfile(pulumi.CustomResource):
             group_id=users.id,
             instance_profile_id=this.id)
         ```
+
+        ## Usage with Databricks SQL serverless
+
+        When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        sql_serverless_assume_role = aws.iam.get_policy_document(statements=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "AWS",
+                "identifiers": ["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
+            }],
+            "conditions": [{
+                "test": "StringEquals",
+                "variable": "sts:ExternalID",
+                "values": [
+                    "databricks-serverless-<YOUR_WORKSPACE_ID1>",
+                    "databricks-serverless-<YOUR_WORKSPACE_ID2>",
+                ],
+            }],
+        }])
+        this = aws.iam.Role("this",
+            name="my-databricks-sql-serverless-role",
+            assume_role_policy=sql_serverless_assume_role.json)
+        this_instance_profile = aws.iam.InstanceProfile("this",
+            name="my-databricks-sql-serverless-instance-profile",
+            role=this.name)
+        this_instance_profile2 = databricks.InstanceProfile("this",
+            instance_profile_arn=this_instance_profile.arn,
+            iam_role_arn=this.arn)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceProfileArgs args: The arguments to use to populate this resource's properties.

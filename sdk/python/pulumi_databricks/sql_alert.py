@@ -31,6 +31,7 @@ class SqlAlertArgs:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlAlert resource.
+
         :param pulumi.Input['SqlAlertOptionsArgs'] options: Alert configuration options.
         :param pulumi.Input[_builtins.str] query_id: ID of the query evaluated by the alert.
         :param pulumi.Input[_builtins.str] name: Name of the alert.
@@ -153,6 +154,7 @@ class _SqlAlertState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlAlert resources.
+
         :param pulumi.Input[_builtins.str] name: Name of the alert.
         :param pulumi.Input['SqlAlertOptionsArgs'] options: Alert configuration options.
         :param pulumi.Input[_builtins.str] parent: The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
@@ -324,6 +326,7 @@ class SqlAlert(pulumi.CustomResource):
         * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the alert.
@@ -382,6 +385,7 @@ class SqlAlert(pulumi.CustomResource):
         * SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
         * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+
 
         :param str resource_name: The name of the resource.
         :param SqlAlertArgs args: The arguments to use to populate this resource's properties.
