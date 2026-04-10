@@ -162,7 +162,9 @@ type Pipeline struct {
 	Name          pulumi.StringOutput             `pulumi:"name"`
 	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon         pulumi.BoolPtrOutput            `pulumi:"photon"`
+	Photon pulumi.BoolPtrOutput `pulumi:"photon"`
+	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
+	PipelineId     pulumi.StringOutput             `pulumi:"pipelineId"`
 	ProviderConfig PipelineProviderConfigPtrOutput `pulumi:"providerConfig"`
 	RestartWindow  PipelineRestartWindowPtrOutput  `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
@@ -258,7 +260,9 @@ type pipelineState struct {
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon         *bool                   `pulumi:"photon"`
+	Photon *bool `pulumi:"photon"`
+	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
+	PipelineId     *string                 `pulumi:"pipelineId"`
 	ProviderConfig *PipelineProviderConfig `pulumi:"providerConfig"`
 	RestartWindow  *PipelineRestartWindow  `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
@@ -325,7 +329,9 @@ type PipelineState struct {
 	Name          pulumi.StringPtrInput
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon         pulumi.BoolPtrInput
+	Photon pulumi.BoolPtrInput
+	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
+	PipelineId     pulumi.StringPtrInput
 	ProviderConfig PipelineProviderConfigPtrInput
 	RestartWindow  PipelineRestartWindowPtrInput
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
@@ -396,7 +402,9 @@ type pipelineArgs struct {
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon         *bool                   `pulumi:"photon"`
+	Photon *bool `pulumi:"photon"`
+	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
+	PipelineId     *string                 `pulumi:"pipelineId"`
 	ProviderConfig *PipelineProviderConfig `pulumi:"providerConfig"`
 	RestartWindow  *PipelineRestartWindow  `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
@@ -464,7 +472,9 @@ type PipelineArgs struct {
 	Name          pulumi.StringPtrInput
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon         pulumi.BoolPtrInput
+	Photon pulumi.BoolPtrInput
+	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
+	PipelineId     pulumi.StringPtrInput
 	ProviderConfig PipelineProviderConfigPtrInput
 	RestartWindow  PipelineRestartWindowPtrInput
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
@@ -694,6 +704,11 @@ func (o PipelineOutput) Notifications() PipelineNotificationArrayOutput {
 // A flag indicating whether to use Photon engine. The default value is `false`.
 func (o PipelineOutput) Photon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Photon }).(pulumi.BoolPtrOutput)
+}
+
+// Canonical unique identifier of the Lakeflow Declarative Pipeline.
+func (o PipelineOutput) PipelineId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.PipelineId }).(pulumi.StringOutput)
 }
 
 func (o PipelineOutput) ProviderConfig() PipelineProviderConfigPtrOutput {

@@ -213,6 +213,21 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * the unique ID of the SQL warehouse.
+     * 
+     */
+    @Import(name="sqlEndpointId")
+    private @Nullable Output<String> sqlEndpointId;
+
+    /**
+     * @return the unique ID of the SQL warehouse.
+     * 
+     */
+    public Optional<Output<String>> sqlEndpointId() {
+        return Optional.ofNullable(this.sqlEndpointId);
+    }
+
+    /**
      * Databricks tags all endpoint resources with these tags.
      * 
      */
@@ -258,6 +273,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         this.noWait = $.noWait;
         this.providerConfig = $.providerConfig;
         this.spotInstancePolicy = $.spotInstancePolicy;
+        this.sqlEndpointId = $.sqlEndpointId;
         this.tags = $.tags;
         this.warehouseType = $.warehouseType;
     }
@@ -543,6 +559,27 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spotInstancePolicy(String spotInstancePolicy) {
             return spotInstancePolicy(Output.of(spotInstancePolicy));
+        }
+
+        /**
+         * @param sqlEndpointId the unique ID of the SQL warehouse.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlEndpointId(@Nullable Output<String> sqlEndpointId) {
+            $.sqlEndpointId = sqlEndpointId;
+            return this;
+        }
+
+        /**
+         * @param sqlEndpointId the unique ID of the SQL warehouse.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlEndpointId(String sqlEndpointId) {
+            return sqlEndpointId(Output.of(sqlEndpointId));
         }
 
         /**

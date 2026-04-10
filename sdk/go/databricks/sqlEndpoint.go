@@ -112,6 +112,8 @@ type SqlEndpoint struct {
 	ProviderConfig SqlEndpointProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrOutput `pulumi:"spotInstancePolicy"`
+	// the unique ID of the SQL warehouse.
+	SqlEndpointId pulumi.StringOutput `pulumi:"sqlEndpointId"`
 	// The current state of the endpoint.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Databricks tags all endpoint resources with these tags.
@@ -192,6 +194,8 @@ type sqlEndpointState struct {
 	ProviderConfig *SqlEndpointProviderConfig `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
+	// the unique ID of the SQL warehouse.
+	SqlEndpointId *string `pulumi:"sqlEndpointId"`
 	// The current state of the endpoint.
 	State *string `pulumi:"state"`
 	// Databricks tags all endpoint resources with these tags.
@@ -240,6 +244,8 @@ type SqlEndpointState struct {
 	ProviderConfig SqlEndpointProviderConfigPtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
+	// the unique ID of the SQL warehouse.
+	SqlEndpointId pulumi.StringPtrInput
 	// The current state of the endpoint.
 	State pulumi.StringPtrInput
 	// Databricks tags all endpoint resources with these tags.
@@ -280,6 +286,8 @@ type sqlEndpointArgs struct {
 	ProviderConfig *SqlEndpointProviderConfig `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
+	// the unique ID of the SQL warehouse.
+	SqlEndpointId *string `pulumi:"sqlEndpointId"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags *SqlEndpointTags `pulumi:"tags"`
 	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -315,6 +323,8 @@ type SqlEndpointArgs struct {
 	ProviderConfig SqlEndpointProviderConfigPtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
+	// the unique ID of the SQL warehouse.
+	SqlEndpointId pulumi.StringPtrInput
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrInput
 	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -502,6 +512,11 @@ func (o SqlEndpointOutput) ProviderConfig() SqlEndpointProviderConfigPtrOutput {
 // The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 func (o SqlEndpointOutput) SpotInstancePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringPtrOutput { return v.SpotInstancePolicy }).(pulumi.StringPtrOutput)
+}
+
+// the unique ID of the SQL warehouse.
+func (o SqlEndpointOutput) SqlEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.SqlEndpointId }).(pulumi.StringOutput)
 }
 
 // The current state of the endpoint.

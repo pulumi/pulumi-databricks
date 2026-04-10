@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mysql = new Databricks.Connection("mysql", new()
+    ///     var mysql = new Databricks.Index.Connection("mysql", new()
     ///     {
     ///         Name = "mysql_connection",
     ///         ConnectionType = "MYSQL",
@@ -63,7 +63,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bigquery = new Databricks.Connection("bigquery", new()
+    ///     var bigquery = new Databricks.Index.Connection("bigquery", new()
     ///     {
     ///         Name = "bq_connection",
     ///         ConnectionType = "BIGQUERY",
@@ -107,7 +107,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var hms = new Databricks.Connection("hms", new()
+    ///     var hms = new Databricks.Index.Connection("hms", new()
     ///     {
     ///         Name = "hms-builtin",
     ///         ConnectionType = "HIVE_METASTORE",
@@ -131,7 +131,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var httpBearer = new Databricks.Connection("http_bearer", new()
+    ///     var httpBearer = new Databricks.Index.Connection("http_bearer", new()
     ///     {
     ///         Name = "http_bearer",
     ///         ConnectionType = "HTTP",
@@ -158,7 +158,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var httpOauth = new Databricks.Connection("http_oauth", new()
+    ///     var httpOauth = new Databricks.Index.Connection("http_oauth", new()
     ///     {
     ///         Name = "http_oauth",
     ///         ConnectionType = "HTTP",
@@ -188,7 +188,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var pbi = new Databricks.Connection("pbi", new()
+    ///     var pbi = new Databricks.Index.Connection("pbi", new()
     ///     {
     ///         Name = "test-pbi",
     ///         ConnectionType = "POWER_BI",

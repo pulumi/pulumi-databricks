@@ -267,6 +267,20 @@ public class NotificationDestination extends com.pulumi.resources.CustomResource
         return this.displayName;
     }
     /**
+     * The unique ID of the Notification Destination.
+     * 
+     */
+    @Export(name="notificationDestinationId", refs={String.class}, tree="[0]")
+    private Output<String> notificationDestinationId;
+
+    /**
+     * @return The unique ID of the Notification Destination.
+     * 
+     */
+    public Output<String> notificationDestinationId() {
+        return this.notificationDestinationId;
+    }
+    /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */

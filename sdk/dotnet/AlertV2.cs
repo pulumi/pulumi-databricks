@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicAlert = new Databricks.AlertV2("basic_alert", new()
+    ///     var basicAlert = new Databricks.Index.AlertV2("basic_alert", new()
     ///     {
     ///         DisplayName = "High Error Rate Alert",
     ///         QueryText = "SELECT count(*) as error_count FROM logs WHERE level = 'ERROR' AND timestamp &gt; now() - interval 1 hour",

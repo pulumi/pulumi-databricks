@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.SecretScope("this", new()
+    ///     var @this = new Databricks.Index.SecretScope("this", new()
     ///     {
     ///         Name = "terraform-demo-scope",
     ///     });

@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var piiPolicy = Databricks.GetPolicyInfo.Invoke(new()
+        ///     var piiPolicy = Databricks.Index.GetPolicyInfo.Invoke(new()
         ///     {
         ///         OnSecurableType = "CATALOG",
         ///         OnSecurableFullname = "main",
@@ -66,7 +66,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var piiPolicy = Databricks.GetPolicyInfo.Invoke(new()
+        ///     var piiPolicy = Databricks.Index.GetPolicyInfo.Invoke(new()
         ///     {
         ///         OnSecurableType = "CATALOG",
         ///         OnSecurableFullname = "main",
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var piiPolicy = Databricks.GetPolicyInfo.Invoke(new()
+        ///     var piiPolicy = Databricks.Index.GetPolicyInfo.Invoke(new()
         ///     {
         ///         OnSecurableType = "CATALOG",
         ///         OnSecurableFullname = "main",

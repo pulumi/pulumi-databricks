@@ -32,34 +32,34 @@ namespace Pulumi.Databricks
         ///     var config = new Config();
         ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        ///     var @this = Databricks.Index.GetAwsCrossAccountPolicy.Invoke();
         /// 
-        ///     var crossAccountPolicy = new Aws.Iam.Policy("cross_account_policy", new()
+        ///     var crossAccountPolicy = new Aws.Index.IamPolicy("cross_account_policy", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-policy",
-        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json)),
+        ///         Policy = @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
         ///     });
         /// 
-        ///     var thisGetAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+        ///     var thisGetAwsAssumeRolePolicy = Databricks.Index.GetAwsAssumeRolePolicy.Invoke(new()
         ///     {
         ///         ExternalId = databricksAccountId,
         ///     });
         /// 
-        ///     var crossAccount = new Aws.Iam.Role("cross_account", new()
+        ///     var crossAccount = new Aws.Index.IamRole("cross_account", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-role",
         ///         AssumeRolePolicy = thisGetAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
         ///         Description = "Grants Databricks full access to VPC resources",
         ///     });
         /// 
-        ///     var crossAccountRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("cross_account", new()
+        ///     var crossAccountIamRolePolicyAttachment = new Aws.Index.IamRolePolicyAttachment("cross_account", new()
         ///     {
         ///         PolicyArn = crossAccountPolicy.Arn,
         ///         Role = crossAccount.Name,
         ///     });
         /// 
         ///     // required only in case of multi-workspace setup
-        ///     var thisMwsCredentials = new Databricks.MwsCredentials("this", new()
+        ///     var thisMwsCredentials = new Databricks.Index.MwsCredentials("this", new()
         ///     {
         ///         AccountId = databricksAccountId,
         ///         CredentialsName = $"{prefix}-creds",
@@ -101,34 +101,34 @@ namespace Pulumi.Databricks
         ///     var config = new Config();
         ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        ///     var @this = Databricks.Index.GetAwsCrossAccountPolicy.Invoke();
         /// 
-        ///     var crossAccountPolicy = new Aws.Iam.Policy("cross_account_policy", new()
+        ///     var crossAccountPolicy = new Aws.Index.IamPolicy("cross_account_policy", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-policy",
-        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json)),
+        ///         Policy = @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
         ///     });
         /// 
-        ///     var thisGetAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+        ///     var thisGetAwsAssumeRolePolicy = Databricks.Index.GetAwsAssumeRolePolicy.Invoke(new()
         ///     {
         ///         ExternalId = databricksAccountId,
         ///     });
         /// 
-        ///     var crossAccount = new Aws.Iam.Role("cross_account", new()
+        ///     var crossAccount = new Aws.Index.IamRole("cross_account", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-role",
         ///         AssumeRolePolicy = thisGetAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
         ///         Description = "Grants Databricks full access to VPC resources",
         ///     });
         /// 
-        ///     var crossAccountRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("cross_account", new()
+        ///     var crossAccountIamRolePolicyAttachment = new Aws.Index.IamRolePolicyAttachment("cross_account", new()
         ///     {
         ///         PolicyArn = crossAccountPolicy.Arn,
         ///         Role = crossAccount.Name,
         ///     });
         /// 
         ///     // required only in case of multi-workspace setup
-        ///     var thisMwsCredentials = new Databricks.MwsCredentials("this", new()
+        ///     var thisMwsCredentials = new Databricks.Index.MwsCredentials("this", new()
         ///     {
         ///         AccountId = databricksAccountId,
         ///         CredentialsName = $"{prefix}-creds",
@@ -170,34 +170,34 @@ namespace Pulumi.Databricks
         ///     var config = new Config();
         ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        ///     var @this = Databricks.Index.GetAwsCrossAccountPolicy.Invoke();
         /// 
-        ///     var crossAccountPolicy = new Aws.Iam.Policy("cross_account_policy", new()
+        ///     var crossAccountPolicy = new Aws.Index.IamPolicy("cross_account_policy", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-policy",
-        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json)),
+        ///         Policy = @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
         ///     });
         /// 
-        ///     var thisGetAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+        ///     var thisGetAwsAssumeRolePolicy = Databricks.Index.GetAwsAssumeRolePolicy.Invoke(new()
         ///     {
         ///         ExternalId = databricksAccountId,
         ///     });
         /// 
-        ///     var crossAccount = new Aws.Iam.Role("cross_account", new()
+        ///     var crossAccount = new Aws.Index.IamRole("cross_account", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-role",
         ///         AssumeRolePolicy = thisGetAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
         ///         Description = "Grants Databricks full access to VPC resources",
         ///     });
         /// 
-        ///     var crossAccountRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("cross_account", new()
+        ///     var crossAccountIamRolePolicyAttachment = new Aws.Index.IamRolePolicyAttachment("cross_account", new()
         ///     {
         ///         PolicyArn = crossAccountPolicy.Arn,
         ///         Role = crossAccount.Name,
         ///     });
         /// 
         ///     // required only in case of multi-workspace setup
-        ///     var thisMwsCredentials = new Databricks.MwsCredentials("this", new()
+        ///     var thisMwsCredentials = new Databricks.Index.MwsCredentials("this", new()
         ///     {
         ///         AccountId = databricksAccountId,
         ///         CredentialsName = $"{prefix}-creds",

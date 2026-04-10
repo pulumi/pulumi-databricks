@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupMwsNetworkConnectivityConfig(ctx, &databricks.LookupMwsNetworkConnectivityConfigArgs{
+//			this, err := databricks.GetMwsNetworkConnectivityConfig(ctx, &databricks.LookupMwsNetworkConnectivityConfigArgs{
 //				Name: "ncc",
 //			}, nil)
 //			if err != nil {

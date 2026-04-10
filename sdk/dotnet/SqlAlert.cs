@@ -26,12 +26,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
+    ///     var sharedDir = new Databricks.Index.Directory("shared_dir", new()
     ///     {
     ///         Path = "/Shared/Queries",
     ///     });
     /// 
-    ///     var @this = new Databricks.SqlQuery("this", new()
+    ///     var @this = new Databricks.Index.SqlQuery("this", new()
     ///     {
     ///         DataSourceId = example.DataSourceId,
     ///         Name = "My Query Name",
@@ -39,7 +39,7 @@ namespace Pulumi.Databricks
     ///         Parent = sharedDir.ObjectId.Apply(objectId =&gt; $"folders/{objectId}"),
     ///     });
     /// 
-    ///     var alert = new Databricks.SqlAlert("alert", new()
+    ///     var alert = new Databricks.Index.SqlAlert("alert", new()
     ///     {
     ///         QueryId = @this.Id,
     ///         Name = "My Alert",

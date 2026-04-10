@@ -132,6 +132,10 @@ export class NotificationDestination extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
+     * The unique ID of the Notification Destination.
+     */
+    declare public readonly notificationDestinationId: pulumi.Output<string>;
+    /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     declare public readonly providerConfig: pulumi.Output<outputs.NotificationDestinationProviderConfig | undefined>;
@@ -152,6 +156,7 @@ export class NotificationDestination extends pulumi.CustomResource {
             resourceInputs["config"] = state?.config;
             resourceInputs["destinationType"] = state?.destinationType;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["notificationDestinationId"] = state?.notificationDestinationId;
             resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as NotificationDestinationArgs | undefined;
@@ -161,6 +166,7 @@ export class NotificationDestination extends pulumi.CustomResource {
             resourceInputs["config"] = args?.config;
             resourceInputs["destinationType"] = args?.destinationType;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["notificationDestinationId"] = args?.notificationDestinationId;
             resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -185,6 +191,10 @@ export interface NotificationDestinationState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * The unique ID of the Notification Destination.
+     */
+    notificationDestinationId?: pulumi.Input<string>;
+    /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     providerConfig?: pulumi.Input<inputs.NotificationDestinationProviderConfig>;
@@ -206,6 +216,10 @@ export interface NotificationDestinationArgs {
      * The display name of the Notification Destination.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * The unique ID of the Notification Destination.
+     */
+    notificationDestinationId?: pulumi.Input<string>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */

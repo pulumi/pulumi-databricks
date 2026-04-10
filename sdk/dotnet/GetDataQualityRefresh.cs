@@ -38,12 +38,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetTable.Invoke(new()
+        ///     var @this = Databricks.Index.GetTable.Invoke(new()
         ///     {
         ///         Name = "my_catalog.my_schema.my_table",
         ///     });
         /// 
-        ///     var thisGetDataQualityRefresh = Databricks.GetDataQualityRefresh.Invoke(new()
+        ///     var thisGetDataQualityRefresh = Databricks.Index.GetDataQualityRefresh.Invoke(new()
         ///     {
         ///         ObjectType = "table",
         ///         ObjectId = @this.Apply(getTableResult =&gt; getTableResult.Id),
@@ -82,12 +82,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetTable.Invoke(new()
+        ///     var @this = Databricks.Index.GetTable.Invoke(new()
         ///     {
         ///         Name = "my_catalog.my_schema.my_table",
         ///     });
         /// 
-        ///     var thisGetDataQualityRefresh = Databricks.GetDataQualityRefresh.Invoke(new()
+        ///     var thisGetDataQualityRefresh = Databricks.Index.GetDataQualityRefresh.Invoke(new()
         ///     {
         ///         ObjectType = "table",
         ///         ObjectId = @this.Apply(getTableResult =&gt; getTableResult.Id),
@@ -126,12 +126,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetTable.Invoke(new()
+        ///     var @this = Databricks.Index.GetTable.Invoke(new()
         ///     {
         ///         Name = "my_catalog.my_schema.my_table",
         ///     });
         /// 
-        ///     var thisGetDataQualityRefresh = Databricks.GetDataQualityRefresh.Invoke(new()
+        ///     var thisGetDataQualityRefresh = Databricks.Index.GetDataQualityRefresh.Invoke(new()
         ///     {
         ///         ObjectType = "table",
         ///         ObjectId = @this.Apply(getTableResult =&gt; getTableResult.Id),

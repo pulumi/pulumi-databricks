@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        ///     var @this = Databricks.Index.GetAwsCrossAccountPolicy.Invoke();
         /// 
         /// });
         /// ```
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        ///     var @this = Databricks.Index.GetAwsCrossAccountPolicy.Invoke();
         /// 
         /// });
         /// ```
@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        ///     var @this = Databricks.Index.GetAwsCrossAccountPolicy.Invoke();
         /// 
         /// });
         /// ```

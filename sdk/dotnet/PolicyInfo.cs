@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var piiRowFilter = new Databricks.PolicyInfo("pii_row_filter", new()
+    ///     var piiRowFilter = new Databricks.Index.PolicyInfo("pii_row_filter", new()
     ///     {
     ///         OnSecurableType = "CATALOG",
     ///         OnSecurableFullname = "main",
@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sensitiveColumnMask = new Databricks.PolicyInfo("sensitive_column_mask", new()
+    ///     var sensitiveColumnMask = new Databricks.Index.PolicyInfo("sensitive_column_mask", new()
     ///     {
     ///         OnSecurableType = "SCHEMA",
     ///         OnSecurableFullname = "main.finance",

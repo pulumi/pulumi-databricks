@@ -432,7 +432,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "ldp_usage", &databricks.PermissionsArgs{
-//				PipelineId: this.ID(),
+//				PipelineId: this.PipelineId,
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.String("users"),
@@ -1184,7 +1184,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewPermissions(ctx, "endpoint_usage", &databricks.PermissionsArgs{
-//				SqlEndpointId: this.ID(),
+//				SqlEndpointId: this.SqlEndpointId,
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       auto.DisplayName,

@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetBudgetPolicy.Invoke(new()
+        ///     var @this = Databricks.Index.GetBudgetPolicy.Invoke(new()
         ///     {
         ///         PolicyId = "test",
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetBudgetPolicy.Invoke(new()
+        ///     var @this = Databricks.Index.GetBudgetPolicy.Invoke(new()
         ///     {
         ///         PolicyId = "test",
         ///     });
@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetBudgetPolicy.Invoke(new()
+        ///     var @this = Databricks.Index.GetBudgetPolicy.Invoke(new()
         ///     {
         ///         PolicyId = "test",
         ///     });

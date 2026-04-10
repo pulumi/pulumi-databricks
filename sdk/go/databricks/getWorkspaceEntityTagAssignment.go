@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
+//			_, err := databricks.GetWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
 //				EntityType: "notebooks",
 //				EntityId:   "2807324866692453",
 //				TagKey:     "sensitivity_level",
@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.LookupWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
+//			_, err = databricks.GetWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
 //				EntityType: "apps",
 //				EntityId:   "myapp",
 //				TagKey:     "sensitivity_level",
@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.LookupWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
+//			_, err = databricks.GetWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
 //				EntityType: "dashboards",
 //				EntityId:   "2807324866692453",
 //				TagKey:     "sensitivity_level",
@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.LookupWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
+//			_, err = databricks.GetWorkspaceEntityTagAssignment(ctx, &databricks.LookupWorkspaceEntityTagAssignmentArgs{
 //				EntityType: "geniespaces",
 //				EntityId:   "2807324866692453",
 //				TagKey:     "sensitivity_level",

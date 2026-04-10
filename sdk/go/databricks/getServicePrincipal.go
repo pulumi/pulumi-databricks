@@ -31,13 +31,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			admins, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "admins",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			spn, err := databricks.LookupServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
+//			spn, err := databricks.GetServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
 //				ApplicationId: pulumi.StringRef("11111111-2222-3333-4444-555666777888"),
 //			}, nil)
 //			if err != nil {

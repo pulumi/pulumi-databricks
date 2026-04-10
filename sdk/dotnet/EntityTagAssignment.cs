@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var catalogTag = new Databricks.EntityTagAssignment("catalog_tag", new()
+    ///     var catalogTag = new Databricks.Index.EntityTagAssignment("catalog_tag", new()
     ///     {
     ///         EntityType = "catalogs",
     ///         EntityName = "production_catalog",
@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     ///         TagValue = "production",
     ///     });
     /// 
-    ///     var schemaTag = new Databricks.EntityTagAssignment("schema_tag", new()
+    ///     var schemaTag = new Databricks.Index.EntityTagAssignment("schema_tag", new()
     ///     {
     ///         EntityType = "schemas",
     ///         EntityName = "production_catalog.sales_data",
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
     ///         TagValue = "sales-team",
     ///     });
     /// 
-    ///     var tableTag = new Databricks.EntityTagAssignment("table_tag", new()
+    ///     var tableTag = new Databricks.Index.EntityTagAssignment("table_tag", new()
     ///     {
     ///         EntityType = "tables",
     ///         EntityName = "production_catalog.sales_data.customer_orders",
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
     ///         TagValue = "confidential",
     ///     });
     /// 
-    ///     var columnTag = new Databricks.EntityTagAssignment("column_tag", new()
+    ///     var columnTag = new Databricks.Index.EntityTagAssignment("column_tag", new()
     ///     {
     ///         EntityType = "columns",
     ///         EntityName = "production_catalog.sales_data.customers.email_address",
@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
     ///         TagValue = "email",
     ///     });
     /// 
-    ///     var volumeTag = new Databricks.EntityTagAssignment("volume_tag", new()
+    ///     var volumeTag = new Databricks.Index.EntityTagAssignment("volume_tag", new()
     ///     {
     ///         EntityType = "volumes",
     ///         EntityName = "production_catalog.raw_data.landing_zone",

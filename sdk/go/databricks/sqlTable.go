@@ -134,7 +134,7 @@ import (
 //				CatalogName: pulumi.Any(sandbox.Name),
 //				SchemaName:  pulumi.Any(things.Name),
 //				TableType:   pulumi.String("MANAGED"),
-//				WarehouseId: this.ID(),
+//				WarehouseId: this.SqlEndpointId,
 //				Columns: databricks.SqlTableColumnArray{
 //					&databricks.SqlTableColumnArgs{
 //						Name: pulumi.String("id"),
@@ -165,7 +165,7 @@ import (
 //				CatalogName:    pulumi.Any(sandbox.Name),
 //				SchemaName:     pulumi.Any(things.Name),
 //				TableType:      pulumi.String("VIEW"),
-//				WarehouseId:    this.ID(),
+//				WarehouseId:    this.SqlEndpointId,
 //				ViewDefinition: pulumi.String(invokeFormat.Result),
 //				Comment:        pulumi.String("this view is managed by terraform"),
 //			})

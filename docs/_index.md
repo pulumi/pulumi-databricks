@@ -140,23 +140,23 @@ object NotImplemented(string errorMessage)
 
 return await Deployment.RunAsync(() =>
 {
-    var me = Databricks.GetCurrentUser.Invoke();
+    var me = Databricks.Index.GetCurrentUser.Invoke();
 
-    var latest = Databricks.GetSparkVersion.Invoke();
+    var latest = Databricks.Index.GetSparkVersion.Invoke();
 
-    var smallest = Databricks.GetNodeType.Invoke(new()
+    var smallest = Databricks.Index.GetNodeType.Invoke(new()
     {
         LocalDisk = true,
     });
 
-    var @this = new Databricks.Notebook("this", new()
+    var @this = new Databricks.Index.Notebook("this", new()
     {
         Path = $"{me.Apply(getCurrentUserResult => getCurrentUserResult.Home)}/Pulumi",
         Language = "PYTHON",
-        ContentBase64 = Std.Abspath.Invoke(new()
+        ContentBase64 = Std.Index.Abspath.Invoke(new()
         {
             Input = NotImplemented("path.module"),
-        }).Apply(invoke => Std.Base64encode.Invoke(new()
+        }).Apply(invoke => Std.Index.Base64encode.Invoke(new()
         {
             Input = @$"# created from {invoke.Result}
 display(spark.range(10))
@@ -164,7 +164,7 @@ display(spark.range(10))
         })).Apply(invoke => invoke.Result),
     });
 
-    var thisJob = new Databricks.Job("this", new()
+    var thisJob = new Databricks.Index.Job("this", new()
     {
         Name = $"Pulumi Demo ({me.Apply(getCurrentUserResult => getCurrentUserResult.Alphanumeric)})",
         Tasks = new[]
@@ -528,7 +528,7 @@ using Databricks = Pulumi.Databricks;
 
 return await Deployment.RunAsync(() =>
 {
-    var clusterAdmin = new Databricks.Group("cluster_admin", new()
+    var clusterAdmin = new Databricks.Index.Group("cluster_admin", new()
     {
         DisplayName = "cluster_admin",
         AllowClusterCreate = true,
@@ -790,7 +790,7 @@ return await Deployment.RunAsync(() =>
         Sku = "premium",
     });
 
-    var my_user = new Databricks.User("my-user", new()
+    var my_user = new Databricks.Index.User("my-user", new()
     {
         UserName = "test-user@databricks.com",
     });
@@ -1064,7 +1064,7 @@ return await Deployment.RunAsync(() =>
         Sku = "premium",
     });
 
-    var my_user = new Databricks.User("my-user", new()
+    var my_user = new Databricks.Index.User("my-user", new()
     {
         UserName = "test-user@databricks.com",
         DisplayName = "Test User",
@@ -1329,7 +1329,7 @@ return await Deployment.RunAsync(() =>
         Sku = "premium",
     });
 
-    var my_user = new Databricks.User("my-user", new()
+    var my_user = new Databricks.Index.User("my-user", new()
     {
         UserName = "test-user@databricks.com",
     });

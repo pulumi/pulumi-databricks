@@ -27,7 +27,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -38,18 +40,21 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
 //			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
-//			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			rootStorageBucket, err := s3.NewBucket(ctx, "root_storage_bucket", &s3.BucketArgs{
-//				Bucket: pulumi.Sprintf("%v-rootbucket", prefix),
-//				Acl:    pulumi.String(s3.CannedAclPrivate),
+//			var databricksAccountId interface{}
+//			cfg.RequireObject("databricksAccountId", &databricksAccountId)
+//			rootStorageBucket, err := aws.NewS3Bucket(ctx, "root_storage_bucket", &aws.S3BucketArgs{
+//				Bucket: fmt.Sprintf("%v-rootbucket", prefix),
+//				Acl:    "private",
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = s3.NewBucketVersioning(ctx, "root_versioning", &s3.BucketVersioningArgs{
-//				Bucket: rootStorageBucket.ID(),
-//				VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
-//					Status: pulumi.String("Disabled"),
+//			_, err = aws.NewS3BucketVersioning(ctx, "root_versioning", &aws.S3BucketVersioningArgs{
+//				Bucket: rootStorageBucket.Id,
+//				VersioningConfiguration: []map[string]interface{}{
+//					map[string]interface{}{
+//						"status": "Disabled",
+//					},
 //				},
 //			})
 //			if err != nil {

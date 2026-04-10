@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,21 +30,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisBucket, err := s3.NewBucket(ctx, "this", &s3.BucketArgs{
-//				Bucket:       pulumi.String("<unique_bucket_name>"),
-//				ForceDestroy: pulumi.Bool(true),
+//			thisS3Bucket, err := aws.NewS3Bucket(ctx, "this", &aws.S3BucketArgs{
+//				Bucket:       "<unique_bucket_name>",
+//				ForceDestroy: true,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			this := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
-//				Bucket: thisBucket.Bucket,
+//			this, err := databricks.GetAwsBucketPolicy(ctx, &databricks.GetAwsBucketPolicyArgs{
+//				Bucket: thisS3Bucket.Bucket,
 //			}, nil)
-//			_, err = s3.NewBucketPolicy(ctx, "this", &s3.BucketPolicyArgs{
-//				Bucket: thisBucket.ID(),
-//				Policy: pulumi.String(this.ApplyT(func(this databricks.GetAwsBucketPolicyResult) (*string, error) {
-//					return &this.Json, nil
-//				}).(pulumi.StringPtrOutput)),
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewS3BucketPolicy(ctx, "this", &aws.S3BucketPolicyArgs{
+//				Bucket: thisS3Bucket.Id,
+//				Policy: this.Json,
 //			})
 //			if err != nil {
 //				return err
@@ -56,110 +57,6 @@ import (
 // ```
 //
 // Bucket policy with full access:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeMerge, err := std.Merge(ctx, &std.MergeArgs{
-//				Input: []interface{}{
-//					tags,
-//					map[string]interface{}{
-//						"name": fmt.Sprintf("%v-ds", prefix),
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			dsBucket, err := s3.NewBucket(ctx, "ds", &s3.BucketArgs{
-//				Bucket:       pulumi.Sprintf("%v-ds", prefix),
-//				ForceDestroy: pulumi.Bool(true),
-//				Tags:         pulumi.StringMap(invokeMerge.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = s3.NewBucketVersioning(ctx, "ds_versioning", &s3.BucketVersioningArgs{
-//				Bucket: dsBucket.ID(),
-//				VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
-//					Status: pulumi.String("Disabled"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			assumeRoleForEc2, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-//				Statements: []iam.GetPolicyDocumentStatement{
-//					{
-//						Effect: pulumi.StringRef("Allow"),
-//						Actions: []string{
-//							"sts:AssumeRole",
-//						},
-//						Principals: []iam.GetPolicyDocumentStatementPrincipal{
-//							{
-//								Identifiers: []string{
-//									"ec2.amazonaws.com",
-//								},
-//								Type: "Service",
-//							},
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			dataRole, err := iam.NewRole(ctx, "data_role", &iam.RoleArgs{
-//				Name:             pulumi.Sprintf("%v-first-ec2s3", prefix),
-//				Description:      pulumi.Sprintf("(%v) EC2 Assume Role role for S3 access", prefix),
-//				AssumeRolePolicy: pulumi.String(pulumi.String(assumeRoleForEc2.Json)),
-//				Tags:             pulumi.Any(tags),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ds := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
-//				FullAccessRole: dataRole.Arn,
-//				Bucket:         dsBucket.Bucket,
-//			}, nil)
-//			// allow databricks to access this bucket
-//			_, err = s3.NewBucketPolicy(ctx, "ds", &s3.BucketPolicyArgs{
-//				Bucket: dsBucket.ID(),
-//				Policy: pulumi.String(ds.ApplyT(func(ds databricks.GetAwsBucketPolicyResult) (*string, error) {
-//					return &ds.Json, nil
-//				}).(pulumi.StringPtrOutput)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
-// * End to end workspace management guide
-// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-// * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 func GetAwsBucketPolicy(ctx *pulumi.Context, args *GetAwsBucketPolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsBucketPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsBucketPolicyResult

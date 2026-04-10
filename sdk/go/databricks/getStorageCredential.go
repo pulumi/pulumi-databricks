@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupStorageCredential(ctx, &databricks.LookupStorageCredentialArgs{
+//			this, err := databricks.GetStorageCredential(ctx, &databricks.LookupStorageCredentialArgs{
 //				Name: "this",
 //			}, nil)
 //			if err != nil {

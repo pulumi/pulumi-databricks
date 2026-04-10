@@ -35,17 +35,17 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group
-    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     var ds = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
+    ///     var automationSp = new Databricks.Index.ServicePrincipal("automation_sp", new()
     ///     {
     ///         DisplayName = "SP_FOR_AUTOMATION",
     ///     });
     /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
+    ///     var automationSpRuleSet = new Databricks.Index.AccessControlRuleSet("automation_sp_rule_set", new()
     ///     {
     ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
     ///         GrantRules = new[]
@@ -77,17 +77,17 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group creation
-    ///     var ds = new Databricks.Group("ds", new()
+    ///     var ds = new Databricks.Index.Group("ds", new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
+    ///     var automationSp = new Databricks.Index.ServicePrincipal("automation_sp", new()
     ///     {
     ///         DisplayName = "SP_FOR_AUTOMATION",
     ///     });
     /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
+    ///     var automationSpRuleSet = new Databricks.Index.AccessControlRuleSet("automation_sp_rule_set", new()
     ///     {
     ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
     ///         GrantRules = new[]
@@ -119,18 +119,18 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group creation
-    ///     var ds = new Databricks.Group("ds", new()
+    ///     var ds = new Databricks.Index.Group("ds", new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
+    ///     var automationSp = new Databricks.Index.ServicePrincipal("automation_sp", new()
     ///     {
     ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
     ///         DisplayName = "SP_FOR_AUTOMATION",
     ///     });
     /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
+    ///     var automationSpRuleSet = new Databricks.Index.AccessControlRuleSet("automation_sp_rule_set", new()
     ///     {
     ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
     ///         GrantRules = new[]
@@ -162,17 +162,17 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group creation
-    ///     var ds = new Databricks.Group("ds", new()
+    ///     var ds = new Databricks.Index.Group("ds", new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
+    ///     var automationSp = new Databricks.Index.ServicePrincipal("automation_sp", new()
     ///     {
     ///         DisplayName = "SP_FOR_AUTOMATION",
     ///     });
     /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
+    ///     var automationSpRuleSet = new Databricks.Index.AccessControlRuleSet("automation_sp_rule_set", new()
     ///     {
     ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
     ///         GrantRules = new[]
@@ -206,17 +206,17 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group
-    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     var ds = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var john = Databricks.GetUser.Invoke(new()
+    ///     var john = Databricks.Index.GetUser.Invoke(new()
     ///     {
     ///         UserName = "john.doe@example.com",
     ///     });
     /// 
-    ///     var dsGroupRuleSet = new Databricks.AccessControlRuleSet("ds_group_rule_set", new()
+    ///     var dsGroupRuleSet = new Databricks.Index.AccessControlRuleSet("ds_group_rule_set", new()
     ///     {
     ///         Name = $"accounts/{accountId}/groups/{dsDatabricksGroup.Id}/ruleSets/default",
     ///         GrantRules = new[]
@@ -250,23 +250,23 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group
-    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     var ds = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
     ///     // account level group
-    ///     var marketplaceAdmins = Databricks.GetGroup.Invoke(new()
+    ///     var marketplaceAdmins = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Marketplace Admins",
     ///     });
     /// 
-    ///     var john = Databricks.GetUser.Invoke(new()
+    ///     var john = Databricks.Index.GetUser.Invoke(new()
     ///     {
     ///         UserName = "john.doe@example.com",
     ///     });
     /// 
-    ///     var accountRuleSet = new Databricks.AccessControlRuleSet("account_rule_set", new()
+    ///     var accountRuleSet = new Databricks.Index.AccessControlRuleSet("account_rule_set", new()
     ///     {
     ///         Name = $"accounts/{accountId}/ruleSets/default",
     ///         GrantRules = new[]
@@ -316,17 +316,17 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group
-    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     var ds = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var john = Databricks.GetUser.Invoke(new()
+    ///     var john = Databricks.Index.GetUser.Invoke(new()
     ///     {
     ///         UserName = "john.doe@example.com",
     ///     });
     /// 
-    ///     var @this = new Databricks.BudgetPolicy("this", new()
+    ///     var @this = new Databricks.Index.BudgetPolicy("this", new()
     ///     {
     ///         PolicyName = "data-science-budget-policy",
     ///         CustomTags = new[]
@@ -339,7 +339,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var budgetPolicyUsage = new Databricks.AccessControlRuleSet("budget_policy_usage", new()
+    ///     var budgetPolicyUsage = new Databricks.Index.AccessControlRuleSet("budget_policy_usage", new()
     ///     {
     ///         Name = @this.PolicyId.Apply(policyId =&gt; $"accounts/{accountId}/budgetPolicies/{policyId}/ruleSets/default"),
     ///         GrantRules = new[]
@@ -381,17 +381,17 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group
-    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     var ds = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var john = Databricks.GetUser.Invoke(new()
+    ///     var john = Databricks.Index.GetUser.Invoke(new()
     ///     {
     ///         UserName = "john.doe@example.com",
     ///     });
     /// 
-    ///     var @this = new Databricks.TagPolicy("this", new()
+    ///     var @this = new Databricks.Index.TagPolicy("this", new()
     ///     {
     ///         TagKey = "example_tag_key",
     ///         Description = "Example description.",
@@ -408,7 +408,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var tagPolicyUsage = new Databricks.AccessControlRuleSet("tag_policy_usage", new()
+    ///     var tagPolicyUsage = new Databricks.Index.AccessControlRuleSet("tag_policy_usage", new()
     ///     {
     ///         Name = @this.Id.Apply(id =&gt; $"accounts/{accountId}/tagPolicies/{id}/ruleSets/default"),
     ///         GrantRules = new[]

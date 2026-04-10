@@ -34,22 +34,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aws.s3.Bucket;
- * import com.pulumi.aws.s3.BucketArgs;
+ * import com.pulumi.aws.S3Bucket;
+ * import com.pulumi.aws.S3BucketArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.MergeArgs;
- * import com.pulumi.aws.s3.BucketPublicAccessBlock;
- * import com.pulumi.aws.s3.BucketPublicAccessBlockArgs;
+ * import com.pulumi.aws.S3BucketPublicAccessBlock;
+ * import com.pulumi.aws.S3BucketPublicAccessBlockArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
- * import com.pulumi.aws.s3.BucketVersioning;
- * import com.pulumi.aws.s3.BucketVersioningArgs;
- * import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
- * import com.pulumi.aws.iam.Role;
- * import com.pulumi.aws.iam.RoleArgs;
+ * import com.pulumi.aws.S3BucketVersioning;
+ * import com.pulumi.aws.S3BucketVersioningArgs;
+ * import com.pulumi.aws.IamRole;
+ * import com.pulumi.aws.IamRoleArgs;
  * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
- * import com.pulumi.aws.s3.BucketPolicy;
- * import com.pulumi.aws.s3.BucketPolicyArgs;
+ * import com.pulumi.aws.S3BucketPolicy;
+ * import com.pulumi.aws.S3BucketPolicyArgs;
  * import com.pulumiverse.time.Sleep;
  * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.databricks.MwsCredentials;
@@ -74,7 +73,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.require("databricksAccountId");
- *         var logdeliveryBucket = new Bucket("logdeliveryBucket", BucketArgs.builder()
+ *         var logdeliveryS3Bucket = new S3Bucket("logdeliveryS3Bucket", S3BucketArgs.builder()
  *             .bucket(String.format("%s-logdelivery", prefix))
  *             .acl("private")
  *             .forceDestroy(true)
@@ -85,8 +84,8 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var logdeliveryBucketPublicAccessBlock = new BucketPublicAccessBlock("logdeliveryBucketPublicAccessBlock", BucketPublicAccessBlockArgs.builder()
- *             .bucket(logdeliveryBucket.id())
+ *         var logdeliveryS3BucketPublicAccessBlock = new S3BucketPublicAccessBlock("logdeliveryS3BucketPublicAccessBlock", S3BucketPublicAccessBlockArgs.builder()
+ *             .bucket(logdeliveryS3Bucket.id())
  *             .ignorePublicAcls(true)
  *             .build());
  * 
@@ -95,14 +94,12 @@ import javax.annotation.Nullable;
  *             .forLogDelivery(true)
  *             .build());
  * 
- *         var logdeliveryVersioning = new BucketVersioning("logdeliveryVersioning", BucketVersioningArgs.builder()
- *             .bucket(logdeliveryBucket.id())
- *             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
- *                 .status("Disabled")
- *                 .build())
+ *         var logdeliveryVersioning = new S3BucketVersioning("logdeliveryVersioning", S3BucketVersioningArgs.builder()
+ *             .bucket(logdeliveryS3Bucket.id())
+ *             .versioningConfiguration(List.of(Map.of("status", "Disabled")))
  *             .build());
  * 
- *         var logdeliveryRole = new Role("logdeliveryRole", RoleArgs.builder()
+ *         var logdeliveryIamRole = new IamRole("logdeliveryIamRole", IamRoleArgs.builder()
  *             .name(String.format("%s-logdelivery", prefix))
  *             .description(String.format("(%s) UsageDelivery role", prefix))
  *             .assumeRolePolicy(logdelivery.json())
@@ -110,25 +107,25 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var logdeliveryGetAwsBucketPolicy = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
- *             .fullAccessRole(logdeliveryRole.arn())
- *             .bucket(logdeliveryBucket.bucket())
+ *             .fullAccessRole(logdeliveryIamRole.arn())
+ *             .bucket(logdeliveryS3Bucket.bucket())
  *             .build());
  * 
- *         var logdeliveryBucketPolicy = new BucketPolicy("logdeliveryBucketPolicy", BucketPolicyArgs.builder()
- *             .bucket(logdeliveryBucket.id())
- *             .policy(logdeliveryGetAwsBucketPolicy.applyValue(_logdeliveryGetAwsBucketPolicy -> _logdeliveryGetAwsBucketPolicy.json()))
+ *         var logdeliveryS3BucketPolicy = new S3BucketPolicy("logdeliveryS3BucketPolicy", S3BucketPolicyArgs.builder()
+ *             .bucket(logdeliveryS3Bucket.id())
+ *             .policy(logdeliveryGetAwsBucketPolicy.json())
  *             .build());
  * 
  *         var wait = new Sleep("wait", SleepArgs.builder()
  *             .createDuration("10s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(logdeliveryRole)
+ *                 .dependsOn(logdeliveryIamRole)
  *                 .build());
  * 
  *         var logWriter = new MwsCredentials("logWriter", MwsCredentialsArgs.builder()
  *             .accountId(databricksAccountId)
  *             .credentialsName("Usage Delivery")
- *             .roleArn(logdeliveryRole.arn())
+ *             .roleArn(logdeliveryIamRole.arn())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(wait)
  *                 .build());
@@ -136,7 +133,7 @@ import javax.annotation.Nullable;
  *         var logBucket = new MwsStorageConfigurations("logBucket", MwsStorageConfigurationsArgs.builder()
  *             .accountId(databricksAccountId)
  *             .storageConfigurationName("Usage Logs")
- *             .bucketName(logdeliveryBucket.bucket())
+ *             .bucketName(logdeliveryS3Bucket.bucket())
  *             .build());
  * 
  *         var usageLogs = new MwsLogDelivery("usageLogs", MwsLogDeliveryArgs.builder()

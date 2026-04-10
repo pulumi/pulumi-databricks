@@ -240,6 +240,21 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Unique ID of the recipient token.
+     * 
+     */
+    @Import(name="recipientId")
+    private @Nullable Output<String> recipientId;
+
+    /**
+     * @return Unique ID of the recipient token.
+     * 
+     */
+    public Optional<Output<String>> recipientId() {
+        return Optional.ofNullable(this.recipientId);
+    }
+
+    /**
      * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
@@ -332,6 +347,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         this.owner = $.owner;
         this.propertiesKvpairs = $.propertiesKvpairs;
         this.providerConfig = $.providerConfig;
+        this.recipientId = $.recipientId;
         this.region = $.region;
         this.sharingCode = $.sharingCode;
         this.tokens = $.tokens;
@@ -658,6 +674,27 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder providerConfig(RecipientProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param recipientId Unique ID of the recipient token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recipientId(@Nullable Output<String> recipientId) {
+            $.recipientId = recipientId;
+            return this;
+        }
+
+        /**
+         * @param recipientId Unique ID of the recipient token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recipientId(String recipientId) {
+            return recipientId(Output.of(recipientId));
         }
 
         /**

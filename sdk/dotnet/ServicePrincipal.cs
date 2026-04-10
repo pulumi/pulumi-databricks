@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     var sp = new Databricks.Index.ServicePrincipal("sp", new()
     ///     {
     ///         DisplayName = "Admin SP",
     ///     });
@@ -55,17 +55,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admins = Databricks.GetGroup.Invoke(new()
+    ///     var admins = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "admins",
     ///     });
     /// 
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     var sp = new Databricks.Index.ServicePrincipal("sp", new()
     ///     {
     ///         DisplayName = "Admin SP",
     ///     });
     /// 
-    ///     var i_am_admin = new Databricks.GroupMember("i-am-admin", new()
+    ///     var i_am_admin = new Databricks.Index.GroupMember("i-am-admin", new()
     ///     {
     ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
     ///         MemberId = sp.Id,
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     var sp = new Databricks.Index.ServicePrincipal("sp", new()
     ///     {
     ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
     ///         DisplayName = "Example service principal",
@@ -104,7 +104,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     var sp = new Databricks.Index.ServicePrincipal("sp", new()
     ///     {
     ///         DisplayName = "Automation-only SP",
     ///     });
@@ -122,7 +122,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     var sp = new Databricks.Index.ServicePrincipal("sp", new()
     ///     {
     ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
     ///     });

@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
     ///         SourceSubnetworkIpRangesToNat = "ALL_SUBNETWORKS_ALL_IP_RANGES",
     ///     });
     /// 
-    ///     var @this = new Databricks.MwsNetworks("this", new()
+    ///     var @this = new Databricks.Index.MwsNetworks("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         NetworkName = $"test-demo-{suffix.Result}",
@@ -115,7 +115,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.MwsNetworks("this", new()
+    ///     var @this = new Databricks.Index.MwsNetworks("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         NetworkName = $"test-demo-{suffix.Result}",

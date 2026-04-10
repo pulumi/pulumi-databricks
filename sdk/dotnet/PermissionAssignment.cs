@@ -29,12 +29,12 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Use the account provider
-    ///     var me = Databricks.GetUser.Invoke(new()
+    ///     var me = Databricks.Index.GetUser.Invoke(new()
     ///     {
     ///         UserName = "me@example.com",
     ///     });
     /// 
-    ///     var addUser = new Databricks.PermissionAssignment("add_user", new()
+    ///     var addUser = new Databricks.Index.PermissionAssignment("add_user", new()
     ///     {
     ///         PrincipalId = me.Apply(getUserResult =&gt; getUserResult.Id),
     ///         Permissions = new[]
@@ -57,12 +57,12 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Use the account provider
-    ///     var sp = Databricks.GetServicePrincipal.Invoke(new()
+    ///     var sp = Databricks.Index.GetServicePrincipal.Invoke(new()
     ///     {
     ///         DisplayName = "Automation-only SP",
     ///     });
     /// 
-    ///     var addAdminSpn = new Databricks.PermissionAssignment("add_admin_spn", new()
+    ///     var addAdminSpn = new Databricks.Index.PermissionAssignment("add_admin_spn", new()
     ///     {
     ///         PrincipalId = sp.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
     ///         Permissions = new[]
@@ -85,13 +85,13 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Use the account provider
-    ///     var accountLevel = Databricks.GetGroup.Invoke(new()
+    ///     var accountLevel = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "example-group",
     ///     });
     /// 
     ///     // Use the workspace provider
-    ///     var @this = new Databricks.PermissionAssignment("this", new()
+    ///     var @this = new Databricks.Index.PermissionAssignment("this", new()
     ///     {
     ///         PrincipalId = accountLevel.Apply(getGroupResult =&gt; getGroupResult.Id),
     ///         Permissions = new[]
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var workspaceLevel = Databricks.GetGroup.Invoke(new()
+    ///     var workspaceLevel = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "example-group",
     ///     });
@@ -124,7 +124,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var addUser = new Databricks.PermissionAssignment("add_user", new()
+    ///     var addUser = new Databricks.Index.PermissionAssignment("add_user", new()
     ///     {
     ///         UserName = "me@example.com",
     ///         Permissions = new[]
@@ -146,7 +146,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var addAdminSpn = new Databricks.PermissionAssignment("add_admin_spn", new()
+    ///     var addAdminSpn = new Databricks.Index.PermissionAssignment("add_admin_spn", new()
     ///     {
     ///         ServicePrincipalName = "00000000-0000-0000-0000-000000000000",
     ///         Permissions = new[]
@@ -168,7 +168,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.PermissionAssignment("this", new()
+    ///     var @this = new Databricks.Index.PermissionAssignment("this", new()
     ///     {
     ///         GroupName = "example-group",
     ///         Permissions = new[]

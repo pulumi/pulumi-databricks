@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetClusters.Invoke();
+        ///     var all = Databricks.Index.GetClusters.Invoke();
         /// 
         ///     var allGetCluster = ;
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myCluster = Databricks.GetClusters.Invoke(new()
+        ///     var myCluster = Databricks.Index.GetClusters.Invoke(new()
         ///     {
         ///         ClusterNameContains = "my-cluster",
         ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var myClusterGetCluster = Databricks.GetCluster.Invoke(new()
+        ///     var myClusterGetCluster = Databricks.Index.GetCluster.Invoke(new()
         ///     {
         ///         ClusterId = myCluster.Apply(getClustersResult =&gt; getClustersResult.Ids[0]),
         ///     });
@@ -99,7 +99,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetClusters.Invoke();
+        ///     var all = Databricks.Index.GetClusters.Invoke();
         /// 
         ///     var allGetCluster = ;
         /// 
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myCluster = Databricks.GetClusters.Invoke(new()
+        ///     var myCluster = Databricks.Index.GetClusters.Invoke(new()
         ///     {
         ///         ClusterNameContains = "my-cluster",
         ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
@@ -130,7 +130,7 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var myClusterGetCluster = Databricks.GetCluster.Invoke(new()
+        ///     var myClusterGetCluster = Databricks.Index.GetCluster.Invoke(new()
         ///     {
         ///         ClusterId = myCluster.Apply(getClustersResult =&gt; getClustersResult.Ids[0]),
         ///     });
@@ -170,7 +170,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetClusters.Invoke();
+        ///     var all = Databricks.Index.GetClusters.Invoke();
         /// 
         ///     var allGetCluster = ;
         /// 
@@ -189,7 +189,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myCluster = Databricks.GetClusters.Invoke(new()
+        ///     var myCluster = Databricks.Index.GetClusters.Invoke(new()
         ///     {
         ///         ClusterNameContains = "my-cluster",
         ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
@@ -201,7 +201,7 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var myClusterGetCluster = Databricks.GetCluster.Invoke(new()
+        ///     var myClusterGetCluster = Databricks.Index.GetCluster.Invoke(new()
         ///     {
         ///         ClusterId = myCluster.Apply(getClustersResult =&gt; getClustersResult.Ids[0]),
         ///     });

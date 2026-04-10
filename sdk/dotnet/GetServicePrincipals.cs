@@ -30,22 +30,22 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var admins = await Databricks.GetGroup.InvokeAsync(new()
+        ///     var admins = await Databricks.Index.GetGroup.InvokeAsync(new()
         ///     {
         ///         DisplayName = "admins",
         ///     });
         /// 
-        ///     var spns = await Databricks.GetServicePrincipals.InvokeAsync(new()
+        ///     var spns = await Databricks.Index.GetServicePrincipals.InvokeAsync(new()
         ///     {
         ///         DisplayNameContains = "my-spn",
         ///     });
         /// 
         ///     var spn = ;
         /// 
-        ///     var myMemberSpn = new List&lt;Databricks.GroupMember&gt;();
+        ///     var myMemberSpn = new List&lt;Databricks.Index.GroupMember&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         myMemberSpn.Add(new Databricks.GroupMember($"my_member_spn-{range.Key}", new()
+        ///         myMemberSpn.Add(new Databricks.Index.GroupMember($"my_member_spn-{range.Key}", new()
         ///         {
         ///             GroupId = admins.Id,
         ///             MemberId = spn[range.Value].SpId,
@@ -89,22 +89,22 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var admins = await Databricks.GetGroup.InvokeAsync(new()
+        ///     var admins = await Databricks.Index.GetGroup.InvokeAsync(new()
         ///     {
         ///         DisplayName = "admins",
         ///     });
         /// 
-        ///     var spns = await Databricks.GetServicePrincipals.InvokeAsync(new()
+        ///     var spns = await Databricks.Index.GetServicePrincipals.InvokeAsync(new()
         ///     {
         ///         DisplayNameContains = "my-spn",
         ///     });
         /// 
         ///     var spn = ;
         /// 
-        ///     var myMemberSpn = new List&lt;Databricks.GroupMember&gt;();
+        ///     var myMemberSpn = new List&lt;Databricks.Index.GroupMember&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         myMemberSpn.Add(new Databricks.GroupMember($"my_member_spn-{range.Key}", new()
+        ///         myMemberSpn.Add(new Databricks.Index.GroupMember($"my_member_spn-{range.Key}", new()
         ///         {
         ///             GroupId = admins.Id,
         ///             MemberId = spn[range.Value].SpId,
@@ -148,22 +148,22 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var admins = await Databricks.GetGroup.InvokeAsync(new()
+        ///     var admins = await Databricks.Index.GetGroup.InvokeAsync(new()
         ///     {
         ///         DisplayName = "admins",
         ///     });
         /// 
-        ///     var spns = await Databricks.GetServicePrincipals.InvokeAsync(new()
+        ///     var spns = await Databricks.Index.GetServicePrincipals.InvokeAsync(new()
         ///     {
         ///         DisplayNameContains = "my-spn",
         ///     });
         /// 
         ///     var spn = ;
         /// 
-        ///     var myMemberSpn = new List&lt;Databricks.GroupMember&gt;();
+        ///     var myMemberSpn = new List&lt;Databricks.Index.GroupMember&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         myMemberSpn.Add(new Databricks.GroupMember($"my_member_spn-{range.Key}", new()
+        ///         myMemberSpn.Add(new Databricks.Index.GroupMember($"my_member_spn-{range.Key}", new()
         ///         {
         ///             GroupId = admins.Id,
         ///             MemberId = spn[range.Value].SpId,

@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Change default catalog to anything than `hive_metastore`
-    ///     var @this = new Databricks.DefaultNamespaceSetting("this", new()
+    ///     var @this = new Databricks.Index.DefaultNamespaceSetting("this", new()
     ///     {
     ///         Namespace = new Databricks.Inputs.DefaultNamespaceSettingNamespaceArgs
     ///         {
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
     ///     });
     /// 
     ///     // Disable legacy features
-    ///     var thisDisableLegacyFeaturesSetting = new Databricks.DisableLegacyFeaturesSetting("this", new()
+    ///     var thisDisableLegacyFeaturesSetting = new Databricks.Index.DisableLegacyFeaturesSetting("this", new()
     ///     {
     ///         DisableLegacyFeatures = new Databricks.Inputs.DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs
     ///         {

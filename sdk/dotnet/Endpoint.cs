@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Endpoint("this", new()
+    ///     var @this = new Databricks.Index.Endpoint("this", new()
     ///     {
     ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
     ///         DisplayName = "my-private-endpoint",

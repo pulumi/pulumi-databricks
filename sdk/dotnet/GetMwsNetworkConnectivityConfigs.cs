@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke();
+        ///     var @this = Databricks.Index.GetMwsNetworkConnectivityConfigs.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke(new()
+        ///     var @this = Databricks.Index.GetMwsNetworkConnectivityConfigs.Invoke(new()
         ///     {
         ///         Region = "us-east-1",
         ///     });
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke();
+        ///     var @this = Databricks.Index.GetMwsNetworkConnectivityConfigs.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -105,7 +105,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke(new()
+        ///     var @this = Databricks.Index.GetMwsNetworkConnectivityConfigs.Invoke(new()
         ///     {
         ///         Region = "us-east-1",
         ///     });
@@ -144,7 +144,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke();
+        ///     var @this = Databricks.Index.GetMwsNetworkConnectivityConfigs.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -163,7 +163,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke(new()
+        ///     var @this = Databricks.Index.GetMwsNetworkConnectivityConfigs.Invoke(new()
         ///     {
         ///         Region = "us-east-1",
         ///     });

@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Metastore("this", new()
+    ///     var @this = new Databricks.Index.Metastore("this", new()
     ///     {
     ///         Name = "primary",
     ///         StorageRoot = $"s3://{metastore.Id}/metastore",
@@ -33,7 +33,7 @@ namespace Pulumi.Databricks
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("this", new()
+    ///     var thisMetastoreAssignment = new Databricks.Index.MetastoreAssignment("this", new()
     ///     {
     ///         MetastoreId = @this.Id,
     ///         WorkspaceId = workspaceId,

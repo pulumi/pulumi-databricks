@@ -103,6 +103,10 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
      */
     declare public readonly servicePrincipalId: pulumi.Output<string>;
     /**
+     * ID of the secret
+     */
+    declare public readonly servicePrincipalSecretId: pulumi.Output<string>;
+    /**
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      */
     declare public readonly status: pulumi.Output<string>;
@@ -135,6 +139,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
             resourceInputs["secret"] = state?.secret;
             resourceInputs["secretHash"] = state?.secretHash;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
+            resourceInputs["servicePrincipalSecretId"] = state?.servicePrincipalSecretId;
             resourceInputs["status"] = state?.status;
             resourceInputs["timeRotating"] = state?.timeRotating;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -150,6 +155,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["secretHash"] = args?.secretHash;
             resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
+            resourceInputs["servicePrincipalSecretId"] = args?.servicePrincipalSecretId;
             resourceInputs["status"] = args?.status;
             resourceInputs["timeRotating"] = args?.timeRotating;
             resourceInputs["updateTime"] = args?.updateTime;
@@ -193,6 +199,10 @@ export interface ServicePrincipalSecretState {
      * SCIM ID of the databricks.ServicePrincipal (not application ID).
      */
     servicePrincipalId?: pulumi.Input<string>;
+    /**
+     * ID of the secret
+     */
+    servicePrincipalSecretId?: pulumi.Input<string>;
     /**
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      */
@@ -239,6 +249,10 @@ export interface ServicePrincipalSecretArgs {
      * SCIM ID of the databricks.ServicePrincipal (not application ID).
      */
     servicePrincipalId: pulumi.Input<string>;
+    /**
+     * ID of the secret
+     */
+    servicePrincipalSecretId?: pulumi.Input<string>;
     /**
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      */

@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  * import * as random from "@pulumi/random";
  *
- * const db2opensharecode = new random.RandomPassword("db2opensharecode", {
+ * const db2opensharecode = new random.index.Password("db2opensharecode", {
  *     length: 16,
  *     special: true,
  * });
@@ -170,6 +170,10 @@ export class Recipient extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.RecipientProviderConfig | undefined>;
     /**
+     * Unique ID of the recipient token.
+     */
+    declare public readonly recipientId: pulumi.Output<string>;
+    /**
      * Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      */
     declare public /*out*/ readonly region: pulumi.Output<string>;
@@ -218,6 +222,7 @@ export class Recipient extends pulumi.CustomResource {
             resourceInputs["owner"] = state?.owner;
             resourceInputs["propertiesKvpairs"] = state?.propertiesKvpairs;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["recipientId"] = state?.recipientId;
             resourceInputs["region"] = state?.region;
             resourceInputs["sharingCode"] = state?.sharingCode;
             resourceInputs["tokens"] = state?.tokens;
@@ -237,6 +242,7 @@ export class Recipient extends pulumi.CustomResource {
             resourceInputs["owner"] = args?.owner;
             resourceInputs["propertiesKvpairs"] = args?.propertiesKvpairs;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["recipientId"] = args?.recipientId;
             resourceInputs["sharingCode"] = args?.sharingCode ? pulumi.secret(args.sharingCode) : undefined;
             resourceInputs["tokens"] = args?.tokens;
             resourceInputs["activated"] = undefined /*out*/;
@@ -318,6 +324,10 @@ export interface RecipientState {
      */
     providerConfig?: pulumi.Input<inputs.RecipientProviderConfig>;
     /**
+     * Unique ID of the recipient token.
+     */
+    recipientId?: pulumi.Input<string>;
+    /**
      * Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      */
     region?: pulumi.Input<string>;
@@ -379,6 +389,10 @@ export interface RecipientArgs {
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
     providerConfig?: pulumi.Input<inputs.RecipientProviderConfig>;
+    /**
+     * Unique ID of the recipient token.
+     */
+    recipientId?: pulumi.Input<string>;
     /**
      * The one-time sharing code provided by the data recipient.
      */

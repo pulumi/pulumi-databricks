@@ -28,12 +28,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var fctTransactions = Databricks.GetTable.Invoke(new()
+        ///     var fctTransactions = Databricks.Index.GetTable.Invoke(new()
         ///     {
         ///         Name = "main.certified.fct_transactions",
         ///     });
         /// 
-        ///     var things = new Databricks.Grants("things", new()
+        ///     var things = new Databricks.Index.Grants("things", new()
         ///     {
         ///         Table = fctTransactions.Apply(getTableResult =&gt; getTableResult.Name),
         ///         GrantDetails = new[]
@@ -80,12 +80,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var fctTransactions = Databricks.GetTable.Invoke(new()
+        ///     var fctTransactions = Databricks.Index.GetTable.Invoke(new()
         ///     {
         ///         Name = "main.certified.fct_transactions",
         ///     });
         /// 
-        ///     var things = new Databricks.Grants("things", new()
+        ///     var things = new Databricks.Index.Grants("things", new()
         ///     {
         ///         Table = fctTransactions.Apply(getTableResult =&gt; getTableResult.Name),
         ///         GrantDetails = new[]
@@ -132,12 +132,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var fctTransactions = Databricks.GetTable.Invoke(new()
+        ///     var fctTransactions = Databricks.Index.GetTable.Invoke(new()
         ///     {
         ///         Name = "main.certified.fct_transactions",
         ///     });
         /// 
-        ///     var things = new Databricks.Grants("things", new()
+        ///     var things = new Databricks.Index.Grants("things", new()
         ///     {
         ///         Table = fctTransactions.Apply(getTableResult =&gt; getTableResult.Name),
         ///         GrantDetails = new[]

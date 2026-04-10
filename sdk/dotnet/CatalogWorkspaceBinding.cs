@@ -30,13 +30,13 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Catalog("sandbox", new()
     ///     {
     ///         Name = "sandbox",
     ///         IsolationMode = "ISOLATED",
     ///     });
     /// 
-    ///     var sandboxCatalogWorkspaceBinding = new Databricks.CatalogWorkspaceBinding("sandbox", new()
+    ///     var sandboxCatalogWorkspaceBinding = new Databricks.Index.CatalogWorkspaceBinding("sandbox", new()
     ///     {
     ///         SecurableName = sandbox.Name,
     ///         WorkspaceId = other.WorkspaceId,

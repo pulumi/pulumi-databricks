@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var lastSelected = new Databricks.WarehousesDefaultWarehouseOverride("last_selected", new()
+    ///     var lastSelected = new Databricks.Index.WarehousesDefaultWarehouseOverride("last_selected", new()
     ///     {
     ///         DefaultWarehouseOverrideId = example.Id,
     ///         Type = "LAST_SELECTED",
@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var custom = new Databricks.WarehousesDefaultWarehouseOverride("custom", new()
+    ///     var custom = new Databricks.Index.WarehousesDefaultWarehouseOverride("custom", new()
     ///     {
     ///         DefaultWarehouseOverrideId = example.Id,
     ///         Type = "CUSTOM",

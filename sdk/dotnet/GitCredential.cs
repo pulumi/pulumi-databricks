@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ado = new Databricks.GitCredential("ado", new()
+    ///     var ado = new Databricks.Index.GitCredential("ado", new()
     ///     {
     ///         GitUsername = "myuser",
     ///         GitProvider = "azureDevOpsServices",
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ado = new Databricks.GitCredential("ado", new()
+    ///     var ado = new Databricks.Index.GitCredential("ado", new()
     ///     {
     ///         GitProvider = "azureDevOpsServicesAad",
     ///     });

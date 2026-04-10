@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.SqlGlobalConfig("this", new()
+    ///     var @this = new Databricks.Index.SqlGlobalConfig("this", new()
     ///     {
     ///         SecurityPolicy = "DATA_ACCESS_CONTROL",
     ///         InstanceProfileArn = "arn:....",
@@ -51,7 +51,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.SqlGlobalConfig("this", new()
+    ///     var @this = new Databricks.Index.SqlGlobalConfig("this", new()
     ///     {
     ///         SecurityPolicy = "DATA_ACCESS_CONTROL",
     ///         DataAccessConfig = 

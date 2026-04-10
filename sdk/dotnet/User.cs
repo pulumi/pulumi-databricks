@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = new Databricks.User("me", new()
+    ///     var me = new Databricks.Index.User("me", new()
     ///     {
     ///         UserName = "me@example.com",
     ///     });
@@ -52,17 +52,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admins = Databricks.GetGroup.Invoke(new()
+    ///     var admins = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "admins",
     ///     });
     /// 
-    ///     var me = new Databricks.User("me", new()
+    ///     var me = new Databricks.Index.User("me", new()
     ///     {
     ///         UserName = "me@example.com",
     ///     });
     /// 
-    ///     var i_am_admin = new Databricks.GroupMember("i-am-admin", new()
+    ///     var i_am_admin = new Databricks.Index.GroupMember("i-am-admin", new()
     ///     {
     ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
     ///         MemberId = me.Id,
@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = new Databricks.User("me", new()
+    ///     var me = new Databricks.Index.User("me", new()
     ///     {
     ///         UserName = "me@example.com",
     ///         DisplayName = "Example user",
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var accountUser = new Databricks.User("account_user", new()
+    ///     var accountUser = new Databricks.Index.User("account_user", new()
     ///     {
     ///         UserName = "me@example.com",
     ///         DisplayName = "Example user",
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var accountUser = new Databricks.User("account_user", new()
+    ///     var accountUser = new Databricks.Index.User("account_user", new()
     ///     {
     ///         UserName = "me@example.com",
     ///         DisplayName = "Example user",

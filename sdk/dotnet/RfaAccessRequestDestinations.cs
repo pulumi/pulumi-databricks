@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customerDataTable = new Databricks.RfaAccessRequestDestinations("customer_data_table", new()
+    ///     var customerDataTable = new Databricks.Index.RfaAccessRequestDestinations("customer_data_table", new()
     ///     {
     ///         Destinations = new[]
     ///         {

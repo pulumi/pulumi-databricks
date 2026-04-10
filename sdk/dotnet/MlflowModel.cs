@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Databricks.MlflowModel("test", new()
+    ///     var test = new Databricks.Index.MlflowModel("test", new()
     ///     {
     ///         Name = "My MLflow Model",
     ///         Description = "My MLflow model description",

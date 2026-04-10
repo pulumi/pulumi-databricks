@@ -36,8 +36,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			region := cfg.RequireObject("region")
-//			prefix := cfg.RequireObject("prefix")
+//			var region interface{}
+//			cfg.RequireObject("region", &region)
+//			var prefix interface{}
+//			cfg.RequireObject("prefix", &prefix)
 //			ncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, "ncc", &databricks.MwsNetworkConnectivityConfigArgs{
 //				Name:   pulumi.Sprintf("ncc-for-%v", prefix),
 //				Region: pulumi.Any(region),
@@ -85,8 +87,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			region := cfg.RequireObject("region")
-//			prefix := cfg.RequireObject("prefix")
+//			var region interface{}
+//			cfg.RequireObject("region", &region)
+//			var prefix interface{}
+//			cfg.RequireObject("prefix", &prefix)
 //			ncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, "ncc", &databricks.MwsNetworkConnectivityConfigArgs{
 //				Name:   pulumi.Sprintf("ncc-for-%v", prefix),
 //				Region: pulumi.Any(region),

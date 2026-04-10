@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetEndpoints.Invoke(new()
+        ///     var all = Databricks.Index.GetEndpoints.Invoke(new()
         ///     {
         ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
         ///     });
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetEndpoints.Invoke(new()
+        ///     var all = Databricks.Index.GetEndpoints.Invoke(new()
         ///     {
         ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
         ///     });
@@ -93,7 +93,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetEndpoints.Invoke(new()
+        ///     var all = Databricks.Index.GetEndpoints.Invoke(new()
         ///     {
         ///         Parent = "accounts/123e4567-e89b-12d3-a456-426614174000",
         ///     });

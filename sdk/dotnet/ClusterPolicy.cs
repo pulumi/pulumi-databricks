@@ -68,10 +68,10 @@ namespace Pulumi.Databricks
     ///         } },
     ///     };
     /// 
-    ///     var fairUse = new Databricks.ClusterPolicy("fair_use", new()
+    ///     var fairUse = new Databricks.Index.ClusterPolicy("fair_use", new()
     ///     {
     ///         Name = $"{team} cluster policy",
-    ///         Definition = JsonSerializer.Serialize(Std.Merge.Invoke(new()
+    ///         Definition = JsonSerializer.Serialize(Std.Index.Merge.Invoke(new()
     ///         {
     ///             Input = new[]
     ///             {
@@ -98,7 +98,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var canUseClusterPolicyinstanceProfile = new Databricks.Permissions("can_use_cluster_policyinstance_profile", new()
+    ///     var canUseClusterPolicyinstanceProfile = new Databricks.Index.Permissions("can_use_cluster_policyinstance_profile", new()
     ///     {
     ///         ClusterPolicyId = fairUse.Id,
     ///         AccessControls = new[]
@@ -150,7 +150,7 @@ namespace Pulumi.Databricks
     ///         } },
     ///     };
     /// 
-    ///     var personalVm = new Databricks.ClusterPolicy("personal_vm", new()
+    ///     var personalVm = new Databricks.Index.ClusterPolicy("personal_vm", new()
     ///     {
     ///         PolicyFamilyId = "personal-vm",
     ///         PolicyFamilyDefinitionOverrides = JsonSerializer.Serialize(personalVmOverride),

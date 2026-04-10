@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetServicePrincipalFederationPolicies.Invoke(new()
+        ///     var all = Databricks.Index.GetServicePrincipalFederationPolicies.Invoke(new()
         ///     {
         ///         ServicePrincipalId = 1234,
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetServicePrincipalFederationPolicies.Invoke(new()
+        ///     var all = Databricks.Index.GetServicePrincipalFederationPolicies.Invoke(new()
         ///     {
         ///         ServicePrincipalId = 1234,
         ///     });
@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetServicePrincipalFederationPolicies.Invoke(new()
+        ///     var all = Databricks.Index.GetServicePrincipalFederationPolicies.Invoke(new()
         ///     {
         ///         ServicePrincipalId = 1234,
         ///     });

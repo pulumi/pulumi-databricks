@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupNotebook(ctx, &databricks.LookupNotebookArgs{
+//			_, err := databricks.GetNotebook(ctx, &databricks.LookupNotebookArgs{
 //				Path:   "/Production/Features",
 //				Format: "SOURCE",
 //			}, nil)

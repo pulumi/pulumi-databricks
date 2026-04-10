@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Group("this", new()
+    ///     var @this = new Databricks.Index.Group("this", new()
     ///     {
     ///         DisplayName = "Some Group",
     ///         AllowClusterCreate = true,
@@ -58,19 +58,19 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Group("this", new()
+    ///     var @this = new Databricks.Index.Group("this", new()
     ///     {
     ///         DisplayName = "Some Group",
     ///         AllowClusterCreate = true,
     ///         AllowInstancePoolCreate = true,
     ///     });
     /// 
-    ///     var thisUser = new Databricks.User("this", new()
+    ///     var thisUser = new Databricks.Index.User("this", new()
     ///     {
     ///         UserName = "someone@example.com",
     ///     });
     /// 
-    ///     var vipMember = new Databricks.GroupMember("vip_member", new()
+    ///     var vipMember = new Databricks.Index.GroupMember("vip_member", new()
     ///     {
     ///         GroupId = @this.Id,
     ///         MemberId = thisUser.Id,
@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Group("this", new()
+    ///     var @this = new Databricks.Index.Group("this", new()
     ///     {
     ///         DisplayName = "Some Group",
     ///     });
@@ -107,7 +107,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Group("this", new()
+    ///     var @this = new Databricks.Index.Group("this", new()
     ///     {
     ///         DisplayName = "Some Group",
     ///     });

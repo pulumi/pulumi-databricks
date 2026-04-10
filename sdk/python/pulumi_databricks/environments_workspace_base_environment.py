@@ -376,7 +376,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.index.WorkspaceBaseEnvironment("this",
+        this = databricks.WorkspaceBaseEnvironment("this",
             display_name=my-environment,
             filepath=/Volumes/catalog/schema/volume/environment.yaml)
         ```
@@ -389,7 +389,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        gpu_env = databricks.index.WorkspaceBaseEnvironment("gpu_env",
+        gpu_env = databricks.WorkspaceBaseEnvironment("gpu_env",
             display_name=my-gpu-environment,
             filepath=/Volumes/catalog/schema/volume/gpu-environment.yaml,
             base_environment_type=GPU_LARGE)
@@ -431,7 +431,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.index.WorkspaceBaseEnvironment("this",
+        this = databricks.WorkspaceBaseEnvironment("this",
             display_name=my-environment,
             filepath=/Volumes/catalog/schema/volume/environment.yaml)
         ```
@@ -444,7 +444,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        gpu_env = databricks.index.WorkspaceBaseEnvironment("gpu_env",
+        gpu_env = databricks.WorkspaceBaseEnvironment("gpu_env",
             display_name=my-gpu-environment,
             filepath=/Volumes/catalog/schema/volume/gpu-environment.yaml,
             base_environment_type=GPU_LARGE)

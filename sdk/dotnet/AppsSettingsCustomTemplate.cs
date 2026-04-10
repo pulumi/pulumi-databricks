@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.AppsSettingsCustomTemplate("this", new()
+    ///     var @this = new Databricks.Index.AppsSettingsCustomTemplate("this", new()
     ///     {
     ///         Name = "my-custom-template",
     ///         Description = "A sample custom app template",
@@ -57,7 +57,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var apiScopesExample = new Databricks.AppsSettingsCustomTemplate("api_scopes_example", new()
+    ///     var apiScopesExample = new Databricks.Index.AppsSettingsCustomTemplate("api_scopes_example", new()
     ///     {
     ///         Name = "my-api-template",
     ///         Description = "A template that requests user API scopes",
@@ -91,7 +91,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var resourcesExample = new Databricks.AppsSettingsCustomTemplate("resources_example", new()
+    ///     var resourcesExample = new Databricks.Index.AppsSettingsCustomTemplate("resources_example", new()
     ///     {
     ///         Name = "my-resource-template",
     ///         Description = "Template that requires secret and SQL warehouse access",

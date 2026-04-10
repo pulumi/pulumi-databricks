@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = new Databricks.Pipeline("this", new()
+        ///     var @this = new Databricks.Index.Pipeline("this", new()
         ///     {
         ///         Name = "Serverless demo",
         ///         Serverless = true,

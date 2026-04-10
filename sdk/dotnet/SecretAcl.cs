@@ -26,24 +26,24 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ds = new Databricks.Group("ds", new()
+    ///     var ds = new Databricks.Index.Group("ds", new()
     ///     {
     ///         DisplayName = "data-scientists",
     ///     });
     /// 
-    ///     var app = new Databricks.SecretScope("app", new()
+    ///     var app = new Databricks.Index.SecretScope("app", new()
     ///     {
     ///         Name = "app-secret-scope",
     ///     });
     /// 
-    ///     var mySecretAcl = new Databricks.SecretAcl("my_secret_acl", new()
+    ///     var mySecretAcl = new Databricks.Index.SecretAcl("my_secret_acl", new()
     ///     {
     ///         Principal = ds.DisplayName,
     ///         Permission = "READ",
     ///         Scope = app.Name,
     ///     });
     /// 
-    ///     var publishingApi = new Databricks.Secret("publishing_api", new()
+    ///     var publishingApi = new Databricks.Index.Secret("publishing_api", new()
     ///     {
     ///         Key = "publishing_api",
     ///         StringValue = example.Value,

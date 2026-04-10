@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupPolicyInfo(ctx, &databricks.LookupPolicyInfoArgs{
+//			_, err := databricks.GetPolicyInfo(ctx, &databricks.LookupPolicyInfoArgs{
 //				OnSecurableType:     "CATALOG",
 //				OnSecurableFullname: "main",
 //				Name:                "pii_data_policy",

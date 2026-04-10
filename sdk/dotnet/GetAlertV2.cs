@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetAlertV2.Invoke(new()
+        ///     var @this = Databricks.Index.GetAlertV2.Invoke(new()
         ///     {
         ///         Id = "123",
         ///     });
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetAlertV2.Invoke(new()
+        ///     var @this = Databricks.Index.GetAlertV2.Invoke(new()
         ///     {
         ///         Id = "123",
         ///     });
@@ -105,7 +105,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetAlertV2.Invoke(new()
+        ///     var @this = Databricks.Index.GetAlertV2.Invoke(new()
         ///     {
         ///         Id = "123",
         ///     });

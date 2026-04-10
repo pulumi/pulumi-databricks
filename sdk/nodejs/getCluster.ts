@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * const all = databricks.getClusters({});
  * const allGetCluster = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getCluster({
  *     clusterId: __value,
- * }) })));
+ * }) }), {}));
  * ```
  *
  * ### Multiple clusters with the same name
@@ -129,7 +129,7 @@ export interface GetClusterResult {
  * const all = databricks.getClusters({});
  * const allGetCluster = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getCluster({
  *     clusterId: __value,
- * }) })));
+ * }) }), {}));
  * ```
  *
  * ### Multiple clusters with the same name

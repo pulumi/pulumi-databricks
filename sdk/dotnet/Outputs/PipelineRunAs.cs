@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = new Databricks.Pipeline("this", new()
+        ///     var @this = new Databricks.Index.Pipeline("this", new()
         ///     {
         ///         RunAs = new Databricks.Inputs.PipelineRunAsArgs
         ///         {

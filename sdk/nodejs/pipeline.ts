@@ -188,6 +188,10 @@ export class Pipeline extends pulumi.CustomResource {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     declare public readonly photon: pulumi.Output<boolean | undefined>;
+    /**
+     * Canonical unique identifier of the Lakeflow Declarative Pipeline.
+     */
+    declare public readonly pipelineId: pulumi.Output<string>;
     declare public readonly providerConfig: pulumi.Output<outputs.PipelineProviderConfig | undefined>;
     declare public readonly restartWindow: pulumi.Output<outputs.PipelineRestartWindow | undefined>;
     /**
@@ -266,6 +270,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["notifications"] = state?.notifications;
             resourceInputs["photon"] = state?.photon;
+            resourceInputs["pipelineId"] = state?.pipelineId;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["restartWindow"] = state?.restartWindow;
             resourceInputs["rootPath"] = state?.rootPath;
@@ -308,6 +313,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["notifications"] = args?.notifications;
             resourceInputs["photon"] = args?.photon;
+            resourceInputs["pipelineId"] = args?.pipelineId;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["restartWindow"] = args?.restartWindow;
             resourceInputs["rootPath"] = args?.rootPath;
@@ -406,6 +412,10 @@ export interface PipelineState {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    /**
+     * Canonical unique identifier of the Lakeflow Declarative Pipeline.
+     */
+    pipelineId?: pulumi.Input<string>;
     providerConfig?: pulumi.Input<inputs.PipelineProviderConfig>;
     restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
     /**
@@ -524,6 +534,10 @@ export interface PipelineArgs {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    /**
+     * Canonical unique identifier of the Lakeflow Declarative Pipeline.
+     */
+    pipelineId?: pulumi.Input<string>;
     providerConfig?: pulumi.Input<inputs.PipelineProviderConfig>;
     restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
     /**

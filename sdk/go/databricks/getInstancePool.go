@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			pool, err := databricks.LookupInstancePool(ctx, &databricks.LookupInstancePoolArgs{
+//			pool, err := databricks.GetInstancePool(ctx, &databricks.LookupInstancePoolArgs{
 //				Name: "All spot",
 //			}, nil)
 //			if err != nil {

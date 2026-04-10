@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Budget("this", new()
+    ///     var @this = new Databricks.Index.Budget("this", new()
     ///     {
     ///         DisplayName = "databricks-workspace-budget",
     ///         AlertConfigurations = new[]

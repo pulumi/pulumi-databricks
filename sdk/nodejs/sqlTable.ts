@@ -88,7 +88,7 @@ import * as utilities from "./utilities";
  *     catalogName: sandbox.name,
  *     schemaName: things.name,
  *     tableType: "MANAGED",
- *     warehouseId: _this.id,
+ *     warehouseId: _this.sqlEndpointId,
  *     columns: [
  *         {
  *             name: "id",
@@ -107,7 +107,7 @@ import * as utilities from "./utilities";
  *     catalogName: sandbox.name,
  *     schemaName: things.name,
  *     tableType: "VIEW",
- *     warehouseId: _this.id,
+ *     warehouseId: _this.sqlEndpointId,
  *     viewDefinition: std.format({
  *         input: "SELECT name FROM %s WHERE id == 1",
  *         args: [thing.id],

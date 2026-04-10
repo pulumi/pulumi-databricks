@@ -26,13 +26,13 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetServingEndpoints.Invoke();
+        ///     var all = Databricks.Index.GetServingEndpoints.Invoke();
         /// 
-        ///     var mlServingUsage = new List&lt;Databricks.Permissions&gt;();
+        ///     var mlServingUsage = new List&lt;Databricks.Index.Permissions&gt;();
         ///     for (var rangeIndex = 0; rangeIndex &lt; allDatabricksServingEndpoints.Endpoints; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
-        ///         mlServingUsage.Add(new Databricks.Permissions($"ml_serving_usage-{range.Value}", new()
+        ///         mlServingUsage.Add(new Databricks.Index.Permissions($"ml_serving_usage-{range.Value}", new()
         ///         {
         ///             ServingEndpointId = range.Value.Id,
         ///             AccessControls = new[]
@@ -82,13 +82,13 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetServingEndpoints.Invoke();
+        ///     var all = Databricks.Index.GetServingEndpoints.Invoke();
         /// 
-        ///     var mlServingUsage = new List&lt;Databricks.Permissions&gt;();
+        ///     var mlServingUsage = new List&lt;Databricks.Index.Permissions&gt;();
         ///     for (var rangeIndex = 0; rangeIndex &lt; allDatabricksServingEndpoints.Endpoints; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
-        ///         mlServingUsage.Add(new Databricks.Permissions($"ml_serving_usage-{range.Value}", new()
+        ///         mlServingUsage.Add(new Databricks.Index.Permissions($"ml_serving_usage-{range.Value}", new()
         ///         {
         ///             ServingEndpointId = range.Value.Id,
         ///             AccessControls = new[]
@@ -138,13 +138,13 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetServingEndpoints.Invoke();
+        ///     var all = Databricks.Index.GetServingEndpoints.Invoke();
         /// 
-        ///     var mlServingUsage = new List&lt;Databricks.Permissions&gt;();
+        ///     var mlServingUsage = new List&lt;Databricks.Index.Permissions&gt;();
         ///     for (var rangeIndex = 0; rangeIndex &lt; allDatabricksServingEndpoints.Endpoints; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
-        ///         mlServingUsage.Add(new Databricks.Permissions($"ml_serving_usage-{range.Value}", new()
+        ///         mlServingUsage.Add(new Databricks.Index.Permissions($"ml_serving_usage-{range.Value}", new()
         ///         {
         ///             ServingEndpointId = range.Value.Id,
         ///             AccessControls = new[]

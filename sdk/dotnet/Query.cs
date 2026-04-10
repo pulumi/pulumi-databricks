@@ -24,13 +24,13 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
+    ///     var sharedDir = new Databricks.Index.Directory("shared_dir", new()
     ///     {
     ///         Path = "/Shared/Queries",
     ///     });
     /// 
     ///     // This will be replaced with new databricks_query resource
-    ///     var @this = new Databricks.Query("this", new()
+    ///     var @this = new Databricks.Index.Query("this", new()
     ///     {
     ///         WarehouseId = example.Id,
     ///         DisplayName = "My Query Name",
@@ -61,7 +61,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var query = new Databricks.SqlQuery("query", new()
+    ///     var query = new Databricks.Index.SqlQuery("query", new()
     ///     {
     ///         DataSourceId = example.DataSourceId,
     ///         Query = "select 42 as value",
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var query = new Databricks.Query("query", new()
+    ///     var query = new Databricks.Index.Query("query", new()
     ///     {
     ///         WarehouseId = example.Id,
     ///         QueryText = "select 42 as value",
@@ -129,7 +129,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var queryUsage = new Databricks.Permissions("query_usage", new()
+    ///     var queryUsage = new Databricks.Index.Permissions("query_usage", new()
     ///     {
     ///         SqlQueryId = query.Id,
     ///         AccessControls = new[]

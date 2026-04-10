@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Databricks.GetWarehousesDefaultWarehouseOverride.Invoke(new()
+        ///     var user = Databricks.Index.GetWarehousesDefaultWarehouseOverride.Invoke(new()
         ///     {
         ///         Name = $"default-warehouse-overrides/{example.Id}",
         ///     });
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Databricks.GetWarehousesDefaultWarehouseOverride.Invoke(new()
+        ///     var user = Databricks.Index.GetWarehousesDefaultWarehouseOverride.Invoke(new()
         ///     {
         ///         Name = $"default-warehouse-overrides/{example.Id}",
         ///     });
@@ -114,7 +114,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var user = Databricks.GetWarehousesDefaultWarehouseOverride.Invoke(new()
+        ///     var user = Databricks.Index.GetWarehousesDefaultWarehouseOverride.Invoke(new()
         ///     {
         ///         Name = $"default-warehouse-overrides/{example.Id}",
         ///     });

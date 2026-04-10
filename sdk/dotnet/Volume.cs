@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Catalog("sandbox", new()
     ///     {
     ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var things = new Databricks.Schema("things", new()
+    ///     var things = new Databricks.Index.Schema("things", new()
     ///     {
     ///         CatalogName = sandbox.Name,
     ///         Name = "things",
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var external = new Databricks.StorageCredential("external", new()
+    ///     var external = new Databricks.Index.StorageCredential("external", new()
     ///     {
     ///         Name = "creds",
     ///         AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs
@@ -78,14 +78,14 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var some = new Databricks.ExternalLocation("some", new()
+    ///     var some = new Databricks.Index.ExternalLocation("some", new()
     ///     {
     ///         Name = "external_location",
     ///         Url = $"s3://{externalAwsS3Bucket.Id}/some",
     ///         CredentialName = external.Name,
     ///     });
     /// 
-    ///     var @this = new Databricks.Volume("this", new()
+    ///     var @this = new Databricks.Index.Volume("this", new()
     ///     {
     ///         Name = "quickstart_volume",
     ///         CatalogName = sandbox.Name,

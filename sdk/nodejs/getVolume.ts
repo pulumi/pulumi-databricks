@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * });
  * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
  *     name: __value,
- * }) })));
+ * }) }), {}));
  * ```
  *
  * * Search for a specific volume by its fully qualified name
@@ -118,7 +118,7 @@ export interface GetVolumeResult {
  * });
  * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
  *     name: __value,
- * }) })));
+ * }) }), {}));
  * ```
  *
  * * Search for a specific volume by its fully qualified name

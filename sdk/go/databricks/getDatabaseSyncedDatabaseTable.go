@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupDatabaseSyncedDatabaseTable(ctx, &databricks.LookupDatabaseSyncedDatabaseTableArgs{
+//			_, err := databricks.GetDatabaseSyncedDatabaseTable(ctx, &databricks.LookupDatabaseSyncedDatabaseTableArgs{
 //				Name: "my_database_catalog.public.synced_table",
 //			}, nil)
 //			if err != nil {

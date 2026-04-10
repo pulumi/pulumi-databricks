@@ -77,7 +77,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
+ * import * as azurerm from "@pulumi/azurerm";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
@@ -85,7 +85,7 @@ import * as utilities from "./utilities";
  * const resourceGroup = config.require("resourceGroup");
  * // Name of the Databricks Workspace
  * const workspaceName = config.require("workspaceName");
- * const _this = azure.databricks.getWorkspace({
+ * const _this = azurerm.DatabricksWorkspace({
  *     name: workspaceName,
  *     resourceGroupName: resourceGroup,
  * });
@@ -166,7 +166,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
+ * import * as azurerm from "@pulumi/azurerm";
  * import * as databricks from "@pulumi/databricks";
  *
  * const terraform = new databricks.SecretScope("terraform", {
@@ -178,7 +178,7 @@ import * as utilities from "./utilities";
  *     stringValue: ARM_CLIENT_SECRET,
  *     scope: terraform.name,
  * });
- * const _this = new azure.storage.Account("this", {
+ * const _this = new azurerm.index.StorageAccount("this", {
  *     name: `${prefix}datalake`,
  *     resourceGroupName: resourceGroupName,
  *     location: resourceGroupLocation,
@@ -187,19 +187,19 @@ import * as utilities from "./utilities";
  *     accountKind: "StorageV2",
  *     isHnsEnabled: true,
  * });
- * const thisAssignment = new azure.authorization.Assignment("this", {
+ * const thisRoleAssignment = new azurerm.index.RoleAssignment("this", {
  *     scope: _this.id,
  *     roleDefinitionName: "Storage Blob Data Contributor",
  *     principalId: current.objectId,
  * });
- * const thisContainer = new azure.storage.Container("this", {
+ * const thisStorageContainer = new azurerm.index.StorageContainer("this", {
  *     name: "marketing",
  *     storageAccountName: _this.name,
  *     containerAccessType: "private",
  * });
  * const marketing = new databricks.Mount("marketing", {
  *     name: "marketing",
- *     resourceId: thisContainer.resourceManagerId,
+ *     resourceId: thisStorageContainer.resourceManagerId,
  *     abfs: {
  *         clientId: current.clientId,
  *         clientSecretScope: terraform.name,
@@ -278,10 +278,10 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
+ * import * as azurerm from "@pulumi/azurerm";
  * import * as databricks from "@pulumi/databricks";
  *
- * const blobaccount = new azure.storage.Account("blobaccount", {
+ * const blobaccount = new azurerm.index.StorageAccount("blobaccount", {
  *     name: `${prefix}blob`,
  *     resourceGroupName: resourceGroupName,
  *     location: resourceGroupLocation,
@@ -289,7 +289,7 @@ import * as utilities from "./utilities";
  *     accountReplicationType: "LRS",
  *     accountKind: "StorageV2",
  * });
- * const marketing = new azure.storage.Container("marketing", {
+ * const marketing = new azurerm.index.StorageContainer("marketing", {
  *     name: "marketing",
  *     storageAccountName: blobaccount.name,
  *     containerAccessType: "private",

@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.ServicePrincipalFederationPolicy("this", new()
+    ///     var @this = new Databricks.Index.ServicePrincipalFederationPolicy("this", new()
     ///     {
     ///         ServicePrincipalId = 1234,
     ///         PolicyId = "my-policy",

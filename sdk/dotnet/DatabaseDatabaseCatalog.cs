@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.DatabaseDatabaseCatalog("this", new()
+    ///     var @this = new Databricks.Index.DatabaseDatabaseCatalog("this", new()
     ///     {
     ///         Name = "my_registered_catalog",
     ///         DatabaseInstanceName = "my-database-instance",
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.DatabaseDatabaseCatalog("this", new()
+    ///     var @this = new Databricks.Index.DatabaseDatabaseCatalog("this", new()
     ///     {
     ///         Name = "my_registered_catalog",
     ///         DatabaseInstanceName = "my-database-instance",
@@ -66,13 +66,13 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instance = new Databricks.DatabaseInstance("instance", new()
+    ///     var instance = new Databricks.Index.DatabaseInstance("instance", new()
     ///     {
     ///         Name = "my-database-instance",
     ///         Capacity = "CU_1",
     ///     });
     /// 
-    ///     var catalog = new Databricks.DatabaseDatabaseCatalog("catalog", new()
+    ///     var catalog = new Databricks.Index.DatabaseDatabaseCatalog("catalog", new()
     ///     {
     ///         Name = "my_registered_catalog",
     ///         DatabaseInstanceName = instance.Name,

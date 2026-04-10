@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     });
  *     const dataUsersGroup = new databricks.Group("data_users_group", {displayName: "Data Users"});
  *     const addUsersToGroup: databricks.GroupMember[] = [];
- *     for (const range of Object.entries(.reduce((__obj, user) => ({ ...__obj, [user.id]: user }))).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(.reduce((__obj, user) => ({ ...__obj, [user.id]: user }), {})).map(([k, v]) => ({key: k, value: v}))) {
  *         addUsersToGroup.push(new databricks.GroupMember(`add_users_to_group-${range.key}`, {
  *             groupId: dataUsersGroup.id,
  *             memberId: range.value.id,
@@ -109,7 +109,7 @@ export interface GetUsersResult {
  *     });
  *     const dataUsersGroup = new databricks.Group("data_users_group", {displayName: "Data Users"});
  *     const addUsersToGroup: databricks.GroupMember[] = [];
- *     for (const range of Object.entries(.reduce((__obj, user) => ({ ...__obj, [user.id]: user }))).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(.reduce((__obj, user) => ({ ...__obj, [user.id]: user }), {})).map(([k, v]) => ({key: k, value: v}))) {
  *         addUsersToGroup.push(new databricks.GroupMember(`add_users_to_group-${range.key}`, {
  *             groupId: dataUsersGroup.id,
  *             memberId: range.value.id,

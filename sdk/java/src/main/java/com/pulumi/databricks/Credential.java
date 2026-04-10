@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
- *             .credential(external.id())
+ *             .credential(external.databricksCredentialId())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal("Data Engineers")
  *                 .privileges("ACCESS")
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
- *             .credential(externalMi.id())
+ *             .credential(externalMi.databricksCredentialId())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal("Data Engineers")
  *                 .privileges("ACCESS")
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
- *             .credential(externalGcpSa.id())
+ *             .credential(externalGcpSa.databricksCredentialId())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal("Data Engineers")
  *                 .privileges("ACCESS")
@@ -233,6 +233,20 @@ public class Credential extends com.pulumi.resources.CustomResource {
      */
     public Output<String> credentialId() {
         return this.credentialId;
+    }
+    /**
+     * ID of this credential - same as the `name`.
+     * 
+     */
+    @Export(name="databricksCredentialId", refs={String.class}, tree="[0]")
+    private Output<String> databricksCredentialId;
+
+    /**
+     * @return ID of this credential - same as the `name`.
+     * 
+     */
+    public Output<String> databricksCredentialId() {
+        return this.databricksCredentialId;
     }
     @Export(name="databricksGcpServiceAccount", refs={CredentialDatabricksGcpServiceAccount.class}, tree="[0]")
     private Output<CredentialDatabricksGcpServiceAccount> databricksGcpServiceAccount;

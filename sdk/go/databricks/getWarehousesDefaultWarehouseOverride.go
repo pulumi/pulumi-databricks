@@ -42,7 +42,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupWarehousesDefaultWarehouseOverride(ctx, &databricks.LookupWarehousesDefaultWarehouseOverrideArgs{
+//			_, err := databricks.GetWarehousesDefaultWarehouseOverride(ctx, &databricks.LookupWarehousesDefaultWarehouseOverrideArgs{
 //				Name: fmt.Sprintf("default-warehouse-overrides/%v", example.Id),
 //			}, nil)
 //			if err != nil {

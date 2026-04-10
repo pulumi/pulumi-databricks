@@ -33,12 +33,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prod = Databricks.GetCatalog.Invoke(new()
+        ///     var prod = Databricks.Index.GetCatalog.Invoke(new()
         ///     {
         ///         Name = "prod_catalog",
         ///     });
         /// 
-        ///     var prodConfig = Databricks.GetDataClassificationCatalogConfig.Invoke(new()
+        ///     var prodConfig = Databricks.Index.GetDataClassificationCatalogConfig.Invoke(new()
         ///     {
         ///         Name = $"catalogs/{prod.Apply(getCatalogResult =&gt; getCatalogResult.Name)}/config",
         ///     });
@@ -75,12 +75,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prod = Databricks.GetCatalog.Invoke(new()
+        ///     var prod = Databricks.Index.GetCatalog.Invoke(new()
         ///     {
         ///         Name = "prod_catalog",
         ///     });
         /// 
-        ///     var prodConfig = Databricks.GetDataClassificationCatalogConfig.Invoke(new()
+        ///     var prodConfig = Databricks.Index.GetDataClassificationCatalogConfig.Invoke(new()
         ///     {
         ///         Name = $"catalogs/{prod.Apply(getCatalogResult =&gt; getCatalogResult.Name)}/config",
         ///     });
@@ -117,12 +117,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prod = Databricks.GetCatalog.Invoke(new()
+        ///     var prod = Databricks.Index.GetCatalog.Invoke(new()
         ///     {
         ///         Name = "prod_catalog",
         ///     });
         /// 
-        ///     var prodConfig = Databricks.GetDataClassificationCatalogConfig.Invoke(new()
+        ///     var prodConfig = Databricks.Index.GetDataClassificationCatalogConfig.Invoke(new()
         ///     {
         ///         Name = $"catalogs/{prod.Apply(getCatalogResult =&gt; getCatalogResult.Name)}/config",
         ///     });

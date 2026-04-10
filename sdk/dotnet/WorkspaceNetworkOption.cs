@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkspaceNetworkOption = new Databricks.WorkspaceNetworkOption("example_workspace_network_option", new()
+    ///     var exampleWorkspaceNetworkOption = new Databricks.Index.WorkspaceNetworkOption("example_workspace_network_option", new()
     ///     {
     ///         WorkspaceId = "9999999999999999",
     ///         NetworkPolicyId = "default-policy",

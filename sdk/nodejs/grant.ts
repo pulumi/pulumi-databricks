@@ -300,7 +300,7 @@ import * as utilities from "./utilities";
  *     comment: "Managed by TF",
  * });
  * const externalCreds = new databricks.Grant("external_creds", {
- *     credential: external.id,
+ *     credential: external.databricksCredentialId,
  *     principal: "Data Engineers",
  *     privileges: ["ACCESS"],
  * });

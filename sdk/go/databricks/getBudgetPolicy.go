@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupBudgetPolicy(ctx, &databricks.LookupBudgetPolicyArgs{
+//			_, err := databricks.GetBudgetPolicy(ctx, &databricks.LookupBudgetPolicyArgs{
 //				PolicyId: "test",
 //			}, nil)
 //			if err != nil {

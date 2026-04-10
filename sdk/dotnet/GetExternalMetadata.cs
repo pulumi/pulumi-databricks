@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetExternalMetadata.Invoke(new()
+        ///     var @this = Databricks.Index.GetExternalMetadata.Invoke(new()
         ///     {
         ///         Name = "security_events_stream",
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetExternalMetadata.Invoke(new()
+        ///     var @this = Databricks.Index.GetExternalMetadata.Invoke(new()
         ///     {
         ///         Name = "security_events_stream",
         ///     });
@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetExternalMetadata.Invoke(new()
+        ///     var @this = Databricks.Index.GetExternalMetadata.Invoke(new()
         ///     {
         ///         Name = "security_events_stream",
         ///     });

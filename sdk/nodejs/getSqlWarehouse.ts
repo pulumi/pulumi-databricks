@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * const all = databricks.getSqlWarehouses({});
  * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSqlWarehouse({
  *     id: __value,
- * }) })));
+ * }) }), {}));
  * ```
  *
  * * Search for a specific SQL Warehouse by name:
@@ -266,7 +266,7 @@ export interface GetSqlWarehouseResult {
  * const all = databricks.getSqlWarehouses({});
  * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSqlWarehouse({
  *     id: __value,
- * }) })));
+ * }) }), {}));
  * ```
  *
  * * Search for a specific SQL Warehouse by name:

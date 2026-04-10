@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSqlWarehouses.Invoke();
+        ///     var all = Databricks.Index.GetSqlWarehouses.Invoke();
         /// 
         /// });
         /// ```
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var allShared = Databricks.GetSqlWarehouses.Invoke(new()
+        ///     var allShared = Databricks.Index.GetSqlWarehouses.Invoke(new()
         ///     {
         ///         WarehouseNameContains = "shared",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSqlWarehouses.Invoke();
+        ///     var all = Databricks.Index.GetSqlWarehouses.Invoke();
         /// 
         /// });
         /// ```
@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var allShared = Databricks.GetSqlWarehouses.Invoke(new()
+        ///     var allShared = Databricks.Index.GetSqlWarehouses.Invoke(new()
         ///     {
         ///         WarehouseNameContains = "shared",
         ///     });
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSqlWarehouses.Invoke();
+        ///     var all = Databricks.Index.GetSqlWarehouses.Invoke();
         /// 
         /// });
         /// ```
@@ -149,7 +149,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var allShared = Databricks.GetSqlWarehouses.Invoke(new()
+        ///     var allShared = Databricks.Index.GetSqlWarehouses.Invoke(new()
         ///     {
         ///         WarehouseNameContains = "shared",
         ///     });

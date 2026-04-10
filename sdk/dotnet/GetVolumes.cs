@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetVolumes.Invoke(new()
+        ///     var @this = Databricks.Index.GetVolumes.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
@@ -77,7 +77,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetVolumes.Invoke(new()
+        ///     var @this = Databricks.Index.GetVolumes.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
@@ -122,7 +122,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetVolumes.Invoke(new()
+        ///     var @this = Databricks.Index.GetVolumes.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",

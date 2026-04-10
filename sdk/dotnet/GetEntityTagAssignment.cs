@@ -28,35 +28,35 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var catalogTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var catalogTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "catalogs",
         ///         EntityName = "production_catalog",
         ///         TagKey = "environment",
         ///     });
         /// 
-        ///     var schemaTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var schemaTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "schemas",
         ///         EntityName = "production_catalog.analytics_data",
         ///         TagKey = "cost_center",
         ///     });
         /// 
-        ///     var tableTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var tableTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "tables",
         ///         EntityName = "production_catalog.sales_data.customer_orders",
         ///         TagKey = "owner",
         ///     });
         /// 
-        ///     var columnTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var columnTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "columns",
         ///         EntityName = "production_catalog.customer_data.users.email_address",
         ///         TagKey = "pii_classification",
         ///     });
         /// 
-        ///     var volumeTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var volumeTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "volumes",
         ///         EntityName = "production_catalog.raw_data.landing_zone",
@@ -86,35 +86,35 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var catalogTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var catalogTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "catalogs",
         ///         EntityName = "production_catalog",
         ///         TagKey = "environment",
         ///     });
         /// 
-        ///     var schemaTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var schemaTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "schemas",
         ///         EntityName = "production_catalog.analytics_data",
         ///         TagKey = "cost_center",
         ///     });
         /// 
-        ///     var tableTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var tableTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "tables",
         ///         EntityName = "production_catalog.sales_data.customer_orders",
         ///         TagKey = "owner",
         ///     });
         /// 
-        ///     var columnTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var columnTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "columns",
         ///         EntityName = "production_catalog.customer_data.users.email_address",
         ///         TagKey = "pii_classification",
         ///     });
         /// 
-        ///     var volumeTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var volumeTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "volumes",
         ///         EntityName = "production_catalog.raw_data.landing_zone",
@@ -144,35 +144,35 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var catalogTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var catalogTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "catalogs",
         ///         EntityName = "production_catalog",
         ///         TagKey = "environment",
         ///     });
         /// 
-        ///     var schemaTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var schemaTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "schemas",
         ///         EntityName = "production_catalog.analytics_data",
         ///         TagKey = "cost_center",
         ///     });
         /// 
-        ///     var tableTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var tableTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "tables",
         ///         EntityName = "production_catalog.sales_data.customer_orders",
         ///         TagKey = "owner",
         ///     });
         /// 
-        ///     var columnTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var columnTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "columns",
         ///         EntityName = "production_catalog.customer_data.users.email_address",
         ///         TagKey = "pii_classification",
         ///     });
         /// 
-        ///     var volumeTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     var volumeTag = Databricks.Index.GetEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "volumes",
         ///         EntityName = "production_catalog.raw_data.landing_zone",

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.LookupMwsWorkspaces(ctx, &databricks.LookupMwsWorkspacesArgs{}, nil)
+//			all, err := databricks.GetMwsWorkspaces(ctx, &databricks.LookupMwsWorkspacesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

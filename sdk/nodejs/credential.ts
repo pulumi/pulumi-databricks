@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *     comment: "Managed by TF",
  * });
  * const externalCreds = new databricks.Grants("external_creds", {
- *     credential: external.id,
+ *     credential: external.databricksCredentialId,
  *     grants: [{
  *         principal: "Data Engineers",
  *         privileges: ["ACCESS"],
@@ -56,7 +56,7 @@ import * as utilities from "./utilities";
  *     comment: "Managed identity credential managed by TF",
  * });
  * const externalCreds = new databricks.Grants("external_creds", {
- *     credential: externalMi.id,
+ *     credential: externalMi.databricksCredentialId,
  *     grants: [{
  *         principal: "Data Engineers",
  *         privileges: ["ACCESS"],
@@ -77,7 +77,7 @@ import * as utilities from "./utilities";
  *     comment: "GCP SA credential managed by TF",
  * });
  * const externalCreds = new databricks.Grants("external_creds", {
- *     credential: externalGcpSa.id,
+ *     credential: externalGcpSa.databricksCredentialId,
  *     grants: [{
  *         principal: "Data Engineers",
  *         privileges: ["ACCESS"],
@@ -123,6 +123,10 @@ export class Credential extends pulumi.CustomResource {
      * Unique ID of the credential.
      */
     declare public /*out*/ readonly credentialId: pulumi.Output<string>;
+    /**
+     * ID of this credential - same as the `name`.
+     */
+    declare public readonly databricksCredentialId: pulumi.Output<string>;
     declare public readonly databricksGcpServiceAccount: pulumi.Output<outputs.CredentialDatabricksGcpServiceAccount>;
     /**
      * Delete credential regardless of its dependencies.
@@ -184,6 +188,7 @@ export class Credential extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["credentialId"] = state?.credentialId;
+            resourceInputs["databricksCredentialId"] = state?.databricksCredentialId;
             resourceInputs["databricksGcpServiceAccount"] = state?.databricksGcpServiceAccount;
             resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["forceUpdate"] = state?.forceUpdate;
@@ -209,6 +214,7 @@ export class Credential extends pulumi.CustomResource {
             resourceInputs["comment"] = args?.comment;
             resourceInputs["createdAt"] = args?.createdAt;
             resourceInputs["createdBy"] = args?.createdBy;
+            resourceInputs["databricksCredentialId"] = args?.databricksCredentialId;
             resourceInputs["databricksGcpServiceAccount"] = args?.databricksGcpServiceAccount;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["forceUpdate"] = args?.forceUpdate;
@@ -244,6 +250,10 @@ export interface CredentialState {
      * Unique ID of the credential.
      */
     credentialId?: pulumi.Input<string>;
+    /**
+     * ID of this credential - same as the `name`.
+     */
+    databricksCredentialId?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.CredentialDatabricksGcpServiceAccount>;
     /**
      * Delete credential regardless of its dependencies.
@@ -296,6 +306,10 @@ export interface CredentialArgs {
     comment?: pulumi.Input<string>;
     createdAt?: pulumi.Input<number>;
     createdBy?: pulumi.Input<string>;
+    /**
+     * ID of this credential - same as the `name`.
+     */
+    databricksCredentialId?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.CredentialDatabricksGcpServiceAccount>;
     /**
      * Delete credential regardless of its dependencies.

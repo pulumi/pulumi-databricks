@@ -24,19 +24,19 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var app = new Databricks.SecretScope("app", new()
+    ///     var app = new Databricks.Index.SecretScope("app", new()
     ///     {
     ///         Name = "application-secret-scope",
     ///     });
     /// 
-    ///     var publishingApi = new Databricks.Secret("publishing_api", new()
+    ///     var publishingApi = new Databricks.Index.Secret("publishing_api", new()
     ///     {
     ///         Key = "publishing_api",
     ///         StringValue = example.Value,
     ///         Scope = app.Id,
     ///     });
     /// 
-    ///     var @this = new Databricks.Cluster("this", new()
+    ///     var @this = new Databricks.Index.Cluster("this", new()
     ///     {
     ///         SparkConf = 
     ///         {

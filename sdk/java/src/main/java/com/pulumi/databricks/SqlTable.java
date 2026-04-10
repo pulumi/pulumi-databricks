@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *             .catalogName(sandbox.name())
  *             .schemaName(things.name())
  *             .tableType("MANAGED")
- *             .warehouseId(this_.id())
+ *             .warehouseId(this_.sqlEndpointId())
  *             .columns(            
  *                 SqlTableColumnArgs.builder()
  *                     .name("id")
@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  *             .catalogName(sandbox.name())
  *             .schemaName(things.name())
  *             .tableType("VIEW")
- *             .warehouseId(this_.id())
+ *             .warehouseId(this_.sqlEndpointId())
  *             .viewDefinition(StdFunctions.format(FormatArgs.builder()
  *                 .input("SELECT name FROM %s WHERE id == 1")
  *                 .args(thing.id())

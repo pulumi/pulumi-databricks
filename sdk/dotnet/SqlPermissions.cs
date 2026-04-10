@@ -22,7 +22,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var clusterWithTableAccessControl = new Databricks.Cluster("cluster_with_table_access_control", new()
+    ///     var clusterWithTableAccessControl = new Databricks.Index.Cluster("cluster_with_table_access_control", new()
     ///     {
     ///         SparkConf = 
     ///         {
@@ -55,7 +55,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooTable = new Databricks.SqlPermissions("foo_table", new()
+    ///     var fooTable = new Databricks.Index.SqlPermissions("foo_table", new()
     ///     {
     ///         Table = "foo",
     ///         PrivilegeAssignments = new[]
@@ -125,7 +125,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var fooTable = new Databricks.SqlPermissions("foo_table", new()
+        ///     var fooTable = new Databricks.Index.SqlPermissions("foo_table", new()
         ///     {
         ///         ClusterId = clusterName.Id,
         ///     });
@@ -234,7 +234,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var fooTable = new Databricks.SqlPermissions("foo_table", new()
+        ///     var fooTable = new Databricks.Index.SqlPermissions("foo_table", new()
         ///     {
         ///         ClusterId = clusterName.Id,
         ///     });
@@ -310,7 +310,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var fooTable = new Databricks.SqlPermissions("foo_table", new()
+        ///     var fooTable = new Databricks.Index.SqlPermissions("foo_table", new()
         ///     {
         ///         ClusterId = clusterName.Id,
         ///     });

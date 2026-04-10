@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupVolume(ctx, &databricks.LookupVolumeArgs{
+//			_, err := databricks.GetVolume(ctx, &databricks.LookupVolumeArgs{
 //				Name: "catalog.schema.volume",
 //			}, nil)
 //			if err != nil {

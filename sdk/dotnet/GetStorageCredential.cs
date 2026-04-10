@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetStorageCredential.Invoke(new()
+        ///     var @this = Databricks.Index.GetStorageCredential.Invoke(new()
         ///     {
         ///         Name = "this",
         ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetStorageCredential.Invoke(new()
+        ///     var @this = Databricks.Index.GetStorageCredential.Invoke(new()
         ///     {
         ///         Name = "this",
         ///     });
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetStorageCredential.Invoke(new()
+        ///     var @this = Databricks.Index.GetStorageCredential.Invoke(new()
         ///     {
         ///         Name = "this",
         ///     });

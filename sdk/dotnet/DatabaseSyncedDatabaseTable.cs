@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.DatabaseSyncedDatabaseTable("this", new()
+    ///     var @this = new Databricks.Index.DatabaseSyncedDatabaseTable("this", new()
     ///     {
     ///         Name = "my_database_catalog.public.synced_table",
     ///         LogicalDatabaseName = "databricks_postgres",
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.DatabaseSyncedDatabaseTable("this", new()
+    ///     var @this = new Databricks.Index.DatabaseSyncedDatabaseTable("this", new()
     ///     {
     ///         Name = "my_standard_catalog.public.synced_table",
     ///         LogicalDatabaseName = "databricks_postgres",
@@ -106,13 +106,13 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instance = new Databricks.DatabaseInstance("instance", new()
+    ///     var instance = new Databricks.Index.DatabaseInstance("instance", new()
     ///     {
     ///         Name = "my-database-instance",
     ///         Capacity = "CU_1",
     ///     });
     /// 
-    ///     var syncedTable1 = new Databricks.DatabaseSyncedDatabaseTable("synced_table_1", new()
+    ///     var syncedTable1 = new Databricks.Index.DatabaseSyncedDatabaseTable("synced_table_1", new()
     ///     {
     ///         Name = "my_standard_catalog.public.synced_table1",
     ///         LogicalDatabaseName = "databricks_postgres",
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var syncedTable2 = new Databricks.DatabaseSyncedDatabaseTable("synced_table_2", new()
+    ///     var syncedTable2 = new Databricks.Index.DatabaseSyncedDatabaseTable("synced_table_2", new()
     ///     {
     ///         Name = "my_standard_catalog.public.synced_table2",
     ///         LogicalDatabaseName = "databricks_postgres",
@@ -172,7 +172,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var syncedTable = new Databricks.DatabaseSyncedDatabaseTable("synced_table", new()
+    ///     var syncedTable = new Databricks.Index.DatabaseSyncedDatabaseTable("synced_table", new()
     ///     {
     ///         Name = "my_standard_catalog.default.my_synced_table",
     ///         LogicalDatabaseName = "terraform_test_db",
@@ -194,7 +194,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var syncPipelineScheduleJob = new Databricks.Job("sync_pipeline_schedule_job", new()
+    ///     var syncPipelineScheduleJob = new Databricks.Index.Job("sync_pipeline_schedule_job", new()
     ///     {
     ///         Name = "Synced Pipeline Refresh",
     ///         Description = "Job to schedule synced database table pipeline. ",

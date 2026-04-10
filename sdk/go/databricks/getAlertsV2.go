@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupAlertV2(ctx, &databricks.LookupAlertV2Args{}, nil)
+//			_, err := databricks.GetAlertV2(ctx, &databricks.LookupAlertV2Args{}, nil)
 //			if err != nil {
 //				return err
 //			}

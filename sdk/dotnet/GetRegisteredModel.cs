@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetRegisteredModel.Invoke(new()
+        ///     var @this = Databricks.Index.GetRegisteredModel.Invoke(new()
         ///     {
         ///         FullName = "main.default.my_model",
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetRegisteredModel.Invoke(new()
+        ///     var @this = Databricks.Index.GetRegisteredModel.Invoke(new()
         ///     {
         ///         FullName = "main.default.my_model",
         ///     });
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetRegisteredModel.Invoke(new()
+        ///     var @this = Databricks.Index.GetRegisteredModel.Invoke(new()
         ///     {
         ///         FullName = "main.default.my_model",
         ///     });

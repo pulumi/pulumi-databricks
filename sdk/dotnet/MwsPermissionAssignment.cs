@@ -26,12 +26,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dataEng = new Databricks.Group("data_eng", new()
+    ///     var dataEng = new Databricks.Index.Group("data_eng", new()
     ///     {
     ///         DisplayName = "Data Engineering",
     ///     });
     /// 
-    ///     var addAdminGroup = new Databricks.MwsPermissionAssignment("add_admin_group", new()
+    ///     var addAdminGroup = new Databricks.Index.MwsPermissionAssignment("add_admin_group", new()
     ///     {
     ///         WorkspaceId = @this.WorkspaceId,
     ///         PrincipalId = dataEng.Id,
@@ -54,12 +54,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = new Databricks.User("me", new()
+    ///     var me = new Databricks.Index.User("me", new()
     ///     {
     ///         UserName = "me@example.com",
     ///     });
     /// 
-    ///     var addUser = new Databricks.MwsPermissionAssignment("add_user", new()
+    ///     var addUser = new Databricks.Index.MwsPermissionAssignment("add_user", new()
     ///     {
     ///         WorkspaceId = @this.WorkspaceId,
     ///         PrincipalId = me.Id,
@@ -82,12 +82,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     var sp = new Databricks.Index.ServicePrincipal("sp", new()
     ///     {
     ///         DisplayName = "Automation-only SP",
     ///     });
     /// 
-    ///     var addAdminSpn = new Databricks.MwsPermissionAssignment("add_admin_spn", new()
+    ///     var addAdminSpn = new Databricks.Index.MwsPermissionAssignment("add_admin_spn", new()
     ///     {
     ///         WorkspaceId = @this.WorkspaceId,
     ///         PrincipalId = sp.Id,

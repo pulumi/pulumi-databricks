@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = new Docker.RegistryImage("this", new()
+        ///     var @this = new Docker.Index.RegistryImage("this", new()
         ///     {
         ///         Build = new[]
         ///         {
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks.Inputs
         ///         Name = $"{thisAzurermContainerRegistry.LoginServer}/sample:latest",
         ///     });
         /// 
-        ///     var thisCluster = new Databricks.Cluster("this", new()
+        ///     var thisCluster = new Databricks.Index.Cluster("this", new()
         ///     {
         ///         DockerImage = new Databricks.Inputs.ClusterDockerImageArgs
         ///         {

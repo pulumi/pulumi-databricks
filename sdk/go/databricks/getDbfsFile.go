@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupDbfsFile(ctx, &databricks.LookupDbfsFileArgs{
+//			_, err := databricks.GetDbfsFile(ctx, &databricks.LookupDbfsFileArgs{
 //				Path:          "dbfs:/reports/some.csv",
 //				LimitFileSize: true,
 //			}, nil)

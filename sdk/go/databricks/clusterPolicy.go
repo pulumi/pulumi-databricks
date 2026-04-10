@@ -52,9 +52,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
 //			// Team that performs the work
-//			team := cfg.RequireObject("team")
+//			var team interface{}
+//			cfg.RequireObject("team", &team)
 //			// Cluster policy overrides
-//			policyOverrides := cfg.RequireObject("policyOverrides")
+//			var policyOverrides interface{}
+//			cfg.RequireObject("policyOverrides", &policyOverrides)
 //			defaultPolicy := map[string]interface{}{
 //				"dbus_per_hour": map[string]interface{}{
 //					"type":     "range",
@@ -82,7 +84,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			fairUse, err := databricks.NewClusterPolicy(ctx, "fair_use", &databricks.ClusterPolicyArgs{
 //				Name:       pulumi.Sprintf("%v cluster policy", team),
-//				Definition: pulumi.String(json0),
+//				Definition: json0,
 //				Libraries: databricks.ClusterPolicyLibraryArray{
 //					&databricks.ClusterPolicyLibraryArgs{
 //						Pypi: &databricks.ClusterPolicyLibraryPypiArgs{

@@ -28,17 +28,17 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     var admins = Databricks.Index.GetGroup.Invoke(new()
         ///     {
         ///         DisplayName = "admins",
         ///     });
         /// 
-        ///     var me = new Databricks.User("me", new()
+        ///     var me = new Databricks.Index.User("me", new()
         ///     {
         ///         UserName = "me@example.com",
         ///     });
         /// 
-        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     var myMemberA = new Databricks.Index.GroupMember("my_member_a", new()
         ///     {
         ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         MemberId = me.Id,
@@ -78,17 +78,17 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     var admins = Databricks.Index.GetGroup.Invoke(new()
         ///     {
         ///         DisplayName = "admins",
         ///     });
         /// 
-        ///     var me = new Databricks.User("me", new()
+        ///     var me = new Databricks.Index.User("me", new()
         ///     {
         ///         UserName = "me@example.com",
         ///     });
         /// 
-        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     var myMemberA = new Databricks.Index.GroupMember("my_member_a", new()
         ///     {
         ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         MemberId = me.Id,
@@ -128,17 +128,17 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     var admins = Databricks.Index.GetGroup.Invoke(new()
         ///     {
         ///         DisplayName = "admins",
         ///     });
         /// 
-        ///     var me = new Databricks.User("me", new()
+        ///     var me = new Databricks.Index.User("me", new()
         ///     {
         ///         UserName = "me@example.com",
         ///     });
         /// 
-        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     var myMemberA = new Databricks.Index.GroupMember("my_member_a", new()
         ///     {
         ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         MemberId = me.Id,

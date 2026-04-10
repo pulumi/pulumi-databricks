@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.BudgetPolicy("this", new()
+    ///     var @this = new Databricks.Index.BudgetPolicy("this", new()
     ///     {
     ///         PolicyName = "my-budget-policy",
     ///         CustomTags = new[]

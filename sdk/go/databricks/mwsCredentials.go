@@ -25,7 +25,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -36,19 +38,21 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
 //			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
-//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			var databricksAccountId interface{}
+//			cfg.RequireObject("databricksAccountId", &databricksAccountId)
 //			// Names of created resources will be prefixed with this value
-//			prefix := cfg.RequireObject("prefix")
+//			var prefix interface{}
+//			cfg.RequireObject("prefix", &prefix)
 //			this, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
 //				ExternalId: databricksAccountId,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			crossAccountRole, err := iam.NewRole(ctx, "cross_account_role", &iam.RoleArgs{
-//				Name:             pulumi.Sprintf("%v-crossaccount", prefix),
-//				AssumeRolePolicy: pulumi.String(pulumi.String(this.Json)),
-//				Tags:             pulumi.Any(tags),
+//			crossAccountRole, err := aws.NewIamRole(ctx, "cross_account_role", &aws.IamRoleArgs{
+//				Name:             fmt.Sprintf("%v-crossaccount", prefix),
+//				AssumeRolePolicy: this.Json,
+//				Tags:             tags,
 //			})
 //			if err != nil {
 //				return err
@@ -57,10 +61,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewRolePolicy(ctx, "this", &iam.RolePolicyArgs{
-//				Name:   pulumi.Sprintf("%v-policy", prefix),
-//				Role:   crossAccountRole.ID(),
-//				Policy: pulumi.String(pulumi.String(thisGetAwsCrossAccountPolicy.Json)),
+//			_, err = aws.NewIamRolePolicy(ctx, "this", &aws.IamRolePolicyArgs{
+//				Name:   fmt.Sprintf("%v-policy", prefix),
+//				Role:   crossAccountRole.Id,
+//				Policy: thisGetAwsCrossAccountPolicy.Json,
 //			})
 //			if err != nil {
 //				return err

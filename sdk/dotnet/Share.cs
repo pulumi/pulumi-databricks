@@ -30,13 +30,13 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var things = Databricks.GetTables.Invoke(new()
+    ///     var things = Databricks.Index.GetTables.Invoke(new()
     ///     {
     ///         CatalogName = "sandbox",
     ///         SchemaName = "things",
     ///     });
     /// 
-    ///     var some = new Databricks.Share("some", new()
+    ///     var some = new Databricks.Index.Share("some", new()
     ///     {
     ///         Objects = ,
     ///         Name = "my_share",
@@ -55,7 +55,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mixed = new Databricks.Share("mixed", new()
+    ///     var mixed = new Databricks.Index.Share("mixed", new()
     ///     {
     ///         Name = "mixed_share",
     ///         Objects = new[]
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var schemaShare = new Databricks.Share("schema_share", new()
+    ///     var schemaShare = new Databricks.Index.Share("schema_share", new()
     ///     {
     ///         Name = "schema_share",
     ///         Objects = new[]
@@ -121,7 +121,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var some = new Databricks.Share("some", new()
+    ///     var some = new Databricks.Index.Share("some", new()
     ///     {
     ///         Name = "my_share",
     ///         Objects = new[]

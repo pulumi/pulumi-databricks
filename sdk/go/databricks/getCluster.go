@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.LookupCluster(ctx, &databricks.LookupClusterArgs{
+//			_, err = databricks.GetCluster(ctx, &databricks.LookupClusterArgs{
 //				ClusterId: pulumi.StringRef(myCluster.Ids[0]),
 //			}, nil)
 //			if err != nil {

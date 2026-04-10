@@ -206,7 +206,7 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        theme_setting = databricks.index.AccountUserSettingV2("theme_setting",
+        theme_setting = databricks.AccountUserSettingV2("theme_setting",
             user_id=<user-id>,
             name=enableDarkMode,
             string_val={
@@ -220,7 +220,7 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        enable_line_numbers = databricks.index.AccountUserSettingV2("enable_line_numbers",
+        enable_line_numbers = databricks.AccountUserSettingV2("enable_line_numbers",
             user_id=<user-id>,
             name=enableLineNumbers,
             boolean_val={
@@ -255,7 +255,7 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        theme_setting = databricks.index.AccountUserSettingV2("theme_setting",
+        theme_setting = databricks.AccountUserSettingV2("theme_setting",
             user_id=<user-id>,
             name=enableDarkMode,
             string_val={
@@ -269,7 +269,7 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        enable_line_numbers = databricks.index.AccountUserSettingV2("enable_line_numbers",
+        enable_line_numbers = databricks.AccountUserSettingV2("enable_line_numbers",
             user_id=<user-id>,
             name=enableLineNumbers,
             boolean_val={

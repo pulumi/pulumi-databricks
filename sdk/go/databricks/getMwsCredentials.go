@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.LookupMwsCredentials(ctx, &databricks.LookupMwsCredentialsArgs{}, nil)
+//			all, err := databricks.GetMwsCredentials(ctx, &databricks.LookupMwsCredentialsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

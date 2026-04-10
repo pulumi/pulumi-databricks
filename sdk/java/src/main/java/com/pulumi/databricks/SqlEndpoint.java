@@ -355,6 +355,20 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spotInstancePolicy);
     }
     /**
+     * the unique ID of the SQL warehouse.
+     * 
+     */
+    @Export(name="sqlEndpointId", refs={String.class}, tree="[0]")
+    private Output<String> sqlEndpointId;
+
+    /**
+     * @return the unique ID of the SQL warehouse.
+     * 
+     */
+    public Output<String> sqlEndpointId() {
+        return this.sqlEndpointId;
+    }
+    /**
      * The current state of the endpoint.
      * 
      */

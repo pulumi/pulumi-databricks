@@ -28,17 +28,17 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     var admins = Databricks.Index.GetGroup.Invoke(new()
         ///     {
         ///         DisplayName = "admins",
         ///     });
         /// 
-        ///     var spn = Databricks.GetServicePrincipal.Invoke(new()
+        ///     var spn = Databricks.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         ApplicationId = "11111111-2222-3333-4444-555666777888",
         ///     });
         /// 
-        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     var myMemberA = new Databricks.Index.GroupMember("my_member_a", new()
         ///     {
         ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         MemberId = spn.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
@@ -80,17 +80,17 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     var admins = Databricks.Index.GetGroup.Invoke(new()
         ///     {
         ///         DisplayName = "admins",
         ///     });
         /// 
-        ///     var spn = Databricks.GetServicePrincipal.Invoke(new()
+        ///     var spn = Databricks.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         ApplicationId = "11111111-2222-3333-4444-555666777888",
         ///     });
         /// 
-        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     var myMemberA = new Databricks.Index.GroupMember("my_member_a", new()
         ///     {
         ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         MemberId = spn.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
@@ -132,17 +132,17 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     var admins = Databricks.Index.GetGroup.Invoke(new()
         ///     {
         ///         DisplayName = "admins",
         ///     });
         /// 
-        ///     var spn = Databricks.GetServicePrincipal.Invoke(new()
+        ///     var spn = Databricks.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         ApplicationId = "11111111-2222-3333-4444-555666777888",
         ///     });
         /// 
-        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     var myMemberA = new Databricks.Index.GroupMember("my_member_a", new()
         ///     {
         ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         MemberId = spn.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),

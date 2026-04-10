@@ -126,9 +126,9 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
     import pulumi_databricks as databricks
 
     def single_or_none(elements):
-        if len(elements) != 1:
+        if len(elements) > 1:
             raise Exception("single_or_none expected input list to have a single element")
-        return elements[0]
+        return elements[0] if elements else None
 
 
     this = databricks.get_current_config()
@@ -211,9 +211,9 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
     import pulumi_databricks as databricks
 
     def single_or_none(elements):
-        if len(elements) != 1:
+        if len(elements) > 1:
             raise Exception("single_or_none expected input list to have a single element")
-        return elements[0]
+        return elements[0] if elements else None
 
 
     this = databricks.get_current_config()

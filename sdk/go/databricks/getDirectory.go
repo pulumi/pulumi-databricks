@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupDirectory(ctx, &databricks.LookupDirectoryArgs{
+//			_, err := databricks.GetDirectory(ctx, &databricks.LookupDirectoryArgs{
 //				Path: "/Production",
 //			}, nil)
 //			if err != nil {

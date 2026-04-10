@@ -25,7 +25,7 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // create PAT token to provision entities within workspace
-    ///     var pat = new Databricks.Token("pat", new()
+    ///     var pat = new Databricks.Index.Token("pat", new()
     ///     {
     ///         Comment = "Pulumi Provisioning",
     ///         LifetimeSeconds = 8640000,
@@ -49,12 +49,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Time.Rotating("this", new()
+    ///     var @this = new Time.Index.Rotating("this", new()
     ///     {
     ///         RotationDays = 30,
     ///     });
     /// 
-    ///     var pat = new Databricks.Token("pat", new()
+    ///     var pat = new Databricks.Index.Token("pat", new()
     ///     {
     ///         Comment = @this.Rfc3339.Apply(rfc3339 =&gt; $"Pulumi (created: {rfc3339})"),
     ///         LifetimeSeconds = 60 * 24 * 60 * 60,

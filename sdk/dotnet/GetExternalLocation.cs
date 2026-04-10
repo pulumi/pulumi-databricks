@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetExternalLocation.Invoke(new()
+        ///     var @this = Databricks.Index.GetExternalLocation.Invoke(new()
         ///     {
         ///         Name = "this",
         ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetExternalLocation.Invoke(new()
+        ///     var @this = Databricks.Index.GetExternalLocation.Invoke(new()
         ///     {
         ///         Name = "this",
         ///     });
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetExternalLocation.Invoke(new()
+        ///     var @this = Databricks.Index.GetExternalLocation.Invoke(new()
         ///     {
         ///         Name = "this",
         ///     });

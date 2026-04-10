@@ -28,12 +28,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
+    ///     var sharedDir = new Databricks.Index.Directory("shared_dir", new()
     ///     {
     ///         Path = "/Shared/Dashboards",
     ///     });
     /// 
-    ///     var d1 = new Databricks.SqlDashboard("d1", new()
+    ///     var d1 = new Databricks.Index.SqlDashboard("d1", new()
     ///     {
     ///         Name = "My Dashboard Name",
     ///         Parent = sharedDir.ObjectId.Apply(objectId =&gt; $"folders/{objectId}"),
@@ -57,7 +57,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var d1 = new Databricks.Permissions("d1", new()
+    ///     var d1 = new Databricks.Index.Permissions("d1", new()
     ///     {
     ///         SqlDashboardId = d1DatabricksSqlDashboard.Id,
     ///         AccessControls = new[]

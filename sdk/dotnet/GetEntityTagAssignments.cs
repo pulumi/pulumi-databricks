@@ -28,31 +28,31 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var catalogTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var catalogTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "catalogs",
         ///         EntityName = "production_catalog",
         ///     });
         /// 
-        ///     var schemaTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var schemaTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "schemas",
         ///         EntityName = "production_catalog.sales_data",
         ///     });
         /// 
-        ///     var tableTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var tableTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "tables",
         ///         EntityName = "production_catalog.sales_data.customer_orders",
         ///     });
         /// 
-        ///     var columnTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var columnTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "columns",
         ///         EntityName = "production_catalog.customer_data.users.email_address",
         ///     });
         /// 
-        ///     var volumeTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var volumeTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "volumes",
         ///         EntityName = "production_catalog.raw_data.landing_zone",
@@ -81,31 +81,31 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var catalogTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var catalogTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "catalogs",
         ///         EntityName = "production_catalog",
         ///     });
         /// 
-        ///     var schemaTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var schemaTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "schemas",
         ///         EntityName = "production_catalog.sales_data",
         ///     });
         /// 
-        ///     var tableTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var tableTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "tables",
         ///         EntityName = "production_catalog.sales_data.customer_orders",
         ///     });
         /// 
-        ///     var columnTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var columnTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "columns",
         ///         EntityName = "production_catalog.customer_data.users.email_address",
         ///     });
         /// 
-        ///     var volumeTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var volumeTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "volumes",
         ///         EntityName = "production_catalog.raw_data.landing_zone",
@@ -134,31 +134,31 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var catalogTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var catalogTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "catalogs",
         ///         EntityName = "production_catalog",
         ///     });
         /// 
-        ///     var schemaTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var schemaTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "schemas",
         ///         EntityName = "production_catalog.sales_data",
         ///     });
         /// 
-        ///     var tableTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var tableTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "tables",
         ///         EntityName = "production_catalog.sales_data.customer_orders",
         ///     });
         /// 
-        ///     var columnTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var columnTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "columns",
         ///         EntityName = "production_catalog.customer_data.users.email_address",
         ///     });
         /// 
-        ///     var volumeTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     var volumeTags = Databricks.Index.GetEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "volumes",
         ///         EntityName = "production_catalog.raw_data.landing_zone",

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//			_, err := databricks.GetEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
 //				EntityType: "catalogs",
 //				EntityName: "production_catalog",
 //				TagKey:     "environment",
@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//			_, err = databricks.GetEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
 //				EntityType: "schemas",
 //				EntityName: "production_catalog.analytics_data",
 //				TagKey:     "cost_center",
@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//			_, err = databricks.GetEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
 //				EntityType: "tables",
 //				EntityName: "production_catalog.sales_data.customer_orders",
 //				TagKey:     "owner",
@@ -55,7 +55,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//			_, err = databricks.GetEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
 //				EntityType: "columns",
 //				EntityName: "production_catalog.customer_data.users.email_address",
 //				TagKey:     "pii_classification",
@@ -63,7 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//			_, err = databricks.GetEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
 //				EntityType: "volumes",
 //				EntityName: "production_catalog.raw_data.landing_zone",
 //				TagKey:     "purpose",

@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Job("this", new()
+    ///     var @this = new Databricks.Index.Job("this", new()
     ///     {
     ///         Name = "Job with multiple tasks",
     ///         Description = "This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished.",

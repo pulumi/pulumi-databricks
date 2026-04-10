@@ -123,6 +123,21 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * ID of the secret
+     * 
+     */
+    @Import(name="servicePrincipalSecretId")
+    private @Nullable Output<String> servicePrincipalSecretId;
+
+    /**
+     * @return ID of the secret
+     * 
+     */
+    public Optional<Output<String>> servicePrincipalSecretId() {
+        return Optional.ofNullable(this.servicePrincipalSecretId);
+    }
+
+    /**
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      * 
      */
@@ -177,6 +192,7 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
         this.secret = $.secret;
         this.secretHash = $.secretHash;
         this.servicePrincipalId = $.servicePrincipalId;
+        this.servicePrincipalSecretId = $.servicePrincipalSecretId;
         this.status = $.status;
         this.timeRotating = $.timeRotating;
         this.updateTime = $.updateTime;
@@ -345,6 +361,27 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
          */
         public Builder servicePrincipalId(String servicePrincipalId) {
             return servicePrincipalId(Output.of(servicePrincipalId));
+        }
+
+        /**
+         * @param servicePrincipalSecretId ID of the secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipalSecretId(@Nullable Output<String> servicePrincipalSecretId) {
+            $.servicePrincipalSecretId = servicePrincipalSecretId;
+            return this;
+        }
+
+        /**
+         * @param servicePrincipalSecretId ID of the secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipalSecretId(String servicePrincipalSecretId) {
+            return servicePrincipalSecretId(Output.of(servicePrincipalSecretId));
         }
 
         /**

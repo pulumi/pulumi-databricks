@@ -28,28 +28,28 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var a = new Databricks.Group("a", new()
+    ///     var a = new Databricks.Index.Group("a", new()
     ///     {
     ///         DisplayName = "A",
     ///     });
     /// 
-    ///     var b = new Databricks.Group("b", new()
+    ///     var b = new Databricks.Index.Group("b", new()
     ///     {
     ///         DisplayName = "B",
     ///     });
     /// 
-    ///     var ab = new Databricks.GroupMember("ab", new()
+    ///     var ab = new Databricks.Index.GroupMember("ab", new()
     ///     {
     ///         GroupId = a.Id,
     ///         MemberId = b.Id,
     ///     });
     /// 
-    ///     var bradley = new Databricks.User("bradley", new()
+    ///     var bradley = new Databricks.Index.User("bradley", new()
     ///     {
     ///         UserName = "bradley@example.com",
     ///     });
     /// 
-    ///     var bb = new Databricks.GroupMember("bb", new()
+    ///     var bb = new Databricks.Index.GroupMember("bb", new()
     ///     {
     ///         GroupId = b.Id,
     ///         MemberId = bradley.Id,

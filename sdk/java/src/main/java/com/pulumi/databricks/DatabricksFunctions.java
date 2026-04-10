@@ -3164,13 +3164,13 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
      * import java.util.List;
@@ -3191,7 +3191,7 @@ public final class DatabricksFunctions {
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
-     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
+     *         var crossAccountPolicy = new IamPolicy("crossAccountPolicy", IamPolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
@@ -3200,13 +3200,13 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
+     *         var crossAccount = new IamRole("crossAccount", IamRoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
@@ -3253,13 +3253,13 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
      * import java.util.List;
@@ -3280,7 +3280,7 @@ public final class DatabricksFunctions {
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
-     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
+     *         var crossAccountPolicy = new IamPolicy("crossAccountPolicy", IamPolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
@@ -3289,13 +3289,13 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
+     *         var crossAccount = new IamRole("crossAccount", IamRoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
@@ -3342,13 +3342,13 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
      * import java.util.List;
@@ -3369,7 +3369,7 @@ public final class DatabricksFunctions {
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
-     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
+     *         var crossAccountPolicy = new IamPolicy("crossAccountPolicy", IamPolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
@@ -3378,13 +3378,13 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
+     *         var crossAccount = new IamRole("crossAccount", IamRoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
@@ -3431,13 +3431,13 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
      * import java.util.List;
@@ -3458,7 +3458,7 @@ public final class DatabricksFunctions {
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
-     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
+     *         var crossAccountPolicy = new IamPolicy("crossAccountPolicy", IamPolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
@@ -3467,13 +3467,13 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
+     *         var crossAccount = new IamRole("crossAccount", IamRoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
@@ -3520,13 +3520,13 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
      * import java.util.List;
@@ -3547,7 +3547,7 @@ public final class DatabricksFunctions {
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
      *             .build());
      * 
-     *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
+     *         var crossAccountPolicy = new IamPolicy("crossAccountPolicy", IamPolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
@@ -3556,13 +3556,13 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
+     *         var crossAccount = new IamRole("crossAccount", IamRoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment("crossAccountRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment("crossAccountIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
@@ -3605,12 +3605,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import com.pulumi.aws.S3BucketPolicy;
+     * import com.pulumi.aws.S3BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3624,18 +3624,18 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
+     *         var thisS3Bucket = new S3Bucket("thisS3Bucket", S3BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucket.bucket())
+     *             .bucket(thisS3Bucket.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucket.id())
-     *             .policy(this_.applyValue(_this_ -> _this_.json()))
+     *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
+     *             .bucket(thisS3Bucket.id())
+     *             .policy(this_.json())
      *             .build());
      * 
      *     }
@@ -3644,101 +3644,6 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      * Bucket policy with full access:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
-     * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.MergeArgs;
-     * import com.pulumi.aws.s3.BucketVersioning;
-     * import com.pulumi.aws.s3.BucketVersioningArgs;
-     * import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var dsBucket = new Bucket("dsBucket", BucketArgs.builder()
-     *             .bucket(String.format("%s-ds", prefix))
-     *             .forceDestroy(true)
-     *             .tags(StdFunctions.merge(MergeArgs.builder()
-     *                 .input(                
-     *                     tags,
-     *                     Map.of("name", String.format("%s-ds", prefix)))
-     *                 .build()).result())
-     *             .build());
-     * 
-     *         var dsVersioning = new BucketVersioning("dsVersioning", BucketVersioningArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
-     *                 .status("Disabled")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var assumeRoleForEc2 = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect("Allow")
-     *                 .actions("sts:AssumeRole")
-     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .identifiers("ec2.amazonaws.com")
-     *                     .type("Service")
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *         var dataRole = new Role("dataRole", RoleArgs.builder()
-     *             .name(String.format("%s-first-ec2s3", prefix))
-     *             .description(String.format("(%s) EC2 Assume Role role for S3 access", prefix))
-     *             .assumeRolePolicy(assumeRoleForEc2.json())
-     *             .tags(tags)
-     *             .build());
-     * 
-     *         final var ds = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .fullAccessRole(dataRole.arn())
-     *             .bucket(dsBucket.bucket())
-     *             .build());
-     * 
-     *         // allow databricks to access this bucket
-     *         var dsBucketPolicy = new BucketPolicy("dsBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .policy(ds.applyValue(_ds -> _ds.json()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
-     * * End to end workspace management guide
-     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-     * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
      * 
      */
     public static Output<GetAwsBucketPolicyResult> getAwsBucketPolicy(GetAwsBucketPolicyArgs args) {
@@ -3758,12 +3663,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import com.pulumi.aws.S3BucketPolicy;
+     * import com.pulumi.aws.S3BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3777,18 +3682,18 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
+     *         var thisS3Bucket = new S3Bucket("thisS3Bucket", S3BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucket.bucket())
+     *             .bucket(thisS3Bucket.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucket.id())
-     *             .policy(this_.applyValue(_this_ -> _this_.json()))
+     *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
+     *             .bucket(thisS3Bucket.id())
+     *             .policy(this_.json())
      *             .build());
      * 
      *     }
@@ -3797,101 +3702,6 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      * Bucket policy with full access:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
-     * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.MergeArgs;
-     * import com.pulumi.aws.s3.BucketVersioning;
-     * import com.pulumi.aws.s3.BucketVersioningArgs;
-     * import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var dsBucket = new Bucket("dsBucket", BucketArgs.builder()
-     *             .bucket(String.format("%s-ds", prefix))
-     *             .forceDestroy(true)
-     *             .tags(StdFunctions.merge(MergeArgs.builder()
-     *                 .input(                
-     *                     tags,
-     *                     Map.of("name", String.format("%s-ds", prefix)))
-     *                 .build()).result())
-     *             .build());
-     * 
-     *         var dsVersioning = new BucketVersioning("dsVersioning", BucketVersioningArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
-     *                 .status("Disabled")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var assumeRoleForEc2 = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect("Allow")
-     *                 .actions("sts:AssumeRole")
-     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .identifiers("ec2.amazonaws.com")
-     *                     .type("Service")
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *         var dataRole = new Role("dataRole", RoleArgs.builder()
-     *             .name(String.format("%s-first-ec2s3", prefix))
-     *             .description(String.format("(%s) EC2 Assume Role role for S3 access", prefix))
-     *             .assumeRolePolicy(assumeRoleForEc2.json())
-     *             .tags(tags)
-     *             .build());
-     * 
-     *         final var ds = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .fullAccessRole(dataRole.arn())
-     *             .bucket(dsBucket.bucket())
-     *             .build());
-     * 
-     *         // allow databricks to access this bucket
-     *         var dsBucketPolicy = new BucketPolicy("dsBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .policy(ds.applyValue(_ds -> _ds.json()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
-     * * End to end workspace management guide
-     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-     * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
      * 
      */
     public static CompletableFuture<GetAwsBucketPolicyResult> getAwsBucketPolicyPlain(GetAwsBucketPolicyPlainArgs args) {
@@ -3911,12 +3721,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import com.pulumi.aws.S3BucketPolicy;
+     * import com.pulumi.aws.S3BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3930,18 +3740,18 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
+     *         var thisS3Bucket = new S3Bucket("thisS3Bucket", S3BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucket.bucket())
+     *             .bucket(thisS3Bucket.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucket.id())
-     *             .policy(this_.applyValue(_this_ -> _this_.json()))
+     *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
+     *             .bucket(thisS3Bucket.id())
+     *             .policy(this_.json())
      *             .build());
      * 
      *     }
@@ -3950,101 +3760,6 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      * Bucket policy with full access:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
-     * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.MergeArgs;
-     * import com.pulumi.aws.s3.BucketVersioning;
-     * import com.pulumi.aws.s3.BucketVersioningArgs;
-     * import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var dsBucket = new Bucket("dsBucket", BucketArgs.builder()
-     *             .bucket(String.format("%s-ds", prefix))
-     *             .forceDestroy(true)
-     *             .tags(StdFunctions.merge(MergeArgs.builder()
-     *                 .input(                
-     *                     tags,
-     *                     Map.of("name", String.format("%s-ds", prefix)))
-     *                 .build()).result())
-     *             .build());
-     * 
-     *         var dsVersioning = new BucketVersioning("dsVersioning", BucketVersioningArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
-     *                 .status("Disabled")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var assumeRoleForEc2 = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect("Allow")
-     *                 .actions("sts:AssumeRole")
-     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .identifiers("ec2.amazonaws.com")
-     *                     .type("Service")
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *         var dataRole = new Role("dataRole", RoleArgs.builder()
-     *             .name(String.format("%s-first-ec2s3", prefix))
-     *             .description(String.format("(%s) EC2 Assume Role role for S3 access", prefix))
-     *             .assumeRolePolicy(assumeRoleForEc2.json())
-     *             .tags(tags)
-     *             .build());
-     * 
-     *         final var ds = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .fullAccessRole(dataRole.arn())
-     *             .bucket(dsBucket.bucket())
-     *             .build());
-     * 
-     *         // allow databricks to access this bucket
-     *         var dsBucketPolicy = new BucketPolicy("dsBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .policy(ds.applyValue(_ds -> _ds.json()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
-     * * End to end workspace management guide
-     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-     * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
      * 
      */
     public static Output<GetAwsBucketPolicyResult> getAwsBucketPolicy(GetAwsBucketPolicyArgs args, InvokeOptions options) {
@@ -4064,12 +3779,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import com.pulumi.aws.S3BucketPolicy;
+     * import com.pulumi.aws.S3BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4083,18 +3798,18 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
+     *         var thisS3Bucket = new S3Bucket("thisS3Bucket", S3BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucket.bucket())
+     *             .bucket(thisS3Bucket.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucket.id())
-     *             .policy(this_.applyValue(_this_ -> _this_.json()))
+     *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
+     *             .bucket(thisS3Bucket.id())
+     *             .policy(this_.json())
      *             .build());
      * 
      *     }
@@ -4103,101 +3818,6 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      * Bucket policy with full access:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
-     * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.MergeArgs;
-     * import com.pulumi.aws.s3.BucketVersioning;
-     * import com.pulumi.aws.s3.BucketVersioningArgs;
-     * import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var dsBucket = new Bucket("dsBucket", BucketArgs.builder()
-     *             .bucket(String.format("%s-ds", prefix))
-     *             .forceDestroy(true)
-     *             .tags(StdFunctions.merge(MergeArgs.builder()
-     *                 .input(                
-     *                     tags,
-     *                     Map.of("name", String.format("%s-ds", prefix)))
-     *                 .build()).result())
-     *             .build());
-     * 
-     *         var dsVersioning = new BucketVersioning("dsVersioning", BucketVersioningArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
-     *                 .status("Disabled")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var assumeRoleForEc2 = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect("Allow")
-     *                 .actions("sts:AssumeRole")
-     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .identifiers("ec2.amazonaws.com")
-     *                     .type("Service")
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *         var dataRole = new Role("dataRole", RoleArgs.builder()
-     *             .name(String.format("%s-first-ec2s3", prefix))
-     *             .description(String.format("(%s) EC2 Assume Role role for S3 access", prefix))
-     *             .assumeRolePolicy(assumeRoleForEc2.json())
-     *             .tags(tags)
-     *             .build());
-     * 
-     *         final var ds = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .fullAccessRole(dataRole.arn())
-     *             .bucket(dsBucket.bucket())
-     *             .build());
-     * 
-     *         // allow databricks to access this bucket
-     *         var dsBucketPolicy = new BucketPolicy("dsBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .policy(ds.applyValue(_ds -> _ds.json()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
-     * * End to end workspace management guide
-     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-     * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
      * 
      */
     public static Output<GetAwsBucketPolicyResult> getAwsBucketPolicy(GetAwsBucketPolicyArgs args, InvokeOutputOptions options) {
@@ -4217,12 +3837,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import com.pulumi.aws.S3BucketPolicy;
+     * import com.pulumi.aws.S3BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4236,18 +3856,18 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
+     *         var thisS3Bucket = new S3Bucket("thisS3Bucket", S3BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucket.bucket())
+     *             .bucket(thisS3Bucket.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucket.id())
-     *             .policy(this_.applyValue(_this_ -> _this_.json()))
+     *         var thisS3BucketPolicy = new S3BucketPolicy("thisS3BucketPolicy", S3BucketPolicyArgs.builder()
+     *             .bucket(thisS3Bucket.id())
+     *             .policy(this_.json())
      *             .build());
      * 
      *     }
@@ -4256,101 +3876,6 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      * Bucket policy with full access:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
-     * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.MergeArgs;
-     * import com.pulumi.aws.s3.BucketVersioning;
-     * import com.pulumi.aws.s3.BucketVersioningArgs;
-     * import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var dsBucket = new Bucket("dsBucket", BucketArgs.builder()
-     *             .bucket(String.format("%s-ds", prefix))
-     *             .forceDestroy(true)
-     *             .tags(StdFunctions.merge(MergeArgs.builder()
-     *                 .input(                
-     *                     tags,
-     *                     Map.of("name", String.format("%s-ds", prefix)))
-     *                 .build()).result())
-     *             .build());
-     * 
-     *         var dsVersioning = new BucketVersioning("dsVersioning", BucketVersioningArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
-     *                 .status("Disabled")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var assumeRoleForEc2 = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect("Allow")
-     *                 .actions("sts:AssumeRole")
-     *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .identifiers("ec2.amazonaws.com")
-     *                     .type("Service")
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *         var dataRole = new Role("dataRole", RoleArgs.builder()
-     *             .name(String.format("%s-first-ec2s3", prefix))
-     *             .description(String.format("(%s) EC2 Assume Role role for S3 access", prefix))
-     *             .assumeRolePolicy(assumeRoleForEc2.json())
-     *             .tags(tags)
-     *             .build());
-     * 
-     *         final var ds = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .fullAccessRole(dataRole.arn())
-     *             .bucket(dsBucket.bucket())
-     *             .build());
-     * 
-     *         // allow databricks to access this bucket
-     *         var dsBucketPolicy = new BucketPolicy("dsBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(dsBucket.id())
-     *             .policy(ds.applyValue(_ds -> _ds.json()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
-     * * End to end workspace management guide
-     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-     * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
      * 
      */
     public static CompletableFuture<GetAwsBucketPolicyResult> getAwsBucketPolicyPlain(GetAwsBucketPolicyPlainArgs args, InvokeOptions options) {
@@ -4739,12 +4264,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4771,17 +4296,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -4814,12 +4339,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4846,17 +4371,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -4889,12 +4414,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4921,17 +4446,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -4964,12 +4489,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4996,17 +4521,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -5039,12 +4564,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5071,17 +4596,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -5114,12 +4639,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5146,17 +4671,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -5189,12 +4714,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5221,17 +4746,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -5264,12 +4789,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5296,17 +4821,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -5339,12 +4864,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5371,17 +4896,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -5414,12 +4939,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.IamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.IamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.IamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5446,17 +4971,17 @@ public final class DatabricksFunctions {
      *             .externalId("12345")
      *             .build());
      * 
-     *         var unityMetastore = new Policy("unityMetastore", PolicyArgs.builder()
+     *         var unityMetastore = new IamPolicy("unityMetastore", IamPolicyArgs.builder()
      *             .name(String.format("%s-unity-catalog-metastore-access-iam-policy", prefix))
      *             .policy(this_.json())
      *             .build());
      * 
-     *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
+     *         var metastoreDataAccess = new IamRole("metastoreDataAccess", IamRoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .build());
      * 
-     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *         var metastoreDataAccessIamRolePolicyAttachment = new IamRolePolicyAttachment("metastoreDataAccessIamRolePolicyAttachment", IamRolePolicyAttachmentArgs.builder()
      *             .role(metastoreDataAccess.name())
      *             .policyArn(unityMetastore.arn())
      *             .build());
@@ -18340,8 +17865,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -18359,14 +17884,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new Bucket("metastore", BucketArgs.builder()
+     *         var metastore = new S3Bucket("metastore", S3BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -18409,8 +17934,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -18428,14 +17953,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new Bucket("metastore", BucketArgs.builder()
+     *         var metastore = new S3Bucket("metastore", S3BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -18478,8 +18003,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -18497,14 +18022,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new Bucket("metastore", BucketArgs.builder()
+     *         var metastore = new S3Bucket("metastore", S3BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -18547,8 +18072,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -18566,14 +18091,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new Bucket("metastore", BucketArgs.builder()
+     *         var metastore = new S3Bucket("metastore", S3BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -18616,8 +18141,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -18635,14 +18160,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new Bucket("metastore", BucketArgs.builder()
+     *         var metastore = new S3Bucket("metastore", S3BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -18685,8 +18210,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -18704,14 +18229,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new Bucket("metastore", BucketArgs.builder()
+     *         var metastore = new S3Bucket("metastore", S3BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -18754,8 +18279,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.Bucket;
-     * import com.pulumi.aws.s3.BucketArgs;
+     * import com.pulumi.aws.S3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -18773,14 +18298,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new Bucket("metastore", BucketArgs.builder()
+     *         var metastore = new S3Bucket("metastore", S3BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
+     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());

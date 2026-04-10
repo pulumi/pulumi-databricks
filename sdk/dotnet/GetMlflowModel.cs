@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisMlflowModel = new Databricks.MlflowModel("this", new()
+        ///     var thisMlflowModel = new Databricks.Index.MlflowModel("this", new()
         ///     {
         ///         Name = "My MLflow Model",
         ///         Description = "My MLflow model description",
@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var @this = Databricks.GetMlflowModel.Invoke(new()
+        ///     var @this = Databricks.Index.GetMlflowModel.Invoke(new()
         ///     {
         ///         Name = "My MLflow Model",
         ///     });
@@ -65,12 +65,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMlflowModel.Invoke(new()
+        ///     var @this = Databricks.Index.GetMlflowModel.Invoke(new()
         ///     {
         ///         Name = "My MLflow Model with multiple versions",
         ///     });
         /// 
-        ///     var thisModelServing = new Databricks.ModelServing("this", new()
+        ///     var thisModelServing = new Databricks.Index.ModelServing("this", new()
         ///     {
         ///         Name = "model-serving-endpoint",
         ///         Config = new Databricks.Inputs.ModelServingConfigArgs
@@ -110,7 +110,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisMlflowModel = new Databricks.MlflowModel("this", new()
+        ///     var thisMlflowModel = new Databricks.Index.MlflowModel("this", new()
         ///     {
         ///         Name = "My MLflow Model",
         ///         Description = "My MLflow model description",
@@ -129,7 +129,7 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var @this = Databricks.GetMlflowModel.Invoke(new()
+        ///     var @this = Databricks.Index.GetMlflowModel.Invoke(new()
         ///     {
         ///         Name = "My MLflow Model",
         ///     });
@@ -149,12 +149,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMlflowModel.Invoke(new()
+        ///     var @this = Databricks.Index.GetMlflowModel.Invoke(new()
         ///     {
         ///         Name = "My MLflow Model with multiple versions",
         ///     });
         /// 
-        ///     var thisModelServing = new Databricks.ModelServing("this", new()
+        ///     var thisModelServing = new Databricks.Index.ModelServing("this", new()
         ///     {
         ///         Name = "model-serving-endpoint",
         ///         Config = new Databricks.Inputs.ModelServingConfigArgs
@@ -194,7 +194,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisMlflowModel = new Databricks.MlflowModel("this", new()
+        ///     var thisMlflowModel = new Databricks.Index.MlflowModel("this", new()
         ///     {
         ///         Name = "My MLflow Model",
         ///         Description = "My MLflow model description",
@@ -213,7 +213,7 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var @this = Databricks.GetMlflowModel.Invoke(new()
+        ///     var @this = Databricks.Index.GetMlflowModel.Invoke(new()
         ///     {
         ///         Name = "My MLflow Model",
         ///     });
@@ -233,12 +233,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMlflowModel.Invoke(new()
+        ///     var @this = Databricks.Index.GetMlflowModel.Invoke(new()
         ///     {
         ///         Name = "My MLflow Model with multiple versions",
         ///     });
         /// 
-        ///     var thisModelServing = new Databricks.ModelServing("this", new()
+        ///     var thisModelServing = new Databricks.Index.ModelServing("this", new()
         ///     {
         ///         Name = "model-serving-endpoint",
         ///         Config = new Databricks.Inputs.ModelServingConfigArgs

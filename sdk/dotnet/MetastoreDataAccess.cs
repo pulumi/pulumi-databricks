@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Metastore("this", new()
+    ///     var @this = new Databricks.Index.Metastore("this", new()
     ///     {
     ///         Name = "primary",
     ///         StorageRoot = $"s3://{metastore.Id}/metastore",
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var thisMetastoreDataAccess = new Databricks.MetastoreDataAccess("this", new()
+    ///     var thisMetastoreDataAccess = new Databricks.Index.MetastoreDataAccess("this", new()
     ///     {
     ///         MetastoreId = @this.Id,
     ///         Name = metastoreDataAccess.Name,
@@ -60,10 +60,10 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Metastore("this", new()
+    ///     var @this = new Databricks.Index.Metastore("this", new()
     ///     {
     ///         Name = "primary",
-    ///         StorageRoot = Std.Format.Invoke(new()
+    ///         StorageRoot = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "abfss://%s@%s.dfs.core.windows.net/",
     ///             Args = new[]
@@ -77,7 +77,7 @@ namespace Pulumi.Databricks
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var thisMetastoreDataAccess = new Databricks.MetastoreDataAccess("this", new()
+    ///     var thisMetastoreDataAccess = new Databricks.Index.MetastoreDataAccess("this", new()
     ///     {
     ///         MetastoreId = @this.Id,
     ///         Name = "mi_dac",

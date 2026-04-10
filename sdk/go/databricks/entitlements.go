@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			me, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//			me, err := databricks.GetUser(ctx, &databricks.LookupUserArgs{
 //				UserName: pulumi.StringRef("me@example.com"),
 //			}, nil)
 //			if err != nil {
@@ -67,7 +67,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
+//			this, err := databricks.GetServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
 //				ApplicationId: pulumi.StringRef("11111111-2222-3333-4444-555666777888"),
 //			}, nil)
 //			if err != nil {
@@ -101,7 +101,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			users, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			users, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "users",
 //			}, nil)
 //			if err != nil {

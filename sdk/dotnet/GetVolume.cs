@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetVolumes.Invoke(new()
+        ///     var all = Databricks.Index.GetVolumes.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetVolume.Invoke(new()
+        ///     var @this = Databricks.Index.GetVolume.Invoke(new()
         ///     {
         ///         Name = "catalog.schema.volume",
         ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetVolumes.Invoke(new()
+        ///     var all = Databricks.Index.GetVolumes.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
@@ -108,7 +108,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetVolume.Invoke(new()
+        ///     var @this = Databricks.Index.GetVolume.Invoke(new()
         ///     {
         ///         Name = "catalog.schema.volume",
         ///     });
@@ -145,7 +145,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetVolumes.Invoke(new()
+        ///     var all = Databricks.Index.GetVolumes.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetVolume.Invoke(new()
+        ///     var @this = Databricks.Index.GetVolume.Invoke(new()
         ///     {
         ///         Name = "catalog.schema.volume",
         ///     });

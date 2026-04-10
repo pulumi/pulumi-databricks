@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTagPolicy = Databricks.GetTagPolicy.Invoke(new()
+        ///     var exampleTagPolicy = Databricks.Index.GetTagPolicy.Invoke(new()
         ///     {
         ///         TagKey = "example_tag_key",
         ///     });
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTagPolicy = Databricks.GetTagPolicy.Invoke(new()
+        ///     var exampleTagPolicy = Databricks.Index.GetTagPolicy.Invoke(new()
         ///     {
         ///         TagKey = "example_tag_key",
         ///     });
@@ -114,7 +114,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTagPolicy = Databricks.GetTagPolicy.Invoke(new()
+        ///     var exampleTagPolicy = Databricks.Index.GetTagPolicy.Invoke(new()
         ///     {
         ///         TagKey = "example_tag_key",
         ///     });

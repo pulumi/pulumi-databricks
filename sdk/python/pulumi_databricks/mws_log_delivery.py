@@ -420,47 +420,47 @@ class MwsLogDelivery(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        logdelivery_bucket = aws.s3.Bucket("logdelivery",
-            bucket=f"{prefix}-logdelivery",
-            acl=aws.s3.CannedAcl.PRIVATE,
+        logdelivery_s3_bucket = aws.S3Bucket("logdelivery",
+            bucket=f{prefix}-logdelivery,
+            acl=private,
             force_destroy=True,
             tags=std.merge(input=[
                 tags,
                 {
-                    "name": f"{prefix}-logdelivery",
+                    name: f{prefix}-logdelivery,
                 },
             ]).result)
-        logdelivery_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("logdelivery",
-            bucket=logdelivery_bucket.id,
+        logdelivery_s3_bucket_public_access_block = aws.S3BucketPublicAccessBlock("logdelivery",
+            bucket=logdelivery_s3_bucket.id,
             ignore_public_acls=True)
         logdelivery = databricks.get_aws_assume_role_policy(external_id=databricks_account_id,
             for_log_delivery=True)
-        logdelivery_versioning = aws.s3.BucketVersioning("logdelivery_versioning",
-            bucket=logdelivery_bucket.id,
-            versioning_configuration={
-                "status": "Disabled",
-            })
-        logdelivery_role = aws.iam.Role("logdelivery",
-            name=f"{prefix}-logdelivery",
-            description=f"({prefix}) UsageDelivery role",
+        logdelivery_versioning = aws.S3BucketVersioning("logdelivery_versioning",
+            bucket=logdelivery_s3_bucket.id,
+            versioning_configuration=[{
+                status: Disabled,
+            }])
+        logdelivery_iam_role = aws.IamRole("logdelivery",
+            name=f{prefix}-logdelivery,
+            description=f({prefix}) UsageDelivery role,
             assume_role_policy=logdelivery.json,
             tags=tags)
-        logdelivery_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(full_access_role=logdelivery_role.arn,
-            bucket=logdelivery_bucket.bucket)
-        logdelivery_bucket_policy = aws.s3.BucketPolicy("logdelivery",
-            bucket=logdelivery_bucket.id,
+        logdelivery_get_aws_bucket_policy = databricks.get_aws_bucket_policy(full_access_role=logdelivery_iam_role["arn"],
+            bucket=logdelivery_s3_bucket["bucket"])
+        logdelivery_s3_bucket_policy = aws.S3BucketPolicy("logdelivery",
+            bucket=logdelivery_s3_bucket.id,
             policy=logdelivery_get_aws_bucket_policy.json)
         wait = time.Sleep("wait", create_duration="10s",
-        opts = pulumi.ResourceOptions(depends_on=[logdelivery_role]))
+        opts = pulumi.ResourceOptions(depends_on=[logdelivery_iam_role]))
         log_writer = databricks.MwsCredentials("log_writer",
             account_id=databricks_account_id,
             credentials_name="Usage Delivery",
-            role_arn=logdelivery_role.arn,
+            role_arn=logdelivery_iam_role["arn"],
             opts = pulumi.ResourceOptions(depends_on=[wait]))
         log_bucket = databricks.MwsStorageConfigurations("log_bucket",
             account_id=databricks_account_id,
             storage_configuration_name="Usage Logs",
-            bucket_name=logdelivery_bucket.bucket)
+            bucket_name=logdelivery_s3_bucket["bucket"])
         usage_logs = databricks.MwsLogDelivery("usage_logs",
             account_id=databricks_account_id,
             credentials_id=log_writer.credentials_id,
@@ -574,47 +574,47 @@ class MwsLogDelivery(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        logdelivery_bucket = aws.s3.Bucket("logdelivery",
-            bucket=f"{prefix}-logdelivery",
-            acl=aws.s3.CannedAcl.PRIVATE,
+        logdelivery_s3_bucket = aws.S3Bucket("logdelivery",
+            bucket=f{prefix}-logdelivery,
+            acl=private,
             force_destroy=True,
             tags=std.merge(input=[
                 tags,
                 {
-                    "name": f"{prefix}-logdelivery",
+                    name: f{prefix}-logdelivery,
                 },
             ]).result)
-        logdelivery_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("logdelivery",
-            bucket=logdelivery_bucket.id,
+        logdelivery_s3_bucket_public_access_block = aws.S3BucketPublicAccessBlock("logdelivery",
+            bucket=logdelivery_s3_bucket.id,
             ignore_public_acls=True)
         logdelivery = databricks.get_aws_assume_role_policy(external_id=databricks_account_id,
             for_log_delivery=True)
-        logdelivery_versioning = aws.s3.BucketVersioning("logdelivery_versioning",
-            bucket=logdelivery_bucket.id,
-            versioning_configuration={
-                "status": "Disabled",
-            })
-        logdelivery_role = aws.iam.Role("logdelivery",
-            name=f"{prefix}-logdelivery",
-            description=f"({prefix}) UsageDelivery role",
+        logdelivery_versioning = aws.S3BucketVersioning("logdelivery_versioning",
+            bucket=logdelivery_s3_bucket.id,
+            versioning_configuration=[{
+                status: Disabled,
+            }])
+        logdelivery_iam_role = aws.IamRole("logdelivery",
+            name=f{prefix}-logdelivery,
+            description=f({prefix}) UsageDelivery role,
             assume_role_policy=logdelivery.json,
             tags=tags)
-        logdelivery_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(full_access_role=logdelivery_role.arn,
-            bucket=logdelivery_bucket.bucket)
-        logdelivery_bucket_policy = aws.s3.BucketPolicy("logdelivery",
-            bucket=logdelivery_bucket.id,
+        logdelivery_get_aws_bucket_policy = databricks.get_aws_bucket_policy(full_access_role=logdelivery_iam_role["arn"],
+            bucket=logdelivery_s3_bucket["bucket"])
+        logdelivery_s3_bucket_policy = aws.S3BucketPolicy("logdelivery",
+            bucket=logdelivery_s3_bucket.id,
             policy=logdelivery_get_aws_bucket_policy.json)
         wait = time.Sleep("wait", create_duration="10s",
-        opts = pulumi.ResourceOptions(depends_on=[logdelivery_role]))
+        opts = pulumi.ResourceOptions(depends_on=[logdelivery_iam_role]))
         log_writer = databricks.MwsCredentials("log_writer",
             account_id=databricks_account_id,
             credentials_name="Usage Delivery",
-            role_arn=logdelivery_role.arn,
+            role_arn=logdelivery_iam_role["arn"],
             opts = pulumi.ResourceOptions(depends_on=[wait]))
         log_bucket = databricks.MwsStorageConfigurations("log_bucket",
             account_id=databricks_account_id,
             storage_configuration_name="Usage Logs",
-            bucket_name=logdelivery_bucket.bucket)
+            bucket_name=logdelivery_s3_bucket["bucket"])
         usage_logs = databricks.MwsLogDelivery("usage_logs",
             account_id=databricks_account_id,
             credentials_id=log_writer.credentials_id,

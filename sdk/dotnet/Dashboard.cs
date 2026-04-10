@@ -26,12 +26,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var starter = Databricks.GetSqlWarehouse.Invoke(new()
+    ///     var starter = Databricks.Index.GetSqlWarehouse.Invoke(new()
     ///     {
     ///         Name = "Starter Warehouse",
     ///     });
     /// 
-    ///     var dashboard = new Databricks.Dashboard("dashboard", new()
+    ///     var dashboard = new Databricks.Index.Dashboard("dashboard", new()
     ///     {
     ///         DisplayName = "New Dashboard",
     ///         WarehouseId = starter.Apply(getSqlWarehouseResult =&gt; getSqlWarehouseResult.Id),

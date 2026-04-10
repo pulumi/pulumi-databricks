@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var email = new Databricks.NotificationDestination("email", new()
+        ///     var email = new Databricks.Index.NotificationDestination("email", new()
         ///     {
         ///         DisplayName = "Email Destination",
         ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -41,7 +41,7 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var slack = new Databricks.NotificationDestination("slack", new()
+        ///     var slack = new Databricks.Index.NotificationDestination("slack", new()
         ///     {
         ///         DisplayName = "Slack Destination",
         ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -54,10 +54,10 @@ namespace Pulumi.Databricks
         ///     });
         /// 
         ///     // Lists all notification desitnations
-        ///     var @this = Databricks.GetNotificationDestinations.Invoke();
+        ///     var @this = Databricks.Index.GetNotificationDestinations.Invoke();
         /// 
         ///     // List destinations of specific type and name
-        ///     var filteredNotification = Databricks.GetNotificationDestinations.Invoke(new()
+        ///     var filteredNotification = Databricks.Index.GetNotificationDestinations.Invoke(new()
         ///     {
         ///         DisplayNameContains = "Destination",
         ///         Type = "EMAIL",
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var email = new Databricks.NotificationDestination("email", new()
+        ///     var email = new Databricks.Index.NotificationDestination("email", new()
         ///     {
         ///         DisplayName = "Email Destination",
         ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -99,7 +99,7 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var slack = new Databricks.NotificationDestination("slack", new()
+        ///     var slack = new Databricks.Index.NotificationDestination("slack", new()
         ///     {
         ///         DisplayName = "Slack Destination",
         ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -112,10 +112,10 @@ namespace Pulumi.Databricks
         ///     });
         /// 
         ///     // Lists all notification desitnations
-        ///     var @this = Databricks.GetNotificationDestinations.Invoke();
+        ///     var @this = Databricks.Index.GetNotificationDestinations.Invoke();
         /// 
         ///     // List destinations of specific type and name
-        ///     var filteredNotification = Databricks.GetNotificationDestinations.Invoke(new()
+        ///     var filteredNotification = Databricks.Index.GetNotificationDestinations.Invoke(new()
         ///     {
         ///         DisplayNameContains = "Destination",
         ///         Type = "EMAIL",
@@ -142,7 +142,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var email = new Databricks.NotificationDestination("email", new()
+        ///     var email = new Databricks.Index.NotificationDestination("email", new()
         ///     {
         ///         DisplayName = "Email Destination",
         ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -157,7 +157,7 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var slack = new Databricks.NotificationDestination("slack", new()
+        ///     var slack = new Databricks.Index.NotificationDestination("slack", new()
         ///     {
         ///         DisplayName = "Slack Destination",
         ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -170,10 +170,10 @@ namespace Pulumi.Databricks
         ///     });
         /// 
         ///     // Lists all notification desitnations
-        ///     var @this = Databricks.GetNotificationDestinations.Invoke();
+        ///     var @this = Databricks.Index.GetNotificationDestinations.Invoke();
         /// 
         ///     // List destinations of specific type and name
-        ///     var filteredNotification = Databricks.GetNotificationDestinations.Invoke(new()
+        ///     var filteredNotification = Databricks.Index.GetNotificationDestinations.Invoke(new()
         ///     {
         ///         DisplayNameContains = "Destination",
         ///         Type = "EMAIL",

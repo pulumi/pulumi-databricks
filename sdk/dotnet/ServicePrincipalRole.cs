@@ -26,17 +26,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instanceProfile = new Databricks.InstanceProfile("instance_profile", new()
+    ///     var instanceProfile = new Databricks.Index.InstanceProfile("instance_profile", new()
     ///     {
     ///         InstanceProfileArn = "my_instance_profile_arn",
     ///     });
     /// 
-    ///     var @this = new Databricks.ServicePrincipal("this", new()
+    ///     var @this = new Databricks.Index.ServicePrincipal("this", new()
     ///     {
     ///         DisplayName = "My Service Principal",
     ///     });
     /// 
-    ///     var myServicePrincipalInstanceProfile = new Databricks.ServicePrincipalRole("my_service_principal_instance_profile", new()
+    ///     var myServicePrincipalInstanceProfile = new Databricks.Index.ServicePrincipalRole("my_service_principal_instance_profile", new()
     ///     {
     ///         ServicePrincipalId = @this.Id,
     ///         Role = instanceProfile.Id,
@@ -57,12 +57,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfAdmin = new Databricks.ServicePrincipal("tf_admin", new()
+    ///     var tfAdmin = new Databricks.Index.ServicePrincipal("tf_admin", new()
     ///     {
     ///         DisplayName = "Pulumi Admin",
     ///     });
     /// 
-    ///     var tfAdminAccount = new Databricks.ServicePrincipalRole("tf_admin_account", new()
+    ///     var tfAdminAccount = new Databricks.Index.ServicePrincipalRole("tf_admin_account", new()
     ///     {
     ///         ServicePrincipalId = tfAdmin.Id,
     ///         Role = "account_admin",

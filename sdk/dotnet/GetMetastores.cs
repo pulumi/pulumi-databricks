@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetMetastores.Invoke();
+        ///     var all = Databricks.Index.GetMetastores.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetMetastores.Invoke();
+        ///     var all = Databricks.Index.GetMetastores.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -108,7 +108,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetMetastores.Invoke();
+        ///     var all = Databricks.Index.GetMetastores.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

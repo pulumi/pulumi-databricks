@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var q1v1 = new Databricks.SqlVisualization("q1v1", new()
+    ///     var q1v1 = new Databricks.Index.SqlVisualization("q1v1", new()
     ///     {
     ///         QueryId = q1.Id,
     ///         Type = "table",

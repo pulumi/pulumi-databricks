@@ -29,7 +29,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         ///     var storageContainer = "test";
         /// 
-        ///     var withNfs = new Databricks.Cluster("with_nfs", new()
+        ///     var withNfs = new Databricks.Index.Cluster("with_nfs", new()
         ///     {
         ///         ClusterMountInfos = new[]
         ///         {

@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myCustomDirectory = new Databricks.Directory("my_custom_directory", new()
+    ///     var myCustomDirectory = new Databricks.Index.Directory("my_custom_directory", new()
     ///     {
     ///         Path = "/my_custom_directory",
     ///     });

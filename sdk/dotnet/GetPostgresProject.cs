@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetPostgresProject.Invoke(new()
+        ///     var @this = Databricks.Index.GetPostgresProject.Invoke(new()
         ///     {
         ///         Name = "projects/my-project",
         ///     });
@@ -64,7 +64,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetPostgresProject.Invoke(new()
+        ///     var @this = Databricks.Index.GetPostgresProject.Invoke(new()
         ///     {
         ///         Name = "projects/my-project",
         ///     });
@@ -99,7 +99,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetPostgresProject.Invoke(new()
+        ///     var @this = Databricks.Index.GetPostgresProject.Invoke(new()
         ///     {
         ///         Name = "projects/my-project",
         ///     });

@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var withGpu = Databricks.GetNodeType.Invoke(new()
+        ///     var withGpu = Databricks.Index.GetNodeType.Invoke(new()
         ///     {
         ///         LocalDisk = true,
         ///         MinCores = 16,
@@ -36,13 +36,13 @@ namespace Pulumi.Databricks
         ///         MinGpus = 1,
         ///     });
         /// 
-        ///     var gpuMl = Databricks.GetSparkVersion.Invoke(new()
+        ///     var gpuMl = Databricks.Index.GetSparkVersion.Invoke(new()
         ///     {
         ///         Gpu = true,
         ///         Ml = true,
         ///     });
         /// 
-        ///     var research = new Databricks.Cluster("research", new()
+        ///     var research = new Databricks.Index.Cluster("research", new()
         ///     {
         ///         ClusterName = "Research Cluster",
         ///         SparkVersion = gpuMl.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
@@ -88,7 +88,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var withGpu = Databricks.GetNodeType.Invoke(new()
+        ///     var withGpu = Databricks.Index.GetNodeType.Invoke(new()
         ///     {
         ///         LocalDisk = true,
         ///         MinCores = 16,
@@ -96,13 +96,13 @@ namespace Pulumi.Databricks
         ///         MinGpus = 1,
         ///     });
         /// 
-        ///     var gpuMl = Databricks.GetSparkVersion.Invoke(new()
+        ///     var gpuMl = Databricks.Index.GetSparkVersion.Invoke(new()
         ///     {
         ///         Gpu = true,
         ///         Ml = true,
         ///     });
         /// 
-        ///     var research = new Databricks.Cluster("research", new()
+        ///     var research = new Databricks.Index.Cluster("research", new()
         ///     {
         ///         ClusterName = "Research Cluster",
         ///         SparkVersion = gpuMl.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
@@ -148,7 +148,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var withGpu = Databricks.GetNodeType.Invoke(new()
+        ///     var withGpu = Databricks.Index.GetNodeType.Invoke(new()
         ///     {
         ///         LocalDisk = true,
         ///         MinCores = 16,
@@ -156,13 +156,13 @@ namespace Pulumi.Databricks
         ///         MinGpus = 1,
         ///     });
         /// 
-        ///     var gpuMl = Databricks.GetSparkVersion.Invoke(new()
+        ///     var gpuMl = Databricks.Index.GetSparkVersion.Invoke(new()
         ///     {
         ///         Gpu = true,
         ///         Ml = true,
         ///     });
         /// 
-        ///     var research = new Databricks.Cluster("research", new()
+        ///     var research = new Databricks.Index.Cluster("research", new()
         ///     {
         ///         ClusterName = "Research Cluster",
         ///         SparkVersion = gpuMl.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),

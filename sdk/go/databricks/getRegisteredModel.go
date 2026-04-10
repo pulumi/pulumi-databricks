@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupRegisteredModel(ctx, &databricks.LookupRegisteredModelArgs{
+//			_, err := databricks.GetRegisteredModel(ctx, &databricks.LookupRegisteredModelArgs{
 //				FullName: "main.default.my_model",
 //			}, nil)
 //			if err != nil {

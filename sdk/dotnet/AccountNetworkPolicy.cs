@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNetworkPolicy = new Databricks.AccountNetworkPolicy("example_network_policy", new()
+    ///     var exampleNetworkPolicy = new Databricks.Index.AccountNetworkPolicy("example_network_policy", new()
     ///     {
     ///         NetworkPolicyId = "example-network-policy",
     ///         Egress = new Databricks.Inputs.AccountNetworkPolicyEgressArgs

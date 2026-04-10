@@ -33,13 +33,13 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     var region = config.RequireObject&lt;dynamic&gt;("region");
     ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
-    ///     var ncc = new Databricks.MwsNetworkConnectivityConfig("ncc", new()
+    ///     var ncc = new Databricks.Index.MwsNetworkConnectivityConfig("ncc", new()
     ///     {
     ///         Name = $"ncc-for-{prefix}",
     ///         Region = region,
     ///     });
     /// 
-    ///     var nccBinding = new Databricks.MwsNccBinding("ncc_binding", new()
+    ///     var nccBinding = new Databricks.Index.MwsNccBinding("ncc_binding", new()
     ///     {
     ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
     ///         WorkspaceId = databricksWorkspaceId,
