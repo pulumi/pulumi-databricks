@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.OnlineTable("this", new()
+    ///     var @this = new Databricks.Index.OnlineTable("this", new()
     ///     {
     ///         Name = "main.default.online_table",
     ///         Spec = new Databricks.Inputs.OnlineTableSpecArgs

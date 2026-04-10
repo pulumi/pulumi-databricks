@@ -28,9 +28,9 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetCurrentConfig.Invoke();
+        ///     var @this = Databricks.Index.GetCurrentConfig.Invoke();
         /// 
-        ///     var external = new Databricks.StorageCredential("external", new()
+        ///     var external = new Databricks.Index.StorageCredential("external", new()
         ///     {
         ///         AwsIamRole = Enumerable.Single(),
         ///         AzureManagedIdentity = Enumerable.Single(),
@@ -81,9 +81,9 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetCurrentConfig.Invoke();
+        ///     var @this = Databricks.Index.GetCurrentConfig.Invoke();
         /// 
-        ///     var external = new Databricks.StorageCredential("external", new()
+        ///     var external = new Databricks.Index.StorageCredential("external", new()
         ///     {
         ///         AwsIamRole = Enumerable.Single(),
         ///         AzureManagedIdentity = Enumerable.Single(),
@@ -134,9 +134,9 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetCurrentConfig.Invoke();
+        ///     var @this = Databricks.Index.GetCurrentConfig.Invoke();
         /// 
-        ///     var external = new Databricks.StorageCredential("external", new()
+        ///     var external = new Databricks.Index.StorageCredential("external", new()
         ///     {
         ///         AwsIamRole = Enumerable.Single(),
         ///         AzureManagedIdentity = Enumerable.Single(),

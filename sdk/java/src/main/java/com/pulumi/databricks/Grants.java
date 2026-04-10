@@ -594,7 +594,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
- *             .credential(external.id())
+ *             .credential(external.databricksCredentialId())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal("Data Engineers")
  *                 .privileges("CREATE_CONNECTION")

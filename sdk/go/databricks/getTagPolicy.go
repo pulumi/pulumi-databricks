@@ -40,7 +40,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupTagPolicy(ctx, &databricks.LookupTagPolicyArgs{
+//			_, err := databricks.GetTagPolicy(ctx, &databricks.LookupTagPolicyArgs{
 //				TagKey: "example_tag_key",
 //			}, nil)
 //			if err != nil {

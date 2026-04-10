@@ -24,9 +24,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = Databricks.GetCurrentUser.Invoke();
+    ///     var me = Databricks.Index.GetCurrentUser.Invoke();
     /// 
-    ///     var @this = new Databricks.SqlEndpoint("this", new()
+    ///     var @this = new Databricks.Index.SqlEndpoint("this", new()
     ///     {
     ///         Name = $"Endpoint of {me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}",
     ///         ClusterSize = "Small",
@@ -179,6 +179,12 @@ namespace Pulumi.Databricks
         public Output<string?> SpotInstancePolicy { get; private set; } = null!;
 
         /// <summary>
+        /// the unique ID of the SQL warehouse.
+        /// </summary>
+        [Output("sqlEndpointId")]
+        public Output<string> SqlEndpointId { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of the endpoint.
         /// </summary>
         [Output("state")]
@@ -320,6 +326,12 @@ namespace Pulumi.Databricks
         public Input<string>? SpotInstancePolicy { get; set; }
 
         /// <summary>
+        /// the unique ID of the SQL warehouse.
+        /// </summary>
+        [Input("sqlEndpointId")]
+        public Input<string>? SqlEndpointId { get; set; }
+
+        /// <summary>
         /// Databricks tags all endpoint resources with these tags.
         /// </summary>
         [Input("tags")]
@@ -457,6 +469,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("spotInstancePolicy")]
         public Input<string>? SpotInstancePolicy { get; set; }
+
+        /// <summary>
+        /// the unique ID of the SQL warehouse.
+        /// </summary>
+        [Input("sqlEndpointId")]
+        public Input<string>? SqlEndpointId { get; set; }
 
         /// <summary>
         /// The current state of the endpoint.

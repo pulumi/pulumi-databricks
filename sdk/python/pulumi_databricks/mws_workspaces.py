@@ -1091,58 +1091,58 @@ class MwsWorkspaces(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        naming = random.RandomString("naming",
+        naming = random.String("naming",
             special=False,
             upper=False,
             length=6)
-        prefix = naming.result.apply(lambda result: f"dltp{result}")
+        prefix = f"dltp{naming['result']}"
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.iam.Role("cross_account_role",
-            name=f"{prefix}-crossaccount",
+        cross_account_role = aws.IamRole("cross_account_role",
+            name=f{prefix}-crossaccount,
             assume_role_policy=this.json,
             tags=tags)
         this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_role_policy = aws.iam.RolePolicy("this",
-            name=f"{prefix}-policy",
+        this_iam_role_policy = aws.IamRolePolicy("this",
+            name=f{prefix}-policy,
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role.arn)
-        root_storage_bucket = aws.s3.Bucket("root_storage_bucket",
-            bucket=f"{prefix}-rootbucket",
-            acl=aws.s3.CannedAcl.PRIVATE,
+            role_arn=cross_account_role["arn"])
+        root_storage_bucket = aws.S3Bucket("root_storage_bucket",
+            bucket=f{prefix}-rootbucket,
+            acl=private,
             force_destroy=True,
             tags=tags)
-        root_versioning = aws.s3.BucketVersioning("root_versioning",
+        root_versioning = aws.S3BucketVersioning("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration={
-                "status": "Disabled",
-            })
-        root_storage_bucket_bucket_server_side_encryption_configuration = aws.s3.BucketServerSideEncryptionConfiguration("root_storage_bucket",
-            bucket=root_storage_bucket.bucket,
-            rules=[{
-                "apply_server_side_encryption_by_default": {
-                    "sse_algorithm": "AES256",
-                },
+            versioning_configuration=[{
+                status: Disabled,
             }])
-        root_storage_bucket_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("root_storage_bucket",
+        root_storage_bucket_s3_bucket_server_side_encryption_configuration = aws.S3BucketServerSideEncryptionConfiguration("root_storage_bucket",
+            bucket=root_storage_bucket.bucket,
+            rule=[{
+                applyServerSideEncryptionByDefault: [{
+                    sseAlgorithm: AES256,
+                }],
+            }])
+        root_storage_bucket_s3_bucket_public_access_block = aws.S3BucketPublicAccessBlock("root_storage_bucket",
             bucket=root_storage_bucket.id,
             block_public_acls=True,
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
             opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
-        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket.bucket)
-        root_bucket_policy = aws.s3.BucketPolicy("root_bucket_policy",
+        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy(bucket=root_storage_bucket["bucket"])
+        root_bucket_policy = aws.S3BucketPolicy("root_bucket_policy",
             bucket=root_storage_bucket.id,
             policy=this_get_aws_bucket_policy.json,
-            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
+            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_s3_bucket_public_access_block]))
         this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket.bucket)
+            bucket_name=root_storage_bucket["bucket"])
         this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,
@@ -1212,8 +1212,8 @@ class MwsWorkspaces(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        me = google.index.client_openid_userinfo()
-        current = google.index.client_config()
+        me = google.client_openid_userinfo()
+        current = google.client_config()
         this = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,
@@ -1375,58 +1375,58 @@ class MwsWorkspaces(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        naming = random.RandomString("naming",
+        naming = random.String("naming",
             special=False,
             upper=False,
             length=6)
-        prefix = naming.result.apply(lambda result: f"dltp{result}")
+        prefix = f"dltp{naming['result']}"
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.iam.Role("cross_account_role",
-            name=f"{prefix}-crossaccount",
+        cross_account_role = aws.IamRole("cross_account_role",
+            name=f{prefix}-crossaccount,
             assume_role_policy=this.json,
             tags=tags)
         this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_role_policy = aws.iam.RolePolicy("this",
-            name=f"{prefix}-policy",
+        this_iam_role_policy = aws.IamRolePolicy("this",
+            name=f{prefix}-policy,
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role.arn)
-        root_storage_bucket = aws.s3.Bucket("root_storage_bucket",
-            bucket=f"{prefix}-rootbucket",
-            acl=aws.s3.CannedAcl.PRIVATE,
+            role_arn=cross_account_role["arn"])
+        root_storage_bucket = aws.S3Bucket("root_storage_bucket",
+            bucket=f{prefix}-rootbucket,
+            acl=private,
             force_destroy=True,
             tags=tags)
-        root_versioning = aws.s3.BucketVersioning("root_versioning",
+        root_versioning = aws.S3BucketVersioning("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration={
-                "status": "Disabled",
-            })
-        root_storage_bucket_bucket_server_side_encryption_configuration = aws.s3.BucketServerSideEncryptionConfiguration("root_storage_bucket",
-            bucket=root_storage_bucket.bucket,
-            rules=[{
-                "apply_server_side_encryption_by_default": {
-                    "sse_algorithm": "AES256",
-                },
+            versioning_configuration=[{
+                status: Disabled,
             }])
-        root_storage_bucket_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("root_storage_bucket",
+        root_storage_bucket_s3_bucket_server_side_encryption_configuration = aws.S3BucketServerSideEncryptionConfiguration("root_storage_bucket",
+            bucket=root_storage_bucket.bucket,
+            rule=[{
+                applyServerSideEncryptionByDefault: [{
+                    sseAlgorithm: AES256,
+                }],
+            }])
+        root_storage_bucket_s3_bucket_public_access_block = aws.S3BucketPublicAccessBlock("root_storage_bucket",
             bucket=root_storage_bucket.id,
             block_public_acls=True,
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
             opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
-        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket.bucket)
-        root_bucket_policy = aws.s3.BucketPolicy("root_bucket_policy",
+        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy(bucket=root_storage_bucket["bucket"])
+        root_bucket_policy = aws.S3BucketPolicy("root_bucket_policy",
             bucket=root_storage_bucket.id,
             policy=this_get_aws_bucket_policy.json,
-            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
+            opts = pulumi.ResourceOptions(depends_on=[root_storage_bucket_s3_bucket_public_access_block]))
         this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket.bucket)
+            bucket_name=root_storage_bucket["bucket"])
         this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,
@@ -1496,8 +1496,8 @@ class MwsWorkspaces(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        me = google.index.client_openid_userinfo()
-        current = google.index.client_config()
+        me = google.client_openid_userinfo()
+        current = google.client_config()
         this = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,

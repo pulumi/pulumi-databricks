@@ -27,12 +27,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var all = await Databricks.GetDashboards.InvokeAsync();
+        ///     var all = await Databricks.Index.GetDashboards.InvokeAsync();
         /// 
-        ///     var dashboardsPermissions = new List&lt;Databricks.Permissions&gt;();
+        ///     var dashboardsPermissions = new List&lt;Databricks.Index.Permissions&gt;();
         ///     foreach (var range in all.Dashboards.Select(__item =&gt; __item.DashboardId).ToList().Select((v, k) =&gt; new { Key = k, Value = v }))
         ///     {
-        ///         dashboardsPermissions.Add(new Databricks.Permissions($"dashboards_permissions-{range.Key}", new()
+        ///         dashboardsPermissions.Add(new Databricks.Index.Permissions($"dashboards_permissions-{range.Key}", new()
         ///         {
         ///             Depends = new[]
         ///             {
@@ -71,12 +71,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var all = await Databricks.GetDashboards.InvokeAsync();
+        ///     var all = await Databricks.Index.GetDashboards.InvokeAsync();
         /// 
-        ///     var dashboardsPermissions = new List&lt;Databricks.Permissions&gt;();
+        ///     var dashboardsPermissions = new List&lt;Databricks.Index.Permissions&gt;();
         ///     foreach (var range in all.Dashboards.Select(__item =&gt; __item.DashboardId).ToList().Select((v, k) =&gt; new { Key = k, Value = v }))
         ///     {
-        ///         dashboardsPermissions.Add(new Databricks.Permissions($"dashboards_permissions-{range.Key}", new()
+        ///         dashboardsPermissions.Add(new Databricks.Index.Permissions($"dashboards_permissions-{range.Key}", new()
         ///         {
         ///             Depends = new[]
         ///             {
@@ -115,12 +115,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var all = await Databricks.GetDashboards.InvokeAsync();
+        ///     var all = await Databricks.Index.GetDashboards.InvokeAsync();
         /// 
-        ///     var dashboardsPermissions = new List&lt;Databricks.Permissions&gt;();
+        ///     var dashboardsPermissions = new List&lt;Databricks.Index.Permissions&gt;();
         ///     foreach (var range in all.Dashboards.Select(__item =&gt; __item.DashboardId).ToList().Select((v, k) =&gt; new { Key = k, Value = v }))
         ///     {
-        ///         dashboardsPermissions.Add(new Databricks.Permissions($"dashboards_permissions-{range.Key}", new()
+        ///         dashboardsPermissions.Add(new Databricks.Index.Permissions($"dashboards_permissions-{range.Key}", new()
         ///         {
         ///             Depends = new[]
         ///             {

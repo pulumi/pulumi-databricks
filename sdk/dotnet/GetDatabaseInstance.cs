@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetDatabaseInstance.Invoke(new()
+        ///     var @this = Databricks.Index.GetDatabaseInstance.Invoke(new()
         ///     {
         ///         Name = "my-database-instance",
         ///     });
@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetDatabaseInstance.Invoke(new()
+        ///     var @this = Databricks.Index.GetDatabaseInstance.Invoke(new()
         ///     {
         ///         Name = "my-database-instance",
         ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetDatabaseInstance.Invoke(new()
+        ///     var @this = Databricks.Index.GetDatabaseInstance.Invoke(new()
         ///     {
         ///         Name = "my-database-instance",
         ///     });

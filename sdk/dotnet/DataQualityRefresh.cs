@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Catalog("sandbox", new()
     ///     {
     ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var myTestSchema = new Databricks.Schema("myTestSchema", new()
+    ///     var myTestSchema = new Databricks.Index.Schema("myTestSchema", new()
     ///     {
     ///         CatalogName = sandbox.Id,
     ///         Name = "myTestSchema",
@@ -55,7 +55,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var myTestTable = new Databricks.SqlTable("myTestTable", new()
+    ///     var myTestTable = new Databricks.Index.SqlTable("myTestTable", new()
     ///     {
     ///         CatalogName = "main",
     ///         SchemaName = myTestSchema.Name,
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var @this = new Databricks.DataQualityMonitor("this", new()
+    ///     var @this = new Databricks.Index.DataQualityMonitor("this", new()
     ///     {
     ///         ObjectType = "table",
     ///         ObjectId = myTestTable.Id,
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var thisDataQualityRefresh = new Databricks.DataQualityRefresh("this", new()
+    ///     var thisDataQualityRefresh = new Databricks.Index.DataQualityRefresh("this", new()
     ///     {
     ///         ObjectType = "table",
     ///         ObjectId = myTestTable.Id,

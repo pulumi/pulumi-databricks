@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetDatabaseDatabaseCatalog.Invoke(new()
+        ///     var @this = Databricks.Index.GetDatabaseDatabaseCatalog.Invoke(new()
         ///     {
         ///         Name = "my-database-catalog",
         ///     });
@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetDatabaseDatabaseCatalog.Invoke(new()
+        ///     var @this = Databricks.Index.GetDatabaseDatabaseCatalog.Invoke(new()
         ///     {
         ///         Name = "my-database-catalog",
         ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetDatabaseDatabaseCatalog.Invoke(new()
+        ///     var @this = Databricks.Index.GetDatabaseDatabaseCatalog.Invoke(new()
         ///     {
         ///         Name = "my-database-catalog",
         ///     });

@@ -28,12 +28,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pool = Databricks.GetInstancePool.Invoke(new()
+        ///     var pool = Databricks.Index.GetInstancePool.Invoke(new()
         ///     {
         ///         Name = "All spot",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
+        ///     var myCluster = new Databricks.Index.Cluster("my_cluster", new()
         ///     {
         ///         InstancePoolId = pool.Apply(getInstancePoolResult =&gt; getInstancePoolResult.Id),
         ///     });
@@ -61,12 +61,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pool = Databricks.GetInstancePool.Invoke(new()
+        ///     var pool = Databricks.Index.GetInstancePool.Invoke(new()
         ///     {
         ///         Name = "All spot",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
+        ///     var myCluster = new Databricks.Index.Cluster("my_cluster", new()
         ///     {
         ///         InstancePoolId = pool.Apply(getInstancePoolResult =&gt; getInstancePoolResult.Id),
         ///     });
@@ -94,12 +94,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var pool = Databricks.GetInstancePool.Invoke(new()
+        ///     var pool = Databricks.Index.GetInstancePool.Invoke(new()
         ///     {
         ///         Name = "All spot",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
+        ///     var myCluster = new Databricks.Index.Cluster("my_cluster", new()
         ///     {
         ///         InstancePoolId = pool.Apply(getInstancePoolResult =&gt; getInstancePoolResult.Id),
         ///     });

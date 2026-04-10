@@ -423,6 +423,20 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> photon() {
         return Codegen.optional(this.photon);
     }
+    /**
+     * Canonical unique identifier of the Lakeflow Declarative Pipeline.
+     * 
+     */
+    @Export(name="pipelineId", refs={String.class}, tree="[0]")
+    private Output<String> pipelineId;
+
+    /**
+     * @return Canonical unique identifier of the Lakeflow Declarative Pipeline.
+     * 
+     */
+    public Output<String> pipelineId() {
+        return this.pipelineId;
+    }
     @Export(name="providerConfig", refs={PipelineProviderConfig.class}, tree="[0]")
     private Output</* @Nullable */ PipelineProviderConfig> providerConfig;
 

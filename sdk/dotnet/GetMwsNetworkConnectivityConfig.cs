@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMwsNetworkConnectivityConfig.Invoke(new()
+        ///     var @this = Databricks.Index.GetMwsNetworkConnectivityConfig.Invoke(new()
         ///     {
         ///         Name = "ncc",
         ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMwsNetworkConnectivityConfig.Invoke(new()
+        ///     var @this = Databricks.Index.GetMwsNetworkConnectivityConfig.Invoke(new()
         ///     {
         ///         Name = "ncc",
         ///     });
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetMwsNetworkConnectivityConfig.Invoke(new()
+        ///     var @this = Databricks.Index.GetMwsNetworkConnectivityConfig.Invoke(new()
         ///     {
         ///         Name = "ncc",
         ///     });

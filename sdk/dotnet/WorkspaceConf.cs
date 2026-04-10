@@ -36,7 +36,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.WorkspaceConf("this", new()
+    ///     var @this = new Databricks.Index.WorkspaceConf("this", new()
     ///     {
     ///         CustomConfig = 
     ///         {

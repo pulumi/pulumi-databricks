@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetDatabaseSyncedDatabaseTable.Invoke(new()
+        ///     var @this = Databricks.Index.GetDatabaseSyncedDatabaseTable.Invoke(new()
         ///     {
         ///         Name = "my_database_catalog.public.synced_table",
         ///     });
@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetDatabaseSyncedDatabaseTable.Invoke(new()
+        ///     var @this = Databricks.Index.GetDatabaseSyncedDatabaseTable.Invoke(new()
         ///     {
         ///         Name = "my_database_catalog.public.synced_table",
         ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetDatabaseSyncedDatabaseTable.Invoke(new()
+        ///     var @this = Databricks.Index.GetDatabaseSyncedDatabaseTable.Invoke(new()
         ///     {
         ///         Name = "my_database_catalog.public.synced_table",
         ///     });

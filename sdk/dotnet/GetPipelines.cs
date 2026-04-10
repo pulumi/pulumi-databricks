@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetPipelines.Invoke();
+        ///     var all = Databricks.Index.GetPipelines.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     var @this = Databricks.Index.GetPipelines.Invoke(new()
         ///     {
         ///         PipelineName = "my_pipeline",
         ///     });
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     var @this = Databricks.Index.GetPipelines.Invoke(new()
         ///     {
         ///         PipelineName = "%pipeline%",
         ///     });
@@ -111,7 +111,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetPipelines.Invoke();
+        ///     var all = Databricks.Index.GetPipelines.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -130,7 +130,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     var @this = Databricks.Index.GetPipelines.Invoke(new()
         ///     {
         ///         PipelineName = "my_pipeline",
         ///     });
@@ -152,7 +152,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     var @this = Databricks.Index.GetPipelines.Invoke(new()
         ///     {
         ///         PipelineName = "%pipeline%",
         ///     });
@@ -194,7 +194,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetPipelines.Invoke();
+        ///     var all = Databricks.Index.GetPipelines.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -213,7 +213,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     var @this = Databricks.Index.GetPipelines.Invoke(new()
         ///     {
         ///         PipelineName = "my_pipeline",
         ///     });
@@ -235,7 +235,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     var @this = Databricks.Index.GetPipelines.Invoke(new()
         ///     {
         ///         PipelineName = "%pipeline%",
         ///     });

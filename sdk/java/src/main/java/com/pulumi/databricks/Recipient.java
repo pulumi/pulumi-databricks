@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomPassword;
- * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.random.Password;
+ * import com.pulumi.random.PasswordArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.inputs.GetCurrentUserArgs;
  * import com.pulumi.databricks.Recipient;
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var db2opensharecode = new RandomPassword("db2opensharecode", RandomPasswordArgs.builder()
+ *         var db2opensharecode = new Password("db2opensharecode", PasswordArgs.builder()
  *             .length(16)
  *             .special(true)
  *             .build());
@@ -361,6 +361,20 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RecipientProviderConfig>> providerConfig() {
         return Codegen.optional(this.providerConfig);
+    }
+    /**
+     * Unique ID of the recipient token.
+     * 
+     */
+    @Export(name="recipientId", refs={String.class}, tree="[0]")
+    private Output<String> recipientId;
+
+    /**
+     * @return Unique ID of the recipient token.
+     * 
+     */
+    public Output<String> recipientId() {
+        return this.recipientId;
     }
     /**
      * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.

@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var workspace = new Aws.Ec2.VpcEndpoint("workspace", new()
+    ///     var workspace = new Aws.Index.VpcEndpoint("workspace", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         ServiceName = privateLink.WorkspaceService,
@@ -52,7 +52,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var relay = new Aws.Ec2.VpcEndpoint("relay", new()
+    ///     var relay = new Aws.Index.VpcEndpoint("relay", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         ServiceName = privateLink.RelayService,
@@ -88,7 +88,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var s3 = new Aws.Ec2.VpcEndpoint("s3", new()
+    ///     var s3 = new Aws.Index.VpcEndpoint("s3", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         RouteTableIds = vpc.PrivateRouteTableIds,
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var sts = new Aws.Ec2.VpcEndpoint("sts", new()
+    ///     var sts = new Aws.Index.VpcEndpoint("sts", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         ServiceName = $"com.amazonaws.{region}.sts",
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var kinesis_streams = new Aws.Ec2.VpcEndpoint("kinesis-streams", new()
+    ///     var kinesis_streams = new Aws.Index.VpcEndpoint("kinesis-streams", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         ServiceName = $"com.amazonaws.{region}.kinesis-streams",
@@ -151,7 +151,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var workspace = new Databricks.MwsVpcEndpoint("workspace", new()
+    ///     var workspace = new Databricks.Index.MwsVpcEndpoint("workspace", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         AwsVpcEndpointId = workspaceAwsVpcEndpoint.Id,
@@ -165,7 +165,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var relay = new Databricks.MwsVpcEndpoint("relay", new()
+    ///     var relay = new Databricks.Index.MwsVpcEndpoint("relay", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         AwsVpcEndpointId = relayAwsVpcEndpoint.Id,
@@ -192,7 +192,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.MwsWorkspaces("this", new()
+    ///     var @this = new Databricks.Index.MwsWorkspaces("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         AwsRegion = region,
@@ -233,7 +233,7 @@ namespace Pulumi.Databricks
     ///     var databricksGoogleServiceAccount = config.RequireObject&lt;dynamic&gt;("databricksGoogleServiceAccount");
     ///     var googleProject = config.RequireObject&lt;dynamic&gt;("googleProject");
     ///     var subnetRegion = config.RequireObject&lt;dynamic&gt;("subnetRegion");
-    ///     var workspace = new Databricks.MwsVpcEndpoint("workspace", new()
+    ///     var workspace = new Databricks.Index.MwsVpcEndpoint("workspace", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         VpcEndpointName = "PSC Rest API endpoint",
@@ -245,7 +245,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var relay = new Databricks.MwsVpcEndpoint("relay", new()
+    ///     var relay = new Databricks.Index.MwsVpcEndpoint("relay", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         VpcEndpointName = "PSC Relay endpoint",
@@ -270,7 +270,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.MwsWorkspaces("this", new()
+    ///     var @this = new Databricks.Index.MwsWorkspaces("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         WorkspaceName = "gcp workspace",

@@ -324,7 +324,7 @@ import * as utilities from "./utilities";
  *     comment: "Managed by TF",
  * });
  * const externalCreds = new databricks.Grants("external_creds", {
- *     credential: external.id,
+ *     credential: external.databricksCredentialId,
  *     grants: [{
  *         principal: "Data Engineers",
  *         privileges: ["CREATE_CONNECTION"],

@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSqlWarehouses.Invoke();
+        ///     var all = Databricks.Index.GetSqlWarehouses.Invoke();
         /// 
         ///     var @this = ;
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSqlWarehouse.Invoke(new()
+        ///     var all = Databricks.Index.GetSqlWarehouse.Invoke(new()
         ///     {
         ///         Name = "Starter Warehouse",
         ///     });
@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSqlWarehouses.Invoke();
+        ///     var all = Databricks.Index.GetSqlWarehouses.Invoke();
         /// 
         ///     var @this = ;
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSqlWarehouse.Invoke(new()
+        ///     var all = Databricks.Index.GetSqlWarehouse.Invoke(new()
         ///     {
         ///         Name = "Starter Warehouse",
         ///     });
@@ -138,7 +138,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSqlWarehouses.Invoke();
+        ///     var all = Databricks.Index.GetSqlWarehouses.Invoke();
         /// 
         ///     var @this = ;
         /// 
@@ -155,7 +155,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSqlWarehouse.Invoke(new()
+        ///     var all = Databricks.Index.GetSqlWarehouse.Invoke(new()
         ///     {
         ///         Name = "Starter Warehouse",
         ///     });

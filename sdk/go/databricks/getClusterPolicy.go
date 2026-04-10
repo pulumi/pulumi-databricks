@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			personal, err := databricks.LookupClusterPolicy(ctx, &databricks.LookupClusterPolicyArgs{
+//			personal, err := databricks.GetClusterPolicy(ctx, &databricks.LookupClusterPolicyArgs{
 //				Name: pulumi.StringRef("Personal Compute"),
 //			}, nil)
 //			if err != nil {

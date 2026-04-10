@@ -41,13 +41,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupSchema(ctx, &databricks.LookupSchemaArgs{
+//			this, err := databricks.GetSchema(ctx, &databricks.LookupSchemaArgs{
 //				Name: "my_catalog.my_schema",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.LookupDataQualityMonitor(ctx, &databricks.LookupDataQualityMonitorArgs{
+//			_, err = databricks.GetDataQualityMonitor(ctx, &databricks.LookupDataQualityMonitorArgs{
 //				ObjectType: "schema",
 //				ObjectId:   this.SchemaInfo.SchemaId,
 //			}, nil)

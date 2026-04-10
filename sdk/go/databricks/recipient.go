@@ -40,9 +40,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			db2opensharecode, err := random.NewRandomPassword(ctx, "db2opensharecode", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(true),
+//			db2opensharecode, err := random.NewPassword(ctx, "db2opensharecode", &random.PasswordArgs{
+//				Length:  16,
+//				Special: true,
 //			})
 //			if err != nil {
 //				return err
@@ -166,6 +166,8 @@ type Recipient struct {
 	PropertiesKvpairs RecipientPropertiesKvpairsPtrOutput `pulumi:"propertiesKvpairs"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig RecipientProviderConfigPtrOutput `pulumi:"providerConfig"`
+	// Unique ID of the recipient token.
+	RecipientId pulumi.StringOutput `pulumi:"recipientId"`
 	// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The one-time sharing code provided by the data recipient.
@@ -247,6 +249,8 @@ type recipientState struct {
 	PropertiesKvpairs *RecipientPropertiesKvpairs `pulumi:"propertiesKvpairs"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *RecipientProviderConfig `pulumi:"providerConfig"`
+	// Unique ID of the recipient token.
+	RecipientId *string `pulumi:"recipientId"`
 	// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
 	Region *string `pulumi:"region"`
 	// The one-time sharing code provided by the data recipient.
@@ -289,6 +293,8 @@ type RecipientState struct {
 	PropertiesKvpairs RecipientPropertiesKvpairsPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig RecipientProviderConfigPtrInput
+	// Unique ID of the recipient token.
+	RecipientId pulumi.StringPtrInput
 	// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
 	Region pulumi.StringPtrInput
 	// The one-time sharing code provided by the data recipient.
@@ -324,6 +330,8 @@ type recipientArgs struct {
 	PropertiesKvpairs *RecipientPropertiesKvpairs `pulumi:"propertiesKvpairs"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *RecipientProviderConfig `pulumi:"providerConfig"`
+	// Unique ID of the recipient token.
+	RecipientId *string `pulumi:"recipientId"`
 	// The one-time sharing code provided by the data recipient.
 	SharingCode *string `pulumi:"sharingCode"`
 	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
@@ -350,6 +358,8 @@ type RecipientArgs struct {
 	PropertiesKvpairs RecipientPropertiesKvpairsPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig RecipientProviderConfigPtrInput
+	// Unique ID of the recipient token.
+	RecipientId pulumi.StringPtrInput
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrInput
 	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
@@ -515,6 +525,11 @@ func (o RecipientOutput) PropertiesKvpairs() RecipientPropertiesKvpairsPtrOutput
 // Configure the provider for management through account provider. This block consists of the following fields:
 func (o RecipientOutput) ProviderConfig() RecipientProviderConfigPtrOutput {
 	return o.ApplyT(func(v *Recipient) RecipientProviderConfigPtrOutput { return v.ProviderConfig }).(RecipientProviderConfigPtrOutput)
+}
+
+// Unique ID of the recipient token.
+func (o RecipientOutput) RecipientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Recipient) pulumi.StringOutput { return v.RecipientId }).(pulumi.StringOutput)
 }
 
 // Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.

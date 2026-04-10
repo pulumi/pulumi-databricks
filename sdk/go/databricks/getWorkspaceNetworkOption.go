@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupWorkspaceNetworkOption(ctx, &databricks.LookupWorkspaceNetworkOptionArgs{
+//			_, err := databricks.GetWorkspaceNetworkOption(ctx, &databricks.LookupWorkspaceNetworkOptionArgs{
 //				WorkspaceId: "9999999999999999",
 //			}, nil)
 //			if err != nil {

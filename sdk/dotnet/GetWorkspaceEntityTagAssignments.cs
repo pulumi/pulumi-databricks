@@ -26,25 +26,25 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var notebookTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var notebookTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "notebooks",
         ///         EntityId = "2807324866692453",
         ///     });
         /// 
-        ///     var appTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var appTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "apps",
         ///         EntityId = "myapp",
         ///     });
         /// 
-        ///     var dashboardTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var dashboardTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "dashboards",
         ///         EntityId = "2807324866692453",
         ///     });
         /// 
-        ///     var geniespaceTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var geniespaceTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "geniespaces",
         ///         EntityId = "2807324866692453",
@@ -71,25 +71,25 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var notebookTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var notebookTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "notebooks",
         ///         EntityId = "2807324866692453",
         ///     });
         /// 
-        ///     var appTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var appTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "apps",
         ///         EntityId = "myapp",
         ///     });
         /// 
-        ///     var dashboardTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var dashboardTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "dashboards",
         ///         EntityId = "2807324866692453",
         ///     });
         /// 
-        ///     var geniespaceTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var geniespaceTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "geniespaces",
         ///         EntityId = "2807324866692453",
@@ -116,25 +116,25 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var notebookTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var notebookTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "notebooks",
         ///         EntityId = "2807324866692453",
         ///     });
         /// 
-        ///     var appTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var appTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "apps",
         ///         EntityId = "myapp",
         ///     });
         /// 
-        ///     var dashboardTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var dashboardTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "dashboards",
         ///         EntityId = "2807324866692453",
         ///     });
         /// 
-        ///     var geniespaceTags = Databricks.GetWorkspaceEntityTagAssignments.Invoke(new()
+        ///     var geniespaceTags = Databricks.Index.GetWorkspaceEntityTagAssignments.Invoke(new()
         ///     {
         ///         EntityType = "geniespaces",
         ///         EntityId = "2807324866692453",

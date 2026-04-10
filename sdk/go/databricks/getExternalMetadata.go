@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupExternalMetadata(ctx, &databricks.LookupExternalMetadataArgs{
+//			_, err := databricks.GetExternalMetadata(ctx, &databricks.LookupExternalMetadataArgs{
 //				Name: "security_events_stream",
 //			}, nil)
 //			if err != nil {

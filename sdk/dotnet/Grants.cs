@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Grants("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Grants("sandbox", new()
     ///     {
     ///         Metastore = "metastore_id",
     ///         GrantDetails = new[]
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Catalog("sandbox", new()
     ///     {
     ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var sandboxGrants = new Databricks.Grants("sandbox", new()
+    ///     var sandboxGrants = new Databricks.Index.Grants("sandbox", new()
     ///     {
     ///         Catalog = sandbox.Name,
     ///         GrantDetails = new[]
@@ -152,7 +152,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var things = new Databricks.Schema("things", new()
+    ///     var things = new Databricks.Index.Schema("things", new()
     ///     {
     ///         CatalogName = sandbox.Id,
     ///         Name = "things",
@@ -163,7 +163,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var thingsGrants = new Databricks.Grants("things", new()
+    ///     var thingsGrants = new Databricks.Index.Grants("things", new()
     ///     {
     ///         Schema = things.Id,
     ///         GrantDetails = new[]
@@ -195,7 +195,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customers = new Databricks.Grants("customers", new()
+    ///     var customers = new Databricks.Index.Grants("customers", new()
     ///     {
     ///         Table = "main.reporting.customers",
     ///         GrantDetails = new[]
@@ -234,16 +234,16 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(async() =&gt; 
     /// {
-    ///     var things = await Databricks.GetTables.InvokeAsync(new()
+    ///     var things = await Databricks.Index.GetTables.InvokeAsync(new()
     ///     {
     ///         CatalogName = "sandbox",
     ///         SchemaName = "things",
     ///     });
     /// 
-    ///     var thingsGrants = new List&lt;Databricks.Grants&gt;();
+    ///     var thingsGrants = new List&lt;Databricks.Index.Grants&gt;();
     ///     foreach (var range in )
     ///     {
-    ///         thingsGrants.Add(new Databricks.Grants($"things-{range.Key}", new()
+    ///         thingsGrants.Add(new Databricks.Index.Grants($"things-{range.Key}", new()
     ///         {
     ///             Table = range.Value,
     ///             GrantDetails = new[]
@@ -275,7 +275,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customer360 = new Databricks.Grants("customer360", new()
+    ///     var customer360 = new Databricks.Index.Grants("customer360", new()
     ///     {
     ///         Table = "main.reporting.customer360",
     ///         GrantDetails = new[]
@@ -305,16 +305,16 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(async() =&gt; 
     /// {
-    ///     var customers = await Databricks.GetViews.InvokeAsync(new()
+    ///     var customers = await Databricks.Index.GetViews.InvokeAsync(new()
     ///     {
     ///         CatalogName = "main",
     ///         SchemaName = "customers",
     ///     });
     /// 
-    ///     var customersGrants = new List&lt;Databricks.Grants&gt;();
+    ///     var customersGrants = new List&lt;Databricks.Index.Grants&gt;();
     ///     foreach (var range in )
     ///     {
-    ///         customersGrants.Add(new Databricks.Grants($"customers-{range.Key}", new()
+    ///         customersGrants.Add(new Databricks.Index.Grants($"customers-{range.Key}", new()
     ///         {
     ///             Table = range.Value,
     ///             GrantDetails = new[]
@@ -346,7 +346,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Volume("this", new()
+    ///     var @this = new Databricks.Index.Volume("this", new()
     ///     {
     ///         Name = "quickstart_volume",
     ///         CatalogName = sandbox.Name,
@@ -356,7 +356,7 @@ namespace Pulumi.Databricks
     ///         Comment = "this volume is managed by terraform",
     ///     });
     /// 
-    ///     var volume = new Databricks.Grants("volume", new()
+    ///     var volume = new Databricks.Index.Grants("volume", new()
     ///     {
     ///         Volume = @this.Id,
     ///         GrantDetails = new[]
@@ -387,7 +387,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customers = new Databricks.Grants("customers", new()
+    ///     var customers = new Databricks.Index.Grants("customers", new()
     ///     {
     ///         Model = "main.reporting.customer_model",
     ///         GrantDetails = new[]
@@ -427,7 +427,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var udf = new Databricks.Grants("udf", new()
+    ///     var udf = new Databricks.Index.Grants("udf", new()
     ///     {
     ///         Function = "main.reporting.udf",
     ///         GrantDetails = new[]
@@ -466,7 +466,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var external = new Databricks.Credential("external", new()
+    ///     var external = new Databricks.Index.Credential("external", new()
     ///     {
     ///         Name = externalDataAccess.Name,
     ///         AwsIamRole = new Databricks.Inputs.CredentialAwsIamRoleArgs
@@ -477,9 +477,9 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Grants("external_creds", new()
+    ///     var externalCreds = new Databricks.Index.Grants("external_creds", new()
     ///     {
-    ///         Credential = external.Id,
+    ///         Credential = external.DatabricksCredentialId,
     ///         GrantDetails = new[]
     ///         {
     ///             new Databricks.Inputs.GrantsGrantArgs
@@ -508,7 +508,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var external = new Databricks.StorageCredential("external", new()
+    ///     var external = new Databricks.Index.StorageCredential("external", new()
     ///     {
     ///         Name = externalDataAccess.Name,
     ///         AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs
@@ -518,7 +518,7 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Grants("external_creds", new()
+    ///     var externalCreds = new Databricks.Index.Grants("external_creds", new()
     ///     {
     ///         StorageCredential = external.Id,
     ///         GrantDetails = new[]
@@ -549,7 +549,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var some = new Databricks.ExternalLocation("some", new()
+    ///     var some = new Databricks.Index.ExternalLocation("some", new()
     ///     {
     ///         Name = "external",
     ///         Url = $"s3://{externalAwsS3Bucket.Id}/some",
@@ -557,7 +557,7 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var someGrants = new Databricks.Grants("some", new()
+    ///     var someGrants = new Databricks.Index.Grants("some", new()
     ///     {
     ///         ExternalLocation = some.Id,
     ///         GrantDetails = new[]
@@ -616,7 +616,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mysql = new Databricks.Connection("mysql", new()
+    ///     var mysql = new Databricks.Index.Connection("mysql", new()
     ///     {
     ///         Name = "mysql_connection",
     ///         ConnectionType = "MYSQL",
@@ -634,7 +634,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var some = new Databricks.Grants("some", new()
+    ///     var some = new Databricks.Index.Grants("some", new()
     ///     {
     ///         ForeignConnection = mysql.Name,
     ///         GrantDetails = new[]
@@ -666,17 +666,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var some = new Databricks.Share("some", new()
+    ///     var some = new Databricks.Index.Share("some", new()
     ///     {
     ///         Name = "my_share",
     ///     });
     /// 
-    ///     var someRecipient = new Databricks.Recipient("some", new()
+    ///     var someRecipient = new Databricks.Index.Recipient("some", new()
     ///     {
     ///         Name = "my_recipient",
     ///     });
     /// 
-    ///     var someGrants = new Databricks.Grants("some", new()
+    ///     var someGrants = new Databricks.Index.Grants("some", new()
     ///     {
     ///         Share = some.Name,
     ///         GrantDetails = new[]

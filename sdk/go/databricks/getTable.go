@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fctTransactions, err := databricks.LookupTable(ctx, &databricks.LookupTableArgs{
+//			fctTransactions, err := databricks.GetTable(ctx, &databricks.LookupTableArgs{
 //				Name: "main.certified.fct_transactions",
 //			}, nil)
 //			if err != nil {

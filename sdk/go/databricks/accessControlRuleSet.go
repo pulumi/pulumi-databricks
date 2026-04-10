@@ -41,7 +41,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			accountId := "00000000-0000-0000-0000-000000000000"
 //			// account level group
-//			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			ds, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
 //			}, nil)
 //			if err != nil {
@@ -250,13 +250,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			accountId := "00000000-0000-0000-0000-000000000000"
 //			// account level group
-//			_, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			_, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			john, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//			john, err := databricks.GetUser(ctx, &databricks.LookupUserArgs{
 //				UserName: pulumi.StringRef("john.doe@example.com"),
 //			}, nil)
 //			if err != nil {
@@ -300,20 +300,20 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			accountId := "00000000-0000-0000-0000-000000000000"
 //			// account level group
-//			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			ds, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// account level group
-//			marketplaceAdmins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			marketplaceAdmins, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Marketplace Admins",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			john, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//			john, err := databricks.GetUser(ctx, &databricks.LookupUserArgs{
 //				UserName: pulumi.StringRef("john.doe@example.com"),
 //			}, nil)
 //			if err != nil {
@@ -371,13 +371,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			accountId := "00000000-0000-0000-0000-000000000000"
 //			// account level group
-//			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			ds, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			john, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//			john, err := databricks.GetUser(ctx, &databricks.LookupUserArgs{
 //				UserName: pulumi.StringRef("john.doe@example.com"),
 //			}, nil)
 //			if err != nil {
@@ -443,13 +443,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			accountId := "00000000-0000-0000-0000-000000000000"
 //			// account level group
-//			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			ds, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			john, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//			john, err := databricks.GetUser(ctx, &databricks.LookupUserArgs{
 //				UserName: pulumi.StringRef("john.doe@example.com"),
 //			}, nil)
 //			if err != nil {

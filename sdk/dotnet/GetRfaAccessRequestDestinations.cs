@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var customerDataSchema = Databricks.GetRfaAccessRequestDestinations.Invoke(new()
+        ///     var customerDataSchema = Databricks.Index.GetRfaAccessRequestDestinations.Invoke(new()
         ///     {
         ///         SecurableType = "SCHEMA",
         ///         FullName = "main.customer_data",
@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var customerDataSchema = Databricks.GetRfaAccessRequestDestinations.Invoke(new()
+        ///     var customerDataSchema = Databricks.Index.GetRfaAccessRequestDestinations.Invoke(new()
         ///     {
         ///         SecurableType = "SCHEMA",
         ///         FullName = "main.customer_data",
@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var customerDataSchema = Databricks.GetRfaAccessRequestDestinations.Invoke(new()
+        ///     var customerDataSchema = Databricks.Index.GetRfaAccessRequestDestinations.Invoke(new()
         ///     {
         ///         SecurableType = "SCHEMA",
         ///         FullName = "main.customer_data",

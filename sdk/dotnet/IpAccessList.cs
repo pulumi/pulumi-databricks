@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.WorkspaceConf("this", new()
+    ///     var @this = new Databricks.Index.WorkspaceConf("this", new()
     ///     {
     ///         CustomConfig = 
     ///         {
@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var allowed_list = new Databricks.IpAccessList("allowed-list", new()
+    ///     var allowed_list = new Databricks.Index.IpAccessList("allowed-list", new()
     ///     {
     ///         Label = "allow_in",
     ///         ListType = "ALLOW",

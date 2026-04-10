@@ -34,13 +34,13 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Schema("this", new()
+    ///     var @this = new Databricks.Index.Schema("this", new()
     ///     {
     ///         CatalogName = "my_catalog",
     ///         Name = "my_schema",
     ///     });
     /// 
-    ///     var thisDataQualityMonitor = new Databricks.DataQualityMonitor("this", new()
+    ///     var thisDataQualityMonitor = new Databricks.Index.DataQualityMonitor("this", new()
     ///     {
     ///         ObjectType = "schema",
     ///         ObjectId = @this.SchemaId,

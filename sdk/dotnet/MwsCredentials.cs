@@ -32,28 +32,28 @@ namespace Pulumi.Databricks
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
     ///     // Names of created resources will be prefixed with this value
     ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
-    ///     var @this = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+    ///     var @this = Databricks.Index.GetAwsAssumeRolePolicy.Invoke(new()
     ///     {
     ///         ExternalId = databricksAccountId,
     ///     });
     /// 
-    ///     var crossAccountRole = new Aws.Iam.Role("cross_account_role", new()
+    ///     var crossAccountRole = new Aws.Index.IamRole("cross_account_role", new()
     ///     {
     ///         Name = $"{prefix}-crossaccount",
-    ///         AssumeRolePolicy = @this.Apply(@this =&gt; @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json)),
+    ///         AssumeRolePolicy = @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
     ///         Tags = tags,
     ///     });
     /// 
-    ///     var thisGetAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
+    ///     var thisGetAwsCrossAccountPolicy = Databricks.Index.GetAwsCrossAccountPolicy.Invoke();
     /// 
-    ///     var thisRolePolicy = new Aws.Iam.RolePolicy("this", new()
+    ///     var thisIamRolePolicy = new Aws.Index.IamRolePolicy("this", new()
     ///     {
     ///         Name = $"{prefix}-policy",
     ///         Role = crossAccountRole.Id,
     ///         Policy = thisGetAwsCrossAccountPolicy.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
     ///     });
     /// 
-    ///     var thisMwsCredentials = new Databricks.MwsCredentials("this", new()
+    ///     var thisMwsCredentials = new Databricks.Index.MwsCredentials("this", new()
     ///     {
     ///         CredentialsName = $"{prefix}-creds",
     ///         RoleArn = crossAccountRole.Arn,

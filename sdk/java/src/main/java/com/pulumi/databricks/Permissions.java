@@ -454,7 +454,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ldpUsage = new Permissions("ldpUsage", PermissionsArgs.builder()
- *             .pipelineId(this_.id())
+ *             .pipelineId(this_.pipelineId())
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName("users")
@@ -1249,7 +1249,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var endpointUsage = new Permissions("endpointUsage", PermissionsArgs.builder()
- *             .sqlEndpointId(this_.id())
+ *             .sqlEndpointId(this_.sqlEndpointId())
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName(auto.displayName())

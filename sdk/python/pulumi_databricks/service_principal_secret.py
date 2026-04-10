@@ -28,6 +28,7 @@ class ServicePrincipalSecretArgs:
                  provider_config: Optional[pulumi.Input['ServicePrincipalSecretProviderConfigArgs']] = None,
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_principal_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  time_rotating: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
@@ -41,6 +42,7 @@ class ServicePrincipalSecretArgs:
         :param pulumi.Input['ServicePrincipalSecretProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[_builtins.str] secret_hash: Secret Hash.
+        :param pulumi.Input[_builtins.str] service_principal_secret_id: ID of the secret
         :param pulumi.Input[_builtins.str] status: Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
         :param pulumi.Input[_builtins.str] time_rotating: Changing this argument forces recreation of the secret.
         :param pulumi.Input[_builtins.str] update_time: UTC time when the secret was updated.
@@ -58,6 +60,8 @@ class ServicePrincipalSecretArgs:
             pulumi.set(__self__, "secret", secret)
         if secret_hash is not None:
             pulumi.set(__self__, "secret_hash", secret_hash)
+        if service_principal_secret_id is not None:
+            pulumi.set(__self__, "service_principal_secret_id", service_principal_secret_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if time_rotating is not None:
@@ -150,6 +154,18 @@ class ServicePrincipalSecretArgs:
         pulumi.set(self, "secret_hash", value)
 
     @_builtins.property
+    @pulumi.getter(name="servicePrincipalSecretId")
+    def service_principal_secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the secret
+        """
+        return pulumi.get(self, "service_principal_secret_id")
+
+    @service_principal_secret_id.setter
+    def service_principal_secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_principal_secret_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -196,6 +212,7 @@ class _ServicePrincipalSecretState:
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_principal_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  time_rotating: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
@@ -209,6 +226,7 @@ class _ServicePrincipalSecretState:
         :param pulumi.Input[_builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[_builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[_builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
+        :param pulumi.Input[_builtins.str] service_principal_secret_id: ID of the secret
         :param pulumi.Input[_builtins.str] status: Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
         :param pulumi.Input[_builtins.str] time_rotating: Changing this argument forces recreation of the secret.
         :param pulumi.Input[_builtins.str] update_time: UTC time when the secret was updated.
@@ -227,6 +245,8 @@ class _ServicePrincipalSecretState:
             pulumi.set(__self__, "secret_hash", secret_hash)
         if service_principal_id is not None:
             pulumi.set(__self__, "service_principal_id", service_principal_id)
+        if service_principal_secret_id is not None:
+            pulumi.set(__self__, "service_principal_secret_id", service_principal_secret_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if time_rotating is not None:
@@ -319,6 +339,18 @@ class _ServicePrincipalSecretState:
         pulumi.set(self, "service_principal_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="servicePrincipalSecretId")
+    def service_principal_secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the secret
+        """
+        return pulumi.get(self, "service_principal_secret_id")
+
+    @service_principal_secret_id.setter
+    def service_principal_secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_principal_secret_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -368,6 +400,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_principal_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  time_rotating: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -421,6 +454,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[_builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[_builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
+        :param pulumi.Input[_builtins.str] service_principal_secret_id: ID of the secret
         :param pulumi.Input[_builtins.str] status: Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
         :param pulumi.Input[_builtins.str] time_rotating: Changing this argument forces recreation of the secret.
         :param pulumi.Input[_builtins.str] update_time: UTC time when the secret was updated.
@@ -493,6 +527,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_principal_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  time_rotating: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -514,6 +549,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
             if service_principal_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_principal_id'")
             __props__.__dict__["service_principal_id"] = service_principal_id
+            __props__.__dict__["service_principal_secret_id"] = service_principal_secret_id
             __props__.__dict__["status"] = status
             __props__.__dict__["time_rotating"] = time_rotating
             __props__.__dict__["update_time"] = update_time
@@ -536,6 +572,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
             secret: Optional[pulumi.Input[_builtins.str]] = None,
             secret_hash: Optional[pulumi.Input[_builtins.str]] = None,
             service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+            service_principal_secret_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             time_rotating: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServicePrincipalSecret':
@@ -553,6 +590,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[_builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[_builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
+        :param pulumi.Input[_builtins.str] service_principal_secret_id: ID of the secret
         :param pulumi.Input[_builtins.str] status: Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
         :param pulumi.Input[_builtins.str] time_rotating: Changing this argument forces recreation of the secret.
         :param pulumi.Input[_builtins.str] update_time: UTC time when the secret was updated.
@@ -568,6 +606,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         __props__.__dict__["secret"] = secret
         __props__.__dict__["secret_hash"] = secret_hash
         __props__.__dict__["service_principal_id"] = service_principal_id
+        __props__.__dict__["service_principal_secret_id"] = service_principal_secret_id
         __props__.__dict__["status"] = status
         __props__.__dict__["time_rotating"] = time_rotating
         __props__.__dict__["update_time"] = update_time
@@ -628,6 +667,14 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         SCIM ID of the ServicePrincipal (not application ID).
         """
         return pulumi.get(self, "service_principal_id")
+
+    @_builtins.property
+    @pulumi.getter(name="servicePrincipalSecretId")
+    def service_principal_secret_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        ID of the secret
+        """
+        return pulumi.get(self, "service_principal_secret_id")
 
     @_builtins.property
     @pulumi.getter

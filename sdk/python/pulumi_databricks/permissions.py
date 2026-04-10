@@ -1020,7 +1020,7 @@ class Permissions(pulumi.CustomResource):
                 "excludes": ["com.databricks.exclude"],
             })
         ldp_usage = databricks.Permissions("ldp_usage",
-            pipeline_id=this.id,
+            pipeline_id=this.pipeline_id,
             access_controls=[
                 {
                     "group_name": "users",
@@ -1421,7 +1421,7 @@ class Permissions(pulumi.CustomResource):
                 }],
             })
         endpoint_usage = databricks.Permissions("endpoint_usage",
-            sql_endpoint_id=this.id,
+            sql_endpoint_id=this.sql_endpoint_id,
             access_controls=[
                 {
                     "group_name": auto.display_name,
@@ -1881,7 +1881,7 @@ class Permissions(pulumi.CustomResource):
                 "excludes": ["com.databricks.exclude"],
             })
         ldp_usage = databricks.Permissions("ldp_usage",
-            pipeline_id=this.id,
+            pipeline_id=this.pipeline_id,
             access_controls=[
                 {
                     "group_name": "users",
@@ -2282,7 +2282,7 @@ class Permissions(pulumi.CustomResource):
                 }],
             })
         endpoint_usage = databricks.Permissions("endpoint_usage",
-            sql_endpoint_id=this.id,
+            sql_endpoint_id=this.sql_endpoint_id,
             access_controls=[
                 {
                     "group_name": auto.display_name,

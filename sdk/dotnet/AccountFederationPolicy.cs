@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.AccountFederationPolicy("this", new()
+    ///     var @this = new Databricks.Index.AccountFederationPolicy("this", new()
     ///     {
     ///         PolicyId = "my-policy",
     ///         OidcPolicy = new Databricks.Inputs.AccountFederationPolicyOidcPolicyArgs

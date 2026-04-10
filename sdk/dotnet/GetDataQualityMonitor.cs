@@ -39,12 +39,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetSchema.Invoke(new()
+        ///     var @this = Databricks.Index.GetSchema.Invoke(new()
         ///     {
         ///         Name = "my_catalog.my_schema",
         ///     });
         /// 
-        ///     var thisGetDataQualityMonitor = Databricks.GetDataQualityMonitor.Invoke(new()
+        ///     var thisGetDataQualityMonitor = Databricks.Index.GetDataQualityMonitor.Invoke(new()
         ///     {
         ///         ObjectType = "schema",
         ///         ObjectId = @this.Apply(getSchemaResult =&gt; getSchemaResult.SchemaInfo?.SchemaId),
@@ -84,12 +84,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetSchema.Invoke(new()
+        ///     var @this = Databricks.Index.GetSchema.Invoke(new()
         ///     {
         ///         Name = "my_catalog.my_schema",
         ///     });
         /// 
-        ///     var thisGetDataQualityMonitor = Databricks.GetDataQualityMonitor.Invoke(new()
+        ///     var thisGetDataQualityMonitor = Databricks.Index.GetDataQualityMonitor.Invoke(new()
         ///     {
         ///         ObjectType = "schema",
         ///         ObjectId = @this.Apply(getSchemaResult =&gt; getSchemaResult.SchemaInfo?.SchemaId),
@@ -129,12 +129,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetSchema.Invoke(new()
+        ///     var @this = Databricks.Index.GetSchema.Invoke(new()
         ///     {
         ///         Name = "my_catalog.my_schema",
         ///     });
         /// 
-        ///     var thisGetDataQualityMonitor = Databricks.GetDataQualityMonitor.Invoke(new()
+        ///     var thisGetDataQualityMonitor = Databricks.Index.GetDataQualityMonitor.Invoke(new()
         ///     {
         ///         ObjectType = "schema",
         ///         ObjectId = @this.Apply(getSchemaResult =&gt; getSchemaResult.SchemaInfo?.SchemaId),

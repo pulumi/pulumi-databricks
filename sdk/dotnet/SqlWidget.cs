@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var d1w1 = new Databricks.SqlWidget("d1w1", new()
+    ///     var d1w1 = new Databricks.Index.SqlWidget("d1w1", new()
     ///     {
     ///         DashboardId = d1.Id,
     ///         Text = "Hello! I'm a **text widget**!",
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var d1w2 = new Databricks.SqlWidget("d1w2", new()
+    ///     var d1w2 = new Databricks.Index.SqlWidget("d1w2", new()
     ///     {
     ///         DashboardId = d1.Id,
     ///         VisualizationId = q1v1.Id,

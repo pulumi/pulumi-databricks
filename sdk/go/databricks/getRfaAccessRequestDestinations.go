@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupRfaAccessRequestDestinations(ctx, &databricks.LookupRfaAccessRequestDestinationsArgs{
+//			_, err := databricks.GetRfaAccessRequestDestinations(ctx, &databricks.LookupRfaAccessRequestDestinationsArgs{
 //				SecurableType: "SCHEMA",
 //				FullName:      "main.customer_data",
 //			}, nil)

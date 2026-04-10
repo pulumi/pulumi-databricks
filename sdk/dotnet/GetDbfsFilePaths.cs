@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var partitions = Databricks.GetDbfsFilePaths.Invoke(new()
+        ///     var partitions = Databricks.Index.GetDbfsFilePaths.Invoke(new()
         ///     {
         ///         Path = "dbfs:/user/hive/default.db/table",
         ///         Recursive = false,
@@ -64,7 +64,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var partitions = Databricks.GetDbfsFilePaths.Invoke(new()
+        ///     var partitions = Databricks.Index.GetDbfsFilePaths.Invoke(new()
         ///     {
         ///         Path = "dbfs:/user/hive/default.db/table",
         ///         Recursive = false,
@@ -102,7 +102,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var partitions = Databricks.GetDbfsFilePaths.Invoke(new()
+        ///     var partitions = Databricks.Index.GetDbfsFilePaths.Invoke(new()
         ///     {
         ///         Path = "dbfs:/user/hive/default.db/table",
         ///         Recursive = false,

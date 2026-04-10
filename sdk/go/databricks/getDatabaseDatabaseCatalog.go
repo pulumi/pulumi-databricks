@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupDatabaseDatabaseCatalog(ctx, &databricks.LookupDatabaseDatabaseCatalogArgs{
+//			_, err := databricks.GetDatabaseDatabaseCatalog(ctx, &databricks.LookupDatabaseDatabaseCatalogArgs{
 //				Name: "my-database-catalog",
 //			}, nil)
 //			if err != nil {

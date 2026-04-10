@@ -30,6 +30,7 @@ class RecipientArgs:
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties_kvpairs: Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']] = None,
                  provider_config: Optional[pulumi.Input['RecipientProviderConfigArgs']] = None,
+                 recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None):
         """
@@ -44,6 +45,7 @@ class RecipientArgs:
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input['RecipientPropertiesKvpairsArgs'] properties_kvpairs: Recipient properties - object consisting of following fields:
         :param pulumi.Input['RecipientProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[_builtins.str] recipient_id: Unique ID of the recipient token.
         :param pulumi.Input[_builtins.str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
@@ -64,6 +66,8 @@ class RecipientArgs:
             pulumi.set(__self__, "properties_kvpairs", properties_kvpairs)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if recipient_id is not None:
+            pulumi.set(__self__, "recipient_id", recipient_id)
         if sharing_code is not None:
             pulumi.set(__self__, "sharing_code", sharing_code)
         if tokens is not None:
@@ -178,6 +182,18 @@ class RecipientArgs:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="recipientId")
+    def recipient_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique ID of the recipient token.
+        """
+        return pulumi.get(self, "recipient_id")
+
+    @recipient_id.setter
+    def recipient_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "recipient_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="sharingCode")
     def sharing_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -220,6 +236,7 @@ class _RecipientState:
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties_kvpairs: Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']] = None,
                  provider_config: Optional[pulumi.Input['RecipientProviderConfigArgs']] = None,
+                 recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
@@ -242,6 +259,7 @@ class _RecipientState:
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input['RecipientPropertiesKvpairsArgs'] properties_kvpairs: Recipient properties - object consisting of following fields:
         :param pulumi.Input['RecipientProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[_builtins.str] recipient_id: Unique ID of the recipient token.
         :param pulumi.Input[_builtins.str] region: Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
         :param pulumi.Input[_builtins.str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
@@ -278,6 +296,8 @@ class _RecipientState:
             pulumi.set(__self__, "properties_kvpairs", properties_kvpairs)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if recipient_id is not None:
+            pulumi.set(__self__, "recipient_id", recipient_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if sharing_code is not None:
@@ -467,6 +487,18 @@ class _RecipientState:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="recipientId")
+    def recipient_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique ID of the recipient token.
+        """
+        return pulumi.get(self, "recipient_id")
+
+    @recipient_id.setter
+    def recipient_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "recipient_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -542,6 +574,7 @@ class Recipient(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
                  provider_config: Optional[pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
+                 recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
@@ -566,7 +599,7 @@ class Recipient(pulumi.CustomResource):
         import pulumi_databricks as databricks
         import pulumi_random as random
 
-        db2opensharecode = random.RandomPassword("db2opensharecode",
+        db2opensharecode = random.Password("db2opensharecode",
             length=16,
             special=True)
         current = databricks.get_current_user()
@@ -574,7 +607,7 @@ class Recipient(pulumi.CustomResource):
             name=f"{current.alphanumeric}-recipient",
             comment="Made by Pulumi",
             authentication_type="TOKEN",
-            sharing_code=db2opensharecode.result,
+            sharing_code=db2opensharecode["result"],
             ip_access_list={
                 "allowed_ip_addresses": [],
             })
@@ -629,6 +662,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']] properties_kvpairs: Recipient properties - object consisting of following fields:
         :param pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[_builtins.str] recipient_id: Unique ID of the recipient token.
         :param pulumi.Input[_builtins.str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
@@ -659,7 +693,7 @@ class Recipient(pulumi.CustomResource):
         import pulumi_databricks as databricks
         import pulumi_random as random
 
-        db2opensharecode = random.RandomPassword("db2opensharecode",
+        db2opensharecode = random.Password("db2opensharecode",
             length=16,
             special=True)
         current = databricks.get_current_user()
@@ -667,7 +701,7 @@ class Recipient(pulumi.CustomResource):
             name=f"{current.alphanumeric}-recipient",
             comment="Made by Pulumi",
             authentication_type="TOKEN",
-            sharing_code=db2opensharecode.result,
+            sharing_code=db2opensharecode["result"],
             ip_access_list={
                 "allowed_ip_addresses": [],
             })
@@ -735,6 +769,7 @@ class Recipient(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
                  provider_config: Optional[pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
+                 recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
@@ -757,6 +792,7 @@ class Recipient(pulumi.CustomResource):
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties_kvpairs"] = properties_kvpairs
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["recipient_id"] = recipient_id
             __props__.__dict__["sharing_code"] = None if sharing_code is None else pulumi.Output.secret(sharing_code)
             __props__.__dict__["tokens"] = tokens
             __props__.__dict__["activated"] = None
@@ -795,6 +831,7 @@ class Recipient(pulumi.CustomResource):
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
             provider_config: Optional[pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
+            recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
             tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
@@ -821,6 +858,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']] properties_kvpairs: Recipient properties - object consisting of following fields:
         :param pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        :param pulumi.Input[_builtins.str] recipient_id: Unique ID of the recipient token.
         :param pulumi.Input[_builtins.str] region: Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
         :param pulumi.Input[_builtins.str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
@@ -846,6 +884,7 @@ class Recipient(pulumi.CustomResource):
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties_kvpairs"] = properties_kvpairs
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["recipient_id"] = recipient_id
         __props__.__dict__["region"] = region
         __props__.__dict__["sharing_code"] = sharing_code
         __props__.__dict__["tokens"] = tokens
@@ -969,6 +1008,14 @@ class Recipient(pulumi.CustomResource):
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="recipientId")
+    def recipient_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Unique ID of the recipient token.
+        """
+        return pulumi.get(self, "recipient_id")
 
     @_builtins.property
     @pulumi.getter

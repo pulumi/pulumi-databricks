@@ -728,7 +728,7 @@ class Grant(pulumi.CustomResource):
             purpose="SERVICE",
             comment="Managed by TF")
         external_creds = databricks.Grant("external_creds",
-            credential=external.id,
+            credential=external.databricks_credential_id,
             principal="Data Engineers",
             privileges=["ACCESS"])
         ```
@@ -1120,7 +1120,7 @@ class Grant(pulumi.CustomResource):
             purpose="SERVICE",
             comment="Managed by TF")
         external_creds = databricks.Grant("external_creds",
-            credential=external.id,
+            credential=external.databricks_credential_id,
             principal="Data Engineers",
             privileges=["ACCESS"])
         ```

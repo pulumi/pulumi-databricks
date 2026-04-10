@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.CustomAppIntegration("this", new()
+    ///     var @this = new Databricks.Index.CustomAppIntegration("this", new()
     ///     {
     ///         Name = "custom_integration_name",
     ///         RedirectUrls = new[]

@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -53,7 +53,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -77,7 +77,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -125,7 +125,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -162,6 +162,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique ID of the Notification Destination.
+        /// </summary>
+        [Output("notificationDestinationId")]
+        public Output<string> NotificationDestinationId { get; private set; } = null!;
 
         /// <summary>
         /// Configure the provider for management through account provider. This block consists of the following fields:
@@ -234,6 +240,12 @@ namespace Pulumi.Databricks
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// The unique ID of the Notification Destination.
+        /// </summary>
+        [Input("notificationDestinationId")]
+        public Input<string>? NotificationDestinationId { get; set; }
+
+        /// <summary>
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Input("providerConfig")]
@@ -264,6 +276,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The unique ID of the Notification Destination.
+        /// </summary>
+        [Input("notificationDestinationId")]
+        public Input<string>? NotificationDestinationId { get; set; }
 
         /// <summary>
         /// Configure the provider for management through account provider. This block consists of the following fields:

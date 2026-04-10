@@ -34,15 +34,15 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var db2opensharecode = new Random.RandomPassword("db2opensharecode", new()
+    ///     var db2opensharecode = new Random.Index.Password("db2opensharecode", new()
     ///     {
     ///         Length = 16,
     ///         Special = true,
     ///     });
     /// 
-    ///     var current = Databricks.GetCurrentUser.Invoke();
+    ///     var current = Databricks.Index.GetCurrentUser.Invoke();
     /// 
-    ///     var db2open = new Databricks.Recipient("db2open", new()
+    ///     var db2open = new Databricks.Index.Recipient("db2open", new()
     ///     {
     ///         Name = $"{current.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}-recipient",
     ///         Comment = "Made by Pulumi",
@@ -72,12 +72,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = Databricks.GetCurrentUser.Invoke();
+    ///     var current = Databricks.Index.GetCurrentUser.Invoke();
     /// 
-    ///     var recipientMetastore = new Databricks.Metastore("recipient_metastore", new()
+    ///     var recipientMetastore = new Databricks.Index.Metastore("recipient_metastore", new()
     ///     {
     ///         Name = "recipient",
-    ///         StorageRoot = Std.Format.Invoke(new()
+    ///         StorageRoot = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "abfss://%s@%s.dfs.core.windows.net/",
     ///             Args = new[]
@@ -91,7 +91,7 @@ namespace Pulumi.Databricks
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var db2db = new Databricks.Recipient("db2db", new()
+    ///     var db2db = new Databricks.Index.Recipient("db2db", new()
     ///     {
     ///         Name = $"{current.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}-recipient",
     ///         Comment = "Made by Pulumi",
@@ -199,6 +199,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("providerConfig")]
         public Output<Outputs.RecipientProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique ID of the recipient token.
+        /// </summary>
+        [Output("recipientId")]
+        public Output<string> RecipientId { get; private set; } = null!;
 
         /// <summary>
         /// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the AuthenticationType is `DATABRICKS`.
@@ -334,6 +340,12 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.RecipientProviderConfigArgs>? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// Unique ID of the recipient token.
+        /// </summary>
+        [Input("recipientId")]
+        public Input<string>? RecipientId { get; set; }
+
         [Input("sharingCode")]
         private Input<string>? _sharingCode;
 
@@ -456,6 +468,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.RecipientProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
+        /// Unique ID of the recipient token.
+        /// </summary>
+        [Input("recipientId")]
+        public Input<string>? RecipientId { get; set; }
 
         /// <summary>
         /// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the AuthenticationType is `DATABRICKS`.

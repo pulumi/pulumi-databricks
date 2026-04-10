@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myTemplate = Databricks.GetAppsSettingsCustomTemplate.Invoke(new()
+        ///     var myTemplate = Databricks.Index.GetAppsSettingsCustomTemplate.Invoke(new()
         ///     {
         ///         Name = "my-custom-template",
         ///     });
@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myTemplate = Databricks.GetAppsSettingsCustomTemplate.Invoke(new()
+        ///     var myTemplate = Databricks.Index.GetAppsSettingsCustomTemplate.Invoke(new()
         ///     {
         ///         Name = "my-custom-template",
         ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myTemplate = Databricks.GetAppsSettingsCustomTemplate.Invoke(new()
+        ///     var myTemplate = Databricks.Index.GetAppsSettingsCustomTemplate.Invoke(new()
         ///     {
         ///         Name = "my-custom-template",
         ///     });

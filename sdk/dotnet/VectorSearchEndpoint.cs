@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.VectorSearchEndpoint("this", new()
+    ///     var @this = new Databricks.Index.VectorSearchEndpoint("this", new()
     ///     {
     ///         Name = "vector-search-test",
     ///         EndpointType = "STANDARD",

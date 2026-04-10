@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupShare(ctx, &databricks.LookupShareArgs{
+//			this, err := databricks.GetShare(ctx, &databricks.LookupShareArgs{
 //				Name: pulumi.StringRef("this"),
 //			}, nil)
 //			if err != nil {

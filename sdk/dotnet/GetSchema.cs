@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSchemas.Invoke(new()
+        ///     var all = Databricks.Index.GetSchemas.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///     });
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetSchema.Invoke(new()
+        ///     var @this = Databricks.Index.GetSchema.Invoke(new()
         ///     {
         ///         Name = "catalog.schema",
         ///     });
@@ -85,7 +85,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSchemas.Invoke(new()
+        ///     var all = Databricks.Index.GetSchemas.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///     });
@@ -105,7 +105,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetSchema.Invoke(new()
+        ///     var @this = Databricks.Index.GetSchema.Invoke(new()
         ///     {
         ///         Name = "catalog.schema",
         ///     });
@@ -141,7 +141,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetSchemas.Invoke(new()
+        ///     var all = Databricks.Index.GetSchemas.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///     });
@@ -161,7 +161,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetSchema.Invoke(new()
+        ///     var @this = Databricks.Index.GetSchema.Invoke(new()
         ///     {
         ///         Name = "catalog.schema",
         ///     });

@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Catalog("sandbox", new()
     ///     {
     ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var things = new Databricks.Schema("things", new()
+    ///     var things = new Databricks.Index.Schema("things", new()
     ///     {
     ///         CatalogName = sandbox.Id,
     ///         Name = "things",
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var myTestTable = new Databricks.SqlTable("myTestTable", new()
+    ///     var myTestTable = new Databricks.Index.SqlTable("myTestTable", new()
     ///     {
     ///         CatalogName = "main",
     ///         SchemaName = things.Name,
@@ -64,7 +64,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var testTimeseriesMonitor = new Databricks.LakehouseMonitor("testTimeseriesMonitor", new()
+    ///     var testTimeseriesMonitor = new Databricks.Index.LakehouseMonitor("testTimeseriesMonitor", new()
     ///     {
     ///         TableName = Output.Tuple(sandbox.Name, things.Name, myTestTable.Name).Apply(values =&gt;
     ///         {
@@ -103,7 +103,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testMonitorInference = new Databricks.LakehouseMonitor("testMonitorInference", new()
+    ///     var testMonitorInference = new Databricks.Index.LakehouseMonitor("testMonitorInference", new()
     ///     {
     ///         TableName = $"{sandbox.Name}.{things.Name}.{myTestTable.Name}",
     ///         AssetsDir = $"/Shared/provider-test/databricks_lakehouse_monitoring/{myTestTable.Name}",
@@ -132,7 +132,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testMonitorInference = new Databricks.LakehouseMonitor("testMonitorInference", new()
+    ///     var testMonitorInference = new Databricks.Index.LakehouseMonitor("testMonitorInference", new()
     ///     {
     ///         TableName = $"{sandbox.Name}.{things.Name}.{myTestTable.Name}",
     ///         AssetsDir = $"/Shared/provider-test/databricks_lakehouse_monitoring/{myTestTable.Name}",

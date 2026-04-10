@@ -529,7 +529,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
-//				Credential: external.ID(),
+//				Credential: external.DatabricksCredentialId,
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),

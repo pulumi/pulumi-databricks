@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var terraformSp = new Databricks.ServicePrincipalSecret("terraform_sp", new()
+    ///     var terraformSp = new Databricks.Index.ServicePrincipalSecret("terraform_sp", new()
     ///     {
     ///         ServicePrincipalId = @this.Id,
     ///     });
@@ -49,12 +49,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Time.Rotating("this", new()
+    ///     var @this = new Time.Index.Rotating("this", new()
     ///     {
     ///         RotationDays = 30,
     ///     });
     /// 
-    ///     var terraformSp = new Databricks.ServicePrincipalSecret("terraform_sp", new()
+    ///     var terraformSp = new Databricks.Index.ServicePrincipalSecret("terraform_sp", new()
     ///     {
     ///         ServicePrincipalId = thisDatabricksServicePrincipal.Id,
     ///         TimeRotating = @this.Rfc3339.Apply(rfc3339 =&gt; $"Pulumi (created: {rfc3339})"),
@@ -113,6 +113,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the secret
+        /// </summary>
+        [Output("servicePrincipalSecretId")]
+        public Output<string> ServicePrincipalSecretId { get; private set; } = null!;
 
         /// <summary>
         /// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
@@ -235,6 +241,12 @@ namespace Pulumi.Databricks
         public Input<string> ServicePrincipalId { get; set; } = null!;
 
         /// <summary>
+        /// ID of the secret
+        /// </summary>
+        [Input("servicePrincipalSecretId")]
+        public Input<string>? ServicePrincipalSecretId { get; set; }
+
+        /// <summary>
         /// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
         /// </summary>
         [Input("status")]
@@ -311,6 +323,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
+
+        /// <summary>
+        /// ID of the secret
+        /// </summary>
+        [Input("servicePrincipalSecretId")]
+        public Input<string>? ServicePrincipalSecretId { get; set; }
 
         /// <summary>
         /// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).

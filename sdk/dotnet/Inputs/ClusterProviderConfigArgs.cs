@@ -25,17 +25,17 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var smallest = Databricks.GetNodeType.Invoke(new()
+        ///     var smallest = Databricks.Index.GetNodeType.Invoke(new()
         ///     {
         ///         LocalDisk = true,
         ///     });
         /// 
-        ///     var latestLts = Databricks.GetSparkVersion.Invoke(new()
+        ///     var latestLts = Databricks.Index.GetSparkVersion.Invoke(new()
         ///     {
         ///         LongTermSupport = true,
         ///     });
         /// 
-        ///     var sharedAutoscaling = new Databricks.Cluster("shared_autoscaling", new()
+        ///     var sharedAutoscaling = new Databricks.Index.Cluster("shared_autoscaling", new()
         ///     {
         ///         ClusterName = "Shared Autoscaling",
         ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),

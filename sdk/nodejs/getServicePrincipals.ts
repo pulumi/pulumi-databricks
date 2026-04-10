@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *     });
  *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: await databricks.getServicePrincipal({
  *         applicationId: __value,
- *     }) }));
+ *     }) }), {});
  *     const myMemberSpn: databricks.GroupMember[] = [];
  *     for (const range of std.toset({
  *         input: spns.applicationIds,
@@ -130,7 +130,7 @@ export interface GetServicePrincipalsResult {
  *     });
  *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: await databricks.getServicePrincipal({
  *         applicationId: __value,
- *     }) }));
+ *     }) }), {});
  *     const myMemberSpn: databricks.GroupMember[] = [];
  *     for (const range of std.toset({
  *         input: spns.applicationIds,

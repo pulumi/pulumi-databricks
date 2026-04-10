@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupPostgresBranch(ctx, &databricks.LookupPostgresBranchArgs{
+//			this, err := databricks.GetPostgresBranch(ctx, &databricks.LookupPostgresBranchArgs{
 //				Name: "projects/my-project/branches/dev-branch",
 //			}, nil)
 //			if err != nil {

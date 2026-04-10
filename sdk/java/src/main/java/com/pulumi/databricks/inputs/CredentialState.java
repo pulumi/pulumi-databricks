@@ -78,6 +78,21 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.credentialId);
     }
 
+    /**
+     * ID of this credential - same as the `name`.
+     * 
+     */
+    @Import(name="databricksCredentialId")
+    private @Nullable Output<String> databricksCredentialId;
+
+    /**
+     * @return ID of this credential - same as the `name`.
+     * 
+     */
+    public Optional<Output<String>> databricksCredentialId() {
+        return Optional.ofNullable(this.databricksCredentialId);
+    }
+
     @Import(name="databricksGcpServiceAccount")
     private @Nullable Output<CredentialDatabricksGcpServiceAccountArgs> databricksGcpServiceAccount;
 
@@ -254,6 +269,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.credentialId = $.credentialId;
+        this.databricksCredentialId = $.databricksCredentialId;
         this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
         this.forceDestroy = $.forceDestroy;
         this.forceUpdate = $.forceUpdate;
@@ -361,6 +377,27 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder credentialId(String credentialId) {
             return credentialId(Output.of(credentialId));
+        }
+
+        /**
+         * @param databricksCredentialId ID of this credential - same as the `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databricksCredentialId(@Nullable Output<String> databricksCredentialId) {
+            $.databricksCredentialId = databricksCredentialId;
+            return this;
+        }
+
+        /**
+         * @param databricksCredentialId ID of this credential - same as the `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databricksCredentialId(String databricksCredentialId) {
+            return databricksCredentialId(Output.of(databricksCredentialId));
         }
 
         public Builder databricksGcpServiceAccount(@Nullable Output<CredentialDatabricksGcpServiceAccountArgs> databricksGcpServiceAccount) {

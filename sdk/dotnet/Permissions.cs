@@ -34,29 +34,29 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var ds = new Databricks.Group("ds", new()
+    ///     var ds = new Databricks.Index.Group("ds", new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var latest = Databricks.GetSparkVersion.Invoke();
+    ///     var latest = Databricks.Index.GetSparkVersion.Invoke();
     /// 
-    ///     var smallest = Databricks.GetNodeType.Invoke(new()
+    ///     var smallest = Databricks.Index.GetNodeType.Invoke(new()
     ///     {
     ///         LocalDisk = true,
     ///     });
     /// 
-    ///     var sharedAutoscaling = new Databricks.Cluster("shared_autoscaling", new()
+    ///     var sharedAutoscaling = new Databricks.Index.Cluster("shared_autoscaling", new()
     ///     {
     ///         ClusterName = "Shared Autoscaling",
     ///         SparkVersion = latest.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var clusterUsage = new Databricks.Permissions("cluster_usage", new()
+    ///     var clusterUsage = new Databricks.Index.Permissions("cluster_usage", new()
     ///     {
     ///         ClusterId = sharedAutoscaling.Id,
     ///         AccessControls = new[]
@@ -108,17 +108,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ds = new Databricks.Group("ds", new()
+    ///     var ds = new Databricks.Index.Group("ds", new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var somethingSimple = new Databricks.ClusterPolicy("something_simple", new()
+    ///     var somethingSimple = new Databricks.Index.ClusterPolicy("something_simple", new()
     ///     {
     ///         Name = "Some simple policy",
     ///         Definition = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
     ///         }),
     ///     });
     /// 
-    ///     var policyUsage = new Databricks.Permissions("policy_usage", new()
+    ///     var policyUsage = new Databricks.Index.Permissions("policy_usage", new()
     ///     {
     ///         ClusterPolicyId = somethingSimple.Id,
     ///         AccessControls = new[]
@@ -167,22 +167,22 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var smallest = Databricks.GetNodeType.Invoke(new()
+    ///     var smallest = Databricks.Index.GetNodeType.Invoke(new()
     ///     {
     ///         LocalDisk = true,
     ///     });
     /// 
-    ///     var @this = new Databricks.InstancePool("this", new()
+    ///     var @this = new Databricks.Index.InstancePool("this", new()
     ///     {
     ///         InstancePoolName = "Reserved Instances",
     ///         IdleInstanceAutoterminationMinutes = 60,
@@ -191,7 +191,7 @@ namespace Pulumi.Databricks
     ///         MaxCapacity = 10,
     ///     });
     /// 
-    ///     var poolUsage = new Databricks.Permissions("pool_usage", new()
+    ///     var poolUsage = new Databricks.Index.Permissions("pool_usage", new()
     ///     {
     ///         InstancePoolId = @this.Id,
     ///         AccessControls = new[]
@@ -230,29 +230,29 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var awsPrincipal = new Databricks.ServicePrincipal("aws_principal", new()
+    ///     var awsPrincipal = new Databricks.Index.ServicePrincipal("aws_principal", new()
     ///     {
     ///         DisplayName = "main",
     ///     });
     /// 
-    ///     var latest = Databricks.GetSparkVersion.Invoke();
+    ///     var latest = Databricks.Index.GetSparkVersion.Invoke();
     /// 
-    ///     var smallest = Databricks.GetNodeType.Invoke(new()
+    ///     var smallest = Databricks.Index.GetNodeType.Invoke(new()
     ///     {
     ///         LocalDisk = true,
     ///     });
     /// 
-    ///     var @this = new Databricks.Job("this", new()
+    ///     var @this = new Databricks.Index.Job("this", new()
     ///     {
     ///         Name = "Featurization",
     ///         MaxConcurrentRuns = 1,
@@ -275,7 +275,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var jobUsage = new Databricks.Permissions("job_usage", new()
+    ///     var jobUsage = new Databricks.Index.Permissions("job_usage", new()
     ///     {
     ///         JobId = @this.Id,
     ///         AccessControls = new[]
@@ -325,16 +325,16 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = Databricks.GetCurrentUser.Invoke();
+    ///     var me = Databricks.Index.GetCurrentUser.Invoke();
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var ldpDemo = new Databricks.Notebook("ldp_demo", new()
+    ///     var ldpDemo = new Databricks.Index.Notebook("ldp_demo", new()
     ///     {
-    ///         ContentBase64 = Std.Base64encode.Invoke(new()
+    ///         ContentBase64 = Std.Index.Base64encode.Invoke(new()
     ///         {
     ///             Input = @"import dlt
     /// json_path = \""/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json\""
@@ -349,7 +349,7 @@ namespace Pulumi.Databricks
     ///         Path = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/ldp_demo",
     ///     });
     /// 
-    ///     var @this = new Databricks.Pipeline("this", new()
+    ///     var @this = new Databricks.Index.Pipeline("this", new()
     ///     {
     ///         Name = $"LDP Demo Pipeline ({me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)})",
     ///         Storage = "/test/tf-pipeline",
@@ -382,9 +382,9 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var ldpUsage = new Databricks.Permissions("ldp_usage", new()
+    ///     var ldpUsage = new Databricks.Index.Permissions("ldp_usage", new()
     ///     {
-    ///         PipelineId = @this.Id,
+    ///         PipelineId = @this.PipelineId,
     ///         AccessControls = new[]
     ///         {
     ///             new Databricks.Inputs.PermissionsAccessControlArgs
@@ -418,19 +418,19 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var @this = new Databricks.Notebook("this", new()
+    ///     var @this = new Databricks.Index.Notebook("this", new()
     ///     {
-    ///         ContentBase64 = Std.Base64encode.Invoke(new()
+    ///         ContentBase64 = Std.Index.Base64encode.Invoke(new()
     ///         {
     ///             Input = "# Welcome to your Python notebook",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -438,7 +438,7 @@ namespace Pulumi.Databricks
     ///         Language = "PYTHON",
     ///     });
     /// 
-    ///     var notebookUsageByPath = new Databricks.Permissions("notebook_usage_by_path", new()
+    ///     var notebookUsageByPath = new Databricks.Index.Permissions("notebook_usage_by_path", new()
     ///     {
     ///         NotebookPath = @this.Path,
     ///         AccessControls = new[]
@@ -461,7 +461,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var notebookUsageById = new Databricks.Permissions("notebook_usage_by_id", new()
+    ///     var notebookUsageById = new Databricks.Index.Permissions("notebook_usage_by_id", new()
     ///     {
     ///         NotebookId = @this.ObjectId,
     ///         AccessControls = new[]
@@ -504,26 +504,26 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var @this = new Databricks.WorkspaceFile("this", new()
+    ///     var @this = new Databricks.Index.WorkspaceFile("this", new()
     ///     {
-    ///         ContentBase64 = Std.Base64encode.Invoke(new()
+    ///         ContentBase64 = Std.Index.Base64encode.Invoke(new()
     ///         {
     ///             Input = "print('Hello World')",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         Path = "/Production/ETL/Features.py",
     ///     });
     /// 
-    ///     var workspaceFileUsageByPath = new Databricks.Permissions("workspace_file_usage_by_path", new()
+    ///     var workspaceFileUsageByPath = new Databricks.Index.Permissions("workspace_file_usage_by_path", new()
     ///     {
     ///         WorkspaceFilePath = @this.Path,
     ///         AccessControls = new[]
@@ -546,7 +546,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var workspaceFileUsageById = new Databricks.Permissions("workspace_file_usage_by_id", new()
+    ///     var workspaceFileUsageById = new Databricks.Index.Permissions("workspace_file_usage_by_id", new()
     ///     {
     ///         WorkspaceFileId = @this.ObjectId,
     ///         AccessControls = new[]
@@ -593,22 +593,22 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var @this = new Databricks.Directory("this", new()
+    ///     var @this = new Databricks.Index.Directory("this", new()
     ///     {
     ///         Path = "/Production/ETL",
     ///     });
     /// 
-    ///     var folderUsageByPath = new Databricks.Permissions("folder_usage_by_path", new()
+    ///     var folderUsageByPath = new Databricks.Index.Permissions("folder_usage_by_path", new()
     ///     {
     ///         DirectoryPath = @this.Path,
     ///         AccessControls = new[]
@@ -631,7 +631,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var folderUsageById = new Databricks.Permissions("folder_usage_by_id", new()
+    ///     var folderUsageById = new Databricks.Index.Permissions("folder_usage_by_id", new()
     ///     {
     ///         DirectoryId = @this.ObjectId,
     ///         AccessControls = new[]
@@ -671,22 +671,22 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var @this = new Databricks.Repo("this", new()
+    ///     var @this = new Databricks.Index.Repo("this", new()
     ///     {
     ///         Url = "https://github.com/user/demo.git",
     ///     });
     /// 
-    ///     var repoUsage = new Databricks.Permissions("repo_usage", new()
+    ///     var repoUsage = new Databricks.Index.Permissions("repo_usage", new()
     ///     {
     ///         RepoId = @this.Id,
     ///         AccessControls = new[]
@@ -724,26 +724,26 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = Databricks.GetCurrentUser.Invoke();
+    ///     var me = Databricks.Index.GetCurrentUser.Invoke();
     /// 
-    ///     var @this = new Databricks.MlflowExperiment("this", new()
+    ///     var @this = new Databricks.Index.MlflowExperiment("this", new()
     ///     {
     ///         Name = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/Sample",
     ///         ArtifactLocation = "s3://bucket/my-experiment",
     ///         Description = "My MLflow experiment description",
     ///     });
     /// 
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var experimentUsage = new Databricks.Permissions("experiment_usage", new()
+    ///     var experimentUsage = new Databricks.Index.Permissions("experiment_usage", new()
     ///     {
     ///         ExperimentId = @this.Id,
     ///         AccessControls = new[]
@@ -781,22 +781,22 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.MlflowModel("this", new()
+    ///     var @this = new Databricks.Index.MlflowModel("this", new()
     ///     {
     ///         Name = "SomePredictions",
     ///     });
     /// 
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var modelUsage = new Databricks.Permissions("model_usage", new()
+    ///     var modelUsage = new Databricks.Index.Permissions("model_usage", new()
     ///     {
     ///         RegisteredModelId = @this.RegisteredModelId,
     ///         AccessControls = new[]
@@ -834,7 +834,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.ModelServing("this", new()
+    ///     var @this = new Databricks.Index.ModelServing("this", new()
     ///     {
     ///         Name = "tf-test",
     ///         Config = new Databricks.Inputs.ModelServingConfigArgs
@@ -853,17 +853,17 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var mlServingUsage = new Databricks.Permissions("ml_serving_usage", new()
+    ///     var mlServingUsage = new Databricks.Index.Permissions("ml_serving_usage", new()
     ///     {
     ///         ServingEndpointId = @this.ServingEndpointId,
     ///         AccessControls = new[]
@@ -903,18 +903,18 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.VectorSearchEndpoint("this", new()
+    ///     var @this = new Databricks.Index.VectorSearchEndpoint("this", new()
     ///     {
     ///         Name = "vector-search-test",
     ///         EndpointType = "STANDARD",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var vectorSearchEndpointUsage = new Databricks.Permissions("vector_search_endpoint_usage", new()
+    ///     var vectorSearchEndpointUsage = new Databricks.Index.Permissions("vector_search_endpoint_usage", new()
     ///     {
     ///         VectorSearchEndpointId = @this.EndpointId,
     ///         AccessControls = new[]
@@ -947,12 +947,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var guests = new Databricks.Group("guests", new()
+    ///     var guests = new Databricks.Index.Group("guests", new()
     ///     {
     ///         DisplayName = "Guest Users",
     ///     });
     /// 
-    ///     var passwordUsage = new Databricks.Permissions("password_usage", new()
+    ///     var passwordUsage = new Databricks.Index.Permissions("password_usage", new()
     ///     {
     ///         Authorization = "passwords",
     ///         AccessControls = new[]
@@ -984,17 +984,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var tokenUsage = new Databricks.Permissions("token_usage", new()
+    ///     var tokenUsage = new Databricks.Index.Permissions("token_usage", new()
     ///     {
     ///         Authorization = "tokens",
     ///         AccessControls = new[]
@@ -1031,19 +1031,19 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = Databricks.GetCurrentUser.Invoke();
+    ///     var me = Databricks.Index.GetCurrentUser.Invoke();
     /// 
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var @this = new Databricks.SqlEndpoint("this", new()
+    ///     var @this = new Databricks.Index.SqlEndpoint("this", new()
     ///     {
     ///         Name = $"Endpoint of {me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}",
     ///         ClusterSize = "Small",
@@ -1061,9 +1061,9 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var endpointUsage = new Databricks.Permissions("endpoint_usage", new()
+    ///     var endpointUsage = new Databricks.Index.Permissions("endpoint_usage", new()
     ///     {
-    ///         SqlEndpointId = @this.Id,
+    ///         SqlEndpointId = @this.SqlEndpointId,
     ///         AccessControls = new[]
     ///         {
     ///             new Databricks.Inputs.PermissionsAccessControlArgs
@@ -1094,22 +1094,22 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var dashboard = new Databricks.Dashboard("dashboard", new()
+    ///     var dashboard = new Databricks.Index.Dashboard("dashboard", new()
     ///     {
     ///         DisplayName = "TF New Dashboard",
     ///     });
     /// 
-    ///     var dashboardUsage = new Databricks.Permissions("dashboard_usage", new()
+    ///     var dashboardUsage = new Databricks.Index.Permissions("dashboard_usage", new()
     ///     {
     ///         DashboardId = dashboard.Id,
     ///         AccessControls = new[]
@@ -1142,17 +1142,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var sqlDashboardUsage = new Databricks.Permissions("sql_dashboard_usage", new()
+    ///     var sqlDashboardUsage = new Databricks.Index.Permissions("sql_dashboard_usage", new()
     ///     {
     ///         SqlDashboardId = "3244325",
     ///         AccessControls = new[]
@@ -1187,17 +1187,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var queryUsage = new Databricks.Permissions("query_usage", new()
+    ///     var queryUsage = new Databricks.Index.Permissions("query_usage", new()
     ///     {
     ///         SqlQueryId = "3244325",
     ///         AccessControls = new[]
@@ -1230,17 +1230,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var appUsage = new Databricks.Permissions("app_usage", new()
+    ///     var appUsage = new Databricks.Index.Permissions("app_usage", new()
     ///     {
     ///         AlertV2Id = "12345",
     ///         AccessControls = new[]
@@ -1273,17 +1273,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto = new Databricks.Group("auto", new()
+    ///     var auto = new Databricks.Index.Group("auto", new()
     ///     {
     ///         DisplayName = "Automation",
     ///     });
     /// 
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var alertUsage = new Databricks.Permissions("alert_usage", new()
+    ///     var alertUsage = new Databricks.Index.Permissions("alert_usage", new()
     ///     {
     ///         SqlAlertId = "3244325",
     ///         AccessControls = new[]
@@ -1316,12 +1316,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var appUsage = new Databricks.Permissions("app_usage", new()
+    ///     var appUsage = new Databricks.Index.Permissions("app_usage", new()
     ///     {
     ///         AppName = "myapp",
     ///         AccessControls = new[]
@@ -1354,12 +1354,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var appUsage = new Databricks.Permissions("app_usage", new()
+    ///     var appUsage = new Databricks.Index.Permissions("app_usage", new()
     ///     {
     ///         DatabaseInstanceName = "my_database",
     ///         AccessControls = new[]
@@ -1392,12 +1392,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var eng = new Databricks.Group("eng", new()
+    ///     var eng = new Databricks.Index.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var dbProjectUsage = new Databricks.Permissions("db_project_usage", new()
+    ///     var dbProjectUsage = new Databricks.Index.Permissions("db_project_usage", new()
     ///     {
     ///         DatabaseProjectName = "my_project",
     ///         AccessControls = new[]

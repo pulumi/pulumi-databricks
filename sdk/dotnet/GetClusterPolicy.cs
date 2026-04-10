@@ -28,12 +28,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var personal = Databricks.GetClusterPolicy.Invoke(new()
+        ///     var personal = Databricks.Index.GetClusterPolicy.Invoke(new()
         ///     {
         ///         Name = "Personal Compute",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
+        ///     var myCluster = new Databricks.Index.Cluster("my_cluster", new()
         ///     {
         ///         PolicyId = personal.Apply(getClusterPolicyResult =&gt; getClusterPolicyResult.Id),
         ///     });
@@ -61,12 +61,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var personal = Databricks.GetClusterPolicy.Invoke(new()
+        ///     var personal = Databricks.Index.GetClusterPolicy.Invoke(new()
         ///     {
         ///         Name = "Personal Compute",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
+        ///     var myCluster = new Databricks.Index.Cluster("my_cluster", new()
         ///     {
         ///         PolicyId = personal.Apply(getClusterPolicyResult =&gt; getClusterPolicyResult.Id),
         ///     });
@@ -94,12 +94,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var personal = Databricks.GetClusterPolicy.Invoke(new()
+        ///     var personal = Databricks.Index.GetClusterPolicy.Invoke(new()
         ///     {
         ///         Name = "Personal Compute",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
+        ///     var myCluster = new Databricks.Index.Cluster("my_cluster", new()
         ///     {
         ///         PolicyId = personal.Apply(getClusterPolicyResult =&gt; getClusterPolicyResult.Id),
         ///     });

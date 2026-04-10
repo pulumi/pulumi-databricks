@@ -31,12 +31,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var @this = await Databricks.GetJobs.InvokeAsync();
+        ///     var @this = await Databricks.Index.GetJobs.InvokeAsync();
         /// 
-        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Index.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Index.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
         ///         {
         ///             JobId = range.Value,
         ///             AccessControls = new[]
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetJobs.Invoke(new()
+        ///     var @this = Databricks.Index.GetJobs.Invoke(new()
         ///     {
         ///         JobNameContains = "test",
         ///     });
@@ -85,15 +85,15 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var @this = await Databricks.GetJobs.InvokeAsync(new()
+        ///     var @this = await Databricks.Index.GetJobs.InvokeAsync(new()
         ///     {
         ///         Key = "id",
         ///     });
         /// 
-        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Index.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Index.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
         ///         {
         ///             JobId = range.Value,
         ///             AccessControls = new[]
@@ -138,12 +138,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var @this = await Databricks.GetJobs.InvokeAsync();
+        ///     var @this = await Databricks.Index.GetJobs.InvokeAsync();
         /// 
-        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Index.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Index.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
         ///         {
         ///             JobId = range.Value,
         ///             AccessControls = new[]
@@ -169,7 +169,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetJobs.Invoke(new()
+        ///     var @this = Databricks.Index.GetJobs.Invoke(new()
         ///     {
         ///         JobNameContains = "test",
         ///     });
@@ -192,15 +192,15 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var @this = await Databricks.GetJobs.InvokeAsync(new()
+        ///     var @this = await Databricks.Index.GetJobs.InvokeAsync(new()
         ///     {
         ///         Key = "id",
         ///     });
         /// 
-        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Index.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Index.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
         ///         {
         ///             JobId = range.Value,
         ///             AccessControls = new[]
@@ -245,12 +245,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var @this = await Databricks.GetJobs.InvokeAsync();
+        ///     var @this = await Databricks.Index.GetJobs.InvokeAsync();
         /// 
-        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Index.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Index.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
         ///         {
         ///             JobId = range.Value,
         ///             AccessControls = new[]
@@ -276,7 +276,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetJobs.Invoke(new()
+        ///     var @this = Databricks.Index.GetJobs.Invoke(new()
         ///     {
         ///         JobNameContains = "test",
         ///     });
@@ -299,15 +299,15 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var @this = await Databricks.GetJobs.InvokeAsync(new()
+        ///     var @this = await Databricks.Index.GetJobs.InvokeAsync(new()
         ///     {
         ///         Key = "id",
         ///     });
         /// 
-        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Index.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Index.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
         ///         {
         ///             JobId = range.Value,
         ///             AccessControls = new[]

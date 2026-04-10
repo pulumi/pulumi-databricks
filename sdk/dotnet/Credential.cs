@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var external = new Databricks.Credential("external", new()
+    ///     var external = new Databricks.Index.Credential("external", new()
     ///     {
     ///         Name = externalDataAccess.Name,
     ///         AwsIamRole = new Databricks.Inputs.CredentialAwsIamRoleArgs
@@ -42,9 +42,9 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Grants("external_creds", new()
+    ///     var externalCreds = new Databricks.Index.Grants("external_creds", new()
     ///     {
-    ///         Credential = external.Id,
+    ///         Credential = external.DatabricksCredentialId,
     ///         GrantDetails = new[]
     ///         {
     ///             new Databricks.Inputs.GrantsGrantArgs
@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var externalMi = new Databricks.Credential("external_mi", new()
+    ///     var externalMi = new Databricks.Index.Credential("external_mi", new()
     ///     {
     ///         Name = "mi_credential",
     ///         AzureManagedIdentity = new Databricks.Inputs.CredentialAzureManagedIdentityArgs
@@ -82,9 +82,9 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed identity credential managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Grants("external_creds", new()
+    ///     var externalCreds = new Databricks.Index.Grants("external_creds", new()
     ///     {
-    ///         Credential = externalMi.Id,
+    ///         Credential = externalMi.DatabricksCredentialId,
     ///         GrantDetails = new[]
     ///         {
     ///             new Databricks.Inputs.GrantsGrantArgs
@@ -111,7 +111,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var externalGcpSa = new Databricks.Credential("external_gcp_sa", new()
+    ///     var externalGcpSa = new Databricks.Index.Credential("external_gcp_sa", new()
     ///     {
     ///         Name = "gcp_sa_credential",
     ///         DatabricksGcpServiceAccount = null,
@@ -119,9 +119,9 @@ namespace Pulumi.Databricks
     ///         Comment = "GCP SA credential managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Grants("external_creds", new()
+    ///     var externalCreds = new Databricks.Index.Grants("external_creds", new()
     ///     {
-    ///         Credential = externalGcpSa.Id,
+    ///         Credential = externalGcpSa.DatabricksCredentialId,
     ///         GrantDetails = new[]
     ///         {
     ///             new Databricks.Inputs.GrantsGrantArgs
@@ -164,6 +164,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("credentialId")]
         public Output<string> CredentialId { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of this credential - same as the `Name`.
+        /// </summary>
+        [Output("databricksCredentialId")]
+        public Output<string> DatabricksCredentialId { get; private set; } = null!;
 
         [Output("databricksGcpServiceAccount")]
         public Output<Outputs.CredentialDatabricksGcpServiceAccount> DatabricksGcpServiceAccount { get; private set; } = null!;
@@ -297,6 +303,12 @@ namespace Pulumi.Databricks
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// ID of this credential - same as the `Name`.
+        /// </summary>
+        [Input("databricksCredentialId")]
+        public Input<string>? DatabricksCredentialId { get; set; }
+
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.CredentialDatabricksGcpServiceAccountArgs>? DatabricksGcpServiceAccount { get; set; }
 
@@ -396,6 +408,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("credentialId")]
         public Input<string>? CredentialId { get; set; }
+
+        /// <summary>
+        /// ID of this credential - same as the `Name`.
+        /// </summary>
+        [Input("databricksCredentialId")]
+        public Input<string>? DatabricksCredentialId { get; set; }
 
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.CredentialDatabricksGcpServiceAccountGetArgs>? DatabricksGcpServiceAccount { get; set; }

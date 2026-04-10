@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupAppsSettingsCustomTemplate(ctx, &databricks.LookupAppsSettingsCustomTemplateArgs{
+//			_, err := databricks.GetAppsSettingsCustomTemplate(ctx, &databricks.LookupAppsSettingsCustomTemplateArgs{
 //				Name: "my-custom-template",
 //			}, nil)
 //			if err != nil {

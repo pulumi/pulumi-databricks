@@ -35,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Use the account provider
-//			me, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//			me, err := databricks.GetUser(ctx, &databricks.LookupUserArgs{
 //				UserName: pulumi.StringRef("me@example.com"),
 //			}, nil)
 //			if err != nil {
@@ -71,7 +71,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Use the account provider
-//			sp, err := databricks.LookupServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
+//			sp, err := databricks.GetServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
 //				DisplayName: pulumi.StringRef("Automation-only SP"),
 //			}, nil)
 //			if err != nil {
@@ -107,7 +107,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Use the account provider
-//			accountLevel, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			accountLevel, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "example-group",
 //			}, nil)
 //			if err != nil {
@@ -123,7 +123,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			workspaceLevel, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			workspaceLevel, err := databricks.GetGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "example-group",
 //			}, nil)
 //			if err != nil {

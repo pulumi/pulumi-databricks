@@ -31,20 +31,20 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     var region = config.RequireObject&lt;dynamic&gt;("region");
     ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
-    ///     var ncc = new Databricks.MwsNetworkConnectivityConfig("ncc", new()
+    ///     var ncc = new Databricks.Index.MwsNetworkConnectivityConfig("ncc", new()
     ///     {
     ///         Name = $"ncc-for-{prefix}",
     ///         Region = region,
     ///     });
     /// 
-    ///     var storage = new Databricks.MwsNccPrivateEndpointRule("storage", new()
+    ///     var storage = new Databricks.Index.MwsNccPrivateEndpointRule("storage", new()
     ///     {
     ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
     ///         ResourceId = "/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa",
     ///         GroupId = "blob",
     ///     });
     /// 
-    ///     var slb = new Databricks.MwsNccPrivateEndpointRule("slb", new()
+    ///     var slb = new Databricks.Index.MwsNccPrivateEndpointRule("slb", new()
     ///     {
     ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
     ///         ResourceId = "/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Network/privatelinkServices/example-private-link-service",
@@ -70,13 +70,13 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     var region = config.RequireObject&lt;dynamic&gt;("region");
     ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
-    ///     var ncc = new Databricks.MwsNetworkConnectivityConfig("ncc", new()
+    ///     var ncc = new Databricks.Index.MwsNetworkConnectivityConfig("ncc", new()
     ///     {
     ///         Name = $"ncc-for-{prefix}",
     ///         Region = region,
     ///     });
     /// 
-    ///     var storage = new Databricks.MwsNccPrivateEndpointRule("storage", new()
+    ///     var storage = new Databricks.Index.MwsNccPrivateEndpointRule("storage", new()
     ///     {
     ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
     ///         EndpointService = "com.amazonaws.us-east-1.s3",
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var vpce = new Databricks.MwsNccPrivateEndpointRule("vpce", new()
+    ///     var vpce = new Databricks.Index.MwsNccPrivateEndpointRule("vpce", new()
     ///     {
     ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
     ///         EndpointService = "com.amazonaws.vpce.us-west-2.vpce-svc-xyz",

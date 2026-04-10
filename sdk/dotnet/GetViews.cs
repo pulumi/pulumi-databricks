@@ -29,16 +29,16 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var things = await Databricks.GetViews.InvokeAsync(new()
+        ///     var things = await Databricks.Index.GetViews.InvokeAsync(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
         ///     });
         /// 
-        ///     var thingsGrants = new List&lt;Databricks.Grants&gt;();
+        ///     var thingsGrants = new List&lt;Databricks.Index.Grants&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         thingsGrants.Add(new Databricks.Grants($"things-{range.Key}", new()
+        ///         thingsGrants.Add(new Databricks.Index.Grants($"things-{range.Key}", new()
         ///         {
         ///             Table = range.Value,
         ///             GrantDetails = new[]
@@ -86,16 +86,16 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var things = await Databricks.GetViews.InvokeAsync(new()
+        ///     var things = await Databricks.Index.GetViews.InvokeAsync(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
         ///     });
         /// 
-        ///     var thingsGrants = new List&lt;Databricks.Grants&gt;();
+        ///     var thingsGrants = new List&lt;Databricks.Index.Grants&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         thingsGrants.Add(new Databricks.Grants($"things-{range.Key}", new()
+        ///         thingsGrants.Add(new Databricks.Index.Grants($"things-{range.Key}", new()
         ///         {
         ///             Table = range.Value,
         ///             GrantDetails = new[]
@@ -143,16 +143,16 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var things = await Databricks.GetViews.InvokeAsync(new()
+        ///     var things = await Databricks.Index.GetViews.InvokeAsync(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
         ///     });
         /// 
-        ///     var thingsGrants = new List&lt;Databricks.Grants&gt;();
+        ///     var thingsGrants = new List&lt;Databricks.Index.Grants&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         thingsGrants.Add(new Databricks.Grants($"things-{range.Key}", new()
+        ///         thingsGrants.Add(new Databricks.Index.Grants($"things-{range.Key}", new()
         ///         {
         ///             Table = range.Value,
         ///             GrantDetails = new[]

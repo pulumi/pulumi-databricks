@@ -37,13 +37,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			prod, err := databricks.LookupCatalog(ctx, &databricks.LookupCatalogArgs{
+//			prod, err := databricks.GetCatalog(ctx, &databricks.LookupCatalogArgs{
 //				Name: "prod_catalog",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			prodConfig, err := databricks.LookupDataClassificationCatalogConfig(ctx, &databricks.LookupDataClassificationCatalogConfigArgs{
+//			prodConfig, err := databricks.GetDataClassificationCatalogConfig(ctx, &databricks.LookupDataClassificationCatalogConfigArgs{
 //				Name: fmt.Sprintf("catalogs/%v/config", prod.Name),
 //			}, nil)
 //			if err != nil {

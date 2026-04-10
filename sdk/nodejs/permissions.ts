@@ -243,7 +243,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const ldpUsage = new databricks.Permissions("ldp_usage", {
- *     pipelineId: _this.id,
+ *     pipelineId: _this.pipelineId,
  *     accessControls: [
  *         {
  *             groupName: "users",
@@ -668,7 +668,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const endpointUsage = new databricks.Permissions("endpoint_usage", {
- *     sqlEndpointId: _this.id,
+ *     sqlEndpointId: _this.sqlEndpointId,
  *     accessControls: [
  *         {
  *             groupName: auto.displayName,

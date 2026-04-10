@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.ExternalMetadata("this", new()
+    ///     var @this = new Databricks.Index.ExternalMetadata("this", new()
     ///     {
     ///         Name = "security_events_stream",
     ///         SystemType = "KAFKA",

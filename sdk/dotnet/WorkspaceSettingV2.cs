@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.WorkspaceSettingV2("this", new()
+    ///     var @this = new Databricks.Index.WorkspaceSettingV2("this", new()
     ///     {
     ///         Name = "llm_proxy_partner_powered",
     ///         BooleanVal = new Databricks.Inputs.WorkspaceSettingV2BooleanValArgs

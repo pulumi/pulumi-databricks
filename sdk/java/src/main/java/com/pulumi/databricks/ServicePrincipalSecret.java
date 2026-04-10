@@ -208,6 +208,20 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
         return this.servicePrincipalId;
     }
     /**
+     * ID of the secret
+     * 
+     */
+    @Export(name="servicePrincipalSecretId", refs={String.class}, tree="[0]")
+    private Output<String> servicePrincipalSecretId;
+
+    /**
+     * @return ID of the secret
+     * 
+     */
+    public Output<String> servicePrincipalSecretId() {
+        return this.servicePrincipalSecretId;
+    }
+    /**
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      * 
      */

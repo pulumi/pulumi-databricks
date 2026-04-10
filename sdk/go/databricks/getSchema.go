@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupSchema(ctx, &databricks.LookupSchemaArgs{
+//			_, err := databricks.GetSchema(ctx, &databricks.LookupSchemaArgs{
 //				Name: "catalog.schema",
 //			}, nil)
 //			if err != nil {

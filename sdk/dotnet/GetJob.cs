@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetJob.Invoke(new()
+        ///     var @this = Databricks.Index.GetJob.Invoke(new()
         ///     {
         ///         JobName = "My job",
         ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetJob.Invoke(new()
+        ///     var @this = Databricks.Index.GetJob.Invoke(new()
         ///     {
         ///         JobName = "My job",
         ///     });
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetJob.Invoke(new()
+        ///     var @this = Databricks.Index.GetJob.Invoke(new()
         ///     {
         ///         JobName = "My job",
         ///     });

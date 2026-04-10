@@ -24,11 +24,11 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ldpDemo = new Databricks.Notebook("ldp_demo");
+    ///     var ldpDemo = new Databricks.Index.Notebook("ldp_demo");
     /// 
-    ///     var ldpDemoRepo = new Databricks.Repo("ldp_demo");
+    ///     var ldpDemoRepo = new Databricks.Index.Repo("ldp_demo");
     /// 
-    ///     var @this = new Databricks.Pipeline("this", new()
+    ///     var @this = new Databricks.Index.Pipeline("this", new()
     ///     {
     ///         Name = "Pipeline Name",
     ///         Catalog = "main",
@@ -245,6 +245,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("photon")]
         public Output<bool?> Photon { get; private set; } = null!;
+
+        /// <summary>
+        /// Canonical unique identifier of the Lakeflow Declarative Pipeline.
+        /// </summary>
+        [Output("pipelineId")]
+        public Output<string> PipelineId { get; private set; } = null!;
 
         [Output("providerConfig")]
         public Output<Outputs.PipelineProviderConfig?> ProviderConfig { get; private set; } = null!;
@@ -512,6 +518,12 @@ namespace Pulumi.Databricks
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
 
+        /// <summary>
+        /// Canonical unique identifier of the Lakeflow Declarative Pipeline.
+        /// </summary>
+        [Input("pipelineId")]
+        public Input<string>? PipelineId { get; set; }
+
         [Input("providerConfig")]
         public Input<Inputs.PipelineProviderConfigArgs>? ProviderConfig { get; set; }
 
@@ -745,6 +757,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
+
+        /// <summary>
+        /// Canonical unique identifier of the Lakeflow Declarative Pipeline.
+        /// </summary>
+        [Input("pipelineId")]
+        public Input<string>? PipelineId { get; set; }
 
         [Input("providerConfig")]
         public Input<Inputs.PipelineProviderConfigGetArgs>? ProviderConfig { get; set; }

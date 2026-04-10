@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
-//				Credential: external.ID(),
+//				Credential: external.DatabricksCredentialId,
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
-//				Credential: externalMi.ID(),
+//				Credential: externalMi.DatabricksCredentialId,
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -137,7 +137,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
-//				Credential: externalGcpSa.ID(),
+//				Credential: externalGcpSa.DatabricksCredentialId,
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -165,7 +165,9 @@ type Credential struct {
 	CreatedAt             pulumi.IntOutput                         `pulumi:"createdAt"`
 	CreatedBy             pulumi.StringOutput                      `pulumi:"createdBy"`
 	// Unique ID of the credential.
-	CredentialId                pulumi.StringOutput                         `pulumi:"credentialId"`
+	CredentialId pulumi.StringOutput `pulumi:"credentialId"`
+	// ID of this credential - same as the `name`.
+	DatabricksCredentialId      pulumi.StringOutput                         `pulumi:"databricksCredentialId"`
 	DatabricksGcpServiceAccount CredentialDatabricksGcpServiceAccountOutput `pulumi:"databricksGcpServiceAccount"`
 	// Delete credential regardless of its dependencies.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
@@ -232,7 +234,9 @@ type credentialState struct {
 	CreatedAt             *int                             `pulumi:"createdAt"`
 	CreatedBy             *string                          `pulumi:"createdBy"`
 	// Unique ID of the credential.
-	CredentialId                *string                                `pulumi:"credentialId"`
+	CredentialId *string `pulumi:"credentialId"`
+	// ID of this credential - same as the `name`.
+	DatabricksCredentialId      *string                                `pulumi:"databricksCredentialId"`
 	DatabricksGcpServiceAccount *CredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	// Delete credential regardless of its dependencies.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -267,7 +271,9 @@ type CredentialState struct {
 	CreatedAt             pulumi.IntPtrInput
 	CreatedBy             pulumi.StringPtrInput
 	// Unique ID of the credential.
-	CredentialId                pulumi.StringPtrInput
+	CredentialId pulumi.StringPtrInput
+	// ID of this credential - same as the `name`.
+	DatabricksCredentialId      pulumi.StringPtrInput
 	DatabricksGcpServiceAccount CredentialDatabricksGcpServiceAccountPtrInput
 	// Delete credential regardless of its dependencies.
 	ForceDestroy pulumi.BoolPtrInput
@@ -299,12 +305,14 @@ func (CredentialState) ElementType() reflect.Type {
 }
 
 type credentialArgs struct {
-	AwsIamRole                  *CredentialAwsIamRole                  `pulumi:"awsIamRole"`
-	AzureManagedIdentity        *CredentialAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
-	AzureServicePrincipal       *CredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
-	Comment                     *string                                `pulumi:"comment"`
-	CreatedAt                   *int                                   `pulumi:"createdAt"`
-	CreatedBy                   *string                                `pulumi:"createdBy"`
+	AwsIamRole            *CredentialAwsIamRole            `pulumi:"awsIamRole"`
+	AzureManagedIdentity  *CredentialAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
+	AzureServicePrincipal *CredentialAzureServicePrincipal `pulumi:"azureServicePrincipal"`
+	Comment               *string                          `pulumi:"comment"`
+	CreatedAt             *int                             `pulumi:"createdAt"`
+	CreatedBy             *string                          `pulumi:"createdBy"`
+	// ID of this credential - same as the `name`.
+	DatabricksCredentialId      *string                                `pulumi:"databricksCredentialId"`
 	DatabricksGcpServiceAccount *CredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	// Delete credential regardless of its dependencies.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -333,12 +341,14 @@ type credentialArgs struct {
 
 // The set of arguments for constructing a Credential resource.
 type CredentialArgs struct {
-	AwsIamRole                  CredentialAwsIamRolePtrInput
-	AzureManagedIdentity        CredentialAzureManagedIdentityPtrInput
-	AzureServicePrincipal       CredentialAzureServicePrincipalPtrInput
-	Comment                     pulumi.StringPtrInput
-	CreatedAt                   pulumi.IntPtrInput
-	CreatedBy                   pulumi.StringPtrInput
+	AwsIamRole            CredentialAwsIamRolePtrInput
+	AzureManagedIdentity  CredentialAzureManagedIdentityPtrInput
+	AzureServicePrincipal CredentialAzureServicePrincipalPtrInput
+	Comment               pulumi.StringPtrInput
+	CreatedAt             pulumi.IntPtrInput
+	CreatedBy             pulumi.StringPtrInput
+	// ID of this credential - same as the `name`.
+	DatabricksCredentialId      pulumi.StringPtrInput
 	DatabricksGcpServiceAccount CredentialDatabricksGcpServiceAccountPtrInput
 	// Delete credential regardless of its dependencies.
 	ForceDestroy pulumi.BoolPtrInput
@@ -479,6 +489,11 @@ func (o CredentialOutput) CreatedBy() pulumi.StringOutput {
 // Unique ID of the credential.
 func (o CredentialOutput) CredentialId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.CredentialId }).(pulumi.StringOutput)
+}
+
+// ID of this credential - same as the `name`.
+func (o CredentialOutput) DatabricksCredentialId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.DatabricksCredentialId }).(pulumi.StringOutput)
 }
 
 func (o CredentialOutput) DatabricksGcpServiceAccount() CredentialDatabricksGcpServiceAccountOutput {

@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var pas = new Databricks.MwsPrivateAccessSettings("pas", new()
+    ///     var pas = new Databricks.Index.MwsPrivateAccessSettings("pas", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         PrivateAccessSettingsName = $"Private Access Settings for {prefix}",
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.MwsWorkspaces("this", new()
+    ///     var @this = new Databricks.Index.MwsWorkspaces("this", new()
     ///     {
     ///         AwsRegion = region,
     ///         WorkspaceName = prefix,
@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.MwsWorkspaces("this", new()
+    ///     var @this = new Databricks.Index.MwsWorkspaces("this", new()
     ///     {
     ///         WorkspaceName = "gcp-workspace",
     ///         Location = subnetRegion,

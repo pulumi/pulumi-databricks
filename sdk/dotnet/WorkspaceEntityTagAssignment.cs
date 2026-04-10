@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var notebookTag = new Databricks.WorkspaceEntityTagAssignment("notebook_tag", new()
+    ///     var notebookTag = new Databricks.Index.WorkspaceEntityTagAssignment("notebook_tag", new()
     ///     {
     ///         EntityType = "notebooks",
     ///         EntityId = "2807324866692453",
@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
     ///         TagValue = "high",
     ///     });
     /// 
-    ///     var appTag = new Databricks.WorkspaceEntityTagAssignment("app_tag", new()
+    ///     var appTag = new Databricks.Index.WorkspaceEntityTagAssignment("app_tag", new()
     ///     {
     ///         EntityType = "apps",
     ///         EntityId = "myapp",
@@ -40,7 +40,7 @@ namespace Pulumi.Databricks
     ///         TagValue = "high",
     ///     });
     /// 
-    ///     var dashboardTag = new Databricks.WorkspaceEntityTagAssignment("dashboard_tag", new()
+    ///     var dashboardTag = new Databricks.Index.WorkspaceEntityTagAssignment("dashboard_tag", new()
     ///     {
     ///         EntityType = "dashboards",
     ///         EntityId = "2807324866692453",
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
     ///         TagValue = "high",
     ///     });
     /// 
-    ///     var geniespaceTag = new Databricks.WorkspaceEntityTagAssignment("geniespace_tag", new()
+    ///     var geniespaceTag = new Databricks.Index.WorkspaceEntityTagAssignment("geniespace_tag", new()
     ///     {
     ///         EntityType = "geniespaces",
     ///         EntityId = "2807324866692453",

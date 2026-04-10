@@ -343,6 +343,21 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.photon);
     }
 
+    /**
+     * Canonical unique identifier of the Lakeflow Declarative Pipeline.
+     * 
+     */
+    @Import(name="pipelineId")
+    private @Nullable Output<String> pipelineId;
+
+    /**
+     * @return Canonical unique identifier of the Lakeflow Declarative Pipeline.
+     * 
+     */
+    public Optional<Output<String>> pipelineId() {
+        return Optional.ofNullable(this.pipelineId);
+    }
+
     @Import(name="providerConfig")
     private @Nullable Output<PipelineProviderConfigArgs> providerConfig;
 
@@ -534,6 +549,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.notifications = $.notifications;
         this.photon = $.photon;
+        this.pipelineId = $.pipelineId;
         this.providerConfig = $.providerConfig;
         this.restartWindow = $.restartWindow;
         this.rootPath = $.rootPath;
@@ -1020,6 +1036,27 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder photon(Boolean photon) {
             return photon(Output.of(photon));
+        }
+
+        /**
+         * @param pipelineId Canonical unique identifier of the Lakeflow Declarative Pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineId(@Nullable Output<String> pipelineId) {
+            $.pipelineId = pipelineId;
+            return this;
+        }
+
+        /**
+         * @param pipelineId Canonical unique identifier of the Lakeflow Declarative Pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineId(String pipelineId) {
+            return pipelineId(Output.of(pipelineId));
         }
 
         public Builder providerConfig(@Nullable Output<PipelineProviderConfigArgs> providerConfig) {

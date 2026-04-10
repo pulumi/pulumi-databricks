@@ -24,9 +24,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = Databricks.GetCurrentUser.Invoke();
+    ///     var me = Databricks.Index.GetCurrentUser.Invoke();
     /// 
-    ///     var @this = new Databricks.MlflowExperiment("this", new()
+    ///     var @this = new Databricks.Index.MlflowExperiment("this", new()
     ///     {
     ///         Name = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/Sample",
     ///         ArtifactLocation = "s3://bucket/my-experiment",

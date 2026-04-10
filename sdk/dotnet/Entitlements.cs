@@ -28,12 +28,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = Databricks.GetUser.Invoke(new()
+    ///     var me = Databricks.Index.GetUser.Invoke(new()
     ///     {
     ///         UserName = "me@example.com",
     ///     });
     /// 
-    ///     var meEntitlements = new Databricks.Entitlements("me", new()
+    ///     var meEntitlements = new Databricks.Index.Entitlements("me", new()
     ///     {
     ///         UserId = me.Apply(getUserResult =&gt; getUserResult.Id),
     ///         AllowClusterCreate = true,
@@ -53,12 +53,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = Databricks.GetServicePrincipal.Invoke(new()
+    ///     var @this = Databricks.Index.GetServicePrincipal.Invoke(new()
     ///     {
     ///         ApplicationId = "11111111-2222-3333-4444-555666777888",
     ///     });
     /// 
-    ///     var thisEntitlements = new Databricks.Entitlements("this", new()
+    ///     var thisEntitlements = new Databricks.Index.Entitlements("this", new()
     ///     {
     ///         ServicePrincipalId = @this.Apply(@this =&gt; @this.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.SpId)),
     ///         AllowClusterCreate = true,
@@ -78,12 +78,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var users = Databricks.GetGroup.Invoke(new()
+    ///     var users = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "users",
     ///     });
     /// 
-    ///     var workspace_users = new Databricks.Entitlements("workspace-users", new()
+    ///     var workspace_users = new Databricks.Index.Entitlements("workspace-users", new()
     ///     {
     ///         GroupId = users.Apply(getGroupResult =&gt; getGroupResult.Id),
     ///         AllowClusterCreate = true,

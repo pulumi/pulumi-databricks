@@ -30,12 +30,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.ServicePrincipal("this", new()
+    ///     var @this = new Databricks.Index.ServicePrincipal("this", new()
     ///     {
     ///         DisplayName = "Automation-only SP",
     ///     });
     /// 
-    ///     var tokenUsage = new Databricks.Permissions("token_usage", new()
+    ///     var tokenUsage = new Databricks.Index.Permissions("token_usage", new()
     ///     {
     ///         Authorization = "tokens",
     ///         AccessControls = new[]
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var thisOboToken = new Databricks.OboToken("this", new()
+    ///     var thisOboToken = new Databricks.Index.OboToken("this", new()
     ///     {
     ///         ApplicationId = @this.ApplicationId,
     ///         Comment = @this.DisplayName.Apply(displayName =&gt; $"PAT on behalf of {displayName}"),
@@ -78,23 +78,23 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.ServicePrincipal("this", new()
+    ///     var @this = new Databricks.Index.ServicePrincipal("this", new()
     ///     {
     ///         DisplayName = "Pulumi",
     ///     });
     /// 
-    ///     var admins = Databricks.GetGroup.Invoke(new()
+    ///     var admins = Databricks.Index.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "admins",
     ///     });
     /// 
-    ///     var thisGroupMember = new Databricks.GroupMember("this", new()
+    ///     var thisGroupMember = new Databricks.Index.GroupMember("this", new()
     ///     {
     ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
     ///         MemberId = @this.Id,
     ///     });
     /// 
-    ///     var thisOboToken = new Databricks.OboToken("this", new()
+    ///     var thisOboToken = new Databricks.Index.OboToken("this", new()
     ///     {
     ///         ApplicationId = @this.ApplicationId,
     ///         Comment = @this.DisplayName.Apply(displayName =&gt; $"PAT on behalf of {displayName}"),

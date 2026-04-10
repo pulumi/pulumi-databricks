@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prod = Databricks.GetDirectory.Invoke(new()
+        ///     var prod = Databricks.Index.GetDirectory.Invoke(new()
         ///     {
         ///         Path = "/Production",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prod = Databricks.GetDirectory.Invoke(new()
+        ///     var prod = Databricks.Index.GetDirectory.Invoke(new()
         ///     {
         ///         Path = "/Production",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prod = Databricks.GetDirectory.Invoke(new()
+        ///     var prod = Databricks.Index.GetDirectory.Invoke(new()
         ///     {
         ///         Path = "/Production",
         ///     });

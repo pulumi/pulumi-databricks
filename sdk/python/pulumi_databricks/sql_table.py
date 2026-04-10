@@ -729,7 +729,7 @@ class SqlTable(pulumi.CustomResource):
             catalog_name=sandbox["name"],
             schema_name=things["name"],
             table_type="MANAGED",
-            warehouse_id=this.id,
+            warehouse_id=this.sql_endpoint_id,
             columns=[
                 {
                     "name": "id",
@@ -747,7 +747,7 @@ class SqlTable(pulumi.CustomResource):
             catalog_name=sandbox["name"],
             schema_name=things["name"],
             table_type="VIEW",
-            warehouse_id=this.id,
+            warehouse_id=this.sql_endpoint_id,
             view_definition=std.format(input="SELECT name FROM %s WHERE id == 1",
                 args=[thing.id]).result,
             comment="this view is managed by terraform")
@@ -949,7 +949,7 @@ class SqlTable(pulumi.CustomResource):
             catalog_name=sandbox["name"],
             schema_name=things["name"],
             table_type="MANAGED",
-            warehouse_id=this.id,
+            warehouse_id=this.sql_endpoint_id,
             columns=[
                 {
                     "name": "id",
@@ -967,7 +967,7 @@ class SqlTable(pulumi.CustomResource):
             catalog_name=sandbox["name"],
             schema_name=things["name"],
             table_type="VIEW",
-            warehouse_id=this.id,
+            warehouse_id=this.sql_endpoint_id,
             view_definition=std.format(input="SELECT name FROM %s WHERE id == 1",
                 args=[thing.id]).result,
             comment="this view is managed by terraform")

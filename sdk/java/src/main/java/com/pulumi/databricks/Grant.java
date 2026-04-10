@@ -569,7 +569,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var externalCreds = new Grant("externalCreds", GrantArgs.builder()
- *             .credential(external.id())
+ *             .credential(external.databricksCredentialId())
  *             .principal("Data Engineers")
  *             .privileges("ACCESS")
  *             .build());

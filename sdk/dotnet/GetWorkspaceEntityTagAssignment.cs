@@ -26,28 +26,28 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var notebookTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var notebookTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "notebooks",
         ///         EntityId = "2807324866692453",
         ///         TagKey = "sensitivity_level",
         ///     });
         /// 
-        ///     var appTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var appTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "apps",
         ///         EntityId = "myapp",
         ///         TagKey = "sensitivity_level",
         ///     });
         /// 
-        ///     var dashboardTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var dashboardTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "dashboards",
         ///         EntityId = "2807324866692453",
         ///         TagKey = "sensitivity_level",
         ///     });
         /// 
-        ///     var geniespaceTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var geniespaceTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "geniespaces",
         ///         EntityId = "2807324866692453",
@@ -75,28 +75,28 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var notebookTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var notebookTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "notebooks",
         ///         EntityId = "2807324866692453",
         ///         TagKey = "sensitivity_level",
         ///     });
         /// 
-        ///     var appTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var appTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "apps",
         ///         EntityId = "myapp",
         ///         TagKey = "sensitivity_level",
         ///     });
         /// 
-        ///     var dashboardTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var dashboardTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "dashboards",
         ///         EntityId = "2807324866692453",
         ///         TagKey = "sensitivity_level",
         ///     });
         /// 
-        ///     var geniespaceTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var geniespaceTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "geniespaces",
         ///         EntityId = "2807324866692453",
@@ -124,28 +124,28 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var notebookTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var notebookTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "notebooks",
         ///         EntityId = "2807324866692453",
         ///         TagKey = "sensitivity_level",
         ///     });
         /// 
-        ///     var appTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var appTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "apps",
         ///         EntityId = "myapp",
         ///         TagKey = "sensitivity_level",
         ///     });
         /// 
-        ///     var dashboardTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var dashboardTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "dashboards",
         ///         EntityId = "2807324866692453",
         ///         TagKey = "sensitivity_level",
         ///     });
         /// 
-        ///     var geniespaceTag = Databricks.GetWorkspaceEntityTagAssignment.Invoke(new()
+        ///     var geniespaceTag = Databricks.Index.GetWorkspaceEntityTagAssignment.Invoke(new()
         ///     {
         ///         EntityType = "geniespaces",
         ///         EntityId = "2807324866692453",

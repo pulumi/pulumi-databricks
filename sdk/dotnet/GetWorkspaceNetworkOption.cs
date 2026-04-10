@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetWorkspaceNetworkOption.Invoke(new()
+        ///     var @this = Databricks.Index.GetWorkspaceNetworkOption.Invoke(new()
         ///     {
         ///         WorkspaceId = "9999999999999999",
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetWorkspaceNetworkOption.Invoke(new()
+        ///     var @this = Databricks.Index.GetWorkspaceNetworkOption.Invoke(new()
         ///     {
         ///         WorkspaceId = "9999999999999999",
         ///     });
@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetWorkspaceNetworkOption.Invoke(new()
+        ///     var @this = Databricks.Index.GetWorkspaceNetworkOption.Invoke(new()
         ///     {
         ///         WorkspaceId = "9999999999999999",
         ///     });

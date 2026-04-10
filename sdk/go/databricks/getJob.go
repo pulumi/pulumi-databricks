@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupJob(ctx, &databricks.LookupJobArgs{
+//			this, err := databricks.GetJob(ctx, &databricks.LookupJobArgs{
 //				JobName: pulumi.StringRef("My job"),
 //			}, nil)
 //			if err != nil {

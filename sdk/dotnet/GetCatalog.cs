@@ -28,12 +28,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Databricks.GetCatalog.Invoke(new()
+        ///     var test = Databricks.Index.GetCatalog.Invoke(new()
         ///     {
         ///         Name = "test",
         ///     });
         /// 
-        ///     var things = new Databricks.Grants("things", new()
+        ///     var things = new Databricks.Index.Grants("things", new()
         ///     {
         ///         Catalog = test.Apply(getCatalogResult =&gt; getCatalogResult.Name),
         ///         GrantDetails = new[]
@@ -79,12 +79,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Databricks.GetCatalog.Invoke(new()
+        ///     var test = Databricks.Index.GetCatalog.Invoke(new()
         ///     {
         ///         Name = "test",
         ///     });
         /// 
-        ///     var things = new Databricks.Grants("things", new()
+        ///     var things = new Databricks.Index.Grants("things", new()
         ///     {
         ///         Catalog = test.Apply(getCatalogResult =&gt; getCatalogResult.Name),
         ///         GrantDetails = new[]
@@ -130,12 +130,12 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Databricks.GetCatalog.Invoke(new()
+        ///     var test = Databricks.Index.GetCatalog.Invoke(new()
         ///     {
         ///         Name = "test",
         ///     });
         /// 
-        ///     var things = new Databricks.Grants("things", new()
+        ///     var things = new Databricks.Index.Grants("things", new()
         ///     {
         ///         Catalog = test.Apply(getCatalogResult =&gt; getCatalogResult.Name),
         ///         GrantDetails = new[]

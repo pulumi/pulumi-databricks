@@ -108,6 +108,8 @@ type ServicePrincipalSecret struct {
 	SecretHash pulumi.StringOutput `pulumi:"secretHash"`
 	// SCIM ID of the ServicePrincipal (not application ID).
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
+	// ID of the secret
+	ServicePrincipalSecretId pulumi.StringOutput `pulumi:"servicePrincipalSecretId"`
 	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Changing this argument forces recreation of the secret.
@@ -170,6 +172,8 @@ type servicePrincipalSecretState struct {
 	SecretHash *string `pulumi:"secretHash"`
 	// SCIM ID of the ServicePrincipal (not application ID).
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
+	// ID of the secret
+	ServicePrincipalSecretId *string `pulumi:"servicePrincipalSecretId"`
 	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
 	Status *string `pulumi:"status"`
 	// Changing this argument forces recreation of the secret.
@@ -193,6 +197,8 @@ type ServicePrincipalSecretState struct {
 	SecretHash pulumi.StringPtrInput
 	// SCIM ID of the ServicePrincipal (not application ID).
 	ServicePrincipalId pulumi.StringPtrInput
+	// ID of the secret
+	ServicePrincipalSecretId pulumi.StringPtrInput
 	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
 	Status pulumi.StringPtrInput
 	// Changing this argument forces recreation of the secret.
@@ -220,6 +226,8 @@ type servicePrincipalSecretArgs struct {
 	SecretHash *string `pulumi:"secretHash"`
 	// SCIM ID of the ServicePrincipal (not application ID).
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
+	// ID of the secret
+	ServicePrincipalSecretId *string `pulumi:"servicePrincipalSecretId"`
 	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
 	Status *string `pulumi:"status"`
 	// Changing this argument forces recreation of the secret.
@@ -244,6 +252,8 @@ type ServicePrincipalSecretArgs struct {
 	SecretHash pulumi.StringPtrInput
 	// SCIM ID of the ServicePrincipal (not application ID).
 	ServicePrincipalId pulumi.StringInput
+	// ID of the secret
+	ServicePrincipalSecretId pulumi.StringPtrInput
 	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
 	Status pulumi.StringPtrInput
 	// Changing this argument forces recreation of the secret.
@@ -372,6 +382,11 @@ func (o ServicePrincipalSecretOutput) SecretHash() pulumi.StringOutput {
 // SCIM ID of the ServicePrincipal (not application ID).
 func (o ServicePrincipalSecretOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
+}
+
+// ID of the secret
+func (o ServicePrincipalSecretOutput) ServicePrincipalSecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.ServicePrincipalSecretId }).(pulumi.StringOutput)
 }
 
 // Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).

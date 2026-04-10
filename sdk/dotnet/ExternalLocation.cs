@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var external = new Databricks.StorageCredential("external", new()
+    ///     var external = new Databricks.Index.StorageCredential("external", new()
     ///     {
     ///         Name = externalDataAccess.Name,
     ///         AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs
@@ -39,7 +39,7 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var some = new Databricks.ExternalLocation("some", new()
+    ///     var some = new Databricks.Index.ExternalLocation("some", new()
     ///     {
     ///         Name = "external",
     ///         Url = $"s3://{externalAwsS3Bucket.Id}/some",
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var someGrants = new Databricks.Grants("some", new()
+    ///     var someGrants = new Databricks.Index.Grants("some", new()
     ///     {
     ///         ExternalLocation = some.Id,
     ///         GrantDetails = new[]
@@ -78,7 +78,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var external = new Databricks.StorageCredential("external", new()
+    ///     var external = new Databricks.Index.StorageCredential("external", new()
     ///     {
     ///         Name = extCred.DisplayName,
     ///         AzureServicePrincipal = new Databricks.Inputs.StorageCredentialAzureServicePrincipalArgs
@@ -96,10 +96,10 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var some = new Databricks.ExternalLocation("some", new()
+    ///     var some = new Databricks.Index.ExternalLocation("some", new()
     ///     {
     ///         Name = "external",
-    ///         Url = Std.Format.Invoke(new()
+    ///         Url = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "abfss://%s@%s.dfs.core.windows.net",
     ///             Args = new[]
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var someGrants = new Databricks.Grants("some", new()
+    ///     var someGrants = new Databricks.Index.Grants("some", new()
     ///     {
     ///         ExternalLocation = some.Id,
     ///         GrantDetails = new[]
@@ -148,13 +148,13 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ext = new Databricks.StorageCredential("ext", new()
+    ///     var ext = new Databricks.Index.StorageCredential("ext", new()
     ///     {
     ///         Name = "the-creds",
     ///         DatabricksGcpServiceAccount = null,
     ///     });
     /// 
-    ///     var some = new Databricks.ExternalLocation("some", new()
+    ///     var some = new Databricks.Index.ExternalLocation("some", new()
     ///     {
     ///         Name = "the-ext-location",
     ///         Url = $"gs://{extBucket.Name}",
@@ -162,7 +162,7 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var someGrants = new Databricks.Grants("some", new()
+    ///     var someGrants = new Databricks.Index.Grants("some", new()
     ///     {
     ///         ExternalLocation = some.Id,
     ///         GrantDetails = new[]

@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sync = new Databricks.VectorSearchIndex("sync", new()
+    ///     var sync = new Databricks.Index.VectorSearchIndex("sync", new()
     ///     {
     ///         Name = "main.default.vector_search_index",
     ///         EndpointName = thisDatabricksVectorSearchEndpoint.Name,

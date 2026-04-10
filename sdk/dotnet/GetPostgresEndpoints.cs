@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetPostgresEndpoints.Invoke(new()
+        ///     var all = Databricks.Index.GetPostgresEndpoints.Invoke(new()
         ///     {
         ///         Parent = "projects/my-project/branches/dev-branch",
         ///     });
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetPostgresEndpoints.Invoke(new()
+        ///     var all = Databricks.Index.GetPostgresEndpoints.Invoke(new()
         ///     {
         ///         Parent = "projects/my-project/branches/dev-branch",
         ///     });
@@ -109,7 +109,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.GetPostgresEndpoints.Invoke(new()
+        ///     var all = Databricks.Index.GetPostgresEndpoints.Invoke(new()
         ///     {
         ///         Parent = "projects/my-project/branches/dev-branch",
         ///     });

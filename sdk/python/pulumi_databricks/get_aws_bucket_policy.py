@@ -125,66 +125,16 @@ def get_aws_bucket_policy(aws_partition: Optional[_builtins.str] = None,
     import pulumi_aws as aws
     import pulumi_databricks as databricks
 
-    this_bucket = aws.s3.Bucket("this",
-        bucket="<unique_bucket_name>",
+    this_s3_bucket = aws.S3Bucket("this",
+        bucket=<unique_bucket_name>,
         force_destroy=True)
-    this = databricks.get_aws_bucket_policy_output(bucket=this_bucket.bucket)
-    this_bucket_policy = aws.s3.BucketPolicy("this",
-        bucket=this_bucket.id,
+    this = databricks.get_aws_bucket_policy(bucket=this_s3_bucket["bucket"])
+    this_s3_bucket_policy = aws.S3BucketPolicy("this",
+        bucket=this_s3_bucket.id,
         policy=this.json)
     ```
 
     Bucket policy with full access:
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_databricks as databricks
-    import pulumi_std as std
-
-    ds_bucket = aws.s3.Bucket("ds",
-        bucket=f"{prefix}-ds",
-        force_destroy=True,
-        tags=std.merge(input=[
-            tags,
-            {
-                "name": f"{prefix}-ds",
-            },
-        ]).result)
-    ds_versioning = aws.s3.BucketVersioning("ds_versioning",
-        bucket=ds_bucket.id,
-        versioning_configuration={
-            "status": "Disabled",
-        })
-    assume_role_for_ec2 = aws.iam.get_policy_document(statements=[{
-        "effect": "Allow",
-        "actions": ["sts:AssumeRole"],
-        "principals": [{
-            "identifiers": ["ec2.amazonaws.com"],
-            "type": "Service",
-        }],
-    }])
-    data_role = aws.iam.Role("data_role",
-        name=f"{prefix}-first-ec2s3",
-        description=f"({prefix}) EC2 Assume Role role for S3 access",
-        assume_role_policy=assume_role_for_ec2.json,
-        tags=tags)
-    ds = databricks.get_aws_bucket_policy_output(full_access_role=data_role.arn,
-        bucket=ds_bucket.bucket)
-    # allow databricks to access this bucket
-    ds_bucket_policy = aws.s3.BucketPolicy("ds",
-        bucket=ds_bucket.id,
-        policy=ds.json)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
-    * End to end workspace management guide
-    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-    * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 
 
     :param _builtins.str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
@@ -227,66 +177,16 @@ def get_aws_bucket_policy_output(aws_partition: Optional[pulumi.Input[Optional[_
     import pulumi_aws as aws
     import pulumi_databricks as databricks
 
-    this_bucket = aws.s3.Bucket("this",
-        bucket="<unique_bucket_name>",
+    this_s3_bucket = aws.S3Bucket("this",
+        bucket=<unique_bucket_name>,
         force_destroy=True)
-    this = databricks.get_aws_bucket_policy_output(bucket=this_bucket.bucket)
-    this_bucket_policy = aws.s3.BucketPolicy("this",
-        bucket=this_bucket.id,
+    this = databricks.get_aws_bucket_policy(bucket=this_s3_bucket["bucket"])
+    this_s3_bucket_policy = aws.S3BucketPolicy("this",
+        bucket=this_s3_bucket.id,
         policy=this.json)
     ```
 
     Bucket policy with full access:
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_databricks as databricks
-    import pulumi_std as std
-
-    ds_bucket = aws.s3.Bucket("ds",
-        bucket=f"{prefix}-ds",
-        force_destroy=True,
-        tags=std.merge(input=[
-            tags,
-            {
-                "name": f"{prefix}-ds",
-            },
-        ]).result)
-    ds_versioning = aws.s3.BucketVersioning("ds_versioning",
-        bucket=ds_bucket.id,
-        versioning_configuration={
-            "status": "Disabled",
-        })
-    assume_role_for_ec2 = aws.iam.get_policy_document(statements=[{
-        "effect": "Allow",
-        "actions": ["sts:AssumeRole"],
-        "principals": [{
-            "identifiers": ["ec2.amazonaws.com"],
-            "type": "Service",
-        }],
-    }])
-    data_role = aws.iam.Role("data_role",
-        name=f"{prefix}-first-ec2s3",
-        description=f"({prefix}) EC2 Assume Role role for S3 access",
-        assume_role_policy=assume_role_for_ec2.json,
-        tags=tags)
-    ds = databricks.get_aws_bucket_policy_output(full_access_role=data_role.arn,
-        bucket=ds_bucket.bucket)
-    # allow databricks to access this bucket
-    ds_bucket_policy = aws.s3.BucketPolicy("ds",
-        bucket=ds_bucket.id,
-        policy=ds.json)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
-    * End to end workspace management guide
-    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-    * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 
 
     :param _builtins.str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`

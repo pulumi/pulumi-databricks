@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Metastore("this", new()
+    ///     var @this = new Databricks.Index.Metastore("this", new()
     ///     {
     ///         Name = "primary",
     ///         StorageRoot = $"s3://{metastore.Id}/metastore",
@@ -39,7 +39,7 @@ namespace Pulumi.Databricks
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("this", new()
+    ///     var thisMetastoreAssignment = new Databricks.Index.MetastoreAssignment("this", new()
     ///     {
     ///         MetastoreId = @this.Id,
     ///         WorkspaceId = workspaceId,
@@ -59,10 +59,10 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Metastore("this", new()
+    ///     var @this = new Databricks.Index.Metastore("this", new()
     ///     {
     ///         Name = "primary",
-    ///         StorageRoot = Std.Format.Invoke(new()
+    ///         StorageRoot = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "abfss://%s@%s.dfs.core.windows.net/",
     ///             Args = new[]
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("this", new()
+    ///     var thisMetastoreAssignment = new Databricks.Index.MetastoreAssignment("this", new()
     ///     {
     ///         MetastoreId = @this.Id,
     ///         WorkspaceId = workspaceId,
@@ -95,7 +95,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Metastore("this", new()
+    ///     var @this = new Databricks.Index.Metastore("this", new()
     ///     {
     ///         Name = "primary",
     ///         StorageRoot = $"gs://{unityMetastore.Name}",
@@ -104,7 +104,7 @@ namespace Pulumi.Databricks
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("this", new()
+    ///     var thisMetastoreAssignment = new Databricks.Index.MetastoreAssignment("this", new()
     ///     {
     ///         MetastoreId = @this.Id,
     ///         WorkspaceId = workspaceId,

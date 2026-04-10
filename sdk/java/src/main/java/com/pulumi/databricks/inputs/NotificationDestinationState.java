@@ -63,6 +63,21 @@ public final class NotificationDestinationState extends com.pulumi.resources.Res
     }
 
     /**
+     * The unique ID of the Notification Destination.
+     * 
+     */
+    @Import(name="notificationDestinationId")
+    private @Nullable Output<String> notificationDestinationId;
+
+    /**
+     * @return The unique ID of the Notification Destination.
+     * 
+     */
+    public Optional<Output<String>> notificationDestinationId() {
+        return Optional.ofNullable(this.notificationDestinationId);
+    }
+
+    /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
@@ -83,6 +98,7 @@ public final class NotificationDestinationState extends com.pulumi.resources.Res
         this.config = $.config;
         this.destinationType = $.destinationType;
         this.displayName = $.displayName;
+        this.notificationDestinationId = $.notificationDestinationId;
         this.providerConfig = $.providerConfig;
     }
 
@@ -165,6 +181,27 @@ public final class NotificationDestinationState extends com.pulumi.resources.Res
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param notificationDestinationId The unique ID of the Notification Destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationDestinationId(@Nullable Output<String> notificationDestinationId) {
+            $.notificationDestinationId = notificationDestinationId;
+            return this;
+        }
+
+        /**
+         * @param notificationDestinationId The unique ID of the Notification Destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationDestinationId(String notificationDestinationId) {
+            return notificationDestinationId(Output.of(notificationDestinationId));
         }
 
         /**

@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Catalog("sandbox", new()
     ///     {
     ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var things = new Databricks.Schema("things", new()
+    ///     var things = new Databricks.Index.Schema("things", new()
     ///     {
     ///         CatalogName = sandbox.Id,
     ///         Name = "things",

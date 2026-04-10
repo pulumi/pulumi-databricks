@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     var @this = new Databricks.Index.PostgresProject("this", new()
     ///     {
     ///         ProjectId = "my-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     var @this = new Databricks.Index.PostgresProject("this", new()
     ///     {
     ///         ProjectId = "analytics-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -77,7 +77,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     var @this = new Databricks.Index.PostgresProject("this", new()
     ///     {
     ///         ProjectId = "my-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -87,7 +87,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var dev = new Databricks.PostgresBranch("dev", new()
+    ///     var dev = new Databricks.Index.PostgresBranch("dev", new()
     ///     {
     ///         BranchId = "dev-branch",
     ///         Parent = @this.Name,

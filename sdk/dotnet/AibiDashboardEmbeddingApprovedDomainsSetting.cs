@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.AibiDashboardEmbeddingAccessPolicySetting("this", new()
+    ///     var @this = new Databricks.Index.AibiDashboardEmbeddingAccessPolicySetting("this", new()
     ///     {
     ///         AibiDashboardEmbeddingAccessPolicy = new Databricks.Inputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs
     ///         {
@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var thisAibiDashboardEmbeddingApprovedDomainsSetting = new Databricks.AibiDashboardEmbeddingApprovedDomainsSetting("this", new()
+    ///     var thisAibiDashboardEmbeddingApprovedDomainsSetting = new Databricks.Index.AibiDashboardEmbeddingApprovedDomainsSetting("this", new()
     ///     {
     ///         AibiDashboardEmbeddingApprovedDomains = new Databricks.Inputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs
     ///         {

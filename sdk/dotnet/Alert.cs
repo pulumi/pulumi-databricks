@@ -24,13 +24,13 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
+    ///     var sharedDir = new Databricks.Index.Directory("shared_dir", new()
     ///     {
     ///         Path = "/Shared/Queries",
     ///     });
     /// 
     ///     // This will be replaced with new databricks_query resource
-    ///     var @this = new Databricks.Query("this", new()
+    ///     var @this = new Databricks.Index.Query("this", new()
     ///     {
     ///         WarehouseId = example.Id,
     ///         DisplayName = "My Query Name",
@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
     ///         ParentPath = sharedDir.Path,
     ///     });
     /// 
-    ///     var alert = new Databricks.Alert("alert", new()
+    ///     var alert = new Databricks.Index.Alert("alert", new()
     ///     {
     ///         QueryId = @this.Id,
     ///         DisplayName = "TF new alert",
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alert = new Databricks.SqlAlert("alert", new()
+    ///     var alert = new Databricks.Index.SqlAlert("alert", new()
     ///     {
     ///         QueryId = @this.Id,
     ///         Name = "My Alert",
@@ -121,7 +121,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alert = new Databricks.Alert("alert", new()
+    ///     var alert = new Databricks.Index.Alert("alert", new()
     ///     {
     ///         QueryId = @this.Id,
     ///         DisplayName = "My Alert",
@@ -161,7 +161,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alertUsage = new Databricks.Permissions("alert_usage", new()
+    ///     var alertUsage = new Databricks.Index.Permissions("alert_usage", new()
     ///     {
     ///         SqlAlertId = alert.Id,
     ///         AccessControls = new[]
@@ -189,7 +189,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alertUsage = new Databricks.Permissions("alert_usage", new()
+    ///     var alertUsage = new Databricks.Index.Permissions("alert_usage", new()
     ///     {
     ///         SqlAlertId = alert.Id,
     ///         AccessControls = new[]

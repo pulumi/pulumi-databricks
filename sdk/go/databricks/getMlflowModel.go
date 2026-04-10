@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			this, err := databricks.LookupMlflowModel(ctx, &databricks.LookupMlflowModelArgs{
+//			this, err := databricks.GetMlflowModel(ctx, &databricks.LookupMlflowModelArgs{
 //				Name: "My MLflow Model",
 //			}, nil)
 //			if err != nil {
@@ -71,7 +71,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupMlflowModel(ctx, &databricks.LookupMlflowModelArgs{
+//			this, err := databricks.GetMlflowModel(ctx, &databricks.LookupMlflowModelArgs{
 //				Name: "My MLflow Model with multiple versions",
 //			}, nil)
 //			if err != nil {

@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.AibiDashboardEmbeddingAccessPolicySetting("this", new()
+    ///     var @this = new Databricks.Index.AibiDashboardEmbeddingAccessPolicySetting("this", new()
     ///     {
     ///         AibiDashboardEmbeddingAccessPolicy = new Databricks.Inputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs
     ///         {

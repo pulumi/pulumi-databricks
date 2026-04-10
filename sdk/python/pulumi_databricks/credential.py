@@ -28,6 +28,7 @@ class CredentialArgs:
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['CredentialDatabricksGcpServiceAccountArgs']] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -45,6 +46,7 @@ class CredentialArgs:
         The set of arguments for constructing a Credential resource.
 
         :param pulumi.Input[_builtins.str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        :param pulumi.Input[_builtins.str] databricks_credential_id: ID of this credential - same as the `name`.
         :param pulumi.Input[_builtins.bool] force_destroy: Delete credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
@@ -68,6 +70,8 @@ class CredentialArgs:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
+        if databricks_credential_id is not None:
+            pulumi.set(__self__, "databricks_credential_id", databricks_credential_id)
         if databricks_gcp_service_account is not None:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
         if force_destroy is not None:
@@ -160,6 +164,18 @@ class CredentialArgs:
     @created_by.setter
     def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databricksCredentialId")
+    def databricks_credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of this credential - same as the `name`.
+        """
+        return pulumi.get(self, "databricks_credential_id")
+
+    @databricks_credential_id.setter
+    def databricks_credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "databricks_credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksGcpServiceAccount")
@@ -312,6 +328,7 @@ class _CredentialState:
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
                  credential_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['CredentialDatabricksGcpServiceAccountArgs']] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -330,6 +347,7 @@ class _CredentialState:
         Input properties used for looking up and filtering Credential resources.
 
         :param pulumi.Input[_builtins.str] credential_id: Unique ID of the credential.
+        :param pulumi.Input[_builtins.str] databricks_credential_id: ID of this credential - same as the `name`.
         :param pulumi.Input[_builtins.bool] force_destroy: Delete credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
@@ -355,6 +373,8 @@ class _CredentialState:
             pulumi.set(__self__, "created_by", created_by)
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
+        if databricks_credential_id is not None:
+            pulumi.set(__self__, "databricks_credential_id", databricks_credential_id)
         if databricks_gcp_service_account is not None:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
         if force_destroy is not None:
@@ -449,6 +469,18 @@ class _CredentialState:
     @credential_id.setter
     def credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "credential_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databricksCredentialId")
+    def databricks_credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of this credential - same as the `name`.
+        """
+        return pulumi.get(self, "databricks_credential_id")
+
+    @databricks_credential_id.setter
+    def databricks_credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "databricks_credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksGcpServiceAccount")
@@ -615,6 +647,7 @@ class Credential(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -656,7 +689,7 @@ class Credential(pulumi.CustomResource):
             purpose="SERVICE",
             comment="Managed by TF")
         external_creds = databricks.Grants("external_creds",
-            credential=external.id,
+            credential=external.databricks_credential_id,
             grants=[{
                 "principal": "Data Engineers",
                 "privileges": ["ACCESS"],
@@ -677,7 +710,7 @@ class Credential(pulumi.CustomResource):
             purpose="SERVICE",
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("external_creds",
-            credential=external_mi.id,
+            credential=external_mi.databricks_credential_id,
             grants=[{
                 "principal": "Data Engineers",
                 "privileges": ["ACCESS"],
@@ -696,7 +729,7 @@ class Credential(pulumi.CustomResource):
             purpose="SERVICE",
             comment="GCP SA credential managed by TF")
         external_creds = databricks.Grants("external_creds",
-            credential=external_gcp_sa.id,
+            credential=external_gcp_sa.databricks_credential_id,
             grants=[{
                 "principal": "Data Engineers",
                 "privileges": ["ACCESS"],
@@ -706,6 +739,7 @@ class Credential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] databricks_credential_id: ID of this credential - same as the `name`.
         :param pulumi.Input[_builtins.bool] force_destroy: Delete credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
@@ -749,7 +783,7 @@ class Credential(pulumi.CustomResource):
             purpose="SERVICE",
             comment="Managed by TF")
         external_creds = databricks.Grants("external_creds",
-            credential=external.id,
+            credential=external.databricks_credential_id,
             grants=[{
                 "principal": "Data Engineers",
                 "privileges": ["ACCESS"],
@@ -770,7 +804,7 @@ class Credential(pulumi.CustomResource):
             purpose="SERVICE",
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("external_creds",
-            credential=external_mi.id,
+            credential=external_mi.databricks_credential_id,
             grants=[{
                 "principal": "Data Engineers",
                 "privileges": ["ACCESS"],
@@ -789,7 +823,7 @@ class Credential(pulumi.CustomResource):
             purpose="SERVICE",
             comment="GCP SA credential managed by TF")
         external_creds = databricks.Grants("external_creds",
-            credential=external_gcp_sa.id,
+            credential=external_gcp_sa.databricks_credential_id,
             grants=[{
                 "principal": "Data Engineers",
                 "privileges": ["ACCESS"],
@@ -818,6 +852,7 @@ class Credential(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -847,6 +882,7 @@ class Credential(pulumi.CustomResource):
             __props__.__dict__["comment"] = comment
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["created_by"] = created_by
+            __props__.__dict__["databricks_credential_id"] = databricks_credential_id
             __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["force_update"] = force_update
@@ -881,6 +917,7 @@ class Credential(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[_builtins.int]] = None,
             created_by: Optional[pulumi.Input[_builtins.str]] = None,
             credential_id: Optional[pulumi.Input[_builtins.str]] = None,
+            databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
             databricks_gcp_service_account: Optional[pulumi.Input[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict']]] = None,
             force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             force_update: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -903,6 +940,7 @@ class Credential(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] credential_id: Unique ID of the credential.
+        :param pulumi.Input[_builtins.str] databricks_credential_id: ID of this credential - same as the `name`.
         :param pulumi.Input[_builtins.bool] force_destroy: Delete credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
@@ -925,6 +963,7 @@ class Credential(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["credential_id"] = credential_id
+        __props__.__dict__["databricks_credential_id"] = databricks_credential_id
         __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["force_update"] = force_update
@@ -978,6 +1017,14 @@ class Credential(pulumi.CustomResource):
         Unique ID of the credential.
         """
         return pulumi.get(self, "credential_id")
+
+    @_builtins.property
+    @pulumi.getter(name="databricksCredentialId")
+    def databricks_credential_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        ID of this credential - same as the `name`.
+        """
+        return pulumi.get(self, "databricks_credential_id")
 
     @_builtins.property
     @pulumi.getter(name="databricksGcpServiceAccount")

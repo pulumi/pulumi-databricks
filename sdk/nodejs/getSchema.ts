@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * });
  * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSchema({
  *     name: __value,
- * }) })));
+ * }) }), {}));
  * ```
  *
  * * Search for a specific schema by its fully qualified name:
@@ -115,7 +115,7 @@ export interface GetSchemaResult {
  * });
  * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSchema({
  *     name: __value,
- * }) })));
+ * }) }), {}));
  * ```
  *
  * * Search for a specific schema by its fully qualified name:

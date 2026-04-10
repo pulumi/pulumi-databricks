@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.DisableLegacyAccessSetting("this", new()
+    ///     var @this = new Databricks.Index.DisableLegacyAccessSetting("this", new()
     ///     {
     ///         DisableLegacyAccess = new Databricks.Inputs.DisableLegacyAccessSettingDisableLegacyAccessArgs
     ///         {

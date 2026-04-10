@@ -27,20 +27,20 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = Databricks.GetCurrentUser.Invoke();
+    ///     var me = Databricks.Index.GetCurrentUser.Invoke();
     /// 
-    ///     var latest = Databricks.GetSparkVersion.Invoke();
+    ///     var latest = Databricks.Index.GetSparkVersion.Invoke();
     /// 
-    ///     var smallest = Databricks.GetNodeType.Invoke(new()
+    ///     var smallest = Databricks.Index.GetNodeType.Invoke(new()
     ///     {
     ///         LocalDisk = true,
     ///     });
     /// 
-    ///     var @this = new Databricks.Notebook("this", new()
+    ///     var @this = new Databricks.Index.Notebook("this", new()
     ///     {
     ///         Path = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/MLFlowWebhook",
     ///         Language = "PYTHON",
-    ///         ContentBase64 = Std.Base64encode.Invoke(new()
+    ///         ContentBase64 = Std.Index.Base64encode.Invoke(new()
     ///         {
     ///             Input = @"import json
     ///  
@@ -51,7 +51,7 @@ namespace Pulumi.Databricks
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
-    ///     var thisJob = new Databricks.Job("this", new()
+    ///     var thisJob = new Databricks.Index.Job("this", new()
     ///     {
     ///         Name = $"Pulumi MLflowWebhook Demo ({me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)})",
     ///         Tasks = new[]
@@ -73,13 +73,13 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var patForWebhook = new Databricks.Token("pat_for_webhook", new()
+    ///     var patForWebhook = new Databricks.Index.Token("pat_for_webhook", new()
     ///     {
     ///         Comment = "MLflow Webhook",
     ///         LifetimeSeconds = 86400000,
     ///     });
     /// 
-    ///     var job = new Databricks.MlflowWebhook("job", new()
+    ///     var job = new Databricks.Index.MlflowWebhook("job", new()
     ///     {
     ///         Events = new[]
     ///         {
@@ -108,7 +108,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var url = new Databricks.MlflowWebhook("url", new()
+    ///     var url = new Databricks.Index.MlflowWebhook("url", new()
     ///     {
     ///         Events = new[]
     ///         {

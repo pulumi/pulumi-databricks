@@ -65,7 +65,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
 //			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
-//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			var databricksAccountId interface{}
+//			cfg.RequireObject("databricksAccountId", &databricksAccountId)
 //			dbxPrivateVpc, err := google.NewComputeNetwork(ctx, "dbx_private_vpc", &google.ComputeNetworkArgs{
 //				Project:               googleProject,
 //				Name:                  fmt.Sprintf("tf-network-%v", suffix.Result),

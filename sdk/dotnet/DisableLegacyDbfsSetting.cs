@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.DisableLegacyDbfsSetting("this", new()
+    ///     var @this = new Databricks.Index.DisableLegacyDbfsSetting("this", new()
     ///     {
     ///         DisableLegacyDbfs = new Databricks.Inputs.DisableLegacyDbfsSettingDisableLegacyDbfsArgs
     ///         {

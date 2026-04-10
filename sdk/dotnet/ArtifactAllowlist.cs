@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var initScripts = new Databricks.ArtifactAllowlist("init_scripts", new()
+    ///     var initScripts = new Databricks.Index.ArtifactAllowlist("init_scripts", new()
     ///     {
     ///         ArtifactType = "INIT_SCRIPT",
     ///         ArtifactMatchers = new[]

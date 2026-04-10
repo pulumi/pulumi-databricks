@@ -150,6 +150,10 @@ export class SqlEndpoint extends pulumi.CustomResource {
      */
     declare public readonly spotInstancePolicy: pulumi.Output<string | undefined>;
     /**
+     * the unique ID of the SQL warehouse.
+     */
+    declare public readonly sqlEndpointId: pulumi.Output<string>;
+    /**
      * The current state of the endpoint.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
@@ -194,6 +198,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["odbcParams"] = state?.odbcParams;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["spotInstancePolicy"] = state?.spotInstancePolicy;
+            resourceInputs["sqlEndpointId"] = state?.sqlEndpointId;
             resourceInputs["state"] = state?.state;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["warehouseType"] = state?.warehouseType;
@@ -215,6 +220,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["noWait"] = args?.noWait;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["spotInstancePolicy"] = args?.spotInstancePolicy;
+            resourceInputs["sqlEndpointId"] = args?.sqlEndpointId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["warehouseType"] = args?.warehouseType;
             resourceInputs["creatorName"] = undefined /*out*/;
@@ -310,6 +316,10 @@ export interface SqlEndpointState {
      */
     spotInstancePolicy?: pulumi.Input<string>;
     /**
+     * the unique ID of the SQL warehouse.
+     */
+    sqlEndpointId?: pulumi.Input<string>;
+    /**
      * The current state of the endpoint.
      */
     state?: pulumi.Input<string>;
@@ -378,6 +388,10 @@ export interface SqlEndpointArgs {
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */
     spotInstancePolicy?: pulumi.Input<string>;
+    /**
+     * the unique ID of the SQL warehouse.
+     */
+    sqlEndpointId?: pulumi.Input<string>;
     /**
      * Databricks tags all endpoint resources with these tags.
      */

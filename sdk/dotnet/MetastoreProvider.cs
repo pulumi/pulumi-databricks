@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbprovider = new Databricks.MetastoreProvider("dbprovider", new()
+    ///     var dbprovider = new Databricks.Index.MetastoreProvider("dbprovider", new()
     ///     {
     ///         Name = "terraform-test-provider",
     ///         Comment = "made by terraform 2",

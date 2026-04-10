@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prod = Databricks.GetNotebookPaths.Invoke(new()
+        ///     var prod = Databricks.Index.GetNotebookPaths.Invoke(new()
         ///     {
         ///         Path = "/Production",
         ///         Recursive = true,
@@ -53,7 +53,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prod = Databricks.GetNotebookPaths.Invoke(new()
+        ///     var prod = Databricks.Index.GetNotebookPaths.Invoke(new()
         ///     {
         ///         Path = "/Production",
         ///         Recursive = true,
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var prod = Databricks.GetNotebookPaths.Invoke(new()
+        ///     var prod = Databricks.Index.GetNotebookPaths.Invoke(new()
         ///     {
         ///         Path = "/Production",
         ///         Recursive = true,

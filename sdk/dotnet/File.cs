@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Catalog("sandbox", new()
     ///     {
     ///         MetastoreId = thisDatabricksMetastore.Id,
     ///         Name = "sandbox",
@@ -41,7 +41,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var things = new Databricks.Schema("things", new()
+    ///     var things = new Databricks.Index.Schema("things", new()
     ///     {
     ///         CatalogName = sandbox.Name,
     ///         Name = "things",
@@ -52,7 +52,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var @this = new Databricks.Volume("this", new()
+    ///     var @this = new Databricks.Index.Volume("this", new()
     ///     {
     ///         Name = "quickstart_volume",
     ///         CatalogName = sandbox.Name,
@@ -61,7 +61,7 @@ namespace Pulumi.Databricks
     ///         Comment = "this volume is managed by terraform",
     ///     });
     /// 
-    ///     var thisFile = new Databricks.File("this", new()
+    ///     var thisFile = new Databricks.Index.File("this", new()
     ///     {
     ///         Source = "/full/path/on/local/system",
     ///         Path = @this.VolumePath.Apply(volumePath =&gt; $"{volumePath}/fileName"),
@@ -81,9 +81,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var initScript = new Databricks.File("init_script", new()
+    ///     var initScript = new Databricks.Index.File("init_script", new()
     ///     {
-    ///         ContentBase64 = Std.Base64encode.Invoke(new()
+    ///         ContentBase64 = Std.Index.Base64encode.Invoke(new()
     ///         {
     ///             Input = @"#!/bin/bash
     /// echo \""Hello World\""

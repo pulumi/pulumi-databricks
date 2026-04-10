@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.SystemSchema("this", new()
+    ///     var @this = new Databricks.Index.SystemSchema("this", new()
     ///     {
     ///         Schema = "access",
     ///     });

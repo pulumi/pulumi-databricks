@@ -183,10 +183,10 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        cpu_env = databricks.index.WorkspaceBaseEnvironment("cpu_env",
+        cpu_env = databricks.WorkspaceBaseEnvironment("cpu_env",
             display_name=my-cpu-environment,
             filepath=/Volumes/catalog/schema/volume/cpu-environment.yaml)
-        this = databricks.index.DefaultWorkspaceBaseEnvironment("this", cpu_workspace_base_environment=cpu_env.name)
+        this = databricks.DefaultWorkspaceBaseEnvironment("this", cpu_workspace_base_environment=cpu_env.name)
         ```
 
         ### Set Defaults for Both CPU and GPU Compute
@@ -195,14 +195,14 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        cpu_env = databricks.index.WorkspaceBaseEnvironment("cpu_env",
+        cpu_env = databricks.WorkspaceBaseEnvironment("cpu_env",
             display_name=my-cpu-environment,
             filepath=/Volumes/catalog/schema/volume/cpu-environment.yaml)
-        gpu_env = databricks.index.WorkspaceBaseEnvironment("gpu_env",
+        gpu_env = databricks.WorkspaceBaseEnvironment("gpu_env",
             display_name=my-gpu-environment,
             filepath=/Volumes/catalog/schema/volume/gpu-environment.yaml,
             base_environment_type=GPU_LARGE)
-        this = databricks.index.DefaultWorkspaceBaseEnvironment("this",
+        this = databricks.DefaultWorkspaceBaseEnvironment("this",
             cpu_workspace_base_environment=cpu_env.name,
             gpu_workspace_base_environment=gpu_env.name)
         ```
@@ -213,7 +213,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.index.DefaultWorkspaceBaseEnvironment("this")
+        this = databricks.DefaultWorkspaceBaseEnvironment("this")
         ```
 
 
@@ -246,10 +246,10 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        cpu_env = databricks.index.WorkspaceBaseEnvironment("cpu_env",
+        cpu_env = databricks.WorkspaceBaseEnvironment("cpu_env",
             display_name=my-cpu-environment,
             filepath=/Volumes/catalog/schema/volume/cpu-environment.yaml)
-        this = databricks.index.DefaultWorkspaceBaseEnvironment("this", cpu_workspace_base_environment=cpu_env.name)
+        this = databricks.DefaultWorkspaceBaseEnvironment("this", cpu_workspace_base_environment=cpu_env.name)
         ```
 
         ### Set Defaults for Both CPU and GPU Compute
@@ -258,14 +258,14 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        cpu_env = databricks.index.WorkspaceBaseEnvironment("cpu_env",
+        cpu_env = databricks.WorkspaceBaseEnvironment("cpu_env",
             display_name=my-cpu-environment,
             filepath=/Volumes/catalog/schema/volume/cpu-environment.yaml)
-        gpu_env = databricks.index.WorkspaceBaseEnvironment("gpu_env",
+        gpu_env = databricks.WorkspaceBaseEnvironment("gpu_env",
             display_name=my-gpu-environment,
             filepath=/Volumes/catalog/schema/volume/gpu-environment.yaml,
             base_environment_type=GPU_LARGE)
-        this = databricks.index.DefaultWorkspaceBaseEnvironment("this",
+        this = databricks.DefaultWorkspaceBaseEnvironment("this",
             cpu_workspace_base_environment=cpu_env.name,
             gpu_workspace_base_environment=gpu_env.name)
         ```
@@ -276,7 +276,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.index.DefaultWorkspaceBaseEnvironment("this")
+        this = databricks.DefaultWorkspaceBaseEnvironment("this")
         ```
 
 

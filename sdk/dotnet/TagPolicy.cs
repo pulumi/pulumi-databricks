@@ -33,7 +33,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTagPolicy = new Databricks.TagPolicy("example_tag_policy", new()
+    ///     var exampleTagPolicy = new Databricks.Index.TagPolicy("example_tag_policy", new()
     ///     {
     ///         TagKey = "example_tag_key",
     ///         Description = "Example description.",

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupPostgresProject(ctx, &databricks.LookupPostgresProjectArgs{
+//			this, err := databricks.GetPostgresProject(ctx, &databricks.LookupPostgresProjectArgs{
 //				Name: "projects/my-project",
 //			}, nil)
 //			if err != nil {

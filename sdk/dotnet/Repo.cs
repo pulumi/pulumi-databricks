@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var nutterInHome = new Databricks.Repo("nutter_in_home", new()
+    ///     var nutterInHome = new Databricks.Index.Repo("nutter_in_home", new()
     ///     {
     ///         Url = "https://github.com/user/demo.git",
     ///     });

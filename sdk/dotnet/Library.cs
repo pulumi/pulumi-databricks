@@ -33,12 +33,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(async() =&gt; 
     /// {
-    ///     var all = await Databricks.GetClusters.InvokeAsync();
+    ///     var all = await Databricks.Index.GetClusters.InvokeAsync();
     /// 
-    ///     var cli = new List&lt;Databricks.Library&gt;();
+    ///     var cli = new List&lt;Databricks.Index.Library&gt;();
     ///     foreach (var range in )
     ///     {
-    ///         cli.Add(new Databricks.Library($"cli-{range.Key}", new()
+    ///         cli.Add(new Databricks.Index.Library($"cli-{range.Key}", new()
     ///         {
     ///             ClusterId = range.Key,
     ///             Pypi = new Databricks.Inputs.LibraryPypiArgs
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var deequ = new Databricks.Library("deequ", new()
+    ///     var deequ = new Databricks.Index.Library("deequ", new()
     ///     {
     ///         ClusterId = @this.Id,
     ///         Maven = new Databricks.Inputs.LibraryMavenArgs
@@ -92,7 +92,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fbprophet = new Databricks.Library("fbprophet", new()
+    ///     var fbprophet = new Databricks.Index.Library("fbprophet", new()
     ///     {
     ///         ClusterId = @this.Id,
     ///         Pypi = new Databricks.Inputs.LibraryPypiArgs
@@ -116,7 +116,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var libraries = new Databricks.Library("libraries", new()
+    ///     var libraries = new Databricks.Index.Library("libraries", new()
     ///     {
     ///         ClusterId = @this.Id,
     ///         Requirements = "/Workspace/path/to/requirements.txt",
@@ -137,7 +137,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var rkeops = new Databricks.Library("rkeops", new()
+    ///     var rkeops = new Databricks.Index.Library("rkeops", new()
     ///     {
     ///         ClusterId = @this.Id,
     ///         Cran = new Databricks.Inputs.LibraryCranArgs

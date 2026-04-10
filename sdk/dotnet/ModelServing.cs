@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.ModelServing("this", new()
+    ///     var @this = new Databricks.Index.ModelServing("this", new()
     ///     {
     ///         Name = "ads-serving-endpoint",
     ///         Config = new Databricks.Inputs.ModelServingConfigArgs
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var llama = new Databricks.ModelServing("llama", new()
+    ///     var llama = new Databricks.Index.ModelServing("llama", new()
     ///     {
     ///         Name = "llama_3_2_3b_instruct",
     ///         AiGateway = new Databricks.Inputs.ModelServingAiGatewayArgs
@@ -123,7 +123,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gpt4o = new Databricks.ModelServing("gpt_4o", new()
+    ///     var gpt4o = new Databricks.Index.ModelServing("gpt_4o", new()
     ///     {
     ///         Name = "gpt-4o-mini",
     ///         AiGateway = new Databricks.Inputs.ModelServingAiGatewayArgs

@@ -29,20 +29,20 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var companyUsers = await Databricks.GetUsers.InvokeAsync(new()
+        ///     var companyUsers = await Databricks.Index.GetUsers.InvokeAsync(new()
         ///     {
         ///         Filter = "userName co \"@domain.org\"",
         ///     });
         /// 
-        ///     var dataUsersGroup = new Databricks.Group("data_users_group", new()
+        ///     var dataUsersGroup = new Databricks.Index.Group("data_users_group", new()
         ///     {
         ///         DisplayName = "Data Users",
         ///     });
         /// 
-        ///     var addUsersToGroup = new List&lt;Databricks.GroupMember&gt;();
+        ///     var addUsersToGroup = new List&lt;Databricks.Index.GroupMember&gt;();
         ///     foreach (var range in .Select(pair =&gt; new { pair.Key, pair.Value }))
         ///     {
-        ///         addUsersToGroup.Add(new Databricks.GroupMember($"add_users_to_group-{range.Key}", new()
+        ///         addUsersToGroup.Add(new Databricks.Index.GroupMember($"add_users_to_group-{range.Key}", new()
         ///         {
         ///             GroupId = dataUsersGroup.Id,
         ///             MemberId = range.Value.Id,
@@ -82,20 +82,20 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var companyUsers = await Databricks.GetUsers.InvokeAsync(new()
+        ///     var companyUsers = await Databricks.Index.GetUsers.InvokeAsync(new()
         ///     {
         ///         Filter = "userName co \"@domain.org\"",
         ///     });
         /// 
-        ///     var dataUsersGroup = new Databricks.Group("data_users_group", new()
+        ///     var dataUsersGroup = new Databricks.Index.Group("data_users_group", new()
         ///     {
         ///         DisplayName = "Data Users",
         ///     });
         /// 
-        ///     var addUsersToGroup = new List&lt;Databricks.GroupMember&gt;();
+        ///     var addUsersToGroup = new List&lt;Databricks.Index.GroupMember&gt;();
         ///     foreach (var range in .Select(pair =&gt; new { pair.Key, pair.Value }))
         ///     {
-        ///         addUsersToGroup.Add(new Databricks.GroupMember($"add_users_to_group-{range.Key}", new()
+        ///         addUsersToGroup.Add(new Databricks.Index.GroupMember($"add_users_to_group-{range.Key}", new()
         ///         {
         ///             GroupId = dataUsersGroup.Id,
         ///             MemberId = range.Value.Id,
@@ -135,20 +135,20 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var companyUsers = await Databricks.GetUsers.InvokeAsync(new()
+        ///     var companyUsers = await Databricks.Index.GetUsers.InvokeAsync(new()
         ///     {
         ///         Filter = "userName co \"@domain.org\"",
         ///     });
         /// 
-        ///     var dataUsersGroup = new Databricks.Group("data_users_group", new()
+        ///     var dataUsersGroup = new Databricks.Index.Group("data_users_group", new()
         ///     {
         ///         DisplayName = "Data Users",
         ///     });
         /// 
-        ///     var addUsersToGroup = new List&lt;Databricks.GroupMember&gt;();
+        ///     var addUsersToGroup = new List&lt;Databricks.Index.GroupMember&gt;();
         ///     foreach (var range in .Select(pair =&gt; new { pair.Key, pair.Value }))
         ///     {
-        ///         addUsersToGroup.Add(new Databricks.GroupMember($"add_users_to_group-{range.Key}", new()
+        ///         addUsersToGroup.Add(new Databricks.Index.GroupMember($"add_users_to_group-{range.Key}", new()
         ///         {
         ///             GroupId = dataUsersGroup.Id,
         ///             MemberId = range.Value.Id,

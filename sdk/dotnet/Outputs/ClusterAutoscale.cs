@@ -26,17 +26,17 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var smallest = Databricks.GetNodeType.Invoke(new()
+        ///     var smallest = Databricks.Index.GetNodeType.Invoke(new()
         ///     {
         ///         LocalDisk = true,
         ///     });
         /// 
-        ///     var latestLts = Databricks.GetSparkVersion.Invoke(new()
+        ///     var latestLts = Databricks.Index.GetSparkVersion.Invoke(new()
         ///     {
         ///         LongTermSupport = true,
         ///     });
         /// 
-        ///     var singleNode = new Databricks.Cluster("single_node", new()
+        ///     var singleNode = new Databricks.Index.Cluster("single_node", new()
         ///     {
         ///         ClusterName = "Single Node",
         ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),

@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var llama = new Databricks.ModelServingProvisionedThroughput("llama", new()
+    ///     var llama = new Databricks.Index.ModelServingProvisionedThroughput("llama", new()
     ///     {
     ///         AiGateway = new Databricks.Inputs.ModelServingProvisionedThroughputAiGatewayArgs
     ///         {

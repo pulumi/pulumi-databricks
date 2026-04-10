@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.RestrictWorkspaceAdminsSetting("this", new()
+    ///     var @this = new Databricks.Index.RestrictWorkspaceAdminsSetting("this", new()
     ///     {
     ///         RestrictWorkspaceAdmins = new Databricks.Inputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs
     ///         {

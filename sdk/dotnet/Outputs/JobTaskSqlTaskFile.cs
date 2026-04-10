@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sqlAggregationJob = new Databricks.Job("sql_aggregation_job", new()
+        ///     var sqlAggregationJob = new Databricks.Index.Job("sql_aggregation_job", new()
         ///     {
         ///         Name = "Example SQL Job",
         ///         Tasks = new[]

@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.RegisteredModel("this", new()
+    ///     var @this = new Databricks.Index.RegisteredModel("this", new()
     ///     {
     ///         Name = "my_model",
     ///         CatalogName = "main",

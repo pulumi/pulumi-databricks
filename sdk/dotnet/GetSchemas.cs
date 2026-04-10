@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sandbox = Databricks.GetSchemas.Invoke(new()
+        ///     var sandbox = Databricks.Index.GetSchemas.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sandbox = Databricks.GetSchemas.Invoke(new()
+        ///     var sandbox = Databricks.Index.GetSchemas.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///     });
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sandbox = Databricks.GetSchemas.Invoke(new()
+        ///     var sandbox = Databricks.Index.GetSchemas.Invoke(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///     });

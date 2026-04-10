@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Catalog("sandbox", new()
     ///     {
     ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
@@ -41,7 +41,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var things = new Databricks.Schema("things", new()
+    ///     var things = new Databricks.Index.Schema("things", new()
     ///     {
     ///         CatalogName = sandbox.Id,
     ///         Name = "things",
@@ -52,7 +52,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     var thing = new Databricks.Index.SqlTable("thing", new()
     ///     {
     ///         Name = "quickstart_table",
     ///         CatalogName = sandbox.Name,
@@ -75,14 +75,14 @@ namespace Pulumi.Databricks
     ///         Comment = "this table is managed by terraform",
     ///     });
     /// 
-    ///     var thingView = new Databricks.SqlTable("thing_view", new()
+    ///     var thingView = new Databricks.Index.SqlTable("thing_view", new()
     ///     {
     ///         Name = "quickstart_table_view",
     ///         CatalogName = sandbox.Name,
     ///         SchemaName = things.Name,
     ///         TableType = "VIEW",
     ///         ClusterId = "0423-201305-xsrt82qn",
-    ///         ViewDefinition = Std.Format.Invoke(new()
+    ///         ViewDefinition = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "SELECT name FROM %s WHERE id == 1",
     ///             Args = new[]
@@ -107,20 +107,20 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.SqlEndpoint("this", new()
+    ///     var @this = new Databricks.Index.SqlEndpoint("this", new()
     ///     {
     ///         Name = "endpoint",
     ///         ClusterSize = "2X-Small",
     ///         MaxNumClusters = 1,
     ///     });
     /// 
-    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     var thing = new Databricks.Index.SqlTable("thing", new()
     ///     {
     ///         Name = "quickstart_table",
     ///         CatalogName = sandbox.Name,
     ///         SchemaName = things.Name,
     ///         TableType = "MANAGED",
-    ///         WarehouseId = @this.Id,
+    ///         WarehouseId = @this.SqlEndpointId,
     ///         Columns = new[]
     ///         {
     ///             new Databricks.Inputs.SqlTableColumnArgs
@@ -138,14 +138,14 @@ namespace Pulumi.Databricks
     ///         Comment = "this table is managed by terraform",
     ///     });
     /// 
-    ///     var thingView = new Databricks.SqlTable("thing_view", new()
+    ///     var thingView = new Databricks.Index.SqlTable("thing_view", new()
     ///     {
     ///         Name = "quickstart_table_view",
     ///         CatalogName = sandbox.Name,
     ///         SchemaName = things.Name,
     ///         TableType = "VIEW",
-    ///         WarehouseId = @this.Id,
-    ///         ViewDefinition = Std.Format.Invoke(new()
+    ///         WarehouseId = @this.SqlEndpointId,
+    ///         ViewDefinition = Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "SELECT name FROM %s WHERE id == 1",
     ///             Args = new[]
@@ -169,7 +169,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     var sandbox = new Databricks.Index.Catalog("sandbox", new()
     ///     {
     ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
@@ -179,7 +179,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var things = new Databricks.Schema("things", new()
+    ///     var things = new Databricks.Index.Schema("things", new()
     ///     {
     ///         CatalogName = sandbox.Id,
     ///         Name = "things",
@@ -190,7 +190,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     var thing = new Databricks.Index.SqlTable("thing", new()
     ///     {
     ///         Name = "identity_table",
     ///         CatalogName = sandbox.Name,
@@ -227,7 +227,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     var thing = new Databricks.Index.SqlTable("thing", new()
     ///     {
     ///         Name = "auto_cluster_table",
     ///         CatalogName = sandbox.Name,
@@ -270,7 +270,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Table("this", new()
+    ///     var @this = new Databricks.Index.Table("this", new()
     ///     {
     ///         CatalogName = "catalog",
     ///         SchemaName = "schema",

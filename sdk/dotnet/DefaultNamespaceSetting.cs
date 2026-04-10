@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.DefaultNamespaceSetting("this", new()
+    ///     var @this = new Databricks.Index.DefaultNamespaceSetting("this", new()
     ///     {
     ///         Namespace = new Databricks.Inputs.DefaultNamespaceSettingNamespaceArgs
     ///         {

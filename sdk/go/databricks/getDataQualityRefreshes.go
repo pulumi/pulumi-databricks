@@ -41,7 +41,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupTable(ctx, &databricks.LookupTableArgs{
+//			this, err := databricks.GetTable(ctx, &databricks.LookupTableArgs{
 //				Name: "my_catalog.my_schema.my_table",
 //			}, nil)
 //			if err != nil {

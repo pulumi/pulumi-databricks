@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var report = Databricks.GetDbfsFile.Invoke(new()
+        ///     var report = Databricks.Index.GetDbfsFile.Invoke(new()
         ///     {
         ///         Path = "dbfs:/reports/some.csv",
         ///         LimitFileSize = true,
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var report = Databricks.GetDbfsFile.Invoke(new()
+        ///     var report = Databricks.Index.GetDbfsFile.Invoke(new()
         ///     {
         ///         Path = "dbfs:/reports/some.csv",
         ///         LimitFileSize = true,
@@ -98,7 +98,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var report = Databricks.GetDbfsFile.Invoke(new()
+        ///     var report = Databricks.Index.GetDbfsFile.Invoke(new()
         ///     {
         ///         Path = "dbfs:/reports/some.csv",
         ///         LimitFileSize = true,
