@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.index.WorkspaceBaseEnvironment("this", {
+ * const _this = new databricks.EnvironmentsWorkspaceBaseEnvironment("this", {
  *     displayName: "my-environment",
  *     filepath: "/Volumes/catalog/schema/volume/environment.yaml",
  * });
@@ -39,10 +39,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const gpuEnv = new databricks.index.WorkspaceBaseEnvironment("gpu_env", {
+ * const gpuEnv = new databricks.EnvironmentsWorkspaceBaseEnvironment("gpu_env", {
  *     displayName: "my-gpu-environment",
  *     filepath: "/Volumes/catalog/schema/volume/gpu-environment.yaml",
- *     baseEnvironmentType: "GPU_LARGE",
+ *     baseEnvironmentType: "GPU",
  * });
  * ```
  */

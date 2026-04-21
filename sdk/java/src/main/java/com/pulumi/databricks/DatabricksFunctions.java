@@ -190,6 +190,8 @@ import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
 import com.pulumi.databricks.inputs.GetPostgresBranchPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresBranchesArgs;
 import com.pulumi.databricks.inputs.GetPostgresBranchesPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresCatalogArgs;
+import com.pulumi.databricks.inputs.GetPostgresCatalogPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
 import com.pulumi.databricks.inputs.GetPostgresDatabasePlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresDatabasesArgs;
@@ -206,6 +208,8 @@ import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
 import com.pulumi.databricks.inputs.GetPostgresRolePlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresRolesArgs;
 import com.pulumi.databricks.inputs.GetPostgresRolesPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresSyncedTableArgs;
+import com.pulumi.databricks.inputs.GetPostgresSyncedTablePlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2PlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
@@ -369,6 +373,7 @@ import com.pulumi.databricks.outputs.GetPolicyInfoResult;
 import com.pulumi.databricks.outputs.GetPolicyInfosResult;
 import com.pulumi.databricks.outputs.GetPostgresBranchResult;
 import com.pulumi.databricks.outputs.GetPostgresBranchesResult;
+import com.pulumi.databricks.outputs.GetPostgresCatalogResult;
 import com.pulumi.databricks.outputs.GetPostgresDatabaseResult;
 import com.pulumi.databricks.outputs.GetPostgresDatabasesResult;
 import com.pulumi.databricks.outputs.GetPostgresEndpointResult;
@@ -377,6 +382,7 @@ import com.pulumi.databricks.outputs.GetPostgresProjectResult;
 import com.pulumi.databricks.outputs.GetPostgresProjectsResult;
 import com.pulumi.databricks.outputs.GetPostgresRoleResult;
 import com.pulumi.databricks.outputs.GetPostgresRolesResult;
+import com.pulumi.databricks.outputs.GetPostgresSyncedTableResult;
 import com.pulumi.databricks.outputs.GetQualityMonitorV2Result;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2Result;
 import com.pulumi.databricks.outputs.GetRegisteredModelResult;
@@ -1186,7 +1192,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account user preference setting.
      * 
@@ -1195,7 +1201,7 @@ public final class DatabricksFunctions {
         return getAccountSettingUserPreferenceV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account user preference setting.
      * 
@@ -1204,7 +1210,7 @@ public final class DatabricksFunctions {
         return getAccountSettingUserPreferenceV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account user preference setting.
      * 
@@ -1213,7 +1219,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", TypeShape.of(GetAccountSettingUserPreferenceV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account user preference setting.
      * 
@@ -1222,7 +1228,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", TypeShape.of(GetAccountSettingUserPreferenceV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single account user preference setting.
      * 
@@ -8064,7 +8070,7 @@ public final class DatabricksFunctions {
      * * `isAccount` - Whether the provider is configured at account-level
      * * `accountId` - Account Id if provider is configured at account-level
      * * `host` - Host of the Databricks workspace or account console
-     * * `cloudType` - Cloud type specified in the provider
+     * * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
      * * `authType` - Auth type used by the provider
      * 
      * ## Related Resources
@@ -8096,7 +8102,7 @@ public final class DatabricksFunctions {
      * * `isAccount` - Whether the provider is configured at account-level
      * * `accountId` - Account Id if provider is configured at account-level
      * * `host` - Host of the Databricks workspace or account console
-     * * `cloudType` - Cloud type specified in the provider
+     * * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
      * * `authType` - Auth type used by the provider
      * 
      * ## Related Resources
@@ -8128,7 +8134,7 @@ public final class DatabricksFunctions {
      * * `isAccount` - Whether the provider is configured at account-level
      * * `accountId` - Account Id if provider is configured at account-level
      * * `host` - Host of the Databricks workspace or account console
-     * * `cloudType` - Cloud type specified in the provider
+     * * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
      * * `authType` - Auth type used by the provider
      * 
      * ## Related Resources
@@ -8160,7 +8166,7 @@ public final class DatabricksFunctions {
      * * `isAccount` - Whether the provider is configured at account-level
      * * `accountId` - Account Id if provider is configured at account-level
      * * `host` - Host of the Databricks workspace or account console
-     * * `cloudType` - Cloud type specified in the provider
+     * * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
      * * `authType` - Auth type used by the provider
      * 
      * ## Related Resources
@@ -8192,7 +8198,7 @@ public final class DatabricksFunctions {
      * * `isAccount` - Whether the provider is configured at account-level
      * * `accountId` - Account Id if provider is configured at account-level
      * * `host` - Host of the Databricks workspace or account console
-     * * `cloudType` - Cloud type specified in the provider
+     * * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
      * * `authType` - Auth type used by the provider
      * 
      * ## Related Resources
@@ -8224,7 +8230,7 @@ public final class DatabricksFunctions {
      * * `isAccount` - Whether the provider is configured at account-level
      * * `accountId` - Account Id if provider is configured at account-level
      * * `host` - Host of the Databricks workspace or account console
-     * * `cloudType` - Cloud type specified in the provider
+     * * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
      * * `authType` - Auth type used by the provider
      * 
      * ## Related Resources
@@ -8256,7 +8262,7 @@ public final class DatabricksFunctions {
      * * `isAccount` - Whether the provider is configured at account-level
      * * `accountId` - Account Id if provider is configured at account-level
      * * `host` - Host of the Databricks workspace or account console
-     * * `cloudType` - Cloud type specified in the provider
+     * * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
      * * `authType` - Auth type used by the provider
      * 
      * ## Related Resources
@@ -12735,7 +12741,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
@@ -12805,7 +12811,7 @@ public final class DatabricksFunctions {
         return getEntityTagAssignment(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
@@ -12875,7 +12881,7 @@ public final class DatabricksFunctions {
         return getEntityTagAssignmentPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
@@ -12945,7 +12951,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignment:getEntityTagAssignment", TypeShape.of(GetEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
@@ -13015,7 +13021,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignment:getEntityTagAssignment", TypeShape.of(GetEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
@@ -13085,7 +13091,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getEntityTagAssignment:getEntityTagAssignment", TypeShape.of(GetEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
@@ -13150,7 +13156,7 @@ public final class DatabricksFunctions {
         return getEntityTagAssignments(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
@@ -13215,7 +13221,7 @@ public final class DatabricksFunctions {
         return getEntityTagAssignmentsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
@@ -13280,7 +13286,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
@@ -13345,7 +13351,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
@@ -13414,6 +13420,40 @@ public final class DatabricksFunctions {
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = DatabricksFunctions.getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("default-workspace-base-environment")
+     *             .build());
+     * 
+     *         ctx.export("defaultCpuEnvironment", current.cpuWorkspaceBaseEnvironment());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs args) {
         return getEnvironmentsDefaultWorkspaceBaseEnvironment(args, InvokeOptions.Empty);
@@ -13422,6 +13462,40 @@ public final class DatabricksFunctions {
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = DatabricksFunctions.getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("default-workspace-base-environment")
+     *             .build());
+     * 
+     *         ctx.export("defaultCpuEnvironment", current.cpuWorkspaceBaseEnvironment());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironmentPlain(GetEnvironmentsDefaultWorkspaceBaseEnvironmentPlainArgs args) {
@@ -13432,6 +13506,40 @@ public final class DatabricksFunctions {
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = DatabricksFunctions.getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("default-workspace-base-environment")
+     *             .build());
+     * 
+     *         ctx.export("defaultCpuEnvironment", current.cpuWorkspaceBaseEnvironment());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
@@ -13440,6 +13548,40 @@ public final class DatabricksFunctions {
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = DatabricksFunctions.getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("default-workspace-base-environment")
+     *             .build());
+     * 
+     *         ctx.export("defaultCpuEnvironment", current.cpuWorkspaceBaseEnvironment());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs args, InvokeOutputOptions options) {
@@ -13450,6 +13592,40 @@ public final class DatabricksFunctions {
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = DatabricksFunctions.getEnvironmentsDefaultWorkspaceBaseEnvironment(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("default-workspace-base-environment")
+     *             .build());
+     * 
+     *         ctx.export("defaultCpuEnvironment", current.cpuWorkspaceBaseEnvironment());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> getEnvironmentsDefaultWorkspaceBaseEnvironmentPlain(GetEnvironmentsDefaultWorkspaceBaseEnvironmentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
@@ -13458,6 +13634,39 @@ public final class DatabricksFunctions {
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnv = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("workspace-base-environments/my-environment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs args) {
@@ -13468,6 +13677,39 @@ public final class DatabricksFunctions {
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnv = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("workspace-base-environments/my-environment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironmentPlain(GetEnvironmentsWorkspaceBaseEnvironmentPlainArgs args) {
         return getEnvironmentsWorkspaceBaseEnvironmentPlain(args, InvokeOptions.Empty);
@@ -13476,6 +13718,39 @@ public final class DatabricksFunctions {
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnv = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("workspace-base-environments/my-environment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs args, InvokeOptions options) {
@@ -13486,6 +13761,39 @@ public final class DatabricksFunctions {
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnv = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("workspace-base-environments/my-environment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
@@ -13494,6 +13802,39 @@ public final class DatabricksFunctions {
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnv = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironment(GetEnvironmentsWorkspaceBaseEnvironmentArgs.builder()
+     *             .name("workspace-base-environments/my-environment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentResult> getEnvironmentsWorkspaceBaseEnvironmentPlain(GetEnvironmentsWorkspaceBaseEnvironmentPlainArgs args, InvokeOptions options) {
@@ -13505,6 +13846,39 @@ public final class DatabricksFunctions {
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEnvironments", all.workspaceBaseEnvironments());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironments() {
         return getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.Empty, InvokeOptions.Empty);
@@ -13514,6 +13888,39 @@ public final class DatabricksFunctions {
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEnvironments", all.workspaceBaseEnvironments());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironmentsPlain() {
@@ -13525,6 +13932,39 @@ public final class DatabricksFunctions {
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEnvironments", all.workspaceBaseEnvironments());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs args) {
         return getEnvironmentsWorkspaceBaseEnvironments(args, InvokeOptions.Empty);
@@ -13534,6 +13974,39 @@ public final class DatabricksFunctions {
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEnvironments", all.workspaceBaseEnvironments());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironmentsPlain(GetEnvironmentsWorkspaceBaseEnvironmentsPlainArgs args) {
@@ -13545,6 +14018,39 @@ public final class DatabricksFunctions {
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEnvironments", all.workspaceBaseEnvironments());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentsResult.class), args, Utilities.withVersion(options));
@@ -13555,6 +14061,39 @@ public final class DatabricksFunctions {
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEnvironments", all.workspaceBaseEnvironments());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentsResult.class), args, Utilities.withVersion(options));
@@ -13564,6 +14103,39 @@ public final class DatabricksFunctions {
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEnvironments", all.workspaceBaseEnvironments());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetEnvironmentsWorkspaceBaseEnvironmentsResult> getEnvironmentsWorkspaceBaseEnvironmentsPlain(GetEnvironmentsWorkspaceBaseEnvironmentsPlainArgs args, InvokeOptions options) {
@@ -24369,6 +24941,41 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresCatalogResult> getPostgresCatalog(GetPostgresCatalogArgs args) {
+        return getPostgresCatalog(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresCatalogResult> getPostgresCatalogPlain(GetPostgresCatalogPlainArgs args) {
+        return getPostgresCatalogPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresCatalogResult> getPostgresCatalog(GetPostgresCatalogArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresCatalogResult> getPostgresCatalog(GetPostgresCatalogArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresCatalogResult> getPostgresCatalogPlain(GetPostgresCatalogPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      */
@@ -25123,6 +25730,41 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetPostgresRolesResult> getPostgresRolesPlain(GetPostgresRolesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresRoles:getPostgresRoles", TypeShape.of(GetPostgresRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresSyncedTableResult> getPostgresSyncedTable(GetPostgresSyncedTableArgs args) {
+        return getPostgresSyncedTable(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresSyncedTableResult> getPostgresSyncedTablePlain(GetPostgresSyncedTablePlainArgs args) {
+        return getPostgresSyncedTablePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresSyncedTableResult> getPostgresSyncedTable(GetPostgresSyncedTableArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", TypeShape.of(GetPostgresSyncedTableResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresSyncedTableResult> getPostgresSyncedTable(GetPostgresSyncedTableArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", TypeShape.of(GetPostgresSyncedTableResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresSyncedTableResult> getPostgresSyncedTablePlain(GetPostgresSyncedTablePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", TypeShape.of(GetPostgresSyncedTableResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -32055,7 +32697,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -32108,7 +32750,7 @@ public final class DatabricksFunctions {
         return getTagPolicies(GetTagPoliciesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -32161,7 +32803,7 @@ public final class DatabricksFunctions {
         return getTagPoliciesPlain(GetTagPoliciesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -32214,7 +32856,7 @@ public final class DatabricksFunctions {
         return getTagPolicies(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -32267,7 +32909,7 @@ public final class DatabricksFunctions {
         return getTagPoliciesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -32320,7 +32962,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getTagPolicies:getTagPolicies", TypeShape.of(GetTagPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -32373,7 +33015,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getTagPolicies:getTagPolicies", TypeShape.of(GetTagPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -32426,7 +33068,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getTagPolicies:getTagPolicies", TypeShape.of(GetTagPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
@@ -32479,7 +33121,7 @@ public final class DatabricksFunctions {
         return getTagPolicy(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
@@ -32532,7 +33174,7 @@ public final class DatabricksFunctions {
         return getTagPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
@@ -32585,7 +33227,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getTagPolicy:getTagPolicy", TypeShape.of(GetTagPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
@@ -32638,7 +33280,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getTagPolicy:getTagPolicy", TypeShape.of(GetTagPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to get a single tag policy by its tag key.
      * 

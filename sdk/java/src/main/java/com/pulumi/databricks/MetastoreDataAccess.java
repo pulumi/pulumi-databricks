@@ -16,6 +16,7 @@ import com.pulumi.databricks.outputs.MetastoreDataAccessAzureServicePrincipal;
 import com.pulumi.databricks.outputs.MetastoreDataAccessCloudflareApiToken;
 import com.pulumi.databricks.outputs.MetastoreDataAccessDatabricksGcpServiceAccount;
 import com.pulumi.databricks.outputs.MetastoreDataAccessGcpServiceAccountKey;
+import com.pulumi.databricks.outputs.MetastoreDataAccessProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -136,6 +137,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/metastoreDataAccess:MetastoreDataAccess")
 public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
     @Export(name="awsIamRole", refs={MetastoreDataAccessAwsIamRole.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreDataAccessAwsIamRole> awsIamRole;
 
@@ -227,6 +242,20 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
 
     public Output<String> owner() {
         return this.owner;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={MetastoreDataAccessProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ MetastoreDataAccessProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<MetastoreDataAccessProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readOnly;

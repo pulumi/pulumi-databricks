@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetUsersProviderConfig;
 import com.pulumi.databricks.outputs.GetUsersUser;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUsersResult {
+    private @Nullable String api;
     private @Nullable String extraAttributes;
     private @Nullable String filter;
     /**
@@ -21,6 +23,7 @@ public final class GetUsersResult {
      * 
      */
     private String id;
+    private @Nullable GetUsersProviderConfig providerConfig;
     /**
      * @return A list of users matching the specified criteria. Each user has the following attributes:
      * 
@@ -28,6 +31,9 @@ public final class GetUsersResult {
     private List<GetUsersUser> users;
 
     private GetUsersResult() {}
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
+    }
     public Optional<String> extraAttributes() {
         return Optional.ofNullable(this.extraAttributes);
     }
@@ -40,6 +46,9 @@ public final class GetUsersResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<GetUsersProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     /**
      * @return A list of users matching the specified criteria. Each user has the following attributes:
@@ -58,19 +67,29 @@ public final class GetUsersResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String api;
         private @Nullable String extraAttributes;
         private @Nullable String filter;
         private String id;
+        private @Nullable GetUsersProviderConfig providerConfig;
         private List<GetUsersUser> users;
         public Builder() {}
         public Builder(GetUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.api = defaults.api;
     	      this.extraAttributes = defaults.extraAttributes;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
+        public Builder api(@Nullable String api) {
+
+            this.api = api;
+            return this;
+        }
         @CustomType.Setter
         public Builder extraAttributes(@Nullable String extraAttributes) {
 
@@ -92,6 +111,12 @@ public final class GetUsersResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetUsersProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder users(List<GetUsersUser> users) {
             if (users == null) {
               throw new MissingRequiredPropertyException("GetUsersResult", "users");
@@ -104,9 +129,11 @@ public final class GetUsersResult {
         }
         public GetUsersResult build() {
             final var _resultValue = new GetUsersResult();
+            _resultValue.api = api;
             _resultValue.extraAttributes = extraAttributes;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.users = users;
             return _resultValue;
         }

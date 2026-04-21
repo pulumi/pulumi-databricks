@@ -35,6 +35,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? CredentialName;
         public readonly bool? EffectiveEnableFileEvents;
+        public readonly Outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueResult? EffectiveFileEventQueue;
         public readonly bool? EnableFileEvents;
         /// <summary>
         /// A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -88,6 +89,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool? effectiveEnableFileEvents,
 
+            Outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueResult? effectiveFileEventQueue,
+
             bool? enableFileEvents,
 
             Outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult? encryptionDetails,
@@ -119,6 +122,7 @@ namespace Pulumi.Databricks.Outputs
             CredentialId = credentialId;
             CredentialName = credentialName;
             EffectiveEnableFileEvents = effectiveEnableFileEvents;
+            EffectiveFileEventQueue = effectiveFileEventQueue;
             EnableFileEvents = enableFileEvents;
             EncryptionDetails = encryptionDetails;
             Fallback = fallback;

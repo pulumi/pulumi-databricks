@@ -44,6 +44,12 @@ type LookupAccountNetworkPolicyResult struct {
 	Egress GetAccountNetworkPolicyEgress `pulumi:"egress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
+	Ingress GetAccountNetworkPolicyIngress `pulumi:"ingress"`
+	// (CustomerFacingIngressNetworkPolicy) - The ingress policy for dry run mode. Dry run will always run even if the request
+	// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+	// and emit logs only without blocking requests
+	IngressDryRun GetAccountNetworkPolicyIngressDryRun `pulumi:"ingressDryRun"`
 	// (string) - The unique identifier for the network policy
 	NetworkPolicyId string `pulumi:"networkPolicyId"`
 }
@@ -95,6 +101,18 @@ func (o LookupAccountNetworkPolicyResultOutput) Egress() GetAccountNetworkPolicy
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAccountNetworkPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
+func (o LookupAccountNetworkPolicyResultOutput) Ingress() GetAccountNetworkPolicyIngressOutput {
+	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) GetAccountNetworkPolicyIngress { return v.Ingress }).(GetAccountNetworkPolicyIngressOutput)
+}
+
+// (CustomerFacingIngressNetworkPolicy) - The ingress policy for dry run mode. Dry run will always run even if the request
+// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+// and emit logs only without blocking requests
+func (o LookupAccountNetworkPolicyResultOutput) IngressDryRun() GetAccountNetworkPolicyIngressDryRunOutput {
+	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) GetAccountNetworkPolicyIngressDryRun { return v.IngressDryRun }).(GetAccountNetworkPolicyIngressDryRunOutput)
 }
 
 // (string) - The unique identifier for the network policy

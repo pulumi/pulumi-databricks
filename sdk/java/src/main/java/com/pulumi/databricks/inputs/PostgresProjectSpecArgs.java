@@ -51,6 +51,21 @@ public final class PostgresProjectSpecArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * (string) - The full resource path of the default branch of the project
+     * 
+     */
+    @Import(name="defaultBranch")
+    private @Nullable Output<String> defaultBranch;
+
+    /**
+     * @return (string) - The full resource path of the default branch of the project
+     * 
+     */
+    public Optional<Output<String>> defaultBranch() {
+        return Optional.ofNullable(this.defaultBranch);
+    }
+
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      * 
      */
@@ -130,6 +145,7 @@ public final class PostgresProjectSpecArgs extends com.pulumi.resources.Resource
     private PostgresProjectSpecArgs(PostgresProjectSpecArgs $) {
         this.budgetPolicyId = $.budgetPolicyId;
         this.customTags = $.customTags;
+        this.defaultBranch = $.defaultBranch;
         this.defaultEndpointSettings = $.defaultEndpointSettings;
         this.displayName = $.displayName;
         this.enablePgNativeLogin = $.enablePgNativeLogin;
@@ -205,6 +221,27 @@ public final class PostgresProjectSpecArgs extends com.pulumi.resources.Resource
          */
         public Builder customTags(PostgresProjectSpecCustomTagArgs... customTags) {
             return customTags(List.of(customTags));
+        }
+
+        /**
+         * @param defaultBranch (string) - The full resource path of the default branch of the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBranch(@Nullable Output<String> defaultBranch) {
+            $.defaultBranch = defaultBranch;
+            return this;
+        }
+
+        /**
+         * @param defaultBranch (string) - The full resource path of the default branch of the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBranch(String defaultBranch) {
+            return defaultBranch(Output.of(defaultBranch));
         }
 
         /**

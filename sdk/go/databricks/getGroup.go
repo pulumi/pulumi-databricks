@@ -84,6 +84,8 @@ type LookupGroupArgs struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// True if group members can create instance pools
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// Set of Group identifiers, that can be modified with GroupMember resource.
 	ChildGroups         []string `pulumi:"childGroups"`
 	DatabricksSqlAccess *bool    `pulumi:"databricksSqlAccess"`
@@ -116,7 +118,8 @@ type LookupGroupResult struct {
 	// True if group members can create clusters
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// True if group members can create instance pools
-	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
+	AllowInstancePoolCreate *bool   `pulumi:"allowInstancePoolCreate"`
+	Api                     *string `pulumi:"api"`
 	// Set of Group identifiers, that can be modified with GroupMember resource.
 	ChildGroups         []string `pulumi:"childGroups"`
 	DatabricksSqlAccess *bool    `pulumi:"databricksSqlAccess"`
@@ -158,6 +161,8 @@ type LookupGroupOutputArgs struct {
 	AllowClusterCreate pulumi.BoolPtrInput `pulumi:"allowClusterCreate"`
 	// True if group members can create instance pools
 	AllowInstancePoolCreate pulumi.BoolPtrInput `pulumi:"allowInstancePoolCreate"`
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput `pulumi:"api"`
 	// Set of Group identifiers, that can be modified with GroupMember resource.
 	ChildGroups         pulumi.StringArrayInput `pulumi:"childGroups"`
 	DatabricksSqlAccess pulumi.BoolPtrInput     `pulumi:"databricksSqlAccess"`
@@ -215,6 +220,10 @@ func (o LookupGroupResultOutput) AllowClusterCreate() pulumi.BoolPtrOutput {
 // True if group members can create instance pools
 func (o LookupGroupResultOutput) AllowInstancePoolCreate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGroupResult) *bool { return v.AllowInstancePoolCreate }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupGroupResultOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupGroupResult) *string { return v.Api }).(pulumi.StringPtrOutput)
 }
 
 // Set of Group identifiers, that can be modified with GroupMember resource.

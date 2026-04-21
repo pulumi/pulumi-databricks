@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ServicePrincipalArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ServicePrincipalState;
+import com.pulumi.databricks.outputs.ServicePrincipalProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -285,6 +286,20 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowInstancePoolCreate);
     }
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
+    /**
      * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
      * 
      */
@@ -409,6 +424,12 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      */
     public Output<String> home() {
         return this.home;
+    }
+    @Export(name="providerConfig", refs={ServicePrincipalProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServicePrincipalProviderConfig> providerConfig;
+
+    public Output<Optional<ServicePrincipalProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.

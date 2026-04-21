@@ -91,10 +91,19 @@ namespace Pulumi.Databricks
     public partial class GroupRole : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// This is the id of the group resource.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.GroupRoleProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Either a role name or the ARN/ID of the instance profile resource.
@@ -149,10 +158,19 @@ namespace Pulumi.Databricks
     public sealed class GroupRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is the id of the group resource.
         /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
+
+        [Input("providerConfig")]
+        public Input<Inputs.GroupRoleProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Either a role name or the ARN/ID of the instance profile resource.
@@ -169,10 +187,19 @@ namespace Pulumi.Databricks
     public sealed class GroupRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is the id of the group resource.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.GroupRoleProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Either a role name or the ARN/ID of the instance profile resource.

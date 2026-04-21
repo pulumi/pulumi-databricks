@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureState;
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureProviderConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -52,6 +53,20 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
         return this.featureName;
     }
     /**
+     * (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     * 
+     */
+    @Export(name="isOnline", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isOnline;
+
+    /**
+     * @return (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     * 
+     */
+    public Output<Boolean> isOnline() {
+        return this.isOnline;
+    }
+    /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      * 
@@ -82,16 +97,16 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
         return Codegen.optional(this.materializedFeatureId);
     }
     @Export(name="offlineStoreConfig", refs={FeatureEngineeringMaterializedFeatureOfflineStoreConfig.class}, tree="[0]")
-    private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureOfflineStoreConfig> offlineStoreConfig;
+    private Output<FeatureEngineeringMaterializedFeatureOfflineStoreConfig> offlineStoreConfig;
 
-    public Output<Optional<FeatureEngineeringMaterializedFeatureOfflineStoreConfig>> offlineStoreConfig() {
-        return Codegen.optional(this.offlineStoreConfig);
+    public Output<FeatureEngineeringMaterializedFeatureOfflineStoreConfig> offlineStoreConfig() {
+        return this.offlineStoreConfig;
     }
     @Export(name="onlineStoreConfig", refs={FeatureEngineeringMaterializedFeatureOnlineStoreConfig.class}, tree="[0]")
-    private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureOnlineStoreConfig> onlineStoreConfig;
+    private Output<FeatureEngineeringMaterializedFeatureOnlineStoreConfig> onlineStoreConfig;
 
-    public Output<Optional<FeatureEngineeringMaterializedFeatureOnlineStoreConfig>> onlineStoreConfig() {
-        return Codegen.optional(this.onlineStoreConfig);
+    public Output<FeatureEngineeringMaterializedFeatureOnlineStoreConfig> onlineStoreConfig() {
+        return this.onlineStoreConfig;
     }
     /**
      * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`

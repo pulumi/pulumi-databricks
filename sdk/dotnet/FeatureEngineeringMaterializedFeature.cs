@@ -28,6 +28,12 @@ namespace Pulumi.Databricks
         public Output<string> FeatureName { get; private set; } = null!;
 
         /// <summary>
+        /// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+        /// </summary>
+        [Output("isOnline")]
+        public Output<bool> IsOnline { get; private set; } = null!;
+
+        /// <summary>
         /// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
         /// If the pipeline has not run yet, this field will be null
         /// </summary>
@@ -41,10 +47,10 @@ namespace Pulumi.Databricks
         public Output<string?> MaterializedFeatureId { get; private set; } = null!;
 
         [Output("offlineStoreConfig")]
-        public Output<Outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig?> OfflineStoreConfig { get; private set; } = null!;
+        public Output<Outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig> OfflineStoreConfig { get; private set; } = null!;
 
         [Output("onlineStoreConfig")]
-        public Output<Outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig?> OnlineStoreConfig { get; private set; } = null!;
+        public Output<Outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig> OnlineStoreConfig { get; private set; } = null!;
 
         /// <summary>
         /// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
@@ -165,6 +171,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("featureName")]
         public Input<string>? FeatureName { get; set; }
+
+        /// <summary>
+        /// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+        /// </summary>
+        [Input("isOnline")]
+        public Input<bool>? IsOnline { get; set; }
 
         /// <summary>
         /// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.

@@ -75,6 +75,9 @@ namespace Pulumi.Databricks
         [Output("endpointName")]
         public Output<string> EndpointName { get; private set; } = null!;
 
+        [Output("indexSubtype")]
+        public Output<string?> IndexSubtype { get; private set; } = null!;
+
         /// <summary>
         /// Mosaic AI Vector Search index type. Currently supported values are:
         /// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
@@ -168,6 +171,9 @@ namespace Pulumi.Databricks
         [Input("endpointName", required: true)]
         public Input<string> EndpointName { get; set; } = null!;
 
+        [Input("indexSubtype")]
+        public Input<string>? IndexSubtype { get; set; }
+
         /// <summary>
         /// Mosaic AI Vector Search index type. Currently supported values are:
         /// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
@@ -222,6 +228,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("endpointName")]
         public Input<string>? EndpointName { get; set; }
+
+        [Input("indexSubtype")]
+        public Input<string>? IndexSubtype { get; set; }
 
         /// <summary>
         /// Mosaic AI Vector Search index type. Currently supported values are:

@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.MetastoreAssignmentProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class MetastoreAssignmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MetastoreAssignmentArgs Empty = new MetastoreAssignmentArgs();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
 
     /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
@@ -55,6 +71,21 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<MetastoreAssignmentProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<MetastoreAssignmentProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * id of the workspace for the assignment
      * 
      */
@@ -72,8 +103,10 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
     private MetastoreAssignmentArgs() {}
 
     private MetastoreAssignmentArgs(MetastoreAssignmentArgs $) {
+        this.api = $.api;
         this.defaultCatalogName = $.defaultCatalogName;
         this.metastoreId = $.metastoreId;
+        this.providerConfig = $.providerConfig;
         this.workspaceId = $.workspaceId;
     }
 
@@ -93,6 +126,27 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
 
         public Builder(MetastoreAssignmentArgs defaults) {
             $ = new MetastoreAssignmentArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
         }
 
         /**
@@ -143,6 +197,27 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
          */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<MetastoreAssignmentProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(MetastoreAssignmentProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

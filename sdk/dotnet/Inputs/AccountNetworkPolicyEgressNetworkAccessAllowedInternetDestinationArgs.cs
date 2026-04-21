@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The internet destination to which access will be allowed. Format dependent on the destination type
-        /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }
 

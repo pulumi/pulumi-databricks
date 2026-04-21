@@ -11,10 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
-    /**
-     * @return The internet destination to which access will be allowed. Format dependent on the destination type
-     * 
-     */
     private @Nullable String destination;
     /**
      * @return The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
@@ -23,10 +19,6 @@ public final class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestina
     private @Nullable String internetDestinationType;
 
     private AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination() {}
-    /**
-     * @return The internet destination to which access will be allowed. Format dependent on the destination type
-     * 
-     */
     public Optional<String> destination() {
         return Optional.ofNullable(this.destination);
     }

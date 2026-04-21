@@ -27,7 +27,7 @@ class GetAccountNetworkPolicyResult:
     """
     A collection of values returned by getAccountNetworkPolicy.
     """
-    def __init__(__self__, account_id=None, egress=None, id=None, network_policy_id=None):
+    def __init__(__self__, account_id=None, egress=None, id=None, ingress=None, ingress_dry_run=None, network_policy_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,6 +37,12 @@ class GetAccountNetworkPolicyResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ingress and not isinstance(ingress, dict):
+            raise TypeError("Expected argument 'ingress' to be a dict")
+        pulumi.set(__self__, "ingress", ingress)
+        if ingress_dry_run and not isinstance(ingress_dry_run, dict):
+            raise TypeError("Expected argument 'ingress_dry_run' to be a dict")
+        pulumi.set(__self__, "ingress_dry_run", ingress_dry_run)
         if network_policy_id and not isinstance(network_policy_id, str):
             raise TypeError("Expected argument 'network_policy_id' to be a str")
         pulumi.set(__self__, "network_policy_id", network_policy_id)
@@ -66,6 +72,24 @@ class GetAccountNetworkPolicyResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def ingress(self) -> 'outputs.GetAccountNetworkPolicyIngressResult':
+        """
+        (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
+        """
+        return pulumi.get(self, "ingress")
+
+    @_builtins.property
+    @pulumi.getter(name="ingressDryRun")
+    def ingress_dry_run(self) -> 'outputs.GetAccountNetworkPolicyIngressDryRunResult':
+        """
+        (CustomerFacingIngressNetworkPolicy) - The ingress policy for dry run mode. Dry run will always run even if the request
+        is allowed by the ingress policy. When this field is set, the policy will be evaluated
+        and emit logs only without blocking requests
+        """
+        return pulumi.get(self, "ingress_dry_run")
+
+    @_builtins.property
     @pulumi.getter(name="networkPolicyId")
     def network_policy_id(self) -> _builtins.str:
         """
@@ -83,6 +107,8 @@ class AwaitableGetAccountNetworkPolicyResult(GetAccountNetworkPolicyResult):
             account_id=self.account_id,
             egress=self.egress,
             id=self.id,
+            ingress=self.ingress,
+            ingress_dry_run=self.ingress_dry_run,
             network_policy_id=self.network_policy_id)
 
 
@@ -111,6 +137,8 @@ def get_account_network_policy(network_policy_id: Optional[_builtins.str] = None
         account_id=pulumi.get(__ret__, 'account_id'),
         egress=pulumi.get(__ret__, 'egress'),
         id=pulumi.get(__ret__, 'id'),
+        ingress=pulumi.get(__ret__, 'ingress'),
+        ingress_dry_run=pulumi.get(__ret__, 'ingress_dry_run'),
         network_policy_id=pulumi.get(__ret__, 'network_policy_id'))
 def get_account_network_policy_output(network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountNetworkPolicyResult]:
@@ -136,4 +164,6 @@ def get_account_network_policy_output(network_policy_id: Optional[pulumi.Input[_
         account_id=pulumi.get(__response__, 'account_id'),
         egress=pulumi.get(__response__, 'egress'),
         id=pulumi.get(__response__, 'id'),
+        ingress=pulumi.get(__response__, 'ingress'),
+        ingress_dry_run=pulumi.get(__response__, 'ingress_dry_run'),
         network_policy_id=pulumi.get(__response__, 'network_policy_id')))

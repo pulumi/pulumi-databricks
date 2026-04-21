@@ -62,10 +62,19 @@ namespace Pulumi.Databricks
     public partial class UserInstanceProfile : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// This is the id of the instance profile resource.
         /// </summary>
         [Output("instanceProfileId")]
         public Output<string> InstanceProfileId { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.UserInstanceProfileProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// This is the id of the user resource.
@@ -120,10 +129,19 @@ namespace Pulumi.Databricks
     public sealed class UserInstanceProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is the id of the instance profile resource.
         /// </summary>
         [Input("instanceProfileId", required: true)]
         public Input<string> InstanceProfileId { get; set; } = null!;
+
+        [Input("providerConfig")]
+        public Input<Inputs.UserInstanceProfileProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// This is the id of the user resource.
@@ -140,10 +158,19 @@ namespace Pulumi.Databricks
     public sealed class UserInstanceProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is the id of the instance profile resource.
         /// </summary>
         [Input("instanceProfileId")]
         public Input<string>? InstanceProfileId { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.UserInstanceProfileProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// This is the id of the user resource.

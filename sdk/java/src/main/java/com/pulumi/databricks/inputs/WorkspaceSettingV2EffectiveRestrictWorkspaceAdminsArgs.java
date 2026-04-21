@@ -6,13 +6,33 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs Empty = new WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs();
+
+    /**
+     * When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     * 
+     */
+    @Import(name="disableGovTagCreation")
+    private @Nullable Output<Boolean> disableGovTagCreation;
+
+    /**
+     * @return When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     * 
+     */
+    public Optional<Output<Boolean>> disableGovTagCreation() {
+        return Optional.ofNullable(this.disableGovTagCreation);
+    }
 
     /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
@@ -32,6 +52,7 @@ public final class WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs extend
     private WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs() {}
 
     private WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs(WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs $) {
+        this.disableGovTagCreation = $.disableGovTagCreation;
         this.status = $.status;
     }
 
@@ -51,6 +72,29 @@ public final class WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs extend
 
         public Builder(WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs defaults) {
             $ = new WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param disableGovTagCreation When true, workspace admins cannot create governance tags.
+         * ALLOW_ALL status does not override this; they are independent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableGovTagCreation(@Nullable Output<Boolean> disableGovTagCreation) {
+            $.disableGovTagCreation = disableGovTagCreation;
+            return this;
+        }
+
+        /**
+         * @param disableGovTagCreation When true, workspace admins cannot create governance tags.
+         * ALLOW_ALL status does not override this; they are independent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableGovTagCreation(Boolean disableGovTagCreation) {
+            return disableGovTagCreation(Output.of(disableGovTagCreation));
         }
 
         /**

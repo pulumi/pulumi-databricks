@@ -94,6 +94,8 @@ import (
 type ServicePrincipalSecret struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// UTC time when the secret was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
@@ -158,6 +160,8 @@ func GetServicePrincipalSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalSecret resources.
 type servicePrincipalSecretState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// UTC time when the secret was created.
 	CreateTime *string `pulumi:"createTime"`
 	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
@@ -183,6 +187,8 @@ type servicePrincipalSecretState struct {
 }
 
 type ServicePrincipalSecretState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// UTC time when the secret was created.
 	CreateTime pulumi.StringPtrInput
 	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
@@ -212,6 +218,8 @@ func (ServicePrincipalSecretState) ElementType() reflect.Type {
 }
 
 type servicePrincipalSecretArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// UTC time when the secret was created.
 	CreateTime *string `pulumi:"createTime"`
 	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
@@ -238,6 +246,8 @@ type servicePrincipalSecretArgs struct {
 
 // The set of arguments for constructing a ServicePrincipalSecret resource.
 type ServicePrincipalSecretArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// UTC time when the secret was created.
 	CreateTime pulumi.StringPtrInput
 	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
@@ -347,6 +357,11 @@ func (o ServicePrincipalSecretOutput) ToServicePrincipalSecretOutput() ServicePr
 
 func (o ServicePrincipalSecretOutput) ToServicePrincipalSecretOutputWithContext(ctx context.Context) ServicePrincipalSecretOutput {
 	return o
+}
+
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o ServicePrincipalSecretOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
 }
 
 // UTC time when the secret was created.

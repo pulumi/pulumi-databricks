@@ -10,6 +10,18 @@ import * as utilities from "./utilities";
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const current = databricks.getEnvironmentsDefaultWorkspaceBaseEnvironment({
+ *     name: "default-workspace-base-environment",
+ * });
+ * export const defaultCpuEnvironment = current.then(current => current.cpuWorkspaceBaseEnvironment);
+ * ```
  */
 export function getEnvironmentsDefaultWorkspaceBaseEnvironment(args: GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -63,6 +75,18 @@ export interface GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const current = databricks.getEnvironmentsDefaultWorkspaceBaseEnvironment({
+ *     name: "default-workspace-base-environment",
+ * });
+ * export const defaultCpuEnvironment = current.then(current => current.cpuWorkspaceBaseEnvironment);
+ * ```
  */
 export function getEnvironmentsDefaultWorkspaceBaseEnvironmentOutput(args: GetEnvironmentsDefaultWorkspaceBaseEnvironmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

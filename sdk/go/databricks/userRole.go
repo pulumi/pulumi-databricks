@@ -107,6 +107,9 @@ import (
 type UserRole struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api            pulumi.StringPtrOutput          `pulumi:"api"`
+	ProviderConfig UserRoleProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// This is the id of the user resource.
@@ -149,6 +152,9 @@ func GetUserRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserRole resources.
 type userRoleState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api            *string                 `pulumi:"api"`
+	ProviderConfig *UserRoleProviderConfig `pulumi:"providerConfig"`
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role *string `pulumi:"role"`
 	// This is the id of the user resource.
@@ -156,6 +162,9 @@ type userRoleState struct {
 }
 
 type UserRoleState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api            pulumi.StringPtrInput
+	ProviderConfig UserRoleProviderConfigPtrInput
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role pulumi.StringPtrInput
 	// This is the id of the user resource.
@@ -167,6 +176,9 @@ func (UserRoleState) ElementType() reflect.Type {
 }
 
 type userRoleArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api            *string                 `pulumi:"api"`
+	ProviderConfig *UserRoleProviderConfig `pulumi:"providerConfig"`
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role string `pulumi:"role"`
 	// This is the id of the user resource.
@@ -175,6 +187,9 @@ type userRoleArgs struct {
 
 // The set of arguments for constructing a UserRole resource.
 type UserRoleArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api            pulumi.StringPtrInput
+	ProviderConfig UserRoleProviderConfigPtrInput
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role pulumi.StringInput
 	// This is the id of the user resource.
@@ -266,6 +281,15 @@ func (o UserRoleOutput) ToUserRoleOutput() UserRoleOutput {
 
 func (o UserRoleOutput) ToUserRoleOutputWithContext(ctx context.Context) UserRoleOutput {
 	return o
+}
+
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o UserRoleOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserRole) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
+func (o UserRoleOutput) ProviderConfig() UserRoleProviderConfigPtrOutput {
+	return o.ApplyT(func(v *UserRole) UserRoleProviderConfigPtrOutput { return v.ProviderConfig }).(UserRoleProviderConfigPtrOutput)
 }
 
 // Either a role name or the ARN/ID of the instance profile resource.

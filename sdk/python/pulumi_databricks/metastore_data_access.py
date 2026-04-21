@@ -21,6 +21,7 @@ __all__ = ['MetastoreDataAccessArgs', 'MetastoreDataAccess']
 @pulumi.input_type
 class MetastoreDataAccessArgs:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
@@ -35,13 +36,18 @@ class MetastoreDataAccessArgs:
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MetastoreDataAccessProviderConfigArgs']] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a MetastoreDataAccess resource.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
+        :param pulumi.Input['MetastoreDataAccessProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
         if azure_managed_identity is not None:
@@ -70,10 +76,24 @@ class MetastoreDataAccessArgs:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
@@ -203,6 +223,18 @@ class MetastoreDataAccessArgs:
     @owner.setter
     def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "owner", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MetastoreDataAccessProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MetastoreDataAccessProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
@@ -226,6 +258,7 @@ class MetastoreDataAccessArgs:
 @pulumi.input_type
 class _MetastoreDataAccessState:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
@@ -240,13 +273,18 @@ class _MetastoreDataAccessState:
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MetastoreDataAccessProviderConfigArgs']] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering MetastoreDataAccess resources.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
+        :param pulumi.Input['MetastoreDataAccessProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
         if azure_managed_identity is not None:
@@ -275,10 +313,24 @@ class _MetastoreDataAccessState:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
@@ -408,6 +460,18 @@ class _MetastoreDataAccessState:
     @owner.setter
     def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "owner", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MetastoreDataAccessProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MetastoreDataAccessProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
@@ -434,6 +498,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  aws_iam_role: Optional[pulumi.Input[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict']]] = None,
                  azure_service_principal: Optional[pulumi.Input[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict']]] = None,
@@ -448,6 +513,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
@@ -508,7 +574,9 @@ class MetastoreDataAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
+        :param pulumi.Input[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
     @overload
@@ -586,6 +654,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  aws_iam_role: Optional[pulumi.Input[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict']]] = None,
                  azure_service_principal: Optional[pulumi.Input[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict']]] = None,
@@ -600,6 +669,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
@@ -611,6 +681,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MetastoreDataAccessArgs.__new__(MetastoreDataAccessArgs)
 
+            __props__.__dict__["api"] = api
             __props__.__dict__["aws_iam_role"] = aws_iam_role
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
             __props__.__dict__["azure_service_principal"] = azure_service_principal
@@ -625,6 +696,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["read_only"] = read_only
             __props__.__dict__["skip_validation"] = skip_validation
         super(MetastoreDataAccess, __self__).__init__(
@@ -637,6 +709,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
             aws_iam_role: Optional[pulumi.Input[Union['MetastoreDataAccessAwsIamRoleArgs', 'MetastoreDataAccessAwsIamRoleArgsDict']]] = None,
             azure_managed_identity: Optional[pulumi.Input[Union['MetastoreDataAccessAzureManagedIdentityArgs', 'MetastoreDataAccessAzureManagedIdentityArgsDict']]] = None,
             azure_service_principal: Optional[pulumi.Input[Union['MetastoreDataAccessAzureServicePrincipalArgs', 'MetastoreDataAccessAzureServicePrincipalArgsDict']]] = None,
@@ -651,6 +724,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']]] = None,
             read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             skip_validation: Optional[pulumi.Input[_builtins.bool]] = None) -> 'MetastoreDataAccess':
         """
@@ -660,12 +734,15 @@ class MetastoreDataAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
+        :param pulumi.Input[Union['MetastoreDataAccessProviderConfigArgs', 'MetastoreDataAccessProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _MetastoreDataAccessState.__new__(_MetastoreDataAccessState)
 
+        __props__.__dict__["api"] = api
         __props__.__dict__["aws_iam_role"] = aws_iam_role
         __props__.__dict__["azure_managed_identity"] = azure_managed_identity
         __props__.__dict__["azure_service_principal"] = azure_service_principal
@@ -680,9 +757,18 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["skip_validation"] = skip_validation
         return MetastoreDataAccess(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
@@ -756,6 +842,14 @@ class MetastoreDataAccess(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "owner")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.MetastoreDataAccessProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="readOnly")

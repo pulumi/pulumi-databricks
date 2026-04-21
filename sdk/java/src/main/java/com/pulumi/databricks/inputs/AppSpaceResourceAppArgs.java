@@ -3,15 +3,54 @@
 
 package com.pulumi.databricks.inputs;
 
-
+import com.pulumi.core.Output;
+import com.pulumi.core.annotations.Import;
+import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AppSpaceResourceAppArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppSpaceResourceAppArgs Empty = new AppSpaceResourceAppArgs();
 
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="permission")
+    private @Nullable Output<String> permission;
+
+    public Optional<Output<String>> permission() {
+        return Optional.ofNullable(this.permission);
+    }
+
+    private AppSpaceResourceAppArgs() {}
+
+    private AppSpaceResourceAppArgs(AppSpaceResourceAppArgs $) {
+        this.name = $.name;
+        this.permission = $.permission;
+    }
+
     public static Builder builder() {
         return new Builder();
+    }
+    public static Builder builder(AppSpaceResourceAppArgs defaults) {
+        return new Builder(defaults);
     }
 
     public static final class Builder {
@@ -20,6 +59,43 @@ public final class AppSpaceResourceAppArgs extends com.pulumi.resources.Resource
         public Builder() {
             $ = new AppSpaceResourceAppArgs();
         }
+
+        public Builder(AppSpaceResourceAppArgs defaults) {
+            $ = new AppSpaceResourceAppArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param name The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+         * It must be unique within the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+         * It must be unique within the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        public Builder permission(@Nullable Output<String> permission) {
+            $.permission = permission;
+            return this;
+        }
+
+        public Builder permission(String permission) {
+            return permission(Output.of(permission));
+        }
+
         public AppSpaceResourceAppArgs build() {
             return $;
         }

@@ -13,9 +13,23 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppsAppResourceAppResult
     {
+        /// <summary>
+        /// The name of Genie Space.
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        /// </summary>
+        public readonly string? Permission;
+
         [OutputConstructor]
-        private GetAppsAppResourceAppResult()
+        private GetAppsAppResourceAppResult(
+            string? name,
+
+            string? permission)
         {
+            Name = name;
+            Permission = permission;
         }
     }
 }

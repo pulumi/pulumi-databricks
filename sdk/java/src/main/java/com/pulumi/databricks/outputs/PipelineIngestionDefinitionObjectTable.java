@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableConnectorOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableTableConfiguration;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -13,6 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObjectTable {
+    private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptions connectorOptions;
     private String destinationCatalog;
     private String destinationSchema;
     private @Nullable String destinationTable;
@@ -22,6 +24,9 @@ public final class PipelineIngestionDefinitionObjectTable {
     private @Nullable PipelineIngestionDefinitionObjectTableTableConfiguration tableConfiguration;
 
     private PipelineIngestionDefinitionObjectTable() {}
+    public Optional<PipelineIngestionDefinitionObjectTableConnectorOptions> connectorOptions() {
+        return Optional.ofNullable(this.connectorOptions);
+    }
     public String destinationCatalog() {
         return this.destinationCatalog;
     }
@@ -53,6 +58,7 @@ public final class PipelineIngestionDefinitionObjectTable {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineIngestionDefinitionObjectTableConnectorOptions connectorOptions;
         private String destinationCatalog;
         private String destinationSchema;
         private @Nullable String destinationTable;
@@ -63,6 +69,7 @@ public final class PipelineIngestionDefinitionObjectTable {
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectTable defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connectorOptions = defaults.connectorOptions;
     	      this.destinationCatalog = defaults.destinationCatalog;
     	      this.destinationSchema = defaults.destinationSchema;
     	      this.destinationTable = defaults.destinationTable;
@@ -72,6 +79,12 @@ public final class PipelineIngestionDefinitionObjectTable {
     	      this.tableConfiguration = defaults.tableConfiguration;
         }
 
+        @CustomType.Setter
+        public Builder connectorOptions(@Nullable PipelineIngestionDefinitionObjectTableConnectorOptions connectorOptions) {
+
+            this.connectorOptions = connectorOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder destinationCatalog(String destinationCatalog) {
             if (destinationCatalog == null) {
@@ -122,6 +135,7 @@ public final class PipelineIngestionDefinitionObjectTable {
         }
         public PipelineIngestionDefinitionObjectTable build() {
             final var _resultValue = new PipelineIngestionDefinitionObjectTable();
+            _resultValue.connectorOptions = connectorOptions;
             _resultValue.destinationCatalog = destinationCatalog;
             _resultValue.destinationSchema = destinationSchema;
             _resultValue.destinationTable = destinationTable;

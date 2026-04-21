@@ -13,6 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// When true, workspace admins cannot create governance tags.
+        /// ALLOW_ALL status does not override this; they are independent
+        /// </summary>
+        [Input("disableGovTagCreation")]
+        public Input<bool>? DisableGovTagCreation { get; set; }
+
+        /// <summary>
         /// Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
         /// </summary>
         [Input("status", required: true)]

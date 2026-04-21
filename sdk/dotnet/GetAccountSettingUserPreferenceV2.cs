@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAccountSettingUserPreferenceV2
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single account user preference setting.
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountSettingUserPreferenceV2Result>("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", args ?? new GetAccountSettingUserPreferenceV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single account user preference setting.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountSettingUserPreferenceV2Result>("databricks:index/getAccountSettingUserPreferenceV2:getAccountSettingUserPreferenceV2", args ?? new GetAccountSettingUserPreferenceV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single account user preference setting.
         /// </summary>

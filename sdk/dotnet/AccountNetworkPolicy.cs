@@ -74,16 +74,30 @@ namespace Pulumi.Databricks
     public partial class AccountNetworkPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The associated account ID for this Network Policy object
+        /// (string) - The associated account ID for this Network Policy object
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The network policies applying for egress traffic
         /// </summary>
         [Output("egress")]
         public Output<Outputs.AccountNetworkPolicyEgress?> Egress { get; private set; } = null!;
+
+        /// <summary>
+        /// The network policies applying for ingress traffic
+        /// </summary>
+        [Output("ingress")]
+        public Output<Outputs.AccountNetworkPolicyIngress?> Ingress { get; private set; } = null!;
+
+        /// <summary>
+        /// The ingress policy for dry run mode. Dry run will always run even if the request
+        /// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+        /// and emit logs only without blocking requests
+        /// </summary>
+        [Output("ingressDryRun")]
+        public Output<Outputs.AccountNetworkPolicyIngressDryRun?> IngressDryRun { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier for the network policy
@@ -138,7 +152,7 @@ namespace Pulumi.Databricks
     public sealed class AccountNetworkPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The associated account ID for this Network Policy object
+        /// (string) - The associated account ID for this Network Policy object
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -148,6 +162,20 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("egress")]
         public Input<Inputs.AccountNetworkPolicyEgressArgs>? Egress { get; set; }
+
+        /// <summary>
+        /// The network policies applying for ingress traffic
+        /// </summary>
+        [Input("ingress")]
+        public Input<Inputs.AccountNetworkPolicyIngressArgs>? Ingress { get; set; }
+
+        /// <summary>
+        /// The ingress policy for dry run mode. Dry run will always run even if the request
+        /// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+        /// and emit logs only without blocking requests
+        /// </summary>
+        [Input("ingressDryRun")]
+        public Input<Inputs.AccountNetworkPolicyIngressDryRunArgs>? IngressDryRun { get; set; }
 
         /// <summary>
         /// The unique identifier for the network policy
@@ -164,7 +192,7 @@ namespace Pulumi.Databricks
     public sealed class AccountNetworkPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The associated account ID for this Network Policy object
+        /// (string) - The associated account ID for this Network Policy object
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -174,6 +202,20 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("egress")]
         public Input<Inputs.AccountNetworkPolicyEgressGetArgs>? Egress { get; set; }
+
+        /// <summary>
+        /// The network policies applying for ingress traffic
+        /// </summary>
+        [Input("ingress")]
+        public Input<Inputs.AccountNetworkPolicyIngressGetArgs>? Ingress { get; set; }
+
+        /// <summary>
+        /// The ingress policy for dry run mode. Dry run will always run even if the request
+        /// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+        /// and emit logs only without blocking requests
+        /// </summary>
+        [Input("ingressDryRun")]
+        public Input<Inputs.AccountNetworkPolicyIngressDryRunGetArgs>? IngressDryRun { get; set; }
 
         /// <summary>
         /// The unique identifier for the network policy

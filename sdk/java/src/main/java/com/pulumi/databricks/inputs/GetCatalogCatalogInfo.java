@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag;
+import com.pulumi.databricks.inputs.GetCatalogCatalogInfoManagedEncryptionSettings;
 import com.pulumi.databricks.inputs.GetCatalogCatalogInfoProvisioningInfo;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -159,6 +160,13 @@ public final class GetCatalogCatalogInfo extends com.pulumi.resources.InvokeArgs
      */
     public Optional<String> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
+    }
+
+    @Import(name="managedEncryptionSettings")
+    private @Nullable GetCatalogCatalogInfoManagedEncryptionSettings managedEncryptionSettings;
+
+    public Optional<GetCatalogCatalogInfoManagedEncryptionSettings> managedEncryptionSettings() {
+        return Optional.ofNullable(this.managedEncryptionSettings);
     }
 
     /**
@@ -361,6 +369,7 @@ public final class GetCatalogCatalogInfo extends com.pulumi.resources.InvokeArgs
         this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.fullName = $.fullName;
         this.isolationMode = $.isolationMode;
+        this.managedEncryptionSettings = $.managedEncryptionSettings;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.options = $.options;
@@ -495,6 +504,11 @@ public final class GetCatalogCatalogInfo extends com.pulumi.resources.InvokeArgs
          */
         public Builder isolationMode(@Nullable String isolationMode) {
             $.isolationMode = isolationMode;
+            return this;
+        }
+
+        public Builder managedEncryptionSettings(@Nullable GetCatalogCatalogInfoManagedEncryptionSettings managedEncryptionSettings) {
+            $.managedEncryptionSettings = managedEncryptionSettings;
             return this;
         }
 

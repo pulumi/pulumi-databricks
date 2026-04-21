@@ -4,11 +4,39 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpacesSpaceResourceApp {
+    /**
+     * @return (string) - Name of the serving endpoint to grant permission on
+     * 
+     */
+    private @Nullable String name;
+    /**
+     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * 
+     */
+    private @Nullable String permission;
+
     private GetAppSpacesSpaceResourceApp() {}
+    /**
+     * @return (string) - Name of the serving endpoint to grant permission on
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * 
+     */
+    public Optional<String> permission() {
+        return Optional.ofNullable(this.permission);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -19,13 +47,31 @@ public final class GetAppSpacesSpaceResourceApp {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String name;
+        private @Nullable String permission;
         public Builder() {}
         public Builder(GetAppSpacesSpaceResourceApp defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.name = defaults.name;
+    	      this.permission = defaults.permission;
         }
 
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder permission(@Nullable String permission) {
+
+            this.permission = permission;
+            return this;
+        }
         public GetAppSpacesSpaceResourceApp build() {
             final var _resultValue = new GetAppSpacesSpaceResourceApp();
+            _resultValue.name = name;
+            _resultValue.permission = permission;
             return _resultValue;
         }
     }

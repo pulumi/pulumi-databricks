@@ -22,6 +22,16 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAccountNetworkPoliciesItemEgressResult Egress;
         /// <summary>
+        /// (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
+        /// </summary>
+        public readonly Outputs.GetAccountNetworkPoliciesItemIngressResult Ingress;
+        /// <summary>
+        /// (CustomerFacingIngressNetworkPolicy) - The ingress policy for dry run mode. Dry run will always run even if the request
+        /// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+        /// and emit logs only without blocking requests
+        /// </summary>
+        public readonly Outputs.GetAccountNetworkPoliciesItemIngressDryRunResult IngressDryRun;
+        /// <summary>
         /// (string) - The unique identifier for the network policy
         /// </summary>
         public readonly string NetworkPolicyId;
@@ -32,10 +42,16 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetAccountNetworkPoliciesItemEgressResult egress,
 
+            Outputs.GetAccountNetworkPoliciesItemIngressResult ingress,
+
+            Outputs.GetAccountNetworkPoliciesItemIngressDryRunResult ingressDryRun,
+
             string networkPolicyId)
         {
             AccountId = accountId;
             Egress = egress;
+            Ingress = ingress;
+            IngressDryRun = ingressDryRun;
             NetworkPolicyId = networkPolicyId;
         }
     }

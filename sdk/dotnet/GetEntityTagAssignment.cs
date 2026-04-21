@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetEntityTagAssignment
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntityTagAssignmentResult>("databricks:index/getEntityTagAssignment:getEntityTagAssignment", args ?? new GetEntityTagAssignmentArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
         /// 
@@ -128,7 +128,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetEntityTagAssignmentResult>("databricks:index/getEntityTagAssignment:getEntityTagAssignment", args ?? new GetEntityTagAssignmentInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
         /// 
@@ -196,7 +196,7 @@ namespace Pulumi.Databricks
         public string EntityName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// The type of the entity to which the tag is assigned
         /// </summary>
         [Input("entityType", required: true)]
         public string EntityType { get; set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.Databricks
         public Input<string> EntityName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// The type of the entity to which the tag is assigned
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string EntityName;
         /// <summary>
-        /// (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// (string) - The type of the entity to which the tag is assigned
         /// </summary>
         public readonly string EntityType;
         /// <summary>

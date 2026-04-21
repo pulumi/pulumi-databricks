@@ -5,11 +5,15 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
+    private @Nullable Boolean disableGovTagCreation;
     /**
      * @return The restrict workspace admins status for the workspace.
      * 
@@ -17,6 +21,9 @@ public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
     private String status;
 
     private RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins() {}
+    public Optional<Boolean> disableGovTagCreation() {
+        return Optional.ofNullable(this.disableGovTagCreation);
+    }
     /**
      * @return The restrict workspace admins status for the workspace.
      * 
@@ -34,13 +41,21 @@ public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean disableGovTagCreation;
         private String status;
         public Builder() {}
         public Builder(RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disableGovTagCreation = defaults.disableGovTagCreation;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
+        public Builder disableGovTagCreation(@Nullable Boolean disableGovTagCreation) {
+
+            this.disableGovTagCreation = disableGovTagCreation;
+            return this;
+        }
         @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
@@ -51,6 +66,7 @@ public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
         }
         public RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins build() {
             final var _resultValue = new RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins();
+            _resultValue.disableGovTagCreation = disableGovTagCreation;
             _resultValue.status = status;
             return _resultValue;
         }

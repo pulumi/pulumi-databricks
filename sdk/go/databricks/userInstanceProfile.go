@@ -72,8 +72,11 @@ import (
 type UserInstanceProfile struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// This is the id of the instance profile resource.
-	InstanceProfileId pulumi.StringOutput `pulumi:"instanceProfileId"`
+	InstanceProfileId pulumi.StringOutput                        `pulumi:"instanceProfileId"`
+	ProviderConfig    UserInstanceProfileProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// This is the id of the user resource.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
@@ -114,15 +117,21 @@ func GetUserInstanceProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserInstanceProfile resources.
 type userInstanceProfileState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the id of the instance profile resource.
-	InstanceProfileId *string `pulumi:"instanceProfileId"`
+	InstanceProfileId *string                            `pulumi:"instanceProfileId"`
+	ProviderConfig    *UserInstanceProfileProviderConfig `pulumi:"providerConfig"`
 	// This is the id of the user resource.
 	UserId *string `pulumi:"userId"`
 }
 
 type UserInstanceProfileState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the id of the instance profile resource.
 	InstanceProfileId pulumi.StringPtrInput
+	ProviderConfig    UserInstanceProfileProviderConfigPtrInput
 	// This is the id of the user resource.
 	UserId pulumi.StringPtrInput
 }
@@ -132,16 +141,22 @@ func (UserInstanceProfileState) ElementType() reflect.Type {
 }
 
 type userInstanceProfileArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the id of the instance profile resource.
-	InstanceProfileId string `pulumi:"instanceProfileId"`
+	InstanceProfileId string                             `pulumi:"instanceProfileId"`
+	ProviderConfig    *UserInstanceProfileProviderConfig `pulumi:"providerConfig"`
 	// This is the id of the user resource.
 	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a UserInstanceProfile resource.
 type UserInstanceProfileArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the id of the instance profile resource.
 	InstanceProfileId pulumi.StringInput
+	ProviderConfig    UserInstanceProfileProviderConfigPtrInput
 	// This is the id of the user resource.
 	UserId pulumi.StringInput
 }
@@ -233,9 +248,18 @@ func (o UserInstanceProfileOutput) ToUserInstanceProfileOutputWithContext(ctx co
 	return o
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o UserInstanceProfileOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserInstanceProfile) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // This is the id of the instance profile resource.
 func (o UserInstanceProfileOutput) InstanceProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserInstanceProfile) pulumi.StringOutput { return v.InstanceProfileId }).(pulumi.StringOutput)
+}
+
+func (o UserInstanceProfileOutput) ProviderConfig() UserInstanceProfileProviderConfigPtrOutput {
+	return o.ApplyT(func(v *UserInstanceProfile) UserInstanceProfileProviderConfigPtrOutput { return v.ProviderConfig }).(UserInstanceProfileProviderConfigPtrOutput)
 }
 
 // This is the id of the user resource.

@@ -90,6 +90,15 @@ namespace Pulumi.Databricks
     public partial class ServicePrincipalRole : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.ServicePrincipalRoleProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// This is the role name, role id, or instance profile resource.
         /// </summary>
         [Output("role")]
@@ -148,6 +157,15 @@ namespace Pulumi.Databricks
     public sealed class ServicePrincipalRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.ServicePrincipalRoleProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// This is the role name, role id, or instance profile resource.
         /// </summary>
         [Input("role", required: true)]
@@ -167,6 +185,15 @@ namespace Pulumi.Databricks
 
     public sealed class ServicePrincipalRoleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.ServicePrincipalRoleProviderConfigGetArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// This is the role name, role id, or instance profile resource.
         /// </summary>

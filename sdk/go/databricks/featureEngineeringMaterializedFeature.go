@@ -20,13 +20,15 @@ type FeatureEngineeringMaterializedFeature struct {
 	CronSchedule pulumi.StringPtrOutput `pulumi:"cronSchedule"`
 	// The full name of the feature in Unity Catalog
 	FeatureName pulumi.StringOutput `pulumi:"featureName"`
+	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+	IsOnline pulumi.BoolOutput `pulumi:"isOnline"`
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringOutput `pulumi:"lastMaterializationTime"`
 	// Unique identifier for the materialized feature
-	MaterializedFeatureId pulumi.StringPtrOutput                                           `pulumi:"materializedFeatureId"`
-	OfflineStoreConfig    FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput `pulumi:"offlineStoreConfig"`
-	OnlineStoreConfig     FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput  `pulumi:"onlineStoreConfig"`
+	MaterializedFeatureId pulumi.StringPtrOutput                                        `pulumi:"materializedFeatureId"`
+	OfflineStoreConfig    FeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput `pulumi:"offlineStoreConfig"`
+	OnlineStoreConfig     FeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput  `pulumi:"onlineStoreConfig"`
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrOutput `pulumi:"pipelineScheduleState"`
 	// Configure the provider for management through account provider.
@@ -72,6 +74,8 @@ type featureEngineeringMaterializedFeatureState struct {
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// The full name of the feature in Unity Catalog
 	FeatureName *string `pulumi:"featureName"`
+	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+	IsOnline *bool `pulumi:"isOnline"`
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime *string `pulumi:"lastMaterializationTime"`
@@ -92,6 +96,8 @@ type FeatureEngineeringMaterializedFeatureState struct {
 	CronSchedule pulumi.StringPtrInput
 	// The full name of the feature in Unity Catalog
 	FeatureName pulumi.StringPtrInput
+	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+	IsOnline pulumi.BoolPtrInput
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringPtrInput
@@ -239,6 +245,11 @@ func (o FeatureEngineeringMaterializedFeatureOutput) FeatureName() pulumi.String
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.FeatureName }).(pulumi.StringOutput)
 }
 
+// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+func (o FeatureEngineeringMaterializedFeatureOutput) IsOnline() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.BoolOutput { return v.IsOnline }).(pulumi.BoolOutput)
+}
+
 // (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 // If the pipeline has not run yet, this field will be null
 func (o FeatureEngineeringMaterializedFeatureOutput) LastMaterializationTime() pulumi.StringOutput {
@@ -250,16 +261,16 @@ func (o FeatureEngineeringMaterializedFeatureOutput) MaterializedFeatureId() pul
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringPtrOutput { return v.MaterializedFeatureId }).(pulumi.StringPtrOutput)
 }
 
-func (o FeatureEngineeringMaterializedFeatureOutput) OfflineStoreConfig() FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput {
-	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput {
+func (o FeatureEngineeringMaterializedFeatureOutput) OfflineStoreConfig() FeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput {
 		return v.OfflineStoreConfig
-	}).(FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput)
+	}).(FeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput)
 }
 
-func (o FeatureEngineeringMaterializedFeatureOutput) OnlineStoreConfig() FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput {
-	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput {
+func (o FeatureEngineeringMaterializedFeatureOutput) OnlineStoreConfig() FeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput {
 		return v.OnlineStoreConfig
-	}).(FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput)
+	}).(FeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput)
 }
 
 // The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`

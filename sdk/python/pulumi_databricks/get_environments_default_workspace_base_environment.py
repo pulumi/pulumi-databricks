@@ -107,6 +107,16 @@ def get_environments_default_workspace_base_environment(name: Optional[_builtins
 
     This data source retrieves the current default Workspace Base Environment configuration for the workspace.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    current = databricks.get_environments_default_workspace_base_environment(name="default-workspace-base-environment")
+    pulumi.export("defaultCpuEnvironment", current.cpu_workspace_base_environment)
+    ```
+
 
     :param _builtins.str name: The resource name of this singleton resource.
            Format: default-workspace-base-environment
@@ -131,6 +141,16 @@ def get_environments_default_workspace_base_environment_output(name: Optional[pu
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    current = databricks.get_environments_default_workspace_base_environment(name="default-workspace-base-environment")
+    pulumi.export("defaultCpuEnvironment", current.cpu_workspace_base_environment)
+    ```
 
 
     :param _builtins.str name: The resource name of this singleton resource.

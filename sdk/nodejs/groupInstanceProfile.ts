@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -70,6 +72,10 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * This is the id of the group resource.
      */
     declare public readonly groupId: pulumi.Output<string>;
@@ -77,6 +83,7 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
      * This is the id of the instance profile resource.
      */
     declare public readonly instanceProfileId: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GroupInstanceProfileProviderConfig | undefined>;
 
     /**
      * Create a GroupInstanceProfile resource with the given unique name, arguments, and options.
@@ -91,8 +98,10 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupInstanceProfileState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["groupId"] = state?.groupId;
             resourceInputs["instanceProfileId"] = state?.instanceProfileId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as GroupInstanceProfileArgs | undefined;
             if (args?.groupId === undefined && !opts.urn) {
@@ -101,8 +110,10 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
             if (args?.instanceProfileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceProfileId'");
             }
+            resourceInputs["api"] = args?.api;
             resourceInputs["groupId"] = args?.groupId;
             resourceInputs["instanceProfileId"] = args?.instanceProfileId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupInstanceProfile.__pulumiType, name, resourceInputs, opts);
@@ -114,6 +125,10 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
  */
 export interface GroupInstanceProfileState {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is the id of the group resource.
      */
     groupId?: pulumi.Input<string>;
@@ -121,12 +136,17 @@ export interface GroupInstanceProfileState {
      * This is the id of the instance profile resource.
      */
     instanceProfileId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GroupInstanceProfileProviderConfig>;
 }
 
 /**
  * The set of arguments for constructing a GroupInstanceProfile resource.
  */
 export interface GroupInstanceProfileArgs {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * This is the id of the group resource.
      */
@@ -135,4 +155,5 @@ export interface GroupInstanceProfileArgs {
      * This is the id of the instance profile resource.
      */
     instanceProfileId: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GroupInstanceProfileProviderConfig>;
 }

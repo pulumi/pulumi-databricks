@@ -6,13 +6,23 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs Empty = new RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs();
+
+    @Import(name="disableGovTagCreation")
+    private @Nullable Output<Boolean> disableGovTagCreation;
+
+    public Optional<Output<Boolean>> disableGovTagCreation() {
+        return Optional.ofNullable(this.disableGovTagCreation);
+    }
 
     /**
      * The restrict workspace admins status for the workspace.
@@ -32,6 +42,7 @@ public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs ext
     private RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs() {}
 
     private RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs(RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs $) {
+        this.disableGovTagCreation = $.disableGovTagCreation;
         this.status = $.status;
     }
 
@@ -51,6 +62,15 @@ public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs ext
 
         public Builder(RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs defaults) {
             $ = new RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder disableGovTagCreation(@Nullable Output<Boolean> disableGovTagCreation) {
+            $.disableGovTagCreation = disableGovTagCreation;
+            return this;
+        }
+
+        public Builder disableGovTagCreation(Boolean disableGovTagCreation) {
+            return disableGovTagCreation(Output.of(disableGovTagCreation));
         }
 
         /**

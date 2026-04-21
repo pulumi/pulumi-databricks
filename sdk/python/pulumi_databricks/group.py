@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupArgs', 'Group']
 
@@ -22,10 +24,12 @@ class GroupArgs:
                  acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  external_id: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input['GroupProviderConfigArgs']] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
@@ -35,6 +39,7 @@ class GroupArgs:
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[_builtins.str] external_id: ID of the group in an external identity provider.
@@ -48,6 +53,8 @@ class GroupArgs:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
             pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if databricks_sql_access is not None:
             pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
         if display_name is not None:
@@ -56,6 +63,8 @@ class GroupArgs:
             pulumi.set(__self__, "external_id", external_id)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if workspace_access is not None:
@@ -98,6 +107,18 @@ class GroupArgs:
     @allow_instance_pool_create.setter
     def allow_instance_pool_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "allow_instance_pool_create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
@@ -146,6 +167,15 @@ class GroupArgs:
     @force.setter
     def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GroupProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GroupProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -187,10 +217,12 @@ class _GroupState:
                  acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  external_id: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input['GroupProviderConfigArgs']] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
@@ -200,6 +232,7 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[_builtins.str] external_id: ID of the group in an external identity provider.
@@ -213,6 +246,8 @@ class _GroupState:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
             pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if databricks_sql_access is not None:
             pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
         if display_name is not None:
@@ -221,6 +256,8 @@ class _GroupState:
             pulumi.set(__self__, "external_id", external_id)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if workspace_access is not None:
@@ -263,6 +300,18 @@ class _GroupState:
     @allow_instance_pool_create.setter
     def allow_instance_pool_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "allow_instance_pool_create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
@@ -311,6 +360,15 @@ class _GroupState:
     @force.setter
     def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GroupProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GroupProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -355,10 +413,12 @@ class Group(pulumi.CustomResource):
                  acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  external_id: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict']]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -434,6 +494,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[_builtins.str] external_id: ID of the group in an external identity provider.
@@ -531,10 +592,12 @@ class Group(pulumi.CustomResource):
                  acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  external_id: Optional[pulumi.Input[_builtins.str]] = None,
                  force: Optional[pulumi.Input[_builtins.bool]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict']]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -550,10 +613,12 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["acl_principal_id"] = acl_principal_id
             __props__.__dict__["allow_cluster_create"] = allow_cluster_create
             __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
+            __props__.__dict__["api"] = api
             __props__.__dict__["databricks_sql_access"] = databricks_sql_access
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["force"] = force
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["url"] = url
             __props__.__dict__["workspace_access"] = workspace_access
             __props__.__dict__["workspace_consume"] = workspace_consume
@@ -570,10 +635,12 @@ class Group(pulumi.CustomResource):
             acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
             allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
             allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
             databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             external_id: Optional[pulumi.Input[_builtins.str]] = None,
             force: Optional[pulumi.Input[_builtins.bool]] = None,
+            provider_config: Optional[pulumi.Input[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict']]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None,
             workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
             workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Group':
@@ -587,6 +654,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[_builtins.str] external_id: ID of the group in an external identity provider.
@@ -601,10 +669,12 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["acl_principal_id"] = acl_principal_id
         __props__.__dict__["allow_cluster_create"] = allow_cluster_create
         __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
+        __props__.__dict__["api"] = api
         __props__.__dict__["databricks_sql_access"] = databricks_sql_access
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["force"] = force
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["url"] = url
         __props__.__dict__["workspace_access"] = workspace_access
         __props__.__dict__["workspace_consume"] = workspace_consume
@@ -633,6 +703,14 @@ class Group(pulumi.CustomResource):
         This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         """
         return pulumi.get(self, "allow_instance_pool_create")
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
@@ -665,6 +743,11 @@ class Group(pulumi.CustomResource):
         Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         """
         return pulumi.get(self, "force")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.GroupProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

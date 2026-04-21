@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['UserInstanceProfileArgs', 'UserInstanceProfile']
 
@@ -20,15 +22,22 @@ __all__ = ['UserInstanceProfileArgs', 'UserInstanceProfile']
 class UserInstanceProfileArgs:
     def __init__(__self__, *,
                  instance_profile_id: pulumi.Input[_builtins.str],
-                 user_id: pulumi.Input[_builtins.str]):
+                 user_id: pulumi.Input[_builtins.str],
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a UserInstanceProfile resource.
 
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         :param pulumi.Input[_builtins.str] user_id: This is the id of the user resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         pulumi.set(__self__, "instance_profile_id", instance_profile_id)
         pulumi.set(__self__, "user_id", user_id)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="instanceProfileId")
@@ -54,22 +63,62 @@ class UserInstanceProfileArgs:
     def user_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "user_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _UserInstanceProfileState:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserInstanceProfile resources.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         :param pulumi.Input[_builtins.str] user_id: This is the id of the user resource.
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if instance_profile_id is not None:
             pulumi.set(__self__, "instance_profile_id", instance_profile_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceProfileId")
@@ -82,6 +131,15 @@ class _UserInstanceProfileState:
     @instance_profile_id.setter
     def instance_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instance_profile_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
@@ -102,7 +160,9 @@ class UserInstanceProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -141,6 +201,7 @@ class UserInstanceProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         :param pulumi.Input[_builtins.str] user_id: This is the id of the user resource.
         """
@@ -199,7 +260,9 @@ class UserInstanceProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -210,9 +273,11 @@ class UserInstanceProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = UserInstanceProfileArgs.__new__(UserInstanceProfileArgs)
 
+            __props__.__dict__["api"] = api
             if instance_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_profile_id'")
             __props__.__dict__["instance_profile_id"] = instance_profile_id
+            __props__.__dict__["provider_config"] = provider_config
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
@@ -226,7 +291,9 @@ class UserInstanceProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
             instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
             user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserInstanceProfile':
         """
         Get an existing UserInstanceProfile resource's state with the given name, id, and optional extra
@@ -235,6 +302,7 @@ class UserInstanceProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         :param pulumi.Input[_builtins.str] user_id: This is the id of the user resource.
         """
@@ -242,9 +310,19 @@ class UserInstanceProfile(pulumi.CustomResource):
 
         __props__ = _UserInstanceProfileState.__new__(_UserInstanceProfileState)
 
+        __props__.__dict__["api"] = api
         __props__.__dict__["instance_profile_id"] = instance_profile_id
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["user_id"] = user_id
         return UserInstanceProfile(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="instanceProfileId")
@@ -253,6 +331,11 @@ class UserInstanceProfile(pulumi.CustomResource):
         This is the id of the instance profile resource.
         """
         return pulumi.get(self, "instance_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.UserInstanceProfileProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="userId")

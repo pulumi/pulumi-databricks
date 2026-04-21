@@ -36,6 +36,10 @@ export interface AccessControlRuleSetGrantRule {
     role: pulumi.Input<string>;
 }
 
+export interface AccessControlRuleSetProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface AccountFederationPolicyOidcPolicy {
     /**
      * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
@@ -99,16 +103,10 @@ export interface AccountNetworkPolicyEgressNetworkAccess {
      * Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      */
     policyEnforcement?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement>;
-    /**
-     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-     */
     restrictionMode: pulumi.Input<string>;
 }
 
 export interface AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
-    /**
-     * The internet destination to which access will be allowed. Format dependent on the destination type
-     */
     destination?: pulumi.Input<string>;
     /**
      * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
@@ -145,6 +143,330 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
      * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngress {
+    publicAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccess>;
+}
+
+export interface AccountNetworkPolicyIngressDryRun {
+    publicAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccess>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccess {
+    allowRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRule>[]>;
+    denyRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRule>[]>;
+    restrictionMode: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRule {
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination>;
+    /**
+     * User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: pulumi.Input<string>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthenticationIdentity>[]>;
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthenticationIdentity {
+    principalId?: pulumi.Input<string>;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
+    allDestinations?: pulumi.Input<boolean>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi>;
+    /**
+     * Workspace destinations
+     */
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi {
+    allDestinations?: pulumi.Input<boolean>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin {
+    /**
+     * Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: pulumi.Input<boolean>;
+    /**
+     * Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges>;
+    /**
+     * Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRule {
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination>;
+    /**
+     * User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: pulumi.Input<string>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthenticationIdentity>[]>;
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthenticationIdentity {
+    principalId?: pulumi.Input<string>;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
+    allDestinations?: pulumi.Input<boolean>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi>;
+    /**
+     * Workspace destinations
+     */
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi {
+    allDestinations?: pulumi.Input<boolean>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin {
+    /**
+     * Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: pulumi.Input<boolean>;
+    /**
+     * Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges>;
+    /**
+     * Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccess {
+    allowRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRule>[]>;
+    denyRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRule>[]>;
+    restrictionMode: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRule {
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestination>;
+    /**
+     * User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: pulumi.Input<string>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOrigin>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationIdentity>[]>;
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationIdentity {
+    principalId?: pulumi.Input<string>;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
+    allDestinations?: pulumi.Input<boolean>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi>;
+    /**
+     * Workspace destinations
+     */
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi {
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi {
+    allDestinations?: pulumi.Input<boolean>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOrigin {
+    /**
+     * Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: pulumi.Input<boolean>;
+    /**
+     * Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOriginExcludedIpRanges>;
+    /**
+     * Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedIpRanges>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOriginExcludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRule {
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestination>;
+    /**
+     * User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: pulumi.Input<string>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOrigin>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationIdentity>[]>;
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationIdentity {
+    principalId?: pulumi.Input<string>;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
+    allDestinations?: pulumi.Input<boolean>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi>;
+    /**
+     * Workspace destinations
+     */
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi {
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi {
+    allDestinations?: pulumi.Input<boolean>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleOrigin {
+    /**
+     * Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: pulumi.Input<boolean>;
+    /**
+     * Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOriginExcludedIpRanges>;
+    /**
+     * Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOriginIncludedIpRanges>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleOriginExcludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleOriginIncludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccountSettingUserPreferenceV2BooleanVal {
@@ -291,6 +613,11 @@ export interface AccountSettingV2EffectivePersonalCompute {
 
 export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
     /**
+     * When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: pulumi.Input<boolean>;
+    /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: pulumi.Input<string>;
@@ -309,6 +636,11 @@ export interface AccountSettingV2PersonalCompute {
 }
 
 export interface AccountSettingV2RestrictWorkspaceAdmins {
+    /**
+     * When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: pulumi.Input<boolean>;
     /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
@@ -697,7 +1029,7 @@ export interface AppPendingDeploymentStatus {
 }
 
 export interface AppProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string>;
 }
 
 export interface AppResource {
@@ -745,6 +1077,11 @@ export interface AppResource {
 }
 
 export interface AppResourceApp {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name?: pulumi.Input<string>;
+    permission?: pulumi.Input<string>;
 }
 
 export interface AppResourceDatabase {
@@ -882,6 +1219,12 @@ export interface AppSpaceResource {
 }
 
 export interface AppSpaceResourceApp {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name?: pulumi.Input<string>;
+    permission?: pulumi.Input<string>;
 }
 
 export interface AppSpaceResourceDatabase {
@@ -1202,6 +1545,18 @@ export interface CatalogEffectivePredictiveOptimizationFlag {
     inheritedFromName?: pulumi.Input<string>;
     inheritedFromType?: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface CatalogManagedEncryptionSettings {
+    azureEncryptionSettings?: pulumi.Input<inputs.CatalogManagedEncryptionSettingsAzureEncryptionSettings>;
+    azureKeyVaultKeyId?: pulumi.Input<string>;
+    customerManagedKeyId?: pulumi.Input<string>;
+}
+
+export interface CatalogManagedEncryptionSettingsAzureEncryptionSettings {
+    azureCmkAccessConnectorId?: pulumi.Input<string>;
+    azureCmkManagedIdentityId?: pulumi.Input<string>;
+    azureTenantId: pulumi.Input<string>;
 }
 
 export interface CatalogProviderConfig {
@@ -1798,6 +2153,13 @@ export interface CredentialDatabricksGcpServiceAccount {
      */
     email?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
+}
+
+export interface CredentialProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface CustomAppIntegrationTokenAccessPolicy {
@@ -2506,6 +2868,85 @@ export interface EnvironmentsWorkspaceBaseEnvironmentProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface ExternalLocationEffectiveFileEventQueue {
+    /**
+     * Configuration for managed Azure Queue Storage queue.
+     */
+    managedAqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueManagedAqs>;
+    /**
+     * Configuration for managed Google Cloud Pub/Sub queue.
+     */
+    managedPubsub?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueManagedPubsub>;
+    /**
+     * Configuration for managed Amazon SQS queue.
+     */
+    managedSqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueManagedSqs>;
+    /**
+     * Configuration for provided Azure Storage Queue.
+     */
+    providedAqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueProvidedAqs>;
+    /**
+     * Configuration for provided Google Cloud Pub/Sub queue.
+     */
+    providedPubsub?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueProvidedPubsub>;
+    /**
+     * Configuration for provided Amazon SQS queue.
+     */
+    providedSqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueProvidedSqs>;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueManagedAqs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+    /**
+     * The name of the Azure resource group.
+     */
+    resourceGroup?: pulumi.Input<string>;
+    /**
+     * The Azure subscription ID.
+     */
+    subscriptionId?: pulumi.Input<string>;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueManagedPubsub {
+    managedResourceId?: pulumi.Input<string>;
+    /**
+     * The name of the subscription.
+     */
+    subscriptionName?: pulumi.Input<string>;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueManagedSqs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueProvidedAqs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+    /**
+     * The name of the Azure resource group.
+     */
+    resourceGroup?: pulumi.Input<string>;
+    /**
+     * The Azure subscription ID.
+     */
+    subscriptionId?: pulumi.Input<string>;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueProvidedPubsub {
+    managedResourceId?: pulumi.Input<string>;
+    /**
+     * The name of the subscription.
+     */
+    subscriptionName?: pulumi.Input<string>;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueProvidedSqs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+}
+
 export interface ExternalLocationEncryptionDetails {
     /**
      * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
@@ -2642,6 +3083,10 @@ export interface FeatureEngineeringFeatureFunction {
      */
     aggregationFunction?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunction>;
     /**
+     * Selects the latest value of a single column in a data source
+     */
+    columnSelection?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionColumnSelection>;
+    /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      */
@@ -2764,6 +3209,13 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp {
     input: pulumi.Input<string>;
 }
 
+export interface FeatureEngineeringFeatureFunctionColumnSelection {
+    /**
+     * Column name from source to select as the feature value
+     */
+    column: pulumi.Input<string>;
+}
+
 export interface FeatureEngineeringFeatureFunctionExtraParameter {
     /**
      * The name of the parameter
@@ -2805,8 +3257,18 @@ export interface FeatureEngineeringFeatureProviderConfig {
 }
 
 export interface FeatureEngineeringFeatureSource {
+    /**
+     * A Delta table data source
+     */
     deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceDeltaTableSource>;
+    /**
+     * A Kafka stream data source
+     */
     kafkaSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSource>;
+    /**
+     * A request-time data source
+     */
+    requestSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceRequestSource>;
 }
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
@@ -2863,18 +3325,40 @@ export interface FeatureEngineeringFeatureSourceKafkaSource {
 
 export interface FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
     /**
-     * String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      */
     variantExprPath: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
     /**
-     * String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      */
     variantExprPath: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureSourceRequestSource {
+    /**
+     * A flat schema with scalar-typed fields only
+     */
+    flatSchema?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchema>;
+}
+
+export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchema {
+    /**
+     * The list of fields in this schema
+     */
+    fields: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField>[]>;
+}
+
+export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
+    /**
+     * The scalar data type of the field. Possible values are: `BINARY`, `BOOLEAN`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `INTEGER`, `LONG`, `SHORT`, `STRING`, `TIMESTAMP`
+     */
+    dataType: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringFeatureTimeWindow {
@@ -3222,6 +3706,7 @@ export interface GetCatalogCatalogInfo {
      * Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
      */
     isolationMode?: string;
+    managedEncryptionSettings?: inputs.GetCatalogCatalogInfoManagedEncryptionSettings;
     /**
      * Unique identifier of parent metastore.
      */
@@ -3311,6 +3796,7 @@ export interface GetCatalogCatalogInfoArgs {
      * Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
      */
     isolationMode?: pulumi.Input<string>;
+    managedEncryptionSettings?: pulumi.Input<inputs.GetCatalogCatalogInfoManagedEncryptionSettingsArgs>;
     /**
      * Unique identifier of parent metastore.
      */
@@ -3372,6 +3858,30 @@ export interface GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs {
     inheritedFromName?: pulumi.Input<string>;
     inheritedFromType?: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface GetCatalogCatalogInfoManagedEncryptionSettings {
+    azureEncryptionSettings?: inputs.GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettings;
+    azureKeyVaultKeyId?: string;
+    customerManagedKeyId?: string;
+}
+
+export interface GetCatalogCatalogInfoManagedEncryptionSettingsArgs {
+    azureEncryptionSettings?: pulumi.Input<inputs.GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettingsArgs>;
+    azureKeyVaultKeyId?: pulumi.Input<string>;
+    customerManagedKeyId?: pulumi.Input<string>;
+}
+
+export interface GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettings {
+    azureCmkAccessConnectorId?: string;
+    azureCmkManagedIdentityId?: string;
+    azureTenantId: string;
+}
+
+export interface GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettingsArgs {
+    azureCmkAccessConnectorId?: pulumi.Input<string>;
+    azureCmkManagedIdentityId?: pulumi.Input<string>;
+    azureTenantId: pulumi.Input<string>;
 }
 
 export interface GetCatalogCatalogInfoProvisioningInfo {
@@ -5129,6 +5639,7 @@ export interface GetExternalLocationExternalLocationInfo {
      */
     credentialName?: string;
     effectiveEnableFileEvents?: boolean;
+    effectiveFileEventQueue?: inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueue;
     enableFileEvents?: boolean;
     /**
      * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -5190,6 +5701,7 @@ export interface GetExternalLocationExternalLocationInfoArgs {
      */
     credentialName?: pulumi.Input<string>;
     effectiveEnableFileEvents?: pulumi.Input<boolean>;
+    effectiveFileEventQueue?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs>;
     enableFileEvents?: pulumi.Input<boolean>;
     /**
      * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -5226,6 +5738,92 @@ export interface GetExternalLocationExternalLocationInfoArgs {
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      */
     url?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueue {
+    managedAqs?: inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqs;
+    managedPubsub?: inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsub;
+    managedSqs?: inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqs;
+    providedAqs?: inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqs;
+    providedPubsub?: inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsub;
+    providedSqs?: inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqs;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs {
+    managedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqsArgs>;
+    managedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsubArgs>;
+    managedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqsArgs>;
+    providedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqsArgs>;
+    providedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsubArgs>;
+    providedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqsArgs>;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    resourceGroup?: string;
+    subscriptionId?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqsArgs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsub {
+    managedResourceId?: string;
+    subscriptionName?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsubArgs {
+    managedResourceId?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqsArgs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    resourceGroup?: string;
+    subscriptionId?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqsArgs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsub {
+    managedResourceId?: string;
+    subscriptionName?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsubArgs {
+    managedResourceId?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqsArgs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetails {
@@ -10154,6 +10752,20 @@ export interface GetPostgresBranchesProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetPostgresCatalogProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresCatalogProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetPostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -10260,6 +10872,20 @@ export interface GetPostgresRolesProviderConfig {
 }
 
 export interface GetPostgresRolesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetPostgresSyncedTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresSyncedTableProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -12506,6 +13132,20 @@ export interface GetUserProviderConfigArgs {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface GetUsersProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetUsersProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetUsersUser {
     /**
      * Boolean that represents if this user is active.
@@ -12974,6 +13614,22 @@ export interface GrantsGrant {
 }
 
 export interface GrantsProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GroupInstanceProfileProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GroupMemberProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GroupProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GroupRoleProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
@@ -16458,6 +17114,13 @@ export interface MaterializedFeaturesFeatureTagProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
+export interface MetastoreAssignmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface MetastoreDataAccessAwsIamRole {
     externalId?: pulumi.Input<string>;
     roleArn: pulumi.Input<string>;
@@ -16491,6 +17154,20 @@ export interface MetastoreDataAccessGcpServiceAccountKey {
     email: pulumi.Input<string>;
     privateKey: pulumi.Input<string>;
     privateKeyId: pulumi.Input<string>;
+}
+
+export interface MetastoreDataAccessProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface MetastoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface MetastoreProviderProviderConfig {
@@ -17428,6 +18105,11 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
     kmsKeyId: pulumi.Input<string>;
 }
 
+export interface MwsNccPrivateEndpointRuleGcpEndpoint {
+    pscEndpointUri?: pulumi.Input<string>;
+    serviceAttachment?: pulumi.Input<string>;
+}
+
 export interface MwsNetworkConnectivityConfigEgressConfig {
     /**
      * block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
@@ -17544,11 +18226,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -17615,11 +18297,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -18222,11 +18904,93 @@ export interface PipelineIngestionDefinitionObjectReportTableConfigurationWorkda
 }
 
 export interface PipelineIngestionDefinitionObjectSchema {
+    connectorOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions>;
     destinationCatalog: pulumi.Input<string>;
     destinationSchema: pulumi.Input<string>;
     sourceCatalog?: pulumi.Input<string>;
     sourceSchema: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
+    gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions>;
+    googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions>;
+    sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions>;
+    tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions {
+    entityType?: pulumi.Input<string>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptions>;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptions {
+    corruptRecordColumn?: pulumi.Input<string>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter>[]>;
+    format?: pulumi.Input<string>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ignoreCorruptFiles?: pulumi.Input<boolean>;
+    inferColumnTypes?: pulumi.Input<boolean>;
+    readerCaseSensitive?: pulumi.Input<boolean>;
+    rescuedDataColumn?: pulumi.Input<string>;
+    schemaEvolutionMode?: pulumi.Input<string>;
+    schemaHints?: pulumi.Input<string>;
+    singleVariantColumn?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: pulumi.Input<string>;
+    modifiedBefore?: pulumi.Input<string>;
+    pathFilter?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions {
+    lookbackWindowDays?: pulumi.Input<number>;
+    managerAccountId: pulumi.Input<string>;
+    syncStartDate?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions {
+    entityType?: pulumi.Input<string>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions>;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions {
+    corruptRecordColumn?: pulumi.Input<string>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter>[]>;
+    format?: pulumi.Input<string>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ignoreCorruptFiles?: pulumi.Input<boolean>;
+    inferColumnTypes?: pulumi.Input<boolean>;
+    readerCaseSensitive?: pulumi.Input<boolean>;
+    rescuedDataColumn?: pulumi.Input<string>;
+    schemaEvolutionMode?: pulumi.Input<string>;
+    schemaHints?: pulumi.Input<string>;
+    singleVariantColumn?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: pulumi.Input<string>;
+    modifiedBefore?: pulumi.Input<string>;
+    pathFilter?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions {
+    dataLevel?: pulumi.Input<string>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    lookbackWindowDays?: pulumi.Input<number>;
+    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    queryLifetime?: pulumi.Input<boolean>;
+    reportType?: pulumi.Input<string>;
+    syncStartDate?: pulumi.Input<string>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
@@ -18265,6 +19029,7 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkda
 }
 
 export interface PipelineIngestionDefinitionObjectTable {
+    connectorOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptions>;
     destinationCatalog: pulumi.Input<string>;
     destinationSchema: pulumi.Input<string>;
     destinationTable?: pulumi.Input<string>;
@@ -18272,6 +19037,87 @@ export interface PipelineIngestionDefinitionObjectTable {
     sourceSchema?: pulumi.Input<string>;
     sourceTable: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfiguration>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
+    gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions>;
+    googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions>;
+    sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions>;
+    tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions {
+    entityType?: pulumi.Input<string>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptions>;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptions {
+    corruptRecordColumn?: pulumi.Input<string>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter>[]>;
+    format?: pulumi.Input<string>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ignoreCorruptFiles?: pulumi.Input<boolean>;
+    inferColumnTypes?: pulumi.Input<boolean>;
+    readerCaseSensitive?: pulumi.Input<boolean>;
+    rescuedDataColumn?: pulumi.Input<string>;
+    schemaEvolutionMode?: pulumi.Input<string>;
+    schemaHints?: pulumi.Input<string>;
+    singleVariantColumn?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: pulumi.Input<string>;
+    modifiedBefore?: pulumi.Input<string>;
+    pathFilter?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions {
+    lookbackWindowDays?: pulumi.Input<number>;
+    managerAccountId: pulumi.Input<string>;
+    syncStartDate?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions {
+    entityType?: pulumi.Input<string>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptions>;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptions {
+    corruptRecordColumn?: pulumi.Input<string>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter>[]>;
+    format?: pulumi.Input<string>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ignoreCorruptFiles?: pulumi.Input<boolean>;
+    inferColumnTypes?: pulumi.Input<boolean>;
+    readerCaseSensitive?: pulumi.Input<boolean>;
+    rescuedDataColumn?: pulumi.Input<string>;
+    schemaEvolutionMode?: pulumi.Input<string>;
+    schemaHints?: pulumi.Input<string>;
+    singleVariantColumn?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: pulumi.Input<string>;
+    modifiedBefore?: pulumi.Input<string>;
+    pathFilter?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions {
+    dataLevel?: pulumi.Input<string>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    lookbackWindowDays?: pulumi.Input<number>;
+    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    queryLifetime?: pulumi.Input<boolean>;
+    reportType?: pulumi.Input<string>;
+    syncStartDate?: pulumi.Input<string>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
@@ -18604,6 +19450,47 @@ export interface PostgresBranchStatus {
     stateChangeTime?: pulumi.Input<string>;
 }
 
+export interface PostgresCatalogProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface PostgresCatalogSpec {
+    /**
+     * (string) - The resource path of the branch associated with the catalog.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * If set to true, the specified postgresDatabase is created on behalf of the calling user
+     * if it does not already exist. In this case, the calling user has a role created for
+     * them in Postgres if they do not already have one.
+     *
+     * Defaults to false, meaning that the request fails if the specified postgresDatabase does not already exist
+     */
+    createDatabaseIfMissing?: pulumi.Input<boolean>;
+    /**
+     * (string) - The name of the Postgres database associated with the catalog
+     */
+    postgresDatabase: pulumi.Input<string>;
+}
+
+export interface PostgresCatalogStatus {
+    /**
+     * (string) - The resource path of the branch associated with the catalog.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * (string) - The name of the Postgres database associated with the catalog
+     */
+    postgresDatabase?: pulumi.Input<string>;
+    /**
+     * (string) - The resource path of the project associated with the catalog.
+     */
+    project?: pulumi.Input<string>;
+}
+
 export interface PostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -18804,6 +19691,10 @@ export interface PostgresProjectSpec {
      */
     customTags?: pulumi.Input<pulumi.Input<inputs.PostgresProjectSpecCustomTag>[]>;
     /**
+     * (string) - The full resource path of the default branch of the project
+     */
+    defaultBranch?: pulumi.Input<string>;
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings?: pulumi.Input<inputs.PostgresProjectSpecDefaultEndpointSettings>;
@@ -18874,6 +19765,10 @@ export interface PostgresProjectStatus {
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
     customTags?: pulumi.Input<pulumi.Input<inputs.PostgresProjectStatusCustomTag>[]>;
+    /**
+     * (string) - The full resource path of the default branch of the project
+     */
+    defaultBranch?: pulumi.Input<string>;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
@@ -18973,6 +19868,186 @@ export interface PostgresRoleStatusAttributes {
     bypassrls?: pulumi.Input<boolean>;
     createdb?: pulumi.Input<boolean>;
     createrole?: pulumi.Input<boolean>;
+}
+
+export interface PostgresSyncedTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface PostgresSyncedTableSpec {
+    /**
+     * The full resource name the branch associated with the table.
+     *
+     * Format: "projects/{project_id}/branches/{branch_id}"
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * If true, the synced table's logical database and schema resources in PG
+     * will be created if they do not already exist.
+     * The request will fail if this is false and the database/schema do not exist.
+     *
+     * Defaults to true if omitted
+     */
+    createDatabaseObjectsIfMissing?: pulumi.Input<boolean>;
+    /**
+     * ID of an existing pipeline to bin-pack this synced table into.
+     * At most one of existingPipelineId and newPipelineSpec should be defined.
+     *
+     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     */
+    existingPipelineId?: pulumi.Input<string>;
+    /**
+     * Specification for creating a new pipeline.
+     * At most one of existingPipelineId and newPipelineSpec should be defined.
+     *
+     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     */
+    newPipelineSpec?: pulumi.Input<inputs.PostgresSyncedTableSpecNewPipelineSpec>;
+    /**
+     * The Postgres database name where the synced table will be created in.
+     *
+     * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
+     * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
+     *
+     * A value must be specified when creating a synced table inside a Standard Catalog
+     */
+    postgresDatabase?: pulumi.Input<string>;
+    /**
+     * Primary Key columns to be used for data insert/update in the destination
+     */
+    primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     */
+    schedulingPolicy?: pulumi.Input<string>;
+    /**
+     * Three-part (catalog, schema, table) name of the source Delta table.
+     *
+     * For the corresponding destination table, use any of the two:
+     *
+     * * syncedTableId used at the creation of the SyncedTable
+     * * "name" consisting of "synced_tables/" prefix and the full name of the destination table
+     */
+    sourceTableFullName?: pulumi.Input<string>;
+    /**
+     * Time series key to deduplicate (tie-break) rows with the same primary key
+     */
+    timeseriesKey?: pulumi.Input<string>;
+}
+
+export interface PostgresSyncedTableSpecNewPipelineSpec {
+    /**
+     * Budget policy to set on the newly created pipeline
+     */
+    budgetPolicyId?: pulumi.Input<string>;
+    /**
+     * UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
+     * This needs to be a standard catalog where the user has permissions to create Delta tables
+     */
+    storageCatalog?: pulumi.Input<string>;
+    /**
+     * UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
+     * This needs to be in the standard catalog where the user has permissions to create Delta tables
+     */
+    storageSchema?: pulumi.Input<string>;
+}
+
+export interface PostgresSyncedTableStatus {
+    /**
+     * (string) - The state of the synced table. Possible values are: `SYNCED_TABLE_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+     */
+    detailedState?: pulumi.Input<string>;
+    /**
+     * (integer) - The last source table Delta version that was successfully synced to the synced table
+     */
+    lastProcessedCommitVersion?: pulumi.Input<number>;
+    /**
+     * (SyncedTablePosition) - Summary of the last successful synchronization from source to destination
+     */
+    lastSync?: pulumi.Input<inputs.PostgresSyncedTableStatusLastSync>;
+    /**
+     * (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+     * table. This is when the data is available in the synced table
+     */
+    lastSyncTime?: pulumi.Input<string>;
+    /**
+     * (string) - A text description of the current state of the synced table
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * (SyncedTablePipelineProgress)
+     */
+    ongoingSyncProgress?: pulumi.Input<inputs.PostgresSyncedTableStatusOngoingSyncProgress>;
+    /**
+     * (string) - ID of the associated pipeline
+     */
+    pipelineId?: pulumi.Input<string>;
+    /**
+     * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+     */
+    provisioningPhase?: pulumi.Input<string>;
+    /**
+     * (string) - The provisioning state of the synced table entity in Unity Catalog. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
+     */
+    unityCatalogProvisioningState?: pulumi.Input<string>;
+}
+
+export interface PostgresSyncedTableStatusLastSync {
+    /**
+     * (DeltaTableSyncInfo)
+     */
+    deltaTableSyncInfo?: pulumi.Input<inputs.PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo>;
+    /**
+     * (string) - The end timestamp of the most recent successful synchronization.
+     * This is the time when the data is available in the synced table
+     */
+    syncEndTime?: pulumi.Input<string>;
+    /**
+     * (string) - The starting timestamp of the most recent successful synchronization from the source table
+     * to the destination (synced) table.
+     * Note this is the starting timestamp of the sync operation, not the end time.
+     * E.g., for a batch, this is the time when the sync operation started
+     */
+    syncStartTime?: pulumi.Input<string>;
+}
+
+export interface PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo {
+    /**
+     * (string) - The timestamp when the above Delta version was committed in the source Delta table.
+     * Note: This is the Delta commit time, not the time the data was written to the synced table
+     */
+    deltaCommitTime?: pulumi.Input<string>;
+    /**
+     * (integer) - The Delta Lake commit version that was last successfully synced
+     */
+    deltaCommitVersion?: pulumi.Input<number>;
+}
+
+export interface PostgresSyncedTableStatusOngoingSyncProgress {
+    /**
+     * (number) - The estimated time remaining to complete this update in seconds
+     */
+    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
+    /**
+     * (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+     * have completely processed this version yet
+     */
+    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
+    /**
+     * (number) - The completion ratio of this update. This is a number between 0 and 1
+     */
+    syncProgressCompletion?: pulumi.Input<number>;
+    /**
+     * (integer) - The number of rows that have been synced in this update
+     */
+    syncedRowCount?: pulumi.Input<number>;
+    /**
+     * (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+     */
+    totalRowCount?: pulumi.Input<number>;
 }
 
 export interface QualityMonitorCustomMetric {
@@ -19400,6 +20475,7 @@ export interface RestrictWorkspaceAdminsSettingProviderConfig {
 }
 
 export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
+    disableGovTagCreation?: pulumi.Input<boolean>;
     /**
      * The restrict workspace admins status for the workspace.
      */
@@ -19541,6 +20617,14 @@ export interface ServicePrincipalFederationPolicyOidcPolicy {
      * is 'sub'
      */
     subjectClaim?: pulumi.Input<string>;
+}
+
+export interface ServicePrincipalProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface ServicePrincipalRoleProviderConfig {
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface ServicePrincipalSecretProviderConfig {
@@ -19766,6 +20850,10 @@ export interface SqlPermissionsPrivilegeAssignment {
      * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
      */
     privileges: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SqlPermissionsProviderConfig {
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameter {
@@ -20080,6 +21168,13 @@ export interface StorageCredentialGcpServiceAccountKey {
     privateKeyId: pulumi.Input<string>;
 }
 
+export interface StorageCredentialProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface SystemSchemaProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -20120,6 +21215,18 @@ export interface TokenProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface UserInstanceProfileProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface UserProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface UserRoleProviderConfig {
     workspaceId: pulumi.Input<string>;
 }
 
@@ -20441,6 +21548,11 @@ export interface WorkspaceSettingV2EffectivePersonalCompute {
 
 export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
     /**
+     * When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: pulumi.Input<boolean>;
+    /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: pulumi.Input<string>;
@@ -20466,6 +21578,11 @@ export interface WorkspaceSettingV2ProviderConfig {
 }
 
 export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
+    /**
+     * When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: pulumi.Input<boolean>;
     /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */

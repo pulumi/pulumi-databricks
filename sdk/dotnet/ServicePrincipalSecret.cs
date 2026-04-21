@@ -73,6 +73,12 @@ namespace Pulumi.Databricks
     public partial class ServicePrincipalSecret : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// UTC time when the secret was created.
         /// </summary>
         [Output("createTime")]
@@ -189,6 +195,12 @@ namespace Pulumi.Databricks
     public sealed class ServicePrincipalSecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// UTC time when the secret was created.
         /// </summary>
         [Input("createTime")]
@@ -272,6 +284,12 @@ namespace Pulumi.Databricks
 
     public sealed class ServicePrincipalSecretState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         /// <summary>
         /// UTC time when the secret was created.
         /// </summary>

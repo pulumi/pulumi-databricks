@@ -183,10 +183,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        cpu_env = databricks.WorkspaceBaseEnvironment("cpu_env",
-            display_name=my-cpu-environment,
-            filepath=/Volumes/catalog/schema/volume/cpu-environment.yaml)
-        this = databricks.DefaultWorkspaceBaseEnvironment("this", cpu_workspace_base_environment=cpu_env.name)
+        this = databricks.EnvironmentsDefaultWorkspaceBaseEnvironment("this", cpu_workspace_base_environment="workspace-base-environments/my-base-env-12345")
         ```
 
         ### Set Defaults for Both CPU and GPU Compute
@@ -195,14 +192,14 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        cpu_env = databricks.WorkspaceBaseEnvironment("cpu_env",
-            display_name=my-cpu-environment,
-            filepath=/Volumes/catalog/schema/volume/cpu-environment.yaml)
-        gpu_env = databricks.WorkspaceBaseEnvironment("gpu_env",
-            display_name=my-gpu-environment,
-            filepath=/Volumes/catalog/schema/volume/gpu-environment.yaml,
-            base_environment_type=GPU_LARGE)
-        this = databricks.DefaultWorkspaceBaseEnvironment("this",
+        cpu_env = databricks.EnvironmentsWorkspaceBaseEnvironment("cpu_env",
+            display_name="my-cpu-environment",
+            filepath="/Volumes/catalog/schema/volume/cpu-environment.yaml")
+        gpu_env = databricks.EnvironmentsWorkspaceBaseEnvironment("gpu_env",
+            display_name="my-gpu-environment",
+            filepath="/Volumes/catalog/schema/volume/gpu-environment.yaml",
+            base_environment_type="GPU")
+        this = databricks.EnvironmentsDefaultWorkspaceBaseEnvironment("this",
             cpu_workspace_base_environment=cpu_env.name,
             gpu_workspace_base_environment=gpu_env.name)
         ```
@@ -213,7 +210,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.DefaultWorkspaceBaseEnvironment("this")
+        this = databricks.EnvironmentsDefaultWorkspaceBaseEnvironment("this")
         ```
 
 
@@ -246,10 +243,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        cpu_env = databricks.WorkspaceBaseEnvironment("cpu_env",
-            display_name=my-cpu-environment,
-            filepath=/Volumes/catalog/schema/volume/cpu-environment.yaml)
-        this = databricks.DefaultWorkspaceBaseEnvironment("this", cpu_workspace_base_environment=cpu_env.name)
+        this = databricks.EnvironmentsDefaultWorkspaceBaseEnvironment("this", cpu_workspace_base_environment="workspace-base-environments/my-base-env-12345")
         ```
 
         ### Set Defaults for Both CPU and GPU Compute
@@ -258,14 +252,14 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        cpu_env = databricks.WorkspaceBaseEnvironment("cpu_env",
-            display_name=my-cpu-environment,
-            filepath=/Volumes/catalog/schema/volume/cpu-environment.yaml)
-        gpu_env = databricks.WorkspaceBaseEnvironment("gpu_env",
-            display_name=my-gpu-environment,
-            filepath=/Volumes/catalog/schema/volume/gpu-environment.yaml,
-            base_environment_type=GPU_LARGE)
-        this = databricks.DefaultWorkspaceBaseEnvironment("this",
+        cpu_env = databricks.EnvironmentsWorkspaceBaseEnvironment("cpu_env",
+            display_name="my-cpu-environment",
+            filepath="/Volumes/catalog/schema/volume/cpu-environment.yaml")
+        gpu_env = databricks.EnvironmentsWorkspaceBaseEnvironment("gpu_env",
+            display_name="my-gpu-environment",
+            filepath="/Volumes/catalog/schema/volume/gpu-environment.yaml",
+            base_environment_type="GPU")
+        this = databricks.EnvironmentsDefaultWorkspaceBaseEnvironment("this",
             cpu_workspace_base_environment=cpu_env.name,
             gpu_workspace_base_environment=gpu_env.name)
         ```
@@ -276,7 +270,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.DefaultWorkspaceBaseEnvironment("this")
+        this = databricks.EnvironmentsDefaultWorkspaceBaseEnvironment("this")
         ```
 
 

@@ -174,6 +174,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
+        [Input("api")]
+        public string? Api { get; set; }
+
         /// <summary>
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
@@ -200,6 +203,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         /// <summary>
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
@@ -240,6 +246,7 @@ namespace Pulumi.Databricks
         /// Alphanumeric representation of user local name. e.g. `MrFoo`.
         /// </summary>
         public readonly string Alphanumeric;
+        public readonly string? Api;
         public readonly string ApplicationId;
         /// <summary>
         /// Display name of the user, e.g. `Mr Foo`.
@@ -276,6 +283,8 @@ namespace Pulumi.Databricks
 
             string alphanumeric,
 
+            string? api,
+
             string applicationId,
 
             string displayName,
@@ -297,6 +306,7 @@ namespace Pulumi.Databricks
             AclPrincipalId = aclPrincipalId;
             Active = active;
             Alphanumeric = alphanumeric;
+            Api = api;
             ApplicationId = applicationId;
             DisplayName = displayName;
             ExternalId = externalId;

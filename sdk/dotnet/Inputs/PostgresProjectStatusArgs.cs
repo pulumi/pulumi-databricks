@@ -37,6 +37,12 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
+        /// (string) - The full resource path of the default branch of the project
+        /// </summary>
+        [Input("defaultBranch")]
+        public Input<string>? DefaultBranch { get; set; }
+
+        /// <summary>
         /// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         /// </summary>
         [Input("defaultEndpointSettings")]

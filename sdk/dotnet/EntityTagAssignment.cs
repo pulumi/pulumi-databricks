@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
     /// 
@@ -79,7 +79,7 @@ namespace Pulumi.Databricks
         public Output<string> EntityName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// The type of the entity to which the tag is assigned
         /// </summary>
         [Output("entityType")]
         public Output<string> EntityType { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.Databricks
         public Input<string> EntityName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// The type of the entity to which the tag is assigned
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.Databricks
         public Input<string>? EntityName { get; set; }
 
         /// <summary>
-        /// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// The type of the entity to which the tag is assigned
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }

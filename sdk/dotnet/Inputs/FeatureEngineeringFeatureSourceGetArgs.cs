@@ -12,11 +12,23 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureSourceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A Delta table data source
+        /// </summary>
         [Input("deltaTableSource")]
         public Input<Inputs.FeatureEngineeringFeatureSourceDeltaTableSourceGetArgs>? DeltaTableSource { get; set; }
 
+        /// <summary>
+        /// A Kafka stream data source
+        /// </summary>
         [Input("kafkaSource")]
         public Input<Inputs.FeatureEngineeringFeatureSourceKafkaSourceGetArgs>? KafkaSource { get; set; }
+
+        /// <summary>
+        /// A request-time data source
+        /// </summary>
+        [Input("requestSource")]
+        public Input<Inputs.FeatureEngineeringFeatureSourceRequestSourceGetArgs>? RequestSource { get; set; }
 
         public FeatureEngineeringFeatureSourceGetArgs()
         {

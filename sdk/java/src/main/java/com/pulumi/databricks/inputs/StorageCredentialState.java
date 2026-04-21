@@ -11,6 +11,7 @@ import com.pulumi.databricks.inputs.StorageCredentialAzureServicePrincipalArgs;
 import com.pulumi.databricks.inputs.StorageCredentialCloudflareApiTokenArgs;
 import com.pulumi.databricks.inputs.StorageCredentialDatabricksGcpServiceAccountArgs;
 import com.pulumi.databricks.inputs.StorageCredentialGcpServiceAccountKeyArgs;
+import com.pulumi.databricks.inputs.StorageCredentialProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -21,6 +22,25 @@ import javax.annotation.Nullable;
 public final class StorageCredentialState extends com.pulumi.resources.ResourceArgs {
 
     public static final StorageCredentialState Empty = new StorageCredentialState();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
 
     /**
      * exposes two additional attributes:
@@ -112,16 +132,12 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
     /**
      * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      * 
-     * `awsIamRole` optional configuration block for credential details for AWS:
-     * 
      */
     @Import(name="isolationMode")
     private @Nullable Output<String> isolationMode;
 
     /**
      * @return Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-     * 
-     * `awsIamRole` optional configuration block for credential details for AWS:
      * 
      */
     public Optional<Output<String>> isolationMode() {
@@ -174,6 +190,21 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<StorageCredentialProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<StorageCredentialProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Indicates whether the storage credential is only usable for read operations.
      * 
      */
@@ -221,6 +252,7 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
     private StorageCredentialState() {}
 
     private StorageCredentialState(StorageCredentialState $) {
+        this.api = $.api;
         this.awsIamRole = $.awsIamRole;
         this.azureManagedIdentity = $.azureManagedIdentity;
         this.azureServicePrincipal = $.azureServicePrincipal;
@@ -234,6 +266,7 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
+        this.providerConfig = $.providerConfig;
         this.readOnly = $.readOnly;
         this.skipValidation = $.skipValidation;
         this.storageCredentialId = $.storageCredentialId;
@@ -255,6 +288,31 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         public Builder(StorageCredentialState defaults) {
             $ = new StorageCredentialState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * `awsIamRole` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * `awsIamRole` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
         }
 
         /**
@@ -377,8 +435,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         /**
          * @param isolationMode Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
          * 
-         * `awsIamRole` optional configuration block for credential details for AWS:
-         * 
          * @return builder
          * 
          */
@@ -389,8 +445,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         /**
          * @param isolationMode Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-         * 
-         * `awsIamRole` optional configuration block for credential details for AWS:
          * 
          * @return builder
          * 
@@ -460,6 +514,27 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<StorageCredentialProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(StorageCredentialProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

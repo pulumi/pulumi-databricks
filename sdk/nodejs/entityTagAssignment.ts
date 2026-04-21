@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
  *
@@ -84,7 +84,7 @@ export class EntityTagAssignment extends pulumi.CustomResource {
      */
     declare public readonly entityName: pulumi.Output<string>;
     /**
-     * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * The type of the entity to which the tag is assigned
      */
     declare public readonly entityType: pulumi.Output<string>;
     /**
@@ -167,7 +167,7 @@ export interface EntityTagAssignmentState {
      */
     entityName?: pulumi.Input<string>;
     /**
-     * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * The type of the entity to which the tag is assigned
      */
     entityType?: pulumi.Input<string>;
     /**
@@ -205,7 +205,7 @@ export interface EntityTagAssignmentArgs {
      */
     entityName: pulumi.Input<string>;
     /**
-     * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * The type of the entity to which the tag is assigned
      */
     entityType: pulumi.Input<string>;
     /**

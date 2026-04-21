@@ -183,6 +183,12 @@ namespace Pulumi.Databricks
         [Input("allowInstancePoolCreate")]
         public bool? AllowInstancePoolCreate { get; set; }
 
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public string? Api { get; set; }
+
         [Input("childGroups")]
         private List<string>? _childGroups;
 
@@ -311,6 +317,12 @@ namespace Pulumi.Databricks
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         [Input("childGroups")]
         private InputList<string>? _childGroups;
 
@@ -435,6 +447,7 @@ namespace Pulumi.Databricks
         /// True if group members can create instance pools
         /// </summary>
         public readonly bool? AllowInstancePoolCreate;
+        public readonly string? Api;
         /// <summary>
         /// Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
         /// </summary>
@@ -479,6 +492,8 @@ namespace Pulumi.Databricks
 
             bool? allowInstancePoolCreate,
 
+            string? api,
+
             ImmutableArray<string> childGroups,
 
             bool? databricksSqlAccess,
@@ -510,6 +525,7 @@ namespace Pulumi.Databricks
             AclPrincipalId = aclPrincipalId;
             AllowClusterCreate = allowClusterCreate;
             AllowInstancePoolCreate = allowInstancePoolCreate;
+            Api = api;
             ChildGroups = childGroups;
             DatabricksSqlAccess = databricksSqlAccess;
             DisplayName = displayName;

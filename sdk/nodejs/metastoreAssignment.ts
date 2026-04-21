@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -57,6 +59,10 @@ export class MetastoreAssignment extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      *
      * @deprecated Use databricks.DefaultNamespaceSetting resource instead
@@ -66,6 +72,10 @@ export class MetastoreAssignment extends pulumi.CustomResource {
      * Unique identifier of the parent Metastore
      */
     declare public readonly metastoreId: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreAssignmentProviderConfig | undefined>;
     /**
      * id of the workspace for the assignment
      */
@@ -84,8 +94,10 @@ export class MetastoreAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetastoreAssignmentState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["defaultCatalogName"] = state?.defaultCatalogName;
             resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as MetastoreAssignmentArgs | undefined;
@@ -95,8 +107,10 @@ export class MetastoreAssignment extends pulumi.CustomResource {
             if (args?.workspaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
             }
+            resourceInputs["api"] = args?.api;
             resourceInputs["defaultCatalogName"] = args?.defaultCatalogName;
             resourceInputs["metastoreId"] = args?.metastoreId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -109,6 +123,10 @@ export class MetastoreAssignment extends pulumi.CustomResource {
  */
 export interface MetastoreAssignmentState {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      *
      * @deprecated Use databricks.DefaultNamespaceSetting resource instead
@@ -118,6 +136,10 @@ export interface MetastoreAssignmentState {
      * Unique identifier of the parent Metastore
      */
     metastoreId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MetastoreAssignmentProviderConfig>;
     /**
      * id of the workspace for the assignment
      */
@@ -129,6 +151,10 @@ export interface MetastoreAssignmentState {
  */
 export interface MetastoreAssignmentArgs {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      *
      * @deprecated Use databricks.DefaultNamespaceSetting resource instead
@@ -138,6 +164,10 @@ export interface MetastoreAssignmentArgs {
      * Unique identifier of the parent Metastore
      */
     metastoreId: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MetastoreAssignmentProviderConfig>;
     /**
      * id of the workspace for the assignment
      */

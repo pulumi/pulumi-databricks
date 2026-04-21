@@ -213,6 +213,12 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.CredentialProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         /// </summary>
         [Output("purpose")]
@@ -351,6 +357,12 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.CredentialProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         /// </summary>
         [Input("purpose", required: true)]
@@ -455,6 +467,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.CredentialProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.

@@ -77,6 +77,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      */
     declare public readonly endpointName: pulumi.Output<string>;
+    declare public readonly indexSubtype: pulumi.Output<string | undefined>;
     /**
      * Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
@@ -114,6 +115,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
             resourceInputs["deltaSyncIndexSpec"] = state?.deltaSyncIndexSpec;
             resourceInputs["directAccessIndexSpec"] = state?.directAccessIndexSpec;
             resourceInputs["endpointName"] = state?.endpointName;
+            resourceInputs["indexSubtype"] = state?.indexSubtype;
             resourceInputs["indexType"] = state?.indexType;
             resourceInputs["name"] = state?.name;
             resourceInputs["primaryKey"] = state?.primaryKey;
@@ -133,6 +135,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
             resourceInputs["deltaSyncIndexSpec"] = args?.deltaSyncIndexSpec;
             resourceInputs["directAccessIndexSpec"] = args?.directAccessIndexSpec;
             resourceInputs["endpointName"] = args?.endpointName;
+            resourceInputs["indexSubtype"] = args?.indexSubtype;
             resourceInputs["indexType"] = args?.indexType;
             resourceInputs["name"] = args?.name;
             resourceInputs["primaryKey"] = args?.primaryKey;
@@ -165,6 +168,7 @@ export interface VectorSearchIndexState {
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      */
     endpointName?: pulumi.Input<string>;
+    indexSubtype?: pulumi.Input<string>;
     /**
      * Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
@@ -202,6 +206,7 @@ export interface VectorSearchIndexArgs {
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      */
     endpointName: pulumi.Input<string>;
+    indexSubtype?: pulumi.Input<string>;
     /**
      * Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.

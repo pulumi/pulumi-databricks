@@ -163,7 +163,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.AppPendingDeployment> PendingDeployment { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.AppProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.AppProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// A list of resources that the app have access to.

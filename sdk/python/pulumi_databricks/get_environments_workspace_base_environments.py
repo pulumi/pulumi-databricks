@@ -87,6 +87,16 @@ def get_environments_workspace_base_environments(page_size: Optional[_builtins.i
     This data source retrieves the list of all Workspace Base Environments in the workspace.
     The list can be accessed via the data object's `workspace_base_environments` field.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_environments_workspace_base_environments()
+    pulumi.export("allEnvironments", all.workspace_base_environments)
+    ```
+
 
     :param _builtins.int page_size: The maximum number of environments to return per page.
            Default is 1000
@@ -111,6 +121,16 @@ def get_environments_workspace_base_environments_output(page_size: Optional[pulu
 
     This data source retrieves the list of all Workspace Base Environments in the workspace.
     The list can be accessed via the data object's `workspace_base_environments` field.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_environments_workspace_base_environments()
+    pulumi.export("allEnvironments", all.workspace_base_environments)
+    ```
 
 
     :param _builtins.int page_size: The maximum number of environments to return per page.

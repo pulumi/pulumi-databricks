@@ -69,6 +69,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("isolationMode")]
         public string? IsolationMode { get; set; }
 
+        [Input("managedEncryptionSettings")]
+        public Inputs.GetCatalogCatalogInfoManagedEncryptionSettingsArgs? ManagedEncryptionSettings { get; set; }
+
         /// <summary>
         /// Unique identifier of parent metastore.
         /// </summary>

@@ -4,11 +4,39 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppResourceApp {
+    /**
+     * @return The name of Genie Space.
+     * 
+     */
+    private @Nullable String name;
+    /**
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * 
+     */
+    private @Nullable String permission;
+
     private GetAppsAppResourceApp() {}
+    /**
+     * @return The name of Genie Space.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * 
+     */
+    public Optional<String> permission() {
+        return Optional.ofNullable(this.permission);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -19,13 +47,31 @@ public final class GetAppsAppResourceApp {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String name;
+        private @Nullable String permission;
         public Builder() {}
         public Builder(GetAppsAppResourceApp defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.name = defaults.name;
+    	      this.permission = defaults.permission;
         }
 
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder permission(@Nullable String permission) {
+
+            this.permission = permission;
+            return this;
+        }
         public GetAppsAppResourceApp build() {
             final var _resultValue = new GetAppsAppResourceApp();
+            _resultValue.name = name;
+            _resultValue.permission = permission;
             return _resultValue;
         }
     }

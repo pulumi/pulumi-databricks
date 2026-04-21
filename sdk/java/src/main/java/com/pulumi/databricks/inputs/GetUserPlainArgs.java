@@ -15,6 +15,13 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserPlainArgs Empty = new GetUserPlainArgs();
 
+    @Import(name="api")
+    private @Nullable String api;
+
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
+    }
+
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
@@ -63,6 +70,7 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetUserPlainArgs() {}
 
     private GetUserPlainArgs(GetUserPlainArgs $) {
+        this.api = $.api;
         this.providerConfig = $.providerConfig;
         this.userId = $.userId;
         this.userName = $.userName;
@@ -84,6 +92,11 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetUserPlainArgs defaults) {
             $ = new GetUserPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder api(@Nullable String api) {
+            $.api = api;
+            return this;
         }
 
         /**

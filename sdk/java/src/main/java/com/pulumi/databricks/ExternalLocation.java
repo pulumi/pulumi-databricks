@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ExternalLocationArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ExternalLocationState;
+import com.pulumi.databricks.outputs.ExternalLocationEffectiveFileEventQueue;
 import com.pulumi.databricks.outputs.ExternalLocationEncryptionDetails;
 import com.pulumi.databricks.outputs.ExternalLocationFileEventQueue;
 import com.pulumi.databricks.outputs.ExternalLocationProviderConfig;
@@ -307,6 +308,12 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
 
     public Output<Boolean> effectiveEnableFileEvents() {
         return this.effectiveEnableFileEvents;
+    }
+    @Export(name="effectiveFileEventQueue", refs={ExternalLocationEffectiveFileEventQueue.class}, tree="[0]")
+    private Output</* @Nullable */ ExternalLocationEffectiveFileEventQueue> effectiveFileEventQueue;
+
+    public Output<Optional<ExternalLocationEffectiveFileEventQueue>> effectiveFileEventQueue() {
+        return Codegen.optional(this.effectiveFileEventQueue);
     }
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.

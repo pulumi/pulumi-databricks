@@ -15,6 +15,29 @@ namespace Pulumi.Databricks
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = Databricks.Index.GetEnvironmentsDefaultWorkspaceBaseEnvironment.Invoke(new()
+        ///     {
+        ///         Name = "default-workspace-base-environment",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultCpuEnvironment"] = current.Apply(getEnvironmentsDefaultWorkspaceBaseEnvironmentResult =&gt; getEnvironmentsDefaultWorkspaceBaseEnvironmentResult.CpuWorkspaceBaseEnvironment),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> InvokeAsync(GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", args ?? new GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs(), options.WithDefaults());
@@ -23,6 +46,29 @@ namespace Pulumi.Databricks
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = Databricks.Index.GetEnvironmentsDefaultWorkspaceBaseEnvironment.Invoke(new()
+        ///     {
+        ///         Name = "default-workspace-base-environment",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultCpuEnvironment"] = current.Apply(getEnvironmentsDefaultWorkspaceBaseEnvironmentResult =&gt; getEnvironmentsDefaultWorkspaceBaseEnvironmentResult.CpuWorkspaceBaseEnvironment),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> Invoke(GetEnvironmentsDefaultWorkspaceBaseEnvironmentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", args ?? new GetEnvironmentsDefaultWorkspaceBaseEnvironmentInvokeArgs(), options.WithDefaults());
@@ -31,6 +77,29 @@ namespace Pulumi.Databricks
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = Databricks.Index.GetEnvironmentsDefaultWorkspaceBaseEnvironment.Invoke(new()
+        ///     {
+        ///         Name = "default-workspace-base-environment",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultCpuEnvironment"] = current.Apply(getEnvironmentsDefaultWorkspaceBaseEnvironmentResult =&gt; getEnvironmentsDefaultWorkspaceBaseEnvironmentResult.CpuWorkspaceBaseEnvironment),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult> Invoke(GetEnvironmentsDefaultWorkspaceBaseEnvironmentInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", args ?? new GetEnvironmentsDefaultWorkspaceBaseEnvironmentInvokeArgs(), options.WithDefaults());

@@ -29,6 +29,7 @@ public final class GetUserResult {
      * 
      */
     private String alphanumeric;
+    private @Nullable String api;
     private String applicationId;
     /**
      * @return Display name of the user, e.g. `Mr Foo`.
@@ -84,6 +85,9 @@ public final class GetUserResult {
      */
     public String alphanumeric() {
         return this.alphanumeric;
+    }
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
     }
     public String applicationId() {
         return this.applicationId;
@@ -149,6 +153,7 @@ public final class GetUserResult {
         private String aclPrincipalId;
         private Boolean active;
         private String alphanumeric;
+        private @Nullable String api;
         private String applicationId;
         private String displayName;
         private String externalId;
@@ -164,6 +169,7 @@ public final class GetUserResult {
     	      this.aclPrincipalId = defaults.aclPrincipalId;
     	      this.active = defaults.active;
     	      this.alphanumeric = defaults.alphanumeric;
+    	      this.api = defaults.api;
     	      this.applicationId = defaults.applicationId;
     	      this.displayName = defaults.displayName;
     	      this.externalId = defaults.externalId;
@@ -197,6 +203,12 @@ public final class GetUserResult {
               throw new MissingRequiredPropertyException("GetUserResult", "alphanumeric");
             }
             this.alphanumeric = alphanumeric;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder api(@Nullable String api) {
+
+            this.api = api;
             return this;
         }
         @CustomType.Setter
@@ -270,6 +282,7 @@ public final class GetUserResult {
             _resultValue.aclPrincipalId = aclPrincipalId;
             _resultValue.active = active;
             _resultValue.alphanumeric = alphanumeric;
+            _resultValue.api = api;
             _resultValue.applicationId = applicationId;
             _resultValue.displayName = displayName;
             _resultValue.externalId = externalId;

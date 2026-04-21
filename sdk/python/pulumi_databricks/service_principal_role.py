@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ServicePrincipalRoleArgs', 'ServicePrincipalRole']
 
@@ -20,15 +22,22 @@ __all__ = ['ServicePrincipalRoleArgs', 'ServicePrincipalRole']
 class ServicePrincipalRoleArgs:
     def __init__(__self__, *,
                  role: pulumi.Input[_builtins.str],
-                 service_principal_id: pulumi.Input[_builtins.str]):
+                 service_principal_id: pulumi.Input[_builtins.str],
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ServicePrincipalRoleProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a ServicePrincipalRole resource.
 
         :param pulumi.Input[_builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[_builtins.str] service_principal_id: This is the id of the service principal resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "service_principal_id", service_principal_id)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -54,22 +63,71 @@ class ServicePrincipalRoleArgs:
     def service_principal_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_principal_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ServicePrincipalRoleProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ServicePrincipalRoleProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _ServicePrincipalRoleState:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ServicePrincipalRoleProviderConfigArgs']] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalRole resources.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[_builtins.str] service_principal_id: This is the id of the service principal resource.
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if service_principal_id is not None:
             pulumi.set(__self__, "service_principal_id", service_principal_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ServicePrincipalRoleProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ServicePrincipalRoleProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -102,6 +160,8 @@ class ServicePrincipalRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict']]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -157,6 +217,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[_builtins.str] service_principal_id: This is the id of the service principal resource.
         """
@@ -231,6 +292,8 @@ class ServicePrincipalRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict']]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -242,6 +305,8 @@ class ServicePrincipalRole(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServicePrincipalRoleArgs.__new__(ServicePrincipalRoleArgs)
 
+            __props__.__dict__["api"] = api
+            __props__.__dict__["provider_config"] = provider_config
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
@@ -258,6 +323,8 @@ class ServicePrincipalRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['ServicePrincipalRoleProviderConfigArgs', 'ServicePrincipalRoleProviderConfigArgsDict']]] = None,
             role: Optional[pulumi.Input[_builtins.str]] = None,
             service_principal_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServicePrincipalRole':
         """
@@ -267,6 +334,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[_builtins.str] service_principal_id: This is the id of the service principal resource.
         """
@@ -274,9 +342,24 @@ class ServicePrincipalRole(pulumi.CustomResource):
 
         __props__ = _ServicePrincipalRoleState.__new__(_ServicePrincipalRoleState)
 
+        __props__.__dict__["api"] = api
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["role"] = role
         __props__.__dict__["service_principal_id"] = service_principal_id
         return ServicePrincipalRole(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ServicePrincipalRoleProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

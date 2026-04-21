@@ -65,6 +65,12 @@ namespace Pulumi.Databricks
     public partial class GroupInstanceProfile : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// This is the id of the group resource.
         /// </summary>
         [Output("groupId")]
@@ -75,6 +81,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("instanceProfileId")]
         public Output<string> InstanceProfileId { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.GroupInstanceProfileProviderConfig?> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -123,6 +132,12 @@ namespace Pulumi.Databricks
     public sealed class GroupInstanceProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is the id of the group resource.
         /// </summary>
         [Input("groupId", required: true)]
@@ -134,6 +149,9 @@ namespace Pulumi.Databricks
         [Input("instanceProfileId", required: true)]
         public Input<string> InstanceProfileId { get; set; } = null!;
 
+        [Input("providerConfig")]
+        public Input<Inputs.GroupInstanceProfileProviderConfigArgs>? ProviderConfig { get; set; }
+
         public GroupInstanceProfileArgs()
         {
         }
@@ -142,6 +160,12 @@ namespace Pulumi.Databricks
 
     public sealed class GroupInstanceProfileState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         /// <summary>
         /// This is the id of the group resource.
         /// </summary>
@@ -153,6 +177,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("instanceProfileId")]
         public Input<string>? InstanceProfileId { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.GroupInstanceProfileProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public GroupInstanceProfileState()
         {

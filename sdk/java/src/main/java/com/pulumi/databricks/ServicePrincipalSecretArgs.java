@@ -18,6 +18,21 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
     public static final ServicePrincipalSecretArgs Empty = new ServicePrincipalSecretArgs();
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
+
+    /**
      * UTC time when the secret was created.
      * 
      */
@@ -185,6 +200,7 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
     private ServicePrincipalSecretArgs() {}
 
     private ServicePrincipalSecretArgs(ServicePrincipalSecretArgs $) {
+        this.api = $.api;
         this.createTime = $.createTime;
         this.expireTime = $.expireTime;
         this.lifetime = $.lifetime;
@@ -214,6 +230,27 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
 
         public Builder(ServicePrincipalSecretArgs defaults) {
             $ = new ServicePrincipalSecretArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
         }
 
         /**

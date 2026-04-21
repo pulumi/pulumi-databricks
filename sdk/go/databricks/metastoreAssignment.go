@@ -55,12 +55,16 @@ import (
 type MetastoreAssignment struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	//
 	// Deprecated: Use DefaultNamespaceSetting resource instead
 	DefaultCatalogName pulumi.StringOutput `pulumi:"defaultCatalogName"`
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MetastoreAssignmentProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// id of the workspace for the assignment
 	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
@@ -101,23 +105,31 @@ func GetMetastoreAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetastoreAssignment resources.
 type metastoreAssignmentState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	//
 	// Deprecated: Use DefaultNamespaceSetting resource instead
 	DefaultCatalogName *string `pulumi:"defaultCatalogName"`
 	// Unique identifier of the parent Metastore
 	MetastoreId *string `pulumi:"metastoreId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *MetastoreAssignmentProviderConfig `pulumi:"providerConfig"`
 	// id of the workspace for the assignment
 	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type MetastoreAssignmentState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	//
 	// Deprecated: Use DefaultNamespaceSetting resource instead
 	DefaultCatalogName pulumi.StringPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MetastoreAssignmentProviderConfigPtrInput
 	// id of the workspace for the assignment
 	WorkspaceId pulumi.StringPtrInput
 }
@@ -127,24 +139,32 @@ func (MetastoreAssignmentState) ElementType() reflect.Type {
 }
 
 type metastoreAssignmentArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	//
 	// Deprecated: Use DefaultNamespaceSetting resource instead
 	DefaultCatalogName *string `pulumi:"defaultCatalogName"`
 	// Unique identifier of the parent Metastore
 	MetastoreId string `pulumi:"metastoreId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *MetastoreAssignmentProviderConfig `pulumi:"providerConfig"`
 	// id of the workspace for the assignment
 	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a MetastoreAssignment resource.
 type MetastoreAssignmentArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	//
 	// Deprecated: Use DefaultNamespaceSetting resource instead
 	DefaultCatalogName pulumi.StringPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MetastoreAssignmentProviderConfigPtrInput
 	// id of the workspace for the assignment
 	WorkspaceId pulumi.StringInput
 }
@@ -236,6 +256,11 @@ func (o MetastoreAssignmentOutput) ToMetastoreAssignmentOutputWithContext(ctx co
 	return o
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o MetastoreAssignmentOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreAssignment) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 //
 // Deprecated: Use DefaultNamespaceSetting resource instead
@@ -246,6 +271,11 @@ func (o MetastoreAssignmentOutput) DefaultCatalogName() pulumi.StringOutput {
 // Unique identifier of the parent Metastore
 func (o MetastoreAssignmentOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreAssignment) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o MetastoreAssignmentOutput) ProviderConfig() MetastoreAssignmentProviderConfigPtrOutput {
+	return o.ApplyT(func(v *MetastoreAssignment) MetastoreAssignmentProviderConfigPtrOutput { return v.ProviderConfig }).(MetastoreAssignmentProviderConfigPtrOutput)
 }
 
 // id of the workspace for the assignment

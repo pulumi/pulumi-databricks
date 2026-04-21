@@ -14,6 +14,33 @@ import (
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // This data source retrieves the current default Workspace Base Environment configuration for the workspace.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := databricks.GetEnvironmentsDefaultWorkspaceBaseEnvironment(ctx, &databricks.LookupEnvironmentsDefaultWorkspaceBaseEnvironmentArgs{
+//				Name: "default-workspace-base-environment",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("defaultCpuEnvironment", current.CpuWorkspaceBaseEnvironment)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupEnvironmentsDefaultWorkspaceBaseEnvironment(ctx *pulumi.Context, args *LookupEnvironmentsDefaultWorkspaceBaseEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentsDefaultWorkspaceBaseEnvironmentResult

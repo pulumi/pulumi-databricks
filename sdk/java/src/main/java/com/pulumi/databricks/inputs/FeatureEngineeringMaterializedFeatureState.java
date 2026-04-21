@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureProviderConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,21 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
      */
     public Optional<Output<String>> featureName() {
         return Optional.ofNullable(this.featureName);
+    }
+
+    /**
+     * (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     * 
+     */
+    @Import(name="isOnline")
+    private @Nullable Output<Boolean> isOnline;
+
+    /**
+     * @return (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     * 
+     */
+    public Optional<Output<Boolean>> isOnline() {
+        return Optional.ofNullable(this.isOnline);
     }
 
     /**
@@ -144,6 +160,7 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
     private FeatureEngineeringMaterializedFeatureState(FeatureEngineeringMaterializedFeatureState $) {
         this.cronSchedule = $.cronSchedule;
         this.featureName = $.featureName;
+        this.isOnline = $.isOnline;
         this.lastMaterializationTime = $.lastMaterializationTime;
         this.materializedFeatureId = $.materializedFeatureId;
         this.offlineStoreConfig = $.offlineStoreConfig;
@@ -211,6 +228,27 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
          */
         public Builder featureName(String featureName) {
             return featureName(Output.of(featureName));
+        }
+
+        /**
+         * @param isOnline (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isOnline(@Nullable Output<Boolean> isOnline) {
+            $.isOnline = isOnline;
+            return this;
+        }
+
+        /**
+         * @param isOnline (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isOnline(Boolean isOnline) {
+            return isOnline(Output.of(isOnline));
         }
 
         /**

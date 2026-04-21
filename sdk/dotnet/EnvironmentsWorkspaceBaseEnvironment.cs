@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.WorkspaceBaseEnvironment("this", new()
+    ///     var @this = new Databricks.Index.EnvironmentsWorkspaceBaseEnvironment("this", new()
     ///     {
     ///         DisplayName = "my-environment",
     ///         Filepath = "/Volumes/catalog/schema/volume/environment.yaml",
@@ -53,11 +53,11 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gpuEnv = new Databricks.Index.WorkspaceBaseEnvironment("gpu_env", new()
+    ///     var gpuEnv = new Databricks.Index.EnvironmentsWorkspaceBaseEnvironment("gpu_env", new()
     ///     {
     ///         DisplayName = "my-gpu-environment",
     ///         Filepath = "/Volumes/catalog/schema/volume/gpu-environment.yaml",
-    ///         BaseEnvironmentType = "GPU_LARGE",
+    ///         BaseEnvironmentType = "GPU",
     ///     });
     /// 
     /// });

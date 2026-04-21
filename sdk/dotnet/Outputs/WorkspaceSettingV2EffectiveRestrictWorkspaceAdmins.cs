@@ -14,13 +14,22 @@ namespace Pulumi.Databricks.Outputs
     public sealed class WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins
     {
         /// <summary>
+        /// When true, workspace admins cannot create governance tags.
+        /// ALLOW_ALL status does not override this; they are independent
+        /// </summary>
+        public readonly bool? DisableGovTagCreation;
+        /// <summary>
         /// Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
         /// </summary>
         public readonly string Status;
 
         [OutputConstructor]
-        private WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins(string status)
+        private WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins(
+            bool? disableGovTagCreation,
+
+            string status)
         {
+            DisableGovTagCreation = disableGovTagCreation;
             Status = status;
         }
     }

@@ -65,6 +65,21 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
+
+    /**
      * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
@@ -245,6 +260,7 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         this.aclPrincipalId = $.aclPrincipalId;
         this.allowClusterCreate = $.allowClusterCreate;
         this.allowInstancePoolCreate = $.allowInstancePoolCreate;
+        this.api = $.api;
         this.childGroups = $.childGroups;
         this.databricksSqlAccess = $.databricksSqlAccess;
         this.displayName = $.displayName;
@@ -339,6 +355,27 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder allowInstancePoolCreate(Boolean allowInstancePoolCreate) {
             return allowInstancePoolCreate(Output.of(allowInstancePoolCreate));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
         }
 
         /**

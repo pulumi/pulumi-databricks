@@ -315,6 +315,31 @@ class PostgresProject(pulumi.CustomResource):
             })
         ```
 
+        ### Project with High Availability Endpoint
+
+        Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+        One compute instance acts as the read-write primary.
+        The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ha = databricks.PostgresProject("ha",
+            project_id="ha-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "HA Production Project",
+            },
+            initial_endpoint_spec={
+                "group": {
+                    "min": 2,
+                    "max": 2,
+                    "enable_readable_secondaries": False,
+                },
+            })
+        ```
+
         ### Referencing in Other Resources
 
         ```python
@@ -389,6 +414,31 @@ class PostgresProject(pulumi.CustomResource):
                     "autoscaling_limit_min_cu": 1,
                     "autoscaling_limit_max_cu": 8,
                     "suspend_timeout_duration": "300s",
+                },
+            })
+        ```
+
+        ### Project with High Availability Endpoint
+
+        Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+        One compute instance acts as the read-write primary.
+        The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ha = databricks.PostgresProject("ha",
+            project_id="ha-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "HA Production Project",
+            },
+            initial_endpoint_spec={
+                "group": {
+                    "min": 2,
+                    "max": 2,
+                    "enable_readable_secondaries": False,
                 },
             })
         ```

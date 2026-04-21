@@ -140,6 +140,7 @@ type SqlPermissions struct {
 	// Name of the database. Has a default value of `default`.
 	Database             pulumi.StringPtrOutput                       `pulumi:"database"`
 	PrivilegeAssignments SqlPermissionsPrivilegeAssignmentArrayOutput `pulumi:"privilegeAssignments"`
+	ProviderConfig       SqlPermissionsProviderConfigPtrOutput        `pulumi:"providerConfig"`
 	// Name of the table. Can be combined with the `database`.
 	Table pulumi.StringPtrOutput `pulumi:"table"`
 	// Name of the view. Can be combined with the `database`.
@@ -210,6 +211,7 @@ type sqlPermissionsState struct {
 	// Name of the database. Has a default value of `default`.
 	Database             *string                             `pulumi:"database"`
 	PrivilegeAssignments []SqlPermissionsPrivilegeAssignment `pulumi:"privilegeAssignments"`
+	ProviderConfig       *SqlPermissionsProviderConfig       `pulumi:"providerConfig"`
 	// Name of the table. Can be combined with the `database`.
 	Table *string `pulumi:"table"`
 	// Name of the view. Can be combined with the `database`.
@@ -251,6 +253,7 @@ type SqlPermissionsState struct {
 	// Name of the database. Has a default value of `default`.
 	Database             pulumi.StringPtrInput
 	PrivilegeAssignments SqlPermissionsPrivilegeAssignmentArrayInput
+	ProviderConfig       SqlPermissionsProviderConfigPtrInput
 	// Name of the table. Can be combined with the `database`.
 	Table pulumi.StringPtrInput
 	// Name of the view. Can be combined with the `database`.
@@ -296,6 +299,7 @@ type sqlPermissionsArgs struct {
 	// Name of the database. Has a default value of `default`.
 	Database             *string                             `pulumi:"database"`
 	PrivilegeAssignments []SqlPermissionsPrivilegeAssignment `pulumi:"privilegeAssignments"`
+	ProviderConfig       *SqlPermissionsProviderConfig       `pulumi:"providerConfig"`
 	// Name of the table. Can be combined with the `database`.
 	Table *string `pulumi:"table"`
 	// Name of the view. Can be combined with the `database`.
@@ -338,6 +342,7 @@ type SqlPermissionsArgs struct {
 	// Name of the database. Has a default value of `default`.
 	Database             pulumi.StringPtrInput
 	PrivilegeAssignments SqlPermissionsPrivilegeAssignmentArrayInput
+	ProviderConfig       SqlPermissionsProviderConfigPtrInput
 	// Name of the table. Can be combined with the `database`.
 	Table pulumi.StringPtrInput
 	// Name of the view. Can be combined with the `database`.
@@ -484,6 +489,10 @@ func (o SqlPermissionsOutput) Database() pulumi.StringPtrOutput {
 
 func (o SqlPermissionsOutput) PrivilegeAssignments() SqlPermissionsPrivilegeAssignmentArrayOutput {
 	return o.ApplyT(func(v *SqlPermissions) SqlPermissionsPrivilegeAssignmentArrayOutput { return v.PrivilegeAssignments }).(SqlPermissionsPrivilegeAssignmentArrayOutput)
+}
+
+func (o SqlPermissionsOutput) ProviderConfig() SqlPermissionsProviderConfigPtrOutput {
+	return o.ApplyT(func(v *SqlPermissions) SqlPermissionsProviderConfigPtrOutput { return v.ProviderConfig }).(SqlPermissionsProviderConfigPtrOutput)
 }
 
 // Name of the table. Can be combined with the `database`.

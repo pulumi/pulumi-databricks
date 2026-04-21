@@ -299,10 +299,10 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.pendingDeployment;
     }
     @Export(name="providerConfig", refs={AppProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ AppProviderConfig> providerConfig;
+    private Output<AppProviderConfig> providerConfig;
 
-    public Output<Optional<AppProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<AppProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * A list of resources that the app have access to.

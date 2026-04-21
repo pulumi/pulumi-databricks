@@ -49,6 +49,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getUser:getUser", {
+        "api": args.api,
         "providerConfig": args.providerConfig,
         "userId": args.userId,
         "userName": args.userName,
@@ -59,6 +60,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    api?: string;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
@@ -89,6 +91,7 @@ export interface GetUserResult {
      * Alphanumeric representation of user local name. e.g. `mrFoo`.
      */
     readonly alphanumeric: string;
+    readonly api?: string;
     readonly applicationId: string;
     /**
      * Display name of the user, e.g. `Mr Foo`.
@@ -160,6 +163,7 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getUser:getUser", {
+        "api": args.api,
         "providerConfig": args.providerConfig,
         "userId": args.userId,
         "userName": args.userName,
@@ -170,6 +174,7 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
+    api?: pulumi.Input<string>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */

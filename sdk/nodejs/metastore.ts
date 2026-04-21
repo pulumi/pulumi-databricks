@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -108,6 +110,10 @@ export class Metastore extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
      */
     declare public /*out*/ readonly cloud: pulumi.Output<string>;
@@ -164,6 +170,10 @@ export class Metastore extends pulumi.CustomResource {
      */
     declare public readonly privilegeModelVersion: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreProviderConfig | undefined>;
+    /**
      * The region of the metastore
      */
     declare public readonly region: pulumi.Output<string>;
@@ -201,6 +211,7 @@ export class Metastore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetastoreState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["cloud"] = state?.cloud;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
@@ -215,6 +226,7 @@ export class Metastore extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["privilegeModelVersion"] = state?.privilegeModelVersion;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["region"] = state?.region;
             resourceInputs["storageRoot"] = state?.storageRoot;
             resourceInputs["storageRootCredentialId"] = state?.storageRootCredentialId;
@@ -223,6 +235,7 @@ export class Metastore extends pulumi.CustomResource {
             resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
             const args = argsOrState as MetastoreArgs | undefined;
+            resourceInputs["api"] = args?.api;
             resourceInputs["defaultDataAccessConfigId"] = args?.defaultDataAccessConfigId;
             resourceInputs["deltaSharingOrganizationName"] = args?.deltaSharingOrganizationName;
             resourceInputs["deltaSharingRecipientTokenLifetimeInSeconds"] = args?.deltaSharingRecipientTokenLifetimeInSeconds;
@@ -232,6 +245,7 @@ export class Metastore extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["privilegeModelVersion"] = args?.privilegeModelVersion;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["region"] = args?.region;
             resourceInputs["storageRoot"] = args?.storageRoot;
             resourceInputs["storageRootCredentialId"] = args?.storageRootCredentialId;
@@ -253,6 +267,10 @@ export class Metastore extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Metastore resources.
  */
 export interface MetastoreState {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
      */
@@ -310,6 +328,10 @@ export interface MetastoreState {
      */
     privilegeModelVersion?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MetastoreProviderConfig>;
+    /**
      * The region of the metastore
      */
     region?: pulumi.Input<string>;
@@ -339,6 +361,10 @@ export interface MetastoreState {
  * The set of arguments for constructing a Metastore resource.
  */
 export interface MetastoreArgs {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * (Optional) Unique identifier of the metastore's default data access configuration.
      */
@@ -375,6 +401,10 @@ export interface MetastoreArgs {
      * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
      */
     privilegeModelVersion?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MetastoreProviderConfig>;
     /**
      * The region of the metastore
      */

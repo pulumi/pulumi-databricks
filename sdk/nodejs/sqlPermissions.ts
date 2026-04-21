@@ -124,6 +124,7 @@ export class SqlPermissions extends pulumi.CustomResource {
      */
     declare public readonly database: pulumi.Output<string | undefined>;
     declare public readonly privilegeAssignments: pulumi.Output<outputs.SqlPermissionsPrivilegeAssignment[] | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlPermissionsProviderConfig | undefined>;
     /**
      * Name of the table. Can be combined with the `database`.
      */
@@ -152,6 +153,7 @@ export class SqlPermissions extends pulumi.CustomResource {
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["database"] = state?.database;
             resourceInputs["privilegeAssignments"] = state?.privilegeAssignments;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["table"] = state?.table;
             resourceInputs["view"] = state?.view;
         } else {
@@ -162,6 +164,7 @@ export class SqlPermissions extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["database"] = args?.database;
             resourceInputs["privilegeAssignments"] = args?.privilegeAssignments;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["table"] = args?.table;
             resourceInputs["view"] = args?.view;
         }
@@ -204,6 +207,7 @@ export interface SqlPermissionsState {
      */
     database?: pulumi.Input<string>;
     privilegeAssignments?: pulumi.Input<pulumi.Input<inputs.SqlPermissionsPrivilegeAssignment>[]>;
+    providerConfig?: pulumi.Input<inputs.SqlPermissionsProviderConfig>;
     /**
      * Name of the table. Can be combined with the `database`.
      */
@@ -248,6 +252,7 @@ export interface SqlPermissionsArgs {
      */
     database?: pulumi.Input<string>;
     privilegeAssignments?: pulumi.Input<pulumi.Input<inputs.SqlPermissionsPrivilegeAssignment>[]>;
+    providerConfig?: pulumi.Input<inputs.SqlPermissionsProviderConfig>;
     /**
      * Name of the table. Can be combined with the `database`.
      */

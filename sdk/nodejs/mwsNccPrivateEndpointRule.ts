@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -139,6 +141,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
      */
     declare public readonly endpointService: pulumi.Output<string | undefined>;
     declare public readonly errorMessage: pulumi.Output<string | undefined>;
+    declare public readonly gcpEndpoint: pulumi.Output<outputs.MwsNccPrivateEndpointRuleGcpEndpoint | undefined>;
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      */
@@ -191,6 +194,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
             resourceInputs["endpointName"] = state?.endpointName;
             resourceInputs["endpointService"] = state?.endpointService;
             resourceInputs["errorMessage"] = state?.errorMessage;
+            resourceInputs["gcpEndpoint"] = state?.gcpEndpoint;
             resourceInputs["groupId"] = state?.groupId;
             resourceInputs["networkConnectivityConfigId"] = state?.networkConnectivityConfigId;
             resourceInputs["resourceId"] = state?.resourceId;
@@ -213,6 +217,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
             resourceInputs["endpointName"] = args?.endpointName;
             resourceInputs["endpointService"] = args?.endpointService;
             resourceInputs["errorMessage"] = args?.errorMessage;
+            resourceInputs["gcpEndpoint"] = args?.gcpEndpoint;
             resourceInputs["groupId"] = args?.groupId;
             resourceInputs["networkConnectivityConfigId"] = args?.networkConnectivityConfigId;
             resourceInputs["resourceId"] = args?.resourceId;
@@ -271,6 +276,7 @@ export interface MwsNccPrivateEndpointRuleState {
      */
     endpointService?: pulumi.Input<string>;
     errorMessage?: pulumi.Input<string>;
+    gcpEndpoint?: pulumi.Input<inputs.MwsNccPrivateEndpointRuleGcpEndpoint>;
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      */
@@ -346,6 +352,7 @@ export interface MwsNccPrivateEndpointRuleArgs {
      */
     endpointService?: pulumi.Input<string>;
     errorMessage?: pulumi.Input<string>;
+    gcpEndpoint?: pulumi.Input<inputs.MwsNccPrivateEndpointRuleGcpEndpoint>;
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      */

@@ -60,7 +60,7 @@ class GetEntityTagAssignmentsResult:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> _builtins.str:
         """
-        (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        (string) - The type of the entity to which the tag is assigned
         """
         return pulumi.get(self, "entity_type")
 
@@ -108,7 +108,7 @@ def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
                                provider_config: Optional[Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEntityTagAssignmentsResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
 
@@ -134,7 +134,7 @@ def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
 
 
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
-    :param _builtins.str entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+    :param _builtins.str entity_type: The type of the entity to which the tag is assigned
     :param _builtins.int max_results: Optional. Maximum number of tag assignments to return in a single page
     :param Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
@@ -159,7 +159,7 @@ def get_entity_tag_assignments_output(entity_name: Optional[pulumi.Input[_builti
                                       provider_config: Optional[pulumi.Input[Optional[Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntityTagAssignmentsResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
 
@@ -185,7 +185,7 @@ def get_entity_tag_assignments_output(entity_name: Optional[pulumi.Input[_builti
 
 
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
-    :param _builtins.str entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+    :param _builtins.str entity_type: The type of the entity to which the tag is assigned
     :param _builtins.int max_results: Optional. Maximum number of tag assignments to return in a single page
     :param Union['GetEntityTagAssignmentsProviderConfigArgs', 'GetEntityTagAssignmentsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """

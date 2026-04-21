@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupInstanceProfileArgs', 'GroupInstanceProfile']
 
@@ -20,15 +22,22 @@ __all__ = ['GroupInstanceProfileArgs', 'GroupInstanceProfile']
 class GroupInstanceProfileArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
-                 instance_profile_id: pulumi.Input[_builtins.str]):
+                 instance_profile_id: pulumi.Input[_builtins.str],
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a GroupInstanceProfile resource.
 
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "instance_profile_id", instance_profile_id)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -54,22 +63,62 @@ class GroupInstanceProfileArgs:
     def instance_profile_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "instance_profile_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _GroupInstanceProfileState:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering GroupInstanceProfile resources.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if instance_profile_id is not None:
             pulumi.set(__self__, "instance_profile_id", instance_profile_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -95,6 +144,15 @@ class _GroupInstanceProfileState:
     def instance_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instance_profile_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.type_token("databricks:index/groupInstanceProfile:GroupInstanceProfile")
 class GroupInstanceProfile(pulumi.CustomResource):
@@ -102,8 +160,10 @@ class GroupInstanceProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         > **Deprecated** Please migrate to databricks_group_role.
@@ -144,6 +204,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         """
@@ -205,8 +266,10 @@ class GroupInstanceProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -216,12 +279,14 @@ class GroupInstanceProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupInstanceProfileArgs.__new__(GroupInstanceProfileArgs)
 
+            __props__.__dict__["api"] = api
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
             if instance_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_profile_id'")
             __props__.__dict__["instance_profile_id"] = instance_profile_id
+            __props__.__dict__["provider_config"] = provider_config
         super(GroupInstanceProfile, __self__).__init__(
             'databricks:index/groupInstanceProfile:GroupInstanceProfile',
             resource_name,
@@ -232,8 +297,10 @@ class GroupInstanceProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
             group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupInstanceProfile':
+            instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None) -> 'GroupInstanceProfile':
         """
         Get an existing GroupInstanceProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -241,6 +308,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] instance_profile_id: This is the id of the instance profile resource.
         """
@@ -248,9 +316,19 @@ class GroupInstanceProfile(pulumi.CustomResource):
 
         __props__ = _GroupInstanceProfileState.__new__(_GroupInstanceProfileState)
 
+        __props__.__dict__["api"] = api
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["instance_profile_id"] = instance_profile_id
+        __props__.__dict__["provider_config"] = provider_config
         return GroupInstanceProfile(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -267,4 +345,9 @@ class GroupInstanceProfile(pulumi.CustomResource):
         This is the id of the instance profile resource.
         """
         return pulumi.get(self, "instance_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.GroupInstanceProfileProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 

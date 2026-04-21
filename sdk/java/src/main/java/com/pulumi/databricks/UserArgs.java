@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.UserProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -75,6 +76,21 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> allowInstancePoolCreate() {
         return Optional.ofNullable(this.allowInstancePoolCreate);
+    }
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
     }
 
     /**
@@ -197,6 +213,13 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.home);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<UserProviderConfigArgs> providerConfig;
+
+    public Optional<Output<UserProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
@@ -264,6 +287,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         this.active = $.active;
         this.allowClusterCreate = $.allowClusterCreate;
         this.allowInstancePoolCreate = $.allowInstancePoolCreate;
+        this.api = $.api;
         this.databricksSqlAccess = $.databricksSqlAccess;
         this.disableAsUserDeletion = $.disableAsUserDeletion;
         this.displayName = $.displayName;
@@ -272,6 +296,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         this.forceDeleteHomeDir = $.forceDeleteHomeDir;
         this.forceDeleteRepos = $.forceDeleteRepos;
         this.home = $.home;
+        this.providerConfig = $.providerConfig;
         this.repos = $.repos;
         this.userName = $.userName;
         this.workspaceAccess = $.workspaceAccess;
@@ -378,6 +403,27 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowInstancePoolCreate(Boolean allowInstancePoolCreate) {
             return allowInstancePoolCreate(Output.of(allowInstancePoolCreate));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
         }
 
         /**
@@ -546,6 +592,15 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder home(String home) {
             return home(Output.of(home));
+        }
+
+        public Builder providerConfig(@Nullable Output<UserProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(UserProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

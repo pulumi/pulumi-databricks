@@ -33,15 +33,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cpuEnv, err := databricks.NewWorkspaceBaseEnvironment(ctx, "cpu_env", &databricks.WorkspaceBaseEnvironmentArgs{
-//				DisplayName: "my-cpu-environment",
-//				Filepath:    "/Volumes/catalog/schema/volume/cpu-environment.yaml",
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewDefaultWorkspaceBaseEnvironment(ctx, "this", &databricks.DefaultWorkspaceBaseEnvironmentArgs{
-//				CpuWorkspaceBaseEnvironment: cpuEnv.Name,
+//			_, err := databricks.NewEnvironmentsDefaultWorkspaceBaseEnvironment(ctx, "this", &databricks.EnvironmentsDefaultWorkspaceBaseEnvironmentArgs{
+//				CpuWorkspaceBaseEnvironment: pulumi.String("workspace-base-environments/my-base-env-12345"),
 //			})
 //			if err != nil {
 //				return err
@@ -66,22 +59,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cpuEnv, err := databricks.NewWorkspaceBaseEnvironment(ctx, "cpu_env", &databricks.WorkspaceBaseEnvironmentArgs{
-//				DisplayName: "my-cpu-environment",
-//				Filepath:    "/Volumes/catalog/schema/volume/cpu-environment.yaml",
+//			cpuEnv, err := databricks.NewEnvironmentsWorkspaceBaseEnvironment(ctx, "cpu_env", &databricks.EnvironmentsWorkspaceBaseEnvironmentArgs{
+//				DisplayName: pulumi.String("my-cpu-environment"),
+//				Filepath:    pulumi.String("/Volumes/catalog/schema/volume/cpu-environment.yaml"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			gpuEnv, err := databricks.NewWorkspaceBaseEnvironment(ctx, "gpu_env", &databricks.WorkspaceBaseEnvironmentArgs{
-//				DisplayName:         "my-gpu-environment",
-//				Filepath:            "/Volumes/catalog/schema/volume/gpu-environment.yaml",
-//				BaseEnvironmentType: "GPU_LARGE",
+//			gpuEnv, err := databricks.NewEnvironmentsWorkspaceBaseEnvironment(ctx, "gpu_env", &databricks.EnvironmentsWorkspaceBaseEnvironmentArgs{
+//				DisplayName:         pulumi.String("my-gpu-environment"),
+//				Filepath:            pulumi.String("/Volumes/catalog/schema/volume/gpu-environment.yaml"),
+//				BaseEnvironmentType: pulumi.String("GPU"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewDefaultWorkspaceBaseEnvironment(ctx, "this", &databricks.DefaultWorkspaceBaseEnvironmentArgs{
+//			_, err = databricks.NewEnvironmentsDefaultWorkspaceBaseEnvironment(ctx, "this", &databricks.EnvironmentsDefaultWorkspaceBaseEnvironmentArgs{
 //				CpuWorkspaceBaseEnvironment: cpuEnv.Name,
 //				GpuWorkspaceBaseEnvironment: gpuEnv.Name,
 //			})
@@ -108,7 +101,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewDefaultWorkspaceBaseEnvironment(ctx, "this", nil)
+//			_, err := databricks.NewEnvironmentsDefaultWorkspaceBaseEnvironment(ctx, "this", nil)
 //			if err != nil {
 //				return err
 //			}

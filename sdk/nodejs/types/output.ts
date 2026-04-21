@@ -36,6 +36,10 @@ export interface AccessControlRuleSetGrantRule {
     role: string;
 }
 
+export interface AccessControlRuleSetProviderConfig {
+    workspaceId: string;
+}
+
 export interface AccountFederationPolicyOidcPolicy {
     /**
      * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
@@ -99,16 +103,10 @@ export interface AccountNetworkPolicyEgressNetworkAccess {
      * Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      */
     policyEnforcement?: outputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
-    /**
-     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-     */
     restrictionMode: string;
 }
 
 export interface AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
-    /**
-     * The internet destination to which access will be allowed. Format dependent on the destination type
-     */
     destination?: string;
     /**
      * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
@@ -145,6 +143,330 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
      * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: string;
+}
+
+export interface AccountNetworkPolicyIngress {
+    publicAccess?: outputs.AccountNetworkPolicyIngressPublicAccess;
+}
+
+export interface AccountNetworkPolicyIngressDryRun {
+    publicAccess?: outputs.AccountNetworkPolicyIngressDryRunPublicAccess;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccess {
+    allowRules?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRule[];
+    denyRules?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRule[];
+    restrictionMode: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRule {
+    authentication?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication;
+    destination?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination;
+    /**
+     * User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    origin?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthenticationIdentity {
+    principalId?: string;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
+    allDestinations?: boolean;
+    workspaceApi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * Workspace destinations
+     */
+    workspaceUi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin {
+    /**
+     * Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges;
+    /**
+     * Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRule {
+    authentication?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication;
+    destination?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination;
+    /**
+     * User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    origin?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthenticationIdentity {
+    principalId?: string;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
+    allDestinations?: boolean;
+    workspaceApi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * Workspace destinations
+     */
+    workspaceUi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin {
+    /**
+     * Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges;
+    /**
+     * Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface AccountNetworkPolicyIngressPublicAccess {
+    allowRules?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRule[];
+    denyRules?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRule[];
+    restrictionMode: string;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRule {
+    authentication?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication;
+    destination?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestination;
+    /**
+     * User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    origin?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOrigin;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationIdentity {
+    principalId?: string;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
+    allDestinations?: boolean;
+    workspaceApi?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * Workspace destinations
+     */
+    workspaceUi?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi {
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOrigin {
+    /**
+     * Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOriginExcludedIpRanges;
+    /**
+     * Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedIpRanges;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOriginExcludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRule {
+    authentication?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication;
+    destination?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestination;
+    /**
+     * User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    origin?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOrigin;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationIdentity {
+    principalId?: string;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
+    allDestinations?: boolean;
+    workspaceApi?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * Workspace destinations
+     */
+    workspaceUi?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi {
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleOrigin {
+    /**
+     * Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOriginExcludedIpRanges;
+    /**
+     * Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOriginIncludedIpRanges;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleOriginExcludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleOriginIncludedIpRanges {
+    /**
+     * We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
 }
 
 export interface AccountSettingUserPreferenceV2BooleanVal {
@@ -291,6 +613,11 @@ export interface AccountSettingV2EffectivePersonalCompute {
 
 export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
     /**
+     * When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: boolean;
+    /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
@@ -309,6 +636,11 @@ export interface AccountSettingV2PersonalCompute {
 }
 
 export interface AccountSettingV2RestrictWorkspaceAdmins {
+    /**
+     * When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: boolean;
     /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
@@ -745,6 +1077,11 @@ export interface AppResource {
 }
 
 export interface AppResourceApp {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name?: string;
+    permission?: string;
 }
 
 export interface AppResourceDatabase {
@@ -882,6 +1219,12 @@ export interface AppSpaceResource {
 }
 
 export interface AppSpaceResourceApp {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name?: string;
+    permission?: string;
 }
 
 export interface AppSpaceResourceDatabase {
@@ -1202,6 +1545,18 @@ export interface CatalogEffectivePredictiveOptimizationFlag {
     inheritedFromName?: string;
     inheritedFromType?: string;
     value: string;
+}
+
+export interface CatalogManagedEncryptionSettings {
+    azureEncryptionSettings?: outputs.CatalogManagedEncryptionSettingsAzureEncryptionSettings;
+    azureKeyVaultKeyId?: string;
+    customerManagedKeyId?: string;
+}
+
+export interface CatalogManagedEncryptionSettingsAzureEncryptionSettings {
+    azureCmkAccessConnectorId?: string;
+    azureCmkManagedIdentityId?: string;
+    azureTenantId: string;
 }
 
 export interface CatalogProviderConfig {
@@ -1798,6 +2153,13 @@ export interface CredentialDatabricksGcpServiceAccount {
      */
     email: string;
     privateKeyId: string;
+}
+
+export interface CredentialProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface CustomAppIntegrationTokenAccessPolicy {
@@ -2506,6 +2868,85 @@ export interface EnvironmentsWorkspaceBaseEnvironmentProviderConfig {
     workspaceId: string;
 }
 
+export interface ExternalLocationEffectiveFileEventQueue {
+    /**
+     * Configuration for managed Azure Queue Storage queue.
+     */
+    managedAqs?: outputs.ExternalLocationEffectiveFileEventQueueManagedAqs;
+    /**
+     * Configuration for managed Google Cloud Pub/Sub queue.
+     */
+    managedPubsub?: outputs.ExternalLocationEffectiveFileEventQueueManagedPubsub;
+    /**
+     * Configuration for managed Amazon SQS queue.
+     */
+    managedSqs?: outputs.ExternalLocationEffectiveFileEventQueueManagedSqs;
+    /**
+     * Configuration for provided Azure Storage Queue.
+     */
+    providedAqs?: outputs.ExternalLocationEffectiveFileEventQueueProvidedAqs;
+    /**
+     * Configuration for provided Google Cloud Pub/Sub queue.
+     */
+    providedPubsub?: outputs.ExternalLocationEffectiveFileEventQueueProvidedPubsub;
+    /**
+     * Configuration for provided Amazon SQS queue.
+     */
+    providedSqs?: outputs.ExternalLocationEffectiveFileEventQueueProvidedSqs;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueManagedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    /**
+     * The name of the Azure resource group.
+     */
+    resourceGroup?: string;
+    /**
+     * The Azure subscription ID.
+     */
+    subscriptionId?: string;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueManagedPubsub {
+    managedResourceId?: string;
+    /**
+     * The name of the subscription.
+     */
+    subscriptionName?: string;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueManagedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueProvidedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    /**
+     * The name of the Azure resource group.
+     */
+    resourceGroup?: string;
+    /**
+     * The Azure subscription ID.
+     */
+    subscriptionId?: string;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueProvidedPubsub {
+    managedResourceId?: string;
+    /**
+     * The name of the subscription.
+     */
+    subscriptionName?: string;
+}
+
+export interface ExternalLocationEffectiveFileEventQueueProvidedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+}
+
 export interface ExternalLocationEncryptionDetails {
     /**
      * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
@@ -2642,6 +3083,10 @@ export interface FeatureEngineeringFeatureFunction {
      */
     aggregationFunction?: outputs.FeatureEngineeringFeatureFunctionAggregationFunction;
     /**
+     * Selects the latest value of a single column in a data source
+     */
+    columnSelection?: outputs.FeatureEngineeringFeatureFunctionColumnSelection;
+    /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      */
@@ -2764,6 +3209,13 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp {
     input: string;
 }
 
+export interface FeatureEngineeringFeatureFunctionColumnSelection {
+    /**
+     * Column name from source to select as the feature value
+     */
+    column: string;
+}
+
 export interface FeatureEngineeringFeatureFunctionExtraParameter {
     /**
      * The name of the parameter
@@ -2805,8 +3257,18 @@ export interface FeatureEngineeringFeatureProviderConfig {
 }
 
 export interface FeatureEngineeringFeatureSource {
+    /**
+     * A Delta table data source
+     */
     deltaTableSource?: outputs.FeatureEngineeringFeatureSourceDeltaTableSource;
+    /**
+     * A Kafka stream data source
+     */
     kafkaSource?: outputs.FeatureEngineeringFeatureSourceKafkaSource;
+    /**
+     * A request-time data source
+     */
+    requestSource?: outputs.FeatureEngineeringFeatureSourceRequestSource;
 }
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
@@ -2863,18 +3325,40 @@ export interface FeatureEngineeringFeatureSourceKafkaSource {
 
 export interface FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
     /**
-     * String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      */
     variantExprPath: string;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
     /**
-     * String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      */
     variantExprPath: string;
+}
+
+export interface FeatureEngineeringFeatureSourceRequestSource {
+    /**
+     * A flat schema with scalar-typed fields only
+     */
+    flatSchema?: outputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchema;
+}
+
+export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchema {
+    /**
+     * The list of fields in this schema
+     */
+    fields: outputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField[];
+}
+
+export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
+    /**
+     * The scalar data type of the field. Possible values are: `BINARY`, `BOOLEAN`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `INTEGER`, `LONG`, `SHORT`, `STRING`, `TIMESTAMP`
+     */
+    dataType: string;
+    name: string;
 }
 
 export interface FeatureEngineeringFeatureTimeWindow {
@@ -3158,6 +3642,16 @@ export interface GetAccountNetworkPoliciesItem {
      */
     egress: outputs.GetAccountNetworkPoliciesItemEgress;
     /**
+     * (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
+     */
+    ingress: outputs.GetAccountNetworkPoliciesItemIngress;
+    /**
+     * (CustomerFacingIngressNetworkPolicy) - The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     */
+    ingressDryRun: outputs.GetAccountNetworkPoliciesItemIngressDryRun;
+    /**
      * (string) - The unique identifier for the network policy
      */
     networkPolicyId: string;
@@ -3237,6 +3731,450 @@ export interface GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforceme
     enforcementMode?: string;
 }
 
+export interface GetAccountNetworkPoliciesItemIngress {
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicAccess)
+     */
+    publicAccess?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccess;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRun {
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicAccess)
+     */
+    publicAccess?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccess;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccess {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    allowRules?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRule[];
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    denyRules?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRule[];
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestination;
+    /**
+     * (string) - User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleOrigin;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestination {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination) - Workspace destinations
+     */
+    workspaceUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleOrigin {
+    /**
+     * (boolean) - Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestination;
+    /**
+     * (string) - User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleOrigin;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestination {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination) - Workspace destinations
+     */
+    workspaceUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleOrigin {
+    /**
+     * (boolean) - Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccess {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    allowRules?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRule[];
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    denyRules?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRule[];
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestination;
+    /**
+     * (string) - User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleOrigin;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestination {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination) - Workspace destinations
+     */
+    workspaceUi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleOrigin {
+    /**
+     * (boolean) - Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleOriginExcludedIpRanges;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleOriginIncludedIpRanges;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleOriginExcludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleOriginIncludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestination;
+    /**
+     * (string) - User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleOrigin;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestination {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination) - Workspace destinations
+     */
+    workspaceUi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleOrigin {
+    /**
+     * (boolean) - Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleOriginExcludedIpRanges;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleOriginIncludedIpRanges;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleOriginExcludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleOriginIncludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
 export interface GetAccountNetworkPolicyEgress {
     /**
      * (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
@@ -3309,6 +4247,450 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
      * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: string;
+}
+
+export interface GetAccountNetworkPolicyIngress {
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicAccess)
+     */
+    publicAccess?: outputs.GetAccountNetworkPolicyIngressPublicAccess;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRun {
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicAccess)
+     */
+    publicAccess?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccess;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccess {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    allowRules?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRule[];
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    denyRules?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRule[];
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination;
+    /**
+     * (string) - User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination) - Workspace destinations
+     */
+    workspaceUi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin {
+    /**
+     * (boolean) - Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination;
+    /**
+     * (string) - User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination) - Workspace destinations
+     */
+    workspaceUi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin {
+    /**
+     * (boolean) - Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccess {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    allowRules?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRule[];
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    denyRules?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRule[];
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessAllowRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestination;
+    /**
+     * (string) - User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleOrigin;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination) - Workspace destinations
+     */
+    workspaceUi?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleOrigin {
+    /**
+     * (boolean) - Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleOriginExcludedIpRanges;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedIpRanges;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleOriginExcludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessDenyRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestination;
+    /**
+     * (string) - User-provided name for this ingress rule. Helps identify which rule
+     * caused a request to be denied or dry-run denied
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleOrigin;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination) - Workspace destinations
+     */
+    workspaceUi?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleOrigin {
+    /**
+     * (boolean) - Matches all IPv4 and IPv6 ranges (both public and private)
+     */
+    allIpRanges?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Excluded means: all public IP ranges except this one
+     */
+    excludedIpRanges?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleOriginExcludedIpRanges;
+    /**
+     * (CustomerFacingIngressNetworkPolicyIpRanges) - Will not allow IP ranges with private IPs
+     */
+    includedIpRanges?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleOriginIncludedIpRanges;
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleOriginExcludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleOriginIncludedIpRanges {
+    /**
+     * (list of string) - We only support IPv4 and IPv4 CIDR notation for now
+     */
+    ipRanges?: string[];
 }
 
 export interface GetAccountSettingUserPreferenceV2BooleanVal {
@@ -3539,6 +4921,11 @@ export interface GetAccountSettingV2EffectivePersonalCompute {
 
 export interface GetAccountSettingV2EffectiveRestrictWorkspaceAdmins {
     /**
+     * (boolean) - When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: boolean;
+    /**
      * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
@@ -3566,6 +4953,11 @@ export interface GetAccountSettingV2PersonalCompute {
 }
 
 export interface GetAccountSettingV2RestrictWorkspaceAdmins {
+    /**
+     * (boolean) - When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: boolean;
     /**
      * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
@@ -4287,6 +5679,14 @@ export interface GetAppAppResource {
 }
 
 export interface GetAppAppResourceApp {
+    /**
+     * The name of the app.
+     */
+    name?: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission?: string;
 }
 
 export interface GetAppAppResourceDatabase {
@@ -4477,6 +5877,15 @@ export interface GetAppSpaceResource {
 }
 
 export interface GetAppSpaceResourceApp {
+    /**
+     * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     */
+    name?: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission?: string;
 }
 
 export interface GetAppSpaceResourceDatabase {
@@ -4753,6 +6162,14 @@ export interface GetAppSpacesSpaceResource {
 }
 
 export interface GetAppSpacesSpaceResourceApp {
+    /**
+     * (string) - Name of the serving endpoint to grant permission on
+     */
+    name?: string;
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission?: string;
 }
 
 export interface GetAppSpacesSpaceResourceDatabase {
@@ -5181,6 +6598,14 @@ export interface GetAppsAppResource {
 }
 
 export interface GetAppsAppResourceApp {
+    /**
+     * The name of Genie Space.
+     */
+    name?: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission?: string;
 }
 
 export interface GetAppsAppResourceDatabase {
@@ -5689,6 +7114,7 @@ export interface GetCatalogCatalogInfo {
      * Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
      */
     isolationMode?: string;
+    managedEncryptionSettings?: outputs.GetCatalogCatalogInfoManagedEncryptionSettings;
     /**
      * Unique identifier of parent metastore.
      */
@@ -5744,6 +7170,18 @@ export interface GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
     inheritedFromName?: string;
     inheritedFromType?: string;
     value: string;
+}
+
+export interface GetCatalogCatalogInfoManagedEncryptionSettings {
+    azureEncryptionSettings?: outputs.GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettings;
+    azureKeyVaultKeyId?: string;
+    customerManagedKeyId?: string;
+}
+
+export interface GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettings {
+    azureCmkAccessConnectorId?: string;
+    azureCmkManagedIdentityId?: string;
+    azureTenantId: string;
 }
 
 export interface GetCatalogCatalogInfoProvisioningInfo {
@@ -8124,7 +9562,7 @@ export interface GetEntityTagAssignmentsTagAssignment {
      */
     entityName: string;
     /**
-     * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * The type of the entity to which the tag is assigned
      */
     entityType: string;
     /**
@@ -8264,6 +9702,7 @@ export interface GetExternalLocationExternalLocationInfo {
      */
     credentialName?: string;
     effectiveEnableFileEvents?: boolean;
+    effectiveFileEventQueue?: outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueue;
     enableFileEvents?: boolean;
     /**
      * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -8300,6 +9739,49 @@ export interface GetExternalLocationExternalLocationInfo {
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      */
     url?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueue {
+    managedAqs?: outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqs;
+    managedPubsub?: outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsub;
+    managedSqs?: outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqs;
+    providedAqs?: outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqs;
+    providedPubsub?: outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsub;
+    providedSqs?: outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqs;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    resourceGroup?: string;
+    subscriptionId?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsub {
+    managedResourceId?: string;
+    subscriptionName?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    resourceGroup?: string;
+    subscriptionId?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsub {
+    managedResourceId?: string;
+    subscriptionName?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetails {
@@ -8463,7 +9945,12 @@ export interface GetExternalMetadatasProviderConfig {
 
 export interface GetFeatureEngineeringFeatureEntity {
     /**
-     * (string) - The name of the timeseries column
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
 }
@@ -8473,6 +9960,10 @@ export interface GetFeatureEngineeringFeatureFunction {
      * (AggregationFunction) - An aggregation function applied over a time window
      */
     aggregationFunction?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunction;
+    /**
+     * (ColumnSelection) - Selects the latest value of a single column in a data source
+     */
+    columnSelection?: outputs.GetFeatureEngineeringFeatureFunctionColumnSelection;
     /**
      * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -8691,6 +10182,13 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionVarSamp 
     input: string;
 }
 
+export interface GetFeatureEngineeringFeatureFunctionColumnSelection {
+    /**
+     * (string) - Column name from source to select as the feature value
+     */
+    column: string;
+}
+
 export interface GetFeatureEngineeringFeatureFunctionExtraParameter {
     /**
      * (string) - The name of the parameter
@@ -8733,13 +10231,17 @@ export interface GetFeatureEngineeringFeatureProviderConfig {
 
 export interface GetFeatureEngineeringFeatureSource {
     /**
-     * (DeltaTableSource)
+     * (DeltaTableSource) - A Delta table data source
      */
     deltaTableSource?: outputs.GetFeatureEngineeringFeatureSourceDeltaTableSource;
     /**
-     * (KafkaSource)
+     * (KafkaSource) - A Kafka stream data source
      */
     kafkaSource?: outputs.GetFeatureEngineeringFeatureSourceKafkaSource;
+    /**
+     * (RequestSource) - A request-time data source
+     */
+    requestSource?: outputs.GetFeatureEngineeringFeatureSourceRequestSource;
 }
 
 export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
@@ -8786,7 +10288,12 @@ export interface GetFeatureEngineeringFeatureSourceKafkaSource {
      */
     filterCondition?: string;
     /**
-     * (string) - The name of the timeseries column
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
     /**
@@ -8798,18 +10305,48 @@ export interface GetFeatureEngineeringFeatureSourceKafkaSource {
 
 export interface GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
     /**
-     * (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      */
     variantExprPath: string;
 }
 
 export interface GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
     /**
-     * (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      */
     variantExprPath: string;
+}
+
+export interface GetFeatureEngineeringFeatureSourceRequestSource {
+    /**
+     * (FlatSchema) - A flat schema with scalar-typed fields only
+     */
+    flatSchema?: outputs.GetFeatureEngineeringFeatureSourceRequestSourceFlatSchema;
+}
+
+export interface GetFeatureEngineeringFeatureSourceRequestSourceFlatSchema {
+    /**
+     * (list of FieldDefinition) - The list of fields in this schema
+     */
+    fields: outputs.GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaField[];
+}
+
+export interface GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
+    /**
+     * (string) - The scalar data type of the field. Possible values are: `BINARY`, `BOOLEAN`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `INTEGER`, `LONG`, `SHORT`, `STRING`, `TIMESTAMP`
+     */
+    dataType: string;
+    /**
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
+     */
+    name: string;
 }
 
 export interface GetFeatureEngineeringFeatureTimeWindow {
@@ -8858,7 +10395,12 @@ export interface GetFeatureEngineeringFeatureTimeWindowTumbling {
 
 export interface GetFeatureEngineeringFeatureTimeseriesColumn {
     /**
-     * (string) - The name of the timeseries column
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
 }
@@ -8918,7 +10460,12 @@ export interface GetFeatureEngineeringFeaturesFeature {
 
 export interface GetFeatureEngineeringFeaturesFeatureEntity {
     /**
-     * (string) - The name of the timeseries column
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
 }
@@ -8928,6 +10475,10 @@ export interface GetFeatureEngineeringFeaturesFeatureFunction {
      * (AggregationFunction) - An aggregation function applied over a time window
      */
     aggregationFunction?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction;
+    /**
+     * (ColumnSelection) - Selects the latest value of a single column in a data source
+     */
+    columnSelection?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionColumnSelection;
     /**
      * (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -9146,6 +10697,13 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
     input: string;
 }
 
+export interface GetFeatureEngineeringFeaturesFeatureFunctionColumnSelection {
+    /**
+     * (string) - Column name from source to select as the feature value
+     */
+    column: string;
+}
+
 export interface GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter {
     /**
      * (string) - The name of the parameter
@@ -9188,13 +10746,17 @@ export interface GetFeatureEngineeringFeaturesFeatureProviderConfig {
 
 export interface GetFeatureEngineeringFeaturesFeatureSource {
     /**
-     * (DeltaTableSource)
+     * (DeltaTableSource) - A Delta table data source
      */
     deltaTableSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource;
     /**
-     * (KafkaSource)
+     * (KafkaSource) - A Kafka stream data source
      */
     kafkaSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSource;
+    /**
+     * (RequestSource) - A request-time data source
+     */
+    requestSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSource;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
@@ -9241,7 +10803,12 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
      */
     filterCondition?: string;
     /**
-     * (string) - The name of the timeseries column
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
     /**
@@ -9253,18 +10820,48 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier {
     /**
-     * (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      */
     variantExprPath: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
     /**
-     * (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * (string) - String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      */
     variantExprPath: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceRequestSource {
+    /**
+     * (FlatSchema) - A flat schema with scalar-typed fields only
+     */
+    flatSchema?: outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchema;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchema {
+    /**
+     * (list of FieldDefinition) - The list of fields in this schema
+     */
+    fields: outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchemaField[];
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSchemaField {
+    /**
+     * (string) - The scalar data type of the field. Possible values are: `BINARY`, `BOOLEAN`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `INTEGER`, `LONG`, `SHORT`, `STRING`, `TIMESTAMP`
+     */
+    dataType: string;
+    /**
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
+     */
+    name: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
@@ -9313,7 +10910,12 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowTumbling {
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeseriesColumn {
     /**
-     * (string) - The name of the timeseries column
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
 }
@@ -9600,6 +11202,10 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
      * Filter by feature name. If specified, only materialized features materialized from this feature will be returned
      */
     featureName: string;
+    /**
+     * (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     */
+    isOnline: boolean;
     /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
@@ -12731,6 +14337,45 @@ export interface GetPostgresBranchesProviderConfig {
     workspaceId: string;
 }
 
+export interface GetPostgresCatalogProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresCatalogSpec {
+    /**
+     * (string) - The resource path of the branch associated with the catalog.
+     */
+    branch?: string;
+    /**
+     * (boolean) - If set to true, the specified postgresDatabase is created on behalf of the calling user
+     * if it does not already exist. In this case, the calling user has a role created for
+     * them in Postgres if they do not already have one.
+     */
+    createDatabaseIfMissing: boolean;
+    /**
+     * (string) - The name of the Postgres database associated with the catalog
+     */
+    postgresDatabase: string;
+}
+
+export interface GetPostgresCatalogStatus {
+    /**
+     * (string) - The resource path of the branch associated with the catalog.
+     */
+    branch: string;
+    /**
+     * (string) - The name of the Postgres database associated with the catalog
+     */
+    postgresDatabase: string;
+    /**
+     * (string) - The resource path of the project associated with the catalog.
+     */
+    project: string;
+}
+
 export interface GetPostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -13236,6 +14881,10 @@ export interface GetPostgresProjectSpec {
      */
     customTags?: outputs.GetPostgresProjectSpecCustomTag[];
     /**
+     * (string) - The full resource path of the default branch of the project
+     */
+    defaultBranch?: string;
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings?: outputs.GetPostgresProjectSpecDefaultEndpointSettings;
@@ -13306,6 +14955,10 @@ export interface GetPostgresProjectStatus {
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
     customTags: outputs.GetPostgresProjectStatusCustomTag[];
+    /**
+     * (string) - The full resource path of the default branch of the project
+     */
+    defaultBranch: string;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
@@ -13454,6 +15107,10 @@ export interface GetPostgresProjectsProjectSpec {
      */
     customTags?: outputs.GetPostgresProjectsProjectSpecCustomTag[];
     /**
+     * (string) - The full resource path of the default branch of the project
+     */
+    defaultBranch?: string;
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings?: outputs.GetPostgresProjectsProjectSpecDefaultEndpointSettings;
@@ -13524,6 +15181,10 @@ export interface GetPostgresProjectsProjectStatus {
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
     customTags: outputs.GetPostgresProjectsProjectStatusCustomTag[];
+    /**
+     * (string) - The full resource path of the default branch of the project
+     */
+    defaultBranch: string;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
@@ -13801,6 +15462,168 @@ export interface GetPostgresRolesRoleStatusAttributes {
      * (boolean)
      */
     createrole?: boolean;
+}
+
+export interface GetPostgresSyncedTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresSyncedTableSpec {
+    /**
+     * (string) - The full resource name the branch associated with the table.
+     */
+    branch?: string;
+    /**
+     * (boolean) - If true, the synced table's logical database and schema resources in PG
+     * will be created if they do not already exist.
+     * The request will fail if this is false and the database/schema do not exist.
+     */
+    createDatabaseObjectsIfMissing?: boolean;
+    /**
+     * (string) - ID of an existing pipeline to bin-pack this synced table into.
+     * At most one of existingPipelineId and newPipelineSpec should be defined.
+     */
+    existingPipelineId?: string;
+    /**
+     * (NewPipelineSpec) - Specification for creating a new pipeline.
+     * At most one of existingPipelineId and newPipelineSpec should be defined.
+     */
+    newPipelineSpec?: outputs.GetPostgresSyncedTableSpecNewPipelineSpec;
+    /**
+     * (string) - The Postgres database name where the synced table will be created in.
+     */
+    postgresDatabase?: string;
+    /**
+     * (list of string) - Primary Key columns to be used for data insert/update in the destination
+     */
+    primaryKeyColumns?: string[];
+    /**
+     * (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     */
+    schedulingPolicy?: string;
+    /**
+     * (string) - Three-part (catalog, schema, table) name of the source Delta table.
+     */
+    sourceTableFullName?: string;
+    /**
+     * (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+     */
+    timeseriesKey?: string;
+}
+
+export interface GetPostgresSyncedTableSpecNewPipelineSpec {
+    /**
+     * (string) - Budget policy to set on the newly created pipeline
+     */
+    budgetPolicyId?: string;
+    /**
+     * (string) - UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
+     * This needs to be a standard catalog where the user has permissions to create Delta tables
+     */
+    storageCatalog?: string;
+    /**
+     * (string) - UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
+     * This needs to be in the standard catalog where the user has permissions to create Delta tables
+     */
+    storageSchema?: string;
+}
+
+export interface GetPostgresSyncedTableStatus {
+    /**
+     * (string) - The state of the synced table. Possible values are: `SYNCED_TABLE_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+     */
+    detailedState: string;
+    /**
+     * (integer) - The last source table Delta version that was successfully synced to the synced table
+     */
+    lastProcessedCommitVersion: number;
+    /**
+     * (SyncedTablePosition) - Summary of the last successful synchronization from source to destination
+     */
+    lastSync: outputs.GetPostgresSyncedTableStatusLastSync;
+    /**
+     * (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+     * table. This is when the data is available in the synced table
+     */
+    lastSyncTime: string;
+    /**
+     * (string) - A text description of the current state of the synced table
+     */
+    message: string;
+    /**
+     * (SyncedTablePipelineProgress)
+     */
+    ongoingSyncProgress: outputs.GetPostgresSyncedTableStatusOngoingSyncProgress;
+    /**
+     * (string) - ID of the associated pipeline
+     */
+    pipelineId: string;
+    /**
+     * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+     */
+    provisioningPhase: string;
+    /**
+     * (string) - The provisioning state of the synced table entity in Unity Catalog. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
+     */
+    unityCatalogProvisioningState: string;
+}
+
+export interface GetPostgresSyncedTableStatusLastSync {
+    /**
+     * (DeltaTableSyncInfo)
+     */
+    deltaTableSyncInfo: outputs.GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo;
+    /**
+     * (string) - The end timestamp of the most recent successful synchronization.
+     * This is the time when the data is available in the synced table
+     */
+    syncEndTime: string;
+    /**
+     * (string) - The starting timestamp of the most recent successful synchronization from the source table
+     * to the destination (synced) table.
+     * Note this is the starting timestamp of the sync operation, not the end time.
+     * E.g., for a batch, this is the time when the sync operation started
+     */
+    syncStartTime: string;
+}
+
+export interface GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo {
+    /**
+     * (string) - The timestamp when the above Delta version was committed in the source Delta table.
+     * Note: This is the Delta commit time, not the time the data was written to the synced table
+     */
+    deltaCommitTime: string;
+    /**
+     * (integer) - The Delta Lake commit version that was last successfully synced
+     */
+    deltaCommitVersion: number;
+}
+
+export interface GetPostgresSyncedTableStatusOngoingSyncProgress {
+    /**
+     * (number) - The estimated time remaining to complete this update in seconds
+     */
+    estimatedCompletionTimeSeconds: number;
+    /**
+     * (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+     * have completely processed this version yet
+     */
+    latestVersionCurrentlyProcessing: number;
+    /**
+     * (number) - The completion ratio of this update. This is a number between 0 and 1
+     */
+    syncProgressCompletion: number;
+    /**
+     * (integer) - The number of rows that have been synced in this update
+     */
+    syncedRowCount: number;
+    /**
+     * (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+     */
+    totalRowCount: number;
 }
 
 export interface GetQualityMonitorV2AnomalyDetectionConfig {
@@ -15318,6 +17141,13 @@ export interface GetUserProviderConfig {
     workspaceId: string;
 }
 
+export interface GetUsersProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetUsersUser {
     /**
      * Boolean that represents if this user is active.
@@ -15788,6 +17618,11 @@ export interface GetWorkspaceSettingV2EffectivePersonalCompute {
 
 export interface GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
     /**
+     * (boolean) - When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: boolean;
+    /**
      * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
@@ -15822,6 +17657,11 @@ export interface GetWorkspaceSettingV2ProviderConfig {
 }
 
 export interface GetWorkspaceSettingV2RestrictWorkspaceAdmins {
+    /**
+     * (boolean) - When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: boolean;
     /**
      * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
@@ -15866,6 +17706,22 @@ export interface GrantsGrant {
 }
 
 export interface GrantsProviderConfig {
+    workspaceId: string;
+}
+
+export interface GroupInstanceProfileProviderConfig {
+    workspaceId: string;
+}
+
+export interface GroupMemberProviderConfig {
+    workspaceId: string;
+}
+
+export interface GroupProviderConfig {
+    workspaceId: string;
+}
+
+export interface GroupRoleProviderConfig {
     workspaceId: string;
 }
 
@@ -19350,6 +21206,13 @@ export interface MaterializedFeaturesFeatureTagProviderConfig {
     workspaceId: string;
 }
 
+export interface MetastoreAssignmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface MetastoreDataAccessAwsIamRole {
     externalId: string;
     roleArn: string;
@@ -19383,6 +21246,20 @@ export interface MetastoreDataAccessGcpServiceAccountKey {
     email: string;
     privateKey: string;
     privateKeyId: string;
+}
+
+export interface MetastoreDataAccessProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface MetastoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface MetastoreProviderProviderConfig {
@@ -20320,6 +22197,11 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
     kmsKeyId: string;
 }
 
+export interface MwsNccPrivateEndpointRuleGcpEndpoint {
+    pscEndpointUri?: string;
+    serviceAttachment?: string;
+}
+
 export interface MwsNetworkConnectivityConfigEgressConfig {
     /**
      * block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
@@ -20436,11 +22318,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -20507,11 +22389,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.112.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -21114,11 +22996,93 @@ export interface PipelineIngestionDefinitionObjectReportTableConfigurationWorkda
 }
 
 export interface PipelineIngestionDefinitionObjectSchema {
+    connectorOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions;
     destinationCatalog: string;
     destinationSchema: string;
     sourceCatalog?: string;
     sourceSchema: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
+    gdriveOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions;
+    googleAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions;
+    sharepointOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions;
+    tiktokAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions {
+    entityType?: string;
+    fileIngestionOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptions;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptions {
+    corruptRecordColumn?: string;
+    fileFilters?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter[];
+    format?: string;
+    formatOptions?: {[key: string]: string};
+    ignoreCorruptFiles?: boolean;
+    inferColumnTypes?: boolean;
+    readerCaseSensitive?: boolean;
+    rescuedDataColumn?: string;
+    schemaEvolutionMode?: string;
+    schemaHints?: string;
+    singleVariantColumn?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: string;
+    modifiedBefore?: string;
+    pathFilter?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions {
+    lookbackWindowDays?: number;
+    managerAccountId: string;
+    syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions {
+    entityType?: string;
+    fileIngestionOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions {
+    corruptRecordColumn?: string;
+    fileFilters?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter[];
+    format?: string;
+    formatOptions?: {[key: string]: string};
+    ignoreCorruptFiles?: boolean;
+    inferColumnTypes?: boolean;
+    readerCaseSensitive?: boolean;
+    rescuedDataColumn?: string;
+    schemaEvolutionMode?: string;
+    schemaHints?: string;
+    singleVariantColumn?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: string;
+    modifiedBefore?: string;
+    pathFilter?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions {
+    dataLevel?: string;
+    dimensions?: string[];
+    lookbackWindowDays?: number;
+    metrics?: string[];
+    queryLifetime?: boolean;
+    reportType?: string;
+    syncStartDate?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
@@ -21157,6 +23121,7 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkda
 }
 
 export interface PipelineIngestionDefinitionObjectTable {
+    connectorOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptions;
     destinationCatalog: string;
     destinationSchema: string;
     destinationTable?: string;
@@ -21164,6 +23129,87 @@ export interface PipelineIngestionDefinitionObjectTable {
     sourceSchema?: string;
     sourceTable: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionObjectTableTableConfiguration;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
+    gdriveOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions;
+    googleAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions;
+    sharepointOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions;
+    tiktokAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions {
+    entityType?: string;
+    fileIngestionOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptions;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptions {
+    corruptRecordColumn?: string;
+    fileFilters?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter[];
+    format?: string;
+    formatOptions?: {[key: string]: string};
+    ignoreCorruptFiles?: boolean;
+    inferColumnTypes?: boolean;
+    readerCaseSensitive?: boolean;
+    rescuedDataColumn?: string;
+    schemaEvolutionMode?: string;
+    schemaHints?: string;
+    singleVariantColumn?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: string;
+    modifiedBefore?: string;
+    pathFilter?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions {
+    lookbackWindowDays?: number;
+    managerAccountId: string;
+    syncStartDate?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions {
+    entityType?: string;
+    fileIngestionOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptions;
+    /**
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
+     */
+    url?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptions {
+    corruptRecordColumn?: string;
+    fileFilters?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter[];
+    format?: string;
+    formatOptions?: {[key: string]: string};
+    ignoreCorruptFiles?: boolean;
+    inferColumnTypes?: boolean;
+    readerCaseSensitive?: boolean;
+    rescuedDataColumn?: string;
+    schemaEvolutionMode?: string;
+    schemaHints?: string;
+    singleVariantColumn?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter {
+    modifiedAfter?: string;
+    modifiedBefore?: string;
+    pathFilter?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions {
+    dataLevel?: string;
+    dimensions?: string[];
+    lookbackWindowDays?: number;
+    metrics?: string[];
+    queryLifetime?: boolean;
+    reportType?: string;
+    syncStartDate?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
@@ -21496,6 +23542,47 @@ export interface PostgresBranchStatus {
     stateChangeTime: string;
 }
 
+export interface PostgresCatalogProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface PostgresCatalogSpec {
+    /**
+     * (string) - The resource path of the branch associated with the catalog.
+     */
+    branch?: string;
+    /**
+     * If set to true, the specified postgresDatabase is created on behalf of the calling user
+     * if it does not already exist. In this case, the calling user has a role created for
+     * them in Postgres if they do not already have one.
+     *
+     * Defaults to false, meaning that the request fails if the specified postgresDatabase does not already exist
+     */
+    createDatabaseIfMissing: boolean;
+    /**
+     * (string) - The name of the Postgres database associated with the catalog
+     */
+    postgresDatabase: string;
+}
+
+export interface PostgresCatalogStatus {
+    /**
+     * (string) - The resource path of the branch associated with the catalog.
+     */
+    branch: string;
+    /**
+     * (string) - The name of the Postgres database associated with the catalog
+     */
+    postgresDatabase: string;
+    /**
+     * (string) - The resource path of the project associated with the catalog.
+     */
+    project: string;
+}
+
 export interface PostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -21696,6 +23783,10 @@ export interface PostgresProjectSpec {
      */
     customTags?: outputs.PostgresProjectSpecCustomTag[];
     /**
+     * (string) - The full resource path of the default branch of the project
+     */
+    defaultBranch?: string;
+    /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
     defaultEndpointSettings?: outputs.PostgresProjectSpecDefaultEndpointSettings;
@@ -21766,6 +23857,10 @@ export interface PostgresProjectStatus {
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
     customTags: outputs.PostgresProjectStatusCustomTag[];
+    /**
+     * (string) - The full resource path of the default branch of the project
+     */
+    defaultBranch: string;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
@@ -21865,6 +23960,186 @@ export interface PostgresRoleStatusAttributes {
     bypassrls?: boolean;
     createdb?: boolean;
     createrole?: boolean;
+}
+
+export interface PostgresSyncedTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface PostgresSyncedTableSpec {
+    /**
+     * The full resource name the branch associated with the table.
+     *
+     * Format: "projects/{project_id}/branches/{branch_id}"
+     */
+    branch?: string;
+    /**
+     * If true, the synced table's logical database and schema resources in PG
+     * will be created if they do not already exist.
+     * The request will fail if this is false and the database/schema do not exist.
+     *
+     * Defaults to true if omitted
+     */
+    createDatabaseObjectsIfMissing?: boolean;
+    /**
+     * ID of an existing pipeline to bin-pack this synced table into.
+     * At most one of existingPipelineId and newPipelineSpec should be defined.
+     *
+     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     */
+    existingPipelineId?: string;
+    /**
+     * Specification for creating a new pipeline.
+     * At most one of existingPipelineId and newPipelineSpec should be defined.
+     *
+     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     */
+    newPipelineSpec?: outputs.PostgresSyncedTableSpecNewPipelineSpec;
+    /**
+     * The Postgres database name where the synced table will be created in.
+     *
+     * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
+     * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
+     *
+     * A value must be specified when creating a synced table inside a Standard Catalog
+     */
+    postgresDatabase?: string;
+    /**
+     * Primary Key columns to be used for data insert/update in the destination
+     */
+    primaryKeyColumns?: string[];
+    /**
+     * Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     */
+    schedulingPolicy?: string;
+    /**
+     * Three-part (catalog, schema, table) name of the source Delta table.
+     *
+     * For the corresponding destination table, use any of the two:
+     *
+     * * syncedTableId used at the creation of the SyncedTable
+     * * "name" consisting of "synced_tables/" prefix and the full name of the destination table
+     */
+    sourceTableFullName?: string;
+    /**
+     * Time series key to deduplicate (tie-break) rows with the same primary key
+     */
+    timeseriesKey?: string;
+}
+
+export interface PostgresSyncedTableSpecNewPipelineSpec {
+    /**
+     * Budget policy to set on the newly created pipeline
+     */
+    budgetPolicyId?: string;
+    /**
+     * UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
+     * This needs to be a standard catalog where the user has permissions to create Delta tables
+     */
+    storageCatalog?: string;
+    /**
+     * UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
+     * This needs to be in the standard catalog where the user has permissions to create Delta tables
+     */
+    storageSchema?: string;
+}
+
+export interface PostgresSyncedTableStatus {
+    /**
+     * (string) - The state of the synced table. Possible values are: `SYNCED_TABLE_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+     */
+    detailedState: string;
+    /**
+     * (integer) - The last source table Delta version that was successfully synced to the synced table
+     */
+    lastProcessedCommitVersion: number;
+    /**
+     * (SyncedTablePosition) - Summary of the last successful synchronization from source to destination
+     */
+    lastSync: outputs.PostgresSyncedTableStatusLastSync;
+    /**
+     * (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+     * table. This is when the data is available in the synced table
+     */
+    lastSyncTime: string;
+    /**
+     * (string) - A text description of the current state of the synced table
+     */
+    message: string;
+    /**
+     * (SyncedTablePipelineProgress)
+     */
+    ongoingSyncProgress: outputs.PostgresSyncedTableStatusOngoingSyncProgress;
+    /**
+     * (string) - ID of the associated pipeline
+     */
+    pipelineId: string;
+    /**
+     * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+     */
+    provisioningPhase: string;
+    /**
+     * (string) - The provisioning state of the synced table entity in Unity Catalog. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
+     */
+    unityCatalogProvisioningState: string;
+}
+
+export interface PostgresSyncedTableStatusLastSync {
+    /**
+     * (DeltaTableSyncInfo)
+     */
+    deltaTableSyncInfo: outputs.PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo;
+    /**
+     * (string) - The end timestamp of the most recent successful synchronization.
+     * This is the time when the data is available in the synced table
+     */
+    syncEndTime: string;
+    /**
+     * (string) - The starting timestamp of the most recent successful synchronization from the source table
+     * to the destination (synced) table.
+     * Note this is the starting timestamp of the sync operation, not the end time.
+     * E.g., for a batch, this is the time when the sync operation started
+     */
+    syncStartTime: string;
+}
+
+export interface PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo {
+    /**
+     * (string) - The timestamp when the above Delta version was committed in the source Delta table.
+     * Note: This is the Delta commit time, not the time the data was written to the synced table
+     */
+    deltaCommitTime: string;
+    /**
+     * (integer) - The Delta Lake commit version that was last successfully synced
+     */
+    deltaCommitVersion: number;
+}
+
+export interface PostgresSyncedTableStatusOngoingSyncProgress {
+    /**
+     * (number) - The estimated time remaining to complete this update in seconds
+     */
+    estimatedCompletionTimeSeconds: number;
+    /**
+     * (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+     * have completely processed this version yet
+     */
+    latestVersionCurrentlyProcessing: number;
+    /**
+     * (number) - The completion ratio of this update. This is a number between 0 and 1
+     */
+    syncProgressCompletion: number;
+    /**
+     * (integer) - The number of rows that have been synced in this update
+     */
+    syncedRowCount: number;
+    /**
+     * (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+     */
+    totalRowCount: number;
 }
 
 export interface QualityMonitorCustomMetric {
@@ -22292,6 +24567,7 @@ export interface RestrictWorkspaceAdminsSettingProviderConfig {
 }
 
 export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
+    disableGovTagCreation?: boolean;
     /**
      * The restrict workspace admins status for the workspace.
      */
@@ -22433,6 +24709,14 @@ export interface ServicePrincipalFederationPolicyOidcPolicy {
      * is 'sub'
      */
     subjectClaim?: string;
+}
+
+export interface ServicePrincipalProviderConfig {
+    workspaceId: string;
+}
+
+export interface ServicePrincipalRoleProviderConfig {
+    workspaceId: string;
 }
 
 export interface ServicePrincipalSecretProviderConfig {
@@ -22658,6 +24942,10 @@ export interface SqlPermissionsPrivilegeAssignment {
      * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
      */
     privileges: string[];
+}
+
+export interface SqlPermissionsProviderConfig {
+    workspaceId: string;
 }
 
 export interface SqlQueryParameter {
@@ -22972,6 +25260,13 @@ export interface StorageCredentialGcpServiceAccountKey {
     privateKeyId: string;
 }
 
+export interface StorageCredentialProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface SystemSchemaProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -23012,6 +25307,18 @@ export interface TokenProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
+    workspaceId: string;
+}
+
+export interface UserInstanceProfileProviderConfig {
+    workspaceId: string;
+}
+
+export interface UserProviderConfig {
+    workspaceId: string;
+}
+
+export interface UserRoleProviderConfig {
     workspaceId: string;
 }
 
@@ -23333,6 +25640,11 @@ export interface WorkspaceSettingV2EffectivePersonalCompute {
 
 export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
     /**
+     * When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: boolean;
+    /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
@@ -23358,6 +25670,11 @@ export interface WorkspaceSettingV2ProviderConfig {
 }
 
 export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
+    /**
+     * When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     */
+    disableGovTagCreation?: boolean;
     /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */

@@ -137,6 +137,12 @@ namespace Pulumi.Databricks
         public Output<bool?> AllowInstancePoolCreate { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         /// </summary>
         [Output("databricksSqlAccess")]
@@ -159,6 +165,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.GroupProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -240,6 +249,12 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
@@ -262,6 +277,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.GroupProviderConfigArgs>? ProviderConfig { get; set; }
 
         [Input("url")]
         public Input<string>? Url { get; set; }
@@ -305,6 +323,12 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
@@ -327,6 +351,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.GroupProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("url")]
         public Input<string>? Url { get; set; }

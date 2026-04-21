@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.MetastoreProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MetastoreArgs Empty = new MetastoreArgs();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
 
     /**
      * (Optional) Unique identifier of the metastore&#39;s default data access configuration.
@@ -153,6 +169,21 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<MetastoreProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<MetastoreProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The region of the metastore
      * 
      */
@@ -215,6 +246,7 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
     private MetastoreArgs() {}
 
     private MetastoreArgs(MetastoreArgs $) {
+        this.api = $.api;
         this.defaultDataAccessConfigId = $.defaultDataAccessConfigId;
         this.deltaSharingOrganizationName = $.deltaSharingOrganizationName;
         this.deltaSharingRecipientTokenLifetimeInSeconds = $.deltaSharingRecipientTokenLifetimeInSeconds;
@@ -224,6 +256,7 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.owner = $.owner;
         this.privilegeModelVersion = $.privilegeModelVersion;
+        this.providerConfig = $.providerConfig;
         this.region = $.region;
         this.storageRoot = $.storageRoot;
         this.storageRootCredentialId = $.storageRootCredentialId;
@@ -246,6 +279,27 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(MetastoreArgs defaults) {
             $ = new MetastoreArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
         }
 
         /**
@@ -435,6 +489,27 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder privilegeModelVersion(String privilegeModelVersion) {
             return privilegeModelVersion(Output.of(privilegeModelVersion));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<MetastoreProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(MetastoreProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

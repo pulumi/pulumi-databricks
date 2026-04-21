@@ -88,6 +88,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+        /// </summary>
+        public readonly bool IsOnline;
+        /// <summary>
         /// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
         /// If the pipeline has not run yet, this field will be null
         /// </summary>
@@ -122,6 +126,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            bool isOnline,
+
             string lastMaterializationTime,
 
             string materializedFeatureId,
@@ -139,6 +145,7 @@ namespace Pulumi.Databricks
             CronSchedule = cronSchedule;
             FeatureName = featureName;
             Id = id;
+            IsOnline = isOnline;
             LastMaterializationTime = lastMaterializationTime;
             MaterializedFeatureId = materializedFeatureId;
             OfflineStoreConfig = offlineStoreConfig;

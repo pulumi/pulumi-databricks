@@ -117,6 +117,12 @@ namespace Pulumi.Databricks
     public partial class Metastore : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// Cloud vendor of the metastore home shard (e.g., `Aws`, `Azure`, `Gcp`).
         /// </summary>
         [Output("cloud")]
@@ -201,6 +207,12 @@ namespace Pulumi.Databricks
         public Output<string> PrivilegeModelVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.MetastoreProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The region of the metastore
         /// </summary>
         [Output("region")]
@@ -283,6 +295,12 @@ namespace Pulumi.Databricks
     public sealed class MetastoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// (Optional) Unique identifier of the metastore's default data access configuration.
         /// </summary>
         [Input("defaultDataAccessConfigId")]
@@ -337,6 +355,12 @@ namespace Pulumi.Databricks
         public Input<string>? PrivilegeModelVersion { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MetastoreProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The region of the metastore
         /// </summary>
         [Input("region")]
@@ -368,6 +392,12 @@ namespace Pulumi.Databricks
 
     public sealed class MetastoreState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         /// <summary>
         /// Cloud vendor of the metastore home shard (e.g., `Aws`, `Azure`, `Gcp`).
         /// </summary>
@@ -451,6 +481,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("privilegeModelVersion")]
         public Input<string>? PrivilegeModelVersion { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MetastoreProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The region of the metastore

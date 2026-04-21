@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueue;
 import com.pulumi.databricks.inputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
 import com.pulumi.databricks.inputs.GetExternalLocationExternalLocationInfoFileEventQueue;
 import java.lang.Boolean;
@@ -105,6 +106,13 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
 
     public Optional<Boolean> effectiveEnableFileEvents() {
         return Optional.ofNullable(this.effectiveEnableFileEvents);
+    }
+
+    @Import(name="effectiveFileEventQueue")
+    private @Nullable GetExternalLocationExternalLocationInfoEffectiveFileEventQueue effectiveFileEventQueue;
+
+    public Optional<GetExternalLocationExternalLocationInfoEffectiveFileEventQueue> effectiveFileEventQueue() {
+        return Optional.ofNullable(this.effectiveFileEventQueue);
     }
 
     @Import(name="enableFileEvents")
@@ -265,6 +273,7 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
         this.effectiveEnableFileEvents = $.effectiveEnableFileEvents;
+        this.effectiveFileEventQueue = $.effectiveFileEventQueue;
         this.enableFileEvents = $.enableFileEvents;
         this.encryptionDetails = $.encryptionDetails;
         this.fallback = $.fallback;
@@ -359,6 +368,11 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
 
         public Builder effectiveEnableFileEvents(@Nullable Boolean effectiveEnableFileEvents) {
             $.effectiveEnableFileEvents = effectiveEnableFileEvents;
+            return this;
+        }
+
+        public Builder effectiveFileEventQueue(@Nullable GetExternalLocationExternalLocationInfoEffectiveFileEventQueue effectiveFileEventQueue) {
+            $.effectiveFileEventQueue = effectiveFileEventQueue;
             return this;
         }
 

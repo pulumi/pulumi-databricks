@@ -74,10 +74,16 @@ import (
 type AccountNetworkPolicy struct {
 	pulumi.CustomResourceState
 
-	// The associated account ID for this Network Policy object
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// (string) - The associated account ID for this Network Policy object
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The network policies applying for egress traffic
 	Egress AccountNetworkPolicyEgressPtrOutput `pulumi:"egress"`
+	// The network policies applying for ingress traffic
+	Ingress AccountNetworkPolicyIngressPtrOutput `pulumi:"ingress"`
+	// The ingress policy for dry run mode. Dry run will always run even if the request
+	// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+	// and emit logs only without blocking requests
+	IngressDryRun AccountNetworkPolicyIngressDryRunPtrOutput `pulumi:"ingressDryRun"`
 	// The unique identifier for the network policy
 	NetworkPolicyId pulumi.StringPtrOutput `pulumi:"networkPolicyId"`
 }
@@ -112,19 +118,31 @@ func GetAccountNetworkPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountNetworkPolicy resources.
 type accountNetworkPolicyState struct {
-	// The associated account ID for this Network Policy object
+	// (string) - The associated account ID for this Network Policy object
 	AccountId *string `pulumi:"accountId"`
 	// The network policies applying for egress traffic
 	Egress *AccountNetworkPolicyEgress `pulumi:"egress"`
+	// The network policies applying for ingress traffic
+	Ingress *AccountNetworkPolicyIngress `pulumi:"ingress"`
+	// The ingress policy for dry run mode. Dry run will always run even if the request
+	// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+	// and emit logs only without blocking requests
+	IngressDryRun *AccountNetworkPolicyIngressDryRun `pulumi:"ingressDryRun"`
 	// The unique identifier for the network policy
 	NetworkPolicyId *string `pulumi:"networkPolicyId"`
 }
 
 type AccountNetworkPolicyState struct {
-	// The associated account ID for this Network Policy object
+	// (string) - The associated account ID for this Network Policy object
 	AccountId pulumi.StringPtrInput
 	// The network policies applying for egress traffic
 	Egress AccountNetworkPolicyEgressPtrInput
+	// The network policies applying for ingress traffic
+	Ingress AccountNetworkPolicyIngressPtrInput
+	// The ingress policy for dry run mode. Dry run will always run even if the request
+	// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+	// and emit logs only without blocking requests
+	IngressDryRun AccountNetworkPolicyIngressDryRunPtrInput
 	// The unique identifier for the network policy
 	NetworkPolicyId pulumi.StringPtrInput
 }
@@ -134,20 +152,32 @@ func (AccountNetworkPolicyState) ElementType() reflect.Type {
 }
 
 type accountNetworkPolicyArgs struct {
-	// The associated account ID for this Network Policy object
+	// (string) - The associated account ID for this Network Policy object
 	AccountId *string `pulumi:"accountId"`
 	// The network policies applying for egress traffic
 	Egress *AccountNetworkPolicyEgress `pulumi:"egress"`
+	// The network policies applying for ingress traffic
+	Ingress *AccountNetworkPolicyIngress `pulumi:"ingress"`
+	// The ingress policy for dry run mode. Dry run will always run even if the request
+	// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+	// and emit logs only without blocking requests
+	IngressDryRun *AccountNetworkPolicyIngressDryRun `pulumi:"ingressDryRun"`
 	// The unique identifier for the network policy
 	NetworkPolicyId *string `pulumi:"networkPolicyId"`
 }
 
 // The set of arguments for constructing a AccountNetworkPolicy resource.
 type AccountNetworkPolicyArgs struct {
-	// The associated account ID for this Network Policy object
+	// (string) - The associated account ID for this Network Policy object
 	AccountId pulumi.StringPtrInput
 	// The network policies applying for egress traffic
 	Egress AccountNetworkPolicyEgressPtrInput
+	// The network policies applying for ingress traffic
+	Ingress AccountNetworkPolicyIngressPtrInput
+	// The ingress policy for dry run mode. Dry run will always run even if the request
+	// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+	// and emit logs only without blocking requests
+	IngressDryRun AccountNetworkPolicyIngressDryRunPtrInput
 	// The unique identifier for the network policy
 	NetworkPolicyId pulumi.StringPtrInput
 }
@@ -239,14 +269,26 @@ func (o AccountNetworkPolicyOutput) ToAccountNetworkPolicyOutputWithContext(ctx 
 	return o
 }
 
-// The associated account ID for this Network Policy object
-func (o AccountNetworkPolicyOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountNetworkPolicy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// (string) - The associated account ID for this Network Policy object
+func (o AccountNetworkPolicyOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The network policies applying for egress traffic
 func (o AccountNetworkPolicyOutput) Egress() AccountNetworkPolicyEgressPtrOutput {
 	return o.ApplyT(func(v *AccountNetworkPolicy) AccountNetworkPolicyEgressPtrOutput { return v.Egress }).(AccountNetworkPolicyEgressPtrOutput)
+}
+
+// The network policies applying for ingress traffic
+func (o AccountNetworkPolicyOutput) Ingress() AccountNetworkPolicyIngressPtrOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicy) AccountNetworkPolicyIngressPtrOutput { return v.Ingress }).(AccountNetworkPolicyIngressPtrOutput)
+}
+
+// The ingress policy for dry run mode. Dry run will always run even if the request
+// is allowed by the ingress policy. When this field is set, the policy will be evaluated
+// and emit logs only without blocking requests
+func (o AccountNetworkPolicyOutput) IngressDryRun() AccountNetworkPolicyIngressDryRunPtrOutput {
+	return o.ApplyT(func(v *AccountNetworkPolicy) AccountNetworkPolicyIngressDryRunPtrOutput { return v.IngressDryRun }).(AccountNetworkPolicyIngressDryRunPtrOutput)
 }
 
 // The unique identifier for the network policy

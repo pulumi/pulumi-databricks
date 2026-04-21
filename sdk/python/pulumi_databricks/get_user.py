@@ -28,7 +28,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, acl_principal_id=None, active=None, alphanumeric=None, application_id=None, display_name=None, external_id=None, home=None, id=None, provider_config=None, repos=None, user_id=None, user_name=None):
+    def __init__(__self__, acl_principal_id=None, active=None, alphanumeric=None, api=None, application_id=None, display_name=None, external_id=None, home=None, id=None, provider_config=None, repos=None, user_id=None, user_name=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -38,6 +38,9 @@ class GetUserResult:
         if alphanumeric and not isinstance(alphanumeric, str):
             raise TypeError("Expected argument 'alphanumeric' to be a str")
         pulumi.set(__self__, "alphanumeric", alphanumeric)
+        if api and not isinstance(api, str):
+            raise TypeError("Expected argument 'api' to be a str")
+        pulumi.set(__self__, "api", api)
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
         pulumi.set(__self__, "application_id", application_id)
@@ -89,6 +92,11 @@ class GetUserResult:
         Alphanumeric representation of user local name. e.g. `mr_foo`.
         """
         return pulumi.get(self, "alphanumeric")
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
@@ -163,6 +171,7 @@ class AwaitableGetUserResult(GetUserResult):
             acl_principal_id=self.acl_principal_id,
             active=self.active,
             alphanumeric=self.alphanumeric,
+            api=self.api,
             application_id=self.application_id,
             display_name=self.display_name,
             external_id=self.external_id,
@@ -174,7 +183,8 @@ class AwaitableGetUserResult(GetUserResult):
             user_name=self.user_name)
 
 
-def get_user(provider_config: Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']] = None,
+def get_user(api: Optional[_builtins.str] = None,
+             provider_config: Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']] = None,
              user_id: Optional[_builtins.str] = None,
              user_name: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
@@ -218,6 +228,7 @@ def get_user(provider_config: Optional[Union['GetUserProviderConfigArgs', 'GetUs
     :param _builtins.str user_name: User name of the user. The user must exist before this resource can be planned.
     """
     __args__ = dict()
+    __args__['api'] = api
     __args__['providerConfig'] = provider_config
     __args__['userId'] = user_id
     __args__['userName'] = user_name
@@ -228,6 +239,7 @@ def get_user(provider_config: Optional[Union['GetUserProviderConfigArgs', 'GetUs
         acl_principal_id=pulumi.get(__ret__, 'acl_principal_id'),
         active=pulumi.get(__ret__, 'active'),
         alphanumeric=pulumi.get(__ret__, 'alphanumeric'),
+        api=pulumi.get(__ret__, 'api'),
         application_id=pulumi.get(__ret__, 'application_id'),
         display_name=pulumi.get(__ret__, 'display_name'),
         external_id=pulumi.get(__ret__, 'external_id'),
@@ -237,7 +249,8 @@ def get_user(provider_config: Optional[Union['GetUserProviderConfigArgs', 'GetUs
         repos=pulumi.get(__ret__, 'repos'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_name=pulumi.get(__ret__, 'user_name'))
-def get_user_output(provider_config: Optional[pulumi.Input[Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']]]] = None,
+def get_user_output(api: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                    provider_config: Optional[pulumi.Input[Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']]]] = None,
                     user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     user_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
@@ -281,6 +294,7 @@ def get_user_output(provider_config: Optional[pulumi.Input[Optional[Union['GetUs
     :param _builtins.str user_name: User name of the user. The user must exist before this resource can be planned.
     """
     __args__ = dict()
+    __args__['api'] = api
     __args__['providerConfig'] = provider_config
     __args__['userId'] = user_id
     __args__['userName'] = user_name
@@ -290,6 +304,7 @@ def get_user_output(provider_config: Optional[pulumi.Input[Optional[Union['GetUs
         acl_principal_id=pulumi.get(__response__, 'acl_principal_id'),
         active=pulumi.get(__response__, 'active'),
         alphanumeric=pulumi.get(__response__, 'alphanumeric'),
+        api=pulumi.get(__response__, 'api'),
         application_id=pulumi.get(__response__, 'application_id'),
         display_name=pulumi.get(__response__, 'display_name'),
         external_id=pulumi.get(__response__, 'external_id'),

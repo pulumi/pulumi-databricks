@@ -15,6 +15,31 @@ import (
 //
 // This data source retrieves the list of all Workspace Base Environments in the workspace.
 // The list can be accessed via the data object's `workspaceBaseEnvironments` field.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetEnvironmentsWorkspaceBaseEnvironments(ctx, &databricks.GetEnvironmentsWorkspaceBaseEnvironmentsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allEnvironments", all.WorkspaceBaseEnvironments)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEnvironmentsWorkspaceBaseEnvironments(ctx *pulumi.Context, args *GetEnvironmentsWorkspaceBaseEnvironmentsArgs, opts ...pulumi.InvokeOption) (*GetEnvironmentsWorkspaceBaseEnvironmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnvironmentsWorkspaceBaseEnvironmentsResult

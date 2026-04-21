@@ -5,14 +5,39 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.UserRoleProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class UserRoleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final UserRoleArgs Empty = new UserRoleArgs();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
+
+    @Import(name="providerConfig")
+    private @Nullable Output<UserRoleProviderConfigArgs> providerConfig;
+
+    public Optional<Output<UserRoleProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
@@ -47,6 +72,8 @@ public final class UserRoleArgs extends com.pulumi.resources.ResourceArgs {
     private UserRoleArgs() {}
 
     private UserRoleArgs(UserRoleArgs $) {
+        this.api = $.api;
+        this.providerConfig = $.providerConfig;
         this.role = $.role;
         this.userId = $.userId;
     }
@@ -67,6 +94,36 @@ public final class UserRoleArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(UserRoleArgs defaults) {
             $ = new UserRoleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
+        }
+
+        public Builder providerConfig(@Nullable Output<UserRoleProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(UserRoleProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -18,6 +18,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("aggregationFunction")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionArgs>? AggregationFunction { get; set; }
 
+        /// <summary>
+        /// Selects the latest value of a single column in a data source
+        /// </summary>
+        [Input("columnSelection")]
+        public Input<Inputs.FeatureEngineeringFeatureFunctionColumnSelectionArgs>? ColumnSelection { get; set; }
+
         [Input("extraParameters")]
         private InputList<Inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs>? _extraParameters;
 

@@ -30,6 +30,7 @@ public final class GetGroupResult {
      * 
      */
     private @Nullable Boolean allowInstancePoolCreate;
+    private @Nullable String api;
     /**
      * @return Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      * 
@@ -100,6 +101,9 @@ public final class GetGroupResult {
      */
     public Optional<Boolean> allowInstancePoolCreate() {
         return Optional.ofNullable(this.allowInstancePoolCreate);
+    }
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
     }
     /**
      * @return Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
@@ -190,6 +194,7 @@ public final class GetGroupResult {
         private String aclPrincipalId;
         private @Nullable Boolean allowClusterCreate;
         private @Nullable Boolean allowInstancePoolCreate;
+        private @Nullable String api;
         private List<String> childGroups;
         private @Nullable Boolean databricksSqlAccess;
         private String displayName;
@@ -210,6 +215,7 @@ public final class GetGroupResult {
     	      this.aclPrincipalId = defaults.aclPrincipalId;
     	      this.allowClusterCreate = defaults.allowClusterCreate;
     	      this.allowInstancePoolCreate = defaults.allowInstancePoolCreate;
+    	      this.api = defaults.api;
     	      this.childGroups = defaults.childGroups;
     	      this.databricksSqlAccess = defaults.databricksSqlAccess;
     	      this.displayName = defaults.displayName;
@@ -244,6 +250,12 @@ public final class GetGroupResult {
         public Builder allowInstancePoolCreate(@Nullable Boolean allowInstancePoolCreate) {
 
             this.allowInstancePoolCreate = allowInstancePoolCreate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder api(@Nullable String api) {
+
+            this.api = api;
             return this;
         }
         @CustomType.Setter
@@ -371,6 +383,7 @@ public final class GetGroupResult {
             _resultValue.aclPrincipalId = aclPrincipalId;
             _resultValue.allowClusterCreate = allowClusterCreate;
             _resultValue.allowInstancePoolCreate = allowInstancePoolCreate;
+            _resultValue.api = api;
             _resultValue.childGroups = childGroups;
             _resultValue.databricksSqlAccess = databricksSqlAccess;
             _resultValue.displayName = displayName;

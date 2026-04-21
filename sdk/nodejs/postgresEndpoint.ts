@@ -107,6 +107,59 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### High Availability Endpoint
+ *
+ * Configure a single endpoint with multiple compute instances for high availability.
+ * One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const haPrimary = new databricks.PostgresEndpoint("ha_primary", {
+ *     endpointId: "primary",
+ *     parent: main.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *         group: {
+ *             min: 2,
+ *             max: 2,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### High Availability Endpoint with Readable Secondaries
+ *
+ * Enable readable secondaries to offload read traffic to replica computes via a
+ * dedicated read-only host, in addition to hot-standby failover. Only supported
+ * on read-write endpoints with more than one compute. The secondaries are optionally
+ * exposed as read-only host via `enableReadableSecondaries`.
+ *
+ * High availability requires scale-to-zero to be disabled.
+ * Set `noSuspension = true` in `defaultEndpointSettings` as shown in the example below.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const haReadable = new databricks.PostgresEndpoint("ha_readable", {
+ *     endpointId: "primary",
+ *     parent: main.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *         group: {
+ *             min: 2,
+ *             max: 2,
+ *             enableReadableSecondaries: true,
+ *         },
+ *         defaultEndpointSettings: {
+ *             noSuspension: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ### Complete Example
  *
  * ```typescript
@@ -141,6 +194,11 @@ import * as utilities from "./utilities";
  *         autoscalingLimitMinCu: 1,
  *         autoscalingLimitMaxCu: 9,
  *         noSuspension: true,
+ *         group: {
+ *             min: 2,
+ *             max: 2,
+ *             enableReadableSecondaries: true,
+ *         },
  *     },
  * });
  * const readReplica = new databricks.PostgresEndpoint("read_replica", {

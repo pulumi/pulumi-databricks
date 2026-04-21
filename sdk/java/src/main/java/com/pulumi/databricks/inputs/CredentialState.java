@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.CredentialAwsIamRoleArgs;
 import com.pulumi.databricks.inputs.CredentialAzureManagedIdentityArgs;
 import com.pulumi.databricks.inputs.CredentialAzureServicePrincipalArgs;
 import com.pulumi.databricks.inputs.CredentialDatabricksGcpServiceAccountArgs;
+import com.pulumi.databricks.inputs.CredentialProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -194,6 +195,21 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<CredentialProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<CredentialProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
      * 
      */
@@ -278,6 +294,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
+        this.providerConfig = $.providerConfig;
         this.purpose = $.purpose;
         this.readOnly = $.readOnly;
         this.skipValidation = $.skipValidation;
@@ -534,6 +551,27 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<CredentialProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(CredentialProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

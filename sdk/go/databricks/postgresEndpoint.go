@@ -193,6 +193,89 @@ import (
 //
 // ```
 //
+// ### High Availability Endpoint
+//
+// Configure a single endpoint with multiple compute instances for high availability.
+// One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresEndpoint(ctx, "ha_primary", &databricks.PostgresEndpointArgs{
+//				EndpointId: pulumi.String("primary"),
+//				Parent:     pulumi.Any(main.Name),
+//				Spec: &databricks.PostgresEndpointSpecArgs{
+//					EndpointType: pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
+//					Group: &databricks.PostgresEndpointSpecGroupArgs{
+//						Min: pulumi.Int(2),
+//						Max: pulumi.Int(2),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### High Availability Endpoint with Readable Secondaries
+//
+// Enable readable secondaries to offload read traffic to replica computes via a
+// dedicated read-only host, in addition to hot-standby failover. Only supported
+// on read-write endpoints with more than one compute. The secondaries are optionally
+// exposed as read-only host via `enableReadableSecondaries`.
+//
+// High availability requires scale-to-zero to be disabled.
+// Set `noSuspension = true` in `defaultEndpointSettings` as shown in the example below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresEndpoint(ctx, "ha_readable", &databricks.PostgresEndpointArgs{
+//				EndpointId: pulumi.String("primary"),
+//				Parent:     pulumi.Any(main.Name),
+//				Spec: &databricks.PostgresEndpointSpecArgs{
+//					EndpointType: pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
+//					Group: &databricks.PostgresEndpointSpecGroupArgs{
+//						Min:                       pulumi.Int(2),
+//						Max:                       pulumi.Int(2),
+//						EnableReadableSecondaries: pulumi.Bool(true),
+//					},
+//					DefaultEndpointSettings: map[string]interface{}{
+//						"noSuspension": true,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Complete Example
 //
 // ```go
@@ -241,6 +324,11 @@ import (
 //					AutoscalingLimitMinCu: pulumi.Float64(1),
 //					AutoscalingLimitMaxCu: pulumi.Float64(9),
 //					NoSuspension:          pulumi.Bool(true),
+//					Group: &databricks.PostgresEndpointSpecGroupArgs{
+//						Min:                       pulumi.Int(2),
+//						Max:                       pulumi.Int(2),
+//						EnableReadableSecondaries: pulumi.Bool(true),
+//					},
 //				},
 //			})
 //			if err != nil {

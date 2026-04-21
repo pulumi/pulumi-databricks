@@ -24,11 +24,33 @@ public final class GetCurrentConfigArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
+
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     public Optional<Output<String>> authType() {
         return Optional.ofNullable(this.authType);
+    }
+
+    /**
+     * Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+     * 
+     */
+    @Import(name="cloud")
+    private @Nullable Output<String> cloud;
+
+    /**
+     * @return Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+     * 
+     */
+    public Optional<Output<String>> cloud() {
+        return Optional.ofNullable(this.cloud);
     }
 
     @Import(name="cloudType")
@@ -71,7 +93,9 @@ public final class GetCurrentConfigArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetCurrentConfigArgs(GetCurrentConfigArgs $) {
         this.accountId = $.accountId;
+        this.api = $.api;
         this.authType = $.authType;
+        this.cloud = $.cloud;
         this.cloudType = $.cloudType;
         this.host = $.host;
         this.isAccount = $.isAccount;
@@ -105,6 +129,15 @@ public final class GetCurrentConfigArgs extends com.pulumi.resources.InvokeArgs 
             return accountId(Output.of(accountId));
         }
 
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        public Builder api(String api) {
+            return api(Output.of(api));
+        }
+
         public Builder authType(@Nullable Output<String> authType) {
             $.authType = authType;
             return this;
@@ -112,6 +145,27 @@ public final class GetCurrentConfigArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder authType(String authType) {
             return authType(Output.of(authType));
+        }
+
+        /**
+         * @param cloud Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloud(@Nullable Output<String> cloud) {
+            $.cloud = cloud;
+            return this;
+        }
+
+        /**
+         * @param cloud Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloud(String cloud) {
+            return cloud(Output.of(cloud));
         }
 
         public Builder cloudType(@Nullable Output<String> cloudType) {

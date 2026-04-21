@@ -15,17 +15,9 @@ public final class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestina
 
     public static final AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs Empty = new AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs();
 
-    /**
-     * The internet destination to which access will be allowed. Format dependent on the destination type
-     * 
-     */
     @Import(name="destination")
     private @Nullable Output<String> destination;
 
-    /**
-     * @return The internet destination to which access will be allowed. Format dependent on the destination type
-     * 
-     */
     public Optional<Output<String>> destination() {
         return Optional.ofNullable(this.destination);
     }
@@ -70,23 +62,11 @@ public final class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestina
             $ = new AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param destination The internet destination to which access will be allowed. Format dependent on the destination type
-         * 
-         * @return builder
-         * 
-         */
         public Builder destination(@Nullable Output<String> destination) {
             $.destination = destination;
             return this;
         }
 
-        /**
-         * @param destination The internet destination to which access will be allowed. Format dependent on the destination type
-         * 
-         * @return builder
-         * 
-         */
         public Builder destination(String destination) {
             return destination(Output.of(destination));
         }

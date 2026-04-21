@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -138,6 +140,10 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly allowInstancePoolCreate: pulumi.Output<boolean | undefined>;
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
     declare public readonly databricksSqlAccess: pulumi.Output<boolean | undefined>;
@@ -169,6 +175,7 @@ export class User extends pulumi.CustomResource {
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */
     declare public readonly home: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.UserProviderConfig | undefined>;
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      */
@@ -203,6 +210,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["active"] = state?.active;
             resourceInputs["allowClusterCreate"] = state?.allowClusterCreate;
             resourceInputs["allowInstancePoolCreate"] = state?.allowInstancePoolCreate;
+            resourceInputs["api"] = state?.api;
             resourceInputs["databricksSqlAccess"] = state?.databricksSqlAccess;
             resourceInputs["disableAsUserDeletion"] = state?.disableAsUserDeletion;
             resourceInputs["displayName"] = state?.displayName;
@@ -211,6 +219,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["forceDeleteHomeDir"] = state?.forceDeleteHomeDir;
             resourceInputs["forceDeleteRepos"] = state?.forceDeleteRepos;
             resourceInputs["home"] = state?.home;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["repos"] = state?.repos;
             resourceInputs["userName"] = state?.userName;
             resourceInputs["workspaceAccess"] = state?.workspaceAccess;
@@ -224,6 +233,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["active"] = args?.active;
             resourceInputs["allowClusterCreate"] = args?.allowClusterCreate;
             resourceInputs["allowInstancePoolCreate"] = args?.allowInstancePoolCreate;
+            resourceInputs["api"] = args?.api;
             resourceInputs["databricksSqlAccess"] = args?.databricksSqlAccess;
             resourceInputs["disableAsUserDeletion"] = args?.disableAsUserDeletion;
             resourceInputs["displayName"] = args?.displayName;
@@ -232,6 +242,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["forceDeleteHomeDir"] = args?.forceDeleteHomeDir;
             resourceInputs["forceDeleteRepos"] = args?.forceDeleteRepos;
             resourceInputs["home"] = args?.home;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["repos"] = args?.repos;
             resourceInputs["userName"] = args?.userName;
             resourceInputs["workspaceAccess"] = args?.workspaceAccess;
@@ -262,6 +273,10 @@ export interface UserState {
      * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
@@ -294,6 +309,7 @@ export interface UserState {
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */
     home?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.UserProviderConfig>;
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      */
@@ -333,6 +349,10 @@ export interface UserArgs {
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
@@ -364,6 +384,7 @@ export interface UserArgs {
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */
     home?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.UserProviderConfig>;
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      */

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
 //
@@ -85,7 +85,7 @@ func GetEntityTagAssignments(ctx *pulumi.Context, args *GetEntityTagAssignmentsA
 type GetEntityTagAssignmentsArgs struct {
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName string `pulumi:"entityName"`
-	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// The type of the entity to which the tag is assigned
 	EntityType string `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	MaxResults *int `pulumi:"maxResults"`
@@ -97,7 +97,7 @@ type GetEntityTagAssignmentsArgs struct {
 type GetEntityTagAssignmentsResult struct {
 	// (string) - The fully qualified name of the entity to which the tag is assigned
 	EntityName string `pulumi:"entityName"`
-	// (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// (string) - The type of the entity to which the tag is assigned
 	EntityType string `pulumi:"entityType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                                 `pulumi:"id"`
@@ -119,7 +119,7 @@ func GetEntityTagAssignmentsOutput(ctx *pulumi.Context, args GetEntityTagAssignm
 type GetEntityTagAssignmentsOutputArgs struct {
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName pulumi.StringInput `pulumi:"entityName"`
-	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// The type of the entity to which the tag is assigned
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Optional. Maximum number of tag assignments to return in a single page
 	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
@@ -151,7 +151,7 @@ func (o GetEntityTagAssignmentsResultOutput) EntityName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEntityTagAssignmentsResult) string { return v.EntityName }).(pulumi.StringOutput)
 }
 
-// (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+// (string) - The type of the entity to which the tag is assigned
 func (o GetEntityTagAssignmentsResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEntityTagAssignmentsResult) string { return v.EntityType }).(pulumi.StringOutput)
 }

@@ -13,14 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins
     {
+        public readonly bool? DisableGovTagCreation;
         /// <summary>
         /// The restrict workspace admins status for the workspace.
         /// </summary>
         public readonly string Status;
 
         [OutputConstructor]
-        private RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins(string status)
+        private RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins(
+            bool? disableGovTagCreation,
+
+            string status)
         {
+            DisableGovTagCreation = disableGovTagCreation;
             Status = status;
         }
     }

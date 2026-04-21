@@ -138,6 +138,14 @@ namespace Pulumi.Databricks
     public partial class StorageCredential : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// 
+        /// `AwsIamRole` optional configuration block for credential details for AWS:
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// exposes two additional attributes:
         /// </summary>
         [Output("awsIamRole")]
@@ -175,8 +183,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-        /// 
-        /// `AwsIamRole` optional configuration block for credential details for AWS:
         /// </summary>
         [Output("isolationMode")]
         public Output<string> IsolationMode { get; private set; } = null!;
@@ -198,6 +204,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.StorageCredentialProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.
@@ -264,6 +276,14 @@ namespace Pulumi.Databricks
     public sealed class StorageCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// 
+        /// `AwsIamRole` optional configuration block for credential details for AWS:
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// exposes two additional attributes:
         /// </summary>
         [Input("awsIamRole")]
@@ -301,8 +321,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-        /// 
-        /// `AwsIamRole` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
@@ -326,6 +344,12 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.StorageCredentialProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.
         /// </summary>
         [Input("readOnly")]
@@ -345,6 +369,14 @@ namespace Pulumi.Databricks
 
     public sealed class StorageCredentialState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// 
+        /// `AwsIamRole` optional configuration block for credential details for AWS:
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         /// <summary>
         /// exposes two additional attributes:
         /// </summary>
@@ -383,8 +415,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-        /// 
-        /// `AwsIamRole` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
@@ -406,6 +436,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.StorageCredentialProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.

@@ -22,6 +22,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPostgresProjectsProjectSpecCustomTagResult> CustomTags;
         /// <summary>
+        /// (string) - The full resource path of the default branch of the project
+        /// </summary>
+        public readonly string? DefaultBranch;
+        /// <summary>
         /// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
         /// </summary>
         public readonly Outputs.GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult? DefaultEndpointSettings;
@@ -48,6 +52,8 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.GetPostgresProjectsProjectSpecCustomTagResult> customTags,
 
+            string? defaultBranch,
+
             Outputs.GetPostgresProjectsProjectSpecDefaultEndpointSettingsResult? defaultEndpointSettings,
 
             string? displayName,
@@ -60,6 +66,7 @@ namespace Pulumi.Databricks.Outputs
         {
             BudgetPolicyId = budgetPolicyId;
             CustomTags = customTags;
+            DefaultBranch = defaultBranch;
             DefaultEndpointSettings = defaultEndpointSettings;
             DisplayName = displayName;
             EnablePgNativeLogin = enablePgNativeLogin;

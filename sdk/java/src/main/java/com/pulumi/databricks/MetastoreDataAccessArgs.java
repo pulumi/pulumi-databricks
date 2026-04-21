@@ -11,6 +11,7 @@ import com.pulumi.databricks.inputs.MetastoreDataAccessAzureServicePrincipalArgs
 import com.pulumi.databricks.inputs.MetastoreDataAccessCloudflareApiTokenArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessDatabricksGcpServiceAccountArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessGcpServiceAccountKeyArgs;
+import com.pulumi.databricks.inputs.MetastoreDataAccessProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -21,6 +22,21 @@ import javax.annotation.Nullable;
 public final class MetastoreDataAccessArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MetastoreDataAccessArgs Empty = new MetastoreDataAccessArgs();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
 
     @Import(name="awsIamRole")
     private @Nullable Output<MetastoreDataAccessAwsIamRoleArgs> awsIamRole;
@@ -128,6 +144,21 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<MetastoreDataAccessProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<MetastoreDataAccessProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
@@ -145,6 +176,7 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
     private MetastoreDataAccessArgs() {}
 
     private MetastoreDataAccessArgs(MetastoreDataAccessArgs $) {
+        this.api = $.api;
         this.awsIamRole = $.awsIamRole;
         this.azureManagedIdentity = $.azureManagedIdentity;
         this.azureServicePrincipal = $.azureServicePrincipal;
@@ -159,6 +191,7 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
+        this.providerConfig = $.providerConfig;
         this.readOnly = $.readOnly;
         this.skipValidation = $.skipValidation;
     }
@@ -179,6 +212,27 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
 
         public Builder(MetastoreDataAccessArgs defaults) {
             $ = new MetastoreDataAccessArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
         }
 
         public Builder awsIamRole(@Nullable Output<MetastoreDataAccessAwsIamRoleArgs> awsIamRole) {
@@ -317,6 +371,27 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
 
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<MetastoreDataAccessProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(MetastoreDataAccessProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder readOnly(@Nullable Output<Boolean> readOnly) {

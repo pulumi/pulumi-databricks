@@ -88,6 +88,15 @@ namespace Pulumi.Databricks
     public partial class UserRole : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.UserRoleProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Either a role name or the ARN/ID of the instance profile resource.
         /// </summary>
         [Output("role")]
@@ -146,6 +155,15 @@ namespace Pulumi.Databricks
     public sealed class UserRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.UserRoleProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Either a role name or the ARN/ID of the instance profile resource.
         /// </summary>
         [Input("role", required: true)]
@@ -165,6 +183,15 @@ namespace Pulumi.Databricks
 
     public sealed class UserRoleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.UserRoleProviderConfigGetArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// Either a role name or the ARN/ID of the instance profile resource.
         /// </summary>

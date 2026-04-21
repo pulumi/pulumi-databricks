@@ -47,7 +47,7 @@ import * as utilities from "./utilities";
  * * `isAccount` - Whether the provider is configured at account-level
  * * `accountId` - Account Id if provider is configured at account-level
  * * `host` - Host of the Databricks workspace or account console
- * * `cloudType` - Cloud type specified in the provider
+ * * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
  * * `authType` - Auth type used by the provider
  *
  * ## Related Resources
@@ -64,7 +64,9 @@ export function getCurrentConfig(args?: GetCurrentConfigArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCurrentConfig:getCurrentConfig", {
         "accountId": args.accountId,
+        "api": args.api,
         "authType": args.authType,
+        "cloud": args.cloud,
         "cloudType": args.cloudType,
         "host": args.host,
         "isAccount": args.isAccount,
@@ -77,7 +79,12 @@ export function getCurrentConfig(args?: GetCurrentConfigArgs, opts?: pulumi.Invo
  */
 export interface GetCurrentConfigArgs {
     accountId?: string;
+    api?: string;
     authType?: string;
+    /**
+     * Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+     */
+    cloud?: string;
     cloudType?: string;
     host?: string;
     isAccount?: boolean;
@@ -92,7 +99,9 @@ export interface GetCurrentConfigArgs {
  */
 export interface GetCurrentConfigResult {
     readonly accountId: string;
+    readonly api?: string;
     readonly authType: string;
+    readonly cloud?: string;
     readonly cloudType: string;
     readonly host: string;
     /**
@@ -143,7 +152,7 @@ export interface GetCurrentConfigResult {
  * * `isAccount` - Whether the provider is configured at account-level
  * * `accountId` - Account Id if provider is configured at account-level
  * * `host` - Host of the Databricks workspace or account console
- * * `cloudType` - Cloud type specified in the provider
+ * * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
  * * `authType` - Auth type used by the provider
  *
  * ## Related Resources
@@ -160,7 +169,9 @@ export function getCurrentConfigOutput(args?: GetCurrentConfigOutputArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCurrentConfig:getCurrentConfig", {
         "accountId": args.accountId,
+        "api": args.api,
         "authType": args.authType,
+        "cloud": args.cloud,
         "cloudType": args.cloudType,
         "host": args.host,
         "isAccount": args.isAccount,
@@ -173,7 +184,12 @@ export function getCurrentConfigOutput(args?: GetCurrentConfigOutputArgs, opts?:
  */
 export interface GetCurrentConfigOutputArgs {
     accountId?: pulumi.Input<string>;
+    api?: pulumi.Input<string>;
     authType?: pulumi.Input<string>;
+    /**
+     * Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+     */
+    cloud?: pulumi.Input<string>;
     cloudType?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     isAccount?: pulumi.Input<boolean>;

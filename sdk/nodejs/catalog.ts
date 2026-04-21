@@ -99,6 +99,7 @@ export class Catalog extends pulumi.CustomResource {
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
     declare public readonly isolationMode: pulumi.Output<string>;
+    declare public readonly managedEncryptionSettings: pulumi.Output<outputs.CatalogManagedEncryptionSettings | undefined>;
     /**
      * ID of the parent metastore.
      */
@@ -177,6 +178,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["fullName"] = state?.fullName;
             resourceInputs["isolationMode"] = state?.isolationMode;
+            resourceInputs["managedEncryptionSettings"] = state?.managedEncryptionSettings;
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
             resourceInputs["options"] = state?.options;
@@ -200,6 +202,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["enablePredictiveOptimization"] = args?.enablePredictiveOptimization;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["isolationMode"] = args?.isolationMode;
+            resourceInputs["managedEncryptionSettings"] = args?.managedEncryptionSettings;
             resourceInputs["metastoreId"] = args?.metastoreId;
             resourceInputs["name"] = args?.name;
             resourceInputs["options"] = args?.options;
@@ -263,6 +266,7 @@ export interface CatalogState {
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
     isolationMode?: pulumi.Input<string>;
+    managedEncryptionSettings?: pulumi.Input<inputs.CatalogManagedEncryptionSettings>;
     /**
      * ID of the parent metastore.
      */
@@ -344,6 +348,7 @@ export interface CatalogArgs {
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
     isolationMode?: pulumi.Input<string>;
+    managedEncryptionSettings?: pulumi.Input<inputs.CatalogManagedEncryptionSettings>;
     /**
      * ID of the parent metastore.
      */

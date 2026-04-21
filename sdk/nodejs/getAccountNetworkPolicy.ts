@@ -51,6 +51,16 @@ export interface GetAccountNetworkPolicyResult {
      */
     readonly id: string;
     /**
+     * (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
+     */
+    readonly ingress: outputs.GetAccountNetworkPolicyIngress;
+    /**
+     * (CustomerFacingIngressNetworkPolicy) - The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     */
+    readonly ingressDryRun: outputs.GetAccountNetworkPolicyIngressDryRun;
+    /**
      * (string) - The unique identifier for the network policy
      */
     readonly networkPolicyId: string;

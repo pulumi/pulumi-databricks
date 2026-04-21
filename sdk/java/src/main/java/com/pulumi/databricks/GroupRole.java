@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.GroupRoleArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.GroupRoleState;
+import com.pulumi.databricks.outputs.GroupRoleProviderConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -128,6 +130,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/groupRole:GroupRole")
 public class GroupRole extends com.pulumi.resources.CustomResource {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
+    /**
      * This is the id of the group resource.
      * 
      */
@@ -140,6 +156,12 @@ public class GroupRole extends com.pulumi.resources.CustomResource {
      */
     public Output<String> groupId() {
         return this.groupId;
+    }
+    @Export(name="providerConfig", refs={GroupRoleProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ GroupRoleProviderConfig> providerConfig;
+
+    public Output<Optional<GroupRoleProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Either a role name or the ARN/ID of the instance profile resource.

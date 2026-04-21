@@ -110,6 +110,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/servicePrincipalSecret:ServicePrincipalSecret")
 public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
+    /**
      * UTC time when the secret was created.
      * 
      */

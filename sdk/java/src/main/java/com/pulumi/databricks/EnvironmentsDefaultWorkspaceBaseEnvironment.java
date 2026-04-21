@@ -33,10 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.WorkspaceBaseEnvironment;
- * import com.pulumi.databricks.WorkspaceBaseEnvironmentArgs;
- * import com.pulumi.databricks.DefaultWorkspaceBaseEnvironment;
- * import com.pulumi.databricks.DefaultWorkspaceBaseEnvironmentArgs;
+ * import com.pulumi.databricks.EnvironmentsDefaultWorkspaceBaseEnvironment;
+ * import com.pulumi.databricks.EnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,13 +48,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cpuEnv = new WorkspaceBaseEnvironment("cpuEnv", WorkspaceBaseEnvironmentArgs.builder()
- *             .displayName("my-cpu-environment")
- *             .filepath("/Volumes/catalog/schema/volume/cpu-environment.yaml")
- *             .build());
- * 
- *         var this_ = new DefaultWorkspaceBaseEnvironment("this", DefaultWorkspaceBaseEnvironmentArgs.builder()
- *             .cpuWorkspaceBaseEnvironment(cpuEnv.name())
+ *         var this_ = new EnvironmentsDefaultWorkspaceBaseEnvironment("this", EnvironmentsDefaultWorkspaceBaseEnvironmentArgs.builder()
+ *             .cpuWorkspaceBaseEnvironment("workspace-base-environments/my-base-env-12345")
  *             .build());
  * 
  *     }
@@ -73,10 +66,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.WorkspaceBaseEnvironment;
- * import com.pulumi.databricks.WorkspaceBaseEnvironmentArgs;
- * import com.pulumi.databricks.DefaultWorkspaceBaseEnvironment;
- * import com.pulumi.databricks.DefaultWorkspaceBaseEnvironmentArgs;
+ * import com.pulumi.databricks.EnvironmentsWorkspaceBaseEnvironment;
+ * import com.pulumi.databricks.EnvironmentsWorkspaceBaseEnvironmentArgs;
+ * import com.pulumi.databricks.EnvironmentsDefaultWorkspaceBaseEnvironment;
+ * import com.pulumi.databricks.EnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -90,18 +83,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cpuEnv = new WorkspaceBaseEnvironment("cpuEnv", WorkspaceBaseEnvironmentArgs.builder()
+ *         var cpuEnv = new EnvironmentsWorkspaceBaseEnvironment("cpuEnv", EnvironmentsWorkspaceBaseEnvironmentArgs.builder()
  *             .displayName("my-cpu-environment")
  *             .filepath("/Volumes/catalog/schema/volume/cpu-environment.yaml")
  *             .build());
  * 
- *         var gpuEnv = new WorkspaceBaseEnvironment("gpuEnv", WorkspaceBaseEnvironmentArgs.builder()
+ *         var gpuEnv = new EnvironmentsWorkspaceBaseEnvironment("gpuEnv", EnvironmentsWorkspaceBaseEnvironmentArgs.builder()
  *             .displayName("my-gpu-environment")
  *             .filepath("/Volumes/catalog/schema/volume/gpu-environment.yaml")
- *             .baseEnvironmentType("GPU_LARGE")
+ *             .baseEnvironmentType("GPU")
  *             .build());
  * 
- *         var this_ = new DefaultWorkspaceBaseEnvironment("this", DefaultWorkspaceBaseEnvironmentArgs.builder()
+ *         var this_ = new EnvironmentsDefaultWorkspaceBaseEnvironment("this", EnvironmentsDefaultWorkspaceBaseEnvironmentArgs.builder()
  *             .cpuWorkspaceBaseEnvironment(cpuEnv.name())
  *             .gpuWorkspaceBaseEnvironment(gpuEnv.name())
  *             .build());
@@ -120,7 +113,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.DefaultWorkspaceBaseEnvironment;
+ * import com.pulumi.databricks.EnvironmentsDefaultWorkspaceBaseEnvironment;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -134,7 +127,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new DefaultWorkspaceBaseEnvironment("this");
+ *         var this_ = new EnvironmentsDefaultWorkspaceBaseEnvironment("this");
  * 
  *     }
  * }

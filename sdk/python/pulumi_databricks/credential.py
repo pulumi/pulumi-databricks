@@ -37,6 +37,7 @@ class CredentialArgs:
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['CredentialProviderConfigArgs']] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.int]] = None,
@@ -54,6 +55,7 @@ class CredentialArgs:
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the credential owner.
+        :param pulumi.Input['CredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the credential.
         """
@@ -88,6 +90,8 @@ class CredentialArgs:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
@@ -267,6 +271,18 @@ class CredentialArgs:
         pulumi.set(self, "owner", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['CredentialProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['CredentialProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -337,6 +353,7 @@ class _CredentialState:
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['CredentialProviderConfigArgs']] = None,
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -355,6 +372,7 @@ class _CredentialState:
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the credential owner.
+        :param pulumi.Input['CredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the credential.
@@ -391,6 +409,8 @@ class _CredentialState:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if purpose is not None:
             pulumi.set(__self__, "purpose", purpose)
         if read_only is not None:
@@ -572,6 +592,18 @@ class _CredentialState:
         pulumi.set(self, "owner", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['CredentialProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['CredentialProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -656,6 +688,7 @@ class Credential(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']]] = None,
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -747,6 +780,7 @@ class Credential(pulumi.CustomResource):
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the credential owner.
+        :param pulumi.Input[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the credential.
@@ -861,6 +895,7 @@ class Credential(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']]] = None,
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -891,6 +926,7 @@ class Credential(pulumi.CustomResource):
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["provider_config"] = provider_config
             if purpose is None and not opts.urn:
                 raise TypeError("Missing required property 'purpose'")
             __props__.__dict__["purpose"] = purpose
@@ -926,6 +962,7 @@ class Credential(pulumi.CustomResource):
             metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']]] = None,
             purpose: Optional[pulumi.Input[_builtins.str]] = None,
             read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -948,6 +985,7 @@ class Credential(pulumi.CustomResource):
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the credential owner.
+        :param pulumi.Input[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the credential.
@@ -972,6 +1010,7 @@ class Credential(pulumi.CustomResource):
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["skip_validation"] = skip_validation
@@ -1082,6 +1121,14 @@ class Credential(pulumi.CustomResource):
         Username/groupname/sp application_id of the credential owner.
         """
         return pulumi.get(self, "owner")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.CredentialProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

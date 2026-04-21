@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableTableConfigurationArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionObjectTableArgs Empty = new PipelineIngestionDefinitionObjectTableArgs();
+
+    @Import(name="connectorOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsArgs> connectorOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectTableConnectorOptionsArgs>> connectorOptions() {
+        return Optional.ofNullable(this.connectorOptions);
+    }
 
     @Import(name="destinationCatalog", required=true)
     private Output<String> destinationCatalog;
@@ -69,6 +77,7 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
     private PipelineIngestionDefinitionObjectTableArgs() {}
 
     private PipelineIngestionDefinitionObjectTableArgs(PipelineIngestionDefinitionObjectTableArgs $) {
+        this.connectorOptions = $.connectorOptions;
         this.destinationCatalog = $.destinationCatalog;
         this.destinationSchema = $.destinationSchema;
         this.destinationTable = $.destinationTable;
@@ -94,6 +103,15 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
 
         public Builder(PipelineIngestionDefinitionObjectTableArgs defaults) {
             $ = new PipelineIngestionDefinitionObjectTableArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder connectorOptions(@Nullable Output<PipelineIngestionDefinitionObjectTableConnectorOptionsArgs> connectorOptions) {
+            $.connectorOptions = connectorOptions;
+            return this;
+        }
+
+        public Builder connectorOptions(PipelineIngestionDefinitionObjectTableConnectorOptionsArgs connectorOptions) {
+            return connectorOptions(Output.of(connectorOptions));
         }
 
         public Builder destinationCatalog(Output<String> destinationCatalog) {

@@ -175,6 +175,12 @@ namespace Pulumi.Databricks
     public sealed class GetUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public string? Api { get; set; }
+
+        /// <summary>
         /// A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `Id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
         /// </summary>
         [Input("extraAttributes")]
@@ -188,6 +194,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetUsersProviderConfigArgs? ProviderConfig { get; set; }
 
         [Input("users")]
         private List<Inputs.GetUsersUserArgs>? _users;
@@ -210,6 +222,12 @@ namespace Pulumi.Databricks
     public sealed class GetUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `Id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
         /// </summary>
         [Input("extraAttributes")]
@@ -223,6 +241,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetUsersProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         [Input("users")]
         private InputList<Inputs.GetUsersUserInputArgs>? _users;
@@ -246,12 +270,14 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetUsersResult
     {
+        public readonly string? Api;
         public readonly string? ExtraAttributes;
         public readonly string? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetUsersProviderConfigResult? ProviderConfig;
         /// <summary>
         /// A list of users matching the specified criteria. Each user has the following attributes:
         /// </summary>
@@ -259,17 +285,23 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetUsersResult(
+            string? api,
+
             string? extraAttributes,
 
             string? filter,
 
             string id,
 
+            Outputs.GetUsersProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetUsersUserResult> users)
         {
+            Api = api;
             ExtraAttributes = extraAttributes;
             Filter = filter;
             Id = id;
+            ProviderConfig = providerConfig;
             Users = users;
         }
     }
