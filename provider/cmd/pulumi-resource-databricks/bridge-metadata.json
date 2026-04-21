@@ -14,6 +14,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -48,6 +51,194 @@
                                         "fields": {
                                             "dry_run_mode_product_filter": {
                                                 "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ingress": {
+                        "fields": {
+                            "public_access": {
+                                "fields": {
+                                    "allow_rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "authentication": {
+                                                    "fields": {
+                                                        "identities": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "destination": {
+                                                    "fields": {
+                                                        "workspace_api": {
+                                                            "fields": {
+                                                                "scopes": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "origin": {
+                                                    "fields": {
+                                                        "excluded_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "included_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "deny_rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "authentication": {
+                                                    "fields": {
+                                                        "identities": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "destination": {
+                                                    "fields": {
+                                                        "workspace_api": {
+                                                            "fields": {
+                                                                "scopes": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "origin": {
+                                                    "fields": {
+                                                        "excluded_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "included_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ingress_dry_run": {
+                        "fields": {
+                            "public_access": {
+                                "fields": {
+                                    "allow_rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "authentication": {
+                                                    "fields": {
+                                                        "identities": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "destination": {
+                                                    "fields": {
+                                                        "workspace_api": {
+                                                            "fields": {
+                                                                "scopes": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "origin": {
+                                                    "fields": {
+                                                        "excluded_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "included_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "deny_rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "authentication": {
+                                                    "fields": {
+                                                        "identities": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "destination": {
+                                                    "fields": {
+                                                        "workspace_api": {
+                                                            "fields": {
+                                                                "scopes": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "origin": {
+                                                    "fields": {
+                                                        "excluded_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "included_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -348,6 +539,16 @@
                     "effective_predictive_optimization_flag": {
                         "maxItemsOne": true
                     },
+                    "managed_encryption_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "azure_encryption_settings": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "provider_config": {
                         "maxItemsOne": true
                     },
@@ -594,6 +795,9 @@
                     },
                     "databricks_gcp_service_account": {
                         "maxItemsOne": true
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -838,6 +1042,31 @@
                 "current": "databricks:index/externalLocation:ExternalLocation",
                 "majorVersion": 1,
                 "fields": {
+                    "effective_file_event_queue": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "managed_aqs": {
+                                    "maxItemsOne": true
+                                },
+                                "managed_pubsub": {
+                                    "maxItemsOne": true
+                                },
+                                "managed_sqs": {
+                                    "maxItemsOne": true
+                                },
+                                "provided_aqs": {
+                                    "maxItemsOne": true
+                                },
+                                "provided_pubsub": {
+                                    "maxItemsOne": true
+                                },
+                                "provided_sqs": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "encryption_details": {
                         "maxItemsOne": true,
                         "elem": {
@@ -917,6 +1146,17 @@
                                 "fields": {
                                     "entity_column_identifiers": {
                                         "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "request_source": {
+                                "fields": {
+                                    "flat_schema": {
+                                        "fields": {
+                                            "fields": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -1005,19 +1245,39 @@
             },
             "databricks_group": {
                 "current": "databricks:index/group:Group",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_group_instance_profile": {
                 "current": "databricks:index/groupInstanceProfile:GroupInstanceProfile",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_group_member": {
                 "current": "databricks:index/groupMember:GroupMember",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_group_role": {
                 "current": "databricks:index/groupRole:GroupRole",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_instance_pool": {
                 "current": "databricks:index/instancePool:InstancePool",
@@ -2635,11 +2895,21 @@
             },
             "databricks_metastore": {
                 "current": "databricks:index/metastore:Metastore",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_metastore_assignment": {
                 "current": "databricks:index/metastoreAssignment:MetastoreAssignment",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_metastore_data_access": {
                 "current": "databricks:index/metastoreDataAccess:MetastoreDataAccess",
@@ -2661,6 +2931,9 @@
                         "maxItemsOne": true
                     },
                     "gcp_service_account_key": {
+                        "maxItemsOne": true
+                    },
+                    "provider_config": {
                         "maxItemsOne": true
                     }
                 }
@@ -3032,6 +3305,9 @@
                 "fields": {
                     "domain_names": {
                         "maxItemsOne": false
+                    },
+                    "gcp_endpoint": {
+                        "maxItemsOne": true
                     },
                     "resource_names": {
                         "maxItemsOne": false
@@ -3540,6 +3816,63 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "connector_options": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "gdrive_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "file_ingestion_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "file_filters": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "google_ads_options": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "sharepoint_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "file_ingestion_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "file_filters": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "tiktok_ads_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "dimensions": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "metrics": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "table_configuration": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -3589,6 +3922,63 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "connector_options": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "gdrive_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "file_ingestion_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "file_filters": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "google_ads_options": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "sharepoint_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "file_ingestion_options": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "file_filters": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "tiktok_ads_options": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "dimensions": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "metrics": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "table_configuration": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -3812,6 +4202,10 @@
                 "current": "databricks:index/postgresBranch:PostgresBranch",
                 "majorVersion": 1
             },
+            "databricks_postgres_catalog": {
+                "current": "databricks:index/postgresCatalog:PostgresCatalog",
+                "majorVersion": 1
+            },
             "databricks_postgres_database": {
                 "current": "databricks:index/postgresDatabase:PostgresDatabase",
                 "majorVersion": 1
@@ -3854,6 +4248,19 @@
                     "status": {
                         "fields": {
                             "membership_roles": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_postgres_synced_table": {
+                "current": "databricks:index/postgresSyncedTable:PostgresSyncedTable",
+                "majorVersion": 1,
+                "fields": {
+                    "spec": {
+                        "fields": {
+                            "primary_key_columns": {
                                 "maxItemsOne": false
                             }
                         }
@@ -4170,7 +4577,12 @@
             },
             "databricks_service_principal": {
                 "current": "databricks:index/servicePrincipal:ServicePrincipal",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_service_principal_federation_policy": {
                 "current": "databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy",
@@ -4187,7 +4599,12 @@
             },
             "databricks_service_principal_role": {
                 "current": "databricks:index/servicePrincipalRole:ServicePrincipalRole",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_service_principal_secret": {
                 "current": "databricks:index/servicePrincipalSecret:ServicePrincipalSecret",
@@ -4305,6 +4722,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -4487,6 +4907,9 @@
                     },
                     "gcp_service_account_key": {
                         "maxItemsOne": true
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -4531,15 +4954,30 @@
             },
             "databricks_user": {
                 "current": "databricks:index/user:User",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_user_instance_profile": {
                 "current": "databricks:index/userInstanceProfile:UserInstanceProfile",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_user_role": {
                 "current": "databricks:index/userRole:UserRole",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_vector_search_endpoint": {
                 "current": "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint",
@@ -4725,6 +5163,194 @@
                                             }
                                         }
                                     }
+                                },
+                                "ingress": {
+                                    "fields": {
+                                        "public_access": {
+                                            "fields": {
+                                                "allow_rules": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "authentication": {
+                                                                "fields": {
+                                                                    "identities": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            },
+                                                            "destination": {
+                                                                "fields": {
+                                                                    "workspace_api": {
+                                                                        "fields": {
+                                                                            "scopes": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "origin": {
+                                                                "fields": {
+                                                                    "excluded_ip_ranges": {
+                                                                        "fields": {
+                                                                            "ip_ranges": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "included_ip_ranges": {
+                                                                        "fields": {
+                                                                            "ip_ranges": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "deny_rules": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "authentication": {
+                                                                "fields": {
+                                                                    "identities": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            },
+                                                            "destination": {
+                                                                "fields": {
+                                                                    "workspace_api": {
+                                                                        "fields": {
+                                                                            "scopes": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "origin": {
+                                                                "fields": {
+                                                                    "excluded_ip_ranges": {
+                                                                        "fields": {
+                                                                            "ip_ranges": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "included_ip_ranges": {
+                                                                        "fields": {
+                                                                            "ip_ranges": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "ingress_dry_run": {
+                                    "fields": {
+                                        "public_access": {
+                                            "fields": {
+                                                "allow_rules": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "authentication": {
+                                                                "fields": {
+                                                                    "identities": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            },
+                                                            "destination": {
+                                                                "fields": {
+                                                                    "workspace_api": {
+                                                                        "fields": {
+                                                                            "scopes": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "origin": {
+                                                                "fields": {
+                                                                    "excluded_ip_ranges": {
+                                                                        "fields": {
+                                                                            "ip_ranges": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "included_ip_ranges": {
+                                                                        "fields": {
+                                                                            "ip_ranges": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "deny_rules": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "authentication": {
+                                                                "fields": {
+                                                                    "identities": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            },
+                                                            "destination": {
+                                                                "fields": {
+                                                                    "workspace_api": {
+                                                                        "fields": {
+                                                                            "scopes": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "origin": {
+                                                                "fields": {
+                                                                    "excluded_ip_ranges": {
+                                                                        "fields": {
+                                                                            "ip_ranges": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "included_ip_ranges": {
+                                                                        "fields": {
+                                                                            "ip_ranges": {
+                                                                                "maxItemsOne": false
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -4749,6 +5375,194 @@
                                         "fields": {
                                             "dry_run_mode_product_filter": {
                                                 "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ingress": {
+                        "fields": {
+                            "public_access": {
+                                "fields": {
+                                    "allow_rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "authentication": {
+                                                    "fields": {
+                                                        "identities": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "destination": {
+                                                    "fields": {
+                                                        "workspace_api": {
+                                                            "fields": {
+                                                                "scopes": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "origin": {
+                                                    "fields": {
+                                                        "excluded_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "included_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "deny_rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "authentication": {
+                                                    "fields": {
+                                                        "identities": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "destination": {
+                                                    "fields": {
+                                                        "workspace_api": {
+                                                            "fields": {
+                                                                "scopes": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "origin": {
+                                                    "fields": {
+                                                        "excluded_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "included_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ingress_dry_run": {
+                        "fields": {
+                            "public_access": {
+                                "fields": {
+                                    "allow_rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "authentication": {
+                                                    "fields": {
+                                                        "identities": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "destination": {
+                                                    "fields": {
+                                                        "workspace_api": {
+                                                            "fields": {
+                                                                "scopes": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "origin": {
+                                                    "fields": {
+                                                        "excluded_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "included_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "deny_rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "authentication": {
+                                                    "fields": {
+                                                        "identities": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                },
+                                                "destination": {
+                                                    "fields": {
+                                                        "workspace_api": {
+                                                            "fields": {
+                                                                "scopes": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "origin": {
+                                                    "fields": {
+                                                        "excluded_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "included_ip_ranges": {
+                                                            "fields": {
+                                                                "ip_ranges": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -5046,6 +5860,16 @@
                             "fields": {
                                 "effective_predictive_optimization_flag": {
                                     "maxItemsOne": true
+                                },
+                                "managed_encryption_settings": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "azure_encryption_settings": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "provisioning_info": {
                                     "maxItemsOne": true
@@ -5753,6 +6577,31 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "effective_file_event_queue": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "managed_aqs": {
+                                                "maxItemsOne": true
+                                            },
+                                            "managed_pubsub": {
+                                                "maxItemsOne": true
+                                            },
+                                            "managed_sqs": {
+                                                "maxItemsOne": true
+                                            },
+                                            "provided_aqs": {
+                                                "maxItemsOne": true
+                                            },
+                                            "provided_pubsub": {
+                                                "maxItemsOne": true
+                                            },
+                                            "provided_sqs": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "encryption_details": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -5865,6 +6714,17 @@
                                         "maxItemsOne": false
                                     }
                                 }
+                            },
+                            "request_source": {
+                                "fields": {
+                                    "flat_schema": {
+                                        "fields": {
+                                            "fields": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -5904,6 +6764,17 @@
                                             "fields": {
                                                 "entity_column_identifiers": {
                                                     "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "request_source": {
+                                            "fields": {
+                                                "flat_schema": {
+                                                    "fields": {
+                                                        "fields": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -7525,6 +8396,10 @@
                     }
                 }
             },
+            "databricks_postgres_catalog": {
+                "current": "databricks:index/getPostgresCatalog:getPostgresCatalog",
+                "majorVersion": 1
+            },
             "databricks_postgres_database": {
                 "current": "databricks:index/getPostgresDatabase:getPostgresDatabase",
                 "majorVersion": 1
@@ -7640,6 +8515,19 @@
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_postgres_synced_table": {
+                "current": "databricks:index/getPostgresSyncedTable:getPostgresSyncedTable",
+                "majorVersion": 1,
+                "fields": {
+                    "spec": {
+                        "fields": {
+                            "primary_key_columns": {
+                                "maxItemsOne": false
                             }
                         }
                     }
@@ -8512,6 +9400,12 @@
     },
     "ids": {
         "resources": {
+            "databricks_account_network_policy": [
+                "ingress.public_access.allow_rules.$.authentication.identities.$.principal_id",
+                "ingress.public_access.deny_rules.$.authentication.identities.$.principal_id",
+                "ingress_dry_run.public_access.allow_rules.$.authentication.identities.$.principal_id",
+                "ingress_dry_run.public_access.deny_rules.$.authentication.identities.$.principal_id"
+            ],
             "databricks_git_credential": [
                 "principal_id"
             ],
@@ -8520,6 +9414,20 @@
             ],
             "databricks_permission_assignment": [
                 "principal_id"
+            ]
+        },
+        "dataSources": {
+            "databricks_account_network_policies": [
+                "items.$.ingress.public_access.allow_rules.$.authentication.identities.$.principal_id",
+                "items.$.ingress.public_access.deny_rules.$.authentication.identities.$.principal_id",
+                "items.$.ingress_dry_run.public_access.allow_rules.$.authentication.identities.$.principal_id",
+                "items.$.ingress_dry_run.public_access.deny_rules.$.authentication.identities.$.principal_id"
+            ],
+            "databricks_account_network_policy": [
+                "ingress.public_access.allow_rules.$.authentication.identities.$.principal_id",
+                "ingress.public_access.deny_rules.$.authentication.identities.$.principal_id",
+                "ingress_dry_run.public_access.allow_rules.$.authentication.identities.$.principal_id",
+                "ingress_dry_run.public_access.deny_rules.$.authentication.identities.$.principal_id"
             ]
         }
     },
@@ -8623,10 +9531,12 @@
             "databricks:index/pipeline:Pipeline": 0,
             "databricks:index/policyInfo:PolicyInfo": 1,
             "databricks:index/postgresBranch:PostgresBranch": 1,
+            "databricks:index/postgresCatalog:PostgresCatalog": 1,
             "databricks:index/postgresDatabase:PostgresDatabase": 1,
             "databricks:index/postgresEndpoint:PostgresEndpoint": 1,
             "databricks:index/postgresProject:PostgresProject": 1,
             "databricks:index/postgresRole:PostgresRole": 1,
+            "databricks:index/postgresSyncedTable:PostgresSyncedTable": 1,
             "databricks:index/qualityMonitor:QualityMonitor": 1,
             "databricks:index/qualityMonitorV2:QualityMonitorV2": 1,
             "databricks:index/query:Query": 0,
@@ -8766,6 +9676,7 @@
             "databricks:index/getPolicyInfos:getPolicyInfos": 1,
             "databricks:index/getPostgresBranch:getPostgresBranch": 1,
             "databricks:index/getPostgresBranches:getPostgresBranches": 1,
+            "databricks:index/getPostgresCatalog:getPostgresCatalog": 1,
             "databricks:index/getPostgresDatabase:getPostgresDatabase": 1,
             "databricks:index/getPostgresDatabases:getPostgresDatabases": 1,
             "databricks:index/getPostgresEndpoint:getPostgresEndpoint": 1,
@@ -8774,6 +9685,7 @@
             "databricks:index/getPostgresProjects:getPostgresProjects": 1,
             "databricks:index/getPostgresRole:getPostgresRole": 1,
             "databricks:index/getPostgresRoles:getPostgresRoles": 1,
+            "databricks:index/getPostgresSyncedTable:getPostgresSyncedTable": 1,
             "databricks:index/getQualityMonitorV2:getQualityMonitorV2": 1,
             "databricks:index/getQualityMonitorsV2:getQualityMonitorsV2": 1,
             "databricks:index/getRegisteredModel:getRegisteredModel": 1,
@@ -11734,6 +12646,9 @@
     },
     "workspace-id": {
         "resources": {
+            "databricks_access_control_rule_set": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_aibi_dashboard_embedding_access_policy_setting": [
                 "provider_config.$.workspace_id"
             ],
@@ -11782,6 +12697,9 @@
                 "provider_config.$.workspace_id"
             ],
             "databricks_connection": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_credential": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_dashboard": [
@@ -11868,6 +12786,18 @@
             "databricks_grants": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_group": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_group_instance_profile": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_group_member": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_group_role": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_instance_pool": [
                 "provider_config.$.workspace_id"
             ],
@@ -11906,8 +12836,15 @@
             "databricks_materialized_features_feature_tag": [
                 "provider_config.workspace_id"
             ],
+            "databricks_metastore": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_metastore_assignment": [
+                "provider_config.$.workspace_id",
                 "workspace_id"
+            ],
+            "databricks_metastore_data_access": [
+                "provider_config.$.workspace_id"
             ],
             "databricks_mlflow_experiment": [
                 "provider_config.$.workspace_id"
@@ -11969,6 +12906,9 @@
             "databricks_postgres_branch": [
                 "provider_config.workspace_id"
             ],
+            "databricks_postgres_catalog": [
+                "provider_config.workspace_id"
+            ],
             "databricks_postgres_database": [
                 "provider_config.workspace_id"
             ],
@@ -11979,6 +12919,9 @@
                 "provider_config.workspace_id"
             ],
             "databricks_postgres_role": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_synced_table": [
                 "provider_config.workspace_id"
             ],
             "databricks_provider": [
@@ -12020,6 +12963,12 @@
             "databricks_secret_scope": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_service_principal": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_service_principal_role": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_service_principal_secret": [
                 "provider_config.$.workspace_id"
             ],
@@ -12038,6 +12987,9 @@
             "databricks_sql_global_config": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_sql_permissions": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_sql_query": [
                 "provider_config.$.workspace_id"
             ],
@@ -12050,6 +13002,9 @@
             "databricks_sql_widget": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_storage_credential": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_system_schema": [
                 "provider_config.$.workspace_id"
             ],
@@ -12060,6 +13015,15 @@
                 "provider_config.workspace_id"
             ],
             "databricks_token": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_user": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_user_instance_profile": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_user_role": [
                 "provider_config.$.workspace_id"
             ],
             "databricks_vector_search_endpoint": [
@@ -12342,6 +13306,9 @@
                 "branches.$.provider_config.workspace_id",
                 "provider_config.workspace_id"
             ],
+            "databricks_postgres_catalog": [
+                "provider_config.workspace_id"
+            ],
             "databricks_postgres_database": [
                 "provider_config.workspace_id"
             ],
@@ -12369,6 +13336,9 @@
             "databricks_postgres_roles": [
                 "provider_config.workspace_id",
                 "roles.$.provider_config.workspace_id"
+            ],
+            "databricks_postgres_synced_table": [
+                "provider_config.workspace_id"
             ],
             "databricks_quality_monitor_v2": [
                 "provider_config.workspace_id"
@@ -12437,6 +13407,9 @@
             ],
             "databricks_user": [
                 "provider_config.$.workspace_id"
+            ],
+            "databricks_users": [
+                "provider_config.workspace_id"
             ],
             "databricks_views": [
                 "provider_config.$.workspace_id"
