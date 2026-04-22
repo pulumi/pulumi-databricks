@@ -438,7 +438,7 @@ func Provider() tfbridge.ProviderInfo {
 	// generated nested field metadata lands on .Fields instead of .Elem.Fields.
 	// The "ids" traversal above creates the ingress and ingress_dry_run
 	// SchemaInfo paths by visiting their nested principal_id fields.
-	prov.P.ResourcesMap().Range(func(key string, value shim.Resource) bool {
+	prov.P.ResourcesMap().Range(func(key string, _ shim.Resource) bool {
 		if key != "databricks_account_network_policy" {
 			return true
 		}
