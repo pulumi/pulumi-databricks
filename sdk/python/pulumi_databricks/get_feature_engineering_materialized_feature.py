@@ -28,7 +28,7 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringMaterializedFeature.
     """
-    def __init__(__self__, cron_schedule=None, feature_name=None, id=None, last_materialization_time=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, provider_config=None, table_name=None):
+    def __init__(__self__, cron_schedule=None, feature_name=None, id=None, is_online=None, last_materialization_time=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, provider_config=None, table_name=None):
         if cron_schedule and not isinstance(cron_schedule, str):
             raise TypeError("Expected argument 'cron_schedule' to be a str")
         pulumi.set(__self__, "cron_schedule", cron_schedule)
@@ -38,6 +38,9 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_online and not isinstance(is_online, bool):
+            raise TypeError("Expected argument 'is_online' to be a bool")
+        pulumi.set(__self__, "is_online", is_online)
         if last_materialization_time and not isinstance(last_materialization_time, str):
             raise TypeError("Expected argument 'last_materialization_time' to be a str")
         pulumi.set(__self__, "last_materialization_time", last_materialization_time)
@@ -83,6 +86,14 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isOnline")
+    def is_online(self) -> _builtins.bool:
+        """
+        (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+        """
+        return pulumi.get(self, "is_online")
 
     @_builtins.property
     @pulumi.getter(name="lastMaterializationTime")
@@ -148,6 +159,7 @@ class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineer
             cron_schedule=self.cron_schedule,
             feature_name=self.feature_name,
             id=self.id,
+            is_online=self.is_online,
             last_materialization_time=self.last_materialization_time,
             materialized_feature_id=self.materialized_feature_id,
             offline_store_config=self.offline_store_config,
@@ -177,6 +189,7 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
         cron_schedule=pulumi.get(__ret__, 'cron_schedule'),
         feature_name=pulumi.get(__ret__, 'feature_name'),
         id=pulumi.get(__ret__, 'id'),
+        is_online=pulumi.get(__ret__, 'is_online'),
         last_materialization_time=pulumi.get(__ret__, 'last_materialization_time'),
         materialized_feature_id=pulumi.get(__ret__, 'materialized_feature_id'),
         offline_store_config=pulumi.get(__ret__, 'offline_store_config'),
@@ -203,6 +216,7 @@ def get_feature_engineering_materialized_feature_output(materialized_feature_id:
         cron_schedule=pulumi.get(__response__, 'cron_schedule'),
         feature_name=pulumi.get(__response__, 'feature_name'),
         id=pulumi.get(__response__, 'id'),
+        is_online=pulumi.get(__response__, 'is_online'),
         last_materialization_time=pulumi.get(__response__, 'last_materialization_time'),
         materialized_feature_id=pulumi.get(__response__, 'materialized_feature_id'),
         offline_store_config=pulumi.get(__response__, 'offline_store_config'),

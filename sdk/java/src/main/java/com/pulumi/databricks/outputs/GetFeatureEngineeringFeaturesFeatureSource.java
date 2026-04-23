@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSource;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSource;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,30 +14,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureSource {
     /**
-     * @return (DeltaTableSource)
+     * @return (DeltaTableSource) - A Delta table data source
      * 
      */
     private @Nullable GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource deltaTableSource;
     /**
-     * @return (KafkaSource)
+     * @return (KafkaSource) - A Kafka stream data source
      * 
      */
     private @Nullable GetFeatureEngineeringFeaturesFeatureSourceKafkaSource kafkaSource;
+    /**
+     * @return (RequestSource) - A request-time data source
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeaturesFeatureSourceRequestSource requestSource;
 
     private GetFeatureEngineeringFeaturesFeatureSource() {}
     /**
-     * @return (DeltaTableSource)
+     * @return (DeltaTableSource) - A Delta table data source
      * 
      */
     public Optional<GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource> deltaTableSource() {
         return Optional.ofNullable(this.deltaTableSource);
     }
     /**
-     * @return (KafkaSource)
+     * @return (KafkaSource) - A Kafka stream data source
      * 
      */
     public Optional<GetFeatureEngineeringFeaturesFeatureSourceKafkaSource> kafkaSource() {
         return Optional.ofNullable(this.kafkaSource);
+    }
+    /**
+     * @return (RequestSource) - A request-time data source
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeaturesFeatureSourceRequestSource> requestSource() {
+        return Optional.ofNullable(this.requestSource);
     }
 
     public static Builder builder() {
@@ -50,11 +63,13 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource deltaTableSource;
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceKafkaSource kafkaSource;
+        private @Nullable GetFeatureEngineeringFeaturesFeatureSourceRequestSource requestSource;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeatureSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deltaTableSource = defaults.deltaTableSource;
     	      this.kafkaSource = defaults.kafkaSource;
+    	      this.requestSource = defaults.requestSource;
         }
 
         @CustomType.Setter
@@ -69,10 +84,17 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
             this.kafkaSource = kafkaSource;
             return this;
         }
+        @CustomType.Setter
+        public Builder requestSource(@Nullable GetFeatureEngineeringFeaturesFeatureSourceRequestSource requestSource) {
+
+            this.requestSource = requestSource;
+            return this;
+        }
         public GetFeatureEngineeringFeaturesFeatureSource build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureSource();
             _resultValue.deltaTableSource = deltaTableSource;
             _resultValue.kafkaSource = kafkaSource;
+            _resultValue.requestSource = requestSource;
             return _resultValue;
         }
     }

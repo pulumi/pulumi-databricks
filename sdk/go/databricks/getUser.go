@@ -81,6 +81,7 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
+	Api *string `pulumi:"api"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *GetUserProviderConfig `pulumi:"providerConfig"`
 	// ID of the user.
@@ -96,8 +97,9 @@ type LookupUserResult struct {
 	// Whether the user is active.
 	Active bool `pulumi:"active"`
 	// Alphanumeric representation of user local name. e.g. `mrFoo`.
-	Alphanumeric  string `pulumi:"alphanumeric"`
-	ApplicationId string `pulumi:"applicationId"`
+	Alphanumeric  string  `pulumi:"alphanumeric"`
+	Api           *string `pulumi:"api"`
+	ApplicationId string  `pulumi:"applicationId"`
 	// Display name of the user, e.g. `Mr Foo`.
 	DisplayName string `pulumi:"displayName"`
 	// ID of the user in an external identity provider.
@@ -125,6 +127,7 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
+	Api pulumi.StringPtrInput `pulumi:"api"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig GetUserProviderConfigPtrInput `pulumi:"providerConfig"`
 	// ID of the user.
@@ -165,6 +168,10 @@ func (o LookupUserResultOutput) Active() pulumi.BoolOutput {
 // Alphanumeric representation of user local name. e.g. `mrFoo`.
 func (o LookupUserResultOutput) Alphanumeric() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Alphanumeric }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUserResult) *string { return v.Api }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupUserResultOutput) ApplicationId() pulumi.StringOutput {

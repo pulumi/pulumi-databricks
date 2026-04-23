@@ -46,6 +46,10 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
      */
     declare public readonly featureName: pulumi.Output<string>;
     /**
+     * (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     */
+    declare public /*out*/ readonly isOnline: pulumi.Output<boolean>;
+    /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      */
@@ -54,8 +58,8 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
      * Unique identifier for the materialized feature
      */
     declare public readonly materializedFeatureId: pulumi.Output<string | undefined>;
-    declare public readonly offlineStoreConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig | undefined>;
-    declare public readonly onlineStoreConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig | undefined>;
+    declare public readonly offlineStoreConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig>;
+    declare public readonly onlineStoreConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig>;
     /**
      * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
@@ -84,6 +88,7 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
             const state = argsOrState as FeatureEngineeringMaterializedFeatureState | undefined;
             resourceInputs["cronSchedule"] = state?.cronSchedule;
             resourceInputs["featureName"] = state?.featureName;
+            resourceInputs["isOnline"] = state?.isOnline;
             resourceInputs["lastMaterializationTime"] = state?.lastMaterializationTime;
             resourceInputs["materializedFeatureId"] = state?.materializedFeatureId;
             resourceInputs["offlineStoreConfig"] = state?.offlineStoreConfig;
@@ -103,6 +108,7 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
             resourceInputs["onlineStoreConfig"] = args?.onlineStoreConfig;
             resourceInputs["pipelineScheduleState"] = args?.pipelineScheduleState;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["isOnline"] = undefined /*out*/;
             resourceInputs["lastMaterializationTime"] = undefined /*out*/;
             resourceInputs["tableName"] = undefined /*out*/;
         }
@@ -123,6 +129,10 @@ export interface FeatureEngineeringMaterializedFeatureState {
      * The full name of the feature in Unity Catalog
      */
     featureName?: pulumi.Input<string>;
+    /**
+     * (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     */
+    isOnline?: pulumi.Input<boolean>;
     /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null

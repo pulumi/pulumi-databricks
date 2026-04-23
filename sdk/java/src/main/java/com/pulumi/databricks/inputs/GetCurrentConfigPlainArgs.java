@@ -23,11 +23,33 @@ public final class GetCurrentConfigPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="api")
+    private @Nullable String api;
+
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
+    }
+
     @Import(name="authType")
     private @Nullable String authType;
 
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
+    }
+
+    /**
+     * Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+     * 
+     */
+    @Import(name="cloud")
+    private @Nullable String cloud;
+
+    /**
+     * @return Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+     * 
+     */
+    public Optional<String> cloud() {
+        return Optional.ofNullable(this.cloud);
     }
 
     @Import(name="cloudType")
@@ -70,7 +92,9 @@ public final class GetCurrentConfigPlainArgs extends com.pulumi.resources.Invoke
 
     private GetCurrentConfigPlainArgs(GetCurrentConfigPlainArgs $) {
         this.accountId = $.accountId;
+        this.api = $.api;
         this.authType = $.authType;
+        this.cloud = $.cloud;
         this.cloudType = $.cloudType;
         this.host = $.host;
         this.isAccount = $.isAccount;
@@ -100,8 +124,24 @@ public final class GetCurrentConfigPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        public Builder api(@Nullable String api) {
+            $.api = api;
+            return this;
+        }
+
         public Builder authType(@Nullable String authType) {
             $.authType = authType;
+            return this;
+        }
+
+        /**
+         * @param cloud Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloud(@Nullable String cloud) {
+            $.cloud = cloud;
             return this;
         }
 

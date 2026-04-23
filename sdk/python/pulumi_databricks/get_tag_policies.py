@@ -82,7 +82,7 @@ def get_tag_policies(page_size: Optional[_builtins.int] = None,
                      provider_config: Optional[Union['GetTagPoliciesProviderConfigArgs', 'GetTagPoliciesProviderConfigArgsDict']] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagPoliciesResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source can be used to list all tag policies in the account.
 
@@ -128,7 +128,7 @@ def get_tag_policies_output(page_size: Optional[pulumi.Input[Optional[_builtins.
                             provider_config: Optional[pulumi.Input[Optional[Union['GetTagPoliciesProviderConfigArgs', 'GetTagPoliciesProviderConfigArgsDict']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagPoliciesResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source can be used to list all tag policies in the account.
 

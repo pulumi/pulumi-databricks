@@ -6,6 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressArgs;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressArgs;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +19,14 @@ public final class AccountNetworkPolicyState extends com.pulumi.resources.Resour
     public static final AccountNetworkPolicyState Empty = new AccountNetworkPolicyState();
 
     /**
-     * The associated account ID for this Network Policy object
+     * (string) - The associated account ID for this Network Policy object
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The associated account ID for this Network Policy object
+     * @return (string) - The associated account ID for this Network Policy object
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -47,6 +49,40 @@ public final class AccountNetworkPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The network policies applying for ingress traffic
+     * 
+     */
+    @Import(name="ingress")
+    private @Nullable Output<AccountNetworkPolicyIngressArgs> ingress;
+
+    /**
+     * @return The network policies applying for ingress traffic
+     * 
+     */
+    public Optional<Output<AccountNetworkPolicyIngressArgs>> ingress() {
+        return Optional.ofNullable(this.ingress);
+    }
+
+    /**
+     * The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     * 
+     */
+    @Import(name="ingressDryRun")
+    private @Nullable Output<AccountNetworkPolicyIngressDryRunArgs> ingressDryRun;
+
+    /**
+     * @return The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     * 
+     */
+    public Optional<Output<AccountNetworkPolicyIngressDryRunArgs>> ingressDryRun() {
+        return Optional.ofNullable(this.ingressDryRun);
+    }
+
+    /**
      * The unique identifier for the network policy
      * 
      */
@@ -66,6 +102,8 @@ public final class AccountNetworkPolicyState extends com.pulumi.resources.Resour
     private AccountNetworkPolicyState(AccountNetworkPolicyState $) {
         this.accountId = $.accountId;
         this.egress = $.egress;
+        this.ingress = $.ingress;
+        this.ingressDryRun = $.ingressDryRun;
         this.networkPolicyId = $.networkPolicyId;
     }
 
@@ -88,7 +126,7 @@ public final class AccountNetworkPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountId The associated account ID for this Network Policy object
+         * @param accountId (string) - The associated account ID for this Network Policy object
          * 
          * @return builder
          * 
@@ -99,7 +137,7 @@ public final class AccountNetworkPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountId The associated account ID for this Network Policy object
+         * @param accountId (string) - The associated account ID for this Network Policy object
          * 
          * @return builder
          * 
@@ -127,6 +165,52 @@ public final class AccountNetworkPolicyState extends com.pulumi.resources.Resour
          */
         public Builder egress(AccountNetworkPolicyEgressArgs egress) {
             return egress(Output.of(egress));
+        }
+
+        /**
+         * @param ingress The network policies applying for ingress traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingress(@Nullable Output<AccountNetworkPolicyIngressArgs> ingress) {
+            $.ingress = ingress;
+            return this;
+        }
+
+        /**
+         * @param ingress The network policies applying for ingress traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingress(AccountNetworkPolicyIngressArgs ingress) {
+            return ingress(Output.of(ingress));
+        }
+
+        /**
+         * @param ingressDryRun The ingress policy for dry run mode. Dry run will always run even if the request
+         * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+         * and emit logs only without blocking requests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressDryRun(@Nullable Output<AccountNetworkPolicyIngressDryRunArgs> ingressDryRun) {
+            $.ingressDryRun = ingressDryRun;
+            return this;
+        }
+
+        /**
+         * @param ingressDryRun The ingress policy for dry run mode. Dry run will always run even if the request
+         * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+         * and emit logs only without blocking requests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressDryRun(AccountNetworkPolicyIngressDryRunArgs ingressDryRun) {
+            return ingressDryRun(Output.of(ingressDryRun));
         }
 
         /**

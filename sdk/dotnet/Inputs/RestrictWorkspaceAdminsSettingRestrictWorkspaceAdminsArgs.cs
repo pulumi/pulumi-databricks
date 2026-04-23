@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("disableGovTagCreation")]
+        public Input<bool>? DisableGovTagCreation { get; set; }
+
         /// <summary>
         /// The restrict workspace admins status for the workspace.
         /// </summary>

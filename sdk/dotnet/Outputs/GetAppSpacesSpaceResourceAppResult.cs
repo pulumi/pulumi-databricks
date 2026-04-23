@@ -13,9 +13,23 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppSpacesSpaceResourceAppResult
     {
+        /// <summary>
+        /// (string) - Name of the serving endpoint to grant permission on
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+        /// </summary>
+        public readonly string? Permission;
+
         [OutputConstructor]
-        private GetAppSpacesSpaceResourceAppResult()
+        private GetAppSpacesSpaceResourceAppResult(
+            string? name,
+
+            string? permission)
         {
+            Name = name;
+            Permission = permission;
         }
     }
 }

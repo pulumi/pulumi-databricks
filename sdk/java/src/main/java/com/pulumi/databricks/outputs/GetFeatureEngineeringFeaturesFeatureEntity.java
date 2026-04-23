@@ -11,14 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureEntity {
     /**
-     * @return (string) - The name of the timeseries column
+     * @return (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., &#34;value.event_timestamp&#34;). For nested
+     * fields, the leaf node name (e.g., &#34;eventTimestamp&#34; from &#34;value.event_details.event_timestamp&#34;)
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., &#34;value:event_timestamp&#34;) is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
      * 
      */
     private String name;
 
     private GetFeatureEngineeringFeaturesFeatureEntity() {}
     /**
-     * @return (string) - The name of the timeseries column
+     * @return (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., &#34;value.event_timestamp&#34;). For nested
+     * fields, the leaf node name (e.g., &#34;eventTimestamp&#34; from &#34;value.event_details.event_timestamp&#34;)
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., &#34;value:event_timestamp&#34;) is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
      * 
      */
     public String name() {

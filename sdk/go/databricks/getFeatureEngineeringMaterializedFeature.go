@@ -38,6 +38,8 @@ type LookupFeatureEngineeringMaterializedFeatureResult struct {
 	FeatureName string `pulumi:"featureName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+	IsOnline bool `pulumi:"isOnline"`
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime string `pulumi:"lastMaterializationTime"`
@@ -103,6 +105,11 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) FeatureName() p
 // The provider-assigned unique ID for this managed resource.
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) IsOnline() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) bool { return v.IsOnline }).(pulumi.BoolOutput)
 }
 
 // (string) - The timestamp when the pipeline last ran and updated the materialized feature values.

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionColumnSelectionArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionExtraParameterArgs;
 import java.lang.String;
 import java.util.List;
@@ -31,6 +32,21 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
      */
     public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionArgs>> aggregationFunction() {
         return Optional.ofNullable(this.aggregationFunction);
+    }
+
+    /**
+     * Selects the latest value of a single column in a data source
+     * 
+     */
+    @Import(name="columnSelection")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionColumnSelectionArgs> columnSelection;
+
+    /**
+     * @return Selects the latest value of a single column in a data source
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureFunctionColumnSelectionArgs>> columnSelection() {
+        return Optional.ofNullable(this.columnSelection);
     }
 
     /**
@@ -71,6 +87,7 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
 
     private FeatureEngineeringFeatureFunctionArgs(FeatureEngineeringFeatureFunctionArgs $) {
         this.aggregationFunction = $.aggregationFunction;
+        this.columnSelection = $.columnSelection;
         this.extraParameters = $.extraParameters;
         this.functionType = $.functionType;
     }
@@ -112,6 +129,27 @@ public final class FeatureEngineeringFeatureFunctionArgs extends com.pulumi.reso
          */
         public Builder aggregationFunction(FeatureEngineeringFeatureFunctionAggregationFunctionArgs aggregationFunction) {
             return aggregationFunction(Output.of(aggregationFunction));
+        }
+
+        /**
+         * @param columnSelection Selects the latest value of a single column in a data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder columnSelection(@Nullable Output<FeatureEngineeringFeatureFunctionColumnSelectionArgs> columnSelection) {
+            $.columnSelection = columnSelection;
+            return this;
+        }
+
+        /**
+         * @param columnSelection Selects the latest value of a single column in a data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder columnSelection(FeatureEngineeringFeatureFunctionColumnSelectionArgs columnSelection) {
+            return columnSelection(Output.of(columnSelection));
         }
 
         /**

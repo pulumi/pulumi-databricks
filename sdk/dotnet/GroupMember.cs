@@ -76,6 +76,12 @@ namespace Pulumi.Databricks
     public partial class GroupMember : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// This is the `Id` attribute (SCIM ID) of the group resource.
         /// </summary>
         [Output("groupId")]
@@ -86,6 +92,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("memberId")]
         public Output<string> MemberId { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.GroupMemberProviderConfig?> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -134,6 +143,12 @@ namespace Pulumi.Databricks
     public sealed class GroupMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is the `Id` attribute (SCIM ID) of the group resource.
         /// </summary>
         [Input("groupId", required: true)]
@@ -145,6 +160,9 @@ namespace Pulumi.Databricks
         [Input("memberId", required: true)]
         public Input<string> MemberId { get; set; } = null!;
 
+        [Input("providerConfig")]
+        public Input<Inputs.GroupMemberProviderConfigArgs>? ProviderConfig { get; set; }
+
         public GroupMemberArgs()
         {
         }
@@ -153,6 +171,12 @@ namespace Pulumi.Databricks
 
     public sealed class GroupMemberState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         /// <summary>
         /// This is the `Id` attribute (SCIM ID) of the group resource.
         /// </summary>
@@ -164,6 +188,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("memberId")]
         public Input<string>? MemberId { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.GroupMemberProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public GroupMemberState()
         {

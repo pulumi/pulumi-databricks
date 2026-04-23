@@ -147,6 +147,9 @@ namespace Pulumi.Databricks
         [Output("privilegeAssignments")]
         public Output<ImmutableArray<Outputs.SqlPermissionsPrivilegeAssignment>> PrivilegeAssignments { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.SqlPermissionsProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         /// <summary>
         /// Name of the table. Can be combined with the `Database`.
         /// </summary>
@@ -261,6 +264,9 @@ namespace Pulumi.Databricks
             set => _privilegeAssignments = value;
         }
 
+        [Input("providerConfig")]
+        public Input<Inputs.SqlPermissionsProviderConfigArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// Name of the table. Can be combined with the `Database`.
         /// </summary>
@@ -336,6 +342,9 @@ namespace Pulumi.Databricks
             get => _privilegeAssignments ?? (_privilegeAssignments = new InputList<Inputs.SqlPermissionsPrivilegeAssignmentGetArgs>());
             set => _privilegeAssignments = value;
         }
+
+        [Input("providerConfig")]
+        public Input<Inputs.SqlPermissionsProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Name of the table. Can be combined with the `Database`.

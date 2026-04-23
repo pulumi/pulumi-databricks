@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
 //
@@ -90,7 +90,7 @@ func LookupEntityTagAssignment(ctx *pulumi.Context, args *LookupEntityTagAssignm
 type LookupEntityTagAssignmentArgs struct {
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName string `pulumi:"entityName"`
-	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// The type of the entity to which the tag is assigned
 	EntityType string `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
@@ -102,7 +102,7 @@ type LookupEntityTagAssignmentArgs struct {
 type LookupEntityTagAssignmentResult struct {
 	// (string) - The fully qualified name of the entity to which the tag is assigned
 	EntityName string `pulumi:"entityName"`
-	// (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// (string) - The type of the entity to which the tag is assigned
 	EntityType string `pulumi:"entityType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                                `pulumi:"id"`
@@ -132,7 +132,7 @@ func LookupEntityTagAssignmentOutput(ctx *pulumi.Context, args LookupEntityTagAs
 type LookupEntityTagAssignmentOutputArgs struct {
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName pulumi.StringInput `pulumi:"entityName"`
-	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// The type of the entity to which the tag is assigned
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetEntityTagAssignmentProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -164,7 +164,7 @@ func (o LookupEntityTagAssignmentResultOutput) EntityName() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.EntityName }).(pulumi.StringOutput)
 }
 
-// (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+// (string) - The type of the entity to which the tag is assigned
 func (o LookupEntityTagAssignmentResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.EntityType }).(pulumi.StringOutput)
 }

@@ -126,7 +126,7 @@ def get_account_setting_user_preference_v2(name: Optional[_builtins.str] = None,
                                            user_id: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountSettingUserPreferenceV2Result:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source can be used to get a single account user preference setting.
 
@@ -152,7 +152,7 @@ def get_account_setting_user_preference_v2_output(name: Optional[pulumi.Input[_b
                                                   user_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSettingUserPreferenceV2Result]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source can be used to get a single account user preference setting.
 

@@ -28,7 +28,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, acl_principal_id=None, allow_cluster_create=None, allow_instance_pool_create=None, child_groups=None, databricks_sql_access=None, display_name=None, external_id=None, groups=None, id=None, instance_profiles=None, members=None, provider_config=None, recursive=None, service_principals=None, users=None, workspace_access=None, workspace_consume=None):
+    def __init__(__self__, acl_principal_id=None, allow_cluster_create=None, allow_instance_pool_create=None, api=None, child_groups=None, databricks_sql_access=None, display_name=None, external_id=None, groups=None, id=None, instance_profiles=None, members=None, provider_config=None, recursive=None, service_principals=None, users=None, workspace_access=None, workspace_consume=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -38,6 +38,9 @@ class GetGroupResult:
         if allow_instance_pool_create and not isinstance(allow_instance_pool_create, bool):
             raise TypeError("Expected argument 'allow_instance_pool_create' to be a bool")
         pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
+        if api and not isinstance(api, str):
+            raise TypeError("Expected argument 'api' to be a str")
+        pulumi.set(__self__, "api", api)
         if child_groups and not isinstance(child_groups, list):
             raise TypeError("Expected argument 'child_groups' to be a list")
         pulumi.set(__self__, "child_groups", child_groups)
@@ -104,6 +107,11 @@ class GetGroupResult:
         True if group members can create instance pools
         """
         return pulumi.get(self, "allow_instance_pool_create")
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="childGroups")
@@ -207,6 +215,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             acl_principal_id=self.acl_principal_id,
             allow_cluster_create=self.allow_cluster_create,
             allow_instance_pool_create=self.allow_instance_pool_create,
+            api=self.api,
             child_groups=self.child_groups,
             databricks_sql_access=self.databricks_sql_access,
             display_name=self.display_name,
@@ -226,6 +235,7 @@ class AwaitableGetGroupResult(GetGroupResult):
 def get_group(acl_principal_id: Optional[_builtins.str] = None,
               allow_cluster_create: Optional[_builtins.bool] = None,
               allow_instance_pool_create: Optional[_builtins.bool] = None,
+              api: Optional[_builtins.str] = None,
               child_groups: Optional[Sequence[_builtins.str]] = None,
               databricks_sql_access: Optional[_builtins.bool] = None,
               display_name: Optional[_builtins.str] = None,
@@ -275,6 +285,7 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
     :param _builtins.str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
     :param _builtins.bool allow_cluster_create: True if group members can create clusters
     :param _builtins.bool allow_instance_pool_create: True if group members can create instance pools
+    :param _builtins.str api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
     :param Sequence[_builtins.str] child_groups: Set of Group identifiers, that can be modified with GroupMember resource.
     :param _builtins.str display_name: Display name of the group. The group must exist before this resource can be planned.
     :param _builtins.str external_id: ID of the group in an external identity provider.
@@ -289,6 +300,7 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
     __args__['aclPrincipalId'] = acl_principal_id
     __args__['allowClusterCreate'] = allow_cluster_create
     __args__['allowInstancePoolCreate'] = allow_instance_pool_create
+    __args__['api'] = api
     __args__['childGroups'] = child_groups
     __args__['databricksSqlAccess'] = databricks_sql_access
     __args__['displayName'] = display_name
@@ -309,6 +321,7 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
         acl_principal_id=pulumi.get(__ret__, 'acl_principal_id'),
         allow_cluster_create=pulumi.get(__ret__, 'allow_cluster_create'),
         allow_instance_pool_create=pulumi.get(__ret__, 'allow_instance_pool_create'),
+        api=pulumi.get(__ret__, 'api'),
         child_groups=pulumi.get(__ret__, 'child_groups'),
         databricks_sql_access=pulumi.get(__ret__, 'databricks_sql_access'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -326,6 +339,7 @@ def get_group(acl_principal_id: Optional[_builtins.str] = None,
 def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      allow_cluster_create: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                      allow_instance_pool_create: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                     api: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      child_groups: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                      databricks_sql_access: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                      display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -375,6 +389,7 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[_builtins.
     :param _builtins.str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
     :param _builtins.bool allow_cluster_create: True if group members can create clusters
     :param _builtins.bool allow_instance_pool_create: True if group members can create instance pools
+    :param _builtins.str api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
     :param Sequence[_builtins.str] child_groups: Set of Group identifiers, that can be modified with GroupMember resource.
     :param _builtins.str display_name: Display name of the group. The group must exist before this resource can be planned.
     :param _builtins.str external_id: ID of the group in an external identity provider.
@@ -389,6 +404,7 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[_builtins.
     __args__['aclPrincipalId'] = acl_principal_id
     __args__['allowClusterCreate'] = allow_cluster_create
     __args__['allowInstancePoolCreate'] = allow_instance_pool_create
+    __args__['api'] = api
     __args__['childGroups'] = child_groups
     __args__['databricksSqlAccess'] = databricks_sql_access
     __args__['displayName'] = display_name
@@ -408,6 +424,7 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[_builtins.
         acl_principal_id=pulumi.get(__response__, 'acl_principal_id'),
         allow_cluster_create=pulumi.get(__response__, 'allow_cluster_create'),
         allow_instance_pool_create=pulumi.get(__response__, 'allow_instance_pool_create'),
+        api=pulumi.get(__response__, 'api'),
         child_groups=pulumi.get(__response__, 'child_groups'),
         databricks_sql_access=pulumi.get(__response__, 'databricks_sql_access'),
         display_name=pulumi.get(__response__, 'display_name'),

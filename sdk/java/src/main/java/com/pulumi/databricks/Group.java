@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.GroupArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.GroupState;
+import com.pulumi.databricks.outputs.GroupProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -229,6 +230,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowInstancePoolCreate);
     }
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
+    /**
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      * 
      */
@@ -283,6 +298,12 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
+    }
+    @Export(name="providerConfig", refs={GroupProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ GroupProviderConfig> providerConfig;
+
+    public Output<Optional<GroupProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;

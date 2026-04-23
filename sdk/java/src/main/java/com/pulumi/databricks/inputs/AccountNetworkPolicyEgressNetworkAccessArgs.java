@@ -65,17 +65,9 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
         return Optional.ofNullable(this.policyEnforcement);
     }
 
-    /**
-     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-     * 
-     */
     @Import(name="restrictionMode", required=true)
     private Output<String> restrictionMode;
 
-    /**
-     * @return The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-     * 
-     */
     public Output<String> restrictionMode() {
         return this.restrictionMode;
     }
@@ -190,23 +182,11 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
             return policyEnforcement(Output.of(policyEnforcement));
         }
 
-        /**
-         * @param restrictionMode The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-         * 
-         * @return builder
-         * 
-         */
         public Builder restrictionMode(Output<String> restrictionMode) {
             $.restrictionMode = restrictionMode;
             return this;
         }
 
-        /**
-         * @param restrictionMode The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-         * 
-         * @return builder
-         * 
-         */
         public Builder restrictionMode(String restrictionMode) {
             return restrictionMode(Output.of(restrictionMode));
         }

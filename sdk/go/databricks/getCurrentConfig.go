@@ -26,7 +26,7 @@ import (
 // * `isAccount` - Whether the provider is configured at account-level
 // * `accountId` - Account Id if provider is configured at account-level
 // * `host` - Host of the Databricks workspace or account console
-// * `cloudType` - Cloud type specified in the provider
+// * `cloudType` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
 // * `authType` - Auth type used by the provider
 //
 // ## Related Resources
@@ -50,7 +50,10 @@ func GetCurrentConfig(ctx *pulumi.Context, args *GetCurrentConfigArgs, opts ...p
 // A collection of arguments for invoking getCurrentConfig.
 type GetCurrentConfigArgs struct {
 	AccountId *string `pulumi:"accountId"`
+	Api       *string `pulumi:"api"`
 	AuthType  *string `pulumi:"authType"`
+	// Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+	Cloud     *string `pulumi:"cloud"`
 	CloudType *string `pulumi:"cloudType"`
 	Host      *string `pulumi:"host"`
 	IsAccount *bool   `pulumi:"isAccount"`
@@ -60,10 +63,12 @@ type GetCurrentConfigArgs struct {
 
 // A collection of values returned by getCurrentConfig.
 type GetCurrentConfigResult struct {
-	AccountId string `pulumi:"accountId"`
-	AuthType  string `pulumi:"authType"`
-	CloudType string `pulumi:"cloudType"`
-	Host      string `pulumi:"host"`
+	AccountId string  `pulumi:"accountId"`
+	Api       *string `pulumi:"api"`
+	AuthType  string  `pulumi:"authType"`
+	Cloud     *string `pulumi:"cloud"`
+	CloudType string  `pulumi:"cloudType"`
+	Host      string  `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                          `pulumi:"id"`
 	IsAccount      bool                            `pulumi:"isAccount"`
@@ -82,7 +87,10 @@ func GetCurrentConfigOutput(ctx *pulumi.Context, args GetCurrentConfigOutputArgs
 // A collection of arguments for invoking getCurrentConfig.
 type GetCurrentConfigOutputArgs struct {
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	Api       pulumi.StringPtrInput `pulumi:"api"`
 	AuthType  pulumi.StringPtrInput `pulumi:"authType"`
+	// Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+	Cloud     pulumi.StringPtrInput `pulumi:"cloud"`
 	CloudType pulumi.StringPtrInput `pulumi:"cloudType"`
 	Host      pulumi.StringPtrInput `pulumi:"host"`
 	IsAccount pulumi.BoolPtrInput   `pulumi:"isAccount"`
@@ -113,8 +121,16 @@ func (o GetCurrentConfigResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentConfigResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+func (o GetCurrentConfigResultOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentConfigResult) *string { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 func (o GetCurrentConfigResultOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentConfigResult) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+func (o GetCurrentConfigResultOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentConfigResult) *string { return v.Cloud }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCurrentConfigResultOutput) CloudType() pulumi.StringOutput {

@@ -11,6 +11,8 @@ import com.pulumi.databricks.AccountNetworkPolicyArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyState;
 import com.pulumi.databricks.outputs.AccountNetworkPolicyEgress;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngress;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRun;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -87,18 +89,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/accountNetworkPolicy:AccountNetworkPolicy")
 public class AccountNetworkPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The associated account ID for this Network Policy object
+     * (string) - The associated account ID for this Network Policy object
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return The associated account ID for this Network Policy object
+     * @return (string) - The associated account ID for this Network Policy object
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * The network policies applying for egress traffic
@@ -113,6 +115,38 @@ public class AccountNetworkPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AccountNetworkPolicyEgress>> egress() {
         return Codegen.optional(this.egress);
+    }
+    /**
+     * The network policies applying for ingress traffic
+     * 
+     */
+    @Export(name="ingress", refs={AccountNetworkPolicyIngress.class}, tree="[0]")
+    private Output</* @Nullable */ AccountNetworkPolicyIngress> ingress;
+
+    /**
+     * @return The network policies applying for ingress traffic
+     * 
+     */
+    public Output<Optional<AccountNetworkPolicyIngress>> ingress() {
+        return Codegen.optional(this.ingress);
+    }
+    /**
+     * The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     * 
+     */
+    @Export(name="ingressDryRun", refs={AccountNetworkPolicyIngressDryRun.class}, tree="[0]")
+    private Output</* @Nullable */ AccountNetworkPolicyIngressDryRun> ingressDryRun;
+
+    /**
+     * @return The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     * 
+     */
+    public Output<Optional<AccountNetworkPolicyIngressDryRun>> ingressDryRun() {
+        return Codegen.optional(this.ingressDryRun);
     }
     /**
      * The unique identifier for the network policy

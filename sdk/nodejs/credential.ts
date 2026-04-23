@@ -153,6 +153,10 @@ export class Credential extends pulumi.CustomResource {
      */
     declare public readonly owner: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.CredentialProviderConfig | undefined>;
+    /**
      * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
      */
     declare public readonly purpose: pulumi.Output<string>;
@@ -197,6 +201,7 @@ export class Credential extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["purpose"] = state?.purpose;
             resourceInputs["readOnly"] = state?.readOnly;
             resourceInputs["skipValidation"] = state?.skipValidation;
@@ -223,6 +228,7 @@ export class Credential extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = args?.metastoreId;
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["purpose"] = args?.purpose;
             resourceInputs["readOnly"] = args?.readOnly;
             resourceInputs["skipValidation"] = args?.skipValidation;
@@ -280,6 +286,10 @@ export interface CredentialState {
      */
     owner?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.CredentialProviderConfig>;
+    /**
      * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
      */
     purpose?: pulumi.Input<string>;
@@ -335,6 +345,10 @@ export interface CredentialArgs {
      * Username/groupname/sp applicationId of the credential owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.CredentialProviderConfig>;
     /**
      * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
      */

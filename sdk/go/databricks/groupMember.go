@@ -88,10 +88,13 @@ import (
 type GroupMember struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
-	MemberId pulumi.StringOutput `pulumi:"memberId"`
+	MemberId       pulumi.StringOutput                `pulumi:"memberId"`
+	ProviderConfig GroupMemberProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewGroupMember registers a new resource with the given unique name, arguments, and options.
@@ -130,17 +133,23 @@ func GetGroupMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMember resources.
 type groupMemberState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId *string `pulumi:"groupId"`
 	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
-	MemberId *string `pulumi:"memberId"`
+	MemberId       *string                    `pulumi:"memberId"`
+	ProviderConfig *GroupMemberProviderConfig `pulumi:"providerConfig"`
 }
 
 type GroupMemberState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId pulumi.StringPtrInput
 	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
-	MemberId pulumi.StringPtrInput
+	MemberId       pulumi.StringPtrInput
+	ProviderConfig GroupMemberProviderConfigPtrInput
 }
 
 func (GroupMemberState) ElementType() reflect.Type {
@@ -148,18 +157,24 @@ func (GroupMemberState) ElementType() reflect.Type {
 }
 
 type groupMemberArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId string `pulumi:"groupId"`
 	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
-	MemberId string `pulumi:"memberId"`
+	MemberId       string                     `pulumi:"memberId"`
+	ProviderConfig *GroupMemberProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a GroupMember resource.
 type GroupMemberArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId pulumi.StringInput
 	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
-	MemberId pulumi.StringInput
+	MemberId       pulumi.StringInput
+	ProviderConfig GroupMemberProviderConfigPtrInput
 }
 
 func (GroupMemberArgs) ElementType() reflect.Type {
@@ -249,6 +264,11 @@ func (o GroupMemberOutput) ToGroupMemberOutputWithContext(ctx context.Context) G
 	return o
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o GroupMemberOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMember) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // This is the `id` attribute (SCIM ID) of the group resource.
 func (o GroupMemberOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
@@ -257,6 +277,10 @@ func (o GroupMemberOutput) GroupId() pulumi.StringOutput {
 // This is the `id` attribute (SCIM ID) of the group, service principal, or user.
 func (o GroupMemberOutput) MemberId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.MemberId }).(pulumi.StringOutput)
+}
+
+func (o GroupMemberOutput) ProviderConfig() GroupMemberProviderConfigPtrOutput {
+	return o.ApplyT(func(v *GroupMember) GroupMemberProviderConfigPtrOutput { return v.ProviderConfig }).(GroupMemberProviderConfigPtrOutput)
 }
 
 type GroupMemberArrayOutput struct{ *pulumi.OutputState }

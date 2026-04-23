@@ -241,6 +241,105 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### High Availability Endpoint
+ * 
+ * Configure a single endpoint with multiple compute instances for high availability.
+ * One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresEndpoint;
+ * import com.pulumi.databricks.PostgresEndpointArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var haPrimary = new PostgresEndpoint("haPrimary", PostgresEndpointArgs.builder()
+ *             .endpointId("primary")
+ *             .parent(main.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .group(PostgresEndpointSpecGroupArgs.builder()
+ *                     .min(2)
+ *                     .max(2)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### High Availability Endpoint with Readable Secondaries
+ * 
+ * Enable readable secondaries to offload read traffic to replica computes via a
+ * dedicated read-only host, in addition to hot-standby failover. Only supported
+ * on read-write endpoints with more than one compute. The secondaries are optionally
+ * exposed as read-only host via `enableReadableSecondaries`.
+ * 
+ * High availability requires scale-to-zero to be disabled.
+ * Set `noSuspension = true` in `defaultEndpointSettings` as shown in the example below.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresEndpoint;
+ * import com.pulumi.databricks.PostgresEndpointArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var haReadable = new PostgresEndpoint("haReadable", PostgresEndpointArgs.builder()
+ *             .endpointId("primary")
+ *             .parent(main.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .group(PostgresEndpointSpecGroupArgs.builder()
+ *                     .min(2)
+ *                     .max(2)
+ *                     .enableReadableSecondaries(true)
+ *                     .build())
+ *                 .defaultEndpointSettings(Map.of("noSuspension", true))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Complete Example
  * 
  * <pre>
@@ -260,6 +359,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.PostgresEndpoint;
  * import com.pulumi.databricks.PostgresEndpointArgs;
  * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecGroupArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -303,6 +403,11 @@ import javax.annotation.Nullable;
  *                 .autoscalingLimitMinCu(1.0)
  *                 .autoscalingLimitMaxCu(9.0)
  *                 .noSuspension(true)
+ *                 .group(PostgresEndpointSpecGroupArgs.builder()
+ *                     .min(2)
+ *                     .max(2)
+ *                     .enableReadableSecondaries(true)
+ *                     .build())
  *                 .build())
  *             .build());
  * 

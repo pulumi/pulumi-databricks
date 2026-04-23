@@ -156,8 +156,9 @@ type MwsNccPrivateEndpointRule struct {
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
 	// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
-	EndpointService pulumi.StringPtrOutput `pulumi:"endpointService"`
-	ErrorMessage    pulumi.StringPtrOutput `pulumi:"errorMessage"`
+	EndpointService pulumi.StringPtrOutput                        `pulumi:"endpointService"`
+	ErrorMessage    pulumi.StringPtrOutput                        `pulumi:"errorMessage"`
+	GcpEndpoint     MwsNccPrivateEndpointRuleGcpEndpointPtrOutput `pulumi:"gcpEndpoint"`
 	// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
@@ -230,8 +231,9 @@ type mwsNccPrivateEndpointRuleState struct {
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName *string `pulumi:"endpointName"`
 	// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
-	EndpointService *string `pulumi:"endpointService"`
-	ErrorMessage    *string `pulumi:"errorMessage"`
+	EndpointService *string                               `pulumi:"endpointService"`
+	ErrorMessage    *string                               `pulumi:"errorMessage"`
+	GcpEndpoint     *MwsNccPrivateEndpointRuleGcpEndpoint `pulumi:"gcpEndpoint"`
 	// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
 	GroupId *string `pulumi:"groupId"`
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
@@ -274,6 +276,7 @@ type MwsNccPrivateEndpointRuleState struct {
 	// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
 	EndpointService pulumi.StringPtrInput
 	ErrorMessage    pulumi.StringPtrInput
+	GcpEndpoint     MwsNccPrivateEndpointRuleGcpEndpointPtrInput
 	// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
 	GroupId pulumi.StringPtrInput
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
@@ -318,8 +321,9 @@ type mwsNccPrivateEndpointRuleArgs struct {
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName *string `pulumi:"endpointName"`
 	// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
-	EndpointService *string `pulumi:"endpointService"`
-	ErrorMessage    *string `pulumi:"errorMessage"`
+	EndpointService *string                               `pulumi:"endpointService"`
+	ErrorMessage    *string                               `pulumi:"errorMessage"`
+	GcpEndpoint     *MwsNccPrivateEndpointRuleGcpEndpoint `pulumi:"gcpEndpoint"`
 	// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
 	GroupId *string `pulumi:"groupId"`
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
@@ -363,6 +367,7 @@ type MwsNccPrivateEndpointRuleArgs struct {
 	// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
 	EndpointService pulumi.StringPtrInput
 	ErrorMessage    pulumi.StringPtrInput
+	GcpEndpoint     MwsNccPrivateEndpointRuleGcpEndpointPtrInput
 	// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
 	GroupId pulumi.StringPtrInput
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
@@ -519,6 +524,10 @@ func (o MwsNccPrivateEndpointRuleOutput) EndpointService() pulumi.StringPtrOutpu
 
 func (o MwsNccPrivateEndpointRuleOutput) ErrorMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringPtrOutput { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleOutput) GcpEndpoint() MwsNccPrivateEndpointRuleGcpEndpointPtrOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) MwsNccPrivateEndpointRuleGcpEndpointPtrOutput { return v.GcpEndpoint }).(MwsNccPrivateEndpointRuleGcpEndpointPtrOutput)
 }
 
 // Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.

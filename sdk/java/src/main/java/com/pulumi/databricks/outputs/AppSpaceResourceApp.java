@@ -4,11 +4,33 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpaceResourceApp {
+    /**
+     * @return The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     * 
+     */
+    private @Nullable String name;
+    private @Nullable String permission;
+
     private AppSpaceResourceApp() {}
+    /**
+     * @return The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
+     * It must be unique within the workspace
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+    public Optional<String> permission() {
+        return Optional.ofNullable(this.permission);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -19,13 +41,31 @@ public final class AppSpaceResourceApp {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String name;
+        private @Nullable String permission;
         public Builder() {}
         public Builder(AppSpaceResourceApp defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.name = defaults.name;
+    	      this.permission = defaults.permission;
         }
 
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder permission(@Nullable String permission) {
+
+            this.permission = permission;
+            return this;
+        }
         public AppSpaceResourceApp build() {
             final var _resultValue = new AppSpaceResourceApp();
+            _resultValue.name = name;
+            _resultValue.permission = permission;
             return _resultValue;
         }
     }

@@ -156,6 +156,78 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ### High Availability Endpoint
+    /// 
+    /// Configure a single endpoint with multiple compute instances for high availability.
+    /// One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var haPrimary = new Databricks.Index.PostgresEndpoint("ha_primary", new()
+    ///     {
+    ///         EndpointId = "primary",
+    ///         Parent = main.Name,
+    ///         Spec = new Databricks.Inputs.PostgresEndpointSpecArgs
+    ///         {
+    ///             EndpointType = "ENDPOINT_TYPE_READ_WRITE",
+    ///             Group = new Databricks.Inputs.PostgresEndpointSpecGroupArgs
+    ///             {
+    ///                 Min = 2,
+    ///                 Max = 2,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### High Availability Endpoint with Readable Secondaries
+    /// 
+    /// Enable readable secondaries to offload read traffic to replica computes via a
+    /// dedicated read-only host, in addition to hot-standby failover. Only supported
+    /// on read-write endpoints with more than one compute. The secondaries are optionally
+    /// exposed as read-only host via `EnableReadableSecondaries`.
+    /// 
+    /// High availability requires scale-to-zero to be disabled.
+    /// Set `NoSuspension = true` in `DefaultEndpointSettings` as shown in the example below.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var haReadable = new Databricks.Index.PostgresEndpoint("ha_readable", new()
+    ///     {
+    ///         EndpointId = "primary",
+    ///         Parent = main.Name,
+    ///         Spec = new Databricks.Inputs.PostgresEndpointSpecArgs
+    ///         {
+    ///             EndpointType = "ENDPOINT_TYPE_READ_WRITE",
+    ///             Group = new Databricks.Inputs.PostgresEndpointSpecGroupArgs
+    ///             {
+    ///                 Min = 2,
+    ///                 Max = 2,
+    ///                 EnableReadableSecondaries = true,
+    ///             },
+    ///             DefaultEndpointSettings = 
+    ///             {
+    ///                 { "noSuspension", true },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Complete Example
     /// 
     /// ```csharp
@@ -203,6 +275,12 @@ namespace Pulumi.Databricks
     ///             AutoscalingLimitMinCu = 1,
     ///             AutoscalingLimitMaxCu = 9,
     ///             NoSuspension = true,
+    ///             Group = new Databricks.Inputs.PostgresEndpointSpecGroupArgs
+    ///             {
+    ///                 Min = 2,
+    ///                 Max = 2,
+    ///                 EnableReadableSecondaries = true,
+    ///             },
     ///         },
     ///     });
     /// 

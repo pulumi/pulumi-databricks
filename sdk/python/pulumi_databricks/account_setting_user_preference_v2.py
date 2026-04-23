@@ -192,7 +192,7 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         User preference is a configurable value that determines how a feature or behavior works for a specific user within the Databricks platform.
 
@@ -241,7 +241,7 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
                  args: Optional[AccountSettingUserPreferenceV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         User preference is a configurable value that determines how a feature or behavior works for a specific user within the Databricks platform.
 

@@ -82,6 +82,47 @@ import (
 //
 // ```
 //
+// ### Project with High Availability Endpoint
+//
+// Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+// One compute instance acts as the read-write primary.
+// The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresProject(ctx, "ha", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("ha-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:   pulumi.Int(17),
+//					DisplayName: pulumi.String("HA Production Project"),
+//				},
+//				InitialEndpointSpec: &databricks.PostgresProjectInitialEndpointSpecArgs{
+//					Group: &databricks.PostgresProjectInitialEndpointSpecGroupArgs{
+//						Min:                       pulumi.Int(2),
+//						Max:                       pulumi.Int(2),
+//						EnableReadableSecondaries: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Referencing in Other Resources
 //
 // ```go

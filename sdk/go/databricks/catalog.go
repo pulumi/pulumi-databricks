@@ -75,7 +75,8 @@ type Catalog struct {
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	FullName     pulumi.StringOutput  `pulumi:"fullName"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
+	IsolationMode             pulumi.StringOutput                       `pulumi:"isolationMode"`
+	ManagedEncryptionSettings CatalogManagedEncryptionSettingsPtrOutput `pulumi:"managedEncryptionSettings"`
 	// ID of the parent metastore.
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
@@ -153,7 +154,8 @@ type catalogState struct {
 	ForceDestroy *bool   `pulumi:"forceDestroy"`
 	FullName     *string `pulumi:"fullName"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode *string `pulumi:"isolationMode"`
+	IsolationMode             *string                           `pulumi:"isolationMode"`
+	ManagedEncryptionSettings *CatalogManagedEncryptionSettings `pulumi:"managedEncryptionSettings"`
 	// ID of the parent metastore.
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
@@ -202,7 +204,8 @@ type CatalogState struct {
 	ForceDestroy pulumi.BoolPtrInput
 	FullName     pulumi.StringPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode pulumi.StringPtrInput
+	IsolationMode             pulumi.StringPtrInput
+	ManagedEncryptionSettings CatalogManagedEncryptionSettingsPtrInput
 	// ID of the parent metastore.
 	MetastoreId pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
@@ -248,7 +251,8 @@ type catalogArgs struct {
 	// Delete catalog regardless of its contents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode *string `pulumi:"isolationMode"`
+	IsolationMode             *string                           `pulumi:"isolationMode"`
+	ManagedEncryptionSettings *CatalogManagedEncryptionSettings `pulumi:"managedEncryptionSettings"`
 	// ID of the parent metastore.
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
@@ -283,7 +287,8 @@ type CatalogArgs struct {
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode pulumi.StringPtrInput
+	IsolationMode             pulumi.StringPtrInput
+	ManagedEncryptionSettings CatalogManagedEncryptionSettingsPtrInput
 	// ID of the parent metastore.
 	MetastoreId pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
@@ -444,6 +449,10 @@ func (o CatalogOutput) FullName() pulumi.StringOutput {
 // Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 func (o CatalogOutput) IsolationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
+}
+
+func (o CatalogOutput) ManagedEncryptionSettings() CatalogManagedEncryptionSettingsPtrOutput {
+	return o.ApplyT(func(v *Catalog) CatalogManagedEncryptionSettingsPtrOutput { return v.ManagedEncryptionSettings }).(CatalogManagedEncryptionSettingsPtrOutput)
 }
 
 // ID of the parent metastore.

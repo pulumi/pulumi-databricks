@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -67,9 +69,14 @@ export class UserInstanceProfile extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * This is the id of the instance profile resource.
      */
     declare public readonly instanceProfileId: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.UserInstanceProfileProviderConfig | undefined>;
     /**
      * This is the id of the user resource.
      */
@@ -88,7 +95,9 @@ export class UserInstanceProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserInstanceProfileState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["instanceProfileId"] = state?.instanceProfileId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserInstanceProfileArgs | undefined;
@@ -98,7 +107,9 @@ export class UserInstanceProfile extends pulumi.CustomResource {
             if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
+            resourceInputs["api"] = args?.api;
             resourceInputs["instanceProfileId"] = args?.instanceProfileId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -111,9 +122,14 @@ export class UserInstanceProfile extends pulumi.CustomResource {
  */
 export interface UserInstanceProfileState {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is the id of the instance profile resource.
      */
     instanceProfileId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.UserInstanceProfileProviderConfig>;
     /**
      * This is the id of the user resource.
      */
@@ -125,9 +141,14 @@ export interface UserInstanceProfileState {
  */
 export interface UserInstanceProfileArgs {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is the id of the instance profile resource.
      */
     instanceProfileId: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.UserInstanceProfileProviderConfig>;
     /**
      * This is the id of the user resource.
      */

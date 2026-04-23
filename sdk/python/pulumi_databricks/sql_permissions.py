@@ -27,6 +27,7 @@ class SqlPermissionsArgs:
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  database: Optional[pulumi.Input[_builtins.str]] = None,
                  privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
+                 provider_config: Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']] = None,
                  table: Optional[pulumi.Input[_builtins.str]] = None,
                  view: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -61,6 +62,8 @@ class SqlPermissionsArgs:
             pulumi.set(__self__, "database", database)
         if privilege_assignments is not None:
             pulumi.set(__self__, "privilege_assignments", privilege_assignments)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if table is not None:
             pulumi.set(__self__, "table", table)
         if view is not None:
@@ -143,6 +146,15 @@ class SqlPermissionsArgs:
     @privilege_assignments.setter
     def privilege_assignments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]):
         pulumi.set(self, "privilege_assignments", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -178,6 +190,7 @@ class _SqlPermissionsState:
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  database: Optional[pulumi.Input[_builtins.str]] = None,
                  privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
+                 provider_config: Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']] = None,
                  table: Optional[pulumi.Input[_builtins.str]] = None,
                  view: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -212,6 +225,8 @@ class _SqlPermissionsState:
             pulumi.set(__self__, "database", database)
         if privilege_assignments is not None:
             pulumi.set(__self__, "privilege_assignments", privilege_assignments)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if table is not None:
             pulumi.set(__self__, "table", table)
         if view is not None:
@@ -294,6 +309,15 @@ class _SqlPermissionsState:
     @privilege_assignments.setter
     def privilege_assignments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]):
         pulumi.set(self, "privilege_assignments", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -332,6 +356,7 @@ class SqlPermissions(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  database: Optional[pulumi.Input[_builtins.str]] = None,
                  privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
                  table: Optional[pulumi.Input[_builtins.str]] = None,
                  view: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -501,6 +526,7 @@ class SqlPermissions(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  database: Optional[pulumi.Input[_builtins.str]] = None,
                  privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
+                 provider_config: Optional[pulumi.Input[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
                  table: Optional[pulumi.Input[_builtins.str]] = None,
                  view: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -518,6 +544,7 @@ class SqlPermissions(pulumi.CustomResource):
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["database"] = database
             __props__.__dict__["privilege_assignments"] = privilege_assignments
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["table"] = table
             __props__.__dict__["view"] = view
         super(SqlPermissions, __self__).__init__(
@@ -536,6 +563,7 @@ class SqlPermissions(pulumi.CustomResource):
             cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
             database: Optional[pulumi.Input[_builtins.str]] = None,
             privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
+            provider_config: Optional[pulumi.Input[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
             table: Optional[pulumi.Input[_builtins.str]] = None,
             view: Optional[pulumi.Input[_builtins.str]] = None) -> 'SqlPermissions':
         """
@@ -572,6 +600,7 @@ class SqlPermissions(pulumi.CustomResource):
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["database"] = database
         __props__.__dict__["privilege_assignments"] = privilege_assignments
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["table"] = table
         __props__.__dict__["view"] = view
         return SqlPermissions(resource_name, opts=opts, __props__=__props__)
@@ -629,6 +658,11 @@ class SqlPermissions(pulumi.CustomResource):
     @pulumi.getter(name="privilegeAssignments")
     def privilege_assignments(self) -> pulumi.Output[Optional[Sequence['outputs.SqlPermissionsPrivilegeAssignment']]]:
         return pulumi.get(self, "privilege_assignments")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlPermissionsProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

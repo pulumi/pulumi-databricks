@@ -15,16 +15,16 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentif
     public static final FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs Empty = new FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs();
 
     /**
-     * String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      * 
      */
     @Import(name="variantExprPath", required=true)
     private Output<String> variantExprPath;
 
     /**
-     * @return String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     * @return String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
      * 
      */
     public Output<String> variantExprPath() {
@@ -56,8 +56,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentif
         }
 
         /**
-         * @param variantExprPath String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-         * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+         * @param variantExprPath String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+         * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
          * 
          * @return builder
          * 
@@ -68,8 +68,8 @@ public final class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentif
         }
 
         /**
-         * @param variantExprPath String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
-         * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+         * @param variantExprPath String representation of the column name using dot-prefixed path notation. For nested fields, the leaf value is what will be present in materialized tables
+         * and expected to match at query time. For example, the leaf node of value.trip_details.location_details.pickup_zip is pickup_zip
          * 
          * @return builder
          * 

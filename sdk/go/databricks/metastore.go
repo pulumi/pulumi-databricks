@@ -145,6 +145,8 @@ import (
 type Metastore struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
 	Cloud pulumi.StringOutput `pulumi:"cloud"`
 	// Time at which the metastore was created, in epoch milliseconds.
@@ -173,6 +175,8 @@ type Metastore struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 	PrivilegeModelVersion pulumi.StringOutput `pulumi:"privilegeModelVersion"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MetastoreProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The region of the metastore
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
@@ -217,6 +221,8 @@ func GetMetastore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Metastore resources.
 type metastoreState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
 	Cloud *string `pulumi:"cloud"`
 	// Time at which the metastore was created, in epoch milliseconds.
@@ -245,6 +251,8 @@ type metastoreState struct {
 	Owner *string `pulumi:"owner"`
 	// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *MetastoreProviderConfig `pulumi:"providerConfig"`
 	// The region of the metastore
 	Region *string `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
@@ -260,6 +268,8 @@ type metastoreState struct {
 }
 
 type MetastoreState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
 	Cloud pulumi.StringPtrInput
 	// Time at which the metastore was created, in epoch milliseconds.
@@ -288,6 +298,8 @@ type MetastoreState struct {
 	Owner pulumi.StringPtrInput
 	// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 	PrivilegeModelVersion pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MetastoreProviderConfigPtrInput
 	// The region of the metastore
 	Region pulumi.StringPtrInput
 	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
@@ -307,6 +319,8 @@ func (MetastoreState) ElementType() reflect.Type {
 }
 
 type metastoreArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// (Optional) Unique identifier of the metastore's default data access configuration.
 	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
 	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
@@ -325,6 +339,8 @@ type metastoreArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *MetastoreProviderConfig `pulumi:"providerConfig"`
 	// The region of the metastore
 	Region *string `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
@@ -337,6 +353,8 @@ type metastoreArgs struct {
 
 // The set of arguments for constructing a Metastore resource.
 type MetastoreArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// (Optional) Unique identifier of the metastore's default data access configuration.
 	DefaultDataAccessConfigId pulumi.StringPtrInput
 	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
@@ -355,6 +373,8 @@ type MetastoreArgs struct {
 	Owner pulumi.StringPtrInput
 	// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 	PrivilegeModelVersion pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MetastoreProviderConfigPtrInput
 	// The region of the metastore
 	Region pulumi.StringPtrInput
 	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
@@ -452,6 +472,11 @@ func (o MetastoreOutput) ToMetastoreOutputWithContext(ctx context.Context) Metas
 	return o
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o MetastoreOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Metastore) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
 func (o MetastoreOutput) Cloud() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Cloud }).(pulumi.StringOutput)
@@ -520,6 +545,11 @@ func (o MetastoreOutput) Owner() pulumi.StringOutput {
 // Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 func (o MetastoreOutput) PrivilegeModelVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.PrivilegeModelVersion }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o MetastoreOutput) ProviderConfig() MetastoreProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Metastore) MetastoreProviderConfigPtrOutput { return v.ProviderConfig }).(MetastoreProviderConfigPtrOutput)
 }
 
 // The region of the metastore

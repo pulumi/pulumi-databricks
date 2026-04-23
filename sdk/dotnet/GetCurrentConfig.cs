@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
         /// * `IsAccount` - Whether the provider is configured at account-level
         /// * `AccountId` - Account Id if provider is configured at account-level
         /// * `Host` - Host of the Databricks workspace or account console
-        /// * `CloudType` - Cloud type specified in the provider
+        /// * `CloudType` - Cloud type of the provider. If `Cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
         /// * `AuthType` - Auth type used by the provider
         /// 
         /// ## Related Resources
@@ -102,7 +102,7 @@ namespace Pulumi.Databricks
         /// * `IsAccount` - Whether the provider is configured at account-level
         /// * `AccountId` - Account Id if provider is configured at account-level
         /// * `Host` - Host of the Databricks workspace or account console
-        /// * `CloudType` - Cloud type specified in the provider
+        /// * `CloudType` - Cloud type of the provider. If `Cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
         /// * `AuthType` - Auth type used by the provider
         /// 
         /// ## Related Resources
@@ -155,7 +155,7 @@ namespace Pulumi.Databricks
         /// * `IsAccount` - Whether the provider is configured at account-level
         /// * `AccountId` - Account Id if provider is configured at account-level
         /// * `Host` - Host of the Databricks workspace or account console
-        /// * `CloudType` - Cloud type specified in the provider
+        /// * `CloudType` - Cloud type of the provider. If `Cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
         /// * `AuthType` - Auth type used by the provider
         /// 
         /// ## Related Resources
@@ -177,8 +177,17 @@ namespace Pulumi.Databricks
         [Input("accountId")]
         public string? AccountId { get; set; }
 
+        [Input("api")]
+        public string? Api { get; set; }
+
         [Input("authType")]
         public string? AuthType { get; set; }
+
+        /// <summary>
+        /// Explicitly set the cloud type. Must be one of `Aws`, `Azure`, or `Gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+        /// </summary>
+        [Input("cloud")]
+        public string? Cloud { get; set; }
 
         [Input("cloudType")]
         public string? CloudType { get; set; }
@@ -206,8 +215,17 @@ namespace Pulumi.Databricks
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
+
+        /// <summary>
+        /// Explicitly set the cloud type. Must be one of `Aws`, `Azure`, or `Gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
+        /// </summary>
+        [Input("cloud")]
+        public Input<string>? Cloud { get; set; }
 
         [Input("cloudType")]
         public Input<string>? CloudType { get; set; }
@@ -235,7 +253,9 @@ namespace Pulumi.Databricks
     public sealed class GetCurrentConfigResult
     {
         public readonly string AccountId;
+        public readonly string? Api;
         public readonly string AuthType;
+        public readonly string? Cloud;
         public readonly string CloudType;
         public readonly string Host;
         /// <summary>
@@ -249,7 +269,11 @@ namespace Pulumi.Databricks
         private GetCurrentConfigResult(
             string accountId,
 
+            string? api,
+
             string authType,
+
+            string? cloud,
 
             string cloudType,
 
@@ -262,7 +286,9 @@ namespace Pulumi.Databricks
             Outputs.GetCurrentConfigProviderConfigResult? providerConfig)
         {
             AccountId = accountId;
+            Api = api;
             AuthType = authType;
+            Cloud = cloud;
             CloudType = cloudType;
             Host = host;
             Id = id;

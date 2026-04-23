@@ -46,6 +46,12 @@ namespace Pulumi.Databricks
     public partial class MetastoreAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
         /// </summary>
         [Output("defaultCatalogName")]
@@ -56,6 +62,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.MetastoreAssignmentProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// id of the workspace for the assignment
@@ -110,6 +122,12 @@ namespace Pulumi.Databricks
     public sealed class MetastoreAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
         /// </summary>
         [Input("defaultCatalogName")]
@@ -120,6 +138,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("metastoreId", required: true)]
         public Input<string> MetastoreId { get; set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MetastoreAssignmentProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// id of the workspace for the assignment
@@ -136,6 +160,12 @@ namespace Pulumi.Databricks
     public sealed class MetastoreAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
         /// </summary>
         [Input("defaultCatalogName")]
@@ -146,6 +176,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MetastoreAssignmentProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// id of the workspace for the assignment

@@ -5,11 +5,20 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkspaceSettingV2RestrictWorkspaceAdmins {
+    /**
+     * @return (boolean) - When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     * 
+     */
+    private @Nullable Boolean disableGovTagCreation;
     /**
      * @return (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      * 
@@ -17,6 +26,14 @@ public final class GetWorkspaceSettingV2RestrictWorkspaceAdmins {
     private String status;
 
     private GetWorkspaceSettingV2RestrictWorkspaceAdmins() {}
+    /**
+     * @return (boolean) - When true, workspace admins cannot create governance tags.
+     * ALLOW_ALL status does not override this; they are independent
+     * 
+     */
+    public Optional<Boolean> disableGovTagCreation() {
+        return Optional.ofNullable(this.disableGovTagCreation);
+    }
     /**
      * @return (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      * 
@@ -34,13 +51,21 @@ public final class GetWorkspaceSettingV2RestrictWorkspaceAdmins {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean disableGovTagCreation;
         private String status;
         public Builder() {}
         public Builder(GetWorkspaceSettingV2RestrictWorkspaceAdmins defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disableGovTagCreation = defaults.disableGovTagCreation;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
+        public Builder disableGovTagCreation(@Nullable Boolean disableGovTagCreation) {
+
+            this.disableGovTagCreation = disableGovTagCreation;
+            return this;
+        }
         @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
@@ -51,6 +76,7 @@ public final class GetWorkspaceSettingV2RestrictWorkspaceAdmins {
         }
         public GetWorkspaceSettingV2RestrictWorkspaceAdmins build() {
             final var _resultValue = new GetWorkspaceSettingV2RestrictWorkspaceAdmins();
+            _resultValue.disableGovTagCreation = disableGovTagCreation;
             _resultValue.status = status;
             return _resultValue;
         }

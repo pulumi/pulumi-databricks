@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueue;
 import com.pulumi.databricks.outputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
 import com.pulumi.databricks.outputs.GetExternalLocationExternalLocationInfoFileEventQueue;
 import java.lang.Boolean;
@@ -42,6 +43,7 @@ public final class GetExternalLocationExternalLocationInfo {
      */
     private @Nullable String credentialName;
     private @Nullable Boolean effectiveEnableFileEvents;
+    private @Nullable GetExternalLocationExternalLocationInfoEffectiveFileEventQueue effectiveFileEventQueue;
     private @Nullable Boolean enableFileEvents;
     /**
      * @return A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
@@ -129,6 +131,9 @@ public final class GetExternalLocationExternalLocationInfo {
     public Optional<Boolean> effectiveEnableFileEvents() {
         return Optional.ofNullable(this.effectiveEnableFileEvents);
     }
+    public Optional<GetExternalLocationExternalLocationInfoEffectiveFileEventQueue> effectiveFileEventQueue() {
+        return Optional.ofNullable(this.effectiveFileEventQueue);
+    }
     public Optional<Boolean> enableFileEvents() {
         return Optional.ofNullable(this.enableFileEvents);
     }
@@ -214,6 +219,7 @@ public final class GetExternalLocationExternalLocationInfo {
         private @Nullable String credentialId;
         private @Nullable String credentialName;
         private @Nullable Boolean effectiveEnableFileEvents;
+        private @Nullable GetExternalLocationExternalLocationInfoEffectiveFileEventQueue effectiveFileEventQueue;
         private @Nullable Boolean enableFileEvents;
         private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
         private @Nullable Boolean fallback;
@@ -236,6 +242,7 @@ public final class GetExternalLocationExternalLocationInfo {
     	      this.credentialId = defaults.credentialId;
     	      this.credentialName = defaults.credentialName;
     	      this.effectiveEnableFileEvents = defaults.effectiveEnableFileEvents;
+    	      this.effectiveFileEventQueue = defaults.effectiveFileEventQueue;
     	      this.enableFileEvents = defaults.enableFileEvents;
     	      this.encryptionDetails = defaults.encryptionDetails;
     	      this.fallback = defaults.fallback;
@@ -290,6 +297,12 @@ public final class GetExternalLocationExternalLocationInfo {
         public Builder effectiveEnableFileEvents(@Nullable Boolean effectiveEnableFileEvents) {
 
             this.effectiveEnableFileEvents = effectiveEnableFileEvents;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveFileEventQueue(@Nullable GetExternalLocationExternalLocationInfoEffectiveFileEventQueue effectiveFileEventQueue) {
+
+            this.effectiveFileEventQueue = effectiveFileEventQueue;
             return this;
         }
         @CustomType.Setter
@@ -373,6 +386,7 @@ public final class GetExternalLocationExternalLocationInfo {
             _resultValue.credentialId = credentialId;
             _resultValue.credentialName = credentialName;
             _resultValue.effectiveEnableFileEvents = effectiveEnableFileEvents;
+            _resultValue.effectiveFileEventQueue = effectiveFileEventQueue;
             _resultValue.enableFileEvents = enableFileEvents;
             _resultValue.encryptionDetails = encryptionDetails;
             _resultValue.fallback = fallback;

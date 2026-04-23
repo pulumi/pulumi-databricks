@@ -376,9 +376,9 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.WorkspaceBaseEnvironment("this",
-            display_name=my-environment,
-            filepath=/Volumes/catalog/schema/volume/environment.yaml)
+        this = databricks.EnvironmentsWorkspaceBaseEnvironment("this",
+            display_name="my-environment",
+            filepath="/Volumes/catalog/schema/volume/environment.yaml")
         ```
 
         ### Example with GPU Compute Type
@@ -389,10 +389,10 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        gpu_env = databricks.WorkspaceBaseEnvironment("gpu_env",
-            display_name=my-gpu-environment,
-            filepath=/Volumes/catalog/schema/volume/gpu-environment.yaml,
-            base_environment_type=GPU_LARGE)
+        gpu_env = databricks.EnvironmentsWorkspaceBaseEnvironment("gpu_env",
+            display_name="my-gpu-environment",
+            filepath="/Volumes/catalog/schema/volume/gpu-environment.yaml",
+            base_environment_type="GPU")
         ```
 
 
@@ -431,9 +431,9 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.WorkspaceBaseEnvironment("this",
-            display_name=my-environment,
-            filepath=/Volumes/catalog/schema/volume/environment.yaml)
+        this = databricks.EnvironmentsWorkspaceBaseEnvironment("this",
+            display_name="my-environment",
+            filepath="/Volumes/catalog/schema/volume/environment.yaml")
         ```
 
         ### Example with GPU Compute Type
@@ -444,10 +444,10 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        gpu_env = databricks.WorkspaceBaseEnvironment("gpu_env",
-            display_name=my-gpu-environment,
-            filepath=/Volumes/catalog/schema/volume/gpu-environment.yaml,
-            base_environment_type=GPU_LARGE)
+        gpu_env = databricks.EnvironmentsWorkspaceBaseEnvironment("gpu_env",
+            display_name="my-gpu-environment",
+            filepath="/Volumes/catalog/schema/volume/gpu-environment.yaml",
+            base_environment_type="GPU")
         ```
 
 

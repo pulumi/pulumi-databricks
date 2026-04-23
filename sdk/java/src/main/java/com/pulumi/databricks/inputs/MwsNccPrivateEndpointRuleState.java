@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.MwsNccPrivateEndpointRuleGcpEndpointArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -166,6 +167,13 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
         return Optional.ofNullable(this.errorMessage);
     }
 
+    @Import(name="gcpEndpoint")
+    private @Nullable Output<MwsNccPrivateEndpointRuleGcpEndpointArgs> gcpEndpoint;
+
+    public Optional<Output<MwsNccPrivateEndpointRuleGcpEndpointArgs>> gcpEndpoint() {
+        return Optional.ofNullable(this.gcpEndpoint);
+    }
+
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      * 
@@ -284,6 +292,7 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
         this.endpointName = $.endpointName;
         this.endpointService = $.endpointService;
         this.errorMessage = $.errorMessage;
+        this.gcpEndpoint = $.gcpEndpoint;
         this.groupId = $.groupId;
         this.networkConnectivityConfigId = $.networkConnectivityConfigId;
         this.resourceId = $.resourceId;
@@ -520,6 +529,15 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
 
         public Builder errorMessage(String errorMessage) {
             return errorMessage(Output.of(errorMessage));
+        }
+
+        public Builder gcpEndpoint(@Nullable Output<MwsNccPrivateEndpointRuleGcpEndpointArgs> gcpEndpoint) {
+            $.gcpEndpoint = gcpEndpoint;
+            return this;
+        }
+
+        public Builder gcpEndpoint(MwsNccPrivateEndpointRuleGcpEndpointArgs gcpEndpoint) {
+            return gcpEndpoint(Output.of(gcpEndpoint));
         }
 
         /**

@@ -105,7 +105,7 @@ type App struct {
 	Oauth2AppClientId      pulumi.StringOutput        `pulumi:"oauth2AppClientId"`
 	Oauth2AppIntegrationId pulumi.StringOutput        `pulumi:"oauth2AppIntegrationId"`
 	PendingDeployment      AppPendingDeploymentOutput `pulumi:"pendingDeployment"`
-	ProviderConfig         AppProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig         AppProviderConfigOutput    `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
 	Resources AppResourceArrayOutput `pulumi:"resources"`
 	// client_id (application_id) of the app service principal
@@ -477,8 +477,8 @@ func (o AppOutput) PendingDeployment() AppPendingDeploymentOutput {
 	return o.ApplyT(func(v *App) AppPendingDeploymentOutput { return v.PendingDeployment }).(AppPendingDeploymentOutput)
 }
 
-func (o AppOutput) ProviderConfig() AppProviderConfigPtrOutput {
-	return o.ApplyT(func(v *App) AppProviderConfigPtrOutput { return v.ProviderConfig }).(AppProviderConfigPtrOutput)
+func (o AppOutput) ProviderConfig() AppProviderConfigOutput {
+	return o.ApplyT(func(v *App) AppProviderConfigOutput { return v.ProviderConfig }).(AppProviderConfigOutput)
 }
 
 // A list of resources that the app have access to.

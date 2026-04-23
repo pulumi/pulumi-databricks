@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GroupProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -59,6 +60,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> allowInstancePoolCreate() {
         return Optional.ofNullable(this.allowInstancePoolCreate);
+    }
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
     }
 
     /**
@@ -121,6 +137,13 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.force);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GroupProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GroupProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="url")
     private @Nullable Output<String> url;
 
@@ -164,10 +187,12 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.aclPrincipalId = $.aclPrincipalId;
         this.allowClusterCreate = $.allowClusterCreate;
         this.allowInstancePoolCreate = $.allowInstancePoolCreate;
+        this.api = $.api;
         this.databricksSqlAccess = $.databricksSqlAccess;
         this.displayName = $.displayName;
         this.externalId = $.externalId;
         this.force = $.force;
+        this.providerConfig = $.providerConfig;
         this.url = $.url;
         this.workspaceAccess = $.workspaceAccess;
         this.workspaceConsume = $.workspaceConsume;
@@ -255,6 +280,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
+        }
+
+        /**
          * @param databricksSqlAccess This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
          * 
          * @return builder
@@ -336,6 +382,15 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder force(Boolean force) {
             return force(Output.of(force));
+        }
+
+        public Builder providerConfig(@Nullable Output<GroupProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GroupProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder url(@Nullable Output<String> url) {

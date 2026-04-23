@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ExternalLocationEffectiveFileEventQueueArgs;
 import com.pulumi.databricks.inputs.ExternalLocationEncryptionDetailsArgs;
 import com.pulumi.databricks.inputs.ExternalLocationFileEventQueueArgs;
 import com.pulumi.databricks.inputs.ExternalLocationProviderConfigArgs;
@@ -107,6 +108,13 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<Boolean>> effectiveEnableFileEvents() {
         return Optional.ofNullable(this.effectiveEnableFileEvents);
+    }
+
+    @Import(name="effectiveFileEventQueue")
+    private @Nullable Output<ExternalLocationEffectiveFileEventQueueArgs> effectiveFileEventQueue;
+
+    public Optional<Output<ExternalLocationEffectiveFileEventQueueArgs>> effectiveFileEventQueue() {
+        return Optional.ofNullable(this.effectiveFileEventQueue);
     }
 
     /**
@@ -327,6 +335,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
         this.effectiveEnableFileEvents = $.effectiveEnableFileEvents;
+        this.effectiveFileEventQueue = $.effectiveFileEventQueue;
         this.enableFileEvents = $.enableFileEvents;
         this.encryptionDetails = $.encryptionDetails;
         this.fallback = $.fallback;
@@ -484,6 +493,15 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
 
         public Builder effectiveEnableFileEvents(Boolean effectiveEnableFileEvents) {
             return effectiveEnableFileEvents(Output.of(effectiveEnableFileEvents));
+        }
+
+        public Builder effectiveFileEventQueue(@Nullable Output<ExternalLocationEffectiveFileEventQueueArgs> effectiveFileEventQueue) {
+            $.effectiveFileEventQueue = effectiveFileEventQueue;
+            return this;
+        }
+
+        public Builder effectiveFileEventQueue(ExternalLocationEffectiveFileEventQueueArgs effectiveFileEventQueue) {
+            return effectiveFileEventQueue(Output.of(effectiveFileEventQueue));
         }
 
         /**

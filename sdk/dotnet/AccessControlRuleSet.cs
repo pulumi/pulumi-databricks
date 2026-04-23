@@ -446,6 +446,12 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/accessControlRuleSet:AccessControlRuleSet")]
     public partial class AccessControlRuleSet : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
@@ -467,6 +473,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.AccessControlRuleSetProviderConfig?> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -514,6 +523,12 @@ namespace Pulumi.Databricks
 
     public sealed class AccessControlRuleSetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         [Input("grantRules")]
         private InputList<Inputs.AccessControlRuleSetGrantRuleArgs>? _grantRules;
 
@@ -539,6 +554,9 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.AccessControlRuleSetProviderConfigArgs>? ProviderConfig { get; set; }
+
         public AccessControlRuleSetArgs()
         {
         }
@@ -547,6 +565,12 @@ namespace Pulumi.Databricks
 
     public sealed class AccessControlRuleSetState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
@@ -574,6 +598,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.AccessControlRuleSetProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         public AccessControlRuleSetState()
         {

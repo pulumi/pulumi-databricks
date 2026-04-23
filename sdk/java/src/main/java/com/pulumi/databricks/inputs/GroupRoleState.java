@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GroupRoleProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class GroupRoleState extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupRoleState Empty = new GroupRoleState();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
 
     /**
      * This is the id of the group resource.
@@ -28,6 +44,13 @@ public final class GroupRoleState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> groupId() {
         return Optional.ofNullable(this.groupId);
+    }
+
+    @Import(name="providerConfig")
+    private @Nullable Output<GroupRoleProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GroupRoleProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -48,7 +71,9 @@ public final class GroupRoleState extends com.pulumi.resources.ResourceArgs {
     private GroupRoleState() {}
 
     private GroupRoleState(GroupRoleState $) {
+        this.api = $.api;
         this.groupId = $.groupId;
+        this.providerConfig = $.providerConfig;
         this.role = $.role;
     }
 
@@ -71,6 +96,27 @@ public final class GroupRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
+        }
+
+        /**
          * @param groupId This is the id of the group resource.
          * 
          * @return builder
@@ -89,6 +135,15 @@ public final class GroupRoleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
+        }
+
+        public Builder providerConfig(@Nullable Output<GroupRoleProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GroupRoleProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

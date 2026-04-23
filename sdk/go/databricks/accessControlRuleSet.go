@@ -508,7 +508,9 @@ import (
 type AccessControlRuleSet struct {
 	pulumi.CustomResourceState
 
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api  pulumi.StringPtrOutput `pulumi:"api"`
+	Etag pulumi.StringOutput    `pulumi:"etag"`
 	// The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 	//
 	// !> Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
@@ -519,7 +521,8 @@ type AccessControlRuleSet struct {
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
 	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name           pulumi.StringOutput                         `pulumi:"name"`
+	ProviderConfig AccessControlRuleSetProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewAccessControlRuleSet registers a new resource with the given unique name, arguments, and options.
@@ -552,6 +555,8 @@ func GetAccessControlRuleSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessControlRuleSet resources.
 type accessControlRuleSetState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api  *string `pulumi:"api"`
 	Etag *string `pulumi:"etag"`
 	// The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 	//
@@ -563,10 +568,13 @@ type accessControlRuleSetState struct {
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
 	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
-	Name *string `pulumi:"name"`
+	Name           *string                             `pulumi:"name"`
+	ProviderConfig *AccessControlRuleSetProviderConfig `pulumi:"providerConfig"`
 }
 
 type AccessControlRuleSetState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api  pulumi.StringPtrInput
 	Etag pulumi.StringPtrInput
 	// The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 	//
@@ -578,7 +586,8 @@ type AccessControlRuleSetState struct {
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
 	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
-	Name pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	ProviderConfig AccessControlRuleSetProviderConfigPtrInput
 }
 
 func (AccessControlRuleSetState) ElementType() reflect.Type {
@@ -586,6 +595,8 @@ func (AccessControlRuleSetState) ElementType() reflect.Type {
 }
 
 type accessControlRuleSetArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 	//
 	// !> Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
@@ -596,11 +607,14 @@ type accessControlRuleSetArgs struct {
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
 	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
-	Name *string `pulumi:"name"`
+	Name           *string                             `pulumi:"name"`
+	ProviderConfig *AccessControlRuleSetProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a AccessControlRuleSet resource.
 type AccessControlRuleSetArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 	//
 	// !> Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
@@ -611,7 +625,8 @@ type AccessControlRuleSetArgs struct {
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
 	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
-	Name pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	ProviderConfig AccessControlRuleSetProviderConfigPtrInput
 }
 
 func (AccessControlRuleSetArgs) ElementType() reflect.Type {
@@ -701,6 +716,11 @@ func (o AccessControlRuleSetOutput) ToAccessControlRuleSetOutputWithContext(ctx 
 	return o
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o AccessControlRuleSetOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessControlRuleSet) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessControlRuleSetOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessControlRuleSet) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -720,6 +740,10 @@ func (o AccessControlRuleSetOutput) GrantRules() AccessControlRuleSetGrantRuleAr
 // * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
 func (o AccessControlRuleSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessControlRuleSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AccessControlRuleSetOutput) ProviderConfig() AccessControlRuleSetProviderConfigPtrOutput {
+	return o.ApplyT(func(v *AccessControlRuleSet) AccessControlRuleSetProviderConfigPtrOutput { return v.ProviderConfig }).(AccessControlRuleSetProviderConfigPtrOutput)
 }
 
 type AccessControlRuleSetArrayOutput struct{ *pulumi.OutputState }

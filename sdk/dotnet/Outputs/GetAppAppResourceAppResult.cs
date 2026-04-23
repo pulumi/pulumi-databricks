@@ -13,9 +13,23 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppAppResourceAppResult
     {
+        /// <summary>
+        /// The name of the app.
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        /// </summary>
+        public readonly string? Permission;
+
         [OutputConstructor]
-        private GetAppAppResourceAppResult()
+        private GetAppAppResourceAppResult(
+            string? name,
+
+            string? permission)
         {
+            Name = name;
+            Permission = permission;
         }
     }
 }

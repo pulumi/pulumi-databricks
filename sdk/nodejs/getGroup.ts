@@ -46,6 +46,7 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
         "aclPrincipalId": args.aclPrincipalId,
         "allowClusterCreate": args.allowClusterCreate,
         "allowInstancePoolCreate": args.allowInstancePoolCreate,
+        "api": args.api,
         "childGroups": args.childGroups,
         "databricksSqlAccess": args.databricksSqlAccess,
         "displayName": args.displayName,
@@ -78,6 +79,10 @@ export interface GetGroupArgs {
      * True if group members can create instance pools
      */
     allowInstancePoolCreate?: boolean;
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: string;
     /**
      * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      */
@@ -139,6 +144,7 @@ export interface GetGroupResult {
      * True if group members can create instance pools
      */
     readonly allowInstancePoolCreate?: boolean;
+    readonly api?: string;
     /**
      * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      */
@@ -218,6 +224,7 @@ export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOut
         "aclPrincipalId": args.aclPrincipalId,
         "allowClusterCreate": args.allowClusterCreate,
         "allowInstancePoolCreate": args.allowInstancePoolCreate,
+        "api": args.api,
         "childGroups": args.childGroups,
         "databricksSqlAccess": args.databricksSqlAccess,
         "displayName": args.displayName,
@@ -250,6 +257,10 @@ export interface GetGroupOutputArgs {
      * True if group members can create instance pools
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      */

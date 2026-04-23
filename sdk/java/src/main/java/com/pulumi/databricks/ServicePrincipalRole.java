@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ServicePrincipalRoleArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ServicePrincipalRoleState;
+import com.pulumi.databricks.outputs.ServicePrincipalRoleProviderConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -126,6 +128,26 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/servicePrincipalRole:ServicePrincipalRole")
 public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
+    @Export(name="providerConfig", refs={ServicePrincipalRoleProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServicePrincipalRoleProviderConfig> providerConfig;
+
+    public Output<Optional<ServicePrincipalRoleProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
+    }
     /**
      * This is the role name, role id, or instance profile resource.
      * 

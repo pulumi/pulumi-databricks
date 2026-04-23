@@ -128,6 +128,12 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
     public Output<String> endpointName() {
         return this.endpointName;
     }
+    @Export(name="indexSubtype", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> indexSubtype;
+
+    public Output<Optional<String>> indexSubtype() {
+        return Codegen.optional(this.indexSubtype);
+    }
     /**
      * Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.

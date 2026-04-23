@@ -14,22 +14,29 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeaturesFeatureSourceResult
     {
         /// <summary>
-        /// (DeltaTableSource)
+        /// (DeltaTableSource) - A Delta table data source
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult? DeltaTableSource;
         /// <summary>
-        /// (KafkaSource)
+        /// (KafkaSource) - A Kafka stream data source
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult? KafkaSource;
+        /// <summary>
+        /// (RequestSource) - A request-time data source
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSourceResult? RequestSource;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeaturesFeatureSourceResult(
             Outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult? deltaTableSource,
 
-            Outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult? kafkaSource)
+            Outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult? kafkaSource,
+
+            Outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSourceResult? requestSource)
         {
             DeltaTableSource = deltaTableSource;
             KafkaSource = kafkaSource;
+            RequestSource = requestSource;
         }
     }
 }

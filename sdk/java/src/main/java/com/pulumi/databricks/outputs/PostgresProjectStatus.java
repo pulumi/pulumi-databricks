@@ -32,6 +32,11 @@ public final class PostgresProjectStatus {
      */
     private @Nullable List<PostgresProjectStatusCustomTag> customTags;
     /**
+     * @return (string) - The full resource path of the default branch of the project
+     * 
+     */
+    private @Nullable String defaultBranch;
+    /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      * 
      */
@@ -88,6 +93,13 @@ public final class PostgresProjectStatus {
      */
     public List<PostgresProjectStatusCustomTag> customTags() {
         return this.customTags == null ? List.of() : this.customTags;
+    }
+    /**
+     * @return (string) - The full resource path of the default branch of the project
+     * 
+     */
+    public Optional<String> defaultBranch() {
+        return Optional.ofNullable(this.defaultBranch);
     }
     /**
      * @return (ProjectDefaultEndpointSettings) - The effective default endpoint settings
@@ -151,6 +163,7 @@ public final class PostgresProjectStatus {
         private @Nullable Integer branchLogicalSizeLimitBytes;
         private @Nullable String budgetPolicyId;
         private @Nullable List<PostgresProjectStatusCustomTag> customTags;
+        private @Nullable String defaultBranch;
         private @Nullable PostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings;
         private @Nullable String displayName;
         private @Nullable Boolean enablePgNativeLogin;
@@ -164,6 +177,7 @@ public final class PostgresProjectStatus {
     	      this.branchLogicalSizeLimitBytes = defaults.branchLogicalSizeLimitBytes;
     	      this.budgetPolicyId = defaults.budgetPolicyId;
     	      this.customTags = defaults.customTags;
+    	      this.defaultBranch = defaults.defaultBranch;
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
     	      this.displayName = defaults.displayName;
     	      this.enablePgNativeLogin = defaults.enablePgNativeLogin;
@@ -193,6 +207,12 @@ public final class PostgresProjectStatus {
         }
         public Builder customTags(PostgresProjectStatusCustomTag... customTags) {
             return customTags(List.of(customTags));
+        }
+        @CustomType.Setter
+        public Builder defaultBranch(@Nullable String defaultBranch) {
+
+            this.defaultBranch = defaultBranch;
+            return this;
         }
         @CustomType.Setter
         public Builder defaultEndpointSettings(@Nullable PostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings) {
@@ -241,6 +261,7 @@ public final class PostgresProjectStatus {
             _resultValue.branchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
             _resultValue.budgetPolicyId = budgetPolicyId;
             _resultValue.customTags = customTags;
+            _resultValue.defaultBranch = defaultBranch;
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;
             _resultValue.displayName = displayName;
             _resultValue.enablePgNativeLogin = enablePgNativeLogin;

@@ -48,6 +48,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("effectiveEnableFileEvents")]
         public bool? EffectiveEnableFileEvents { get; set; }
 
+        [Input("effectiveFileEventQueue")]
+        public Inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs? EffectiveFileEventQueue { get; set; }
+
         [Input("enableFileEvents")]
         public bool? EnableFileEvents { get; set; }
 

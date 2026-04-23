@@ -21,6 +21,7 @@ __all__ = ['StorageCredentialArgs', 'StorageCredential']
 @pulumi.input_type
 class StorageCredentialArgs:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  aws_iam_role: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
@@ -34,23 +35,28 @@ class StorageCredentialArgs:
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['StorageCredentialProviderConfigArgs']] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a StorageCredential resource.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input['StorageCredentialAwsIamRoleArgs'] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[_builtins.str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the storage credential owner.
+        :param pulumi.Input['StorageCredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the storage credential is only usable for read operations.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
         if azure_managed_identity is not None:
@@ -77,10 +83,26 @@ class StorageCredentialArgs:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
@@ -177,8 +199,6 @@ class StorageCredentialArgs:
     def isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "isolation_mode")
 
@@ -221,6 +241,18 @@ class StorageCredentialArgs:
     @owner.setter
     def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "owner", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['StorageCredentialProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['StorageCredentialProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
@@ -250,6 +282,7 @@ class StorageCredentialArgs:
 @pulumi.input_type
 class _StorageCredentialState:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  aws_iam_role: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
@@ -263,25 +296,30 @@ class _StorageCredentialState:
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['StorageCredentialProviderConfigArgs']] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  storage_credential_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageCredential resources.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input['StorageCredentialAwsIamRoleArgs'] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[_builtins.str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the storage credential owner.
+        :param pulumi.Input['StorageCredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the storage credential is only usable for read operations.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         :param pulumi.Input[_builtins.str] storage_credential_id: Unique ID of storage credential.
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
         if azure_managed_identity is not None:
@@ -308,12 +346,28 @@ class _StorageCredentialState:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
         if storage_credential_id is not None:
             pulumi.set(__self__, "storage_credential_id", storage_credential_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
@@ -410,8 +464,6 @@ class _StorageCredentialState:
     def isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "isolation_mode")
 
@@ -454,6 +506,18 @@ class _StorageCredentialState:
     @owner.setter
     def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "owner", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['StorageCredentialProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['StorageCredentialProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
@@ -498,6 +562,7 @@ class StorageCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
                  azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
@@ -511,6 +576,7 @@ class StorageCredential(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
@@ -586,15 +652,17 @@ class StorageCredential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[_builtins.str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the storage credential owner.
+        :param pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the storage credential is only usable for read operations.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         """
@@ -689,6 +757,7 @@ class StorageCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
                  azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
@@ -702,6 +771,7 @@ class StorageCredential(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
@@ -713,6 +783,7 @@ class StorageCredential(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StorageCredentialArgs.__new__(StorageCredentialArgs)
 
+            __props__.__dict__["api"] = api
             __props__.__dict__["aws_iam_role"] = aws_iam_role
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
             __props__.__dict__["azure_service_principal"] = azure_service_principal
@@ -726,6 +797,7 @@ class StorageCredential(pulumi.CustomResource):
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["read_only"] = read_only
             __props__.__dict__["skip_validation"] = skip_validation
             __props__.__dict__["storage_credential_id"] = None
@@ -739,6 +811,7 @@ class StorageCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
             aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
             azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
             azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
@@ -752,6 +825,7 @@ class StorageCredential(pulumi.CustomResource):
             metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
             read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
             storage_credential_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'StorageCredential':
@@ -762,15 +836,17 @@ class StorageCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[_builtins.str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the storage credential owner.
+        :param pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the storage credential is only usable for read operations.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         :param pulumi.Input[_builtins.str] storage_credential_id: Unique ID of storage credential.
@@ -779,6 +855,7 @@ class StorageCredential(pulumi.CustomResource):
 
         __props__ = _StorageCredentialState.__new__(_StorageCredentialState)
 
+        __props__.__dict__["api"] = api
         __props__.__dict__["aws_iam_role"] = aws_iam_role
         __props__.__dict__["azure_managed_identity"] = azure_managed_identity
         __props__.__dict__["azure_service_principal"] = azure_service_principal
@@ -792,10 +869,21 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["skip_validation"] = skip_validation
         __props__.__dict__["storage_credential_id"] = storage_credential_id
         return StorageCredential(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
@@ -856,8 +944,6 @@ class StorageCredential(pulumi.CustomResource):
     def isolation_mode(self) -> pulumi.Output[_builtins.str]:
         """
         Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "isolation_mode")
 
@@ -884,6 +970,14 @@ class StorageCredential(pulumi.CustomResource):
         Username/groupname/sp application_id of the storage credential owner.
         """
         return pulumi.get(self, "owner")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.StorageCredentialProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="readOnly")

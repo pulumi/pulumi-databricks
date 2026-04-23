@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetTagPolicy
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single tag policy by its tag key.
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagPolicyResult>("databricks:index/getTagPolicy:getTagPolicy", args ?? new GetTagPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single tag policy by its tag key.
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetTagPolicyResult>("databricks:index/getTagPolicy:getTagPolicy", args ?? new GetTagPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to get a single tag policy by its tag key.
         /// 

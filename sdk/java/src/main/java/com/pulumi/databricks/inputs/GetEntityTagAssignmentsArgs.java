@@ -34,14 +34,14 @@ public final class GetEntityTagAssignmentsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * The type of the entity to which the tag is assigned
      * 
      */
     @Import(name="entityType", required=true)
     private Output<String> entityType;
 
     /**
-     * @return The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * @return The type of the entity to which the tag is assigned
      * 
      */
     public Output<String> entityType() {
@@ -127,7 +127,7 @@ public final class GetEntityTagAssignmentsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param entityType The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+         * @param entityType The type of the entity to which the tag is assigned
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class GetEntityTagAssignmentsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param entityType The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+         * @param entityType The type of the entity to which the tag is assigned
          * 
          * @return builder
          * 

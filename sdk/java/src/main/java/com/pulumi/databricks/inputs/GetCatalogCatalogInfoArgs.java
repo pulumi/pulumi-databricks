@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs;
+import com.pulumi.databricks.inputs.GetCatalogCatalogInfoManagedEncryptionSettingsArgs;
 import com.pulumi.databricks.inputs.GetCatalogCatalogInfoProvisioningInfoArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -160,6 +161,13 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
+    }
+
+    @Import(name="managedEncryptionSettings")
+    private @Nullable Output<GetCatalogCatalogInfoManagedEncryptionSettingsArgs> managedEncryptionSettings;
+
+    public Optional<Output<GetCatalogCatalogInfoManagedEncryptionSettingsArgs>> managedEncryptionSettings() {
+        return Optional.ofNullable(this.managedEncryptionSettings);
     }
 
     /**
@@ -362,6 +370,7 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
         this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.fullName = $.fullName;
         this.isolationMode = $.isolationMode;
+        this.managedEncryptionSettings = $.managedEncryptionSettings;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.options = $.options;
@@ -591,6 +600,15 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
          */
         public Builder isolationMode(String isolationMode) {
             return isolationMode(Output.of(isolationMode));
+        }
+
+        public Builder managedEncryptionSettings(@Nullable Output<GetCatalogCatalogInfoManagedEncryptionSettingsArgs> managedEncryptionSettings) {
+            $.managedEncryptionSettings = managedEncryptionSettings;
+            return this;
+        }
+
+        public Builder managedEncryptionSettings(GetCatalogCatalogInfoManagedEncryptionSettingsArgs managedEncryptionSettings) {
+            return managedEncryptionSettings(Output.of(managedEncryptionSettings));
         }
 
         /**

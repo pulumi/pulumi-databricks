@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -84,6 +86,11 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalRoleProviderConfig | undefined>;
+    /**
      * This is the role name, role id, or instance profile resource.
      */
     declare public readonly role: pulumi.Output<string>;
@@ -105,6 +112,8 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalRoleState | undefined;
+            resourceInputs["api"] = state?.api;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["role"] = state?.role;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
         } else {
@@ -115,6 +124,8 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
             if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
+            resourceInputs["api"] = args?.api;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["role"] = args?.role;
             resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
         }
@@ -127,6 +138,11 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServicePrincipalRole resources.
  */
 export interface ServicePrincipalRoleState {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalRoleProviderConfig>;
     /**
      * This is the role name, role id, or instance profile resource.
      */
@@ -141,6 +157,11 @@ export interface ServicePrincipalRoleState {
  * The set of arguments for constructing a ServicePrincipalRole resource.
  */
 export interface ServicePrincipalRoleArgs {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalRoleProviderConfig>;
     /**
      * This is the role name, role id, or instance profile resource.
      */

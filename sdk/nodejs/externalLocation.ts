@@ -171,6 +171,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     declare public readonly credentialName: pulumi.Output<string>;
     declare public /*out*/ readonly effectiveEnableFileEvents: pulumi.Output<boolean>;
+    declare public readonly effectiveFileEventQueue: pulumi.Output<outputs.ExternalLocationEffectiveFileEventQueue | undefined>;
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */
@@ -244,6 +245,7 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["credentialId"] = state?.credentialId;
             resourceInputs["credentialName"] = state?.credentialName;
             resourceInputs["effectiveEnableFileEvents"] = state?.effectiveEnableFileEvents;
+            resourceInputs["effectiveFileEventQueue"] = state?.effectiveFileEventQueue;
             resourceInputs["enableFileEvents"] = state?.enableFileEvents;
             resourceInputs["encryptionDetails"] = state?.encryptionDetails;
             resourceInputs["fallback"] = state?.fallback;
@@ -270,6 +272,7 @@ export class ExternalLocation extends pulumi.CustomResource {
             }
             resourceInputs["comment"] = args?.comment;
             resourceInputs["credentialName"] = args?.credentialName;
+            resourceInputs["effectiveFileEventQueue"] = args?.effectiveFileEventQueue;
             resourceInputs["enableFileEvents"] = args?.enableFileEvents;
             resourceInputs["encryptionDetails"] = args?.encryptionDetails;
             resourceInputs["fallback"] = args?.fallback;
@@ -323,6 +326,7 @@ export interface ExternalLocationState {
      */
     credentialName?: pulumi.Input<string>;
     effectiveEnableFileEvents?: pulumi.Input<boolean>;
+    effectiveFileEventQueue?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueue>;
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */
@@ -389,6 +393,7 @@ export interface ExternalLocationArgs {
      * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName: pulumi.Input<string>;
+    effectiveFileEventQueue?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueue>;
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */

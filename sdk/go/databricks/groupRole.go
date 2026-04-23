@@ -110,8 +110,11 @@ import (
 type GroupRole struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// This is the id of the group resource.
-	GroupId pulumi.StringOutput `pulumi:"groupId"`
+	GroupId        pulumi.StringOutput              `pulumi:"groupId"`
+	ProviderConfig GroupRoleProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
@@ -152,15 +155,21 @@ func GetGroupRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupRole resources.
 type groupRoleState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the id of the group resource.
-	GroupId *string `pulumi:"groupId"`
+	GroupId        *string                  `pulumi:"groupId"`
+	ProviderConfig *GroupRoleProviderConfig `pulumi:"providerConfig"`
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role *string `pulumi:"role"`
 }
 
 type GroupRoleState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the id of the group resource.
-	GroupId pulumi.StringPtrInput
+	GroupId        pulumi.StringPtrInput
+	ProviderConfig GroupRoleProviderConfigPtrInput
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role pulumi.StringPtrInput
 }
@@ -170,16 +179,22 @@ func (GroupRoleState) ElementType() reflect.Type {
 }
 
 type groupRoleArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the id of the group resource.
-	GroupId string `pulumi:"groupId"`
+	GroupId        string                   `pulumi:"groupId"`
+	ProviderConfig *GroupRoleProviderConfig `pulumi:"providerConfig"`
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a GroupRole resource.
 type GroupRoleArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the id of the group resource.
-	GroupId pulumi.StringInput
+	GroupId        pulumi.StringInput
+	ProviderConfig GroupRoleProviderConfigPtrInput
 	// Either a role name or the ARN/ID of the instance profile resource.
 	Role pulumi.StringInput
 }
@@ -271,9 +286,18 @@ func (o GroupRoleOutput) ToGroupRoleOutputWithContext(ctx context.Context) Group
 	return o
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o GroupRoleOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupRole) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // This is the id of the group resource.
 func (o GroupRoleOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupRole) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+func (o GroupRoleOutput) ProviderConfig() GroupRoleProviderConfigPtrOutput {
+	return o.ApplyT(func(v *GroupRole) GroupRoleProviderConfigPtrOutput { return v.ProviderConfig }).(GroupRoleProviderConfigPtrOutput)
 }
 
 // Either a role name or the ARN/ID of the instance profile resource.

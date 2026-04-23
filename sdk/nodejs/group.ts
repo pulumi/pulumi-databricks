@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -113,6 +115,10 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly allowInstancePoolCreate: pulumi.Output<boolean | undefined>;
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
     declare public readonly databricksSqlAccess: pulumi.Output<boolean | undefined>;
@@ -128,6 +134,7 @@ export class Group extends pulumi.CustomResource {
      * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     declare public readonly force: pulumi.Output<boolean | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GroupProviderConfig | undefined>;
     declare public readonly url: pulumi.Output<string>;
     /**
      * This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
@@ -154,10 +161,12 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["aclPrincipalId"] = state?.aclPrincipalId;
             resourceInputs["allowClusterCreate"] = state?.allowClusterCreate;
             resourceInputs["allowInstancePoolCreate"] = state?.allowInstancePoolCreate;
+            resourceInputs["api"] = state?.api;
             resourceInputs["databricksSqlAccess"] = state?.databricksSqlAccess;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["externalId"] = state?.externalId;
             resourceInputs["force"] = state?.force;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["url"] = state?.url;
             resourceInputs["workspaceAccess"] = state?.workspaceAccess;
             resourceInputs["workspaceConsume"] = state?.workspaceConsume;
@@ -166,10 +175,12 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["aclPrincipalId"] = args?.aclPrincipalId;
             resourceInputs["allowClusterCreate"] = args?.allowClusterCreate;
             resourceInputs["allowInstancePoolCreate"] = args?.allowInstancePoolCreate;
+            resourceInputs["api"] = args?.api;
             resourceInputs["databricksSqlAccess"] = args?.databricksSqlAccess;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["externalId"] = args?.externalId;
             resourceInputs["force"] = args?.force;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["url"] = args?.url;
             resourceInputs["workspaceAccess"] = args?.workspaceAccess;
             resourceInputs["workspaceConsume"] = args?.workspaceConsume;
@@ -196,6 +207,10 @@ export interface GroupState {
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
@@ -211,6 +226,7 @@ export interface GroupState {
      * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     force?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.GroupProviderConfig>;
     url?: pulumi.Input<string>;
     /**
      * This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
@@ -239,6 +255,10 @@ export interface GroupArgs {
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
@@ -254,6 +274,7 @@ export interface GroupArgs {
      * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     force?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.GroupProviderConfig>;
     url?: pulumi.Input<string>;
     /**
      * This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).

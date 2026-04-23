@@ -107,6 +107,9 @@ namespace Pulumi.Databricks
         [Output("isolationMode")]
         public Output<string> IsolationMode { get; private set; } = null!;
 
+        [Output("managedEncryptionSettings")]
+        public Output<Outputs.CatalogManagedEncryptionSettings?> ManagedEncryptionSettings { get; private set; } = null!;
+
         /// <summary>
         /// ID of the parent metastore.
         /// </summary>
@@ -270,6 +273,9 @@ namespace Pulumi.Databricks
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
 
+        [Input("managedEncryptionSettings")]
+        public Input<Inputs.CatalogManagedEncryptionSettingsArgs>? ManagedEncryptionSettings { get; set; }
+
         /// <summary>
         /// ID of the parent metastore.
         /// </summary>
@@ -403,6 +409,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
+
+        [Input("managedEncryptionSettings")]
+        public Input<Inputs.CatalogManagedEncryptionSettingsGetArgs>? ManagedEncryptionSettings { get; set; }
 
         /// <summary>
         /// ID of the parent metastore.

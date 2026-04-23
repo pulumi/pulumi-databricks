@@ -48,6 +48,10 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      */
     readonly id: string;
     /**
+     * (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     */
+    readonly isOnline: boolean;
+    /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      */

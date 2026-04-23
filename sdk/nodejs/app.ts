@@ -134,7 +134,7 @@ export class App extends pulumi.CustomResource {
     declare public /*out*/ readonly oauth2AppClientId: pulumi.Output<string>;
     declare public /*out*/ readonly oauth2AppIntegrationId: pulumi.Output<string>;
     declare public /*out*/ readonly pendingDeployment: pulumi.Output<outputs.AppPendingDeployment>;
-    declare public readonly providerConfig: pulumi.Output<outputs.AppProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AppProviderConfig>;
     /**
      * A list of resources that the app have access to.
      */

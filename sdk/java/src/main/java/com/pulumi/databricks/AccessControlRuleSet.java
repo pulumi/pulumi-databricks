@@ -11,6 +11,7 @@ import com.pulumi.databricks.AccessControlRuleSetArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AccessControlRuleSetState;
 import com.pulumi.databricks.outputs.AccessControlRuleSetGrantRule;
+import com.pulumi.databricks.outputs.AccessControlRuleSetProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -519,6 +520,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/accessControlRuleSet:AccessControlRuleSet")
 public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
@@ -566,6 +581,12 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="providerConfig", refs={AccessControlRuleSetProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AccessControlRuleSetProviderConfig> providerConfig;
+
+    public Output<Optional<AccessControlRuleSetProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
 
     /**

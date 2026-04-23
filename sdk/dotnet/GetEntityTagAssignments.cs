@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetEntityTagAssignments
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
         /// 
@@ -65,7 +65,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntityTagAssignmentsResult>("databricks:index/getEntityTagAssignments:getEntityTagAssignments", args ?? new GetEntityTagAssignmentsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
         /// 
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetEntityTagAssignmentsResult>("databricks:index/getEntityTagAssignments:getEntityTagAssignments", args ?? new GetEntityTagAssignmentsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
         /// 
@@ -181,7 +181,7 @@ namespace Pulumi.Databricks
         public string EntityName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// The type of the entity to which the tag is assigned
         /// </summary>
         [Input("entityType", required: true)]
         public string EntityType { get; set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.Databricks
         public Input<string> EntityName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// The type of the entity to which the tag is assigned
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string EntityName;
         /// <summary>
-        /// (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// (string) - The type of the entity to which the tag is assigned
         /// </summary>
         public readonly string EntityType;
         /// <summary>

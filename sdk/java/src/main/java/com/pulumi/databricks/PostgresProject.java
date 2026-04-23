@@ -106,6 +106,57 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Project with High Availability Endpoint
+ * 
+ * Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+ * One compute instance acts as the read-write primary.
+ * The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectInitialEndpointSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectInitialEndpointSpecGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ha = new PostgresProject("ha", PostgresProjectArgs.builder()
+ *             .projectId("ha-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("HA Production Project")
+ *                 .build())
+ *             .initialEndpointSpec(PostgresProjectInitialEndpointSpecArgs.builder()
+ *                 .group(PostgresProjectInitialEndpointSpecGroupArgs.builder()
+ *                     .min(2)
+ *                     .max(2)
+ *                     .enableReadableSecondaries(false)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Referencing in Other Resources
  * 
  * <pre>

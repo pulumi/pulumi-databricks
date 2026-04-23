@@ -112,6 +112,8 @@ import (
 type MetastoreDataAccess struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api                         pulumi.StringPtrOutput                               `pulumi:"api"`
 	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrOutput               `pulumi:"awsIamRole"`
 	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrOutput     `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrOutput    `pulumi:"azureServicePrincipal"`
@@ -122,13 +124,15 @@ type MetastoreDataAccess struct {
 	ForceUpdate                 pulumi.BoolPtrOutput                                 `pulumi:"forceUpdate"`
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrOutput     `pulumi:"gcpServiceAccountKey"`
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
-	IsDefault      pulumi.BoolPtrOutput `pulumi:"isDefault"`
-	IsolationMode  pulumi.StringOutput  `pulumi:"isolationMode"`
-	MetastoreId    pulumi.StringOutput  `pulumi:"metastoreId"`
-	Name           pulumi.StringOutput  `pulumi:"name"`
-	Owner          pulumi.StringOutput  `pulumi:"owner"`
-	ReadOnly       pulumi.BoolPtrOutput `pulumi:"readOnly"`
-	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
+	IsDefault     pulumi.BoolPtrOutput `pulumi:"isDefault"`
+	IsolationMode pulumi.StringOutput  `pulumi:"isolationMode"`
+	MetastoreId   pulumi.StringOutput  `pulumi:"metastoreId"`
+	Name          pulumi.StringOutput  `pulumi:"name"`
+	Owner         pulumi.StringOutput  `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MetastoreDataAccessProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ReadOnly       pulumi.BoolPtrOutput                       `pulumi:"readOnly"`
+	SkipValidation pulumi.BoolPtrOutput                       `pulumi:"skipValidation"`
 }
 
 // NewMetastoreDataAccess registers a new resource with the given unique name, arguments, and options.
@@ -161,6 +165,8 @@ func GetMetastoreDataAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetastoreDataAccess resources.
 type metastoreDataAccessState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api                         *string                                         `pulumi:"api"`
 	AwsIamRole                  *MetastoreDataAccessAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *MetastoreDataAccessAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *MetastoreDataAccessAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
@@ -171,16 +177,20 @@ type metastoreDataAccessState struct {
 	ForceUpdate                 *bool                                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
-	IsDefault      *bool   `pulumi:"isDefault"`
-	IsolationMode  *string `pulumi:"isolationMode"`
-	MetastoreId    *string `pulumi:"metastoreId"`
-	Name           *string `pulumi:"name"`
-	Owner          *string `pulumi:"owner"`
-	ReadOnly       *bool   `pulumi:"readOnly"`
-	SkipValidation *bool   `pulumi:"skipValidation"`
+	IsDefault     *bool   `pulumi:"isDefault"`
+	IsolationMode *string `pulumi:"isolationMode"`
+	MetastoreId   *string `pulumi:"metastoreId"`
+	Name          *string `pulumi:"name"`
+	Owner         *string `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *MetastoreDataAccessProviderConfig `pulumi:"providerConfig"`
+	ReadOnly       *bool                              `pulumi:"readOnly"`
+	SkipValidation *bool                              `pulumi:"skipValidation"`
 }
 
 type MetastoreDataAccessState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api                         pulumi.StringPtrInput
 	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrInput
 	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrInput
@@ -191,11 +201,13 @@ type MetastoreDataAccessState struct {
 	ForceUpdate                 pulumi.BoolPtrInput
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
-	IsDefault      pulumi.BoolPtrInput
-	IsolationMode  pulumi.StringPtrInput
-	MetastoreId    pulumi.StringPtrInput
-	Name           pulumi.StringPtrInput
-	Owner          pulumi.StringPtrInput
+	IsDefault     pulumi.BoolPtrInput
+	IsolationMode pulumi.StringPtrInput
+	MetastoreId   pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
+	Owner         pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MetastoreDataAccessProviderConfigPtrInput
 	ReadOnly       pulumi.BoolPtrInput
 	SkipValidation pulumi.BoolPtrInput
 }
@@ -205,6 +217,8 @@ func (MetastoreDataAccessState) ElementType() reflect.Type {
 }
 
 type metastoreDataAccessArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api                         *string                                         `pulumi:"api"`
 	AwsIamRole                  *MetastoreDataAccessAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *MetastoreDataAccessAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *MetastoreDataAccessAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
@@ -215,17 +229,21 @@ type metastoreDataAccessArgs struct {
 	ForceUpdate                 *bool                                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
-	IsDefault      *bool   `pulumi:"isDefault"`
-	IsolationMode  *string `pulumi:"isolationMode"`
-	MetastoreId    *string `pulumi:"metastoreId"`
-	Name           *string `pulumi:"name"`
-	Owner          *string `pulumi:"owner"`
-	ReadOnly       *bool   `pulumi:"readOnly"`
-	SkipValidation *bool   `pulumi:"skipValidation"`
+	IsDefault     *bool   `pulumi:"isDefault"`
+	IsolationMode *string `pulumi:"isolationMode"`
+	MetastoreId   *string `pulumi:"metastoreId"`
+	Name          *string `pulumi:"name"`
+	Owner         *string `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *MetastoreDataAccessProviderConfig `pulumi:"providerConfig"`
+	ReadOnly       *bool                              `pulumi:"readOnly"`
+	SkipValidation *bool                              `pulumi:"skipValidation"`
 }
 
 // The set of arguments for constructing a MetastoreDataAccess resource.
 type MetastoreDataAccessArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api                         pulumi.StringPtrInput
 	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrInput
 	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrInput
@@ -236,11 +254,13 @@ type MetastoreDataAccessArgs struct {
 	ForceUpdate                 pulumi.BoolPtrInput
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
-	IsDefault      pulumi.BoolPtrInput
-	IsolationMode  pulumi.StringPtrInput
-	MetastoreId    pulumi.StringPtrInput
-	Name           pulumi.StringPtrInput
-	Owner          pulumi.StringPtrInput
+	IsDefault     pulumi.BoolPtrInput
+	IsolationMode pulumi.StringPtrInput
+	MetastoreId   pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
+	Owner         pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig MetastoreDataAccessProviderConfigPtrInput
 	ReadOnly       pulumi.BoolPtrInput
 	SkipValidation pulumi.BoolPtrInput
 }
@@ -332,6 +352,11 @@ func (o MetastoreDataAccessOutput) ToMetastoreDataAccessOutputWithContext(ctx co
 	return o
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o MetastoreDataAccessOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 func (o MetastoreDataAccessOutput) AwsIamRole() MetastoreDataAccessAwsIamRolePtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessAwsIamRolePtrOutput { return v.AwsIamRole }).(MetastoreDataAccessAwsIamRolePtrOutput)
 }
@@ -397,6 +422,11 @@ func (o MetastoreDataAccessOutput) Name() pulumi.StringOutput {
 
 func (o MetastoreDataAccessOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o MetastoreDataAccessOutput) ProviderConfig() MetastoreDataAccessProviderConfigPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessProviderConfigPtrOutput { return v.ProviderConfig }).(MetastoreDataAccessProviderConfigPtrOutput)
 }
 
 func (o MetastoreDataAccessOutput) ReadOnly() pulumi.BoolPtrOutput {

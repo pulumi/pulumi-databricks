@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.UserRoleArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.UserRoleState;
+import com.pulumi.databricks.outputs.UserRoleProviderConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -124,6 +126,26 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/userRole:UserRole")
 public class UserRole extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
+    @Export(name="providerConfig", refs={UserRoleProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ UserRoleProviderConfig> providerConfig;
+
+    public Output<Optional<UserRoleProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
+    }
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      * 

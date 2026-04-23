@@ -25,9 +25,6 @@ namespace Pulumi.Databricks.Outputs
         /// Optional. When PolicyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
         /// </summary>
         public readonly Outputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement? PolicyEnforcement;
-        /// <summary>
-        /// The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-        /// </summary>
         public readonly string RestrictionMode;
 
         [OutputConstructor]

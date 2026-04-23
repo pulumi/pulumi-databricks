@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.WorkspaceBaseEnvironment;
- * import com.pulumi.databricks.WorkspaceBaseEnvironmentArgs;
+ * import com.pulumi.databricks.EnvironmentsWorkspaceBaseEnvironment;
+ * import com.pulumi.databricks.EnvironmentsWorkspaceBaseEnvironmentArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new WorkspaceBaseEnvironment("this", WorkspaceBaseEnvironmentArgs.builder()
+ *         var this_ = new EnvironmentsWorkspaceBaseEnvironment("this", EnvironmentsWorkspaceBaseEnvironmentArgs.builder()
  *             .displayName("my-environment")
  *             .filepath("/Volumes/catalog/schema/volume/environment.yaml")
  *             .build());
@@ -74,8 +74,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.WorkspaceBaseEnvironment;
- * import com.pulumi.databricks.WorkspaceBaseEnvironmentArgs;
+ * import com.pulumi.databricks.EnvironmentsWorkspaceBaseEnvironment;
+ * import com.pulumi.databricks.EnvironmentsWorkspaceBaseEnvironmentArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -89,10 +89,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gpuEnv = new WorkspaceBaseEnvironment("gpuEnv", WorkspaceBaseEnvironmentArgs.builder()
+ *         var gpuEnv = new EnvironmentsWorkspaceBaseEnvironment("gpuEnv", EnvironmentsWorkspaceBaseEnvironmentArgs.builder()
  *             .displayName("my-gpu-environment")
  *             .filepath("/Volumes/catalog/schema/volume/gpu-environment.yaml")
- *             .baseEnvironmentType("GPU_LARGE")
+ *             .baseEnvironmentType("GPU")
  *             .build());
  * 
  *     }

@@ -38,9 +38,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewWorkspaceBaseEnvironment(ctx, "this", &databricks.WorkspaceBaseEnvironmentArgs{
-//				DisplayName: "my-environment",
-//				Filepath:    "/Volumes/catalog/schema/volume/environment.yaml",
+//			_, err := databricks.NewEnvironmentsWorkspaceBaseEnvironment(ctx, "this", &databricks.EnvironmentsWorkspaceBaseEnvironmentArgs{
+//				DisplayName: pulumi.String("my-environment"),
+//				Filepath:    pulumi.String("/Volumes/catalog/schema/volume/environment.yaml"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,10 +67,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewWorkspaceBaseEnvironment(ctx, "gpu_env", &databricks.WorkspaceBaseEnvironmentArgs{
-//				DisplayName:         "my-gpu-environment",
-//				Filepath:            "/Volumes/catalog/schema/volume/gpu-environment.yaml",
-//				BaseEnvironmentType: "GPU_LARGE",
+//			_, err := databricks.NewEnvironmentsWorkspaceBaseEnvironment(ctx, "gpu_env", &databricks.EnvironmentsWorkspaceBaseEnvironmentArgs{
+//				DisplayName:         pulumi.String("my-gpu-environment"),
+//				Filepath:            pulumi.String("/Volumes/catalog/schema/volume/gpu-environment.yaml"),
+//				BaseEnvironmentType: pulumi.String("GPU"),
 //			})
 //			if err != nil {
 //				return err

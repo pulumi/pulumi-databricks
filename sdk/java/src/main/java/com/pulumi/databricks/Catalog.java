@@ -11,6 +11,7 @@ import com.pulumi.databricks.CatalogArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.CatalogState;
 import com.pulumi.databricks.outputs.CatalogEffectivePredictiveOptimizationFlag;
+import com.pulumi.databricks.outputs.CatalogManagedEncryptionSettings;
 import com.pulumi.databricks.outputs.CatalogProviderConfig;
 import com.pulumi.databricks.outputs.CatalogProvisioningInfo;
 import java.lang.Boolean;
@@ -202,6 +203,12 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      */
     public Output<String> isolationMode() {
         return this.isolationMode;
+    }
+    @Export(name="managedEncryptionSettings", refs={CatalogManagedEncryptionSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CatalogManagedEncryptionSettings> managedEncryptionSettings;
+
+    public Output<Optional<CatalogManagedEncryptionSettings>> managedEncryptionSettings() {
+        return Codegen.optional(this.managedEncryptionSettings);
     }
     /**
      * ID of the parent metastore.

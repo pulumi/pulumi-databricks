@@ -11,6 +11,16 @@ import * as utilities from "./utilities";
  *
  * This data source retrieves the list of all Workspace Base Environments in the workspace.
  * The list can be accessed via the data object's `workspaceBaseEnvironments` field.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getEnvironmentsWorkspaceBaseEnvironments({});
+ * export const allEnvironments = all.then(all => all.workspaceBaseEnvironments);
+ * ```
  */
 export function getEnvironmentsWorkspaceBaseEnvironments(args?: GetEnvironmentsWorkspaceBaseEnvironmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentsWorkspaceBaseEnvironmentsResult> {
     args = args || {};
@@ -53,6 +63,16 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsResult {
  *
  * This data source retrieves the list of all Workspace Base Environments in the workspace.
  * The list can be accessed via the data object's `workspaceBaseEnvironments` field.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getEnvironmentsWorkspaceBaseEnvironments({});
+ * export const allEnvironments = all.then(all => all.workspaceBaseEnvironments);
+ * ```
  */
 export function getEnvironmentsWorkspaceBaseEnvironmentsOutput(args?: GetEnvironmentsWorkspaceBaseEnvironmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> {
     args = args || {};

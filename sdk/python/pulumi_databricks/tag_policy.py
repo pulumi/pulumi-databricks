@@ -183,7 +183,7 @@ class TagPolicy(pulumi.CustomResource):
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None,
                  __props__=None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         Define tag policies to manage governed tags in your account.
 
@@ -230,7 +230,7 @@ class TagPolicy(pulumi.CustomResource):
                  args: TagPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         Define tag policies to manage governed tags in your account.
 

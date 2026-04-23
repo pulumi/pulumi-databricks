@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['MwsNccPrivateEndpointRuleArgs', 'MwsNccPrivateEndpointRule']
 
@@ -30,6 +32,7 @@ class MwsNccPrivateEndpointRuleArgs:
                  endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
                  error_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 gcp_endpoint: Optional[pulumi.Input['MwsNccPrivateEndpointRuleGcpEndpointArgs']] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -83,6 +86,8 @@ class MwsNccPrivateEndpointRuleArgs:
             pulumi.set(__self__, "endpoint_service", endpoint_service)
         if error_message is not None:
             pulumi.set(__self__, "error_message", error_message)
+        if gcp_endpoint is not None:
+            pulumi.set(__self__, "gcp_endpoint", gcp_endpoint)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if resource_id is not None:
@@ -230,6 +235,15 @@ class MwsNccPrivateEndpointRuleArgs:
         pulumi.set(self, "error_message", value)
 
     @_builtins.property
+    @pulumi.getter(name="gcpEndpoint")
+    def gcp_endpoint(self) -> Optional[pulumi.Input['MwsNccPrivateEndpointRuleGcpEndpointArgs']]:
+        return pulumi.get(self, "gcp_endpoint")
+
+    @gcp_endpoint.setter
+    def gcp_endpoint(self, value: Optional[pulumi.Input['MwsNccPrivateEndpointRuleGcpEndpointArgs']]):
+        pulumi.set(self, "gcp_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -315,6 +329,7 @@ class _MwsNccPrivateEndpointRuleState:
                  endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
                  error_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 gcp_endpoint: Optional[pulumi.Input['MwsNccPrivateEndpointRuleGcpEndpointArgs']] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -368,6 +383,8 @@ class _MwsNccPrivateEndpointRuleState:
             pulumi.set(__self__, "endpoint_service", endpoint_service)
         if error_message is not None:
             pulumi.set(__self__, "error_message", error_message)
+        if gcp_endpoint is not None:
+            pulumi.set(__self__, "gcp_endpoint", gcp_endpoint)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if network_connectivity_config_id is not None:
@@ -505,6 +522,15 @@ class _MwsNccPrivateEndpointRuleState:
         pulumi.set(self, "error_message", value)
 
     @_builtins.property
+    @pulumi.getter(name="gcpEndpoint")
+    def gcp_endpoint(self) -> Optional[pulumi.Input['MwsNccPrivateEndpointRuleGcpEndpointArgs']]:
+        return pulumi.get(self, "gcp_endpoint")
+
+    @gcp_endpoint.setter
+    def gcp_endpoint(self, value: Optional[pulumi.Input['MwsNccPrivateEndpointRuleGcpEndpointArgs']]):
+        pulumi.set(self, "gcp_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -605,6 +631,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
                  error_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 gcp_endpoint: Optional[pulumi.Input[Union['MwsNccPrivateEndpointRuleGcpEndpointArgs', 'MwsNccPrivateEndpointRuleGcpEndpointArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -791,6 +818,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
                  error_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 gcp_endpoint: Optional[pulumi.Input[Union['MwsNccPrivateEndpointRuleGcpEndpointArgs', 'MwsNccPrivateEndpointRuleGcpEndpointArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -817,6 +845,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             __props__.__dict__["endpoint_name"] = endpoint_name
             __props__.__dict__["endpoint_service"] = endpoint_service
             __props__.__dict__["error_message"] = error_message
+            __props__.__dict__["gcp_endpoint"] = gcp_endpoint
             __props__.__dict__["group_id"] = group_id
             if network_connectivity_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_connectivity_config_id'")
@@ -846,6 +875,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
             endpoint_service: Optional[pulumi.Input[_builtins.str]] = None,
             error_message: Optional[pulumi.Input[_builtins.str]] = None,
+            gcp_endpoint: Optional[pulumi.Input[Union['MwsNccPrivateEndpointRuleGcpEndpointArgs', 'MwsNccPrivateEndpointRuleGcpEndpointArgsDict']]] = None,
             group_id: Optional[pulumi.Input[_builtins.str]] = None,
             network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -897,6 +927,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         __props__.__dict__["endpoint_name"] = endpoint_name
         __props__.__dict__["endpoint_service"] = endpoint_service
         __props__.__dict__["error_message"] = error_message
+        __props__.__dict__["gcp_endpoint"] = gcp_endpoint
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["network_connectivity_config_id"] = network_connectivity_config_id
         __props__.__dict__["resource_id"] = resource_id
@@ -986,6 +1017,11 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "error_message")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpEndpoint")
+    def gcp_endpoint(self) -> pulumi.Output[Optional['outputs.MwsNccPrivateEndpointRuleGcpEndpoint']]:
+        return pulumi.get(self, "gcp_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="groupId")

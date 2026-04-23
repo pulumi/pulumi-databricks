@@ -75,6 +75,10 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * UTC time when the secret was created.
      */
     declare public readonly createTime: pulumi.Output<string>;
@@ -132,6 +136,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalSecretState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["lifetime"] = state?.lifetime;
@@ -148,6 +153,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
             if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
+            resourceInputs["api"] = args?.api;
             resourceInputs["createTime"] = args?.createTime;
             resourceInputs["expireTime"] = args?.expireTime;
             resourceInputs["lifetime"] = args?.lifetime;
@@ -171,6 +177,10 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServicePrincipalSecret resources.
  */
 export interface ServicePrincipalSecretState {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * UTC time when the secret was created.
      */
@@ -221,6 +231,10 @@ export interface ServicePrincipalSecretState {
  * The set of arguments for constructing a ServicePrincipalSecret resource.
  */
 export interface ServicePrincipalSecretArgs {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * UTC time when the secret was created.
      */

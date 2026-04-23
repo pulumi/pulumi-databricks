@@ -281,6 +281,10 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessControlRuleSet.__pulumiType;
     }
 
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
@@ -297,6 +301,7 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
      * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      */
     declare public readonly name: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AccessControlRuleSetProviderConfig | undefined>;
 
     /**
      * Create a AccessControlRuleSet resource with the given unique name, arguments, and options.
@@ -311,13 +316,17 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessControlRuleSetState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["grantRules"] = state?.grantRules;
             resourceInputs["name"] = state?.name;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as AccessControlRuleSetArgs | undefined;
+            resourceInputs["api"] = args?.api;
             resourceInputs["grantRules"] = args?.grantRules;
             resourceInputs["name"] = args?.name;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -329,6 +338,10 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessControlRuleSet resources.
  */
 export interface AccessControlRuleSetState {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     etag?: pulumi.Input<string>;
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
@@ -345,12 +358,17 @@ export interface AccessControlRuleSetState {
      * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      */
     name?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.AccessControlRuleSetProviderConfig>;
 }
 
 /**
  * The set of arguments for constructing a AccessControlRuleSet resource.
  */
 export interface AccessControlRuleSetArgs {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      *
@@ -366,4 +384,5 @@ export interface AccessControlRuleSetArgs {
      * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      */
     name?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.AccessControlRuleSetProviderConfig>;
 }

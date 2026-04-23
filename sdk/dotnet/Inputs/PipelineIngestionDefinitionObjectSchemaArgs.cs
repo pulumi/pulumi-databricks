@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectSchemaArgs : global::Pulumi.ResourceArgs
     {
+        [Input("connectorOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs>? ConnectorOptions { get; set; }
+
         [Input("destinationCatalog", required: true)]
         public Input<string> DestinationCatalog { get; set; } = null!;
 

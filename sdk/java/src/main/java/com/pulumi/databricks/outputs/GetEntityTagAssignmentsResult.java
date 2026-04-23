@@ -22,7 +22,7 @@ public final class GetEntityTagAssignmentsResult {
      */
     private String entityName;
     /**
-     * @return (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * @return (string) - The type of the entity to which the tag is assigned
      * 
      */
     private String entityType;
@@ -44,7 +44,7 @@ public final class GetEntityTagAssignmentsResult {
         return this.entityName;
     }
     /**
-     * @return (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * @return (string) - The type of the entity to which the tag is assigned
      * 
      */
     public String entityType() {

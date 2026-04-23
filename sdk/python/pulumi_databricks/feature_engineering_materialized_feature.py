@@ -135,6 +135,7 @@ class _FeatureEngineeringMaterializedFeatureState:
     def __init__(__self__, *,
                  cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
                  feature_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_online: Optional[pulumi.Input[_builtins.bool]] = None,
                  last_materialization_time: Optional[pulumi.Input[_builtins.str]] = None,
                  materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
                  offline_store_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
@@ -147,6 +148,7 @@ class _FeatureEngineeringMaterializedFeatureState:
 
         :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
+        :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
         :param pulumi.Input[_builtins.str] materialized_feature_id: Unique identifier for the materialized feature
@@ -158,6 +160,8 @@ class _FeatureEngineeringMaterializedFeatureState:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
         if feature_name is not None:
             pulumi.set(__self__, "feature_name", feature_name)
+        if is_online is not None:
+            pulumi.set(__self__, "is_online", is_online)
         if last_materialization_time is not None:
             pulumi.set(__self__, "last_materialization_time", last_materialization_time)
         if materialized_feature_id is not None:
@@ -196,6 +200,18 @@ class _FeatureEngineeringMaterializedFeatureState:
     @feature_name.setter
     def feature_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "feature_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isOnline")
+    def is_online(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+        """
+        return pulumi.get(self, "is_online")
+
+    @is_online.setter
+    def is_online(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_online", value)
 
     @_builtins.property
     @pulumi.getter(name="lastMaterializationTime")
@@ -353,6 +369,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
             __props__.__dict__["online_store_config"] = online_store_config
             __props__.__dict__["pipeline_schedule_state"] = pipeline_schedule_state
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["is_online"] = None
             __props__.__dict__["last_materialization_time"] = None
             __props__.__dict__["table_name"] = None
         super(FeatureEngineeringMaterializedFeature, __self__).__init__(
@@ -367,6 +384,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
             feature_name: Optional[pulumi.Input[_builtins.str]] = None,
+            is_online: Optional[pulumi.Input[_builtins.bool]] = None,
             last_materialization_time: Optional[pulumi.Input[_builtins.str]] = None,
             materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
             offline_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
@@ -383,6 +401,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
+        :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
         :param pulumi.Input[_builtins.str] last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
         :param pulumi.Input[_builtins.str] materialized_feature_id: Unique identifier for the materialized feature
@@ -396,6 +415,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
 
         __props__.__dict__["cron_schedule"] = cron_schedule
         __props__.__dict__["feature_name"] = feature_name
+        __props__.__dict__["is_online"] = is_online
         __props__.__dict__["last_materialization_time"] = last_materialization_time
         __props__.__dict__["materialized_feature_id"] = materialized_feature_id
         __props__.__dict__["offline_store_config"] = offline_store_config
@@ -422,6 +442,14 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         return pulumi.get(self, "feature_name")
 
     @_builtins.property
+    @pulumi.getter(name="isOnline")
+    def is_online(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+        """
+        return pulumi.get(self, "is_online")
+
+    @_builtins.property
     @pulumi.getter(name="lastMaterializationTime")
     def last_materialization_time(self) -> pulumi.Output[_builtins.str]:
         """
@@ -440,12 +468,12 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="offlineStoreConfig")
-    def offline_store_config(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig']]:
+    def offline_store_config(self) -> pulumi.Output['outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig']:
         return pulumi.get(self, "offline_store_config")
 
     @_builtins.property
     @pulumi.getter(name="onlineStoreConfig")
-    def online_store_config(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig']]:
+    def online_store_config(self) -> pulumi.Output['outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig']:
         return pulumi.get(self, "online_store_config")
 
     @_builtins.property

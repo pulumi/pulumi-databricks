@@ -28,13 +28,19 @@ class GetCurrentConfigResult:
     """
     A collection of values returned by getCurrentConfig.
     """
-    def __init__(__self__, account_id=None, auth_type=None, cloud_type=None, host=None, id=None, is_account=None, provider_config=None):
+    def __init__(__self__, account_id=None, api=None, auth_type=None, cloud=None, cloud_type=None, host=None, id=None, is_account=None, provider_config=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if api and not isinstance(api, str):
+            raise TypeError("Expected argument 'api' to be a str")
+        pulumi.set(__self__, "api", api)
         if auth_type and not isinstance(auth_type, str):
             raise TypeError("Expected argument 'auth_type' to be a str")
         pulumi.set(__self__, "auth_type", auth_type)
+        if cloud and not isinstance(cloud, str):
+            raise TypeError("Expected argument 'cloud' to be a str")
+        pulumi.set(__self__, "cloud", cloud)
         if cloud_type and not isinstance(cloud_type, str):
             raise TypeError("Expected argument 'cloud_type' to be a str")
         pulumi.set(__self__, "cloud_type", cloud_type)
@@ -57,9 +63,19 @@ class GetCurrentConfigResult:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "api")
+
+    @_builtins.property
     @pulumi.getter(name="authType")
     def auth_type(self) -> _builtins.str:
         return pulumi.get(self, "auth_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def cloud(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "cloud")
 
     @_builtins.property
     @pulumi.getter(name="cloudType")
@@ -97,7 +113,9 @@ class AwaitableGetCurrentConfigResult(GetCurrentConfigResult):
             yield self
         return GetCurrentConfigResult(
             account_id=self.account_id,
+            api=self.api,
             auth_type=self.auth_type,
+            cloud=self.cloud,
             cloud_type=self.cloud_type,
             host=self.host,
             id=self.id,
@@ -106,7 +124,9 @@ class AwaitableGetCurrentConfigResult(GetCurrentConfigResult):
 
 
 def get_current_config(account_id: Optional[_builtins.str] = None,
+                       api: Optional[_builtins.str] = None,
                        auth_type: Optional[_builtins.str] = None,
+                       cloud: Optional[_builtins.str] = None,
                        cloud_type: Optional[_builtins.str] = None,
                        host: Optional[_builtins.str] = None,
                        is_account: Optional[_builtins.bool] = None,
@@ -157,7 +177,7 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
     * `is_account` - Whether the provider is configured at account-level
     * `account_id` - Account Id if provider is configured at account-level
     * `host` - Host of the Databricks workspace or account console
-    * `cloud_type` - Cloud type specified in the provider
+    * `cloud_type` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
     * `auth_type` - Auth type used by the provider
 
     ## Related Resources
@@ -170,11 +190,14 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
     * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
 
+    :param _builtins.str cloud: Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
     :param Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['api'] = api
     __args__['authType'] = auth_type
+    __args__['cloud'] = cloud
     __args__['cloudType'] = cloud_type
     __args__['host'] = host
     __args__['isAccount'] = is_account
@@ -184,14 +207,18 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetCurrentConfigResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        api=pulumi.get(__ret__, 'api'),
         auth_type=pulumi.get(__ret__, 'auth_type'),
+        cloud=pulumi.get(__ret__, 'cloud'),
         cloud_type=pulumi.get(__ret__, 'cloud_type'),
         host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),
         is_account=pulumi.get(__ret__, 'is_account'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              api: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               auth_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              cloud: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               cloud_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               host: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               is_account: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -242,7 +269,7 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
     * `is_account` - Whether the provider is configured at account-level
     * `account_id` - Account Id if provider is configured at account-level
     * `host` - Host of the Databricks workspace or account console
-    * `cloud_type` - Cloud type specified in the provider
+    * `cloud_type` - Cloud type of the provider. If `cloud` argument is set, this will match that value. Otherwise, it is determined from the provider configuration.
     * `auth_type` - Auth type used by the provider
 
     ## Related Resources
@@ -255,11 +282,14 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
     * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
 
+    :param _builtins.str cloud: Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
     :param Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['api'] = api
     __args__['authType'] = auth_type
+    __args__['cloud'] = cloud
     __args__['cloudType'] = cloud_type
     __args__['host'] = host
     __args__['isAccount'] = is_account
@@ -268,7 +298,9 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCurrentConfig:getCurrentConfig', __args__, opts=opts, typ=GetCurrentConfigResult)
     return __ret__.apply(lambda __response__: GetCurrentConfigResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        api=pulumi.get(__response__, 'api'),
         auth_type=pulumi.get(__response__, 'auth_type'),
+        cloud=pulumi.get(__response__, 'cloud'),
         cloud_type=pulumi.get(__response__, 'cloud_type'),
         host=pulumi.get(__response__, 'host'),
         id=pulumi.get(__response__, 'id'),

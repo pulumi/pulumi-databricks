@@ -30,7 +30,7 @@ class EntityTagAssignmentArgs:
         The set of arguments for constructing a EntityTagAssignment resource.
 
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
-        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input['EntityTagAssignmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
@@ -59,7 +59,7 @@ class EntityTagAssignmentArgs:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        The type of the entity to which the tag is assigned
         """
         return pulumi.get(self, "entity_type")
 
@@ -119,7 +119,7 @@ class _EntityTagAssignmentState:
         Input properties used for looking up and filtering EntityTagAssignment resources.
 
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
-        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned
         :param pulumi.Input['EntityTagAssignmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] source_type: (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
@@ -160,7 +160,7 @@ class _EntityTagAssignmentState:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        The type of the entity to which the tag is assigned
         """
         return pulumi.get(self, "entity_type")
 
@@ -254,7 +254,7 @@ class EntityTagAssignment(pulumi.CustomResource):
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
 
@@ -297,7 +297,7 @@ class EntityTagAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
-        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned
         :param pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
@@ -309,7 +309,7 @@ class EntityTagAssignment(pulumi.CustomResource):
                  args: EntityTagAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
 
@@ -418,7 +418,7 @@ class EntityTagAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
-        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned
         :param pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] source_type: (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
@@ -452,7 +452,7 @@ class EntityTagAssignment(pulumi.CustomResource):
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        The type of the entity to which the tag is assigned
         """
         return pulumi.get(self, "entity_type")
 

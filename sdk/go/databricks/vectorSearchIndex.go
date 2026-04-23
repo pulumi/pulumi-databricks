@@ -64,7 +64,8 @@ type VectorSearchIndex struct {
 	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec VectorSearchIndexDirectAccessIndexSpecPtrOutput `pulumi:"directAccessIndexSpec"`
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
-	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
+	EndpointName pulumi.StringOutput    `pulumi:"endpointName"`
+	IndexSubtype pulumi.StringPtrOutput `pulumi:"indexSubtype"`
 	// Mosaic AI Vector Search index type. Currently supported values are:
 	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
 	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
@@ -125,6 +126,7 @@ type vectorSearchIndexState struct {
 	DirectAccessIndexSpec *VectorSearchIndexDirectAccessIndexSpec `pulumi:"directAccessIndexSpec"`
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName *string `pulumi:"endpointName"`
+	IndexSubtype *string `pulumi:"indexSubtype"`
 	// Mosaic AI Vector Search index type. Currently supported values are:
 	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
 	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
@@ -147,6 +149,7 @@ type VectorSearchIndexState struct {
 	DirectAccessIndexSpec VectorSearchIndexDirectAccessIndexSpecPtrInput
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringPtrInput
+	IndexSubtype pulumi.StringPtrInput
 	// Mosaic AI Vector Search index type. Currently supported values are:
 	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
 	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
@@ -170,7 +173,8 @@ type vectorSearchIndexArgs struct {
 	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec *VectorSearchIndexDirectAccessIndexSpec `pulumi:"directAccessIndexSpec"`
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
-	EndpointName string `pulumi:"endpointName"`
+	EndpointName string  `pulumi:"endpointName"`
+	IndexSubtype *string `pulumi:"indexSubtype"`
 	// Mosaic AI Vector Search index type. Currently supported values are:
 	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
 	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
@@ -190,6 +194,7 @@ type VectorSearchIndexArgs struct {
 	DirectAccessIndexSpec VectorSearchIndexDirectAccessIndexSpecPtrInput
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringInput
+	IndexSubtype pulumi.StringPtrInput
 	// Mosaic AI Vector Search index type. Currently supported values are:
 	// * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
 	// * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
@@ -308,6 +313,10 @@ func (o VectorSearchIndexOutput) DirectAccessIndexSpec() VectorSearchIndexDirect
 // The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 func (o VectorSearchIndexOutput) EndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchIndex) pulumi.StringOutput { return v.EndpointName }).(pulumi.StringOutput)
+}
+
+func (o VectorSearchIndexOutput) IndexSubtype() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VectorSearchIndex) pulumi.StringPtrOutput { return v.IndexSubtype }).(pulumi.StringPtrOutput)
 }
 
 // Mosaic AI Vector Search index type. Currently supported values are:

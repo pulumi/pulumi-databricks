@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
 //
@@ -87,7 +87,7 @@ type EntityTagAssignment struct {
 
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName pulumi.StringOutput `pulumi:"entityName"`
-	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// The type of the entity to which the tag is assigned
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig EntityTagAssignmentProviderConfigPtrOutput `pulumi:"providerConfig"`
@@ -144,7 +144,7 @@ func GetEntityTagAssignment(ctx *pulumi.Context,
 type entityTagAssignmentState struct {
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName *string `pulumi:"entityName"`
-	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// The type of the entity to which the tag is assigned
 	EntityType *string `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *EntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
@@ -163,7 +163,7 @@ type entityTagAssignmentState struct {
 type EntityTagAssignmentState struct {
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName pulumi.StringPtrInput
-	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// The type of the entity to which the tag is assigned
 	EntityType pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig EntityTagAssignmentProviderConfigPtrInput
@@ -186,7 +186,7 @@ func (EntityTagAssignmentState) ElementType() reflect.Type {
 type entityTagAssignmentArgs struct {
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName string `pulumi:"entityName"`
-	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// The type of the entity to which the tag is assigned
 	EntityType string `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *EntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
@@ -200,7 +200,7 @@ type entityTagAssignmentArgs struct {
 type EntityTagAssignmentArgs struct {
 	// The fully qualified name of the entity to which the tag is assigned
 	EntityName pulumi.StringInput
-	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+	// The type of the entity to which the tag is assigned
 	EntityType pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig EntityTagAssignmentProviderConfigPtrInput
@@ -302,7 +302,7 @@ func (o EntityTagAssignmentOutput) EntityName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringOutput { return v.EntityName }).(pulumi.StringOutput)
 }
 
-// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+// The type of the entity to which the tag is assigned
 func (o EntityTagAssignmentOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringOutput { return v.EntityType }).(pulumi.StringOutput)
 }

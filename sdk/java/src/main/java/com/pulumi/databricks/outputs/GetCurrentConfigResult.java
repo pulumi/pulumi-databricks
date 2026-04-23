@@ -15,7 +15,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCurrentConfigResult {
     private String accountId;
+    private @Nullable String api;
     private String authType;
+    private @Nullable String cloud;
     private String cloudType;
     private String host;
     /**
@@ -30,8 +32,14 @@ public final class GetCurrentConfigResult {
     public String accountId() {
         return this.accountId;
     }
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
+    }
     public String authType() {
         return this.authType;
+    }
+    public Optional<String> cloud() {
+        return Optional.ofNullable(this.cloud);
     }
     public String cloudType() {
         return this.cloudType;
@@ -63,7 +71,9 @@ public final class GetCurrentConfigResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private @Nullable String api;
         private String authType;
+        private @Nullable String cloud;
         private String cloudType;
         private String host;
         private String id;
@@ -73,7 +83,9 @@ public final class GetCurrentConfigResult {
         public Builder(GetCurrentConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.api = defaults.api;
     	      this.authType = defaults.authType;
+    	      this.cloud = defaults.cloud;
     	      this.cloudType = defaults.cloudType;
     	      this.host = defaults.host;
     	      this.id = defaults.id;
@@ -90,11 +102,23 @@ public final class GetCurrentConfigResult {
             return this;
         }
         @CustomType.Setter
+        public Builder api(@Nullable String api) {
+
+            this.api = api;
+            return this;
+        }
+        @CustomType.Setter
         public Builder authType(String authType) {
             if (authType == null) {
               throw new MissingRequiredPropertyException("GetCurrentConfigResult", "authType");
             }
             this.authType = authType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloud(@Nullable String cloud) {
+
+            this.cloud = cloud;
             return this;
         }
         @CustomType.Setter
@@ -138,7 +162,9 @@ public final class GetCurrentConfigResult {
         public GetCurrentConfigResult build() {
             final var _resultValue = new GetCurrentConfigResult();
             _resultValue.accountId = accountId;
+            _resultValue.api = api;
             _resultValue.authType = authType;
+            _resultValue.cloud = cloud;
             _resultValue.cloudType = cloudType;
             _resultValue.host = host;
             _resultValue.id = id;

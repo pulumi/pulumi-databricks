@@ -148,6 +148,7 @@ from .get_policy_info import *
 from .get_policy_infos import *
 from .get_postgres_branch import *
 from .get_postgres_branches import *
+from .get_postgres_catalog import *
 from .get_postgres_database import *
 from .get_postgres_databases import *
 from .get_postgres_endpoint import *
@@ -156,6 +157,7 @@ from .get_postgres_project import *
 from .get_postgres_projects import *
 from .get_postgres_role import *
 from .get_postgres_roles import *
+from .get_postgres_synced_table import *
 from .get_quality_monitor_v2 import *
 from .get_quality_monitors_v2 import *
 from .get_registered_model import *
@@ -240,10 +242,12 @@ from .permissions import *
 from .pipeline import *
 from .policy_info import *
 from .postgres_branch import *
+from .postgres_catalog import *
 from .postgres_database import *
 from .postgres_endpoint import *
 from .postgres_project import *
 from .postgres_role import *
+from .postgres_synced_table import *
 from .provider import *
 from .quality_monitor import *
 from .quality_monitor_v2 import *
@@ -1088,6 +1092,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/postgresCatalog",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/postgresCatalog:PostgresCatalog": "PostgresCatalog"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/postgresDatabase",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -1116,6 +1128,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/postgresRole:PostgresRole": "PostgresRole"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/postgresSyncedTable",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/postgresSyncedTable:PostgresSyncedTable": "PostgresSyncedTable"
   }
  },
  {

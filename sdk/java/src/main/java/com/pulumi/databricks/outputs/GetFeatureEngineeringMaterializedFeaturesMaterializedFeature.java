@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeaturesMa
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -25,6 +26,11 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
      * 
      */
     private String featureName;
+    /**
+     * @return (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     * 
+     */
+    private Boolean isOnline;
     /**
      * @return (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
@@ -76,6 +82,13 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
      */
     public String featureName() {
         return this.featureName;
+    }
+    /**
+     * @return (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
+     * 
+     */
+    public Boolean isOnline() {
+        return this.isOnline;
     }
     /**
      * @return (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
@@ -139,6 +152,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
     public static final class Builder {
         private String cronSchedule;
         private String featureName;
+        private Boolean isOnline;
         private String lastMaterializationTime;
         private String materializedFeatureId;
         private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig offlineStoreConfig;
@@ -151,6 +165,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
     	      Objects.requireNonNull(defaults);
     	      this.cronSchedule = defaults.cronSchedule;
     	      this.featureName = defaults.featureName;
+    	      this.isOnline = defaults.isOnline;
     	      this.lastMaterializationTime = defaults.lastMaterializationTime;
     	      this.materializedFeatureId = defaults.materializedFeatureId;
     	      this.offlineStoreConfig = defaults.offlineStoreConfig;
@@ -174,6 +189,14 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
               throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeaturesMaterializedFeature", "featureName");
             }
             this.featureName = featureName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isOnline(Boolean isOnline) {
+            if (isOnline == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeaturesMaterializedFeature", "isOnline");
+            }
+            this.isOnline = isOnline;
             return this;
         }
         @CustomType.Setter
@@ -234,6 +257,7 @@ public final class GetFeatureEngineeringMaterializedFeaturesMaterializedFeature 
             final var _resultValue = new GetFeatureEngineeringMaterializedFeaturesMaterializedFeature();
             _resultValue.cronSchedule = cronSchedule;
             _resultValue.featureName = featureName;
+            _resultValue.isOnline = isOnline;
             _resultValue.lastMaterializationTime = lastMaterializationTime;
             _resultValue.materializedFeatureId = materializedFeatureId;
             _resultValue.offlineStoreConfig = offlineStoreConfig;

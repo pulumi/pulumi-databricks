@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -135,6 +137,10 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     declare public readonly allowInstancePoolCreate: pulumi.Output<boolean | undefined>;
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
      */
     declare public readonly applicationId: pulumi.Output<string>;
@@ -170,6 +176,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
      */
     declare public readonly home: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalProviderConfig | undefined>;
     /**
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
      */
@@ -200,6 +207,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             resourceInputs["active"] = state?.active;
             resourceInputs["allowClusterCreate"] = state?.allowClusterCreate;
             resourceInputs["allowInstancePoolCreate"] = state?.allowInstancePoolCreate;
+            resourceInputs["api"] = state?.api;
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["databricksSqlAccess"] = state?.databricksSqlAccess;
             resourceInputs["disableAsUserDeletion"] = state?.disableAsUserDeletion;
@@ -209,6 +217,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             resourceInputs["forceDeleteHomeDir"] = state?.forceDeleteHomeDir;
             resourceInputs["forceDeleteRepos"] = state?.forceDeleteRepos;
             resourceInputs["home"] = state?.home;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["repos"] = state?.repos;
             resourceInputs["workspaceAccess"] = state?.workspaceAccess;
             resourceInputs["workspaceConsume"] = state?.workspaceConsume;
@@ -218,6 +227,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             resourceInputs["active"] = args?.active;
             resourceInputs["allowClusterCreate"] = args?.allowClusterCreate;
             resourceInputs["allowInstancePoolCreate"] = args?.allowInstancePoolCreate;
+            resourceInputs["api"] = args?.api;
             resourceInputs["applicationId"] = args?.applicationId;
             resourceInputs["databricksSqlAccess"] = args?.databricksSqlAccess;
             resourceInputs["disableAsUserDeletion"] = args?.disableAsUserDeletion;
@@ -227,6 +237,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             resourceInputs["forceDeleteHomeDir"] = args?.forceDeleteHomeDir;
             resourceInputs["forceDeleteRepos"] = args?.forceDeleteRepos;
             resourceInputs["home"] = args?.home;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["repos"] = args?.repos;
             resourceInputs["workspaceAccess"] = args?.workspaceAccess;
             resourceInputs["workspaceConsume"] = args?.workspaceConsume;
@@ -256,6 +267,10 @@ export interface ServicePrincipalState {
      * Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
      */
@@ -292,6 +307,7 @@ export interface ServicePrincipalState {
      * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
      */
     home?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalProviderConfig>;
     /**
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
      */
@@ -327,6 +343,10 @@ export interface ServicePrincipalArgs {
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
      */
     applicationId?: pulumi.Input<string>;
@@ -362,6 +382,7 @@ export interface ServicePrincipalArgs {
      * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
      */
     home?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalProviderConfig>;
     /**
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
      */

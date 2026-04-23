@@ -28,7 +28,10 @@ class GetUsersResult:
     """
     A collection of values returned by getUsers.
     """
-    def __init__(__self__, extra_attributes=None, filter=None, id=None, users=None):
+    def __init__(__self__, api=None, extra_attributes=None, filter=None, id=None, provider_config=None, users=None):
+        if api and not isinstance(api, str):
+            raise TypeError("Expected argument 'api' to be a str")
+        pulumi.set(__self__, "api", api)
         if extra_attributes and not isinstance(extra_attributes, str):
             raise TypeError("Expected argument 'extra_attributes' to be a str")
         pulumi.set(__self__, "extra_attributes", extra_attributes)
@@ -38,9 +41,17 @@ class GetUsersResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         pulumi.set(__self__, "users", users)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="extraAttributes")
@@ -61,6 +72,11 @@ class GetUsersResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetUsersProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
         """
@@ -75,14 +91,18 @@ class AwaitableGetUsersResult(GetUsersResult):
         if False:
             yield self
         return GetUsersResult(
+            api=self.api,
             extra_attributes=self.extra_attributes,
             filter=self.filter,
             id=self.id,
+            provider_config=self.provider_config,
             users=self.users)
 
 
-def get_users(extra_attributes: Optional[_builtins.str] = None,
+def get_users(api: Optional[_builtins.str] = None,
+              extra_attributes: Optional[_builtins.str] = None,
               filter: Optional[_builtins.str] = None,
+              provider_config: Optional[Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict']] = None,
               users: Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
@@ -118,27 +138,35 @@ def get_users(extra_attributes: Optional[_builtins.str] = None,
     - **databricks_current_user**: Data source to retrieve information about the user or service principal that is calling the Databricks REST API.
 
 
+    :param _builtins.str api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
     :param _builtins.str extra_attributes: A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
     :param _builtins.str filter: Query by which the results have to be filtered. If not specified, all users will be returned. Supported operators are equals (`eq`), contains (`co`), starts with (`sw`), and not equals (`ne`). Additionally, simple expressions can be formed using logical operators `and` and `or`.
            
            **Examples:**
            - User whose `displayName` equals "john":
+    :param Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']] users: A list of users matching the specified criteria. Each user has the following attributes:
     """
     __args__ = dict()
+    __args__['api'] = api
     __args__['extraAttributes'] = extra_attributes
     __args__['filter'] = filter
+    __args__['providerConfig'] = provider_config
     __args__['users'] = users
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
+        api=pulumi.get(__ret__, 'api'),
         extra_attributes=pulumi.get(__ret__, 'extra_attributes'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         users=pulumi.get(__ret__, 'users'))
-def get_users_output(extra_attributes: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_users_output(api: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                     extra_attributes: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                     provider_config: Optional[pulumi.Input[Optional[Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict']]]] = None,
                      users: Optional[pulumi.Input[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
@@ -174,21 +202,27 @@ def get_users_output(extra_attributes: Optional[pulumi.Input[Optional[_builtins.
     - **databricks_current_user**: Data source to retrieve information about the user or service principal that is calling the Databricks REST API.
 
 
+    :param _builtins.str api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
     :param _builtins.str extra_attributes: A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
     :param _builtins.str filter: Query by which the results have to be filtered. If not specified, all users will be returned. Supported operators are equals (`eq`), contains (`co`), starts with (`sw`), and not equals (`ne`). Additionally, simple expressions can be formed using logical operators `and` and `or`.
            
            **Examples:**
            - User whose `displayName` equals "john":
+    :param Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']] users: A list of users matching the specified criteria. Each user has the following attributes:
     """
     __args__ = dict()
+    __args__['api'] = api
     __args__['extraAttributes'] = extra_attributes
     __args__['filter'] = filter
+    __args__['providerConfig'] = provider_config
     __args__['users'] = users
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
     return __ret__.apply(lambda __response__: GetUsersResult(
+        api=pulumi.get(__response__, 'api'),
         extra_attributes=pulumi.get(__response__, 'extra_attributes'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         users=pulumi.get(__response__, 'users')))

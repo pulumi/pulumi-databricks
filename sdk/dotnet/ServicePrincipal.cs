@@ -170,6 +170,12 @@ namespace Pulumi.Databricks
         public Output<bool?> AllowInstancePoolCreate { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
         /// </summary>
         [Output("applicationId")]
@@ -222,6 +228,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("home")]
         public Output<string> Home { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.ServicePrincipalProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
@@ -312,6 +321,12 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
         /// </summary>
         [Input("applicationId")]
@@ -364,6 +379,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("home")]
         public Input<string>? Home { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.ServicePrincipalProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
@@ -416,6 +434,12 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
         /// </summary>
         [Input("applicationId")]
@@ -468,6 +492,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("home")]
         public Input<string>? Home { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.ServicePrincipalProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.

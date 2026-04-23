@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlPermissionsPrivilegeAssignmentArgs;
+import com.pulumi.databricks.inputs.SqlPermissionsProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -166,6 +167,13 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.privilegeAssignments);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<SqlPermissionsProviderConfigArgs> providerConfig;
+
+    public Optional<Output<SqlPermissionsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * Name of the table. Can be combined with the `database`.
      * 
@@ -205,6 +213,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         this.clusterId = $.clusterId;
         this.database = $.database;
         this.privilegeAssignments = $.privilegeAssignments;
+        this.providerConfig = $.providerConfig;
         this.table = $.table;
         this.view = $.view;
     }
@@ -409,6 +418,15 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
 
         public Builder privilegeAssignments(SqlPermissionsPrivilegeAssignmentArgs... privilegeAssignments) {
             return privilegeAssignments(List.of(privilegeAssignments));
+        }
+
+        public Builder providerConfig(@Nullable Output<SqlPermissionsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(SqlPermissionsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

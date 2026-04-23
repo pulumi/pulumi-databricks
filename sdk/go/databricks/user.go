@@ -195,6 +195,8 @@ type User struct {
 	AllowClusterCreate pulumi.BoolPtrOutput `pulumi:"allowClusterCreate"`
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrOutput `pulumi:"allowInstancePoolCreate"`
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrOutput `pulumi:"databricksSqlAccess"`
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
@@ -210,7 +212,8 @@ type User struct {
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos pulumi.BoolPtrOutput `pulumi:"forceDeleteRepos"`
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-	Home pulumi.StringOutput `pulumi:"home"`
+	Home           pulumi.StringOutput         `pulumi:"home"`
+	ProviderConfig UserProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos pulumi.StringOutput `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
@@ -262,6 +265,8 @@ type userState struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
@@ -277,7 +282,8 @@ type userState struct {
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos *bool `pulumi:"forceDeleteRepos"`
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-	Home *string `pulumi:"home"`
+	Home           *string             `pulumi:"home"`
+	ProviderConfig *UserProviderConfig `pulumi:"providerConfig"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos *string `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
@@ -297,6 +303,8 @@ type UserState struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
@@ -312,7 +320,8 @@ type UserState struct {
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos pulumi.BoolPtrInput
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-	Home pulumi.StringPtrInput
+	Home           pulumi.StringPtrInput
+	ProviderConfig UserProviderConfigPtrInput
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos pulumi.StringPtrInput
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
@@ -336,6 +345,8 @@ type userArgs struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
@@ -351,7 +362,8 @@ type userArgs struct {
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos *bool `pulumi:"forceDeleteRepos"`
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-	Home *string `pulumi:"home"`
+	Home           *string             `pulumi:"home"`
+	ProviderConfig *UserProviderConfig `pulumi:"providerConfig"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos *string `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
@@ -372,6 +384,8 @@ type UserArgs struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
@@ -387,7 +401,8 @@ type UserArgs struct {
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos pulumi.BoolPtrInput
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-	Home pulumi.StringPtrInput
+	Home           pulumi.StringPtrInput
+	ProviderConfig UserProviderConfigPtrInput
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos pulumi.StringPtrInput
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
@@ -505,6 +520,11 @@ func (o UserOutput) AllowInstancePoolCreate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.AllowInstancePoolCreate }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o UserOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 func (o UserOutput) DatabricksSqlAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.DatabricksSqlAccess }).(pulumi.BoolPtrOutput)
@@ -543,6 +563,10 @@ func (o UserOutput) ForceDeleteRepos() pulumi.BoolPtrOutput {
 // Home folder of the user, e.g. `/Users/mr.foo@example.com`.
 func (o UserOutput) Home() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Home }).(pulumi.StringOutput)
+}
+
+func (o UserOutput) ProviderConfig() UserProviderConfigPtrOutput {
+	return o.ApplyT(func(v *User) UserProviderConfigPtrOutput { return v.ProviderConfig }).(UserProviderConfigPtrOutput)
 }
 
 // Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.

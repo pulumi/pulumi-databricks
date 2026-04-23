@@ -359,12 +359,8 @@ func Provider() tfbridge.ProviderInfo {
 	// The MustTraverseProperties for workspace-id above puts the property on the `.Field` instead of on `.Elem.Field`.
 	// This is a workaround where we postprocess the schema to put it on the correct spot.
 	// Upstream recently changed `provider_config` to PF which is why this is needed now
-	moveProviderConfigCallback := func(res shim.Resource, info *tfbridge.SchemaInfo) bool {
+	moveFieldsToElemCallback := func(info *tfbridge.SchemaInfo) bool {
 		if info == nil || len(info.Fields) == 0 {
-			return true
-		}
-		schema, ok := res.Schema().GetOk("provider_config")
-		if !ok || schema.Type() != shim.TypeMap {
 			return true
 		}
 		if info.Elem == nil {
@@ -379,11 +375,36 @@ func Provider() tfbridge.ProviderInfo {
 		info.Fields = nil
 		return true
 	}
+	var moveFieldsToElemRecursive func(info *tfbridge.SchemaInfo)
+	moveFieldsToElemRecursive = func(info *tfbridge.SchemaInfo) {
+		if info == nil {
+			return
+		}
+		hadFields := len(info.Fields) > 0
+		originalElem := info.Elem
+		moveFieldsToElemCallback(info)
+		if !hadFields && originalElem != nil {
+			moveFieldsToElemRecursive(originalElem)
+		}
+		if info.Elem == nil {
+			return
+		}
+		for _, fieldInfo := range info.Elem.Fields {
+			moveFieldsToElemRecursive(fieldInfo)
+		}
+	}
+	moveObjectFieldsToElemCallback := func(res shim.Resource, fieldName string, info *tfbridge.SchemaInfo) bool {
+		schema, ok := res.Schema().GetOk(fieldName)
+		if !ok || schema.Type() != shim.TypeMap {
+			return true
+		}
+		return moveFieldsToElemCallback(info)
+	}
 
 	prov.P.ResourcesMap().Range(func(key string, value shim.Resource) bool {
 		if resInfo, ok := prov.Resources[key]; ok {
 			if pc, ok := resInfo.Fields["provider_config"]; ok {
-				return moveProviderConfigCallback(value, pc)
+				return moveObjectFieldsToElemCallback(value, "provider_config", pc)
 			}
 		}
 		return true
@@ -391,7 +412,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.P.DataSourcesMap().Range(func(key string, value shim.Resource) bool {
 		if dsInfo, ok := prov.DataSources[key]; ok {
-			moveProviderConfigCallback(value, dsInfo.Fields["provider_config"])
+			moveObjectFieldsToElemCallback(value, "provider_config", dsInfo.Fields["provider_config"])
 		}
 		return true
 	})
@@ -412,6 +433,24 @@ func Provider() tfbridge.ProviderInfo {
 			}
 			return tfbridge.PropertyVisitResult{}, nil
 		})
+
+	// This is another instance of pulumi/pulumi-terraform-bridge#2803 where
+	// generated nested field metadata lands on .Fields instead of .Elem.Fields.
+	// The "ids" traversal above creates the ingress and ingress_dry_run
+	// SchemaInfo paths by visiting their nested principal_id fields.
+	prov.P.ResourcesMap().Range(func(key string, _ shim.Resource) bool {
+		if key != "databricks_account_network_policy" {
+			return true
+		}
+		resInfo, ok := prov.Resources[key]
+		if !ok {
+			return true
+		}
+		for _, fieldName := range []string{"ingress", "ingress_dry_run"} {
+			moveFieldsToElemRecursive(resInfo.Fields[fieldName])
+		}
+		return true
+	})
 
 	return prov
 }

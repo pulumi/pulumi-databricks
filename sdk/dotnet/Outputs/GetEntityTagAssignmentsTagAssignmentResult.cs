@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string EntityName;
         /// <summary>
-        /// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+        /// The type of the entity to which the tag is assigned
         /// </summary>
         public readonly string EntityType;
         /// <summary>

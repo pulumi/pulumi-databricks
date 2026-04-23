@@ -13,12 +13,15 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['MetastoreArgs', 'Metastore']
 
 @pulumi.input_type
 class MetastoreArgs:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  default_data_access_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delta_sharing_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
                  delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -28,6 +31,7 @@ class MetastoreArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MetastoreProviderConfigArgs']] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,6 +39,7 @@ class MetastoreArgs:
         """
         The set of arguments for constructing a Metastore resource.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] default_data_access_config_id: (Optional) Unique identifier of the metastore's default data access configuration.
         :param pulumi.Input[_builtins.str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
         :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
@@ -44,11 +49,14 @@ class MetastoreArgs:
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] privilege_model_version: Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        :param pulumi.Input['MetastoreProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] region: The region of the metastore
         :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.  **It's recommended to define `storage_root` on the catalog level.
         :param pulumi.Input[_builtins.str] storage_root_credential_id: (Optional) UUID of storage credential to access the metastore storage_root.
         :param pulumi.Input[_builtins.str] storage_root_credential_name: Name of the storage credential to access the metastore storage_root.
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if default_data_access_config_id is not None:
             pulumi.set(__self__, "default_data_access_config_id", default_data_access_config_id)
         if delta_sharing_organization_name is not None:
@@ -67,6 +75,8 @@ class MetastoreArgs:
             pulumi.set(__self__, "owner", owner)
         if privilege_model_version is not None:
             pulumi.set(__self__, "privilege_model_version", privilege_model_version)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if storage_root is not None:
@@ -75,6 +85,18 @@ class MetastoreArgs:
             pulumi.set(__self__, "storage_root_credential_id", storage_root_credential_id)
         if storage_root_credential_name is not None:
             pulumi.set(__self__, "storage_root_credential_name", storage_root_credential_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultDataAccessConfigId")
@@ -185,6 +207,18 @@ class MetastoreArgs:
         pulumi.set(self, "privilege_model_version", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MetastoreProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MetastoreProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -236,6 +270,7 @@ class MetastoreArgs:
 @pulumi.input_type
 class _MetastoreState:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  cloud: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -250,6 +285,7 @@ class _MetastoreState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['MetastoreProviderConfigArgs']] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -259,6 +295,7 @@ class _MetastoreState:
         """
         Input properties used for looking up and filtering Metastore resources.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] cloud: Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
         :param pulumi.Input[_builtins.int] created_at: Time at which the metastore was created, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] created_by: Username of metastore creator.
@@ -273,6 +310,7 @@ class _MetastoreState:
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] privilege_model_version: Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        :param pulumi.Input['MetastoreProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] region: The region of the metastore
         :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.  **It's recommended to define `storage_root` on the catalog level.
         :param pulumi.Input[_builtins.str] storage_root_credential_id: (Optional) UUID of storage credential to access the metastore storage_root.
@@ -280,6 +318,8 @@ class _MetastoreState:
         :param pulumi.Input[_builtins.int] updated_at: Time at which the metastore was last modified, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] updated_by: Username of user who last modified the metastore.
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
         if created_at is not None:
@@ -308,6 +348,8 @@ class _MetastoreState:
             pulumi.set(__self__, "owner", owner)
         if privilege_model_version is not None:
             pulumi.set(__self__, "privilege_model_version", privilege_model_version)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if storage_root is not None:
@@ -320,6 +362,18 @@ class _MetastoreState:
             pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
             pulumi.set(__self__, "updated_by", updated_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter
@@ -490,6 +544,18 @@ class _MetastoreState:
         pulumi.set(self, "privilege_model_version", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['MetastoreProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['MetastoreProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -568,6 +634,7 @@ class Metastore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  default_data_access_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delta_sharing_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
                  delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -577,6 +644,7 @@ class Metastore(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -652,6 +720,7 @@ class Metastore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] default_data_access_config_id: (Optional) Unique identifier of the metastore's default data access configuration.
         :param pulumi.Input[_builtins.str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
         :param pulumi.Input[_builtins.int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
@@ -661,6 +730,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] privilege_model_version: Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        :param pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] region: The region of the metastore
         :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.  **It's recommended to define `storage_root` on the catalog level.
         :param pulumi.Input[_builtins.str] storage_root_credential_id: (Optional) UUID of storage credential to access the metastore storage_root.
@@ -755,6 +825,7 @@ class Metastore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  default_data_access_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delta_sharing_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
                  delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -764,6 +835,7 @@ class Metastore(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -777,6 +849,7 @@ class Metastore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MetastoreArgs.__new__(MetastoreArgs)
 
+            __props__.__dict__["api"] = api
             __props__.__dict__["default_data_access_config_id"] = default_data_access_config_id
             __props__.__dict__["delta_sharing_organization_name"] = delta_sharing_organization_name
             __props__.__dict__["delta_sharing_recipient_token_lifetime_in_seconds"] = delta_sharing_recipient_token_lifetime_in_seconds
@@ -786,6 +859,7 @@ class Metastore(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
             __props__.__dict__["privilege_model_version"] = privilege_model_version
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["region"] = region
             __props__.__dict__["storage_root"] = storage_root
             __props__.__dict__["storage_root_credential_id"] = storage_root_credential_id
@@ -807,6 +881,7 @@ class Metastore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
             cloud: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.int]] = None,
             created_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -821,6 +896,7 @@ class Metastore(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             storage_root: Optional[pulumi.Input[_builtins.str]] = None,
             storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -834,6 +910,7 @@ class Metastore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] cloud: Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
         :param pulumi.Input[_builtins.int] created_at: Time at which the metastore was created, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] created_by: Username of metastore creator.
@@ -848,6 +925,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] privilege_model_version: Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        :param pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] region: The region of the metastore
         :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.  **It's recommended to define `storage_root` on the catalog level.
         :param pulumi.Input[_builtins.str] storage_root_credential_id: (Optional) UUID of storage credential to access the metastore storage_root.
@@ -859,6 +937,7 @@ class Metastore(pulumi.CustomResource):
 
         __props__ = _MetastoreState.__new__(_MetastoreState)
 
+        __props__.__dict__["api"] = api
         __props__.__dict__["cloud"] = cloud
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
@@ -873,6 +952,7 @@ class Metastore(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["privilege_model_version"] = privilege_model_version
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["region"] = region
         __props__.__dict__["storage_root"] = storage_root
         __props__.__dict__["storage_root_credential_id"] = storage_root_credential_id
@@ -880,6 +960,14 @@ class Metastore(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["updated_by"] = updated_by
         return Metastore(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter
@@ -992,6 +1080,14 @@ class Metastore(pulumi.CustomResource):
         Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
         """
         return pulumi.get(self, "privilege_model_version")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.MetastoreProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.CatalogEffectivePredictiveOptimizationFlagArgs;
+import com.pulumi.databricks.inputs.CatalogManagedEncryptionSettingsArgs;
 import com.pulumi.databricks.inputs.CatalogProviderConfigArgs;
 import com.pulumi.databricks.inputs.CatalogProvisioningInfoArgs;
 import java.lang.Boolean;
@@ -107,6 +108,13 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
+    }
+
+    @Import(name="managedEncryptionSettings")
+    private @Nullable Output<CatalogManagedEncryptionSettingsArgs> managedEncryptionSettings;
+
+    public Optional<Output<CatalogManagedEncryptionSettingsArgs>> managedEncryptionSettings() {
+        return Optional.ofNullable(this.managedEncryptionSettings);
     }
 
     /**
@@ -261,6 +269,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.forceDestroy = $.forceDestroy;
         this.isolationMode = $.isolationMode;
+        this.managedEncryptionSettings = $.managedEncryptionSettings;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.options = $.options;
@@ -412,6 +421,15 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isolationMode(String isolationMode) {
             return isolationMode(Output.of(isolationMode));
+        }
+
+        public Builder managedEncryptionSettings(@Nullable Output<CatalogManagedEncryptionSettingsArgs> managedEncryptionSettings) {
+            $.managedEncryptionSettings = managedEncryptionSettings;
+            return this;
+        }
+
+        public Builder managedEncryptionSettings(CatalogManagedEncryptionSettingsArgs managedEncryptionSettings) {
+            return managedEncryptionSettings(Output.of(managedEncryptionSettings));
         }
 
         /**

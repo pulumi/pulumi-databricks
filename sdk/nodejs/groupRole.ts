@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -85,9 +87,14 @@ export class GroupRole extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * This is the id of the group resource.
      */
     declare public readonly groupId: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GroupRoleProviderConfig | undefined>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */
@@ -106,7 +113,9 @@ export class GroupRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupRoleState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as GroupRoleArgs | undefined;
@@ -116,7 +125,9 @@ export class GroupRole extends pulumi.CustomResource {
             if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
+            resourceInputs["api"] = args?.api;
             resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["role"] = args?.role;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -129,9 +140,14 @@ export class GroupRole extends pulumi.CustomResource {
  */
 export interface GroupRoleState {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is the id of the group resource.
      */
     groupId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GroupRoleProviderConfig>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */
@@ -143,9 +159,14 @@ export interface GroupRoleState {
  */
 export interface GroupRoleArgs {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is the id of the group resource.
      */
     groupId: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GroupRoleProviderConfig>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */

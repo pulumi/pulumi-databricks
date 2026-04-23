@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
  *
@@ -60,7 +60,7 @@ export interface GetEntityTagAssignmentsArgs {
      */
     entityName: string;
     /**
-     * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * The type of the entity to which the tag is assigned
      */
     entityType: string;
     /**
@@ -82,7 +82,7 @@ export interface GetEntityTagAssignmentsResult {
      */
     readonly entityName: string;
     /**
-     * (string) - The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * (string) - The type of the entity to which the tag is assigned
      */
     readonly entityType: string;
     /**
@@ -94,7 +94,7 @@ export interface GetEntityTagAssignmentsResult {
     readonly tagAssignments: outputs.GetEntityTagAssignmentsTagAssignment[];
 }
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
  *
@@ -147,7 +147,7 @@ export interface GetEntityTagAssignmentsOutputArgs {
      */
     entityName: pulumi.Input<string>;
     /**
-     * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     * The type of the entity to which the tag is assigned
      */
     entityType: pulumi.Input<string>;
     /**

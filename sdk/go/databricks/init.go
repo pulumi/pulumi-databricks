@@ -217,6 +217,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PolicyInfo{}
 	case "databricks:index/postgresBranch:PostgresBranch":
 		r = &PostgresBranch{}
+	case "databricks:index/postgresCatalog:PostgresCatalog":
+		r = &PostgresCatalog{}
 	case "databricks:index/postgresDatabase:PostgresDatabase":
 		r = &PostgresDatabase{}
 	case "databricks:index/postgresEndpoint:PostgresEndpoint":
@@ -225,6 +227,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PostgresProject{}
 	case "databricks:index/postgresRole:PostgresRole":
 		r = &PostgresRole{}
+	case "databricks:index/postgresSyncedTable:PostgresSyncedTable":
+		r = &PostgresSyncedTable{}
 	case "databricks:index/qualityMonitor:QualityMonitor":
 		r = &QualityMonitor{}
 	case "databricks:index/qualityMonitorV2:QualityMonitorV2":
@@ -836,6 +840,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/postgresCatalog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/postgresDatabase",
 		&module{version},
 	)
@@ -852,6 +861,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/postgresRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/postgresSyncedTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

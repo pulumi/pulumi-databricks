@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupMemberArgs', 'GroupMember']
 
@@ -20,15 +22,22 @@ __all__ = ['GroupMemberArgs', 'GroupMember']
 class GroupMemberArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
-                 member_id: pulumi.Input[_builtins.str]):
+                 member_id: pulumi.Input[_builtins.str],
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GroupMemberProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a GroupMember resource.
 
         :param pulumi.Input[_builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
         :param pulumi.Input[_builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "member_id", member_id)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -54,22 +63,62 @@ class GroupMemberArgs:
     def member_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "member_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GroupMemberProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GroupMemberProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _GroupMemberState:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 member_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GroupMemberProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering GroupMember resources.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
         :param pulumi.Input[_builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if member_id is not None:
             pulumi.set(__self__, "member_id", member_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -95,6 +144,15 @@ class _GroupMemberState:
     def member_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "member_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GroupMemberProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GroupMemberProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.type_token("databricks:index/groupMember:GroupMember")
 class GroupMember(pulumi.CustomResource):
@@ -102,8 +160,10 @@ class GroupMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  member_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to attach users, service_principal, and groups as group members.
@@ -148,6 +208,7 @@ class GroupMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
         :param pulumi.Input[_builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
@@ -213,8 +274,10 @@ class GroupMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  member_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -224,12 +287,14 @@ class GroupMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupMemberArgs.__new__(GroupMemberArgs)
 
+            __props__.__dict__["api"] = api
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
             if member_id is None and not opts.urn:
                 raise TypeError("Missing required property 'member_id'")
             __props__.__dict__["member_id"] = member_id
+            __props__.__dict__["provider_config"] = provider_config
         super(GroupMember, __self__).__init__(
             'databricks:index/groupMember:GroupMember',
             resource_name,
@@ -240,8 +305,10 @@ class GroupMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
             group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            member_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupMember':
+            member_id: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None) -> 'GroupMember':
         """
         Get an existing GroupMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -249,6 +316,7 @@ class GroupMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
         :param pulumi.Input[_builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
@@ -256,9 +324,19 @@ class GroupMember(pulumi.CustomResource):
 
         __props__ = _GroupMemberState.__new__(_GroupMemberState)
 
+        __props__.__dict__["api"] = api
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["member_id"] = member_id
+        __props__.__dict__["provider_config"] = provider_config
         return GroupMember(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -275,4 +353,9 @@ class GroupMember(pulumi.CustomResource):
         This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
         return pulumi.get(self, "member_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.GroupMemberProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 

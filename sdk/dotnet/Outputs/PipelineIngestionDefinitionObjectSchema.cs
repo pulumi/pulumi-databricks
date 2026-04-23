@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObjectSchema
     {
+        public readonly Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions? ConnectorOptions;
         public readonly string DestinationCatalog;
         public readonly string DestinationSchema;
         public readonly string? SourceCatalog;
@@ -21,6 +22,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectSchema(
+            Outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions? connectorOptions,
+
             string destinationCatalog,
 
             string destinationSchema,
@@ -31,6 +34,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration? tableConfiguration)
         {
+            ConnectorOptions = connectorOptions;
             DestinationCatalog = destinationCatalog;
             DestinationSchema = destinationSchema;
             SourceCatalog = sourceCatalog;

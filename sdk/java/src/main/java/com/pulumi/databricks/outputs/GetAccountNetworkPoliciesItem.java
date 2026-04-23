@@ -5,6 +5,8 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemEgress;
+import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemIngress;
+import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemIngressDryRun;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -21,6 +23,18 @@ public final class GetAccountNetworkPoliciesItem {
      * 
      */
     private GetAccountNetworkPoliciesItemEgress egress;
+    /**
+     * @return (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
+     * 
+     */
+    private GetAccountNetworkPoliciesItemIngress ingress;
+    /**
+     * @return (CustomerFacingIngressNetworkPolicy) - The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     * 
+     */
+    private GetAccountNetworkPoliciesItemIngressDryRun ingressDryRun;
     /**
      * @return (string) - The unique identifier for the network policy
      * 
@@ -43,6 +57,22 @@ public final class GetAccountNetworkPoliciesItem {
         return this.egress;
     }
     /**
+     * @return (CustomerFacingIngressNetworkPolicy) - The network policies applying for ingress traffic
+     * 
+     */
+    public GetAccountNetworkPoliciesItemIngress ingress() {
+        return this.ingress;
+    }
+    /**
+     * @return (CustomerFacingIngressNetworkPolicy) - The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     * 
+     */
+    public GetAccountNetworkPoliciesItemIngressDryRun ingressDryRun() {
+        return this.ingressDryRun;
+    }
+    /**
      * @return (string) - The unique identifier for the network policy
      * 
      */
@@ -61,12 +91,16 @@ public final class GetAccountNetworkPoliciesItem {
     public static final class Builder {
         private String accountId;
         private GetAccountNetworkPoliciesItemEgress egress;
+        private GetAccountNetworkPoliciesItemIngress ingress;
+        private GetAccountNetworkPoliciesItemIngressDryRun ingressDryRun;
         private String networkPolicyId;
         public Builder() {}
         public Builder(GetAccountNetworkPoliciesItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.egress = defaults.egress;
+    	      this.ingress = defaults.ingress;
+    	      this.ingressDryRun = defaults.ingressDryRun;
     	      this.networkPolicyId = defaults.networkPolicyId;
         }
 
@@ -87,6 +121,22 @@ public final class GetAccountNetworkPoliciesItem {
             return this;
         }
         @CustomType.Setter
+        public Builder ingress(GetAccountNetworkPoliciesItemIngress ingress) {
+            if (ingress == null) {
+              throw new MissingRequiredPropertyException("GetAccountNetworkPoliciesItem", "ingress");
+            }
+            this.ingress = ingress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ingressDryRun(GetAccountNetworkPoliciesItemIngressDryRun ingressDryRun) {
+            if (ingressDryRun == null) {
+              throw new MissingRequiredPropertyException("GetAccountNetworkPoliciesItem", "ingressDryRun");
+            }
+            this.ingressDryRun = ingressDryRun;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkPolicyId(String networkPolicyId) {
             if (networkPolicyId == null) {
               throw new MissingRequiredPropertyException("GetAccountNetworkPoliciesItem", "networkPolicyId");
@@ -98,6 +148,8 @@ public final class GetAccountNetworkPoliciesItem {
             final var _resultValue = new GetAccountNetworkPoliciesItem();
             _resultValue.accountId = accountId;
             _resultValue.egress = egress;
+            _resultValue.ingress = ingress;
+            _resultValue.ingressDryRun = ingressDryRun;
             _resultValue.networkPolicyId = networkPolicyId;
             return _resultValue;
         }

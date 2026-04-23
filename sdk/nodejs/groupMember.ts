@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -75,6 +77,10 @@ export class GroupMember extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * This is the `id` attribute (SCIM ID) of the group resource.
      */
     declare public readonly groupId: pulumi.Output<string>;
@@ -82,6 +88,7 @@ export class GroupMember extends pulumi.CustomResource {
      * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
     declare public readonly memberId: pulumi.Output<string>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GroupMemberProviderConfig | undefined>;
 
     /**
      * Create a GroupMember resource with the given unique name, arguments, and options.
@@ -96,8 +103,10 @@ export class GroupMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMemberState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["groupId"] = state?.groupId;
             resourceInputs["memberId"] = state?.memberId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
             const args = argsOrState as GroupMemberArgs | undefined;
             if (args?.groupId === undefined && !opts.urn) {
@@ -106,8 +115,10 @@ export class GroupMember extends pulumi.CustomResource {
             if (args?.memberId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memberId'");
             }
+            resourceInputs["api"] = args?.api;
             resourceInputs["groupId"] = args?.groupId;
             resourceInputs["memberId"] = args?.memberId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupMember.__pulumiType, name, resourceInputs, opts);
@@ -119,6 +130,10 @@ export class GroupMember extends pulumi.CustomResource {
  */
 export interface GroupMemberState {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
+    /**
      * This is the `id` attribute (SCIM ID) of the group resource.
      */
     groupId?: pulumi.Input<string>;
@@ -126,12 +141,17 @@ export interface GroupMemberState {
      * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
     memberId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GroupMemberProviderConfig>;
 }
 
 /**
  * The set of arguments for constructing a GroupMember resource.
  */
 export interface GroupMemberArgs {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * This is the `id` attribute (SCIM ID) of the group resource.
      */
@@ -140,4 +160,5 @@ export interface GroupMemberArgs {
      * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
     memberId: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GroupMemberProviderConfig>;
 }

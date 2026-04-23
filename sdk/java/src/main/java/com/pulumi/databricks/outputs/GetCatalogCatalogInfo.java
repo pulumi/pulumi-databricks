@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag;
+import com.pulumi.databricks.outputs.GetCatalogCatalogInfoManagedEncryptionSettings;
 import com.pulumi.databricks.outputs.GetCatalogCatalogInfoProvisioningInfo;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -62,6 +63,7 @@ public final class GetCatalogCatalogInfo {
      * 
      */
     private @Nullable String isolationMode;
+    private @Nullable GetCatalogCatalogInfoManagedEncryptionSettings managedEncryptionSettings;
     /**
      * @return Unique identifier of parent metastore.
      * 
@@ -191,6 +193,9 @@ public final class GetCatalogCatalogInfo {
     public Optional<String> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
     }
+    public Optional<GetCatalogCatalogInfoManagedEncryptionSettings> managedEncryptionSettings() {
+        return Optional.ofNullable(this.managedEncryptionSettings);
+    }
     /**
      * @return Unique identifier of parent metastore.
      * 
@@ -298,6 +303,7 @@ public final class GetCatalogCatalogInfo {
         private @Nullable String enablePredictiveOptimization;
         private @Nullable String fullName;
         private @Nullable String isolationMode;
+        private @Nullable GetCatalogCatalogInfoManagedEncryptionSettings managedEncryptionSettings;
         private @Nullable String metastoreId;
         private @Nullable String name;
         private @Nullable Map<String,String> options;
@@ -324,6 +330,7 @@ public final class GetCatalogCatalogInfo {
     	      this.enablePredictiveOptimization = defaults.enablePredictiveOptimization;
     	      this.fullName = defaults.fullName;
     	      this.isolationMode = defaults.isolationMode;
+    	      this.managedEncryptionSettings = defaults.managedEncryptionSettings;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
     	      this.options = defaults.options;
@@ -397,6 +404,12 @@ public final class GetCatalogCatalogInfo {
         public Builder isolationMode(@Nullable String isolationMode) {
 
             this.isolationMode = isolationMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder managedEncryptionSettings(@Nullable GetCatalogCatalogInfoManagedEncryptionSettings managedEncryptionSettings) {
+
+            this.managedEncryptionSettings = managedEncryptionSettings;
             return this;
         }
         @CustomType.Setter
@@ -489,6 +502,7 @@ public final class GetCatalogCatalogInfo {
             _resultValue.enablePredictiveOptimization = enablePredictiveOptimization;
             _resultValue.fullName = fullName;
             _resultValue.isolationMode = isolationMode;
+            _resultValue.managedEncryptionSettings = managedEncryptionSettings;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;
             _resultValue.options = options;

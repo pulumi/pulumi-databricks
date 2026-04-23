@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination
     {
-        /// <summary>
-        /// The internet destination to which access will be allowed. Format dependent on the destination type
-        /// </summary>
         public readonly string? Destination;
         /// <summary>
         /// The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`

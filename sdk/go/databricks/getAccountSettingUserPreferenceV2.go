@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // This data source can be used to get a single account user preference setting.
 func LookupAccountSettingUserPreferenceV2(ctx *pulumi.Context, args *LookupAccountSettingUserPreferenceV2Args, opts ...pulumi.InvokeOption) (*LookupAccountSettingUserPreferenceV2Result, error) {

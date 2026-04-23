@@ -94,6 +94,10 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
         return obj['__pulumiType'] === MetastoreDataAccess.__pulumiType;
     }
 
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
     declare public readonly awsIamRole: pulumi.Output<outputs.MetastoreDataAccessAwsIamRole | undefined>;
     declare public readonly azureManagedIdentity: pulumi.Output<outputs.MetastoreDataAccessAzureManagedIdentity | undefined>;
     declare public readonly azureServicePrincipal: pulumi.Output<outputs.MetastoreDataAccessAzureServicePrincipal | undefined>;
@@ -111,6 +115,10 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     declare public readonly metastoreId: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly owner: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreDataAccessProviderConfig | undefined>;
     declare public readonly readOnly: pulumi.Output<boolean | undefined>;
     declare public readonly skipValidation: pulumi.Output<boolean | undefined>;
 
@@ -127,6 +135,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetastoreDataAccessState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["awsIamRole"] = state?.awsIamRole;
             resourceInputs["azureManagedIdentity"] = state?.azureManagedIdentity;
             resourceInputs["azureServicePrincipal"] = state?.azureServicePrincipal;
@@ -141,10 +150,12 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["readOnly"] = state?.readOnly;
             resourceInputs["skipValidation"] = state?.skipValidation;
         } else {
             const args = argsOrState as MetastoreDataAccessArgs | undefined;
+            resourceInputs["api"] = args?.api;
             resourceInputs["awsIamRole"] = args?.awsIamRole;
             resourceInputs["azureManagedIdentity"] = args?.azureManagedIdentity;
             resourceInputs["azureServicePrincipal"] = args?.azureServicePrincipal;
@@ -159,6 +170,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = args?.metastoreId;
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["readOnly"] = args?.readOnly;
             resourceInputs["skipValidation"] = args?.skipValidation;
         }
@@ -171,6 +183,10 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MetastoreDataAccess resources.
  */
 export interface MetastoreDataAccessState {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole>;
     azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
@@ -188,6 +204,10 @@ export interface MetastoreDataAccessState {
     metastoreId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MetastoreDataAccessProviderConfig>;
     readOnly?: pulumi.Input<boolean>;
     skipValidation?: pulumi.Input<boolean>;
 }
@@ -196,6 +216,10 @@ export interface MetastoreDataAccessState {
  * The set of arguments for constructing a MetastoreDataAccess resource.
  */
 export interface MetastoreDataAccessArgs {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole>;
     azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
@@ -213,6 +237,10 @@ export interface MetastoreDataAccessArgs {
     metastoreId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.MetastoreDataAccessProviderConfig>;
     readOnly?: pulumi.Input<boolean>;
     skipValidation?: pulumi.Input<boolean>;
 }

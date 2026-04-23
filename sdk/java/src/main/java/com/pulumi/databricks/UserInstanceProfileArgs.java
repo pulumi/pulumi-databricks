@@ -5,14 +5,32 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.UserInstanceProfileProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class UserInstanceProfileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final UserInstanceProfileArgs Empty = new UserInstanceProfileArgs();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
 
     /**
      * This is the id of the instance profile resource.
@@ -27,6 +45,13 @@ public final class UserInstanceProfileArgs extends com.pulumi.resources.Resource
      */
     public Output<String> instanceProfileId() {
         return this.instanceProfileId;
+    }
+
+    @Import(name="providerConfig")
+    private @Nullable Output<UserInstanceProfileProviderConfigArgs> providerConfig;
+
+    public Optional<Output<UserInstanceProfileProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -47,7 +72,9 @@ public final class UserInstanceProfileArgs extends com.pulumi.resources.Resource
     private UserInstanceProfileArgs() {}
 
     private UserInstanceProfileArgs(UserInstanceProfileArgs $) {
+        this.api = $.api;
         this.instanceProfileId = $.instanceProfileId;
+        this.providerConfig = $.providerConfig;
         this.userId = $.userId;
     }
 
@@ -70,6 +97,27 @@ public final class UserInstanceProfileArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
+        }
+
+        /**
          * @param instanceProfileId This is the id of the instance profile resource.
          * 
          * @return builder
@@ -88,6 +136,15 @@ public final class UserInstanceProfileArgs extends com.pulumi.resources.Resource
          */
         public Builder instanceProfileId(String instanceProfileId) {
             return instanceProfileId(Output.of(instanceProfileId));
+        }
+
+        public Builder providerConfig(@Nullable Output<UserInstanceProfileProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(UserInstanceProfileProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

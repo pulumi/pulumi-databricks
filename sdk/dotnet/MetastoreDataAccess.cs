@@ -94,6 +94,12 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/metastoreDataAccess:MetastoreDataAccess")]
     public partial class MetastoreDataAccess : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
         [Output("awsIamRole")]
         public Output<Outputs.MetastoreDataAccessAwsIamRole?> AwsIamRole { get; private set; } = null!;
 
@@ -138,6 +144,12 @@ namespace Pulumi.Databricks
 
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.MetastoreDataAccessProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;
@@ -191,6 +203,12 @@ namespace Pulumi.Databricks
 
     public sealed class MetastoreDataAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         [Input("awsIamRole")]
         public Input<Inputs.MetastoreDataAccessAwsIamRoleArgs>? AwsIamRole { get; set; }
 
@@ -236,6 +254,12 @@ namespace Pulumi.Databricks
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MetastoreDataAccessProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
@@ -250,6 +274,12 @@ namespace Pulumi.Databricks
 
     public sealed class MetastoreDataAccessState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         [Input("awsIamRole")]
         public Input<Inputs.MetastoreDataAccessAwsIamRoleGetArgs>? AwsIamRole { get; set; }
 
@@ -294,6 +324,12 @@ namespace Pulumi.Databricks
 
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.MetastoreDataAccessProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }

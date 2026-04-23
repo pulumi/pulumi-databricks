@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetUsersProviderConfig;
 import com.pulumi.databricks.inputs.GetUsersUser;
 import java.lang.String;
 import java.util.List;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUsersPlainArgs Empty = new GetUsersPlainArgs();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable String api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
+    }
 
     /**
      * A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
@@ -53,6 +69,21 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetUsersProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetUsersProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * A list of users matching the specified criteria. Each user has the following attributes:
      * 
      */
@@ -70,8 +101,10 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetUsersPlainArgs() {}
 
     private GetUsersPlainArgs(GetUsersPlainArgs $) {
+        this.api = $.api;
         this.extraAttributes = $.extraAttributes;
         this.filter = $.filter;
+        this.providerConfig = $.providerConfig;
         this.users = $.users;
     }
 
@@ -91,6 +124,17 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetUsersPlainArgs defaults) {
             $ = new GetUsersPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable String api) {
+            $.api = api;
+            return this;
         }
 
         /**
@@ -115,6 +159,17 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder filter(@Nullable String filter) {
             $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetUsersProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

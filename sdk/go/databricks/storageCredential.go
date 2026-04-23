@@ -153,6 +153,10 @@ import (
 type StorageCredential struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// exposes two additional attributes:
 	AwsIamRole                  StorageCredentialAwsIamRolePtrOutput               `pulumi:"awsIamRole"`
 	AzureManagedIdentity        StorageCredentialAzureManagedIdentityPtrOutput     `pulumi:"azureManagedIdentity"`
@@ -166,8 +170,6 @@ type StorageCredential struct {
 	ForceUpdate          pulumi.BoolPtrOutput                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrOutput `pulumi:"gcpServiceAccountKey"`
 	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
@@ -175,6 +177,8 @@ type StorageCredential struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig StorageCredentialProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the storage credential.
@@ -213,6 +217,10 @@ func GetStorageCredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StorageCredential resources.
 type storageCredentialState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	Api *string `pulumi:"api"`
 	// exposes two additional attributes:
 	AwsIamRole                  *StorageCredentialAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *StorageCredentialAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
@@ -226,8 +234,6 @@ type storageCredentialState struct {
 	ForceUpdate          *bool                                  `pulumi:"forceUpdate"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
 	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode *string `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -235,6 +241,8 @@ type storageCredentialState struct {
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner *string `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *StorageCredentialProviderConfig `pulumi:"providerConfig"`
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly *bool `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the storage credential.
@@ -244,6 +252,10 @@ type storageCredentialState struct {
 }
 
 type StorageCredentialState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	Api pulumi.StringPtrInput
 	// exposes two additional attributes:
 	AwsIamRole                  StorageCredentialAwsIamRolePtrInput
 	AzureManagedIdentity        StorageCredentialAzureManagedIdentityPtrInput
@@ -257,8 +269,6 @@ type StorageCredentialState struct {
 	ForceUpdate          pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
 	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode pulumi.StringPtrInput
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringPtrInput
@@ -266,6 +276,8 @@ type StorageCredentialState struct {
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig StorageCredentialProviderConfigPtrInput
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly pulumi.BoolPtrInput
 	// Suppress validation errors if any & force save the storage credential.
@@ -279,6 +291,10 @@ func (StorageCredentialState) ElementType() reflect.Type {
 }
 
 type storageCredentialArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	Api *string `pulumi:"api"`
 	// exposes two additional attributes:
 	AwsIamRole                  *StorageCredentialAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *StorageCredentialAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
@@ -292,8 +308,6 @@ type storageCredentialArgs struct {
 	ForceUpdate          *bool                                  `pulumi:"forceUpdate"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
 	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode *string `pulumi:"isolationMode"`
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -301,6 +315,8 @@ type storageCredentialArgs struct {
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner *string `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *StorageCredentialProviderConfig `pulumi:"providerConfig"`
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly *bool `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the storage credential.
@@ -309,6 +325,10 @@ type storageCredentialArgs struct {
 
 // The set of arguments for constructing a StorageCredential resource.
 type StorageCredentialArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	Api pulumi.StringPtrInput
 	// exposes two additional attributes:
 	AwsIamRole                  StorageCredentialAwsIamRolePtrInput
 	AzureManagedIdentity        StorageCredentialAzureManagedIdentityPtrInput
@@ -322,8 +342,6 @@ type StorageCredentialArgs struct {
 	ForceUpdate          pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
 	// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode pulumi.StringPtrInput
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringPtrInput
@@ -331,6 +349,8 @@ type StorageCredentialArgs struct {
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig StorageCredentialProviderConfigPtrInput
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly pulumi.BoolPtrInput
 	// Suppress validation errors if any & force save the storage credential.
@@ -424,6 +444,13 @@ func (o StorageCredentialOutput) ToStorageCredentialOutputWithContext(ctx contex
 	return o
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+//
+// `awsIamRole` optional configuration block for credential details for AWS:
+func (o StorageCredentialOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredential) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // exposes two additional attributes:
 func (o StorageCredentialOutput) AwsIamRole() StorageCredentialAwsIamRolePtrOutput {
 	return o.ApplyT(func(v *StorageCredential) StorageCredentialAwsIamRolePtrOutput { return v.AwsIamRole }).(StorageCredentialAwsIamRolePtrOutput)
@@ -472,8 +499,6 @@ func (o StorageCredentialOutput) GcpServiceAccountKey() StorageCredentialGcpServ
 }
 
 // Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-//
-// `awsIamRole` optional configuration block for credential details for AWS:
 func (o StorageCredentialOutput) IsolationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }
@@ -491,6 +516,11 @@ func (o StorageCredentialOutput) Name() pulumi.StringOutput {
 // Username/groupname/sp applicationId of the storage credential owner.
 func (o StorageCredentialOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o StorageCredentialOutput) ProviderConfig() StorageCredentialProviderConfigPtrOutput {
+	return o.ApplyT(func(v *StorageCredential) StorageCredentialProviderConfigPtrOutput { return v.ProviderConfig }).(StorageCredentialProviderConfigPtrOutput)
 }
 
 // Indicates whether the storage credential is only usable for read operations.

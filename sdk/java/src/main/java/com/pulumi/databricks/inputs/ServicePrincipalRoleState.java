@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ServicePrincipalRoleProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,28 @@ import javax.annotation.Nullable;
 public final class ServicePrincipalRoleState extends com.pulumi.resources.ResourceArgs {
 
     public static final ServicePrincipalRoleState Empty = new ServicePrincipalRoleState();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
+
+    @Import(name="providerConfig")
+    private @Nullable Output<ServicePrincipalRoleProviderConfigArgs> providerConfig;
+
+    public Optional<Output<ServicePrincipalRoleProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     /**
      * This is the role name, role id, or instance profile resource.
@@ -48,6 +71,8 @@ public final class ServicePrincipalRoleState extends com.pulumi.resources.Resour
     private ServicePrincipalRoleState() {}
 
     private ServicePrincipalRoleState(ServicePrincipalRoleState $) {
+        this.api = $.api;
+        this.providerConfig = $.providerConfig;
         this.role = $.role;
         this.servicePrincipalId = $.servicePrincipalId;
     }
@@ -68,6 +93,36 @@ public final class ServicePrincipalRoleState extends com.pulumi.resources.Resour
 
         public Builder(ServicePrincipalRoleState defaults) {
             $ = new ServicePrincipalRoleState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
+        }
+
+        public Builder providerConfig(@Nullable Output<ServicePrincipalRoleProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(ServicePrincipalRoleProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

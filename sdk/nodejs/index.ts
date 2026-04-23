@@ -715,6 +715,11 @@ export const getPostgresBranches: typeof import("./getPostgresBranches").getPost
 export const getPostgresBranchesOutput: typeof import("./getPostgresBranches").getPostgresBranchesOutput = null as any;
 utilities.lazyLoad(exports, ["getPostgresBranches","getPostgresBranchesOutput"], () => require("./getPostgresBranches"));
 
+export { GetPostgresCatalogArgs, GetPostgresCatalogResult, GetPostgresCatalogOutputArgs } from "./getPostgresCatalog";
+export const getPostgresCatalog: typeof import("./getPostgresCatalog").getPostgresCatalog = null as any;
+export const getPostgresCatalogOutput: typeof import("./getPostgresCatalog").getPostgresCatalogOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresCatalog","getPostgresCatalogOutput"], () => require("./getPostgresCatalog"));
+
 export { GetPostgresDatabaseArgs, GetPostgresDatabaseResult, GetPostgresDatabaseOutputArgs } from "./getPostgresDatabase";
 export const getPostgresDatabase: typeof import("./getPostgresDatabase").getPostgresDatabase = null as any;
 export const getPostgresDatabaseOutput: typeof import("./getPostgresDatabase").getPostgresDatabaseOutput = null as any;
@@ -754,6 +759,11 @@ export { GetPostgresRolesArgs, GetPostgresRolesResult, GetPostgresRolesOutputArg
 export const getPostgresRoles: typeof import("./getPostgresRoles").getPostgresRoles = null as any;
 export const getPostgresRolesOutput: typeof import("./getPostgresRoles").getPostgresRolesOutput = null as any;
 utilities.lazyLoad(exports, ["getPostgresRoles","getPostgresRolesOutput"], () => require("./getPostgresRoles"));
+
+export { GetPostgresSyncedTableArgs, GetPostgresSyncedTableResult, GetPostgresSyncedTableOutputArgs } from "./getPostgresSyncedTable";
+export const getPostgresSyncedTable: typeof import("./getPostgresSyncedTable").getPostgresSyncedTable = null as any;
+export const getPostgresSyncedTableOutput: typeof import("./getPostgresSyncedTable").getPostgresSyncedTableOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresSyncedTable","getPostgresSyncedTableOutput"], () => require("./getPostgresSyncedTable"));
 
 export { GetQualityMonitorV2Args, GetQualityMonitorV2Result, GetQualityMonitorV2OutputArgs } from "./getQualityMonitorV2";
 export const getQualityMonitorV2: typeof import("./getQualityMonitorV2").getQualityMonitorV2 = null as any;
@@ -1175,6 +1185,11 @@ export type PostgresBranch = import("./postgresBranch").PostgresBranch;
 export const PostgresBranch: typeof import("./postgresBranch").PostgresBranch = null as any;
 utilities.lazyLoad(exports, ["PostgresBranch"], () => require("./postgresBranch"));
 
+export { PostgresCatalogArgs, PostgresCatalogState } from "./postgresCatalog";
+export type PostgresCatalog = import("./postgresCatalog").PostgresCatalog;
+export const PostgresCatalog: typeof import("./postgresCatalog").PostgresCatalog = null as any;
+utilities.lazyLoad(exports, ["PostgresCatalog"], () => require("./postgresCatalog"));
+
 export { PostgresDatabaseArgs, PostgresDatabaseState } from "./postgresDatabase";
 export type PostgresDatabase = import("./postgresDatabase").PostgresDatabase;
 export const PostgresDatabase: typeof import("./postgresDatabase").PostgresDatabase = null as any;
@@ -1194,6 +1209,11 @@ export { PostgresRoleArgs, PostgresRoleState } from "./postgresRole";
 export type PostgresRole = import("./postgresRole").PostgresRole;
 export const PostgresRole: typeof import("./postgresRole").PostgresRole = null as any;
 utilities.lazyLoad(exports, ["PostgresRole"], () => require("./postgresRole"));
+
+export { PostgresSyncedTableArgs, PostgresSyncedTableState } from "./postgresSyncedTable";
+export type PostgresSyncedTable = import("./postgresSyncedTable").PostgresSyncedTable;
+export const PostgresSyncedTable: typeof import("./postgresSyncedTable").PostgresSyncedTable = null as any;
+utilities.lazyLoad(exports, ["PostgresSyncedTable"], () => require("./postgresSyncedTable"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -1628,6 +1648,8 @@ const _module = {
                 return new PolicyInfo(name, <any>undefined, { urn })
             case "databricks:index/postgresBranch:PostgresBranch":
                 return new PostgresBranch(name, <any>undefined, { urn })
+            case "databricks:index/postgresCatalog:PostgresCatalog":
+                return new PostgresCatalog(name, <any>undefined, { urn })
             case "databricks:index/postgresDatabase:PostgresDatabase":
                 return new PostgresDatabase(name, <any>undefined, { urn })
             case "databricks:index/postgresEndpoint:PostgresEndpoint":
@@ -1636,6 +1658,8 @@ const _module = {
                 return new PostgresProject(name, <any>undefined, { urn })
             case "databricks:index/postgresRole:PostgresRole":
                 return new PostgresRole(name, <any>undefined, { urn })
+            case "databricks:index/postgresSyncedTable:PostgresSyncedTable":
+                return new PostgresSyncedTable(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitor:QualityMonitor":
                 return new QualityMonitor(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitorV2:QualityMonitorV2":
@@ -1827,10 +1851,12 @@ pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/policyInfo", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresBranch", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresCatalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresDatabase", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresProject", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresRole", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresSyncedTable", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitorV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/query", _module)

@@ -10,6 +10,17 @@ import * as utilities from "./utilities";
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source retrieves a single Workspace Base Environment by its resource name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myEnv = databricks.getEnvironmentsWorkspaceBaseEnvironment({
+ *     name: "workspace-base-environments/my-environment",
+ * });
+ * ```
  */
 export function getEnvironmentsWorkspaceBaseEnvironment(args: GetEnvironmentsWorkspaceBaseEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentsWorkspaceBaseEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -94,6 +105,17 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentResult {
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source retrieves a single Workspace Base Environment by its resource name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myEnv = databricks.getEnvironmentsWorkspaceBaseEnvironment({
+ *     name: "workspace-base-environments/my-environment",
+ * });
+ * ```
  */
 export function getEnvironmentsWorkspaceBaseEnvironmentOutput(args: GetEnvironmentsWorkspaceBaseEnvironmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentsWorkspaceBaseEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

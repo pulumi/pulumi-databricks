@@ -78,13 +78,23 @@ export class AccountNetworkPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The associated account ID for this Network Policy object
+     * (string) - The associated account ID for this Network Policy object
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The network policies applying for egress traffic
      */
     declare public readonly egress: pulumi.Output<outputs.AccountNetworkPolicyEgress | undefined>;
+    /**
+     * The network policies applying for ingress traffic
+     */
+    declare public readonly ingress: pulumi.Output<outputs.AccountNetworkPolicyIngress | undefined>;
+    /**
+     * The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     */
+    declare public readonly ingressDryRun: pulumi.Output<outputs.AccountNetworkPolicyIngressDryRun | undefined>;
     /**
      * The unique identifier for the network policy
      */
@@ -105,11 +115,15 @@ export class AccountNetworkPolicy extends pulumi.CustomResource {
             const state = argsOrState as AccountNetworkPolicyState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["egress"] = state?.egress;
+            resourceInputs["ingress"] = state?.ingress;
+            resourceInputs["ingressDryRun"] = state?.ingressDryRun;
             resourceInputs["networkPolicyId"] = state?.networkPolicyId;
         } else {
             const args = argsOrState as AccountNetworkPolicyArgs | undefined;
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["egress"] = args?.egress;
+            resourceInputs["ingress"] = args?.ingress;
+            resourceInputs["ingressDryRun"] = args?.ingressDryRun;
             resourceInputs["networkPolicyId"] = args?.networkPolicyId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -122,13 +136,23 @@ export class AccountNetworkPolicy extends pulumi.CustomResource {
  */
 export interface AccountNetworkPolicyState {
     /**
-     * The associated account ID for this Network Policy object
+     * (string) - The associated account ID for this Network Policy object
      */
     accountId?: pulumi.Input<string>;
     /**
      * The network policies applying for egress traffic
      */
     egress?: pulumi.Input<inputs.AccountNetworkPolicyEgress>;
+    /**
+     * The network policies applying for ingress traffic
+     */
+    ingress?: pulumi.Input<inputs.AccountNetworkPolicyIngress>;
+    /**
+     * The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     */
+    ingressDryRun?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRun>;
     /**
      * The unique identifier for the network policy
      */
@@ -140,13 +164,23 @@ export interface AccountNetworkPolicyState {
  */
 export interface AccountNetworkPolicyArgs {
     /**
-     * The associated account ID for this Network Policy object
+     * (string) - The associated account ID for this Network Policy object
      */
     accountId?: pulumi.Input<string>;
     /**
      * The network policies applying for egress traffic
      */
     egress?: pulumi.Input<inputs.AccountNetworkPolicyEgress>;
+    /**
+     * The network policies applying for ingress traffic
+     */
+    ingress?: pulumi.Input<inputs.AccountNetworkPolicyIngress>;
+    /**
+     * The ingress policy for dry run mode. Dry run will always run even if the request
+     * is allowed by the ingress policy. When this field is set, the policy will be evaluated
+     * and emit logs only without blocking requests
+     */
+    ingressDryRun?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRun>;
     /**
      * The unique identifier for the network policy
      */

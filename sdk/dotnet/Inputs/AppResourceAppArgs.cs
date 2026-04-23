@@ -12,6 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppResourceAppArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
         public AppResourceAppArgs()
         {
         }

@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.UserInstanceProfileArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.UserInstanceProfileState;
+import com.pulumi.databricks.outputs.UserInstanceProfileProviderConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -83,6 +85,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/userInstanceProfile:UserInstanceProfile")
 public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
+    /**
      * This is the id of the instance profile resource.
      * 
      */
@@ -95,6 +111,12 @@ public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceProfileId() {
         return this.instanceProfileId;
+    }
+    @Export(name="providerConfig", refs={UserInstanceProfileProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ UserInstanceProfileProviderConfig> providerConfig;
+
+    public Output<Optional<UserInstanceProfileProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * This is the id of the user resource.

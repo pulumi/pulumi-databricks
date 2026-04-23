@@ -18,6 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunction? AggregationFunction;
         /// <summary>
+        /// Selects the latest value of a single column in a data source
+        /// </summary>
+        public readonly Outputs.FeatureEngineeringFeatureFunctionColumnSelection? ColumnSelection;
+        /// <summary>
         /// Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
         /// Extra parameters for parameterized functions
         /// </summary>
@@ -32,11 +36,14 @@ namespace Pulumi.Databricks.Outputs
         private FeatureEngineeringFeatureFunction(
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunction? aggregationFunction,
 
+            Outputs.FeatureEngineeringFeatureFunctionColumnSelection? columnSelection,
+
             ImmutableArray<Outputs.FeatureEngineeringFeatureFunctionExtraParameter> extraParameters,
 
             string? functionType)
         {
             AggregationFunction = aggregationFunction;
+            ColumnSelection = columnSelection;
             ExtraParameters = extraParameters;
             FunctionType = functionType;
         }

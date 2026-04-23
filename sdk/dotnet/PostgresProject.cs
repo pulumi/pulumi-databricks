@@ -67,6 +67,42 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ### Project with High Availability Endpoint
+    /// 
+    /// Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+    /// One compute instance acts as the read-write primary.
+    /// The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ha = new Databricks.Index.PostgresProject("ha", new()
+    ///     {
+    ///         ProjectId = "ha-project",
+    ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
+    ///         {
+    ///             PgVersion = 17,
+    ///             DisplayName = "HA Production Project",
+    ///         },
+    ///         InitialEndpointSpec = new Databricks.Inputs.PostgresProjectInitialEndpointSpecArgs
+    ///         {
+    ///             Group = new Databricks.Inputs.PostgresProjectInitialEndpointSpecGroupArgs
+    ///             {
+    ///                 Min = 2,
+    ///                 Max = 2,
+    ///                 EnableReadableSecondaries = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Referencing in Other Resources
     /// 
     /// ```csharp

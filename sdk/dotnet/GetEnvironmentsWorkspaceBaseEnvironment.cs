@@ -15,6 +15,25 @@ namespace Pulumi.Databricks
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves a single Workspace Base Environment by its resource name.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myEnv = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironment.Invoke(new()
+        ///     {
+        ///         Name = "workspace-base-environments/my-environment",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetEnvironmentsWorkspaceBaseEnvironmentResult> InvokeAsync(GetEnvironmentsWorkspaceBaseEnvironmentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentsWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentArgs(), options.WithDefaults());
@@ -23,6 +42,25 @@ namespace Pulumi.Databricks
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves a single Workspace Base Environment by its resource name.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myEnv = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironment.Invoke(new()
+        ///     {
+        ///         Name = "workspace-base-environments/my-environment",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEnvironmentsWorkspaceBaseEnvironmentResult> Invoke(GetEnvironmentsWorkspaceBaseEnvironmentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentInvokeArgs(), options.WithDefaults());
@@ -31,6 +69,25 @@ namespace Pulumi.Databricks
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves a single Workspace Base Environment by its resource name.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myEnv = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironment.Invoke(new()
+        ///     {
+        ///         Name = "workspace-base-environments/my-environment",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEnvironmentsWorkspaceBaseEnvironmentResult> Invoke(GetEnvironmentsWorkspaceBaseEnvironmentInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentInvokeArgs(), options.WithDefaults());

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunctionColumnSelection;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter;
 import java.lang.String;
 import java.util.List;
@@ -19,6 +20,11 @@ public final class GetFeatureEngineeringFeaturesFeatureFunction {
      * 
      */
     private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction aggregationFunction;
+    /**
+     * @return (ColumnSelection) - Selects the latest value of a single column in a data source
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionColumnSelection columnSelection;
     /**
      * @return (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
@@ -39,6 +45,13 @@ public final class GetFeatureEngineeringFeaturesFeatureFunction {
      */
     public Optional<GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction> aggregationFunction() {
         return Optional.ofNullable(this.aggregationFunction);
+    }
+    /**
+     * @return (ColumnSelection) - Selects the latest value of a single column in a data source
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeaturesFeatureFunctionColumnSelection> columnSelection() {
+        return Optional.ofNullable(this.columnSelection);
     }
     /**
      * @return (list of FunctionExtraParameter, deprecated) - Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
@@ -67,12 +80,14 @@ public final class GetFeatureEngineeringFeaturesFeatureFunction {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction aggregationFunction;
+        private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionColumnSelection columnSelection;
         private @Nullable List<GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter> extraParameters;
         private @Nullable String functionType;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeatureFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregationFunction = defaults.aggregationFunction;
+    	      this.columnSelection = defaults.columnSelection;
     	      this.extraParameters = defaults.extraParameters;
     	      this.functionType = defaults.functionType;
         }
@@ -81,6 +96,12 @@ public final class GetFeatureEngineeringFeaturesFeatureFunction {
         public Builder aggregationFunction(@Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction aggregationFunction) {
 
             this.aggregationFunction = aggregationFunction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder columnSelection(@Nullable GetFeatureEngineeringFeaturesFeatureFunctionColumnSelection columnSelection) {
+
+            this.columnSelection = columnSelection;
             return this;
         }
         @CustomType.Setter
@@ -101,6 +122,7 @@ public final class GetFeatureEngineeringFeaturesFeatureFunction {
         public GetFeatureEngineeringFeaturesFeatureFunction build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureFunction();
             _resultValue.aggregationFunction = aggregationFunction;
+            _resultValue.columnSelection = columnSelection;
             _resultValue.extraParameters = extraParameters;
             _resultValue.functionType = functionType;
             return _resultValue;

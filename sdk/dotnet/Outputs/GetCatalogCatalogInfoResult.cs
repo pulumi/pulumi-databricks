@@ -50,6 +50,7 @@ namespace Pulumi.Databricks.Outputs
         /// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
         /// </summary>
         public readonly string? IsolationMode;
+        public readonly Outputs.GetCatalogCatalogInfoManagedEncryptionSettingsResult? ManagedEncryptionSettings;
         /// <summary>
         /// Unique identifier of parent metastore.
         /// </summary>
@@ -122,6 +123,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? isolationMode,
 
+            Outputs.GetCatalogCatalogInfoManagedEncryptionSettingsResult? managedEncryptionSettings,
+
             string? metastoreId,
 
             string? name,
@@ -158,6 +161,7 @@ namespace Pulumi.Databricks.Outputs
             EnablePredictiveOptimization = enablePredictiveOptimization;
             FullName = fullName;
             IsolationMode = isolationMode;
+            ManagedEncryptionSettings = managedEncryptionSettings;
             MetastoreId = metastoreId;
             Name = name;
             Options = options;

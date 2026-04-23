@@ -47,6 +47,32 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Project with High Availability Endpoint
+ *
+ * Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+ * One compute instance acts as the read-write primary.
+ * The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const ha = new databricks.PostgresProject("ha", {
+ *     projectId: "ha-project",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "HA Production Project",
+ *     },
+ *     initialEndpointSpec: {
+ *         group: {
+ *             min: 2,
+ *             max: 2,
+ *             enableReadableSecondaries: false,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ### Referencing in Other Resources
  *
  * ```typescript

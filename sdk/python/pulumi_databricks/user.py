@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['UserArgs', 'User']
 
@@ -24,6 +26,7 @@ class UserArgs:
                  active: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_as_user_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32,6 +35,7 @@ class UserArgs:
                  force_delete_home_dir: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete_repos: Optional[pulumi.Input[_builtins.bool]] = None,
                  home: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['UserProviderConfigArgs']] = None,
                  repos: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
@@ -43,6 +47,7 @@ class UserArgs:
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[_builtins.str] display_name: This is an alias for the username that can be the full name of the user.
@@ -64,6 +69,8 @@ class UserArgs:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
             pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if databricks_sql_access is not None:
             pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
         if disable_as_user_deletion is not None:
@@ -80,6 +87,8 @@ class UserArgs:
             pulumi.set(__self__, "force_delete_repos", force_delete_repos)
         if home is not None:
             pulumi.set(__self__, "home", home)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if repos is not None:
             pulumi.set(__self__, "repos", repos)
         if workspace_access is not None:
@@ -148,6 +157,18 @@ class UserArgs:
         pulumi.set(self, "allow_instance_pool_create", value)
 
     @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -244,6 +265,15 @@ class UserArgs:
         pulumi.set(self, "home", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['UserProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['UserProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def repos(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -287,6 +317,7 @@ class _UserState:
                  active: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_as_user_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -295,6 +326,7 @@ class _UserState:
                  force_delete_home_dir: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete_repos: Optional[pulumi.Input[_builtins.bool]] = None,
                  home: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['UserProviderConfigArgs']] = None,
                  repos: Optional[pulumi.Input[_builtins.str]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -306,6 +338,7 @@ class _UserState:
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[_builtins.str] display_name: This is an alias for the username that can be the full name of the user.
@@ -327,6 +360,8 @@ class _UserState:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
             pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if databricks_sql_access is not None:
             pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
         if disable_as_user_deletion is not None:
@@ -343,6 +378,8 @@ class _UserState:
             pulumi.set(__self__, "force_delete_repos", force_delete_repos)
         if home is not None:
             pulumi.set(__self__, "home", home)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if repos is not None:
             pulumi.set(__self__, "repos", repos)
         if user_name is not None:
@@ -401,6 +438,18 @@ class _UserState:
         pulumi.set(self, "allow_instance_pool_create", value)
 
     @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -495,6 +544,15 @@ class _UserState:
     @home.setter
     def home(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "home", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['UserProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['UserProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -555,6 +613,7 @@ class User(pulumi.CustomResource):
                  active: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_as_user_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -563,6 +622,7 @@ class User(pulumi.CustomResource):
                  force_delete_home_dir: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete_repos: Optional[pulumi.Input[_builtins.bool]] = None,
                  home: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['UserProviderConfigArgs', 'UserProviderConfigArgsDict']]] = None,
                  repos: Optional[pulumi.Input[_builtins.str]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -658,6 +718,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[_builtins.str] display_name: This is an alias for the username that can be the full name of the user.
@@ -780,6 +841,7 @@ class User(pulumi.CustomResource):
                  active: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_as_user_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -788,6 +850,7 @@ class User(pulumi.CustomResource):
                  force_delete_home_dir: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete_repos: Optional[pulumi.Input[_builtins.bool]] = None,
                  home: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['UserProviderConfigArgs', 'UserProviderConfigArgsDict']]] = None,
                  repos: Optional[pulumi.Input[_builtins.str]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -805,6 +868,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["active"] = active
             __props__.__dict__["allow_cluster_create"] = allow_cluster_create
             __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
+            __props__.__dict__["api"] = api
             __props__.__dict__["databricks_sql_access"] = databricks_sql_access
             __props__.__dict__["disable_as_user_deletion"] = disable_as_user_deletion
             __props__.__dict__["display_name"] = display_name
@@ -813,6 +877,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["force_delete_home_dir"] = force_delete_home_dir
             __props__.__dict__["force_delete_repos"] = force_delete_repos
             __props__.__dict__["home"] = home
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["repos"] = repos
             if user_name is None and not opts.urn:
                 raise TypeError("Missing required property 'user_name'")
@@ -833,6 +898,7 @@ class User(pulumi.CustomResource):
             active: Optional[pulumi.Input[_builtins.bool]] = None,
             allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
             allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
             databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
             disable_as_user_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -841,6 +907,7 @@ class User(pulumi.CustomResource):
             force_delete_home_dir: Optional[pulumi.Input[_builtins.bool]] = None,
             force_delete_repos: Optional[pulumi.Input[_builtins.bool]] = None,
             home: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['UserProviderConfigArgs', 'UserProviderConfigArgsDict']]] = None,
             repos: Optional[pulumi.Input[_builtins.str]] = None,
             user_name: Optional[pulumi.Input[_builtins.str]] = None,
             workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -856,6 +923,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[_builtins.str] display_name: This is an alias for the username that can be the full name of the user.
@@ -877,6 +945,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["active"] = active
         __props__.__dict__["allow_cluster_create"] = allow_cluster_create
         __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
+        __props__.__dict__["api"] = api
         __props__.__dict__["databricks_sql_access"] = databricks_sql_access
         __props__.__dict__["disable_as_user_deletion"] = disable_as_user_deletion
         __props__.__dict__["display_name"] = display_name
@@ -885,6 +954,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["force_delete_home_dir"] = force_delete_home_dir
         __props__.__dict__["force_delete_repos"] = force_delete_repos
         __props__.__dict__["home"] = home
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["repos"] = repos
         __props__.__dict__["user_name"] = user_name
         __props__.__dict__["workspace_access"] = workspace_access
@@ -922,6 +992,14 @@ class User(pulumi.CustomResource):
         Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         """
         return pulumi.get(self, "allow_instance_pool_create")
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
@@ -986,6 +1064,11 @@ class User(pulumi.CustomResource):
         Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         """
         return pulumi.get(self, "home")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.UserProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

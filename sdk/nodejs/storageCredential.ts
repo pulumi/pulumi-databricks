@@ -110,6 +110,12 @@ export class StorageCredential extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
+    declare public readonly api: pulumi.Output<string | undefined>;
+    /**
      * exposes two additional attributes:
      */
     declare public readonly awsIamRole: pulumi.Output<outputs.StorageCredentialAwsIamRole | undefined>;
@@ -129,8 +135,6 @@ export class StorageCredential extends pulumi.CustomResource {
     declare public readonly gcpServiceAccountKey: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
     /**
      * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     declare public readonly isolationMode: pulumi.Output<string>;
     /**
@@ -145,6 +149,10 @@ export class StorageCredential extends pulumi.CustomResource {
      * Username/groupname/sp applicationId of the storage credential owner.
      */
     declare public readonly owner: pulumi.Output<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.StorageCredentialProviderConfig | undefined>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
      */
@@ -171,6 +179,7 @@ export class StorageCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageCredentialState | undefined;
+            resourceInputs["api"] = state?.api;
             resourceInputs["awsIamRole"] = state?.awsIamRole;
             resourceInputs["azureManagedIdentity"] = state?.azureManagedIdentity;
             resourceInputs["azureServicePrincipal"] = state?.azureServicePrincipal;
@@ -184,11 +193,13 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["readOnly"] = state?.readOnly;
             resourceInputs["skipValidation"] = state?.skipValidation;
             resourceInputs["storageCredentialId"] = state?.storageCredentialId;
         } else {
             const args = argsOrState as StorageCredentialArgs | undefined;
+            resourceInputs["api"] = args?.api;
             resourceInputs["awsIamRole"] = args?.awsIamRole;
             resourceInputs["azureManagedIdentity"] = args?.azureManagedIdentity;
             resourceInputs["azureServicePrincipal"] = args?.azureServicePrincipal;
@@ -202,6 +213,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = args?.metastoreId;
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["readOnly"] = args?.readOnly;
             resourceInputs["skipValidation"] = args?.skipValidation;
             resourceInputs["storageCredentialId"] = undefined /*out*/;
@@ -215,6 +227,12 @@ export class StorageCredential extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StorageCredential resources.
  */
 export interface StorageCredentialState {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
+    api?: pulumi.Input<string>;
     /**
      * exposes two additional attributes:
      */
@@ -235,8 +253,6 @@ export interface StorageCredentialState {
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     /**
      * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     isolationMode?: pulumi.Input<string>;
     /**
@@ -251,6 +267,10 @@ export interface StorageCredentialState {
      * Username/groupname/sp applicationId of the storage credential owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.StorageCredentialProviderConfig>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
      */
@@ -270,6 +290,12 @@ export interface StorageCredentialState {
  */
 export interface StorageCredentialArgs {
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
+    api?: pulumi.Input<string>;
+    /**
      * exposes two additional attributes:
      */
     awsIamRole?: pulumi.Input<inputs.StorageCredentialAwsIamRole>;
@@ -289,8 +315,6 @@ export interface StorageCredentialArgs {
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     /**
      * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     isolationMode?: pulumi.Input<string>;
     /**
@@ -305,6 +329,10 @@ export interface StorageCredentialArgs {
      * Username/groupname/sp applicationId of the storage credential owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.StorageCredentialProviderConfig>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
      */

@@ -48,8 +48,10 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getUsers:getUsers", {
+        "api": args.api,
         "extraAttributes": args.extraAttributes,
         "filter": args.filter,
+        "providerConfig": args.providerConfig,
         "users": args.users,
     }, opts);
 }
@@ -58,6 +60,10 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: string;
     /**
      * A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
      */
@@ -70,6 +76,10 @@ export interface GetUsersArgs {
      */
     filter?: string;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetUsersProviderConfig;
+    /**
      * A list of users matching the specified criteria. Each user has the following attributes:
      */
     users?: inputs.GetUsersUser[];
@@ -79,12 +89,14 @@ export interface GetUsersArgs {
  * A collection of values returned by getUsers.
  */
 export interface GetUsersResult {
+    readonly api?: string;
     readonly extraAttributes?: string;
     readonly filter?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetUsersProviderConfig;
     /**
      * A list of users matching the specified criteria. Each user has the following attributes:
      */
@@ -132,8 +144,10 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOu
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getUsers:getUsers", {
+        "api": args.api,
         "extraAttributes": args.extraAttributes,
         "filter": args.filter,
+        "providerConfig": args.providerConfig,
         "users": args.users,
     }, opts);
 }
@@ -142,6 +156,10 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersOutputArgs {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     */
+    api?: pulumi.Input<string>;
     /**
      * A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
      */
@@ -153,6 +171,10 @@ export interface GetUsersOutputArgs {
      * - User whose `displayName` equals "john":
      */
     filter?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetUsersProviderConfigArgs>;
     /**
      * A list of users matching the specified criteria. Each user has the following attributes:
      */

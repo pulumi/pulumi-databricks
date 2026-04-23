@@ -23,18 +23,28 @@ class AccountNetworkPolicyArgs:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  egress: Optional[pulumi.Input['AccountNetworkPolicyEgressArgs']] = None,
+                 ingress: Optional[pulumi.Input['AccountNetworkPolicyIngressArgs']] = None,
+                 ingress_dry_run: Optional[pulumi.Input['AccountNetworkPolicyIngressDryRunArgs']] = None,
                  network_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountNetworkPolicy resource.
 
-        :param pulumi.Input[_builtins.str] account_id: The associated account ID for this Network Policy object
+        :param pulumi.Input[_builtins.str] account_id: (string) - The associated account ID for this Network Policy object
         :param pulumi.Input['AccountNetworkPolicyEgressArgs'] egress: The network policies applying for egress traffic
+        :param pulumi.Input['AccountNetworkPolicyIngressArgs'] ingress: The network policies applying for ingress traffic
+        :param pulumi.Input['AccountNetworkPolicyIngressDryRunArgs'] ingress_dry_run: The ingress policy for dry run mode. Dry run will always run even if the request
+               is allowed by the ingress policy. When this field is set, the policy will be evaluated
+               and emit logs only without blocking requests
         :param pulumi.Input[_builtins.str] network_policy_id: The unique identifier for the network policy
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
+        if ingress is not None:
+            pulumi.set(__self__, "ingress", ingress)
+        if ingress_dry_run is not None:
+            pulumi.set(__self__, "ingress_dry_run", ingress_dry_run)
         if network_policy_id is not None:
             pulumi.set(__self__, "network_policy_id", network_policy_id)
 
@@ -42,7 +52,7 @@ class AccountNetworkPolicyArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The associated account ID for this Network Policy object
+        (string) - The associated account ID for this Network Policy object
         """
         return pulumi.get(self, "account_id")
 
@@ -61,6 +71,32 @@ class AccountNetworkPolicyArgs:
     @egress.setter
     def egress(self, value: Optional[pulumi.Input['AccountNetworkPolicyEgressArgs']]):
         pulumi.set(self, "egress", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ingress(self) -> Optional[pulumi.Input['AccountNetworkPolicyIngressArgs']]:
+        """
+        The network policies applying for ingress traffic
+        """
+        return pulumi.get(self, "ingress")
+
+    @ingress.setter
+    def ingress(self, value: Optional[pulumi.Input['AccountNetworkPolicyIngressArgs']]):
+        pulumi.set(self, "ingress", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ingressDryRun")
+    def ingress_dry_run(self) -> Optional[pulumi.Input['AccountNetworkPolicyIngressDryRunArgs']]:
+        """
+        The ingress policy for dry run mode. Dry run will always run even if the request
+        is allowed by the ingress policy. When this field is set, the policy will be evaluated
+        and emit logs only without blocking requests
+        """
+        return pulumi.get(self, "ingress_dry_run")
+
+    @ingress_dry_run.setter
+    def ingress_dry_run(self, value: Optional[pulumi.Input['AccountNetworkPolicyIngressDryRunArgs']]):
+        pulumi.set(self, "ingress_dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPolicyId")
@@ -80,18 +116,28 @@ class _AccountNetworkPolicyState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  egress: Optional[pulumi.Input['AccountNetworkPolicyEgressArgs']] = None,
+                 ingress: Optional[pulumi.Input['AccountNetworkPolicyIngressArgs']] = None,
+                 ingress_dry_run: Optional[pulumi.Input['AccountNetworkPolicyIngressDryRunArgs']] = None,
                  network_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountNetworkPolicy resources.
 
-        :param pulumi.Input[_builtins.str] account_id: The associated account ID for this Network Policy object
+        :param pulumi.Input[_builtins.str] account_id: (string) - The associated account ID for this Network Policy object
         :param pulumi.Input['AccountNetworkPolicyEgressArgs'] egress: The network policies applying for egress traffic
+        :param pulumi.Input['AccountNetworkPolicyIngressArgs'] ingress: The network policies applying for ingress traffic
+        :param pulumi.Input['AccountNetworkPolicyIngressDryRunArgs'] ingress_dry_run: The ingress policy for dry run mode. Dry run will always run even if the request
+               is allowed by the ingress policy. When this field is set, the policy will be evaluated
+               and emit logs only without blocking requests
         :param pulumi.Input[_builtins.str] network_policy_id: The unique identifier for the network policy
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
+        if ingress is not None:
+            pulumi.set(__self__, "ingress", ingress)
+        if ingress_dry_run is not None:
+            pulumi.set(__self__, "ingress_dry_run", ingress_dry_run)
         if network_policy_id is not None:
             pulumi.set(__self__, "network_policy_id", network_policy_id)
 
@@ -99,7 +145,7 @@ class _AccountNetworkPolicyState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The associated account ID for this Network Policy object
+        (string) - The associated account ID for this Network Policy object
         """
         return pulumi.get(self, "account_id")
 
@@ -118,6 +164,32 @@ class _AccountNetworkPolicyState:
     @egress.setter
     def egress(self, value: Optional[pulumi.Input['AccountNetworkPolicyEgressArgs']]):
         pulumi.set(self, "egress", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ingress(self) -> Optional[pulumi.Input['AccountNetworkPolicyIngressArgs']]:
+        """
+        The network policies applying for ingress traffic
+        """
+        return pulumi.get(self, "ingress")
+
+    @ingress.setter
+    def ingress(self, value: Optional[pulumi.Input['AccountNetworkPolicyIngressArgs']]):
+        pulumi.set(self, "ingress", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ingressDryRun")
+    def ingress_dry_run(self) -> Optional[pulumi.Input['AccountNetworkPolicyIngressDryRunArgs']]:
+        """
+        The ingress policy for dry run mode. Dry run will always run even if the request
+        is allowed by the ingress policy. When this field is set, the policy will be evaluated
+        and emit logs only without blocking requests
+        """
+        return pulumi.get(self, "ingress_dry_run")
+
+    @ingress_dry_run.setter
+    def ingress_dry_run(self, value: Optional[pulumi.Input['AccountNetworkPolicyIngressDryRunArgs']]):
+        pulumi.set(self, "ingress_dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPolicyId")
@@ -140,6 +212,8 @@ class AccountNetworkPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  egress: Optional[pulumi.Input[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']]] = None,
+                 ingress: Optional[pulumi.Input[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']]] = None,
+                 ingress_dry_run: Optional[pulumi.Input[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']]] = None,
                  network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -187,8 +261,12 @@ class AccountNetworkPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: The associated account ID for this Network Policy object
+        :param pulumi.Input[_builtins.str] account_id: (string) - The associated account ID for this Network Policy object
         :param pulumi.Input[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']] egress: The network policies applying for egress traffic
+        :param pulumi.Input[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']] ingress: The network policies applying for ingress traffic
+        :param pulumi.Input[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']] ingress_dry_run: The ingress policy for dry run mode. Dry run will always run even if the request
+               is allowed by the ingress policy. When this field is set, the policy will be evaluated
+               and emit logs only without blocking requests
         :param pulumi.Input[_builtins.str] network_policy_id: The unique identifier for the network policy
         """
         ...
@@ -257,6 +335,8 @@ class AccountNetworkPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  egress: Optional[pulumi.Input[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']]] = None,
+                 ingress: Optional[pulumi.Input[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']]] = None,
+                 ingress_dry_run: Optional[pulumi.Input[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']]] = None,
                  network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -269,6 +349,8 @@ class AccountNetworkPolicy(pulumi.CustomResource):
 
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["egress"] = egress
+            __props__.__dict__["ingress"] = ingress
+            __props__.__dict__["ingress_dry_run"] = ingress_dry_run
             __props__.__dict__["network_policy_id"] = network_policy_id
         super(AccountNetworkPolicy, __self__).__init__(
             'databricks:index/accountNetworkPolicy:AccountNetworkPolicy',
@@ -282,6 +364,8 @@ class AccountNetworkPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             egress: Optional[pulumi.Input[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']]] = None,
+            ingress: Optional[pulumi.Input[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']]] = None,
+            ingress_dry_run: Optional[pulumi.Input[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']]] = None,
             network_policy_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountNetworkPolicy':
         """
         Get an existing AccountNetworkPolicy resource's state with the given name, id, and optional extra
@@ -290,8 +374,12 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: The associated account ID for this Network Policy object
+        :param pulumi.Input[_builtins.str] account_id: (string) - The associated account ID for this Network Policy object
         :param pulumi.Input[Union['AccountNetworkPolicyEgressArgs', 'AccountNetworkPolicyEgressArgsDict']] egress: The network policies applying for egress traffic
+        :param pulumi.Input[Union['AccountNetworkPolicyIngressArgs', 'AccountNetworkPolicyIngressArgsDict']] ingress: The network policies applying for ingress traffic
+        :param pulumi.Input[Union['AccountNetworkPolicyIngressDryRunArgs', 'AccountNetworkPolicyIngressDryRunArgsDict']] ingress_dry_run: The ingress policy for dry run mode. Dry run will always run even if the request
+               is allowed by the ingress policy. When this field is set, the policy will be evaluated
+               and emit logs only without blocking requests
         :param pulumi.Input[_builtins.str] network_policy_id: The unique identifier for the network policy
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -300,14 +388,16 @@ class AccountNetworkPolicy(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["egress"] = egress
+        __props__.__dict__["ingress"] = ingress
+        __props__.__dict__["ingress_dry_run"] = ingress_dry_run
         __props__.__dict__["network_policy_id"] = network_policy_id
         return AccountNetworkPolicy(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The associated account ID for this Network Policy object
+        (string) - The associated account ID for this Network Policy object
         """
         return pulumi.get(self, "account_id")
 
@@ -318,6 +408,24 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         The network policies applying for egress traffic
         """
         return pulumi.get(self, "egress")
+
+    @_builtins.property
+    @pulumi.getter
+    def ingress(self) -> pulumi.Output[Optional['outputs.AccountNetworkPolicyIngress']]:
+        """
+        The network policies applying for ingress traffic
+        """
+        return pulumi.get(self, "ingress")
+
+    @_builtins.property
+    @pulumi.getter(name="ingressDryRun")
+    def ingress_dry_run(self) -> pulumi.Output[Optional['outputs.AccountNetworkPolicyIngressDryRun']]:
+        """
+        The ingress policy for dry run mode. Dry run will always run even if the request
+        is allowed by the ingress policy. When this field is set, the policy will be evaluated
+        and emit logs only without blocking requests
+        """
+        return pulumi.get(self, "ingress_dry_run")
 
     @_builtins.property
     @pulumi.getter(name="networkPolicyId")

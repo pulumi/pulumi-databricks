@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.UserArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.UserState;
+import com.pulumi.databricks.outputs.UserProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -284,6 +285,20 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowInstancePoolCreate);
     }
     /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
+    /**
      * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      * 
      */
@@ -394,6 +409,12 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<String> home() {
         return this.home;
+    }
+    @Export(name="providerConfig", refs={UserProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ UserProviderConfig> providerConfig;
+
+    public Output<Optional<UserProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.

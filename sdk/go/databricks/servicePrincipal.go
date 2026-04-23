@@ -195,6 +195,8 @@ type ServicePrincipal struct {
 	AllowClusterCreate pulumi.BoolPtrOutput `pulumi:"allowClusterCreate"`
 	// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrOutput `pulumi:"allowInstancePoolCreate"`
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
@@ -212,7 +214,8 @@ type ServicePrincipal struct {
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos pulumi.BoolPtrOutput `pulumi:"forceDeleteRepos"`
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
-	Home pulumi.StringOutput `pulumi:"home"`
+	Home           pulumi.StringOutput                     `pulumi:"home"`
+	ProviderConfig ServicePrincipalProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
 	Repos pulumi.StringOutput `pulumi:"repos"`
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
@@ -259,6 +262,8 @@ type servicePrincipalState struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
 	ApplicationId *string `pulumi:"applicationId"`
 	// This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
@@ -276,7 +281,8 @@ type servicePrincipalState struct {
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos *bool `pulumi:"forceDeleteRepos"`
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
-	Home *string `pulumi:"home"`
+	Home           *string                         `pulumi:"home"`
+	ProviderConfig *ServicePrincipalProviderConfig `pulumi:"providerConfig"`
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
 	Repos *string `pulumi:"repos"`
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
@@ -294,6 +300,8 @@ type ServicePrincipalState struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
 	ApplicationId pulumi.StringPtrInput
 	// This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
@@ -311,7 +319,8 @@ type ServicePrincipalState struct {
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos pulumi.BoolPtrInput
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
-	Home pulumi.StringPtrInput
+	Home           pulumi.StringPtrInput
+	ProviderConfig ServicePrincipalProviderConfigPtrInput
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
 	Repos pulumi.StringPtrInput
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
@@ -333,6 +342,8 @@ type servicePrincipalArgs struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
 	ApplicationId *string `pulumi:"applicationId"`
 	// This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
@@ -350,7 +361,8 @@ type servicePrincipalArgs struct {
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos *bool `pulumi:"forceDeleteRepos"`
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
-	Home *string `pulumi:"home"`
+	Home           *string                         `pulumi:"home"`
+	ProviderConfig *ServicePrincipalProviderConfig `pulumi:"providerConfig"`
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
 	Repos *string `pulumi:"repos"`
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
@@ -369,6 +381,8 @@ type ServicePrincipalArgs struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
 	ApplicationId pulumi.StringPtrInput
 	// This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
@@ -386,7 +400,8 @@ type ServicePrincipalArgs struct {
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos pulumi.BoolPtrInput
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
-	Home pulumi.StringPtrInput
+	Home           pulumi.StringPtrInput
+	ProviderConfig ServicePrincipalProviderConfigPtrInput
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
 	Repos pulumi.StringPtrInput
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
@@ -502,6 +517,11 @@ func (o ServicePrincipalOutput) AllowInstancePoolCreate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.AllowInstancePoolCreate }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o ServicePrincipalOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
 func (o ServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
@@ -545,6 +565,10 @@ func (o ServicePrincipalOutput) ForceDeleteRepos() pulumi.BoolPtrOutput {
 // Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
 func (o ServicePrincipalOutput) Home() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.Home }).(pulumi.StringOutput)
+}
+
+func (o ServicePrincipalOutput) ProviderConfig() ServicePrincipalProviderConfigPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalProviderConfigPtrOutput { return v.ProviderConfig }).(ServicePrincipalProviderConfigPtrOutput)
 }
 
 // Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.

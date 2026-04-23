@@ -21,11 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const cpuEnv = new databricks.index.WorkspaceBaseEnvironment("cpu_env", {
- *     displayName: "my-cpu-environment",
- *     filepath: "/Volumes/catalog/schema/volume/cpu-environment.yaml",
- * });
- * const _this = new databricks.index.DefaultWorkspaceBaseEnvironment("this", {cpuWorkspaceBaseEnvironment: cpuEnv.name});
+ * const _this = new databricks.EnvironmentsDefaultWorkspaceBaseEnvironment("this", {cpuWorkspaceBaseEnvironment: "workspace-base-environments/my-base-env-12345"});
  * ```
  *
  * ### Set Defaults for Both CPU and GPU Compute
@@ -34,16 +30,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const cpuEnv = new databricks.index.WorkspaceBaseEnvironment("cpu_env", {
+ * const cpuEnv = new databricks.EnvironmentsWorkspaceBaseEnvironment("cpu_env", {
  *     displayName: "my-cpu-environment",
  *     filepath: "/Volumes/catalog/schema/volume/cpu-environment.yaml",
  * });
- * const gpuEnv = new databricks.index.WorkspaceBaseEnvironment("gpu_env", {
+ * const gpuEnv = new databricks.EnvironmentsWorkspaceBaseEnvironment("gpu_env", {
  *     displayName: "my-gpu-environment",
  *     filepath: "/Volumes/catalog/schema/volume/gpu-environment.yaml",
- *     baseEnvironmentType: "GPU_LARGE",
+ *     baseEnvironmentType: "GPU",
  * });
- * const _this = new databricks.index.DefaultWorkspaceBaseEnvironment("this", {
+ * const _this = new databricks.EnvironmentsDefaultWorkspaceBaseEnvironment("this", {
  *     cpuWorkspaceBaseEnvironment: cpuEnv.name,
  *     gpuWorkspaceBaseEnvironment: gpuEnv.name,
  * });
@@ -55,7 +51,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.index.DefaultWorkspaceBaseEnvironment("this", {});
+ * const _this = new databricks.EnvironmentsDefaultWorkspaceBaseEnvironment("this", {});
  * ```
  */
 export class EnvironmentsDefaultWorkspaceBaseEnvironment extends pulumi.CustomResource {

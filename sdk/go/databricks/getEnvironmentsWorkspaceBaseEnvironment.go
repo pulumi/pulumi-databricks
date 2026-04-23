@@ -14,6 +14,32 @@ import (
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // This data source retrieves a single Workspace Base Environment by its resource name.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetEnvironmentsWorkspaceBaseEnvironment(ctx, &databricks.LookupEnvironmentsWorkspaceBaseEnvironmentArgs{
+//				Name: "workspace-base-environments/my-environment",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupEnvironmentsWorkspaceBaseEnvironment(ctx *pulumi.Context, args *LookupEnvironmentsWorkspaceBaseEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentsWorkspaceBaseEnvironmentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentsWorkspaceBaseEnvironmentResult

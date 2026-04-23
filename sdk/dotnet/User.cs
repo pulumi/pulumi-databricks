@@ -169,6 +169,12 @@ namespace Pulumi.Databricks
         public Output<bool?> AllowInstancePoolCreate { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Output("api")]
+        public Output<string?> Api { get; private set; } = null!;
+
+        /// <summary>
         /// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         /// </summary>
         [Output("databricksSqlAccess")]
@@ -215,6 +221,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("home")]
         public Output<string> Home { get; private set; } = null!;
+
+        [Output("providerConfig")]
+        public Output<Outputs.UserProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
@@ -311,6 +320,12 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
@@ -357,6 +372,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("home")]
         public Input<string>? Home { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.UserProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
@@ -415,6 +433,12 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
+        /// Specifies whether to use account-level or workspace-level API. Valid values are `Account` and `Workspace`. When not set, the API level is inferred from the provider host.
+        /// </summary>
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
+        /// <summary>
         /// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
@@ -461,6 +485,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("home")]
         public Input<string>? Home { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.UserProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.

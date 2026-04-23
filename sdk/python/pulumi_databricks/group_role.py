@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupRoleArgs', 'GroupRole']
 
@@ -20,15 +22,22 @@ __all__ = ['GroupRoleArgs', 'GroupRole']
 class GroupRoleArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
-                 role: pulumi.Input[_builtins.str]):
+                 role: pulumi.Input[_builtins.str],
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GroupRoleProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a GroupRole resource.
 
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] role: Either a role name or the ARN/ID of the instance profile resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "role", role)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -54,22 +63,62 @@ class GroupRoleArgs:
     def role(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "role", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GroupRoleProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GroupRoleProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
 
 @pulumi.input_type
 class _GroupRoleState:
     def __init__(__self__, *,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['GroupRoleProviderConfigArgs']] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupRole resources.
 
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if role is not None:
             pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -82,6 +131,15 @@ class _GroupRoleState:
     @group_id.setter
     def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['GroupRoleProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['GroupRoleProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -102,7 +160,9 @@ class GroupRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GroupRoleProviderConfigArgs', 'GroupRoleProviderConfigArgsDict']]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -158,6 +218,7 @@ class GroupRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
@@ -233,7 +294,9 @@ class GroupRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api: Optional[pulumi.Input[_builtins.str]] = None,
                  group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['GroupRoleProviderConfigArgs', 'GroupRoleProviderConfigArgsDict']]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -244,9 +307,11 @@ class GroupRole(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupRoleArgs.__new__(GroupRoleArgs)
 
+            __props__.__dict__["api"] = api
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["provider_config"] = provider_config
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
@@ -260,7 +325,9 @@ class GroupRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api: Optional[pulumi.Input[_builtins.str]] = None,
             group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['GroupRoleProviderConfigArgs', 'GroupRoleProviderConfigArgsDict']]] = None,
             role: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupRole':
         """
         Get an existing GroupRole resource's state with the given name, id, and optional extra
@@ -269,6 +336,7 @@ class GroupRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api: Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         :param pulumi.Input[_builtins.str] group_id: This is the id of the group resource.
         :param pulumi.Input[_builtins.str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
@@ -276,9 +344,19 @@ class GroupRole(pulumi.CustomResource):
 
         __props__ = _GroupRoleState.__new__(_GroupRoleState)
 
+        __props__.__dict__["api"] = api
         __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["role"] = role
         return GroupRole(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+        """
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -287,6 +365,11 @@ class GroupRole(pulumi.CustomResource):
         This is the id of the group resource.
         """
         return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.GroupRoleProviderConfig']]:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

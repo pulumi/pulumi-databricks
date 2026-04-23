@@ -40,6 +40,8 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
 	ExtraAttributes *string `pulumi:"extraAttributes"`
 	// Query by which the results have to be filtered. If not specified, all users will be returned. Supported operators are equals (`eq`), contains (`co`), starts with (`sw`), and not equals (`ne`). Additionally, simple expressions can be formed using logical operators `and` and `or`.
@@ -47,16 +49,20 @@ type GetUsersArgs struct {
 	// **Examples:**
 	// - User whose `displayName` equals "john":
 	Filter *string `pulumi:"filter"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetUsersProviderConfig `pulumi:"providerConfig"`
 	// A list of users matching the specified criteria. Each user has the following attributes:
 	Users []GetUsersUser `pulumi:"users"`
 }
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
+	Api             *string `pulumi:"api"`
 	ExtraAttributes *string `pulumi:"extraAttributes"`
 	Filter          *string `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                  `pulumi:"id"`
+	ProviderConfig *GetUsersProviderConfig `pulumi:"providerConfig"`
 	// A list of users matching the specified criteria. Each user has the following attributes:
 	Users []GetUsersUser `pulumi:"users"`
 }
@@ -72,6 +78,8 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getUsers.
 type GetUsersOutputArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput `pulumi:"api"`
 	// A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
 	ExtraAttributes pulumi.StringPtrInput `pulumi:"extraAttributes"`
 	// Query by which the results have to be filtered. If not specified, all users will be returned. Supported operators are equals (`eq`), contains (`co`), starts with (`sw`), and not equals (`ne`). Additionally, simple expressions can be formed using logical operators `and` and `or`.
@@ -79,6 +87,8 @@ type GetUsersOutputArgs struct {
 	// **Examples:**
 	// - User whose `displayName` equals "john":
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetUsersProviderConfigPtrInput `pulumi:"providerConfig"`
 	// A list of users matching the specified criteria. Each user has the following attributes:
 	Users GetUsersUserArrayInput `pulumi:"users"`
 }
@@ -102,6 +112,10 @@ func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GetUsersResultOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 func (o GetUsersResultOutput) ExtraAttributes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.ExtraAttributes }).(pulumi.StringPtrOutput)
 }
@@ -113,6 +127,10 @@ func (o GetUsersResultOutput) Filter() pulumi.StringPtrOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetUsersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetUsersResultOutput) ProviderConfig() GetUsersProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *GetUsersProviderConfig { return v.ProviderConfig }).(GetUsersProviderConfigPtrOutput)
 }
 
 // A list of users matching the specified criteria. Each user has the following attributes:

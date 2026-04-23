@@ -16,6 +16,26 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironments.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allEnvironments"] = all.Apply(getEnvironmentsWorkspaceBaseEnvironmentsResult =&gt; getEnvironmentsWorkspaceBaseEnvironmentsResult.WorkspaceBaseEnvironments),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetEnvironmentsWorkspaceBaseEnvironmentsResult> InvokeAsync(GetEnvironmentsWorkspaceBaseEnvironmentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentsWorkspaceBaseEnvironmentsResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentsArgs(), options.WithDefaults());
@@ -25,6 +45,26 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironments.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allEnvironments"] = all.Apply(getEnvironmentsWorkspaceBaseEnvironmentsResult =&gt; getEnvironmentsWorkspaceBaseEnvironmentsResult.WorkspaceBaseEnvironments),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> Invoke(GetEnvironmentsWorkspaceBaseEnvironmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsWorkspaceBaseEnvironmentsResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentsInvokeArgs(), options.WithDefaults());
@@ -34,6 +74,26 @@ namespace Pulumi.Databricks
         /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironments.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allEnvironments"] = all.Apply(getEnvironmentsWorkspaceBaseEnvironmentsResult =&gt; getEnvironmentsWorkspaceBaseEnvironmentsResult.WorkspaceBaseEnvironments),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEnvironmentsWorkspaceBaseEnvironmentsResult> Invoke(GetEnvironmentsWorkspaceBaseEnvironmentsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsWorkspaceBaseEnvironmentsResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentsInvokeArgs(), options.WithDefaults());

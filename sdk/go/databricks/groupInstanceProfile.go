@@ -75,10 +75,13 @@ import (
 type GroupInstanceProfile struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// This is the id of the group resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// This is the id of the instance profile resource.
-	InstanceProfileId pulumi.StringOutput `pulumi:"instanceProfileId"`
+	InstanceProfileId pulumi.StringOutput                         `pulumi:"instanceProfileId"`
+	ProviderConfig    GroupInstanceProfileProviderConfigPtrOutput `pulumi:"providerConfig"`
 }
 
 // NewGroupInstanceProfile registers a new resource with the given unique name, arguments, and options.
@@ -117,17 +120,23 @@ func GetGroupInstanceProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupInstanceProfile resources.
 type groupInstanceProfileState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the id of the group resource.
 	GroupId *string `pulumi:"groupId"`
 	// This is the id of the instance profile resource.
-	InstanceProfileId *string `pulumi:"instanceProfileId"`
+	InstanceProfileId *string                             `pulumi:"instanceProfileId"`
+	ProviderConfig    *GroupInstanceProfileProviderConfig `pulumi:"providerConfig"`
 }
 
 type GroupInstanceProfileState struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the id of the group resource.
 	GroupId pulumi.StringPtrInput
 	// This is the id of the instance profile resource.
 	InstanceProfileId pulumi.StringPtrInput
+	ProviderConfig    GroupInstanceProfileProviderConfigPtrInput
 }
 
 func (GroupInstanceProfileState) ElementType() reflect.Type {
@@ -135,18 +144,24 @@ func (GroupInstanceProfileState) ElementType() reflect.Type {
 }
 
 type groupInstanceProfileArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api *string `pulumi:"api"`
 	// This is the id of the group resource.
 	GroupId string `pulumi:"groupId"`
 	// This is the id of the instance profile resource.
-	InstanceProfileId string `pulumi:"instanceProfileId"`
+	InstanceProfileId string                              `pulumi:"instanceProfileId"`
+	ProviderConfig    *GroupInstanceProfileProviderConfig `pulumi:"providerConfig"`
 }
 
 // The set of arguments for constructing a GroupInstanceProfile resource.
 type GroupInstanceProfileArgs struct {
+	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+	Api pulumi.StringPtrInput
 	// This is the id of the group resource.
 	GroupId pulumi.StringInput
 	// This is the id of the instance profile resource.
 	InstanceProfileId pulumi.StringInput
+	ProviderConfig    GroupInstanceProfileProviderConfigPtrInput
 }
 
 func (GroupInstanceProfileArgs) ElementType() reflect.Type {
@@ -236,6 +251,11 @@ func (o GroupInstanceProfileOutput) ToGroupInstanceProfileOutputWithContext(ctx 
 	return o
 }
 
+// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+func (o GroupInstanceProfileOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupInstanceProfile) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // This is the id of the group resource.
 func (o GroupInstanceProfileOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupInstanceProfile) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
@@ -244,6 +264,10 @@ func (o GroupInstanceProfileOutput) GroupId() pulumi.StringOutput {
 // This is the id of the instance profile resource.
 func (o GroupInstanceProfileOutput) InstanceProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupInstanceProfile) pulumi.StringOutput { return v.InstanceProfileId }).(pulumi.StringOutput)
+}
+
+func (o GroupInstanceProfileOutput) ProviderConfig() GroupInstanceProfileProviderConfigPtrOutput {
+	return o.ApplyT(func(v *GroupInstanceProfile) GroupInstanceProfileProviderConfigPtrOutput { return v.ProviderConfig }).(GroupInstanceProfileProviderConfigPtrOutput)
 }
 
 type GroupInstanceProfileArrayOutput struct{ *pulumi.OutputState }

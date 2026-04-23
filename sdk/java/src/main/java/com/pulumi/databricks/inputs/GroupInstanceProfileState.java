@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GroupInstanceProfileProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class GroupInstanceProfileState extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupInstanceProfileState Empty = new GroupInstanceProfileState();
+
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
 
     /**
      * This is the id of the group resource.
@@ -45,11 +61,20 @@ public final class GroupInstanceProfileState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.instanceProfileId);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GroupInstanceProfileProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GroupInstanceProfileProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GroupInstanceProfileState() {}
 
     private GroupInstanceProfileState(GroupInstanceProfileState $) {
+        this.api = $.api;
         this.groupId = $.groupId;
         this.instanceProfileId = $.instanceProfileId;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -68,6 +93,27 @@ public final class GroupInstanceProfileState extends com.pulumi.resources.Resour
 
         public Builder(GroupInstanceProfileState defaults) {
             $ = new GroupInstanceProfileState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        /**
+         * @param api Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder api(String api) {
+            return api(Output.of(api));
         }
 
         /**
@@ -110,6 +156,15 @@ public final class GroupInstanceProfileState extends com.pulumi.resources.Resour
          */
         public Builder instanceProfileId(String instanceProfileId) {
             return instanceProfileId(Output.of(instanceProfileId));
+        }
+
+        public Builder providerConfig(@Nullable Output<GroupInstanceProfileProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GroupInstanceProfileProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GroupInstanceProfileState build() {

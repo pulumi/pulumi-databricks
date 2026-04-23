@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationExternalLocationInfoFileEventQueueArgs;
 import java.lang.Boolean;
@@ -106,6 +107,13 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
 
     public Optional<Output<Boolean>> effectiveEnableFileEvents() {
         return Optional.ofNullable(this.effectiveEnableFileEvents);
+    }
+
+    @Import(name="effectiveFileEventQueue")
+    private @Nullable Output<GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs> effectiveFileEventQueue;
+
+    public Optional<Output<GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs>> effectiveFileEventQueue() {
+        return Optional.ofNullable(this.effectiveFileEventQueue);
     }
 
     @Import(name="enableFileEvents")
@@ -266,6 +274,7 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
         this.effectiveEnableFileEvents = $.effectiveEnableFileEvents;
+        this.effectiveFileEventQueue = $.effectiveFileEventQueue;
         this.enableFileEvents = $.enableFileEvents;
         this.encryptionDetails = $.encryptionDetails;
         this.fallback = $.fallback;
@@ -419,6 +428,15 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
 
         public Builder effectiveEnableFileEvents(Boolean effectiveEnableFileEvents) {
             return effectiveEnableFileEvents(Output.of(effectiveEnableFileEvents));
+        }
+
+        public Builder effectiveFileEventQueue(@Nullable Output<GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs> effectiveFileEventQueue) {
+            $.effectiveFileEventQueue = effectiveFileEventQueue;
+            return this;
+        }
+
+        public Builder effectiveFileEventQueue(GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs effectiveFileEventQueue) {
+            return effectiveFileEventQueue(Output.of(effectiveFileEventQueue));
         }
 
         public Builder enableFileEvents(@Nullable Output<Boolean> enableFileEvents) {

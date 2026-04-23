@@ -210,6 +210,15 @@ def get_environments_workspace_base_environment(name: Optional[_builtins.str] = 
 
     This data source retrieves a single Workspace Base Environment by its resource name.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    my_env = databricks.get_environments_workspace_base_environment(name="workspace-base-environments/my-environment")
+    ```
+
 
     :param _builtins.str name: The resource name of the workspace base environment.
            Format: workspace-base-environments/{workspace-base-environment}
@@ -243,6 +252,15 @@ def get_environments_workspace_base_environment_output(name: Optional[pulumi.Inp
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source retrieves a single Workspace Base Environment by its resource name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    my_env = databricks.get_environments_workspace_base_environment(name="workspace-base-environments/my-environment")
+    ```
 
 
     :param _builtins.str name: The resource name of the workspace base environment.

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MetastoreArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MetastoreState;
+import com.pulumi.databricks.outputs.MetastoreProviderConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -169,6 +170,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/metastore:Metastore")
 public class Metastore extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    @Export(name="api", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> api;
+
+    /**
+     * @return Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
+     * 
+     */
+    public Output<Optional<String>> api() {
+        return Codegen.optional(this.api);
+    }
     /**
      * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
      * 
@@ -364,6 +379,20 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> privilegeModelVersion() {
         return this.privilegeModelVersion;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={MetastoreProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ MetastoreProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<MetastoreProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The region of the metastore
