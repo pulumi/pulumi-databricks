@@ -171,6 +171,25 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * (integer) - The current space occupied by the project in storage
      * 
      */
@@ -198,6 +217,7 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
         this.historyRetentionDuration = $.historyRetentionDuration;
         this.owner = $.owner;
         this.pgVersion = $.pgVersion;
+        this.projectId = $.projectId;
         this.syntheticStorageSizeBytes = $.syntheticStorageSizeBytes;
     }
 
@@ -437,6 +457,31 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
          */
         public Builder pgVersion(Integer pgVersion) {
             return pgVersion(Output.of(pgVersion));
+        }
+
+        /**
+         * @param projectId The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `my-app` becomes `projects/my-app`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `my-app` becomes `projects/my-app`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

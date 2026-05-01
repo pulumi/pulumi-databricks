@@ -28,10 +28,13 @@ class GetPostgresProjectResult:
     """
     A collection of values returned by getPostgresProject.
     """
-    def __init__(__self__, create_time=None, id=None, initial_endpoint_spec=None, name=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, id=None, initial_endpoint_spec=None, name=None, provider_config=None, purge_time=None, spec=None, status=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if delete_time and not isinstance(delete_time, str):
+            raise TypeError("Expected argument 'delete_time' to be a str")
+        pulumi.set(__self__, "delete_time", delete_time)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -44,6 +47,9 @@ class GetPostgresProjectResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
+        if purge_time and not isinstance(purge_time, str):
+            raise TypeError("Expected argument 'purge_time' to be a str")
+        pulumi.set(__self__, "purge_time", purge_time)
         if spec and not isinstance(spec, dict):
             raise TypeError("Expected argument 'spec' to be a dict")
         pulumi.set(__self__, "spec", spec)
@@ -66,6 +72,15 @@ class GetPostgresProjectResult:
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> _builtins.str:
+        """
+        (string) - A timestamp indicating when the project was soft-deleted.
+        Empty if the project is not deleted, otherwise set to a timestamp in the past
+        """
+        return pulumi.get(self, "delete_time")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -77,7 +92,7 @@ class GetPostgresProjectResult:
     @pulumi.getter(name="initialEndpointSpec")
     def initial_endpoint_spec(self) -> 'outputs.GetPostgresProjectInitialEndpointSpecResult':
         """
-        (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         created project. If omitted, the initial endpoint created will have default settings, without high availability
         configured. This field does not apply to any endpoints created after project creation. Use
         spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -97,6 +112,15 @@ class GetPostgresProjectResult:
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['outputs.GetPostgresProjectProviderConfigResult']:
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="purgeTime")
+    def purge_time(self) -> _builtins.str:
+        """
+        (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+        Empty if the project is not deleted, otherwise set to a timestamp in the future
+        """
+        return pulumi.get(self, "purge_time")
 
     @_builtins.property
     @pulumi.getter
@@ -138,10 +162,12 @@ class AwaitableGetPostgresProjectResult(GetPostgresProjectResult):
             yield self
         return GetPostgresProjectResult(
             create_time=self.create_time,
+            delete_time=self.delete_time,
             id=self.id,
             initial_endpoint_spec=self.initial_endpoint_spec,
             name=self.name,
             provider_config=self.provider_config,
+            purge_time=self.purge_time,
             spec=self.spec,
             status=self.status,
             uid=self.uid,
@@ -183,10 +209,12 @@ def get_postgres_project(name: Optional[_builtins.str] = None,
 
     return AwaitableGetPostgresProjectResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
         id=pulumi.get(__ret__, 'id'),
         initial_endpoint_spec=pulumi.get(__ret__, 'initial_endpoint_spec'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
+        purge_time=pulumi.get(__ret__, 'purge_time'),
         spec=pulumi.get(__ret__, 'spec'),
         status=pulumi.get(__ret__, 'status'),
         uid=pulumi.get(__ret__, 'uid'),
@@ -225,10 +253,12 @@ def get_postgres_project_output(name: Optional[pulumi.Input[_builtins.str]] = No
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresProject:getPostgresProject', __args__, opts=opts, typ=GetPostgresProjectResult)
     return __ret__.apply(lambda __response__: GetPostgresProjectResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        delete_time=pulumi.get(__response__, 'delete_time'),
         id=pulumi.get(__response__, 'id'),
         initial_endpoint_spec=pulumi.get(__response__, 'initial_endpoint_spec'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
+        purge_time=pulumi.get(__response__, 'purge_time'),
         spec=pulumi.get(__response__, 'spec'),
         status=pulumi.get(__response__, 'status'),
         uid=pulumi.get(__response__, 'uid'),

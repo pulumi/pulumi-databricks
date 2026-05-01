@@ -11,6 +11,143 @@ namespace Pulumi.Databricks
 {
     /// <summary>
     /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Database Owned by a Specific Role
+    /// 
+    /// Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var appOwner = new Databricks.Index.PostgresRole("app_owner", new()
+    ///     {
+    ///         RoleId = "app-owner",
+    ///         Parent = main.Name,
+    ///         Spec = new Databricks.Inputs.PostgresRoleSpecArgs
+    ///         {
+    ///             PostgresRole = "app_owner",
+    ///         },
+    ///     });
+    /// 
+    ///     var app = new Databricks.Index.PostgresDatabase("app", new()
+    ///     {
+    ///         DatabaseId = "app",
+    ///         Parent = main.Name,
+    ///         Spec = new Databricks.Inputs.PostgresDatabaseSpecArgs
+    ///         {
+    ///             PostgresDatabase = "app",
+    ///             Role = appOwner.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Renaming a Database
+    /// 
+    /// Changing `spec.postgres_database` renames the underlying Postgres database without replacing the resource. The resource identifier (`DatabaseId`) is separate from the Postgres database name, and stays intact in the example below.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var analytics = new Databricks.Index.PostgresDatabase("analytics", new()
+    ///     {
+    ///         DatabaseId = "analytics",
+    ///         Parent = main.Name,
+    ///         Spec = new Databricks.Inputs.PostgresDatabaseSpecArgs
+    ///         {
+    ///             PostgresDatabase = "analytics_v2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Multiple databases in a branch
+    /// 
+    /// By default, Pulumi creates resources in parallel if the dependency graph allows for that. However, Lakebase
+    /// doesn't allow the parallel management of resource inside a single branch. Only one of these resources can
+    /// be created at a time:
+    /// 
+    /// - Role
+    /// - Database
+    /// - Endpoint
+    /// 
+    /// If you try to create resources in parallel, you'll see a conflict error like:
+    /// 
+    /// &gt; Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+    /// 
+    /// Pulumi serializes automatically when one resource references another, forming an edge in the dependency graph.
+    /// For example, if a database's `spec.role` points at a role, Pulumi creates the role before the database.
+    /// For resources that don't reference each other, like two sibling databases in the same branch, add `DependsOn` so
+    /// Pulumi knows to wait for complete creation of the first resource, before starting the creation of the second one.
+    /// 
+    /// For example:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schemaOwner = new Databricks.Index.PostgresRole("schema_owner", new()
+    ///     {
+    ///         RoleId = "schemamigrator",
+    ///         Parent = test.Name,
+    ///         Spec = new Databricks.Inputs.PostgresRoleSpecArgs
+    ///         {
+    ///             PostgresRole = "schemamigrator",
+    ///             MembershipRoles = new[]
+    ///             {
+    ///                 "DATABRICKS_SUPERUSER",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var application1 = new Databricks.Index.PostgresDatabase("application1", new()
+    ///     {
+    ///         DatabaseId = "application1",
+    ///         Parent = test.Name,
+    ///         Spec = new Databricks.Inputs.PostgresDatabaseSpecArgs
+    ///         {
+    ///             PostgresDatabase = "application1",
+    ///             Role = schemaOwner.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var application2 = new Databricks.Index.PostgresDatabase("application2", new()
+    ///     {
+    ///         DatabaseId = "application2",
+    ///         Parent = test.Name,
+    ///         Spec = new Databricks.Inputs.PostgresDatabaseSpecArgs
+    ///         {
+    ///             PostgresDatabase = "application2",
+    ///             Role = schemaOwner.Name,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             application1,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/postgresDatabase:PostgresDatabase")]
     public partial class PostgresDatabase : global::Pulumi.CustomResource

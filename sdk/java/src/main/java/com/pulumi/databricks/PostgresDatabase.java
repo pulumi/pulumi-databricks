@@ -20,6 +20,182 @@ import javax.annotation.Nullable;
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
+ * ## Example Usage
+ * 
+ * ### Database Owned by a Specific Role
+ * 
+ * Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresRole;
+ * import com.pulumi.databricks.PostgresRoleArgs;
+ * import com.pulumi.databricks.inputs.PostgresRoleSpecArgs;
+ * import com.pulumi.databricks.PostgresDatabase;
+ * import com.pulumi.databricks.PostgresDatabaseArgs;
+ * import com.pulumi.databricks.inputs.PostgresDatabaseSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var appOwner = new PostgresRole("appOwner", PostgresRoleArgs.builder()
+ *             .roleId("app-owner")
+ *             .parent(main.name())
+ *             .spec(PostgresRoleSpecArgs.builder()
+ *                 .postgresRole("app_owner")
+ *                 .build())
+ *             .build());
+ * 
+ *         var app = new PostgresDatabase("app", PostgresDatabaseArgs.builder()
+ *             .databaseId("app")
+ *             .parent(main.name())
+ *             .spec(PostgresDatabaseSpecArgs.builder()
+ *                 .postgresDatabase("app")
+ *                 .role(appOwner.name())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Renaming a Database
+ * 
+ * Changing `spec.postgres_database` renames the underlying Postgres database without replacing the resource. The resource identifier (`databaseId`) is separate from the Postgres database name, and stays intact in the example below.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresDatabase;
+ * import com.pulumi.databricks.PostgresDatabaseArgs;
+ * import com.pulumi.databricks.inputs.PostgresDatabaseSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var analytics = new PostgresDatabase("analytics", PostgresDatabaseArgs.builder()
+ *             .databaseId("analytics")
+ *             .parent(main.name())
+ *             .spec(PostgresDatabaseSpecArgs.builder()
+ *                 .postgresDatabase("analytics_v2")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Multiple databases in a branch
+ * 
+ * By default, Pulumi creates resources in parallel if the dependency graph allows for that. However, Lakebase
+ * doesn&#39;t allow the parallel management of resource inside a single branch. Only one of these resources can
+ * be created at a time:
+ * 
+ * - Role
+ * - Database
+ * - Endpoint
+ * 
+ * If you try to create resources in parallel, you&#39;ll see a conflict error like:
+ * 
+ * &gt; Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+ * 
+ * Pulumi serializes automatically when one resource references another, forming an edge in the dependency graph.
+ * For example, if a database&#39;s `spec.role` points at a role, Pulumi creates the role before the database.
+ * For resources that don&#39;t reference each other, like two sibling databases in the same branch, add `dependsOn` so
+ * Pulumi knows to wait for complete creation of the first resource, before starting the creation of the second one.
+ * 
+ * For example:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresRole;
+ * import com.pulumi.databricks.PostgresRoleArgs;
+ * import com.pulumi.databricks.inputs.PostgresRoleSpecArgs;
+ * import com.pulumi.databricks.PostgresDatabase;
+ * import com.pulumi.databricks.PostgresDatabaseArgs;
+ * import com.pulumi.databricks.inputs.PostgresDatabaseSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var schemaOwner = new PostgresRole("schemaOwner", PostgresRoleArgs.builder()
+ *             .roleId("schemamigrator")
+ *             .parent(test.name())
+ *             .spec(PostgresRoleSpecArgs.builder()
+ *                 .postgresRole("schemamigrator")
+ *                 .membershipRoles("DATABRICKS_SUPERUSER")
+ *                 .build())
+ *             .build());
+ * 
+ *         var application1 = new PostgresDatabase("application1", PostgresDatabaseArgs.builder()
+ *             .databaseId("application1")
+ *             .parent(test.name())
+ *             .spec(PostgresDatabaseSpecArgs.builder()
+ *                 .postgresDatabase("application1")
+ *                 .role(schemaOwner.name())
+ *                 .build())
+ *             .build());
+ * 
+ *         var application2 = new PostgresDatabase("application2", PostgresDatabaseArgs.builder()
+ *             .databaseId("application2")
+ *             .parent(test.name())
+ *             .spec(PostgresDatabaseSpecArgs.builder()
+ *                 .postgresDatabase("application2")
+ *                 .role(schemaOwner.name())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(application1)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="databricks:index/postgresDatabase:PostgresDatabase")
 public class PostgresDatabase extends com.pulumi.resources.CustomResource {

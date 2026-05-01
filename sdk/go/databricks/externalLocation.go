@@ -211,9 +211,9 @@ type ExternalLocation struct {
 	// Unique ID of the location's storage credential.
 	CredentialId pulumi.StringOutput `pulumi:"credentialId"`
 	// Name of the StorageCredential to use with this external location.
-	CredentialName            pulumi.StringOutput                              `pulumi:"credentialName"`
-	EffectiveEnableFileEvents pulumi.BoolOutput                                `pulumi:"effectiveEnableFileEvents"`
-	EffectiveFileEventQueue   ExternalLocationEffectiveFileEventQueuePtrOutput `pulumi:"effectiveFileEventQueue"`
+	CredentialName            pulumi.StringOutput                           `pulumi:"credentialName"`
+	EffectiveEnableFileEvents pulumi.BoolOutput                             `pulumi:"effectiveEnableFileEvents"`
+	EffectiveFileEventQueue   ExternalLocationEffectiveFileEventQueueOutput `pulumi:"effectiveFileEventQueue"`
 	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
 	EnableFileEvents  pulumi.BoolPtrOutput                       `pulumi:"enableFileEvents"`
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrOutput `pulumi:"encryptionDetails"`
@@ -556,10 +556,10 @@ func (o ExternalLocationOutput) EffectiveEnableFileEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolOutput { return v.EffectiveEnableFileEvents }).(pulumi.BoolOutput)
 }
 
-func (o ExternalLocationOutput) EffectiveFileEventQueue() ExternalLocationEffectiveFileEventQueuePtrOutput {
-	return o.ApplyT(func(v *ExternalLocation) ExternalLocationEffectiveFileEventQueuePtrOutput {
+func (o ExternalLocationOutput) EffectiveFileEventQueue() ExternalLocationEffectiveFileEventQueueOutput {
+	return o.ApplyT(func(v *ExternalLocation) ExternalLocationEffectiveFileEventQueueOutput {
 		return v.EffectiveFileEventQueue
-	}).(ExternalLocationEffectiveFileEventQueuePtrOutput)
+	}).(ExternalLocationEffectiveFileEventQueueOutput)
 }
 
 // indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.

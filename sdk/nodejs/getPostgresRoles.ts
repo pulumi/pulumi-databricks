@@ -8,6 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres roles in a branch.
+ *
+ * ## Example Usage
+ *
+ * ### List All Roles in a Branch
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresRoles({
+ *     parent: "projects/my-project/branches/main",
+ * });
+ * export const roleNames = all.then(all => .map(role => (role.name)));
+ * export const roleIdentityTypes = all.then(all => .map(role => (role.status?.identityType)));
+ * ```
  */
 export function getPostgresRoles(args: GetPostgresRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresRolesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,6 +73,23 @@ export interface GetPostgresRolesResult {
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres roles in a branch.
+ *
+ * ## Example Usage
+ *
+ * ### List All Roles in a Branch
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresRoles({
+ *     parent: "projects/my-project/branches/main",
+ * });
+ * export const roleNames = all.then(all => .map(role => (role.name)));
+ * export const roleIdentityTypes = all.then(all => .map(role => (role.status?.identityType)));
+ * ```
  */
 export function getPostgresRolesOutput(args: GetPostgresRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresRolesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -11,7 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### Basic Read-Write Endpoint
+ * ### Managing Implicitly Created Read-Write Endpoint
+ *
+ * A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi take ownership of the implicitly created endpoint and immediately apply the provided configuration to it. Support for providing a custom `endpointId` will be available in later versions.
+ *
+ * This resource is only required if you want to apply configuration changes to the implicitly created endpoint.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +40,11 @@ import * as utilities from "./utilities";
  *     parent: dev.name,
  *     spec: {
  *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *         autoscalingLimitMinCu: 0.5,
+ *         autoscalingLimitMaxCu: 4,
+ *         suspendTimeoutDuration: "600s",
  *     },
+ *     replaceExisting: true,
  * });
  * ```
  *
@@ -112,20 +120,27 @@ import * as utilities from "./utilities";
  * Configure a single endpoint with multiple compute instances for high availability.
  * One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
  *
+ * High availability requires scale-to-zero to be disabled.
+ * Set `noSuspension = true` in `spec` as shown in the example below.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const haPrimary = new databricks.PostgresEndpoint("ha_primary", {
  *     endpointId: "primary",
- *     parent: main.name,
+ *     parent: dev.name,
  *     spec: {
  *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *         noSuspension: true,
+ *         autoscalingLimitMinCu: 0.5,
+ *         autoscalingLimitMaxCu: 4,
  *         group: {
  *             min: 2,
  *             max: 2,
  *         },
  *     },
+ *     replaceExisting: true,
  * });
  * ```
  *
@@ -136,27 +151,25 @@ import * as utilities from "./utilities";
  * on read-write endpoints with more than one compute. The secondaries are optionally
  * exposed as read-only host via `enableReadableSecondaries`.
  *
- * High availability requires scale-to-zero to be disabled.
- * Set `noSuspension = true` in `defaultEndpointSettings` as shown in the example below.
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const haReadable = new databricks.PostgresEndpoint("ha_readable", {
  *     endpointId: "primary",
- *     parent: main.name,
+ *     parent: dev.name,
  *     spec: {
  *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *         noSuspension: true,
+ *         autoscalingLimitMinCu: 0.5,
+ *         autoscalingLimitMaxCu: 4,
  *         group: {
  *             min: 2,
  *             max: 2,
  *             enableReadableSecondaries: true,
  *         },
- *         defaultEndpointSettings: {
- *             noSuspension: true,
- *         },
  *     },
+ *     replaceExisting: true,
  * });
  * ```
  *
@@ -200,6 +213,7 @@ import * as utilities from "./utilities";
  *             enableReadableSecondaries: true,
  *         },
  *     },
+ *     replaceExisting: true,
  * });
  * const readReplica = new databricks.PostgresEndpoint("read_replica", {
  *     endpointId: "read-replica",
@@ -266,6 +280,10 @@ export class PostgresEndpoint extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresEndpointProviderConfig | undefined>;
     /**
+     * If true, update the endpoint if it already exists instead of returning an error
+     */
+    declare public readonly replaceExisting: pulumi.Output<boolean | undefined>;
+    /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresEndpointSpec>;
@@ -300,6 +318,7 @@ export class PostgresEndpoint extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["replaceExisting"] = state?.replaceExisting;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
             resourceInputs["uid"] = state?.uid;
@@ -315,6 +334,7 @@ export class PostgresEndpoint extends pulumi.CustomResource {
             resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["replaceExisting"] = args?.replaceExisting;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -356,6 +376,10 @@ export interface PostgresEndpointState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig>;
     /**
+     * If true, update the endpoint if it already exists instead of returning an error
+     */
+    replaceExisting?: pulumi.Input<boolean>;
+    /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
     spec?: pulumi.Input<inputs.PostgresEndpointSpec>;
@@ -392,6 +416,10 @@ export interface PostgresEndpointArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig>;
+    /**
+     * If true, update the endpoint if it already exists instead of returning an error
+     */
+    replaceExisting?: pulumi.Input<boolean>;
     /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */

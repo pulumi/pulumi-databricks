@@ -79,6 +79,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? PgVersion { get; set; }
 
         /// <summary>
+        /// The ID to use for the Project. This becomes the final component of the project's resource name.
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `my-app` becomes `projects/my-app`
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// (integer) - The current space occupied by the project in storage
         /// </summary>
         [Input("syntheticStorageSizeBytes")]

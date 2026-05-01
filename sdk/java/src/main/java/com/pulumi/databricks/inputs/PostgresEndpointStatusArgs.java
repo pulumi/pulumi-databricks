@@ -21,14 +21,16 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     public static final PostgresEndpointStatusArgs Empty = new PostgresEndpointStatusArgs();
 
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     @Import(name="autoscalingLimitMaxCu")
     private @Nullable Output<Double> autoscalingLimitMaxCu;
 
     /**
-     * @return (number) - The maximum number of Compute Units
+     * @return (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     public Optional<Output<Double>> autoscalingLimitMaxCu() {
@@ -84,6 +86,25 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
+    }
+
+    /**
+     * The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * 
+     */
+    @Import(name="endpointId")
+    private @Nullable Output<String> endpointId;
+
+    /**
+     * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * 
+     */
+    public Optional<Output<String>> endpointId() {
+        return Optional.ofNullable(this.endpointId);
     }
 
     /**
@@ -183,6 +204,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         this.autoscalingLimitMinCu = $.autoscalingLimitMinCu;
         this.currentState = $.currentState;
         this.disabled = $.disabled;
+        this.endpointId = $.endpointId;
         this.endpointType = $.endpointType;
         this.group = $.group;
         this.hosts = $.hosts;
@@ -210,7 +232,8 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param autoscalingLimitMaxCu (number) - The maximum number of Compute Units
+         * @param autoscalingLimitMaxCu (number) - The maximum number of Compute Units. The maximum value is 64.
+         * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
          * 
          * @return builder
          * 
@@ -221,7 +244,8 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param autoscalingLimitMaxCu (number) - The maximum number of Compute Units
+         * @param autoscalingLimitMaxCu (number) - The maximum number of Compute Units. The maximum value is 64.
+         * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
          * 
          * @return builder
          * 
@@ -297,6 +321,31 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
          */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
+        }
+
+        /**
+         * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointId(@Nullable Output<String> endpointId) {
+            $.endpointId = endpointId;
+            return this;
+        }
+
+        /**
+         * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointId(String endpointId) {
+            return endpointId(Output.of(endpointId));
         }
 
         /**

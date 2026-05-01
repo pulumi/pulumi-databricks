@@ -140,6 +140,22 @@ def get_postgres_role(name: Optional[_builtins.str] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    This data source retrieves a single Postgres role.
+
+    ## Example Usage
+
+    ### Retrieve Role by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_role(name="projects/my-project/branches/main/roles/jane")
+    pulumi.export("rolePostgresName", this.status.postgres_role)
+    pulumi.export("roleIdentityType", this.status.identity_type)
+    pulumi.export("roleAuthMethod", this.status.auth_method)
+    ```
+
 
     :param _builtins.str name: Output only. The full resource path of the role.
            Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
@@ -165,6 +181,22 @@ def get_postgres_role_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresRoleResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source retrieves a single Postgres role.
+
+    ## Example Usage
+
+    ### Retrieve Role by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_role(name="projects/my-project/branches/main/roles/jane")
+    pulumi.export("rolePostgresName", this.status.postgres_role)
+    pulumi.export("roleIdentityType", this.status.identity_type)
+    pulumi.export("roleAuthMethod", this.status.auth_method)
+    ```
 
 
     :param _builtins.str name: Output only. The full resource path of the role.

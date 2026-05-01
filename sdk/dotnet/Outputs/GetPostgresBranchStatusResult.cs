@@ -14,6 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresBranchStatusResult
     {
         /// <summary>
+        /// (string) - The short identifier of the branch, suitable for showing to the users.
+        /// For a branch with name `projects/my-project/branches/my-branch`, the BranchId is `my-branch`.
+        /// </summary>
+        public readonly string BranchId;
+        /// <summary>
         /// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         /// </summary>
         public readonly string CurrentState;
@@ -57,6 +62,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetPostgresBranchStatusResult(
+            string branchId,
+
             string currentState,
 
             bool @default,
@@ -77,6 +84,7 @@ namespace Pulumi.Databricks.Outputs
 
             string stateChangeTime)
         {
+            BranchId = branchId;
             CurrentState = currentState;
             Default = @default;
             ExpireTime = expireTime;

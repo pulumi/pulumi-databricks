@@ -54,6 +54,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int PgVersion;
         /// <summary>
+        /// (string) - The short identifier of the project, suitable for showing to the users.
+        /// For a project with name `projects/my-project`, the ProjectId is `my-project`.
+        /// </summary>
+        public readonly string ProjectId;
+        /// <summary>
         /// (integer) - The current space occupied by the project in storage
         /// </summary>
         public readonly int SyntheticStorageSizeBytes;
@@ -80,6 +85,8 @@ namespace Pulumi.Databricks.Outputs
 
             int pgVersion,
 
+            string projectId,
+
             int syntheticStorageSizeBytes)
         {
             BranchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
@@ -92,6 +99,7 @@ namespace Pulumi.Databricks.Outputs
             HistoryRetentionDuration = historyRetentionDuration;
             Owner = owner;
             PgVersion = pgVersion;
+            ProjectId = projectId;
             SyntheticStorageSizeBytes = syntheticStorageSizeBytes;
         }
     }

@@ -24978,12 +24978,90 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres database.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Database by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresDatabase(GetPostgresDatabaseArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app")
+     *             .build());
+     * 
+     *         ctx.export("postgresDatabaseName", this_.status().postgresDatabase());
+     *         ctx.export("databaseOwnerRole", this_.status().role());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresDatabaseResult> getPostgresDatabase(GetPostgresDatabaseArgs args) {
         return getPostgresDatabase(args, InvokeOptions.Empty);
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres database.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Database by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresDatabase(GetPostgresDatabaseArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app")
+     *             .build());
+     * 
+     *         ctx.export("postgresDatabaseName", this_.status().postgresDatabase());
+     *         ctx.export("databaseOwnerRole", this_.status().role());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresDatabaseResult> getPostgresDatabasePlain(GetPostgresDatabasePlainArgs args) {
@@ -24992,12 +25070,90 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres database.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Database by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresDatabase(GetPostgresDatabaseArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app")
+     *             .build());
+     * 
+     *         ctx.export("postgresDatabaseName", this_.status().postgresDatabase());
+     *         ctx.export("databaseOwnerRole", this_.status().role());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresDatabaseResult> getPostgresDatabase(GetPostgresDatabaseArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres database.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Database by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresDatabase(GetPostgresDatabaseArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app")
+     *             .build());
+     * 
+     *         ctx.export("postgresDatabaseName", this_.status().postgresDatabase());
+     *         ctx.export("databaseOwnerRole", this_.status().role());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresDatabaseResult> getPostgresDatabase(GetPostgresDatabaseArgs args, InvokeOutputOptions options) {
@@ -25006,12 +25162,57 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres database.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Database by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresDatabase(GetPostgresDatabaseArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app")
+     *             .build());
+     * 
+     *         ctx.export("postgresDatabaseName", this_.status().postgresDatabase());
+     *         ctx.export("databaseOwnerRole", this_.status().role());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetPostgresDatabaseResult> getPostgresDatabasePlain(GetPostgresDatabasePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres databases in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Databases in a Branch
      * 
      */
     public static Output<GetPostgresDatabasesResult> getPostgresDatabases(GetPostgresDatabasesArgs args) {
@@ -25020,12 +25221,24 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source lists all Postgres databases in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Databases in a Branch
+     * 
      */
     public static CompletableFuture<GetPostgresDatabasesResult> getPostgresDatabasesPlain(GetPostgresDatabasesPlainArgs args) {
         return getPostgresDatabasesPlain(args, InvokeOptions.Empty);
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres databases in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Databases in a Branch
      * 
      */
     public static Output<GetPostgresDatabasesResult> getPostgresDatabases(GetPostgresDatabasesArgs args, InvokeOptions options) {
@@ -25034,12 +25247,24 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source lists all Postgres databases in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Databases in a Branch
+     * 
      */
     public static Output<GetPostgresDatabasesResult> getPostgresDatabases(GetPostgresDatabasesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabases:getPostgresDatabases", TypeShape.of(GetPostgresDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres databases in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Databases in a Branch
      * 
      */
     public static CompletableFuture<GetPostgresDatabasesResult> getPostgresDatabasesPlain(GetPostgresDatabasesPlainArgs args, InvokeOptions options) {
@@ -25664,12 +25889,92 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres role.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Role by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresRole(GetPostgresRoleArgs.builder()
+     *             .name("projects/my-project/branches/main/roles/jane")
+     *             .build());
+     * 
+     *         ctx.export("rolePostgresName", this_.status().postgresRole());
+     *         ctx.export("roleIdentityType", this_.status().identityType());
+     *         ctx.export("roleAuthMethod", this_.status().authMethod());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresRoleResult> getPostgresRole(GetPostgresRoleArgs args) {
         return getPostgresRole(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres role.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Role by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresRole(GetPostgresRoleArgs.builder()
+     *             .name("projects/my-project/branches/main/roles/jane")
+     *             .build());
+     * 
+     *         ctx.export("rolePostgresName", this_.status().postgresRole());
+     *         ctx.export("roleIdentityType", this_.status().identityType());
+     *         ctx.export("roleAuthMethod", this_.status().authMethod());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresRoleResult> getPostgresRolePlain(GetPostgresRolePlainArgs args) {
@@ -25678,12 +25983,92 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres role.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Role by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresRole(GetPostgresRoleArgs.builder()
+     *             .name("projects/my-project/branches/main/roles/jane")
+     *             .build());
+     * 
+     *         ctx.export("rolePostgresName", this_.status().postgresRole());
+     *         ctx.export("roleIdentityType", this_.status().identityType());
+     *         ctx.export("roleAuthMethod", this_.status().authMethod());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresRoleResult> getPostgresRole(GetPostgresRoleArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresRole:getPostgresRole", TypeShape.of(GetPostgresRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres role.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Role by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresRole(GetPostgresRoleArgs.builder()
+     *             .name("projects/my-project/branches/main/roles/jane")
+     *             .build());
+     * 
+     *         ctx.export("rolePostgresName", this_.status().postgresRole());
+     *         ctx.export("roleIdentityType", this_.status().identityType());
+     *         ctx.export("roleAuthMethod", this_.status().authMethod());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetPostgresRoleResult> getPostgresRole(GetPostgresRoleArgs args, InvokeOutputOptions options) {
@@ -25692,12 +26077,58 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres role.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Role by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresRole(GetPostgresRoleArgs.builder()
+     *             .name("projects/my-project/branches/main/roles/jane")
+     *             .build());
+     * 
+     *         ctx.export("rolePostgresName", this_.status().postgresRole());
+     *         ctx.export("roleIdentityType", this_.status().identityType());
+     *         ctx.export("roleAuthMethod", this_.status().authMethod());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetPostgresRoleResult> getPostgresRolePlain(GetPostgresRolePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresRole:getPostgresRole", TypeShape.of(GetPostgresRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres roles in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Roles in a Branch
      * 
      */
     public static Output<GetPostgresRolesResult> getPostgresRoles(GetPostgresRolesArgs args) {
@@ -25706,12 +26137,24 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source lists all Postgres roles in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Roles in a Branch
+     * 
      */
     public static CompletableFuture<GetPostgresRolesResult> getPostgresRolesPlain(GetPostgresRolesPlainArgs args) {
         return getPostgresRolesPlain(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres roles in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Roles in a Branch
      * 
      */
     public static Output<GetPostgresRolesResult> getPostgresRoles(GetPostgresRolesArgs args, InvokeOptions options) {
@@ -25720,12 +26163,24 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source lists all Postgres roles in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Roles in a Branch
+     * 
      */
     public static Output<GetPostgresRolesResult> getPostgresRoles(GetPostgresRolesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresRoles:getPostgresRoles", TypeShape.of(GetPostgresRolesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source lists all Postgres roles in a branch.
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Roles in a Branch
      * 
      */
     public static CompletableFuture<GetPostgresRolesResult> getPostgresRolesPlain(GetPostgresRolesPlainArgs args, InvokeOptions options) {

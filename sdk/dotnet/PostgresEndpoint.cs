@@ -14,7 +14,11 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic Read-Write Endpoint
+    /// ### Managing Implicitly Created Read-Write Endpoint
+    /// 
+    /// A read-write endpoint named `Primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `ReplaceExisting = true`: it lets Pulumi take ownership of the implicitly created endpoint and immediately apply the provided configuration to it. Support for providing a custom `EndpointId` will be available in later versions.
+    /// 
+    /// This resource is only required if you want to apply configuration changes to the implicitly created endpoint.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -51,7 +55,11 @@ namespace Pulumi.Databricks
     ///         Spec = new Databricks.Inputs.PostgresEndpointSpecArgs
     ///         {
     ///             EndpointType = "ENDPOINT_TYPE_READ_WRITE",
+    ///             AutoscalingLimitMinCu = 0.5,
+    ///             AutoscalingLimitMaxCu = 4,
+    ///             SuspendTimeoutDuration = "600s",
     ///         },
+    ///         ReplaceExisting = true,
     ///     });
     /// 
     /// });
@@ -161,6 +169,9 @@ namespace Pulumi.Databricks
     /// Configure a single endpoint with multiple compute instances for high availability.
     /// One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
     /// 
+    /// High availability requires scale-to-zero to be disabled.
+    /// Set `NoSuspension = true` in `Spec` as shown in the example below.
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -172,16 +183,20 @@ namespace Pulumi.Databricks
     ///     var haPrimary = new Databricks.Index.PostgresEndpoint("ha_primary", new()
     ///     {
     ///         EndpointId = "primary",
-    ///         Parent = main.Name,
+    ///         Parent = dev.Name,
     ///         Spec = new Databricks.Inputs.PostgresEndpointSpecArgs
     ///         {
     ///             EndpointType = "ENDPOINT_TYPE_READ_WRITE",
+    ///             NoSuspension = true,
+    ///             AutoscalingLimitMinCu = 0.5,
+    ///             AutoscalingLimitMaxCu = 4,
     ///             Group = new Databricks.Inputs.PostgresEndpointSpecGroupArgs
     ///             {
     ///                 Min = 2,
     ///                 Max = 2,
     ///             },
     ///         },
+    ///         ReplaceExisting = true,
     ///     });
     /// 
     /// });
@@ -194,9 +209,6 @@ namespace Pulumi.Databricks
     /// on read-write endpoints with more than one compute. The secondaries are optionally
     /// exposed as read-only host via `EnableReadableSecondaries`.
     /// 
-    /// High availability requires scale-to-zero to be disabled.
-    /// Set `NoSuspension = true` in `DefaultEndpointSettings` as shown in the example below.
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -208,21 +220,21 @@ namespace Pulumi.Databricks
     ///     var haReadable = new Databricks.Index.PostgresEndpoint("ha_readable", new()
     ///     {
     ///         EndpointId = "primary",
-    ///         Parent = main.Name,
+    ///         Parent = dev.Name,
     ///         Spec = new Databricks.Inputs.PostgresEndpointSpecArgs
     ///         {
     ///             EndpointType = "ENDPOINT_TYPE_READ_WRITE",
+    ///             NoSuspension = true,
+    ///             AutoscalingLimitMinCu = 0.5,
+    ///             AutoscalingLimitMaxCu = 4,
     ///             Group = new Databricks.Inputs.PostgresEndpointSpecGroupArgs
     ///             {
     ///                 Min = 2,
     ///                 Max = 2,
     ///                 EnableReadableSecondaries = true,
     ///             },
-    ///             DefaultEndpointSettings = 
-    ///             {
-    ///                 { "noSuspension", true },
-    ///             },
     ///         },
+    ///         ReplaceExisting = true,
     ///     });
     /// 
     /// });
@@ -282,6 +294,7 @@ namespace Pulumi.Databricks
     ///                 EnableReadableSecondaries = true,
     ///             },
     ///         },
+    ///         ReplaceExisting = true,
     ///     });
     /// 
     ///     var readReplica = new Databricks.Index.PostgresEndpoint("read_replica", new()
@@ -336,6 +349,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("providerConfig")]
         public Output<Outputs.PostgresEndpointProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, update the endpoint if it already exists instead of returning an error
+        /// </summary>
+        [Output("replaceExisting")]
+        public Output<bool?> ReplaceExisting { get; private set; } = null!;
 
         /// <summary>
         /// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
@@ -429,6 +448,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresEndpointProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
+        /// If true, update the endpoint if it already exists instead of returning an error
+        /// </summary>
+        [Input("replaceExisting")]
+        public Input<bool>? ReplaceExisting { get; set; }
+
+        /// <summary>
         /// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         /// </summary>
         [Input("spec")]
@@ -475,6 +500,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.PostgresEndpointProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
+        /// If true, update the endpoint if it already exists instead of returning an error
+        /// </summary>
+        [Input("replaceExisting")]
+        public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
         /// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state

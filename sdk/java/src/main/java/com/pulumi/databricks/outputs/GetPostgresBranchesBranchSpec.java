@@ -24,7 +24,8 @@ public final class GetPostgresBranchesBranchSpec {
     private @Nullable Boolean isProtected;
     /**
      * @return (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
-     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * If set to false, the request is invalid; provide either ttl or expireTime instead.
+     * Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
      * 
      */
     private @Nullable Boolean noExpiry;
@@ -45,7 +46,8 @@ public final class GetPostgresBranchesBranchSpec {
      */
     private @Nullable String sourceBranchTime;
     /**
-     * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+     * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      * 
      */
     private @Nullable String ttl;
@@ -67,7 +69,8 @@ public final class GetPostgresBranchesBranchSpec {
     }
     /**
      * @return (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
-     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * If set to false, the request is invalid; provide either ttl or expireTime instead.
+     * Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
      * 
      */
     public Optional<Boolean> noExpiry() {
@@ -96,7 +99,8 @@ public final class GetPostgresBranchesBranchSpec {
         return Optional.ofNullable(this.sourceBranchTime);
     }
     /**
-     * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * @return (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+     * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      * 
      */
     public Optional<String> ttl() {

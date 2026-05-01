@@ -14143,7 +14143,8 @@ export interface GetPostgresBranchSpec {
     isProtected?: boolean;
     /**
      * (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
-     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * If set to false, the request is invalid; provide either ttl or expireTime instead.
+     * Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
      */
     noExpiry?: boolean;
     /**
@@ -14160,12 +14161,18 @@ export interface GetPostgresBranchSpec {
      */
     sourceBranchTime?: string;
     /**
-     * (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+     * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      */
     ttl?: string;
 }
 
 export interface GetPostgresBranchStatus {
+    /**
+     * (string) - The short identifier of the branch, suitable for showing to the users.
+     * For a branch with name `projects/my-project/branches/my-branch`, the branchId is `my-branch`.
+     */
+    branchId: string;
     /**
      * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
@@ -14264,7 +14271,8 @@ export interface GetPostgresBranchesBranchSpec {
     isProtected?: boolean;
     /**
      * (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
-     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * If set to false, the request is invalid; provide either ttl or expireTime instead.
+     * Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
      */
     noExpiry?: boolean;
     /**
@@ -14281,12 +14289,18 @@ export interface GetPostgresBranchesBranchSpec {
      */
     sourceBranchTime?: string;
     /**
-     * (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * (string) - Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+     * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      */
     ttl?: string;
 }
 
 export interface GetPostgresBranchesBranchStatus {
+    /**
+     * (string) - The short identifier of the branch, suitable for showing to the users.
+     * For a branch with name `projects/my-project/branches/my-branch`, the branchId is `my-branch`.
+     */
+    branchId: string;
     /**
      * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
@@ -14367,6 +14381,11 @@ export interface GetPostgresCatalogStatus {
      */
     branch: string;
     /**
+     * (string) - The short identifier of the catalog, suitable for showing to the users.
+     * For a catalog with name `catalogs/my-catalog`, the catalogId is `my-catalog`.
+     */
+    catalogId: string;
+    /**
      * (string) - The name of the Postgres database associated with the catalog
      */
     postgresDatabase: string;
@@ -14396,6 +14415,12 @@ export interface GetPostgresDatabaseSpec {
 }
 
 export interface GetPostgresDatabaseStatus {
+    /**
+     * (string) - The short identifier of the database, suitable for showing to the users.
+     * For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
+     * the databaseId is `my-db`.
+     */
+    databaseId: string;
     /**
      * (string) - The name of the Postgres database
      */
@@ -14461,6 +14486,12 @@ export interface GetPostgresDatabasesDatabaseSpec {
 
 export interface GetPostgresDatabasesDatabaseStatus {
     /**
+     * (string) - The short identifier of the database, suitable for showing to the users.
+     * For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
+     * the databaseId is `my-db`.
+     */
+    databaseId: string;
+    /**
      * (string) - The name of the Postgres database
      */
     postgresDatabase?: string;
@@ -14487,7 +14518,8 @@ export interface GetPostgresEndpointProviderConfig {
 
 export interface GetPostgresEndpointSpec {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
     autoscalingLimitMaxCu?: number;
     /**
@@ -14511,7 +14543,8 @@ export interface GetPostgresEndpointSpec {
     group?: outputs.GetPostgresEndpointSpecGroup;
     /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
      */
     noSuspension?: boolean;
     /**
@@ -14552,7 +14585,8 @@ export interface GetPostgresEndpointSpecSettings {
 
 export interface GetPostgresEndpointStatus {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
     autoscalingLimitMaxCu: number;
     /**
@@ -14570,6 +14604,12 @@ export interface GetPostgresEndpointStatus {
      * console action
      */
     disabled: boolean;
+    /**
+     * (string) - The short identifier of the endpoint, suitable for showing to the users.
+     * For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
+     * the endpointId is `my-endpoint`.
+     */
+    endpointId: string;
     /**
      * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
@@ -14682,7 +14722,8 @@ export interface GetPostgresEndpointsEndpointProviderConfig {
 
 export interface GetPostgresEndpointsEndpointSpec {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
     autoscalingLimitMaxCu?: number;
     /**
@@ -14706,7 +14747,8 @@ export interface GetPostgresEndpointsEndpointSpec {
     group?: outputs.GetPostgresEndpointsEndpointSpecGroup;
     /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
      */
     noSuspension?: boolean;
     /**
@@ -14747,7 +14789,8 @@ export interface GetPostgresEndpointsEndpointSpecSettings {
 
 export interface GetPostgresEndpointsEndpointStatus {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
     autoscalingLimitMaxCu: number;
     /**
@@ -14765,6 +14808,12 @@ export interface GetPostgresEndpointsEndpointStatus {
      * console action
      */
     disabled: boolean;
+    /**
+     * (string) - The short identifier of the endpoint, suitable for showing to the users.
+     * For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
+     * the endpointId is `my-endpoint`.
+     */
+    endpointId: string;
     /**
      * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
@@ -14928,7 +14977,8 @@ export interface GetPostgresProjectSpecDefaultEndpointSettings {
     autoscalingLimitMinCu?: number;
     /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     noSuspension?: boolean;
     /**
@@ -14937,7 +14987,8 @@ export interface GetPostgresProjectSpecDefaultEndpointSettings {
     pgSettings?: {[key: string]: string};
     /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     suspendTimeoutDuration?: string;
 }
@@ -14984,6 +15035,11 @@ export interface GetPostgresProjectStatus {
      */
     pgVersion: number;
     /**
+     * (string) - The short identifier of the project, suitable for showing to the users.
+     * For a project with name `projects/my-project`, the projectId is `my-project`.
+     */
+    projectId: string;
+    /**
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes: number;
@@ -15011,7 +15067,8 @@ export interface GetPostgresProjectStatusDefaultEndpointSettings {
     autoscalingLimitMinCu?: number;
     /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     noSuspension?: boolean;
     /**
@@ -15020,7 +15077,8 @@ export interface GetPostgresProjectStatusDefaultEndpointSettings {
     pgSettings?: {[key: string]: string};
     /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     suspendTimeoutDuration?: string;
 }
@@ -15031,7 +15089,12 @@ export interface GetPostgresProjectsProject {
      */
     createTime: string;
     /**
-     * (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     */
+    deleteTime: string;
+    /**
+     * (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -15046,6 +15109,11 @@ export interface GetPostgresProjectsProject {
      * Configure the provider for management through account provider.
      */
     providerConfig?: outputs.GetPostgresProjectsProjectProviderConfig;
+    /**
+     * (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     */
+    purgeTime: string;
     /**
      * (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
@@ -15154,7 +15222,8 @@ export interface GetPostgresProjectsProjectSpecDefaultEndpointSettings {
     autoscalingLimitMinCu?: number;
     /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     noSuspension?: boolean;
     /**
@@ -15163,7 +15232,8 @@ export interface GetPostgresProjectsProjectSpecDefaultEndpointSettings {
     pgSettings?: {[key: string]: string};
     /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     suspendTimeoutDuration?: string;
 }
@@ -15210,6 +15280,11 @@ export interface GetPostgresProjectsProjectStatus {
      */
     pgVersion: number;
     /**
+     * (string) - The short identifier of the project, suitable for showing to the users.
+     * For a project with name `projects/my-project`, the projectId is `my-project`.
+     */
+    projectId: string;
+    /**
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes: number;
@@ -15237,7 +15312,8 @@ export interface GetPostgresProjectsProjectStatusDefaultEndpointSettings {
     autoscalingLimitMinCu?: number;
     /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     noSuspension?: boolean;
     /**
@@ -15246,7 +15322,8 @@ export interface GetPostgresProjectsProjectStatusDefaultEndpointSettings {
     pgSettings?: {[key: string]: string};
     /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     suspendTimeoutDuration?: string;
 }
@@ -15324,6 +15401,12 @@ export interface GetPostgresRoleStatus {
      * (string) - The name of the Postgres role
      */
     postgresRole?: string;
+    /**
+     * (string) - The short identifier of the role, suitable for showing to the users.
+     * For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
+     * the roleId is `my-role`.
+     */
+    roleId: string;
 }
 
 export interface GetPostgresRoleStatusAttributes {
@@ -15447,6 +15530,12 @@ export interface GetPostgresRolesRoleStatus {
      * (string) - The name of the Postgres role
      */
     postgresRole?: string;
+    /**
+     * (string) - The short identifier of the role, suitable for showing to the users.
+     * For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
+     * the roleId is `my-role`.
+     */
+    roleId: string;
 }
 
 export interface GetPostgresRolesRoleStatusAttributes {
@@ -15561,6 +15650,10 @@ export interface GetPostgresSyncedTableStatus {
      * (string) - ID of the associated pipeline
      */
     pipelineId: string;
+    /**
+     * (string) - The full resource name of the project associated with the table.
+     */
+    project: string;
     /**
      * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      */
@@ -23476,7 +23569,8 @@ export interface PostgresBranchSpec {
     isProtected?: boolean;
     /**
      * Explicitly disable expiration. When set to true, the branch will not expire.
-     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * If set to false, the request is invalid; provide either ttl or expireTime instead.
+     * Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
      */
     noExpiry?: boolean;
     /**
@@ -23493,12 +23587,19 @@ export interface PostgresBranchSpec {
      */
     sourceBranchTime?: string;
     /**
-     * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+     * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      */
     ttl?: string;
 }
 
 export interface PostgresBranchStatus {
+    /**
+     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `development` becomes `projects/my-app/branches/development`
+     */
+    branchId: string;
     /**
      * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
@@ -23574,6 +23675,11 @@ export interface PostgresCatalogStatus {
      */
     branch: string;
     /**
+     * The ID in the Unity Catalog.
+     * It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+     */
+    catalogId: string;
+    /**
      * (string) - The name of the Postgres database associated with the catalog
      */
     postgresDatabase: string;
@@ -23596,6 +23702,17 @@ export interface PostgresDatabaseSpec {
 }
 
 export interface PostgresDatabaseStatus {
+    /**
+     * The ID to use for the Database, which will become the final component of
+     * the database's resource name.
+     * This ID becomes the database name in postgres.
+     *
+     * This value should be 4-63 characters, and only use characters available in DNS names,
+     * as defined by RFC-1123
+     *
+     * If databaseId is not specified in the request, it is generated automatically
+     */
+    databaseId: string;
     postgresDatabase?: string;
     role?: string;
 }
@@ -23609,7 +23726,8 @@ export interface PostgresEndpointProviderConfig {
 
 export interface PostgresEndpointSpec {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
     autoscalingLimitMaxCu?: number;
     /**
@@ -23633,7 +23751,8 @@ export interface PostgresEndpointSpec {
     group?: outputs.PostgresEndpointSpecGroup;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
      */
     noSuspension?: boolean;
     /**
@@ -23665,7 +23784,8 @@ export interface PostgresEndpointSpecSettings {
 
 export interface PostgresEndpointStatus {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
     autoscalingLimitMaxCu: number;
     /**
@@ -23683,6 +23803,12 @@ export interface PostgresEndpointStatus {
      * console action
      */
     disabled: boolean;
+    /**
+     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     */
+    endpointId: string;
     /**
      * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
@@ -23830,7 +23956,8 @@ export interface PostgresProjectSpecDefaultEndpointSettings {
     autoscalingLimitMinCu?: number;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     noSuspension?: boolean;
     /**
@@ -23839,7 +23966,8 @@ export interface PostgresProjectSpecDefaultEndpointSettings {
     pgSettings?: {[key: string]: string};
     /**
      * Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     suspendTimeoutDuration?: string;
 }
@@ -23886,6 +24014,12 @@ export interface PostgresProjectStatus {
      */
     pgVersion: number;
     /**
+     * The ID to use for the Project. This becomes the final component of the project's resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
+     */
+    projectId: string;
+    /**
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes: number;
@@ -23913,7 +24047,8 @@ export interface PostgresProjectStatusDefaultEndpointSettings {
     autoscalingLimitMinCu?: number;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     noSuspension?: boolean;
     /**
@@ -23922,7 +24057,8 @@ export interface PostgresProjectStatusDefaultEndpointSettings {
     pgSettings?: {[key: string]: string};
     /**
      * Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     suspendTimeoutDuration?: string;
 }
@@ -23954,6 +24090,17 @@ export interface PostgresRoleStatus {
     identityType?: string;
     membershipRoles?: string[];
     postgresRole?: string;
+    /**
+     * The ID to use for the Role, which will become the final component of
+     * the role's resource name.
+     * This ID becomes the role in Postgres.
+     *
+     * This value should be 4-63 characters, and valid characters
+     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
+     *
+     * If roleId is not specified in the request, it is generated automatically
+     */
+    roleId: string;
 }
 
 export interface PostgresRoleStatusAttributes {
@@ -24077,6 +24224,10 @@ export interface PostgresSyncedTableStatus {
      * (string) - ID of the associated pipeline
      */
     pipelineId: string;
+    /**
+     * (string) - The full resource name of the project associated with the table.
+     */
+    project: string;
     /**
      * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      */

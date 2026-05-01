@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.PostgresProjectInitialEndpointSpecArgs;
 import com.pulumi.databricks.inputs.PostgresProjectProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,7 +21,7 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
     public static final PostgresProjectArgs Empty = new PostgresProjectArgs();
 
     /**
-     * Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -30,7 +31,7 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<PostgresProjectInitialEndpointSpecArgs> initialEndpointSpec;
 
     /**
-     * @return Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * @return Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -75,6 +76,23 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * If true, permanently deletes the project (hard delete).
+     * If false or unset, performs a soft delete
+     * 
+     */
+    @Import(name="purgeOnDelete")
+    private @Nullable Output<Boolean> purgeOnDelete;
+
+    /**
+     * @return If true, permanently deletes the project (hard delete).
+     * If false or unset, performs a soft delete
+     * 
+     */
+    public Optional<Output<Boolean>> purgeOnDelete() {
+        return Optional.ofNullable(this.purgeOnDelete);
+    }
+
+    /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      * 
      */
@@ -95,6 +113,7 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
         this.initialEndpointSpec = $.initialEndpointSpec;
         this.projectId = $.projectId;
         this.providerConfig = $.providerConfig;
+        this.purgeOnDelete = $.purgeOnDelete;
         this.spec = $.spec;
     }
 
@@ -117,7 +136,7 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
          * created project. If omitted, the initial endpoint created will have default settings, without high availability
          * configured. This field does not apply to any endpoints created after project creation. Use
          * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -131,7 +150,7 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
          * created project. If omitted, the initial endpoint created will have default settings, without high availability
          * configured. This field does not apply to any endpoints created after project creation. Use
          * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -187,6 +206,29 @@ public final class PostgresProjectArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder providerConfig(PostgresProjectProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param purgeOnDelete If true, permanently deletes the project (hard delete).
+         * If false or unset, performs a soft delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(@Nullable Output<Boolean> purgeOnDelete) {
+            $.purgeOnDelete = purgeOnDelete;
+            return this;
+        }
+
+        /**
+         * @param purgeOnDelete If true, permanently deletes the project (hard delete).
+         * If false or unset, performs a soft delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(Boolean purgeOnDelete) {
+            return purgeOnDelete(Output.of(purgeOnDelete));
         }
 
         /**

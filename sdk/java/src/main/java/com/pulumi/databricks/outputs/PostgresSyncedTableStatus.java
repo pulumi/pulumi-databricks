@@ -51,6 +51,11 @@ public final class PostgresSyncedTableStatus {
      */
     private @Nullable String pipelineId;
     /**
+     * @return (string) - The full resource name of the project associated with the table.
+     * 
+     */
+    private @Nullable String project;
+    /**
      * @return (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      * 
      */
@@ -113,6 +118,13 @@ public final class PostgresSyncedTableStatus {
         return Optional.ofNullable(this.pipelineId);
     }
     /**
+     * @return (string) - The full resource name of the project associated with the table.
+     * 
+     */
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
+    }
+    /**
      * @return (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      * 
      */
@@ -143,6 +155,7 @@ public final class PostgresSyncedTableStatus {
         private @Nullable String message;
         private @Nullable PostgresSyncedTableStatusOngoingSyncProgress ongoingSyncProgress;
         private @Nullable String pipelineId;
+        private @Nullable String project;
         private @Nullable String provisioningPhase;
         private @Nullable String unityCatalogProvisioningState;
         public Builder() {}
@@ -155,6 +168,7 @@ public final class PostgresSyncedTableStatus {
     	      this.message = defaults.message;
     	      this.ongoingSyncProgress = defaults.ongoingSyncProgress;
     	      this.pipelineId = defaults.pipelineId;
+    	      this.project = defaults.project;
     	      this.provisioningPhase = defaults.provisioningPhase;
     	      this.unityCatalogProvisioningState = defaults.unityCatalogProvisioningState;
         }
@@ -202,6 +216,12 @@ public final class PostgresSyncedTableStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder project(@Nullable String project) {
+
+            this.project = project;
+            return this;
+        }
+        @CustomType.Setter
         public Builder provisioningPhase(@Nullable String provisioningPhase) {
 
             this.provisioningPhase = provisioningPhase;
@@ -222,6 +242,7 @@ public final class PostgresSyncedTableStatus {
             _resultValue.message = message;
             _resultValue.ongoingSyncProgress = ongoingSyncProgress;
             _resultValue.pipelineId = pipelineId;
+            _resultValue.project = project;
             _resultValue.provisioningPhase = provisioningPhase;
             _resultValue.unityCatalogProvisioningState = unityCatalogProvisioningState;
             return _resultValue;

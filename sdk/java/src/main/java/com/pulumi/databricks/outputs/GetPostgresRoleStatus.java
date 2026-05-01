@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresRoleStatusAttributes;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -38,6 +39,13 @@ public final class GetPostgresRoleStatus {
      * 
      */
     private @Nullable String postgresRole;
+    /**
+     * @return (string) - The short identifier of the role, suitable for showing to the users.
+     * For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
+     * the roleId is `my-role`.
+     * 
+     */
+    private String roleId;
 
     private GetPostgresRoleStatus() {}
     /**
@@ -75,6 +83,15 @@ public final class GetPostgresRoleStatus {
     public Optional<String> postgresRole() {
         return Optional.ofNullable(this.postgresRole);
     }
+    /**
+     * @return (string) - The short identifier of the role, suitable for showing to the users.
+     * For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
+     * the roleId is `my-role`.
+     * 
+     */
+    public String roleId() {
+        return this.roleId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -90,6 +107,7 @@ public final class GetPostgresRoleStatus {
         private @Nullable String identityType;
         private @Nullable List<String> membershipRoles;
         private @Nullable String postgresRole;
+        private String roleId;
         public Builder() {}
         public Builder(GetPostgresRoleStatus defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,6 +116,7 @@ public final class GetPostgresRoleStatus {
     	      this.identityType = defaults.identityType;
     	      this.membershipRoles = defaults.membershipRoles;
     	      this.postgresRole = defaults.postgresRole;
+    	      this.roleId = defaults.roleId;
         }
 
         @CustomType.Setter
@@ -133,6 +152,14 @@ public final class GetPostgresRoleStatus {
             this.postgresRole = postgresRole;
             return this;
         }
+        @CustomType.Setter
+        public Builder roleId(String roleId) {
+            if (roleId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresRoleStatus", "roleId");
+            }
+            this.roleId = roleId;
+            return this;
+        }
         public GetPostgresRoleStatus build() {
             final var _resultValue = new GetPostgresRoleStatus();
             _resultValue.attributes = attributes;
@@ -140,6 +167,7 @@ public final class GetPostgresRoleStatus {
             _resultValue.identityType = identityType;
             _resultValue.membershipRoles = membershipRoles;
             _resultValue.postgresRole = postgresRole;
+            _resultValue.roleId = roleId;
             return _resultValue;
         }
     }

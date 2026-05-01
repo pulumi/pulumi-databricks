@@ -54,6 +54,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? PgVersion;
         /// <summary>
+        /// The ID to use for the Project. This becomes the final component of the project's resource name.
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `my-app` becomes `projects/my-app`
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
         /// (integer) - The current space occupied by the project in storage
         /// </summary>
         public readonly int? SyntheticStorageSizeBytes;
@@ -80,6 +86,8 @@ namespace Pulumi.Databricks.Outputs
 
             int? pgVersion,
 
+            string? projectId,
+
             int? syntheticStorageSizeBytes)
         {
             BranchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
@@ -92,6 +100,7 @@ namespace Pulumi.Databricks.Outputs
             HistoryRetentionDuration = historyRetentionDuration;
             Owner = owner;
             PgVersion = pgVersion;
+            ProjectId = projectId;
             SyntheticStorageSizeBytes = syntheticStorageSizeBytes;
         }
     }

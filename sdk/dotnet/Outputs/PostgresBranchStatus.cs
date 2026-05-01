@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PostgresBranchStatus
     {
         /// <summary>
+        /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `Development` becomes `projects/my-app/branches/development`
+        /// </summary>
+        public readonly string? BranchId;
+        /// <summary>
         /// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         /// </summary>
         public readonly string? CurrentState;
@@ -57,6 +63,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PostgresBranchStatus(
+            string? branchId,
+
             string? currentState,
 
             bool? @default,
@@ -77,6 +85,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? stateChangeTime)
         {
+            BranchId = branchId;
             CurrentState = currentState;
             Default = @default;
             ExpireTime = expireTime;

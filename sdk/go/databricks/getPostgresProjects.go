@@ -34,6 +34,10 @@ type GetPostgresProjectsArgs struct {
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetPostgresProjectsProviderConfig `pulumi:"providerConfig"`
+	// Whether to include soft-deleted projects in the response.
+	// When true, soft-deleted projects are included alongside active projects.
+	// Hard-deleted and already-purged projects are never returned
+	ShowDeleted *bool `pulumi:"showDeleted"`
 }
 
 // A collection of values returned by getPostgresProjects.
@@ -43,6 +47,7 @@ type GetPostgresProjectsResult struct {
 	PageSize       *int                               `pulumi:"pageSize"`
 	Projects       []GetPostgresProjectsProject       `pulumi:"projects"`
 	ProviderConfig *GetPostgresProjectsProviderConfig `pulumi:"providerConfig"`
+	ShowDeleted    *bool                              `pulumi:"showDeleted"`
 }
 
 func GetPostgresProjectsOutput(ctx *pulumi.Context, args GetPostgresProjectsOutputArgs, opts ...pulumi.InvokeOption) GetPostgresProjectsResultOutput {
@@ -60,6 +65,10 @@ type GetPostgresProjectsOutputArgs struct {
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetPostgresProjectsProviderConfigPtrInput `pulumi:"providerConfig"`
+	// Whether to include soft-deleted projects in the response.
+	// When true, soft-deleted projects are included alongside active projects.
+	// Hard-deleted and already-purged projects are never returned
+	ShowDeleted pulumi.BoolPtrInput `pulumi:"showDeleted"`
 }
 
 func (GetPostgresProjectsOutputArgs) ElementType() reflect.Type {
@@ -96,6 +105,10 @@ func (o GetPostgresProjectsResultOutput) Projects() GetPostgresProjectsProjectAr
 
 func (o GetPostgresProjectsResultOutput) ProviderConfig() GetPostgresProjectsProviderConfigPtrOutput {
 	return o.ApplyT(func(v GetPostgresProjectsResult) *GetPostgresProjectsProviderConfig { return v.ProviderConfig }).(GetPostgresProjectsProviderConfigPtrOutput)
+}
+
+func (o GetPostgresProjectsResultOutput) ShowDeleted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsResult) *bool { return v.ShowDeleted }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

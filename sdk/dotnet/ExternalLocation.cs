@@ -224,7 +224,7 @@ namespace Pulumi.Databricks
         public Output<bool> EffectiveEnableFileEvents { get; private set; } = null!;
 
         [Output("effectiveFileEventQueue")]
-        public Output<Outputs.ExternalLocationEffectiveFileEventQueue?> EffectiveFileEventQueue { get; private set; } = null!;
+        public Output<Outputs.ExternalLocationEffectiveFileEventQueue> EffectiveFileEventQueue { get; private set; } = null!;
 
         /// <summary>
         /// indicates if managed file events are enabled for this external location.  Requires `FileEventQueue` block.

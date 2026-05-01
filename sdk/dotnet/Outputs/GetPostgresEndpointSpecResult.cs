@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresEndpointSpecResult
     {
         /// <summary>
-        /// (number) - The maximum number of Compute Units
+        /// (number) - The maximum number of Compute Units. The maximum value is 64.
+        /// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
         /// </summary>
         public readonly double? AutoscalingLimitMaxCu;
         /// <summary>
@@ -38,7 +39,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetPostgresEndpointSpecGroupResult? Group;
         /// <summary>
         /// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-        /// Should be set to true when provided
+        /// Should be set to true when provided.
+        /// Mutually exclusive with `SuspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
         /// </summary>
         public readonly bool? NoSuspension;
         /// <summary>

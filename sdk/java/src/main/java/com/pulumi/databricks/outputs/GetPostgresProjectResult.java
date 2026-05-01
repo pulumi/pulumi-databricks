@@ -22,12 +22,18 @@ public final class GetPostgresProjectResult {
      */
     private String createTime;
     /**
+     * @return (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     * 
+     */
+    private String deleteTime;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -41,6 +47,12 @@ public final class GetPostgresProjectResult {
      */
     private String name;
     private @Nullable GetPostgresProjectProviderConfig providerConfig;
+    /**
+     * @return (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    private String purgeTime;
     /**
      * @return (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      * 
@@ -71,6 +83,14 @@ public final class GetPostgresProjectResult {
         return this.createTime;
     }
     /**
+     * @return (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     * 
+     */
+    public String deleteTime() {
+        return this.deleteTime;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -78,7 +98,7 @@ public final class GetPostgresProjectResult {
         return this.id;
     }
     /**
-     * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -97,6 +117,14 @@ public final class GetPostgresProjectResult {
     }
     public Optional<GetPostgresProjectProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
+    }
+    /**
+     * @return (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    public String purgeTime() {
+        return this.purgeTime;
     }
     /**
      * @return (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
@@ -137,10 +165,12 @@ public final class GetPostgresProjectResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deleteTime;
         private String id;
         private GetPostgresProjectInitialEndpointSpec initialEndpointSpec;
         private String name;
         private @Nullable GetPostgresProjectProviderConfig providerConfig;
+        private String purgeTime;
         private GetPostgresProjectSpec spec;
         private GetPostgresProjectStatus status;
         private String uid;
@@ -149,10 +179,12 @@ public final class GetPostgresProjectResult {
         public Builder(GetPostgresProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deleteTime = defaults.deleteTime;
     	      this.id = defaults.id;
     	      this.initialEndpointSpec = defaults.initialEndpointSpec;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.purgeTime = defaults.purgeTime;
     	      this.spec = defaults.spec;
     	      this.status = defaults.status;
     	      this.uid = defaults.uid;
@@ -165,6 +197,14 @@ public final class GetPostgresProjectResult {
               throw new MissingRequiredPropertyException("GetPostgresProjectResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deleteTime(String deleteTime) {
+            if (deleteTime == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectResult", "deleteTime");
+            }
+            this.deleteTime = deleteTime;
             return this;
         }
         @CustomType.Setter
@@ -195,6 +235,14 @@ public final class GetPostgresProjectResult {
         public Builder providerConfig(@Nullable GetPostgresProjectProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder purgeTime(String purgeTime) {
+            if (purgeTime == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectResult", "purgeTime");
+            }
+            this.purgeTime = purgeTime;
             return this;
         }
         @CustomType.Setter
@@ -232,10 +280,12 @@ public final class GetPostgresProjectResult {
         public GetPostgresProjectResult build() {
             final var _resultValue = new GetPostgresProjectResult();
             _resultValue.createTime = createTime;
+            _resultValue.deleteTime = deleteTime;
             _resultValue.id = id;
             _resultValue.initialEndpointSpec = initialEndpointSpec;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.purgeTime = purgeTime;
             _resultValue.spec = spec;
             _resultValue.status = status;
             _resultValue.uid = uid;

@@ -31,6 +31,23 @@ public final class PostgresCatalogStatusArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * The ID in the Unity Catalog.
+     * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+     * 
+     */
+    @Import(name="catalogId")
+    private @Nullable Output<String> catalogId;
+
+    /**
+     * @return The ID in the Unity Catalog.
+     * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+     * 
+     */
+    public Optional<Output<String>> catalogId() {
+        return Optional.ofNullable(this.catalogId);
+    }
+
+    /**
      * (string) - The name of the Postgres database associated with the catalog
      * 
      */
@@ -64,6 +81,7 @@ public final class PostgresCatalogStatusArgs extends com.pulumi.resources.Resour
 
     private PostgresCatalogStatusArgs(PostgresCatalogStatusArgs $) {
         this.branch = $.branch;
+        this.catalogId = $.catalogId;
         this.postgresDatabase = $.postgresDatabase;
         this.project = $.project;
     }
@@ -105,6 +123,29 @@ public final class PostgresCatalogStatusArgs extends com.pulumi.resources.Resour
          */
         public Builder branch(String branch) {
             return branch(Output.of(branch));
+        }
+
+        /**
+         * @param catalogId The ID in the Unity Catalog.
+         * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogId(@Nullable Output<String> catalogId) {
+            $.catalogId = catalogId;
+            return this;
+        }
+
+        /**
+         * @param catalogId The ID in the Unity Catalog.
+         * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogId(String catalogId) {
+            return catalogId(Output.of(catalogId));
         }
 
         /**

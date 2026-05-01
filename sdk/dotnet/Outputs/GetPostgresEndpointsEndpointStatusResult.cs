@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresEndpointsEndpointStatusResult
     {
         /// <summary>
-        /// (number) - The maximum number of Compute Units
+        /// (number) - The maximum number of Compute Units. The maximum value is 64.
+        /// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
         /// </summary>
         public readonly double AutoscalingLimitMaxCu;
         /// <summary>
@@ -32,6 +33,12 @@ namespace Pulumi.Databricks.Outputs
         /// console action
         /// </summary>
         public readonly bool Disabled;
+        /// <summary>
+        /// (string) - The short identifier of the endpoint, suitable for showing to the users.
+        /// For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
+        /// the EndpointId is `my-endpoint`.
+        /// </summary>
+        public readonly string EndpointId;
         /// <summary>
         /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
         /// </summary>
@@ -67,6 +74,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool disabled,
 
+            string endpointId,
+
             string endpointType,
 
             Outputs.GetPostgresEndpointsEndpointStatusGroupResult group,
@@ -83,6 +92,7 @@ namespace Pulumi.Databricks.Outputs
             AutoscalingLimitMinCu = autoscalingLimitMinCu;
             CurrentState = currentState;
             Disabled = disabled;
+            EndpointId = endpointId;
             EndpointType = endpointType;
             Group = group;
             Hosts = hosts;

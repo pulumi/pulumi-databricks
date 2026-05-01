@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresDatabaseStatusResult
     {
         /// <summary>
+        /// (string) - The short identifier of the database, suitable for showing to the users.
+        /// For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
+        /// the DatabaseId is `my-db`.
+        /// </summary>
+        public readonly string DatabaseId;
+        /// <summary>
         /// (string) - The name of the Postgres database
         /// </summary>
         public readonly string? PostgresDatabase;
@@ -25,10 +31,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetPostgresDatabaseStatusResult(
+            string databaseId,
+
             string? postgresDatabase,
 
             string? role)
         {
+            DatabaseId = databaseId;
             PostgresDatabase = postgresDatabase;
             Role = role;
         }

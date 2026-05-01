@@ -15,6 +15,35 @@ public final class PostgresDatabaseStatusArgs extends com.pulumi.resources.Resou
 
     public static final PostgresDatabaseStatusArgs Empty = new PostgresDatabaseStatusArgs();
 
+    /**
+     * The ID to use for the Database, which will become the final component of
+     * the database&#39;s resource name.
+     * This ID becomes the database name in postgres.
+     * 
+     * This value should be 4-63 characters, and only use characters available in DNS names,
+     * as defined by RFC-1123
+     * 
+     * If databaseId is not specified in the request, it is generated automatically
+     * 
+     */
+    @Import(name="databaseId")
+    private @Nullable Output<String> databaseId;
+
+    /**
+     * @return The ID to use for the Database, which will become the final component of
+     * the database&#39;s resource name.
+     * This ID becomes the database name in postgres.
+     * 
+     * This value should be 4-63 characters, and only use characters available in DNS names,
+     * as defined by RFC-1123
+     * 
+     * If databaseId is not specified in the request, it is generated automatically
+     * 
+     */
+    public Optional<Output<String>> databaseId() {
+        return Optional.ofNullable(this.databaseId);
+    }
+
     @Import(name="postgresDatabase")
     private @Nullable Output<String> postgresDatabase;
 
@@ -32,6 +61,7 @@ public final class PostgresDatabaseStatusArgs extends com.pulumi.resources.Resou
     private PostgresDatabaseStatusArgs() {}
 
     private PostgresDatabaseStatusArgs(PostgresDatabaseStatusArgs $) {
+        this.databaseId = $.databaseId;
         this.postgresDatabase = $.postgresDatabase;
         this.role = $.role;
     }
@@ -52,6 +82,41 @@ public final class PostgresDatabaseStatusArgs extends com.pulumi.resources.Resou
 
         public Builder(PostgresDatabaseStatusArgs defaults) {
             $ = new PostgresDatabaseStatusArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param databaseId The ID to use for the Database, which will become the final component of
+         * the database&#39;s resource name.
+         * This ID becomes the database name in postgres.
+         * 
+         * This value should be 4-63 characters, and only use characters available in DNS names,
+         * as defined by RFC-1123
+         * 
+         * If databaseId is not specified in the request, it is generated automatically
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseId(@Nullable Output<String> databaseId) {
+            $.databaseId = databaseId;
+            return this;
+        }
+
+        /**
+         * @param databaseId The ID to use for the Database, which will become the final component of
+         * the database&#39;s resource name.
+         * This ID becomes the database name in postgres.
+         * 
+         * This value should be 4-63 characters, and only use characters available in DNS names,
+         * as defined by RFC-1123
+         * 
+         * If databaseId is not specified in the request, it is generated automatically
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseId(String databaseId) {
+            return databaseId(Output.of(databaseId));
         }
 
         public Builder postgresDatabase(@Nullable Output<String> postgresDatabase) {

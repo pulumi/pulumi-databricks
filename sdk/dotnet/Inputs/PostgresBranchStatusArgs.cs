@@ -13,6 +13,14 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PostgresBranchStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `Development` becomes `projects/my-app/branches/development`
+        /// </summary>
+        [Input("branchId")]
+        public Input<string>? BranchId { get; set; }
+
+        /// <summary>
         /// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         /// </summary>
         [Input("currentState")]

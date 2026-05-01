@@ -13,18 +13,120 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres roles in a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Roles in a Branch
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.Index.GetPostgresRoles.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project/branches/main",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["roleNames"] = .Select(role =&gt; 
+        ///         {
+        ///             return role.Name;
+        ///         }).ToList(),
+        ///         ["roleIdentityTypes"] = .Select(role =&gt; 
+        ///         {
+        ///             return role.Status?.IdentityType;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresRolesResult> InvokeAsync(GetPostgresRolesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresRolesResult>("databricks:index/getPostgresRoles:getPostgresRoles", args ?? new GetPostgresRolesArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres roles in a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Roles in a Branch
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.Index.GetPostgresRoles.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project/branches/main",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["roleNames"] = .Select(role =&gt; 
+        ///         {
+        ///             return role.Name;
+        ///         }).ToList(),
+        ///         ["roleIdentityTypes"] = .Select(role =&gt; 
+        ///         {
+        ///             return role.Status?.IdentityType;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresRolesResult> Invoke(GetPostgresRolesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresRolesResult>("databricks:index/getPostgresRoles:getPostgresRoles", args ?? new GetPostgresRolesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres roles in a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Roles in a Branch
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.Index.GetPostgresRoles.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project/branches/main",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["roleNames"] = .Select(role =&gt; 
+        ///         {
+        ///             return role.Name;
+        ///         }).ToList(),
+        ///         ["roleIdentityTypes"] = .Select(role =&gt; 
+        ///         {
+        ///             return role.Status?.IdentityType;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresRolesResult> Invoke(GetPostgresRolesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresRolesResult>("databricks:index/getPostgresRoles:getPostgresRoles", args ?? new GetPostgresRolesInvokeArgs(), options.WithDefaults());

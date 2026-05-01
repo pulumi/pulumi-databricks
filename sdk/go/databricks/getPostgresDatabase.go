@@ -12,6 +12,38 @@ import (
 )
 
 // [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source retrieves a single Postgres database.
+//
+// ## Example Usage
+//
+// ### Retrieve Database by Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetPostgresDatabase(ctx, &databricks.LookupPostgresDatabaseArgs{
+//				Name: "projects/my-project/branches/main/databases/app",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("postgresDatabaseName", this.Status.PostgresDatabase)
+//			ctx.Export("databaseOwnerRole", this.Status.Role)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPostgresDatabase(ctx *pulumi.Context, args *LookupPostgresDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupPostgresDatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresDatabaseResult

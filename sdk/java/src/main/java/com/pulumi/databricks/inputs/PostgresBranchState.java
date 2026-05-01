@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PostgresBranchProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
 import com.pulumi.databricks.inputs.PostgresBranchStatusArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,6 +109,21 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * If true, update the branch if it already exists instead of returning an error
+     * 
+     */
+    @Import(name="replaceExisting")
+    private @Nullable Output<Boolean> replaceExisting;
+
+    /**
+     * @return If true, update the branch if it already exists instead of returning an error
+     * 
+     */
+    public Optional<Output<Boolean>> replaceExisting() {
+        return Optional.ofNullable(this.replaceExisting);
+    }
+
+    /**
      * The spec contains the branch configuration
      * 
      */
@@ -175,6 +191,7 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         this.name = $.name;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
+        this.replaceExisting = $.replaceExisting;
         this.spec = $.spec;
         this.status = $.status;
         this.uid = $.uid;
@@ -316,6 +333,27 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
          */
         public Builder providerConfig(PostgresBranchProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param replaceExisting If true, update the branch if it already exists instead of returning an error
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replaceExisting(@Nullable Output<Boolean> replaceExisting) {
+            $.replaceExisting = replaceExisting;
+            return this;
+        }
+
+        /**
+         * @param replaceExisting If true, update the branch if it already exists instead of returning an error
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replaceExisting(Boolean replaceExisting) {
+            return replaceExisting(Output.of(replaceExisting));
         }
 
         /**

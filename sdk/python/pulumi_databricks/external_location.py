@@ -1103,7 +1103,7 @@ class ExternalLocation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="effectiveFileEventQueue")
-    def effective_file_event_queue(self) -> pulumi.Output[Optional['outputs.ExternalLocationEffectiveFileEventQueue']]:
+    def effective_file_event_queue(self) -> pulumi.Output['outputs.ExternalLocationEffectiveFileEventQueue']:
         return pulumi.get(self, "effective_file_event_queue")
 
     @_builtins.property

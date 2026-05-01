@@ -140,6 +140,21 @@ def get_postgres_database(name: Optional[_builtins.str] = None,
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    This data source retrieves a single Postgres database.
+
+    ## Example Usage
+
+    ### Retrieve Database by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_database(name="projects/my-project/branches/main/databases/app")
+    pulumi.export("postgresDatabaseName", this.status.postgres_database)
+    pulumi.export("databaseOwnerRole", this.status.role)
+    ```
+
 
     :param _builtins.str name: The resource name of the database.
            Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
@@ -165,6 +180,21 @@ def get_postgres_database_output(name: Optional[pulumi.Input[_builtins.str]] = N
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresDatabaseResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source retrieves a single Postgres database.
+
+    ## Example Usage
+
+    ### Retrieve Database by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_database(name="projects/my-project/branches/main/databases/app")
+    pulumi.export("postgresDatabaseName", this.status.postgres_database)
+    pulumi.export("databaseOwnerRole", this.status.role)
+    ```
 
 
     :param _builtins.str name: The resource name of the database.

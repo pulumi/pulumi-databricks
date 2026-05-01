@@ -21,14 +21,16 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
     public static final PostgresEndpointSpecArgs Empty = new PostgresEndpointSpecArgs();
 
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     @Import(name="autoscalingLimitMaxCu")
     private @Nullable Output<Double> autoscalingLimitMaxCu;
 
     /**
-     * @return (number) - The maximum number of Compute Units
+     * @return (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     public Optional<Output<Double>> autoscalingLimitMaxCu() {
@@ -103,7 +105,8 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
 
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
      * 
      */
     @Import(name="noSuspension")
@@ -111,7 +114,8 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
      * 
      */
     public Optional<Output<Boolean>> noSuspension() {
@@ -180,7 +184,8 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param autoscalingLimitMaxCu (number) - The maximum number of Compute Units
+         * @param autoscalingLimitMaxCu (number) - The maximum number of Compute Units. The maximum value is 64.
+         * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
          * 
          * @return builder
          * 
@@ -191,7 +196,8 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param autoscalingLimitMaxCu (number) - The maximum number of Compute Units
+         * @param autoscalingLimitMaxCu (number) - The maximum number of Compute Units. The maximum value is 64.
+         * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
          * 
          * @return builder
          * 
@@ -292,7 +298,8 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
-         * Should be set to true when provided
+         * Should be set to true when provided.
+         * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
          * 
          * @return builder
          * 
@@ -304,7 +311,8 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
-         * Should be set to true when provided
+         * Should be set to true when provided.
+         * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
          * 
          * @return builder
          * 

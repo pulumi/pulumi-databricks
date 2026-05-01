@@ -59,11 +59,16 @@ export interface GetPostgresProjectResult {
      */
     readonly createTime: string;
     /**
+     * (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     */
+    readonly deleteTime: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -75,6 +80,11 @@ export interface GetPostgresProjectResult {
      */
     readonly name: string;
     readonly providerConfig?: outputs.GetPostgresProjectProviderConfig;
+    /**
+     * (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     */
+    readonly purgeTime: string;
     /**
      * (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */

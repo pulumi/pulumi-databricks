@@ -13,6 +13,175 @@ import (
 )
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// ## Example Usage
+//
+// ### Role Backed by a Databricks User Identity
+//
+// Create a role that is authenticated as a specific Databricks workspace user via OAuth. `authMethod` is left unset and defaults to `LAKEBASE_OAUTH_V1` for managed identities.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:   pulumi.Int(17),
+//					DisplayName: pulumi.String("My Project"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			main, err := databricks.NewPostgresBranch(ctx, "main", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("main"),
+//				Parent:   this.Name,
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					NoExpiry: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresRole(ctx, "jane", &databricks.PostgresRoleArgs{
+//				RoleId: pulumi.String("jane"),
+//				Parent: main.Name,
+//				Spec: &databricks.PostgresRoleSpecArgs{
+//					IdentityType: pulumi.String("USER"),
+//					PostgresRole: pulumi.String("jane@databricks.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Service Principal with `DATABRICKS_SUPERUSER` Membership
+//
+// Create a role that is authenticated as a Databricks service principal via OAuth and grant it the highest customer-exposed privilege set via `DATABRICKS_SUPERUSER` membership.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresRole(ctx, "admin_sp", &databricks.PostgresRoleArgs{
+//				RoleId: pulumi.String("admin-sp"),
+//				Parent: pulumi.Any(main.Name),
+//				Spec: &databricks.PostgresRoleSpecArgs{
+//					IdentityType: pulumi.String("SERVICE_PRINCIPAL"),
+//					PostgresRole: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//					AuthMethod:   pulumi.String("LAKEBASE_OAUTH_V1"),
+//					MembershipRoles: pulumi.StringArray{
+//						pulumi.String("DATABRICKS_SUPERUSER"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Multiple roles in a branch
+//
+// By default, Pulumi creates resources in parallel if the dependency graph allows. However, Lakebase
+// doesn't allow executing parallel manipulations inside a single branch. Only one of these resources can
+// be created or updated at a time:
+//
+// - Role
+// - Database
+// - Endpoint
+//
+// If you try to create resources in parallel, you'll see a conflict error like:
+//
+// > Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+//
+// Pulumi serializes execution automatically when one resource references another.
+// For example, when a database names a role as its owner via `spec.role`, Pulumi creates the role before the database.
+// For resources that don't reference each other, like two sibling roles in the same branch, add `dependsOn` so
+// Pulumi knows to wait for creation of the first one to finish, before scheduling the creation of the second one.
+//
+// For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			schemaOwner, err := databricks.NewPostgresRole(ctx, "schema_owner", &databricks.PostgresRoleArgs{
+//				RoleId: pulumi.String("schemamigrator"),
+//				Parent: pulumi.Any(test.Name),
+//				Spec: &databricks.PostgresRoleSpecArgs{
+//					PostgresRole: pulumi.String("schemamigrator"),
+//					MembershipRoles: pulumi.StringArray{
+//						pulumi.String("DATABRICKS_SUPERUSER"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			application, err := databricks.NewPostgresDatabase(ctx, "application", &databricks.PostgresDatabaseArgs{
+//				DatabaseId: pulumi.String("application"),
+//				Parent:     pulumi.Any(test.Name),
+//				Spec: &databricks.PostgresDatabaseSpecArgs{
+//					PostgresDatabase: pulumi.String("application"),
+//					Role:             schemaOwner.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresRole(ctx, "application", &databricks.PostgresRoleArgs{
+//				RoleId: pulumi.String("application"),
+//				Parent: pulumi.Any(test.Name),
+//				Spec: &databricks.PostgresRoleSpecArgs{
+//					PostgresRole: pulumi.String("application"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				application,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Note: in a real setup, the `application` role would also need `GRANT` privileges, but that's out of scope for this example.
 type PostgresRole struct {
 	pulumi.CustomResourceState
 

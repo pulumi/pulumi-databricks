@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProject;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -24,6 +25,7 @@ public final class GetPostgresProjectsResult {
     private @Nullable Integer pageSize;
     private List<GetPostgresProjectsProject> projects;
     private @Nullable GetPostgresProjectsProviderConfig providerConfig;
+    private @Nullable Boolean showDeleted;
 
     private GetPostgresProjectsResult() {}
     /**
@@ -42,6 +44,9 @@ public final class GetPostgresProjectsResult {
     public Optional<GetPostgresProjectsProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
+    public Optional<Boolean> showDeleted() {
+        return Optional.ofNullable(this.showDeleted);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -56,6 +61,7 @@ public final class GetPostgresProjectsResult {
         private @Nullable Integer pageSize;
         private List<GetPostgresProjectsProject> projects;
         private @Nullable GetPostgresProjectsProviderConfig providerConfig;
+        private @Nullable Boolean showDeleted;
         public Builder() {}
         public Builder(GetPostgresProjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -63,6 +69,7 @@ public final class GetPostgresProjectsResult {
     	      this.pageSize = defaults.pageSize;
     	      this.projects = defaults.projects;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.showDeleted = defaults.showDeleted;
         }
 
         @CustomType.Setter
@@ -96,12 +103,19 @@ public final class GetPostgresProjectsResult {
             this.providerConfig = providerConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder showDeleted(@Nullable Boolean showDeleted) {
+
+            this.showDeleted = showDeleted;
+            return this;
+        }
         public GetPostgresProjectsResult build() {
             final var _resultValue = new GetPostgresProjectsResult();
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.projects = projects;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.showDeleted = showDeleted;
             return _resultValue;
         }
     }

@@ -68,9 +68,12 @@ type LookupPostgresProjectArgs struct {
 type LookupPostgresProjectResult struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime string `pulumi:"createTime"`
+	// (string) - A timestamp indicating when the project was soft-deleted.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the past
+	DeleteTime string `pulumi:"deleteTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
 	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -79,6 +82,9 @@ type LookupPostgresProjectResult struct {
 	// Format: projects/{project_id}
 	Name           string                            `pulumi:"name"`
 	ProviderConfig *GetPostgresProjectProviderConfig `pulumi:"providerConfig"`
+	// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the future
+	PurgeTime string `pulumi:"purgeTime"`
 	// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec GetPostgresProjectSpec `pulumi:"spec"`
 	// (ProjectStatus) - The current status of a Project
@@ -131,12 +137,18 @@ func (o LookupPostgresProjectResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// (string) - A timestamp indicating when the project was soft-deleted.
+// Empty if the project is not deleted, otherwise set to a timestamp in the past
+func (o LookupPostgresProjectResultOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupPostgresProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 // created project. If omitted, the initial endpoint created will have default settings, without high availability
 // configured. This field does not apply to any endpoints created after project creation. Use
 // spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -154,6 +166,12 @@ func (o LookupPostgresProjectResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupPostgresProjectResultOutput) ProviderConfig() GetPostgresProjectProviderConfigPtrOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) *GetPostgresProjectProviderConfig { return v.ProviderConfig }).(GetPostgresProjectProviderConfigPtrOutput)
+}
+
+// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+// Empty if the project is not deleted, otherwise set to a timestamp in the future
+func (o LookupPostgresProjectResultOutput) PurgeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.PurgeTime }).(pulumi.StringOutput)
 }
 
 // (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings

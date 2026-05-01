@@ -8,6 +8,114 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * ## Example Usage
+ *
+ * ### Role Backed by a Databricks User Identity
+ *
+ * Create a role that is authenticated as a specific Databricks workspace user via OAuth. `authMethod` is left unset and defaults to `LAKEBASE_OAUTH_V1` for managed identities.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresProject("this", {
+ *     projectId: "my-project",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "My Project",
+ *     },
+ * });
+ * const main = new databricks.PostgresBranch("main", {
+ *     branchId: "main",
+ *     parent: _this.name,
+ *     spec: {
+ *         noExpiry: true,
+ *     },
+ * });
+ * const jane = new databricks.PostgresRole("jane", {
+ *     roleId: "jane",
+ *     parent: main.name,
+ *     spec: {
+ *         identityType: "USER",
+ *         postgresRole: "jane@databricks.com",
+ *     },
+ * });
+ * ```
+ *
+ * ### Service Principal with `DATABRICKS_SUPERUSER` Membership
+ *
+ * Create a role that is authenticated as a Databricks service principal via OAuth and grant it the highest customer-exposed privilege set via `DATABRICKS_SUPERUSER` membership.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const adminSp = new databricks.PostgresRole("admin_sp", {
+ *     roleId: "admin-sp",
+ *     parent: main.name,
+ *     spec: {
+ *         identityType: "SERVICE_PRINCIPAL",
+ *         postgresRole: "00000000-0000-0000-0000-000000000000",
+ *         authMethod: "LAKEBASE_OAUTH_V1",
+ *         membershipRoles: ["DATABRICKS_SUPERUSER"],
+ *     },
+ * });
+ * ```
+ *
+ * ### Multiple roles in a branch
+ *
+ * By default, Pulumi creates resources in parallel if the dependency graph allows. However, Lakebase
+ * doesn't allow executing parallel manipulations inside a single branch. Only one of these resources can
+ * be created or updated at a time:
+ *
+ * - Role
+ * - Database
+ * - Endpoint
+ *
+ * If you try to create resources in parallel, you'll see a conflict error like:
+ *
+ * > Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+ *
+ * Pulumi serializes execution automatically when one resource references another.
+ * For example, when a database names a role as its owner via `spec.role`, Pulumi creates the role before the database.
+ * For resources that don't reference each other, like two sibling roles in the same branch, add `dependsOn` so
+ * Pulumi knows to wait for creation of the first one to finish, before scheduling the creation of the second one.
+ *
+ * For example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const schemaOwner = new databricks.PostgresRole("schema_owner", {
+ *     roleId: "schemamigrator",
+ *     parent: test.name,
+ *     spec: {
+ *         postgresRole: "schemamigrator",
+ *         membershipRoles: ["DATABRICKS_SUPERUSER"],
+ *     },
+ * });
+ * const application = new databricks.PostgresDatabase("application", {
+ *     databaseId: "application",
+ *     parent: test.name,
+ *     spec: {
+ *         postgresDatabase: "application",
+ *         role: schemaOwner.name,
+ *     },
+ * });
+ * const applicationPostgresRole = new databricks.PostgresRole("application", {
+ *     roleId: "application",
+ *     parent: test.name,
+ *     spec: {
+ *         postgresRole: "application",
+ *     },
+ * }, {
+ *     dependsOn: [application],
+ * });
+ * ```
+ *
+ * Note: in a real setup, the `application` role would also need `GRANT` privileges, but that's out of scope for this example.
  */
 export class PostgresRole extends pulumi.CustomResource {
     /**

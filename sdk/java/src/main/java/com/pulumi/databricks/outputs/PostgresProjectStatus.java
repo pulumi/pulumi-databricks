@@ -67,6 +67,13 @@ public final class PostgresProjectStatus {
      */
     private @Nullable Integer pgVersion;
     /**
+     * @return The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
+     * 
+     */
+    private @Nullable String projectId;
+    /**
      * @return (integer) - The current space occupied by the project in storage
      * 
      */
@@ -144,6 +151,15 @@ public final class PostgresProjectStatus {
         return Optional.ofNullable(this.pgVersion);
     }
     /**
+     * @return The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+    /**
      * @return (integer) - The current space occupied by the project in storage
      * 
      */
@@ -170,6 +186,7 @@ public final class PostgresProjectStatus {
         private @Nullable String historyRetentionDuration;
         private @Nullable String owner;
         private @Nullable Integer pgVersion;
+        private @Nullable String projectId;
         private @Nullable Integer syntheticStorageSizeBytes;
         public Builder() {}
         public Builder(PostgresProjectStatus defaults) {
@@ -184,6 +201,7 @@ public final class PostgresProjectStatus {
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
     	      this.owner = defaults.owner;
     	      this.pgVersion = defaults.pgVersion;
+    	      this.projectId = defaults.projectId;
     	      this.syntheticStorageSizeBytes = defaults.syntheticStorageSizeBytes;
         }
 
@@ -251,6 +269,12 @@ public final class PostgresProjectStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder projectId(@Nullable String projectId) {
+
+            this.projectId = projectId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder syntheticStorageSizeBytes(@Nullable Integer syntheticStorageSizeBytes) {
 
             this.syntheticStorageSizeBytes = syntheticStorageSizeBytes;
@@ -268,6 +292,7 @@ public final class PostgresProjectStatus {
             _resultValue.historyRetentionDuration = historyRetentionDuration;
             _resultValue.owner = owner;
             _resultValue.pgVersion = pgVersion;
+            _resultValue.projectId = projectId;
             _resultValue.syntheticStorageSizeBytes = syntheticStorageSizeBytes;
             return _resultValue;
         }

@@ -49,9 +49,11 @@ import * as utilities from "./utilities";
  *
  * ### Project with High Availability Endpoint
  *
- * Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+ * Create a project whose read-write endpoint is configured with multiple compute instances for high availability.
  * One compute instance acts as the read-write primary.
  * The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+ *
+ * This example manages implicitly created resources for the root branch and read-write endpoint. For more details, see the documentation for `databricks.PostgresBranch` and `databricks.PostgresEndpoint`.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,13 +65,31 @@ import * as utilities from "./utilities";
  *         pgVersion: 17,
  *         displayName: "HA Production Project",
  *     },
- *     initialEndpointSpec: {
+ * });
+ * const production = new databricks.PostgresBranch("production", {
+ *     branchId: "production",
+ *     parent: ha.name,
+ *     spec: {
+ *         noExpiry: true,
+ *         isProtected: true,
+ *     },
+ *     replaceExisting: true,
+ * });
+ * const primary = new databricks.PostgresEndpoint("primary", {
+ *     endpointId: "primary",
+ *     parent: production.name,
+ *     spec: {
+ *         endpointType: "ENDPOINT_TYPE_READ_WRITE",
+ *         noSuspension: true,
+ *         autoscalingLimitMinCu: 0.5,
+ *         autoscalingLimitMaxCu: 4,
  *         group: {
  *             min: 2,
  *             max: 2,
  *             enableReadableSecondaries: false,
  *         },
  *     },
+ *     replaceExisting: true,
  * });
  * ```
  *
@@ -128,7 +148,12 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     */
+    declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    /**
+     * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -149,6 +174,16 @@ export class PostgresProject extends pulumi.CustomResource {
      * Configure the provider for management through account provider.
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresProjectProviderConfig | undefined>;
+    /**
+     * If true, permanently deletes the project (hard delete).
+     * If false or unset, performs a soft delete
+     */
+    declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
+    /**
+     * (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     */
+    declare public /*out*/ readonly purgeTime: pulumi.Output<string>;
     /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
@@ -180,10 +215,13 @@ export class PostgresProject extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PostgresProjectState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteTime"] = state?.deleteTime;
             resourceInputs["initialEndpointSpec"] = state?.initialEndpointSpec;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["purgeOnDelete"] = state?.purgeOnDelete;
+            resourceInputs["purgeTime"] = state?.purgeTime;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
             resourceInputs["uid"] = state?.uid;
@@ -196,9 +234,12 @@ export class PostgresProject extends pulumi.CustomResource {
             resourceInputs["initialEndpointSpec"] = args?.initialEndpointSpec;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["purgeOnDelete"] = args?.purgeOnDelete;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["purgeTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -217,7 +258,12 @@ export interface PostgresProjectState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     */
+    deleteTime?: pulumi.Input<string>;
+    /**
+     * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -238,6 +284,16 @@ export interface PostgresProjectState {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig>;
+    /**
+     * If true, permanently deletes the project (hard delete).
+     * If false or unset, performs a soft delete
+     */
+    purgeOnDelete?: pulumi.Input<boolean>;
+    /**
+     * (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     */
+    purgeTime?: pulumi.Input<string>;
     /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
@@ -261,7 +317,7 @@ export interface PostgresProjectState {
  */
 export interface PostgresProjectArgs {
     /**
-     * Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -277,6 +333,11 @@ export interface PostgresProjectArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig>;
+    /**
+     * If true, permanently deletes the project (hard delete).
+     * If false or unset, performs a soft delete
+     */
+    purgeOnDelete?: pulumi.Input<boolean>;
     /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */

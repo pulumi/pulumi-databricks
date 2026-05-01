@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.PostgresProjectInitialEndpointSpec;
 import com.pulumi.databricks.outputs.PostgresProjectProviderConfig;
 import com.pulumi.databricks.outputs.PostgresProjectSpec;
 import com.pulumi.databricks.outputs.PostgresProjectStatus;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -108,9 +109,11 @@ import javax.annotation.Nullable;
  * 
  * ### Project with High Availability Endpoint
  * 
- * Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+ * Create a project whose read-write endpoint is configured with multiple compute instances for high availability.
  * One compute instance acts as the read-write primary.
  * The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+ * 
+ * This example manages implicitly created resources for the root branch and read-write endpoint. For more details, see the documentation for `databricks.PostgresBranch` and `databricks.PostgresEndpoint`.
  * 
  * <pre>
  * {@code
@@ -122,8 +125,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.PostgresProject;
  * import com.pulumi.databricks.PostgresProjectArgs;
  * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
- * import com.pulumi.databricks.inputs.PostgresProjectInitialEndpointSpecArgs;
- * import com.pulumi.databricks.inputs.PostgresProjectInitialEndpointSpecGroupArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresEndpoint;
+ * import com.pulumi.databricks.PostgresEndpointArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresEndpointSpecGroupArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -143,13 +151,33 @@ import javax.annotation.Nullable;
  *                 .pgVersion(17)
  *                 .displayName("HA Production Project")
  *                 .build())
- *             .initialEndpointSpec(PostgresProjectInitialEndpointSpecArgs.builder()
- *                 .group(PostgresProjectInitialEndpointSpecGroupArgs.builder()
+ *             .build());
+ * 
+ *         var production = new PostgresBranch("production", PostgresBranchArgs.builder()
+ *             .branchId("production")
+ *             .parent(ha.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .isProtected(true)
+ *                 .build())
+ *             .replaceExisting(true)
+ *             .build());
+ * 
+ *         var primary = new PostgresEndpoint("primary", PostgresEndpointArgs.builder()
+ *             .endpointId("primary")
+ *             .parent(production.name())
+ *             .spec(PostgresEndpointSpecArgs.builder()
+ *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .noSuspension(true)
+ *                 .autoscalingLimitMinCu(0.5)
+ *                 .autoscalingLimitMaxCu(4.0)
+ *                 .group(PostgresEndpointSpecGroupArgs.builder()
  *                     .min(2)
  *                     .max(2)
  *                     .enableReadableSecondaries(false)
  *                     .build())
  *                 .build())
+ *             .replaceExisting(true)
  *             .build());
  * 
  *     }
@@ -224,7 +252,23 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     * 
+     */
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
+    private Output<String> deleteTime;
+
+    /**
+     * @return (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     * 
+     */
+    public Output<String> deleteTime() {
+        return this.deleteTime;
+    }
+    /**
+     * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -234,7 +278,7 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
     private Output<PostgresProjectInitialEndpointSpec> initialEndpointSpec;
 
     /**
-     * @return Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * @return Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -290,6 +334,38 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<PostgresProjectProviderConfig>> providerConfig() {
         return Codegen.optional(this.providerConfig);
+    }
+    /**
+     * If true, permanently deletes the project (hard delete).
+     * If false or unset, performs a soft delete
+     * 
+     */
+    @Export(name="purgeOnDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> purgeOnDelete;
+
+    /**
+     * @return If true, permanently deletes the project (hard delete).
+     * If false or unset, performs a soft delete
+     * 
+     */
+    public Output<Optional<Boolean>> purgeOnDelete() {
+        return Codegen.optional(this.purgeOnDelete);
+    }
+    /**
+     * (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    @Export(name="purgeTime", refs={String.class}, tree="[0]")
+    private Output<String> purgeTime;
+
+    /**
+     * @return (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    public Output<String> purgeTime() {
+        return this.purgeTime;
     }
     /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings

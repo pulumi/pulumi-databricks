@@ -17,6 +17,12 @@ public final class PostgresCatalogStatus {
      */
     private @Nullable String branch;
     /**
+     * @return The ID in the Unity Catalog.
+     * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+     * 
+     */
+    private @Nullable String catalogId;
+    /**
      * @return (string) - The name of the Postgres database associated with the catalog
      * 
      */
@@ -34,6 +40,14 @@ public final class PostgresCatalogStatus {
      */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
+    }
+    /**
+     * @return The ID in the Unity Catalog.
+     * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+     * 
+     */
+    public Optional<String> catalogId() {
+        return Optional.ofNullable(this.catalogId);
     }
     /**
      * @return (string) - The name of the Postgres database associated with the catalog
@@ -60,12 +74,14 @@ public final class PostgresCatalogStatus {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String branch;
+        private @Nullable String catalogId;
         private @Nullable String postgresDatabase;
         private @Nullable String project;
         public Builder() {}
         public Builder(PostgresCatalogStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
+    	      this.catalogId = defaults.catalogId;
     	      this.postgresDatabase = defaults.postgresDatabase;
     	      this.project = defaults.project;
         }
@@ -74,6 +90,12 @@ public final class PostgresCatalogStatus {
         public Builder branch(@Nullable String branch) {
 
             this.branch = branch;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder catalogId(@Nullable String catalogId) {
+
+            this.catalogId = catalogId;
             return this;
         }
         @CustomType.Setter
@@ -91,6 +113,7 @@ public final class PostgresCatalogStatus {
         public PostgresCatalogStatus build() {
             final var _resultValue = new PostgresCatalogStatus();
             _resultValue.branch = branch;
+            _resultValue.catalogId = catalogId;
             _resultValue.postgresDatabase = postgresDatabase;
             _resultValue.project = project;
             return _resultValue;

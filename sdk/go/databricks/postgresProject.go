@@ -84,9 +84,11 @@ import (
 //
 // ### Project with High Availability Endpoint
 //
-// Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+// Create a project whose read-write endpoint is configured with multiple compute instances for high availability.
 // One compute instance acts as the read-write primary.
 // The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+//
+// This example manages implicitly created resources for the root branch and read-write endpoint. For more details, see the documentation for `PostgresBranch` and `PostgresEndpoint`.
 //
 // ```go
 // package main
@@ -100,19 +102,43 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewPostgresProject(ctx, "ha", &databricks.PostgresProjectArgs{
+//			ha, err := databricks.NewPostgresProject(ctx, "ha", &databricks.PostgresProjectArgs{
 //				ProjectId: pulumi.String("ha-project"),
 //				Spec: &databricks.PostgresProjectSpecArgs{
 //					PgVersion:   pulumi.Int(17),
 //					DisplayName: pulumi.String("HA Production Project"),
 //				},
-//				InitialEndpointSpec: &databricks.PostgresProjectInitialEndpointSpecArgs{
-//					Group: &databricks.PostgresProjectInitialEndpointSpecGroupArgs{
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			production, err := databricks.NewPostgresBranch(ctx, "production", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("production"),
+//				Parent:   ha.Name,
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					NoExpiry:    pulumi.Bool(true),
+//					IsProtected: pulumi.Bool(true),
+//				},
+//				ReplaceExisting: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresEndpoint(ctx, "primary", &databricks.PostgresEndpointArgs{
+//				EndpointId: pulumi.String("primary"),
+//				Parent:     production.Name,
+//				Spec: &databricks.PostgresEndpointSpecArgs{
+//					EndpointType:          pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
+//					NoSuspension:          pulumi.Bool(true),
+//					AutoscalingLimitMinCu: pulumi.Float64(0.5),
+//					AutoscalingLimitMaxCu: pulumi.Float64(4),
+//					Group: &databricks.PostgresEndpointSpecGroupArgs{
 //						Min:                       pulumi.Int(2),
 //						Max:                       pulumi.Int(2),
 //						EnableReadableSecondaries: pulumi.Bool(false),
 //					},
 //				},
+//				ReplaceExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -167,7 +193,10 @@ type PostgresProject struct {
 
 	// (string) - A timestamp indicating when the project was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// (string) - A timestamp indicating when the project was soft-deleted.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the past
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
 	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -181,6 +210,12 @@ type PostgresProject struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresProjectProviderConfigPtrOutput `pulumi:"providerConfig"`
+	// If true, permanently deletes the project (hard delete).
+	// If false or unset, performs a soft delete
+	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
+	// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the future
+	PurgeTime pulumi.StringOutput `pulumi:"purgeTime"`
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecOutput `pulumi:"spec"`
 	// (ProjectStatus) - The current status of a Project
@@ -226,7 +261,10 @@ func GetPostgresProject(ctx *pulumi.Context,
 type postgresProjectState struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime *string `pulumi:"createTime"`
-	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// (string) - A timestamp indicating when the project was soft-deleted.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the past
+	DeleteTime *string `pulumi:"deleteTime"`
+	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
 	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -240,6 +278,12 @@ type postgresProjectState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresProjectProviderConfig `pulumi:"providerConfig"`
+	// If true, permanently deletes the project (hard delete).
+	// If false or unset, performs a soft delete
+	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
+	// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the future
+	PurgeTime *string `pulumi:"purgeTime"`
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec *PostgresProjectSpec `pulumi:"spec"`
 	// (ProjectStatus) - The current status of a Project
@@ -253,7 +297,10 @@ type postgresProjectState struct {
 type PostgresProjectState struct {
 	// (string) - A timestamp indicating when the project was created
 	CreateTime pulumi.StringPtrInput
-	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// (string) - A timestamp indicating when the project was soft-deleted.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the past
+	DeleteTime pulumi.StringPtrInput
+	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
 	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -267,6 +314,12 @@ type PostgresProjectState struct {
 	ProjectId pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresProjectProviderConfigPtrInput
+	// If true, permanently deletes the project (hard delete).
+	// If false or unset, performs a soft delete
+	PurgeOnDelete pulumi.BoolPtrInput
+	// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the future
+	PurgeTime pulumi.StringPtrInput
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecPtrInput
 	// (ProjectStatus) - The current status of a Project
@@ -282,7 +335,7 @@ func (PostgresProjectState) ElementType() reflect.Type {
 }
 
 type postgresProjectArgs struct {
-	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
 	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -293,13 +346,16 @@ type postgresProjectArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresProjectProviderConfig `pulumi:"providerConfig"`
+	// If true, permanently deletes the project (hard delete).
+	// If false or unset, performs a soft delete
+	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec *PostgresProjectSpec `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a PostgresProject resource.
 type PostgresProjectArgs struct {
-	// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
 	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -310,6 +366,9 @@ type PostgresProjectArgs struct {
 	ProjectId pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresProjectProviderConfigPtrInput
+	// If true, permanently deletes the project (hard delete).
+	// If false or unset, performs a soft delete
+	PurgeOnDelete pulumi.BoolPtrInput
 	// The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
 	Spec PostgresProjectSpecPtrInput
 }
@@ -406,7 +465,13 @@ func (o PostgresProjectOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+// (string) - A timestamp indicating when the project was soft-deleted.
+// Empty if the project is not deleted, otherwise set to a timestamp in the past
+func (o PostgresProjectOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 // created project. If omitted, the initial endpoint created will have default settings, without high availability
 // configured. This field does not apply to any endpoints created after project creation. Use
 // spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -430,6 +495,18 @@ func (o PostgresProjectOutput) ProjectId() pulumi.StringOutput {
 // Configure the provider for management through account provider.
 func (o PostgresProjectOutput) ProviderConfig() PostgresProjectProviderConfigPtrOutput {
 	return o.ApplyT(func(v *PostgresProject) PostgresProjectProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresProjectProviderConfigPtrOutput)
+}
+
+// If true, permanently deletes the project (hard delete).
+// If false or unset, performs a soft delete
+func (o PostgresProjectOutput) PurgeOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PostgresProject) pulumi.BoolPtrOutput { return v.PurgeOnDelete }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+// Empty if the project is not deleted, otherwise set to a timestamp in the future
+func (o PostgresProjectOutput) PurgeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.PurgeTime }).(pulumi.StringOutput)
 }
 
 // The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings

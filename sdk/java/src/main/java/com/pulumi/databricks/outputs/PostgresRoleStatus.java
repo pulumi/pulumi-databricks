@@ -18,6 +18,18 @@ public final class PostgresRoleStatus {
     private @Nullable String identityType;
     private @Nullable List<String> membershipRoles;
     private @Nullable String postgresRole;
+    /**
+     * @return The ID to use for the Role, which will become the final component of
+     * the role&#39;s resource name.
+     * This ID becomes the role in Postgres.
+     * 
+     * This value should be 4-63 characters, and valid characters
+     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
+     * 
+     * If roleId is not specified in the request, it is generated automatically
+     * 
+     */
+    private @Nullable String roleId;
 
     private PostgresRoleStatus() {}
     public Optional<PostgresRoleStatusAttributes> attributes() {
@@ -35,6 +47,20 @@ public final class PostgresRoleStatus {
     public Optional<String> postgresRole() {
         return Optional.ofNullable(this.postgresRole);
     }
+    /**
+     * @return The ID to use for the Role, which will become the final component of
+     * the role&#39;s resource name.
+     * This ID becomes the role in Postgres.
+     * 
+     * This value should be 4-63 characters, and valid characters
+     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
+     * 
+     * If roleId is not specified in the request, it is generated automatically
+     * 
+     */
+    public Optional<String> roleId() {
+        return Optional.ofNullable(this.roleId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,6 +76,7 @@ public final class PostgresRoleStatus {
         private @Nullable String identityType;
         private @Nullable List<String> membershipRoles;
         private @Nullable String postgresRole;
+        private @Nullable String roleId;
         public Builder() {}
         public Builder(PostgresRoleStatus defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,6 +85,7 @@ public final class PostgresRoleStatus {
     	      this.identityType = defaults.identityType;
     	      this.membershipRoles = defaults.membershipRoles;
     	      this.postgresRole = defaults.postgresRole;
+    	      this.roleId = defaults.roleId;
         }
 
         @CustomType.Setter
@@ -93,6 +121,12 @@ public final class PostgresRoleStatus {
             this.postgresRole = postgresRole;
             return this;
         }
+        @CustomType.Setter
+        public Builder roleId(@Nullable String roleId) {
+
+            this.roleId = roleId;
+            return this;
+        }
         public PostgresRoleStatus build() {
             final var _resultValue = new PostgresRoleStatus();
             _resultValue.attributes = attributes;
@@ -100,6 +134,7 @@ public final class PostgresRoleStatus {
             _resultValue.identityType = identityType;
             _resultValue.membershipRoles = membershipRoles;
             _resultValue.postgresRole = postgresRole;
+            _resultValue.roleId = roleId;
             return _resultValue;
         }
     }

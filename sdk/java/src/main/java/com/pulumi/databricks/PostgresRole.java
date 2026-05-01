@@ -20,6 +20,197 @@ import javax.annotation.Nullable;
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
+ * ## Example Usage
+ * 
+ * ### Role Backed by a Databricks User Identity
+ * 
+ * Create a role that is authenticated as a specific Databricks workspace user via OAuth. `authMethod` is left unset and defaults to `LAKEBASE_OAUTH_V1` for managed identities.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresRole;
+ * import com.pulumi.databricks.PostgresRoleArgs;
+ * import com.pulumi.databricks.inputs.PostgresRoleSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Project")
+ *                 .build())
+ *             .build());
+ * 
+ *         var main = new PostgresBranch("main", PostgresBranchArgs.builder()
+ *             .branchId("main")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var jane = new PostgresRole("jane", PostgresRoleArgs.builder()
+ *             .roleId("jane")
+ *             .parent(main.name())
+ *             .spec(PostgresRoleSpecArgs.builder()
+ *                 .identityType("USER")
+ *                 .postgresRole("jane}{@literal @}{@code databricks.com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Service Principal with `DATABRICKS_SUPERUSER` Membership
+ * 
+ * Create a role that is authenticated as a Databricks service principal via OAuth and grant it the highest customer-exposed privilege set via `DATABRICKS_SUPERUSER` membership.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresRole;
+ * import com.pulumi.databricks.PostgresRoleArgs;
+ * import com.pulumi.databricks.inputs.PostgresRoleSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var adminSp = new PostgresRole("adminSp", PostgresRoleArgs.builder()
+ *             .roleId("admin-sp")
+ *             .parent(main.name())
+ *             .spec(PostgresRoleSpecArgs.builder()
+ *                 .identityType("SERVICE_PRINCIPAL")
+ *                 .postgresRole("00000000-0000-0000-0000-000000000000")
+ *                 .authMethod("LAKEBASE_OAUTH_V1")
+ *                 .membershipRoles("DATABRICKS_SUPERUSER")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Multiple roles in a branch
+ * 
+ * By default, Pulumi creates resources in parallel if the dependency graph allows. However, Lakebase
+ * doesn&#39;t allow executing parallel manipulations inside a single branch. Only one of these resources can
+ * be created or updated at a time:
+ * 
+ * - Role
+ * - Database
+ * - Endpoint
+ * 
+ * If you try to create resources in parallel, you&#39;ll see a conflict error like:
+ * 
+ * &gt; Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+ * 
+ * Pulumi serializes execution automatically when one resource references another.
+ * For example, when a database names a role as its owner via `spec.role`, Pulumi creates the role before the database.
+ * For resources that don&#39;t reference each other, like two sibling roles in the same branch, add `dependsOn` so
+ * Pulumi knows to wait for creation of the first one to finish, before scheduling the creation of the second one.
+ * 
+ * For example:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresRole;
+ * import com.pulumi.databricks.PostgresRoleArgs;
+ * import com.pulumi.databricks.inputs.PostgresRoleSpecArgs;
+ * import com.pulumi.databricks.PostgresDatabase;
+ * import com.pulumi.databricks.PostgresDatabaseArgs;
+ * import com.pulumi.databricks.inputs.PostgresDatabaseSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var schemaOwner = new PostgresRole("schemaOwner", PostgresRoleArgs.builder()
+ *             .roleId("schemamigrator")
+ *             .parent(test.name())
+ *             .spec(PostgresRoleSpecArgs.builder()
+ *                 .postgresRole("schemamigrator")
+ *                 .membershipRoles("DATABRICKS_SUPERUSER")
+ *                 .build())
+ *             .build());
+ * 
+ *         var application = new PostgresDatabase("application", PostgresDatabaseArgs.builder()
+ *             .databaseId("application")
+ *             .parent(test.name())
+ *             .spec(PostgresDatabaseSpecArgs.builder()
+ *                 .postgresDatabase("application")
+ *                 .role(schemaOwner.name())
+ *                 .build())
+ *             .build());
+ * 
+ *         var applicationPostgresRole = new PostgresRole("applicationPostgresRole", PostgresRoleArgs.builder()
+ *             .roleId("application")
+ *             .parent(test.name())
+ *             .spec(PostgresRoleSpecArgs.builder()
+ *                 .postgresRole("application")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(application)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Note: in a real setup, the `application` role would also need `GRANT` privileges, but that&#39;s out of scope for this example.
+ * 
  */
 @ResourceType(type="databricks:index/postgresRole:PostgresRole")
 public class PostgresRole extends com.pulumi.resources.CustomResource {

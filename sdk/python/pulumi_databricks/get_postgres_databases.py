@@ -98,6 +98,21 @@ def get_postgres_databases(page_size: Optional[_builtins.int] = None,
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    This data source lists all Postgres databases in a branch.
+
+    ## Example Usage
+
+    ### List All Databases in a Branch
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_postgres_databases(parent="projects/my-project/branches/main")
+    pulumi.export("databaseNames", [db.name for db in all.databases])
+    pulumi.export("postgresDatabaseNames", [db.status.postgres_database for db in all.databases])
+    ```
+
 
     :param _builtins.int page_size: Upper bound for items returned
     :param _builtins.str parent: The Branch that owns this collection of databases.
@@ -123,6 +138,21 @@ def get_postgres_databases_output(page_size: Optional[pulumi.Input[Optional[_bui
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresDatabasesResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source lists all Postgres databases in a branch.
+
+    ## Example Usage
+
+    ### List All Databases in a Branch
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_postgres_databases(parent="projects/my-project/branches/main")
+    pulumi.export("databaseNames", [db.name for db in all.databases])
+    pulumi.export("postgresDatabaseNames", [db.status.postgres_database for db in all.databases])
+    ```
 
 
     :param _builtins.int page_size: Upper bound for items returned

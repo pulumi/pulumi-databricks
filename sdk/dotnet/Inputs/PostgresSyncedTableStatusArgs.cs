@@ -56,6 +56,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? PipelineId { get; set; }
 
         /// <summary>
+        /// (string) - The full resource name of the project associated with the table.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
         /// (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
         /// </summary>
         [Input("provisioningPhase")]

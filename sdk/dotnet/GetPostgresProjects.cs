@@ -126,6 +126,14 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Inputs.GetPostgresProjectsProviderConfigArgs? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// Whether to include soft-deleted projects in the response.
+        /// When true, soft-deleted projects are included alongside active projects.
+        /// Hard-deleted and already-purged projects are never returned
+        /// </summary>
+        [Input("showDeleted")]
+        public bool? ShowDeleted { get; set; }
+
         public GetPostgresProjectsArgs()
         {
         }
@@ -146,6 +154,14 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.GetPostgresProjectsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// Whether to include soft-deleted projects in the response.
+        /// When true, soft-deleted projects are included alongside active projects.
+        /// Hard-deleted and already-purged projects are never returned
+        /// </summary>
+        [Input("showDeleted")]
+        public Input<bool>? ShowDeleted { get; set; }
+
         public GetPostgresProjectsInvokeArgs()
         {
         }
@@ -163,6 +179,7 @@ namespace Pulumi.Databricks
         public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetPostgresProjectsProjectResult> Projects;
         public readonly Outputs.GetPostgresProjectsProviderConfigResult? ProviderConfig;
+        public readonly bool? ShowDeleted;
 
         [OutputConstructor]
         private GetPostgresProjectsResult(
@@ -172,12 +189,15 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetPostgresProjectsProjectResult> projects,
 
-            Outputs.GetPostgresProjectsProviderConfigResult? providerConfig)
+            Outputs.GetPostgresProjectsProviderConfigResult? providerConfig,
+
+            bool? showDeleted)
         {
             Id = id;
             PageSize = pageSize;
             Projects = projects;
             ProviderConfig = providerConfig;
+            ShowDeleted = showDeleted;
         }
     }
 }

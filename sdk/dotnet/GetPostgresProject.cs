@@ -169,11 +169,16 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// (string) - A timestamp indicating when the project was soft-deleted.
+        /// Empty if the project is not deleted, otherwise set to a timestamp in the past
+        /// </summary>
+        public readonly string DeleteTime;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        /// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         /// created project. If omitted, the initial endpoint created will have default settings, without high availability
         /// configured. This field does not apply to any endpoints created after project creation. Use
         /// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -185,6 +190,11 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Name;
         public readonly Outputs.GetPostgresProjectProviderConfigResult? ProviderConfig;
+        /// <summary>
+        /// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+        /// Empty if the project is not deleted, otherwise set to a timestamp in the future
+        /// </summary>
+        public readonly string PurgeTime;
         /// <summary>
         /// (ProjectSpec) - The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
@@ -206,6 +216,8 @@ namespace Pulumi.Databricks
         private GetPostgresProjectResult(
             string createTime,
 
+            string deleteTime,
+
             string id,
 
             Outputs.GetPostgresProjectInitialEndpointSpecResult initialEndpointSpec,
@@ -213,6 +225,8 @@ namespace Pulumi.Databricks
             string name,
 
             Outputs.GetPostgresProjectProviderConfigResult? providerConfig,
+
+            string purgeTime,
 
             Outputs.GetPostgresProjectSpecResult spec,
 
@@ -223,10 +237,12 @@ namespace Pulumi.Databricks
             string updateTime)
         {
             CreateTime = createTime;
+            DeleteTime = deleteTime;
             Id = id;
             InitialEndpointSpec = initialEndpointSpec;
             Name = name;
             ProviderConfig = providerConfig;
+            PurgeTime = purgeTime;
             Spec = spec;
             Status = status;
             Uid = uid;
